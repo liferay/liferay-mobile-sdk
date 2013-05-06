@@ -14,7 +14,9 @@
 
 package com.liferay.client.builder.velocity;
 
-import java.io.StringWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.Writer;
 import java.util.Map;
 import java.util.Set;
 
@@ -43,19 +45,50 @@ public class VelocityUtil {
 		
 		VelocityContext context = new VelocityContext();
 		
+		JavaUtil javaUtil = new JavaUtil();
+
 		String serviceContext = getServiceContext(actions);
 		
+		StringBuilder sb = new StringBuilder("com.liferay.client");
+		sb.append(".");
+		sb.append(serviceContext);
+
+		String packageName = sb.toString();
+
 		context.put("serviceContext", serviceContext);
+		context.put("package", packageName);
 		context.put("actions", actions);
-		context.put("javaUtil", new JavaUtil());
+		context.put("javaUtil", javaUtil);
 		
 		Template template = Velocity.getTemplate(templateDir + "service.vm");
 		
-		StringWriter writer = new StringWriter();
-		
-		template.merge(context, writer);
-		
-		System.out.println(writer);
+		try {
+			String className = javaUtil.getServiceClassName(serviceContext);
+
+			String packagePath = packageName.replace(".", "/");
+
+			sb = new StringBuilder();
+
+			sb.append("gen/");
+			sb.append(packagePath);
+			sb.append("/");
+
+			File file = new File(sb.toString());
+			file.mkdirs();
+
+			sb.append(className);
+			sb.append(".java");
+
+			Writer writer = new FileWriter(sb.toString());
+
+			template.merge(context, writer);
+
+			writer.flush();
+			writer.close();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	protected static String getServiceContext(Map<String, Object> actions) {

@@ -57,19 +57,21 @@ public class JavaUtil {
 	}
 	
 	public String getType(String type) {
-		if (type.endsWith("[]") || type.equals("list")) {
+		if (type.endsWith("[]") || type.startsWith("list")) {
 			return "JSONArray";
 		}
 		
+		if (type.equals("boolean") || type.equals("double") ||
+			type.equals("int") || type.equals("long") || type.equals("void")) {
+
+			return type;
+		}
+
 		if (type.equals("string")) {
 			return "String";
 		}
-		
-		if (type.startsWith("object") || type.startsWith("map")) {
-			return "JSONObject";
-		}
 
-		return type;
+		return "JSONObject";
 	}
 
 }
