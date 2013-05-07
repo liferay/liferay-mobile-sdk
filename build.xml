@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<project name="client-builder" basedir="." default="compile">
+    <property name="lib.dir" value="${basedir}/lib" />
+    <property name="development.dir" value="${lib.dir}/development" />
+    <property name="gen.dir" value="${basedir}/gen" />
+
+	<taskdef name="jalopy" classname="de.hunsicker.jalopy.plugin.ant.AntPlugin">
+		<classpath>
+			<fileset dir="${development.dir}">
+				<include name="*.jar" />
+			</fileset>
+		</classpath>
+	</taskdef>
+
+	<target name="compile">
+		<mkdir dir="bin" />
+
+		<javac srcdir="src" destdir="bin" />
+	</target>
+
+	<target name="format-source">
+		<jalopy fileformat="unix"
+			convention="jalopy.xml">
+
+			<fileset dir="${gen.dir}">
+        		<include name="**/*.java" />
+      		</fileset>
+		</jalopy>
+	</target>
+</project>

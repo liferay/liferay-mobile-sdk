@@ -3,9 +3,6 @@ package $package;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-/**
- * @author Bruno Farache
- */
 public class $javaUtil.getServiceClassName($serviceContext) {
 
 	#foreach ($action in $actions.entrySet())
