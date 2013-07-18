@@ -1,9 +1,11 @@
 package $package;
 
+import com.liferay.client.service.BaseService;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class $javaUtil.getServiceClassName($serviceContext) {
+public class $javaUtil.getServiceClassName($serviceContext) extends BaseService {
 
 	#foreach ($action in $actions.entrySet())
 		#set ($signature = $action.value)
@@ -23,7 +25,7 @@ public class $javaUtil.getServiceClassName($serviceContext) {
 			#end
 		#end
 
-		public static $returnType $methodName($parameterList) {
+		public $returnType $methodName($parameterList) {
 			#if ($returnType != "void")
 				#if ($returnType == "JSONArray")
 					return new JSONArray();
