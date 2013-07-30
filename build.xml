@@ -1,15 +1,28 @@
 <?xml version="1.0"?>
 
 <project name="client-builder" basedir="." default="compile">
-    <property name="lib.dir" value="${basedir}/lib" />
+    <property name="project.dir" value="${basedir}" />
+
+    <property name="gen.dir" value="${project.dir}/gen" />
+	<property name="src.dir" value="${project.dir}/src" />
+    <property name="lib.dir" value="${project.dir}/lib" />
     <property name="development.dir" value="${lib.dir}/development" />
-    <property name="gen.dir" value="${basedir}/gen" />
 
 	<property file="build.${user.name}.properties" />
 	<property file="build.properties" />
 
+	<path id="portal.classpath">
+		<pathelement location="${portal.dir}/portal-impl/classes" />
+		<pathelement location="${portal.dir}/portal-service/classes" />
+		<pathelement location="${portal.dir}/portal-web/docroot/WEB-INF/classes" />
+		<pathelement location="${portal.dir}/util-java/classes" />
+		<fileset dir="${portal.dir}/lib/development" includes="*.jar" />
+		<fileset dir="${portal.dir}/lib/global" includes="*.jar" />
+		<fileset dir="${portal.dir}/lib/portal" includes="*.jar" />
+	</path>
+
 	<path id="project.classpath">
-		<pathelement path="${basedir}/classes"/>
+		<pathelement path="${project.dir}/classes"/>
 		<fileset dir="${lib.dir}" includes="**/*.jar"/>
 	</path>
 
@@ -27,7 +40,7 @@
 		<javac srcdir="src" destdir="bin" />
 	</target>
 
-	<target name="format-source">
+	<target name="format-generated-source">
 		<jalopy fileformat="unix"
 			convention="jalopy.xml">
 
@@ -37,6 +50,20 @@
 		</jalopy>
 	</target>
 
+	<target name="format-source">
+		<java
+			classname="com.liferay.portal.tools.SourceFormatter"
+			classpathref="portal.classpath"
+			dir="${src.dir}"
+			fork="true"
+			newenvironment="true"
+		>
+			<jvmarg value="-Xmx128m" />
+		</java>
+
+		<delete file="ServiceBuilder.temp" />
+	</target>
+	
 	<target name="build-service">
 		<java
 			classname="com.liferay.client.builder.JSONWebServiceClientBuilder"
