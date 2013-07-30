@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2011 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -14,7 +14,10 @@
 
 package com.liferay.client.builder.handler;
 
+import flexjson.JSONDeserializer;
+
 import java.io.IOException;
+
 import java.util.Map;
 
 import org.apache.http.HttpEntity;
@@ -24,9 +27,8 @@ import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
 
-import flexjson.JSONDeserializer;
+import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
@@ -34,28 +36,28 @@ import flexjson.JSONDeserializer;
 public class JSONResponseHandler
 		implements ResponseHandler<Map<String, Object>> {
 
-	public Map<String, Object> handleResponse(HttpResponse response) 
+	public Map<String, Object> handleResponse(HttpResponse response)
 		throws ClientProtocolException, IOException {
 
 		JSONDeserializer<Map<String, Object>> deserializer =
 			new JSONDeserializer<Map<String, Object>>();
-		
+
 		String responseString = getResponseString(response);
-		
+
 		Map<String, Object> result = deserializer.deserialize(responseString);
-		
+
 		return result;
 	}
-	
-	protected String getResponseString(HttpResponse response) 
+
+	protected String getResponseString(HttpResponse response)
 		throws IOException {
-	
+
 		HttpEntity entity = response.getEntity();
-	
+
 		if (entity == null) {
 			return null;
 		}
-	
+
 		return EntityUtils.toString(entity);
 	}
 
@@ -68,12 +70,12 @@ public class JSONResponseHandler
 			throw new Exception("Authentication failed.");
 		}
 
-		if (json != null && json.startsWith("{")) {
+		if ((json != null) && json.startsWith("{")) {
 			JSONObject jsonObj = new JSONObject(json);
 
 			if (jsonObj.has("exception")) {
 				String message = jsonObj.getString("exception");
-					
+
 				throw new Exception(message);
 			}
 		}

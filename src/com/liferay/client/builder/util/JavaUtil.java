@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -23,44 +23,44 @@ public class JavaUtil {
 
 	public String getMethodName(String path) {
 		String last = getMethodURL(path);
-		
+
 		String[] methodName = last.split("-");
-		
+
 		StringBuilder sb = new StringBuilder();
-		
+
 		for (int i = 0; i < methodName.length; i++) {
 			String word = methodName[i];
-			
+
 			if (i > 0) {
 				word = WordUtils.capitalize(word);
-			} 
-			
+			}
+
 			sb.append(word);
 		}
-		
+
 		return sb.toString();
 	}
-	
+
 	public String getMethodURL(String path) {
 		int index = path.lastIndexOf("/") + 1;
-		
+
 		return path.substring(index);
 	}
-	
+
 	public String getServiceClassName(String serviceContext) {
 		StringBuilder sb = new StringBuilder();
-		
+
 		sb.append(WordUtils.capitalize(serviceContext));
 		sb.append("Service");
-		
+
 		return sb.toString();
 	}
-	
+
 	public String getType(String type) {
 		if (type.endsWith("[]") || type.startsWith("list")) {
 			return "JSONArray";
 		}
-		
+
 		if (type.equals("boolean") || type.equals("double") ||
 			type.equals("int") || type.equals("long") || type.equals("void")) {
 

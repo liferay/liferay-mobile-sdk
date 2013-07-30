@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -18,35 +18,35 @@ package com.liferay.client.builder.handler;
  * @author Bruno Farache
  */
 public class Result {
-	
+
 	public String getBasePath() {
 		return _basePath;
 	}
-	
+
 	public String getBaseURL() {
 		return _baseURL;
 	}
-	
+
 	public String getContext() {
 		return _context;
 	}
-	
+
 	public String[] getDiscover() {
 		return _discover;
 	}
-	
+
 	public void setBasePath(String _basePath) {
 		this._basePath = _basePath;
 	}
-	
+
 	public void setBaseURL(String _baseURL) {
 		this._baseURL = _baseURL;
 	}
-	
+
 	public void setContext(String _context) {
 		this._context = _context;
 	}
-	
+
 	public void setDiscover(String[] _discover) {
 		this._discover = _discover;
 	}
@@ -55,5 +55,5 @@ public class Result {
 	private String _baseURL;
 	private String _context;
 	private String[] _discover;
-	
+
 }
