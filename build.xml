@@ -5,6 +5,9 @@
     <property name="development.dir" value="${lib.dir}/development" />
     <property name="gen.dir" value="${basedir}/gen" />
 
+	<property file="build.${user.name}.properties" />
+	<property file="build.properties" />
+
 	<path id="project.classpath">
 		<pathelement path="${basedir}/classes"/>
 		<fileset dir="${lib.dir}" includes="**/*.jar"/>
@@ -34,7 +37,7 @@
 		</jalopy>
 	</target>
 
-	<target name="build-services">
+	<target name="build-service">
 		<java
 			classname="com.liferay.client.builder.JSONWebServiceClientBuilder"
 			classpathref="project.classpath"
@@ -45,6 +48,18 @@
 			<jvmarg value="-Xmx1024m" />
 			<jvmarg value="-Xss2048k" />
 			<jvmarg value="-XX:MaxPermSize=512m" />
+
+			<jvmarg value="${jvmarg.debug}" />
+			<jvmarg value="${jvmarg.debug.port}" />
+
+			<arg value="url=${server.url}" />
+			<arg value="service.context=${service.context}" />
 		</java>
+	</target>
+
+	<target name="build-service-dlapp">
+		<antcall target="build-service">
+			<param name="service.context" value="dlapp" />
+		</antcall>
 	</target>
 </project>

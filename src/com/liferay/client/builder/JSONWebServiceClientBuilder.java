@@ -14,6 +14,7 @@
 
 package com.liferay.client.builder;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.http.client.HttpClient;
@@ -29,29 +30,20 @@ import com.liferay.client.builder.velocity.VelocityUtil;
 public class JSONWebServiceClientBuilder {
 
 	public static void main(String[] args) {
-		String[] filters = new String[] {"/dlapp/*"};
-		
-		new JSONWebServiceClientBuilder(
-			"http://localhost:8080/api/jsonws?discover", "", filters);
-	}
-	
-	public JSONWebServiceClientBuilder(
-		String url, String templateDir, String[] filters) {
-		
+		Map<String, String> arguments = parseArguments(args);
+
+		String url = arguments.get("url");
+		String serviceContext = arguments.get("service.context");
+
 		StringBuilder sb = new StringBuilder();
 
 		sb.append(url);
+		sb.append("/api/jsonws?discover");
 
-		for (int i = 0; i < filters.length; i++) {
-			if (i == 0) {
-				sb.append("=");				
-			}
-			
-			if (i > 1) {
-				sb.append(",");
-			}
-			
-			sb.append(filters[i]);
+		if (serviceContext != null && !serviceContext.equals("")) {
+			sb.append("=/");
+			sb.append(serviceContext);
+			sb.append("/*");
 		}
 		
 		HttpClient client = new DefaultHttpClient();
@@ -72,6 +64,25 @@ public class JSONWebServiceClientBuilder {
 		catch (Exception e) {
 			System.out.println(e);
 		}
+	}
+
+	public static Map<String, String> parseArguments(String[] args) {
+		Map<String, String> arguments = new HashMap<String, String>();
+
+		for (String arg : args) {
+			int pos = arg.indexOf('=');
+
+			if (pos <= 0) {
+				throw new IllegalArgumentException("Bad argument " + arg);
+			}
+
+			String key = arg.substring(0, pos).trim();
+			String value = arg.substring(pos + 1).trim();
+
+			arguments.put(key, value);
+		}
+
+		return arguments;
 	}
 
 }
