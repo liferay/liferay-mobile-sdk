@@ -20,11 +20,11 @@ package com.liferay.client.service;
 public class ServiceContext {
 
 	public static final int DEFAULT_CONNECTION_TIMEOUT = 15000;
-	
+
 	public ServiceContext(String server, String username, String password) {
 		this(server, username, password, DEFAULT_CONNECTION_TIMEOUT);
 	}
-	
+
 	public ServiceContext(
 		String server, String username, String password,
 		int connectionTimeout) {
@@ -34,7 +34,7 @@ public class ServiceContext {
 		_password = password;
 		_connectionTimeout = connectionTimeout;
 	}
-	
+
 	public int getConnectionTimeout() {
 		return _connectionTimeout;
 	}
@@ -42,13 +42,17 @@ public class ServiceContext {
 	public String getPassword() {
 		return _password;
 	}
-	
+
 	public String getServer() {
 		return _server;
 	}
 
 	public String getUsername() {
 		return _username;
+	}
+
+	public void setUsername(String username) {
+		_username = username;
 	}
 
 	public void setConnectionTimeout(int connectionTimeout) {
@@ -61,10 +65,6 @@ public class ServiceContext {
 
 	public void setServer(String server) {
 		_server = server;
-	}
-	
-	public void serUsername(String username) {
-		_username = username;
 	}
 
 	private int _connectionTimeout;

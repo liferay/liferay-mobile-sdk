@@ -22,7 +22,7 @@ public class BaseService {
 	public BaseService(ServiceContext context) {
 		_context = context;
 	}
-	
+
 	public ServiceContext getContext() {
 		return _context;
 	}

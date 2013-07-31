@@ -14,6 +14,8 @@
 
 package com.liferay.client.http;
 
+import com.liferay.client.service.ServiceContext;
+
 import java.io.IOException;
 
 import org.apache.http.HttpEntity;
@@ -25,8 +27,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.util.EntityUtils;
-
-import com.liferay.client.service.ServiceContext;
 
 /**
  * @author Bruno Farache
