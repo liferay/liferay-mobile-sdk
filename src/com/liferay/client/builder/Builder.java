@@ -22,6 +22,8 @@ import java.util.Map;
 public interface Builder {
 
 	public void build(
-		String serviceContext, int portalVersion, Map<String, Object> actions);
+			String serviceContext, int portalVersion,
+			Map<String, Object> actions)
+		throws Exception;
 
 }

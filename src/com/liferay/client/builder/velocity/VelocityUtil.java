@@ -29,7 +29,8 @@ import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 public class VelocityUtil {
 
 	public static void generate(
-		VelocityContext context, String templatePath, String filePath) {
+			VelocityContext context, String templatePath, String filePath)
+		throws Exception {
 
 		Velocity.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
 		Velocity.setProperty(
@@ -40,17 +41,12 @@ public class VelocityUtil {
 
 		Template template = Velocity.getTemplate(templatePath);
 
-		try {
-			Writer writer = new FileWriter(filePath);
+		Writer writer = new FileWriter(filePath);
 
-			template.merge(context, writer);
+		template.merge(context, writer);
 
-			writer.flush();
-			writer.close();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+		writer.flush();
+		writer.close();
 	}
 
 }

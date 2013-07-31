@@ -30,7 +30,9 @@ import org.apache.velocity.VelocityContext;
 public class AndroidBuilder implements Builder {
 
 	public void build(
-		String serviceContext, int portalVersion, Map<String, Object> actions) {
+			String serviceContext, int portalVersion,
+			Map<String, Object> actions)
+		throws Exception {
 
 		VelocityContext context = getVelocityContext(
 			serviceContext, portalVersion, actions);
@@ -38,7 +40,7 @@ public class AndroidBuilder implements Builder {
 		buildServiceImpl(context);
 	}
 
-	protected void buildServiceImpl(VelocityContext context) {
+	protected void buildServiceImpl(VelocityContext context) throws Exception {
 		String templatePath = getTemplateDir() + "/service.vm";
 		String filePath = getServiceFilePath(context);
 
