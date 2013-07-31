@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.client.builder.util;
+package com.liferay.client.builder.android;
 
 import org.apache.commons.lang.WordUtils;
 

@@ -14,8 +14,8 @@
 
 package com.liferay.client.builder;
 
+import com.liferay.client.builder.android.AndroidBuilder;
 import com.liferay.client.builder.handler.JSONResponseHandler;
-import com.liferay.client.builder.velocity.VelocityUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -63,7 +63,9 @@ public class JSONWebServiceClientBuilder {
 			Map<String, Object> actions = (Map<String, Object>)result.get(
 				"actions");
 
-			VelocityUtil.generate("android/", getPortalVersion(url), actions);
+			AndroidBuilder builder = new AndroidBuilder();
+
+			builder.build(serviceContext, getPortalVersion(url), actions);
 		}
 		catch (Exception e) {
 			System.out.println(e);

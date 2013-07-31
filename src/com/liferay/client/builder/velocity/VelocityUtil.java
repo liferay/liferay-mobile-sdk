@@ -14,15 +14,8 @@
 
 package com.liferay.client.builder.velocity;
 
-import com.liferay.client.builder.JSONWebServiceClientBuilder;
-import com.liferay.client.builder.util.JavaUtil;
-
-import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
-
-import java.util.Map;
-import java.util.Set;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
@@ -36,7 +29,7 @@ import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 public class VelocityUtil {
 
 	public static void generate(
-		String templateDir, int portalVersion, Map<String, Object> actions) {
+		VelocityContext context, String templatePath, String filePath) {
 
 		Velocity.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
 		Velocity.setProperty(
@@ -45,49 +38,10 @@ public class VelocityUtil {
 
 		Velocity.init();
 
-		VelocityContext context = new VelocityContext();
-
-		JavaUtil javaUtil = new JavaUtil();
-
-		String serviceContext = getServiceContext(actions);
-
-		StringBuilder sb = new StringBuilder("com.liferay.client");
-
-		if (portalVersion > JSONWebServiceClientBuilder.UNKOWN_PORTAL_VERSION) {
-			sb.append(".v");
-			sb.append(portalVersion);
-		}
-
-		sb.append(".");
-		sb.append(serviceContext);
-
-		String packageName = sb.toString();
-
-		context.put("serviceContext", serviceContext);
-		context.put("package", packageName);
-		context.put("actions", actions);
-		context.put("javaUtil", javaUtil);
-
-		Template template = Velocity.getTemplate(templateDir + "service.vm");
+		Template template = Velocity.getTemplate(templatePath);
 
 		try {
-			String className = javaUtil.getServiceClassName(serviceContext);
-
-			String packagePath = packageName.replace(".", "/");
-
-			sb = new StringBuilder();
-
-			sb.append("gen/");
-			sb.append(packagePath);
-			sb.append("/");
-
-			File file = new File(sb.toString());
-			file.mkdirs();
-
-			sb.append(className);
-			sb.append(".java");
-
-			Writer writer = new FileWriter(sb.toString());
+			Writer writer = new FileWriter(filePath);
 
 			template.merge(context, writer);
 
@@ -97,18 +51,6 @@ public class VelocityUtil {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	protected static String getServiceContext(Map<String, Object> actions) {
-		Set<String> keys = actions.keySet();
-
-		for (String key : keys) {
-			String[] serviceName = key.split("/");
-
-			return serviceName[1];
-		}
-
-		return "";
 	}
 
 }
