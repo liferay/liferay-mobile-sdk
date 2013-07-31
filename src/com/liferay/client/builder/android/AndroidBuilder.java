@@ -79,7 +79,7 @@ public class AndroidBuilder implements Builder {
 
 		StringBuilder sb = new StringBuilder("com.liferay.client");
 
-		if (portalVersion > ClientBuilder.UNKOWN_PORTAL_VERSION) {
+		if (portalVersion != ClientBuilder.UNKOWN_PORTAL_VERSION) {
 			sb.append(".v");
 			sb.append(portalVersion);
 		}
