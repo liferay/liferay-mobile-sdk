@@ -37,7 +37,7 @@ public class $className extends BaseService {
 			#end
 		#end
 
-		public $returnType $methodName($parameterList) throws Exception {
+		public void $methodName($parameterList) throws Exception {
 			JSONObject command = new JSONObject();
 
 			try {
@@ -49,16 +49,6 @@ public class $className extends BaseService {
 			}
 
 			HttpUtil.post(getContext(), command);
-
-			#if ($returnType != "void")
-				#if ($returnType == "JSONArray")
-					return new JSONArray();
-				#end
-
-				#if ($returnType == "JSONObject")
-					return new JSONObject();
-				#end
-			#end
 		}
 	#end
 
