@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.client.builder.handler;
+package com.liferay.client.builder.http;
 
 import flexjson.JSONDeserializer;
 

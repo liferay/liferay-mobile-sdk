@@ -15,7 +15,7 @@
 package com.liferay.client.builder;
 
 import com.liferay.client.builder.android.AndroidBuilder;
-import com.liferay.client.builder.handler.JSONResponseHandler;
+import com.liferay.client.builder.http.JSONResponseHandler;
 
 import java.util.HashMap;
 import java.util.Map;
