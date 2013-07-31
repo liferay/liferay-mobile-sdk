@@ -3,4 +3,4 @@
 /classes/
 /gen/
 /build.*.properties
-velocity.log
+velocity.log*

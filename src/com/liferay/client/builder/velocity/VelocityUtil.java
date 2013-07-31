@@ -14,6 +14,7 @@
 
 package com.liferay.client.builder.velocity;
 
+import com.liferay.client.builder.JSONWebServiceClientBuilder;
 import com.liferay.client.builder.util.JavaUtil;
 
 import java.io.File;
@@ -35,7 +36,7 @@ import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 public class VelocityUtil {
 
 	public static void generate(
-		String templateDir, Map<String, Object> actions) {
+		String templateDir, int portalVersion, Map<String, Object> actions) {
 
 		Velocity.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
 		Velocity.setProperty(
@@ -51,6 +52,12 @@ public class VelocityUtil {
 		String serviceContext = getServiceContext(actions);
 
 		StringBuilder sb = new StringBuilder("com.liferay.client");
+
+		if (portalVersion > JSONWebServiceClientBuilder.UNKOWN_PORTAL_VERSION) {
+			sb.append(".v");
+			sb.append(portalVersion);
+		}
+
 		sb.append(".");
 		sb.append(serviceContext);
 

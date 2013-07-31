@@ -44,9 +44,7 @@ public class JSONResponseHandler
 
 		String responseString = getResponseString(response);
 
-		Map<String, Object> result = deserializer.deserialize(responseString);
-
-		return result;
+		return deserializer.deserialize(responseString);
 	}
 
 	protected String getResponseString(HttpResponse response)

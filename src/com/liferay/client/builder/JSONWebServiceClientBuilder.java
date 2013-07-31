@@ -20,6 +20,8 @@ import com.liferay.client.builder.velocity.VelocityUtil;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.http.Header;
+import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -29,6 +31,9 @@ import org.apache.http.impl.client.DefaultHttpClient;
  */
 public class JSONWebServiceClientBuilder {
 
+	public static final int UNKOWN_PORTAL_VERSION = 0;
+
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		Map<String, String> arguments = parseArguments(args);
 
@@ -55,18 +60,50 @@ public class JSONWebServiceClientBuilder {
 		try {
 			Map<String, Object> result = client.execute(get, handler);
 
-			@SuppressWarnings("unchecked")
 			Map<String, Object> actions = (Map<String, Object>)result.get(
 				"actions");
 
-			VelocityUtil.generate("android/", actions);
+			VelocityUtil.generate("android/", getPortalVersion(url), actions);
 		}
 		catch (Exception e) {
 			System.out.println(e);
 		}
 	}
 
-	public static Map<String, String> parseArguments(String[] args) {
+	protected static int getPortalVersion(String url) {
+		try {
+			HttpClient client = new DefaultHttpClient();
+
+			HttpGet get = new HttpGet(url);
+
+			HttpResponse response = client.execute(get);
+
+			Header portalHeader = response.getFirstHeader("Liferay-Portal");
+
+			if (portalHeader == null) {
+				return UNKOWN_PORTAL_VERSION;
+			}
+
+			String portalField = portalHeader.getValue();
+
+			int indexOfBuild = portalField.indexOf("Build");
+
+			if (indexOfBuild == -1) {
+				return UNKOWN_PORTAL_VERSION;
+			}
+			else {
+				int buildNumber = Integer.parseInt(
+					portalField.substring(indexOfBuild + 6, indexOfBuild + 10));
+
+				return buildNumber;
+			}
+		}
+		catch (Exception e) {
+			return UNKOWN_PORTAL_VERSION;
+		}
+	}
+
+	protected static Map<String, String> parseArguments(String[] args) {
 		Map<String, String> arguments = new HashMap<String, String>();
 
 		for (String arg : args) {
