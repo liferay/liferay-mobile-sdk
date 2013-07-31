@@ -22,14 +22,14 @@ public class $className extends BaseService {
 		#set ($parameters = $signature.parameters)
 
 		#set ($parameterList = "")
-		#set ($jsonObj = "JSONObject jsonObj = new JSONObject();${esc.n}")
+		#set ($jsonObj = "JSONObject params = new JSONObject();${esc.n}")
 
 		#foreach ($parameter in $parameters.entrySet())
 			#set ($parameterName = $parameter.key)
 			#set ($parameterType = $javaUtil.getType($parameter.value))
 			#set ($parameterList = "$parameterList$parameterType $parameterName")
 
-			#set ($jsonObj = "$jsonObj${esc.n}jsonObj.put(${esc.q}$parameterName${esc.q}, $parameterName);")
+			#set ($jsonObj = "$jsonObj${esc.n}params.put(${esc.q}$parameterName${esc.q}, $parameterName);")
 
 			#if ($foreach.hasNext)
 				#set ($parameterList = "$parameterList, ")
@@ -39,10 +39,9 @@ public class $className extends BaseService {
 		public $returnType $methodName($parameterList) {
 			try {
 				JSONObject command = new JSONObject();
-
 				$jsonObj
 
-				command.put(${esc.q}$signature.path${esc.q}, jsonObj);
+				command.put(${esc.q}$signature.path${esc.q}, params);
 			}
 			catch (JSONException je) {
 			}
