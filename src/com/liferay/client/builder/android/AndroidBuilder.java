@@ -41,7 +41,7 @@ public class AndroidBuilder implements Builder {
 	}
 
 	protected void buildServiceImpl(VelocityContext context) throws Exception {
-		String templatePath = getTemplateDir() + "/service.vm";
+		String templatePath = "android/service.vm";
 		String filePath = getServiceFilePath(context);
 
 		VelocityUtil.generate(context, templatePath, filePath);
@@ -68,10 +68,6 @@ public class AndroidBuilder implements Builder {
 		sb.append(".java");
 
 		return sb.toString();
-	}
-
-	protected String getTemplateDir() {
-		return "android";
 	}
 
 	protected VelocityContext getVelocityContext(
