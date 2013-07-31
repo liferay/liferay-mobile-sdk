@@ -15,7 +15,7 @@
 package com.liferay.client.builder.android;
 
 import com.liferay.client.builder.Builder;
-import com.liferay.client.builder.JSONWebServiceClientBuilder;
+import com.liferay.client.builder.ClientBuilder;
 import com.liferay.client.builder.velocity.VelocityUtil;
 
 import java.io.File;
@@ -79,7 +79,7 @@ public class AndroidBuilder implements Builder {
 
 		StringBuilder sb = new StringBuilder("com.liferay.client");
 
-		if (portalVersion > JSONWebServiceClientBuilder.UNKOWN_PORTAL_VERSION) {
+		if (portalVersion > ClientBuilder.UNKOWN_PORTAL_VERSION) {
 			sb.append(".v");
 			sb.append(portalVersion);
 		}

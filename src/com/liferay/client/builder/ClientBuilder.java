@@ -29,7 +29,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 /**
  * @author Bruno Farache
  */
-public class JSONWebServiceClientBuilder {
+public class ClientBuilder {
 
 	public static final int UNKOWN_PORTAL_VERSION = 0;
 
