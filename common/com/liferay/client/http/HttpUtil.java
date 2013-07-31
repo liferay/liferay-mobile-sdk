@@ -24,9 +24,14 @@ import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.Credentials;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.util.EntityUtils;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
@@ -52,6 +57,18 @@ public class HttpUtil {
 		return client;
 	}
 
+	public static String getResponseString(HttpResponse response)
+		throws IOException {
+
+		HttpEntity entity = response.getEntity();
+
+		if (entity == null) {
+			return null;
+		}
+
+		return EntityUtils.toString(entity);
+	}
+
 	public static String getUrl(ServiceContext context) {
 		StringBuilder sb = new StringBuilder();
 
@@ -71,6 +88,18 @@ public class HttpUtil {
 		}
 
 		return EntityUtils.toString(entity);
+	}
+
+	public static JSONArray post(ServiceContext context, JSONObject command)
+		throws Exception {
+
+		HttpClient client = getClient(context);
+
+		HttpPost post = new HttpPost(getUrl(context));
+
+		post.setEntity(new StringEntity(command.toString()));
+
+		return client.execute(post, new PostResponseHandler());
 	}
 
 }

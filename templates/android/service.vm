@@ -1,5 +1,6 @@
 package $package;
 
+import com.liferay.client.http.HttpUtil;
 import com.liferay.client.service.BaseService;
 import com.liferay.client.service.ServiceContext;
 
@@ -36,15 +37,18 @@ public class $className extends BaseService {
 			#end
 		#end
 
-		public $returnType $methodName($parameterList) {
+		public $returnType $methodName($parameterList) throws Exception {
+			JSONObject command = new JSONObject();
+
 			try {
-				JSONObject command = new JSONObject();
 				$jsonObj
 
 				command.put(${esc.q}$signature.path${esc.q}, params);
 			}
 			catch (JSONException je) {
 			}
+
+			HttpUtil.post(getContext(), command);
 
 			#if ($returnType != "void")
 				#if ($returnType == "JSONArray")

@@ -15,7 +15,7 @@
 package com.liferay.client.builder;
 
 import com.liferay.client.builder.android.AndroidBuilder;
-import com.liferay.client.builder.http.JSONResponseHandler;
+import com.liferay.client.builder.http.DiscoveryResponseHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -55,7 +55,7 @@ public class ClientBuilder {
 
 		HttpGet get = new HttpGet(sb.toString());
 
-		JSONResponseHandler handler = new JSONResponseHandler();
+		DiscoveryResponseHandler handler = new DiscoveryResponseHandler();
 
 		try {
 			Map<String, Object> result = client.execute(get, handler);

@@ -14,26 +14,26 @@
 
 package com.liferay.client.builder.http;
 
+import com.liferay.client.http.HttpUtil;
+
 import flexjson.JSONDeserializer;
 
 import java.io.IOException;
 
 import java.util.Map;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
-import org.apache.http.util.EntityUtils;
 
 import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
  */
-public class JSONResponseHandler
+public class DiscoveryResponseHandler
 		implements ResponseHandler<Map<String, Object>> {
 
 	public Map<String, Object> handleResponse(HttpResponse response)
@@ -42,21 +42,9 @@ public class JSONResponseHandler
 		JSONDeserializer<Map<String, Object>> deserializer =
 			new JSONDeserializer<Map<String, Object>>();
 
-		String responseString = getResponseString(response);
+		String responseString = HttpUtil.getResponseString(response);
 
 		return deserializer.deserialize(responseString);
-	}
-
-	protected String getResponseString(HttpResponse response)
-		throws IOException {
-
-		HttpEntity entity = response.getEntity();
-
-		if (entity == null) {
-			return null;
-		}
-
-		return EntityUtils.toString(entity);
 	}
 
 	protected void handleServerException(HttpResponse response, String json)
