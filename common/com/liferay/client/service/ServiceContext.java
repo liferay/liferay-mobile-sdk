@@ -51,10 +51,6 @@ public class ServiceContext {
 		return _username;
 	}
 
-	public void setUsername(String username) {
-		_username = username;
-	}
-
 	public void setConnectionTimeout(int connectionTimeout) {
 		_connectionTimeout = connectionTimeout;
 	}
@@ -65,6 +61,10 @@ public class ServiceContext {
 
 	public void setServer(String server) {
 		_server = server;
+	}
+
+	public void setUsername(String username) {
+		_username = username;
 	}
 
 	private int _connectionTimeout;

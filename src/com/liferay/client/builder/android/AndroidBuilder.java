@@ -23,6 +23,7 @@ import java.io.File;
 import java.util.Map;
 
 import org.apache.velocity.VelocityContext;
+import org.apache.velocity.tools.generic.EscapeTool;
 
 /**
  * @author Bruno Farache
@@ -88,6 +89,7 @@ public class AndroidBuilder implements Builder {
 		String packageName = sb.toString();
 
 		context.put(ACTIONS, actions);
+		context.put(ESCAPE_TOOL, new EscapeTool());
 		context.put(JAVA_UTIL, new JavaUtil());
 		context.put(PACKAGE, packageName);
 		context.put(SERVICE_CONTEXT, serviceContext);
@@ -96,6 +98,7 @@ public class AndroidBuilder implements Builder {
 	}
 
 	protected static final String ACTIONS = "actions";
+	protected static final String ESCAPE_TOOL = "esc";
 	protected static final String JAVA_UTIL = "javaUtil";
 	protected static final String PACKAGE = "package";
 	protected static final String SERVICE_CONTEXT = "serviceContext";
