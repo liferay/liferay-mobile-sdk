@@ -38,10 +38,6 @@ public class AndroidBuilder implements Builder {
 		buildServiceImpl(context);
 	}
 
-	public String getTemplateDir() {
-		return "android";
-	}
-
 	protected void buildServiceImpl(VelocityContext context) {
 		String templatePath = getTemplateDir() + "/service.vm";
 		String filePath = getServiceFilePath(context);
@@ -70,6 +66,10 @@ public class AndroidBuilder implements Builder {
 		sb.append(".java");
 
 		return sb.toString();
+	}
+
+	protected String getTemplateDir() {
+		return "android";
 	}
 
 	protected VelocityContext getVelocityContext(

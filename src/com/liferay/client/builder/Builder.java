@@ -24,6 +24,4 @@ public interface Builder {
 	public void build(
 		String serviceContext, int portalVersion, Map<String, Object> actions);
 
-	public String getTemplateDir();
-
 }
