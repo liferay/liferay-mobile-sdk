@@ -82,6 +82,8 @@
 			<arg value="url=${server.url}" />
 			<arg value="service.context=${service.context}" />
 		</java>
+
+		<antcall target="format-generated-source" />
 	</target>
 
 	<target name="build-service-dlapp">
