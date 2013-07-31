@@ -1,11 +1,18 @@
 package $package;
 
 import com.liferay.client.service.BaseService;
+import com.liferay.client.service.ServiceContext;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class $javaUtil.getServiceClassName($serviceContext) extends BaseService {
+#set ($className = $javaUtil.getServiceClassName($serviceContext))
+
+public class $className extends BaseService {
+
+	public $className(ServiceContext context) {
+		super(context);
+	}
 
 	#foreach ($action in $actions.entrySet())
 		#set ($signature = $action.value)
