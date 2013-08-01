@@ -18,11 +18,9 @@ import com.liferay.client.service.ServiceContext;
 
 import java.io.IOException;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.Credentials;
-import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -46,15 +44,21 @@ public class HttpUtil {
 		HttpConnectionParams.setConnectionTimeout(
 			client.getParams(), context.getConnectionTimeout());
 
-		AuthScope authScope = new AuthScope(
-			AuthScope.ANY_HOST, AuthScope.ANY_PORT);
-
-		Credentials credentials = new UsernamePasswordCredentials(
-			context.getUsername(), context.getPassword());
-
-		client.getCredentialsProvider().setCredentials(authScope, credentials);
-
 		return client;
+	}
+
+	public static HttpPost getPost(ServiceContext context) {
+		HttpPost post = new HttpPost(getUrl(context));
+
+		StringBuilder sb = new StringBuilder(context.getUsername());
+		sb.append(":");
+		sb.append(context.getPassword());
+
+		String basic = Base64.encodeBase64String(sb.toString().getBytes());
+
+		post.setHeader("Authorization", "Basic " + basic);
+
+		return post;
 	}
 
 	public static String getResponseString(HttpResponse response)
@@ -94,8 +98,7 @@ public class HttpUtil {
 		throws Exception {
 
 		HttpClient client = getClient(context);
-
-		HttpPost post = new HttpPost(getUrl(context));
+		HttpPost post = getPost(context);
 
 		post.setEntity(new StringEntity(command.toString()));
 
