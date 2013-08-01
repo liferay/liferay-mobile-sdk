@@ -73,7 +73,7 @@ public class HttpUtil {
 		StringBuilder sb = new StringBuilder();
 
 		sb.append(context.getServer());
-		sb.append("/api/secure/jsonws/invoke");
+		sb.append("/api/jsonws/invoke");
 
 		return sb.toString();
 	}
