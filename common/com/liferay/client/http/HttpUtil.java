@@ -14,6 +14,7 @@
 
 package com.liferay.client.http;
 
+import com.liferay.client.exception.ServerException;
 import com.liferay.client.service.ServiceContext;
 
 import java.io.IOException;
@@ -21,6 +22,8 @@ import java.io.IOException;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -29,6 +32,7 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.util.EntityUtils;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -94,7 +98,7 @@ public class HttpUtil {
 		return EntityUtils.toString(entity);
 	}
 
-	public static JSONArray post(ServiceContext context, JSONObject command)
+	public static Object post(ServiceContext context, JSONObject command)
 		throws Exception {
 
 		HttpClient client = getClient(context);
@@ -102,7 +106,47 @@ public class HttpUtil {
 
 		post.setEntity(new StringEntity(command.toString()));
 
-		return client.execute(post, new PostResponseHandler());
+		HttpResponse response = client.execute(post);;
+
+		String json = HttpUtil.getResponseString(response);
+
+		return handleResponse(response, json);
+	}
+
+	protected static Object handleResponse(HttpResponse response, String json)
+		throws ServerException {
+
+		StatusLine status = response.getStatusLine();
+
+		if (status.getStatusCode() == HttpStatus.SC_UNAUTHORIZED) {
+			throw new ServerException("Authentication failed.");
+		}
+
+		try {
+			if (json != null) {
+				if (json.startsWith("{")) {
+					JSONObject jsonObj = new JSONObject(json);
+
+					if (jsonObj.has("exception")) {
+						String message = jsonObj.getString("exception");
+
+						throw new ServerException(message);
+					}
+
+					return jsonObj;
+				}
+				else if (json.startsWith("[")) {
+					JSONArray jsonArray = new JSONArray(json);
+
+					return jsonArray;
+				}
+			}
+		}
+		catch (JSONException je) {
+			throw new ServerException(je);
+		}
+
+		return json;
 	}
 
 }
