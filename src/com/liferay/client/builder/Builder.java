@@ -22,7 +22,7 @@ import java.util.Map;
 public interface Builder {
 
 	public void build(
-			String serviceContext, int portalVersion,
+			String serviceContext, String portalVersion,
 			Map<String, Object> actions)
 		throws Exception;
 

@@ -31,7 +31,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
  */
 public class ClientBuilder {
 
-	public static final int UNKOWN_PORTAL_VERSION = 0;
+	public static final String UNKOWN_PORTAL_VERSION = "0";
 
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
@@ -72,7 +72,7 @@ public class ClientBuilder {
 		}
 	}
 
-	protected static int getPortalVersion(String url) {
+	protected static String getPortalVersion(String url) {
 		try {
 			HttpClient client = new DefaultHttpClient();
 
@@ -94,8 +94,10 @@ public class ClientBuilder {
 				return UNKOWN_PORTAL_VERSION;
 			}
 			else {
-				int buildNumber = Integer.parseInt(
-					portalField.substring(indexOfBuild + 6, indexOfBuild + 10));
+				String buildNumber = portalField.substring(
+					indexOfBuild + 6, indexOfBuild + 10);
+
+				buildNumber = buildNumber.replaceAll("0*$", "");
 
 				return buildNumber;
 			}

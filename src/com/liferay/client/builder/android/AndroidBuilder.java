@@ -31,7 +31,7 @@ import org.apache.velocity.tools.generic.EscapeTool;
 public class AndroidBuilder implements Builder {
 
 	public void build(
-			String serviceContext, int portalVersion,
+			String serviceContext, String portalVersion,
 			Map<String, Object> actions)
 		throws Exception {
 
@@ -72,13 +72,14 @@ public class AndroidBuilder implements Builder {
 	}
 
 	protected VelocityContext getVelocityContext(
-		String serviceContext, int portalVersion, Map<String, Object> actions) {
+		String serviceContext, String portalVersion,
+		Map<String, Object> actions) {
 
 		VelocityContext context = new VelocityContext();
 
 		StringBuilder sb = new StringBuilder("com.liferay.client");
 
-		if (portalVersion != ClientBuilder.UNKOWN_PORTAL_VERSION) {
+		if (!portalVersion.equals(ClientBuilder.UNKOWN_PORTAL_VERSION)) {
 			sb.append(".v");
 			sb.append(portalVersion);
 		}
