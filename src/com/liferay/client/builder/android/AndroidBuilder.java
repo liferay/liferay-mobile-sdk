@@ -14,15 +14,15 @@
 
 package com.liferay.client.builder.android;
 
-import java.io.File;
-
-import org.apache.velocity.VelocityContext;
-import org.apache.velocity.tools.generic.EscapeTool;
-
 import com.liferay.client.builder.Builder;
 import com.liferay.client.builder.ClientBuilder;
 import com.liferay.client.builder.http.Discovery;
 import com.liferay.client.builder.velocity.VelocityUtil;
+
+import java.io.File;
+
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.tools.generic.EscapeTool;
 
 /**
  * @author Bruno Farache
@@ -70,8 +70,7 @@ public class AndroidBuilder implements Builder {
 	}
 
 	protected VelocityContext getVelocityContext(
-		String serviceContext, String portalVersion,
-		Discovery discovery) {
+		String serviceContext, String portalVersion, Discovery discovery) {
 
 		VelocityContext context = new VelocityContext();
 
@@ -97,9 +96,13 @@ public class AndroidBuilder implements Builder {
 	}
 
 	protected static final String DISCOVERY = "discovery";
+
 	protected static final String ESCAPE_TOOL = "esc";
+
 	protected static final String JAVA_UTIL = "javaUtil";
+
 	protected static final String PACKAGE = "package";
+
 	protected static final String SERVICE_CONTEXT = "serviceContext";
 
 }
