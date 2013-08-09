@@ -25,6 +25,7 @@ import org.json.JSONObject;
  */
 public class Discovery {
 
+	@SuppressWarnings("unchecked")
 	public Discovery(String json) throws JSONException {
 		JSONObject jsonObj = new JSONObject(json);
 

@@ -34,7 +34,6 @@ public class ClientBuilder {
 
 	public static final String UNKOWN_PORTAL_VERSION = "0";
 
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		Map<String, String> arguments = parseArguments(args);
 
