@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 #set ($className = $javaUtil.getServiceClassName($serviceContext))
+#set ($actions = $discovery.actions)
 
 public class $className extends BaseService {
 
@@ -16,18 +17,17 @@ public class $className extends BaseService {
 		super(context);
 	}
 
-	#foreach ($action in $actions.entrySet())
-		#set ($signature = $action.value)
-		#set ($returnType = $javaUtil.getType($signature.response))
-		#set ($methodName = $javaUtil.getMethodName($signature.path))
-		#set ($parameters = $signature.parameters)
+	#foreach ($action in $actions)
+		#set ($returnType = $javaUtil.getType($action.response))
+		#set ($methodName = $javaUtil.getMethodName($action.path))
+		#set ($parameters = $action.parameters)
 
 		#set ($parameterList = "")
 		#set ($jsonObj = "JSONObject params = new JSONObject();${esc.n}")
 
-		#foreach ($parameter in $parameters.entrySet())
-			#set ($parameterName = $parameter.key)
-			#set ($parameterType = $javaUtil.getType($parameter.value))
+		#foreach ($parameter in $parameters)
+			#set ($parameterName = $parameter.name)
+			#set ($parameterType = $javaUtil.getType($parameter.type))
 			#set ($parameterList = "$parameterList$parameterType $parameterName")
 
 			#set ($jsonObj = "$jsonObj${esc.n}params.put(${esc.q}$parameterName${esc.q}, $parameterName);")
@@ -43,7 +43,7 @@ public class $className extends BaseService {
 			try {
 				$jsonObj
 
-				command.put(${esc.q}$signature.path${esc.q}, params);
+				command.put(${esc.q}$action.path${esc.q}, params);
 			}
 			catch (JSONException je) {
 			}

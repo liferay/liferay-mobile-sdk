@@ -14,16 +14,15 @@
 
 package com.liferay.client.builder.android;
 
-import com.liferay.client.builder.Builder;
-import com.liferay.client.builder.ClientBuilder;
-import com.liferay.client.builder.velocity.VelocityUtil;
-
 import java.io.File;
-
-import java.util.Map;
 
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.tools.generic.EscapeTool;
+
+import com.liferay.client.builder.Builder;
+import com.liferay.client.builder.ClientBuilder;
+import com.liferay.client.builder.http.Discovery;
+import com.liferay.client.builder.velocity.VelocityUtil;
 
 /**
  * @author Bruno Farache
@@ -31,12 +30,11 @@ import org.apache.velocity.tools.generic.EscapeTool;
 public class AndroidBuilder implements Builder {
 
 	public void build(
-			String serviceContext, String portalVersion,
-			Map<String, Object> actions)
+			String serviceContext, String portalVersion, Discovery discovery)
 		throws Exception {
 
 		VelocityContext context = getVelocityContext(
-			serviceContext, portalVersion, actions);
+			serviceContext, portalVersion, discovery);
 
 		buildServiceImpl(context);
 	}
@@ -73,7 +71,7 @@ public class AndroidBuilder implements Builder {
 
 	protected VelocityContext getVelocityContext(
 		String serviceContext, String portalVersion,
-		Map<String, Object> actions) {
+		Discovery discovery) {
 
 		VelocityContext context = new VelocityContext();
 
@@ -89,7 +87,7 @@ public class AndroidBuilder implements Builder {
 
 		String packageName = sb.toString();
 
-		context.put(ACTIONS, actions);
+		context.put(DISCOVERY, discovery);
 		context.put(ESCAPE_TOOL, new EscapeTool());
 		context.put(JAVA_UTIL, new JavaUtil());
 		context.put(PACKAGE, packageName);
@@ -98,7 +96,7 @@ public class AndroidBuilder implements Builder {
 		return context;
 	}
 
-	protected static final String ACTIONS = "actions";
+	protected static final String DISCOVERY = "discovery";
 	protected static final String ESCAPE_TOOL = "esc";
 	protected static final String JAVA_UTIL = "javaUtil";
 	protected static final String PACKAGE = "package";

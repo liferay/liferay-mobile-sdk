@@ -12,17 +12,38 @@
  * details.
  */
 
-package com.liferay.client.builder;
+package com.liferay.client.builder.http;
 
-import com.liferay.client.builder.http.Discovery;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
  */
-public interface Builder {
+public class Parameter {
 
-	public void build(
-			String serviceContext, String portalVersion, Discovery discovery)
-		throws Exception;
+	public Parameter(JSONObject jsonObj) throws JSONException {
+		_name = jsonObj.getString("name");
+		_type = jsonObj.getString("type");
+	}
+
+	public String getName() {
+		return _name;
+	}
+
+	public String getType() {
+		return _type;
+	}
+
+	public void setName(String name) {
+		_name = name;
+	}
+
+	public void setType(String type) {
+		_type = type;
+	}
+
+	private String _name;
+	private String _type;
 
 }

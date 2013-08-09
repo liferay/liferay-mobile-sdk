@@ -5,7 +5,6 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="src" path="common"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="lib" path="lib/development/flexjson-2.1.jar"/>
 	<classpathentry kind="lib" path="lib/development/velocity-1.7-dep.jar"/>
 	<classpathentry kind="lib" path="lib/development/velocity-tools-generic-2.0.jar"/>
 	<classpathentry kind="lib" path="lib/development/log4j.jar"/>

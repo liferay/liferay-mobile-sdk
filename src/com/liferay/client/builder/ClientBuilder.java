@@ -14,9 +14,6 @@
 
 package com.liferay.client.builder;
 
-import com.liferay.client.builder.android.AndroidBuilder;
-import com.liferay.client.builder.http.DiscoveryResponseHandler;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,6 +22,10 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+
+import com.liferay.client.builder.android.AndroidBuilder;
+import com.liferay.client.builder.http.Discovery;
+import com.liferay.client.builder.http.DiscoveryResponseHandler;
 
 /**
  * @author Bruno Farache
@@ -58,17 +59,14 @@ public class ClientBuilder {
 		DiscoveryResponseHandler handler = new DiscoveryResponseHandler();
 
 		try {
-			Map<String, Object> result = client.execute(get, handler);
-
-			Map<String, Object> actions = (Map<String, Object>)result.get(
-				"actions");
+			Discovery discovery = client.execute(get, handler);
 
 			AndroidBuilder builder = new AndroidBuilder();
 
-			builder.build(serviceContext, getPortalVersion(url), actions);
+			builder.build(serviceContext, getPortalVersion(url), discovery);
 		}
 		catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 
