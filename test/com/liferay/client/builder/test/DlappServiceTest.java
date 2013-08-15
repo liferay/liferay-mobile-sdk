@@ -14,6 +14,7 @@
 
 package com.liferay.client.builder.test;
 
+import com.liferay.client.exception.ServerException;
 import com.liferay.client.v62.dlapp.DlappService;
 
 import java.io.IOException;
@@ -21,6 +22,8 @@ import java.io.IOException;
 import org.json.JSONObject;
 
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  * @author Bruno Farache
@@ -41,8 +44,32 @@ public class DlappServiceTest extends BaseTest {
 		String description = "";
 		JSONObject serviceContext = null;
 
-		service.addFolder(
+		JSONObject jsonObj = service.addFolder(
 			repositoryId, parentFolderId, name, description, serviceContext);
+
+		assertEquals(name, jsonObj.get("name"));
+	}
+
+	@Test
+	public void deleteFolder() throws Exception {
+		DlappService service = new DlappService(context);
+
+		long repositoryId = Long.valueOf(props.getProperty("repositoryId"));
+		long parentFolderId = 0;
+		String name = "test";
+
+		service.deleteFolder(repositoryId, parentFolderId, name);
+
+		try {
+			service.getFolder(repositoryId, parentFolderId, name);
+
+			fail();
+		}
+		catch (ServerException se) {
+			String message = se.getMessage();
+
+			assertTrue(message.startsWith("No DLFolder exists with the key"));
+		}
 	}
 
 }
