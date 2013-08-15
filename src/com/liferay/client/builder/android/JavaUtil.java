@@ -52,7 +52,7 @@ public class JavaUtil {
 			return type;
 		}
 
-		if (type.endsWith("[]") || type.startsWith("list")) {
+		if (type.endsWith("[]") || type.equals("object<list>")) {
 			return "JSONArray";
 		}
 
