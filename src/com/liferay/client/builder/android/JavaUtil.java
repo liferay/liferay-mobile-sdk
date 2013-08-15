@@ -47,6 +47,18 @@ public class JavaUtil {
 		return path.substring(index);
 	}
 
+	public String getReturnType(String type) {
+		if (type.equals("void")) {
+			return type;
+		}
+
+		if (type.endsWith("[]") || type.startsWith("list")) {
+			return "JSONArray";
+		}
+
+		return "JSONObject";
+	}
+
 	public String getServiceClassName(String serviceContext) {
 		StringBuilder sb = new StringBuilder();
 

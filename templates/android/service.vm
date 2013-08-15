@@ -2,6 +2,7 @@ package $package;
 
 import com.liferay.client.http.HttpUtil;
 import com.liferay.client.service.BaseService;
+import com.liferay.client.service.JSONWrapper;
 import com.liferay.client.service.ServiceContext;
 
 import org.json.JSONArray;
@@ -18,7 +19,7 @@ public class $className extends BaseService {
 	}
 
 	#foreach ($action in $actions)
-		#set ($returnType = $javaUtil.getType($action.response))
+		#set ($returnType = $javaUtil.getReturnType($action.response))
 		#set ($methodName = $javaUtil.getMethodName($action.path))
 		#set ($parameters = $action.parameters)
 
@@ -37,7 +38,7 @@ public class $className extends BaseService {
 			#end
 		#end
 
-		public void $methodName($parameterList) throws Exception {
+		public $returnType $methodName($parameterList) throws Exception {
 			JSONObject command = new JSONObject();
 
 			try {
@@ -46,9 +47,19 @@ public class $className extends BaseService {
 				command.put(${esc.q}$action.path${esc.q}, params);
 			}
 			catch (JSONException je) {
+				throw new Exception(je);
 			}
 
-			HttpUtil.post(getContext(), command);
+			#if ($returnType != "void")
+				JSONWrapper json = HttpUtil.post(getContext(), command);
+
+				#if ($returnType == "JSONArray")
+					return json.getJSONArray();
+				#elseif ($returnType == "JSONObject")
+					return json.getJSONObject();
+				#end
+			#end
+
 		}
 	#end
 

@@ -15,6 +15,7 @@
 package com.liferay.client.http;
 
 import com.liferay.client.exception.ServerException;
+import com.liferay.client.service.JSONWrapper;
 import com.liferay.client.service.ServiceContext;
 
 import java.io.IOException;
@@ -98,7 +99,7 @@ public class HttpUtil {
 		return EntityUtils.toString(entity);
 	}
 
-	public static Object post(ServiceContext context, JSONObject command)
+	public static JSONWrapper post(ServiceContext context, JSONObject command)
 		throws Exception {
 
 		HttpClient client = getClient(context);
@@ -113,7 +114,8 @@ public class HttpUtil {
 		return handleResponse(response, json);
 	}
 
-	protected static Object handleResponse(HttpResponse response, String json)
+	protected static JSONWrapper handleResponse(
+			HttpResponse response, String json)
 		throws ServerException {
 
 		StatusLine status = response.getStatusLine();
@@ -133,12 +135,12 @@ public class HttpUtil {
 						throw new ServerException(message);
 					}
 
-					return jsonObj;
+					return new JSONWrapper(jsonObj);
 				}
 				else if (json.startsWith("[")) {
 					JSONArray jsonArray = new JSONArray(json);
 
-					return jsonArray;
+					return new JSONWrapper(jsonArray);
 				}
 			}
 		}
@@ -146,7 +148,7 @@ public class HttpUtil {
 			throw new ServerException(je);
 		}
 
-		return json;
+		return new JSONWrapper(json);
 	}
 
 }
