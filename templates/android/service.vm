@@ -58,6 +58,8 @@ public class $className extends BaseService {
 				#elseif ($returnType == "JSONObject")
 					return json.getJSONObject();
 				#end
+			#else
+				HttpUtil.post(getContext(), command);
 			#end
 
 		}
