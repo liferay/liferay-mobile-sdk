@@ -17,12 +17,12 @@ package com.liferay.client.builder;
 import com.liferay.client.builder.android.AndroidBuilder;
 import com.liferay.client.builder.http.Discovery;
 import com.liferay.client.builder.http.DiscoveryResponseHandler;
+import com.liferay.client.http.HttpUtil;
+import com.liferay.client.http.PortalVersion;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.http.Header;
-import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -62,45 +62,12 @@ public class ClientBuilder {
 
 			AndroidBuilder builder = new AndroidBuilder();
 
-			builder.build(serviceContext, getPortalVersion(url), discovery);
+			PortalVersion version = HttpUtil.getPortalVersion(url);
+
+			builder.build(serviceContext, version, discovery);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-		}
-	}
-
-	protected static String getPortalVersion(String url) {
-		try {
-			HttpClient client = new DefaultHttpClient();
-
-			HttpGet get = new HttpGet(url);
-
-			HttpResponse response = client.execute(get);
-
-			Header portalHeader = response.getFirstHeader("Liferay-Portal");
-
-			if (portalHeader == null) {
-				return UNKOWN_PORTAL_VERSION;
-			}
-
-			String portalField = portalHeader.getValue();
-
-			int indexOfBuild = portalField.indexOf("Build");
-
-			if (indexOfBuild == -1) {
-				return UNKOWN_PORTAL_VERSION;
-			}
-			else {
-				String buildNumber = portalField.substring(
-					indexOfBuild + 6, indexOfBuild + 10);
-
-				buildNumber = buildNumber.replaceAll("0*$", "");
-
-				return buildNumber;
-			}
-		}
-		catch (Exception e) {
-			return UNKOWN_PORTAL_VERSION;
 		}
 	}
 

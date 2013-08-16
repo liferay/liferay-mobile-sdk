@@ -21,11 +21,13 @@ import com.liferay.client.service.ServiceContext;
 import java.io.IOException;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -50,6 +52,45 @@ public class HttpUtil {
 			client.getParams(), context.getConnectionTimeout());
 
 		return client;
+	}
+
+	public static PortalVersion getPortalVersion(ServiceContext context) {
+		return getPortalVersion(context.getServer());
+	}
+
+	public static PortalVersion getPortalVersion(String url) {
+		try {
+			HttpClient client = new DefaultHttpClient();
+
+			HttpGet get = new HttpGet(url);
+
+			HttpResponse response = client.execute(get);
+
+			Header portalHeader = response.getFirstHeader("Liferay-Portal");
+
+			if (portalHeader == null) {
+				return PortalVersion.UNKNOWN;
+			}
+
+			String portalField = portalHeader.getValue();
+
+			int indexOfBuild = portalField.indexOf("Build");
+
+			if (indexOfBuild == -1) {
+				return PortalVersion.UNKNOWN;
+			}
+			else {
+				String buildNumber = portalField.substring(
+					indexOfBuild + 6, indexOfBuild + 10);
+
+				buildNumber = buildNumber.replaceAll("0*$", "");
+
+				return PortalVersion.getValue(Integer.valueOf(buildNumber));
+			}
+		}
+		catch (Exception e) {
+			return PortalVersion.UNKNOWN;
+		}
 	}
 
 	public static HttpPost getPost(ServiceContext context) {

@@ -12,18 +12,33 @@
  * details.
  */
 
-package com.liferay.client.builder;
-
-import com.liferay.client.builder.http.Discovery;
-import com.liferay.client.http.PortalVersion;
+package com.liferay.client.http;
 
 /**
  * @author Bruno Farache
  */
-public interface Builder {
+public enum PortalVersion {
 
-	public void build(
-			String serviceContext, PortalVersion version, Discovery discovery)
-		throws Exception;
+	UNKNOWN(-1), V_6_2(62);
+
+	public static PortalVersion getValue(int version) {
+		for (PortalVersion value : PortalVersion.values()) {
+			if (value.getValue() == version) {
+				return value;
+			}
+		}
+
+		return UNKNOWN;
+	}
+
+	public int getValue() {
+		return _version;
+	}
+
+	private PortalVersion(int version) {
+		_version = version;
+	}
+
+	private int _version;
 
 }

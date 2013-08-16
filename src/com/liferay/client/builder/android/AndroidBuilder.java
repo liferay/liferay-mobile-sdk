@@ -15,9 +15,9 @@
 package com.liferay.client.builder.android;
 
 import com.liferay.client.builder.Builder;
-import com.liferay.client.builder.ClientBuilder;
 import com.liferay.client.builder.http.Discovery;
 import com.liferay.client.builder.velocity.VelocityUtil;
+import com.liferay.client.http.PortalVersion;
 
 import java.io.File;
 
@@ -30,11 +30,11 @@ import org.apache.velocity.tools.generic.EscapeTool;
 public class AndroidBuilder implements Builder {
 
 	public void build(
-			String serviceContext, String portalVersion, Discovery discovery)
+			String serviceContext, PortalVersion version, Discovery discovery)
 		throws Exception {
 
 		VelocityContext context = getVelocityContext(
-			serviceContext, portalVersion, discovery);
+			serviceContext, version, discovery);
 
 		buildServiceImpl(context);
 	}
@@ -70,15 +70,15 @@ public class AndroidBuilder implements Builder {
 	}
 
 	protected VelocityContext getVelocityContext(
-		String serviceContext, String portalVersion, Discovery discovery) {
+		String serviceContext, PortalVersion version, Discovery discovery) {
 
 		VelocityContext context = new VelocityContext();
 
 		StringBuilder sb = new StringBuilder("com.liferay.client");
 
-		if (!portalVersion.equals(ClientBuilder.UNKOWN_PORTAL_VERSION)) {
+		if (version != PortalVersion.UNKNOWN) {
 			sb.append(".v");
-			sb.append(portalVersion);
+			sb.append(version.getValue());
 		}
 
 		sb.append(".");
