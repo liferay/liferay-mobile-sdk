@@ -91,4 +91,19 @@
 			<param name="service.context" value="dlapp" />
 		</antcall>
 	</target>
+
+	<target name="jar-service-dlapp">
+		<jar
+			basedir="gen/classes"
+			includes="com/liferay/client/**/dlapp/**"
+			jarfile="dlapp-service.jar"
+		/>
+	</target>
+
+	<target name="jar-android">
+		<jar
+			basedir="android/classes"
+			jarfile="liferay-sdk-android.jar"
+		/>
+	</target>
 </project>
