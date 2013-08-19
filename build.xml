@@ -3,6 +3,7 @@
 <project name="client-builder" basedir="." default="compile">
     <property name="project.dir" value="${basedir}" />
 
+	<property name="android.dir" value="${project.dir}/android" />
     <property name="gen.dir" value="${project.dir}/gen" />
 	<property name="src.dir" value="${project.dir}/src" />
     <property name="lib.dir" value="${project.dir}/lib" />
@@ -23,6 +24,7 @@
 
 	<path id="project.classpath">
 		<pathelement path="${project.dir}/classes"/>
+		<pathelement path="${android.dir}/classes"/>
 		<fileset dir="${lib.dir}" includes="**/*.jar"/>
 	</path>
 
@@ -34,36 +36,6 @@
 		</classpath>
 	</taskdef>
 
-	<target name="compile">
-		<mkdir dir="bin" />
-
-		<javac srcdir="src" destdir="bin" />
-	</target>
-
-	<target name="format-generated-source">
-		<jalopy fileformat="unix"
-			convention="jalopy.xml">
-
-			<fileset dir="${gen.dir}">
-        		<include name="**/*.java" />
-      		</fileset>
-		</jalopy>
-	</target>
-
-	<target name="format-source">
-		<java
-			classname="com.liferay.portal.tools.sourceformatter.SourceFormatter"
-			classpathref="portal.classpath"
-			dir="${src.dir}"
-			fork="true"
-			newenvironment="true"
-		>
-			<jvmarg value="-Xmx128m" />
-		</java>
-
-		<delete file="ServiceBuilder.temp" />
-	</target>
-	
 	<target name="build-service">
 		<java
 			classname="com.liferay.client.builder.ClientBuilder"
@@ -82,28 +54,25 @@
 			<arg value="url=${server.url}" />
 			<arg value="service.context=${service.context}" />
 		</java>
-
-		<antcall target="format-generated-source" />
 	</target>
 
-	<target name="build-service-dlapp">
-		<antcall target="build-service">
-			<param name="service.context" value="dlapp" />
-		</antcall>
+	<target name="compile">
+		<mkdir dir="bin" />
+
+		<javac srcdir="src" destdir="bin" />
 	</target>
 
-	<target name="jar-service-dlapp">
-		<jar
-			basedir="gen/classes"
-			includes="com/liferay/client/**/dlapp/**"
-			jarfile="dlapp-service.jar"
-		/>
-	</target>
+	<target name="format-source">
+		<java
+			classname="com.liferay.portal.tools.sourceformatter.SourceFormatter"
+			classpathref="portal.classpath"
+			dir="${src.dir}"
+			fork="true"
+			newenvironment="true"
+		>
+			<jvmarg value="-Xmx128m" />
+		</java>
 
-	<target name="jar-android">
-		<jar
-			basedir="android/classes"
-			jarfile="liferay-sdk-android.jar"
-		/>
+		<delete file="ServiceBuilder.temp" />
 	</target>
 </project>

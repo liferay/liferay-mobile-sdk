@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<project name="android" basedir="../" default="jar">
+	<import file="../build.xml" />
+
+	<target name="build-service">
+		<antcall target="client-builder.build-service" />
+		<antcall target="format-source" />
+	</target>
+
+	<target name="build-service-dlapp">
+		<antcall target="build-service">
+			<param name="service.context" value="dlapp" />
+		</antcall>
+	</target>
+
+	<target name="format-source">
+		<jalopy fileformat="unix"
+				convention="jalopy.xml">
+
+			<fileset dir="${gen.dir}">
+				<include name="**/*.java" />
+			</fileset>
+		</jalopy>
+	</target>
+
+	<target name="jar">
+		<jar
+			basedir="android/classes"
+			jarfile="liferay-sdk-android.jar"
+		/>
+	</target>
+
+	<target name="jar-service-dlapp">
+		<jar
+			basedir="gen/classes"
+			includes="com/liferay/client/**/dlapp/**"
+			jarfile="dlapp-service.jar"
+		/>
+	</target>
+</project>
