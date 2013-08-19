@@ -58,9 +58,15 @@ public class ClientBuilder {
 		DiscoveryResponseHandler handler = new DiscoveryResponseHandler();
 
 		try {
-			Discovery discovery = client.execute(get, handler);
+			String builderType = arguments.get("builder");
 
-			AndroidBuilder builder = new AndroidBuilder();
+			Builder builder = null;
+
+			if (builderType.equals("android")) {
+				builder = new AndroidBuilder();
+			}
+
+			Discovery discovery = client.execute(get, handler);
 
 			PortalVersion version = HttpUtil.getPortalVersion(url);
 

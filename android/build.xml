@@ -4,7 +4,10 @@
 	<import file="../build.xml" />
 
 	<target name="build-service">
-		<antcall target="client-builder.build-service" />
+		<antcall target="client-builder.build-service">
+			<param name="builder" value="android" />
+		</antcall>
+
 		<antcall target="format-source" />
 	</target>
 

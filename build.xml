@@ -51,6 +51,7 @@
 			<jvmarg value="${jvmarg.debug}" />
 			<jvmarg value="${jvmarg.debug.port}" />
 
+			<arg value="builder=${builder}" />
 			<arg value="url=${server.url}" />
 			<arg value="service.context=${service.context}" />
 		</java>
