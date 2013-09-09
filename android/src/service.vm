@@ -30,14 +30,14 @@ public class $className extends BaseService {
 		#set ($parameters = $action.parameters)
 
 		#set ($parameterList = "")
-		#set ($jsonObj = "JSONObject params = new JSONObject();${esc.n}")
+		#set ($jsonObj = "JSONObject _params = new JSONObject();${esc.n}")
 
 		#foreach ($parameter in $parameters)
 			#set ($parameterName = $parameter.name)
 			#set ($parameterType = $javaUtil.getType($parameter.type))
 			#set ($parameterList = "$parameterList$parameterType $parameterName")
 
-			#set ($jsonObj = "$jsonObj${esc.n}params.put(${esc.q}$parameterName${esc.q}, $parameterName);")
+			#set ($jsonObj = "$jsonObj${esc.n}_params.put(${esc.q}$parameterName${esc.q}, $parameterName);")
 
 			#if ($foreach.hasNext)
 				#set ($parameterList = "$parameterList, ")
@@ -45,23 +45,23 @@ public class $className extends BaseService {
 		#end
 
 		public $returnType $methodName($parameterList) throws Exception {
-			JSONObject command = new JSONObject();
+			JSONObject _command = new JSONObject();
 
 			try {
 				$jsonObj
 
-				command.put(${esc.q}$action.path${esc.q}, params);
+				_command.put(${esc.q}$action.path${esc.q}, _params);
 			}
-			catch (JSONException je) {
-				throw new Exception(je);
+			catch (JSONException _je) {
+				throw new Exception(_je);
 			}
 
-			TaskCallback callback = getCallback();
+			TaskCallback _callback = getCallback();
 
-			if (callback != null) {
-				ServiceAsyncTask task = new ServiceAsyncTask(getContext(), callback);
+			if (_callback != null) {
+				ServiceAsyncTask _task = new ServiceAsyncTask(getContext(), _callback);
 
-				task.execute(command);
+				_task.execute(_command);
 
 				#if ($returnType == "void")
 					return;
@@ -71,14 +71,14 @@ public class $className extends BaseService {
 			}
 			else {
 				#if ($returnType == "void")
-					HttpUtil.post(getContext(), command);
+					HttpUtil.post(getContext(), _command);
 				#else
-					JSONWrapper json = HttpUtil.post(getContext(), command);
+					JSONWrapper _json = HttpUtil.post(getContext(), _command);
 
 					#if ($returnType == "JSONArray")
-						return json.getJSONArray();
+						return _json.getJSONArray();
 					#else
-						return json.getJSONObject();
+						return _json.getJSONObject();
 					#end
 				#end
 			}
