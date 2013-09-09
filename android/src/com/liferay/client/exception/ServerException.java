@@ -17,6 +17,7 @@ package com.liferay.client.exception;
 /**
  * @author Bruno Farache
  */
+@SuppressWarnings("serial")
 public class ServerException extends Exception {
 
 	public ServerException() {

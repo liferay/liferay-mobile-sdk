@@ -4,6 +4,8 @@ import com.liferay.client.http.HttpUtil;
 import com.liferay.client.service.BaseService;
 import com.liferay.client.service.JSONWrapper;
 import com.liferay.client.service.ServiceContext;
+import com.liferay.client.task.ServiceAsyncTask;
+import com.liferay.client.task.TaskCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,6 +18,10 @@ public class $className extends BaseService {
 
 	public $className(ServiceContext context) {
 		super(context);
+	}
+
+	public $className(ServiceContext context, TaskCallback callback) {
+		super(context, callback);
 	}
 
 	#foreach ($action in $actions)
@@ -50,18 +56,32 @@ public class $className extends BaseService {
 				throw new Exception(je);
 			}
 
-			#if ($returnType != "void")
-				JSONWrapper json = HttpUtil.post(getContext(), command);
+			TaskCallback callback = getCallback();
 
-				#if ($returnType == "JSONArray")
-					return json.getJSONArray();
-				#elseif ($returnType == "JSONObject")
-					return json.getJSONObject();
+			if (callback != null) {
+				ServiceAsyncTask task = new ServiceAsyncTask(getContext(), callback);
+
+				task.execute(command);
+
+				#if ($returnType == "void")
+					return;
+				#else
+					return null;
 				#end
-			#else
-				HttpUtil.post(getContext(), command);
-			#end
+			}
+			else {
+				#if ($returnType == "void")
+					HttpUtil.post(getContext(), command);
+				#else
+					JSONWrapper json = HttpUtil.post(getContext(), command);
 
+					#if ($returnType == "JSONArray")
+						return json.getJSONArray();
+					#else
+						return json.getJSONObject();
+					#end
+				#end
+			}
 		}
 	#end
 

@@ -14,23 +14,39 @@
 
 package com.liferay.client.service;
 
+import com.liferay.client.task.TaskCallback;
+
 /**
  * @author Bruno Farache
  */
 public class BaseService {
 
 	public BaseService(ServiceContext context) {
-		_context = context;
+		this(context, null);
+	}
+
+	public BaseService(ServiceContext context, TaskCallback callback) {
+		this.context = context;
+		this.callback = callback;
+	}
+
+	public TaskCallback getCallback() {
+		return callback;
 	}
 
 	public ServiceContext getContext() {
-		return _context;
+		return context;
+	}
+
+	public void setCallback(TaskCallback callback) {
+		this.callback = callback;
 	}
 
 	public void setContext(ServiceContext context) {
-		_context = context;
+		this.context = context;
 	}
 
-	protected ServiceContext _context;
+	protected TaskCallback callback;
+	protected ServiceContext context;
 
 }

@@ -17,6 +17,12 @@
 		</antcall>
 	</target>
 
+	<target name="build-service-group">
+		<antcall target="build-service">
+			<param name="service.context" value="group" />
+		</antcall>
+	</target>
+
 	<target name="format-source">
 		<jalopy fileformat="unix"
 				convention="jalopy.xml">

@@ -22,6 +22,10 @@ import org.json.JSONObject;
  */
 public class JSONWrapper {
 
+	public JSONWrapper(Exception exception) {
+		_exception = exception;
+	}
+
 	public JSONWrapper(JSONArray jsonArray) {
 		_jsonArray = jsonArray;
 	}
@@ -32,6 +36,10 @@ public class JSONWrapper {
 
 	public JSONWrapper(String json) {
 		_json = json;
+	}
+
+	public Exception getException() {
+		return _exception;
 	}
 
 	public String getJSON() {
@@ -58,6 +66,7 @@ public class JSONWrapper {
 		_jsonObject = jsonObject;
 	}
 
+	private Exception _exception;
 	private String _json;
 	private JSONArray _jsonArray;
 	private JSONObject _jsonObject;
