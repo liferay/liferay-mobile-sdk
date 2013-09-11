@@ -14,7 +14,7 @@
 
 package com.liferay.client.service;
 
-import com.liferay.client.task.TaskCallback;
+import com.liferay.client.task.callback.AsyncTaskCallback;
 
 /**
  * @author Bruno Farache
@@ -25,12 +25,12 @@ public class BaseService {
 		this(context, null);
 	}
 
-	public BaseService(ServiceContext context, TaskCallback callback) {
+	public BaseService(ServiceContext context, AsyncTaskCallback<?> callback) {
 		this.context = context;
 		this.callback = callback;
 	}
 
-	public TaskCallback getCallback() {
+	public AsyncTaskCallback<?> getCallback() {
 		return callback;
 	}
 
@@ -38,7 +38,7 @@ public class BaseService {
 		return context;
 	}
 
-	public void setCallback(TaskCallback callback) {
+	public void setCallback(AsyncTaskCallback<?> callback) {
 		this.callback = callback;
 	}
 
@@ -46,7 +46,7 @@ public class BaseService {
 		this.context = context;
 	}
 
-	protected TaskCallback callback;
+	protected AsyncTaskCallback<?> callback;
 	protected ServiceContext context;
 
 }

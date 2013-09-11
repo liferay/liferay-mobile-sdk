@@ -19,36 +19,46 @@ import android.os.AsyncTask;
 import com.liferay.client.http.HttpUtil;
 import com.liferay.client.service.JSONWrapper;
 import com.liferay.client.service.ServiceContext;
+import com.liferay.client.task.callback.AsyncTaskCallback;
 
 import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
  */
-public class ServiceAsyncTask extends AsyncTask<JSONObject, Void, JSONWrapper> {
+public class ServiceAsyncTask<T> extends AsyncTask<JSONObject, Void, T> {
 
-	public ServiceAsyncTask(ServiceContext context, TaskCallback callback) {
+	public ServiceAsyncTask(
+		ServiceContext context, AsyncTaskCallback<T> callback) {
+
 		_callback = callback;
 		_context = context;
 	}
 
-	public JSONWrapper doInBackground(JSONObject... params) {
-		JSONWrapper result = null;
+	@SuppressWarnings("unchecked")
+	public T doInBackground(JSONObject... params) {
+		JSONWrapper wrapper;
 
 		try {
-			result = HttpUtil.post(_context, params[0]);
+			wrapper = HttpUtil.post(_context, params[0]);
 
-			return _callback.doInBackground(result);
+			Object json = wrapper.getJSONArray();
+
+			if (json == null) {
+				json = wrapper.getJSONObject();
+			}
+
+			return _callback.doInBackground((T)json);
 		}
 		catch (Exception e) {
-			result = new JSONWrapper(e);
+			wrapper = new JSONWrapper(e);
 
-			_result = result;
+			_result = wrapper;
 
 			cancel(false);
 		}
 
-		return result;
+		return null;
 	}
 
 	public void onCancelled() {
@@ -56,14 +66,14 @@ public class ServiceAsyncTask extends AsyncTask<JSONObject, Void, JSONWrapper> {
 	}
 
 	public void onCancelled(JSONWrapper result) {
-		_callback.onCancelled(result.getException());
+		_callback.onCancelled(_result.getException());
 	}
 
-	public void onPostExecute(JSONWrapper result) {
+	public void onPostExecute(T result) {
 		_callback.onPostExecute(result);
 	}
 
-	private TaskCallback _callback;
+	private AsyncTaskCallback<T> _callback;
 	private ServiceContext _context;
 	private JSONWrapper _result;
 

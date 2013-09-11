@@ -5,7 +5,7 @@ import com.liferay.client.service.BaseService;
 import com.liferay.client.service.JSONWrapper;
 import com.liferay.client.service.ServiceContext;
 import com.liferay.client.task.ServiceAsyncTask;
-import com.liferay.client.task.TaskCallback;
+import com.liferay.client.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,13 +14,14 @@ import org.json.JSONObject;
 #set ($className = $javaUtil.getServiceClassName($serviceContext))
 #set ($actions = $discovery.actions)
 
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class $className extends BaseService {
 
 	public $className(ServiceContext context) {
 		super(context);
 	}
 
-	public $className(ServiceContext context, TaskCallback callback) {
+	public $className(ServiceContext context, AsyncTaskCallback<?> callback) {
 		super(context, callback);
 	}
 
@@ -31,6 +32,12 @@ public class $className extends BaseService {
 
 		#set ($parameterList = "")
 		#set ($jsonObj = "JSONObject _params = new JSONObject();${esc.n}")
+
+		#set ($callbackType = "")
+
+		#if ($returnType != "void")
+			#set ($callbackType = "<$returnType>")
+		#end
 
 		#foreach ($parameter in $parameters)
 			#set ($parameterName = $parameter.name)
@@ -56,10 +63,12 @@ public class $className extends BaseService {
 				throw new Exception(_je);
 			}
 
-			TaskCallback _callback = getCallback();
+			AsyncTaskCallback$callbackType _callback =
+				(AsyncTaskCallback$callbackType)getCallback();
 
 			if (_callback != null) {
-				ServiceAsyncTask _task = new ServiceAsyncTask(getContext(), _callback);
+				ServiceAsyncTask$callbackType _task =
+					new ServiceAsyncTask$callbackType(getContext(), _callback);
 
 				_task.execute(_command);
 

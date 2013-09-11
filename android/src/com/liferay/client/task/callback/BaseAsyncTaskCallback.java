@@ -12,19 +12,19 @@
  * details.
  */
 
-package com.liferay.client.task;
-
-import com.liferay.client.service.JSONWrapper;
+package com.liferay.client.task.callback;
 
 /**
  * @author Bruno Farache
  */
-public interface TaskCallback {
+public abstract class BaseAsyncTaskCallback<T> implements AsyncTaskCallback<T> {
 
-	public JSONWrapper doInBackground(JSONWrapper result);
+	public T doInBackground(T result) {
+		return result;
+	}
 
-	public void onCancelled(Exception exception);
+	public abstract void onCancelled(Exception exception);
 
-	public void onPostExecute(JSONWrapper result);
+	public abstract void onPostExecute(T result);
 
 }
