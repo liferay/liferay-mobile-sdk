@@ -20,16 +20,17 @@ import com.liferay.client.service.ServiceContext;
 
 import java.io.IOException;
 
-import org.apache.commons.codec.binary.Base64;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
+import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.util.EntityUtils;
@@ -42,8 +43,6 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class HttpUtil {
-
-	public static final int CONNECTION_TIMEOUT = 15000;
 
 	public static HttpClient getClient(ServiceContext context) {
 		DefaultHttpClient client = new DefaultHttpClient();
@@ -96,13 +95,14 @@ public class HttpUtil {
 	public static HttpPost getPost(ServiceContext context) {
 		HttpPost post = new HttpPost(getUrl(context));
 
-		StringBuilder sb = new StringBuilder(context.getUsername());
-		sb.append(":");
-		sb.append(context.getPassword());
+		UsernamePasswordCredentials credentials =
+			new UsernamePasswordCredentials(
+				context.getUsername(), context.getPassword());
 
-		String basic = Base64.encodeBase64String(sb.toString().getBytes());
+		Header authorization = BasicScheme.authenticate(
+			credentials, "UTF-8", false);
 
-		post.setHeader("Authorization", "Basic " + basic);
+		post.addHeader(authorization);
 
 		return post;
 	}

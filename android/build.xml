@@ -36,7 +36,7 @@
 	<target name="jar">
 		<jar
 			basedir="android/classes"
-			jarfile="liferay-sdk-android.jar"
+			jarfile="${android.dir}/liferay-sdk-android.jar"
 		/>
 	</target>
 
@@ -44,7 +44,15 @@
 		<jar
 			basedir="gen/classes"
 			includes="com/liferay/client/**/dlapp/**"
-			jarfile="dlapp-service.jar"
+			jarfile="${android.dir}/services/dlapp-service.jar"
+		/>
+	</target>
+
+	<target name="jar-service-group">
+		<jar
+			basedir="gen/classes"
+			includes="com/liferay/client/**/group/**"
+			jarfile="${android.dir}/services/group-service.jar"
 		/>
 	</target>
 </project>
