@@ -25,12 +25,12 @@ public class BaseService {
 		this(context, null);
 	}
 
-	public BaseService(ServiceContext context, AsyncTaskCallback<?> callback) {
+	public BaseService(ServiceContext context, AsyncTaskCallback callback) {
 		this.context = context;
 		this.callback = callback;
 	}
 
-	public AsyncTaskCallback<?> getCallback() {
+	public AsyncTaskCallback getCallback() {
 		return callback;
 	}
 
@@ -38,7 +38,7 @@ public class BaseService {
 		return context;
 	}
 
-	public void setCallback(AsyncTaskCallback<?> callback) {
+	public void setCallback(AsyncTaskCallback callback) {
 		this.callback = callback;
 	}
 
@@ -46,7 +46,7 @@ public class BaseService {
 		this.context = context;
 	}
 
-	protected AsyncTaskCallback<?> callback;
+	protected AsyncTaskCallback callback;
 	protected ServiceContext context;
 
 }

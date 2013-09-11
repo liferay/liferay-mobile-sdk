@@ -15,7 +15,6 @@
 package com.liferay.client.http;
 
 import com.liferay.client.exception.ServerException;
-import com.liferay.client.service.JSONWrapper;
 import com.liferay.client.service.ServiceContext;
 
 import java.io.IOException;
@@ -140,13 +139,13 @@ public class HttpUtil {
 		return EntityUtils.toString(entity);
 	}
 
-	public static JSONWrapper post(ServiceContext context, JSONObject command)
+	public static JSONArray post(ServiceContext context, JSONArray commands)
 		throws Exception {
 
 		HttpClient client = getClient(context);
 		HttpPost post = getPost(context);
 
-		post.setEntity(new StringEntity(command.toString()));
+		post.setEntity(new StringEntity(commands.toString()));
 
 		HttpResponse response = client.execute(post);;
 
@@ -155,7 +154,17 @@ public class HttpUtil {
 		return handleResponse(response, json);
 	}
 
-	protected static JSONWrapper handleResponse(
+	public static JSONArray post(ServiceContext context, JSONObject command)
+		throws Exception {
+
+		JSONArray commands = new JSONArray();
+
+		commands.put(command);
+
+		return post(context, commands);
+	}
+
+	protected static JSONArray handleResponse(
 			HttpResponse response, String json)
 		throws ServerException {
 
@@ -175,13 +184,13 @@ public class HttpUtil {
 
 						throw new ServerException(message);
 					}
-
-					return new JSONWrapper(jsonObj);
+					else {
+						throw new ServerException(
+							"Unexpected return type: " + json.toString());
+					}
 				}
 				else if (json.startsWith("[")) {
-					JSONArray jsonArray = new JSONArray(json);
-
-					return new JSONWrapper(jsonArray);
+					return new JSONArray(json);
 				}
 			}
 		}
@@ -189,7 +198,7 @@ public class HttpUtil {
 			throw new ServerException(je);
 		}
 
-		return new JSONWrapper(json);
+		return null;
 	}
 
 }

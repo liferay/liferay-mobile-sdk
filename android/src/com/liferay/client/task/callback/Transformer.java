@@ -14,11 +14,11 @@
 
 package com.liferay.client.task.callback;
 
-import org.json.JSONObject;
-
 /**
  * @author Bruno Farache
  */
-public abstract class JSONObjectCallback
-	extends BaseAsyncTaskCallback<JSONObject> {
+public abstract class Transformer<T> {
+
+	public abstract T transform(Object obj);
+
 }

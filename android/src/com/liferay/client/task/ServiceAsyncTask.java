@@ -17,43 +17,34 @@ package com.liferay.client.task;
 import android.os.AsyncTask;
 
 import com.liferay.client.http.HttpUtil;
-import com.liferay.client.service.JSONWrapper;
 import com.liferay.client.service.ServiceContext;
 import com.liferay.client.task.callback.AsyncTaskCallback;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
  */
-public class ServiceAsyncTask<T> extends AsyncTask<JSONObject, Void, T> {
+public class ServiceAsyncTask extends AsyncTask<JSONArray, Void, JSONArray> {
 
 	public ServiceAsyncTask(
-		ServiceContext context, AsyncTaskCallback<T> callback) {
+		ServiceContext context, AsyncTaskCallback callback) {
 
 		_callback = callback;
 		_context = context;
 	}
 
-	@SuppressWarnings("unchecked")
-	public T doInBackground(JSONObject... params) {
-		JSONWrapper wrapper;
+	public JSONArray doInBackground(JSONArray... commands) {
+		JSONArray array;
 
 		try {
-			wrapper = HttpUtil.post(_context, params[0]);
+			array = HttpUtil.post(_context, commands[0]);
 
-			Object json = wrapper.getJSONArray();
-
-			if (json == null) {
-				json = wrapper.getJSONObject();
-			}
-
-			return _callback.doInBackground((T)json);
+			return _callback.doInBackground(array);
 		}
 		catch (Exception e) {
-			wrapper = new JSONWrapper(e);
-
-			_result = wrapper;
+			_exception = e;
 
 			cancel(false);
 		}
@@ -61,20 +52,28 @@ public class ServiceAsyncTask<T> extends AsyncTask<JSONObject, Void, T> {
 		return null;
 	}
 
+	public void execute(JSONObject command) {
+		JSONArray commands = new JSONArray();
+
+		commands.put(command);
+
+		this.execute(commands);
+	}
+
 	public void onCancelled() {
-		_callback.onCancelled(_result.getException());
+		_callback.onCancelled(_exception);
 	}
 
-	public void onCancelled(JSONWrapper result) {
-		_callback.onCancelled(_result.getException());
+	public void onCancelled(JSONArray array) {
+		_callback.onCancelled(_exception);
 	}
 
-	public void onPostExecute(T result) {
-		_callback.onPostExecute(result);
+	public void onPostExecute(JSONArray array) {
+		_callback.onPostExecute(array);
 	}
 
-	private AsyncTaskCallback<T> _callback;
+	private AsyncTaskCallback _callback;
 	private ServiceContext _context;
-	private JSONWrapper _result;
+	private Exception _exception;
 
 }

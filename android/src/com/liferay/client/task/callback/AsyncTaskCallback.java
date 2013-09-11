@@ -14,15 +14,17 @@
 
 package com.liferay.client.task.callback;
 
+import org.json.JSONArray;
+
 /**
  * @author Bruno Farache
  */
-public interface AsyncTaskCallback<T> {
+public interface AsyncTaskCallback {
 
-	public T doInBackground(T result);
+	public JSONArray doInBackground(JSONArray array);
 
 	public void onCancelled(Exception exception);
 
-	public void onPostExecute(T result);
+	public void onPostExecute(JSONArray array);
 
 }
