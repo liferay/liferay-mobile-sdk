@@ -16,17 +16,15 @@ package com.liferay.client.task.callback;
 
 import android.util.Log;
 
-import java.util.ArrayList;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 
 /**
  * @author Bruno Farache
  */
-public abstract class BatchAsyncTaskCallback<T> implements AsyncTaskCallback {
+public abstract class BaseAsyncTaskCallback<T> implements AsyncTaskCallback {
 
-	public BatchAsyncTaskCallback(Transformer<T> transformer) {
+	public BaseAsyncTaskCallback(Transformer<T> transformer) {
 		this.transformer = transformer;
 	}
 
@@ -37,32 +35,23 @@ public abstract class BatchAsyncTaskCallback<T> implements AsyncTaskCallback {
 	public abstract void onFailure(Exception exception);
 
 	public void onPostExecute(JSONArray array) {
-		ArrayList<T> results = new ArrayList<T>();
+		try {
+			T result = transformer.transform(array.get(0));
 
-		for (int i = 0; i < array.length(); i++) {
-			Object obj = null;
-
-			try {
-				obj = array.get(i);
-			}
-			catch (JSONException je) {
-				Log.e(
-					_CLASS_NAME, "Couldn't transform object at index " + i, je);
-
-				continue;
-			}
-
-			results.add(transformer.transform(obj));
+			onSuccess(result);
 		}
-
-		onSuccess(results);
+		catch (JSONException je) {
+			Log.e(
+				_CLASS_NAME, "Couldn't transform object " + array.toString(),
+				je);
+		}
 	}
 
-	public abstract void onSuccess(ArrayList<T> results);
+	public abstract void onSuccess(T result);
 
 	protected Transformer<T> transformer;
 
 	private static final String _CLASS_NAME =
-		BatchAsyncTaskCallback.class.getSimpleName();
+		BaseAsyncTaskCallback.class.getSimpleName();
 
 }
