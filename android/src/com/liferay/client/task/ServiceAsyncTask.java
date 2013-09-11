@@ -61,11 +61,11 @@ public class ServiceAsyncTask extends AsyncTask<JSONArray, Void, JSONArray> {
 	}
 
 	public void onCancelled() {
-		_callback.onCancelled(_exception);
+		_callback.onFailure(_exception);
 	}
 
 	public void onCancelled(JSONArray array) {
-		_callback.onCancelled(_exception);
+		_callback.onFailure(_exception);
 	}
 
 	public void onPostExecute(JSONArray array) {

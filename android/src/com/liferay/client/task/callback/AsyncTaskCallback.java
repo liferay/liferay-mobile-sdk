@@ -23,7 +23,7 @@ public interface AsyncTaskCallback {
 
 	public JSONArray doInBackground(JSONArray array);
 
-	public void onCancelled(Exception exception);
+	public void onFailure(Exception exception);
 
 	public void onPostExecute(JSONArray array);
 

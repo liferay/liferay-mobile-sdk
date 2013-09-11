@@ -24,9 +24,9 @@ import org.json.JSONException;
 /**
  * @author Bruno Farache
  */
-public abstract class BaseAsyncTaskCallback<T> implements AsyncTaskCallback {
+public abstract class BatchAsyncTaskCallback<T> implements AsyncTaskCallback {
 
-	public BaseAsyncTaskCallback(Transformer<T> transformer) {
+	public BatchAsyncTaskCallback(Transformer<T> transformer) {
 		this.transformer = transformer;
 	}
 
@@ -34,12 +34,10 @@ public abstract class BaseAsyncTaskCallback<T> implements AsyncTaskCallback {
 		return array;
 	}
 
-	public abstract void onCancelled(Exception exception);
-
-	public abstract void onPostExecute(ArrayList<T> list);
+	public abstract void onFailure(Exception exception);
 
 	public void onPostExecute(JSONArray array) {
-		ArrayList<T> list = new ArrayList<T>();
+		ArrayList<T> results = new ArrayList<T>();
 
 		for (int i = 0; i < array.length(); i++) {
 			Object obj = null;
@@ -53,15 +51,17 @@ public abstract class BaseAsyncTaskCallback<T> implements AsyncTaskCallback {
 				continue;
 			}
 
-			list.add(transformer.transform(obj));
+			results.add(transformer.transform(obj));
 		}
 
-		onPostExecute(list);
+		onSuccess(results);
 	}
+
+	public abstract void onSuccess(ArrayList<T> results);
 
 	protected Transformer<T> transformer;
 
 	private static final String _CLASS_NAME =
-		BaseAsyncTaskCallback.class.getSimpleName();
+		BatchAsyncTaskCallback.class.getSimpleName();
 
 }
