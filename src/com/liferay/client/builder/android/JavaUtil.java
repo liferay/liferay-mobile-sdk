@@ -48,15 +48,17 @@ public class JavaUtil {
 	}
 
 	public String getReturnType(String type) {
+		type = getType(type);
+
 		if (type.equals("void")) {
 			return type;
 		}
 
-		if (type.endsWith("[]") || type.equals("object<list>")) {
-			return "JSONArray";
+		if (type.equals("int")) {
+			return "Integer";
 		}
 
-		return "JSONObject";
+		return WordUtils.capitalize(type);
 	}
 
 	public String getServiceClassName(String serviceContext) {
@@ -69,7 +71,9 @@ public class JavaUtil {
 	}
 
 	public String getType(String type) {
-		if (type.endsWith("[]") || type.startsWith("list")) {
+		if (type.endsWith("[]") || type.equals("object<list>") ||
+			type.startsWith("list")) {
+
 			return "JSONArray";
 		}
 

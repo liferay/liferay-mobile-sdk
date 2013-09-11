@@ -28,9 +28,9 @@ import static org.junit.Assert.*;
 /**
  * @author Bruno Farache
  */
-public class DlappServiceTest extends BaseTest {
+public class DLAppServiceTest extends BaseTest {
 
-	public DlappServiceTest() throws IOException {
+	public DLAppServiceTest() throws IOException {
 		super();
 	}
 
@@ -38,30 +38,32 @@ public class DlappServiceTest extends BaseTest {
 	public void addFolder() throws Exception {
 		DlappService service = new DlappService(context);
 
-		long repositoryId = Long.valueOf(props.getProperty("repositoryId"));
-		long parentFolderId = 0;
-		String name = "test";
-		String description = "";
-		JSONObject serviceContext = null;
-
 		JSONObject jsonObj = service.addFolder(
-			repositoryId, parentFolderId, name, description, serviceContext);
+			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
 
-		assertEquals(name, jsonObj.get("name"));
+		assertEquals(_FOLDER_NAME, jsonObj.get("name"));
+	}
+
+	@Test
+	public void getFoldersCount() throws Exception {
+		DlappService service = new DlappService(context);
+
+		int count = service.getFoldersCount(
+			_getRepositoryId(), _PARENT_FOLDER_ID, 0, false);
+
+		assertEquals(1, count);
 	}
 
 	@Test
 	public void deleteFolder() throws Exception {
 		DlappService service = new DlappService(context);
 
-		long repositoryId = Long.valueOf(props.getProperty("repositoryId"));
-		long parentFolderId = 0;
-		String name = "test";
-
-		service.deleteFolder(repositoryId, parentFolderId, name);
+		service.deleteFolder(
+			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME);
 
 		try {
-			service.getFolder(repositoryId, parentFolderId, name);
+			service.getFolder(
+				_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME);
 
 			fail();
 		}
@@ -71,5 +73,13 @@ public class DlappServiceTest extends BaseTest {
 			assertTrue(message.startsWith("No DLFolder exists with the key"));
 		}
 	}
+
+	private long _getRepositoryId() {
+		return Long.valueOf(props.getProperty("repositoryId"));
+	}
+
+	private static final String _FOLDER_NAME = "test";
+
+	private static final int _PARENT_FOLDER_ID = 0;
 
 }

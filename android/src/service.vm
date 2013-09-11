@@ -75,11 +75,11 @@ public class $className extends BaseService {
 				#else
 					JSONArray _json = HttpUtil.post(getContext(), _command);
 
-					#if ($returnType == "JSONArray")
-						return _json.getJSONArray(0);
-					#else
-						return _json.getJSONObject(0);
+					#if ($returnType == "Integer")
+						#set ($returnType = "Int")
 					#end
+
+					return _json.get${returnType}(0);
 				#end
 			}
 		}
