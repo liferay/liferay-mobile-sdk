@@ -41,7 +41,7 @@ public class ServiceAsyncTask extends AsyncTask<JSONArray, Void, JSONArray> {
 		try {
 			array = HttpUtil.post(_context, commands[0]);
 
-			return _callback.doInBackground(array);
+			return _callback.inBackground(array);
 		}
 		catch (Exception e) {
 			_exception = e;

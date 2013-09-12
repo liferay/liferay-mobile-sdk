@@ -21,7 +21,7 @@ import org.json.JSONArray;
  */
 public interface AsyncTaskCallback {
 
-	public JSONArray doInBackground(JSONArray array);
+	public JSONArray inBackground(JSONArray array);
 
 	public void onFailure(Exception exception);
 

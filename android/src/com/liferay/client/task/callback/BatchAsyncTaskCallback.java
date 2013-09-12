@@ -30,7 +30,7 @@ public abstract class BatchAsyncTaskCallback<T> implements AsyncTaskCallback {
 		this.transformer = transformer;
 	}
 
-	public JSONArray doInBackground(JSONArray array) {
+	public JSONArray inBackground(JSONArray array) {
 		return array;
 	}
 
