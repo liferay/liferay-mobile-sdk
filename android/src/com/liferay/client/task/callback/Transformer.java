@@ -17,8 +17,8 @@ package com.liferay.client.task.callback;
 /**
  * @author Bruno Farache
  */
-public abstract class Transformer<T> {
+public interface Transformer<T> {
 
-	public abstract T transform(Object obj);
+	public T transform(Object obj);
 
 }

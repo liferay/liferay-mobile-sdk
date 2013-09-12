@@ -22,21 +22,16 @@ import org.json.JSONException;
 /**
  * @author Bruno Farache
  */
-public abstract class BaseAsyncTaskCallback<T> implements AsyncTaskCallback {
-
-	public BaseAsyncTaskCallback(Transformer<T> transformer) {
-		this.transformer = transformer;
-	}
+public abstract class BaseAsyncTaskCallback<T>
+		implements AsyncTaskCallback, Transformer<T> {
 
 	public JSONArray inBackground(JSONArray array) {
 		return array;
 	}
 
-	public abstract void onFailure(Exception exception);
-
 	public void onPostExecute(JSONArray array) {
 		try {
-			T result = transformer.transform(array.get(0));
+			T result = transform(array.get(0));
 
 			onSuccess(result);
 		}
@@ -48,8 +43,6 @@ public abstract class BaseAsyncTaskCallback<T> implements AsyncTaskCallback {
 	}
 
 	public abstract void onSuccess(T result);
-
-	protected Transformer<T> transformer;
 
 	private static final String _CLASS_NAME =
 		BaseAsyncTaskCallback.class.getSimpleName();
