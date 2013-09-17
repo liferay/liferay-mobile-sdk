@@ -11,6 +11,12 @@
 		<antcall target="format-source" />
 	</target>
 
+	<target name="build-service-all">
+		<antcall target="build-service">
+			<param name="service.context" value="*" />
+		</antcall>
+	</target>
+
 	<target name="build-service-blogs-entry">
 		<antcall target="build-service">
 			<param name="service.context" value="blogsentry" />
@@ -43,6 +49,13 @@
 		<jar
 			basedir="android/classes"
 			jarfile="${android.dir}/liferay-sdk-android.jar"
+		/>
+	</target>
+
+	<target name="jar-service-all">
+		<jar
+			basedir="gen/classes"
+			jarfile="${android.dir}/services/portal-services.jar"
 		/>
 	</target>
 

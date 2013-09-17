@@ -26,4 +26,7 @@ public interface Builder {
 			String serviceContext, PortalVersion version, Discovery discovery)
 		throws Exception;
 
+	public void buildAll(PortalVersion version, Discovery discovery)
+		throws Exception;
+
 }

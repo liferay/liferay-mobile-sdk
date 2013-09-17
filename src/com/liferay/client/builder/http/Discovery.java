@@ -31,7 +31,10 @@ public class Discovery {
 
 		_context = jsonObj.getString("context");
 		_basePath = jsonObj.getString("basePath");
-		_discover = jsonObj.getString("discover");
+
+		if (jsonObj.has("discover")) {
+			_discover = jsonObj.getString("discover");
+		}
 
 		JSONObject actions = jsonObj.getJSONObject("actions");
 

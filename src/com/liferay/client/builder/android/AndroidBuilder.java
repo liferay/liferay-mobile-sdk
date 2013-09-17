@@ -15,11 +15,16 @@
 package com.liferay.client.builder.android;
 
 import com.liferay.client.builder.Builder;
+import com.liferay.client.builder.http.Action;
 import com.liferay.client.builder.http.Discovery;
 import com.liferay.client.builder.velocity.VelocityUtil;
 import com.liferay.client.http.PortalVersion;
 
 import java.io.File;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.tools.generic.EscapeTool;
@@ -37,6 +42,37 @@ public class AndroidBuilder implements Builder {
 			serviceContext, version, discovery);
 
 		buildServiceImpl(context);
+	}
+
+	public void buildAll(PortalVersion version, Discovery discovery)
+		throws Exception {
+
+		HashMap<String, ArrayList<Action>> actionsMap =
+			new HashMap<String, ArrayList<Action>>();
+
+		ArrayList<Action> actions = discovery.getActions();
+
+		for (Action action : actions) {
+			String path = action.getPath();
+
+			String serviceContext = path.substring(1, path.indexOf("/", 1));
+
+			ArrayList<Action> serviceActions = actionsMap.get(serviceContext);
+
+			if (serviceActions == null) {
+				serviceActions = new ArrayList<Action>();
+
+				actionsMap.put(serviceContext, serviceActions);
+			}
+
+			serviceActions.add(action);
+		}
+
+		for (Entry<String, ArrayList<Action>> entry : actionsMap.entrySet()) {
+			discovery.setActions(entry.getValue());
+
+			build(entry.getKey(), version, discovery);
+		}
 	}
 
 	protected void buildServiceImpl(VelocityContext context) throws Exception {

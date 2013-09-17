@@ -48,7 +48,10 @@ public class ClientBuilder {
 		if ((serviceContext != null) && !serviceContext.equals("")) {
 			sb.append("=/");
 			sb.append(serviceContext);
-			sb.append("/*");
+
+			if (serviceContext.equals("*")) {
+				sb.append("/*");
+			}
 		}
 
 		HttpClient client = new DefaultHttpClient();
@@ -70,7 +73,12 @@ public class ClientBuilder {
 
 			PortalVersion version = HttpUtil.getPortalVersion(url);
 
-			builder.build(serviceContext, version, discovery);
+			if (!serviceContext.equals("*")) {
+				builder.build(serviceContext, version, discovery);
+			}
+			else {
+				builder.buildAll(version, discovery);
+			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
