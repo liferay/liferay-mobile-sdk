@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<project name="android" basedir="../" default="jar">
+<project name="android" basedir="../" default="jar-all">
 	<import file="../build.xml" />
 
 	<target name="build-service">
@@ -17,23 +17,13 @@
 		</antcall>
 	</target>
 
-	<target name="build-service-blogs-entry">
-		<antcall target="build-service">
-			<param name="service.context" value="blogsentry" />
-		</antcall>
-	</target>
-
+<!-- 
 	<target name="build-service-dlapp">
 		<antcall target="build-service">
 			<param name="service.context" value="dlapp" />
 		</antcall>
 	</target>
-
-	<target name="build-service-group">
-		<antcall target="build-service">
-			<param name="service.context" value="group" />
-		</antcall>
-	</target>
+ -->
 
 	<target name="format-source">
 		<jalopy fileformat="unix"
@@ -45,41 +35,33 @@
 		</jalopy>
 	</target>
 
-	<target name="jar">
-		<jar
-			basedir="android/classes"
-			jarfile="${android.dir}/liferay-sdk-android.jar"
-		/>
+	<target name="jar-all">
+		<jar destfile="${android.dir}/liferay-sdk-android.jar">
+    		<fileset dir="android/classes" includes="**/*.class"/>
+    		<fileset dir="gen/classes" includes="**/*.class"/>
+		</jar>
 	</target>
 
-	<target name="jar-service-all">
-		<jar
-			basedir="gen/classes"
-			jarfile="${android.dir}/services/portal-services.jar"
-		/>
+	<target name="jar-common">
+		<jar destfile="${android.dir}/liferay-sdk-android-common.jar">
+			<fileset dir="android/classes" includes="**/*.class"/>
+    	</jar>
 	</target>
 
-	<target name="jar-service-blogs-entry">
-		<jar
-			basedir="gen/classes"
-			includes="com/liferay/client/**/blogsentry/**"
-			jarfile="${android.dir}/services/blogsentry-service.jar"
-		/>
-	</target>
-
-	<target name="jar-service-dlapp">
+<!--
+	<target name="jar-dlapp">
 		<jar
 			basedir="gen/classes"
 			includes="com/liferay/client/**/dlapp/**"
 			jarfile="${android.dir}/services/dlapp-service.jar"
 		/>
 	</target>
+ -->
 
-	<target name="jar-service-group">
-		<jar
-			basedir="gen/classes"
-			includes="com/liferay/client/**/group/**"
-			jarfile="${android.dir}/services/group-service.jar"
-		/>
+	<target name="jar-sources">
+		<jar destfile="${android.dir}/liferay-sdk-android-sources.jar">
+    		<fileset dir="android/src" includes="**/*.java"/>
+    		<fileset dir="gen/src" includes="**/*.java"/>
+		</jar>
 	</target>
 </project>
