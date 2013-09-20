@@ -17,13 +17,13 @@
 		</antcall>
 	</target>
 
-<!-- 
+<!--
 	<target name="build-service-dlapp">
 		<antcall target="build-service">
 			<param name="service.context" value="dlapp" />
 		</antcall>
 	</target>
- -->
+-->
 
 	<target name="format-source">
 		<jalopy fileformat="unix"
@@ -35,17 +35,29 @@
 		</jalopy>
 	</target>
 
+	<target name="format-source-common">
+		<antcall target="client-builder.format-source">
+			<param name="src.dir" value="${android.dir}" />
+		</antcall>
+	</target>
+
+	<target name="format-source-test">
+		<antcall target="client-builder.format-source">
+			<param name="src.dir" value="${test.dir}" />
+		</antcall>
+	</target>
+
 	<target name="jar-all">
 		<jar destfile="${android.dir}/liferay-sdk-android.jar">
-    		<fileset dir="android/classes" includes="**/*.class"/>
-    		<fileset dir="gen/classes" includes="**/*.class"/>
+			<fileset dir="android/classes" includes="**/*.class"/>
+			<fileset dir="gen/classes" includes="**/*.class"/>
 		</jar>
 	</target>
 
 	<target name="jar-common">
 		<jar destfile="${android.dir}/liferay-sdk-android-common.jar">
 			<fileset dir="android/classes" includes="**/*.class"/>
-    	</jar>
+		</jar>
 	</target>
 
 <!--
@@ -56,12 +68,12 @@
 			jarfile="${android.dir}/services/dlapp-service.jar"
 		/>
 	</target>
- -->
+-->
 
 	<target name="jar-sources">
 		<jar destfile="${android.dir}/liferay-sdk-android-sources.jar">
-    		<fileset dir="android/src" includes="**/*.java"/>
-    		<fileset dir="gen/src" includes="**/*.java"/>
+			<fileset dir="android/src" includes="**/*.java"/>
+			<fileset dir="gen/src" includes="**/*.java"/>
 		</jar>
 	</target>
 </project>

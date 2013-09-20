@@ -19,6 +19,7 @@ import com.liferay.client.v62.dlapp.DlappService;
 
 import java.io.IOException;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import org.junit.Test;
@@ -42,11 +43,6 @@ public class DLAppServiceTest extends BaseTest {
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
 
 		assertEquals(_FOLDER_NAME, jsonObj.get("name"));
-	}
-
-	@Test
-	public void getFoldersCount() throws Exception {
-		DlappService service = new DlappService(context);
 
 		int count = service.getFoldersCount(
 			_getRepositoryId(), _PARENT_FOLDER_ID, 0, false);
@@ -74,11 +70,44 @@ public class DLAppServiceTest extends BaseTest {
 		}
 	}
 
+	@Test
+	public void addFoldersBatch() throws Exception {
+		DlappService service = new DlappService(context, true);
+
+		service.addFolder(
+			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
+
+		service.addFolder(
+			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME_2, "", null);
+
+		JSONArray jsonArray = service.execute();
+
+		assertEquals(_FOLDER_NAME, jsonArray.getJSONObject(0).get("name"));
+		assertEquals(_FOLDER_NAME_2, jsonArray.getJSONObject(1).get("name"));
+	}
+
+	@Test
+	public void deleteFoldersBatch() throws Exception {
+		DlappService service = new DlappService(context, true);
+
+		service.deleteFolder(
+			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME);
+
+		service.deleteFolder(
+			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME_2);
+
+		JSONArray jsonArray = service.execute();
+
+		assertEquals(2, jsonArray.length());
+	}
+
 	private long _getRepositoryId() {
 		return Long.valueOf(props.getProperty("repositoryId"));
 	}
 
 	private static final String _FOLDER_NAME = "test";
+
+	private static final String _FOLDER_NAME_2 = "test2";
 
 	private static final int _PARENT_FOLDER_ID = 0;
 

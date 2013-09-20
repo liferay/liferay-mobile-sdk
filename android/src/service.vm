@@ -23,6 +23,10 @@ public class $className extends BaseService {
 		super(context, callback);
 	}
 
+	public $className(ServiceContext context, boolean batch) {
+		super(context, batch);
+	}
+
 	#foreach ($action in $actions)
 		#set ($returnType = $javaUtil.getReturnType($action.response))
 		#set ($methodName = $javaUtil.getMethodName($action.path))
@@ -53,6 +57,16 @@ public class $className extends BaseService {
 			}
 			catch (JSONException _je) {
 				throw new Exception(_je);
+			}
+
+			if (isBatch()) {
+				addCommand(_command);
+
+				#if ($returnType == "void")
+					return;
+				#else
+					return null;
+				#end
 			}
 
 			AsyncTaskCallback _callback = getCallback();

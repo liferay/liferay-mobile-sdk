@@ -14,48 +14,21 @@
 
 package com.liferay.client.task.callback;
 
-import android.util.Log;
-
-import java.util.ArrayList;
-
 import org.json.JSONArray;
-import org.json.JSONException;
 
 /**
  * @author Bruno Farache
  */
-public abstract class BatchAsyncTaskCallback<T>
-		implements AsyncTaskCallback, Transformer<T> {
+public abstract class BatchAsyncTaskCallback implements AsyncTaskCallback {
 
 	public JSONArray inBackground(JSONArray array) {
 		return array;
 	}
 
 	public void onPostExecute(JSONArray array) {
-		ArrayList<T> results = new ArrayList<T>();
-
-		for (int i = 0; i < array.length(); i++) {
-			Object obj = null;
-
-			try {
-				obj = array.get(i);
-			}
-			catch (JSONException je) {
-				Log.e(
-					_CLASS_NAME, "Couldn't transform object at index " + i, je);
-
-				continue;
-			}
-
-			results.add(transform(obj));
-		}
-
-		onSuccess(results);
+		onSuccess(array);
 	}
 
-	public abstract void onSuccess(ArrayList<T> results);
-
-	private static final String _CLASS_NAME =
-		BatchAsyncTaskCallback.class.getSimpleName();
+	public abstract void onSuccess(JSONArray results);
 
 }

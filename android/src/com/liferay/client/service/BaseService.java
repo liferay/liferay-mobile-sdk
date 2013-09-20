@@ -14,7 +14,13 @@
 
 package com.liferay.client.service;
 
+import com.liferay.client.http.HttpUtil;
+import com.liferay.client.task.ServiceAsyncTask;
 import com.liferay.client.task.callback.AsyncTaskCallback;
+import com.liferay.client.task.callback.BatchAsyncTaskCallback;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
@@ -26,8 +32,27 @@ public class BaseService {
 	}
 
 	public BaseService(ServiceContext context, AsyncTaskCallback callback) {
-		this.context = context;
-		this.callback = callback;
+		this(context, callback, false);
+	}
+
+	public BaseService(ServiceContext context, boolean batch) {
+		this(context, null, batch);
+	}
+
+	public JSONArray execute() throws Exception {
+		JSONArray jsonArray = HttpUtil.post(getContext(), commands);
+
+		commands = new JSONArray();
+
+		return jsonArray;
+	}
+
+	public void execute(BatchAsyncTaskCallback callback) {
+		ServiceAsyncTask task = new ServiceAsyncTask(getContext(), callback);
+
+		task.execute(commands);
+
+		commands = new JSONArray();
 	}
 
 	public AsyncTaskCallback getCallback() {
@@ -38,6 +63,14 @@ public class BaseService {
 		return context;
 	}
 
+	public boolean isBatch() {
+		return batch;
+	}
+
+	public void setBatch(boolean batch) {
+		this.batch = batch;
+	}
+
 	public void setCallback(AsyncTaskCallback callback) {
 		this.callback = callback;
 	}
@@ -46,7 +79,21 @@ public class BaseService {
 		this.context = context;
 	}
 
+	protected BaseService(
+		ServiceContext context, AsyncTaskCallback callback, boolean batch) {
+
+		this.context = context;
+		this.callback = callback;
+		this.batch = batch;
+	}
+
+	protected void addCommand(JSONObject command) {
+		commands.put(command);
+	}
+
+	protected boolean batch;
 	protected AsyncTaskCallback callback;
+	protected JSONArray commands = new JSONArray();
 	protected ServiceContext context;
 
 }
