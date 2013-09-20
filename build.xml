@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 
-<project name="client-builder" basedir="." default="compile">
+<project name="mobile-sdk" basedir="." default="compile">
     <property name="project.dir" value="${basedir}" />
 
 	<property name="android.dir" value="${project.dir}/android" />
+    <property name="dist.dir" value="${project.dir}/dist" />
     <property name="gen.dir" value="${project.dir}/gen" />
 	<property name="src.dir" value="${project.dir}/src" />
 	<property name="test.dir" value="${project.dir}/test" />
@@ -39,7 +40,7 @@
 
 	<target name="build-service">
 		<java
-			classname="com.liferay.client.builder.ClientBuilder"
+			classname="com.liferay.mobile.sdk.BuilderAntTask"
 			classpathref="project.classpath"
 			fork="true"
 			newenvironment="true"

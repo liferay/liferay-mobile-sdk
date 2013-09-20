@@ -1,10 +1,12 @@
 <?xml version="1.0"?>
 
-<project name="android" basedir="../" default="jar-all">
+<project name="mobile-sdk-android" basedir="../" default="jar-all">
 	<import file="../build.xml" />
 
+	 <property name="dist.dir.android" value="${dist.dir}/android" />
+	 
 	<target name="build-service">
-		<antcall target="client-builder.build-service">
+		<antcall target="mobile-sdk.build-service">
 			<param name="builder" value="android" />
 		</antcall>
 
@@ -36,26 +38,26 @@
 	</target>
 
 	<target name="format-source-common">
-		<antcall target="client-builder.format-source">
+		<antcall target="mobile-sdk.format-source">
 			<param name="src.dir" value="${android.dir}" />
 		</antcall>
 	</target>
 
 	<target name="format-source-test">
-		<antcall target="client-builder.format-source">
+		<antcall target="mobile-sdk.format-source">
 			<param name="src.dir" value="${test.dir}" />
 		</antcall>
 	</target>
 
 	<target name="jar-all">
-		<jar destfile="${android.dir}/liferay-sdk-android.jar">
+		<jar destfile="${dist.dir.android}/liferay-android-sdk.jar">
 			<fileset dir="android/classes" includes="**/*.class"/>
 			<fileset dir="gen/classes" includes="**/*.class"/>
 		</jar>
 	</target>
 
 	<target name="jar-common">
-		<jar destfile="${android.dir}/liferay-sdk-android-common.jar">
+		<jar destfile="${dist.dir.android}/liferay-android-sdk-common.jar">
 			<fileset dir="android/classes" includes="**/*.class"/>
 		</jar>
 	</target>
@@ -64,14 +66,14 @@
 	<target name="jar-dlapp">
 		<jar
 			basedir="gen/classes"
-			includes="com/liferay/client/**/dlapp/**"
-			jarfile="${android.dir}/services/dlapp-service.jar"
+			includes="com/liferay/mobile/android/**/dlapp/**"
+			jarfile="${dist.dir.android}/dlapp.jar"
 		/>
 	</target>
 -->
 
 	<target name="jar-sources">
-		<jar destfile="${android.dir}/liferay-sdk-android-sources.jar">
+		<jar destfile="${dist.dir.android}/liferay-android-sdk-sources.jar">
 			<fileset dir="android/src" includes="**/*.java"/>
 			<fileset dir="gen/src" includes="**/*.java"/>
 		</jar>

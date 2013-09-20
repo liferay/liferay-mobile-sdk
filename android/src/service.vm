@@ -1,8 +1,8 @@
 package $package;
 
-import com.liferay.client.service.BaseService;
-import com.liferay.client.service.ServiceContext;
-import com.liferay.client.task.callback.AsyncTaskCallback;
+import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
