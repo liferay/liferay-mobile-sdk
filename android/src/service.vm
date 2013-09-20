@@ -1,9 +1,7 @@
 package $package;
 
-import com.liferay.client.http.HttpUtil;
 import com.liferay.client.service.BaseService;
 import com.liferay.client.service.ServiceContext;
-import com.liferay.client.task.ServiceAsyncTask;
 import com.liferay.client.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -59,43 +57,11 @@ public class $className extends BaseService {
 				throw new Exception(_je);
 			}
 
-			if (isBatch()) {
-				addCommand(_command);
-
-				#if ($returnType == "void")
-					return;
-				#else
-					return null;
-				#end
-			}
-
-			AsyncTaskCallback _callback = getCallback();
-
-			if (_callback != null) {
-				ServiceAsyncTask _task = new ServiceAsyncTask(
-					getContext(), _callback);
-
-				_task.execute(_command);
-
-				#if ($returnType == "void")
-					return;
-				#else
-					return null;
-				#end
-			}
-			else {
-				#if ($returnType == "void")
-					HttpUtil.post(getContext(), _command);
-				#else
-					JSONArray _json = HttpUtil.post(getContext(), _command);
-
-					#if ($returnType == "Integer")
-						#set ($returnType = "Int")
-					#end
-
-					return _json.get${returnType}(0);
-				#end
-			}
+			#if ($returnType == "void")
+				post(_command);
+			#else
+				return ($returnType)post(_command);
+			#end
 		}
 	#end
 

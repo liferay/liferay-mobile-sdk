@@ -80,7 +80,7 @@ public class DLAppServiceTest extends BaseTest {
 		service.addFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME_2, "", null);
 
-		JSONArray jsonArray = service.execute();
+		JSONArray jsonArray = service.invoke();
 
 		assertEquals(_FOLDER_NAME, jsonArray.getJSONObject(0).get("name"));
 		assertEquals(_FOLDER_NAME_2, jsonArray.getJSONObject(1).get("name"));
@@ -96,7 +96,7 @@ public class DLAppServiceTest extends BaseTest {
 		service.deleteFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME_2);
 
-		JSONArray jsonArray = service.execute();
+		JSONArray jsonArray = service.invoke();
 
 		assertEquals(2, jsonArray.length());
 	}

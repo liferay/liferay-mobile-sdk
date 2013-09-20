@@ -39,7 +39,15 @@ public class BaseService {
 		this(context, null, batch);
 	}
 
-	public JSONArray execute() throws Exception {
+	public AsyncTaskCallback getCallback() {
+		return callback;
+	}
+
+	public ServiceContext getContext() {
+		return context;
+	}
+
+	public JSONArray invoke() throws Exception {
 		JSONArray jsonArray = HttpUtil.post(getContext(), commands);
 
 		commands = new JSONArray();
@@ -47,20 +55,12 @@ public class BaseService {
 		return jsonArray;
 	}
 
-	public void execute(BatchAsyncTaskCallback callback) {
+	public void invoke(BatchAsyncTaskCallback callback) {
 		ServiceAsyncTask task = new ServiceAsyncTask(getContext(), callback);
 
 		task.execute(commands);
 
 		commands = new JSONArray();
-	}
-
-	public AsyncTaskCallback getCallback() {
-		return callback;
-	}
-
-	public ServiceContext getContext() {
-		return context;
 	}
 
 	public boolean isBatch() {
@@ -89,6 +89,27 @@ public class BaseService {
 
 	protected void addCommand(JSONObject command) {
 		commands.put(command);
+	}
+
+	protected Object post(JSONObject command) throws Exception {
+		if (isBatch()) {
+			addCommand(command);
+
+			return null;
+		}
+
+		if (callback != null) {
+			ServiceAsyncTask task = new ServiceAsyncTask(context, callback);
+
+			task.execute(command);
+
+			return null;
+		}
+		else {
+			JSONArray _json = HttpUtil.post(getContext(), command);
+
+			return _json.get(0);
+		}
 	}
 
 	protected boolean batch;
