@@ -25,17 +25,17 @@ import org.json.JSONObject;
 /**
  * @author Bruno Farache
  */
-public class MDRRulegroupService extends BaseService {
-	public MDRRulegroupService(ServiceContext context) {
+public class MDRRuleGroupService extends BaseService {
+	public MDRRuleGroupService(ServiceContext context) {
 		super(context);
 	}
 
-	public MDRRulegroupService(ServiceContext context,
+	public MDRRuleGroupService(ServiceContext context,
 		AsyncTaskCallback callback) {
 		super(context, callback);
 	}
 
-	public MDRRulegroupService(ServiceContext context, boolean batch) {
+	public MDRRuleGroupService(ServiceContext context, boolean batch) {
 		super(context, batch);
 	}
 
