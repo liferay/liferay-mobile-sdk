@@ -1,0 +1,143 @@
+/**
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ */
+
+package com.liferay.mobile.android.v62.scproductentry;
+
+import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ * @author Bruno Farache
+ */
+public class SCProductEntryService extends BaseService {
+	public SCProductEntryService(ServiceContext context) {
+		super(context);
+	}
+
+	public SCProductEntryService(ServiceContext context,
+		AsyncTaskCallback callback) {
+		super(context, callback);
+	}
+
+	public SCProductEntryService(ServiceContext context, boolean batch) {
+		super(context, batch);
+	}
+
+	public JSONObject addProductEntry(String name, String type, String tags,
+		String shortDescription, String longDescription, String pageURL,
+		String author, String repoGroupId, String repoArtifactId,
+		JSONArray licenseIds, JSONArray thumbnails, JSONArray fullImages,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("name", name);
+			_params.put("type", type);
+			_params.put("tags", tags);
+			_params.put("shortDescription", shortDescription);
+			_params.put("longDescription", longDescription);
+			_params.put("pageURL", pageURL);
+			_params.put("author", author);
+			_params.put("repoGroupId", repoGroupId);
+			_params.put("repoArtifactId", repoArtifactId);
+			_params.put("licenseIds", licenseIds);
+			_params.put("thumbnails", thumbnails);
+			_params.put("fullImages", fullImages);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/scproductentry/add-product-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)post(_command);
+	}
+
+	public void deleteProductEntry(long productEntryId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("productEntryId", productEntryId);
+
+			_command.put("/scproductentry/delete-product-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		post(_command);
+	}
+
+	public JSONObject getProductEntry(long productEntryId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("productEntryId", productEntryId);
+
+			_command.put("/scproductentry/get-product-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)post(_command);
+	}
+
+	public JSONObject updateProductEntry(long productEntryId, String name,
+		String type, String tags, String shortDescription,
+		String longDescription, String pageURL, String author,
+		String repoGroupId, String repoArtifactId, JSONArray licenseIds,
+		JSONArray thumbnails, JSONArray fullImages) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("productEntryId", productEntryId);
+			_params.put("name", name);
+			_params.put("type", type);
+			_params.put("tags", tags);
+			_params.put("shortDescription", shortDescription);
+			_params.put("longDescription", longDescription);
+			_params.put("pageURL", pageURL);
+			_params.put("author", author);
+			_params.put("repoGroupId", repoGroupId);
+			_params.put("repoArtifactId", repoArtifactId);
+			_params.put("licenseIds", licenseIds);
+			_params.put("thumbnails", thumbnails);
+			_params.put("fullImages", fullImages);
+
+			_command.put("/scproductentry/update-product-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)post(_command);
+	}
+}

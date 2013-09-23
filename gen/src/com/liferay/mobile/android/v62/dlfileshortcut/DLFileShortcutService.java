@@ -1,0 +1,121 @@
+/**
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ */
+
+package com.liferay.mobile.android.v62.dlfileshortcut;
+
+import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ * @author Bruno Farache
+ */
+public class DLFileShortcutService extends BaseService {
+	public DLFileShortcutService(ServiceContext context) {
+		super(context);
+	}
+
+	public DLFileShortcutService(ServiceContext context,
+		AsyncTaskCallback callback) {
+		super(context, callback);
+	}
+
+	public DLFileShortcutService(ServiceContext context, boolean batch) {
+		super(context, batch);
+	}
+
+	public JSONObject addFileShortcut(long groupId, long folderId,
+		long toFileEntryId, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+			_params.put("toFileEntryId", toFileEntryId);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/dlfileshortcut/add-file-shortcut", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)post(_command);
+	}
+
+	public void deleteFileShortcut(long fileShortcutId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileShortcutId", fileShortcutId);
+
+			_command.put("/dlfileshortcut/delete-file-shortcut", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		post(_command);
+	}
+
+	public JSONObject getFileShortcut(long fileShortcutId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileShortcutId", fileShortcutId);
+
+			_command.put("/dlfileshortcut/get-file-shortcut", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)post(_command);
+	}
+
+	public JSONObject updateFileShortcut(long fileShortcutId, long folderId,
+		long toFileEntryId, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileShortcutId", fileShortcutId);
+			_params.put("folderId", folderId);
+			_params.put("toFileEntryId", toFileEntryId);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/dlfileshortcut/update-file-shortcut", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)post(_command);
+	}
+}

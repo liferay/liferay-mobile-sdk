@@ -1,6 +1,5 @@
 /.settings/
 /bin/
 /classes/
-/gen/
 /build.*.properties
 velocity.log*

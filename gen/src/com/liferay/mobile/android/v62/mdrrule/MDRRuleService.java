@@ -1,0 +1,140 @@
+/**
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ */
+
+package com.liferay.mobile.android.v62.mdrrule;
+
+import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ * @author Bruno Farache
+ */
+public class MDRRuleService extends BaseService {
+	public MDRRuleService(ServiceContext context) {
+		super(context);
+	}
+
+	public MDRRuleService(ServiceContext context, AsyncTaskCallback callback) {
+		super(context, callback);
+	}
+
+	public MDRRuleService(ServiceContext context, boolean batch) {
+		super(context, batch);
+	}
+
+	public JSONObject addRule(long ruleGroupId, JSONObject nameMap,
+		JSONObject descriptionMap, String type, String typeSettings,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("ruleGroupId", ruleGroupId);
+			_params.put("nameMap", nameMap);
+			_params.put("descriptionMap", descriptionMap);
+			_params.put("type", type);
+			_params.put("typeSettings", typeSettings);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/mdrrule/add-rule", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)post(_command);
+	}
+
+	public void deleteRule(long ruleId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("ruleId", ruleId);
+
+			_command.put("/mdrrule/delete-rule", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		post(_command);
+	}
+
+	public JSONObject fetchRule(long ruleId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("ruleId", ruleId);
+
+			_command.put("/mdrrule/fetch-rule", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)post(_command);
+	}
+
+	public JSONObject getRule(long ruleId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("ruleId", ruleId);
+
+			_command.put("/mdrrule/get-rule", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)post(_command);
+	}
+
+	public JSONObject updateRule(long ruleId, JSONObject nameMap,
+		JSONObject descriptionMap, String type,
+		JSONObject typeSettingsProperties, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("ruleId", ruleId);
+			_params.put("nameMap", nameMap);
+			_params.put("descriptionMap", descriptionMap);
+			_params.put("type", type);
+			_params.put("typeSettingsProperties", typeSettingsProperties);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/mdrrule/update-rule", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)post(_command);
+	}
+}

@@ -1,0 +1,60 @@
+/**
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ */
+
+package com.liferay.mobile.android.v62.permission;
+
+import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ * @author Bruno Farache
+ */
+public class PermissionService extends BaseService {
+	public PermissionService(ServiceContext context) {
+		super(context);
+	}
+
+	public PermissionService(ServiceContext context, AsyncTaskCallback callback) {
+		super(context, callback);
+	}
+
+	public PermissionService(ServiceContext context, boolean batch) {
+		super(context, batch);
+	}
+
+	public void checkPermission(long groupId, String name, long primKey)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("name", name);
+			_params.put("primKey", primKey);
+
+			_command.put("/permission/check-permission", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		post(_command);
+	}
+}
