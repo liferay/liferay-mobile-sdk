@@ -5,6 +5,10 @@
 
 	 <property name="dist.dir.android" value="${dist.dir}/android" />
 
+	<path id="android.classpath">
+		<fileset dir="${lib.dir}/android" includes="**/*.jar"/>
+	</path>
+
 	<target name="build-service">
 		<antcall target="mobile-sdk.build-service">
 			<param name="builder" value="android" />
@@ -26,6 +30,33 @@
 		</antcall>
 	</target>
 -->
+
+	<target name="compile-all">
+		<delete dir="${android.dir}/classes" />
+
+		<mkdir dir="${android.dir}/classes" />
+
+		<javac
+			destdir="${android.dir}/classes"
+			classpathref="android.classpath">
+
+			<src path="${android.dir}/src" />
+			<src path="${gen.dir}/src" />
+		</javac>
+	</target>
+
+	<target name="compile-common">
+		<delete dir="${android.dir}/classes" />
+
+		<mkdir dir="${android.dir}/classes" />
+
+		<javac
+			destdir="${android.dir}/classes"
+			classpathref="android.classpath">
+
+			<src path="${android.dir}/src" />
+		</javac>
+	</target>
 
 	<target name="format-source">
 		<jalopy fileformat="unix"
@@ -49,16 +80,15 @@
 		</antcall>
 	</target>
 
-	<target name="jar-all">
+	<target name="jar-all" depends="compile-all">
 		<jar destfile="${dist.dir.android}/liferay-android-sdk.jar">
-			<fileset dir="android/classes" includes="**/*.class"/>
-			<fileset dir="gen/classes" includes="**/*.class"/>
+			<fileset dir="${android.dir}/classes" includes="**/*.class"/>
 		</jar>
 	</target>
 
-	<target name="jar-common">
+	<target name="jar-common" depends="compile-common">
 		<jar destfile="${dist.dir.android}/liferay-android-sdk-common.jar">
-			<fileset dir="android/classes" includes="**/*.class"/>
+			<fileset dir="${android.dir}/classes" includes="**/*.class"/>
 		</jar>
 	</target>
 
@@ -74,8 +104,8 @@
 
 	<target name="jar-sources">
 		<jar destfile="${dist.dir.android}/liferay-android-sdk-sources.jar">
-			<fileset dir="android/src" includes="**/*.java"/>
-			<fileset dir="gen/src" includes="**/*.java"/>
+			<fileset dir="${android.dir}/src" includes="**/*.java"/>
+			<fileset dir="${gen.dir}/src" includes="**/*.java"/>
 		</jar>
 	</target>
 </project>

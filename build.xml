@@ -24,7 +24,7 @@
 		<fileset dir="${portal.dir}/lib/portal" includes="*.jar" />
 	</path>
 
-	<path id="project.classpath">
+	<path id="builder.classpath">
 		<pathelement path="${project.dir}/classes"/>
 		<pathelement path="${android.dir}/classes"/>
 		<fileset dir="${development.dir}" includes="**/*.jar"/>
@@ -41,7 +41,7 @@
 	<target name="build-service">
 		<java
 			classname="com.liferay.mobile.sdk.BuilderAntTask"
-			classpathref="project.classpath"
+			classpathref="builder.classpath"
 			fork="true"
 			newenvironment="true"
 		>
