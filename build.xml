@@ -3,7 +3,6 @@
 <project name="mobile-sdk" basedir="." default="compile">
     <property name="project.dir" value="${basedir}" />
 
-	<property name="android.dir" value="${project.dir}/android" />
     <property name="dist.dir" value="${project.dir}/dist" />
     <property name="gen.dir" value="${project.dir}/gen" />
 	<property name="src.dir" value="${project.dir}/src" />
@@ -26,17 +25,21 @@
 
 	<path id="builder.classpath">
 		<pathelement path="${project.dir}/classes"/>
-		<pathelement path="${android.dir}/classes"/>
 		<fileset dir="${development.dir}" includes="**/*.jar"/>
 	</path>
 
-	<taskdef name="jalopy" classname="de.hunsicker.jalopy.plugin.ant.AntPlugin">
-		<classpath>
-			<fileset dir="${development.dir}">
-				<include name="*.jar" />
-			</fileset>
-		</classpath>
-	</taskdef>
+	<target name="compile">
+		<delete dir="classes" />
+
+		<mkdir dir="classes" />
+
+		<copyfile dest="classes/service.vm" src="src/service.vm" />
+
+		<javac
+			srcdir="src"
+			destdir="classes"
+			classpathref="builder.classpath" />
+	</target>
 
 	<target name="build-service">
 		<java
@@ -57,12 +60,6 @@
 			<arg value="url=${server.url}" />
 			<arg value="service.context=${service.context}" />
 		</java>
-	</target>
-
-	<target name="compile">
-		<mkdir dir="bin" />
-
-		<javac srcdir="src" destdir="bin" />
 	</target>
 
 	<target name="format-source">

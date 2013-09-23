@@ -14,11 +14,11 @@
 
 package com.liferay.mobile.sdk;
 
-import com.liferay.mobile.android.http.HttpUtil;
-import com.liferay.mobile.android.http.PortalVersion;
 import com.liferay.mobile.sdk.android.AndroidBuilder;
 import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.http.DiscoveryResponseHandler;
+import com.liferay.mobile.sdk.http.HttpUtil;
+import com.liferay.mobile.sdk.http.PortalVersion;
 
 import java.util.HashMap;
 import java.util.Map;

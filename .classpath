@@ -10,13 +10,13 @@
 	<classpathentry kind="lib" path="lib/development/velocity-1.7-dep.jar"/>
 	<classpathentry kind="lib" path="lib/development/velocity-tools-generic-2.0.jar"/>
 	<classpathentry kind="lib" path="lib/development/log4j.jar"/>
-	<classpathentry kind="lib" path="lib/development/http/commons-codec-1.6.jar"/>
-	<classpathentry kind="lib" path="lib/development/http/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="lib/development/http/fluent-hc-4.2.5.jar"/>
-	<classpathentry kind="lib" path="lib/development/http/httpclient-4.2.5.jar"/>
-	<classpathentry kind="lib" path="lib/development/http/httpclient-cache-4.2.5.jar"/>
-	<classpathentry kind="lib" path="lib/development/http/httpcore-4.2.4.jar"/>
-	<classpathentry kind="lib" path="lib/development/http/httpmime-4.2.5.jar"/>
 	<classpathentry kind="lib" path="lib/development/json-java.jar"/>
+	<classpathentry kind="lib" path="lib/development/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="lib/development/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/development/fluent-hc-4.2.5.jar"/>
+	<classpathentry kind="lib" path="lib/development/httpclient-4.2.5.jar"/>
+	<classpathentry kind="lib" path="lib/development/httpclient-cache-4.2.5.jar"/>
+	<classpathentry kind="lib" path="lib/development/httpcore-4.2.4.jar"/>
+	<classpathentry kind="lib" path="lib/development/httpmime-4.2.5.jar"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>

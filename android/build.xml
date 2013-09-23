@@ -3,7 +3,8 @@
 <project name="mobile-sdk-android" basedir="../" default="jar-all">
 	<import file="../build.xml" />
 
-	 <property name="dist.dir.android" value="${dist.dir}/android" />
+	<property name="android.dir" value="${project.dir}/android" />
+	<property name="dist.dir.android" value="${dist.dir}/android" />
 
 	<path id="android.classpath">
 		<fileset dir="${lib.dir}/android" includes="**/*.jar"/>
@@ -14,7 +15,7 @@
 			<param name="builder" value="android" />
 		</antcall>
 
-		<antcall target="format-source" />
+		<antcall target="format-source-gen" />
 	</target>
 
 	<target name="build-service-all">
@@ -58,7 +59,7 @@
 		</javac>
 	</target>
 
-	<target name="format-source">
+	<target name="format-source-gen">
 		<jalopy fileformat="unix"
 				convention="jalopy.xml">
 
@@ -79,6 +80,14 @@
 			<param name="src.dir" value="${test.dir}" />
 		</antcall>
 	</target>
+
+	<taskdef name="jalopy" classname="de.hunsicker.jalopy.plugin.ant.AntPlugin">
+		<classpath>
+			<fileset dir="${development.dir}">
+				<include name="*.jar" />
+			</fileset>
+		</classpath>
+	</taskdef>
 
 	<target name="jar-all" depends="compile-all">
 		<jar destfile="${dist.dir.android}/liferay-android-sdk.jar">

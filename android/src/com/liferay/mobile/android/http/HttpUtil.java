@@ -127,18 +127,6 @@ public class HttpUtil {
 		return sb.toString();
 	}
 
-	public static String handleResponse(HttpResponse httpResponse)
-		throws IOException {
-
-		HttpEntity entity = httpResponse.getEntity();
-
-		if (entity == null) {
-			return null;
-		}
-
-		return EntityUtils.toString(entity);
-	}
-
 	public static JSONArray post(ServiceContext context, JSONArray commands)
 		throws Exception {
 

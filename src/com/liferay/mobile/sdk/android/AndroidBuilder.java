@@ -14,10 +14,10 @@
 
 package com.liferay.mobile.sdk.android;
 
-import com.liferay.mobile.android.http.PortalVersion;
 import com.liferay.mobile.sdk.Builder;
 import com.liferay.mobile.sdk.http.Action;
 import com.liferay.mobile.sdk.http.Discovery;
+import com.liferay.mobile.sdk.http.PortalVersion;
 import com.liferay.mobile.sdk.velocity.VelocityUtil;
 
 import java.io.File;

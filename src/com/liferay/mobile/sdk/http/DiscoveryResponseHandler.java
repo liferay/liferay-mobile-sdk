@@ -14,8 +14,6 @@
 
 package com.liferay.mobile.sdk.http;
 
-import com.liferay.mobile.android.http.HttpUtil;
-
 import java.io.IOException;
 
 import org.apache.http.HttpResponse;

@@ -12,21 +12,33 @@
  * details.
  */
 
-package com.liferay.mobile.sdk;
-
-import com.liferay.mobile.sdk.http.Discovery;
-import com.liferay.mobile.sdk.http.PortalVersion;
+package com.liferay.mobile.sdk.http;
 
 /**
  * @author Bruno Farache
  */
-public interface Builder {
+public enum PortalVersion {
 
-	public void build(
-			String serviceContext, PortalVersion version, Discovery discovery)
-		throws Exception;
+	UNKNOWN(-1), V_6_2(62);
 
-	public void buildAll(PortalVersion version, Discovery discovery)
-		throws Exception;
+	public static PortalVersion getValue(int version) {
+		for (PortalVersion value : PortalVersion.values()) {
+			if (value.getValue() == version) {
+				return value;
+			}
+		}
+
+		return UNKNOWN;
+	}
+
+	public int getValue() {
+		return _version;
+	}
+
+	private PortalVersion(int version) {
+		_version = version;
+	}
+
+	private int _version;
 
 }
