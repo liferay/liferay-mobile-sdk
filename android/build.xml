@@ -4,7 +4,7 @@
 	<import file="../build.xml" />
 
 	 <property name="dist.dir.android" value="${dist.dir}/android" />
-	 
+
 	<target name="build-service">
 		<antcall target="mobile-sdk.build-service">
 			<param name="builder" value="android" />

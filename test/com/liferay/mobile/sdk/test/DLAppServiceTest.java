@@ -15,7 +15,7 @@
 package com.liferay.mobile.sdk.test;
 
 import com.liferay.mobile.android.exception.ServerException;
-import com.liferay.mobile.android.v62.dlapp.DlappService;
+import com.liferay.mobile.android.v62.dlapp.DLAppService;
 
 import java.io.IOException;
 
@@ -37,7 +37,7 @@ public class DLAppServiceTest extends BaseTest {
 
 	@Test
 	public void addFolder() throws Exception {
-		DlappService service = new DlappService(context);
+		DLAppService service = new DLAppService(context);
 
 		JSONObject jsonObj = service.addFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
@@ -52,7 +52,7 @@ public class DLAppServiceTest extends BaseTest {
 
 	@Test
 	public void deleteFolder() throws Exception {
-		DlappService service = new DlappService(context);
+		DLAppService service = new DLAppService(context);
 
 		service.deleteFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME);
@@ -72,7 +72,7 @@ public class DLAppServiceTest extends BaseTest {
 
 	@Test
 	public void addFoldersBatch() throws Exception {
-		DlappService service = new DlappService(context, true);
+		DLAppService service = new DLAppService(context, true);
 
 		service.addFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
@@ -88,7 +88,7 @@ public class DLAppServiceTest extends BaseTest {
 
 	@Test
 	public void deleteFoldersBatch() throws Exception {
-		DlappService service = new DlappService(context, true);
+		DLAppService service = new DLAppService(context, true);
 
 		service.deleteFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME);
