@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 #set ($actions = $discovery.actions)
+#set ($context = $discovery.context)
 
 public class $className extends BaseService {
 
@@ -50,7 +51,7 @@ public class $className extends BaseService {
 			try {
 				$jsonObj
 
-				_command.put(${esc.q}$action.path${esc.q}, _params);
+				_command.put(${esc.q}$context$action.path${esc.q}, _params);
 			}
 			catch (JSONException _je) {
 				throw new Exception(_je);

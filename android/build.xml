@@ -26,6 +26,14 @@
 	</target>
 -->
 
+<!--
+	<target name="build-service-sync-web">
+		<antcall target="build-service">
+			<param name="context" value="sync-web" />
+		</antcall>
+	</target>
+-->
+
 	<target name="compile-all">
 		<delete dir="${android.dir}/classes" />
 

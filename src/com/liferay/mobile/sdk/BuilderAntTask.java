@@ -39,11 +39,18 @@ public class BuilderAntTask {
 		Map<String, String> arguments = parseArguments(args);
 
 		String url = arguments.get("url");
+		String context = arguments.get("context");
 		String filter = arguments.get("filter");
 
 		StringBuilder sb = new StringBuilder();
 
 		sb.append(url);
+
+		if (Validator.isNotNull(context)) {
+			sb.append("/");
+			sb.append(context);
+		}
+
 		sb.append("/api/jsonws?discover");
 
 		if (Validator.isNull(filter)) {

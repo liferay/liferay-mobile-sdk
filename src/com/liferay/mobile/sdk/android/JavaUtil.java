@@ -171,6 +171,7 @@ public class JavaUtil {
 		CLASS_NAMES.put("shoppingorder", "ShoppingOrder");
 		CLASS_NAMES.put("socialactivitysetting", "SocialActivitySetting");
 		CLASS_NAMES.put("socialrequest", "SocialRequest");
+		CLASS_NAMES.put("syncdlobject", "SyncDLObject");
 		CLASS_NAMES.put("trashentry", "TrashEntry");
 		CLASS_NAMES.put("usergroup", "UserGroup");
 		CLASS_NAMES.put("usergroupgrouprole", "UserGroupGroupRole");

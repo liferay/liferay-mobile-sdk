@@ -58,6 +58,7 @@
 
 			<arg value="builder=${builder}" />
 			<arg value="url=${server.url}" />
+			<arg value="context=${context}" />
 			<arg value="filter=${filter}" />
 		</java>
 	</target>
