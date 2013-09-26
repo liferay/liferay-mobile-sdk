@@ -19,6 +19,7 @@ import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.http.DiscoveryResponseHandler;
 import com.liferay.mobile.sdk.http.HttpUtil;
 import com.liferay.mobile.sdk.http.PortalVersion;
+import com.liferay.mobile.sdk.util.Validator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,20 +39,20 @@ public class BuilderAntTask {
 		Map<String, String> arguments = parseArguments(args);
 
 		String url = arguments.get("url");
-		String serviceContext = arguments.get("service.context");
+		String filter = arguments.get("filter");
 
 		StringBuilder sb = new StringBuilder();
 
 		sb.append(url);
 		sb.append("/api/jsonws?discover");
 
-		if ((serviceContext != null) && !serviceContext.equals("")) {
+		if (Validator.isNull(filter)) {
+			sb.append("=/*");
+		}
+		else {
 			sb.append("=/");
-			sb.append(serviceContext);
-
-			if (serviceContext.equals("*")) {
-				sb.append("/*");
-			}
+			sb.append(filter);
+			sb.append("/*");
 		}
 
 		HttpClient client = new DefaultHttpClient();
@@ -73,11 +74,11 @@ public class BuilderAntTask {
 
 			PortalVersion version = HttpUtil.getPortalVersion(url);
 
-			if (!serviceContext.equals("*")) {
-				builder.build(serviceContext, version, discovery);
+			if (Validator.isNull(filter)) {
+				builder.buildAll(version, discovery);
 			}
 			else {
-				builder.buildAll(version, discovery);
+				builder.build(filter, version, discovery);
 			}
 		}
 		catch (Exception e) {

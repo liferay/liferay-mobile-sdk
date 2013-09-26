@@ -34,12 +34,11 @@ import org.apache.velocity.tools.generic.EscapeTool;
  */
 public class AndroidBuilder implements Builder {
 
-	public void build(
-			String serviceContext, PortalVersion version, Discovery discovery)
+	public void build(String filter, PortalVersion version, Discovery discovery)
 		throws Exception {
 
 		VelocityContext context = getVelocityContext(
-			serviceContext, version, discovery);
+			filter, version, discovery);
 
 		buildServiceImpl(context);
 	}
@@ -55,17 +54,16 @@ public class AndroidBuilder implements Builder {
 		for (Action action : actions) {
 			String path = action.getPath();
 
-			String serviceContext = path.substring(1, path.indexOf("/", 1));
+			String className = path.substring(1, path.indexOf("/", 1));
+			ArrayList<Action> classActions = actionsMap.get(className);
 
-			ArrayList<Action> serviceActions = actionsMap.get(serviceContext);
+			if (classActions == null) {
+				classActions = new ArrayList<Action>();
 
-			if (serviceActions == null) {
-				serviceActions = new ArrayList<Action>();
-
-				actionsMap.put(serviceContext, serviceActions);
+				actionsMap.put(className, classActions);
 			}
 
-			serviceActions.add(action);
+			classActions.add(action);
 		}
 
 		for (Entry<String, ArrayList<Action>> entry : actionsMap.entrySet()) {
@@ -83,12 +81,10 @@ public class AndroidBuilder implements Builder {
 	}
 
 	protected String getServiceFilePath(VelocityContext context) {
-		JavaUtil javaUtil = (JavaUtil)context.get(JAVA_UTIL);
 		String packageName = (String)context.get(PACKAGE);
-		String serviceContext = (String)context.get(SERVICE_CONTEXT);
+		String className = (String)context.get(CLASS_NAME);
 
 		String packagePath = packageName.replace(".", "/");
-		String className = javaUtil.getServiceClassName(serviceContext);
 
 		StringBuilder sb = new StringBuilder();
 
@@ -106,9 +102,11 @@ public class AndroidBuilder implements Builder {
 	}
 
 	protected VelocityContext getVelocityContext(
-		String serviceContext, PortalVersion version, Discovery discovery) {
+		String filter, PortalVersion version, Discovery discovery) {
 
 		VelocityContext context = new VelocityContext();
+
+		JavaUtil javaUtil = new JavaUtil();
 
 		StringBuilder sb = new StringBuilder("com.liferay.mobile.android");
 
@@ -118,18 +116,20 @@ public class AndroidBuilder implements Builder {
 		}
 
 		sb.append(".");
-		sb.append(serviceContext);
+		sb.append(filter);
 
 		String packageName = sb.toString();
 
+		context.put(CLASS_NAME, javaUtil.getServiceClassName(filter));
 		context.put(DISCOVERY, discovery);
 		context.put(ESCAPE_TOOL, new EscapeTool());
-		context.put(JAVA_UTIL, new JavaUtil());
+		context.put(JAVA_UTIL, javaUtil);
 		context.put(PACKAGE, packageName);
-		context.put(SERVICE_CONTEXT, serviceContext);
 
 		return context;
 	}
+
+	protected static final String CLASS_NAME = "className";
 
 	protected static final String DISCOVERY = "discovery";
 
@@ -138,7 +138,5 @@ public class AndroidBuilder implements Builder {
 	protected static final String JAVA_UTIL = "javaUtil";
 
 	protected static final String PACKAGE = "package";
-
-	protected static final String SERVICE_CONTEXT = "serviceContext";
 
 }

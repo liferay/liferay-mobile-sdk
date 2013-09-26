@@ -22,8 +22,7 @@ import com.liferay.mobile.sdk.http.PortalVersion;
  */
 public interface Builder {
 
-	public void build(
-			String serviceContext, PortalVersion version, Discovery discovery)
+	public void build(String filter, PortalVersion version, Discovery discovery)
 		throws Exception;
 
 	public void buildAll(PortalVersion version, Discovery discovery)
