@@ -140,7 +140,8 @@ public class JournalFolderService extends BaseService {
 	}
 
 	public JSONArray getFoldersAndArticles(long groupId, long folderId,
-		int start, int end, JSONObject obc) throws Exception {
+		int status, int start, int end, JSONObject obc)
+		throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -148,6 +149,7 @@ public class JournalFolderService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
+			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
 			_params.put("obc", obc);

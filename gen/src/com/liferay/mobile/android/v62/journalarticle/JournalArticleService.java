@@ -426,8 +426,8 @@ public class JournalArticleService extends BaseService {
 	}
 
 	public JSONArray getGroupArticles(long groupId, long userId,
-		long rootFolderId, int start, int end, JSONObject orderByComparator)
-		throws Exception {
+		long rootFolderId, int status, int start, int end,
+		JSONObject orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -436,6 +436,7 @@ public class JournalArticleService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("userId", userId);
 			_params.put("rootFolderId", rootFolderId);
+			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
 			_params.put("orderByComparator", orderByComparator);
@@ -450,7 +451,7 @@ public class JournalArticleService extends BaseService {
 	}
 
 	public Integer getGroupArticlesCount(long groupId, long userId,
-		long rootFolderId) throws Exception {
+		long rootFolderId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -459,6 +460,7 @@ public class JournalArticleService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("userId", userId);
 			_params.put("rootFolderId", rootFolderId);
+			_params.put("status", status);
 
 			_command.put("/journalarticle/get-group-articles-count", _params);
 		}

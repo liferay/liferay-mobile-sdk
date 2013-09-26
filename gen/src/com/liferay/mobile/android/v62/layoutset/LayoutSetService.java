@@ -63,8 +63,7 @@ public class LayoutSetService extends BaseService {
 	}
 
 	public void updateLogo(long groupId, boolean privateLayout, boolean logo,
-		JSONObject inputStream, boolean cleanUpStream)
-		throws Exception {
+		JSONObject file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -73,8 +72,7 @@ public class LayoutSetService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("logo", logo);
-			_params.put("inputStream", inputStream);
-			_params.put("cleanUpStream", cleanUpStream);
+			_params.put("file", file);
 
 			_command.put("/layoutset/update-logo", _params);
 		}

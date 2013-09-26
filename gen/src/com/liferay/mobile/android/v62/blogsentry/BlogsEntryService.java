@@ -38,44 +38,6 @@ public class BlogsEntryService extends BaseService {
 		super(context, batch);
 	}
 
-	public JSONObject addEntry(String title, String description,
-		String content, int displayDateMonth, int displayDateDay,
-		int displayDateYear, int displayDateHour, int displayDateMinute,
-		boolean allowPingbacks, boolean allowTrackbacks, JSONArray trackbacks,
-		boolean smallImage, String smallImageURL, String smallImageFileName,
-		JSONObject smallImageInputStream, JSONObject serviceContext)
-		throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("content", content);
-			_params.put("displayDateMonth", displayDateMonth);
-			_params.put("displayDateDay", displayDateDay);
-			_params.put("displayDateYear", displayDateYear);
-			_params.put("displayDateHour", displayDateHour);
-			_params.put("displayDateMinute", displayDateMinute);
-			_params.put("allowPingbacks", allowPingbacks);
-			_params.put("allowTrackbacks", allowTrackbacks);
-			_params.put("trackbacks", trackbacks);
-			_params.put("smallImage", smallImage);
-			_params.put("smallImageURL", smallImageURL);
-			_params.put("smallImageFileName", smallImageFileName);
-			_params.put("smallImageInputStream", smallImageInputStream);
-			_params.put("serviceContext", serviceContext);
-
-			_command.put("/blogsentry/add-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		return (JSONObject)post(_command);
-	}
-
 	public void deleteEntry(long entryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -371,44 +333,5 @@ public class BlogsEntryService extends BaseService {
 		}
 
 		post(_command);
-	}
-
-	public JSONObject updateEntry(long entryId, String title,
-		String description, String content, int displayDateMonth,
-		int displayDateDay, int displayDateYear, int displayDateHour,
-		int displayDateMinute, boolean allowPingbacks, boolean allowTrackbacks,
-		JSONArray trackbacks, boolean smallImage, String smallImageURL,
-		String smallImageFileName, JSONObject smallImageInputStream,
-		JSONObject serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("entryId", entryId);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("content", content);
-			_params.put("displayDateMonth", displayDateMonth);
-			_params.put("displayDateDay", displayDateDay);
-			_params.put("displayDateYear", displayDateYear);
-			_params.put("displayDateHour", displayDateHour);
-			_params.put("displayDateMinute", displayDateMinute);
-			_params.put("allowPingbacks", allowPingbacks);
-			_params.put("allowTrackbacks", allowTrackbacks);
-			_params.put("trackbacks", trackbacks);
-			_params.put("smallImage", smallImage);
-			_params.put("smallImageURL", smallImageURL);
-			_params.put("smallImageFileName", smallImageFileName);
-			_params.put("smallImageInputStream", smallImageInputStream);
-			_params.put("serviceContext", serviceContext);
-
-			_command.put("/blogsentry/update-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		return (JSONObject)post(_command);
 	}
 }

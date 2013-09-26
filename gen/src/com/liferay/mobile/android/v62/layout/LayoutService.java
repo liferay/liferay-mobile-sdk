@@ -72,29 +72,6 @@ public class LayoutService extends BaseService {
 		return (JSONObject)post(_command);
 	}
 
-	public JSONObject addTempFileEntry(long groupId, String fileName,
-		String tempFolderName, JSONObject inputStream, String mimeType)
-		throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("fileName", fileName);
-			_params.put("tempFolderName", tempFolderName);
-			_params.put("inputStream", inputStream);
-			_params.put("mimeType", mimeType);
-
-			_command.put("/layout/add-temp-file-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		return (JSONObject)post(_command);
-	}
-
 	public void deleteLayout(long groupId, boolean privateLayout,
 		long layoutId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -432,7 +409,7 @@ public class LayoutService extends BaseService {
 	}
 
 	public void importLayouts(long groupId, boolean privateLayout,
-		JSONObject parameterMap, JSONObject is) throws Exception {
+		JSONObject parameterMap, JSONObject file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -441,7 +418,7 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("parameterMap", parameterMap);
-			_params.put("is", is);
+			_params.put("file", file);
 
 			_command.put("/layout/import-layouts", _params);
 		}
@@ -476,7 +453,7 @@ public class LayoutService extends BaseService {
 	}
 
 	public void importPortletInfo(long plid, long groupId, String portletId,
-		JSONObject parameterMap, JSONObject is) throws Exception {
+		JSONObject parameterMap, JSONObject file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -486,7 +463,7 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("portletId", portletId);
 			_params.put("parameterMap", parameterMap);
-			_params.put("is", is);
+			_params.put("file", file);
 
 			_command.put("/layout/import-portlet-info", _params);
 		}
@@ -498,7 +475,7 @@ public class LayoutService extends BaseService {
 	}
 
 	public Long importPortletInfoInBackground(String taskName, long plid,
-		long groupId, String portletId, JSONObject parameterMap, JSONObject is)
+		long groupId, String portletId, JSONObject parameterMap, JSONObject file)
 		throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -510,7 +487,7 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("portletId", portletId);
 			_params.put("parameterMap", parameterMap);
-			_params.put("is", is);
+			_params.put("file", file);
 
 			_command.put("/layout/import-portlet-info-in-background", _params);
 		}
@@ -747,7 +724,8 @@ public class LayoutService extends BaseService {
 	}
 
 	public JSONObject updatePriority(long groupId, boolean privateLayout,
-		long layoutId, int priority) throws Exception {
+		long layoutId, long nextLayoutId, long previousLayoutId)
+		throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -756,7 +734,8 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("layoutId", layoutId);
-			_params.put("priority", priority);
+			_params.put("nextLayoutId", nextLayoutId);
+			_params.put("previousLayoutId", previousLayoutId);
 
 			_command.put("/layout/update-priority", _params);
 		}

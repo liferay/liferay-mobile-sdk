@@ -67,7 +67,7 @@ public class WikiPageService extends BaseService {
 	}
 
 	public void addPageAttachment(long nodeId, String title, String fileName,
-		JSONObject inputStream, String mimeType) throws Exception {
+		JSONObject file, String mimeType) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -76,7 +76,7 @@ public class WikiPageService extends BaseService {
 			_params.put("nodeId", nodeId);
 			_params.put("title", title);
 			_params.put("fileName", fileName);
-			_params.put("inputStream", inputStream);
+			_params.put("file", file);
 			_params.put("mimeType", mimeType);
 
 			_command.put("/wikipage/add-page-attachment", _params);
@@ -100,29 +100,6 @@ public class WikiPageService extends BaseService {
 			_params.put("inputStreamOVPs", inputStreamOVPs);
 
 			_command.put("/wikipage/add-page-attachments", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		post(_command);
-	}
-
-	public void addTempPageAttachment(long nodeId, String fileName,
-		String tempFolderName, JSONObject inputStream, String mimeType)
-		throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("nodeId", nodeId);
-			_params.put("fileName", fileName);
-			_params.put("tempFolderName", tempFolderName);
-			_params.put("inputStream", inputStream);
-			_params.put("mimeType", mimeType);
-
-			_command.put("/wikipage/add-temp-page-attachment", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

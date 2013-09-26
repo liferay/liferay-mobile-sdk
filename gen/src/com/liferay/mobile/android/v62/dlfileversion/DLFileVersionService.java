@@ -57,6 +57,44 @@ public class DLFileVersionService extends BaseService {
 		return (JSONObject)post(_command);
 	}
 
+	public JSONArray getFileVersions(long fileEntryId, int status)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+			_params.put("status", status);
+
+			_command.put("/dlfileversion/get-file-versions", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)post(_command);
+	}
+
+	public Integer getFileVersionsCount(long fileEntryId, int status)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+			_params.put("status", status);
+
+			_command.put("/dlfileversion/get-file-versions-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)post(_command);
+	}
+
 	public JSONObject getLatestFileVersion(long fileEntryId)
 		throws Exception {
 		JSONObject _command = new JSONObject();

@@ -38,40 +38,6 @@ public class DLFileEntryService extends BaseService {
 		super(context, batch);
 	}
 
-	public JSONObject addFileEntry(long groupId, long repositoryId,
-		long folderId, String sourceFileName, String mimeType, String title,
-		String description, String changeLog, long fileEntryTypeId,
-		JSONObject fieldsMap, JSONObject file, JSONObject is, long size,
-		JSONObject serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("repositoryId", repositoryId);
-			_params.put("folderId", folderId);
-			_params.put("sourceFileName", sourceFileName);
-			_params.put("mimeType", mimeType);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("changeLog", changeLog);
-			_params.put("fileEntryTypeId", fileEntryTypeId);
-			_params.put("fieldsMap", fieldsMap);
-			_params.put("file", file);
-			_params.put("is", is);
-			_params.put("size", size);
-			_params.put("serviceContext", serviceContext);
-
-			_command.put("/dlfileentry/add-file-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		return (JSONObject)post(_command);
-	}
-
 	public JSONObject cancelCheckOut(long fileEntryId)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -205,26 +171,6 @@ public class DLFileEntryService extends BaseService {
 			_params.put("imageId", imageId);
 
 			_command.put("/dlfileentry/fetch-file-entry-by-image-id", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		return (JSONObject)post(_command);
-	}
-
-	public JSONObject getFileAsStream(long fileEntryId, String version,
-		boolean incrementCounter) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("fileEntryId", fileEntryId);
-			_params.put("version", version);
-			_params.put("incrementCounter", incrementCounter);
-
-			_command.put("/dlfileentry/get-file-as-stream", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -515,39 +461,6 @@ public class DLFileEntryService extends BaseService {
 			_params.put("end", end);
 
 			_command.put("/dlfileentry/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		return (JSONObject)post(_command);
-	}
-
-	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName,
-		String mimeType, String title, String description, String changeLog,
-		boolean majorVersion, long fileEntryTypeId, JSONObject fieldsMap,
-		JSONObject file, JSONObject is, long size, JSONObject serviceContext)
-		throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("fileEntryId", fileEntryId);
-			_params.put("sourceFileName", sourceFileName);
-			_params.put("mimeType", mimeType);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("changeLog", changeLog);
-			_params.put("majorVersion", majorVersion);
-			_params.put("fileEntryTypeId", fileEntryTypeId);
-			_params.put("fieldsMap", fieldsMap);
-			_params.put("file", file);
-			_params.put("is", is);
-			_params.put("size", size);
-			_params.put("serviceContext", serviceContext);
-
-			_command.put("/dlfileentry/update-file-entry", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

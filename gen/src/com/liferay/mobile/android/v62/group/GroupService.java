@@ -554,7 +554,7 @@ public class GroupService extends BaseService {
 		return (JSONObject)post(_command);
 	}
 
-	public void updateStagedPortlets(long groupId, String stagedPortletIds)
+	public void updateStagedPortlets(long groupId, JSONObject stagedPortletIds)
 		throws Exception {
 		JSONObject _command = new JSONObject();
 

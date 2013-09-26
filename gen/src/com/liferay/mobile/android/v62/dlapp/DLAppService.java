@@ -112,8 +112,8 @@ public class DLAppService extends BaseService {
 	}
 
 	public JSONObject addTempFileEntry(long groupId, long folderId,
-		String fileName, String tempFolderName, JSONObject inputStream,
-		String mimeType) throws Exception {
+		String fileName, String tempFolderName, JSONObject file, String mimeType)
+		throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -123,7 +123,7 @@ public class DLAppService extends BaseService {
 			_params.put("folderId", folderId);
 			_params.put("fileName", fileName);
 			_params.put("tempFolderName", tempFolderName);
-			_params.put("inputStream", inputStream);
+			_params.put("file", file);
 			_params.put("mimeType", mimeType);
 
 			_command.put("/dlapp/add-temp-file-entry", _params);
