@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.ddmtemplate;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class DDMTemplateService extends BaseService {
-	public DDMTemplateService(ServiceContext context) {
-		super(context);
+	public DDMTemplateService(Session session) {
+		super(session);
 	}
 
-	public DDMTemplateService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public DDMTemplateService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public DDMTemplateService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public DDMTemplateService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addTemplate(long groupId, long classNameId, long classPK,

@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.socialactivitysetting;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,17 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class SocialActivitySettingService extends BaseService {
-	public SocialActivitySettingService(ServiceContext context) {
-		super(context);
+	public SocialActivitySettingService(Session session) {
+		super(session);
 	}
 
-	public SocialActivitySettingService(ServiceContext context,
+	public SocialActivitySettingService(Session session,
 		AsyncTaskCallback callback) {
-		super(context, callback);
+		super(session, callback);
 	}
 
-	public SocialActivitySettingService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public SocialActivitySettingService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject getActivityDefinition(long groupId, String className,

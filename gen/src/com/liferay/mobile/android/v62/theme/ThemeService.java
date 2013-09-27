@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.theme;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ThemeService extends BaseService {
-	public ThemeService(ServiceContext context) {
-		super(context);
+	public ThemeService(Session session) {
+		super(session);
 	}
 
-	public ThemeService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public ThemeService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public ThemeService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public ThemeService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONArray getThemes(long companyId) throws Exception {

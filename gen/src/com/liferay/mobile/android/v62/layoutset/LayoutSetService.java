@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.layoutset;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class LayoutSetService extends BaseService {
-	public LayoutSetService(ServiceContext context) {
-		super(context);
+	public LayoutSetService(Session session) {
+		super(session);
 	}
 
-	public LayoutSetService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public LayoutSetService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public LayoutSetService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public LayoutSetService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public void updateLayoutSetPrototypeLinkEnabled(long groupId,

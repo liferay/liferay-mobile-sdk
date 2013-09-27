@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.announcementsentry;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class AnnouncementsEntryService extends BaseService {
-	public AnnouncementsEntryService(ServiceContext context) {
-		super(context);
+	public AnnouncementsEntryService(Session session) {
+		super(session);
 	}
 
-	public AnnouncementsEntryService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public AnnouncementsEntryService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public AnnouncementsEntryService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public AnnouncementsEntryService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addEntry(long plid, long classNameId, long classPK,

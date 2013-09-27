@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.pollsvote;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class PollsVoteService extends BaseService {
-	public PollsVoteService(ServiceContext context) {
-		super(context);
+	public PollsVoteService(Session session) {
+		super(session);
 	}
 
-	public PollsVoteService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public PollsVoteService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public PollsVoteService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public PollsVoteService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addVote(long questionId, long choiceId,

@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.scproductversion;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class SCProductVersionService extends BaseService {
-	public SCProductVersionService(ServiceContext context) {
-		super(context);
+	public SCProductVersionService(Session session) {
+		super(session);
 	}
 
-	public SCProductVersionService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public SCProductVersionService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public SCProductVersionService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public SCProductVersionService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addProductVersion(long productEntryId, String version,

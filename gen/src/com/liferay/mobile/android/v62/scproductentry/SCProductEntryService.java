@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.scproductentry;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class SCProductEntryService extends BaseService {
-	public SCProductEntryService(ServiceContext context) {
-		super(context);
+	public SCProductEntryService(Session session) {
+		super(session);
 	}
 
-	public SCProductEntryService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public SCProductEntryService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public SCProductEntryService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public SCProductEntryService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addProductEntry(String name, String type, String tags,

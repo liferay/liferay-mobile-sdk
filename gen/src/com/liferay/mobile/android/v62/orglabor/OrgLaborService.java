@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.orglabor;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class OrgLaborService extends BaseService {
-	public OrgLaborService(ServiceContext context) {
-		super(context);
+	public OrgLaborService(Session session) {
+		super(session);
 	}
 
-	public OrgLaborService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public OrgLaborService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public OrgLaborService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public OrgLaborService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addOrgLabor(long organizationId, int typeId, int sunOpen,

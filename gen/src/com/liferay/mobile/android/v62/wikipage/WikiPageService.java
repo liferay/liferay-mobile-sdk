@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.wikipage;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class WikiPageService extends BaseService {
-	public WikiPageService(ServiceContext context) {
-		super(context);
+	public WikiPageService(Session session) {
+		super(session);
 	}
 
-	public WikiPageService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public WikiPageService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public WikiPageService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public WikiPageService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addPage(long nodeId, String title, String content,

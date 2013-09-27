@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.bookmarksentry;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class BookmarksEntryService extends BaseService {
-	public BookmarksEntryService(ServiceContext context) {
-		super(context);
+	public BookmarksEntryService(Session session) {
+		super(session);
 	}
 
-	public BookmarksEntryService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public BookmarksEntryService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public BookmarksEntryService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public BookmarksEntryService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addEntry(long groupId, long folderId, String name,

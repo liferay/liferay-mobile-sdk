@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.organization;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class OrganizationService extends BaseService {
-	public OrganizationService(ServiceContext context) {
-		super(context);
+	public OrganizationService(Session session) {
+		super(session);
 	}
 
-	public OrganizationService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public OrganizationService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public OrganizationService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public OrganizationService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public void addGroupOrganizations(long groupId, JSONArray organizationIds)

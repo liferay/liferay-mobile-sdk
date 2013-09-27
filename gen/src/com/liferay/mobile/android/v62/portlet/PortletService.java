@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.portlet;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class PortletService extends BaseService {
-	public PortletService(ServiceContext context) {
-		super(context);
+	public PortletService(Session session) {
+		super(session);
 	}
 
-	public PortletService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public PortletService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public PortletService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public PortletService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject getWarPortlets() throws Exception {

@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.layoutrevision;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class LayoutRevisionService extends BaseService {
-	public LayoutRevisionService(ServiceContext context) {
-		super(context);
+	public LayoutRevisionService(Session session) {
+		super(session);
 	}
 
-	public LayoutRevisionService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public LayoutRevisionService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public LayoutRevisionService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public LayoutRevisionService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addLayoutRevision(long userId, long layoutSetBranchId,

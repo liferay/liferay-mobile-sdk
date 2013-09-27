@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.dlfileentry;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class DLFileEntryService extends BaseService {
-	public DLFileEntryService(ServiceContext context) {
-		super(context);
+	public DLFileEntryService(Session session) {
+		super(session);
 	}
 
-	public DLFileEntryService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public DLFileEntryService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public DLFileEntryService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public DLFileEntryService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject cancelCheckOut(long fileEntryId)

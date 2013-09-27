@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.assetentry;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class AssetEntryService extends BaseService {
-	public AssetEntryService(ServiceContext context) {
-		super(context);
+	public AssetEntryService(Session session) {
+		super(session);
 	}
 
-	public AssetEntryService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public AssetEntryService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public AssetEntryService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public AssetEntryService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONArray getCompanyEntries(long companyId, int start, int end)

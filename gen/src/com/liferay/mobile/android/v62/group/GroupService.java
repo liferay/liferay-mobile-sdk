@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.group;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class GroupService extends BaseService {
-	public GroupService(ServiceContext context) {
-		super(context);
+	public GroupService(Session session) {
+		super(session);
 	}
 
-	public GroupService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public GroupService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public GroupService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public GroupService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addGroup(long parentGroupId, String name,

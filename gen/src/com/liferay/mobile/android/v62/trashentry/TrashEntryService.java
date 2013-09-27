@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.trashentry;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class TrashEntryService extends BaseService {
-	public TrashEntryService(ServiceContext context) {
-		super(context);
+	public TrashEntryService(Session session) {
+		super(session);
 	}
 
-	public TrashEntryService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public TrashEntryService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public TrashEntryService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public TrashEntryService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public void deleteEntries(long groupId) throws Exception {

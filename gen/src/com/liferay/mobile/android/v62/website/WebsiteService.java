@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.website;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class WebsiteService extends BaseService {
-	public WebsiteService(ServiceContext context) {
-		super(context);
+	public WebsiteService(Session session) {
+		super(session);
 	}
 
-	public WebsiteService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public WebsiteService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public WebsiteService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public WebsiteService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addWebsite(String className, long classPK, String url,

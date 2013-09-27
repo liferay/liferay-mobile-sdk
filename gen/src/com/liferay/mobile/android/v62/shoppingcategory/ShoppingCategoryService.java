@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.shoppingcategory;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ShoppingCategoryService extends BaseService {
-	public ShoppingCategoryService(ServiceContext context) {
-		super(context);
+	public ShoppingCategoryService(Session session) {
+		super(session);
 	}
 
-	public ShoppingCategoryService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public ShoppingCategoryService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public ShoppingCategoryService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public ShoppingCategoryService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addCategory(long parentCategoryId, String name,

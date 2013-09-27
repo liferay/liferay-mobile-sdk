@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.dlapp;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class DLAppService extends BaseService {
-	public DLAppService(ServiceContext context) {
-		super(context);
+	public DLAppService(Session session) {
+		super(session);
 	}
 
-	public DLAppService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public DLAppService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public DLAppService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public DLAppService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addFileEntry(long repositoryId, long folderId,

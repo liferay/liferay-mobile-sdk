@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.shoppingitem;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ShoppingItemService extends BaseService {
-	public ShoppingItemService(ServiceContext context) {
-		super(context);
+	public ShoppingItemService(Session session) {
+		super(session);
 	}
 
-	public ShoppingItemService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public ShoppingItemService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public ShoppingItemService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public ShoppingItemService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public void addBookItems(long groupId, long categoryId, JSONArray isbns)

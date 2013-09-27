@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.assetvocabulary;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class AssetVocabularyService extends BaseService {
-	public AssetVocabularyService(ServiceContext context) {
-		super(context);
+	public AssetVocabularyService(Session session) {
+		super(session);
 	}
 
-	public AssetVocabularyService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public AssetVocabularyService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public AssetVocabularyService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public AssetVocabularyService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addVocabulary(String title, JSONObject titleMap,

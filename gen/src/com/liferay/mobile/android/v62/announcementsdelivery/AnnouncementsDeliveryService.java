@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.announcementsdelivery;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,17 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class AnnouncementsDeliveryService extends BaseService {
-	public AnnouncementsDeliveryService(ServiceContext context) {
-		super(context);
+	public AnnouncementsDeliveryService(Session session) {
+		super(session);
 	}
 
-	public AnnouncementsDeliveryService(ServiceContext context,
+	public AnnouncementsDeliveryService(Session session,
 		AsyncTaskCallback callback) {
-		super(context, callback);
+		super(session, callback);
 	}
 
-	public AnnouncementsDeliveryService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public AnnouncementsDeliveryService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject updateDelivery(long userId, String type, boolean email,

@@ -11,10 +11,11 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
+
 package com.liferay.mobile.android.v62.syncdlobject;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -25,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class SyncDLObjectService extends BaseService {
-	public SyncDLObjectService(ServiceContext context) {
-		super(context);
+	public SyncDLObjectService(Session session) {
+		super(session);
 	}
 
-	public SyncDLObjectService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public SyncDLObjectService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public SyncDLObjectService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public SyncDLObjectService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addFileEntry(long repositoryId, long folderId,

@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.mbthread;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class MBThreadService extends BaseService {
-	public MBThreadService(ServiceContext context) {
-		super(context);
+	public MBThreadService(Session session) {
+		super(session);
 	}
 
-	public MBThreadService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public MBThreadService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public MBThreadService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public MBThreadService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public void deleteThread(long threadId) throws Exception {

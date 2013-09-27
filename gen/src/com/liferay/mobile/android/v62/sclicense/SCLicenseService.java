@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.sclicense;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class SCLicenseService extends BaseService {
-	public SCLicenseService(ServiceContext context) {
-		super(context);
+	public SCLicenseService(Session session) {
+		super(session);
 	}
 
-	public SCLicenseService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public SCLicenseService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public SCLicenseService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public SCLicenseService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addLicense(String name, String url, boolean openSource,

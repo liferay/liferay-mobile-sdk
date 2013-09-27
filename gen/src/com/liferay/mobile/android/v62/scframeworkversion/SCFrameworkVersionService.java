@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.scframeworkversion;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class SCFrameworkVersionService extends BaseService {
-	public SCFrameworkVersionService(ServiceContext context) {
-		super(context);
+	public SCFrameworkVersionService(Session session) {
+		super(session);
 	}
 
-	public SCFrameworkVersionService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public SCFrameworkVersionService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public SCFrameworkVersionService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public SCFrameworkVersionService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addFrameworkVersion(String name, String url,

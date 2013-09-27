@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.layoutbranch;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class LayoutBranchService extends BaseService {
-	public LayoutBranchService(ServiceContext context) {
-		super(context);
+	public LayoutBranchService(Session session) {
+		super(session);
 	}
 
-	public LayoutBranchService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public LayoutBranchService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public LayoutBranchService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public LayoutBranchService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addLayoutBranch(long layoutRevisionId, String name,

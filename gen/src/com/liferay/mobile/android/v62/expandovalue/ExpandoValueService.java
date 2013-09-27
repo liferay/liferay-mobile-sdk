@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.expandovalue;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ExpandoValueService extends BaseService {
-	public ExpandoValueService(ServiceContext context) {
-		super(context);
+	public ExpandoValueService(Session session) {
+		super(session);
 	}
 
-	public ExpandoValueService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public ExpandoValueService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public ExpandoValueService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public ExpandoValueService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addValue(long companyId, String className,

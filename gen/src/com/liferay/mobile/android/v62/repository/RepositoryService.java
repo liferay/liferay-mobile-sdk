@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.repository;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class RepositoryService extends BaseService {
-	public RepositoryService(ServiceContext context) {
-		super(context);
+	public RepositoryService(Session session) {
+		super(session);
 	}
 
-	public RepositoryService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public RepositoryService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public RepositoryService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public RepositoryService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addRepository(long groupId, long classNameId,

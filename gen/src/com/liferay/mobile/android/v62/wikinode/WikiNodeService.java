@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.wikinode;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class WikiNodeService extends BaseService {
-	public WikiNodeService(ServiceContext context) {
-		super(context);
+	public WikiNodeService(Session session) {
+		super(session);
 	}
 
-	public WikiNodeService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public WikiNodeService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public WikiNodeService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public WikiNodeService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addNode(String name, String description,

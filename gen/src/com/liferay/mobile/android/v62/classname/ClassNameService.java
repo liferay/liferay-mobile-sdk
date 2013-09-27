@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.classname;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ClassNameService extends BaseService {
-	public ClassNameService(ServiceContext context) {
-		super(context);
+	public ClassNameService(Session session) {
+		super(session);
 	}
 
-	public ClassNameService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public ClassNameService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public ClassNameService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public ClassNameService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject fetchClassName(String value) throws Exception {

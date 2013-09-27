@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.announcementsflag;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class AnnouncementsFlagService extends BaseService {
-	public AnnouncementsFlagService(ServiceContext context) {
-		super(context);
+	public AnnouncementsFlagService(Session session) {
+		super(session);
 	}
 
-	public AnnouncementsFlagService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public AnnouncementsFlagService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public AnnouncementsFlagService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public AnnouncementsFlagService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public void addFlag(long entryId, int value) throws Exception {

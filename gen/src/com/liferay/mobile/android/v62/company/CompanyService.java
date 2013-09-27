@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.company;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class CompanyService extends BaseService {
-	public CompanyService(ServiceContext context) {
-		super(context);
+	public CompanyService(Session session) {
+		super(session);
 	}
 
-	public CompanyService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public CompanyService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public CompanyService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public CompanyService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public void deleteLogo(long companyId) throws Exception {

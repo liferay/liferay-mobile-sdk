@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.bookmarksfolder;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class BookmarksFolderService extends BaseService {
-	public BookmarksFolderService(ServiceContext context) {
-		super(context);
+	public BookmarksFolderService(Session session) {
+		super(session);
 	}
 
-	public BookmarksFolderService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public BookmarksFolderService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public BookmarksFolderService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public BookmarksFolderService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addFolder(long parentFolderId, String name,

@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.contact;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ContactService extends BaseService {
-	public ContactService(ServiceContext context) {
-		super(context);
+	public ContactService(Session session) {
+		super(session);
 	}
 
-	public ContactService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public ContactService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public ContactService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public ContactService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject getContact(long contactId) throws Exception {

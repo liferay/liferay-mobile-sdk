@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.mbcategory;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class MBCategoryService extends BaseService {
-	public MBCategoryService(ServiceContext context) {
-		super(context);
+	public MBCategoryService(Session session) {
+		super(session);
 	}
 
-	public MBCategoryService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public MBCategoryService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public MBCategoryService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public MBCategoryService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addCategory(long userId, long parentCategoryId,

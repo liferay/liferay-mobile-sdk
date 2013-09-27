@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.usergroup;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class UserGroupService extends BaseService {
-	public UserGroupService(ServiceContext context) {
-		super(context);
+	public UserGroupService(Session session) {
+		super(session);
 	}
 
-	public UserGroupService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public UserGroupService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public UserGroupService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public UserGroupService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public void addGroupUserGroups(long groupId, JSONArray userGroupIds)

@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.membershiprequest;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class MembershipRequestService extends BaseService {
-	public MembershipRequestService(ServiceContext context) {
-		super(context);
+	public MembershipRequestService(Session session) {
+		super(session);
 	}
 
-	public MembershipRequestService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public MembershipRequestService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public MembershipRequestService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public MembershipRequestService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addMembershipRequest(long groupId, String comments,

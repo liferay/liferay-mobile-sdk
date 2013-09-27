@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.ddlrecord;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class DDLRecordService extends BaseService {
-	public DDLRecordService(ServiceContext context) {
-		super(context);
+	public DDLRecordService(Session session) {
+		super(session);
 	}
 
-	public DDLRecordService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public DDLRecordService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public DDLRecordService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public DDLRecordService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addRecord(long groupId, long recordSetId,

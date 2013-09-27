@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.mdrrulegroupinstance;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,17 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class MDRRuleGroupInstanceService extends BaseService {
-	public MDRRuleGroupInstanceService(ServiceContext context) {
-		super(context);
+	public MDRRuleGroupInstanceService(Session session) {
+		super(session);
 	}
 
-	public MDRRuleGroupInstanceService(ServiceContext context,
+	public MDRRuleGroupInstanceService(Session session,
 		AsyncTaskCallback callback) {
-		super(context, callback);
+		super(session, callback);
 	}
 
-	public MDRRuleGroupInstanceService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public MDRRuleGroupInstanceService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addRuleGroupInstance(long groupId, String className,

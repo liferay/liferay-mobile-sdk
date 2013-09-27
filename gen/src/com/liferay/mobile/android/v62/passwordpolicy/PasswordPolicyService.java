@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.passwordpolicy;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class PasswordPolicyService extends BaseService {
-	public PasswordPolicyService(ServiceContext context) {
-		super(context);
+	public PasswordPolicyService(Session session) {
+		super(session);
 	}
 
-	public PasswordPolicyService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public PasswordPolicyService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public PasswordPolicyService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public PasswordPolicyService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addPasswordPolicy(String name, String description,

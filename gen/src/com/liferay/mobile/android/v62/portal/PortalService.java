@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.portal;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class PortalService extends BaseService {
-	public PortalService(ServiceContext context) {
-		super(context);
+	public PortalService(Session session) {
+		super(session);
 	}
 
-	public PortalService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public PortalService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public PortalService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public PortalService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public String getAutoDeployDirectory() throws Exception {

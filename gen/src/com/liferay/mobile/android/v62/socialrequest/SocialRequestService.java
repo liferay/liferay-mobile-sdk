@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.socialrequest;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class SocialRequestService extends BaseService {
-	public SocialRequestService(ServiceContext context) {
-		super(context);
+	public SocialRequestService(Session session) {
+		super(session);
 	}
 
-	public SocialRequestService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public SocialRequestService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public SocialRequestService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public SocialRequestService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject updateRequest(long requestId, int status,

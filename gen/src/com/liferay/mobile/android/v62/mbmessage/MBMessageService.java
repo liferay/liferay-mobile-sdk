@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.mbmessage;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class MBMessageService extends BaseService {
-	public MBMessageService(ServiceContext context) {
-		super(context);
+	public MBMessageService(Session session) {
+		super(session);
 	}
 
-	public MBMessageService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public MBMessageService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public MBMessageService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public MBMessageService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addDiscussionMessage(long groupId, String className,

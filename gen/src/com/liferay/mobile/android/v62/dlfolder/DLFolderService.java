@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.dlfolder;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class DLFolderService extends BaseService {
-	public DLFolderService(ServiceContext context) {
-		super(context);
+	public DLFolderService(Session session) {
+		super(session);
 	}
 
-	public DLFolderService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public DLFolderService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public DLFolderService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public DLFolderService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addFolder(long groupId, long repositoryId,

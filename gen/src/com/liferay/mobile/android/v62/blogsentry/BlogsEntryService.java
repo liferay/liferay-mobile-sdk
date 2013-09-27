@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.blogsentry;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class BlogsEntryService extends BaseService {
-	public BlogsEntryService(ServiceContext context) {
-		super(context);
+	public BlogsEntryService(Session session) {
+		super(session);
 	}
 
-	public BlogsEntryService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public BlogsEntryService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public BlogsEntryService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public BlogsEntryService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public void deleteEntry(long entryId) throws Exception {

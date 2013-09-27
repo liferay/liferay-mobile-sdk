@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.assetcategoryproperty;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,17 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class AssetCategoryPropertyService extends BaseService {
-	public AssetCategoryPropertyService(ServiceContext context) {
-		super(context);
+	public AssetCategoryPropertyService(Session session) {
+		super(session);
 	}
 
-	public AssetCategoryPropertyService(ServiceContext context,
+	public AssetCategoryPropertyService(Session session,
 		AsyncTaskCallback callback) {
-		super(context, callback);
+		super(session, callback);
 	}
 
-	public AssetCategoryPropertyService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public AssetCategoryPropertyService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addCategoryProperty(long entryId, String key, String value)

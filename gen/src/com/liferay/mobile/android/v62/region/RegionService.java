@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.region;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class RegionService extends BaseService {
-	public RegionService(ServiceContext context) {
-		super(context);
+	public RegionService(Session session) {
+		super(session);
 	}
 
-	public RegionService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public RegionService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public RegionService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public RegionService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addRegion(long countryId, String regionCode, String name,

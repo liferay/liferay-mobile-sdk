@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.team;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class TeamService extends BaseService {
-	public TeamService(ServiceContext context) {
-		super(context);
+	public TeamService(Session session) {
+		super(session);
 	}
 
-	public TeamService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public TeamService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public TeamService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public TeamService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addTeam(long groupId, String name, String description)

@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.image;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ImageService extends BaseService {
-	public ImageService(ServiceContext context) {
-		super(context);
+	public ImageService(Session session) {
+		super(session);
 	}
 
-	public ImageService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public ImageService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public ImageService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public ImageService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject getImage(long imageId) throws Exception {

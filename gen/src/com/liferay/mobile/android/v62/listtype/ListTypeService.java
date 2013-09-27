@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.listtype;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ListTypeService extends BaseService {
-	public ListTypeService(ServiceContext context) {
-		super(context);
+	public ListTypeService(Session session) {
+		super(session);
 	}
 
-	public ListTypeService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public ListTypeService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public ListTypeService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public ListTypeService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject getListType(int listTypeId) throws Exception {

@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.ratingsentry;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class RatingsEntryService extends BaseService {
-	public RatingsEntryService(ServiceContext context) {
-		super(context);
+	public RatingsEntryService(Session session) {
+		super(session);
 	}
 
-	public RatingsEntryService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public RatingsEntryService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public RatingsEntryService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public RatingsEntryService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public void deleteEntry(String className, long classPK)

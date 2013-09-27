@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.mbban;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class MBBanService extends BaseService {
-	public MBBanService(ServiceContext context) {
-		super(context);
+	public MBBanService(Session session) {
+		super(session);
 	}
 
-	public MBBanService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public MBBanService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public MBBanService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public MBBanService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addBan(long banUserId, JSONObject serviceContext)

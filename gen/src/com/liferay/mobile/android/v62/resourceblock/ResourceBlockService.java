@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.resourceblock;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ResourceBlockService extends BaseService {
-	public ResourceBlockService(ServiceContext context) {
-		super(context);
+	public ResourceBlockService(Session session) {
+		super(session);
 	}
 
-	public ResourceBlockService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public ResourceBlockService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public ResourceBlockService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public ResourceBlockService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public void addCompanyScopePermission(long scopeGroupId, long companyId,

@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.journalfolder;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class JournalFolderService extends BaseService {
-	public JournalFolderService(ServiceContext context) {
-		super(context);
+	public JournalFolderService(Session session) {
+		super(session);
 	}
 
-	public JournalFolderService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public JournalFolderService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public JournalFolderService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public JournalFolderService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addFolder(long groupId, long parentFolderId, String name,

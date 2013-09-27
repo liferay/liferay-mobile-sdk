@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.dlfileshortcut;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class DLFileShortcutService extends BaseService {
-	public DLFileShortcutService(ServiceContext context) {
-		super(context);
+	public DLFileShortcutService(Session session) {
+		super(session);
 	}
 
-	public DLFileShortcutService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public DLFileShortcutService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public DLFileShortcutService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public DLFileShortcutService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addFileShortcut(long groupId, long folderId,

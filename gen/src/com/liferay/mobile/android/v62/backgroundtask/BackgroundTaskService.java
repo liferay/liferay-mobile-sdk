@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.backgroundtask;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class BackgroundTaskService extends BaseService {
-	public BackgroundTaskService(ServiceContext context) {
-		super(context);
+	public BackgroundTaskService(Session session) {
+		super(session);
 	}
 
-	public BackgroundTaskService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public BackgroundTaskService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public BackgroundTaskService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public BackgroundTaskService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public String getBackgroundTaskStatusJson(long backgroundTaskId)

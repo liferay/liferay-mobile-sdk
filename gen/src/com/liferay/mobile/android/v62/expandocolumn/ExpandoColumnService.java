@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.expandocolumn;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ExpandoColumnService extends BaseService {
-	public ExpandoColumnService(ServiceContext context) {
-		super(context);
+	public ExpandoColumnService(Session session) {
+		super(session);
 	}
 
-	public ExpandoColumnService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public ExpandoColumnService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public ExpandoColumnService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public ExpandoColumnService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addColumn(long tableId, String name, int type,

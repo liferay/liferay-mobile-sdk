@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.resourcepermission;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ResourcePermissionService extends BaseService {
-	public ResourcePermissionService(ServiceContext context) {
-		super(context);
+	public ResourcePermissionService(Session session) {
+		super(session);
 	}
 
-	public ResourcePermissionService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public ResourcePermissionService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public ResourcePermissionService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public ResourcePermissionService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public void addResourcePermission(long groupId, long companyId,

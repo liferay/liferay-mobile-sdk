@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.journalfeed;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class JournalFeedService extends BaseService {
-	public JournalFeedService(ServiceContext context) {
-		super(context);
+	public JournalFeedService(Session session) {
+		super(session);
 	}
 
-	public JournalFeedService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public JournalFeedService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public JournalFeedService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public JournalFeedService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addFeed(long groupId, String feedId, boolean autoFeedId,

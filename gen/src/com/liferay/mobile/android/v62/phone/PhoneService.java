@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.phone;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class PhoneService extends BaseService {
-	public PhoneService(ServiceContext context) {
-		super(context);
+	public PhoneService(Session session) {
+		super(session);
 	}
 
-	public PhoneService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public PhoneService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public PhoneService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public PhoneService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addPhone(String className, long classPK, String number,

@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.journalstructure;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class JournalStructureService extends BaseService {
-	public JournalStructureService(ServiceContext context) {
-		super(context);
+	public JournalStructureService(Session session) {
+		super(session);
 	}
 
-	public JournalStructureService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public JournalStructureService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public JournalStructureService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public JournalStructureService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addStructure(long groupId, String structureId,

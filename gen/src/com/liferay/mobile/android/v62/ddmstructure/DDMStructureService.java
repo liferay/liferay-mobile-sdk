@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.ddmstructure;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class DDMStructureService extends BaseService {
-	public DDMStructureService(ServiceContext context) {
-		super(context);
+	public DDMStructureService(Session session) {
+		super(session);
 	}
 
-	public DDMStructureService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public DDMStructureService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public DDMStructureService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public DDMStructureService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addStructure(long userId, long groupId, long classNameId,

@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.permission;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class PermissionService extends BaseService {
-	public PermissionService(ServiceContext context) {
-		super(context);
+	public PermissionService(Session session) {
+		super(session);
 	}
 
-	public PermissionService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public PermissionService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public PermissionService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public PermissionService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public void checkPermission(long groupId, String name, long primKey)

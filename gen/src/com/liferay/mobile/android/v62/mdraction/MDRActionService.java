@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.mdraction;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class MDRActionService extends BaseService {
-	public MDRActionService(ServiceContext context) {
-		super(context);
+	public MDRActionService(Session session) {
+		super(session);
 	}
 
-	public MDRActionService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public MDRActionService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public MDRActionService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public MDRActionService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addAction(long ruleGroupInstanceId, JSONObject nameMap,

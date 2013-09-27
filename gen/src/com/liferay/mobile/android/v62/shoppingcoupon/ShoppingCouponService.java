@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.shoppingcoupon;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,17 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ShoppingCouponService extends BaseService {
-	public ShoppingCouponService(ServiceContext context) {
-		super(context);
+	public ShoppingCouponService(Session session) {
+		super(session);
 	}
 
-	public ShoppingCouponService(ServiceContext context,
-		AsyncTaskCallback callback) {
-		super(context, callback);
+	public ShoppingCouponService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public ShoppingCouponService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public ShoppingCouponService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public JSONObject addCoupon(String code, boolean autoCode, String name,

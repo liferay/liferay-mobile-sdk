@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.v62.flagsentry;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class FlagsEntryService extends BaseService {
-	public FlagsEntryService(ServiceContext context) {
-		super(context);
+	public FlagsEntryService(Session session) {
+		super(session);
 	}
 
-	public FlagsEntryService(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public FlagsEntryService(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public FlagsEntryService(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public FlagsEntryService(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	public void addEntry(String className, long classPK,
