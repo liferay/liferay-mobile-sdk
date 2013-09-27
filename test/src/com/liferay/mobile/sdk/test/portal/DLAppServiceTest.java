@@ -44,7 +44,7 @@ public class DLAppServiceTest extends BaseTest {
 		JSONObject jsonObj = service.addFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
 
-		assertEquals(_FOLDER_NAME, jsonObj.get("name"));
+		assertEquals(_FOLDER_NAME, jsonObj.get(_NAME));
 
 		int count = service.getFoldersCount(
 			_getRepositoryId(), _PARENT_FOLDER_ID, 0, false);
@@ -68,8 +68,8 @@ public class DLAppServiceTest extends BaseTest {
 
 		JSONArray jsonArray = batch.invoke();
 
-		assertEquals(_FOLDER_NAME, jsonArray.getJSONObject(0).get("name"));
-		assertEquals(_FOLDER_NAME_2, jsonArray.getJSONObject(1).get("name"));
+		assertEquals(_FOLDER_NAME, jsonArray.getJSONObject(0).get(_NAME));
+		assertEquals(_FOLDER_NAME_2, jsonArray.getJSONObject(1).get(_NAME));
 
 		deleteFoldersBatch(batch);
 	}
@@ -116,6 +116,8 @@ public class DLAppServiceTest extends BaseTest {
 	private static final String _FOLDER_NAME = "test";
 
 	private static final String _FOLDER_NAME_2 = "test2";
+
+	private static final String _NAME = "name";
 
 	private static final int _PARENT_FOLDER_ID = 0;
 

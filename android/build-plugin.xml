@@ -47,7 +47,7 @@
 			sourcepath=""
 			srcdir="${test.src}">
 
-			<exclude name="**/portal/*ServiceTest.java"/>
+			<exclude name="**/portal/*ServiceTest.java" />
 		</javac>
 	</target>
 
