@@ -50,8 +50,9 @@
 		<mkdir dir="${android.classes}" />
 
 		<javac
-			destdir="${android.classes}"
-			classpathref="android.classpath">
+			classpathref="android.classpath"
+			debug="on"
+			destdir="${android.classes}">
 
 			<src path="${android.src}" />
 			<src path="${gen.src}" />
@@ -64,8 +65,9 @@
 		<mkdir dir="${android.classes}" />
 
 		<javac
-			destdir="${android.classes}"
-			classpathref="android.classpath">
+			classpathref="android.classpath"
+			debug="on"
+			destdir="${android.classes}">
 
 			<src path="${android.src}" />
 		</javac>
@@ -81,8 +83,9 @@
 		</copy>
 
 		<javac
-			destdir="${test.classes}"
 			classpathref="test.classpath"
+			debug="on"
+			destdir="${test.classes}"
 			sourcepath=""
 			srcdir="${test.src}">
 

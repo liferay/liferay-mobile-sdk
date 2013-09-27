@@ -42,8 +42,9 @@
 		</copy>
 
 		<javac
-			destdir="${test.classes}"
 			classpathref="test.classpath"
+			debug="on"
+			destdir="${test.classes}"
 			sourcepath=""
 			srcdir="${test.src}">
 
