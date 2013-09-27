@@ -15,6 +15,7 @@
 package com.liferay.mobile.sdk.test;
 
 import com.liferay.mobile.android.exception.ServerException;
+import com.liferay.mobile.android.service.BatchSessionImpl;
 import com.liferay.mobile.android.v62.dlapp.DLAppService;
 
 import java.io.IOException;
@@ -54,9 +55,9 @@ public class DLAppServiceTest extends BaseTest {
 
 	@Test
 	public void addFoldersBatch() throws Exception {
-		session.setBatch(true);
+		BatchSessionImpl batch = new BatchSessionImpl(session);
 
-		DLAppService service = new DLAppService(session);
+		DLAppService service = new DLAppService(batch);
 
 		service.addFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
@@ -64,14 +65,12 @@ public class DLAppServiceTest extends BaseTest {
 		service.addFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME_2, "", null);
 
-		JSONArray jsonArray = session.invoke();
+		JSONArray jsonArray = batch.invoke();
 
-		assertEquals(_FOLDER_NAME, jsonArray.getJSONObject(0).get("name"));
-		assertEquals(_FOLDER_NAME_2, jsonArray.getJSONObject(1).get("name"));
+		assertEquals(_FOLDER_NAME, jsonArray.getJSONObject(1).get("name"));
+		assertEquals(_FOLDER_NAME_2, jsonArray.getJSONObject(2).get("name"));
 
-		deleteFoldersBatch();
-
-		session.setBatch(false);
+		deleteFoldersBatch(batch);
 	}
 
 	public void deleteFolder() throws Exception {
@@ -93,8 +92,10 @@ public class DLAppServiceTest extends BaseTest {
 		}
 	}
 
-	public void deleteFoldersBatch() throws Exception {
-		DLAppService service = new DLAppService(session);
+	public void deleteFoldersBatch(BatchSessionImpl batch)
+		throws Exception {
+
+		DLAppService service = new DLAppService(batch);
 
 		service.deleteFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME);
@@ -102,7 +103,7 @@ public class DLAppServiceTest extends BaseTest {
 		service.deleteFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME_2);
 
-		JSONArray jsonArray = session.invoke();
+		JSONArray jsonArray = batch.invoke();
 
 		assertEquals(2, jsonArray.length());
 	}

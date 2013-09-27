@@ -17,7 +17,6 @@ package com.liferay.mobile.android.service;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.task.ServiceAsyncTask;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
-import com.liferay.mobile.android.task.callback.BatchAsyncTaskCallback;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -29,69 +28,57 @@ public class SessionImpl implements Session {
 
 	public static final int DEFAULT_CONNECTION_TIMEOUT = 15000;
 
-	public SessionImpl(String server, String username, String password) {
+	public SessionImpl(Session session) {
 		this(
-			server, username, password, DEFAULT_CONNECTION_TIMEOUT, null,
-			false);
+			session.getServer(), session.getUsername(), session.getPassword(),
+			session.getConnectionTimeout(), session.getCallback());
+	}
+
+	public SessionImpl(String server, String username, String password) {
+		this(server, username, password, DEFAULT_CONNECTION_TIMEOUT, null);
+	}
+
+	public SessionImpl(
+		String server, String username, String password,
+		AsyncTaskCallback callback) {
+
+		this(server, username, password, DEFAULT_CONNECTION_TIMEOUT, callback);
 	}
 
 	public SessionImpl(
 		String server, String username, String password, int connectionTimeout,
-		AsyncTaskCallback callback, boolean batch) {
+		AsyncTaskCallback callback) {
 
-		_server = server;
-		_username = username;
-		_password = password;
-		_connectionTimeout = connectionTimeout;
-		_callback = callback;
-		_batch = batch;
+		this.server = server;
+		this.username = username;
+		this.password = password;
+		this.connectionTimeout = connectionTimeout;
+		this.callback = callback;
 	}
 
 	public AsyncTaskCallback getCallback() {
-		return _callback;
+		return callback;
 	}
 
 	public int getConnectionTimeout() {
-		return _connectionTimeout;
+		return connectionTimeout;
 	}
 
 	public String getPassword() {
-		return _password;
+		return password;
 	}
 
 	public String getServer() {
-		return _server;
+		return server;
 	}
 
 	public String getUsername() {
-		return _username;
-	}
-
-	public JSONArray invoke() throws Exception {
-		JSONArray jsonArray = HttpUtil.post(this, _commands);
-
-		_commands = new JSONArray();
-
-		return jsonArray;
-	}
-
-	public void invoke(BatchAsyncTaskCallback callback) {
-		ServiceAsyncTask task = new ServiceAsyncTask(this, callback);
-
-		task.execute(_commands);
-
-		_commands = new JSONArray();
+		return username;
 	}
 
 	public Object invoke(JSONObject command) throws Exception {
-		if (isBatch()) {
-			addCommand(command);
-
-			return null;
-		}
-
-		if (_callback != null) {
-			ServiceAsyncTask task = new ServiceAsyncTask(this, _callback);
+		if (callback != null) {
+			ServiceAsyncTask task = new ServiceAsyncTask(this, callback);
 
 			task.execute(command);
 
@@ -104,44 +91,30 @@ public class SessionImpl implements Session {
 		}
 	}
 
-	public boolean isBatch() {
-		return _batch;
-	}
-
-	public void setBatch(boolean batch) {
-		_batch = batch;
-	}
-
 	public void setCallback(AsyncTaskCallback callback) {
-		_callback = callback;
+		this.callback = callback;
 	}
 
 	public void setConnectionTimeout(int connectionTimeout) {
-		_connectionTimeout = connectionTimeout;
+		this.connectionTimeout = connectionTimeout;
 	}
 
 	public void setPassword(String password) {
-		_password = password;
+		this.password = password;
 	}
 
 	public void setServer(String server) {
-		_server = server;
+		this.server = server;
 	}
 
 	public void setUsername(String username) {
-		_username = username;
+		this.username = username;
 	}
 
-	protected void addCommand(JSONObject command) {
-		_commands.put(command);
-	}
-
-	private boolean _batch;
-	private AsyncTaskCallback _callback;
-	private JSONArray _commands = new JSONArray();
-	private int _connectionTimeout;
-	private String _password;
-	private String _server;
-	private String _username;
+	protected AsyncTaskCallback callback;
+	protected int connectionTimeout;
+	protected String password;
+	protected String server;
+	protected String username;
 
 }
