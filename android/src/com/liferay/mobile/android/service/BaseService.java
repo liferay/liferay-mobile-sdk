@@ -27,24 +27,24 @@ import org.json.JSONObject;
  */
 public class BaseService {
 
-	public BaseService(ServiceContext context) {
-		this(context, null);
+	public BaseService(Session session) {
+		this(session, null);
 	}
 
-	public BaseService(ServiceContext context, AsyncTaskCallback callback) {
-		this(context, callback, false);
+	public BaseService(Session session, AsyncTaskCallback callback) {
+		this(session, callback, false);
 	}
 
-	public BaseService(ServiceContext context, boolean batch) {
-		this(context, null, batch);
+	public BaseService(Session session, boolean batch) {
+		this(session, null, batch);
 	}
 
 	public AsyncTaskCallback getCallback() {
 		return callback;
 	}
 
-	public ServiceContext getContext() {
-		return context;
+	public Session getContext() {
+		return session;
 	}
 
 	public JSONArray invoke() throws Exception {
@@ -75,14 +75,14 @@ public class BaseService {
 		this.callback = callback;
 	}
 
-	public void setContext(ServiceContext context) {
-		this.context = context;
+	public void setSession(Session session) {
+		this.session = session;
 	}
 
 	protected BaseService(
-		ServiceContext context, AsyncTaskCallback callback, boolean batch) {
+		Session session, AsyncTaskCallback callback, boolean batch) {
 
-		this.context = context;
+		this.session = session;
 		this.callback = callback;
 		this.batch = batch;
 	}
@@ -99,7 +99,7 @@ public class BaseService {
 		}
 
 		if (callback != null) {
-			ServiceAsyncTask task = new ServiceAsyncTask(context, callback);
+			ServiceAsyncTask task = new ServiceAsyncTask(session, callback);
 
 			task.execute(command);
 
@@ -115,6 +115,6 @@ public class BaseService {
 	protected boolean batch;
 	protected AsyncTaskCallback callback;
 	protected JSONArray commands = new JSONArray();
-	protected ServiceContext context;
+	protected Session session;
 
 }

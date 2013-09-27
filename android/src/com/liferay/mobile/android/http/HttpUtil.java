@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.http;
 
 import com.liferay.mobile.android.exception.ServerException;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 
 import java.io.IOException;
 
@@ -43,17 +43,17 @@ import org.json.JSONObject;
  */
 public class HttpUtil {
 
-	public static HttpClient getClient(ServiceContext context) {
+	public static HttpClient getClient(Session session) {
 		DefaultHttpClient client = new DefaultHttpClient();
 
 		HttpConnectionParams.setConnectionTimeout(
-			client.getParams(), context.getConnectionTimeout());
+			client.getParams(), session.getConnectionTimeout());
 
 		return client;
 	}
 
-	public static PortalVersion getPortalVersion(ServiceContext context) {
-		return getPortalVersion(context.getServer());
+	public static PortalVersion getPortalVersion(Session session) {
+		return getPortalVersion(session.getServer());
 	}
 
 	public static PortalVersion getPortalVersion(String url) {
@@ -91,12 +91,12 @@ public class HttpUtil {
 		}
 	}
 
-	public static HttpPost getPost(ServiceContext context) {
-		HttpPost post = new HttpPost(getUrl(context));
+	public static HttpPost getPost(Session session) {
+		HttpPost post = new HttpPost(getUrl(session));
 
 		UsernamePasswordCredentials credentials =
 			new UsernamePasswordCredentials(
-				context.getUsername(), context.getPassword());
+				session.getUsername(), session.getPassword());
 
 		Header authorization = BasicScheme.authenticate(
 			credentials, "UTF-8", false);
@@ -118,20 +118,20 @@ public class HttpUtil {
 		return EntityUtils.toString(entity);
 	}
 
-	public static String getUrl(ServiceContext context) {
+	public static String getUrl(Session session) {
 		StringBuilder sb = new StringBuilder();
 
-		sb.append(context.getServer());
+		sb.append(session.getServer());
 		sb.append("/api/jsonws/invoke");
 
 		return sb.toString();
 	}
 
-	public static JSONArray post(ServiceContext context, JSONArray commands)
+	public static JSONArray post(Session session, JSONArray commands)
 		throws Exception {
 
-		HttpClient client = getClient(context);
-		HttpPost post = getPost(context);
+		HttpClient client = getClient(session);
+		HttpPost post = getPost(session);
 
 		post.setEntity(new StringEntity(commands.toString()));
 
@@ -142,14 +142,14 @@ public class HttpUtil {
 		return handleResponse(response, json);
 	}
 
-	public static JSONArray post(ServiceContext context, JSONObject command)
+	public static JSONArray post(Session session, JSONObject command)
 		throws Exception {
 
 		JSONArray commands = new JSONArray();
 
 		commands.put(command);
 
-		return post(context, commands);
+		return post(session, commands);
 	}
 
 	protected static JSONArray handleResponse(

@@ -36,7 +36,7 @@ public class PluginServiceTest extends BaseTest {
 
 	@Test
 	public void getUserSitesGroups() throws Exception {
-		SyncDLObjectService service = new SyncDLObjectService(context);
+		SyncDLObjectService service = new SyncDLObjectService(session);
 
 		JSONArray jsonArray = service.getUserSitesGroups();
 

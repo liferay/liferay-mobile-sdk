@@ -1,7 +1,7 @@
 package $package;
 
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -13,16 +13,16 @@ import org.json.JSONObject;
 
 public class $className extends BaseService {
 
-	public $className(ServiceContext context) {
-		super(context);
+	public $className(Session session) {
+		super(session);
 	}
 
-	public $className(ServiceContext context, AsyncTaskCallback callback) {
-		super(context, callback);
+	public $className(Session session, AsyncTaskCallback callback) {
+		super(session, callback);
 	}
 
-	public $className(ServiceContext context, boolean batch) {
-		super(context, batch);
+	public $className(Session session, boolean batch) {
+		super(session, batch);
 	}
 
 	#foreach ($action in $actions)

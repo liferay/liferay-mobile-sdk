@@ -37,7 +37,7 @@ public class DLAppServiceTest extends BaseTest {
 
 	@Test
 	public void addFolder() throws Exception {
-		DLAppService service = new DLAppService(context);
+		DLAppService service = new DLAppService(session);
 
 		JSONObject jsonObj = service.addFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
@@ -54,7 +54,7 @@ public class DLAppServiceTest extends BaseTest {
 
 	@Test
 	public void addFoldersBatch() throws Exception {
-		DLAppService service = new DLAppService(context, true);
+		DLAppService service = new DLAppService(session, true);
 
 		service.addFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
@@ -71,7 +71,7 @@ public class DLAppServiceTest extends BaseTest {
 	}
 
 	public void deleteFolder() throws Exception {
-		DLAppService service = new DLAppService(context);
+		DLAppService service = new DLAppService(session);
 
 		service.deleteFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME);
@@ -90,7 +90,7 @@ public class DLAppServiceTest extends BaseTest {
 	}
 
 	public void deleteFoldersBatch() throws Exception {
-		DLAppService service = new DLAppService(context, true);
+		DLAppService service = new DLAppService(session, true);
 
 		service.deleteFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME);

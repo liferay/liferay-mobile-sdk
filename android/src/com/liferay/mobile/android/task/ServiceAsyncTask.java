@@ -17,7 +17,7 @@ package com.liferay.mobile.android.task;
 import android.os.AsyncTask;
 
 import com.liferay.mobile.android.http.HttpUtil;
-import com.liferay.mobile.android.service.ServiceContext;
+import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -28,18 +28,16 @@ import org.json.JSONObject;
  */
 public class ServiceAsyncTask extends AsyncTask<JSONArray, Void, JSONArray> {
 
-	public ServiceAsyncTask(
-		ServiceContext context, AsyncTaskCallback callback) {
-
+	public ServiceAsyncTask(Session session, AsyncTaskCallback callback) {
 		_callback = callback;
-		_context = context;
+		_session = session;
 	}
 
 	public JSONArray doInBackground(JSONArray... commands) {
 		JSONArray array;
 
 		try {
-			array = HttpUtil.post(_context, commands[0]);
+			array = HttpUtil.post(_session, commands[0]);
 
 			return _callback.inBackground(array);
 		}
@@ -73,7 +71,7 @@ public class ServiceAsyncTask extends AsyncTask<JSONArray, Void, JSONArray> {
 	}
 
 	private AsyncTaskCallback _callback;
-	private ServiceContext _context;
 	private Exception _exception;
+	private Session _session;
 
 }

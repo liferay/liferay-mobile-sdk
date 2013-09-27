@@ -17,15 +17,15 @@ package com.liferay.mobile.android.service;
 /**
  * @author Bruno Farache
  */
-public class ServiceContext {
+public class Session {
 
 	public static final int DEFAULT_CONNECTION_TIMEOUT = 15000;
 
-	public ServiceContext(String server, String username, String password) {
+	public Session(String server, String username, String password) {
 		this(server, username, password, DEFAULT_CONNECTION_TIMEOUT);
 	}
 
-	public ServiceContext(
+	public Session(
 		String server, String username, String password,
 		int connectionTimeout) {
 

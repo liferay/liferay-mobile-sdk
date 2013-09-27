@@ -36,7 +36,7 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void getUserSites() throws Exception {
-		GroupService service = new GroupService(context);
+		GroupService service = new GroupService(session);
 
 		JSONArray array = service.getUserSites();
 
