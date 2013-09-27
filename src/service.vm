@@ -17,14 +17,6 @@ public class $className extends BaseService {
 		super(session);
 	}
 
-	public $className(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public $className(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	#foreach ($action in $actions)
 		#set ($returnType = $javaUtil.getReturnType($action.response))
 		#set ($methodName = $javaUtil.getMethodName($action.path))
@@ -58,9 +50,9 @@ public class $className extends BaseService {
 			}
 
 			#if ($returnType == "void")
-				post(_command);
+				session.invoke(_command);
 			#else
-				return ($returnType)post(_command);
+				return ($returnType)session.invoke(_command);
 			#end
 		}
 	#end

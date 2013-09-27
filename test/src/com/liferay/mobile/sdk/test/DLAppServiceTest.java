@@ -54,7 +54,9 @@ public class DLAppServiceTest extends BaseTest {
 
 	@Test
 	public void addFoldersBatch() throws Exception {
-		DLAppService service = new DLAppService(session, true);
+		session.setBatch(true);
+
+		DLAppService service = new DLAppService(session);
 
 		service.addFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
@@ -62,12 +64,14 @@ public class DLAppServiceTest extends BaseTest {
 		service.addFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME_2, "", null);
 
-		JSONArray jsonArray = service.invoke();
+		JSONArray jsonArray = session.invoke();
 
 		assertEquals(_FOLDER_NAME, jsonArray.getJSONObject(0).get("name"));
 		assertEquals(_FOLDER_NAME_2, jsonArray.getJSONObject(1).get("name"));
 
 		deleteFoldersBatch();
+
+		session.setBatch(false);
 	}
 
 	public void deleteFolder() throws Exception {
@@ -90,7 +94,7 @@ public class DLAppServiceTest extends BaseTest {
 	}
 
 	public void deleteFoldersBatch() throws Exception {
-		DLAppService service = new DLAppService(session, true);
+		DLAppService service = new DLAppService(session);
 
 		service.deleteFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME);
@@ -98,7 +102,7 @@ public class DLAppServiceTest extends BaseTest {
 		service.deleteFolder(
 			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME_2);
 
-		JSONArray jsonArray = service.invoke();
+		JSONArray jsonArray = session.invoke();
 
 		assertEquals(2, jsonArray.length());
 	}
