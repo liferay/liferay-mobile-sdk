@@ -30,14 +30,6 @@ public class WebsiteService extends BaseService {
 		super(session);
 	}
 
-	public WebsiteService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public WebsiteService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addWebsite(String className, long classPK, String url,
 		int typeId, boolean primary, JSONObject serviceContext)
 		throws Exception {
@@ -59,7 +51,7 @@ public class WebsiteService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteWebsite(long websiteId) throws Exception {
@@ -76,7 +68,7 @@ public class WebsiteService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getWebsite(long websiteId) throws Exception {
@@ -93,7 +85,7 @@ public class WebsiteService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getWebsites(String className, long classPK)
@@ -112,7 +104,7 @@ public class WebsiteService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject updateWebsite(long websiteId, String url, int typeId,
@@ -133,6 +125,6 @@ public class WebsiteService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

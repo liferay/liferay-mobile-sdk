@@ -30,14 +30,6 @@ public class AssetEntryService extends BaseService {
 		super(session);
 	}
 
-	public AssetEntryService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public AssetEntryService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONArray getCompanyEntries(long companyId, int start, int end)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -55,7 +47,7 @@ public class AssetEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getCompanyEntriesCount(long companyId)
@@ -73,7 +65,7 @@ public class AssetEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONArray getEntries(JSONObject entryQuery)
@@ -91,7 +83,7 @@ public class AssetEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getEntriesCount(JSONObject entryQuery)
@@ -109,7 +101,7 @@ public class AssetEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject getEntry(long entryId) throws Exception {
@@ -126,7 +118,7 @@ public class AssetEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject incrementViewCounter(String className, long classPK)
@@ -145,7 +137,7 @@ public class AssetEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateEntry(long groupId, long createDate,
@@ -190,6 +182,6 @@ public class AssetEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

@@ -30,14 +30,6 @@ public class ContactService extends BaseService {
 		super(session);
 	}
 
-	public ContactService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public ContactService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject getContact(long contactId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -52,7 +44,7 @@ public class ContactService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getContacts(long classNameId, long classPK, int start,
@@ -74,7 +66,7 @@ public class ContactService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getContactsCount(long classNameId, long classPK)
@@ -93,6 +85,6 @@ public class ContactService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 }

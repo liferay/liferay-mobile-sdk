@@ -30,14 +30,6 @@ public class LayoutRevisionService extends BaseService {
 		super(session);
 	}
 
-	public LayoutRevisionService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public LayoutRevisionService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addLayoutRevision(long userId, long layoutSetBranchId,
 		long layoutBranchId, long parentLayoutRevisionId, boolean head,
 		long plid, long portletPreferencesPlid, boolean privateLayout,
@@ -80,6 +72,6 @@ public class LayoutRevisionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

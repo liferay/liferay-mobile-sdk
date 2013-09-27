@@ -30,14 +30,6 @@ public class GroupService extends BaseService {
 		super(session);
 	}
 
-	public GroupService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public GroupService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addGroup(long parentGroupId, String name,
 		String description, int type, String friendlyURL, boolean site,
 		boolean active, JSONObject serviceContext) throws Exception {
@@ -61,7 +53,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void addRoleGroups(long roleId, JSONArray groupIds)
@@ -80,7 +72,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void checkRemoteStagingGroup(long groupId) throws Exception {
@@ -97,7 +89,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deleteGroup(long groupId) throws Exception {
@@ -114,7 +106,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void disableStaging(long groupId) throws Exception {
@@ -131,7 +123,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void enableStaging(long groupId) throws Exception {
@@ -148,7 +140,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getCompanyGroup(long companyId) throws Exception {
@@ -165,7 +157,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getGroup(long companyId, String name)
@@ -184,7 +176,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getGroups(long companyId, long parentGroupId, boolean site)
@@ -204,7 +196,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getManageableSiteGroups(JSONObject portlets, int max)
@@ -223,7 +215,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getManageableSites(JSONObject portlets, int max)
@@ -242,7 +234,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getOrganizationsGroups(JSONArray organizations)
@@ -260,7 +252,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject getUserGroup(long companyId, long userId)
@@ -279,7 +271,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getUserGroupsGroups(JSONArray userGroups)
@@ -297,7 +289,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getUserOrganizationsGroups(long userId, int start, int end)
@@ -317,7 +309,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getUserPlaces(long userId, JSONArray classNames,
@@ -342,7 +334,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getUserPlacesCount() throws Exception {
@@ -357,7 +349,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONArray getUserSites() throws Exception {
@@ -372,7 +364,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getUserSitesGroups(long userId, JSONArray classNames,
@@ -397,7 +389,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getUserSitesGroupsCount() throws Exception {
@@ -412,7 +404,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public Boolean hasUserGroup(long userId, long groupId)
@@ -431,7 +423,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)post(_command);
+		return (Boolean)session.invoke(_command);
 	}
 
 	public JSONArray search(long companyId, String name, String description,
@@ -454,7 +446,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer searchCount(long companyId, String name, String description,
@@ -475,7 +467,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public void setRoleGroups(long roleId, JSONArray groupIds)
@@ -494,7 +486,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void unsetRoleGroups(long roleId, JSONArray groupIds)
@@ -513,7 +505,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject updateFriendlyUrl(long groupId, String friendlyURL)
@@ -532,7 +524,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateGroup(long groupId, String typeSettings)
@@ -551,7 +543,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void updateStagedPortlets(long groupId, JSONObject stagedPortletIds)
@@ -570,6 +562,6 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 }

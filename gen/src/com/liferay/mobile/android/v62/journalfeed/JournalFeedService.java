@@ -30,14 +30,6 @@ public class JournalFeedService extends BaseService {
 		super(session);
 	}
 
-	public JournalFeedService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public JournalFeedService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addFeed(long groupId, String feedId, boolean autoFeedId,
 		String name, String description, String type, String structureId,
 		String templateId, String rendererTemplateId, int delta,
@@ -75,7 +67,7 @@ public class JournalFeedService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteFeed(long groupId, long feedId) throws Exception {
@@ -93,7 +85,7 @@ public class JournalFeedService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getFeed(long groupId, long feedId)
@@ -112,7 +104,7 @@ public class JournalFeedService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateFeed(long groupId, String feedId, String name,
@@ -151,6 +143,6 @@ public class JournalFeedService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

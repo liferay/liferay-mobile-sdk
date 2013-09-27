@@ -30,14 +30,6 @@ public class PollsQuestionService extends BaseService {
 		super(session);
 	}
 
-	public PollsQuestionService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public PollsQuestionService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addQuestion(JSONObject titleMap,
 		JSONObject descriptionMap, int expirationDateMonth,
 		int expirationDateDay, int expirationDateYear, int expirationDateHour,
@@ -65,7 +57,7 @@ public class PollsQuestionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteQuestion(long questionId) throws Exception {
@@ -82,7 +74,7 @@ public class PollsQuestionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getQuestion(long questionId) throws Exception {
@@ -99,7 +91,7 @@ public class PollsQuestionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateQuestion(long questionId, JSONObject titleMap,
@@ -130,6 +122,6 @@ public class PollsQuestionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

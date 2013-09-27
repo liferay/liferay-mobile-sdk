@@ -30,14 +30,6 @@ public class JournalArticleService extends BaseService {
 		super(session);
 	}
 
-	public JournalArticleService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public JournalArticleService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addArticle(long groupId, long folderId, long classNameId,
 		long classPK, String articleId, boolean autoArticleId,
 		JSONObject titleMap, JSONObject descriptionMap, String content,
@@ -100,7 +92,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject copyArticle(long groupId, String oldArticleId,
@@ -123,7 +115,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteArticle(long groupId, String articleId, double version,
@@ -145,7 +137,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject expireArticle(long groupId, String articleId,
@@ -168,7 +160,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getArticle(long groupId, String className, long classPK)
@@ -188,7 +180,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getArticleByUrlTitle(long groupId, String urlTitle)
@@ -207,7 +199,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public String getArticleContent(long groupId, String articleId,
@@ -230,7 +222,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (String)post(_command);
+		return (String)session.invoke(_command);
 	}
 
 	public JSONArray getArticles(long groupId, long folderId, int start,
@@ -252,7 +244,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getArticlesByArticleId(long groupId, String articleId,
@@ -274,7 +266,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getArticlesByLayoutUuid(long groupId, String layoutUuid)
@@ -293,7 +285,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getArticlesByStructureId(long groupId, long classNameId,
@@ -318,7 +310,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getArticlesCount(long groupId, long folderId, int status)
@@ -338,7 +330,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public Integer getArticlesCountByArticleId(long groupId, String articleId)
@@ -358,7 +350,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public Integer getArticlesCountByStructureId(long groupId,
@@ -381,7 +373,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject getDisplayArticleByUrlTitle(long groupId, String urlTitle)
@@ -401,7 +393,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public Integer getFoldersAndArticlesCount(long groupId, JSONArray folderIds)
@@ -421,7 +413,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONArray getGroupArticles(long groupId, long userId,
@@ -446,7 +438,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getGroupArticlesCount(long groupId, long userId,
@@ -467,7 +459,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject getLatestArticle(long groupId, String className,
@@ -487,7 +479,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void moveArticle(long groupId, String articleId, long newFolderId)
@@ -507,7 +499,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject moveArticleFromTrash(long groupId, long resourcePrimKey,
@@ -528,7 +520,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveArticleToTrash(long groupId, String articleId)
@@ -547,7 +539,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject removeArticleLocale(long groupId, String articleId,
@@ -568,7 +560,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void restoreArticleFromTrash(long groupId, String articleId)
@@ -587,7 +579,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject search(long groupId, long creatorUserId, int status,
@@ -609,7 +601,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public Integer searchCount(long companyId, long groupId,
@@ -647,7 +639,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public void subscribe(long groupId) throws Exception {
@@ -664,7 +656,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void unsubscribe(long groupId) throws Exception {
@@ -681,7 +673,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject updateArticle(long groupId, long folderId,
@@ -705,7 +697,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateArticleTranslation(long groupId, String articleId,
@@ -733,7 +725,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateContent(long groupId, String articleId,
@@ -754,7 +746,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateStatus(long groupId, String articleId,
@@ -778,6 +770,6 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

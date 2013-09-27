@@ -30,14 +30,6 @@ public class LayoutSetService extends BaseService {
 		super(session);
 	}
 
-	public LayoutSetService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public LayoutSetService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void updateLayoutSetPrototypeLinkEnabled(long groupId,
 		boolean privateLayout, boolean layoutSetPrototypeLinkEnabled,
 		String layoutSetPrototypeUuid) throws Exception {
@@ -59,7 +51,7 @@ public class LayoutSetService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void updateLogo(long groupId, boolean privateLayout, boolean logo,
@@ -80,7 +72,7 @@ public class LayoutSetService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject updateLookAndFeel(long groupId, boolean privateLayout,
@@ -104,7 +96,7 @@ public class LayoutSetService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateSettings(long groupId, boolean privateLayout,
@@ -124,7 +116,7 @@ public class LayoutSetService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateVirtualHost(long groupId, boolean privateLayout,
@@ -144,6 +136,6 @@ public class LayoutSetService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

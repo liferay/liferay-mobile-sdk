@@ -30,14 +30,6 @@ public class EmailAddressService extends BaseService {
 		super(session);
 	}
 
-	public EmailAddressService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public EmailAddressService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addEmailAddress(String className, long classPK,
 		String address, int typeId, boolean primary, JSONObject serviceContext)
 		throws Exception {
@@ -59,7 +51,7 @@ public class EmailAddressService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteEmailAddress(long emailAddressId)
@@ -77,7 +69,7 @@ public class EmailAddressService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getEmailAddress(long emailAddressId)
@@ -95,7 +87,7 @@ public class EmailAddressService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getEmailAddresses(String className, long classPK)
@@ -114,7 +106,7 @@ public class EmailAddressService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject updateEmailAddress(long emailAddressId, String address,
@@ -135,6 +127,6 @@ public class EmailAddressService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

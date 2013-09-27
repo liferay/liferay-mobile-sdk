@@ -30,14 +30,6 @@ public class SCLicenseService extends BaseService {
 		super(session);
 	}
 
-	public SCLicenseService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public SCLicenseService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addLicense(String name, String url, boolean openSource,
 		boolean active, boolean recommended) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -57,7 +49,7 @@ public class SCLicenseService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteLicense(long licenseId) throws Exception {
@@ -74,7 +66,7 @@ public class SCLicenseService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getLicense(long licenseId) throws Exception {
@@ -91,7 +83,7 @@ public class SCLicenseService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateLicense(long licenseId, String name, String url,
@@ -115,6 +107,6 @@ public class SCLicenseService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

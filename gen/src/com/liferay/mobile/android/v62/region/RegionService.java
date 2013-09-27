@@ -30,14 +30,6 @@ public class RegionService extends BaseService {
 		super(session);
 	}
 
-	public RegionService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public RegionService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addRegion(long countryId, String regionCode, String name,
 		boolean active) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -56,7 +48,7 @@ public class RegionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject fetchRegion(long countryId, String regionCode)
@@ -75,7 +67,7 @@ public class RegionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getRegion(long countryId, String regionCode)
@@ -94,7 +86,7 @@ public class RegionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getRegions(long countryId, boolean active)
@@ -113,6 +105,6 @@ public class RegionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 }

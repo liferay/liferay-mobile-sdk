@@ -30,15 +30,6 @@ public class MDRRuleGroupInstanceService extends BaseService {
 		super(session);
 	}
 
-	public MDRRuleGroupInstanceService(Session session,
-		AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public MDRRuleGroupInstanceService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addRuleGroupInstance(long groupId, String className,
 		long classPK, long ruleGroupId, int priority, JSONObject serviceContext)
 		throws Exception {
@@ -61,7 +52,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteRuleGroupInstance(long ruleGroupInstanceId)
@@ -80,7 +71,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONArray getRuleGroupInstances(String className, long classPK,
@@ -104,7 +95,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getRuleGroupInstancesCount(String className, long classPK)
@@ -124,7 +115,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject updateRuleGroupInstance(long ruleGroupInstanceId,
@@ -144,6 +135,6 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

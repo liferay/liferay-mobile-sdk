@@ -30,14 +30,6 @@ public class AnnouncementsFlagService extends BaseService {
 		super(session);
 	}
 
-	public AnnouncementsFlagService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public AnnouncementsFlagService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void addFlag(long entryId, int value) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -53,7 +45,7 @@ public class AnnouncementsFlagService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deleteFlag(long flagId) throws Exception {
@@ -70,7 +62,7 @@ public class AnnouncementsFlagService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getFlag(long entryId, int value)
@@ -89,6 +81,6 @@ public class AnnouncementsFlagService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

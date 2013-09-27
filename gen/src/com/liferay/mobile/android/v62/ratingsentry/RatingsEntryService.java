@@ -30,14 +30,6 @@ public class RatingsEntryService extends BaseService {
 		super(session);
 	}
 
-	public RatingsEntryService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public RatingsEntryService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void deleteEntry(String className, long classPK)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -54,7 +46,7 @@ public class RatingsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject updateEntry(String className, long classPK, double score)
@@ -74,6 +66,6 @@ public class RatingsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

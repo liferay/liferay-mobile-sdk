@@ -30,14 +30,6 @@ public class DLFileVersionService extends BaseService {
 		super(session);
 	}
 
-	public DLFileVersionService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public DLFileVersionService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject getFileVersion(long fileVersionId)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -53,7 +45,7 @@ public class DLFileVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getFileVersions(long fileEntryId, int status)
@@ -72,7 +64,7 @@ public class DLFileVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getFileVersionsCount(long fileEntryId, int status)
@@ -91,7 +83,7 @@ public class DLFileVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject getLatestFileVersion(long fileEntryId)
@@ -109,6 +101,6 @@ public class DLFileVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

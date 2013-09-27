@@ -30,14 +30,6 @@ public class BookmarksEntryService extends BaseService {
 		super(session);
 	}
 
-	public BookmarksEntryService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public BookmarksEntryService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addEntry(long groupId, long folderId, String name,
 		String url, String description, JSONObject serviceContext)
 		throws Exception {
@@ -59,7 +51,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteEntry(long entryId) throws Exception {
@@ -76,7 +68,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONArray getEntries(long groupId, long folderId, int start,
@@ -98,7 +90,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getEntriesCount(long groupId, long folderId, int status)
@@ -118,7 +110,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject getEntry(long entryId) throws Exception {
@@ -135,7 +127,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public Integer getFoldersEntriesCount(long groupId, JSONArray folderIds)
@@ -154,7 +146,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONArray getGroupEntries(long groupId, long userId,
@@ -176,7 +168,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getGroupEntriesCount(long groupId, long userId,
@@ -196,7 +188,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject moveEntry(long entryId, long parentFolderId)
@@ -215,7 +207,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveEntryFromTrash(long entryId, long parentFolderId)
@@ -234,7 +226,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveEntryToTrash(long entryId) throws Exception {
@@ -251,7 +243,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject openEntry(long entryId) throws Exception {
@@ -268,7 +260,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void restoreEntryFromTrash(long entryId) throws Exception {
@@ -285,7 +277,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject search(long groupId, long creatorUserId, int status,
@@ -307,7 +299,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void subscribeEntry(long entryId) throws Exception {
@@ -324,7 +316,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void unsubscribeEntry(long entryId) throws Exception {
@@ -341,7 +333,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject updateEntry(long entryId, long groupId, long folderId,
@@ -366,6 +358,6 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

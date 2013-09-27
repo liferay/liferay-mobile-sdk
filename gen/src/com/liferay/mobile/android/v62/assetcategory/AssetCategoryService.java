@@ -30,14 +30,6 @@ public class AssetCategoryService extends BaseService {
 		super(session);
 	}
 
-	public AssetCategoryService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public AssetCategoryService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addCategory(long parentCategoryId, JSONObject titleMap,
 		JSONObject descriptionMap, long vocabularyId,
 		JSONArray categoryProperties, JSONObject serviceContext)
@@ -60,7 +52,7 @@ public class AssetCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray deleteCategories(JSONArray categoryIds,
@@ -79,7 +71,7 @@ public class AssetCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public void deleteCategory(long categoryId) throws Exception {
@@ -96,7 +88,7 @@ public class AssetCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONArray getCategories(String className, long classPK)
@@ -115,7 +107,7 @@ public class AssetCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject getCategory(long categoryId) throws Exception {
@@ -132,7 +124,7 @@ public class AssetCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getChildCategories(long parentCategoryId, int start,
@@ -153,7 +145,7 @@ public class AssetCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject getJsonSearch(long groupId, String name,
@@ -175,7 +167,7 @@ public class AssetCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getJsonVocabularyCategories(long groupId, String name,
@@ -200,7 +192,7 @@ public class AssetCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getVocabularyCategories(long groupId, String name,
@@ -224,7 +216,7 @@ public class AssetCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getVocabularyCategoriesCount(long groupId, String name,
@@ -245,7 +237,7 @@ public class AssetCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject getVocabularyCategoriesDisplay(long groupId, String name,
@@ -270,7 +262,7 @@ public class AssetCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getVocabularyRootCategories(long groupId,
@@ -294,7 +286,7 @@ public class AssetCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getVocabularyRootCategoriesCount(long groupId,
@@ -314,7 +306,7 @@ public class AssetCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject moveCategory(long categoryId, long parentCategoryId,
@@ -335,7 +327,7 @@ public class AssetCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray search(long groupId, String keywords, long vocabularyId,
@@ -358,7 +350,7 @@ public class AssetCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject updateCategory(long categoryId, long parentCategoryId,
@@ -384,6 +376,6 @@ public class AssetCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

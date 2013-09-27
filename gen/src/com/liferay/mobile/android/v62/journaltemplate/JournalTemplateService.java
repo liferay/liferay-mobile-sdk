@@ -30,14 +30,6 @@ public class JournalTemplateService extends BaseService {
 		super(session);
 	}
 
-	public JournalTemplateService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public JournalTemplateService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addTemplate(long groupId, String templateId,
 		boolean autoTemplateId, String structureId, JSONObject nameMap,
 		JSONObject descriptionMap, String xsl, boolean formatXsl,
@@ -70,7 +62,7 @@ public class JournalTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject copyTemplate(long groupId, String oldTemplateId,
@@ -91,7 +83,7 @@ public class JournalTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteTemplate(long groupId, String templateId)
@@ -110,7 +102,7 @@ public class JournalTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONArray getStructureTemplates(long groupId, String structureId)
@@ -129,7 +121,7 @@ public class JournalTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject getTemplate(long groupId, String templateId,
@@ -149,7 +141,7 @@ public class JournalTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray search(long companyId, JSONArray groupIds,
@@ -175,7 +167,7 @@ public class JournalTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer searchCount(long companyId, JSONArray groupIds,
@@ -202,7 +194,7 @@ public class JournalTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject updateTemplate(long groupId, String templateId,
@@ -235,6 +227,6 @@ public class JournalTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

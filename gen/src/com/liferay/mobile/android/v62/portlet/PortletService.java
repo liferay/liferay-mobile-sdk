@@ -30,14 +30,6 @@ public class PortletService extends BaseService {
 		super(session);
 	}
 
-	public PortletService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public PortletService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject getWarPortlets() throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -50,7 +42,7 @@ public class PortletService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updatePortlet(long companyId, String portletId,
@@ -71,6 +63,6 @@ public class PortletService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

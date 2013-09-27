@@ -30,14 +30,6 @@ public class DDMTemplateService extends BaseService {
 		super(session);
 	}
 
-	public DDMTemplateService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public DDMTemplateService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addTemplate(long groupId, long classNameId, long classPK,
 		String templateKey, JSONObject nameMap, JSONObject descriptionMap,
 		String type, String mode, String language, String script,
@@ -71,7 +63,7 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject copyTemplate(long templateId, JSONObject nameMap,
@@ -93,7 +85,7 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray copyTemplates(long classNameId, long classPK,
@@ -116,7 +108,7 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public void deleteTemplate(long templateId) throws Exception {
@@ -133,7 +125,7 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject fetchTemplate(long groupId, long classNameId,
@@ -153,7 +145,7 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getTemplate(long groupId, long classNameId,
@@ -175,7 +167,7 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getTemplates(long groupId, long classNameId, long classPK,
@@ -197,7 +189,7 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getTemplatesByClassPk(long groupId, long classPK)
@@ -216,7 +208,7 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getTemplatesByStructureClassNameId(long groupId,
@@ -240,7 +232,7 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getTemplatesByStructureClassNameIdCount(long groupId,
@@ -260,7 +252,7 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONArray search(long companyId, JSONArray groupIds,
@@ -293,7 +285,7 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer searchCount(long companyId, JSONArray groupIds,
@@ -318,7 +310,7 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject updateTemplate(long templateId, long classPK,
@@ -351,6 +343,6 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

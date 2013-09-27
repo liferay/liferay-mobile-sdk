@@ -30,14 +30,6 @@ public class DDLRecordService extends BaseService {
 		super(session);
 	}
 
-	public DDLRecordService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public DDLRecordService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addRecord(long groupId, long recordSetId,
 		int displayIndex, JSONObject fieldsMap, JSONObject serviceContext)
 		throws Exception {
@@ -58,7 +50,7 @@ public class DDLRecordService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject deleteRecordLocale(long recordId, String locale,
@@ -78,7 +70,7 @@ public class DDLRecordService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getRecord(long recordId) throws Exception {
@@ -95,7 +87,7 @@ public class DDLRecordService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateRecord(long recordId, boolean majorVersion,
@@ -119,6 +111,6 @@ public class DDLRecordService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

@@ -30,14 +30,6 @@ public class SCProductVersionService extends BaseService {
 		super(session);
 	}
 
-	public SCProductVersionService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public SCProductVersionService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addProductVersion(long productEntryId, String version,
 		String changeLog, String downloadPageURL, String directDownloadURL,
 		boolean testDirectDownloadURL, boolean repoStoreArtifact,
@@ -64,7 +56,7 @@ public class SCProductVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteProductVersion(long productVersionId)
@@ -82,7 +74,7 @@ public class SCProductVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getProductVersion(long productVersionId)
@@ -100,7 +92,7 @@ public class SCProductVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getProductVersions(long productEntryId, int start, int end)
@@ -120,7 +112,7 @@ public class SCProductVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getProductVersionsCount(long productEntryId)
@@ -138,7 +130,7 @@ public class SCProductVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject updateProductVersion(long productVersionId,
@@ -166,6 +158,6 @@ public class SCProductVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

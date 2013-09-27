@@ -30,14 +30,6 @@ public class BackgroundTaskService extends BaseService {
 		super(session);
 	}
 
-	public BackgroundTaskService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public BackgroundTaskService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public String getBackgroundTaskStatusJson(long backgroundTaskId)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -54,6 +46,6 @@ public class BackgroundTaskService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (String)post(_command);
+		return (String)session.invoke(_command);
 	}
 }

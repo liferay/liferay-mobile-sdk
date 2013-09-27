@@ -30,14 +30,6 @@ public class DLFileEntryService extends BaseService {
 		super(session);
 	}
 
-	public DLFileEntryService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public DLFileEntryService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject cancelCheckOut(long fileEntryId)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -53,7 +45,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void checkInFileEntry(long fileEntryId, boolean major,
@@ -74,7 +66,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject checkOutFileEntry(long fileEntryId, String owner,
@@ -96,7 +88,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject copyFileEntry(long groupId, long repositoryId,
@@ -119,7 +111,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteFileEntry(long groupId, long folderId, String title)
@@ -139,7 +131,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deleteFileVersion(long fileEntryId, String version)
@@ -158,7 +150,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject fetchFileEntryByImageId(long imageId)
@@ -176,7 +168,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getFileEntries(long groupId, long folderId, int status,
@@ -199,7 +191,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getFileEntriesCount(long groupId, long folderId, int status)
@@ -219,7 +211,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject getFileEntry(long groupId, long folderId, String title)
@@ -239,7 +231,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getFileEntryByUuidAndGroupId(String uuid, long groupId)
@@ -259,7 +251,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getFileEntryLock(long fileEntryId)
@@ -277,7 +269,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public Integer getFoldersFileEntriesCount(long groupId,
@@ -297,7 +289,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONArray getGroupFileEntries(long groupId, long userId,
@@ -323,7 +315,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getGroupFileEntriesCount(long groupId, long userId,
@@ -346,7 +338,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public Boolean hasFileEntryLock(long fileEntryId) throws Exception {
@@ -363,7 +355,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)post(_command);
+		return (Boolean)session.invoke(_command);
 	}
 
 	public Boolean isFileEntryCheckedOut(long fileEntryId)
@@ -381,7 +373,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)post(_command);
+		return (Boolean)session.invoke(_command);
 	}
 
 	public JSONObject moveFileEntry(long fileEntryId, long newFolderId,
@@ -401,7 +393,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject refreshFileEntryLock(String lockUuid, long companyId,
@@ -421,7 +413,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void revertFileEntry(long fileEntryId, String version,
@@ -441,7 +433,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject search(long groupId, long creatorUserId, long folderId,
@@ -466,7 +458,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public Boolean verifyFileEntryCheckOut(long fileEntryId, String lockUuid)
@@ -485,7 +477,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)post(_command);
+		return (Boolean)session.invoke(_command);
 	}
 
 	public Boolean verifyFileEntryLock(long fileEntryId, String lockUuid)
@@ -504,6 +496,6 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)post(_command);
+		return (Boolean)session.invoke(_command);
 	}
 }

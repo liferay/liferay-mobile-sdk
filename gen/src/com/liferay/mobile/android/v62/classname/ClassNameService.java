@@ -30,14 +30,6 @@ public class ClassNameService extends BaseService {
 		super(session);
 	}
 
-	public ClassNameService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public ClassNameService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject fetchClassName(String value) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -52,7 +44,7 @@ public class ClassNameService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public Long fetchClassNameId(String value) throws Exception {
@@ -69,6 +61,6 @@ public class ClassNameService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Long)post(_command);
+		return (Long)session.invoke(_command);
 	}
 }

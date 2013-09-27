@@ -30,14 +30,6 @@ public class FlagsEntryService extends BaseService {
 		super(session);
 	}
 
-	public FlagsEntryService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public FlagsEntryService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void addEntry(String className, long classPK,
 		String reporterEmailAddress, long reportedUserId, String contentTitle,
 		String contentURL, String reason, JSONObject serviceContext)
@@ -62,6 +54,6 @@ public class FlagsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 }

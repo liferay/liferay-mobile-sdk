@@ -30,14 +30,6 @@ public class MDRActionService extends BaseService {
 		super(session);
 	}
 
-	public MDRActionService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public MDRActionService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addAction(long ruleGroupInstanceId, JSONObject nameMap,
 		JSONObject descriptionMap, String type,
 		JSONObject typeSettingsProperties, JSONObject serviceContext)
@@ -60,7 +52,7 @@ public class MDRActionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteAction(long actionId) throws Exception {
@@ -77,7 +69,7 @@ public class MDRActionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject fetchAction(long actionId) throws Exception {
@@ -94,7 +86,7 @@ public class MDRActionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getAction(long actionId) throws Exception {
@@ -111,7 +103,7 @@ public class MDRActionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateAction(long actionId, JSONObject nameMap,
@@ -136,6 +128,6 @@ public class MDRActionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

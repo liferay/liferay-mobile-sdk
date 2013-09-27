@@ -30,14 +30,6 @@ public class CompanyService extends BaseService {
 		super(session);
 	}
 
-	public CompanyService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public CompanyService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void deleteLogo(long companyId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -52,7 +44,7 @@ public class CompanyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getCompanyById(long companyId) throws Exception {
@@ -69,7 +61,7 @@ public class CompanyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getCompanyByLogoId(long logoId) throws Exception {
@@ -86,7 +78,7 @@ public class CompanyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getCompanyByMx(String mx) throws Exception {
@@ -103,7 +95,7 @@ public class CompanyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getCompanyByVirtualHost(String virtualHost)
@@ -121,7 +113,7 @@ public class CompanyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getCompanyByWebId(String webId) throws Exception {
@@ -138,7 +130,7 @@ public class CompanyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateCompany(long companyId, String virtualHost,
@@ -160,7 +152,7 @@ public class CompanyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void updateDisplay(long companyId, String languageId,
@@ -180,7 +172,7 @@ public class CompanyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject updateLogo(long companyId, JSONArray bytes)
@@ -199,6 +191,6 @@ public class CompanyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

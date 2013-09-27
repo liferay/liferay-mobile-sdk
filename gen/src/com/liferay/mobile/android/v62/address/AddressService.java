@@ -30,14 +30,6 @@ public class AddressService extends BaseService {
 		super(session);
 	}
 
-	public AddressService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public AddressService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addAddress(String className, long classPK,
 		String street1, String street2, String street3, String city,
 		String zip, long regionId, long countryId, int typeId, boolean mailing,
@@ -67,7 +59,7 @@ public class AddressService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteAddress(long addressId) throws Exception {
@@ -84,7 +76,7 @@ public class AddressService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getAddress(long addressId) throws Exception {
@@ -101,7 +93,7 @@ public class AddressService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getAddresses(String className, long classPK)
@@ -120,7 +112,7 @@ public class AddressService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject updateAddress(long addressId, String street1,
@@ -150,6 +142,6 @@ public class AddressService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

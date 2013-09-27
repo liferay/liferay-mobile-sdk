@@ -30,14 +30,6 @@ public class ExpandoColumnService extends BaseService {
 		super(session);
 	}
 
-	public ExpandoColumnService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public ExpandoColumnService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addColumn(long tableId, String name, int type,
 		JSONObject defaultData) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -56,7 +48,7 @@ public class ExpandoColumnService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteColumn(long columnId) throws Exception {
@@ -73,7 +65,7 @@ public class ExpandoColumnService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject updateColumn(long columnId, String name, int type,
@@ -94,7 +86,7 @@ public class ExpandoColumnService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateTypeSettings(long columnId, String typeSettings)
@@ -113,6 +105,6 @@ public class ExpandoColumnService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

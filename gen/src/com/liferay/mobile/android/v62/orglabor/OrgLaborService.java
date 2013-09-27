@@ -30,14 +30,6 @@ public class OrgLaborService extends BaseService {
 		super(session);
 	}
 
-	public OrgLaborService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public OrgLaborService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addOrgLabor(long organizationId, int typeId, int sunOpen,
 		int sunClose, int monOpen, int monClose, int tueOpen, int tueClose,
 		int wedOpen, int wedClose, int thuOpen, int thuClose, int friOpen,
@@ -70,7 +62,7 @@ public class OrgLaborService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteOrgLabor(long orgLaborId) throws Exception {
@@ -87,7 +79,7 @@ public class OrgLaborService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getOrgLabor(long orgLaborId) throws Exception {
@@ -104,7 +96,7 @@ public class OrgLaborService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getOrgLabors(long organizationId)
@@ -122,7 +114,7 @@ public class OrgLaborService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject updateOrgLabor(long orgLaborId, int typeId, int sunOpen,
@@ -157,6 +149,6 @@ public class OrgLaborService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

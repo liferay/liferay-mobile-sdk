@@ -30,14 +30,6 @@ public class SCProductEntryService extends BaseService {
 		super(session);
 	}
 
-	public SCProductEntryService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public SCProductEntryService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addProductEntry(String name, String type, String tags,
 		String shortDescription, String longDescription, String pageURL,
 		String author, String repoGroupId, String repoArtifactId,
@@ -68,7 +60,7 @@ public class SCProductEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteProductEntry(long productEntryId)
@@ -86,7 +78,7 @@ public class SCProductEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getProductEntry(long productEntryId)
@@ -104,7 +96,7 @@ public class SCProductEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateProductEntry(long productEntryId, String name,
@@ -137,6 +129,6 @@ public class SCProductEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

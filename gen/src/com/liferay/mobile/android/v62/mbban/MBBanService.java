@@ -30,14 +30,6 @@ public class MBBanService extends BaseService {
 		super(session);
 	}
 
-	public MBBanService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public MBBanService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addBan(long banUserId, JSONObject serviceContext)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -54,7 +46,7 @@ public class MBBanService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteBan(long banUserId, JSONObject serviceContext)
@@ -73,6 +65,6 @@ public class MBBanService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 }

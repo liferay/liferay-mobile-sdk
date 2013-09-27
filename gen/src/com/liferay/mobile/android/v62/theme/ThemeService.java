@@ -30,14 +30,6 @@ public class ThemeService extends BaseService {
 		super(session);
 	}
 
-	public ThemeService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public ThemeService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONArray getThemes(long companyId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -52,7 +44,7 @@ public class ThemeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject getWarThemes() throws Exception {
@@ -67,6 +59,6 @@ public class ThemeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

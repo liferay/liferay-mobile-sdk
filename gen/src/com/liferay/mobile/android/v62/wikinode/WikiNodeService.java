@@ -30,14 +30,6 @@ public class WikiNodeService extends BaseService {
 		super(session);
 	}
 
-	public WikiNodeService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public WikiNodeService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addNode(String name, String description,
 		JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -55,7 +47,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteNode(long nodeId) throws Exception {
@@ -72,7 +64,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getNode(long groupId, String name)
@@ -91,7 +83,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void importPages(long nodeId, String importer,
@@ -112,7 +104,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject moveNodeToTrash(long nodeId) throws Exception {
@@ -129,7 +121,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void restoreNodeFromTrash(long nodeId) throws Exception {
@@ -146,7 +138,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void subscribeNode(long nodeId) throws Exception {
@@ -163,7 +155,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void unsubscribeNode(long nodeId) throws Exception {
@@ -180,7 +172,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject updateNode(long nodeId, String name, String description,
@@ -201,6 +193,6 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

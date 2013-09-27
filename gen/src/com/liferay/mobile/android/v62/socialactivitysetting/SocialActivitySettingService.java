@@ -30,15 +30,6 @@ public class SocialActivitySettingService extends BaseService {
 		super(session);
 	}
 
-	public SocialActivitySettingService(Session session,
-		AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public SocialActivitySettingService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject getActivityDefinition(long groupId, String className,
 		int activityType) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -57,7 +48,7 @@ public class SocialActivitySettingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getActivityDefinitions(long groupId, String className)
@@ -77,7 +68,7 @@ public class SocialActivitySettingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getActivitySettings(long groupId)
@@ -95,7 +86,7 @@ public class SocialActivitySettingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject getJsonActivityDefinitions(long groupId, String className)
@@ -115,7 +106,7 @@ public class SocialActivitySettingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void updateActivitySetting(long groupId, String className,
@@ -138,7 +129,7 @@ public class SocialActivitySettingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void updateActivitySettings(long groupId, String className,
@@ -161,6 +152,6 @@ public class SocialActivitySettingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 }

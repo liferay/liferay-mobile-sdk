@@ -30,14 +30,6 @@ public class PortletPreferencesService extends BaseService {
 		super(session);
 	}
 
-	public PortletPreferencesService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public PortletPreferencesService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void deleteArchivedPreferences(long portletItemId)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -54,7 +46,7 @@ public class PortletPreferencesService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void restoreArchivedPreferences(long groupId, String name,
@@ -78,7 +70,7 @@ public class PortletPreferencesService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void updateArchivePreferences(long userId, long groupId,
@@ -102,6 +94,6 @@ public class PortletPreferencesService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 }

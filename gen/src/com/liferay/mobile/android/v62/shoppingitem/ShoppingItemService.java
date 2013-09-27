@@ -30,14 +30,6 @@ public class ShoppingItemService extends BaseService {
 		super(session);
 	}
 
-	public ShoppingItemService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public ShoppingItemService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void addBookItems(long groupId, long categoryId, JSONArray isbns)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -55,7 +47,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject addItem(long groupId, long categoryId, String sku,
@@ -102,7 +94,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteItem(long itemId) throws Exception {
@@ -119,7 +111,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public Integer getCategoriesItemsCount(long groupId, JSONArray categoryIds)
@@ -138,7 +130,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject getItem(long itemId) throws Exception {
@@ -155,7 +147,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getItems(long groupId, long categoryId, int start,
@@ -177,7 +169,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getItemsCount(long groupId, long categoryId)
@@ -196,7 +188,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONArray getItemsPrevAndNext(long itemId, JSONObject obc)
@@ -215,7 +207,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject updateItem(long itemId, long groupId, long categoryId,
@@ -263,6 +255,6 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

@@ -30,14 +30,6 @@ public class PhoneService extends BaseService {
 		super(session);
 	}
 
-	public PhoneService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public PhoneService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addPhone(String className, long classPK, String number,
 		String extension, int typeId, boolean primary, JSONObject serviceContext)
 		throws Exception {
@@ -60,7 +52,7 @@ public class PhoneService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deletePhone(long phoneId) throws Exception {
@@ -77,7 +69,7 @@ public class PhoneService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getPhone(long phoneId) throws Exception {
@@ -94,7 +86,7 @@ public class PhoneService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getPhones(String className, long classPK)
@@ -113,7 +105,7 @@ public class PhoneService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject updatePhone(long phoneId, String number,
@@ -136,6 +128,6 @@ public class PhoneService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

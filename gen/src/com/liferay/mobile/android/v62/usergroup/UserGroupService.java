@@ -30,14 +30,6 @@ public class UserGroupService extends BaseService {
 		super(session);
 	}
 
-	public UserGroupService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public UserGroupService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void addGroupUserGroups(long groupId, JSONArray userGroupIds)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -54,7 +46,7 @@ public class UserGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void addTeamUserGroups(long teamId, JSONArray userGroupIds)
@@ -73,7 +65,7 @@ public class UserGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject addUserGroup(String name, String description,
@@ -93,7 +85,7 @@ public class UserGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteUserGroup(long userGroupId) throws Exception {
@@ -110,7 +102,7 @@ public class UserGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getUserGroup(long userGroupId) throws Exception {
@@ -127,7 +119,7 @@ public class UserGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getUserUserGroups(long userId) throws Exception {
@@ -144,7 +136,7 @@ public class UserGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public void unsetGroupUserGroups(long groupId, JSONArray userGroupIds)
@@ -163,7 +155,7 @@ public class UserGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void unsetTeamUserGroups(long teamId, JSONArray userGroupIds)
@@ -182,7 +174,7 @@ public class UserGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject updateUserGroup(long userGroupId, String name,
@@ -204,6 +196,6 @@ public class UserGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

@@ -30,14 +30,6 @@ public class ListTypeService extends BaseService {
 		super(session);
 	}
 
-	public ListTypeService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public ListTypeService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject getListType(int listTypeId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -52,7 +44,7 @@ public class ListTypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getListTypes(String type) throws Exception {
@@ -69,7 +61,7 @@ public class ListTypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public void validate(int listTypeId, long classNameId, String type)
@@ -89,6 +81,6 @@ public class ListTypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 }

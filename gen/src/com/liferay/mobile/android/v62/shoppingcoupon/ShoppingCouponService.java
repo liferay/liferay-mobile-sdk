@@ -30,14 +30,6 @@ public class ShoppingCouponService extends BaseService {
 		super(session);
 	}
 
-	public ShoppingCouponService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public ShoppingCouponService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addCoupon(String code, boolean autoCode, String name,
 		String description, int startDateMonth, int startDateDay,
 		int startDateYear, int startDateHour, int startDateMinute,
@@ -80,7 +72,7 @@ public class ShoppingCouponService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteCoupon(long groupId, long couponId)
@@ -99,7 +91,7 @@ public class ShoppingCouponService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getCoupon(long groupId, long couponId)
@@ -118,7 +110,7 @@ public class ShoppingCouponService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray search(long groupId, long companyId, String code,
@@ -144,7 +136,7 @@ public class ShoppingCouponService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject updateCoupon(long couponId, String name,
@@ -188,6 +180,6 @@ public class ShoppingCouponService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

@@ -30,14 +30,6 @@ public class PasswordPolicyService extends BaseService {
 		super(session);
 	}
 
-	public PasswordPolicyService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public PasswordPolicyService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addPasswordPolicy(String name, String description,
 		boolean changeable, boolean changeRequired, long minAge,
 		boolean checkSyntax, boolean allowDictionaryWords, int minAlphanumeric,
@@ -85,7 +77,7 @@ public class PasswordPolicyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deletePasswordPolicy(long passwordPolicyId)
@@ -103,7 +95,7 @@ public class PasswordPolicyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject updatePasswordPolicy(long passwordPolicyId, String name,
@@ -154,6 +146,6 @@ public class PasswordPolicyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

@@ -30,14 +30,6 @@ public class RepositoryService extends BaseService {
 		super(session);
 	}
 
-	public RepositoryService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public RepositoryService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addRepository(long groupId, long classNameId,
 		long parentFolderId, String name, String description, String portletId,
 		JSONObject typeSettingsProperties, JSONObject serviceContext)
@@ -62,7 +54,7 @@ public class RepositoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void checkRepository(long repositoryId) throws Exception {
@@ -79,7 +71,7 @@ public class RepositoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deleteRepository(long repositoryId) throws Exception {
@@ -96,7 +88,7 @@ public class RepositoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getLocalRepositoryImpl(long folderId, long fileEntryId,
@@ -116,7 +108,7 @@ public class RepositoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getRepository(long repositoryId)
@@ -134,7 +126,7 @@ public class RepositoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getRepositoryImpl(long folderId, long fileEntryId,
@@ -154,7 +146,7 @@ public class RepositoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getSupportedConfigurations(long classNameId)
@@ -172,7 +164,7 @@ public class RepositoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getSupportedParameters(long classNameId,
@@ -191,7 +183,7 @@ public class RepositoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject getTypeSettingsProperties(long repositoryId)
@@ -209,7 +201,7 @@ public class RepositoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void updateRepository(long repositoryId, String name,
@@ -229,6 +221,6 @@ public class RepositoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 }

@@ -30,14 +30,6 @@ public class LayoutService extends BaseService {
 		super(session);
 	}
 
-	public LayoutService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public LayoutService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addLayout(long groupId, boolean privateLayout,
 		long parentLayoutId, JSONObject localeNamesMap,
 		JSONObject localeTitlesMap, JSONObject descriptionMap,
@@ -69,7 +61,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteLayout(long groupId, boolean privateLayout,
@@ -90,7 +82,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deleteTempFileEntry(long groupId, String fileName,
@@ -110,7 +102,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONArray exportLayouts(long groupId, boolean privateLayout,
@@ -134,7 +126,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject exportLayoutsAsFile(long groupId, boolean privateLayout,
@@ -158,7 +150,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public Long exportLayoutsAsFileInBackground(String taskName, long groupId,
@@ -185,7 +177,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Long)post(_command);
+		return (Long)session.invoke(_command);
 	}
 
 	public JSONArray exportPortletInfo(long plid, long groupId,
@@ -209,7 +201,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject exportPortletInfoAsFile(long plid, long groupId,
@@ -233,7 +225,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public Long exportPortletInfoAsFileInBackground(String taskName, long plid,
@@ -261,7 +253,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Long)post(_command);
+		return (Long)session.invoke(_command);
 	}
 
 	public JSONArray getAncestorLayouts(long plid) throws Exception {
@@ -278,7 +270,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Long getDefaultPlid(long groupId, long scopeGroupId,
@@ -299,7 +291,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Long)post(_command);
+		return (Long)session.invoke(_command);
 	}
 
 	public JSONObject getLayoutByUuidAndGroupId(String uuid, long groupId,
@@ -319,7 +311,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public String getLayoutName(long groupId, boolean privateLayout,
@@ -340,7 +332,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (String)post(_command);
+		return (String)session.invoke(_command);
 	}
 
 	public JSONArray getLayoutReferences(long companyId, String portletId,
@@ -362,7 +354,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getLayouts(long groupId, boolean privateLayout,
@@ -386,7 +378,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getTempFileEntryNames(long groupId, String tempFolderName)
@@ -405,7 +397,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public void importLayouts(long groupId, boolean privateLayout,
@@ -426,7 +418,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public Long importLayoutsInBackground(String taskName, long groupId,
@@ -449,7 +441,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Long)post(_command);
+		return (Long)session.invoke(_command);
 	}
 
 	public void importPortletInfo(long plid, long groupId, String portletId,
@@ -471,7 +463,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public Long importPortletInfoInBackground(String taskName, long plid,
@@ -495,7 +487,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Long)post(_command);
+		return (Long)session.invoke(_command);
 	}
 
 	public void schedulePublishToLive(long sourceGroupId, long targetGroupId,
@@ -528,7 +520,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void schedulePublishToRemote(long sourceGroupId,
@@ -567,7 +559,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void setLayouts(long groupId, boolean privateLayout,
@@ -590,7 +582,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void unschedulePublishToLive(long groupId, String jobName,
@@ -610,7 +602,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void unschedulePublishToRemote(long groupId, String jobName,
@@ -630,7 +622,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject updateLayout(long groupId, boolean privateLayout,
@@ -651,7 +643,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateLookAndFeel(long groupId, boolean privateLayout,
@@ -676,7 +668,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateName(long groupId, boolean privateLayout,
@@ -699,7 +691,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateParentLayoutId(long groupId, boolean privateLayout,
@@ -720,7 +712,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updatePriority(long groupId, boolean privateLayout,
@@ -743,7 +735,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject validateImportLayoutsFile(long groupId,
@@ -765,7 +757,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject validateImportPortletInfo(long plid, long groupId,
@@ -788,6 +780,6 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

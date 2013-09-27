@@ -30,14 +30,6 @@ public class JournalFolderService extends BaseService {
 		super(session);
 	}
 
-	public JournalFolderService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public JournalFolderService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addFolder(long groupId, long parentFolderId, String name,
 		String description, JSONObject serviceContext)
 		throws Exception {
@@ -58,7 +50,7 @@ public class JournalFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteFolder(long folderId, boolean includeTrashedEntries)
@@ -77,7 +69,7 @@ public class JournalFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getFolder(long folderId) throws Exception {
@@ -94,7 +86,7 @@ public class JournalFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getFolderIds(long groupId, long folderId)
@@ -113,7 +105,7 @@ public class JournalFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getFolders(long groupId, long parentFolderId, int status,
@@ -135,7 +127,7 @@ public class JournalFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getFoldersAndArticles(long groupId, long folderId,
@@ -159,7 +151,7 @@ public class JournalFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getFoldersAndArticlesCount(long groupId,
@@ -180,7 +172,7 @@ public class JournalFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public Integer getFoldersCount(long groupId, long parentFolderId, int status)
@@ -200,7 +192,7 @@ public class JournalFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONArray getSubfolderIds(long groupId, long folderId,
@@ -220,7 +212,7 @@ public class JournalFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject moveFolder(long folderId, long parentFolderId,
@@ -240,7 +232,7 @@ public class JournalFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveFolderFromTrash(long folderId, long parentFolderId,
@@ -260,7 +252,7 @@ public class JournalFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveFolderToTrash(long folderId)
@@ -278,7 +270,7 @@ public class JournalFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void restoreFolderFromTrash(long folderId) throws Exception {
@@ -295,7 +287,7 @@ public class JournalFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject updateFolder(long folderId, long parentFolderId,
@@ -319,6 +311,6 @@ public class JournalFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

@@ -30,14 +30,6 @@ public class MDRRuleGroupService extends BaseService {
 		super(session);
 	}
 
-	public MDRRuleGroupService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public MDRRuleGroupService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addRuleGroup(long groupId, JSONObject nameMap,
 		JSONObject descriptionMap, JSONObject serviceContext)
 		throws Exception {
@@ -57,7 +49,7 @@ public class MDRRuleGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject copyRuleGroup(long ruleGroupId, long groupId,
@@ -77,7 +69,7 @@ public class MDRRuleGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteRuleGroup(long ruleGroupId) throws Exception {
@@ -94,7 +86,7 @@ public class MDRRuleGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject fetchRuleGroup(long ruleGroupId)
@@ -112,7 +104,7 @@ public class MDRRuleGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getRuleGroup(long ruleGroupId) throws Exception {
@@ -129,7 +121,7 @@ public class MDRRuleGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateRuleGroup(long ruleGroupId, JSONObject nameMap,
@@ -151,6 +143,6 @@ public class MDRRuleGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

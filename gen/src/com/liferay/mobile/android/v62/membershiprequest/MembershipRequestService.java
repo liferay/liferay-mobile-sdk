@@ -30,14 +30,6 @@ public class MembershipRequestService extends BaseService {
 		super(session);
 	}
 
-	public MembershipRequestService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public MembershipRequestService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addMembershipRequest(long groupId, String comments,
 		JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -55,7 +47,7 @@ public class MembershipRequestService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteMembershipRequests(long groupId, int statusId)
@@ -75,7 +67,7 @@ public class MembershipRequestService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getMembershipRequest(long membershipRequestId)
@@ -93,7 +85,7 @@ public class MembershipRequestService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void updateStatus(long membershipRequestId, String reviewComments,
@@ -114,6 +106,6 @@ public class MembershipRequestService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 }

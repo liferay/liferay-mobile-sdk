@@ -30,14 +30,6 @@ public class ResourceBlockService extends BaseService {
 		super(session);
 	}
 
-	public ResourceBlockService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public ResourceBlockService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void addCompanyScopePermission(long scopeGroupId, long companyId,
 		String name, long roleId, String actionId) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -57,7 +49,7 @@ public class ResourceBlockService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void addGroupScopePermission(long scopeGroupId, long companyId,
@@ -81,7 +73,7 @@ public class ResourceBlockService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void addIndividualScopePermission(long companyId, long groupId,
@@ -106,7 +98,7 @@ public class ResourceBlockService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void removeAllGroupScopePermissions(long scopeGroupId,
@@ -130,7 +122,7 @@ public class ResourceBlockService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void removeCompanyScopePermission(long scopeGroupId, long companyId,
@@ -153,7 +145,7 @@ public class ResourceBlockService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void removeGroupScopePermission(long scopeGroupId, long companyId,
@@ -177,7 +169,7 @@ public class ResourceBlockService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void removeIndividualScopePermission(long companyId, long groupId,
@@ -202,7 +194,7 @@ public class ResourceBlockService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void setCompanyScopePermissions(long scopeGroupId, long companyId,
@@ -225,7 +217,7 @@ public class ResourceBlockService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void setGroupScopePermissions(long scopeGroupId, long companyId,
@@ -249,7 +241,7 @@ public class ResourceBlockService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void setIndividualScopePermissions(long companyId, long groupId,
@@ -274,6 +266,6 @@ public class ResourceBlockService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 }

@@ -30,14 +30,6 @@ public class PollsVoteService extends BaseService {
 		super(session);
 	}
 
-	public PollsVoteService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public PollsVoteService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addVote(long questionId, long choiceId,
 		JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -55,6 +47,6 @@ public class PollsVoteService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

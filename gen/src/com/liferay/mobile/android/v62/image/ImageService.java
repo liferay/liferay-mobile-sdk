@@ -30,14 +30,6 @@ public class ImageService extends BaseService {
 		super(session);
 	}
 
-	public ImageService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public ImageService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject getImage(long imageId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -52,6 +44,6 @@ public class ImageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

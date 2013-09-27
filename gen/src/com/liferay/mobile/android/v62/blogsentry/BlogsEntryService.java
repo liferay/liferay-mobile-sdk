@@ -30,14 +30,6 @@ public class BlogsEntryService extends BaseService {
 		super(session);
 	}
 
-	public BlogsEntryService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public BlogsEntryService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void deleteEntry(long entryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -52,7 +44,7 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONArray getCompanyEntries(long companyId, long displayDate,
@@ -73,7 +65,7 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public String getCompanyEntriesRss(long companyId, long displayDate,
@@ -102,7 +94,7 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (String)post(_command);
+		return (String)session.invoke(_command);
 	}
 
 	public JSONObject getEntry(long groupId, String urlTitle)
@@ -121,7 +113,7 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getGroupEntries(long groupId, long displayDate,
@@ -143,7 +135,7 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getGroupEntriesCount(long groupId, long displayDate,
@@ -163,7 +155,7 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public String getGroupEntriesRss(long groupId, long displayDate,
@@ -192,7 +184,7 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (String)post(_command);
+		return (String)session.invoke(_command);
 	}
 
 	public JSONArray getGroupsEntries(long companyId, long groupId,
@@ -214,7 +206,7 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getOrganizationEntries(long organizationId,
@@ -235,7 +227,7 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public String getOrganizationEntriesRss(long organizationId,
@@ -264,7 +256,7 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (String)post(_command);
+		return (String)session.invoke(_command);
 	}
 
 	public JSONObject moveEntryToTrash(long entryId) throws Exception {
@@ -281,7 +273,7 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void restoreEntryFromTrash(long entryId) throws Exception {
@@ -298,7 +290,7 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void subscribe(long groupId) throws Exception {
@@ -315,7 +307,7 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void unsubscribe(long groupId) throws Exception {
@@ -332,6 +324,6 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 }

@@ -30,14 +30,6 @@ public class DDLRecordSetService extends BaseService {
 		super(session);
 	}
 
-	public DDLRecordSetService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public DDLRecordSetService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addRecordSet(long groupId, long ddmStructureId,
 		String recordSetKey, JSONObject nameMap, JSONObject descriptionMap,
 		int minDisplayRows, int scope, JSONObject serviceContext)
@@ -62,7 +54,7 @@ public class DDLRecordSetService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteRecordSet(long recordSetId) throws Exception {
@@ -79,7 +71,7 @@ public class DDLRecordSetService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getRecordSet(long recordSetId) throws Exception {
@@ -96,7 +88,7 @@ public class DDLRecordSetService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateMinDisplayRows(long recordSetId,
@@ -117,7 +109,7 @@ public class DDLRecordSetService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateRecordSet(long groupId, long ddmStructureId,
@@ -143,6 +135,6 @@ public class DDLRecordSetService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

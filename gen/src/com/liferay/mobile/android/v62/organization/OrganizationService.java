@@ -30,14 +30,6 @@ public class OrganizationService extends BaseService {
 		super(session);
 	}
 
-	public OrganizationService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public OrganizationService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void addGroupOrganizations(long groupId, JSONArray organizationIds)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -54,7 +46,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject addOrganization(long parentOrganizationId, String name,
@@ -82,7 +74,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void addPasswordPolicyOrganizations(long passwordPolicyId,
@@ -102,7 +94,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deleteLogo(long organizationId) throws Exception {
@@ -119,7 +111,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deleteOrganization(long organizationId)
@@ -137,7 +129,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONArray getManageableOrganizations(String actionId, int max)
@@ -156,7 +148,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject getOrganization(long organizationId)
@@ -174,7 +166,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public Long getOrganizationId(long companyId, String name)
@@ -193,7 +185,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Long)post(_command);
+		return (Long)session.invoke(_command);
 	}
 
 	public JSONArray getOrganizations(long companyId,
@@ -215,7 +207,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getOrganizationsCount(long companyId,
@@ -234,7 +226,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONArray getUserOrganizations(long userId)
@@ -252,7 +244,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public void setGroupOrganizations(long groupId, JSONArray organizationIds)
@@ -271,7 +263,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void unsetGroupOrganizations(long groupId, JSONArray organizationIds)
@@ -290,7 +282,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void unsetPasswordPolicyOrganizations(long passwordPolicyId,
@@ -310,7 +302,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject updateOrganization(long organizationId,
@@ -348,6 +340,6 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

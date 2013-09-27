@@ -30,14 +30,6 @@ public class PortalService extends BaseService {
 		super(session);
 	}
 
-	public PortalService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public PortalService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public String getAutoDeployDirectory() throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -50,7 +42,7 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (String)post(_command);
+		return (String)session.invoke(_command);
 	}
 
 	public Integer getBuildNumber() throws Exception {
@@ -65,7 +57,7 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public void testAddClassNameAndTestTransactionPortletBar_PortalRollback(
@@ -84,7 +76,7 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void testAddClassNameAndTestTransactionPortletBar_PortletRollback(
@@ -103,7 +95,7 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void testAddClassNameAndTestTransactionPortletBar_Success(
@@ -122,7 +114,7 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void testAddClassName_Rollback(String classNameValue)
@@ -140,7 +132,7 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void testAddClassName_Success(String classNameValue)
@@ -158,7 +150,7 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void testAutoSyncHibernateSessionStateOnTxCreation()
@@ -175,7 +167,7 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void testDeleteClassName() throws Exception {
@@ -190,7 +182,7 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public Integer testGetBuildNumber() throws Exception {
@@ -205,7 +197,7 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public void testGetUserId() throws Exception {
@@ -220,7 +212,7 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public Boolean testHasClassName() throws Exception {
@@ -235,6 +227,6 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)post(_command);
+		return (Boolean)session.invoke(_command);
 	}
 }

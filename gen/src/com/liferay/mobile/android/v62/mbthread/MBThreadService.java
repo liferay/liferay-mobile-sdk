@@ -30,14 +30,6 @@ public class MBThreadService extends BaseService {
 		super(session);
 	}
 
-	public MBThreadService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public MBThreadService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void deleteThread(long threadId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -52,7 +44,7 @@ public class MBThreadService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONArray getGroupThreads(long groupId, long userId, int status,
@@ -77,7 +69,7 @@ public class MBThreadService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getGroupThreadsCount(long groupId, long userId, int status,
@@ -99,7 +91,7 @@ public class MBThreadService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONArray getThreads(long groupId, long categoryId, int status,
@@ -121,7 +113,7 @@ public class MBThreadService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getThreadsCount(long groupId, long categoryId, int status)
@@ -141,7 +133,7 @@ public class MBThreadService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject lockThread(long threadId) throws Exception {
@@ -158,7 +150,7 @@ public class MBThreadService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveThread(long categoryId, long threadId)
@@ -177,7 +169,7 @@ public class MBThreadService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveThreadFromTrash(long categoryId, long threadId)
@@ -196,7 +188,7 @@ public class MBThreadService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveThreadToTrash(long threadId)
@@ -214,7 +206,7 @@ public class MBThreadService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void restoreThreadFromTrash(long threadId) throws Exception {
@@ -231,7 +223,7 @@ public class MBThreadService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject search(long groupId, long creatorUserId, long startDate,
@@ -255,7 +247,7 @@ public class MBThreadService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject splitThread(long messageId, String subject,
@@ -275,7 +267,7 @@ public class MBThreadService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void unlockThread(long threadId) throws Exception {
@@ -292,6 +284,6 @@ public class MBThreadService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 }

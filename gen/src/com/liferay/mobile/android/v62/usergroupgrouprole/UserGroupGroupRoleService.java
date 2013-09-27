@@ -30,14 +30,6 @@ public class UserGroupGroupRoleService extends BaseService {
 		super(session);
 	}
 
-	public UserGroupGroupRoleService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public UserGroupGroupRoleService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void addUserGroupGroupRoles(JSONArray userGroupIds, long groupId,
 		long roleId) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -56,7 +48,7 @@ public class UserGroupGroupRoleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deleteUserGroupGroupRoles(JSONArray userGroupIds, long groupId,
@@ -77,6 +69,6 @@ public class UserGroupGroupRoleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 }

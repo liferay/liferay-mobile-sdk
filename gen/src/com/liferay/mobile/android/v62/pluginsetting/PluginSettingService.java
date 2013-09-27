@@ -30,14 +30,6 @@ public class PluginSettingService extends BaseService {
 		super(session);
 	}
 
-	public PluginSettingService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public PluginSettingService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject updatePluginSetting(long companyId, String pluginId,
 		String pluginType, String roles, boolean active)
 		throws Exception {
@@ -58,6 +50,6 @@ public class PluginSettingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

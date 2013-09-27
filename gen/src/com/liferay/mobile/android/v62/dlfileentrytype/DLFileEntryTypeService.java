@@ -30,14 +30,6 @@ public class DLFileEntryTypeService extends BaseService {
 		super(session);
 	}
 
-	public DLFileEntryTypeService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public DLFileEntryTypeService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addFileEntryType(long groupId, String fileEntryTypeKey,
 		JSONObject nameMap, JSONObject descriptionMap,
 		JSONArray ddmStructureIds, JSONObject serviceContext)
@@ -60,7 +52,7 @@ public class DLFileEntryTypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteFileEntryType(long fileEntryTypeId)
@@ -78,7 +70,7 @@ public class DLFileEntryTypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getFileEntryType(long fileEntryTypeId)
@@ -96,7 +88,7 @@ public class DLFileEntryTypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getFileEntryTypes(JSONArray groupIds, int start, int end)
@@ -116,7 +108,7 @@ public class DLFileEntryTypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getFileEntryTypesCount(JSONArray groupIds)
@@ -134,7 +126,7 @@ public class DLFileEntryTypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONArray getFolderFileEntryTypes(JSONArray groupIds, long folderId,
@@ -154,7 +146,7 @@ public class DLFileEntryTypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray search(long companyId, JSONArray groupIds,
@@ -179,7 +171,7 @@ public class DLFileEntryTypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer searchCount(long companyId, JSONArray groupIds,
@@ -201,7 +193,7 @@ public class DLFileEntryTypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public void updateFileEntryType(long fileEntryTypeId, JSONObject nameMap,
@@ -224,6 +216,6 @@ public class DLFileEntryTypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 }

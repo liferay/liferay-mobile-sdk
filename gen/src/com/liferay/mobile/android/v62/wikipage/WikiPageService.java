@@ -30,14 +30,6 @@ public class WikiPageService extends BaseService {
 		super(session);
 	}
 
-	public WikiPageService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public WikiPageService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addPage(long nodeId, String title, String content,
 		String summary, boolean minorEdit, String format, String parentTitle,
 		String redirectTitle, JSONObject serviceContext)
@@ -63,7 +55,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void addPageAttachment(long nodeId, String title, String fileName,
@@ -85,7 +77,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void addPageAttachments(long nodeId, String title,
@@ -105,7 +97,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void changeParent(long nodeId, String title, String newParentTitle,
@@ -126,7 +118,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void copyPageAttachments(long templateNodeId, String templateTitle,
@@ -147,7 +139,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deletePage(long nodeId, String title, double version)
@@ -167,7 +159,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deletePageAttachment(long nodeId, String title, String fileName)
@@ -187,7 +179,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deletePageAttachments(long nodeId, String title)
@@ -206,7 +198,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deleteTempPageAttachment(long nodeId, String fileName,
@@ -226,7 +218,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deleteTrashPageAttachments(long nodeId, String title)
@@ -245,7 +237,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void discardDraft(long nodeId, String title, double version)
@@ -265,7 +257,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONArray getChildren(long groupId, long nodeId, boolean head,
@@ -286,7 +278,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject getDraftPage(long nodeId, String title)
@@ -305,7 +297,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getNodePages(long nodeId, int max)
@@ -324,7 +316,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public String getNodePagesRss(long nodeId, int max, String type,
@@ -350,7 +342,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (String)post(_command);
+		return (String)session.invoke(_command);
 	}
 
 	public JSONArray getOrphans(long groupId, long nodeId)
@@ -369,7 +361,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject getPage(long nodeId, String title, double version)
@@ -389,7 +381,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getPages(long groupId, long nodeId, boolean head,
@@ -414,7 +406,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getPagesCount(long groupId, long userId, long nodeId,
@@ -435,7 +427,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public String getPagesRss(long companyId, long nodeId, String title,
@@ -465,7 +457,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (String)post(_command);
+		return (String)session.invoke(_command);
 	}
 
 	public JSONArray getRecentChanges(long groupId, long nodeId, int start,
@@ -486,7 +478,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getRecentChangesCount(long groupId, long nodeId)
@@ -505,7 +497,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONArray getTempPageAttachmentNames(long nodeId,
@@ -524,7 +516,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public void movePage(long nodeId, String title, String newTitle,
@@ -545,7 +537,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject movePageAttachmentToTrash(long nodeId, String title,
@@ -565,7 +557,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject movePageToTrash(long nodeId, String title, double version)
@@ -585,7 +577,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void restorePageAttachmentFromTrash(long nodeId, String title,
@@ -605,7 +597,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void restorePageFromTrash(long resourcePrimKey)
@@ -623,7 +615,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject revertPage(long nodeId, String title, double version,
@@ -644,7 +636,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void subscribePage(long nodeId, String title)
@@ -663,7 +655,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void unsubscribePage(long nodeId, String title)
@@ -682,7 +674,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject updatePage(long nodeId, String title, double version,
@@ -711,6 +703,6 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

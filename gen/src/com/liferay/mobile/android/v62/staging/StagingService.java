@@ -30,14 +30,6 @@ public class StagingService extends BaseService {
 		super(session);
 	}
 
-	public StagingService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public StagingService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void cleanUpStagingRequest(long stagingRequestId)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -53,7 +45,7 @@ public class StagingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public Long createStagingRequest(long groupId, String checksum)
@@ -72,7 +64,7 @@ public class StagingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Long)post(_command);
+		return (Long)session.invoke(_command);
 	}
 
 	public void publishStagingRequest(long stagingRequestId,
@@ -93,7 +85,7 @@ public class StagingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void updateStagingRequest(long stagingRequestId, String fileName,
@@ -113,7 +105,7 @@ public class StagingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject validateStagingRequest(long stagingRequestId,
@@ -134,6 +126,6 @@ public class StagingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

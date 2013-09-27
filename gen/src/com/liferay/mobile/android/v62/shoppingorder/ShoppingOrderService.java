@@ -30,14 +30,6 @@ public class ShoppingOrderService extends BaseService {
 		super(session);
 	}
 
-	public ShoppingOrderService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public ShoppingOrderService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void completeOrder(long groupId, String number, String ppTxnId,
 		String ppPaymentStatus, double ppPaymentGross, String ppReceiverEmail,
 		String ppPayerEmail, JSONObject serviceContext)
@@ -62,7 +54,7 @@ public class ShoppingOrderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deleteOrder(long groupId, long orderId)
@@ -81,7 +73,7 @@ public class ShoppingOrderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getOrder(long groupId, long orderId)
@@ -100,7 +92,7 @@ public class ShoppingOrderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void sendEmail(long groupId, long orderId, String emailType,
@@ -121,7 +113,7 @@ public class ShoppingOrderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject updateOrder(long groupId, long orderId, String ppTxnId,
@@ -146,6 +138,6 @@ public class ShoppingOrderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

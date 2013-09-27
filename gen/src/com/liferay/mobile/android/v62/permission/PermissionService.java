@@ -30,14 +30,6 @@ public class PermissionService extends BaseService {
 		super(session);
 	}
 
-	public PermissionService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public PermissionService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void checkPermission(long groupId, String name, long primKey)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -55,6 +47,6 @@ public class PermissionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 }

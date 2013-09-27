@@ -30,14 +30,6 @@ public class SyncDLObjectService extends BaseService {
 		super(session);
 	}
 
-	public SyncDLObjectService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public SyncDLObjectService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addFileEntry(long repositoryId, long folderId,
 		String sourceFileName, String mimeType, String title,
 		String description, String changeLog, JSONObject file, String checksum,
@@ -64,7 +56,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject addFolder(long repositoryId, long parentFolderId,
@@ -87,7 +79,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject cancelCheckOut(long fileEntryId)
@@ -105,7 +97,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject checkInFileEntry(long fileEntryId, boolean majorVersion,
@@ -126,7 +118,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject checkOutFileEntry(long fileEntryId, String owner,
@@ -148,7 +140,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getAllSyncDlObjects(long repositoryId, long folderId)
@@ -168,7 +160,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getFileEntrySyncDlObject(long groupId, long folderId,
@@ -189,7 +181,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getFileEntrySyncDlObjects(long repositoryId, long folderId)
@@ -209,7 +201,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject getFolderSyncDlObject(long folderId)
@@ -228,7 +220,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getFolderSyncDlObjects(long repositoryId,
@@ -248,7 +240,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject getGroup(long groupId) throws Exception {
@@ -265,7 +257,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public Long getLatestModifiedTime() throws Exception {
@@ -281,7 +273,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Long)post(_command);
+		return (Long)session.invoke(_command);
 	}
 
 	public JSONObject getSyncContext(String uuid) throws Exception {
@@ -298,7 +290,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getSyncDlObjectUpdate(long companyId, long repositoryId,
@@ -319,7 +311,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getUserSitesGroups() throws Exception {
@@ -334,7 +326,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject moveFileEntry(long fileEntryId, long newFolderId,
@@ -354,7 +346,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveFileEntryToTrash(long fileEntryId)
@@ -373,7 +365,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveFolder(long folderId, long parentFolderId,
@@ -393,7 +385,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveFolderToTrash(long folderId)
@@ -411,7 +403,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject patchFileEntry(long fileEntryId, String sourceVersion,
@@ -442,7 +434,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject restoreFileEntryFromTrash(long fileEntryId)
@@ -461,7 +453,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject restoreFolderFromTrash(long folderId)
@@ -480,7 +472,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName,
@@ -509,7 +501,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateFolder(long folderId, String name,
@@ -531,6 +523,6 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

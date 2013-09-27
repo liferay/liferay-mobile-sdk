@@ -30,14 +30,6 @@ public class LayoutSetBranchService extends BaseService {
 		super(session);
 	}
 
-	public LayoutSetBranchService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public LayoutSetBranchService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addLayoutSetBranch(long groupId, boolean privateLayout,
 		String name, String description, boolean master,
 		long copyLayoutSetBranchId, JSONObject serviceContext)
@@ -61,7 +53,7 @@ public class LayoutSetBranchService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteLayoutSetBranch(long layoutSetBranchId)
@@ -79,7 +71,7 @@ public class LayoutSetBranchService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONArray getLayoutSetBranches(long groupId, boolean privateLayout)
@@ -98,7 +90,7 @@ public class LayoutSetBranchService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject mergeLayoutSetBranch(long layoutSetBranchId,
@@ -119,7 +111,7 @@ public class LayoutSetBranchService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateLayoutSetBranch(long groupId,
@@ -142,6 +134,6 @@ public class LayoutSetBranchService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

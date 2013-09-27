@@ -30,15 +30,6 @@ public class AnnouncementsDeliveryService extends BaseService {
 		super(session);
 	}
 
-	public AnnouncementsDeliveryService(Session session,
-		AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public AnnouncementsDeliveryService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject updateDelivery(long userId, String type, boolean email,
 		boolean sms, boolean website) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -58,6 +49,6 @@ public class AnnouncementsDeliveryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

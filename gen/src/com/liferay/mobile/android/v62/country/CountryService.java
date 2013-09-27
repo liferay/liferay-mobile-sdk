@@ -30,14 +30,6 @@ public class CountryService extends BaseService {
 		super(session);
 	}
 
-	public CountryService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public CountryService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addCountry(String name, String a2, String a3,
 		String number, String idd, boolean active) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -58,7 +50,7 @@ public class CountryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject fetchCountry(long countryId) throws Exception {
@@ -75,7 +67,7 @@ public class CountryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject fetchCountryByA2(String a2) throws Exception {
@@ -92,7 +84,7 @@ public class CountryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject fetchCountryByA3(String a3) throws Exception {
@@ -109,7 +101,7 @@ public class CountryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getCountries(boolean active) throws Exception {
@@ -126,7 +118,7 @@ public class CountryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject getCountry(long countryId) throws Exception {
@@ -143,7 +135,7 @@ public class CountryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getCountryByA2(String a2) throws Exception {
@@ -160,7 +152,7 @@ public class CountryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getCountryByA3(String a3) throws Exception {
@@ -177,7 +169,7 @@ public class CountryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getCountryByName(String name) throws Exception {
@@ -194,6 +186,6 @@ public class CountryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

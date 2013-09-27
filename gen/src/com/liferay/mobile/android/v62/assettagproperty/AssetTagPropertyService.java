@@ -30,14 +30,6 @@ public class AssetTagPropertyService extends BaseService {
 		super(session);
 	}
 
-	public AssetTagPropertyService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public AssetTagPropertyService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addTagProperty(long tagId, String key, String value)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -55,7 +47,7 @@ public class AssetTagPropertyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteTagProperty(long tagPropertyId) throws Exception {
@@ -72,7 +64,7 @@ public class AssetTagPropertyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONArray getTagProperties(long tagId) throws Exception {
@@ -89,7 +81,7 @@ public class AssetTagPropertyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getTagPropertyValues(long companyId, String key)
@@ -108,7 +100,7 @@ public class AssetTagPropertyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject updateTagProperty(long tagPropertyId, String key,
@@ -128,6 +120,6 @@ public class AssetTagPropertyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

@@ -30,14 +30,6 @@ public class ShoppingCategoryService extends BaseService {
 		super(session);
 	}
 
-	public ShoppingCategoryService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public ShoppingCategoryService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addCategory(long parentCategoryId, String name,
 		String description, JSONObject serviceContext)
 		throws Exception {
@@ -57,7 +49,7 @@ public class ShoppingCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteCategory(long categoryId) throws Exception {
@@ -74,7 +66,7 @@ public class ShoppingCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONArray getCategories(long groupId, long parentCategoryId,
@@ -95,7 +87,7 @@ public class ShoppingCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getCategoriesCount(long groupId, long parentCategoryId)
@@ -114,7 +106,7 @@ public class ShoppingCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject getCategory(long categoryId) throws Exception {
@@ -131,7 +123,7 @@ public class ShoppingCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void getSubcategoryIds(JSONArray categoryIds, long groupId,
@@ -151,7 +143,7 @@ public class ShoppingCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject updateCategory(long categoryId, long parentCategoryId,
@@ -175,6 +167,6 @@ public class ShoppingCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

@@ -30,14 +30,6 @@ public class ResourcePermissionService extends BaseService {
 		super(session);
 	}
 
-	public ResourcePermissionService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public ResourcePermissionService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void addResourcePermission(long groupId, long companyId,
 		String name, int scope, String primKey, long roleId, String actionId)
 		throws Exception {
@@ -60,7 +52,7 @@ public class ResourcePermissionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void removeResourcePermission(long groupId, long companyId,
@@ -86,7 +78,7 @@ public class ResourcePermissionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void removeResourcePermissions(long groupId, long companyId,
@@ -111,7 +103,7 @@ public class ResourcePermissionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void setIndividualResourcePermissions(long groupId, long companyId,
@@ -136,6 +128,6 @@ public class ResourcePermissionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 }

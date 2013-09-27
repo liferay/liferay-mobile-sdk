@@ -30,14 +30,6 @@ public class TrashEntryService extends BaseService {
 		super(session);
 	}
 
-	public TrashEntryService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public TrashEntryService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public void deleteEntries(long groupId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -52,7 +44,7 @@ public class TrashEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deleteEntry(String className, long classPK)
@@ -71,7 +63,7 @@ public class TrashEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getEntries(long groupId, int start, int end,
@@ -92,7 +84,7 @@ public class TrashEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void moveEntry(String className, long classPK,
@@ -115,7 +107,7 @@ public class TrashEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject restoreEntry(long entryId, long overrideClassPK,
@@ -135,6 +127,6 @@ public class TrashEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

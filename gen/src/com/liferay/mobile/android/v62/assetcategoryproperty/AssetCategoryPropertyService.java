@@ -30,15 +30,6 @@ public class AssetCategoryPropertyService extends BaseService {
 		super(session);
 	}
 
-	public AssetCategoryPropertyService(Session session,
-		AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public AssetCategoryPropertyService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addCategoryProperty(long entryId, String key, String value)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -56,7 +47,7 @@ public class AssetCategoryPropertyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteCategoryProperty(long categoryPropertyId)
@@ -75,7 +66,7 @@ public class AssetCategoryPropertyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONArray getCategoryProperties(long entryId)
@@ -94,7 +85,7 @@ public class AssetCategoryPropertyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getCategoryPropertyValues(long companyId, String key)
@@ -114,7 +105,7 @@ public class AssetCategoryPropertyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject updateCategoryProperty(long categoryPropertyId,
@@ -135,6 +126,6 @@ public class AssetCategoryPropertyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

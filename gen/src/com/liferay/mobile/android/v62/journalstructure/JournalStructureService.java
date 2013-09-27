@@ -30,14 +30,6 @@ public class JournalStructureService extends BaseService {
 		super(session);
 	}
 
-	public JournalStructureService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public JournalStructureService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addStructure(long groupId, String structureId,
 		boolean autoStructureId, String parentStructureId, JSONObject nameMap,
 		JSONObject descriptionMap, String xsd, JSONObject serviceContext)
@@ -62,7 +54,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject copyStructure(long groupId, String oldStructureId,
@@ -84,7 +76,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteStructure(long groupId, String structureId)
@@ -103,7 +95,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getStructure(long groupId, String structureId,
@@ -123,7 +115,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getStructures(JSONArray groupIds)
@@ -141,7 +133,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray search(long companyId, JSONArray groupIds,
@@ -169,7 +161,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer searchCount(long companyId, JSONArray groupIds,
@@ -193,7 +185,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject updateStructure(long groupId, String structureId,
@@ -219,6 +211,6 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

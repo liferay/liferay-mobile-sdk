@@ -30,14 +30,6 @@ public class SocialRequestService extends BaseService {
 		super(session);
 	}
 
-	public SocialRequestService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public SocialRequestService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject updateRequest(long requestId, int status,
 		JSONObject themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -55,6 +47,6 @@ public class SocialRequestService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

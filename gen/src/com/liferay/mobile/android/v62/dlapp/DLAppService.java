@@ -30,14 +30,6 @@ public class DLAppService extends BaseService {
 		super(session);
 	}
 
-	public DLAppService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public DLAppService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addFileEntry(long repositoryId, long folderId,
 		String sourceFileName, String mimeType, String title,
 		String description, String changeLog, JSONObject file,
@@ -63,7 +55,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject addFileShortcut(long repositoryId, long folderId,
@@ -85,7 +77,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject addFolder(long repositoryId, long parentFolderId,
@@ -108,7 +100,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject addTempFileEntry(long groupId, long folderId,
@@ -132,7 +124,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void cancelCheckOut(long fileEntryId) throws Exception {
@@ -149,7 +141,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void checkInFileEntry(long fileEntryId, boolean majorVersion,
@@ -170,7 +162,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject checkOutFileEntry(long fileEntryId, String owner,
@@ -192,7 +184,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject copyFolder(long repositoryId, long sourceFolderId,
@@ -216,7 +208,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteFileEntry(long fileEntryId) throws Exception {
@@ -233,7 +225,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deleteFileEntryByTitle(long repositoryId, long folderId,
@@ -253,7 +245,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deleteFileShortcut(long fileShortcutId)
@@ -271,7 +263,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deleteFileVersion(long fileEntryId, String version)
@@ -290,7 +282,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deleteFolder(long repositoryId, long parentFolderId, String name)
@@ -310,7 +302,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void deleteTempFileEntry(long groupId, long folderId,
@@ -331,7 +323,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONArray getFileEntries(long repositoryId, long folderId,
@@ -355,7 +347,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getFileEntriesAndFileShortcuts(long repositoryId,
@@ -378,7 +370,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getFileEntriesAndFileShortcutsCount(long repositoryId,
@@ -401,7 +393,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public Integer getFileEntriesCount(long repositoryId, long folderId,
@@ -421,7 +413,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject getFileEntry(long groupId, long folderId, String title)
@@ -441,7 +433,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getFileEntryByUuidAndGroupId(String uuid, long groupId)
@@ -460,7 +452,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getFileShortcut(long fileShortcutId)
@@ -478,7 +470,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getFolder(long repositoryId, long parentFolderId,
@@ -498,7 +490,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getFolders(long repositoryId, long parentFolderId,
@@ -523,7 +515,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getFoldersAndFileEntriesAndFileShortcuts(
@@ -551,7 +543,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getFoldersAndFileEntriesAndFileShortcutsCount(
@@ -575,7 +567,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public Integer getFoldersCount(long repositoryId, long parentFolderId,
@@ -596,7 +588,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public Integer getFoldersFileEntriesCount(long repositoryId,
@@ -616,7 +608,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONArray getGroupFileEntries(long groupId, long userId,
@@ -642,7 +634,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getGroupFileEntriesCount(long groupId, long userId,
@@ -665,7 +657,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONArray getMountFolders(long repositoryId, long parentFolderId,
@@ -687,7 +679,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Integer getMountFoldersCount(long repositoryId, long parentFolderId)
@@ -706,7 +698,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)post(_command);
+		return (Integer)session.invoke(_command);
 	}
 
 	public void getSubfolderIds(long repositoryId, JSONArray folderIds,
@@ -726,7 +718,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONArray getTempFileEntryNames(long groupId, long folderId,
@@ -746,7 +738,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject lockFileEntry(long fileEntryId, String owner,
@@ -766,7 +758,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject lockFolder(long repositoryId, long folderId,
@@ -789,7 +781,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveFileEntry(long fileEntryId, long newFolderId,
@@ -809,7 +801,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveFileEntryFromTrash(long fileEntryId,
@@ -829,7 +821,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveFileEntryToTrash(long fileEntryId)
@@ -847,7 +839,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveFileShortcutFromTrash(long fileShortcutId,
@@ -867,7 +859,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveFileShortcutToTrash(long fileShortcutId)
@@ -885,7 +877,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveFolder(long folderId, long parentFolderId,
@@ -905,7 +897,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveFolderFromTrash(long folderId, long parentFolderId,
@@ -925,7 +917,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject moveFolderToTrash(long folderId)
@@ -943,7 +935,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject refreshFileEntryLock(String lockUuid, long companyId,
@@ -963,7 +955,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject refreshFolderLock(String lockUuid, long companyId,
@@ -983,7 +975,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void restoreFileEntryFromTrash(long fileEntryId)
@@ -1001,7 +993,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void restoreFileShortcutFromTrash(long fileShortcutId)
@@ -1019,7 +1011,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void restoreFolderFromTrash(long folderId) throws Exception {
@@ -1036,7 +1028,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void revertFileEntry(long fileEntryId, String version,
@@ -1056,7 +1048,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject search(long repositoryId, long creatorUserId,
@@ -1081,7 +1073,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void subscribeFileEntryType(long groupId, long fileEntryTypeId)
@@ -1100,7 +1092,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void subscribeFolder(long groupId, long folderId)
@@ -1119,7 +1111,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void unlockFileEntry(long fileEntryId, String lockUuid)
@@ -1138,7 +1130,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void unlockFolder(long repositoryId, long parentFolderId,
@@ -1159,7 +1151,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void unsubscribeFileEntryType(long groupId, long fileEntryTypeId)
@@ -1178,7 +1170,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public void unsubscribeFolder(long groupId, long folderId)
@@ -1197,7 +1189,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName,
@@ -1225,7 +1217,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateFileEntryAndCheckIn(long fileEntryId,
@@ -1253,7 +1245,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateFileShortcut(long fileShortcutId, long folderId,
@@ -1275,7 +1267,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateFolder(long folderId, String name,
@@ -1297,7 +1289,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public Boolean verifyFileEntryCheckOut(long repositoryId, long fileEntryId,
@@ -1317,7 +1309,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)post(_command);
+		return (Boolean)session.invoke(_command);
 	}
 
 	public Boolean verifyFileEntryLock(long repositoryId, long fileEntryId,
@@ -1337,7 +1329,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)post(_command);
+		return (Boolean)session.invoke(_command);
 	}
 
 	public Boolean verifyInheritableLock(long repositoryId, long folderId,
@@ -1357,6 +1349,6 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)post(_command);
+		return (Boolean)session.invoke(_command);
 	}
 }

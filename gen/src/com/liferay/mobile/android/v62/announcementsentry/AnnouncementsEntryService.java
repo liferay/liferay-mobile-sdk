@@ -30,14 +30,6 @@ public class AnnouncementsEntryService extends BaseService {
 		super(session);
 	}
 
-	public AnnouncementsEntryService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public AnnouncementsEntryService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addEntry(long plid, long classNameId, long classPK,
 		String title, String content, String url, String type,
 		int displayDateMonth, int displayDateDay, int displayDateYear,
@@ -77,7 +69,7 @@ public class AnnouncementsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteEntry(long entryId) throws Exception {
@@ -94,7 +86,7 @@ public class AnnouncementsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getEntry(long entryId) throws Exception {
@@ -111,7 +103,7 @@ public class AnnouncementsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateEntry(long entryId, String title, String content,
@@ -148,6 +140,6 @@ public class AnnouncementsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

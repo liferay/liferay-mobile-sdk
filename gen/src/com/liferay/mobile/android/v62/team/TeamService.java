@@ -30,14 +30,6 @@ public class TeamService extends BaseService {
 		super(session);
 	}
 
-	public TeamService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public TeamService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addTeam(long groupId, String name, String description)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -55,7 +47,7 @@ public class TeamService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteTeam(long teamId) throws Exception {
@@ -72,7 +64,7 @@ public class TeamService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONArray getGroupTeams(long groupId) throws Exception {
@@ -89,7 +81,7 @@ public class TeamService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject getTeam(long groupId, String name)
@@ -108,7 +100,7 @@ public class TeamService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getUserTeams(long userId, long groupId)
@@ -127,7 +119,7 @@ public class TeamService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public Boolean hasUserTeam(long userId, long teamId)
@@ -146,7 +138,7 @@ public class TeamService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)post(_command);
+		return (Boolean)session.invoke(_command);
 	}
 
 	public JSONObject updateTeam(long teamId, String name, String description)
@@ -166,6 +158,6 @@ public class TeamService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }

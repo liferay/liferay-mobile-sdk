@@ -30,14 +30,6 @@ public class SCFrameworkVersionService extends BaseService {
 		super(session);
 	}
 
-	public SCFrameworkVersionService(Session session, AsyncTaskCallback callback) {
-		super(session, callback);
-	}
-
-	public SCFrameworkVersionService(Session session, boolean batch) {
-		super(session, batch);
-	}
-
 	public JSONObject addFrameworkVersion(String name, String url,
 		boolean active, int priority, JSONObject serviceContext)
 		throws Exception {
@@ -58,7 +50,7 @@ public class SCFrameworkVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public void deleteFrameworkVersion(long frameworkVersionId)
@@ -76,7 +68,7 @@ public class SCFrameworkVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		post(_command);
+		session.invoke(_command);
 	}
 
 	public JSONObject getFrameworkVersion(long frameworkVersionId)
@@ -94,7 +86,7 @@ public class SCFrameworkVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONArray getFrameworkVersions(long groupId, boolean active,
@@ -115,7 +107,7 @@ public class SCFrameworkVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)post(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONObject updateFrameworkVersion(long frameworkVersionId,
@@ -138,6 +130,6 @@ public class SCFrameworkVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)post(_command);
+		return (JSONObject)session.invoke(_command);
 	}
 }
