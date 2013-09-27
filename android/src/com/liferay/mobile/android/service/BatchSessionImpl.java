@@ -16,7 +16,6 @@ package com.liferay.mobile.android.service;
 
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.task.ServiceAsyncTask;
-import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 import com.liferay.mobile.android.task.callback.BatchAsyncTaskCallback;
 
 import org.json.JSONArray;
@@ -39,14 +38,14 @@ public class BatchSessionImpl extends SessionImpl {
 
 	public BatchSessionImpl(
 		String server, String username, String password,
-		AsyncTaskCallback callback) {
+		BatchAsyncTaskCallback callback) {
 
 		super(server, username, password, callback);
 	}
 
 	public BatchSessionImpl(
 		String server, String username, String password, int connectionTimeout,
-		AsyncTaskCallback callback) {
+		BatchAsyncTaskCallback callback) {
 
 		super(server, username, password, connectionTimeout, callback);
 	}
