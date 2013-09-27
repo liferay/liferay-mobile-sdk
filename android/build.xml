@@ -5,9 +5,17 @@
 
 	<property name="android.dir" value="${project.dir}/android" />
 	<property name="dist.dir.android" value="${dist.dir}/android" />
+	<property name="test.dir" value="${project.dir}/test" />
 
 	<path id="android.classpath">
 		<fileset dir="${lib.dir}/android" includes="**/*.jar"/>
+	</path>
+
+	<path id="test.classpath">
+		<pathelement location="${android.dir}/classes" />
+		<pathelement location="${project.dir}/gen/classes" />
+		<pathelement location="${test.dir}/classes" />
+		<fileset dir="${development.dir}" includes="**/*.jar"/>
 	</path>
 
 	<target name="build-service">
@@ -58,6 +66,23 @@
 			classpathref="android.classpath">
 
 			<src path="${android.dir}/src" />
+		</javac>
+	</target>
+
+	<target name="compile-test" depends="compile-all">
+		<delete dir="${test.dir}/classes" />
+
+		<mkdir dir="${test.dir}/classes" />
+
+		<copy todir="${test.dir}/classes">
+			<fileset dir="${test.dir}/src" includes="*.properties" />
+		</copy>
+
+		<javac
+			destdir="${test.dir}/classes"
+			classpathref="test.classpath">
+
+			<src path="${test.dir}/src" />
 		</javac>
 	</target>
 
@@ -118,5 +143,21 @@
 			<fileset dir="${android.dir}/src" includes="**/*.java"/>
 			<fileset dir="${gen.dir}/src" includes="**/*.java"/>
 		</jar>
+	</target>
+
+	<target name="test" depends="compile-test">
+		<junit printsummary="withOutAndErr">
+			<classpath>
+				<path refid="test.classpath" />
+			</classpath>
+
+			<formatter type="plain" />
+
+			<batchtest todir="${test.dir}/logs">
+				<fileset dir="${test.dir}/src">
+					<include name="**/*ServiceTest.java" />
+				</fileset>
+			</batchtest>
+		</junit>
 	</target>
 </project>

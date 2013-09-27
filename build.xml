@@ -6,7 +6,6 @@
     <property name="dist.dir" value="${project.dir}/dist" />
     <property name="gen.dir" value="${project.dir}/gen" />
 	<property name="src.dir" value="${project.dir}/src" />
-	<property name="test.dir" value="${project.dir}/test" />
     <property name="lib.dir" value="${project.dir}/lib" />
     <property name="development.dir" value="${lib.dir}/development" />
 

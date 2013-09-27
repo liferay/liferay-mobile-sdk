@@ -35,7 +35,7 @@ public class PluginServiceTest extends BaseTest {
 	}
 
 	@Test
-	public void addFolder() throws Exception {
+	public void getUserSitesGroups() throws Exception {
 		SyncDLObjectService service = new SyncDLObjectService(context);
 
 		JSONArray jsonArray = service.getUserSitesGroups();
