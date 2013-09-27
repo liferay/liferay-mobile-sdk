@@ -3,19 +3,29 @@
 <project name="mobile-sdk-android" basedir="../" default="jar-all">
 	<import file="../build.xml" />
 
-	<property name="android.dir" value="${project.dir}/android" />
 	<property name="dist.dir.android" value="${dist.dir}/android" />
+
+	<property name="android.dir" value="${project.dir}/android" />
+	<property name="android.classes" value="${android.dir}/classes" />
+	<property name="android.src" value="${android.dir}/src" />
+
+	<property name="gen.dir" value="${project.dir}/gen" />
+	<property name="gen.classes" value="${gen.dir}/classes" />
+	<property name="gen.src" value="${gen.dir}/src" />
+
 	<property name="test.dir" value="${project.dir}/test" />
+	<property name="test.classes" value="${test.dir}/classes" />
+	<property name="test.src" value="${test.dir}/src" />
 
 	<path id="android.classpath">
-		<fileset dir="${lib.dir}/android" includes="**/*.jar"/>
+		<fileset dir="${lib.dir}/android" includes="**/*.jar" />
 	</path>
 
 	<path id="test.classpath">
-		<pathelement location="${android.dir}/classes" />
-		<pathelement location="${project.dir}/gen/classes" />
-		<pathelement location="${test.dir}/classes" />
-		<fileset dir="${development.dir}" includes="**/*.jar"/>
+		<pathelement location="${android.classes}" />
+		<pathelement location="${gen.classes}" />
+		<pathelement location="${test.classes}" />
+		<fileset dir="${development.dir}" includes="**/*.jar" />
 	</path>
 
 	<target name="build-service">
@@ -43,46 +53,46 @@
 -->
 
 	<target name="compile-all">
-		<delete dir="${android.dir}/classes" />
+		<delete dir="${android.classes}" />
 
-		<mkdir dir="${android.dir}/classes" />
+		<mkdir dir="${android.classes}" />
 
 		<javac
-			destdir="${android.dir}/classes"
+			destdir="${android.classes}"
 			classpathref="android.classpath">
 
-			<src path="${android.dir}/src" />
-			<src path="${gen.dir}/src" />
+			<src path="${android.src}" />
+			<src path="${gen.src}" />
 		</javac>
 	</target>
 
 	<target name="compile-common">
-		<delete dir="${android.dir}/classes" />
+		<delete dir="${android.classes}" />
 
-		<mkdir dir="${android.dir}/classes" />
+		<mkdir dir="${android.classes}" />
 
 		<javac
-			destdir="${android.dir}/classes"
+			destdir="${android.classes}"
 			classpathref="android.classpath">
 
-			<src path="${android.dir}/src" />
+			<src path="${android.src}" />
 		</javac>
 	</target>
 
 	<target name="compile-test" depends="compile-all">
-		<delete dir="${test.dir}/classes" />
+		<delete dir="${test.classes}" />
 
-		<mkdir dir="${test.dir}/classes" />
+		<mkdir dir="${test.classes}" />
 
-		<copy todir="${test.dir}/classes">
-			<fileset dir="${test.dir}/src" includes="*.properties" />
+		<copy todir="${test.classes}">
+			<fileset dir="${test.src}" includes="*.properties" />
 		</copy>
 
 		<javac
-			destdir="${test.dir}/classes"
+			destdir="${test.classes}"
 			classpathref="test.classpath">
 
-			<src path="${test.dir}/src" />
+			<src path="${test.src}" />
 		</javac>
 	</target>
 
@@ -118,13 +128,13 @@
 
 	<target name="jar-all" depends="compile-all">
 		<jar destfile="${dist.dir.android}/liferay-android-sdk.jar">
-			<fileset dir="${android.dir}/classes" includes="**/*.class"/>
+			<fileset dir="${android.classes}" includes="**/*.class" />
 		</jar>
 	</target>
 
 	<target name="jar-common" depends="compile-common">
 		<jar destfile="${dist.dir.android}/liferay-android-sdk-common.jar">
-			<fileset dir="${android.dir}/classes" includes="**/*.class"/>
+			<fileset dir="${android.classes}" includes="**/*.class" />
 		</jar>
 	</target>
 
@@ -140,8 +150,8 @@
 
 	<target name="jar-sources">
 		<jar destfile="${dist.dir.android}/liferay-android-sdk-sources.jar">
-			<fileset dir="${android.dir}/src" includes="**/*.java"/>
-			<fileset dir="${gen.dir}/src" includes="**/*.java"/>
+			<fileset dir="${android.src}" includes="**/*.java" />
+			<fileset dir="${gen.src}" includes="**/*.java" />
 		</jar>
 	</target>
 
@@ -154,7 +164,7 @@
 			<formatter type="plain" />
 
 			<batchtest todir="${test.dir}/logs">
-				<fileset dir="${test.dir}/src">
+				<fileset dir="${test.src}">
 					<include name="**/*ServiceTest.java" />
 				</fileset>
 			</batchtest>
