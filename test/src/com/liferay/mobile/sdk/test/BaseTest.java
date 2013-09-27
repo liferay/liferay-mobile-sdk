@@ -15,6 +15,7 @@
 package com.liferay.mobile.sdk.test;
 
 import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.service.SessionImpl;
 import com.liferay.mobile.sdk.test.util.PropertiesUtil;
 
 import java.io.IOException;
@@ -27,7 +28,7 @@ public abstract class BaseTest {
 	public BaseTest() throws IOException {
 		props = new PropertiesUtil();
 
-		session = new Session(
+		session = new SessionImpl(
 			props.getServer(), props.getLogin(), props.getPassword());
 	}
 
