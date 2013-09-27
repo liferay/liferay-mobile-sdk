@@ -16,6 +16,9 @@ package com.liferay.mobile.sdk.http;
 
 import java.io.IOException;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -30,7 +33,15 @@ import org.apache.http.util.EntityUtils;
 public class HttpUtil {
 
 	public static PortalVersion getPortalVersion(String url) {
+		PortalVersion version = null;
+
 		try {
+			version = _versions.get(url);
+
+			if (version != null) {
+				return version;
+			}
+
 			HttpClient client = new DefaultHttpClient();
 
 			HttpGet get = new HttpGet(url);
@@ -40,7 +51,9 @@ public class HttpUtil {
 			Header portalHeader = response.getFirstHeader("Liferay-Portal");
 
 			if (portalHeader == null) {
-				return PortalVersion.UNKNOWN;
+				version = PortalVersion.UNKNOWN;
+				
+				return version;
 			}
 
 			String portalField = portalHeader.getValue();
@@ -48,7 +61,7 @@ public class HttpUtil {
 			int indexOfBuild = portalField.indexOf("Build");
 
 			if (indexOfBuild == -1) {
-				return PortalVersion.UNKNOWN;
+				version = PortalVersion.UNKNOWN;
 			}
 			else {
 				String buildNumber = portalField.substring(
@@ -56,12 +69,17 @@ public class HttpUtil {
 
 				buildNumber = buildNumber.replaceAll("0*$", "");
 
-				return PortalVersion.getValue(Integer.valueOf(buildNumber));
+				version = PortalVersion.getValue(Integer.valueOf(buildNumber));
 			}
 		}
 		catch (Exception e) {
-			return PortalVersion.UNKNOWN;
+			version = PortalVersion.UNKNOWN;
 		}
+		finally {
+			_versions.put(url, version);
+		}
+
+		return version;
 	}
 
 	public static String getResponseString(HttpResponse response)
@@ -75,5 +93,8 @@ public class HttpUtil {
 
 		return EntityUtils.toString(entity);
 	}
+
+	private static final Map<String, PortalVersion> _versions =
+		new HashMap<String, PortalVersion>();
 
 }

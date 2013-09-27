@@ -86,7 +86,7 @@
 			sourcepath=""
 			srcdir="${test.src}">
 
-			<exclude name="**/plugin/*ServiceTest.java" />
+			<exclude name="**/plugin/*Test.java" />
 		</javac>
 	</target>
 
@@ -149,7 +149,7 @@
 
 			<batchtest todir="${test.dir}/logs">
 				<fileset dir="${test.src}">
-					<include name="**/portal/*ServiceTest.java" />
+					<include name="**/portal/*Test.java" />
 				</fileset>
 			</batchtest>
 		</junit>

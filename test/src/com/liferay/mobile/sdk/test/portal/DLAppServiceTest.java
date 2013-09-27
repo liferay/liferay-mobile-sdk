@@ -93,9 +93,7 @@ public class DLAppServiceTest extends BaseTest {
 		}
 	}
 
-	public void deleteFoldersBatch(BatchSessionImpl batch)
-		throws Exception {
-
+	public void deleteFoldersBatch(BatchSessionImpl batch) throws Exception {
 		DLAppService service = new DLAppService(batch);
 
 		service.deleteFolder(

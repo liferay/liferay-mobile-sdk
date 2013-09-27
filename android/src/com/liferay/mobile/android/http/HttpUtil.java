@@ -14,10 +14,15 @@
 
 package com.liferay.mobile.android.http;
 
+import android.util.Log;
+
 import com.liferay.mobile.android.exception.ServerException;
 import com.liferay.mobile.android.service.Session;
 
 import java.io.IOException;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -57,7 +62,15 @@ public class HttpUtil {
 	}
 
 	public static PortalVersion getPortalVersion(String url) {
+		PortalVersion version = null;
+
 		try {
+			version = _versions.get(url);
+
+			if (version != null) {
+				return version;
+			}
+
 			HttpClient client = new DefaultHttpClient();
 
 			HttpGet get = new HttpGet(url);
@@ -67,7 +80,9 @@ public class HttpUtil {
 			Header portalHeader = response.getFirstHeader("Liferay-Portal");
 
 			if (portalHeader == null) {
-				return PortalVersion.UNKNOWN;
+				version = PortalVersion.UNKNOWN;
+
+				return version;
 			}
 
 			String portalField = portalHeader.getValue();
@@ -75,7 +90,7 @@ public class HttpUtil {
 			int indexOfBuild = portalField.indexOf("Build");
 
 			if (indexOfBuild == -1) {
-				return PortalVersion.UNKNOWN;
+				version = PortalVersion.UNKNOWN;
 			}
 			else {
 				String buildNumber = portalField.substring(
@@ -83,12 +98,19 @@ public class HttpUtil {
 
 				buildNumber = buildNumber.replaceAll("0*$", "");
 
-				return PortalVersion.getValue(Integer.valueOf(buildNumber));
+				version = PortalVersion.getValue(Integer.valueOf(buildNumber));
 			}
 		}
 		catch (Exception e) {
-			return PortalVersion.UNKNOWN;
+			Log.e(_CLASS_NAME, "Couldn't get portal version", e);
+
+			version = PortalVersion.UNKNOWN;
 		}
+		finally {
+			_versions.put(url, version);
+		}
+
+		return version;
 	}
 
 	public static HttpPost getPost(Session session) {
@@ -188,5 +210,10 @@ public class HttpUtil {
 
 		return null;
 	}
+
+	private static final String _CLASS_NAME = HttpUtil.class.getSimpleName();
+
+	private static final Map<String, PortalVersion> _versions =
+		new HashMap<String, PortalVersion>();
 
 }
