@@ -12,9 +12,10 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.test;
+package com.liferay.mobile.sdk.test.plugin;
 
-import com.liferay.mobile.android.v62.group.GroupService;
+import com.liferay.mobile.android.v62.syncdlobject.SyncDLObjectService;
+import com.liferay.mobile.sdk.test.BaseTest;
 
 import java.io.IOException;
 
@@ -28,28 +29,31 @@ import static org.junit.Assert.*;
 /**
  * @author Bruno Farache
  */
-public class GroupServiceTest extends BaseTest {
+public class PluginServiceTest extends BaseTest {
 
-	public GroupServiceTest() throws IOException {
+	public PluginServiceTest() throws IOException {
 		super();
 	}
 
 	@Test
-	public void getUserSites() throws Exception {
-		GroupService service = new GroupService(session);
+	public void getUserSitesGroups() throws Exception {
+		SyncDLObjectService service = new SyncDLObjectService(session);
 
-		JSONArray array = service.getUserSites();
+		JSONArray jsonArray = service.getUserSitesGroups();
 
-		assertNotNull(array);
-		assertEquals(2, array.length());
+		assertEquals(2, jsonArray.length());
 
-		JSONObject jsonObj = array.getJSONObject(0);
+		for (int i = 0; i < jsonArray.length(); i++) {
+			JSONObject jsonObj = jsonArray.getJSONObject(i);
 
-		assertEquals("/test", jsonObj.getString("friendlyURL"));
+			String name = jsonObj.getString("name");
 
-		jsonObj = array.getJSONObject(1);
+			if (name.equals("Guest")) {
+				String friendlyURL = jsonObj.getString("friendlyURL");
 
-		assertEquals("/guest", jsonObj.getString("friendlyURL"));
+				assertEquals("/guest", friendlyURL);
+			}
+		}
 	}
 
 }

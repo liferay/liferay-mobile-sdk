@@ -12,11 +12,12 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.test;
+package com.liferay.mobile.sdk.test.portal;
 
 import com.liferay.mobile.android.exception.ServerException;
 import com.liferay.mobile.android.service.BatchSessionImpl;
 import com.liferay.mobile.android.v62.dlapp.DLAppService;
+import com.liferay.mobile.sdk.test.BaseTest;
 
 import java.io.IOException;
 
@@ -67,8 +68,8 @@ public class DLAppServiceTest extends BaseTest {
 
 		JSONArray jsonArray = batch.invoke();
 
-		assertEquals(_FOLDER_NAME, jsonArray.getJSONObject(1).get("name"));
-		assertEquals(_FOLDER_NAME_2, jsonArray.getJSONObject(2).get("name"));
+		assertEquals(_FOLDER_NAME, jsonArray.getJSONObject(0).get("name"));
+		assertEquals(_FOLDER_NAME_2, jsonArray.getJSONObject(1).get("name"));
 
 		deleteFoldersBatch(batch);
 	}

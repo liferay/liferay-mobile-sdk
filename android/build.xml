@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<project name="mobile-sdk-android" basedir="../" default="jar-all">
+<project name="mobile-sdk-android" basedir="../" default="build-service">
 	<import file="../build.xml" />
 
 	<property name="dist.dir.android" value="${dist.dir}/android" />
@@ -29,6 +29,8 @@
 	</path>
 
 	<target name="build-service">
+		<antcall target="clear-gen" />
+
 		<antcall target="mobile-sdk.build-service">
 			<param name="builder" value="android" />
 		</antcall>
@@ -36,21 +38,11 @@
 		<antcall target="format-source-gen" />
 	</target>
 
-<!--
-	<target name="build-service-dlapp">
-		<antcall target="build-service">
-			<param name="filter" value="dlapp" />
-		</antcall>
+	<target name="clear-gen">
+		<delete includeemptydirs="true">
+			<fileset dir="${gen.dir}"  includes="**/*" />
+		</delete>
 	</target>
--->
-
-<!--
-	<target name="build-service-sync-web">
-		<antcall target="build-service">
-			<param name="context" value="sync-web" />
-		</antcall>
-	</target>
--->
 
 	<target name="compile-all">
 		<delete dir="${android.classes}" />
@@ -90,9 +82,11 @@
 
 		<javac
 			destdir="${test.classes}"
-			classpathref="test.classpath">
+			classpathref="test.classpath"
+			sourcepath=""
+			srcdir="${test.src}">
 
-			<src path="${test.src}" />
+			<exclude name="**/plugin/*ServiceTest.java" />
 		</javac>
 	</target>
 
@@ -138,16 +132,6 @@
 		</jar>
 	</target>
 
-<!--
-	<target name="jar-dlapp">
-		<jar
-			basedir="gen/classes"
-			includes="com/liferay/mobile/android/**/dlapp/**"
-			jarfile="${dist.dir.android}/dlapp.jar"
-		/>
-	</target>
--->
-
 	<target name="jar-sources">
 		<jar destfile="${dist.dir.android}/liferay-android-sdk-sources.jar">
 			<fileset dir="${android.src}" includes="**/*.java" />
@@ -165,7 +149,7 @@
 
 			<batchtest todir="${test.dir}/logs">
 				<fileset dir="${test.src}">
-					<include name="**/*ServiceTest.java" />
+					<include name="**/portal/*ServiceTest.java" />
 				</fileset>
 			</batchtest>
 		</junit>

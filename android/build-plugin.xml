@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+
+<project name="mobile-sdk-android-plugin" basedir="../" default="build-service">
+	<import file="build.xml" />
+
+	<target name="build-service">
+		<antcall target="clear-gen" />
+
+		<antcall target="mobile-sdk.build-service">
+			<param name="builder" value="android" />
+		</antcall>
+
+		<antcall target="mobile-sdk.build-service">
+			<param name="builder" value="android" />
+			<param name="context" value="sync-web" />
+		</antcall>
+
+		<antcall target="format-source-gen" />
+	</target>
+
+	<target name="build-service-dlapp">
+		<antcall target="mobile-sdk-android.build-service">
+			<param name="filter" value="dlapp" />
+		</antcall>
+	</target>
+
+	<target name="jar-dlapp">
+		<jar
+			basedir="${gen.classes}"
+			includes="com/liferay/mobile/android/**/dlapp/**"
+			jarfile="${dist.dir.android}/dlapp.jar"
+		/>
+	</target>
+
+	<target name="compile-test" depends="compile-all">
+		<delete dir="${test.classes}" />
+
+		<mkdir dir="${test.classes}" />
+
+		<copy todir="${test.classes}">
+			<fileset dir="${test.src}" includes="*.properties" />
+		</copy>
+
+		<javac
+			destdir="${test.classes}"
+			classpathref="test.classpath"
+			sourcepath=""
+			srcdir="${test.src}">
+
+			<exclude name="**/portal/*ServiceTest.java"/>
+		</javac>
+	</target>
+
+	<target name="test" depends="compile-test">
+		<junit printsummary="withOutAndErr">
+			<classpath>
+				<path refid="test.classpath" />
+			</classpath>
+
+			<formatter type="plain" />
+
+			<batchtest todir="${test.dir}/logs">
+				<fileset dir="${test.src}">
+					<include name="**/plugin/*ServiceTest.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+</project>
