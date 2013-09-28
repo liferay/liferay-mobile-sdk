@@ -62,6 +62,10 @@ Check out the [Android sample app](https://github.com/brunofarache/liferay-mobil
 	JSONArray jsonArray = service.getGroupEntries(10184, 0, 0, -1, -1);
 	```
 	
-	This is an example of synchronous service call, the method will only return after the request is finished.
+	It fetches all blog entries from the `Guest` site, which in this example has groupId equals to 10184.
 	
-	Service methods return types can be `void`, `String`, `JSONArray`, `JSONObject` and primitive type wrappers: `Boolean`, `Integer`, `Long`, `Double`.
+	This is an basic example of a synchronous service call, the method will only return after the request is finished.
+	
+	Service methods return types can be `void`, `String`, `JSONArray`, `JSONObject` and primitive type wrappers: `Boolean`, `Integer`, `Long` and `Double`.
+
+	> Many service methods require groupId as a parameter, you can get the user's groups by calling the `getUserSites()` method from `GroupService`.
