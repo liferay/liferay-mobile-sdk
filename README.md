@@ -13,7 +13,7 @@ The project is divided in 2: the SDK itself (for Android) and a SDK Builder. The
 
 ## Liferay Android SDK
 
-Check out the [Android app sample](https://github.com/brunofarache/liferay-mobile-sdk-sample-android). It's a Contacts app that lists all Liferay users and shows contact details about them. It contains many examples on how to use the Liferay Android SDK and it's a good way to learn how to use the SDK.
+Check out the [Android sample app](https://github.com/brunofarache/liferay-mobile-sdk-sample-android). It's a Contacts app that lists all Liferay users and shows contact details about them. It contains many examples on how to use the Liferay Android SDK and it's a good way to learn how to use the SDK.
 
 ### Setup
 
@@ -23,7 +23,7 @@ Check out the [Android app sample](https://github.com/brunofarache/liferay-mobil
 
 3. Import the necessary classes and start using it!
 
-### Usage
+### Use
 
 1. Create a `Session` with the user credentials:
 
@@ -53,3 +53,15 @@ Check out the [Android app sample](https://github.com/brunofarache/liferay-mobil
 	```
 
 	Since the SDK is built for a specific Liferay version, service classes are separate by their package name, in this case `.v62`, which means this SDK is built for Liferay 6.2. You can use several SDKs at the same time to support different Liferay versions.
+
+4. Create a `BlogsEntryService` object and make a service call.
+
+	```java
+	BlogsEntryService service = new BlogsEntryService(session);
+
+	JSONArray jsonArray = service.getGroupEntries(10184, 0, 0, -1, -1);
+	```
+	
+	This is an example of synchronous service call, the method will only return after the request is finished.
+	
+	Service methods return types can be `void`, `String`, `JSONArray`, `JSONObject` and primitive type wrappers: `Boolean`, `Integer`, `Long`, `Double`.
