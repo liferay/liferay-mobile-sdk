@@ -26,8 +26,6 @@ import org.json.JSONObject;
  */
 public class BatchSessionImpl extends SessionImpl {
 
-	public static final int DEFAULT_CONNECTION_TIMEOUT = 15000;
-
 	public BatchSessionImpl(Session session) {
 		super(session);
 	}
@@ -69,17 +67,13 @@ public class BatchSessionImpl extends SessionImpl {
 	}
 
 	public Object invoke(JSONObject command) throws Exception {
-		addCommand(command);
+		commands.put(command);
 
 		return null;
 	}
 
 	public void setCallback(BatchAsyncTaskCallback callback) {
 		this.callback = callback;
-	}
-
-	protected void addCommand(JSONObject command) {
-		commands.put(command);
 	}
 
 	protected JSONArray commands = new JSONArray();

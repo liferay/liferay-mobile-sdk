@@ -52,7 +52,7 @@ public class HttpUtil {
 
 			if (portalHeader == null) {
 				version = PortalVersion.UNKNOWN;
-				
+
 				return version;
 			}
 

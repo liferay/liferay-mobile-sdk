@@ -17,13 +17,10 @@ package com.liferay.mobile.sdk.http;
 import java.io.IOException;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
@@ -46,26 +43,6 @@ public class DiscoveryResponseHandler
 		}
 
 		return discovery;
-	}
-
-	protected void handleServerException(HttpResponse response, String json)
-		throws Exception {
-
-		StatusLine status = response.getStatusLine();
-
-		if (status.getStatusCode() == HttpStatus.SC_UNAUTHORIZED) {
-			throw new Exception("Authentication failed.");
-		}
-
-		if ((json != null) && json.startsWith("{")) {
-			JSONObject jsonObj = new JSONObject(json);
-
-			if (jsonObj.has("exception")) {
-				String message = jsonObj.getString("exception");
-
-				throw new Exception(message);
-			}
-		}
 	}
 
 }
