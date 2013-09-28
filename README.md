@@ -18,34 +18,38 @@ Check out the [Android app sample](https://github.com/brunofarache/liferay-mobil
 ### Setup
 
 1. [Download](https://github.com/brunofarache/liferay-mobile-sdk/releases/) the latest version of `liferay-android-sdk.jar`. iIf you want to debug the SDK source code, you can also download `liferay-android-sdk-sources.jar` and attach the source code to your IDE project.
+
 2. Within your Android project, drop the jar into the `/libs` folder. Android Developer Tools should automatically add this jar to your classpath, if you are using a different IDE, make sure this jar is added to the project classpath.
+
 3. Import the necessary classes and start using it!
 
 ### Usage
 
-1. Check which Liferay services you need in order to build your app by going to [http://localhost:8080/api/jsonws](http://localhost:8080/api/jsonws). This page lists all available portal service as well plugins services.
+1. Create a `Session` with the user credentials:
 
-2. If you are building a blogs app, for example, you can import `BlogsEntryService`:
+	```java
+	import com.liferay.mobile.android.service.Session;
+	import com.liferay.mobile.android.service.SessionImpl;
+	
+	Session session = new SessionImpl("http://10.0.2.2:8080", "test@liferay.com", "test");
+	```
 
-```java
-import com.liferay.mobile.android.v62.blogsentry.BlogsEntryService;
-```
+	The first parameter is the URL of the Liferay instance you are connecting to. If you are running your app on an Android Emulator `http://10.0.2.2:8080` is equivalent to `http://localhost:8080`, it points to your local Liferay instance. In this case, emulator and Liferay are running in the same machine.
 
-Since the SDK is built for a specific Liferay version, service classes are separate by their package name, in this case `.v62`, which means this SDK is built for Liferay 6.2. You can use several SDKs at the same time to support different Liferay versions.
+	The second parameter is either the user's email address, screen name or userId. It depends on which authentication method your Liferay instance is using. The default authentication method is by user's email address.
 
-3. Create a `Session` with the user credentials:
+	The third parameter is the user's password.
 
-```java
-import com.liferay.mobile.android.service.Session;
-import com.liferay.mobile.android.service.SessionImpl;
+	> Be careful to use these credentials on a production Liferay instance, they are typically the administrator credentials, which means you have permission to call any service and change any data.
 
-Session session = new SessionImpl("http://10.0.2.2:8080", "test@liferay.com", "test");
-```
 
-The first parameter is the URL of the Liferay instance you are connecting to. If you are running your app on an Android Emulator `http://10.0.2.2:8080` is equivalent to `http://localhost:8080`, it points to your local Liferay instance. In this case, emulator and Liferay are running in the same machine.
+2. Check which Liferay services you need in order to build your app by going to [http://localhost:8080/api/jsonws](http://localhost:8080/api/jsonws). This page lists all available portal service as well plugins services.
 
-The second parameter is either the user's email address, screen name or userId. It depends on which authentication method your Liferay instance is using. The default authentication method is by user's email address.
 
- The third parameter is the user's password.
+3. If you are building a blogs app, for example, you can import `BlogsEntryService`.
 
-> Be careful to use these credentials on a production Liferay instance, they are typically the administrator credentials, which means you have permission to call any service and change any data.
+	```java
+	import com.liferay.mobile.android.v62.blogsentry.BlogsEntryService;
+	```
+
+	Since the SDK is built for a specific Liferay version, service classes are separate by their package name, in this case `.v62`, which means this SDK is built for Liferay 6.2. You can use several SDKs at the same time to support different Liferay versions.
