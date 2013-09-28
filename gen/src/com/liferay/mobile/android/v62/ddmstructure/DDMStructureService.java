@@ -16,7 +16,6 @@ package com.liferay.mobile.android.v62.ddmstructure;
 
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.Session;
-import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
