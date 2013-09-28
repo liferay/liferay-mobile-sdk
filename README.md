@@ -13,10 +13,10 @@ The project is divided in 2: the SDK itself (for Android) and a SDK Builder. The
 
 ## Liferay Android SDK
 
-Check out the [Android app sample](https://github.com/brunofarache/liferay-mobile-sdk-sample-android). It's a Contacts app that lists all Liferay users and shows contact details about them. It contains many examples on how to use the Liferay Android SDK.
+Check out the [Android app sample](https://github.com/brunofarache/liferay-mobile-sdk-sample-android). It's a Contacts app that lists all Liferay users and shows contact details about them. It contains many examples on how to use the Liferay Android SDK and it's a good way to learn how to use the SDK.
 
 ### Setup
 
-1. [Download](https://github.com/brunofarache/liferay-mobile-sdk/releases/) the latest version of `liferay-android-sdk.jar`. You can also download `liferay-android-sdk-sources.jar` and attach the source code to your IDE project, if you want to debug the SDK source code.
+1. [Download](https://github.com/brunofarache/liferay-mobile-sdk/releases/) the latest version of `liferay-android-sdk.jar`. iIf you want to debug the SDK source code, you can also download `liferay-android-sdk-sources.jar` and attach the source code to your IDE project.
 2. Within your Android project, drop the jar into the `/libs` folder. Android Developer Tools should automatically add this jar to your classpath, if you are not using it, make sure this jar is added to the project classpath.
 3. Import the necessary classes and start using it!
