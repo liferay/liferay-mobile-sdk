@@ -21,7 +21,7 @@ import org.json.JSONArray;
  */
 public abstract class BatchAsyncTaskCallback implements AsyncTaskCallback {
 
-	public JSONArray inBackground(JSONArray array) {
+	public JSONArray inBackground(JSONArray array) throws Exception {
 		return array;
 	}
 

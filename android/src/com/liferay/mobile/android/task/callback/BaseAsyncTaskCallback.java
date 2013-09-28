@@ -25,7 +25,7 @@ import org.json.JSONException;
 public abstract class BaseAsyncTaskCallback<T>
 		implements AsyncTaskCallback, Transformer<T> {
 
-	public JSONArray inBackground(JSONArray array) {
+	public JSONArray inBackground(JSONArray array) throws Exception {
 		return array;
 	}
 
