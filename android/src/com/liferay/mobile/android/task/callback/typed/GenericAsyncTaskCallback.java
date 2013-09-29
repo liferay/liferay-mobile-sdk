@@ -22,12 +22,14 @@ import org.json.JSONArray;
  * @author Bruno Farache
  */
 public abstract class GenericAsyncTaskCallback<T>
-		extends BaseAsyncTaskCallback<T> implements Transformer<T> {
+		extends BaseAsyncTaskCallback<T> {
 
 	public void onPostExecute(JSONArray jsonArray) throws Exception {
 		Object result = jsonArray.get(0);
 
 		onSuccess(transform(result));
 	}
+
+	public abstract T transform(Object obj) throws Exception;
 
 }
