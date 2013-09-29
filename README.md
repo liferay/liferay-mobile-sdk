@@ -113,4 +113,44 @@ Check out the [Android sample app](https://github.com/brunofarache/liferay-mobil
 	
 	Since the request is asynchronous, `service.getGroupEntries` will return right away, with a null object, the result will be passed to the callback `onSuccess` method instead.
 	
+	#### Batch
 	
+	The SDK allows sending requests in batch, this can be much more efficient in some cases. Say for example you want to delete 10 blog entries at the same time, instead of making one request for each delete call, you can create a batch of calls and send them all together.
+	
+	```java
+	import com.liferay.mobile.android.service.BatchSessionImpl;
+
+	BatchSessionImpl batch = new BatchSessionImpl("http://10.0.2.2:8080", "test@liferay.com", "test");
+	BlogsEntryService service = new BlogsEntryService(session);
+		
+	service.deleteEntry(1);
+	service.deleteEntry(2);
+	service.deleteEntry(3);
+	
+	JSONArray jsonArray = batch.invoke();
+	```
+	
+	First, create a `BatchSessionImpl` session. You can either pass credentials or another `session` to the constructor, this is useful when you already have a `session` object and want to reuse the same credentials.
+	
+	Then, make the service calls as usual, as with asynchronous calls, these methods will return a null object right away.
+	
+	Finally, call the `invoke()` from the session object, it will return a JSONArray containing the results for each service call. Since there were 3 `deleteEntry` calls, the jsonArray will contain 3 objects. The order of the results will match the order of the service calls.
+	
+	If you want to make batch calls asynchronously, set the callback as a `BatchAsyncTaskCallback` instance:
+	
+	```java
+	import com.liferay.mobile.android.task.callback.BatchAsyncTaskCallback;
+
+	batch.setCallback(new BatchAsyncTaskCallback() {
+			
+		public void onFailure(Exception exception) {
+		}
+		
+		public void onSuccess(JSONArray results) {
+			// The result is always a JSONArray 
+		}
+
+	});
+	```
+
+	As you can see, the return type is always a JSONArray.
