@@ -69,3 +69,48 @@ Check out the [Android sample app](https://github.com/brunofarache/liferay-mobil
 	Service methods return types can be `void`, `String`, `JSONArray`, `JSONObject` and primitive type wrappers: `Boolean`, `Integer`, `Long` and `Double`.
 
 	> Many service methods require groupId as a parameter, you can get the user's groups by calling the `getUserSites()` method from `GroupService`.
+
+	#### Asynchronous
+	
+	Android doesn't allow synchronous HTTP requests like the above from the main UI thread, you can only make them from different threads, for example, from within a AsyncTask instance.
+	
+	The SDK can help you to make asynchronous HTTP requests if you don't want to create an AsyncTask yourself. It makes the service call from an AsyncTask and you can pass a callback that will be called after the request finishes.
+	
+	Set a callback class implementation to the session, while the callback is not null, all the following services calls will be asynchronous, set it back to null if you want to make synchronous calls again.
+	
+	```java
+	import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
+	import com.liferay.mobile.android.task.callback.BaseAsyncTaskCallback;
+	
+	AsyncTaskCallback callback = new BaseAsyncTaskCallback<JSONObject>() {
+	
+		public void onFailure(Exception exception) {
+			// Implement exception handling code
+		}
+		
+		// Transform the result to some object
+		public JSONObject transform(Object obj) {
+			return (JSONObject)obj;
+		}
+		
+		public void onSuccess(JSONObject result) {
+			// Called after request has finished successfully
+		}
+	
+	};
+	
+	session.setCallback(callback);
+	service.getGroupEntries(10184, 0, 0, -1, -1);
+	```
+	
+	If an exception happens during the request, `onFailure` method will be called. It can be either a connection exception (a request timeout, for example) or a `ServerException`.
+	
+	When a `ServerException` happens, it's because something went wrong on the server side. For example, if you pass a `groupId` that doesn't exist, the portal will complain about it and the SDK will wrap the error message with a `ServerException`.
+	
+	The `transform` method is used to transform the result into any object type you want. It uses Generics to infer which type it should be transformed to, in this case, it's JSONObject. The JSON library tries to figure out which object type the result should be parsed to.
+	
+	`onSuccess` is called on the main UI thread after the request has finished.
+	
+	Since the request is asynchronous, `service.getGroupEntries` will return right away, with a null object, the result will be passed to the callback `onSuccess` method instead.
+	
+	
