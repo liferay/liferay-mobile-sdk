@@ -12,13 +12,13 @@
  * details.
  */
 
-package com.liferay.mobile.android.task.callback;
+package com.liferay.mobile.android.task.callback.typed;
 
 /**
  * @author Bruno Farache
  */
 public interface Transformer<T> {
 
-	public T transform(Object obj);
+	public T transform(Object obj) throws Exception;
 
 }

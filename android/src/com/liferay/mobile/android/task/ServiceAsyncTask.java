@@ -67,7 +67,14 @@ public class ServiceAsyncTask extends AsyncTask<JSONArray, Void, JSONArray> {
 	}
 
 	public void onPostExecute(JSONArray array) {
-		_callback.onPostExecute(array);
+		try {
+			_callback.onPostExecute(array);
+		}
+		catch (Exception e) {
+			_exception = e;
+
+			onCancelled();
+		}
 	}
 
 	private AsyncTaskCallback _callback;

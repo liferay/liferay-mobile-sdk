@@ -19,14 +19,11 @@ import org.json.JSONArray;
 /**
  * @author Bruno Farache
  */
-public abstract class BatchAsyncTaskCallback implements AsyncTaskCallback {
+public abstract class BatchAsyncTaskCallback
+		extends BaseAsyncTaskCallback<JSONArray> {
 
-	public JSONArray inBackground(JSONArray array) throws Exception {
-		return array;
-	}
-
-	public void onPostExecute(JSONArray array) {
-		onSuccess(array);
+	public void onPostExecute(JSONArray jsonArray) {
+		onSuccess(jsonArray);
 	}
 
 	public abstract void onSuccess(JSONArray results);

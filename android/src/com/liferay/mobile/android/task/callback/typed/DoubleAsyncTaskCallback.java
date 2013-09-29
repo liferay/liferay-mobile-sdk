@@ -12,19 +12,23 @@
  * details.
  */
 
-package com.liferay.mobile.android.task.callback;
+package com.liferay.mobile.android.task.callback.typed;
+
+import com.liferay.mobile.android.task.callback.BaseAsyncTaskCallback;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 /**
  * @author Bruno Farache
  */
-public abstract class BaseAsyncTaskCallback<T> implements AsyncTaskCallback {
+public abstract class DoubleAsyncTaskCallback
+		extends BaseAsyncTaskCallback<Double> {
 
-	public JSONArray inBackground(JSONArray jsonArray) throws Exception {
-		return jsonArray;
+	public void onPostExecute(JSONArray jsonArray) throws JSONException {
+		Double result = jsonArray.getDouble(0);
+
+		onSuccess(result);
 	}
-
-	public abstract void onSuccess(T result);
 
 }
