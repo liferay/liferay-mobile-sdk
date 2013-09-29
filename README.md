@@ -1,6 +1,6 @@
 # Liferay Mobile SDK
 
-With Liferay Mobile SDK, you can quickly build native mobile apps that integrate with Liferay instances and connect to portal or plugins web services.
+With Liferay Mobile SDK, you can quickly build native mobile apps that integrate with Liferay Portal instances.
 
 It's a wrapper for Liferay JSON Web Services. It takes care of authentication, makes RESTful requests (synchronously or asynchronously), parses JSON results, handles server side exceptions, etc.
 
@@ -12,6 +12,8 @@ The project is divided in 2: the SDK itself (for Android) and a SDK Builder. The
 
 
 ## Liferay Android SDK
+
+### Sample
 
 Check out the [Android sample app](https://github.com/brunofarache/liferay-mobile-sdk-sample-android). It's a Contacts app that lists all Liferay users and shows contact details about them. It contains many examples on how to use the Liferay Android SDK and it's a good way to learn how to use the SDK.
 
