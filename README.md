@@ -10,6 +10,14 @@ It's compatible Liferay Portal 6.2 and later. It not only helps you to access po
 
 The project is divided in 2: the SDK itself (for Android) and a SDK Builder. The Builder is a code generator that discovers which services are available for a given portal instance and produces most of the code of the SDK. It's template based, that's how we are able to extend the SDK to other platforms.
 
+## Table of Contents
+
+* [Liferay Android SDK](#liferay-android-sdk)
+	* [Sample](#sample)
+	* [Setup](#setup)
+	* [Use](#use)
+		* [Asynchronous](#asynchronous)
+		* [Batch](#batch)
 
 ## Liferay Android SDK
 
