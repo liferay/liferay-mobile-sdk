@@ -90,20 +90,15 @@ Check out the [Android sample app](https://github.com/brunofarache/liferay-mobil
 	
 	```java
 	import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
-	import com.liferay.mobile.android.task.callback.BaseAsyncTaskCallback;
+	import com.liferay.mobile.android.task.callback.typed.JSONArrayAsyncTaskCallback;
 	
-	AsyncTaskCallback callback = new BaseAsyncTaskCallback<JSONObject>() {
+	AsyncTaskCallback callback = new JSONArrayAsyncTaskCallback() {
 	
 		public void onFailure(Exception exception) {
 			// Implement exception handling code
 		}
-		
-		// Transform the result to some object
-		public JSONObject transform(Object obj) {
-			return (JSONObject)obj;
-		}
-		
-		public void onSuccess(JSONObject result) {
+
+		public void onSuccess(JSONArray result) {
 			// Called after request has finished successfully
 		}
 	
@@ -117,7 +112,11 @@ Check out the [Android sample app](https://github.com/brunofarache/liferay-mobil
 	
 	When a `ServerException` happens, it's because something went wrong on the server side. For example, if you pass a `groupId` that doesn't exist, the portal will complain about it and the SDK will wrap the error message with a `ServerException`.
 	
-	The `transform` method is used to transform the result into any object type you want. It uses Generics to infer which type it should be transformed to, in this case, it's JSONObject. The JSON library tries to figure out which object type the result should be parsed to.
+	There are many `AsyncTaskCallback` implementations, one for each service method return type: `JSONObjectAsyncTaskCallback`, `JSONArrayAsyncTaskCallback`, `StringAsyncTaskCallback`, `BooleanAsyncTaskCallback`, `IntegerAsyncTaskCallback`, `LongAsyncTaskCallback` and `DoubleAsyncTaskCallback`. Pick the appropriate implementation, in the example above, since `getGroupEntries` returns a JSONArray, you must use a `JSONArrayAsyncTaskCallback` instance.
+	
+	It's also possible to use a generic `AsyncTaskCallback` implementation called `GenericAsyncTaskCallback`, you must implement a transform method and handle parsing by yourself.
+	
+	> If you still don't want to use any of these callbacks, you can implement `AsyncTaskCallback` directly, but be careful, you should always get the first element of the JSONArray passed as parameter to the `onPostExecute(JSONArray jsonArray)` method, i.e. `jsonArray.get(0)`.
 	
 	`onSuccess` is called on the main UI thread after the request has finished.
 	
