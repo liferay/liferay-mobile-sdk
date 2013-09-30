@@ -1,14 +1,16 @@
 # Liferay Mobile SDK
 
-With Liferay Mobile SDK, you can quickly build native mobile apps that integrate with Liferay Portal instances.
+With the Liferay Mobile SDK, you can quickly build native mobile apps that integrate with your different Liferay Portal instances.
 
-It's a wrapper for Liferay JSON Web Services. It takes care of authentication, makes RESTful requests (synchronously or asynchronously), parses JSON results, handles server side exceptions, etc.
+Internally, it's a wrapper for Liferay JSON Web Services...but it is much more! It takes care of authentication, makes RESTful requests (synchronously or asynchronously), parses JSON results, handles server side exceptions, etc.
 
-Currently, it only supports Android, but it's extensible and we plan to make it available for other platforms in the near future, like iOS and PhoneGap.
+It does not only help you to access all out-of-the-box Liferay Portal web services, but also any custom plugins or portlets that were built with Liferay's Service Builder.
 
-It's compatible Liferay Portal 6.2 and later. It not only helps you to access portal web services but also any custom plugins or portlets that were built with Liferay's Service Builder.
+For the moment we provide support for Android apps, but it's an extensible system and we plan to make it available for other platforms in the near future, like iOS or PhoneGap.
 
-The project is divided in 2: the SDK itself (for Android) and a SDK Builder. The Builder is a code generator that discovers which services are available for a given portal instance and produces most of the code of the SDK. It's template based, that's how we are able to extend the SDK to other platforms.
+Currently it is compatible with Liferay Portal 6.2 and later. 
+
+The project is divided in 2 sections: the SDK (for Android) and a SDK Builder. The SDK Builder is a code generator that discovers which services are available for a given portal instance and produces most of the code of the SDK. It's template based, that's how we will be able to extend the SDK to other platforms.
 
 ## Table of Contents
 
@@ -23,7 +25,7 @@ The project is divided in 2: the SDK itself (for Android) and a SDK Builder. The
 
 ### Sample
 
-Check out the [Android sample app](https://github.com/brunofarache/liferay-mobile-sdk-sample-android). It's a Contacts app that lists all Liferay users and shows contact details about them. It contains many examples on how to use the Liferay Android SDK and it's a good way to learn how to use the SDK.
+Check out the [Android sample app](https://github.com/brunofarache/liferay-mobile-sdk-sample-android). It's a Contacts app that lists all Liferay users and shows contact details about them. It contains many examples on how to use the Liferay Mobile SDK and it's a good way to learn how to use the Liferay Mobile SDK to build your own native applications.
 
 ### Setup
 
