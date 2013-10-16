@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
-<project name="mobile-sdk-android" basedir="../" default="build-service">
-	<import file="../build.xml" />
+<project name="android-sdk" basedir="." default="build-service">
+	<import file="build-common.xml" />
 
 	<property name="dist.dir.android" value="${dist.dir}/android" />
 
@@ -31,12 +31,30 @@
 	<target name="build-service">
 		<antcall target="clear-gen" />
 
-		<antcall target="mobile-sdk.build-service">
+		<antcall target="build-common.build-service">
 			<param name="builder" value="android" />
 		</antcall>
 
 		<antcall target="format-source-gen" />
 	</target>
+
+	<!-- Example on how to build a single service (dlapp) -->
+
+	<!--
+	<target name="build-service-dlapp">
+		<antcall target="build-service">
+			<param name="filter" value="dlapp" />
+		</antcall>
+	</target>
+
+	<target name="jar-dlapp">
+		<jar
+			basedir="${gen.classes}"
+			includes="com/liferay/mobile/android/**/dlapp/**"
+			jarfile="${dist.dir.android}/dlapp.jar"
+		/>
+	</target>
+	-->
 
 	<target name="clear-gen">
 		<delete includeemptydirs="true">
@@ -93,6 +111,12 @@
 		</javac>
 	</target>
 
+	<target name="format-source-common">
+		<antcall target="build-common.format-source">
+			<param name="src.dir" value="${android.dir}" />
+		</antcall>
+	</target>
+
 	<target name="format-source-gen">
 		<jalopy fileformat="unix"
 				convention="jalopy.xml">
@@ -103,14 +127,8 @@
 		</jalopy>
 	</target>
 
-	<target name="format-source-common">
-		<antcall target="mobile-sdk.format-source">
-			<param name="src.dir" value="${android.dir}" />
-		</antcall>
-	</target>
-
 	<target name="format-source-test">
-		<antcall target="mobile-sdk.format-source">
+		<antcall target="build-common.format-source">
 			<param name="src.dir" value="${test.dir}" />
 		</antcall>
 	</target>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<project name="mobile-sdk" basedir="." default="compile">
+<project name="build-common" basedir="." default="compile">
     <property name="project.dir" value="${basedir}" />
 
     <property name="dist.dir" value="${project.dir}/dist" />
