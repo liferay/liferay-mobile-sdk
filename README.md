@@ -165,3 +165,39 @@ Check out the [Android sample app](https://github.com/brunofarache/liferay-mobil
 	```
 
 	As you can see, the return type is always a JSONArray.
+
+## Generating SDKs for custom services
+
+### About
+
+With the SDK Builder, you can generate SDKs for custom portlets. Think it as a Service Builder on the client side, it generates code that allows your mobile app to access your own custom services.
+
+First thing you need to do is to build your services with Service Builder and expose them remotely by setting `remote-service="true"` in service.xml. After deploying your portlet, you can point the SDK Builder to your Liferay instance and ask it to generate code.
+
+You will be able to do things like `MyCustomService.foo();` from your mobile app, Liferay Mobile SDK will take care of making the JSON Web Services request to your portlet.
+
+### Use
+
+1. Download the Mobile SDK source code:
+
+	```sh
+	git clone git@github.com:brunofarache/liferay-mobile-sdk.git
+	```
+
+2. Create a file in the root folder called `build.${user.name}.properties`, where `${user.name}` is your computer user name. If you can't figure out your user name, just change `build.properties` directly.
+
+3. Here are the important properties:
+
+	```
+	server.url=http://localhost:8080
+	context=
+	filter=
+	builder=android
+	```
+	
+* `server.url` should point to your Liferay instance.
+* `context` is your portlet web context. Say for example you are generating a SDK for Liferay's Calendar portlet, this portlet is generally deployed to the `calendar-portlet` context, then you should set `context=calendar-portlet`. Under the hood, the SDK Builder will try to access `http://localhost:8080/calendar-portlet/api/jsonws?discover` to find out which services are available for this portlet.
+* `filter` is used to filter which entities services will be available. If your service.xml has several entities, you can create a SDK for a given entity only. For example, the Calendar portlet has entities such as `CalendarBooking` and `CalendarResource`, if you want to generate a SDK only for `CalendarBooking`, set it to `filter=calendarbooking`. Builder will do the request to the following URL: `http://localhost:8080/calendar-portlet/api/jsonws?discover=/calendarbooking/*`
+* `builder=android` means that a Android SDK will be generated, more platforms will be added in the future, like `ios`.
+
+
