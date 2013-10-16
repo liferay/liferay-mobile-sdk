@@ -31,7 +31,7 @@ import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpHead;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.auth.BasicScheme;
@@ -72,10 +72,8 @@ public class HttpUtil {
 			}
 
 			HttpClient client = new DefaultHttpClient();
-
-			HttpGet get = new HttpGet(url);
-
-			HttpResponse response = client.execute(get);
+			HttpHead head = new HttpHead(url);
+			HttpResponse response = client.execute(head);
 
 			Header portalHeader = response.getFirstHeader("Liferay-Portal");
 
