@@ -29,9 +29,9 @@ import static org.junit.Assert.*;
 /**
  * @author Bruno Farache
  */
-public class PluginServiceTest extends BaseTest {
+public class SyncWebServiceTest extends BaseTest {
 
-	public PluginServiceTest() throws IOException {
+	public SyncWebServiceTest() throws IOException {
 		super();
 	}
 
