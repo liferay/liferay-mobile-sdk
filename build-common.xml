@@ -8,7 +8,12 @@
     <property name="lib.dir" value="${project.dir}/lib" />
     <property name="development.dir" value="${lib.dir}/development" />
 
+	<property environment="env" />
+
 	<property file="build.${user.name}.properties" />
+	<property file="build.${env.COMPUTERNAME}.properties" />
+	<property file="build.${env.HOST}.properties" />
+	<property file="build.${env.HOSTNAME}.properties" />
 	<property file="build.properties" />
 
 	<path id="portal.classpath">
