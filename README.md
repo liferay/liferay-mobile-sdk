@@ -206,5 +206,5 @@ filter=
 
 4. From the root folder, run `ant -f build-android.xml`, this will generate the services classes into the `gen` folder. In order to build a jar file containing the generated service and utility classes, run `ant -f build-android.xml jar`, the jar file will be created at `/dist/android/liferay-android-sdk.jar`.
 
-5. Your are ready to use `liferay-android-sdk.jar` in your Android project, no other dependencies are needed.
+5. You are ready to use `liferay-android-sdk.jar` in your Android project, no other dependencies are needed.
 
