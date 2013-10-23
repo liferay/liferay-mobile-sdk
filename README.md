@@ -1,4 +1,18 @@
-# Liferay Mobile SDK
+## Table of Contents
+
+* [What's the Liferay Mobile SDK?](#whats-the-liferay-mobile-sdk)
+* [Liferay Android SDK](#liferay-android-sdk)
+	* [Sample](#sample)
+	* [Setup](#setup)
+	* [Use](#use)
+		* [Asynchronous](#asynchronous)
+		* [Batch](#batch)
+* [Generating SDKs for custom services](#generating-sdks-for-custom-services)
+	* [About](#about)
+	* [Use](#use-1)
+
+
+## What's the Liferay Mobile SDK?
 
 With the Liferay Mobile SDK, you can quickly build native mobile apps that integrate with your different Liferay Portal instances.
 
@@ -11,15 +25,6 @@ For the moment we provide support for Android apps, but it's an extensible syste
 Currently it is compatible with Liferay Portal 6.2 and later. 
 
 The project is divided in 2 sections: the SDK (for Android) and a SDK Builder. The SDK Builder is a code generator that discovers which services are available for a given portal instance and produces most of the code of the SDK. It's template based, that's how we will be able to extend the SDK to other platforms.
-
-## Table of Contents
-
-* [Liferay Android SDK](#liferay-android-sdk)
-	* [Sample](#sample)
-	* [Setup](#setup)
-	* [Use](#use)
-		* [Asynchronous](#asynchronous)
-		* [Batch](#batch)
 
 ## Liferay Android SDK
 
