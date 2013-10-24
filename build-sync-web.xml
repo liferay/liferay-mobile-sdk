@@ -3,7 +3,7 @@
 <project name="sync-web" basedir="." default="build-service">
 	<import file="build-android.xml" />
 
-	<target name="build-service">
+	<target name="build-service" depends="build-common.compile">
 		<antcall target="clear-gen" />
 
 		<antcall target="build-common.build-service">
