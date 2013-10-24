@@ -58,7 +58,7 @@
 
 	<target name="clear-gen">
 		<delete includeemptydirs="true">
-			<fileset dir="${gen.dir}"  includes="**/*" />
+			<fileset dir="${gen.src}" includes="**/*" />
 		</delete>
 	</target>
 
