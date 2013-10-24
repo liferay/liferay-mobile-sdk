@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<project name="build-common" basedir="." default="compile">
+<project name="build-common" basedir="." default="build-service">
     <property name="project.dir" value="${basedir}" />
 
     <property name="dist.dir" value="${project.dir}/dist" />
@@ -45,7 +45,7 @@
 			srcdir="src" />
 	</target>
 
-	<target name="build-service">
+	<target name="build-service" depends="compile">
 		<java
 			classname="com.liferay.mobile.sdk.BuilderAntTask"
 			classpathref="builder.classpath"

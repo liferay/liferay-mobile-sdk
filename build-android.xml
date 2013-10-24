@@ -62,7 +62,7 @@
 		</delete>
 	</target>
 
-	<target name="compile-all">
+	<target name="compile">
 		<delete dir="${android.classes}" />
 
 		<mkdir dir="${android.classes}" />
@@ -91,7 +91,7 @@
 		</javac>
 	</target>
 
-	<target name="compile-test" depends="compile-all">
+	<target name="compile-test" depends="compile">
 		<delete dir="${test.classes}" />
 
 		<mkdir dir="${test.classes}" />
@@ -141,7 +141,7 @@
 		</classpath>
 	</taskdef>
 
-	<target name="jar-all" depends="compile-all">
+	<target name="jar" depends="compile">
 		<jar destfile="${dist.dir.android}/liferay-android-sdk.jar">
 			<fileset dir="${android.classes}" includes="**/*.class" />
 		</jar>

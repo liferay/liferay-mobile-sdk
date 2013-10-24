@@ -18,7 +18,7 @@
 		<antcall target="format-source-gen" />
 	</target>
 
-	<target name="compile-test" depends="compile-all">
+	<target name="compile-test" depends="compile">
 		<delete dir="${test.classes}" />
 
 		<mkdir dir="${test.classes}" />
