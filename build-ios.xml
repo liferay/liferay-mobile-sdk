@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<project name="ios-sdk" basedir="." default="build-service">
+	<import file="build-common.xml" />
+
+	<target name="build-service" depends="build-common.compile">
+		<antcall target="build-common.build-service">
+			<param name="builder" value="ios" />
+		</antcall>
+	</target>
+</project>

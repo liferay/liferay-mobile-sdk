@@ -12,22 +12,19 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.android;
+package com.liferay.mobile.sdk.ios;
 
 import com.liferay.mobile.sdk.BaseBuilder;
 import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.http.PortalVersion;
 import com.liferay.mobile.sdk.velocity.VelocityUtil;
 
-import java.io.File;
-
 import org.apache.velocity.VelocityContext;
-import org.apache.velocity.tools.generic.EscapeTool;
 
 /**
  * @author Bruno Farache
  */
-public class AndroidBuilder extends BaseBuilder {
+public class iOSBuilder extends BaseBuilder {
 
 	public void build(String filter, PortalVersion version, Discovery discovery)
 		throws Exception {
@@ -35,29 +32,20 @@ public class AndroidBuilder extends BaseBuilder {
 		VelocityContext context = getVelocityContext(
 			filter, version, discovery);
 
-		String templatePath = "com/liferay/mobile/sdk/android/service.vm";
-		String filePath = getServiceFilePath(context);
+		String headerTemplate = "com/liferay/mobile/sdk/ios/header.vm";
+		String headerPath = getServiceFilePath(context);
 
-		VelocityUtil.generate(context, templatePath, filePath);
+		VelocityUtil.generate(context, headerTemplate, headerPath);
 	}
 
 	protected String getServiceFilePath(VelocityContext context) {
-		String packageName = (String)context.get(PACKAGE);
 		String className = (String)context.get(CLASS_NAME);
-
-		String packagePath = packageName.replace(".", "/");
 
 		StringBuilder sb = new StringBuilder();
 
-		sb.append("gen/android/src/");
-		sb.append(packagePath);
-		sb.append("/");
-
-		File file = new File(sb.toString());
-		file.mkdirs();
-
+		sb.append("gen/Services/");
 		sb.append(className);
-		sb.append(".java");
+		sb.append(".h");
 
 		return sb.toString();
 	}
@@ -67,31 +55,11 @@ public class AndroidBuilder extends BaseBuilder {
 
 		VelocityContext context = new VelocityContext();
 
-		JavaUtil javaUtil = new JavaUtil();
+		ObjectiveCUtil objectiveCUtil = new ObjectiveCUtil();
 
-		StringBuilder sb = new StringBuilder("com.liferay.mobile.android");
-
-		if (version != PortalVersion.UNKNOWN) {
-			sb.append(".v");
-			sb.append(version.getValue());
-		}
-
-		sb.append(".");
-		sb.append(filter);
-
-		String packageName = sb.toString();
-
-		context.put(CLASS_NAME, javaUtil.getServiceClassName(filter));
-		context.put(DISCOVERY, discovery);
-		context.put(ESCAPE_TOOL, new EscapeTool());
-		context.put(JAVA_UTIL, javaUtil);
-		context.put(PACKAGE, packageName);
+		context.put(CLASS_NAME, objectiveCUtil.getServiceClassName(filter));
 
 		return context;
 	}
-
-	protected static final String JAVA_UTIL = "javaUtil";
-
-	protected static final String PACKAGE = "package";
 
 }

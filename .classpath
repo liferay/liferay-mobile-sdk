@@ -6,6 +6,7 @@
 	<classpathentry kind="src" output="gen/classes" path="gen/src"/>
 	<classpathentry kind="src" output="android/classes" path="android/src"/>
 	<classpathentry kind="src" output="test/classes" path="test/src"/>
+	<classpathentry kind="src" path="gen/android/src"/>
 	<classpathentry kind="lib" path="lib/android/android.jar"/>
 	<classpathentry kind="lib" path="lib/development/velocity-1.7-dep.jar"/>
 	<classpathentry kind="lib" path="lib/development/velocity-tools-generic-2.0.jar"/>

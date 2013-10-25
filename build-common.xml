@@ -36,7 +36,11 @@
 
 		<mkdir dir="classes" />
 
-		<copyfile dest="classes/service.vm" src="src/service.vm" />
+		<copy file="src/com/liferay/mobile/sdk/android/service.vm"
+			todir="classes/com/liferay/mobile/sdk/android" />
+		
+		<copy file="src/com/liferay/mobile/sdk/ios/header.vm"
+			todir="classes/com/liferay/mobile/sdk/ios" />
 
 		<javac
 			classpathref="builder.classpath"

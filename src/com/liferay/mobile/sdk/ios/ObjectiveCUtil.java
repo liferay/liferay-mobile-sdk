@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.android;
+package com.liferay.mobile.sdk.ios;
 
 import com.liferay.mobile.sdk.util.LanguageUtil;
 
@@ -21,7 +21,7 @@ import org.apache.commons.lang.WordUtils;
 /**
  * @author Bruno Farache
  */
-public class JavaUtil extends LanguageUtil {
+public class ObjectiveCUtil extends LanguageUtil {
 
 	public String getReturnType(String type) {
 		type = getType(type);

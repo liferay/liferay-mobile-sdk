@@ -9,9 +9,7 @@
 	<property name="android.classes" value="${android.dir}/classes" />
 	<property name="android.src" value="${android.dir}/src" />
 
-	<property name="gen.dir" value="${project.dir}/gen" />
-	<property name="gen.classes" value="${gen.dir}/classes" />
-	<property name="gen.src" value="${gen.dir}/src" />
+	<property name="gen.src" value="${project.dir}/gen/android/src" />
 
 	<property name="test.dir" value="${project.dir}/test" />
 	<property name="test.classes" value="${test.dir}/classes" />
@@ -23,7 +21,6 @@
 
 	<path id="test.classpath">
 		<pathelement location="${android.classes}" />
-		<pathelement location="${gen.classes}" />
 		<pathelement location="${test.classes}" />
 		<fileset dir="${development.dir}" includes="**/*.jar" />
 	</path>
@@ -49,7 +46,7 @@
 
 	<target name="jar-dlapp">
 		<jar
-			basedir="${gen.classes}"
+			basedir="${android.classes}"
 			includes="com/liferay/mobile/android/**/dlapp/**"
 			jarfile="${dist.dir.android}/dlapp.jar"
 		/>
@@ -121,7 +118,7 @@
 		<jalopy fileformat="unix"
 				convention="jalopy.xml">
 
-			<fileset dir="${gen.dir}">
+			<fileset dir="${gen.src}">
 				<include name="**/*.java" />
 			</fileset>
 		</jalopy>
