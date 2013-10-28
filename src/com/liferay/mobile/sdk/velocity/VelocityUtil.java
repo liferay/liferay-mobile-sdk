@@ -32,10 +32,22 @@ public class VelocityUtil {
 			VelocityContext context, String templatePath, String filePath)
 		throws Exception {
 
+		generate(context, templatePath, filePath, false);
+	}
+
+	public static void generate(
+			VelocityContext context, String templatePath, String filePath,
+			boolean format)
+		throws Exception {
+
+		String resourceLoader = ClasspathResourceLoader.class.getName();
+
+		if (format) {
+			resourceLoader = FormatterResourceLoader.class.getName();
+		}
+
 		Velocity.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
-		Velocity.setProperty(
-			"classpath.resource.loader.class",
-			ClasspathResourceLoader.class.getName());
+		Velocity.setProperty("classpath.resource.loader.class", resourceLoader);
 
 		Velocity.init();
 

@@ -22,6 +22,7 @@ import com.liferay.mobile.sdk.velocity.VelocityUtil;
 import java.io.File;
 
 import org.apache.velocity.VelocityContext;
+import org.apache.velocity.tools.generic.EscapeTool;
 
 /**
  * @author Bruno Farache
@@ -37,7 +38,7 @@ public class iOSBuilder extends BaseBuilder {
 		String headerTemplate = "com/liferay/mobile/sdk/ios/header.vm";
 		String headerPath = getServiceFilePath(context);
 
-		VelocityUtil.generate(context, headerTemplate, headerPath);
+		VelocityUtil.generate(context, headerTemplate, headerPath, true);
 	}
 
 	protected String getServiceFilePath(VelocityContext context) {
@@ -71,6 +72,7 @@ public class iOSBuilder extends BaseBuilder {
 
 		context.put(CLASS_NAME, className.toString());
 		context.put(DISCOVERY, discovery);
+		context.put(ESCAPE_TOOL, new EscapeTool());
 		context.put(LANGUAGE_UTIL, objectiveCUtil);
 
 		return context;
