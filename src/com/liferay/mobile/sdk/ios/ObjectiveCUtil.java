@@ -16,45 +16,37 @@ package com.liferay.mobile.sdk.ios;
 
 import com.liferay.mobile.sdk.util.LanguageUtil;
 
-import org.apache.commons.lang.WordUtils;
-
 /**
  * @author Bruno Farache
  */
 public class ObjectiveCUtil extends LanguageUtil {
 
-	public String getReturnType(String type) {
-		type = getType(type);
-
-		if (type.equals("void")) {
-			return type;
-		}
-
-		if (type.equals("int")) {
-			return "Integer";
-		}
-
-		return WordUtils.capitalize(type);
-	}
-
 	public String getType(String type) {
 		if (type.endsWith("[]") || type.equals("object<list>") ||
 			type.startsWith("list")) {
 
-			return "JSONArray";
+			return "NSArray *";
 		}
 
-		if (type.equals("boolean") || type.equals("double") ||
-			type.equals("int") || type.equals("long") || type.equals("void")) {
+		if (type.equals("void")) {
+			return "void";
+		}
 
-			return type;
+		if (type.equals("boolean")) {
+			return "BOOL";
+		}
+
+		if (type.equals("double") || type.equals("int") ||
+			type.equals("long")) {
+
+			return "NSNumber *";
 		}
 
 		if (type.equals("string")) {
-			return "String";
+			return "NSString *";
 		}
 
-		return "JSONObject";
+		return "NSDictionary *";
 	}
 
 }

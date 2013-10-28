@@ -17,8 +17,8 @@ public class $className extends BaseService {
 	}
 
 	#foreach ($action in $actions)
-		#set ($returnType = $javaUtil.getReturnType($action.response))
-		#set ($methodName = $javaUtil.getMethodName($action.path))
+		#set ($returnType = $languageUtil.getReturnType($action.response))
+		#set ($methodName = $languageUtil.getMethodName($action.path))
 		#set ($parameters = $action.parameters)
 
 		#set ($parameterList = "")
@@ -26,7 +26,7 @@ public class $className extends BaseService {
 
 		#foreach ($parameter in $parameters)
 			#set ($parameterName = $parameter.name)
-			#set ($parameterType = $javaUtil.getType($parameter.type))
+			#set ($parameterType = $languageUtil.getType($parameter.type))
 			#set ($parameterList = "$parameterList$parameterType $parameterName")
 
 			#set ($jsonObj = "$jsonObj${esc.n}_params.put(${esc.q}$parameterName${esc.q}, $parameterName);")

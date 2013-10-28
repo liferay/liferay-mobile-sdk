@@ -19,6 +19,8 @@ import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.http.PortalVersion;
 import com.liferay.mobile.sdk.velocity.VelocityUtil;
 
+import java.io.File;
+
 import org.apache.velocity.VelocityContext;
 
 /**
@@ -43,7 +45,11 @@ public class iOSBuilder extends BaseBuilder {
 
 		StringBuilder sb = new StringBuilder();
 
-		sb.append("gen/Services/");
+		sb.append("gen/ios/services/");
+
+		File file = new File(sb.toString());
+		file.mkdirs();
+
 		sb.append(className);
 		sb.append(".h");
 
@@ -57,7 +63,15 @@ public class iOSBuilder extends BaseBuilder {
 
 		ObjectiveCUtil objectiveCUtil = new ObjectiveCUtil();
 
-		context.put(CLASS_NAME, objectiveCUtil.getServiceClassName(filter));
+		StringBuilder className = new StringBuilder(
+			objectiveCUtil.getServiceClassName(filter));
+
+		className.append("_v");
+		className.append(version.getValue());
+
+		context.put(CLASS_NAME, className.toString());
+		context.put(DISCOVERY, discovery);
+		context.put(LANGUAGE_UTIL, objectiveCUtil);
 
 		return context;
 	}

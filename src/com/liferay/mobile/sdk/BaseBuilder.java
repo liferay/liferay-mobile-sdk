@@ -63,4 +63,6 @@ public abstract class BaseBuilder implements Builder {
 
 	protected static final String ESCAPE_TOOL = "esc";
 
+	protected static final String LANGUAGE_UTIL = "languageUtil";
+
 }

@@ -84,13 +84,11 @@ public class AndroidBuilder extends BaseBuilder {
 		context.put(CLASS_NAME, javaUtil.getServiceClassName(filter));
 		context.put(DISCOVERY, discovery);
 		context.put(ESCAPE_TOOL, new EscapeTool());
-		context.put(JAVA_UTIL, javaUtil);
+		context.put(LANGUAGE_UTIL, javaUtil);
 		context.put(PACKAGE, packageName);
 
 		return context;
 	}
-
-	protected static final String JAVA_UTIL = "javaUtil";
 
 	protected static final String PACKAGE = "package";
 

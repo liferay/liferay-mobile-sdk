@@ -1,2 +1,24 @@
+#set ($actions = $discovery.actions)
 @interface $className : NSObject
+
+#foreach ($action in $actions)
+	#set ($returnType = $languageUtil.getType($action.response))
+	#set ($methodName = $languageUtil.getMethodName($action.path))
+	#set ($parameters = $action.parameters)
+	#set ($parameterList = "")
+#foreach ($parameter in $parameters)
+#set ($parameterName = $parameter.name)
+#set ($parameterType = $languageUtil.getType($parameter.type))
+#set ($prefix = "")
+#if ($velocityCount > 1)
+#set ($prefix = "$parameterName:")
+#end
+#set ($parameterList = "$parameterList$prefix($parameterType)$parameterName")
+#if ($foreach.hasNext)
+#set ($parameterList = "$parameterList ")
+#end
+#end
+- ($returnType)$methodName:$parameterList;
+#end
+
 @end
