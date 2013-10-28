@@ -1,0 +1,8 @@
+@interface JournalFeedService_v62 : NSObject
+
+- (NSDictionary *)addFeed:(NSNumber *)groupId feedId:(NSString *)feedId autoFeedId:(BOOL)autoFeedId name:(NSString *)name description:(NSString *)description type:(NSString *)type structureId:(NSString *)structureId templateId:(NSString *)templateId rendererTemplateId:(NSString *)rendererTemplateId delta:(NSNumber *)delta orderByCol:(NSString *)orderByCol orderByType:(NSString *)orderByType targetLayoutFriendlyUrl:(NSString *)targetLayoutFriendlyUrl targetPortletId:(NSString *)targetPortletId contentField:(NSString *)contentField feedType:(NSString *)feedType feedVersion:(NSNumber *)feedVersion serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)getFeed:(NSNumber *)groupId feedId:(NSNumber *)feedId;
+- (void)deleteFeed:(NSNumber *)groupId feedId:(NSNumber *)feedId;
+- (NSDictionary *)updateFeed:(NSNumber *)groupId feedId:(NSString *)feedId name:(NSString *)name description:(NSString *)description type:(NSString *)type structureId:(NSString *)structureId templateId:(NSString *)templateId rendererTemplateId:(NSString *)rendererTemplateId delta:(NSNumber *)delta orderByCol:(NSString *)orderByCol orderByType:(NSString *)orderByType targetLayoutFriendlyUrl:(NSString *)targetLayoutFriendlyUrl targetPortletId:(NSString *)targetPortletId contentField:(NSString *)contentField feedType:(NSString *)feedType feedVersion:(NSNumber *)feedVersion serviceContext:(NSDictionary *)serviceContext;
+
+@end
