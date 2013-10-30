@@ -35,24 +35,42 @@ public class iOSBuilder extends BaseBuilder {
 		VelocityContext context = getVelocityContext(
 			filter, version, discovery);
 
-		String headerTemplate = "com/liferay/mobile/sdk/ios/header.vm";
-		String headerPath = getServiceFilePath(context);
+		String headerTemplate = "com/liferay/mobile/sdk/ios/h.vm";
+		String headerPath = getFilePath(context, true);
 
 		VelocityUtil.generate(context, headerTemplate, headerPath, true);
+
+		String implTemplate = "com/liferay/mobile/sdk/ios/m.vm";
+		String implPath = getFilePath(context, false);
+
+		VelocityUtil.generate(context, implTemplate, implPath, true);
 	}
 
-	protected String getServiceFilePath(VelocityContext context) {
+	protected String getFilePath(VelocityContext context, boolean header) {
 		String className = (String)context.get(CLASS_NAME);
 
 		StringBuilder sb = new StringBuilder();
 
 		sb.append("gen/ios/services/");
 
+		if (header) {
+			sb.append("h/");
+		}
+		else {
+			sb.append("m/");
+		}
+
 		File file = new File(sb.toString());
 		file.mkdirs();
 
 		sb.append(className);
-		sb.append(".h");
+
+		if (header) {
+			sb.append(".h");
+		}
+		else {
+			sb.append(".m");
+		}
 
 		return sb.toString();
 	}

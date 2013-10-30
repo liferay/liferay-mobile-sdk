@@ -39,7 +39,10 @@
 		<copy file="src/com/liferay/mobile/sdk/android/service.vm"
 			todir="classes/com/liferay/mobile/sdk/android" />
 		
-		<copy file="src/com/liferay/mobile/sdk/ios/header.vm"
+		<copy file="src/com/liferay/mobile/sdk/ios/h.vm"
+			todir="classes/com/liferay/mobile/sdk/ios" />
+
+		<copy file="src/com/liferay/mobile/sdk/ios/m.vm"
 			todir="classes/com/liferay/mobile/sdk/ios" />
 
 		<javac
