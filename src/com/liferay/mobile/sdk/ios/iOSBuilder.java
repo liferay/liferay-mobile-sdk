@@ -51,7 +51,7 @@ public class iOSBuilder extends BaseBuilder {
 
 		StringBuilder sb = new StringBuilder();
 
-		sb.append("gen/ios/services/");
+		sb.append("gen/ios/");
 
 		if (header) {
 			sb.append("h/");
