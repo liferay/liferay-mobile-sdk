@@ -3,9 +3,19 @@
 <project name="ios-sdk" basedir="." default="build-service">
 	<import file="build-common.xml" />
 
+	<property name="gen.src" value="${project.dir}/gen/ios" />
+
 	<target name="build-service" depends="build-common.compile">
+		<antcall target="clear-gen" />
+
 		<antcall target="build-common.build-service">
 			<param name="builder" value="ios" />
 		</antcall>
+	</target>
+
+	<target name="clear-gen">
+		<delete includeemptydirs="true">
+			<fileset dir="${gen.src}" includes="**/*" />
+		</delete>
 	</target>
 </project>
