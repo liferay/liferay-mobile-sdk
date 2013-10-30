@@ -39,6 +39,8 @@
 		<copy file="src/com/liferay/mobile/sdk/android/service.vm"
 			todir="classes/com/liferay/mobile/sdk/android" />
 		
+		<copy file="src/macros.vm" todir="classes" />
+
 		<copy file="src/com/liferay/mobile/sdk/ios/h.vm"
 			todir="classes/com/liferay/mobile/sdk/ios" />
 
