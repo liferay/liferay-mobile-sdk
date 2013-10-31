@@ -29,7 +29,7 @@ import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 public class FormatterResourceLoader extends ClasspathResourceLoader {
 
 	public InputStream getResourceStream(String name)
-			throws ResourceNotFoundException {
+		throws ResourceNotFoundException {
 
 		InputStream is = super.getResourceStream(name);
 
@@ -55,6 +55,14 @@ public class FormatterResourceLoader extends ClasspathResourceLoader {
 		try {
 			while ((line = reader.readLine()) != null) {
 				if (line.trim().equals("")) {
+					continue;
+				}
+
+				if (line.trim().startsWith("##t")) {
+					line = line.trim().replaceAll("##t", "");
+					sb.append(line);
+					sb.append('\n');
+
 					continue;
 				}
 

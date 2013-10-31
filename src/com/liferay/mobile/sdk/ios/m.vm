@@ -23,13 +23,44 @@ ${esc.h}import "${className}.h"
  */
 
 #set ($actions = $discovery.actions)
+#set ($context = $discovery.context)
 
 @implementation $className
 
 ##n
 
 #foreach ($action in $actions)
+	#set ($parameters = $action.parameters)
+
 	#signature($action " {")
+
+	##t	NSDictionary *_params = @{
+
+	#foreach ($parameter in $parameters)
+		#set ($parameterName = $parameter.name)
+		#set ($line = "@${esc.q}$parameterName${esc.q}: $parameterName")
+
+		#if ($foreach.hasNext)
+			#set ($line = "$line,")
+		#end
+
+		##t		$line
+	#end
+
+	##t	};
+
+	##n
+
+	##t	NSDictionary *_command = @{@${esc.q}$context$action.path${esc.q}: _params};
+
+	##n
+
+	#if ($returnType == "void")
+		##t	[session invoke:_command];
+	#else
+		##t	return ($returnType)[session invoke:_command];
+	#end
+
 	}
 
 	##n
