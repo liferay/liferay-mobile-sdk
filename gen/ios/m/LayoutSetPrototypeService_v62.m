@@ -20,18 +20,64 @@
 @implementation LayoutSetPrototypeService_v62
 
 - (NSDictionary *)updateLayoutSetPrototype:(NSNumber *)layoutSetPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active layoutsUpdateable:(BOOL)layoutsUpdateable serviceContext:(NSDictionary *)serviceContext {
+	NSDictionary *_params = @{
+		@"layoutSetPrototypeId": layoutSetPrototypeId,
+		@"nameMap": nameMap,
+		@"description": description,
+		@"active": active,
+		@"layoutsUpdateable": layoutsUpdateable,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/layoutsetprototype/update-layout-set-prototype": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (void)deleteLayoutSetPrototype:(NSNumber *)layoutSetPrototypeId {
+	NSDictionary *_params = @{
+		@"layoutSetPrototypeId": layoutSetPrototypeId
+	};
+
+	NSDictionary *_command = @{@"/layoutsetprototype/delete-layout-set-prototype": _params};
+
+	[session invoke:_command];
 }
 
 - (NSArray *)search:(NSNumber *)companyId active:(NSDictionary *)active obc:(NSDictionary *)obc {
+	NSDictionary *_params = @{
+		@"companyId": companyId,
+		@"active": active,
+		@"obc": obc
+	};
+
+	NSDictionary *_command = @{@"/layoutsetprototype/search": _params};
+
+	return (NSArray *)[session invoke:_command];
 }
 
 - (NSDictionary *)addLayoutSetPrototype:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active layoutsUpdateable:(BOOL)layoutsUpdateable serviceContext:(NSDictionary *)serviceContext {
+	NSDictionary *_params = @{
+		@"nameMap": nameMap,
+		@"description": description,
+		@"active": active,
+		@"layoutsUpdateable": layoutsUpdateable,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/layoutsetprototype/add-layout-set-prototype": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)getLayoutSetPrototype:(NSNumber *)layoutSetPrototypeId {
+	NSDictionary *_params = @{
+		@"layoutSetPrototypeId": layoutSetPrototypeId
+	};
+
+	NSDictionary *_command = @{@"/layoutsetprototype/get-layout-set-prototype": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 @end

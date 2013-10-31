@@ -20,6 +20,34 @@
 @implementation LayoutRevisionService_v62
 
 - (NSDictionary *)addLayoutRevision:(NSNumber *)userId layoutSetBranchId:(NSNumber *)layoutSetBranchId layoutBranchId:(NSNumber *)layoutBranchId parentLayoutRevisionId:(NSNumber *)parentLayoutRevisionId head:(BOOL)head plid:(NSNumber *)plid portletPreferencesPlid:(NSNumber *)portletPreferencesPlid privateLayout:(BOOL)privateLayout name:(NSString *)name title:(NSString *)title description:(NSString *)description keywords:(NSString *)keywords robots:(NSString *)robots typeSettings:(NSString *)typeSettings iconImage:(BOOL)iconImage iconImageId:(NSNumber *)iconImageId themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId wapThemeId:(NSString *)wapThemeId wapColorSchemeId:(NSString *)wapColorSchemeId css:(NSString *)css serviceContext:(NSDictionary *)serviceContext {
+	NSDictionary *_params = @{
+		@"userId": userId,
+		@"layoutSetBranchId": layoutSetBranchId,
+		@"layoutBranchId": layoutBranchId,
+		@"parentLayoutRevisionId": parentLayoutRevisionId,
+		@"head": head,
+		@"plid": plid,
+		@"portletPreferencesPlid": portletPreferencesPlid,
+		@"privateLayout": privateLayout,
+		@"name": name,
+		@"title": title,
+		@"description": description,
+		@"keywords": keywords,
+		@"robots": robots,
+		@"typeSettings": typeSettings,
+		@"iconImage": iconImage,
+		@"iconImageId": iconImageId,
+		@"themeId": themeId,
+		@"colorSchemeId": colorSchemeId,
+		@"wapThemeId": wapThemeId,
+		@"wapColorSchemeId": wapColorSchemeId,
+		@"css": css,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/layoutrevision/add-layout-revision": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 @end

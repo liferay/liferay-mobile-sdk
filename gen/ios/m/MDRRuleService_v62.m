@@ -20,18 +20,63 @@
 @implementation MDRRuleService_v62
 
 - (NSDictionary *)updateRule:(NSNumber *)ruleId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext {
+	NSDictionary *_params = @{
+		@"ruleId": ruleId,
+		@"nameMap": nameMap,
+		@"descriptionMap": descriptionMap,
+		@"type": type,
+		@"typeSettingsProperties": typeSettingsProperties,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/mdrrule/update-rule": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (void)deleteRule:(NSNumber *)ruleId {
+	NSDictionary *_params = @{
+		@"ruleId": ruleId
+	};
+
+	NSDictionary *_command = @{@"/mdrrule/delete-rule": _params};
+
+	[session invoke:_command];
 }
 
 - (NSDictionary *)addRule:(NSNumber *)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext {
+	NSDictionary *_params = @{
+		@"ruleGroupId": ruleGroupId,
+		@"nameMap": nameMap,
+		@"descriptionMap": descriptionMap,
+		@"type": type,
+		@"typeSettings": typeSettings,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/mdrrule/add-rule": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)getRule:(NSNumber *)ruleId {
+	NSDictionary *_params = @{
+		@"ruleId": ruleId
+	};
+
+	NSDictionary *_command = @{@"/mdrrule/get-rule": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)fetchRule:(NSNumber *)ruleId {
+	NSDictionary *_params = @{
+		@"ruleId": ruleId
+	};
+
+	NSDictionary *_command = @{@"/mdrrule/fetch-rule": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 @end

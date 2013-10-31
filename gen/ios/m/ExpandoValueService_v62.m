@@ -20,15 +20,60 @@
 @implementation ExpandoValueService_v62
 
 - (NSDictionary *)getData:(NSNumber *)companyId className:(NSString *)className tableName:(NSString *)tableName columnNames:(NSDictionary *)columnNames classPK:(NSNumber *)classPK {
+	NSDictionary *_params = @{
+		@"companyId": companyId,
+		@"className": className,
+		@"tableName": tableName,
+		@"columnNames": columnNames,
+		@"classPK": classPK
+	};
+
+	NSDictionary *_command = @{@"/expandovalue/get-data": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (void)addValues:(NSNumber *)companyId className:(NSString *)className tableName:(NSString *)tableName classPK:(NSNumber *)classPK attributeValues:(NSDictionary *)attributeValues {
+	NSDictionary *_params = @{
+		@"companyId": companyId,
+		@"className": className,
+		@"tableName": tableName,
+		@"classPK": classPK,
+		@"attributeValues": attributeValues
+	};
+
+	NSDictionary *_command = @{@"/expandovalue/add-values": _params};
+
+	[session invoke:_command];
 }
 
 - (NSDictionary *)addValue:(NSNumber *)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(NSNumber *)classPK data:(NSDictionary *)data {
+	NSDictionary *_params = @{
+		@"companyId": companyId,
+		@"className": className,
+		@"tableName": tableName,
+		@"columnName": columnName,
+		@"classPK": classPK,
+		@"data": data
+	};
+
+	NSDictionary *_command = @{@"/expandovalue/add-value": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)getJsonData:(NSNumber *)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(NSNumber *)classPK {
+	NSDictionary *_params = @{
+		@"companyId": companyId,
+		@"className": className,
+		@"tableName": tableName,
+		@"columnName": columnName,
+		@"classPK": classPK
+	};
+
+	NSDictionary *_command = @{@"/expandovalue/get-json-data": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 @end

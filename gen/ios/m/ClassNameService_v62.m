@@ -20,9 +20,23 @@
 @implementation ClassNameService_v62
 
 - (NSDictionary *)fetchClassName:(NSString *)value {
+	NSDictionary *_params = @{
+		@"value": value
+	};
+
+	NSDictionary *_command = @{@"/classname/fetch-class-name": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSNumber *)fetchClassNameId:(NSString *)value {
+	NSDictionary *_params = @{
+		@"value": value
+	};
+
+	NSDictionary *_command = @{@"/classname/fetch-class-name-id": _params};
+
+	return (NSNumber *)[session invoke:_command];
 }
 
 @end

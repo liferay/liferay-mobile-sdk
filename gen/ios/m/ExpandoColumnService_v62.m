@@ -20,15 +20,50 @@
 @implementation ExpandoColumnService_v62
 
 - (NSDictionary *)addColumn:(NSNumber *)tableId name:(NSString *)name type:(NSNumber *)type defaultData:(NSDictionary *)defaultData {
+	NSDictionary *_params = @{
+		@"tableId": tableId,
+		@"name": name,
+		@"type": type,
+		@"defaultData": defaultData
+	};
+
+	NSDictionary *_command = @{@"/expandocolumn/add-column": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (void)deleteColumn:(NSNumber *)columnId {
+	NSDictionary *_params = @{
+		@"columnId": columnId
+	};
+
+	NSDictionary *_command = @{@"/expandocolumn/delete-column": _params};
+
+	[session invoke:_command];
 }
 
 - (NSDictionary *)updateTypeSettings:(NSNumber *)columnId typeSettings:(NSString *)typeSettings {
+	NSDictionary *_params = @{
+		@"columnId": columnId,
+		@"typeSettings": typeSettings
+	};
+
+	NSDictionary *_command = @{@"/expandocolumn/update-type-settings": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)updateColumn:(NSNumber *)columnId name:(NSString *)name type:(NSNumber *)type defaultData:(NSDictionary *)defaultData {
+	NSDictionary *_params = @{
+		@"columnId": columnId,
+		@"name": name,
+		@"type": type,
+		@"defaultData": defaultData
+	};
+
+	NSDictionary *_command = @{@"/expandocolumn/update-column": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 @end

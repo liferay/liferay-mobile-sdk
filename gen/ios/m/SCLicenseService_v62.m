@@ -20,15 +20,52 @@
 @implementation SCLicenseService_v62
 
 - (void)deleteLicense:(NSNumber *)licenseId {
+	NSDictionary *_params = @{
+		@"licenseId": licenseId
+	};
+
+	NSDictionary *_command = @{@"/sclicense/delete-license": _params};
+
+	[session invoke:_command];
 }
 
 - (NSDictionary *)updateLicense:(NSNumber *)licenseId name:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended {
+	NSDictionary *_params = @{
+		@"licenseId": licenseId,
+		@"name": name,
+		@"url": url,
+		@"openSource": openSource,
+		@"active": active,
+		@"recommended": recommended
+	};
+
+	NSDictionary *_command = @{@"/sclicense/update-license": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)getLicense:(NSNumber *)licenseId {
+	NSDictionary *_params = @{
+		@"licenseId": licenseId
+	};
+
+	NSDictionary *_command = @{@"/sclicense/get-license": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)addLicense:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended {
+	NSDictionary *_params = @{
+		@"name": name,
+		@"url": url,
+		@"openSource": openSource,
+		@"active": active,
+		@"recommended": recommended
+	};
+
+	NSDictionary *_command = @{@"/sclicense/add-license": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 @end

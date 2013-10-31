@@ -20,21 +20,71 @@
 @implementation MDRRuleGroupService_v62
 
 - (NSDictionary *)copyRuleGroup:(NSNumber *)ruleGroupId groupId:(NSNumber *)groupId serviceContext:(NSDictionary *)serviceContext {
+	NSDictionary *_params = @{
+		@"ruleGroupId": ruleGroupId,
+		@"groupId": groupId,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/mdrrulegroup/copy-rule-group": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)updateRuleGroup:(NSNumber *)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext {
+	NSDictionary *_params = @{
+		@"ruleGroupId": ruleGroupId,
+		@"nameMap": nameMap,
+		@"descriptionMap": descriptionMap,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/mdrrulegroup/update-rule-group": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (void)deleteRuleGroup:(NSNumber *)ruleGroupId {
+	NSDictionary *_params = @{
+		@"ruleGroupId": ruleGroupId
+	};
+
+	NSDictionary *_command = @{@"/mdrrulegroup/delete-rule-group": _params};
+
+	[session invoke:_command];
 }
 
 - (NSDictionary *)fetchRuleGroup:(NSNumber *)ruleGroupId {
+	NSDictionary *_params = @{
+		@"ruleGroupId": ruleGroupId
+	};
+
+	NSDictionary *_command = @{@"/mdrrulegroup/fetch-rule-group": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)addRuleGroup:(NSNumber *)groupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext {
+	NSDictionary *_params = @{
+		@"groupId": groupId,
+		@"nameMap": nameMap,
+		@"descriptionMap": descriptionMap,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/mdrrulegroup/add-rule-group": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)getRuleGroup:(NSNumber *)ruleGroupId {
+	NSDictionary *_params = @{
+		@"ruleGroupId": ruleGroupId
+	};
+
+	NSDictionary *_command = @{@"/mdrrulegroup/get-rule-group": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 @end

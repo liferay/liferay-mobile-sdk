@@ -20,12 +20,40 @@
 @implementation LayoutBranchService_v62
 
 - (NSDictionary *)addLayoutBranch:(NSNumber *)layoutRevisionId name:(NSString *)name description:(NSString *)description master:(BOOL)master serviceContext:(NSDictionary *)serviceContext {
+	NSDictionary *_params = @{
+		@"layoutRevisionId": layoutRevisionId,
+		@"name": name,
+		@"description": description,
+		@"master": master,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/layoutbranch/add-layout-branch": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)updateLayoutBranch:(NSNumber *)layoutBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext {
+	NSDictionary *_params = @{
+		@"layoutBranchId": layoutBranchId,
+		@"name": name,
+		@"description": description,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/layoutbranch/update-layout-branch": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (void)deleteLayoutBranch:(NSNumber *)layoutBranchId {
+	NSDictionary *_params = @{
+		@"layoutBranchId": layoutBranchId
+	};
+
+	NSDictionary *_command = @{@"/layoutbranch/delete-layout-branch": _params};
+
+	[session invoke:_command];
 }
 
 @end

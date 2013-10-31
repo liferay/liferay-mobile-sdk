@@ -20,6 +20,17 @@
 @implementation AnnouncementsDeliveryService_v62
 
 - (NSDictionary *)updateDelivery:(NSNumber *)userId type:(NSString *)type email:(BOOL)email sms:(BOOL)sms website:(BOOL)website {
+	NSDictionary *_params = @{
+		@"userId": userId,
+		@"type": type,
+		@"email": email,
+		@"sms": sms,
+		@"website": website
+	};
+
+	NSDictionary *_command = @{@"/announcementsdelivery/update-delivery": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 @end

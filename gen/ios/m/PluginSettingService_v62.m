@@ -20,6 +20,17 @@
 @implementation PluginSettingService_v62
 
 - (NSDictionary *)updatePluginSetting:(NSNumber *)companyId pluginId:(NSString *)pluginId pluginType:(NSString *)pluginType roles:(NSString *)roles active:(BOOL)active {
+	NSDictionary *_params = @{
+		@"companyId": companyId,
+		@"pluginId": pluginId,
+		@"pluginType": pluginType,
+		@"roles": roles,
+		@"active": active
+	};
+
+	NSDictionary *_command = @{@"/pluginsetting/update-plugin-setting": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 @end

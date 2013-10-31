@@ -20,9 +20,26 @@
 @implementation RatingsEntryService_v62
 
 - (NSDictionary *)updateEntry:(NSString *)className classPK:(NSNumber *)classPK score:(NSNumber *)score {
+	NSDictionary *_params = @{
+		@"className": className,
+		@"classPK": classPK,
+		@"score": score
+	};
+
+	NSDictionary *_command = @{@"/ratingsentry/update-entry": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (void)deleteEntry:(NSString *)className classPK:(NSNumber *)classPK {
+	NSDictionary *_params = @{
+		@"className": className,
+		@"classPK": classPK
+	};
+
+	NSDictionary *_command = @{@"/ratingsentry/delete-entry": _params};
+
+	[session invoke:_command];
 }
 
 @end

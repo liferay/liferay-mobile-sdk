@@ -20,12 +20,38 @@
 @implementation ContactService_v62
 
 - (NSDictionary *)getContact:(NSNumber *)contactId {
+	NSDictionary *_params = @{
+		@"contactId": contactId
+	};
+
+	NSDictionary *_command = @{@"/contact/get-contact": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSNumber *)getContactsCount:(NSNumber *)classNameId classPK:(NSNumber *)classPK {
+	NSDictionary *_params = @{
+		@"classNameId": classNameId,
+		@"classPK": classPK
+	};
+
+	NSDictionary *_command = @{@"/contact/get-contacts-count": _params};
+
+	return (NSNumber *)[session invoke:_command];
 }
 
 - (NSArray *)getContacts:(NSNumber *)classNameId classPK:(NSNumber *)classPK start:(NSNumber *)start end:(NSNumber *)end orderByComparator:(NSDictionary *)orderByComparator {
+	NSDictionary *_params = @{
+		@"classNameId": classNameId,
+		@"classPK": classPK,
+		@"start": start,
+		@"end": end,
+		@"orderByComparator": orderByComparator
+	};
+
+	NSDictionary *_command = @{@"/contact/get-contacts": _params};
+
+	return (NSArray *)[session invoke:_command];
 }
 
 @end

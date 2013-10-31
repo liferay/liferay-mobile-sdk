@@ -20,18 +20,64 @@
 @implementation SCFrameworkVersionService_v62
 
 - (NSDictionary *)getFrameworkVersion:(NSNumber *)frameworkVersionId {
+	NSDictionary *_params = @{
+		@"frameworkVersionId": frameworkVersionId
+	};
+
+	NSDictionary *_command = @{@"/scframeworkversion/get-framework-version": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)addFrameworkVersion:(NSString *)name url:(NSString *)url active:(BOOL)active priority:(NSNumber *)priority serviceContext:(NSDictionary *)serviceContext {
+	NSDictionary *_params = @{
+		@"name": name,
+		@"url": url,
+		@"active": active,
+		@"priority": priority,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/scframeworkversion/add-framework-version": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)updateFrameworkVersion:(NSNumber *)frameworkVersionId name:(NSString *)name url:(NSString *)url active:(BOOL)active priority:(NSNumber *)priority {
+	NSDictionary *_params = @{
+		@"frameworkVersionId": frameworkVersionId,
+		@"name": name,
+		@"url": url,
+		@"active": active,
+		@"priority": priority
+	};
+
+	NSDictionary *_command = @{@"/scframeworkversion/update-framework-version": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSArray *)getFrameworkVersions:(NSNumber *)groupId active:(BOOL)active start:(NSNumber *)start end:(NSNumber *)end {
+	NSDictionary *_params = @{
+		@"groupId": groupId,
+		@"active": active,
+		@"start": start,
+		@"end": end
+	};
+
+	NSDictionary *_command = @{@"/scframeworkversion/get-framework-versions": _params};
+
+	return (NSArray *)[session invoke:_command];
 }
 
 - (void)deleteFrameworkVersion:(NSNumber *)frameworkVersionId {
+	NSDictionary *_params = @{
+		@"frameworkVersionId": frameworkVersionId
+	};
+
+	NSDictionary *_command = @{@"/scframeworkversion/delete-framework-version": _params};
+
+	[session invoke:_command];
 }
 
 @end

@@ -20,12 +20,35 @@
 @implementation AnnouncementsFlagService_v62
 
 - (void)addFlag:(NSNumber *)entryId value:(NSNumber *)value {
+	NSDictionary *_params = @{
+		@"entryId": entryId,
+		@"value": value
+	};
+
+	NSDictionary *_command = @{@"/announcementsflag/add-flag": _params};
+
+	[session invoke:_command];
 }
 
 - (void)deleteFlag:(NSNumber *)flagId {
+	NSDictionary *_params = @{
+		@"flagId": flagId
+	};
+
+	NSDictionary *_command = @{@"/announcementsflag/delete-flag": _params};
+
+	[session invoke:_command];
 }
 
 - (NSDictionary *)getFlag:(NSNumber *)entryId value:(NSNumber *)value {
+	NSDictionary *_params = @{
+		@"entryId": entryId,
+		@"value": value
+	};
+
+	NSDictionary *_command = @{@"/announcementsflag/get-flag": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 @end

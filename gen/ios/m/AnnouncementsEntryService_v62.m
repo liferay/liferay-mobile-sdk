@@ -20,15 +20,77 @@
 @implementation AnnouncementsEntryService_v62
 
 - (NSDictionary *)addEntry:(NSNumber *)plid classNameId:(NSNumber *)classNameId classPK:(NSNumber *)classPK title:(NSString *)title content:(NSString *)content url:(NSString *)url type:(NSString *)type displayDateMonth:(NSNumber *)displayDateMonth displayDateDay:(NSNumber *)displayDateDay displayDateYear:(NSNumber *)displayDateYear displayDateHour:(NSNumber *)displayDateHour displayDateMinute:(NSNumber *)displayDateMinute displayImmediately:(BOOL)displayImmediately expirationDateMonth:(NSNumber *)expirationDateMonth expirationDateDay:(NSNumber *)expirationDateDay expirationDateYear:(NSNumber *)expirationDateYear expirationDateHour:(NSNumber *)expirationDateHour expirationDateMinute:(NSNumber *)expirationDateMinute priority:(NSNumber *)priority alert:(BOOL)alert {
+	NSDictionary *_params = @{
+		@"plid": plid,
+		@"classNameId": classNameId,
+		@"classPK": classPK,
+		@"title": title,
+		@"content": content,
+		@"url": url,
+		@"type": type,
+		@"displayDateMonth": displayDateMonth,
+		@"displayDateDay": displayDateDay,
+		@"displayDateYear": displayDateYear,
+		@"displayDateHour": displayDateHour,
+		@"displayDateMinute": displayDateMinute,
+		@"displayImmediately": displayImmediately,
+		@"expirationDateMonth": expirationDateMonth,
+		@"expirationDateDay": expirationDateDay,
+		@"expirationDateYear": expirationDateYear,
+		@"expirationDateHour": expirationDateHour,
+		@"expirationDateMinute": expirationDateMinute,
+		@"priority": priority,
+		@"alert": alert
+	};
+
+	NSDictionary *_command = @{@"/announcementsentry/add-entry": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)getEntry:(NSNumber *)entryId {
+	NSDictionary *_params = @{
+		@"entryId": entryId
+	};
+
+	NSDictionary *_command = @{@"/announcementsentry/get-entry": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)updateEntry:(NSNumber *)entryId title:(NSString *)title content:(NSString *)content url:(NSString *)url type:(NSString *)type displayDateMonth:(NSNumber *)displayDateMonth displayDateDay:(NSNumber *)displayDateDay displayDateYear:(NSNumber *)displayDateYear displayDateHour:(NSNumber *)displayDateHour displayDateMinute:(NSNumber *)displayDateMinute expirationDateMonth:(NSNumber *)expirationDateMonth expirationDateDay:(NSNumber *)expirationDateDay expirationDateYear:(NSNumber *)expirationDateYear expirationDateHour:(NSNumber *)expirationDateHour expirationDateMinute:(NSNumber *)expirationDateMinute priority:(NSNumber *)priority {
+	NSDictionary *_params = @{
+		@"entryId": entryId,
+		@"title": title,
+		@"content": content,
+		@"url": url,
+		@"type": type,
+		@"displayDateMonth": displayDateMonth,
+		@"displayDateDay": displayDateDay,
+		@"displayDateYear": displayDateYear,
+		@"displayDateHour": displayDateHour,
+		@"displayDateMinute": displayDateMinute,
+		@"expirationDateMonth": expirationDateMonth,
+		@"expirationDateDay": expirationDateDay,
+		@"expirationDateYear": expirationDateYear,
+		@"expirationDateHour": expirationDateHour,
+		@"expirationDateMinute": expirationDateMinute,
+		@"priority": priority
+	};
+
+	NSDictionary *_command = @{@"/announcementsentry/update-entry": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (void)deleteEntry:(NSNumber *)entryId {
+	NSDictionary *_params = @{
+		@"entryId": entryId
+	};
+
+	NSDictionary *_command = @{@"/announcementsentry/delete-entry": _params};
+
+	[session invoke:_command];
 }
 
 @end

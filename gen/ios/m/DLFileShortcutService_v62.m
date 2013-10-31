@@ -20,15 +20,49 @@
 @implementation DLFileShortcutService_v62
 
 - (void)deleteFileShortcut:(NSNumber *)fileShortcutId {
+	NSDictionary *_params = @{
+		@"fileShortcutId": fileShortcutId
+	};
+
+	NSDictionary *_command = @{@"/dlfileshortcut/delete-file-shortcut": _params};
+
+	[session invoke:_command];
 }
 
 - (NSDictionary *)getFileShortcut:(NSNumber *)fileShortcutId {
+	NSDictionary *_params = @{
+		@"fileShortcutId": fileShortcutId
+	};
+
+	NSDictionary *_command = @{@"/dlfileshortcut/get-file-shortcut": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)updateFileShortcut:(NSNumber *)fileShortcutId folderId:(NSNumber *)folderId toFileEntryId:(NSNumber *)toFileEntryId serviceContext:(NSDictionary *)serviceContext {
+	NSDictionary *_params = @{
+		@"fileShortcutId": fileShortcutId,
+		@"folderId": folderId,
+		@"toFileEntryId": toFileEntryId,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/dlfileshortcut/update-file-shortcut": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)addFileShortcut:(NSNumber *)groupId folderId:(NSNumber *)folderId toFileEntryId:(NSNumber *)toFileEntryId serviceContext:(NSDictionary *)serviceContext {
+	NSDictionary *_params = @{
+		@"groupId": groupId,
+		@"folderId": folderId,
+		@"toFileEntryId": toFileEntryId,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/dlfileshortcut/add-file-shortcut": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 @end

@@ -20,15 +20,45 @@
 @implementation DLFileVersionService_v62
 
 - (NSDictionary *)getFileVersion:(NSNumber *)fileVersionId {
+	NSDictionary *_params = @{
+		@"fileVersionId": fileVersionId
+	};
+
+	NSDictionary *_command = @{@"/dlfileversion/get-file-version": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)getLatestFileVersion:(NSNumber *)fileEntryId {
+	NSDictionary *_params = @{
+		@"fileEntryId": fileEntryId
+	};
+
+	NSDictionary *_command = @{@"/dlfileversion/get-latest-file-version": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSArray *)getFileVersions:(NSNumber *)fileEntryId status:(NSNumber *)status {
+	NSDictionary *_params = @{
+		@"fileEntryId": fileEntryId,
+		@"status": status
+	};
+
+	NSDictionary *_command = @{@"/dlfileversion/get-file-versions": _params};
+
+	return (NSArray *)[session invoke:_command];
 }
 
 - (NSNumber *)getFileVersionsCount:(NSNumber *)fileEntryId status:(NSNumber *)status {
+	NSDictionary *_params = @{
+		@"fileEntryId": fileEntryId,
+		@"status": status
+	};
+
+	NSDictionary *_command = @{@"/dlfileversion/get-file-versions-count": _params};
+
+	return (NSNumber *)[session invoke:_command];
 }
 
 @end

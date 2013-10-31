@@ -20,6 +20,13 @@
 @implementation ImageService_v62
 
 - (NSDictionary *)getImage:(NSNumber *)imageId {
+	NSDictionary *_params = @{
+		@"imageId": imageId
+	};
+
+	NSDictionary *_command = @{@"/image/get-image": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 @end

@@ -20,15 +20,65 @@
 @implementation ResourcePermissionService_v62
 
 - (void)removeResourcePermissions:(NSNumber *)groupId companyId:(NSNumber *)companyId name:(NSString *)name scope:(NSNumber *)scope roleId:(NSNumber *)roleId actionId:(NSString *)actionId {
+	NSDictionary *_params = @{
+		@"groupId": groupId,
+		@"companyId": companyId,
+		@"name": name,
+		@"scope": scope,
+		@"roleId": roleId,
+		@"actionId": actionId
+	};
+
+	NSDictionary *_command = @{@"/resourcepermission/remove-resource-permissions": _params};
+
+	[session invoke:_command];
 }
 
 - (void)addResourcePermission:(NSNumber *)groupId companyId:(NSNumber *)companyId name:(NSString *)name scope:(NSNumber *)scope primKey:(NSString *)primKey roleId:(NSNumber *)roleId actionId:(NSString *)actionId {
+	NSDictionary *_params = @{
+		@"groupId": groupId,
+		@"companyId": companyId,
+		@"name": name,
+		@"scope": scope,
+		@"primKey": primKey,
+		@"roleId": roleId,
+		@"actionId": actionId
+	};
+
+	NSDictionary *_command = @{@"/resourcepermission/add-resource-permission": _params};
+
+	[session invoke:_command];
 }
 
 - (void)setIndividualResourcePermissions:(NSNumber *)groupId companyId:(NSNumber *)companyId name:(NSString *)name primKey:(NSString *)primKey roleId:(NSNumber *)roleId actionIds:(NSArray *)actionIds {
+	NSDictionary *_params = @{
+		@"groupId": groupId,
+		@"companyId": companyId,
+		@"name": name,
+		@"primKey": primKey,
+		@"roleId": roleId,
+		@"actionIds": actionIds
+	};
+
+	NSDictionary *_command = @{@"/resourcepermission/set-individual-resource-permissions": _params};
+
+	[session invoke:_command];
 }
 
 - (void)removeResourcePermission:(NSNumber *)groupId companyId:(NSNumber *)companyId name:(NSString *)name scope:(NSNumber *)scope primKey:(NSString *)primKey roleId:(NSNumber *)roleId actionId:(NSString *)actionId {
+	NSDictionary *_params = @{
+		@"groupId": groupId,
+		@"companyId": companyId,
+		@"name": name,
+		@"scope": scope,
+		@"primKey": primKey,
+		@"roleId": roleId,
+		@"actionId": actionId
+	};
+
+	NSDictionary *_command = @{@"/resourcepermission/remove-resource-permission": _params};
+
+	[session invoke:_command];
 }
 
 @end

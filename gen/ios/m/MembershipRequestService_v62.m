@@ -20,15 +20,49 @@
 @implementation MembershipRequestService_v62
 
 - (NSDictionary *)addMembershipRequest:(NSNumber *)groupId comments:(NSString *)comments serviceContext:(NSDictionary *)serviceContext {
+	NSDictionary *_params = @{
+		@"groupId": groupId,
+		@"comments": comments,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/membershiprequest/add-membership-request": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)getMembershipRequest:(NSNumber *)membershipRequestId {
+	NSDictionary *_params = @{
+		@"membershipRequestId": membershipRequestId
+	};
+
+	NSDictionary *_command = @{@"/membershiprequest/get-membership-request": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (void)updateStatus:(NSNumber *)membershipRequestId reviewComments:(NSString *)reviewComments statusId:(NSNumber *)statusId serviceContext:(NSDictionary *)serviceContext {
+	NSDictionary *_params = @{
+		@"membershipRequestId": membershipRequestId,
+		@"reviewComments": reviewComments,
+		@"statusId": statusId,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/membershiprequest/update-status": _params};
+
+	[session invoke:_command];
 }
 
 - (void)deleteMembershipRequests:(NSNumber *)groupId statusId:(NSNumber *)statusId {
+	NSDictionary *_params = @{
+		@"groupId": groupId,
+		@"statusId": statusId
+	};
+
+	NSDictionary *_command = @{@"/membershiprequest/delete-membership-requests": _params};
+
+	[session invoke:_command];
 }
 
 @end

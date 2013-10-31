@@ -20,21 +20,80 @@
 @implementation SCProductVersionService_v62
 
 - (NSNumber *)getProductVersionsCount:(NSNumber *)productEntryId {
+	NSDictionary *_params = @{
+		@"productEntryId": productEntryId
+	};
+
+	NSDictionary *_command = @{@"/scproductversion/get-product-versions-count": _params};
+
+	return (NSNumber *)[session invoke:_command];
 }
 
 - (NSDictionary *)updateProductVersion:(NSNumber *)productVersionId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds {
+	NSDictionary *_params = @{
+		@"productVersionId": productVersionId,
+		@"version": version,
+		@"changeLog": changeLog,
+		@"downloadPageURL": downloadPageURL,
+		@"directDownloadURL": directDownloadURL,
+		@"testDirectDownloadURL": testDirectDownloadURL,
+		@"repoStoreArtifact": repoStoreArtifact,
+		@"frameworkVersionIds": frameworkVersionIds
+	};
+
+	NSDictionary *_command = @{@"/scproductversion/update-product-version": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)addProductVersion:(NSNumber *)productEntryId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds serviceContext:(NSDictionary *)serviceContext {
+	NSDictionary *_params = @{
+		@"productEntryId": productEntryId,
+		@"version": version,
+		@"changeLog": changeLog,
+		@"downloadPageURL": downloadPageURL,
+		@"directDownloadURL": directDownloadURL,
+		@"testDirectDownloadURL": testDirectDownloadURL,
+		@"repoStoreArtifact": repoStoreArtifact,
+		@"frameworkVersionIds": frameworkVersionIds,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/scproductversion/add-product-version": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (void)deleteProductVersion:(NSNumber *)productVersionId {
+	NSDictionary *_params = @{
+		@"productVersionId": productVersionId
+	};
+
+	NSDictionary *_command = @{@"/scproductversion/delete-product-version": _params};
+
+	[session invoke:_command];
 }
 
 - (NSDictionary *)getProductVersion:(NSNumber *)productVersionId {
+	NSDictionary *_params = @{
+		@"productVersionId": productVersionId
+	};
+
+	NSDictionary *_command = @{@"/scproductversion/get-product-version": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSArray *)getProductVersions:(NSNumber *)productEntryId start:(NSNumber *)start end:(NSNumber *)end {
+	NSDictionary *_params = @{
+		@"productEntryId": productEntryId,
+		@"start": start,
+		@"end": end
+	};
+
+	NSDictionary *_command = @{@"/scproductversion/get-product-versions": _params};
+
+	return (NSArray *)[session invoke:_command];
 }
 
 @end

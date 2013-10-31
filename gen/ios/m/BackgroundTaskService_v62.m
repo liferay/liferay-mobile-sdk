@@ -20,6 +20,13 @@
 @implementation BackgroundTaskService_v62
 
 - (NSString *)getBackgroundTaskStatusJson:(NSNumber *)backgroundTaskId {
+	NSDictionary *_params = @{
+		@"backgroundTaskId": backgroundTaskId
+	};
+
+	NSDictionary *_command = @{@"/backgroundtask/get-background-task-status-json": _params};
+
+	return (NSString *)[session invoke:_command];
 }
 
 @end

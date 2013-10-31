@@ -20,15 +20,67 @@
 @implementation SCProductEntryService_v62
 
 - (NSDictionary *)addProductEntry:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages serviceContext:(NSDictionary *)serviceContext {
+	NSDictionary *_params = @{
+		@"name": name,
+		@"type": type,
+		@"tags": tags,
+		@"shortDescription": shortDescription,
+		@"longDescription": longDescription,
+		@"pageURL": pageURL,
+		@"author": author,
+		@"repoGroupId": repoGroupId,
+		@"repoArtifactId": repoArtifactId,
+		@"licenseIds": licenseIds,
+		@"thumbnails": thumbnails,
+		@"fullImages": fullImages,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/scproductentry/add-product-entry": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)updateProductEntry:(NSNumber *)productEntryId name:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages {
+	NSDictionary *_params = @{
+		@"productEntryId": productEntryId,
+		@"name": name,
+		@"type": type,
+		@"tags": tags,
+		@"shortDescription": shortDescription,
+		@"longDescription": longDescription,
+		@"pageURL": pageURL,
+		@"author": author,
+		@"repoGroupId": repoGroupId,
+		@"repoArtifactId": repoArtifactId,
+		@"licenseIds": licenseIds,
+		@"thumbnails": thumbnails,
+		@"fullImages": fullImages
+	};
+
+	NSDictionary *_command = @{@"/scproductentry/update-product-entry": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (NSDictionary *)getProductEntry:(NSNumber *)productEntryId {
+	NSDictionary *_params = @{
+		@"productEntryId": productEntryId
+	};
+
+	NSDictionary *_command = @{@"/scproductentry/get-product-entry": _params};
+
+	return (NSDictionary *)[session invoke:_command];
 }
 
 - (void)deleteProductEntry:(NSNumber *)productEntryId {
+	NSDictionary *_params = @{
+		@"productEntryId": productEntryId
+	};
+
+	NSDictionary *_command = @{@"/scproductentry/delete-product-entry": _params};
+
+	[session invoke:_command];
 }
 
 @end
