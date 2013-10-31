@@ -19,77 +19,77 @@
  */
 @implementation AddressService_v62
 
-- (void)deleteAddress:(NSNumber *)addressId {
+- (void)deleteAddress:(long)addressId {
 	NSDictionary *_params = @{
-		@"addressId": addressId
+		@"addressId": @(addressId)
 	};
 
 	NSDictionary *_command = @{@"/address/delete-address": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)getAddress:(NSNumber *)addressId {
+- (NSDictionary *)getAddress:(long)addressId {
 	NSDictionary *_params = @{
-		@"addressId": addressId
+		@"addressId": @(addressId)
 	};
 
 	NSDictionary *_command = @{@"/address/get-address": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateAddress:(NSNumber *)addressId street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(NSNumber *)regionId countryId:(NSNumber *)countryId typeId:(NSNumber *)typeId mailing:(BOOL)mailing primary:(BOOL)primary {
+- (NSDictionary *)updateAddress:(long)addressId street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long)regionId countryId:(long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary {
 	NSDictionary *_params = @{
-		@"addressId": addressId,
+		@"addressId": @(addressId),
 		@"street1": street1,
 		@"street2": street2,
 		@"street3": street3,
 		@"city": city,
 		@"zip": zip,
-		@"regionId": regionId,
-		@"countryId": countryId,
-		@"typeId": typeId,
-		@"mailing": mailing,
-		@"primary": primary
+		@"regionId": @(regionId),
+		@"countryId": @(countryId),
+		@"typeId": @(typeId),
+		@"mailing": @(mailing),
+		@"primary": @(primary)
 	};
 
 	NSDictionary *_command = @{@"/address/update-address": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSArray *)getAddresses:(NSString *)className classPK:(NSNumber *)classPK {
+- (NSArray *)getAddresses:(NSString *)className classPK:(long)classPK {
 	NSDictionary *_params = @{
 		@"className": className,
-		@"classPK": classPK
+		@"classPK": @(classPK)
 	};
 
 	NSDictionary *_command = @{@"/address/get-addresses": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)addAddress:(NSString *)className classPK:(NSNumber *)classPK street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(NSNumber *)regionId countryId:(NSNumber *)countryId typeId:(NSNumber *)typeId mailing:(BOOL)mailing primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addAddress:(NSString *)className classPK:(long)classPK street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long)regionId countryId:(long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
 		@"className": className,
-		@"classPK": classPK,
+		@"classPK": @(classPK),
 		@"street1": street1,
 		@"street2": street2,
 		@"street3": street3,
 		@"city": city,
 		@"zip": zip,
-		@"regionId": regionId,
-		@"countryId": countryId,
-		@"typeId": typeId,
-		@"mailing": mailing,
-		@"primary": primary,
+		@"regionId": @(regionId),
+		@"countryId": @(countryId),
+		@"typeId": @(typeId),
+		@"mailing": @(mailing),
+		@"primary": @(primary),
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/address/add-address": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 @end

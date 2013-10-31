@@ -13,21 +13,22 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface RepositoryService_v62 : NSObject
+@interface RepositoryService_v62 : BaseService
 
-- (NSDictionary *)getRepositoryImpl:(NSNumber *)folderId fileEntryId:(NSNumber *)fileEntryId fileVersionId:(NSNumber *)fileVersionId;
-- (NSDictionary *)addRepository:(NSNumber *)groupId classNameId:(NSNumber *)classNameId parentFolderId:(NSNumber *)parentFolderId name:(NSString *)name description:(NSString *)description portletId:(NSString *)portletId typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getLocalRepositoryImpl:(NSNumber *)folderId fileEntryId:(NSNumber *)fileEntryId fileVersionId:(NSNumber *)fileVersionId;
-- (NSDictionary *)getRepository:(NSNumber *)repositoryId;
-- (NSArray *)getSupportedParameters:(NSNumber *)classNameId configuration:(NSString *)configuration;
-- (void)updateRepository:(NSNumber *)repositoryId name:(NSString *)name description:(NSString *)description;
-- (NSDictionary *)getTypeSettingsProperties:(NSNumber *)repositoryId;
-- (void)deleteRepository:(NSNumber *)repositoryId;
-- (NSArray *)getSupportedConfigurations:(NSNumber *)classNameId;
-- (void)checkRepository:(NSNumber *)repositoryId;
+- (NSDictionary *)getRepositoryImpl:(long)folderId fileEntryId:(long)fileEntryId fileVersionId:(long)fileVersionId;
+- (NSDictionary *)addRepository:(long)groupId classNameId:(long)classNameId parentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description portletId:(NSString *)portletId typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)getLocalRepositoryImpl:(long)folderId fileEntryId:(long)fileEntryId fileVersionId:(long)fileVersionId;
+- (NSDictionary *)getRepository:(long)repositoryId;
+- (NSArray *)getSupportedParameters:(long)classNameId configuration:(NSString *)configuration;
+- (void)updateRepository:(long)repositoryId name:(NSString *)name description:(NSString *)description;
+- (NSDictionary *)getTypeSettingsProperties:(long)repositoryId;
+- (void)deleteRepository:(long)repositoryId;
+- (NSArray *)getSupportedConfigurations:(long)classNameId;
+- (void)checkRepository:(long)repositoryId;
 
 @end

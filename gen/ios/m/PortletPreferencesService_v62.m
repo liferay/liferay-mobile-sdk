@@ -19,10 +19,10 @@
  */
 @implementation PortletPreferencesService_v62
 
-- (void)updateArchivePreferences:(NSNumber *)userId groupId:(NSNumber *)groupId name:(NSString *)name portletId:(NSString *)portletId preferences:(NSDictionary *)preferences {
+- (void)updateArchivePreferences:(long)userId groupId:(long)groupId name:(NSString *)name portletId:(NSString *)portletId preferences:(NSDictionary *)preferences {
 	NSDictionary *_params = @{
-		@"userId": userId,
-		@"groupId": groupId,
+		@"userId": @(userId),
+		@"groupId": @(groupId),
 		@"name": name,
 		@"portletId": portletId,
 		@"preferences": preferences
@@ -30,12 +30,12 @@
 
 	NSDictionary *_command = @{@"/portletpreferences/update-archive-preferences": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)restoreArchivedPreferences:(NSNumber *)groupId name:(NSString *)name layout:(NSDictionary *)layout portletId:(NSString *)portletId preferences:(NSDictionary *)preferences {
+- (void)restoreArchivedPreferences:(long)groupId name:(NSString *)name layout:(NSDictionary *)layout portletId:(NSString *)portletId preferences:(NSDictionary *)preferences {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"name": name,
 		@"layout": layout,
 		@"portletId": portletId,
@@ -44,17 +44,17 @@
 
 	NSDictionary *_command = @{@"/portletpreferences/restore-archived-preferences": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)deleteArchivedPreferences:(NSNumber *)portletItemId {
+- (void)deleteArchivedPreferences:(long)portletItemId {
 	NSDictionary *_params = @{
-		@"portletItemId": portletItemId
+		@"portletItemId": @(portletItemId)
 	};
 
 	NSDictionary *_command = @{@"/portletpreferences/delete-archived-preferences": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

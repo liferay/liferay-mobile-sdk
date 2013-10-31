@@ -19,14 +19,14 @@
  */
 @implementation WikiPageService_v62
 
-- (NSDictionary *)updatePage:(NSNumber *)nodeId title:(NSString *)title version:(NSNumber *)version content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit format:(NSString *)format parentTitle:(NSString *)parentTitle redirectTitle:(NSString *)redirectTitle serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)updatePage:(long)nodeId title:(NSString *)title version:(double)version content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit format:(NSString *)format parentTitle:(NSString *)parentTitle redirectTitle:(NSString *)redirectTitle serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title,
-		@"version": version,
+		@"version": @(version),
 		@"content": content,
 		@"summary": summary,
-		@"minorEdit": minorEdit,
+		@"minorEdit": @(minorEdit),
 		@"format": format,
 		@"parentTitle": parentTitle,
 		@"redirectTitle": redirectTitle,
@@ -35,65 +35,65 @@
 
 	NSDictionary *_command = @{@"/wikipage/update-page": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteTrashPageAttachments:(NSNumber *)nodeId title:(NSString *)title {
+- (void)deleteTrashPageAttachments:(long)nodeId title:(NSString *)title {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title
 	};
 
 	NSDictionary *_command = @{@"/wikipage/delete-trash-page-attachments": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)revertPage:(NSNumber *)nodeId title:(NSString *)title version:(NSNumber *)version serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)revertPage:(long)nodeId title:(NSString *)title version:(double)version serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title,
-		@"version": version,
+		@"version": @(version),
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/wikipage/revert-page": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSArray *)getPages:(NSNumber *)groupId nodeId:(NSNumber *)nodeId head:(BOOL)head status:(NSNumber *)status start:(NSNumber *)start end:(NSNumber *)end obc:(NSDictionary *)obc {
+- (NSArray *)getPages:(long)groupId nodeId:(long)nodeId head:(BOOL)head status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"nodeId": nodeId,
-		@"head": head,
-		@"status": status,
-		@"start": start,
-		@"end": end,
+		@"groupId": @(groupId),
+		@"nodeId": @(nodeId),
+		@"head": @(head),
+		@"status": @(status),
+		@"start": @(start),
+		@"end": @(end),
 		@"obc": obc
 	};
 
 	NSDictionary *_command = @{@"/wikipage/get-pages": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSArray *)getRecentChanges:(NSNumber *)groupId nodeId:(NSNumber *)nodeId start:(NSNumber *)start end:(NSNumber *)end {
+- (NSArray *)getRecentChanges:(long)groupId nodeId:(long)nodeId start:(int)start end:(int)end {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"nodeId": nodeId,
-		@"start": start,
-		@"end": end
+		@"groupId": @(groupId),
+		@"nodeId": @(nodeId),
+		@"start": @(start),
+		@"end": @(end)
 	};
 
 	NSDictionary *_command = @{@"/wikipage/get-recent-changes": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (void)changeParent:(NSNumber *)nodeId title:(NSString *)title newParentTitle:(NSString *)newParentTitle serviceContext:(NSDictionary *)serviceContext {
+- (void)changeParent:(long)nodeId title:(NSString *)title newParentTitle:(NSString *)newParentTitle serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title,
 		@"newParentTitle": newParentTitle,
 		@"serviceContext": serviceContext
@@ -101,26 +101,26 @@
 
 	NSDictionary *_command = @{@"/wikipage/change-parent": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)getDraftPage:(NSNumber *)nodeId title:(NSString *)title {
+- (NSDictionary *)getDraftPage:(long)nodeId title:(NSString *)title {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title
 	};
 
 	NSDictionary *_command = @{@"/wikipage/get-draft-page": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSString *)getNodePagesRss:(NSNumber *)nodeId max:(NSNumber *)max type:(NSString *)type version:(NSNumber *)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL attachmentURLPrefix:(NSString *)attachmentURLPrefix {
+- (NSString *)getNodePagesRss:(long)nodeId max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL attachmentURLPrefix:(NSString *)attachmentURLPrefix {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
-		@"max": max,
+		@"nodeId": @(nodeId),
+		@"max": @(max),
 		@"type": type,
-		@"version": version,
+		@"version": @(version),
 		@"displayStyle": displayStyle,
 		@"feedURL": feedURL,
 		@"entryURL": entryURL,
@@ -129,47 +129,47 @@
 
 	NSDictionary *_command = @{@"/wikipage/get-node-pages-rss": _params};
 
-	return (NSString *)[session invoke:_command];
+	return (NSString *)[self.session invoke:_command];
 }
 
-- (void)addPageAttachments:(NSNumber *)nodeId title:(NSString *)title inputStreamOVPs:(NSArray *)inputStreamOVPs {
+- (void)addPageAttachments:(long)nodeId title:(NSString *)title inputStreamOVPs:(NSArray *)inputStreamOVPs {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title,
 		@"inputStreamOVPs": inputStreamOVPs
 	};
 
 	NSDictionary *_command = @{@"/wikipage/add-page-attachments": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)subscribePage:(NSNumber *)nodeId title:(NSString *)title {
+- (void)subscribePage:(long)nodeId title:(NSString *)title {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title
 	};
 
 	NSDictionary *_command = @{@"/wikipage/subscribe-page": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)discardDraft:(NSNumber *)nodeId title:(NSString *)title version:(NSNumber *)version {
+- (void)discardDraft:(long)nodeId title:(NSString *)title version:(double)version {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title,
-		@"version": version
+		@"version": @(version)
 	};
 
 	NSDictionary *_command = @{@"/wikipage/discard-draft": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)addPageAttachment:(NSNumber *)nodeId title:(NSString *)title fileName:(NSString *)fileName file:(NSDictionary *)file mimeType:(NSString *)mimeType {
+- (void)addPageAttachment:(long)nodeId title:(NSString *)title fileName:(NSString *)fileName file:(NSDictionary *)file mimeType:(NSString *)mimeType {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title,
 		@"fileName": fileName,
 		@"file": file,
@@ -178,16 +178,16 @@
 
 	NSDictionary *_command = @{@"/wikipage/add-page-attachment": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)addPage:(NSNumber *)nodeId title:(NSString *)title content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit format:(NSString *)format parentTitle:(NSString *)parentTitle redirectTitle:(NSString *)redirectTitle serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addPage:(long)nodeId title:(NSString *)title content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit format:(NSString *)format parentTitle:(NSString *)parentTitle redirectTitle:(NSString *)redirectTitle serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title,
 		@"content": content,
 		@"summary": summary,
-		@"minorEdit": minorEdit,
+		@"minorEdit": @(minorEdit),
 		@"format": format,
 		@"parentTitle": parentTitle,
 		@"redirectTitle": redirectTitle,
@@ -196,28 +196,28 @@
 
 	NSDictionary *_command = @{@"/wikipage/add-page": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deletePageAttachments:(NSNumber *)nodeId title:(NSString *)title {
+- (void)deletePageAttachments:(long)nodeId title:(NSString *)title {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title
 	};
 
 	NSDictionary *_command = @{@"/wikipage/delete-page-attachments": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSString *)getPagesRss:(NSNumber *)companyId nodeId:(NSNumber *)nodeId title:(NSString *)title max:(NSNumber *)max type:(NSString *)type version:(NSNumber *)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL attachmentURLPrefix:(NSString *)attachmentURLPrefix locale:(NSString *)locale {
+- (NSString *)getPagesRss:(long)companyId nodeId:(long)nodeId title:(NSString *)title max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL attachmentURLPrefix:(NSString *)attachmentURLPrefix locale:(NSString *)locale {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
-		@"nodeId": nodeId,
+		@"companyId": @(companyId),
+		@"nodeId": @(nodeId),
 		@"title": title,
-		@"max": max,
+		@"max": @(max),
 		@"type": type,
-		@"version": version,
+		@"version": @(version),
 		@"displayStyle": displayStyle,
 		@"feedURL": feedURL,
 		@"entryURL": entryURL,
@@ -227,188 +227,188 @@
 
 	NSDictionary *_command = @{@"/wikipage/get-pages-rss": _params};
 
-	return (NSString *)[session invoke:_command];
+	return (NSString *)[self.session invoke:_command];
 }
 
-- (NSArray *)getOrphans:(NSNumber *)groupId nodeId:(NSNumber *)nodeId {
+- (NSArray *)getOrphans:(long)groupId nodeId:(long)nodeId {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"nodeId": nodeId
+		@"groupId": @(groupId),
+		@"nodeId": @(nodeId)
 	};
 
 	NSDictionary *_command = @{@"/wikipage/get-orphans": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSArray *)getTempPageAttachmentNames:(NSNumber *)nodeId tempFolderName:(NSString *)tempFolderName {
+- (NSArray *)getTempPageAttachmentNames:(long)nodeId tempFolderName:(NSString *)tempFolderName {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"tempFolderName": tempFolderName
 	};
 
 	NSDictionary *_command = @{@"/wikipage/get-temp-page-attachment-names": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (void)restorePageAttachmentFromTrash:(NSNumber *)nodeId title:(NSString *)title fileName:(NSString *)fileName {
+- (void)restorePageAttachmentFromTrash:(long)nodeId title:(NSString *)title fileName:(NSString *)fileName {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title,
 		@"fileName": fileName
 	};
 
 	NSDictionary *_command = @{@"/wikipage/restore-page-attachment-from-trash": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)unsubscribePage:(NSNumber *)nodeId title:(NSString *)title {
+- (void)unsubscribePage:(long)nodeId title:(NSString *)title {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title
 	};
 
 	NSDictionary *_command = @{@"/wikipage/unsubscribe-page": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSArray *)getNodePages:(NSNumber *)nodeId max:(NSNumber *)max {
+- (NSArray *)getNodePages:(long)nodeId max:(int)max {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
-		@"max": max
+		@"nodeId": @(nodeId),
+		@"max": @(max)
 	};
 
 	NSDictionary *_command = @{@"/wikipage/get-node-pages": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)movePageToTrash:(NSNumber *)nodeId title:(NSString *)title version:(NSNumber *)version {
+- (NSDictionary *)movePageToTrash:(long)nodeId title:(NSString *)title version:(double)version {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title,
-		@"version": version
+		@"version": @(version)
 	};
 
 	NSDictionary *_command = @{@"/wikipage/move-page-to-trash": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)movePageAttachmentToTrash:(NSNumber *)nodeId title:(NSString *)title fileName:(NSString *)fileName {
+- (NSDictionary *)movePageAttachmentToTrash:(long)nodeId title:(NSString *)title fileName:(NSString *)fileName {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title,
 		@"fileName": fileName
 	};
 
 	NSDictionary *_command = @{@"/wikipage/move-page-attachment-to-trash": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteTempPageAttachment:(NSNumber *)nodeId fileName:(NSString *)fileName tempFolderName:(NSString *)tempFolderName {
+- (void)deleteTempPageAttachment:(long)nodeId fileName:(NSString *)fileName tempFolderName:(NSString *)tempFolderName {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"fileName": fileName,
 		@"tempFolderName": tempFolderName
 	};
 
 	NSDictionary *_command = @{@"/wikipage/delete-temp-page-attachment": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)getPage:(NSNumber *)nodeId title:(NSString *)title version:(NSNumber *)version {
+- (NSDictionary *)getPage:(long)nodeId title:(NSString *)title version:(double)version {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title,
-		@"version": version
+		@"version": @(version)
 	};
 
 	NSDictionary *_command = @{@"/wikipage/get-page": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)copyPageAttachments:(NSNumber *)templateNodeId templateTitle:(NSString *)templateTitle nodeId:(NSNumber *)nodeId title:(NSString *)title {
+- (void)copyPageAttachments:(long)templateNodeId templateTitle:(NSString *)templateTitle nodeId:(long)nodeId title:(NSString *)title {
 	NSDictionary *_params = @{
-		@"templateNodeId": templateNodeId,
+		@"templateNodeId": @(templateNodeId),
 		@"templateTitle": templateTitle,
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title
 	};
 
 	NSDictionary *_command = @{@"/wikipage/copy-page-attachments": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSArray *)getChildren:(NSNumber *)groupId nodeId:(NSNumber *)nodeId head:(BOOL)head parentTitle:(NSString *)parentTitle {
+- (NSArray *)getChildren:(long)groupId nodeId:(long)nodeId head:(BOOL)head parentTitle:(NSString *)parentTitle {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"nodeId": nodeId,
-		@"head": head,
+		@"groupId": @(groupId),
+		@"nodeId": @(nodeId),
+		@"head": @(head),
 		@"parentTitle": parentTitle
 	};
 
 	NSDictionary *_command = @{@"/wikipage/get-children": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSNumber *)getRecentChangesCount:(NSNumber *)groupId nodeId:(NSNumber *)nodeId {
+- (int)getRecentChangesCount:(long)groupId nodeId:(long)nodeId {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"nodeId": nodeId
+		@"groupId": @(groupId),
+		@"nodeId": @(nodeId)
 	};
 
 	NSDictionary *_command = @{@"/wikipage/get-recent-changes-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (NSNumber *)getPagesCount:(NSNumber *)groupId userId:(NSNumber *)userId nodeId:(NSNumber *)nodeId status:(NSNumber *)status {
+- (int)getPagesCount:(long)groupId userId:(long)userId nodeId:(long)nodeId status:(int)status {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"userId": userId,
-		@"nodeId": nodeId,
-		@"status": status
+		@"groupId": @(groupId),
+		@"userId": @(userId),
+		@"nodeId": @(nodeId),
+		@"status": @(status)
 	};
 
 	NSDictionary *_command = @{@"/wikipage/get-pages-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (void)restorePageFromTrash:(NSNumber *)resourcePrimKey {
+- (void)restorePageFromTrash:(long)resourcePrimKey {
 	NSDictionary *_params = @{
-		@"resourcePrimKey": resourcePrimKey
+		@"resourcePrimKey": @(resourcePrimKey)
 	};
 
 	NSDictionary *_command = @{@"/wikipage/restore-page-from-trash": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)deletePageAttachment:(NSNumber *)nodeId title:(NSString *)title fileName:(NSString *)fileName {
+- (void)deletePageAttachment:(long)nodeId title:(NSString *)title fileName:(NSString *)fileName {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title,
 		@"fileName": fileName
 	};
 
 	NSDictionary *_command = @{@"/wikipage/delete-page-attachment": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)movePage:(NSNumber *)nodeId title:(NSString *)title newTitle:(NSString *)newTitle serviceContext:(NSDictionary *)serviceContext {
+- (void)movePage:(long)nodeId title:(NSString *)title newTitle:(NSString *)newTitle serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title,
 		@"newTitle": newTitle,
 		@"serviceContext": serviceContext
@@ -416,19 +416,19 @@
 
 	NSDictionary *_command = @{@"/wikipage/move-page": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)deletePage:(NSNumber *)nodeId title:(NSString *)title version:(NSNumber *)version {
+- (void)deletePage:(long)nodeId title:(NSString *)title version:(double)version {
 	NSDictionary *_params = @{
-		@"nodeId": nodeId,
+		@"nodeId": @(nodeId),
 		@"title": title,
-		@"version": version
+		@"version": @(version)
 	};
 
 	NSDictionary *_command = @{@"/wikipage/delete-page": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

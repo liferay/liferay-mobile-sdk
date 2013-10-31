@@ -13,14 +13,15 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface AnnouncementsFlagService_v62 : NSObject
+@interface AnnouncementsFlagService_v62 : BaseService
 
-- (void)addFlag:(NSNumber *)entryId value:(NSNumber *)value;
-- (void)deleteFlag:(NSNumber *)flagId;
-- (NSDictionary *)getFlag:(NSNumber *)entryId value:(NSNumber *)value;
+- (void)addFlag:(long)entryId value:(int)value;
+- (void)deleteFlag:(long)flagId;
+- (NSDictionary *)getFlag:(long)entryId value:(int)value;
 
 @end

@@ -13,15 +13,16 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface JournalFeedService_v62 : NSObject
+@interface JournalFeedService_v62 : BaseService
 
-- (NSDictionary *)addFeed:(NSNumber *)groupId feedId:(NSString *)feedId autoFeedId:(BOOL)autoFeedId name:(NSString *)name description:(NSString *)description type:(NSString *)type structureId:(NSString *)structureId templateId:(NSString *)templateId rendererTemplateId:(NSString *)rendererTemplateId delta:(NSNumber *)delta orderByCol:(NSString *)orderByCol orderByType:(NSString *)orderByType targetLayoutFriendlyUrl:(NSString *)targetLayoutFriendlyUrl targetPortletId:(NSString *)targetPortletId contentField:(NSString *)contentField feedType:(NSString *)feedType feedVersion:(NSNumber *)feedVersion serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getFeed:(NSNumber *)groupId feedId:(NSNumber *)feedId;
-- (void)deleteFeed:(NSNumber *)groupId feedId:(NSNumber *)feedId;
-- (NSDictionary *)updateFeed:(NSNumber *)groupId feedId:(NSString *)feedId name:(NSString *)name description:(NSString *)description type:(NSString *)type structureId:(NSString *)structureId templateId:(NSString *)templateId rendererTemplateId:(NSString *)rendererTemplateId delta:(NSNumber *)delta orderByCol:(NSString *)orderByCol orderByType:(NSString *)orderByType targetLayoutFriendlyUrl:(NSString *)targetLayoutFriendlyUrl targetPortletId:(NSString *)targetPortletId contentField:(NSString *)contentField feedType:(NSString *)feedType feedVersion:(NSNumber *)feedVersion serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)addFeed:(long)groupId feedId:(NSString *)feedId autoFeedId:(BOOL)autoFeedId name:(NSString *)name description:(NSString *)description type:(NSString *)type structureId:(NSString *)structureId templateId:(NSString *)templateId rendererTemplateId:(NSString *)rendererTemplateId delta:(int)delta orderByCol:(NSString *)orderByCol orderByType:(NSString *)orderByType targetLayoutFriendlyUrl:(NSString *)targetLayoutFriendlyUrl targetPortletId:(NSString *)targetPortletId contentField:(NSString *)contentField feedType:(NSString *)feedType feedVersion:(double)feedVersion serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)getFeed:(long)groupId feedId:(long)feedId;
+- (void)deleteFeed:(long)groupId feedId:(long)feedId;
+- (NSDictionary *)updateFeed:(long)groupId feedId:(NSString *)feedId name:(NSString *)name description:(NSString *)description type:(NSString *)type structureId:(NSString *)structureId templateId:(NSString *)templateId rendererTemplateId:(NSString *)rendererTemplateId delta:(int)delta orderByCol:(NSString *)orderByCol orderByType:(NSString *)orderByType targetLayoutFriendlyUrl:(NSString *)targetLayoutFriendlyUrl targetPortletId:(NSString *)targetPortletId contentField:(NSString *)contentField feedType:(NSString *)feedType feedVersion:(double)feedVersion serviceContext:(NSDictionary *)serviceContext;
 
 @end

@@ -26,30 +26,30 @@
 
 	NSDictionary *_command = @{@"/ddmstructure/get-structures": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSArray *)search:(NSNumber *)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds keywords:(NSString *)keywords start:(NSNumber *)start end:(NSNumber *)end orderByComparator:(NSDictionary *)orderByComparator {
+- (NSArray *)search:(long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds keywords:(NSString *)keywords start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
+		@"companyId": @(companyId),
 		@"groupIds": groupIds,
 		@"classNameIds": classNameIds,
 		@"keywords": keywords,
-		@"start": start,
-		@"end": end,
+		@"start": @(start),
+		@"end": @(end),
 		@"orderByComparator": orderByComparator
 	};
 
 	NSDictionary *_command = @{@"/ddmstructure/search": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateStructure:(NSNumber *)groupId parentStructureId:(NSNumber *)parentStructureId classNameId:(NSNumber *)classNameId structureKey:(NSString *)structureKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)updateStructure:(long)groupId parentStructureId:(long)parentStructureId classNameId:(long)classNameId structureKey:(NSString *)structureKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"parentStructureId": parentStructureId,
-		@"classNameId": classNameId,
+		@"groupId": @(groupId),
+		@"parentStructureId": @(parentStructureId),
+		@"classNameId": @(classNameId),
 		@"structureKey": structureKey,
 		@"nameMap": nameMap,
 		@"descriptionMap": descriptionMap,
@@ -59,14 +59,14 @@
 
 	NSDictionary *_command = @{@"/ddmstructure/update-structure": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)addStructure:(NSNumber *)userId groupId:(NSNumber *)groupId classNameId:(NSNumber *)classNameId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addStructure:(long)userId groupId:(long)groupId classNameId:(long)classNameId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"userId": userId,
-		@"groupId": groupId,
-		@"classNameId": classNameId,
+		@"userId": @(userId),
+		@"groupId": @(groupId),
+		@"classNameId": @(classNameId),
 		@"nameMap": nameMap,
 		@"descriptionMap": descriptionMap,
 		@"xsd": xsd,
@@ -75,29 +75,29 @@
 
 	NSDictionary *_command = @{@"/ddmstructure/add-structure": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSNumber *)searchCount:(NSNumber *)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds name:(NSString *)name description:(NSString *)description storageType:(NSString *)storageType type:(NSNumber *)type andOperator:(BOOL)andOperator {
+- (int)searchCount:(long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds name:(NSString *)name description:(NSString *)description storageType:(NSString *)storageType type:(int)type andOperator:(BOOL)andOperator {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
+		@"companyId": @(companyId),
 		@"groupIds": groupIds,
 		@"classNameIds": classNameIds,
 		@"name": name,
 		@"description": description,
 		@"storageType": storageType,
-		@"type": type,
-		@"andOperator": andOperator
+		@"type": @(type),
+		@"andOperator": @(andOperator)
 	};
 
 	NSDictionary *_command = @{@"/ddmstructure/search-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (NSDictionary *)copyStructure:(NSNumber *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)copyStructure:(long)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"structureId": structureId,
+		@"structureId": @(structureId),
 		@"nameMap": nameMap,
 		@"descriptionMap": descriptionMap,
 		@"serviceContext": serviceContext
@@ -105,42 +105,42 @@
 
 	NSDictionary *_command = @{@"/ddmstructure/copy-structure": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getStructure:(NSNumber *)groupId classNameId:(NSNumber *)classNameId structureKey:(NSString *)structureKey includeGlobalStructures:(BOOL)includeGlobalStructures {
+- (NSDictionary *)getStructure:(long)groupId classNameId:(long)classNameId structureKey:(NSString *)structureKey includeGlobalStructures:(BOOL)includeGlobalStructures {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"classNameId": classNameId,
+		@"groupId": @(groupId),
+		@"classNameId": @(classNameId),
 		@"structureKey": structureKey,
-		@"includeGlobalStructures": includeGlobalStructures
+		@"includeGlobalStructures": @(includeGlobalStructures)
 	};
 
 	NSDictionary *_command = @{@"/ddmstructure/get-structure": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)fetchStructure:(NSNumber *)groupId classNameId:(NSNumber *)classNameId structureKey:(NSString *)structureKey {
+- (NSDictionary *)fetchStructure:(long)groupId classNameId:(long)classNameId structureKey:(NSString *)structureKey {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"classNameId": classNameId,
+		@"groupId": @(groupId),
+		@"classNameId": @(classNameId),
 		@"structureKey": structureKey
 	};
 
 	NSDictionary *_command = @{@"/ddmstructure/fetch-structure": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteStructure:(NSNumber *)structureId {
+- (void)deleteStructure:(long)structureId {
 	NSDictionary *_params = @{
-		@"structureId": structureId
+		@"structureId": @(structureId)
 	};
 
 	NSDictionary *_command = @{@"/ddmstructure/delete-structure": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

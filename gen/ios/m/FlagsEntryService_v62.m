@@ -19,12 +19,12 @@
  */
 @implementation FlagsEntryService_v62
 
-- (void)addEntry:(NSString *)className classPK:(NSNumber *)classPK reporterEmailAddress:(NSString *)reporterEmailAddress reportedUserId:(NSNumber *)reportedUserId contentTitle:(NSString *)contentTitle contentURL:(NSString *)contentURL reason:(NSString *)reason serviceContext:(NSDictionary *)serviceContext {
+- (void)addEntry:(NSString *)className classPK:(long)classPK reporterEmailAddress:(NSString *)reporterEmailAddress reportedUserId:(long)reportedUserId contentTitle:(NSString *)contentTitle contentURL:(NSString *)contentURL reason:(NSString *)reason serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
 		@"className": className,
-		@"classPK": classPK,
+		@"classPK": @(classPK),
 		@"reporterEmailAddress": reporterEmailAddress,
-		@"reportedUserId": reportedUserId,
+		@"reportedUserId": @(reportedUserId),
 		@"contentTitle": contentTitle,
 		@"contentURL": contentURL,
 		@"reason": reason,
@@ -33,7 +33,7 @@
 
 	NSDictionary *_command = @{@"/flagsentry/add-entry": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

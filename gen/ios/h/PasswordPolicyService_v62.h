@@ -13,14 +13,15 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface PasswordPolicyService_v62 : NSObject
+@interface PasswordPolicyService_v62 : BaseService
 
-- (NSDictionary *)updatePasswordPolicy:(NSNumber *)passwordPolicyId name:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(NSNumber *)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(NSNumber *)minAlphanumeric minLength:(NSNumber *)minLength minLowerCase:(NSNumber *)minLowerCase minNumbers:(NSNumber *)minNumbers minSymbols:(NSNumber *)minSymbols minUpperCase:(NSNumber *)minUpperCase regex:(NSString *)regex history:(BOOL)history historyCount:(NSNumber *)historyCount expireable:(BOOL)expireable maxAge:(NSNumber *)maxAge warningTime:(NSNumber *)warningTime graceLimit:(NSNumber *)graceLimit lockout:(BOOL)lockout maxFailure:(NSNumber *)maxFailure lockoutDuration:(NSNumber *)lockoutDuration resetFailureCount:(NSNumber *)resetFailureCount resetTicketMaxAge:(NSNumber *)resetTicketMaxAge serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)addPasswordPolicy:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(NSNumber *)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(NSNumber *)minAlphanumeric minLength:(NSNumber *)minLength minLowerCase:(NSNumber *)minLowerCase minNumbers:(NSNumber *)minNumbers minSymbols:(NSNumber *)minSymbols minUpperCase:(NSNumber *)minUpperCase regex:(NSString *)regex history:(BOOL)history historyCount:(NSNumber *)historyCount expireable:(BOOL)expireable maxAge:(NSNumber *)maxAge warningTime:(NSNumber *)warningTime graceLimit:(NSNumber *)graceLimit lockout:(BOOL)lockout maxFailure:(NSNumber *)maxFailure lockoutDuration:(NSNumber *)lockoutDuration resetFailureCount:(NSNumber *)resetFailureCount resetTicketMaxAge:(NSNumber *)resetTicketMaxAge serviceContext:(NSDictionary *)serviceContext;
-- (void)deletePasswordPolicy:(NSNumber *)passwordPolicyId;
+- (NSDictionary *)updatePasswordPolicy:(long)passwordPolicyId name:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase regex:(NSString *)regex history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long)maxAge warningTime:(long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long)lockoutDuration resetFailureCount:(long)resetFailureCount resetTicketMaxAge:(long)resetTicketMaxAge serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)addPasswordPolicy:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase regex:(NSString *)regex history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long)maxAge warningTime:(long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long)lockoutDuration resetFailureCount:(long)resetFailureCount resetTicketMaxAge:(long)resetTicketMaxAge serviceContext:(NSDictionary *)serviceContext;
+- (void)deletePasswordPolicy:(long)passwordPolicyId;
 
 @end

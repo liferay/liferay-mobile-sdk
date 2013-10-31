@@ -26,7 +26,7 @@
 
 	NSDictionary *_command = @{@"/country/get-country-by-name": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 - (NSDictionary *)getCountryByA2:(NSString *)a2 {
@@ -36,7 +36,7 @@
 
 	NSDictionary *_command = @{@"/country/get-country-by-a2": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 - (NSDictionary *)getCountryByA3:(NSString *)a3 {
@@ -46,27 +46,27 @@
 
 	NSDictionary *_command = @{@"/country/get-country-by-a3": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)fetchCountry:(NSNumber *)countryId {
+- (NSDictionary *)fetchCountry:(long)countryId {
 	NSDictionary *_params = @{
-		@"countryId": countryId
+		@"countryId": @(countryId)
 	};
 
 	NSDictionary *_command = @{@"/country/fetch-country": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getCountry:(NSNumber *)countryId {
+- (NSDictionary *)getCountry:(long)countryId {
 	NSDictionary *_params = @{
-		@"countryId": countryId
+		@"countryId": @(countryId)
 	};
 
 	NSDictionary *_command = @{@"/country/get-country": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 - (NSDictionary *)fetchCountryByA3:(NSString *)a3 {
@@ -76,7 +76,7 @@
 
 	NSDictionary *_command = @{@"/country/fetch-country-by-a3": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 - (NSDictionary *)fetchCountryByA2:(NSString *)a2 {
@@ -86,17 +86,17 @@
 
 	NSDictionary *_command = @{@"/country/fetch-country-by-a2": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 - (NSArray *)getCountries:(BOOL)active {
 	NSDictionary *_params = @{
-		@"active": active
+		@"active": @(active)
 	};
 
 	NSDictionary *_command = @{@"/country/get-countries": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
 - (NSDictionary *)addCountry:(NSString *)name a2:(NSString *)a2 a3:(NSString *)a3 number:(NSString *)number idd:(NSString *)idd active:(BOOL)active {
@@ -106,12 +106,12 @@
 		@"a3": a3,
 		@"number": number,
 		@"idd": idd,
-		@"active": active
+		@"active": @(active)
 	};
 
 	NSDictionary *_command = @{@"/country/add-country": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 @end

@@ -13,16 +13,17 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface LayoutSetService_v62 : NSObject
+@interface LayoutSetService_v62 : BaseService
 
-- (NSDictionary *)updateSettings:(NSNumber *)groupId privateLayout:(BOOL)privateLayout settings:(NSString *)settings;
-- (NSDictionary *)updateLookAndFeel:(NSNumber *)groupId privateLayout:(BOOL)privateLayout themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId css:(NSString *)css wapTheme:(BOOL)wapTheme;
-- (void)updateLogo:(NSNumber *)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo file:(NSDictionary *)file;
-- (void)updateLayoutSetPrototypeLinkEnabled:(NSNumber *)groupId privateLayout:(BOOL)privateLayout layoutSetPrototypeLinkEnabled:(BOOL)layoutSetPrototypeLinkEnabled layoutSetPrototypeUuid:(NSString *)layoutSetPrototypeUuid;
-- (NSDictionary *)updateVirtualHost:(NSNumber *)groupId privateLayout:(BOOL)privateLayout virtualHost:(NSString *)virtualHost;
+- (NSDictionary *)updateSettings:(long)groupId privateLayout:(BOOL)privateLayout settings:(NSString *)settings;
+- (NSDictionary *)updateLookAndFeel:(long)groupId privateLayout:(BOOL)privateLayout themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId css:(NSString *)css wapTheme:(BOOL)wapTheme;
+- (void)updateLogo:(long)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo file:(NSDictionary *)file;
+- (void)updateLayoutSetPrototypeLinkEnabled:(long)groupId privateLayout:(BOOL)privateLayout layoutSetPrototypeLinkEnabled:(BOOL)layoutSetPrototypeLinkEnabled layoutSetPrototypeUuid:(NSString *)layoutSetPrototypeUuid;
+- (NSDictionary *)updateVirtualHost:(long)groupId privateLayout:(BOOL)privateLayout virtualHost:(NSString *)virtualHost;
 
 @end

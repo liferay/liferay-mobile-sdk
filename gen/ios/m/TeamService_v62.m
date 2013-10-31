@@ -19,81 +19,81 @@
  */
 @implementation TeamService_v62
 
-- (NSDictionary *)addTeam:(NSNumber *)groupId name:(NSString *)name description:(NSString *)description {
+- (NSDictionary *)addTeam:(long)groupId name:(NSString *)name description:(NSString *)description {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"name": name,
 		@"description": description
 	};
 
 	NSDictionary *_command = @{@"/team/add-team": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSArray *)getUserTeams:(NSNumber *)userId groupId:(NSNumber *)groupId {
+- (NSArray *)getUserTeams:(long)userId groupId:(long)groupId {
 	NSDictionary *_params = @{
-		@"userId": userId,
-		@"groupId": groupId
+		@"userId": @(userId),
+		@"groupId": @(groupId)
 	};
 
 	NSDictionary *_command = @{@"/team/get-user-teams": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateTeam:(NSNumber *)teamId name:(NSString *)name description:(NSString *)description {
+- (NSDictionary *)updateTeam:(long)teamId name:(NSString *)name description:(NSString *)description {
 	NSDictionary *_params = @{
-		@"teamId": teamId,
+		@"teamId": @(teamId),
 		@"name": name,
 		@"description": description
 	};
 
 	NSDictionary *_command = @{@"/team/update-team": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (BOOL)hasUserTeam:(NSNumber *)userId teamId:(NSNumber *)teamId {
+- (BOOL)hasUserTeam:(long)userId teamId:(long)teamId {
 	NSDictionary *_params = @{
-		@"userId": userId,
-		@"teamId": teamId
+		@"userId": @(userId),
+		@"teamId": @(teamId)
 	};
 
 	NSDictionary *_command = @{@"/team/has-user-team": _params};
 
-	return (BOOL)[session invoke:_command];
+	return (BOOL)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getTeam:(NSNumber *)groupId name:(NSString *)name {
+- (NSDictionary *)getTeam:(long)groupId name:(NSString *)name {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"name": name
 	};
 
 	NSDictionary *_command = @{@"/team/get-team": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSArray *)getGroupTeams:(NSNumber *)groupId {
+- (NSArray *)getGroupTeams:(long)groupId {
 	NSDictionary *_params = @{
-		@"groupId": groupId
+		@"groupId": @(groupId)
 	};
 
 	NSDictionary *_command = @{@"/team/get-group-teams": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (void)deleteTeam:(NSNumber *)teamId {
+- (void)deleteTeam:(long)teamId {
 	NSDictionary *_params = @{
-		@"teamId": teamId
+		@"teamId": @(teamId)
 	};
 
 	NSDictionary *_command = @{@"/team/delete-team": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

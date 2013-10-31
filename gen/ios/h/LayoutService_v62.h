@@ -13,43 +13,44 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface LayoutService_v62 : NSObject
+@interface LayoutService_v62 : BaseService
 
-- (NSDictionary *)addLayout:(NSNumber *)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(NSNumber *)parentLayoutId localeNamesMap:(NSDictionary *)localeNamesMap localeTitlesMap:(NSDictionary *)localeTitlesMap descriptionMap:(NSDictionary *)descriptionMap keywordsMap:(NSDictionary *)keywordsMap robotsMap:(NSDictionary *)robotsMap type:(NSString *)type typeSettings:(NSString *)typeSettings hidden:(BOOL)hidden friendlyURLMap:(NSDictionary *)friendlyURLMap serviceContext:(NSDictionary *)serviceContext;
-- (void)setLayouts:(NSNumber *)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(NSNumber *)parentLayoutId layoutIds:(NSArray *)layoutIds serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)updateLayout:(NSNumber *)groupId privateLayout:(BOOL)privateLayout layoutId:(NSNumber *)layoutId typeSettings:(NSString *)typeSettings;
-- (void)unschedulePublishToRemote:(NSNumber *)groupId jobName:(NSString *)jobName groupName:(NSString *)groupName;
-- (void)importPortletInfo:(NSNumber *)plid groupId:(NSNumber *)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file;
-- (NSDictionary *)updateLookAndFeel:(NSNumber *)groupId privateLayout:(BOOL)privateLayout layoutId:(NSNumber *)layoutId themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId css:(NSString *)css wapTheme:(BOOL)wapTheme;
-- (NSNumber *)exportPortletInfoAsFileInBackground:(NSString *)taskName plid:(NSNumber *)plid groupId:(NSNumber *)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(NSNumber *)startDate endDate:(NSNumber *)endDate fileName:(NSString *)fileName;
-- (NSArray *)getAncestorLayouts:(NSNumber *)plid;
-- (NSDictionary *)updatePriority:(NSNumber *)groupId privateLayout:(BOOL)privateLayout layoutId:(NSNumber *)layoutId nextLayoutId:(NSNumber *)nextLayoutId previousLayoutId:(NSNumber *)previousLayoutId;
-- (NSDictionary *)validateImportPortletInfo:(NSNumber *)plid groupId:(NSNumber *)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file;
-- (NSDictionary *)getLayoutByUuidAndGroupId:(NSString *)uuid groupId:(NSNumber *)groupId privateLayout:(BOOL)privateLayout;
-- (void)deleteLayout:(NSNumber *)groupId privateLayout:(BOOL)privateLayout layoutId:(NSNumber *)layoutId serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)exportPortletInfoAsFile:(NSNumber *)plid groupId:(NSNumber *)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(NSNumber *)startDate endDate:(NSNumber *)endDate;
-- (NSDictionary *)validateImportLayoutsFile:(NSNumber *)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file;
-- (NSDictionary *)updateParentLayoutId:(NSNumber *)groupId privateLayout:(BOOL)privateLayout layoutId:(NSNumber *)layoutId parentLayoutId:(NSNumber *)parentLayoutId;
-- (NSArray *)exportLayouts:(NSNumber *)groupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap startDate:(NSNumber *)startDate endDate:(NSNumber *)endDate;
-- (NSNumber *)getDefaultPlid:(NSNumber *)groupId scopeGroupId:(NSNumber *)scopeGroupId privateLayout:(BOOL)privateLayout portletId:(NSString *)portletId;
-- (NSArray *)getTempFileEntryNames:(NSNumber *)groupId tempFolderName:(NSString *)tempFolderName;
-- (NSDictionary *)updateName:(NSNumber *)groupId privateLayout:(BOOL)privateLayout layoutId:(NSNumber *)layoutId name:(NSString *)name languageId:(NSString *)languageId;
-- (NSNumber *)importPortletInfoInBackground:(NSString *)taskName plid:(NSNumber *)plid groupId:(NSNumber *)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file;
-- (NSArray *)getLayoutReferences:(NSNumber *)companyId portletId:(NSString *)portletId preferencesKey:(NSString *)preferencesKey preferencesValue:(NSString *)preferencesValue;
-- (void)schedulePublishToRemote:(NSNumber *)sourceGroupId privateLayout:(BOOL)privateLayout layoutIdMap:(NSDictionary *)layoutIdMap parameterMap:(NSDictionary *)parameterMap remoteAddress:(NSString *)remoteAddress remotePort:(NSNumber *)remotePort remotePathContext:(NSString *)remotePathContext secureConnection:(BOOL)secureConnection remoteGroupId:(NSNumber *)remoteGroupId remotePrivateLayout:(BOOL)remotePrivateLayout startDate:(NSNumber *)startDate endDate:(NSNumber *)endDate groupName:(NSString *)groupName cronText:(NSString *)cronText schedulerStartDate:(NSNumber *)schedulerStartDate schedulerEndDate:(NSNumber *)schedulerEndDate description:(NSString *)description;
-- (NSArray *)exportPortletInfo:(NSNumber *)plid groupId:(NSNumber *)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(NSNumber *)startDate endDate:(NSNumber *)endDate;
-- (NSArray *)getLayouts:(NSNumber *)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(NSNumber *)parentLayoutId incomplete:(BOOL)incomplete start:(NSNumber *)start end:(NSNumber *)end;
-- (void)importLayouts:(NSNumber *)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file;
-- (void)deleteTempFileEntry:(NSNumber *)groupId fileName:(NSString *)fileName tempFolderName:(NSString *)tempFolderName;
-- (NSNumber *)importLayoutsInBackground:(NSString *)taskName groupId:(NSNumber *)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file;
-- (NSNumber *)exportLayoutsAsFileInBackground:(NSString *)taskName groupId:(NSNumber *)groupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap startDate:(NSNumber *)startDate endDate:(NSNumber *)endDate fileName:(NSString *)fileName;
-- (void)schedulePublishToLive:(NSNumber *)sourceGroupId targetGroupId:(NSNumber *)targetGroupId privateLayout:(BOOL)privateLayout layoutIdMap:(NSDictionary *)layoutIdMap parameterMap:(NSDictionary *)parameterMap scope:(NSString *)scope startDate:(NSNumber *)startDate endDate:(NSNumber *)endDate groupName:(NSString *)groupName cronText:(NSString *)cronText schedulerStartDate:(NSNumber *)schedulerStartDate schedulerEndDate:(NSNumber *)schedulerEndDate description:(NSString *)description;
-- (NSString *)getLayoutName:(NSNumber *)groupId privateLayout:(BOOL)privateLayout layoutId:(NSNumber *)layoutId languageId:(NSString *)languageId;
-- (NSDictionary *)exportLayoutsAsFile:(NSNumber *)groupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap startDate:(NSNumber *)startDate endDate:(NSNumber *)endDate;
-- (void)unschedulePublishToLive:(NSNumber *)groupId jobName:(NSString *)jobName groupName:(NSString *)groupName;
+- (NSDictionary *)addLayout:(long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long)parentLayoutId localeNamesMap:(NSDictionary *)localeNamesMap localeTitlesMap:(NSDictionary *)localeTitlesMap descriptionMap:(NSDictionary *)descriptionMap keywordsMap:(NSDictionary *)keywordsMap robotsMap:(NSDictionary *)robotsMap type:(NSString *)type typeSettings:(NSString *)typeSettings hidden:(BOOL)hidden friendlyURLMap:(NSDictionary *)friendlyURLMap serviceContext:(NSDictionary *)serviceContext;
+- (void)setLayouts:(long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long)parentLayoutId layoutIds:(NSArray *)layoutIds serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)updateLayout:(long)groupId privateLayout:(BOOL)privateLayout layoutId:(long)layoutId typeSettings:(NSString *)typeSettings;
+- (void)unschedulePublishToRemote:(long)groupId jobName:(NSString *)jobName groupName:(NSString *)groupName;
+- (void)importPortletInfo:(long)plid groupId:(long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file;
+- (NSDictionary *)updateLookAndFeel:(long)groupId privateLayout:(BOOL)privateLayout layoutId:(long)layoutId themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId css:(NSString *)css wapTheme:(BOOL)wapTheme;
+- (long)exportPortletInfoAsFileInBackground:(NSString *)taskName plid:(long)plid groupId:(long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long)startDate endDate:(long)endDate fileName:(NSString *)fileName;
+- (NSArray *)getAncestorLayouts:(long)plid;
+- (NSDictionary *)updatePriority:(long)groupId privateLayout:(BOOL)privateLayout layoutId:(long)layoutId nextLayoutId:(long)nextLayoutId previousLayoutId:(long)previousLayoutId;
+- (NSDictionary *)validateImportPortletInfo:(long)plid groupId:(long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file;
+- (NSDictionary *)getLayoutByUuidAndGroupId:(NSString *)uuid groupId:(long)groupId privateLayout:(BOOL)privateLayout;
+- (void)deleteLayout:(long)groupId privateLayout:(BOOL)privateLayout layoutId:(long)layoutId serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)exportPortletInfoAsFile:(long)plid groupId:(long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long)startDate endDate:(long)endDate;
+- (NSDictionary *)validateImportLayoutsFile:(long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file;
+- (NSDictionary *)updateParentLayoutId:(long)groupId privateLayout:(BOOL)privateLayout layoutId:(long)layoutId parentLayoutId:(long)parentLayoutId;
+- (NSArray *)exportLayouts:(long)groupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap startDate:(long)startDate endDate:(long)endDate;
+- (long)getDefaultPlid:(long)groupId scopeGroupId:(long)scopeGroupId privateLayout:(BOOL)privateLayout portletId:(NSString *)portletId;
+- (NSArray *)getTempFileEntryNames:(long)groupId tempFolderName:(NSString *)tempFolderName;
+- (NSDictionary *)updateName:(long)groupId privateLayout:(BOOL)privateLayout layoutId:(long)layoutId name:(NSString *)name languageId:(NSString *)languageId;
+- (long)importPortletInfoInBackground:(NSString *)taskName plid:(long)plid groupId:(long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file;
+- (NSArray *)getLayoutReferences:(long)companyId portletId:(NSString *)portletId preferencesKey:(NSString *)preferencesKey preferencesValue:(NSString *)preferencesValue;
+- (void)schedulePublishToRemote:(long)sourceGroupId privateLayout:(BOOL)privateLayout layoutIdMap:(NSDictionary *)layoutIdMap parameterMap:(NSDictionary *)parameterMap remoteAddress:(NSString *)remoteAddress remotePort:(int)remotePort remotePathContext:(NSString *)remotePathContext secureConnection:(BOOL)secureConnection remoteGroupId:(long)remoteGroupId remotePrivateLayout:(BOOL)remotePrivateLayout startDate:(long)startDate endDate:(long)endDate groupName:(NSString *)groupName cronText:(NSString *)cronText schedulerStartDate:(long)schedulerStartDate schedulerEndDate:(long)schedulerEndDate description:(NSString *)description;
+- (NSArray *)exportPortletInfo:(long)plid groupId:(long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long)startDate endDate:(long)endDate;
+- (NSArray *)getLayouts:(long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long)parentLayoutId incomplete:(BOOL)incomplete start:(int)start end:(int)end;
+- (void)importLayouts:(long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file;
+- (void)deleteTempFileEntry:(long)groupId fileName:(NSString *)fileName tempFolderName:(NSString *)tempFolderName;
+- (long)importLayoutsInBackground:(NSString *)taskName groupId:(long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file;
+- (long)exportLayoutsAsFileInBackground:(NSString *)taskName groupId:(long)groupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap startDate:(long)startDate endDate:(long)endDate fileName:(NSString *)fileName;
+- (void)schedulePublishToLive:(long)sourceGroupId targetGroupId:(long)targetGroupId privateLayout:(BOOL)privateLayout layoutIdMap:(NSDictionary *)layoutIdMap parameterMap:(NSDictionary *)parameterMap scope:(NSString *)scope startDate:(long)startDate endDate:(long)endDate groupName:(NSString *)groupName cronText:(NSString *)cronText schedulerStartDate:(long)schedulerStartDate schedulerEndDate:(long)schedulerEndDate description:(NSString *)description;
+- (NSString *)getLayoutName:(long)groupId privateLayout:(BOOL)privateLayout layoutId:(long)layoutId languageId:(NSString *)languageId;
+- (NSDictionary *)exportLayoutsAsFile:(long)groupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap startDate:(long)startDate endDate:(long)endDate;
+- (void)unschedulePublishToLive:(long)groupId jobName:(NSString *)jobName groupName:(NSString *)groupName;
 
 @end

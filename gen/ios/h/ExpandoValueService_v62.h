@@ -13,15 +13,16 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface ExpandoValueService_v62 : NSObject
+@interface ExpandoValueService_v62 : BaseService
 
-- (NSDictionary *)getData:(NSNumber *)companyId className:(NSString *)className tableName:(NSString *)tableName columnNames:(NSDictionary *)columnNames classPK:(NSNumber *)classPK;
-- (void)addValues:(NSNumber *)companyId className:(NSString *)className tableName:(NSString *)tableName classPK:(NSNumber *)classPK attributeValues:(NSDictionary *)attributeValues;
-- (NSDictionary *)addValue:(NSNumber *)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(NSNumber *)classPK data:(NSDictionary *)data;
-- (NSDictionary *)getJsonData:(NSNumber *)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(NSNumber *)classPK;
+- (NSDictionary *)getData:(long)companyId className:(NSString *)className tableName:(NSString *)tableName columnNames:(NSDictionary *)columnNames classPK:(long)classPK;
+- (void)addValues:(long)companyId className:(NSString *)className tableName:(NSString *)tableName classPK:(long)classPK attributeValues:(NSDictionary *)attributeValues;
+- (NSDictionary *)addValue:(long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long)classPK data:(NSDictionary *)data;
+- (NSDictionary *)getJsonData:(long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long)classPK;
 
 @end

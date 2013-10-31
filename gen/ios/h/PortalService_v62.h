@@ -13,23 +13,24 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface PortalService_v62 : NSObject
+@interface PortalService_v62 : BaseService
 
-- (void)testGetUserId:;
-- (void)testAutoSyncHibernateSessionStateOnTxCreation:;
+- (void)testGetUserId;
+- (void)testAutoSyncHibernateSessionStateOnTxCreation;
 - (void)testAddClassNameAndTestTransactionPortletBar_PortalRollback:(NSString *)transactionPortletBarText;
 - (void)testAddClassNameAndTestTransactionPortletBar_Success:(NSString *)transactionPortletBarText;
-- (void)testDeleteClassName:;
+- (void)testDeleteClassName;
 - (void)testAddClassNameAndTestTransactionPortletBar_PortletRollback:(NSString *)transactionPortletBarText;
-- (BOOL)testHasClassName:;
-- (NSString *)getAutoDeployDirectory:;
-- (NSNumber *)getBuildNumber:;
+- (BOOL)testHasClassName;
+- (NSString *)getAutoDeployDirectory;
+- (int)getBuildNumber;
 - (void)testAddClassName_Success:(NSString *)classNameValue;
 - (void)testAddClassName_Rollback:(NSString *)classNameValue;
-- (NSNumber *)testGetBuildNumber:;
+- (int)testGetBuildNumber;
 
 @end

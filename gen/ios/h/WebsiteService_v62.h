@@ -13,16 +13,17 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface WebsiteService_v62 : NSObject
+@interface WebsiteService_v62 : BaseService
 
-- (NSArray *)getWebsites:(NSString *)className classPK:(NSNumber *)classPK;
-- (NSDictionary *)updateWebsite:(NSNumber *)websiteId url:(NSString *)url typeId:(NSNumber *)typeId primary:(BOOL)primary;
-- (void)deleteWebsite:(NSNumber *)websiteId;
-- (NSDictionary *)addWebsite:(NSString *)className classPK:(NSNumber *)classPK url:(NSString *)url typeId:(NSNumber *)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getWebsite:(NSNumber *)websiteId;
+- (NSArray *)getWebsites:(NSString *)className classPK:(long)classPK;
+- (NSDictionary *)updateWebsite:(long)websiteId url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary;
+- (void)deleteWebsite:(long)websiteId;
+- (NSDictionary *)addWebsite:(NSString *)className classPK:(long)classPK url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)getWebsite:(long)websiteId;
 
 @end

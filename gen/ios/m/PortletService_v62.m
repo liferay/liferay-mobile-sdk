@@ -19,26 +19,26 @@
  */
 @implementation PortletService_v62
 
-- (NSDictionary *)updatePortlet:(NSNumber *)companyId portletId:(NSString *)portletId roles:(NSString *)roles active:(BOOL)active {
+- (NSDictionary *)updatePortlet:(long)companyId portletId:(NSString *)portletId roles:(NSString *)roles active:(BOOL)active {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
+		@"companyId": @(companyId),
 		@"portletId": portletId,
 		@"roles": roles,
-		@"active": active
+		@"active": @(active)
 	};
 
 	NSDictionary *_command = @{@"/portlet/update-portlet": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getWarPortlets: {
+- (NSDictionary *)getWarPortlets {
 	NSDictionary *_params = @{
 	};
 
 	NSDictionary *_command = @{@"/portlet/get-war-portlets": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 @end

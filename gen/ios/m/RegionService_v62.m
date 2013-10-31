@@ -19,50 +19,50 @@
  */
 @implementation RegionService_v62
 
-- (NSDictionary *)fetchRegion:(NSNumber *)countryId regionCode:(NSString *)regionCode {
+- (NSDictionary *)fetchRegion:(long)countryId regionCode:(NSString *)regionCode {
 	NSDictionary *_params = @{
-		@"countryId": countryId,
+		@"countryId": @(countryId),
 		@"regionCode": regionCode
 	};
 
 	NSDictionary *_command = @{@"/region/fetch-region": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSArray *)getRegions:(NSNumber *)countryId active:(BOOL)active {
+- (NSArray *)getRegions:(long)countryId active:(BOOL)active {
 	NSDictionary *_params = @{
-		@"countryId": countryId,
-		@"active": active
+		@"countryId": @(countryId),
+		@"active": @(active)
 	};
 
 	NSDictionary *_command = @{@"/region/get-regions": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getRegion:(NSNumber *)countryId regionCode:(NSString *)regionCode {
+- (NSDictionary *)getRegion:(long)countryId regionCode:(NSString *)regionCode {
 	NSDictionary *_params = @{
-		@"countryId": countryId,
+		@"countryId": @(countryId),
 		@"regionCode": regionCode
 	};
 
 	NSDictionary *_command = @{@"/region/get-region": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)addRegion:(NSNumber *)countryId regionCode:(NSString *)regionCode name:(NSString *)name active:(BOOL)active {
+- (NSDictionary *)addRegion:(long)countryId regionCode:(NSString *)regionCode name:(NSString *)name active:(BOOL)active {
 	NSDictionary *_params = @{
-		@"countryId": countryId,
+		@"countryId": @(countryId),
 		@"regionCode": regionCode,
 		@"name": name,
-		@"active": active
+		@"active": @(active)
 	};
 
 	NSDictionary *_command = @{@"/region/add-region": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 @end

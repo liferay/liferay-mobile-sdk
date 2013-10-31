@@ -13,14 +13,15 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface LayoutBranchService_v62 : NSObject
+@interface LayoutBranchService_v62 : BaseService
 
-- (NSDictionary *)addLayoutBranch:(NSNumber *)layoutRevisionId name:(NSString *)name description:(NSString *)description master:(BOOL)master serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)updateLayoutBranch:(NSNumber *)layoutBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteLayoutBranch:(NSNumber *)layoutBranchId;
+- (NSDictionary *)addLayoutBranch:(long)layoutRevisionId name:(NSString *)name description:(NSString *)description master:(BOOL)master serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)updateLayoutBranch:(long)layoutBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
+- (void)deleteLayoutBranch:(long)layoutBranchId;
 
 @end

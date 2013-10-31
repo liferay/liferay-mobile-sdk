@@ -19,28 +19,28 @@
  */
 @implementation UserGroupGroupRoleService_v62
 
-- (void)deleteUserGroupGroupRoles:(NSArray *)userGroupIds groupId:(NSNumber *)groupId roleId:(NSNumber *)roleId {
+- (void)deleteUserGroupGroupRoles:(NSArray *)userGroupIds groupId:(long)groupId roleId:(long)roleId {
 	NSDictionary *_params = @{
 		@"userGroupIds": userGroupIds,
-		@"groupId": groupId,
-		@"roleId": roleId
+		@"groupId": @(groupId),
+		@"roleId": @(roleId)
 	};
 
 	NSDictionary *_command = @{@"/usergroupgrouprole/delete-user-group-group-roles": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)addUserGroupGroupRoles:(NSArray *)userGroupIds groupId:(NSNumber *)groupId roleId:(NSNumber *)roleId {
+- (void)addUserGroupGroupRoles:(NSArray *)userGroupIds groupId:(long)groupId roleId:(long)roleId {
 	NSDictionary *_params = @{
 		@"userGroupIds": userGroupIds,
-		@"groupId": groupId,
-		@"roleId": roleId
+		@"groupId": @(groupId),
+		@"roleId": @(roleId)
 	};
 
 	NSDictionary *_command = @{@"/usergroupgrouprole/add-user-group-group-roles": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

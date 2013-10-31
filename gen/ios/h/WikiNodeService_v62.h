@@ -13,22 +13,23 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface WikiNodeService_v62 : NSObject
+@interface WikiNodeService_v62 : BaseService
 
-- (void)deleteNode:(NSNumber *)nodeId;
+- (void)deleteNode:(long)nodeId;
 - (NSDictionary *)addNode:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
-- (void)restoreNodeFromTrash:(NSNumber *)nodeId;
-- (void)unsubscribeNode:(NSNumber *)nodeId;
-- (void)importPages:(NSNumber *)nodeId importer:(NSString *)importer inputStreams:(NSArray *)inputStreams options:(NSDictionary *)options;
-- (NSNumber *)getNodesCount:(NSNumber *)groupId status:(NSNumber *)status;
-- (NSDictionary *)updateNode:(NSNumber *)nodeId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getNode:(NSNumber *)groupId name:(NSString *)name;
-- (NSDictionary *)moveNodeToTrash:(NSNumber *)nodeId;
-- (NSArray *)getNodes:(NSNumber *)groupId status:(NSNumber *)status start:(NSNumber *)start end:(NSNumber *)end;
-- (void)subscribeNode:(NSNumber *)nodeId;
+- (void)restoreNodeFromTrash:(long)nodeId;
+- (void)unsubscribeNode:(long)nodeId;
+- (void)importPages:(long)nodeId importer:(NSString *)importer inputStreams:(NSArray *)inputStreams options:(NSDictionary *)options;
+- (int)getNodesCount:(long)groupId status:(int)status;
+- (NSDictionary *)updateNode:(long)nodeId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)getNode:(long)groupId name:(NSString *)name;
+- (NSDictionary *)moveNodeToTrash:(long)nodeId;
+- (NSArray *)getNodes:(long)groupId status:(int)status start:(int)start end:(int)end;
+- (void)subscribeNode:(long)nodeId;
 
 @end

@@ -13,12 +13,13 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface ImageService_v62 : NSObject
+@interface ImageService_v62 : BaseService
 
-- (NSDictionary *)getImage:(NSNumber *)imageId;
+- (NSDictionary *)getImage:(long)imageId;
 
 @end

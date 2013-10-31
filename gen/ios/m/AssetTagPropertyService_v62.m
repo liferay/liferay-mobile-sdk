@@ -19,59 +19,59 @@
  */
 @implementation AssetTagPropertyService_v62
 
-- (NSArray *)getTagProperties:(NSNumber *)tagId {
+- (NSArray *)getTagProperties:(long)tagId {
 	NSDictionary *_params = @{
-		@"tagId": tagId
+		@"tagId": @(tagId)
 	};
 
 	NSDictionary *_command = @{@"/assettagproperty/get-tag-properties": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateTagProperty:(NSNumber *)tagPropertyId key:(NSString *)key value:(NSString *)value {
+- (NSDictionary *)updateTagProperty:(long)tagPropertyId key:(NSString *)key value:(NSString *)value {
 	NSDictionary *_params = @{
-		@"tagPropertyId": tagPropertyId,
+		@"tagPropertyId": @(tagPropertyId),
 		@"key": key,
 		@"value": value
 	};
 
 	NSDictionary *_command = @{@"/assettagproperty/update-tag-property": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)addTagProperty:(NSNumber *)tagId key:(NSString *)key value:(NSString *)value {
+- (NSDictionary *)addTagProperty:(long)tagId key:(NSString *)key value:(NSString *)value {
 	NSDictionary *_params = @{
-		@"tagId": tagId,
+		@"tagId": @(tagId),
 		@"key": key,
 		@"value": value
 	};
 
 	NSDictionary *_command = @{@"/assettagproperty/add-tag-property": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSArray *)getTagPropertyValues:(NSNumber *)companyId key:(NSString *)key {
+- (NSArray *)getTagPropertyValues:(long)companyId key:(NSString *)key {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
+		@"companyId": @(companyId),
 		@"key": key
 	};
 
 	NSDictionary *_command = @{@"/assettagproperty/get-tag-property-values": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (void)deleteTagProperty:(NSNumber *)tagPropertyId {
+- (void)deleteTagProperty:(long)tagPropertyId {
 	NSDictionary *_params = @{
-		@"tagPropertyId": tagPropertyId
+		@"tagPropertyId": @(tagPropertyId)
 	};
 
 	NSDictionary *_command = @{@"/assettagproperty/delete-tag-property": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

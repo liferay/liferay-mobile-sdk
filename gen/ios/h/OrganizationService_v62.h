@@ -13,26 +13,27 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface OrganizationService_v62 : NSObject
+@interface OrganizationService_v62 : BaseService
 
-- (NSNumber *)getOrganizationsCount:(NSNumber *)companyId parentOrganizationId:(NSNumber *)parentOrganizationId;
-- (void)unsetGroupOrganizations:(NSNumber *)groupId organizationIds:(NSArray *)organizationIds;
-- (NSArray *)getUserOrganizations:(NSNumber *)userId;
-- (NSArray *)getOrganizations:(NSNumber *)companyId parentOrganizationId:(NSNumber *)parentOrganizationId start:(NSNumber *)start end:(NSNumber *)end;
-- (void)addPasswordPolicyOrganizations:(NSNumber *)passwordPolicyId organizationIds:(NSArray *)organizationIds;
-- (void)deleteOrganization:(NSNumber *)organizationId;
-- (NSDictionary *)updateOrganization:(NSNumber *)organizationId parentOrganizationId:(NSNumber *)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(NSNumber *)regionId countryId:(NSNumber *)countryId statusId:(NSNumber *)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getOrganization:(NSNumber *)organizationId;
-- (void)deleteLogo:(NSNumber *)organizationId;
-- (NSNumber *)getOrganizationId:(NSNumber *)companyId name:(NSString *)name;
-- (NSDictionary *)addOrganization:(NSNumber *)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(NSNumber *)regionId countryId:(NSNumber *)countryId statusId:(NSNumber *)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext;
-- (void)addGroupOrganizations:(NSNumber *)groupId organizationIds:(NSArray *)organizationIds;
-- (void)unsetPasswordPolicyOrganizations:(NSNumber *)passwordPolicyId organizationIds:(NSArray *)organizationIds;
-- (NSArray *)getManageableOrganizations:(NSString *)actionId max:(NSNumber *)max;
-- (void)setGroupOrganizations:(NSNumber *)groupId organizationIds:(NSArray *)organizationIds;
+- (int)getOrganizationsCount:(long)companyId parentOrganizationId:(long)parentOrganizationId;
+- (void)unsetGroupOrganizations:(long)groupId organizationIds:(NSArray *)organizationIds;
+- (NSArray *)getUserOrganizations:(long)userId;
+- (NSArray *)getOrganizations:(long)companyId parentOrganizationId:(long)parentOrganizationId start:(int)start end:(int)end;
+- (void)addPasswordPolicyOrganizations:(long)passwordPolicyId organizationIds:(NSArray *)organizationIds;
+- (void)deleteOrganization:(long)organizationId;
+- (NSDictionary *)updateOrganization:(long)organizationId parentOrganizationId:(long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long)regionId countryId:(long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)getOrganization:(long)organizationId;
+- (void)deleteLogo:(long)organizationId;
+- (long)getOrganizationId:(long)companyId name:(NSString *)name;
+- (NSDictionary *)addOrganization:(long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long)regionId countryId:(long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext;
+- (void)addGroupOrganizations:(long)groupId organizationIds:(NSArray *)organizationIds;
+- (void)unsetPasswordPolicyOrganizations:(long)passwordPolicyId organizationIds:(NSArray *)organizationIds;
+- (NSArray *)getManageableOrganizations:(NSString *)actionId max:(int)max;
+- (void)setGroupOrganizations:(long)groupId organizationIds:(NSArray *)organizationIds;
 
 @end

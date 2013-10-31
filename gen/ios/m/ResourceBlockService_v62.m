@@ -19,150 +19,150 @@
  */
 @implementation ResourceBlockService_v62
 
-- (void)setCompanyScopePermissions:(NSNumber *)scopeGroupId companyId:(NSNumber *)companyId name:(NSString *)name roleId:(NSNumber *)roleId actionIds:(NSArray *)actionIds {
+- (void)setCompanyScopePermissions:(long)scopeGroupId companyId:(long)companyId name:(NSString *)name roleId:(long)roleId actionIds:(NSArray *)actionIds {
 	NSDictionary *_params = @{
-		@"scopeGroupId": scopeGroupId,
-		@"companyId": companyId,
+		@"scopeGroupId": @(scopeGroupId),
+		@"companyId": @(companyId),
 		@"name": name,
-		@"roleId": roleId,
+		@"roleId": @(roleId),
 		@"actionIds": actionIds
 	};
 
 	NSDictionary *_command = @{@"/resourceblock/set-company-scope-permissions": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)addGroupScopePermission:(NSNumber *)scopeGroupId companyId:(NSNumber *)companyId groupId:(NSNumber *)groupId name:(NSString *)name roleId:(NSNumber *)roleId actionId:(NSString *)actionId {
+- (void)addGroupScopePermission:(long)scopeGroupId companyId:(long)companyId groupId:(long)groupId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId {
 	NSDictionary *_params = @{
-		@"scopeGroupId": scopeGroupId,
-		@"companyId": companyId,
-		@"groupId": groupId,
+		@"scopeGroupId": @(scopeGroupId),
+		@"companyId": @(companyId),
+		@"groupId": @(groupId),
 		@"name": name,
-		@"roleId": roleId,
+		@"roleId": @(roleId),
 		@"actionId": actionId
 	};
 
 	NSDictionary *_command = @{@"/resourceblock/add-group-scope-permission": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)addCompanyScopePermission:(NSNumber *)scopeGroupId companyId:(NSNumber *)companyId name:(NSString *)name roleId:(NSNumber *)roleId actionId:(NSString *)actionId {
+- (void)addCompanyScopePermission:(long)scopeGroupId companyId:(long)companyId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId {
 	NSDictionary *_params = @{
-		@"scopeGroupId": scopeGroupId,
-		@"companyId": companyId,
+		@"scopeGroupId": @(scopeGroupId),
+		@"companyId": @(companyId),
 		@"name": name,
-		@"roleId": roleId,
+		@"roleId": @(roleId),
 		@"actionId": actionId
 	};
 
 	NSDictionary *_command = @{@"/resourceblock/add-company-scope-permission": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)removeGroupScopePermission:(NSNumber *)scopeGroupId companyId:(NSNumber *)companyId groupId:(NSNumber *)groupId name:(NSString *)name roleId:(NSNumber *)roleId actionId:(NSString *)actionId {
+- (void)removeGroupScopePermission:(long)scopeGroupId companyId:(long)companyId groupId:(long)groupId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId {
 	NSDictionary *_params = @{
-		@"scopeGroupId": scopeGroupId,
-		@"companyId": companyId,
-		@"groupId": groupId,
+		@"scopeGroupId": @(scopeGroupId),
+		@"companyId": @(companyId),
+		@"groupId": @(groupId),
 		@"name": name,
-		@"roleId": roleId,
+		@"roleId": @(roleId),
 		@"actionId": actionId
 	};
 
 	NSDictionary *_command = @{@"/resourceblock/remove-group-scope-permission": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)setGroupScopePermissions:(NSNumber *)scopeGroupId companyId:(NSNumber *)companyId groupId:(NSNumber *)groupId name:(NSString *)name roleId:(NSNumber *)roleId actionIds:(NSArray *)actionIds {
+- (void)setGroupScopePermissions:(long)scopeGroupId companyId:(long)companyId groupId:(long)groupId name:(NSString *)name roleId:(long)roleId actionIds:(NSArray *)actionIds {
 	NSDictionary *_params = @{
-		@"scopeGroupId": scopeGroupId,
-		@"companyId": companyId,
-		@"groupId": groupId,
+		@"scopeGroupId": @(scopeGroupId),
+		@"companyId": @(companyId),
+		@"groupId": @(groupId),
 		@"name": name,
-		@"roleId": roleId,
+		@"roleId": @(roleId),
 		@"actionIds": actionIds
 	};
 
 	NSDictionary *_command = @{@"/resourceblock/set-group-scope-permissions": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)removeCompanyScopePermission:(NSNumber *)scopeGroupId companyId:(NSNumber *)companyId name:(NSString *)name roleId:(NSNumber *)roleId actionId:(NSString *)actionId {
+- (void)removeCompanyScopePermission:(long)scopeGroupId companyId:(long)companyId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId {
 	NSDictionary *_params = @{
-		@"scopeGroupId": scopeGroupId,
-		@"companyId": companyId,
+		@"scopeGroupId": @(scopeGroupId),
+		@"companyId": @(companyId),
 		@"name": name,
-		@"roleId": roleId,
+		@"roleId": @(roleId),
 		@"actionId": actionId
 	};
 
 	NSDictionary *_command = @{@"/resourceblock/remove-company-scope-permission": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)removeIndividualScopePermission:(NSNumber *)companyId groupId:(NSNumber *)groupId name:(NSString *)name primKey:(NSNumber *)primKey roleId:(NSNumber *)roleId actionId:(NSString *)actionId {
+- (void)removeIndividualScopePermission:(long)companyId groupId:(long)groupId name:(NSString *)name primKey:(long)primKey roleId:(long)roleId actionId:(NSString *)actionId {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
-		@"groupId": groupId,
+		@"companyId": @(companyId),
+		@"groupId": @(groupId),
 		@"name": name,
-		@"primKey": primKey,
-		@"roleId": roleId,
+		@"primKey": @(primKey),
+		@"roleId": @(roleId),
 		@"actionId": actionId
 	};
 
 	NSDictionary *_command = @{@"/resourceblock/remove-individual-scope-permission": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)removeAllGroupScopePermissions:(NSNumber *)scopeGroupId companyId:(NSNumber *)companyId name:(NSString *)name roleId:(NSNumber *)roleId actionId:(NSString *)actionId {
+- (void)removeAllGroupScopePermissions:(long)scopeGroupId companyId:(long)companyId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId {
 	NSDictionary *_params = @{
-		@"scopeGroupId": scopeGroupId,
-		@"companyId": companyId,
+		@"scopeGroupId": @(scopeGroupId),
+		@"companyId": @(companyId),
 		@"name": name,
-		@"roleId": roleId,
+		@"roleId": @(roleId),
 		@"actionId": actionId
 	};
 
 	NSDictionary *_command = @{@"/resourceblock/remove-all-group-scope-permissions": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)addIndividualScopePermission:(NSNumber *)companyId groupId:(NSNumber *)groupId name:(NSString *)name primKey:(NSNumber *)primKey roleId:(NSNumber *)roleId actionId:(NSString *)actionId {
+- (void)addIndividualScopePermission:(long)companyId groupId:(long)groupId name:(NSString *)name primKey:(long)primKey roleId:(long)roleId actionId:(NSString *)actionId {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
-		@"groupId": groupId,
+		@"companyId": @(companyId),
+		@"groupId": @(groupId),
 		@"name": name,
-		@"primKey": primKey,
-		@"roleId": roleId,
+		@"primKey": @(primKey),
+		@"roleId": @(roleId),
 		@"actionId": actionId
 	};
 
 	NSDictionary *_command = @{@"/resourceblock/add-individual-scope-permission": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)setIndividualScopePermissions:(NSNumber *)companyId groupId:(NSNumber *)groupId name:(NSString *)name primKey:(NSNumber *)primKey roleId:(NSNumber *)roleId actionIds:(NSArray *)actionIds {
+- (void)setIndividualScopePermissions:(long)companyId groupId:(long)groupId name:(NSString *)name primKey:(long)primKey roleId:(long)roleId actionIds:(NSArray *)actionIds {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
-		@"groupId": groupId,
+		@"companyId": @(companyId),
+		@"groupId": @(groupId),
 		@"name": name,
-		@"primKey": primKey,
-		@"roleId": roleId,
+		@"primKey": @(primKey),
+		@"roleId": @(roleId),
 		@"actionIds": actionIds
 	};
 
 	NSDictionary *_command = @{@"/resourceblock/set-individual-scope-permissions": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

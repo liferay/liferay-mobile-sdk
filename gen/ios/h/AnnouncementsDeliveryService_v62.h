@@ -13,12 +13,13 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface AnnouncementsDeliveryService_v62 : NSObject
+@interface AnnouncementsDeliveryService_v62 : BaseService
 
-- (NSDictionary *)updateDelivery:(NSNumber *)userId type:(NSString *)type email:(BOOL)email sms:(BOOL)sms website:(BOOL)website;
+- (NSDictionary *)updateDelivery:(long)userId type:(NSString *)type email:(BOOL)email sms:(BOOL)sms website:(BOOL)website;
 
 @end

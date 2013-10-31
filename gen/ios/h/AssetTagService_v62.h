@@ -13,25 +13,26 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface AssetTagService_v62 : NSObject
+@interface AssetTagService_v62 : BaseService
 
-- (NSDictionary *)getJsonGroupTags:(NSNumber *)groupId name:(NSString *)name start:(NSNumber *)start end:(NSNumber *)end;
-- (void)deleteTag:(NSNumber *)tagId;
-- (NSNumber *)getGroupTagsCount:(NSNumber *)groupId;
-- (NSDictionary *)getTag:(NSNumber *)tagId;
+- (NSDictionary *)getJsonGroupTags:(long)groupId name:(NSString *)name start:(int)start end:(int)end;
+- (void)deleteTag:(long)tagId;
+- (int)getGroupTagsCount:(long)groupId;
+- (NSDictionary *)getTag:(long)tagId;
 - (void)deleteTags:(NSArray *)tagIds;
-- (void)mergeTags:(NSArray *)fromTagIds toTagId:(NSNumber *)toTagId overrideProperties:(BOOL)overrideProperties;
-- (NSArray *)getTags:(NSNumber *)groupId classNameId:(NSNumber *)classNameId name:(NSString *)name start:(NSNumber *)start end:(NSNumber *)end obc:(NSDictionary *)obc;
-- (NSDictionary *)updateTag:(NSNumber *)tagId name:(NSString *)name tagProperties:(NSArray *)tagProperties serviceContext:(NSDictionary *)serviceContext;
+- (void)mergeTags:(NSArray *)fromTagIds toTagId:(long)toTagId overrideProperties:(BOOL)overrideProperties;
+- (NSArray *)getTags:(long)groupId classNameId:(long)classNameId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc;
+- (NSDictionary *)updateTag:(long)tagId name:(NSString *)name tagProperties:(NSArray *)tagProperties serviceContext:(NSDictionary *)serviceContext;
 - (NSArray *)getGroupsTags:(NSArray *)groupIds;
-- (NSNumber *)getTagsCount:(NSNumber *)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties;
-- (NSDictionary *)getGroupTagsDisplay:(NSNumber *)groupId name:(NSString *)name start:(NSNumber *)start end:(NSNumber *)end;
-- (NSArray *)getGroupTags:(NSNumber *)groupId start:(NSNumber *)start end:(NSNumber *)end obc:(NSDictionary *)obc;
-- (NSDictionary *)search:(NSArray *)groupIds name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(NSNumber *)start end:(NSNumber *)end;
+- (int)getTagsCount:(long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties;
+- (NSDictionary *)getGroupTagsDisplay:(long)groupId name:(NSString *)name start:(int)start end:(int)end;
+- (NSArray *)getGroupTags:(long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc;
+- (NSDictionary *)search:(NSArray *)groupIds name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end;
 - (NSDictionary *)addTag:(NSString *)name tagProperties:(NSArray *)tagProperties serviceContext:(NSDictionary *)serviceContext;
 
 @end

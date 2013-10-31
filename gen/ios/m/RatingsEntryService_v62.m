@@ -19,27 +19,27 @@
  */
 @implementation RatingsEntryService_v62
 
-- (NSDictionary *)updateEntry:(NSString *)className classPK:(NSNumber *)classPK score:(NSNumber *)score {
+- (NSDictionary *)updateEntry:(NSString *)className classPK:(long)classPK score:(double)score {
 	NSDictionary *_params = @{
 		@"className": className,
-		@"classPK": classPK,
-		@"score": score
+		@"classPK": @(classPK),
+		@"score": @(score)
 	};
 
 	NSDictionary *_command = @{@"/ratingsentry/update-entry": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteEntry:(NSString *)className classPK:(NSNumber *)classPK {
+- (void)deleteEntry:(NSString *)className classPK:(long)classPK {
 	NSDictionary *_params = @{
 		@"className": className,
-		@"classPK": classPK
+		@"classPK": @(classPK)
 	};
 
 	NSDictionary *_command = @{@"/ratingsentry/delete-entry": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

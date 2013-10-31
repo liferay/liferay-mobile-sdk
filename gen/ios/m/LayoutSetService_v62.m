@@ -19,69 +19,69 @@
  */
 @implementation LayoutSetService_v62
 
-- (NSDictionary *)updateSettings:(NSNumber *)groupId privateLayout:(BOOL)privateLayout settings:(NSString *)settings {
+- (NSDictionary *)updateSettings:(long)groupId privateLayout:(BOOL)privateLayout settings:(NSString *)settings {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"privateLayout": privateLayout,
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
 		@"settings": settings
 	};
 
 	NSDictionary *_command = @{@"/layoutset/update-settings": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateLookAndFeel:(NSNumber *)groupId privateLayout:(BOOL)privateLayout themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId css:(NSString *)css wapTheme:(BOOL)wapTheme {
+- (NSDictionary *)updateLookAndFeel:(long)groupId privateLayout:(BOOL)privateLayout themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId css:(NSString *)css wapTheme:(BOOL)wapTheme {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"privateLayout": privateLayout,
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
 		@"themeId": themeId,
 		@"colorSchemeId": colorSchemeId,
 		@"css": css,
-		@"wapTheme": wapTheme
+		@"wapTheme": @(wapTheme)
 	};
 
 	NSDictionary *_command = @{@"/layoutset/update-look-and-feel": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)updateLogo:(NSNumber *)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo file:(NSDictionary *)file {
+- (void)updateLogo:(long)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo file:(NSDictionary *)file {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"privateLayout": privateLayout,
-		@"logo": logo,
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"logo": @(logo),
 		@"file": file
 	};
 
 	NSDictionary *_command = @{@"/layoutset/update-logo": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)updateLayoutSetPrototypeLinkEnabled:(NSNumber *)groupId privateLayout:(BOOL)privateLayout layoutSetPrototypeLinkEnabled:(BOOL)layoutSetPrototypeLinkEnabled layoutSetPrototypeUuid:(NSString *)layoutSetPrototypeUuid {
+- (void)updateLayoutSetPrototypeLinkEnabled:(long)groupId privateLayout:(BOOL)privateLayout layoutSetPrototypeLinkEnabled:(BOOL)layoutSetPrototypeLinkEnabled layoutSetPrototypeUuid:(NSString *)layoutSetPrototypeUuid {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"privateLayout": privateLayout,
-		@"layoutSetPrototypeLinkEnabled": layoutSetPrototypeLinkEnabled,
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"layoutSetPrototypeLinkEnabled": @(layoutSetPrototypeLinkEnabled),
 		@"layoutSetPrototypeUuid": layoutSetPrototypeUuid
 	};
 
 	NSDictionary *_command = @{@"/layoutset/update-layout-set-prototype-link-enabled": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateVirtualHost:(NSNumber *)groupId privateLayout:(BOOL)privateLayout virtualHost:(NSString *)virtualHost {
+- (NSDictionary *)updateVirtualHost:(long)groupId privateLayout:(BOOL)privateLayout virtualHost:(NSString *)virtualHost {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"privateLayout": privateLayout,
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
 		@"virtualHost": virtualHost
 	};
 
 	NSDictionary *_command = @{@"/layoutset/update-virtual-host": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 @end

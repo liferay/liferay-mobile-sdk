@@ -13,13 +13,14 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface ThemeService_v62 : NSObject
+@interface ThemeService_v62 : BaseService
 
-- (NSArray *)getThemes:(NSNumber *)companyId;
-- (NSDictionary *)getWarThemes:;
+- (NSArray *)getThemes:(long)companyId;
+- (NSDictionary *)getWarThemes;
 
 @end

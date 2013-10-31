@@ -13,16 +13,17 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface LayoutSetBranchService_v62 : NSObject
+@interface LayoutSetBranchService_v62 : BaseService
 
-- (void)deleteLayoutSetBranch:(NSNumber *)layoutSetBranchId;
-- (NSArray *)getLayoutSetBranches:(NSNumber *)groupId privateLayout:(BOOL)privateLayout;
-- (NSDictionary *)addLayoutSetBranch:(NSNumber *)groupId privateLayout:(BOOL)privateLayout name:(NSString *)name description:(NSString *)description master:(BOOL)master copyLayoutSetBranchId:(NSNumber *)copyLayoutSetBranchId serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)updateLayoutSetBranch:(NSNumber *)groupId layoutSetBranchId:(NSNumber *)layoutSetBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)mergeLayoutSetBranch:(NSNumber *)layoutSetBranchId mergeLayoutSetBranchId:(NSNumber *)mergeLayoutSetBranchId serviceContext:(NSDictionary *)serviceContext;
+- (void)deleteLayoutSetBranch:(long)layoutSetBranchId;
+- (NSArray *)getLayoutSetBranches:(long)groupId privateLayout:(BOOL)privateLayout;
+- (NSDictionary *)addLayoutSetBranch:(long)groupId privateLayout:(BOOL)privateLayout name:(NSString *)name description:(NSString *)description master:(BOOL)master copyLayoutSetBranchId:(long)copyLayoutSetBranchId serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)updateLayoutSetBranch:(long)groupId layoutSetBranchId:(long)layoutSetBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)mergeLayoutSetBranch:(long)layoutSetBranchId mergeLayoutSetBranchId:(long)mergeLayoutSetBranchId serviceContext:(NSDictionary *)serviceContext;
 
 @end

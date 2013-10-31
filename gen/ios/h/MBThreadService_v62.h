@@ -13,24 +13,25 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface MBThreadService_v62 : NSObject
+@interface MBThreadService_v62 : BaseService
 
-- (NSNumber *)getGroupThreadsCount:(NSNumber *)groupId userId:(NSNumber *)userId status:(NSNumber *)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous;
-- (NSDictionary *)moveThreadFromTrash:(NSNumber *)categoryId threadId:(NSNumber *)threadId;
-- (NSDictionary *)moveThreadToTrash:(NSNumber *)threadId;
-- (void)deleteThread:(NSNumber *)threadId;
-- (void)restoreThreadFromTrash:(NSNumber *)threadId;
-- (void)unlockThread:(NSNumber *)threadId;
-- (NSDictionary *)moveThread:(NSNumber *)categoryId threadId:(NSNumber *)threadId;
-- (NSArray *)getThreads:(NSNumber *)groupId categoryId:(NSNumber *)categoryId status:(NSNumber *)status start:(NSNumber *)start end:(NSNumber *)end;
-- (NSDictionary *)splitThread:(NSNumber *)messageId subject:(NSString *)subject serviceContext:(NSDictionary *)serviceContext;
-- (NSArray *)getGroupThreads:(NSNumber *)groupId userId:(NSNumber *)userId status:(NSNumber *)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous start:(NSNumber *)start end:(NSNumber *)end;
-- (NSDictionary *)lockThread:(NSNumber *)threadId;
-- (NSNumber *)getThreadsCount:(NSNumber *)groupId categoryId:(NSNumber *)categoryId status:(NSNumber *)status;
-- (NSDictionary *)search:(NSNumber *)groupId creatorUserId:(NSNumber *)creatorUserId startDate:(NSNumber *)startDate endDate:(NSNumber *)endDate status:(NSNumber *)status start:(NSNumber *)start end:(NSNumber *)end;
+- (int)getGroupThreadsCount:(long)groupId userId:(long)userId status:(int)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous;
+- (NSDictionary *)moveThreadFromTrash:(long)categoryId threadId:(long)threadId;
+- (NSDictionary *)moveThreadToTrash:(long)threadId;
+- (void)deleteThread:(long)threadId;
+- (void)restoreThreadFromTrash:(long)threadId;
+- (void)unlockThread:(long)threadId;
+- (NSDictionary *)moveThread:(long)categoryId threadId:(long)threadId;
+- (NSArray *)getThreads:(long)groupId categoryId:(long)categoryId status:(int)status start:(int)start end:(int)end;
+- (NSDictionary *)splitThread:(long)messageId subject:(NSString *)subject serviceContext:(NSDictionary *)serviceContext;
+- (NSArray *)getGroupThreads:(long)groupId userId:(long)userId status:(int)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous start:(int)start end:(int)end;
+- (NSDictionary *)lockThread:(long)threadId;
+- (int)getThreadsCount:(long)groupId categoryId:(long)categoryId status:(int)status;
+- (NSDictionary *)search:(long)groupId creatorUserId:(long)creatorUserId startDate:(long)startDate endDate:(long)endDate status:(int)status start:(int)start end:(int)end;
 
 @end

@@ -13,20 +13,21 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface DLFileEntryTypeService_v62 : NSObject
+@interface DLFileEntryTypeService_v62 : BaseService
 
-- (void)updateFileEntryType:(NSNumber *)fileEntryTypeId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext;
-- (NSNumber *)searchCount:(NSNumber *)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType;
-- (NSNumber *)getFileEntryTypesCount:(NSArray *)groupIds;
-- (NSArray *)search:(NSNumber *)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType start:(NSNumber *)start end:(NSNumber *)end orderByComparator:(NSDictionary *)orderByComparator;
-- (NSArray *)getFolderFileEntryTypes:(NSArray *)groupIds folderId:(NSNumber *)folderId inherited:(BOOL)inherited;
-- (NSDictionary *)addFileEntryType:(NSNumber *)groupId fileEntryTypeKey:(NSString *)fileEntryTypeKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext;
-- (NSArray *)getFileEntryTypes:(NSArray *)groupIds start:(NSNumber *)start end:(NSNumber *)end;
-- (NSDictionary *)getFileEntryType:(NSNumber *)fileEntryTypeId;
-- (void)deleteFileEntryType:(NSNumber *)fileEntryTypeId;
+- (void)updateFileEntryType:(long)fileEntryTypeId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext;
+- (int)searchCount:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType;
+- (int)getFileEntryTypesCount:(NSArray *)groupIds;
+- (NSArray *)search:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator;
+- (NSArray *)getFolderFileEntryTypes:(NSArray *)groupIds folderId:(long)folderId inherited:(BOOL)inherited;
+- (NSDictionary *)addFileEntryType:(long)groupId fileEntryTypeKey:(NSString *)fileEntryTypeKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext;
+- (NSArray *)getFileEntryTypes:(NSArray *)groupIds start:(int)start end:(int)end;
+- (NSDictionary *)getFileEntryType:(long)fileEntryTypeId;
+- (void)deleteFileEntryType:(long)fileEntryTypeId;
 
 @end

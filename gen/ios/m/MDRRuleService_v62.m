@@ -19,9 +19,9 @@
  */
 @implementation MDRRuleService_v62
 
-- (NSDictionary *)updateRule:(NSNumber *)ruleId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)updateRule:(long)ruleId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"ruleId": ruleId,
+		@"ruleId": @(ruleId),
 		@"nameMap": nameMap,
 		@"descriptionMap": descriptionMap,
 		@"type": type,
@@ -31,22 +31,22 @@
 
 	NSDictionary *_command = @{@"/mdrrule/update-rule": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteRule:(NSNumber *)ruleId {
+- (void)deleteRule:(long)ruleId {
 	NSDictionary *_params = @{
-		@"ruleId": ruleId
+		@"ruleId": @(ruleId)
 	};
 
 	NSDictionary *_command = @{@"/mdrrule/delete-rule": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)addRule:(NSNumber *)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addRule:(long)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"ruleGroupId": ruleGroupId,
+		@"ruleGroupId": @(ruleGroupId),
 		@"nameMap": nameMap,
 		@"descriptionMap": descriptionMap,
 		@"type": type,
@@ -56,27 +56,27 @@
 
 	NSDictionary *_command = @{@"/mdrrule/add-rule": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getRule:(NSNumber *)ruleId {
+- (NSDictionary *)getRule:(long)ruleId {
 	NSDictionary *_params = @{
-		@"ruleId": ruleId
+		@"ruleId": @(ruleId)
 	};
 
 	NSDictionary *_command = @{@"/mdrrule/get-rule": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)fetchRule:(NSNumber *)ruleId {
+- (NSDictionary *)fetchRule:(long)ruleId {
 	NSDictionary *_params = @{
-		@"ruleId": ruleId
+		@"ruleId": @(ruleId)
 	};
 
 	NSDictionary *_command = @{@"/mdrrule/fetch-rule": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 @end

@@ -13,18 +13,19 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface DDLRecordSetService_v62 : NSObject
+@interface DDLRecordSetService_v62 : BaseService
 
-- (void)deleteRecordSet:(NSNumber *)recordSetId;
-- (NSDictionary *)getRecordSet:(NSNumber *)recordSetId;
-- (NSNumber *)searchCount:(NSNumber *)companyId groupId:(NSNumber *)groupId name:(NSString *)name description:(NSString *)description scope:(NSNumber *)scope andOperator:(BOOL)andOperator;
-- (NSArray *)search:(NSNumber *)companyId groupId:(NSNumber *)groupId name:(NSString *)name description:(NSString *)description scope:(NSNumber *)scope andOperator:(BOOL)andOperator start:(NSNumber *)start end:(NSNumber *)end orderByComparator:(NSDictionary *)orderByComparator;
-- (NSDictionary *)updateMinDisplayRows:(NSNumber *)recordSetId minDisplayRows:(NSNumber *)minDisplayRows serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)updateRecordSet:(NSNumber *)groupId ddmStructureId:(NSNumber *)ddmStructureId recordSetKey:(NSString *)recordSetKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap minDisplayRows:(NSNumber *)minDisplayRows serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)addRecordSet:(NSNumber *)groupId ddmStructureId:(NSNumber *)ddmStructureId recordSetKey:(NSString *)recordSetKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap minDisplayRows:(NSNumber *)minDisplayRows scope:(NSNumber *)scope serviceContext:(NSDictionary *)serviceContext;
+- (void)deleteRecordSet:(long)recordSetId;
+- (NSDictionary *)getRecordSet:(long)recordSetId;
+- (int)searchCount:(long)companyId groupId:(long)groupId name:(NSString *)name description:(NSString *)description scope:(int)scope andOperator:(BOOL)andOperator;
+- (NSArray *)search:(long)companyId groupId:(long)groupId name:(NSString *)name description:(NSString *)description scope:(int)scope andOperator:(BOOL)andOperator start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator;
+- (NSDictionary *)updateMinDisplayRows:(long)recordSetId minDisplayRows:(int)minDisplayRows serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)updateRecordSet:(long)groupId ddmStructureId:(long)ddmStructureId recordSetKey:(NSString *)recordSetKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap minDisplayRows:(int)minDisplayRows serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)addRecordSet:(long)groupId ddmStructureId:(long)ddmStructureId recordSetKey:(NSString *)recordSetKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap minDisplayRows:(int)minDisplayRows scope:(int)scope serviceContext:(NSDictionary *)serviceContext;
 
 @end

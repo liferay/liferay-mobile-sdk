@@ -13,25 +13,26 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface BlogsEntryService_v62 : NSObject
+@interface BlogsEntryService_v62 : BaseService
 
-- (void)unsubscribe:(NSNumber *)groupId;
-- (NSDictionary *)getEntry:(NSNumber *)groupId urlTitle:(NSString *)urlTitle;
-- (NSArray *)getGroupsEntries:(NSNumber *)companyId groupId:(NSNumber *)groupId displayDate:(NSNumber *)displayDate status:(NSNumber *)status max:(NSNumber *)max;
-- (NSArray *)getCompanyEntries:(NSNumber *)companyId displayDate:(NSNumber *)displayDate status:(NSNumber *)status max:(NSNumber *)max;
-- (void)deleteEntry:(NSNumber *)entryId;
-- (NSDictionary *)moveEntryToTrash:(NSNumber *)entryId;
-- (NSString *)getCompanyEntriesRss:(NSNumber *)companyId displayDate:(NSNumber *)displayDate status:(NSNumber *)status max:(NSNumber *)max type:(NSString *)type version:(NSNumber *)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay;
-- (NSString *)getGroupEntriesRss:(NSNumber *)groupId displayDate:(NSNumber *)displayDate status:(NSNumber *)status max:(NSNumber *)max type:(NSString *)type version:(NSNumber *)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay;
-- (NSArray *)getGroupEntries:(NSNumber *)groupId displayDate:(NSNumber *)displayDate status:(NSNumber *)status start:(NSNumber *)start end:(NSNumber *)end;
-- (NSNumber *)getGroupEntriesCount:(NSNumber *)groupId displayDate:(NSNumber *)displayDate status:(NSNumber *)status;
-- (void)restoreEntryFromTrash:(NSNumber *)entryId;
-- (void)subscribe:(NSNumber *)groupId;
-- (NSString *)getOrganizationEntriesRss:(NSNumber *)organizationId displayDate:(NSNumber *)displayDate status:(NSNumber *)status max:(NSNumber *)max type:(NSString *)type version:(NSNumber *)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay;
-- (NSArray *)getOrganizationEntries:(NSNumber *)organizationId displayDate:(NSNumber *)displayDate status:(NSNumber *)status max:(NSNumber *)max;
+- (void)unsubscribe:(long)groupId;
+- (NSDictionary *)getEntry:(long)groupId urlTitle:(NSString *)urlTitle;
+- (NSArray *)getGroupsEntries:(long)companyId groupId:(long)groupId displayDate:(long)displayDate status:(int)status max:(int)max;
+- (NSArray *)getCompanyEntries:(long)companyId displayDate:(long)displayDate status:(int)status max:(int)max;
+- (void)deleteEntry:(long)entryId;
+- (NSDictionary *)moveEntryToTrash:(long)entryId;
+- (NSString *)getCompanyEntriesRss:(long)companyId displayDate:(long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay;
+- (NSString *)getGroupEntriesRss:(long)groupId displayDate:(long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay;
+- (NSArray *)getGroupEntries:(long)groupId displayDate:(long)displayDate status:(int)status start:(int)start end:(int)end;
+- (int)getGroupEntriesCount:(long)groupId displayDate:(long)displayDate status:(int)status;
+- (void)restoreEntryFromTrash:(long)entryId;
+- (void)subscribe:(long)groupId;
+- (NSString *)getOrganizationEntriesRss:(long)organizationId displayDate:(long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay;
+- (NSArray *)getOrganizationEntries:(long)organizationId displayDate:(long)displayDate status:(int)status max:(int)max;
 
 @end

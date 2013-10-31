@@ -13,14 +13,15 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface ContactService_v62 : NSObject
+@interface ContactService_v62 : BaseService
 
-- (NSDictionary *)getContact:(NSNumber *)contactId;
-- (NSNumber *)getContactsCount:(NSNumber *)classNameId classPK:(NSNumber *)classPK;
-- (NSArray *)getContacts:(NSNumber *)classNameId classPK:(NSNumber *)classPK start:(NSNumber *)start end:(NSNumber *)end orderByComparator:(NSDictionary *)orderByComparator;
+- (NSDictionary *)getContact:(long)contactId;
+- (int)getContactsCount:(long)classNameId classPK:(long)classPK;
+- (NSArray *)getContacts:(long)classNameId classPK:(long)classPK start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator;
 
 @end

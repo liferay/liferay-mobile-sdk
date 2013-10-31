@@ -19,58 +19,58 @@
  */
 @implementation JournalFeedService_v62
 
-- (NSDictionary *)addFeed:(NSNumber *)groupId feedId:(NSString *)feedId autoFeedId:(BOOL)autoFeedId name:(NSString *)name description:(NSString *)description type:(NSString *)type structureId:(NSString *)structureId templateId:(NSString *)templateId rendererTemplateId:(NSString *)rendererTemplateId delta:(NSNumber *)delta orderByCol:(NSString *)orderByCol orderByType:(NSString *)orderByType targetLayoutFriendlyUrl:(NSString *)targetLayoutFriendlyUrl targetPortletId:(NSString *)targetPortletId contentField:(NSString *)contentField feedType:(NSString *)feedType feedVersion:(NSNumber *)feedVersion serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addFeed:(long)groupId feedId:(NSString *)feedId autoFeedId:(BOOL)autoFeedId name:(NSString *)name description:(NSString *)description type:(NSString *)type structureId:(NSString *)structureId templateId:(NSString *)templateId rendererTemplateId:(NSString *)rendererTemplateId delta:(int)delta orderByCol:(NSString *)orderByCol orderByType:(NSString *)orderByType targetLayoutFriendlyUrl:(NSString *)targetLayoutFriendlyUrl targetPortletId:(NSString *)targetPortletId contentField:(NSString *)contentField feedType:(NSString *)feedType feedVersion:(double)feedVersion serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"feedId": feedId,
-		@"autoFeedId": autoFeedId,
+		@"autoFeedId": @(autoFeedId),
 		@"name": name,
 		@"description": description,
 		@"type": type,
 		@"structureId": structureId,
 		@"templateId": templateId,
 		@"rendererTemplateId": rendererTemplateId,
-		@"delta": delta,
+		@"delta": @(delta),
 		@"orderByCol": orderByCol,
 		@"orderByType": orderByType,
 		@"targetLayoutFriendlyUrl": targetLayoutFriendlyUrl,
 		@"targetPortletId": targetPortletId,
 		@"contentField": contentField,
 		@"feedType": feedType,
-		@"feedVersion": feedVersion,
+		@"feedVersion": @(feedVersion),
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/journalfeed/add-feed": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getFeed:(NSNumber *)groupId feedId:(NSNumber *)feedId {
+- (NSDictionary *)getFeed:(long)groupId feedId:(long)feedId {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"feedId": feedId
+		@"groupId": @(groupId),
+		@"feedId": @(feedId)
 	};
 
 	NSDictionary *_command = @{@"/journalfeed/get-feed": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteFeed:(NSNumber *)groupId feedId:(NSNumber *)feedId {
+- (void)deleteFeed:(long)groupId feedId:(long)feedId {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"feedId": feedId
+		@"groupId": @(groupId),
+		@"feedId": @(feedId)
 	};
 
 	NSDictionary *_command = @{@"/journalfeed/delete-feed": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateFeed:(NSNumber *)groupId feedId:(NSString *)feedId name:(NSString *)name description:(NSString *)description type:(NSString *)type structureId:(NSString *)structureId templateId:(NSString *)templateId rendererTemplateId:(NSString *)rendererTemplateId delta:(NSNumber *)delta orderByCol:(NSString *)orderByCol orderByType:(NSString *)orderByType targetLayoutFriendlyUrl:(NSString *)targetLayoutFriendlyUrl targetPortletId:(NSString *)targetPortletId contentField:(NSString *)contentField feedType:(NSString *)feedType feedVersion:(NSNumber *)feedVersion serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)updateFeed:(long)groupId feedId:(NSString *)feedId name:(NSString *)name description:(NSString *)description type:(NSString *)type structureId:(NSString *)structureId templateId:(NSString *)templateId rendererTemplateId:(NSString *)rendererTemplateId delta:(int)delta orderByCol:(NSString *)orderByCol orderByType:(NSString *)orderByType targetLayoutFriendlyUrl:(NSString *)targetLayoutFriendlyUrl targetPortletId:(NSString *)targetPortletId contentField:(NSString *)contentField feedType:(NSString *)feedType feedVersion:(double)feedVersion serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"feedId": feedId,
 		@"name": name,
 		@"description": description,
@@ -78,20 +78,20 @@
 		@"structureId": structureId,
 		@"templateId": templateId,
 		@"rendererTemplateId": rendererTemplateId,
-		@"delta": delta,
+		@"delta": @(delta),
 		@"orderByCol": orderByCol,
 		@"orderByType": orderByType,
 		@"targetLayoutFriendlyUrl": targetLayoutFriendlyUrl,
 		@"targetPortletId": targetPortletId,
 		@"contentField": contentField,
 		@"feedType": feedType,
-		@"feedVersion": feedVersion,
+		@"feedVersion": @(feedVersion),
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/journalfeed/update-feed": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 @end

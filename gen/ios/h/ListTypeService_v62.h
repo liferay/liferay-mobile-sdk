@@ -13,14 +13,15 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface ListTypeService_v62 : NSObject
+@interface ListTypeService_v62 : BaseService
 
-- (void)validate:(NSNumber *)listTypeId classNameId:(NSNumber *)classNameId type:(NSString *)type;
+- (void)validate:(int)listTypeId classNameId:(long)classNameId type:(NSString *)type;
 - (NSArray *)getListTypes:(NSString *)type;
-- (NSDictionary *)getListType:(NSNumber *)listTypeId;
+- (NSDictionary *)getListType:(int)listTypeId;
 
 @end

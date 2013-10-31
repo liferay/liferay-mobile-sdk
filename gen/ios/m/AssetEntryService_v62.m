@@ -19,36 +19,36 @@
  */
 @implementation AssetEntryService_v62
 
-- (NSDictionary *)updateEntry:(NSNumber *)groupId createDate:(NSNumber *)createDate modifiedDate:(NSNumber *)modifiedDate className:(NSString *)className classPK:(NSNumber *)classPK classUuid:(NSString *)classUuid classTypeId:(NSNumber *)classTypeId categoryIds:(NSArray *)categoryIds tagNames:(NSArray *)tagNames visible:(BOOL)visible startDate:(NSNumber *)startDate endDate:(NSNumber *)endDate expirationDate:(NSNumber *)expirationDate mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description summary:(NSString *)summary url:(NSString *)url layoutUuid:(NSString *)layoutUuid height:(NSNumber *)height width:(NSNumber *)width priority:(NSDictionary *)priority sync:(BOOL)sync {
+- (NSDictionary *)updateEntry:(long)groupId createDate:(long)createDate modifiedDate:(long)modifiedDate className:(NSString *)className classPK:(long)classPK classUuid:(NSString *)classUuid classTypeId:(long)classTypeId categoryIds:(NSArray *)categoryIds tagNames:(NSArray *)tagNames visible:(BOOL)visible startDate:(long)startDate endDate:(long)endDate expirationDate:(long)expirationDate mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description summary:(NSString *)summary url:(NSString *)url layoutUuid:(NSString *)layoutUuid height:(int)height width:(int)width priority:(NSDictionary *)priority sync:(BOOL)sync {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"createDate": createDate,
-		@"modifiedDate": modifiedDate,
+		@"groupId": @(groupId),
+		@"createDate": @(createDate),
+		@"modifiedDate": @(modifiedDate),
 		@"className": className,
-		@"classPK": classPK,
+		@"classPK": @(classPK),
 		@"classUuid": classUuid,
-		@"classTypeId": classTypeId,
+		@"classTypeId": @(classTypeId),
 		@"categoryIds": categoryIds,
 		@"tagNames": tagNames,
-		@"visible": visible,
-		@"startDate": startDate,
-		@"endDate": endDate,
-		@"expirationDate": expirationDate,
+		@"visible": @(visible),
+		@"startDate": @(startDate),
+		@"endDate": @(endDate),
+		@"expirationDate": @(expirationDate),
 		@"mimeType": mimeType,
 		@"title": title,
 		@"description": description,
 		@"summary": summary,
 		@"url": url,
 		@"layoutUuid": layoutUuid,
-		@"height": height,
-		@"width": width,
+		@"height": @(height),
+		@"width": @(width),
 		@"priority": priority,
-		@"sync": sync
+		@"sync": @(sync)
 	};
 
 	NSDictionary *_command = @{@"/assetentry/update-entry": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 - (NSArray *)getEntries:(NSDictionary *)entryQuery {
@@ -58,60 +58,60 @@
 
 	NSDictionary *_command = @{@"/assetentry/get-entries": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSArray *)getCompanyEntries:(NSNumber *)companyId start:(NSNumber *)start end:(NSNumber *)end {
+- (NSArray *)getCompanyEntries:(long)companyId start:(int)start end:(int)end {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
-		@"start": start,
-		@"end": end
+		@"companyId": @(companyId),
+		@"start": @(start),
+		@"end": @(end)
 	};
 
 	NSDictionary *_command = @{@"/assetentry/get-company-entries": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)incrementViewCounter:(NSString *)className classPK:(NSNumber *)classPK {
+- (NSDictionary *)incrementViewCounter:(NSString *)className classPK:(long)classPK {
 	NSDictionary *_params = @{
 		@"className": className,
-		@"classPK": classPK
+		@"classPK": @(classPK)
 	};
 
 	NSDictionary *_command = @{@"/assetentry/increment-view-counter": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSNumber *)getEntriesCount:(NSDictionary *)entryQuery {
+- (int)getEntriesCount:(NSDictionary *)entryQuery {
 	NSDictionary *_params = @{
 		@"entryQuery": entryQuery
 	};
 
 	NSDictionary *_command = @{@"/assetentry/get-entries-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (NSNumber *)getCompanyEntriesCount:(NSNumber *)companyId {
+- (int)getCompanyEntriesCount:(long)companyId {
 	NSDictionary *_params = @{
-		@"companyId": companyId
+		@"companyId": @(companyId)
 	};
 
 	NSDictionary *_command = @{@"/assetentry/get-company-entries-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getEntry:(NSNumber *)entryId {
+- (NSDictionary *)getEntry:(long)entryId {
 	NSDictionary *_params = @{
-		@"entryId": entryId
+		@"entryId": @(entryId)
 	};
 
 	NSDictionary *_command = @{@"/assetentry/get-entry": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 @end

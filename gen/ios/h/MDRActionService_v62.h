@@ -13,16 +13,17 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface MDRActionService_v62 : NSObject
+@interface MDRActionService_v62 : BaseService
 
-- (NSDictionary *)updateAction:(NSNumber *)actionId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)addAction:(NSNumber *)ruleGroupInstanceId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getAction:(NSNumber *)actionId;
-- (void)deleteAction:(NSNumber *)actionId;
-- (NSDictionary *)fetchAction:(NSNumber *)actionId;
+- (NSDictionary *)updateAction:(long)actionId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)addAction:(long)ruleGroupInstanceId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)getAction:(long)actionId;
+- (void)deleteAction:(long)actionId;
+- (NSDictionary *)fetchAction:(long)actionId;
 
 @end

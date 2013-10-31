@@ -19,127 +19,127 @@
  */
 @implementation BookmarksEntryService_v62
 
-- (NSDictionary *)moveEntryToTrash:(NSNumber *)entryId {
+- (NSDictionary *)moveEntryToTrash:(long)entryId {
 	NSDictionary *_params = @{
-		@"entryId": entryId
+		@"entryId": @(entryId)
 	};
 
 	NSDictionary *_command = @{@"/bookmarksentry/move-entry-to-trash": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)search:(NSNumber *)groupId creatorUserId:(NSNumber *)creatorUserId status:(NSNumber *)status start:(NSNumber *)start end:(NSNumber *)end {
+- (NSDictionary *)search:(long)groupId creatorUserId:(long)creatorUserId status:(int)status start:(int)start end:(int)end {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"creatorUserId": creatorUserId,
-		@"status": status,
-		@"start": start,
-		@"end": end
+		@"groupId": @(groupId),
+		@"creatorUserId": @(creatorUserId),
+		@"status": @(status),
+		@"start": @(start),
+		@"end": @(end)
 	};
 
 	NSDictionary *_command = @{@"/bookmarksentry/search": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSArray *)getEntries:(NSNumber *)groupId folderId:(NSNumber *)folderId start:(NSNumber *)start end:(NSNumber *)end orderByComparator:(NSDictionary *)orderByComparator {
+- (NSArray *)getEntries:(long)groupId folderId:(long)folderId start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"folderId": folderId,
-		@"start": start,
-		@"end": end,
+		@"groupId": @(groupId),
+		@"folderId": @(folderId),
+		@"start": @(start),
+		@"end": @(end),
 		@"orderByComparator": orderByComparator
 	};
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-entries": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (void)restoreEntryFromTrash:(NSNumber *)entryId {
+- (void)restoreEntryFromTrash:(long)entryId {
 	NSDictionary *_params = @{
-		@"entryId": entryId
+		@"entryId": @(entryId)
 	};
 
 	NSDictionary *_command = @{@"/bookmarksentry/restore-entry-from-trash": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSNumber *)getEntriesCount:(NSNumber *)groupId folderId:(NSNumber *)folderId status:(NSNumber *)status {
+- (int)getEntriesCount:(long)groupId folderId:(long)folderId status:(int)status {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"folderId": folderId,
-		@"status": status
+		@"groupId": @(groupId),
+		@"folderId": @(folderId),
+		@"status": @(status)
 	};
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-entries-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (NSDictionary *)moveEntryFromTrash:(NSNumber *)entryId parentFolderId:(NSNumber *)parentFolderId {
+- (NSDictionary *)moveEntryFromTrash:(long)entryId parentFolderId:(long)parentFolderId {
 	NSDictionary *_params = @{
-		@"entryId": entryId,
-		@"parentFolderId": parentFolderId
+		@"entryId": @(entryId),
+		@"parentFolderId": @(parentFolderId)
 	};
 
 	NSDictionary *_command = @{@"/bookmarksentry/move-entry-from-trash": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)moveEntry:(NSNumber *)entryId parentFolderId:(NSNumber *)parentFolderId {
+- (NSDictionary *)moveEntry:(long)entryId parentFolderId:(long)parentFolderId {
 	NSDictionary *_params = @{
-		@"entryId": entryId,
-		@"parentFolderId": parentFolderId
+		@"entryId": @(entryId),
+		@"parentFolderId": @(parentFolderId)
 	};
 
 	NSDictionary *_command = @{@"/bookmarksentry/move-entry": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSNumber *)getFoldersEntriesCount:(NSNumber *)groupId folderIds:(NSArray *)folderIds {
+- (int)getFoldersEntriesCount:(long)groupId folderIds:(NSArray *)folderIds {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"folderIds": folderIds
 	};
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-folders-entries-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (NSArray *)getGroupEntries:(NSNumber *)groupId userId:(NSNumber *)userId rootFolderId:(NSNumber *)rootFolderId start:(NSNumber *)start end:(NSNumber *)end {
+- (NSArray *)getGroupEntries:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId start:(int)start end:(int)end {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"userId": userId,
-		@"rootFolderId": rootFolderId,
-		@"start": start,
-		@"end": end
+		@"groupId": @(groupId),
+		@"userId": @(userId),
+		@"rootFolderId": @(rootFolderId),
+		@"start": @(start),
+		@"end": @(end)
 	};
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-group-entries": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)openEntry:(NSNumber *)entryId {
+- (NSDictionary *)openEntry:(long)entryId {
 	NSDictionary *_params = @{
-		@"entryId": entryId
+		@"entryId": @(entryId)
 	};
 
 	NSDictionary *_command = @{@"/bookmarksentry/open-entry": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)addEntry:(NSNumber *)groupId folderId:(NSNumber *)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addEntry:(long)groupId folderId:(long)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"folderId": folderId,
+		@"groupId": @(groupId),
+		@"folderId": @(folderId),
 		@"name": name,
 		@"url": url,
 		@"description": description,
@@ -148,46 +148,46 @@
 
 	NSDictionary *_command = @{@"/bookmarksentry/add-entry": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteEntry:(NSNumber *)entryId {
+- (void)deleteEntry:(long)entryId {
 	NSDictionary *_params = @{
-		@"entryId": entryId
+		@"entryId": @(entryId)
 	};
 
 	NSDictionary *_command = @{@"/bookmarksentry/delete-entry": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)getEntry:(NSNumber *)entryId {
+- (NSDictionary *)getEntry:(long)entryId {
 	NSDictionary *_params = @{
-		@"entryId": entryId
+		@"entryId": @(entryId)
 	};
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-entry": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSNumber *)getGroupEntriesCount:(NSNumber *)groupId userId:(NSNumber *)userId rootFolderId:(NSNumber *)rootFolderId {
+- (int)getGroupEntriesCount:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"userId": userId,
-		@"rootFolderId": rootFolderId
+		@"groupId": @(groupId),
+		@"userId": @(userId),
+		@"rootFolderId": @(rootFolderId)
 	};
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-group-entries-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateEntry:(NSNumber *)entryId groupId:(NSNumber *)groupId folderId:(NSNumber *)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)updateEntry:(long)entryId groupId:(long)groupId folderId:(long)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"entryId": entryId,
-		@"groupId": groupId,
-		@"folderId": folderId,
+		@"entryId": @(entryId),
+		@"groupId": @(groupId),
+		@"folderId": @(folderId),
 		@"name": name,
 		@"url": url,
 		@"description": description,
@@ -196,27 +196,27 @@
 
 	NSDictionary *_command = @{@"/bookmarksentry/update-entry": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)subscribeEntry:(NSNumber *)entryId {
+- (void)subscribeEntry:(long)entryId {
 	NSDictionary *_params = @{
-		@"entryId": entryId
+		@"entryId": @(entryId)
 	};
 
 	NSDictionary *_command = @{@"/bookmarksentry/subscribe-entry": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)unsubscribeEntry:(NSNumber *)entryId {
+- (void)unsubscribeEntry:(long)entryId {
 	NSDictionary *_params = @{
-		@"entryId": entryId
+		@"entryId": @(entryId)
 	};
 
 	NSDictionary *_command = @{@"/bookmarksentry/unsubscribe-entry": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

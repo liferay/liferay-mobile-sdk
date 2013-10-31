@@ -13,15 +13,16 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface ResourcePermissionService_v62 : NSObject
+@interface ResourcePermissionService_v62 : BaseService
 
-- (void)removeResourcePermissions:(NSNumber *)groupId companyId:(NSNumber *)companyId name:(NSString *)name scope:(NSNumber *)scope roleId:(NSNumber *)roleId actionId:(NSString *)actionId;
-- (void)addResourcePermission:(NSNumber *)groupId companyId:(NSNumber *)companyId name:(NSString *)name scope:(NSNumber *)scope primKey:(NSString *)primKey roleId:(NSNumber *)roleId actionId:(NSString *)actionId;
-- (void)setIndividualResourcePermissions:(NSNumber *)groupId companyId:(NSNumber *)companyId name:(NSString *)name primKey:(NSString *)primKey roleId:(NSNumber *)roleId actionIds:(NSArray *)actionIds;
-- (void)removeResourcePermission:(NSNumber *)groupId companyId:(NSNumber *)companyId name:(NSString *)name scope:(NSNumber *)scope primKey:(NSString *)primKey roleId:(NSNumber *)roleId actionId:(NSString *)actionId;
+- (void)removeResourcePermissions:(long)groupId companyId:(long)companyId name:(NSString *)name scope:(int)scope roleId:(long)roleId actionId:(NSString *)actionId;
+- (void)addResourcePermission:(long)groupId companyId:(long)companyId name:(NSString *)name scope:(int)scope primKey:(NSString *)primKey roleId:(long)roleId actionId:(NSString *)actionId;
+- (void)setIndividualResourcePermissions:(long)groupId companyId:(long)companyId name:(NSString *)name primKey:(NSString *)primKey roleId:(long)roleId actionIds:(NSArray *)actionIds;
+- (void)removeResourcePermission:(long)groupId companyId:(long)companyId name:(NSString *)name scope:(int)scope primKey:(NSString *)primKey roleId:(long)roleId actionId:(NSString *)actionId;
 
 @end

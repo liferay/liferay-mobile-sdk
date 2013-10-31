@@ -19,84 +19,84 @@
  */
 @implementation OrgLaborService_v62
 
-- (NSArray *)getOrgLabors:(NSNumber *)organizationId {
+- (NSArray *)getOrgLabors:(long)organizationId {
 	NSDictionary *_params = @{
-		@"organizationId": organizationId
+		@"organizationId": @(organizationId)
 	};
 
 	NSDictionary *_command = @{@"/orglabor/get-org-labors": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)addOrgLabor:(NSNumber *)organizationId typeId:(NSNumber *)typeId sunOpen:(NSNumber *)sunOpen sunClose:(NSNumber *)sunClose monOpen:(NSNumber *)monOpen monClose:(NSNumber *)monClose tueOpen:(NSNumber *)tueOpen tueClose:(NSNumber *)tueClose wedOpen:(NSNumber *)wedOpen wedClose:(NSNumber *)wedClose thuOpen:(NSNumber *)thuOpen thuClose:(NSNumber *)thuClose friOpen:(NSNumber *)friOpen friClose:(NSNumber *)friClose satOpen:(NSNumber *)satOpen satClose:(NSNumber *)satClose {
+- (NSDictionary *)addOrgLabor:(long)organizationId typeId:(int)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose {
 	NSDictionary *_params = @{
-		@"organizationId": organizationId,
-		@"typeId": typeId,
-		@"sunOpen": sunOpen,
-		@"sunClose": sunClose,
-		@"monOpen": monOpen,
-		@"monClose": monClose,
-		@"tueOpen": tueOpen,
-		@"tueClose": tueClose,
-		@"wedOpen": wedOpen,
-		@"wedClose": wedClose,
-		@"thuOpen": thuOpen,
-		@"thuClose": thuClose,
-		@"friOpen": friOpen,
-		@"friClose": friClose,
-		@"satOpen": satOpen,
-		@"satClose": satClose
+		@"organizationId": @(organizationId),
+		@"typeId": @(typeId),
+		@"sunOpen": @(sunOpen),
+		@"sunClose": @(sunClose),
+		@"monOpen": @(monOpen),
+		@"monClose": @(monClose),
+		@"tueOpen": @(tueOpen),
+		@"tueClose": @(tueClose),
+		@"wedOpen": @(wedOpen),
+		@"wedClose": @(wedClose),
+		@"thuOpen": @(thuOpen),
+		@"thuClose": @(thuClose),
+		@"friOpen": @(friOpen),
+		@"friClose": @(friClose),
+		@"satOpen": @(satOpen),
+		@"satClose": @(satClose)
 	};
 
 	NSDictionary *_command = @{@"/orglabor/add-org-labor": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteOrgLabor:(NSNumber *)orgLaborId {
+- (void)deleteOrgLabor:(long)orgLaborId {
 	NSDictionary *_params = @{
-		@"orgLaborId": orgLaborId
+		@"orgLaborId": @(orgLaborId)
 	};
 
 	NSDictionary *_command = @{@"/orglabor/delete-org-labor": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateOrgLabor:(NSNumber *)orgLaborId typeId:(NSNumber *)typeId sunOpen:(NSNumber *)sunOpen sunClose:(NSNumber *)sunClose monOpen:(NSNumber *)monOpen monClose:(NSNumber *)monClose tueOpen:(NSNumber *)tueOpen tueClose:(NSNumber *)tueClose wedOpen:(NSNumber *)wedOpen wedClose:(NSNumber *)wedClose thuOpen:(NSNumber *)thuOpen thuClose:(NSNumber *)thuClose friOpen:(NSNumber *)friOpen friClose:(NSNumber *)friClose satOpen:(NSNumber *)satOpen satClose:(NSNumber *)satClose {
+- (NSDictionary *)updateOrgLabor:(long)orgLaborId typeId:(int)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose {
 	NSDictionary *_params = @{
-		@"orgLaborId": orgLaborId,
-		@"typeId": typeId,
-		@"sunOpen": sunOpen,
-		@"sunClose": sunClose,
-		@"monOpen": monOpen,
-		@"monClose": monClose,
-		@"tueOpen": tueOpen,
-		@"tueClose": tueClose,
-		@"wedOpen": wedOpen,
-		@"wedClose": wedClose,
-		@"thuOpen": thuOpen,
-		@"thuClose": thuClose,
-		@"friOpen": friOpen,
-		@"friClose": friClose,
-		@"satOpen": satOpen,
-		@"satClose": satClose
+		@"orgLaborId": @(orgLaborId),
+		@"typeId": @(typeId),
+		@"sunOpen": @(sunOpen),
+		@"sunClose": @(sunClose),
+		@"monOpen": @(monOpen),
+		@"monClose": @(monClose),
+		@"tueOpen": @(tueOpen),
+		@"tueClose": @(tueClose),
+		@"wedOpen": @(wedOpen),
+		@"wedClose": @(wedClose),
+		@"thuOpen": @(thuOpen),
+		@"thuClose": @(thuClose),
+		@"friOpen": @(friOpen),
+		@"friClose": @(friClose),
+		@"satOpen": @(satOpen),
+		@"satClose": @(satClose)
 	};
 
 	NSDictionary *_command = @{@"/orglabor/update-org-labor": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getOrgLabor:(NSNumber *)orgLaborId {
+- (NSDictionary *)getOrgLabor:(long)orgLaborId {
 	NSDictionary *_params = @{
-		@"orgLaborId": orgLaborId
+		@"orgLaborId": @(orgLaborId)
 	};
 
 	NSDictionary *_command = @{@"/orglabor/get-org-labor": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 @end

@@ -13,16 +13,17 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface MDRRuleGroupInstanceService_v62 : NSObject
+@interface MDRRuleGroupInstanceService_v62 : BaseService
 
-- (void)deleteRuleGroupInstance:(NSNumber *)ruleGroupInstanceId;
-- (NSDictionary *)updateRuleGroupInstance:(NSNumber *)ruleGroupInstanceId priority:(NSNumber *)priority;
-- (NSDictionary *)addRuleGroupInstance:(NSNumber *)groupId className:(NSString *)className classPK:(NSNumber *)classPK ruleGroupId:(NSNumber *)ruleGroupId priority:(NSNumber *)priority serviceContext:(NSDictionary *)serviceContext;
-- (NSArray *)getRuleGroupInstances:(NSString *)className classPK:(NSNumber *)classPK start:(NSNumber *)start end:(NSNumber *)end orderByComparator:(NSDictionary *)orderByComparator;
-- (NSNumber *)getRuleGroupInstancesCount:(NSString *)className classPK:(NSNumber *)classPK;
+- (void)deleteRuleGroupInstance:(long)ruleGroupInstanceId;
+- (NSDictionary *)updateRuleGroupInstance:(long)ruleGroupInstanceId priority:(int)priority;
+- (NSDictionary *)addRuleGroupInstance:(long)groupId className:(NSString *)className classPK:(long)classPK ruleGroupId:(long)ruleGroupId priority:(int)priority serviceContext:(NSDictionary *)serviceContext;
+- (NSArray *)getRuleGroupInstances:(NSString *)className classPK:(long)classPK start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator;
+- (int)getRuleGroupInstancesCount:(NSString *)className classPK:(long)classPK;
 
 @end

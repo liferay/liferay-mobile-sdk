@@ -19,46 +19,46 @@
  */
 @implementation DLFileVersionService_v62
 
-- (NSDictionary *)getFileVersion:(NSNumber *)fileVersionId {
+- (NSDictionary *)getFileVersion:(long)fileVersionId {
 	NSDictionary *_params = @{
-		@"fileVersionId": fileVersionId
+		@"fileVersionId": @(fileVersionId)
 	};
 
 	NSDictionary *_command = @{@"/dlfileversion/get-file-version": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getLatestFileVersion:(NSNumber *)fileEntryId {
+- (NSDictionary *)getLatestFileVersion:(long)fileEntryId {
 	NSDictionary *_params = @{
-		@"fileEntryId": fileEntryId
+		@"fileEntryId": @(fileEntryId)
 	};
 
 	NSDictionary *_command = @{@"/dlfileversion/get-latest-file-version": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSArray *)getFileVersions:(NSNumber *)fileEntryId status:(NSNumber *)status {
+- (NSArray *)getFileVersions:(long)fileEntryId status:(int)status {
 	NSDictionary *_params = @{
-		@"fileEntryId": fileEntryId,
-		@"status": status
+		@"fileEntryId": @(fileEntryId),
+		@"status": @(status)
 	};
 
 	NSDictionary *_command = @{@"/dlfileversion/get-file-versions": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSNumber *)getFileVersionsCount:(NSNumber *)fileEntryId status:(NSNumber *)status {
+- (int)getFileVersionsCount:(long)fileEntryId status:(int)status {
 	NSDictionary *_params = @{
-		@"fileEntryId": fileEntryId,
-		@"status": status
+		@"fileEntryId": @(fileEntryId),
+		@"status": @(status)
 	};
 
 	NSDictionary *_command = @{@"/dlfileversion/get-file-versions-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
 @end

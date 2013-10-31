@@ -13,17 +13,18 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface SCProductVersionService_v62 : NSObject
+@interface SCProductVersionService_v62 : BaseService
 
-- (NSNumber *)getProductVersionsCount:(NSNumber *)productEntryId;
-- (NSDictionary *)updateProductVersion:(NSNumber *)productVersionId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds;
-- (NSDictionary *)addProductVersion:(NSNumber *)productEntryId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteProductVersion:(NSNumber *)productVersionId;
-- (NSDictionary *)getProductVersion:(NSNumber *)productVersionId;
-- (NSArray *)getProductVersions:(NSNumber *)productEntryId start:(NSNumber *)start end:(NSNumber *)end;
+- (int)getProductVersionsCount:(long)productEntryId;
+- (NSDictionary *)updateProductVersion:(long)productVersionId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds;
+- (NSDictionary *)addProductVersion:(long)productEntryId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds serviceContext:(NSDictionary *)serviceContext;
+- (void)deleteProductVersion:(long)productVersionId;
+- (NSDictionary *)getProductVersion:(long)productVersionId;
+- (NSArray *)getProductVersions:(long)productEntryId start:(int)start end:(int)end;
 
 @end

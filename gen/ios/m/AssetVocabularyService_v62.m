@@ -30,21 +30,21 @@
 
 	NSDictionary *_command = @{@"/assetvocabulary/add-vocabulary": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getJsonGroupVocabularies:(NSNumber *)groupId name:(NSString *)name start:(NSNumber *)start end:(NSNumber *)end obc:(NSDictionary *)obc {
+- (NSDictionary *)getJsonGroupVocabularies:(long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"name": name,
-		@"start": start,
-		@"end": end,
+		@"start": @(start),
+		@"end": @(end),
 		@"obc": obc
 	};
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-json-group-vocabularies": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 - (NSArray *)getVocabularies:(NSArray *)vocabularyIds {
@@ -54,43 +54,43 @@
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-vocabularies": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSNumber *)getGroupVocabulariesCount:(NSNumber *)groupId name:(NSString *)name {
+- (int)getGroupVocabulariesCount:(long)groupId name:(NSString *)name {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"name": name
 	};
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-group-vocabularies-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (NSArray *)getCompanyVocabularies:(NSNumber *)companyId {
+- (NSArray *)getCompanyVocabularies:(long)companyId {
 	NSDictionary *_params = @{
-		@"companyId": companyId
+		@"companyId": @(companyId)
 	};
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-company-vocabularies": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getVocabulary:(NSNumber *)vocabularyId {
+- (NSDictionary *)getVocabulary:(long)vocabularyId {
 	NSDictionary *_params = @{
-		@"vocabularyId": vocabularyId
+		@"vocabularyId": @(vocabularyId)
 	};
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-vocabulary": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateVocabulary:(NSNumber *)vocabularyId title:(NSString *)title titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)updateVocabulary:(long)vocabularyId title:(NSString *)title titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"vocabularyId": vocabularyId,
+		@"vocabularyId": @(vocabularyId),
 		@"title": title,
 		@"titleMap": titleMap,
 		@"descriptionMap": descriptionMap,
@@ -100,21 +100,21 @@
 
 	NSDictionary *_command = @{@"/assetvocabulary/update-vocabulary": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSArray *)getGroupVocabularies:(NSNumber *)groupId name:(NSString *)name start:(NSNumber *)start end:(NSNumber *)end obc:(NSDictionary *)obc {
+- (NSArray *)getGroupVocabularies:(long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"name": name,
-		@"start": start,
-		@"end": end,
+		@"start": @(start),
+		@"end": @(end),
 		@"obc": obc
 	};
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-group-vocabularies": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
 - (NSArray *)getGroupsVocabularies:(NSArray *)groupIds className:(NSString *)className {
@@ -125,32 +125,32 @@
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-groups-vocabularies": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getGroupVocabulariesDisplay:(NSNumber *)groupId name:(NSString *)name start:(NSNumber *)start end:(NSNumber *)end addDefaultVocabulary:(BOOL)addDefaultVocabulary obc:(NSDictionary *)obc {
+- (NSDictionary *)getGroupVocabulariesDisplay:(long)groupId name:(NSString *)name start:(int)start end:(int)end addDefaultVocabulary:(BOOL)addDefaultVocabulary obc:(NSDictionary *)obc {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"name": name,
-		@"start": start,
-		@"end": end,
-		@"addDefaultVocabulary": addDefaultVocabulary,
+		@"start": @(start),
+		@"end": @(end),
+		@"addDefaultVocabulary": @(addDefaultVocabulary),
 		@"obc": obc
 	};
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-group-vocabularies-display": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteVocabulary:(NSNumber *)vocabularyId {
+- (void)deleteVocabulary:(long)vocabularyId {
 	NSDictionary *_params = @{
-		@"vocabularyId": vocabularyId
+		@"vocabularyId": @(vocabularyId)
 	};
 
 	NSDictionary *_command = @{@"/assetvocabulary/delete-vocabulary": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 - (NSArray *)deleteVocabularies:(NSArray *)vocabularyIds serviceContext:(NSDictionary *)serviceContext {
@@ -161,7 +161,7 @@
 
 	NSDictionary *_command = @{@"/assetvocabulary/delete-vocabularies": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
 @end

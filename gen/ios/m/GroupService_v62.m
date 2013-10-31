@@ -19,54 +19,54 @@
  */
 @implementation GroupService_v62
 
-- (void)unsetRoleGroups:(NSNumber *)roleId groupIds:(NSArray *)groupIds {
+- (void)unsetRoleGroups:(long)roleId groupIds:(NSArray *)groupIds {
 	NSDictionary *_params = @{
-		@"roleId": roleId,
+		@"roleId": @(roleId),
 		@"groupIds": groupIds
 	};
 
 	NSDictionary *_command = @{@"/group/unset-role-groups": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)addGroup:(NSNumber *)parentGroupId name:(NSString *)name description:(NSString *)description type:(NSNumber *)type friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addGroup:(long)parentGroupId name:(NSString *)name description:(NSString *)description type:(int)type friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"parentGroupId": parentGroupId,
+		@"parentGroupId": @(parentGroupId),
 		@"name": name,
 		@"description": description,
-		@"type": type,
+		@"type": @(type),
 		@"friendlyURL": friendlyURL,
-		@"site": site,
-		@"active": active,
+		@"site": @(site),
+		@"active": @(active),
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/group/add-group": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (BOOL)hasUserGroup:(NSNumber *)userId groupId:(NSNumber *)groupId {
+- (BOOL)hasUserGroup:(long)userId groupId:(long)groupId {
 	NSDictionary *_params = @{
-		@"userId": userId,
-		@"groupId": groupId
+		@"userId": @(userId),
+		@"groupId": @(groupId)
 	};
 
 	NSDictionary *_command = @{@"/group/has-user-group": _params};
 
-	return (BOOL)[session invoke:_command];
+	return (BOOL)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateFriendlyUrl:(NSNumber *)groupId friendlyURL:(NSString *)friendlyURL {
+- (NSDictionary *)updateFriendlyUrl:(long)groupId friendlyURL:(NSString *)friendlyURL {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"friendlyURL": friendlyURL
 	};
 
 	NSDictionary *_command = @{@"/group/update-friendly-url": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 - (NSArray *)getOrganizationsGroups:(NSArray *)organizations {
@@ -76,36 +76,36 @@
 
 	NSDictionary *_command = @{@"/group/get-organizations-groups": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (void)checkRemoteStagingGroup:(NSNumber *)groupId {
+- (void)checkRemoteStagingGroup:(long)groupId {
 	NSDictionary *_params = @{
-		@"groupId": groupId
+		@"groupId": @(groupId)
 	};
 
 	NSDictionary *_command = @{@"/group/check-remote-staging-group": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSNumber *)getUserPlacesCount: {
+- (int)getUserPlacesCount {
 	NSDictionary *_params = @{
 	};
 
 	NSDictionary *_command = @{@"/group/get-user-places-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (void)enableStaging:(NSNumber *)groupId {
+- (void)enableStaging:(long)groupId {
 	NSDictionary *_params = @{
-		@"groupId": groupId
+		@"groupId": @(groupId)
 	};
 
 	NSDictionary *_command = @{@"/group/enable-staging": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 - (NSArray *)getUserGroupsGroups:(NSArray *)userGroups {
@@ -115,151 +115,151 @@
 
 	NSDictionary *_command = @{@"/group/get-user-groups-groups": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSNumber *)getUserSitesGroupsCount: {
+- (int)getUserSitesGroupsCount {
 	NSDictionary *_params = @{
 	};
 
 	NSDictionary *_command = @{@"/group/get-user-sites-groups-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getUserGroup:(NSNumber *)companyId userId:(NSNumber *)userId {
+- (NSDictionary *)getUserGroup:(long)companyId userId:(long)userId {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
-		@"userId": userId
+		@"companyId": @(companyId),
+		@"userId": @(userId)
 	};
 
 	NSDictionary *_command = @{@"/group/get-user-group": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSArray *)getUserOrganizationsGroups:(NSNumber *)userId start:(NSNumber *)start end:(NSNumber *)end {
+- (NSArray *)getUserOrganizationsGroups:(long)userId start:(int)start end:(int)end {
 	NSDictionary *_params = @{
-		@"userId": userId,
-		@"start": start,
-		@"end": end
+		@"userId": @(userId),
+		@"start": @(start),
+		@"end": @(end)
 	};
 
 	NSDictionary *_command = @{@"/group/get-user-organizations-groups": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (void)setRoleGroups:(NSNumber *)roleId groupIds:(NSArray *)groupIds {
+- (void)setRoleGroups:(long)roleId groupIds:(NSArray *)groupIds {
 	NSDictionary *_params = @{
-		@"roleId": roleId,
+		@"roleId": @(roleId),
 		@"groupIds": groupIds
 	};
 
 	NSDictionary *_command = @{@"/group/set-role-groups": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSArray *)getManageableSites:(NSDictionary *)portlets max:(NSNumber *)max {
+- (NSArray *)getManageableSites:(NSDictionary *)portlets max:(int)max {
 	NSDictionary *_params = @{
 		@"portlets": portlets,
-		@"max": max
+		@"max": @(max)
 	};
 
 	NSDictionary *_command = @{@"/group/get-manageable-sites": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (void)addRoleGroups:(NSNumber *)roleId groupIds:(NSArray *)groupIds {
+- (void)addRoleGroups:(long)roleId groupIds:(NSArray *)groupIds {
 	NSDictionary *_params = @{
-		@"roleId": roleId,
+		@"roleId": @(roleId),
 		@"groupIds": groupIds
 	};
 
 	NSDictionary *_command = @{@"/group/add-role-groups": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSArray *)getUserSites: {
+- (NSArray *)getUserSites {
 	NSDictionary *_params = @{
 	};
 
 	NSDictionary *_command = @{@"/group/get-user-sites": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getGroup:(NSNumber *)companyId name:(NSString *)name {
+- (NSDictionary *)getGroup:(long)companyId name:(NSString *)name {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
+		@"companyId": @(companyId),
 		@"name": name
 	};
 
 	NSDictionary *_command = @{@"/group/get-group": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getCompanyGroup:(NSNumber *)companyId {
+- (NSDictionary *)getCompanyGroup:(long)companyId {
 	NSDictionary *_params = @{
-		@"companyId": companyId
+		@"companyId": @(companyId)
 	};
 
 	NSDictionary *_command = @{@"/group/get-company-group": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSArray *)getUserPlaces:(NSNumber *)userId classNames:(NSArray *)classNames includeControlPanel:(BOOL)includeControlPanel max:(NSNumber *)max {
+- (NSArray *)getUserPlaces:(long)userId classNames:(NSArray *)classNames includeControlPanel:(BOOL)includeControlPanel max:(int)max {
 	NSDictionary *_params = @{
-		@"userId": userId,
+		@"userId": @(userId),
 		@"classNames": classNames,
-		@"includeControlPanel": includeControlPanel,
-		@"max": max
+		@"includeControlPanel": @(includeControlPanel),
+		@"max": @(max)
 	};
 
 	NSDictionary *_command = @{@"/group/get-user-places": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (void)disableStaging:(NSNumber *)groupId {
+- (void)disableStaging:(long)groupId {
 	NSDictionary *_params = @{
-		@"groupId": groupId
+		@"groupId": @(groupId)
 	};
 
 	NSDictionary *_command = @{@"/group/disable-staging": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)deleteGroup:(NSNumber *)groupId {
+- (void)deleteGroup:(long)groupId {
 	NSDictionary *_params = @{
-		@"groupId": groupId
+		@"groupId": @(groupId)
 	};
 
 	NSDictionary *_command = @{@"/group/delete-group": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)updateStagedPortlets:(NSNumber *)groupId stagedPortletIds:(NSDictionary *)stagedPortletIds {
+- (void)updateStagedPortlets:(long)groupId stagedPortletIds:(NSDictionary *)stagedPortletIds {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"stagedPortletIds": stagedPortletIds
 	};
 
 	NSDictionary *_command = @{@"/group/update-staged-portlets": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSNumber *)searchCount:(NSNumber *)companyId name:(NSString *)name description:(NSString *)description params:(NSArray *)params {
+- (int)searchCount:(long)companyId name:(NSString *)name description:(NSString *)description params:(NSArray *)params {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
+		@"companyId": @(companyId),
 		@"name": name,
 		@"description": description,
 		@"params": params
@@ -267,69 +267,69 @@
 
 	NSDictionary *_command = @{@"/group/search-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (NSArray *)getManageableSiteGroups:(NSDictionary *)portlets max:(NSNumber *)max {
+- (NSArray *)getManageableSiteGroups:(NSDictionary *)portlets max:(int)max {
 	NSDictionary *_params = @{
 		@"portlets": portlets,
-		@"max": max
+		@"max": @(max)
 	};
 
 	NSDictionary *_command = @{@"/group/get-manageable-site-groups": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateGroup:(NSNumber *)groupId typeSettings:(NSString *)typeSettings {
+- (NSDictionary *)updateGroup:(long)groupId typeSettings:(NSString *)typeSettings {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"typeSettings": typeSettings
 	};
 
 	NSDictionary *_command = @{@"/group/update-group": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSArray *)search:(NSNumber *)companyId name:(NSString *)name description:(NSString *)description params:(NSArray *)params start:(NSNumber *)start end:(NSNumber *)end {
+- (NSArray *)search:(long)companyId name:(NSString *)name description:(NSString *)description params:(NSArray *)params start:(int)start end:(int)end {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
+		@"companyId": @(companyId),
 		@"name": name,
 		@"description": description,
 		@"params": params,
-		@"start": start,
-		@"end": end
+		@"start": @(start),
+		@"end": @(end)
 	};
 
 	NSDictionary *_command = @{@"/group/search": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSArray *)getUserSitesGroups:(NSNumber *)userId classNames:(NSArray *)classNames includeControlPanel:(BOOL)includeControlPanel max:(NSNumber *)max {
+- (NSArray *)getUserSitesGroups:(long)userId classNames:(NSArray *)classNames includeControlPanel:(BOOL)includeControlPanel max:(int)max {
 	NSDictionary *_params = @{
-		@"userId": userId,
+		@"userId": @(userId),
 		@"classNames": classNames,
-		@"includeControlPanel": includeControlPanel,
-		@"max": max
+		@"includeControlPanel": @(includeControlPanel),
+		@"max": @(max)
 	};
 
 	NSDictionary *_command = @{@"/group/get-user-sites-groups": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSArray *)getGroups:(NSNumber *)companyId parentGroupId:(NSNumber *)parentGroupId site:(BOOL)site {
+- (NSArray *)getGroups:(long)companyId parentGroupId:(long)parentGroupId site:(BOOL)site {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
-		@"parentGroupId": parentGroupId,
-		@"site": site
+		@"companyId": @(companyId),
+		@"parentGroupId": @(parentGroupId),
+		@"site": @(site)
 	};
 
 	NSDictionary *_command = @{@"/group/get-groups": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
 @end

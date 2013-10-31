@@ -13,16 +13,17 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface PhoneService_v62 : NSObject
+@interface PhoneService_v62 : BaseService
 
-- (NSArray *)getPhones:(NSString *)className classPK:(NSNumber *)classPK;
-- (NSDictionary *)getPhone:(NSNumber *)phoneId;
-- (NSDictionary *)addPhone:(NSString *)className classPK:(NSNumber *)classPK number:(NSString *)number extension:(NSString *)extension typeId:(NSNumber *)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)updatePhone:(NSNumber *)phoneId number:(NSString *)number extension:(NSString *)extension typeId:(NSNumber *)typeId primary:(BOOL)primary;
-- (void)deletePhone:(NSNumber *)phoneId;
+- (NSArray *)getPhones:(NSString *)className classPK:(long)classPK;
+- (NSDictionary *)getPhone:(long)phoneId;
+- (NSDictionary *)addPhone:(NSString *)className classPK:(long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)updatePhone:(long)phoneId number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary;
+- (void)deletePhone:(long)phoneId;
 
 @end

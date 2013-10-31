@@ -19,23 +19,23 @@
  */
 @implementation ThemeService_v62
 
-- (NSArray *)getThemes:(NSNumber *)companyId {
+- (NSArray *)getThemes:(long)companyId {
 	NSDictionary *_params = @{
-		@"companyId": companyId
+		@"companyId": @(companyId)
 	};
 
 	NSDictionary *_command = @{@"/theme/get-themes": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getWarThemes: {
+- (NSDictionary *)getWarThemes {
 	NSDictionary *_params = @{
 	};
 
 	NSDictionary *_command = @{@"/theme/get-war-themes": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 @end

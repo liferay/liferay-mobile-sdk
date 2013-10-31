@@ -13,16 +13,17 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface AssetTagPropertyService_v62 : NSObject
+@interface AssetTagPropertyService_v62 : BaseService
 
-- (NSArray *)getTagProperties:(NSNumber *)tagId;
-- (NSDictionary *)updateTagProperty:(NSNumber *)tagPropertyId key:(NSString *)key value:(NSString *)value;
-- (NSDictionary *)addTagProperty:(NSNumber *)tagId key:(NSString *)key value:(NSString *)value;
-- (NSArray *)getTagPropertyValues:(NSNumber *)companyId key:(NSString *)key;
-- (void)deleteTagProperty:(NSNumber *)tagPropertyId;
+- (NSArray *)getTagProperties:(long)tagId;
+- (NSDictionary *)updateTagProperty:(long)tagPropertyId key:(NSString *)key value:(NSString *)value;
+- (NSDictionary *)addTagProperty:(long)tagId key:(NSString *)key value:(NSString *)value;
+- (NSArray *)getTagPropertyValues:(long)companyId key:(NSString *)key;
+- (void)deleteTagProperty:(long)tagPropertyId;
 
 @end

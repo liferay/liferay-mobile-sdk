@@ -13,17 +13,18 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface SocialActivitySettingService_v62 : NSObject
+@interface SocialActivitySettingService_v62 : BaseService
 
-- (NSDictionary *)getActivityDefinition:(NSNumber *)groupId className:(NSString *)className activityType:(NSNumber *)activityType;
-- (NSArray *)getActivityDefinitions:(NSNumber *)groupId className:(NSString *)className;
-- (NSDictionary *)getJsonActivityDefinitions:(NSNumber *)groupId className:(NSString *)className;
-- (void)updateActivitySettings:(NSNumber *)groupId className:(NSString *)className activityType:(NSNumber *)activityType activityCounterDefinitions:(NSArray *)activityCounterDefinitions;
-- (NSArray *)getActivitySettings:(NSNumber *)groupId;
-- (void)updateActivitySetting:(NSNumber *)groupId className:(NSString *)className activityType:(NSNumber *)activityType activityCounterDefinition:(NSDictionary *)activityCounterDefinition;
+- (NSDictionary *)getActivityDefinition:(long)groupId className:(NSString *)className activityType:(int)activityType;
+- (NSArray *)getActivityDefinitions:(long)groupId className:(NSString *)className;
+- (NSDictionary *)getJsonActivityDefinitions:(long)groupId className:(NSString *)className;
+- (void)updateActivitySettings:(long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinitions:(NSArray *)activityCounterDefinitions;
+- (NSArray *)getActivitySettings:(long)groupId;
+- (void)updateActivitySetting:(long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinition:(NSDictionary *)activityCounterDefinition;
 
 @end

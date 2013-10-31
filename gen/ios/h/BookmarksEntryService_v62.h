@@ -13,28 +13,29 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface BookmarksEntryService_v62 : NSObject
+@interface BookmarksEntryService_v62 : BaseService
 
-- (NSDictionary *)moveEntryToTrash:(NSNumber *)entryId;
-- (NSDictionary *)search:(NSNumber *)groupId creatorUserId:(NSNumber *)creatorUserId status:(NSNumber *)status start:(NSNumber *)start end:(NSNumber *)end;
-- (NSArray *)getEntries:(NSNumber *)groupId folderId:(NSNumber *)folderId start:(NSNumber *)start end:(NSNumber *)end orderByComparator:(NSDictionary *)orderByComparator;
-- (void)restoreEntryFromTrash:(NSNumber *)entryId;
-- (NSNumber *)getEntriesCount:(NSNumber *)groupId folderId:(NSNumber *)folderId status:(NSNumber *)status;
-- (NSDictionary *)moveEntryFromTrash:(NSNumber *)entryId parentFolderId:(NSNumber *)parentFolderId;
-- (NSDictionary *)moveEntry:(NSNumber *)entryId parentFolderId:(NSNumber *)parentFolderId;
-- (NSNumber *)getFoldersEntriesCount:(NSNumber *)groupId folderIds:(NSArray *)folderIds;
-- (NSArray *)getGroupEntries:(NSNumber *)groupId userId:(NSNumber *)userId rootFolderId:(NSNumber *)rootFolderId start:(NSNumber *)start end:(NSNumber *)end;
-- (NSDictionary *)openEntry:(NSNumber *)entryId;
-- (NSDictionary *)addEntry:(NSNumber *)groupId folderId:(NSNumber *)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteEntry:(NSNumber *)entryId;
-- (NSDictionary *)getEntry:(NSNumber *)entryId;
-- (NSNumber *)getGroupEntriesCount:(NSNumber *)groupId userId:(NSNumber *)userId rootFolderId:(NSNumber *)rootFolderId;
-- (NSDictionary *)updateEntry:(NSNumber *)entryId groupId:(NSNumber *)groupId folderId:(NSNumber *)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
-- (void)subscribeEntry:(NSNumber *)entryId;
-- (void)unsubscribeEntry:(NSNumber *)entryId;
+- (NSDictionary *)moveEntryToTrash:(long)entryId;
+- (NSDictionary *)search:(long)groupId creatorUserId:(long)creatorUserId status:(int)status start:(int)start end:(int)end;
+- (NSArray *)getEntries:(long)groupId folderId:(long)folderId start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator;
+- (void)restoreEntryFromTrash:(long)entryId;
+- (int)getEntriesCount:(long)groupId folderId:(long)folderId status:(int)status;
+- (NSDictionary *)moveEntryFromTrash:(long)entryId parentFolderId:(long)parentFolderId;
+- (NSDictionary *)moveEntry:(long)entryId parentFolderId:(long)parentFolderId;
+- (int)getFoldersEntriesCount:(long)groupId folderIds:(NSArray *)folderIds;
+- (NSArray *)getGroupEntries:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId start:(int)start end:(int)end;
+- (NSDictionary *)openEntry:(long)entryId;
+- (NSDictionary *)addEntry:(long)groupId folderId:(long)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
+- (void)deleteEntry:(long)entryId;
+- (NSDictionary *)getEntry:(long)entryId;
+- (int)getGroupEntriesCount:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId;
+- (NSDictionary *)updateEntry:(long)entryId groupId:(long)groupId folderId:(long)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
+- (void)subscribeEntry:(long)entryId;
+- (void)unsubscribeEntry:(long)entryId;
 
 @end

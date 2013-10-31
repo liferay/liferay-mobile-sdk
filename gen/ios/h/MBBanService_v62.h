@@ -13,13 +13,14 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface MBBanService_v62 : NSObject
+@interface MBBanService_v62 : BaseService
 
-- (void)deleteBan:(NSNumber *)banUserId serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)addBan:(NSNumber *)banUserId serviceContext:(NSDictionary *)serviceContext;
+- (void)deleteBan:(long)banUserId serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)addBan:(long)banUserId serviceContext:(NSDictionary *)serviceContext;
 
 @end

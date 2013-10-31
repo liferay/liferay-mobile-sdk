@@ -19,51 +19,51 @@
  */
 @implementation ExpandoColumnService_v62
 
-- (NSDictionary *)addColumn:(NSNumber *)tableId name:(NSString *)name type:(NSNumber *)type defaultData:(NSDictionary *)defaultData {
+- (NSDictionary *)addColumn:(long)tableId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData {
 	NSDictionary *_params = @{
-		@"tableId": tableId,
+		@"tableId": @(tableId),
 		@"name": name,
-		@"type": type,
+		@"type": @(type),
 		@"defaultData": defaultData
 	};
 
 	NSDictionary *_command = @{@"/expandocolumn/add-column": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteColumn:(NSNumber *)columnId {
+- (void)deleteColumn:(long)columnId {
 	NSDictionary *_params = @{
-		@"columnId": columnId
+		@"columnId": @(columnId)
 	};
 
 	NSDictionary *_command = @{@"/expandocolumn/delete-column": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateTypeSettings:(NSNumber *)columnId typeSettings:(NSString *)typeSettings {
+- (NSDictionary *)updateTypeSettings:(long)columnId typeSettings:(NSString *)typeSettings {
 	NSDictionary *_params = @{
-		@"columnId": columnId,
+		@"columnId": @(columnId),
 		@"typeSettings": typeSettings
 	};
 
 	NSDictionary *_command = @{@"/expandocolumn/update-type-settings": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateColumn:(NSNumber *)columnId name:(NSString *)name type:(NSNumber *)type defaultData:(NSDictionary *)defaultData {
+- (NSDictionary *)updateColumn:(long)columnId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData {
 	NSDictionary *_params = @{
-		@"columnId": columnId,
+		@"columnId": @(columnId),
 		@"name": name,
-		@"type": type,
+		@"type": @(type),
 		@"defaultData": defaultData
 	};
 
 	NSDictionary *_command = @{@"/expandocolumn/update-column": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 @end

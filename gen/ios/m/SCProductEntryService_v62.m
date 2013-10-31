@@ -38,12 +38,12 @@
 
 	NSDictionary *_command = @{@"/scproductentry/add-product-entry": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateProductEntry:(NSNumber *)productEntryId name:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages {
+- (NSDictionary *)updateProductEntry:(long)productEntryId name:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages {
 	NSDictionary *_params = @{
-		@"productEntryId": productEntryId,
+		@"productEntryId": @(productEntryId),
 		@"name": name,
 		@"type": type,
 		@"tags": tags,
@@ -60,27 +60,27 @@
 
 	NSDictionary *_command = @{@"/scproductentry/update-product-entry": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getProductEntry:(NSNumber *)productEntryId {
+- (NSDictionary *)getProductEntry:(long)productEntryId {
 	NSDictionary *_params = @{
-		@"productEntryId": productEntryId
+		@"productEntryId": @(productEntryId)
 	};
 
 	NSDictionary *_command = @{@"/scproductentry/get-product-entry": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteProductEntry:(NSNumber *)productEntryId {
+- (void)deleteProductEntry:(long)productEntryId {
 	NSDictionary *_params = @{
-		@"productEntryId": productEntryId
+		@"productEntryId": @(productEntryId)
 	};
 
 	NSDictionary *_command = @{@"/scproductentry/delete-product-entry": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

@@ -13,17 +13,18 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface MDRRuleGroupService_v62 : NSObject
+@interface MDRRuleGroupService_v62 : BaseService
 
-- (NSDictionary *)copyRuleGroup:(NSNumber *)ruleGroupId groupId:(NSNumber *)groupId serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)updateRuleGroup:(NSNumber *)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteRuleGroup:(NSNumber *)ruleGroupId;
-- (NSDictionary *)fetchRuleGroup:(NSNumber *)ruleGroupId;
-- (NSDictionary *)addRuleGroup:(NSNumber *)groupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getRuleGroup:(NSNumber *)ruleGroupId;
+- (NSDictionary *)copyRuleGroup:(long)ruleGroupId groupId:(long)groupId serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)updateRuleGroup:(long)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext;
+- (void)deleteRuleGroup:(long)ruleGroupId;
+- (NSDictionary *)fetchRuleGroup:(long)ruleGroupId;
+- (NSDictionary *)addRuleGroup:(long)groupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)getRuleGroup:(long)ruleGroupId;
 
 @end

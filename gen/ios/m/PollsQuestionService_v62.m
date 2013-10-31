@@ -19,63 +19,63 @@
  */
 @implementation PollsQuestionService_v62
 
-- (NSDictionary *)addQuestion:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap expirationDateMonth:(NSNumber *)expirationDateMonth expirationDateDay:(NSNumber *)expirationDateDay expirationDateYear:(NSNumber *)expirationDateYear expirationDateHour:(NSNumber *)expirationDateHour expirationDateMinute:(NSNumber *)expirationDateMinute neverExpire:(BOOL)neverExpire choices:(NSArray *)choices serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addQuestion:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap expirationDateMonth:(int)expirationDateMonth expirationDateDay:(int)expirationDateDay expirationDateYear:(int)expirationDateYear expirationDateHour:(int)expirationDateHour expirationDateMinute:(int)expirationDateMinute neverExpire:(BOOL)neverExpire choices:(NSArray *)choices serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
 		@"titleMap": titleMap,
 		@"descriptionMap": descriptionMap,
-		@"expirationDateMonth": expirationDateMonth,
-		@"expirationDateDay": expirationDateDay,
-		@"expirationDateYear": expirationDateYear,
-		@"expirationDateHour": expirationDateHour,
-		@"expirationDateMinute": expirationDateMinute,
-		@"neverExpire": neverExpire,
+		@"expirationDateMonth": @(expirationDateMonth),
+		@"expirationDateDay": @(expirationDateDay),
+		@"expirationDateYear": @(expirationDateYear),
+		@"expirationDateHour": @(expirationDateHour),
+		@"expirationDateMinute": @(expirationDateMinute),
+		@"neverExpire": @(neverExpire),
 		@"choices": choices,
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/pollsquestion/add-question": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getQuestion:(NSNumber *)questionId {
+- (NSDictionary *)getQuestion:(long)questionId {
 	NSDictionary *_params = @{
-		@"questionId": questionId
+		@"questionId": @(questionId)
 	};
 
 	NSDictionary *_command = @{@"/pollsquestion/get-question": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateQuestion:(NSNumber *)questionId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap expirationDateMonth:(NSNumber *)expirationDateMonth expirationDateDay:(NSNumber *)expirationDateDay expirationDateYear:(NSNumber *)expirationDateYear expirationDateHour:(NSNumber *)expirationDateHour expirationDateMinute:(NSNumber *)expirationDateMinute neverExpire:(BOOL)neverExpire choices:(NSArray *)choices serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)updateQuestion:(long)questionId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap expirationDateMonth:(int)expirationDateMonth expirationDateDay:(int)expirationDateDay expirationDateYear:(int)expirationDateYear expirationDateHour:(int)expirationDateHour expirationDateMinute:(int)expirationDateMinute neverExpire:(BOOL)neverExpire choices:(NSArray *)choices serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"questionId": questionId,
+		@"questionId": @(questionId),
 		@"titleMap": titleMap,
 		@"descriptionMap": descriptionMap,
-		@"expirationDateMonth": expirationDateMonth,
-		@"expirationDateDay": expirationDateDay,
-		@"expirationDateYear": expirationDateYear,
-		@"expirationDateHour": expirationDateHour,
-		@"expirationDateMinute": expirationDateMinute,
-		@"neverExpire": neverExpire,
+		@"expirationDateMonth": @(expirationDateMonth),
+		@"expirationDateDay": @(expirationDateDay),
+		@"expirationDateYear": @(expirationDateYear),
+		@"expirationDateHour": @(expirationDateHour),
+		@"expirationDateMinute": @(expirationDateMinute),
+		@"neverExpire": @(neverExpire),
 		@"choices": choices,
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/pollsquestion/update-question": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteQuestion:(NSNumber *)questionId {
+- (void)deleteQuestion:(long)questionId {
 	NSDictionary *_params = @{
-		@"questionId": questionId
+		@"questionId": @(questionId)
 	};
 
 	NSDictionary *_command = @{@"/pollsquestion/delete-question": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

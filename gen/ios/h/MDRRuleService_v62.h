@@ -13,16 +13,17 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface MDRRuleService_v62 : NSObject
+@interface MDRRuleService_v62 : BaseService
 
-- (NSDictionary *)updateRule:(NSNumber *)ruleId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteRule:(NSNumber *)ruleId;
-- (NSDictionary *)addRule:(NSNumber *)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getRule:(NSNumber *)ruleId;
-- (NSDictionary *)fetchRule:(NSNumber *)ruleId;
+- (NSDictionary *)updateRule:(long)ruleId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext;
+- (void)deleteRule:(long)ruleId;
+- (NSDictionary *)addRule:(long)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)getRule:(long)ruleId;
+- (NSDictionary *)fetchRule:(long)ruleId;
 
 @end

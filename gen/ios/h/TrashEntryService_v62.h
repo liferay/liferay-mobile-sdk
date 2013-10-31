@@ -13,16 +13,17 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface TrashEntryService_v62 : NSObject
+@interface TrashEntryService_v62 : BaseService
 
-- (NSDictionary *)restoreEntry:(NSNumber *)entryId overrideClassPK:(NSNumber *)overrideClassPK name:(NSString *)name;
-- (void)deleteEntry:(NSString *)className classPK:(NSNumber *)classPK;
-- (void)moveEntry:(NSString *)className classPK:(NSNumber *)classPK destinationContainerModelId:(NSNumber *)destinationContainerModelId serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteEntries:(NSNumber *)groupId;
-- (NSDictionary *)getEntries:(NSNumber *)groupId start:(NSNumber *)start end:(NSNumber *)end obc:(NSDictionary *)obc;
+- (NSDictionary *)restoreEntry:(long)entryId overrideClassPK:(long)overrideClassPK name:(NSString *)name;
+- (void)deleteEntry:(NSString *)className classPK:(long)classPK;
+- (void)moveEntry:(NSString *)className classPK:(long)classPK destinationContainerModelId:(long)destinationContainerModelId serviceContext:(NSDictionary *)serviceContext;
+- (void)deleteEntries:(long)groupId;
+- (NSDictionary *)getEntries:(long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc;
 
 @end

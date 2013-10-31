@@ -13,16 +13,17 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface ShoppingCouponService_v62 : NSObject
+@interface ShoppingCouponService_v62 : BaseService
 
-- (NSDictionary *)updateCoupon:(NSNumber *)couponId name:(NSString *)name description:(NSString *)description startDateMonth:(NSNumber *)startDateMonth startDateDay:(NSNumber *)startDateDay startDateYear:(NSNumber *)startDateYear startDateHour:(NSNumber *)startDateHour startDateMinute:(NSNumber *)startDateMinute endDateMonth:(NSNumber *)endDateMonth endDateDay:(NSNumber *)endDateDay endDateYear:(NSNumber *)endDateYear endDateHour:(NSNumber *)endDateHour endDateMinute:(NSNumber *)endDateMinute neverExpire:(BOOL)neverExpire active:(BOOL)active limitCategories:(NSString *)limitCategories limitSkus:(NSString *)limitSkus minOrder:(NSNumber *)minOrder discount:(NSNumber *)discount discountType:(NSString *)discountType serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)addCoupon:(NSString *)code autoCode:(BOOL)autoCode name:(NSString *)name description:(NSString *)description startDateMonth:(NSNumber *)startDateMonth startDateDay:(NSNumber *)startDateDay startDateYear:(NSNumber *)startDateYear startDateHour:(NSNumber *)startDateHour startDateMinute:(NSNumber *)startDateMinute endDateMonth:(NSNumber *)endDateMonth endDateDay:(NSNumber *)endDateDay endDateYear:(NSNumber *)endDateYear endDateHour:(NSNumber *)endDateHour endDateMinute:(NSNumber *)endDateMinute neverExpire:(BOOL)neverExpire active:(BOOL)active limitCategories:(NSString *)limitCategories limitSkus:(NSString *)limitSkus minOrder:(NSNumber *)minOrder discount:(NSNumber *)discount discountType:(NSString *)discountType serviceContext:(NSDictionary *)serviceContext;
-- (NSArray *)search:(NSNumber *)groupId companyId:(NSNumber *)companyId code:(NSString *)code active:(BOOL)active discountType:(NSString *)discountType andOperator:(BOOL)andOperator start:(NSNumber *)start end:(NSNumber *)end;
-- (void)deleteCoupon:(NSNumber *)groupId couponId:(NSNumber *)couponId;
-- (NSDictionary *)getCoupon:(NSNumber *)groupId couponId:(NSNumber *)couponId;
+- (NSDictionary *)updateCoupon:(long)couponId name:(NSString *)name description:(NSString *)description startDateMonth:(int)startDateMonth startDateDay:(int)startDateDay startDateYear:(int)startDateYear startDateHour:(int)startDateHour startDateMinute:(int)startDateMinute endDateMonth:(int)endDateMonth endDateDay:(int)endDateDay endDateYear:(int)endDateYear endDateHour:(int)endDateHour endDateMinute:(int)endDateMinute neverExpire:(BOOL)neverExpire active:(BOOL)active limitCategories:(NSString *)limitCategories limitSkus:(NSString *)limitSkus minOrder:(double)minOrder discount:(double)discount discountType:(NSString *)discountType serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)addCoupon:(NSString *)code autoCode:(BOOL)autoCode name:(NSString *)name description:(NSString *)description startDateMonth:(int)startDateMonth startDateDay:(int)startDateDay startDateYear:(int)startDateYear startDateHour:(int)startDateHour startDateMinute:(int)startDateMinute endDateMonth:(int)endDateMonth endDateDay:(int)endDateDay endDateYear:(int)endDateYear endDateHour:(int)endDateHour endDateMinute:(int)endDateMinute neverExpire:(BOOL)neverExpire active:(BOOL)active limitCategories:(NSString *)limitCategories limitSkus:(NSString *)limitSkus minOrder:(double)minOrder discount:(double)discount discountType:(NSString *)discountType serviceContext:(NSDictionary *)serviceContext;
+- (NSArray *)search:(long)groupId companyId:(long)companyId code:(NSString *)code active:(BOOL)active discountType:(NSString *)discountType andOperator:(BOOL)andOperator start:(int)start end:(int)end;
+- (void)deleteCoupon:(long)groupId couponId:(long)couponId;
+- (NSDictionary *)getCoupon:(long)groupId couponId:(long)couponId;
 
 @end

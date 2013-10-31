@@ -13,20 +13,21 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface CompanyService_v62 : NSObject
+@interface CompanyService_v62 : BaseService
 
-- (void)updateDisplay:(NSNumber *)companyId languageId:(NSString *)languageId timeZoneId:(NSString *)timeZoneId;
+- (void)updateDisplay:(long)companyId languageId:(NSString *)languageId timeZoneId:(NSString *)timeZoneId;
 - (NSDictionary *)getCompanyByWebId:(NSString *)webId;
-- (NSDictionary *)getCompanyByLogoId:(NSNumber *)logoId;
+- (NSDictionary *)getCompanyByLogoId:(long)logoId;
 - (NSDictionary *)getCompanyByVirtualHost:(NSString *)virtualHost;
-- (NSDictionary *)updateLogo:(NSNumber *)companyId bytes:(NSArray *)bytes;
-- (NSDictionary *)getCompanyById:(NSNumber *)companyId;
+- (NSDictionary *)updateLogo:(long)companyId bytes:(NSArray *)bytes;
+- (NSDictionary *)getCompanyById:(long)companyId;
 - (NSDictionary *)getCompanyByMx:(NSString *)mx;
-- (void)deleteLogo:(NSNumber *)companyId;
-- (NSDictionary *)updateCompany:(NSNumber *)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx maxUsers:(NSNumber *)maxUsers active:(BOOL)active;
+- (void)deleteLogo:(long)companyId;
+- (NSDictionary *)updateCompany:(long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx maxUsers:(int)maxUsers active:(BOOL)active;
 
 @end

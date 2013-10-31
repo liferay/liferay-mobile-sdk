@@ -13,16 +13,17 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface LayoutPrototypeService_v62 : NSObject
+@interface LayoutPrototypeService_v62 : BaseService
 
-- (NSDictionary *)updateLayoutPrototype:(NSNumber *)layoutPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteLayoutPrototype:(NSNumber *)layoutPrototypeId;
-- (NSArray *)search:(NSNumber *)companyId active:(NSDictionary *)active obc:(NSDictionary *)obc;
+- (NSDictionary *)updateLayoutPrototype:(long)layoutPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active serviceContext:(NSDictionary *)serviceContext;
+- (void)deleteLayoutPrototype:(long)layoutPrototypeId;
+- (NSArray *)search:(long)companyId active:(NSDictionary *)active obc:(NSDictionary *)obc;
 - (NSDictionary *)addLayoutPrototype:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getLayoutPrototype:(NSNumber *)layoutPrototypeId;
+- (NSDictionary *)getLayoutPrototype:(long)layoutPrototypeId;
 
 @end

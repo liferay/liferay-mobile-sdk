@@ -13,13 +13,14 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface ClassNameService_v62 : NSObject
+@interface ClassNameService_v62 : BaseService
 
 - (NSDictionary *)fetchClassName:(NSString *)value;
-- (NSNumber *)fetchClassNameId:(NSString *)value;
+- (long)fetchClassNameId:(NSString *)value;
 
 @end

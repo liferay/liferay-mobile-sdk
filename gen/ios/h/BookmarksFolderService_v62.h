@@ -13,27 +13,28 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface BookmarksFolderService_v62 : NSObject
+@interface BookmarksFolderService_v62 : BaseService
 
-- (void)deleteFolder:(NSNumber *)folderId includeTrashedEntries:(BOOL)includeTrashedEntries;
-- (void)unsubscribeFolder:(NSNumber *)groupId folderId:(NSNumber *)folderId;
-- (NSDictionary *)getFolder:(NSNumber *)folderId;
-- (NSNumber *)getFoldersAndEntriesCount:(NSNumber *)groupId folderId:(NSNumber *)folderId status:(NSNumber *)status;
-- (void)subscribeFolder:(NSNumber *)groupId folderId:(NSNumber *)folderId;
-- (NSArray *)getFoldersAndEntries:(NSNumber *)groupId folderId:(NSNumber *)folderId status:(NSNumber *)status start:(NSNumber *)start end:(NSNumber *)end;
-- (NSDictionary *)moveFolderToTrash:(NSNumber *)folderId;
-- (NSArray *)getFolderIds:(NSNumber *)groupId folderId:(NSNumber *)folderId;
-- (NSDictionary *)updateFolder:(NSNumber *)folderId parentFolderId:(NSNumber *)parentFolderId name:(NSString *)name description:(NSString *)description mergeWithParentFolder:(BOOL)mergeWithParentFolder serviceContext:(NSDictionary *)serviceContext;
-- (NSArray *)getSubfolderIds:(NSNumber *)groupId folderId:(NSNumber *)folderId recurse:(BOOL)recurse;
-- (NSArray *)getFolders:(NSNumber *)groupId parentFolderId:(NSNumber *)parentFolderId status:(NSNumber *)status start:(NSNumber *)start end:(NSNumber *)end;
-- (void)restoreFolderFromTrash:(NSNumber *)folderId;
-- (NSDictionary *)moveFolder:(NSNumber *)folderId parentFolderId:(NSNumber *)parentFolderId;
-- (NSNumber *)getFoldersCount:(NSNumber *)groupId parentFolderId:(NSNumber *)parentFolderId status:(NSNumber *)status;
-- (NSDictionary *)addFolder:(NSNumber *)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)moveFolderFromTrash:(NSNumber *)folderId parentFolderId:(NSNumber *)parentFolderId;
+- (void)deleteFolder:(long)folderId includeTrashedEntries:(BOOL)includeTrashedEntries;
+- (void)unsubscribeFolder:(long)groupId folderId:(long)folderId;
+- (NSDictionary *)getFolder:(long)folderId;
+- (int)getFoldersAndEntriesCount:(long)groupId folderId:(long)folderId status:(int)status;
+- (void)subscribeFolder:(long)groupId folderId:(long)folderId;
+- (NSArray *)getFoldersAndEntries:(long)groupId folderId:(long)folderId status:(int)status start:(int)start end:(int)end;
+- (NSDictionary *)moveFolderToTrash:(long)folderId;
+- (NSArray *)getFolderIds:(long)groupId folderId:(long)folderId;
+- (NSDictionary *)updateFolder:(long)folderId parentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description mergeWithParentFolder:(BOOL)mergeWithParentFolder serviceContext:(NSDictionary *)serviceContext;
+- (NSArray *)getSubfolderIds:(long)groupId folderId:(long)folderId recurse:(BOOL)recurse;
+- (NSArray *)getFolders:(long)groupId parentFolderId:(long)parentFolderId status:(int)status start:(int)start end:(int)end;
+- (void)restoreFolderFromTrash:(long)folderId;
+- (NSDictionary *)moveFolder:(long)folderId parentFolderId:(long)parentFolderId;
+- (int)getFoldersCount:(long)groupId parentFolderId:(long)parentFolderId status:(int)status;
+- (NSDictionary *)addFolder:(long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)moveFolderFromTrash:(long)folderId parentFolderId:(long)parentFolderId;
 
 @end

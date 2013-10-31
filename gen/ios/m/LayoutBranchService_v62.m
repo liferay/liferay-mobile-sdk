@@ -19,23 +19,23 @@
  */
 @implementation LayoutBranchService_v62
 
-- (NSDictionary *)addLayoutBranch:(NSNumber *)layoutRevisionId name:(NSString *)name description:(NSString *)description master:(BOOL)master serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addLayoutBranch:(long)layoutRevisionId name:(NSString *)name description:(NSString *)description master:(BOOL)master serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"layoutRevisionId": layoutRevisionId,
+		@"layoutRevisionId": @(layoutRevisionId),
 		@"name": name,
 		@"description": description,
-		@"master": master,
+		@"master": @(master),
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/layoutbranch/add-layout-branch": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateLayoutBranch:(NSNumber *)layoutBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)updateLayoutBranch:(long)layoutBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"layoutBranchId": layoutBranchId,
+		@"layoutBranchId": @(layoutBranchId),
 		@"name": name,
 		@"description": description,
 		@"serviceContext": serviceContext
@@ -43,17 +43,17 @@
 
 	NSDictionary *_command = @{@"/layoutbranch/update-layout-branch": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteLayoutBranch:(NSNumber *)layoutBranchId {
+- (void)deleteLayoutBranch:(long)layoutBranchId {
 	NSDictionary *_params = @{
-		@"layoutBranchId": layoutBranchId
+		@"layoutBranchId": @(layoutBranchId)
 	};
 
 	NSDictionary *_command = @{@"/layoutbranch/delete-layout-branch": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

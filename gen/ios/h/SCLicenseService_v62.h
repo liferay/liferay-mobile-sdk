@@ -13,15 +13,16 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface SCLicenseService_v62 : NSObject
+@interface SCLicenseService_v62 : BaseService
 
-- (void)deleteLicense:(NSNumber *)licenseId;
-- (NSDictionary *)updateLicense:(NSNumber *)licenseId name:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended;
-- (NSDictionary *)getLicense:(NSNumber *)licenseId;
+- (void)deleteLicense:(long)licenseId;
+- (NSDictionary *)updateLicense:(long)licenseId name:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended;
+- (NSDictionary *)getLicense:(long)licenseId;
 - (NSDictionary *)addLicense:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended;
 
 @end

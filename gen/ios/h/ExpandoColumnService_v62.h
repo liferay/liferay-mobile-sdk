@@ -13,15 +13,16 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface ExpandoColumnService_v62 : NSObject
+@interface ExpandoColumnService_v62 : BaseService
 
-- (NSDictionary *)addColumn:(NSNumber *)tableId name:(NSString *)name type:(NSNumber *)type defaultData:(NSDictionary *)defaultData;
-- (void)deleteColumn:(NSNumber *)columnId;
-- (NSDictionary *)updateTypeSettings:(NSNumber *)columnId typeSettings:(NSString *)typeSettings;
-- (NSDictionary *)updateColumn:(NSNumber *)columnId name:(NSString *)name type:(NSNumber *)type defaultData:(NSDictionary *)defaultData;
+- (NSDictionary *)addColumn:(long)tableId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData;
+- (void)deleteColumn:(long)columnId;
+- (NSDictionary *)updateTypeSettings:(long)columnId typeSettings:(NSString *)typeSettings;
+- (NSDictionary *)updateColumn:(long)columnId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData;
 
 @end

@@ -13,34 +13,35 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface SocialactivityService_v62 : NSObject
+@interface SocialactivityService_v62 : BaseService
 
-- (NSNumber *)getUserActivitiesCount:(NSNumber *)userId;
-- (NSArray *)getUserGroupsActivities:(NSNumber *)userId start:(NSNumber *)start end:(NSNumber *)end;
-- (NSNumber *)getRelationActivitiesCount:(NSNumber *)userId type:(NSNumber *)type;
-- (NSDictionary *)getMirrorActivity:(NSNumber *)mirrorActivityId;
-- (NSArray *)getUserGroupsAndOrganizationsActivities:(NSNumber *)userId start:(NSNumber *)start end:(NSNumber *)end;
-- (NSNumber *)getUserOrganizationsActivitiesCount:(NSNumber *)userId;
-- (NSDictionary *)getActivity:(NSNumber *)activityId;
-- (NSNumber *)getActivitiesCount:(NSNumber *)mirrorActivityId classNameId:(NSNumber *)classNameId classPK:(NSNumber *)classPK;
-- (NSArray *)getGroupUsersActivities:(NSNumber *)groupId start:(NSNumber *)start end:(NSNumber *)end;
-- (NSArray *)getOrganizationUsersActivities:(NSNumber *)organizationId start:(NSNumber *)start end:(NSNumber *)end;
-- (NSArray *)getActivitySetActivities:(NSNumber *)activitySetId start:(NSNumber *)start end:(NSNumber *)end;
-- (NSArray *)getOrganizationActivities:(NSNumber *)organizationId start:(NSNumber *)start end:(NSNumber *)end;
-- (NSNumber *)getGroupUsersActivitiesCount:(NSNumber *)groupId;
-- (NSNumber *)getGroupActivitiesCount:(NSNumber *)groupId;
-- (NSNumber *)getUserGroupsAndOrganizationsActivitiesCount:(NSNumber *)userId;
-- (NSArray *)getGroupActivities:(NSNumber *)groupId start:(NSNumber *)start end:(NSNumber *)end;
-- (NSNumber *)getUserGroupsActivitiesCount:(NSNumber *)userId;
-- (NSNumber *)getOrganizationUsersActivitiesCount:(NSNumber *)organizationId;
-- (NSArray *)getActivities:(NSNumber *)mirrorActivityId classNameId:(NSNumber *)classNameId classPK:(NSNumber *)classPK start:(NSNumber *)start end:(NSNumber *)end;
-- (NSArray *)getUserActivities:(NSNumber *)userId start:(NSNumber *)start end:(NSNumber *)end;
-- (NSArray *)getRelationActivities:(NSNumber *)userId type:(NSNumber *)type start:(NSNumber *)start end:(NSNumber *)end;
-- (NSArray *)getUserOrganizationsActivities:(NSNumber *)userId start:(NSNumber *)start end:(NSNumber *)end;
-- (NSNumber *)getOrganizationActivitiesCount:(NSNumber *)organizationId;
+- (int)getUserActivitiesCount:(long)userId;
+- (NSArray *)getUserGroupsActivities:(long)userId start:(int)start end:(int)end;
+- (int)getRelationActivitiesCount:(long)userId type:(int)type;
+- (NSDictionary *)getMirrorActivity:(long)mirrorActivityId;
+- (NSArray *)getUserGroupsAndOrganizationsActivities:(long)userId start:(int)start end:(int)end;
+- (int)getUserOrganizationsActivitiesCount:(long)userId;
+- (NSDictionary *)getActivity:(long)activityId;
+- (int)getActivitiesCount:(long)mirrorActivityId classNameId:(long)classNameId classPK:(long)classPK;
+- (NSArray *)getGroupUsersActivities:(long)groupId start:(int)start end:(int)end;
+- (NSArray *)getOrganizationUsersActivities:(long)organizationId start:(int)start end:(int)end;
+- (NSArray *)getActivitySetActivities:(long)activitySetId start:(int)start end:(int)end;
+- (NSArray *)getOrganizationActivities:(long)organizationId start:(int)start end:(int)end;
+- (int)getGroupUsersActivitiesCount:(long)groupId;
+- (int)getGroupActivitiesCount:(long)groupId;
+- (int)getUserGroupsAndOrganizationsActivitiesCount:(long)userId;
+- (NSArray *)getGroupActivities:(long)groupId start:(int)start end:(int)end;
+- (int)getUserGroupsActivitiesCount:(long)userId;
+- (int)getOrganizationUsersActivitiesCount:(long)organizationId;
+- (NSArray *)getActivities:(long)mirrorActivityId classNameId:(long)classNameId classPK:(long)classPK start:(int)start end:(int)end;
+- (NSArray *)getUserActivities:(long)userId start:(int)start end:(int)end;
+- (NSArray *)getRelationActivities:(long)userId type:(int)type start:(int)start end:(int)end;
+- (NSArray *)getUserOrganizationsActivities:(long)userId start:(int)start end:(int)end;
+- (int)getOrganizationActivitiesCount:(long)organizationId;
 
 @end

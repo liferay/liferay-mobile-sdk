@@ -13,15 +13,16 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface DLFileShortcutService_v62 : NSObject
+@interface DLFileShortcutService_v62 : BaseService
 
-- (void)deleteFileShortcut:(NSNumber *)fileShortcutId;
-- (NSDictionary *)getFileShortcut:(NSNumber *)fileShortcutId;
-- (NSDictionary *)updateFileShortcut:(NSNumber *)fileShortcutId folderId:(NSNumber *)folderId toFileEntryId:(NSNumber *)toFileEntryId serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)addFileShortcut:(NSNumber *)groupId folderId:(NSNumber *)folderId toFileEntryId:(NSNumber *)toFileEntryId serviceContext:(NSDictionary *)serviceContext;
+- (void)deleteFileShortcut:(long)fileShortcutId;
+- (NSDictionary *)getFileShortcut:(long)fileShortcutId;
+- (NSDictionary *)updateFileShortcut:(long)fileShortcutId folderId:(long)folderId toFileEntryId:(long)toFileEntryId serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)addFileShortcut:(long)groupId folderId:(long)folderId toFileEntryId:(long)toFileEntryId serviceContext:(NSDictionary *)serviceContext;
 
 @end

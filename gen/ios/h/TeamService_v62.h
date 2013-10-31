@@ -13,18 +13,19 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface TeamService_v62 : NSObject
+@interface TeamService_v62 : BaseService
 
-- (NSDictionary *)addTeam:(NSNumber *)groupId name:(NSString *)name description:(NSString *)description;
-- (NSArray *)getUserTeams:(NSNumber *)userId groupId:(NSNumber *)groupId;
-- (NSDictionary *)updateTeam:(NSNumber *)teamId name:(NSString *)name description:(NSString *)description;
-- (BOOL)hasUserTeam:(NSNumber *)userId teamId:(NSNumber *)teamId;
-- (NSDictionary *)getTeam:(NSNumber *)groupId name:(NSString *)name;
-- (NSArray *)getGroupTeams:(NSNumber *)groupId;
-- (void)deleteTeam:(NSNumber *)teamId;
+- (NSDictionary *)addTeam:(long)groupId name:(NSString *)name description:(NSString *)description;
+- (NSArray *)getUserTeams:(long)userId groupId:(long)groupId;
+- (NSDictionary *)updateTeam:(long)teamId name:(NSString *)name description:(NSString *)description;
+- (BOOL)hasUserTeam:(long)userId teamId:(long)teamId;
+- (NSDictionary *)getTeam:(long)groupId name:(NSString *)name;
+- (NSArray *)getGroupTeams:(long)groupId;
+- (void)deleteTeam:(long)teamId;
 
 @end

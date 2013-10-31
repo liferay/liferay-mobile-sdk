@@ -13,34 +13,35 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface DLFileEntryService_v62 : NSObject
+@interface DLFileEntryService_v62 : BaseService
 
-- (NSDictionary *)refreshFileEntryLock:(NSString *)lockUuid companyId:(NSNumber *)companyId expirationTime:(NSNumber *)expirationTime;
-- (NSNumber *)getFoldersFileEntriesCount:(NSNumber *)groupId folderIds:(NSArray *)folderIds status:(NSNumber *)status;
-- (BOOL)isFileEntryCheckedOut:(NSNumber *)fileEntryId;
-- (void)deleteFileVersion:(NSNumber *)fileEntryId version:(NSString *)version;
-- (NSNumber *)getFileEntriesCount:(NSNumber *)groupId folderId:(NSNumber *)folderId status:(NSNumber *)status;
-- (NSDictionary *)getFileEntry:(NSNumber *)groupId folderId:(NSNumber *)folderId title:(NSString *)title;
-- (NSArray *)getFileEntries:(NSNumber *)groupId folderId:(NSNumber *)folderId status:(NSNumber *)status start:(NSNumber *)start end:(NSNumber *)end obc:(NSDictionary *)obc;
-- (NSDictionary *)search:(NSNumber *)groupId creatorUserId:(NSNumber *)creatorUserId folderId:(NSNumber *)folderId mimeTypes:(NSArray *)mimeTypes status:(NSNumber *)status start:(NSNumber *)start end:(NSNumber *)end;
-- (void)deleteFileEntry:(NSNumber *)groupId folderId:(NSNumber *)folderId title:(NSString *)title;
-- (NSDictionary *)getFileEntryByUuidAndGroupId:(NSString *)uuid groupId:(NSNumber *)groupId;
-- (NSNumber *)getGroupFileEntriesCount:(NSNumber *)groupId userId:(NSNumber *)userId rootFolderId:(NSNumber *)rootFolderId mimeTypes:(NSArray *)mimeTypes status:(NSNumber *)status;
-- (NSDictionary *)checkOutFileEntry:(NSNumber *)fileEntryId owner:(NSString *)owner expirationTime:(NSNumber *)expirationTime serviceContext:(NSDictionary *)serviceContext;
-- (BOOL)verifyFileEntryCheckOut:(NSNumber *)fileEntryId lockUuid:(NSString *)lockUuid;
-- (NSArray *)getGroupFileEntries:(NSNumber *)groupId userId:(NSNumber *)userId rootFolderId:(NSNumber *)rootFolderId mimeTypes:(NSArray *)mimeTypes status:(NSNumber *)status start:(NSNumber *)start end:(NSNumber *)end obc:(NSDictionary *)obc;
-- (void)revertFileEntry:(NSNumber *)fileEntryId version:(NSString *)version serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)fetchFileEntryByImageId:(NSNumber *)imageId;
-- (void)checkInFileEntry:(NSNumber *)fileEntryId major:(BOOL)major changeLog:(NSString *)changeLog serviceContext:(NSDictionary *)serviceContext;
-- (BOOL)hasFileEntryLock:(NSNumber *)fileEntryId;
-- (NSDictionary *)moveFileEntry:(NSNumber *)fileEntryId newFolderId:(NSNumber *)newFolderId serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getFileEntryLock:(NSNumber *)fileEntryId;
-- (BOOL)verifyFileEntryLock:(NSNumber *)fileEntryId lockUuid:(NSString *)lockUuid;
-- (NSDictionary *)copyFileEntry:(NSNumber *)groupId repositoryId:(NSNumber *)repositoryId fileEntryId:(NSNumber *)fileEntryId destFolderId:(NSNumber *)destFolderId serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)cancelCheckOut:(NSNumber *)fileEntryId;
+- (NSDictionary *)refreshFileEntryLock:(NSString *)lockUuid companyId:(long)companyId expirationTime:(long)expirationTime;
+- (int)getFoldersFileEntriesCount:(long)groupId folderIds:(NSArray *)folderIds status:(int)status;
+- (BOOL)isFileEntryCheckedOut:(long)fileEntryId;
+- (void)deleteFileVersion:(long)fileEntryId version:(NSString *)version;
+- (int)getFileEntriesCount:(long)groupId folderId:(long)folderId status:(int)status;
+- (NSDictionary *)getFileEntry:(long)groupId folderId:(long)folderId title:(NSString *)title;
+- (NSArray *)getFileEntries:(long)groupId folderId:(long)folderId status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc;
+- (NSDictionary *)search:(long)groupId creatorUserId:(long)creatorUserId folderId:(long)folderId mimeTypes:(NSArray *)mimeTypes status:(int)status start:(int)start end:(int)end;
+- (void)deleteFileEntry:(long)groupId folderId:(long)folderId title:(NSString *)title;
+- (NSDictionary *)getFileEntryByUuidAndGroupId:(NSString *)uuid groupId:(long)groupId;
+- (int)getGroupFileEntriesCount:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId mimeTypes:(NSArray *)mimeTypes status:(int)status;
+- (NSDictionary *)checkOutFileEntry:(long)fileEntryId owner:(NSString *)owner expirationTime:(long)expirationTime serviceContext:(NSDictionary *)serviceContext;
+- (BOOL)verifyFileEntryCheckOut:(long)fileEntryId lockUuid:(NSString *)lockUuid;
+- (NSArray *)getGroupFileEntries:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId mimeTypes:(NSArray *)mimeTypes status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc;
+- (void)revertFileEntry:(long)fileEntryId version:(NSString *)version serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)fetchFileEntryByImageId:(long)imageId;
+- (void)checkInFileEntry:(long)fileEntryId major:(BOOL)major changeLog:(NSString *)changeLog serviceContext:(NSDictionary *)serviceContext;
+- (BOOL)hasFileEntryLock:(long)fileEntryId;
+- (NSDictionary *)moveFileEntry:(long)fileEntryId newFolderId:(long)newFolderId serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)getFileEntryLock:(long)fileEntryId;
+- (BOOL)verifyFileEntryLock:(long)fileEntryId lockUuid:(NSString *)lockUuid;
+- (NSDictionary *)copyFileEntry:(long)groupId repositoryId:(long)repositoryId fileEntryId:(long)fileEntryId destFolderId:(long)destFolderId serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)cancelCheckOut:(long)fileEntryId;
 
 @end

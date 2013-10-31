@@ -19,65 +19,65 @@
  */
 @implementation PhoneService_v62
 
-- (NSArray *)getPhones:(NSString *)className classPK:(NSNumber *)classPK {
+- (NSArray *)getPhones:(NSString *)className classPK:(long)classPK {
 	NSDictionary *_params = @{
 		@"className": className,
-		@"classPK": classPK
+		@"classPK": @(classPK)
 	};
 
 	NSDictionary *_command = @{@"/phone/get-phones": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getPhone:(NSNumber *)phoneId {
+- (NSDictionary *)getPhone:(long)phoneId {
 	NSDictionary *_params = @{
-		@"phoneId": phoneId
+		@"phoneId": @(phoneId)
 	};
 
 	NSDictionary *_command = @{@"/phone/get-phone": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)addPhone:(NSString *)className classPK:(NSNumber *)classPK number:(NSString *)number extension:(NSString *)extension typeId:(NSNumber *)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addPhone:(NSString *)className classPK:(long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
 		@"className": className,
-		@"classPK": classPK,
+		@"classPK": @(classPK),
 		@"number": number,
 		@"extension": extension,
-		@"typeId": typeId,
-		@"primary": primary,
+		@"typeId": @(typeId),
+		@"primary": @(primary),
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/phone/add-phone": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updatePhone:(NSNumber *)phoneId number:(NSString *)number extension:(NSString *)extension typeId:(NSNumber *)typeId primary:(BOOL)primary {
+- (NSDictionary *)updatePhone:(long)phoneId number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary {
 	NSDictionary *_params = @{
-		@"phoneId": phoneId,
+		@"phoneId": @(phoneId),
 		@"number": number,
 		@"extension": extension,
-		@"typeId": typeId,
-		@"primary": primary
+		@"typeId": @(typeId),
+		@"primary": @(primary)
 	};
 
 	NSDictionary *_command = @{@"/phone/update-phone": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deletePhone:(NSNumber *)phoneId {
+- (void)deletePhone:(long)phoneId {
 	NSDictionary *_params = @{
-		@"phoneId": phoneId
+		@"phoneId": @(phoneId)
 	};
 
 	NSDictionary *_command = @{@"/phone/delete-phone": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

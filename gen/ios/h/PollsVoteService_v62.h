@@ -13,12 +13,13 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface PollsVoteService_v62 : NSObject
+@interface PollsVoteService_v62 : BaseService
 
-- (NSDictionary *)addVote:(NSNumber *)questionId choiceId:(NSNumber *)choiceId serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)addVote:(long)questionId choiceId:(long)choiceId serviceContext:(NSDictionary *)serviceContext;
 
 @end

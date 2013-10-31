@@ -13,18 +13,19 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface ShoppingCategoryService_v62 : NSObject
+@interface ShoppingCategoryService_v62 : BaseService
 
-- (NSDictionary *)addCategory:(NSNumber *)parentCategoryId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteCategory:(NSNumber *)categoryId;
-- (NSDictionary *)getCategory:(NSNumber *)categoryId;
-- (void)getSubcategoryIds:(NSArray *)categoryIds groupId:(NSNumber *)groupId categoryId:(NSNumber *)categoryId;
-- (NSArray *)getCategories:(NSNumber *)groupId parentCategoryId:(NSNumber *)parentCategoryId start:(NSNumber *)start end:(NSNumber *)end;
-- (NSDictionary *)updateCategory:(NSNumber *)categoryId parentCategoryId:(NSNumber *)parentCategoryId name:(NSString *)name description:(NSString *)description mergeWithParentCategory:(BOOL)mergeWithParentCategory serviceContext:(NSDictionary *)serviceContext;
-- (NSNumber *)getCategoriesCount:(NSNumber *)groupId parentCategoryId:(NSNumber *)parentCategoryId;
+- (NSDictionary *)addCategory:(long)parentCategoryId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
+- (void)deleteCategory:(long)categoryId;
+- (NSDictionary *)getCategory:(long)categoryId;
+- (void)getSubcategoryIds:(NSArray *)categoryIds groupId:(long)groupId categoryId:(long)categoryId;
+- (NSArray *)getCategories:(long)groupId parentCategoryId:(long)parentCategoryId start:(int)start end:(int)end;
+- (NSDictionary *)updateCategory:(long)categoryId parentCategoryId:(long)parentCategoryId name:(NSString *)name description:(NSString *)description mergeWithParentCategory:(BOOL)mergeWithParentCategory serviceContext:(NSDictionary *)serviceContext;
+- (int)getCategoriesCount:(long)groupId parentCategoryId:(long)parentCategoryId;
 
 @end

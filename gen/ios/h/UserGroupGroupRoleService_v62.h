@@ -13,13 +13,14 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface UserGroupGroupRoleService_v62 : NSObject
+@interface UserGroupGroupRoleService_v62 : BaseService
 
-- (void)deleteUserGroupGroupRoles:(NSArray *)userGroupIds groupId:(NSNumber *)groupId roleId:(NSNumber *)roleId;
-- (void)addUserGroupGroupRoles:(NSArray *)userGroupIds groupId:(NSNumber *)groupId roleId:(NSNumber *)roleId;
+- (void)deleteUserGroupGroupRoles:(NSArray *)userGroupIds groupId:(long)groupId roleId:(long)roleId;
+- (void)addUserGroupGroupRoles:(NSArray *)userGroupIds groupId:(long)groupId roleId:(long)roleId;
 
 @end

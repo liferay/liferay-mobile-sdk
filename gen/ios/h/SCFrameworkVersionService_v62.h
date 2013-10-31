@@ -13,16 +13,17 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface SCFrameworkVersionService_v62 : NSObject
+@interface SCFrameworkVersionService_v62 : BaseService
 
-- (NSDictionary *)getFrameworkVersion:(NSNumber *)frameworkVersionId;
-- (NSDictionary *)addFrameworkVersion:(NSString *)name url:(NSString *)url active:(BOOL)active priority:(NSNumber *)priority serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)updateFrameworkVersion:(NSNumber *)frameworkVersionId name:(NSString *)name url:(NSString *)url active:(BOOL)active priority:(NSNumber *)priority;
-- (NSArray *)getFrameworkVersions:(NSNumber *)groupId active:(BOOL)active start:(NSNumber *)start end:(NSNumber *)end;
-- (void)deleteFrameworkVersion:(NSNumber *)frameworkVersionId;
+- (NSDictionary *)getFrameworkVersion:(long)frameworkVersionId;
+- (NSDictionary *)addFrameworkVersion:(NSString *)name url:(NSString *)url active:(BOOL)active priority:(int)priority serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)updateFrameworkVersion:(long)frameworkVersionId name:(NSString *)name url:(NSString *)url active:(BOOL)active priority:(int)priority;
+- (NSArray *)getFrameworkVersions:(long)groupId active:(BOOL)active start:(int)start end:(int)end;
+- (void)deleteFrameworkVersion:(long)frameworkVersionId;
 
 @end

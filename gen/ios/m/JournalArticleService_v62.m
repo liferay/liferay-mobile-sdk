@@ -19,153 +19,153 @@
  */
 @implementation JournalArticleService_v62
 
-- (NSArray *)getArticlesByArticleId:(NSNumber *)groupId articleId:(NSString *)articleId start:(NSNumber *)start end:(NSNumber *)end obc:(NSDictionary *)obc {
+- (NSArray *)getArticlesByArticleId:(long)groupId articleId:(NSString *)articleId start:(int)start end:(int)end obc:(NSDictionary *)obc {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"articleId": articleId,
-		@"start": start,
-		@"end": end,
+		@"start": @(start),
+		@"end": @(end),
 		@"obc": obc
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles-by-article-id": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)search:(NSNumber *)groupId creatorUserId:(NSNumber *)creatorUserId status:(NSNumber *)status start:(NSNumber *)start end:(NSNumber *)end {
+- (NSDictionary *)search:(long)groupId creatorUserId:(long)creatorUserId status:(int)status start:(int)start end:(int)end {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"creatorUserId": creatorUserId,
-		@"status": status,
-		@"start": start,
-		@"end": end
+		@"groupId": @(groupId),
+		@"creatorUserId": @(creatorUserId),
+		@"status": @(status),
+		@"start": @(start),
+		@"end": @(end)
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/search": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)removeArticleLocale:(NSNumber *)groupId articleId:(NSString *)articleId version:(NSNumber *)version languageId:(NSString *)languageId {
+- (NSDictionary *)removeArticleLocale:(long)groupId articleId:(NSString *)articleId version:(double)version languageId:(NSString *)languageId {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"articleId": articleId,
-		@"version": version,
+		@"version": @(version),
 		@"languageId": languageId
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/remove-article-locale": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)moveArticleFromTrash:(NSNumber *)groupId resourcePrimKey:(NSNumber *)resourcePrimKey newFolderId:(NSNumber *)newFolderId serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)moveArticleFromTrash:(long)groupId resourcePrimKey:(long)resourcePrimKey newFolderId:(long)newFolderId serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"resourcePrimKey": resourcePrimKey,
-		@"newFolderId": newFolderId,
+		@"groupId": @(groupId),
+		@"resourcePrimKey": @(resourcePrimKey),
+		@"newFolderId": @(newFolderId),
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/move-article-from-trash": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSNumber *)getGroupArticlesCount:(NSNumber *)groupId userId:(NSNumber *)userId rootFolderId:(NSNumber *)rootFolderId status:(NSNumber *)status {
+- (int)getGroupArticlesCount:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId status:(int)status {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"userId": userId,
-		@"rootFolderId": rootFolderId,
-		@"status": status
+		@"groupId": @(groupId),
+		@"userId": @(userId),
+		@"rootFolderId": @(rootFolderId),
+		@"status": @(status)
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/get-group-articles-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (NSArray *)getArticlesByStructureId:(NSNumber *)groupId classNameId:(NSNumber *)classNameId ddmStructureKey:(NSString *)ddmStructureKey status:(NSNumber *)status start:(NSNumber *)start end:(NSNumber *)end obc:(NSDictionary *)obc {
+- (NSArray *)getArticlesByStructureId:(long)groupId classNameId:(long)classNameId ddmStructureKey:(NSString *)ddmStructureKey status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"classNameId": classNameId,
+		@"groupId": @(groupId),
+		@"classNameId": @(classNameId),
 		@"ddmStructureKey": ddmStructureKey,
-		@"status": status,
-		@"start": start,
-		@"end": end,
+		@"status": @(status),
+		@"start": @(start),
+		@"end": @(end),
 		@"obc": obc
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles-by-structure-id": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSArray *)getArticlesByLayoutUuid:(NSNumber *)groupId layoutUuid:(NSString *)layoutUuid {
+- (NSArray *)getArticlesByLayoutUuid:(long)groupId layoutUuid:(NSString *)layoutUuid {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"layoutUuid": layoutUuid
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles-by-layout-uuid": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)moveArticleToTrash:(NSNumber *)groupId articleId:(NSString *)articleId {
+- (NSDictionary *)moveArticleToTrash:(long)groupId articleId:(NSString *)articleId {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"articleId": articleId
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/move-article-to-trash": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)unsubscribe:(NSNumber *)groupId {
+- (void)unsubscribe:(long)groupId {
 	NSDictionary *_params = @{
-		@"groupId": groupId
+		@"groupId": @(groupId)
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/unsubscribe": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSArray *)getGroupArticles:(NSNumber *)groupId userId:(NSNumber *)userId rootFolderId:(NSNumber *)rootFolderId status:(NSNumber *)status start:(NSNumber *)start end:(NSNumber *)end orderByComparator:(NSDictionary *)orderByComparator {
+- (NSArray *)getGroupArticles:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId status:(int)status start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"userId": userId,
-		@"rootFolderId": rootFolderId,
-		@"status": status,
-		@"start": start,
-		@"end": end,
+		@"groupId": @(groupId),
+		@"userId": @(userId),
+		@"rootFolderId": @(rootFolderId),
+		@"status": @(status),
+		@"start": @(start),
+		@"end": @(end),
 		@"orderByComparator": orderByComparator
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/get-group-articles": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (void)restoreArticleFromTrash:(NSNumber *)groupId articleId:(NSString *)articleId {
+- (void)restoreArticleFromTrash:(long)groupId articleId:(NSString *)articleId {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"articleId": articleId
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/restore-article-from-trash": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateArticleTranslation:(NSNumber *)groupId articleId:(NSString *)articleId version:(NSNumber *)version locale:(NSString *)locale title:(NSString *)title description:(NSString *)description content:(NSString *)content images:(NSDictionary *)images serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)updateArticleTranslation:(long)groupId articleId:(NSString *)articleId version:(double)version locale:(NSString *)locale title:(NSString *)title description:(NSString *)description content:(NSString *)content images:(NSDictionary *)images serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"articleId": articleId,
-		@"version": version,
+		@"version": @(version),
 		@"locale": locale,
 		@"title": title,
 		@"description": description,
@@ -176,170 +176,170 @@
 
 	NSDictionary *_command = @{@"/journalarticle/update-article-translation": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getLatestArticle:(NSNumber *)groupId className:(NSString *)className classPK:(NSNumber *)classPK {
+- (NSDictionary *)getLatestArticle:(long)groupId className:(NSString *)className classPK:(long)classPK {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"className": className,
-		@"classPK": classPK
+		@"classPK": @(classPK)
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/get-latest-article": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)copyArticle:(NSNumber *)groupId oldArticleId:(NSString *)oldArticleId newArticleId:(NSString *)newArticleId autoArticleId:(BOOL)autoArticleId version:(NSNumber *)version {
+- (NSDictionary *)copyArticle:(long)groupId oldArticleId:(NSString *)oldArticleId newArticleId:(NSString *)newArticleId autoArticleId:(BOOL)autoArticleId version:(double)version {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"oldArticleId": oldArticleId,
 		@"newArticleId": newArticleId,
-		@"autoArticleId": autoArticleId,
-		@"version": version
+		@"autoArticleId": @(autoArticleId),
+		@"version": @(version)
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/copy-article": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)subscribe:(NSNumber *)groupId {
+- (void)subscribe:(long)groupId {
 	NSDictionary *_params = @{
-		@"groupId": groupId
+		@"groupId": @(groupId)
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/subscribe": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)expireArticle:(NSNumber *)groupId articleId:(NSString *)articleId version:(NSNumber *)version articleURL:(NSString *)articleURL serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)expireArticle:(long)groupId articleId:(NSString *)articleId version:(double)version articleURL:(NSString *)articleURL serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"articleId": articleId,
-		@"version": version,
+		@"version": @(version),
 		@"articleURL": articleURL,
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/expire-article": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getDisplayArticleByUrlTitle:(NSNumber *)groupId urlTitle:(NSString *)urlTitle {
+- (NSDictionary *)getDisplayArticleByUrlTitle:(long)groupId urlTitle:(NSString *)urlTitle {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"urlTitle": urlTitle
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/get-display-article-by-url-title": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateContent:(NSNumber *)groupId articleId:(NSString *)articleId version:(NSNumber *)version content:(NSString *)content {
+- (NSDictionary *)updateContent:(long)groupId articleId:(NSString *)articleId version:(double)version content:(NSString *)content {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"articleId": articleId,
-		@"version": version,
+		@"version": @(version),
 		@"content": content
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/update-content": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSNumber *)getArticlesCountByStructureId:(NSNumber *)groupId classNameId:(NSNumber *)classNameId ddmStructureKey:(NSString *)ddmStructureKey status:(NSNumber *)status {
+- (int)getArticlesCountByStructureId:(long)groupId classNameId:(long)classNameId ddmStructureKey:(NSString *)ddmStructureKey status:(int)status {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"classNameId": classNameId,
+		@"groupId": @(groupId),
+		@"classNameId": @(classNameId),
 		@"ddmStructureKey": ddmStructureKey,
-		@"status": status
+		@"status": @(status)
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles-count-by-structure-id": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateArticle:(NSNumber *)groupId folderId:(NSNumber *)folderId articleId:(NSString *)articleId version:(NSNumber *)version content:(NSString *)content serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)updateArticle:(long)groupId folderId:(long)folderId articleId:(NSString *)articleId version:(double)version content:(NSString *)content serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"folderId": folderId,
+		@"groupId": @(groupId),
+		@"folderId": @(folderId),
 		@"articleId": articleId,
-		@"version": version,
+		@"version": @(version),
 		@"content": content,
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/update-article": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSArray *)getArticles:(NSNumber *)groupId folderId:(NSNumber *)folderId start:(NSNumber *)start end:(NSNumber *)end obc:(NSDictionary *)obc {
+- (NSArray *)getArticles:(long)groupId folderId:(long)folderId start:(int)start end:(int)end obc:(NSDictionary *)obc {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"folderId": folderId,
-		@"start": start,
-		@"end": end,
+		@"groupId": @(groupId),
+		@"folderId": @(folderId),
+		@"start": @(start),
+		@"end": @(end),
 		@"obc": obc
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSNumber *)getFoldersAndArticlesCount:(NSNumber *)groupId folderIds:(NSArray *)folderIds {
+- (int)getFoldersAndArticlesCount:(long)groupId folderIds:(NSArray *)folderIds {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"folderIds": folderIds
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/get-folders-and-articles-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (void)deleteArticle:(NSNumber *)groupId articleId:(NSString *)articleId version:(NSNumber *)version articleURL:(NSString *)articleURL serviceContext:(NSDictionary *)serviceContext {
+- (void)deleteArticle:(long)groupId articleId:(NSString *)articleId version:(double)version articleURL:(NSString *)articleURL serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"articleId": articleId,
-		@"version": version,
+		@"version": @(version),
 		@"articleURL": articleURL,
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/delete-article": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)getArticle:(NSNumber *)groupId className:(NSString *)className classPK:(NSNumber *)classPK {
+- (NSDictionary *)getArticle:(long)groupId className:(NSString *)className classPK:(long)classPK {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"className": className,
-		@"classPK": classPK
+		@"classPK": @(classPK)
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/get-article": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)addArticle:(NSNumber *)groupId folderId:(NSNumber *)folderId classNameId:(NSNumber *)classNameId classPK:(NSNumber *)classPK articleId:(NSString *)articleId autoArticleId:(BOOL)autoArticleId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap content:(NSString *)content type:(NSString *)type ddmStructureKey:(NSString *)ddmStructureKey ddmTemplateKey:(NSString *)ddmTemplateKey layoutUuid:(NSString *)layoutUuid displayDateMonth:(NSNumber *)displayDateMonth displayDateDay:(NSNumber *)displayDateDay displayDateYear:(NSNumber *)displayDateYear displayDateHour:(NSNumber *)displayDateHour displayDateMinute:(NSNumber *)displayDateMinute expirationDateMonth:(NSNumber *)expirationDateMonth expirationDateDay:(NSNumber *)expirationDateDay expirationDateYear:(NSNumber *)expirationDateYear expirationDateHour:(NSNumber *)expirationDateHour expirationDateMinute:(NSNumber *)expirationDateMinute neverExpire:(BOOL)neverExpire reviewDateMonth:(NSNumber *)reviewDateMonth reviewDateDay:(NSNumber *)reviewDateDay reviewDateYear:(NSNumber *)reviewDateYear reviewDateHour:(NSNumber *)reviewDateHour reviewDateMinute:(NSNumber *)reviewDateMinute neverReview:(BOOL)neverReview indexable:(BOOL)indexable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(NSDictionary *)smallFile images:(NSDictionary *)images articleURL:(NSString *)articleURL serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addArticle:(long)groupId folderId:(long)folderId classNameId:(long)classNameId classPK:(long)classPK articleId:(NSString *)articleId autoArticleId:(BOOL)autoArticleId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap content:(NSString *)content type:(NSString *)type ddmStructureKey:(NSString *)ddmStructureKey ddmTemplateKey:(NSString *)ddmTemplateKey layoutUuid:(NSString *)layoutUuid displayDateMonth:(int)displayDateMonth displayDateDay:(int)displayDateDay displayDateYear:(int)displayDateYear displayDateHour:(int)displayDateHour displayDateMinute:(int)displayDateMinute expirationDateMonth:(int)expirationDateMonth expirationDateDay:(int)expirationDateDay expirationDateYear:(int)expirationDateYear expirationDateHour:(int)expirationDateHour expirationDateMinute:(int)expirationDateMinute neverExpire:(BOOL)neverExpire reviewDateMonth:(int)reviewDateMonth reviewDateDay:(int)reviewDateDay reviewDateYear:(int)reviewDateYear reviewDateHour:(int)reviewDateHour reviewDateMinute:(int)reviewDateMinute neverReview:(BOOL)neverReview indexable:(BOOL)indexable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(NSDictionary *)smallFile images:(NSDictionary *)images articleURL:(NSString *)articleURL serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"folderId": folderId,
-		@"classNameId": classNameId,
-		@"classPK": classPK,
+		@"groupId": @(groupId),
+		@"folderId": @(folderId),
+		@"classNameId": @(classNameId),
+		@"classPK": @(classPK),
 		@"articleId": articleId,
-		@"autoArticleId": autoArticleId,
+		@"autoArticleId": @(autoArticleId),
 		@"titleMap": titleMap,
 		@"descriptionMap": descriptionMap,
 		@"content": content,
@@ -347,25 +347,25 @@
 		@"ddmStructureKey": ddmStructureKey,
 		@"ddmTemplateKey": ddmTemplateKey,
 		@"layoutUuid": layoutUuid,
-		@"displayDateMonth": displayDateMonth,
-		@"displayDateDay": displayDateDay,
-		@"displayDateYear": displayDateYear,
-		@"displayDateHour": displayDateHour,
-		@"displayDateMinute": displayDateMinute,
-		@"expirationDateMonth": expirationDateMonth,
-		@"expirationDateDay": expirationDateDay,
-		@"expirationDateYear": expirationDateYear,
-		@"expirationDateHour": expirationDateHour,
-		@"expirationDateMinute": expirationDateMinute,
-		@"neverExpire": neverExpire,
-		@"reviewDateMonth": reviewDateMonth,
-		@"reviewDateDay": reviewDateDay,
-		@"reviewDateYear": reviewDateYear,
-		@"reviewDateHour": reviewDateHour,
-		@"reviewDateMinute": reviewDateMinute,
-		@"neverReview": neverReview,
-		@"indexable": indexable,
-		@"smallImage": smallImage,
+		@"displayDateMonth": @(displayDateMonth),
+		@"displayDateDay": @(displayDateDay),
+		@"displayDateYear": @(displayDateYear),
+		@"displayDateHour": @(displayDateHour),
+		@"displayDateMinute": @(displayDateMinute),
+		@"expirationDateMonth": @(expirationDateMonth),
+		@"expirationDateDay": @(expirationDateDay),
+		@"expirationDateYear": @(expirationDateYear),
+		@"expirationDateHour": @(expirationDateHour),
+		@"expirationDateMinute": @(expirationDateMinute),
+		@"neverExpire": @(neverExpire),
+		@"reviewDateMonth": @(reviewDateMonth),
+		@"reviewDateDay": @(reviewDateDay),
+		@"reviewDateYear": @(reviewDateYear),
+		@"reviewDateHour": @(reviewDateHour),
+		@"reviewDateMinute": @(reviewDateMinute),
+		@"neverReview": @(neverReview),
+		@"indexable": @(indexable),
+		@"smallImage": @(smallImage),
 		@"smallImageURL": smallImageURL,
 		@"smallFile": smallFile,
 		@"images": images,
@@ -375,52 +375,52 @@
 
 	NSDictionary *_command = @{@"/journalarticle/add-article": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getArticleByUrlTitle:(NSNumber *)groupId urlTitle:(NSString *)urlTitle {
+- (NSDictionary *)getArticleByUrlTitle:(long)groupId urlTitle:(NSString *)urlTitle {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"urlTitle": urlTitle
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/get-article-by-url-title": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)moveArticle:(NSNumber *)groupId articleId:(NSString *)articleId newFolderId:(NSNumber *)newFolderId {
+- (void)moveArticle:(long)groupId articleId:(NSString *)articleId newFolderId:(long)newFolderId {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"articleId": articleId,
-		@"newFolderId": newFolderId
+		@"newFolderId": @(newFolderId)
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/move-article": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSString *)getArticleContent:(NSNumber *)groupId articleId:(NSString *)articleId version:(NSNumber *)version languageId:(NSString *)languageId themeDisplay:(NSDictionary *)themeDisplay {
+- (NSString *)getArticleContent:(long)groupId articleId:(NSString *)articleId version:(double)version languageId:(NSString *)languageId themeDisplay:(NSDictionary *)themeDisplay {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"articleId": articleId,
-		@"version": version,
+		@"version": @(version),
 		@"languageId": languageId,
 		@"themeDisplay": themeDisplay
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/get-article-content": _params};
 
-	return (NSString *)[session invoke:_command];
+	return (NSString *)[self.session invoke:_command];
 }
 
-- (NSNumber *)searchCount:(NSNumber *)companyId groupId:(NSNumber *)groupId folderIds:(NSArray *)folderIds classNameId:(NSNumber *)classNameId articleId:(NSString *)articleId version:(NSDictionary *)version title:(NSString *)title description:(NSString *)description content:(NSString *)content type:(NSString *)type ddmStructureKeys:(NSArray *)ddmStructureKeys ddmTemplateKeys:(NSArray *)ddmTemplateKeys displayDateGT:(NSNumber *)displayDateGT displayDateLT:(NSNumber *)displayDateLT status:(NSNumber *)status reviewDate:(NSNumber *)reviewDate andOperator:(BOOL)andOperator {
+- (int)searchCount:(long)companyId groupId:(long)groupId folderIds:(NSArray *)folderIds classNameId:(long)classNameId articleId:(NSString *)articleId version:(NSDictionary *)version title:(NSString *)title description:(NSString *)description content:(NSString *)content type:(NSString *)type ddmStructureKeys:(NSArray *)ddmStructureKeys ddmTemplateKeys:(NSArray *)ddmTemplateKeys displayDateGT:(long)displayDateGT displayDateLT:(long)displayDateLT status:(int)status reviewDate:(long)reviewDate andOperator:(BOOL)andOperator {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
-		@"groupId": groupId,
+		@"companyId": @(companyId),
+		@"groupId": @(groupId),
 		@"folderIds": folderIds,
-		@"classNameId": classNameId,
+		@"classNameId": @(classNameId),
 		@"articleId": articleId,
 		@"version": version,
 		@"title": title,
@@ -429,54 +429,54 @@
 		@"type": type,
 		@"ddmStructureKeys": ddmStructureKeys,
 		@"ddmTemplateKeys": ddmTemplateKeys,
-		@"displayDateGT": displayDateGT,
-		@"displayDateLT": displayDateLT,
-		@"status": status,
-		@"reviewDate": reviewDate,
-		@"andOperator": andOperator
+		@"displayDateGT": @(displayDateGT),
+		@"displayDateLT": @(displayDateLT),
+		@"status": @(status),
+		@"reviewDate": @(reviewDate),
+		@"andOperator": @(andOperator)
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/search-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateStatus:(NSNumber *)groupId articleId:(NSString *)articleId version:(NSNumber *)version status:(NSNumber *)status articleURL:(NSString *)articleURL serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)updateStatus:(long)groupId articleId:(NSString *)articleId version:(double)version status:(int)status articleURL:(NSString *)articleURL serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"articleId": articleId,
-		@"version": version,
-		@"status": status,
+		@"version": @(version),
+		@"status": @(status),
 		@"articleURL": articleURL,
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/update-status": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSNumber *)getArticlesCount:(NSNumber *)groupId folderId:(NSNumber *)folderId status:(NSNumber *)status {
+- (int)getArticlesCount:(long)groupId folderId:(long)folderId status:(int)status {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"folderId": folderId,
-		@"status": status
+		@"groupId": @(groupId),
+		@"folderId": @(folderId),
+		@"status": @(status)
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (NSNumber *)getArticlesCountByArticleId:(NSNumber *)groupId articleId:(NSString *)articleId {
+- (int)getArticlesCountByArticleId:(long)groupId articleId:(NSString *)articleId {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"articleId": articleId
 	};
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles-count-by-article-id": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
 @end

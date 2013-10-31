@@ -13,12 +13,13 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface PermissionService_v62 : NSObject
+@interface PermissionService_v62 : BaseService
 
-- (void)checkPermission:(NSNumber *)groupId name:(NSString *)name primKey:(NSNumber *)primKey;
+- (void)checkPermission:(long)groupId name:(NSString *)name primKey:(long)primKey;
 
 @end

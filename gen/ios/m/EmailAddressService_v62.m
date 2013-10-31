@@ -19,63 +19,63 @@
  */
 @implementation EmailAddressService_v62
 
-- (NSDictionary *)updateEmailAddress:(NSNumber *)emailAddressId address:(NSString *)address typeId:(NSNumber *)typeId primary:(BOOL)primary {
+- (NSDictionary *)updateEmailAddress:(long)emailAddressId address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary {
 	NSDictionary *_params = @{
-		@"emailAddressId": emailAddressId,
+		@"emailAddressId": @(emailAddressId),
 		@"address": address,
-		@"typeId": typeId,
-		@"primary": primary
+		@"typeId": @(typeId),
+		@"primary": @(primary)
 	};
 
 	NSDictionary *_command = @{@"/emailaddress/update-email-address": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSArray *)getEmailAddresses:(NSString *)className classPK:(NSNumber *)classPK {
+- (NSArray *)getEmailAddresses:(NSString *)className classPK:(long)classPK {
 	NSDictionary *_params = @{
 		@"className": className,
-		@"classPK": classPK
+		@"classPK": @(classPK)
 	};
 
 	NSDictionary *_command = @{@"/emailaddress/get-email-addresses": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getEmailAddress:(NSNumber *)emailAddressId {
+- (NSDictionary *)getEmailAddress:(long)emailAddressId {
 	NSDictionary *_params = @{
-		@"emailAddressId": emailAddressId
+		@"emailAddressId": @(emailAddressId)
 	};
 
 	NSDictionary *_command = @{@"/emailaddress/get-email-address": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)addEmailAddress:(NSString *)className classPK:(NSNumber *)classPK address:(NSString *)address typeId:(NSNumber *)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addEmailAddress:(NSString *)className classPK:(long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
 		@"className": className,
-		@"classPK": classPK,
+		@"classPK": @(classPK),
 		@"address": address,
-		@"typeId": typeId,
-		@"primary": primary,
+		@"typeId": @(typeId),
+		@"primary": @(primary),
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/emailaddress/add-email-address": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteEmailAddress:(NSNumber *)emailAddressId {
+- (void)deleteEmailAddress:(long)emailAddressId {
 	NSDictionary *_params = @{
-		@"emailAddressId": emailAddressId
+		@"emailAddressId": @(emailAddressId)
 	};
 
 	NSDictionary *_command = @{@"/emailaddress/delete-email-address": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

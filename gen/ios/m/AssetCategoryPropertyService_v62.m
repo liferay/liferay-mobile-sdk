@@ -19,59 +19,59 @@
  */
 @implementation AssetCategoryPropertyService_v62
 
-- (NSArray *)getCategoryPropertyValues:(NSNumber *)companyId key:(NSString *)key {
+- (NSArray *)getCategoryPropertyValues:(long)companyId key:(NSString *)key {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
+		@"companyId": @(companyId),
 		@"key": key
 	};
 
 	NSDictionary *_command = @{@"/assetcategoryproperty/get-category-property-values": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (void)deleteCategoryProperty:(NSNumber *)categoryPropertyId {
+- (void)deleteCategoryProperty:(long)categoryPropertyId {
 	NSDictionary *_params = @{
-		@"categoryPropertyId": categoryPropertyId
+		@"categoryPropertyId": @(categoryPropertyId)
 	};
 
 	NSDictionary *_command = @{@"/assetcategoryproperty/delete-category-property": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateCategoryProperty:(NSNumber *)categoryPropertyId key:(NSString *)key value:(NSString *)value {
+- (NSDictionary *)updateCategoryProperty:(long)categoryPropertyId key:(NSString *)key value:(NSString *)value {
 	NSDictionary *_params = @{
-		@"categoryPropertyId": categoryPropertyId,
+		@"categoryPropertyId": @(categoryPropertyId),
 		@"key": key,
 		@"value": value
 	};
 
 	NSDictionary *_command = @{@"/assetcategoryproperty/update-category-property": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)addCategoryProperty:(NSNumber *)entryId key:(NSString *)key value:(NSString *)value {
+- (NSDictionary *)addCategoryProperty:(long)entryId key:(NSString *)key value:(NSString *)value {
 	NSDictionary *_params = @{
-		@"entryId": entryId,
+		@"entryId": @(entryId),
 		@"key": key,
 		@"value": value
 	};
 
 	NSDictionary *_command = @{@"/assetcategoryproperty/add-category-property": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSArray *)getCategoryProperties:(NSNumber *)entryId {
+- (NSArray *)getCategoryProperties:(long)entryId {
 	NSDictionary *_params = @{
-		@"entryId": entryId
+		@"entryId": @(entryId)
 	};
 
 	NSDictionary *_command = @{@"/assetcategoryproperty/get-category-properties": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
 @end

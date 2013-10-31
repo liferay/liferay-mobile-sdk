@@ -13,12 +13,13 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface SocialRequestService_v62 : NSObject
+@interface SocialRequestService_v62 : BaseService
 
-- (NSDictionary *)updateRequest:(NSNumber *)requestId status:(NSNumber *)status themeDisplay:(NSDictionary *)themeDisplay;
+- (NSDictionary *)updateRequest:(long)requestId status:(int)status themeDisplay:(NSDictionary *)themeDisplay;
 
 @end

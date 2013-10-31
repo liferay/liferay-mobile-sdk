@@ -19,9 +19,9 @@
  */
 @implementation ShoppingCategoryService_v62
 
-- (NSDictionary *)addCategory:(NSNumber *)parentCategoryId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addCategory:(long)parentCategoryId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"parentCategoryId": parentCategoryId,
+		@"parentCategoryId": @(parentCategoryId),
 		@"name": name,
 		@"description": description,
 		@"serviceContext": serviceContext
@@ -29,78 +29,78 @@
 
 	NSDictionary *_command = @{@"/shoppingcategory/add-category": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteCategory:(NSNumber *)categoryId {
+- (void)deleteCategory:(long)categoryId {
 	NSDictionary *_params = @{
-		@"categoryId": categoryId
+		@"categoryId": @(categoryId)
 	};
 
 	NSDictionary *_command = @{@"/shoppingcategory/delete-category": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)getCategory:(NSNumber *)categoryId {
+- (NSDictionary *)getCategory:(long)categoryId {
 	NSDictionary *_params = @{
-		@"categoryId": categoryId
+		@"categoryId": @(categoryId)
 	};
 
 	NSDictionary *_command = @{@"/shoppingcategory/get-category": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)getSubcategoryIds:(NSArray *)categoryIds groupId:(NSNumber *)groupId categoryId:(NSNumber *)categoryId {
+- (void)getSubcategoryIds:(NSArray *)categoryIds groupId:(long)groupId categoryId:(long)categoryId {
 	NSDictionary *_params = @{
 		@"categoryIds": categoryIds,
-		@"groupId": groupId,
-		@"categoryId": categoryId
+		@"groupId": @(groupId),
+		@"categoryId": @(categoryId)
 	};
 
 	NSDictionary *_command = @{@"/shoppingcategory/get-subcategory-ids": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSArray *)getCategories:(NSNumber *)groupId parentCategoryId:(NSNumber *)parentCategoryId start:(NSNumber *)start end:(NSNumber *)end {
+- (NSArray *)getCategories:(long)groupId parentCategoryId:(long)parentCategoryId start:(int)start end:(int)end {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"parentCategoryId": parentCategoryId,
-		@"start": start,
-		@"end": end
+		@"groupId": @(groupId),
+		@"parentCategoryId": @(parentCategoryId),
+		@"start": @(start),
+		@"end": @(end)
 	};
 
 	NSDictionary *_command = @{@"/shoppingcategory/get-categories": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateCategory:(NSNumber *)categoryId parentCategoryId:(NSNumber *)parentCategoryId name:(NSString *)name description:(NSString *)description mergeWithParentCategory:(BOOL)mergeWithParentCategory serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)updateCategory:(long)categoryId parentCategoryId:(long)parentCategoryId name:(NSString *)name description:(NSString *)description mergeWithParentCategory:(BOOL)mergeWithParentCategory serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"categoryId": categoryId,
-		@"parentCategoryId": parentCategoryId,
+		@"categoryId": @(categoryId),
+		@"parentCategoryId": @(parentCategoryId),
 		@"name": name,
 		@"description": description,
-		@"mergeWithParentCategory": mergeWithParentCategory,
+		@"mergeWithParentCategory": @(mergeWithParentCategory),
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/shoppingcategory/update-category": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSNumber *)getCategoriesCount:(NSNumber *)groupId parentCategoryId:(NSNumber *)parentCategoryId {
+- (int)getCategoriesCount:(long)groupId parentCategoryId:(long)parentCategoryId {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"parentCategoryId": parentCategoryId
+		@"groupId": @(groupId),
+		@"parentCategoryId": @(parentCategoryId)
 	};
 
 	NSDictionary *_command = @{@"/shoppingcategory/get-categories-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
 @end

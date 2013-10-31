@@ -13,12 +13,13 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface FlagsEntryService_v62 : NSObject
+@interface FlagsEntryService_v62 : BaseService
 
-- (void)addEntry:(NSString *)className classPK:(NSNumber *)classPK reporterEmailAddress:(NSString *)reporterEmailAddress reportedUserId:(NSNumber *)reportedUserId contentTitle:(NSString *)contentTitle contentURL:(NSString *)contentURL reason:(NSString *)reason serviceContext:(NSDictionary *)serviceContext;
+- (void)addEntry:(NSString *)className classPK:(long)classPK reporterEmailAddress:(NSString *)reporterEmailAddress reportedUserId:(long)reportedUserId contentTitle:(NSString *)contentTitle contentURL:(NSString *)contentURL reason:(NSString *)reason serviceContext:(NSDictionary *)serviceContext;
 
 @end

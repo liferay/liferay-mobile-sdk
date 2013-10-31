@@ -13,14 +13,15 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface PortletPreferencesService_v62 : NSObject
+@interface PortletPreferencesService_v62 : BaseService
 
-- (void)updateArchivePreferences:(NSNumber *)userId groupId:(NSNumber *)groupId name:(NSString *)name portletId:(NSString *)portletId preferences:(NSDictionary *)preferences;
-- (void)restoreArchivedPreferences:(NSNumber *)groupId name:(NSString *)name layout:(NSDictionary *)layout portletId:(NSString *)portletId preferences:(NSDictionary *)preferences;
-- (void)deleteArchivedPreferences:(NSNumber *)portletItemId;
+- (void)updateArchivePreferences:(long)userId groupId:(long)groupId name:(NSString *)name portletId:(NSString *)portletId preferences:(NSDictionary *)preferences;
+- (void)restoreArchivedPreferences:(long)groupId name:(NSString *)name layout:(NSDictionary *)layout portletId:(NSString *)portletId preferences:(NSDictionary *)preferences;
+- (void)deleteArchivedPreferences:(long)portletItemId;
 
 @end

@@ -13,20 +13,21 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface DDMStructureService_v62 : NSObject
+@interface DDMStructureService_v62 : BaseService
 
 - (NSArray *)getStructures:(NSArray *)groupIds;
-- (NSArray *)search:(NSNumber *)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds keywords:(NSString *)keywords start:(NSNumber *)start end:(NSNumber *)end orderByComparator:(NSDictionary *)orderByComparator;
-- (NSDictionary *)updateStructure:(NSNumber *)groupId parentStructureId:(NSNumber *)parentStructureId classNameId:(NSNumber *)classNameId structureKey:(NSString *)structureKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)addStructure:(NSNumber *)userId groupId:(NSNumber *)groupId classNameId:(NSNumber *)classNameId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(NSDictionary *)serviceContext;
-- (NSNumber *)searchCount:(NSNumber *)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds name:(NSString *)name description:(NSString *)description storageType:(NSString *)storageType type:(NSNumber *)type andOperator:(BOOL)andOperator;
-- (NSDictionary *)copyStructure:(NSNumber *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getStructure:(NSNumber *)groupId classNameId:(NSNumber *)classNameId structureKey:(NSString *)structureKey includeGlobalStructures:(BOOL)includeGlobalStructures;
-- (NSDictionary *)fetchStructure:(NSNumber *)groupId classNameId:(NSNumber *)classNameId structureKey:(NSString *)structureKey;
-- (void)deleteStructure:(NSNumber *)structureId;
+- (NSArray *)search:(long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds keywords:(NSString *)keywords start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator;
+- (NSDictionary *)updateStructure:(long)groupId parentStructureId:(long)parentStructureId classNameId:(long)classNameId structureKey:(NSString *)structureKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)addStructure:(long)userId groupId:(long)groupId classNameId:(long)classNameId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(NSDictionary *)serviceContext;
+- (int)searchCount:(long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds name:(NSString *)name description:(NSString *)description storageType:(NSString *)storageType type:(int)type andOperator:(BOOL)andOperator;
+- (NSDictionary *)copyStructure:(long)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)getStructure:(long)groupId classNameId:(long)classNameId structureKey:(NSString *)structureKey includeGlobalStructures:(BOOL)includeGlobalStructures;
+- (NSDictionary *)fetchStructure:(long)groupId classNameId:(long)classNameId structureKey:(NSString *)structureKey;
+- (void)deleteStructure:(long)structureId;
 
 @end

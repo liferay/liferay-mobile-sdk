@@ -13,12 +13,13 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface PluginSettingService_v62 : NSObject
+@interface PluginSettingService_v62 : BaseService
 
-- (NSDictionary *)updatePluginSetting:(NSNumber *)companyId pluginId:(NSString *)pluginId pluginType:(NSString *)pluginType roles:(NSString *)roles active:(BOOL)active;
+- (NSDictionary *)updatePluginSetting:(long)companyId pluginId:(NSString *)pluginId pluginType:(NSString *)pluginType roles:(NSString *)roles active:(BOOL)active;
 
 @end

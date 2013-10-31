@@ -13,13 +13,14 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface PortletService_v62 : NSObject
+@interface PortletService_v62 : BaseService
 
-- (NSDictionary *)updatePortlet:(NSNumber *)companyId portletId:(NSString *)portletId roles:(NSString *)roles active:(BOOL)active;
-- (NSDictionary *)getWarPortlets:;
+- (NSDictionary *)updatePortlet:(long)companyId portletId:(NSString *)portletId roles:(NSString *)roles active:(BOOL)active;
+- (NSDictionary *)getWarPortlets;
 
 @end

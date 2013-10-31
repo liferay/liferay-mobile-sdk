@@ -13,15 +13,16 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface RegionService_v62 : NSObject
+@interface RegionService_v62 : BaseService
 
-- (NSDictionary *)fetchRegion:(NSNumber *)countryId regionCode:(NSString *)regionCode;
-- (NSArray *)getRegions:(NSNumber *)countryId active:(BOOL)active;
-- (NSDictionary *)getRegion:(NSNumber *)countryId regionCode:(NSString *)regionCode;
-- (NSDictionary *)addRegion:(NSNumber *)countryId regionCode:(NSString *)regionCode name:(NSString *)name active:(BOOL)active;
+- (NSDictionary *)fetchRegion:(long)countryId regionCode:(NSString *)regionCode;
+- (NSArray *)getRegions:(long)countryId active:(BOOL)active;
+- (NSDictionary *)getRegion:(long)countryId regionCode:(NSString *)regionCode;
+- (NSDictionary *)addRegion:(long)countryId regionCode:(NSString *)regionCode name:(NSString *)name active:(BOOL)active;
 
 @end

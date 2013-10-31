@@ -19,51 +19,51 @@
  */
 @implementation ShoppingOrderService_v62
 
-- (NSDictionary *)updateOrder:(NSNumber *)groupId orderId:(NSNumber *)orderId ppTxnId:(NSString *)ppTxnId ppPaymentStatus:(NSString *)ppPaymentStatus ppPaymentGross:(NSNumber *)ppPaymentGross ppReceiverEmail:(NSString *)ppReceiverEmail ppPayerEmail:(NSString *)ppPayerEmail {
+- (NSDictionary *)updateOrder:(long)groupId orderId:(long)orderId ppTxnId:(NSString *)ppTxnId ppPaymentStatus:(NSString *)ppPaymentStatus ppPaymentGross:(double)ppPaymentGross ppReceiverEmail:(NSString *)ppReceiverEmail ppPayerEmail:(NSString *)ppPayerEmail {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"orderId": orderId,
+		@"groupId": @(groupId),
+		@"orderId": @(orderId),
 		@"ppTxnId": ppTxnId,
 		@"ppPaymentStatus": ppPaymentStatus,
-		@"ppPaymentGross": ppPaymentGross,
+		@"ppPaymentGross": @(ppPaymentGross),
 		@"ppReceiverEmail": ppReceiverEmail,
 		@"ppPayerEmail": ppPayerEmail
 	};
 
 	NSDictionary *_command = @{@"/shoppingorder/update-order": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteOrder:(NSNumber *)groupId orderId:(NSNumber *)orderId {
+- (void)deleteOrder:(long)groupId orderId:(long)orderId {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"orderId": orderId
+		@"groupId": @(groupId),
+		@"orderId": @(orderId)
 	};
 
 	NSDictionary *_command = @{@"/shoppingorder/delete-order": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)getOrder:(NSNumber *)groupId orderId:(NSNumber *)orderId {
+- (NSDictionary *)getOrder:(long)groupId orderId:(long)orderId {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"orderId": orderId
+		@"groupId": @(groupId),
+		@"orderId": @(orderId)
 	};
 
 	NSDictionary *_command = @{@"/shoppingorder/get-order": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)completeOrder:(NSNumber *)groupId number:(NSString *)number ppTxnId:(NSString *)ppTxnId ppPaymentStatus:(NSString *)ppPaymentStatus ppPaymentGross:(NSNumber *)ppPaymentGross ppReceiverEmail:(NSString *)ppReceiverEmail ppPayerEmail:(NSString *)ppPayerEmail serviceContext:(NSDictionary *)serviceContext {
+- (void)completeOrder:(long)groupId number:(NSString *)number ppTxnId:(NSString *)ppTxnId ppPaymentStatus:(NSString *)ppPaymentStatus ppPaymentGross:(double)ppPaymentGross ppReceiverEmail:(NSString *)ppReceiverEmail ppPayerEmail:(NSString *)ppPayerEmail serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"number": number,
 		@"ppTxnId": ppTxnId,
 		@"ppPaymentStatus": ppPaymentStatus,
-		@"ppPaymentGross": ppPaymentGross,
+		@"ppPaymentGross": @(ppPaymentGross),
 		@"ppReceiverEmail": ppReceiverEmail,
 		@"ppPayerEmail": ppPayerEmail,
 		@"serviceContext": serviceContext
@@ -71,20 +71,20 @@
 
 	NSDictionary *_command = @{@"/shoppingorder/complete-order": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)sendEmail:(NSNumber *)groupId orderId:(NSNumber *)orderId emailType:(NSString *)emailType serviceContext:(NSDictionary *)serviceContext {
+- (void)sendEmail:(long)groupId orderId:(long)orderId emailType:(NSString *)emailType serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"orderId": orderId,
+		@"groupId": @(groupId),
+		@"orderId": @(orderId),
 		@"emailType": emailType,
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/shoppingorder/send-email": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

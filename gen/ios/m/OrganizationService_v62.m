@@ -19,84 +19,84 @@
  */
 @implementation OrganizationService_v62
 
-- (NSNumber *)getOrganizationsCount:(NSNumber *)companyId parentOrganizationId:(NSNumber *)parentOrganizationId {
+- (int)getOrganizationsCount:(long)companyId parentOrganizationId:(long)parentOrganizationId {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
-		@"parentOrganizationId": parentOrganizationId
+		@"companyId": @(companyId),
+		@"parentOrganizationId": @(parentOrganizationId)
 	};
 
 	NSDictionary *_command = @{@"/organization/get-organizations-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (void)unsetGroupOrganizations:(NSNumber *)groupId organizationIds:(NSArray *)organizationIds {
+- (void)unsetGroupOrganizations:(long)groupId organizationIds:(NSArray *)organizationIds {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"organizationIds": organizationIds
 	};
 
 	NSDictionary *_command = @{@"/organization/unset-group-organizations": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSArray *)getUserOrganizations:(NSNumber *)userId {
+- (NSArray *)getUserOrganizations:(long)userId {
 	NSDictionary *_params = @{
-		@"userId": userId
+		@"userId": @(userId)
 	};
 
 	NSDictionary *_command = @{@"/organization/get-user-organizations": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSArray *)getOrganizations:(NSNumber *)companyId parentOrganizationId:(NSNumber *)parentOrganizationId start:(NSNumber *)start end:(NSNumber *)end {
+- (NSArray *)getOrganizations:(long)companyId parentOrganizationId:(long)parentOrganizationId start:(int)start end:(int)end {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
-		@"parentOrganizationId": parentOrganizationId,
-		@"start": start,
-		@"end": end
+		@"companyId": @(companyId),
+		@"parentOrganizationId": @(parentOrganizationId),
+		@"start": @(start),
+		@"end": @(end)
 	};
 
 	NSDictionary *_command = @{@"/organization/get-organizations": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (void)addPasswordPolicyOrganizations:(NSNumber *)passwordPolicyId organizationIds:(NSArray *)organizationIds {
+- (void)addPasswordPolicyOrganizations:(long)passwordPolicyId organizationIds:(NSArray *)organizationIds {
 	NSDictionary *_params = @{
-		@"passwordPolicyId": passwordPolicyId,
+		@"passwordPolicyId": @(passwordPolicyId),
 		@"organizationIds": organizationIds
 	};
 
 	NSDictionary *_command = @{@"/organization/add-password-policy-organizations": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)deleteOrganization:(NSNumber *)organizationId {
+- (void)deleteOrganization:(long)organizationId {
 	NSDictionary *_params = @{
-		@"organizationId": organizationId
+		@"organizationId": @(organizationId)
 	};
 
 	NSDictionary *_command = @{@"/organization/delete-organization": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)updateOrganization:(NSNumber *)organizationId parentOrganizationId:(NSNumber *)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(NSNumber *)regionId countryId:(NSNumber *)countryId statusId:(NSNumber *)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)updateOrganization:(long)organizationId parentOrganizationId:(long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long)regionId countryId:(long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"organizationId": organizationId,
-		@"parentOrganizationId": parentOrganizationId,
+		@"organizationId": @(organizationId),
+		@"parentOrganizationId": @(parentOrganizationId),
 		@"name": name,
 		@"type": type,
-		@"recursable": recursable,
-		@"regionId": regionId,
-		@"countryId": countryId,
-		@"statusId": statusId,
+		@"recursable": @(recursable),
+		@"regionId": @(regionId),
+		@"countryId": @(countryId),
+		@"statusId": @(statusId),
 		@"comments": comments,
-		@"site": site,
+		@"site": @(site),
 		@"addresses": addresses,
 		@"emailAddresses": emailAddresses,
 		@"orgLabors": orgLabors,
@@ -107,100 +107,100 @@
 
 	NSDictionary *_command = @{@"/organization/update-organization": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getOrganization:(NSNumber *)organizationId {
+- (NSDictionary *)getOrganization:(long)organizationId {
 	NSDictionary *_params = @{
-		@"organizationId": organizationId
+		@"organizationId": @(organizationId)
 	};
 
 	NSDictionary *_command = @{@"/organization/get-organization": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteLogo:(NSNumber *)organizationId {
+- (void)deleteLogo:(long)organizationId {
 	NSDictionary *_params = @{
-		@"organizationId": organizationId
+		@"organizationId": @(organizationId)
 	};
 
 	NSDictionary *_command = @{@"/organization/delete-logo": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSNumber *)getOrganizationId:(NSNumber *)companyId name:(NSString *)name {
+- (long)getOrganizationId:(long)companyId name:(NSString *)name {
 	NSDictionary *_params = @{
-		@"companyId": companyId,
+		@"companyId": @(companyId),
 		@"name": name
 	};
 
 	NSDictionary *_command = @{@"/organization/get-organization-id": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (long)[self.session invoke:_command];
 }
 
-- (NSDictionary *)addOrganization:(NSNumber *)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(NSNumber *)regionId countryId:(NSNumber *)countryId statusId:(NSNumber *)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addOrganization:(long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long)regionId countryId:(long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"parentOrganizationId": parentOrganizationId,
+		@"parentOrganizationId": @(parentOrganizationId),
 		@"name": name,
 		@"type": type,
-		@"regionId": regionId,
-		@"countryId": countryId,
-		@"statusId": statusId,
+		@"regionId": @(regionId),
+		@"countryId": @(countryId),
+		@"statusId": @(statusId),
 		@"comments": comments,
-		@"site": site,
+		@"site": @(site),
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/organization/add-organization": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)addGroupOrganizations:(NSNumber *)groupId organizationIds:(NSArray *)organizationIds {
+- (void)addGroupOrganizations:(long)groupId organizationIds:(NSArray *)organizationIds {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"organizationIds": organizationIds
 	};
 
 	NSDictionary *_command = @{@"/organization/add-group-organizations": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)unsetPasswordPolicyOrganizations:(NSNumber *)passwordPolicyId organizationIds:(NSArray *)organizationIds {
+- (void)unsetPasswordPolicyOrganizations:(long)passwordPolicyId organizationIds:(NSArray *)organizationIds {
 	NSDictionary *_params = @{
-		@"passwordPolicyId": passwordPolicyId,
+		@"passwordPolicyId": @(passwordPolicyId),
 		@"organizationIds": organizationIds
 	};
 
 	NSDictionary *_command = @{@"/organization/unset-password-policy-organizations": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSArray *)getManageableOrganizations:(NSString *)actionId max:(NSNumber *)max {
+- (NSArray *)getManageableOrganizations:(NSString *)actionId max:(int)max {
 	NSDictionary *_params = @{
 		@"actionId": actionId,
-		@"max": max
+		@"max": @(max)
 	};
 
 	NSDictionary *_command = @{@"/organization/get-manageable-organizations": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (void)setGroupOrganizations:(NSNumber *)groupId organizationIds:(NSArray *)organizationIds {
+- (void)setGroupOrganizations:(long)groupId organizationIds:(NSArray *)organizationIds {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"organizationIds": organizationIds
 	};
 
 	NSDictionary *_command = @{@"/organization/set-group-organizations": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

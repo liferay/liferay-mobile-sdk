@@ -13,15 +13,16 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface DLFileVersionService_v62 : NSObject
+@interface DLFileVersionService_v62 : BaseService
 
-- (NSDictionary *)getFileVersion:(NSNumber *)fileVersionId;
-- (NSDictionary *)getLatestFileVersion:(NSNumber *)fileEntryId;
-- (NSArray *)getFileVersions:(NSNumber *)fileEntryId status:(NSNumber *)status;
-- (NSNumber *)getFileVersionsCount:(NSNumber *)fileEntryId status:(NSNumber *)status;
+- (NSDictionary *)getFileVersion:(long)fileVersionId;
+- (NSDictionary *)getLatestFileVersion:(long)fileEntryId;
+- (NSArray *)getFileVersions:(long)fileEntryId status:(int)status;
+- (int)getFileVersionsCount:(long)fileEntryId status:(int)status;
 
 @end

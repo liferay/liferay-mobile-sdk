@@ -13,12 +13,13 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface BackgroundTaskService_v62 : NSObject
+@interface BackgroundTaskService_v62 : BaseService
 
-- (NSString *)getBackgroundTaskStatusJson:(NSNumber *)backgroundTaskId;
+- (NSString *)getBackgroundTaskStatusJson:(long)backgroundTaskId;
 
 @end

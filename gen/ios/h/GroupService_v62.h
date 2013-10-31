@@ -13,39 +13,40 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface GroupService_v62 : NSObject
+@interface GroupService_v62 : BaseService
 
-- (void)unsetRoleGroups:(NSNumber *)roleId groupIds:(NSArray *)groupIds;
-- (NSDictionary *)addGroup:(NSNumber *)parentGroupId name:(NSString *)name description:(NSString *)description type:(NSNumber *)type friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(NSDictionary *)serviceContext;
-- (BOOL)hasUserGroup:(NSNumber *)userId groupId:(NSNumber *)groupId;
-- (NSDictionary *)updateFriendlyUrl:(NSNumber *)groupId friendlyURL:(NSString *)friendlyURL;
+- (void)unsetRoleGroups:(long)roleId groupIds:(NSArray *)groupIds;
+- (NSDictionary *)addGroup:(long)parentGroupId name:(NSString *)name description:(NSString *)description type:(int)type friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(NSDictionary *)serviceContext;
+- (BOOL)hasUserGroup:(long)userId groupId:(long)groupId;
+- (NSDictionary *)updateFriendlyUrl:(long)groupId friendlyURL:(NSString *)friendlyURL;
 - (NSArray *)getOrganizationsGroups:(NSArray *)organizations;
-- (void)checkRemoteStagingGroup:(NSNumber *)groupId;
-- (NSNumber *)getUserPlacesCount:;
-- (void)enableStaging:(NSNumber *)groupId;
+- (void)checkRemoteStagingGroup:(long)groupId;
+- (int)getUserPlacesCount;
+- (void)enableStaging:(long)groupId;
 - (NSArray *)getUserGroupsGroups:(NSArray *)userGroups;
-- (NSNumber *)getUserSitesGroupsCount:;
-- (NSDictionary *)getUserGroup:(NSNumber *)companyId userId:(NSNumber *)userId;
-- (NSArray *)getUserOrganizationsGroups:(NSNumber *)userId start:(NSNumber *)start end:(NSNumber *)end;
-- (void)setRoleGroups:(NSNumber *)roleId groupIds:(NSArray *)groupIds;
-- (NSArray *)getManageableSites:(NSDictionary *)portlets max:(NSNumber *)max;
-- (void)addRoleGroups:(NSNumber *)roleId groupIds:(NSArray *)groupIds;
-- (NSArray *)getUserSites:;
-- (NSDictionary *)getGroup:(NSNumber *)companyId name:(NSString *)name;
-- (NSDictionary *)getCompanyGroup:(NSNumber *)companyId;
-- (NSArray *)getUserPlaces:(NSNumber *)userId classNames:(NSArray *)classNames includeControlPanel:(BOOL)includeControlPanel max:(NSNumber *)max;
-- (void)disableStaging:(NSNumber *)groupId;
-- (void)deleteGroup:(NSNumber *)groupId;
-- (void)updateStagedPortlets:(NSNumber *)groupId stagedPortletIds:(NSDictionary *)stagedPortletIds;
-- (NSNumber *)searchCount:(NSNumber *)companyId name:(NSString *)name description:(NSString *)description params:(NSArray *)params;
-- (NSArray *)getManageableSiteGroups:(NSDictionary *)portlets max:(NSNumber *)max;
-- (NSDictionary *)updateGroup:(NSNumber *)groupId typeSettings:(NSString *)typeSettings;
-- (NSArray *)search:(NSNumber *)companyId name:(NSString *)name description:(NSString *)description params:(NSArray *)params start:(NSNumber *)start end:(NSNumber *)end;
-- (NSArray *)getUserSitesGroups:(NSNumber *)userId classNames:(NSArray *)classNames includeControlPanel:(BOOL)includeControlPanel max:(NSNumber *)max;
-- (NSArray *)getGroups:(NSNumber *)companyId parentGroupId:(NSNumber *)parentGroupId site:(BOOL)site;
+- (int)getUserSitesGroupsCount;
+- (NSDictionary *)getUserGroup:(long)companyId userId:(long)userId;
+- (NSArray *)getUserOrganizationsGroups:(long)userId start:(int)start end:(int)end;
+- (void)setRoleGroups:(long)roleId groupIds:(NSArray *)groupIds;
+- (NSArray *)getManageableSites:(NSDictionary *)portlets max:(int)max;
+- (void)addRoleGroups:(long)roleId groupIds:(NSArray *)groupIds;
+- (NSArray *)getUserSites;
+- (NSDictionary *)getGroup:(long)companyId name:(NSString *)name;
+- (NSDictionary *)getCompanyGroup:(long)companyId;
+- (NSArray *)getUserPlaces:(long)userId classNames:(NSArray *)classNames includeControlPanel:(BOOL)includeControlPanel max:(int)max;
+- (void)disableStaging:(long)groupId;
+- (void)deleteGroup:(long)groupId;
+- (void)updateStagedPortlets:(long)groupId stagedPortletIds:(NSDictionary *)stagedPortletIds;
+- (int)searchCount:(long)companyId name:(NSString *)name description:(NSString *)description params:(NSArray *)params;
+- (NSArray *)getManageableSiteGroups:(NSDictionary *)portlets max:(int)max;
+- (NSDictionary *)updateGroup:(long)groupId typeSettings:(NSString *)typeSettings;
+- (NSArray *)search:(long)companyId name:(NSString *)name description:(NSString *)description params:(NSArray *)params start:(int)start end:(int)end;
+- (NSArray *)getUserSitesGroups:(long)userId classNames:(NSArray *)classNames includeControlPanel:(BOOL)includeControlPanel max:(int)max;
+- (NSArray *)getGroups:(long)companyId parentGroupId:(long)parentGroupId site:(BOOL)site;
 
 @end

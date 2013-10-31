@@ -13,15 +13,16 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface MembershipRequestService_v62 : NSObject
+@interface MembershipRequestService_v62 : BaseService
 
-- (NSDictionary *)addMembershipRequest:(NSNumber *)groupId comments:(NSString *)comments serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getMembershipRequest:(NSNumber *)membershipRequestId;
-- (void)updateStatus:(NSNumber *)membershipRequestId reviewComments:(NSString *)reviewComments statusId:(NSNumber *)statusId serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteMembershipRequests:(NSNumber *)groupId statusId:(NSNumber *)statusId;
+- (NSDictionary *)addMembershipRequest:(long)groupId comments:(NSString *)comments serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)getMembershipRequest:(long)membershipRequestId;
+- (void)updateStatus:(long)membershipRequestId reviewComments:(NSString *)reviewComments statusId:(int)statusId serviceContext:(NSDictionary *)serviceContext;
+- (void)deleteMembershipRequests:(long)groupId statusId:(int)statusId;
 
 @end

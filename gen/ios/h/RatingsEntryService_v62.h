@@ -13,13 +13,14 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface RatingsEntryService_v62 : NSObject
+@interface RatingsEntryService_v62 : BaseService
 
-- (NSDictionary *)updateEntry:(NSString *)className classPK:(NSNumber *)classPK score:(NSNumber *)score;
-- (void)deleteEntry:(NSString *)className classPK:(NSNumber *)classPK;
+- (NSDictionary *)updateEntry:(NSString *)className classPK:(long)classPK score:(double)score;
+- (void)deleteEntry:(NSString *)className classPK:(long)classPK;
 
 @end

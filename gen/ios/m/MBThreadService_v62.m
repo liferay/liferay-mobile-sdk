@@ -19,160 +19,160 @@
  */
 @implementation MBThreadService_v62
 
-- (NSNumber *)getGroupThreadsCount:(NSNumber *)groupId userId:(NSNumber *)userId status:(NSNumber *)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous {
+- (int)getGroupThreadsCount:(long)groupId userId:(long)userId status:(int)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"userId": userId,
-		@"status": status,
-		@"subscribed": subscribed,
-		@"includeAnonymous": includeAnonymous
+		@"groupId": @(groupId),
+		@"userId": @(userId),
+		@"status": @(status),
+		@"subscribed": @(subscribed),
+		@"includeAnonymous": @(includeAnonymous)
 	};
 
 	NSDictionary *_command = @{@"/mbthread/get-group-threads-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (NSDictionary *)moveThreadFromTrash:(NSNumber *)categoryId threadId:(NSNumber *)threadId {
+- (NSDictionary *)moveThreadFromTrash:(long)categoryId threadId:(long)threadId {
 	NSDictionary *_params = @{
-		@"categoryId": categoryId,
-		@"threadId": threadId
+		@"categoryId": @(categoryId),
+		@"threadId": @(threadId)
 	};
 
 	NSDictionary *_command = @{@"/mbthread/move-thread-from-trash": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)moveThreadToTrash:(NSNumber *)threadId {
+- (NSDictionary *)moveThreadToTrash:(long)threadId {
 	NSDictionary *_params = @{
-		@"threadId": threadId
+		@"threadId": @(threadId)
 	};
 
 	NSDictionary *_command = @{@"/mbthread/move-thread-to-trash": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)deleteThread:(NSNumber *)threadId {
+- (void)deleteThread:(long)threadId {
 	NSDictionary *_params = @{
-		@"threadId": threadId
+		@"threadId": @(threadId)
 	};
 
 	NSDictionary *_command = @{@"/mbthread/delete-thread": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)restoreThreadFromTrash:(NSNumber *)threadId {
+- (void)restoreThreadFromTrash:(long)threadId {
 	NSDictionary *_params = @{
-		@"threadId": threadId
+		@"threadId": @(threadId)
 	};
 
 	NSDictionary *_command = @{@"/mbthread/restore-thread-from-trash": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)unlockThread:(NSNumber *)threadId {
+- (void)unlockThread:(long)threadId {
 	NSDictionary *_params = @{
-		@"threadId": threadId
+		@"threadId": @(threadId)
 	};
 
 	NSDictionary *_command = @{@"/mbthread/unlock-thread": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (NSDictionary *)moveThread:(NSNumber *)categoryId threadId:(NSNumber *)threadId {
+- (NSDictionary *)moveThread:(long)categoryId threadId:(long)threadId {
 	NSDictionary *_params = @{
-		@"categoryId": categoryId,
-		@"threadId": threadId
+		@"categoryId": @(categoryId),
+		@"threadId": @(threadId)
 	};
 
 	NSDictionary *_command = @{@"/mbthread/move-thread": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSArray *)getThreads:(NSNumber *)groupId categoryId:(NSNumber *)categoryId status:(NSNumber *)status start:(NSNumber *)start end:(NSNumber *)end {
+- (NSArray *)getThreads:(long)groupId categoryId:(long)categoryId status:(int)status start:(int)start end:(int)end {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"categoryId": categoryId,
-		@"status": status,
-		@"start": start,
-		@"end": end
+		@"groupId": @(groupId),
+		@"categoryId": @(categoryId),
+		@"status": @(status),
+		@"start": @(start),
+		@"end": @(end)
 	};
 
 	NSDictionary *_command = @{@"/mbthread/get-threads": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)splitThread:(NSNumber *)messageId subject:(NSString *)subject serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)splitThread:(long)messageId subject:(NSString *)subject serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"messageId": messageId,
+		@"messageId": @(messageId),
 		@"subject": subject,
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/mbthread/split-thread": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSArray *)getGroupThreads:(NSNumber *)groupId userId:(NSNumber *)userId status:(NSNumber *)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous start:(NSNumber *)start end:(NSNumber *)end {
+- (NSArray *)getGroupThreads:(long)groupId userId:(long)userId status:(int)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous start:(int)start end:(int)end {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"userId": userId,
-		@"status": status,
-		@"subscribed": subscribed,
-		@"includeAnonymous": includeAnonymous,
-		@"start": start,
-		@"end": end
+		@"groupId": @(groupId),
+		@"userId": @(userId),
+		@"status": @(status),
+		@"subscribed": @(subscribed),
+		@"includeAnonymous": @(includeAnonymous),
+		@"start": @(start),
+		@"end": @(end)
 	};
 
 	NSDictionary *_command = @{@"/mbthread/get-group-threads": _params};
 
-	return (NSArray *)[session invoke:_command];
+	return (NSArray *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)lockThread:(NSNumber *)threadId {
+- (NSDictionary *)lockThread:(long)threadId {
 	NSDictionary *_params = @{
-		@"threadId": threadId
+		@"threadId": @(threadId)
 	};
 
 	NSDictionary *_command = @{@"/mbthread/lock-thread": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSNumber *)getThreadsCount:(NSNumber *)groupId categoryId:(NSNumber *)categoryId status:(NSNumber *)status {
+- (int)getThreadsCount:(long)groupId categoryId:(long)categoryId status:(int)status {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"categoryId": categoryId,
-		@"status": status
+		@"groupId": @(groupId),
+		@"categoryId": @(categoryId),
+		@"status": @(status)
 	};
 
 	NSDictionary *_command = @{@"/mbthread/get-threads-count": _params};
 
-	return (NSNumber *)[session invoke:_command];
+	return (int)[self.session invoke:_command];
 }
 
-- (NSDictionary *)search:(NSNumber *)groupId creatorUserId:(NSNumber *)creatorUserId startDate:(NSNumber *)startDate endDate:(NSNumber *)endDate status:(NSNumber *)status start:(NSNumber *)start end:(NSNumber *)end {
+- (NSDictionary *)search:(long)groupId creatorUserId:(long)creatorUserId startDate:(long)startDate endDate:(long)endDate status:(int)status start:(int)start end:(int)end {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"creatorUserId": creatorUserId,
-		@"startDate": startDate,
-		@"endDate": endDate,
-		@"status": status,
-		@"start": start,
-		@"end": end
+		@"groupId": @(groupId),
+		@"creatorUserId": @(creatorUserId),
+		@"startDate": @(startDate),
+		@"endDate": @(endDate),
+		@"status": @(status),
+		@"start": @(start),
+		@"end": @(end)
 	};
 
 	NSDictionary *_command = @{@"/mbthread/search": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
 @end

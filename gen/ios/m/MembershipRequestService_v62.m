@@ -19,50 +19,50 @@
  */
 @implementation MembershipRequestService_v62
 
-- (NSDictionary *)addMembershipRequest:(NSNumber *)groupId comments:(NSString *)comments serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addMembershipRequest:(long)groupId comments:(NSString *)comments serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
+		@"groupId": @(groupId),
 		@"comments": comments,
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/membershiprequest/add-membership-request": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (NSDictionary *)getMembershipRequest:(NSNumber *)membershipRequestId {
+- (NSDictionary *)getMembershipRequest:(long)membershipRequestId {
 	NSDictionary *_params = @{
-		@"membershipRequestId": membershipRequestId
+		@"membershipRequestId": @(membershipRequestId)
 	};
 
 	NSDictionary *_command = @{@"/membershiprequest/get-membership-request": _params};
 
-	return (NSDictionary *)[session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command];
 }
 
-- (void)updateStatus:(NSNumber *)membershipRequestId reviewComments:(NSString *)reviewComments statusId:(NSNumber *)statusId serviceContext:(NSDictionary *)serviceContext {
+- (void)updateStatus:(long)membershipRequestId reviewComments:(NSString *)reviewComments statusId:(int)statusId serviceContext:(NSDictionary *)serviceContext {
 	NSDictionary *_params = @{
-		@"membershipRequestId": membershipRequestId,
+		@"membershipRequestId": @(membershipRequestId),
 		@"reviewComments": reviewComments,
-		@"statusId": statusId,
+		@"statusId": @(statusId),
 		@"serviceContext": serviceContext
 	};
 
 	NSDictionary *_command = @{@"/membershiprequest/update-status": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
-- (void)deleteMembershipRequests:(NSNumber *)groupId statusId:(NSNumber *)statusId {
+- (void)deleteMembershipRequests:(long)groupId statusId:(int)statusId {
 	NSDictionary *_params = @{
-		@"groupId": groupId,
-		@"statusId": statusId
+		@"groupId": @(groupId),
+		@"statusId": @(statusId)
 	};
 
 	NSDictionary *_command = @{@"/membershiprequest/delete-membership-requests": _params};
 
-	[session invoke:_command];
+	[self.session invoke:_command];
 }
 
 @end

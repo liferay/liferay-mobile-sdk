@@ -13,17 +13,18 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-@interface CountryService_v62 : NSObject
+@interface CountryService_v62 : BaseService
 
 - (NSDictionary *)getCountryByName:(NSString *)name;
 - (NSDictionary *)getCountryByA2:(NSString *)a2;
 - (NSDictionary *)getCountryByA3:(NSString *)a3;
-- (NSDictionary *)fetchCountry:(NSNumber *)countryId;
-- (NSDictionary *)getCountry:(NSNumber *)countryId;
+- (NSDictionary *)fetchCountry:(long)countryId;
+- (NSDictionary *)getCountry:(long)countryId;
 - (NSDictionary *)fetchCountryByA3:(NSString *)a3;
 - (NSDictionary *)fetchCountryByA2:(NSString *)a2;
 - (NSArray *)getCountries:(BOOL)active;
