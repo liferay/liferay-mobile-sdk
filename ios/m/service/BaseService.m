@@ -12,27 +12,11 @@
  * details.
  */
 
-##n
-
-${esc.h}import <Foundation/Foundation.h>
-${esc.h}import "BaseService.h"
-
-##n
+#import "BaseService.h"
 
 /**
  * author Bruno Farache
  */
-
-#set ($actions = $discovery.actions)
-
-@interface $className : BaseService
-
-##n
-
-#foreach ($action in $actions)
-	#signature($action ";")
-#end
-
-##n
+@implementation BaseService
 
 @end

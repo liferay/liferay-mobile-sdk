@@ -36,9 +36,11 @@ ${esc.h}import "${className}.h"
 
 	##t	NSDictionary *_params = @{
 
-	#foreach ($parameter in $parameters)
-		#set ($parameterName = $parameter.name)
-		#set ($line = "@${esc.q}$parameterName${esc.q}: $parameterName")
+	#foreach ($param in $parameters)
+		#set ($paramName = $param.name)
+		#set ($paramValue = $languageUtil.getParamValue($paramName, $param.type))
+
+		#set ($line = "@${esc.q}$paramName${esc.q}: $paramValue")
 
 		#if ($foreach.hasNext)
 			#set ($line = "$line,")
@@ -56,9 +58,9 @@ ${esc.h}import "${className}.h"
 	##n
 
 	#if ($returnType == "void")
-		##t	[session invoke:_command];
+		##t	[self.session invoke:_command];
 	#else
-		##t	return ($returnType)[session invoke:_command];
+		##t	return ($returnType)[self.session invoke:_command];
 	#end
 
 	}

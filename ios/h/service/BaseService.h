@@ -12,27 +12,14 @@
  * details.
  */
 
-##n
-
-${esc.h}import <Foundation/Foundation.h>
-${esc.h}import "BaseService.h"
-
-##n
+#import <Foundation/Foundation.h>
+#import "Session.h"
 
 /**
  * author Bruno Farache
  */
+@interface BaseService : NSObject
 
-#set ($actions = $discovery.actions)
-
-@interface $className : BaseService
-
-##n
-
-#foreach ($action in $actions)
-	#signature($action ";")
-#end
-
-##n
+@property (nonatomic, strong) id<Session> session;
 
 @end

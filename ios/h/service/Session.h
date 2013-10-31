@@ -12,27 +12,13 @@
  * details.
  */
 
-##n
-
-${esc.h}import <Foundation/Foundation.h>
-${esc.h}import "BaseService.h"
-
-##n
+#import <Foundation/Foundation.h>
 
 /**
  * author Bruno Farache
  */
+@protocol Session <NSObject>
 
-#set ($actions = $discovery.actions)
-
-@interface $className : BaseService
-
-##n
-
-#foreach ($action in $actions)
-	#signature($action ";")
-#end
-
-##n
+- (id)invoke:(NSDictionary *)command;
 
 @end

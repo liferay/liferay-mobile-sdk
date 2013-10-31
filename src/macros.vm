@@ -11,6 +11,8 @@
 
 		#if ($velocityCount > 1)
 			#set ($prefix = "$parameterName:")
+		#else
+			#set ($parameterList = ":")
 		#end
 
 		#set ($parameterList = "$parameterList$prefix($parameterType)$parameterName")
@@ -20,5 +22,5 @@
 		#end
 	#end
 
-	- ($returnType)$methodName:$parameterList$suffix
+	- ($returnType)$methodName$parameterList$suffix
 #end

@@ -21,6 +21,18 @@ import com.liferay.mobile.sdk.util.LanguageUtil;
  */
 public class ObjectiveCUtil extends LanguageUtil {
 
+	public String getParamValue(String name, String type) {
+		type = getType(type);
+
+		if (type.equals("BOOL") || type.equals("double") ||
+			type.equals("int") || type.equals("long")) {
+
+			name = "@("  + name + ")";
+		}
+
+		return name;
+	}
+
 	public String getType(String type) {
 		if (type.endsWith("[]") || type.equals("object<list>") ||
 			type.startsWith("list")) {
@@ -39,7 +51,7 @@ public class ObjectiveCUtil extends LanguageUtil {
 		if (type.equals("double") || type.equals("int") ||
 			type.equals("long")) {
 
-			return "NSNumber *";
+			return type;
 		}
 
 		if (type.equals("string")) {
