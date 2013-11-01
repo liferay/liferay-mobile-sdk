@@ -12,18 +12,17 @@
  * details.
  */
 
-#import <Foundation/Foundation.h>
+#import "SessionImpl.h"
 
 /**
  * author Bruno Farache
  */
-@protocol Session <NSObject>
+@implementation SessionImpl
 
-@property (nonatomic) int connectionTimeout;
-@property (nonatomic, strong) NSString *password;
-@property (nonatomic, strong) NSString *server;
-@property (nonatomic, strong) NSString *username;
+- (id)invoke:(NSDictionary *)command {
+	NSArray *json = [HttpUtil post:self command:command];
 
-- (id)invoke:(NSDictionary *)command;
+	return [json objectAtIndex:0];
+}
 
 @end

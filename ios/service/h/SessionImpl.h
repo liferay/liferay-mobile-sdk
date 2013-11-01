@@ -12,12 +12,13 @@
  * details.
  */
 
-#import <Foundation/Foundation.h>
+#import "Session.h"
+#import "HttpUtil.h"
 
 /**
  * author Bruno Farache
  */
-@protocol Session <NSObject>
+@interface SessionImpl : NSObject <Session>
 
 @property (nonatomic) int connectionTimeout;
 @property (nonatomic, strong) NSString *password;

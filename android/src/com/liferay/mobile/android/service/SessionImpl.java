@@ -85,9 +85,9 @@ public class SessionImpl implements Session {
 			return null;
 		}
 		else {
-			JSONArray _json = HttpUtil.post(this, command);
+			JSONArray json = HttpUtil.post(this, command);
 
-			return _json.get(0);
+			return json.get(0);
 		}
 	}
 

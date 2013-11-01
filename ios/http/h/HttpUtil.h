@@ -13,17 +13,14 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "Session.h"
 
 /**
  * author Bruno Farache
  */
-@protocol Session <NSObject>
+@interface HttpUtil : NSObject
 
-@property (nonatomic) int connectionTimeout;
-@property (nonatomic, strong) NSString *password;
-@property (nonatomic, strong) NSString *server;
-@property (nonatomic, strong) NSString *username;
-
-- (id)invoke:(NSDictionary *)command;
++ (NSArray *)post:(id<Session>)session command:(NSDictionary *)command;
++ (NSArray *)post:(id<Session>)session commands:(NSArray *)commands;
 
 @end
