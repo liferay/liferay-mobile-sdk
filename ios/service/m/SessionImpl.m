@@ -19,6 +19,11 @@
  */
 @implementation SessionImpl
 
+@synthesize connectionTimeout;
+@synthesize password;
+@synthesize username;
+@synthesize server;
+
 - (id)invoke:(NSDictionary *)command {
 	NSArray *json = [HttpUtil post:self command:command];
 

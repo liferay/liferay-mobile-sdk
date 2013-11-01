@@ -20,11 +20,4 @@
  */
 @interface SessionImpl : NSObject <Session>
 
-@property (nonatomic) int connectionTimeout;
-@property (nonatomic, strong) NSString *password;
-@property (nonatomic, strong) NSString *server;
-@property (nonatomic, strong) NSString *username;
-
-- (id)invoke:(NSDictionary *)command;
-
 @end
