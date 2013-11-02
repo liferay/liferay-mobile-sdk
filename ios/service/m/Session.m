@@ -12,18 +12,13 @@
  * details.
  */
 
-#import "SessionImpl.h"
+#import "HttpUtil.h"
+#import "Session.h"
 
 /**
  * author Bruno Farache
  */
-@implementation SessionImpl
-
-@synthesize callback;
-@synthesize connectionTimeout;
-@synthesize password;
-@synthesize server;
-@synthesize username;
+@implementation Session
 
 - (id)invoke:(NSDictionary *)command {
 	NSArray *json = [HttpUtil post:self command:command];

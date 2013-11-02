@@ -19,7 +19,7 @@
  */
 @implementation HttpUtil
 
-+ (NSMutableURLRequest *)getRequest:(id<Session>)session
++ (NSMutableURLRequest *)getRequest:(Session *)session
 		commands:(NSArray *)commands {
 
 	NSURL *URL = [self getURL:session];
@@ -48,20 +48,20 @@
 	return request;
 }
 
-+ (NSURL *)getURL:(id<Session>)session {
++ (NSURL *)getURL:(Session *)session {
 	NSString *URL =
 		[NSString stringWithFormat:@"%@/api/jsonws/invoke", session.server];
 
 	return [NSURL URLWithString:URL];
 }
 
-+ (NSArray *)post:(id<Session>)session command:(NSDictionary *)command {
++ (NSArray *)post:(Session *)session command:(NSDictionary *)command {
 	NSArray *commands = [NSArray arrayWithObject:command];
 
 	return [self post:session commands:commands];
 }
 
-+ (NSArray *)post:(id<Session>)session commands:(NSArray *)commands {
++ (NSArray *)post:(Session *)session commands:(NSArray *)commands {
 	NSURLRequest *request = [self getRequest:session commands:commands];
 
 	NSURLResponse *response;

@@ -20,6 +20,6 @@
  */
 @interface BaseService : NSObject
 
-@property (nonatomic, strong) id<Session> session;
+@property (nonatomic, strong) Session *session;
 
 @end

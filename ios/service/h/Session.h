@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@protocol Session <NSObject>
+@interface Session : NSObject
 
 @property (nonatomic, strong) id<Callback> callback;
 @property (nonatomic) int connectionTimeout;
