@@ -13,12 +13,14 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "Callback.h"
 
 /**
  * author Bruno Farache
  */
 @protocol Session <NSObject>
 
+@property (nonatomic, strong) id<Callback> callback;
 @property (nonatomic) int connectionTimeout;
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *server;

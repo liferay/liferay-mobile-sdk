@@ -19,20 +19,9 @@
  */
 @implementation HttpUtil
 
-+ (NSURL *)getURL:(id<Session>)session {
-	NSString *URL =
-		[NSString stringWithFormat:@"%@/api/jsonws/invoke", session.server];
++ (NSMutableURLRequest *)getRequest:(id<Session>)session
+		commands:(NSArray *)commands {
 
-	return [NSURL URLWithString:URL];
-}
-
-+ (NSArray *)post:(id<Session>)session command:(NSDictionary *)command {
-	NSArray *commands = [NSArray arrayWithObject:command];
-
-	return [self post:session commands:commands];
-}
-
-+ (NSArray *)post:(id<Session>)session commands:(NSArray *)commands {
 	NSURL *URL = [self getURL:session];
 
 	NSMutableURLRequest *request =
@@ -56,12 +45,58 @@
 
 	[request setHTTPBody:body];
 
+	return request;
+}
+
++ (NSURL *)getURL:(id<Session>)session {
+	NSString *URL =
+		[NSString stringWithFormat:@"%@/api/jsonws/invoke", session.server];
+
+	return [NSURL URLWithString:URL];
+}
+
++ (NSArray *)post:(id<Session>)session command:(NSDictionary *)command {
+	NSArray *commands = [NSArray arrayWithObject:command];
+
+	return [self post:session commands:commands];
+}
+
++ (NSArray *)post:(id<Session>)session commands:(NSArray *)commands {
+	NSURLRequest *request = [self getRequest:session commands:commands];
+
 	NSURLResponse *response;
+	__block NSError *error;
+	id<Callback> callback = session.callback;
 
-	NSData *data = [NSURLConnection sendSynchronousRequest:request
-		returningResponse:&response error:&error];
+	if (callback) {
+		NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
-	return [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+		Handler handler = ^(NSURLResponse *r, NSData *d, NSError *e) {
+			if (e) {
+				[callback onFailure:e];
+			}
+			else {
+				NSArray *json = [NSJSONSerialization JSONObjectWithData:d
+					options:0 error:&error];
+
+				[callback onSuccess:[json objectAtIndex:0]];
+			}
+		};
+
+		[NSURLConnection sendAsynchronousRequest:request queue:queue
+			completionHandler:handler];
+
+		return nil;
+	}
+	else {
+		NSData *data = [NSURLConnection sendSynchronousRequest:request
+			returningResponse:&response error:&error];
+
+		NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:0
+			error:&error];
+
+		return json;
+	}
 }
 
 @end

@@ -20,6 +20,8 @@
  */
 @interface HttpUtil : NSObject
 
+typedef void (^Handler)(NSURLResponse *response, NSData *data, NSError *error);
+
 + (NSArray *)post:(id<Session>)session command:(NSDictionary *)command;
 + (NSArray *)post:(id<Session>)session commands:(NSArray *)commands;
 

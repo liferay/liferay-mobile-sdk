@@ -12,23 +12,14 @@
  * details.
  */
 
-#import "SessionImpl.h"
+#import <Foundation/Foundation.h>
 
 /**
  * author Bruno Farache
  */
-@implementation SessionImpl
+@protocol Callback <NSObject>
 
-@synthesize callback;
-@synthesize connectionTimeout;
-@synthesize password;
-@synthesize server;
-@synthesize username;
-
-- (id)invoke:(NSDictionary *)command {
-	NSArray *json = [HttpUtil post:self command:command];
-
-	return [json objectAtIndex:0];
-}
+- (void)onFailure:(NSError *)error;
+- (void)onSuccess:(id)result;
 
 @end
