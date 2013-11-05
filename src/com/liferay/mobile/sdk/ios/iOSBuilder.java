@@ -48,7 +48,7 @@ public class iOSBuilder extends BaseBuilder {
 
 	protected String getFilePath(
 		VelocityContext context, PortalVersion version, boolean header) {
-		
+
 		String className = (String)context.get(CLASS_NAME);
 
 		StringBuilder sb = new StringBuilder();

@@ -28,7 +28,6 @@ import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
-import org.apache.http.StatusLine;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpHead;
@@ -176,10 +175,15 @@ public class HttpUtil {
 			HttpResponse response, String json)
 		throws ServerException {
 
-		StatusLine status = response.getStatusLine();
+		int status = response.getStatusLine().getStatusCode();
 
-		if (status.getStatusCode() == HttpStatus.SC_UNAUTHORIZED) {
+		if (status == HttpStatus.SC_UNAUTHORIZED) {
 			throw new ServerException("Authentication failed.");
+		}
+
+		if (status != HttpStatus.SC_OK) {
+			throw new ServerException(
+				"Request failed. Response code: " + status);
 		}
 
 		try {
