@@ -15,8 +15,8 @@
 package com.liferay.mobile.sdk.http;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,7 +25,6 @@ import org.json.JSONObject;
  */
 public class Discovery {
 
-	@SuppressWarnings("unchecked")
 	public Discovery(String json) throws JSONException {
 		JSONObject jsonObj = new JSONObject(json);
 
@@ -33,17 +32,17 @@ public class Discovery {
 		_basePath = jsonObj.getString("basePath");
 
 		if (jsonObj.has("discover")) {
-			_discover = jsonObj.getString("discover");
+			JSONArray jsonArray = jsonObj.getJSONArray("discover");
+
+			for (int i = 0; i < jsonArray.length(); i++) {
+				_discover.add(jsonArray.getString(i));
+			}
 		}
 
-		JSONObject actions = jsonObj.getJSONObject("actions");
+		JSONArray actions = jsonObj.getJSONArray("actions");
 
-		Iterator<String> it = actions.keys();
-
-		while (it.hasNext()) {
-			String key = it.next();
-
-			Action action = new Action(actions.getJSONObject(key));
+		for (int i = 0; i < actions.length(); i++) {
+			Action action = new Action(actions.getJSONObject(i));
 
 			_actions.add(action);
 		}
@@ -61,7 +60,7 @@ public class Discovery {
 		return _context;
 	}
 
-	public String getDiscover() {
+	public ArrayList<String> getDiscover() {
 		return _discover;
 	}
 
@@ -77,13 +76,13 @@ public class Discovery {
 		_context = context;
 	}
 
-	public void setDiscover(String discover) {
+	public void setDiscover(ArrayList<String> discover) {
 		_discover = discover;
 	}
 
 	private ArrayList<Action> _actions = new ArrayList<Action>();
 	private String _basePath;
 	private String _context;
-	private String _discover;
+	private ArrayList<String> _discover = new ArrayList<String>();
 
 }
