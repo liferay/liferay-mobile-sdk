@@ -131,6 +131,7 @@ public class LanguageUtil {
 		CLASS_NAMES.put("sclicense", "SCLicense");
 		CLASS_NAMES.put("scproductentry", "SCProductEntry");
 		CLASS_NAMES.put("scproductversion", "SCProductVersion");
+		CLASS_NAMES.put("socialactivity", "SocialActivity");
 		CLASS_NAMES.put("shoppingcategory", "ShoppingCategory");
 		CLASS_NAMES.put("shoppingcoupon", "ShoppingCoupon");
 		CLASS_NAMES.put("shoppingitem", "ShoppingItem");
