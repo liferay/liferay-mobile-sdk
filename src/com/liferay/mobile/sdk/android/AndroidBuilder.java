@@ -15,11 +15,14 @@
 package com.liferay.mobile.sdk.android;
 
 import com.liferay.mobile.sdk.BaseBuilder;
+import com.liferay.mobile.sdk.http.Action;
 import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.http.HttpUtil;
 import com.liferay.mobile.sdk.velocity.VelocityUtil;
 
 import java.io.File;
+
+import java.util.ArrayList;
 
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.tools.generic.EscapeTool;
@@ -87,9 +90,32 @@ public class AndroidBuilder extends BaseBuilder {
 		context.put(LANGUAGE_UTIL, javaUtil);
 		context.put(PACKAGE, packageName);
 
+		_excludeMethods(context);
+
 		return context;
 	}
 
 	protected static final String PACKAGE = "package";
+
+	private void _excludeMethods(VelocityContext context) {
+		String className = (String)context.get(CLASS_NAME);
+		Discovery discovery = (Discovery)context.get(DISCOVERY);
+
+		if (!className.equals("DDLRecordService")) {
+			return;
+		}
+
+		ArrayList<Action> actions = discovery.getActions();
+
+		for (Action action : actions) {
+			String path = action.getPath();
+
+			if (path.equals("/ddlrecord/add-record")) {
+				actions.remove(action);
+
+				break;
+			}
+		}
+	}
 
 }

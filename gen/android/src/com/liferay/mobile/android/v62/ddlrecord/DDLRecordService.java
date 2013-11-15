@@ -30,29 +30,6 @@ public class DDLRecordService extends BaseService {
 	}
 
 	public JSONObject addRecord(long groupId, long recordSetId,
-		int displayIndex, JSONObject fields, JSONObject serviceContext)
-		throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("recordSetId", recordSetId);
-			_params.put("displayIndex", displayIndex);
-			_params.put("fields", fields);
-			_params.put("serviceContext", serviceContext);
-
-			_command.put("/ddlrecord/add-record", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		return (JSONObject)session.invoke(_command);
-	}
-
-	public JSONObject addRecord(long groupId, long recordSetId,
 		int displayIndex, JSONObject fieldsMap, JSONObject serviceContext)
 		throws Exception {
 		JSONObject _command = new JSONObject();

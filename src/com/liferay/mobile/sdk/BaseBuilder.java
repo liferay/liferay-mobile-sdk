@@ -26,9 +26,7 @@ import java.util.Map.Entry;
  */
 public abstract class BaseBuilder implements Builder {
 
-	public void buildAll(Discovery discovery, int version)
-		throws Exception {
-
+	public void buildAll(Discovery discovery, int version) throws Exception {
 		HashMap<String, ArrayList<Action>> actionsMap =
 			new HashMap<String, ArrayList<Action>>();
 
