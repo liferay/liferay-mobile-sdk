@@ -139,6 +139,92 @@ public class AssetEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public JSONObject updateEntry(long groupId, String className, long classPK,
+		String classUuid, long classTypeId, JSONArray categoryIds,
+		JSONArray tagNames, boolean visible, long startDate, long endDate,
+		long expirationDate, String mimeType, String title, String description,
+		String summary, String url, String layoutUuid, int height, int width,
+		JSONObject priority, boolean sync) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("className", className);
+			_params.put("classPK", classPK);
+			_params.put("classUuid", classUuid);
+			_params.put("classTypeId", classTypeId);
+			_params.put("categoryIds", categoryIds);
+			_params.put("tagNames", tagNames);
+			_params.put("visible", visible);
+			_params.put("startDate", startDate);
+			_params.put("endDate", endDate);
+			_params.put("expirationDate", expirationDate);
+			_params.put("mimeType", mimeType);
+			_params.put("title", title);
+			_params.put("description", description);
+			_params.put("summary", summary);
+			_params.put("url", url);
+			_params.put("layoutUuid", layoutUuid);
+			_params.put("height", height);
+			_params.put("width", width);
+			_params.put("priority", priority);
+			_params.put("sync", sync);
+
+			_command.put("/assetentry/update-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject updateEntry(long groupId, String className, long classPK,
+		String classUuid, long classTypeId, JSONArray categoryIds,
+		JSONArray tagNames, boolean visible, long startDate, long endDate,
+		long publishDate, long expirationDate, String mimeType, String title,
+		String description, String summary, String url, String layoutUuid,
+		int height, int width, JSONObject priority, boolean sync)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("className", className);
+			_params.put("classPK", classPK);
+			_params.put("classUuid", classUuid);
+			_params.put("classTypeId", classTypeId);
+			_params.put("categoryIds", categoryIds);
+			_params.put("tagNames", tagNames);
+			_params.put("visible", visible);
+			_params.put("startDate", startDate);
+			_params.put("endDate", endDate);
+			_params.put("publishDate", publishDate);
+			_params.put("expirationDate", expirationDate);
+			_params.put("mimeType", mimeType);
+			_params.put("title", title);
+			_params.put("description", description);
+			_params.put("summary", summary);
+			_params.put("url", url);
+			_params.put("layoutUuid", layoutUuid);
+			_params.put("height", height);
+			_params.put("width", width);
+			_params.put("priority", priority);
+			_params.put("sync", sync);
+
+			_command.put("/assetentry/update-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject updateEntry(long groupId, long createDate,
 		long modifiedDate, String className, long classPK, String classUuid,
 		long classTypeId, JSONArray categoryIds, JSONArray tagNames,

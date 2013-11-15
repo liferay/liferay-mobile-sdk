@@ -29,6 +29,26 @@ public class AssetCategoryService extends BaseService {
 		super(session);
 	}
 
+	public JSONObject addCategory(String title, long vocabularyId,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("title", title);
+			_params.put("vocabularyId", vocabularyId);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/assetcategory/add-category", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject addCategory(long parentCategoryId, JSONObject titleMap,
 		JSONObject descriptionMap, long vocabularyId,
 		JSONArray categoryProperties, JSONObject serviceContext)
@@ -52,6 +72,24 @@ public class AssetCategoryService extends BaseService {
 		}
 
 		return (JSONObject)session.invoke(_command);
+	}
+
+	public void deleteCategories(JSONArray categoryIds)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("categoryIds", categoryIds);
+
+			_command.put("/assetcategory/delete-categories", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 	public JSONArray deleteCategories(JSONArray categoryIds,
@@ -126,6 +164,24 @@ public class AssetCategoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public JSONArray getChildCategories(long parentCategoryId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("parentCategoryId", parentCategoryId);
+
+			_command.put("/assetcategory/get-child-categories", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray getChildCategories(long parentCategoryId, int start,
 		int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -169,6 +225,28 @@ public class AssetCategoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public JSONObject getJsonVocabularyCategories(long vocabularyId, int start,
+		int end, JSONObject obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("vocabularyId", vocabularyId);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/assetcategory/get-json-vocabulary-categories",
+				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject getJsonVocabularyCategories(long groupId, String name,
 		long vocabularyId, int start, int end, JSONObject obc)
 		throws Exception {
@@ -192,6 +270,50 @@ public class AssetCategoryService extends BaseService {
 		}
 
 		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONArray getVocabularyCategories(long vocabularyId, int start,
+		int end, JSONObject obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("vocabularyId", vocabularyId);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/assetcategory/get-vocabulary-categories", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getVocabularyCategories(long parentCategoryId,
+		long vocabularyId, int start, int end, JSONObject obc)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("parentCategoryId", parentCategoryId);
+			_params.put("vocabularyId", vocabularyId);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/assetcategory/get-vocabulary-categories", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getVocabularyCategories(long groupId, String name,
@@ -218,6 +340,26 @@ public class AssetCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
+	public Integer getVocabularyCategoriesCount(long groupId, long vocabularyId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("vocabularyId", vocabularyId);
+
+			_command.put("/assetcategory/get-vocabulary-categories-count",
+				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
 	public Integer getVocabularyCategoriesCount(long groupId, String name,
 		long vocabularyId) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -237,6 +379,28 @@ public class AssetCategoryService extends BaseService {
 		}
 
 		return (Integer)session.invoke(_command);
+	}
+
+	public JSONObject getVocabularyCategoriesDisplay(long vocabularyId,
+		int start, int end, JSONObject obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("vocabularyId", vocabularyId);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/assetcategory/get-vocabulary-categories-display",
+				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getVocabularyCategoriesDisplay(long groupId, String name,
@@ -262,6 +426,28 @@ public class AssetCategoryService extends BaseService {
 		}
 
 		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONArray getVocabularyRootCategories(long vocabularyId, int start,
+		int end, JSONObject obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("vocabularyId", vocabularyId);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/assetcategory/get-vocabulary-root-categories",
+				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getVocabularyRootCategories(long groupId,
@@ -321,6 +507,51 @@ public class AssetCategoryService extends BaseService {
 			_params.put("serviceContext", serviceContext);
 
 			_command.put("/assetcategory/move-category", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject search(long groupId, String name,
+		JSONArray categoryProperties, int start, int end)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("name", name);
+			_params.put("categoryProperties", categoryProperties);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/assetcategory/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject search(JSONArray groupIds, String name,
+		JSONArray vocabularyIds, int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupIds", groupIds);
+			_params.put("name", name);
+			_params.put("vocabularyIds", vocabularyIds);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/assetcategory/search", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

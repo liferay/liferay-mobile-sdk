@@ -29,6 +29,27 @@ public class RoleService extends BaseService {
 		super(session);
 	}
 
+	public JSONObject addRole(String name, JSONObject titleMap,
+		JSONObject descriptionMap, int type) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("name", name);
+			_params.put("titleMap", titleMap);
+			_params.put("descriptionMap", descriptionMap);
+			_params.put("type", type);
+
+			_command.put("/role/add-role", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject addRole(String className, long classPK, String name,
 		JSONObject titleMap, JSONObject descriptionMap, int type,
 		String subtype, JSONObject serviceContext) throws Exception {
@@ -106,6 +127,23 @@ public class RoleService extends BaseService {
 		}
 
 		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONObject getRole(long roleId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("roleId", roleId);
+
+			_command.put("/role/get-role", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getRole(long companyId, String name)

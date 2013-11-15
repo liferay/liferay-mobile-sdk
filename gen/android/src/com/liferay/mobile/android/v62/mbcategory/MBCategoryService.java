@@ -29,6 +29,52 @@ public class MBCategoryService extends BaseService {
 		super(session);
 	}
 
+	public JSONObject addCategory(long parentCategoryId, String name,
+		String description, String displayStyle, String emailAddress,
+		String inProtocol, String inServerName, int inServerPort,
+		boolean inUseSSL, String inUserName, String inPassword,
+		int inReadInterval, String outEmailAddress, boolean outCustom,
+		String outServerName, int outServerPort, boolean outUseSSL,
+		String outUserName, String outPassword, boolean mailingListActive,
+		boolean allowAnonymousEmail, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("parentCategoryId", parentCategoryId);
+			_params.put("name", name);
+			_params.put("description", description);
+			_params.put("displayStyle", displayStyle);
+			_params.put("emailAddress", emailAddress);
+			_params.put("inProtocol", inProtocol);
+			_params.put("inServerName", inServerName);
+			_params.put("inServerPort", inServerPort);
+			_params.put("inUseSSL", inUseSSL);
+			_params.put("inUserName", inUserName);
+			_params.put("inPassword", inPassword);
+			_params.put("inReadInterval", inReadInterval);
+			_params.put("outEmailAddress", outEmailAddress);
+			_params.put("outCustom", outCustom);
+			_params.put("outServerName", outServerName);
+			_params.put("outServerPort", outServerPort);
+			_params.put("outUseSSL", outUseSSL);
+			_params.put("outUserName", outUserName);
+			_params.put("outPassword", outPassword);
+			_params.put("mailingListActive", mailingListActive);
+			_params.put("allowAnonymousEmail", allowAnonymousEmail);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/mbcategory/add-category", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject addCategory(long userId, long parentCategoryId,
 		String name, String description, JSONObject serviceContext)
 		throws Exception {
@@ -52,6 +98,25 @@ public class MBCategoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public void deleteCategory(long categoryId, boolean includeTrashedEntries)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("categoryId", categoryId);
+			_params.put("includeTrashedEntries", includeTrashedEntries);
+
+			_command.put("/mbcategory/delete-category", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public void deleteCategory(long groupId, long categoryId)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -69,6 +134,106 @@ public class MBCategoryService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONArray getCategories(long groupId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+
+			_command.put("/mbcategory/get-categories", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getCategories(long groupId, int status)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("status", status);
+
+			_command.put("/mbcategory/get-categories", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getCategories(long groupId, long parentCategoryId,
+		int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("parentCategoryId", parentCategoryId);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/mbcategory/get-categories", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getCategories(long groupId, JSONArray parentCategoryIds,
+		int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("parentCategoryIds", parentCategoryIds);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/mbcategory/get-categories", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getCategories(long groupId, long parentCategoryId,
+		int status, int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("parentCategoryId", parentCategoryId);
+			_params.put("status", status);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/mbcategory/get-categories", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getCategories(long groupId, JSONArray parentCategoryIds,
@@ -91,6 +256,64 @@ public class MBCategoryService extends BaseService {
 		}
 
 		return (JSONArray)session.invoke(_command);
+	}
+
+	public Integer getCategoriesCount(long groupId, long parentCategoryId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("parentCategoryId", parentCategoryId);
+
+			_command.put("/mbcategory/get-categories-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getCategoriesCount(long groupId, JSONArray parentCategoryIds)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("parentCategoryIds", parentCategoryIds);
+
+			_command.put("/mbcategory/get-categories-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getCategoriesCount(long groupId, long parentCategoryId,
+		int status) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("parentCategoryId", parentCategoryId);
+			_params.put("status", status);
+
+			_command.put("/mbcategory/get-categories-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
 	}
 
 	public Integer getCategoriesCount(long groupId,

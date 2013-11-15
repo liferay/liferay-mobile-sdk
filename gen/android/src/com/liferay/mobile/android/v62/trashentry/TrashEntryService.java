@@ -29,6 +29,23 @@ public class TrashEntryService extends BaseService {
 		super(session);
 	}
 
+	public void deleteEntries(JSONArray entryIds) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("entryIds", entryIds);
+
+			_command.put("/trashentry/delete-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public void deleteEntries(long groupId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -38,6 +55,23 @@ public class TrashEntryService extends BaseService {
 			_params.put("groupId", groupId);
 
 			_command.put("/trashentry/delete-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void deleteEntry(long entryId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("entryId", entryId);
+
+			_command.put("/trashentry/delete-entry", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -63,6 +97,23 @@ public class TrashEntryService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject getEntries(long groupId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+
+			_command.put("/trashentry/get-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getEntries(long groupId, int start, int end,
@@ -107,6 +158,23 @@ public class TrashEntryService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject restoreEntry(long entryId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("entryId", entryId);
+
+			_command.put("/trashentry/restore-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject restoreEntry(long entryId, long overrideClassPK,

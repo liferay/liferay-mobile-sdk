@@ -47,6 +47,75 @@ public class MBThreadService extends BaseService {
 	}
 
 	public JSONArray getGroupThreads(long groupId, long userId, int status,
+		int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("status", status);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/mbthread/get-group-threads", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getGroupThreads(long groupId, long userId,
+		long modifiedDate, int status, int start, int end)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("modifiedDate", modifiedDate);
+			_params.put("status", status);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/mbthread/get-group-threads", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getGroupThreads(long groupId, long userId, int status,
+		boolean subscribed, int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("status", status);
+			_params.put("subscribed", subscribed);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/mbthread/get-group-threads", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getGroupThreads(long groupId, long userId, int status,
 		boolean subscribed, boolean includeAnonymous, int start, int end)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -69,6 +138,68 @@ public class MBThreadService extends BaseService {
 		}
 
 		return (JSONArray)session.invoke(_command);
+	}
+
+	public Integer getGroupThreadsCount(long groupId, long userId, int status)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("status", status);
+
+			_command.put("/mbthread/get-group-threads-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getGroupThreadsCount(long groupId, long userId,
+		long modifiedDate, int status) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("modifiedDate", modifiedDate);
+			_params.put("status", status);
+
+			_command.put("/mbthread/get-group-threads-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getGroupThreadsCount(long groupId, long userId, int status,
+		boolean subscribed) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("status", status);
+			_params.put("subscribed", subscribed);
+
+			_command.put("/mbthread/get-group-threads-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
 	}
 
 	public Integer getGroupThreadsCount(long groupId, long userId, int status,
@@ -223,6 +354,28 @@ public class MBThreadService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject search(long groupId, long creatorUserId, int status,
+		int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("creatorUserId", creatorUserId);
+			_params.put("status", status);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/mbthread/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject search(long groupId, long creatorUserId, long startDate,

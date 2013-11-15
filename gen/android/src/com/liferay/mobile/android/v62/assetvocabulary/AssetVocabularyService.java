@@ -29,6 +29,47 @@ public class AssetVocabularyService extends BaseService {
 		super(session);
 	}
 
+	public JSONObject addVocabulary(String title, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("title", title);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/assetvocabulary/add-vocabulary", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addVocabulary(JSONObject titleMap,
+		JSONObject descriptionMap, String settings, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("titleMap", titleMap);
+			_params.put("descriptionMap", descriptionMap);
+			_params.put("settings", settings);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/assetvocabulary/add-vocabulary", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject addVocabulary(String title, JSONObject titleMap,
 		JSONObject descriptionMap, String settings, JSONObject serviceContext)
 		throws Exception {
@@ -50,6 +91,24 @@ public class AssetVocabularyService extends BaseService {
 		}
 
 		return (JSONObject)session.invoke(_command);
+	}
+
+	public void deleteVocabularies(JSONArray vocabularyIds)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("vocabularyIds", vocabularyIds);
+
+			_command.put("/assetvocabulary/delete-vocabularies", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 	public JSONArray deleteVocabularies(JSONArray vocabularyIds,
@@ -106,6 +165,64 @@ public class AssetVocabularyService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
+	public JSONArray getGroupVocabularies(long groupId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+
+			_command.put("/assetvocabulary/get-group-vocabularies", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getGroupVocabularies(long groupId,
+		boolean createDefaultVocabulary) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("createDefaultVocabulary", createDefaultVocabulary);
+
+			_command.put("/assetvocabulary/get-group-vocabularies", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getGroupVocabularies(long groupId, int start, int end,
+		JSONObject obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/assetvocabulary/get-group-vocabularies", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray getGroupVocabularies(long groupId, String name, int start,
 		int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -128,6 +245,25 @@ public class AssetVocabularyService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
+	public Integer getGroupVocabulariesCount(long groupId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+
+			_command.put("/assetvocabulary/get-group-vocabularies-count",
+				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
 	public Integer getGroupVocabulariesCount(long groupId, String name)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -146,6 +282,29 @@ public class AssetVocabularyService extends BaseService {
 		}
 
 		return (Integer)session.invoke(_command);
+	}
+
+	public JSONObject getGroupVocabulariesDisplay(long groupId, String name,
+		int start, int end, JSONObject obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("name", name);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/assetvocabulary/get-group-vocabularies-display",
+				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getGroupVocabulariesDisplay(long groupId, String name,
@@ -171,6 +330,24 @@ public class AssetVocabularyService extends BaseService {
 		}
 
 		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONArray getGroupsVocabularies(JSONArray groupIds)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupIds", groupIds);
+
+			_command.put("/assetvocabulary/get-groups-vocabularies", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getGroupsVocabularies(JSONArray groupIds, String className)
@@ -242,6 +419,29 @@ public class AssetVocabularyService extends BaseService {
 			_params.put("vocabularyId", vocabularyId);
 
 			_command.put("/assetvocabulary/get-vocabulary", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject updateVocabulary(long vocabularyId, JSONObject titleMap,
+		JSONObject descriptionMap, String settings, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("vocabularyId", vocabularyId);
+			_params.put("titleMap", titleMap);
+			_params.put("descriptionMap", descriptionMap);
+			_params.put("settings", settings);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/assetvocabulary/update-vocabulary", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

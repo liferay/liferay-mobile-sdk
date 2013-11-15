@@ -29,6 +29,26 @@ public class ExpandoColumnService extends BaseService {
 		super(session);
 	}
 
+	public JSONObject addColumn(long tableId, String name, int type)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("tableId", tableId);
+			_params.put("name", name);
+			_params.put("type", type);
+
+			_command.put("/expandocolumn/add-column", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject addColumn(long tableId, String name, int type,
 		JSONObject defaultData) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -65,6 +85,26 @@ public class ExpandoColumnService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject updateColumn(long columnId, String name, int type)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("columnId", columnId);
+			_params.put("name", name);
+			_params.put("type", type);
+
+			_command.put("/expandocolumn/update-column", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateColumn(long columnId, String name, int type,

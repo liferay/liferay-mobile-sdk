@@ -105,6 +105,30 @@ public class MDRRuleService extends BaseService {
 	}
 
 	public JSONObject updateRule(long ruleId, JSONObject nameMap,
+		JSONObject descriptionMap, String type, String typeSettings,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("ruleId", ruleId);
+			_params.put("nameMap", nameMap);
+			_params.put("descriptionMap", descriptionMap);
+			_params.put("type", type);
+			_params.put("typeSettings", typeSettings);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/mdrrule/update-rule", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject updateRule(long ruleId, JSONObject nameMap,
 		JSONObject descriptionMap, String type,
 		JSONObject typeSettingsProperties, JSONObject serviceContext)
 		throws Exception {

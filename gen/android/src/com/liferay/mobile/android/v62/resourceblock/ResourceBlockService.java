@@ -244,6 +244,30 @@ public class ResourceBlockService extends BaseService {
 	}
 
 	public void setIndividualScopePermissions(long companyId, long groupId,
+		String name, long primKey, JSONObject roleIdsToActionIds)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("name", name);
+			_params.put("primKey", primKey);
+			_params.put("roleIdsToActionIds", roleIdsToActionIds);
+
+			_command.put("/resourceblock/set-individual-scope-permissions",
+				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void setIndividualScopePermissions(long companyId, long groupId,
 		String name, long primKey, long roleId, JSONArray actionIds)
 		throws Exception {
 		JSONObject _command = new JSONObject();

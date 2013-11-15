@@ -30,7 +30,7 @@ public class ExpandoValueService extends BaseService {
 	}
 
 	public JSONObject addValue(long companyId, String className,
-		String tableName, String columnName, long classPK, JSONObject data)
+		String tableName, String columnName, long classPK, String data)
 		throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -73,6 +73,29 @@ public class ExpandoValueService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject getData(long companyId, String className,
+		String tableName, String columnName, long classPK)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("className", className);
+			_params.put("tableName", tableName);
+			_params.put("columnName", columnName);
+			_params.put("classPK", classPK);
+
+			_command.put("/expandovalue/get-data", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getData(long companyId, String className,

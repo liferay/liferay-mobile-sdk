@@ -30,6 +30,30 @@ public class WikiPageService extends BaseService {
 	}
 
 	public JSONObject addPage(long nodeId, String title, String content,
+		String summary, boolean minorEdit, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("nodeId", nodeId);
+			_params.put("title", title);
+			_params.put("content", content);
+			_params.put("summary", summary);
+			_params.put("minorEdit", minorEdit);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/wikipage/add-page", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addPage(long nodeId, String title, String content,
 		String summary, boolean minorEdit, String format, String parentTitle,
 		String redirectTitle, JSONObject serviceContext)
 		throws Exception {
@@ -133,6 +157,24 @@ public class WikiPageService extends BaseService {
 			_params.put("title", title);
 
 			_command.put("/wikipage/copy-page-attachments", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void deletePage(long nodeId, String title) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("nodeId", nodeId);
+			_params.put("title", title);
+
+			_command.put("/wikipage/delete-page", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -319,6 +361,31 @@ public class WikiPageService extends BaseService {
 	}
 
 	public String getNodePagesRss(long nodeId, int max, String type,
+		double version, String displayStyle, String feedURL, String entryURL)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("nodeId", nodeId);
+			_params.put("max", max);
+			_params.put("type", type);
+			_params.put("version", version);
+			_params.put("displayStyle", displayStyle);
+			_params.put("feedURL", feedURL);
+			_params.put("entryURL", entryURL);
+
+			_command.put("/wikipage/get-node-pages-rss", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (String)session.invoke(_command);
+	}
+
+	public String getNodePagesRss(long nodeId, int max, String type,
 		double version, String displayStyle, String feedURL, String entryURL,
 		String attachmentURLPrefix) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -363,6 +430,65 @@ public class WikiPageService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
+	public JSONObject getPage(long nodeId, String title)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("nodeId", nodeId);
+			_params.put("title", title);
+
+			_command.put("/wikipage/get-page", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject getPage(long groupId, long nodeId, String title)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("nodeId", nodeId);
+			_params.put("title", title);
+
+			_command.put("/wikipage/get-page", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject getPage(long nodeId, String title, JSONObject head)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("nodeId", nodeId);
+			_params.put("title", title);
+			_params.put("head", head);
+
+			_command.put("/wikipage/get-page", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject getPage(long nodeId, String title, double version)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -381,6 +507,29 @@ public class WikiPageService extends BaseService {
 		}
 
 		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONArray getPages(long groupId, long userId, long nodeId,
+		int status, int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("nodeId", nodeId);
+			_params.put("status", status);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/wikipage/get-pages", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getPages(long groupId, long nodeId, boolean head,
@@ -408,6 +557,26 @@ public class WikiPageService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
+	public Integer getPagesCount(long groupId, long nodeId, boolean head)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("nodeId", nodeId);
+			_params.put("head", head);
+
+			_command.put("/wikipage/get-pages-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
 	public Integer getPagesCount(long groupId, long userId, long nodeId,
 		int status) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -427,6 +596,35 @@ public class WikiPageService extends BaseService {
 		}
 
 		return (Integer)session.invoke(_command);
+	}
+
+	public String getPagesRss(long companyId, long nodeId, String title,
+		int max, String type, double version, String displayStyle,
+		String feedURL, String entryURL, String locale)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("nodeId", nodeId);
+			_params.put("title", title);
+			_params.put("max", max);
+			_params.put("type", type);
+			_params.put("version", version);
+			_params.put("displayStyle", displayStyle);
+			_params.put("feedURL", feedURL);
+			_params.put("entryURL", entryURL);
+			_params.put("locale", locale);
+
+			_command.put("/wikipage/get-pages-rss", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (String)session.invoke(_command);
 	}
 
 	public String getPagesRss(long companyId, long nodeId, String title,
@@ -551,6 +749,25 @@ public class WikiPageService extends BaseService {
 			_params.put("fileName", fileName);
 
 			_command.put("/wikipage/move-page-attachment-to-trash", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject movePageToTrash(long nodeId, String title)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("nodeId", nodeId);
+			_params.put("title", title);
+
+			_command.put("/wikipage/move-page-to-trash", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

@@ -69,7 +69,25 @@ public class JournalFeedService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteFeed(long groupId, long feedId) throws Exception {
+	public void deleteFeed(long feedId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("feedId", feedId);
+
+			_command.put("/journalfeed/delete-feed", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void deleteFeed(long groupId, String feedId)
+		throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -87,7 +105,24 @@ public class JournalFeedService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject getFeed(long groupId, long feedId)
+	public JSONObject getFeed(long feedId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("feedId", feedId);
+
+			_command.put("/journalfeed/get-feed", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject getFeed(long groupId, String feedId)
 		throws Exception {
 		JSONObject _command = new JSONObject();
 

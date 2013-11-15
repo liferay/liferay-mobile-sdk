@@ -88,6 +88,25 @@ public class SCFrameworkVersionService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public JSONArray getFrameworkVersions(long groupId, boolean active)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("active", active);
+
+			_command.put("/scframeworkversion/get-framework-versions", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray getFrameworkVersions(long groupId, boolean active,
 		int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();

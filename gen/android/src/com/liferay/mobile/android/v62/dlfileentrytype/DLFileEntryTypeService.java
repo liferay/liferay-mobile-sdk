@@ -29,6 +29,29 @@ public class DLFileEntryTypeService extends BaseService {
 		super(session);
 	}
 
+	public JSONObject addFileEntryType(long groupId, String name,
+		String description, JSONArray ddmStructureIds, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("name", name);
+			_params.put("description", description);
+			_params.put("ddmStructureIds", ddmStructureIds);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/dlfileentrytype/add-file-entry-type", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject addFileEntryType(long groupId, String fileEntryTypeKey,
 		JSONObject nameMap, JSONObject descriptionMap,
 		JSONArray ddmStructureIds, JSONObject serviceContext)
@@ -88,6 +111,24 @@ public class DLFileEntryTypeService extends BaseService {
 		}
 
 		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONArray getFileEntryTypes(JSONArray groupIds)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupIds", groupIds);
+
+			_command.put("/dlfileentrytype/get-file-entry-types", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getFileEntryTypes(JSONArray groupIds, int start, int end)
@@ -193,6 +234,29 @@ public class DLFileEntryTypeService extends BaseService {
 		}
 
 		return (Integer)session.invoke(_command);
+	}
+
+	public void updateFileEntryType(long fileEntryTypeId, String name,
+		String description, JSONArray ddmStructureIds, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryTypeId", fileEntryTypeId);
+			_params.put("name", name);
+			_params.put("description", description);
+			_params.put("ddmStructureIds", ddmStructureIds);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/dlfileentrytype/update-file-entry-type", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 	public void updateFileEntryType(long fileEntryTypeId, JSONObject nameMap,

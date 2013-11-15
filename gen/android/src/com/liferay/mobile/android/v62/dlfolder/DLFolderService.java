@@ -55,6 +55,42 @@ public class DLFolderService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public void deleteFolder(long folderId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("folderId", folderId);
+
+			_command.put("/dlfolder/delete-folder", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void deleteFolder(long folderId, boolean includeTrashedEntries)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("folderId", folderId);
+			_params.put("includeTrashedEntries", includeTrashedEntries);
+
+			_command.put("/dlfolder/delete-folder", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public void deleteFolder(long groupId, long parentFolderId, String name)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -100,6 +136,27 @@ public class DLFolderService extends BaseService {
 	}
 
 	public Integer getFileEntriesAndFileShortcutsCount(long groupId,
+		long folderId, int status) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+			_params.put("status", status);
+
+			_command.put("/dlfolder/get-file-entries-and-file-shortcuts-count",
+				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getFileEntriesAndFileShortcutsCount(long groupId,
 		long folderId, int status, JSONArray mimeTypes)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -120,6 +177,23 @@ public class DLFolderService extends BaseService {
 		}
 
 		return (Integer)session.invoke(_command);
+	}
+
+	public JSONObject getFolder(long folderId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("folderId", folderId);
+
+			_command.put("/dlfolder/get-folder", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getFolder(long groupId, long parentFolderId, String name)
@@ -161,6 +235,28 @@ public class DLFolderService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
+	public JSONArray getFolders(long groupId, long parentFolderId, int start,
+		int end, JSONObject obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("parentFolderId", parentFolderId);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/dlfolder/get-folders", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray getFolders(long groupId, long parentFolderId, int status,
 		boolean includeMountfolders, int start, int end, JSONObject obc)
 		throws Exception {
@@ -178,6 +274,32 @@ public class DLFolderService extends BaseService {
 			_params.put("obc", obc);
 
 			_command.put("/dlfolder/get-folders", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getFoldersAndFileEntriesAndFileShortcuts(long groupId,
+		long folderId, int status, boolean includeMountFolders, int start,
+		int end, JSONObject obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+			_params.put("status", status);
+			_params.put("includeMountFolders", includeMountFolders);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/dlfolder/get-folders-and-file-entries-and-file-shortcuts",
+				_params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -215,6 +337,29 @@ public class DLFolderService extends BaseService {
 	}
 
 	public Integer getFoldersAndFileEntriesAndFileShortcutsCount(long groupId,
+		long folderId, int status, boolean includeMountFolders)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+			_params.put("status", status);
+			_params.put("includeMountFolders", includeMountFolders);
+
+			_command.put("/dlfolder/get-folders-and-file-entries-and-file-shortcuts-count",
+				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getFoldersAndFileEntriesAndFileShortcutsCount(long groupId,
 		long folderId, int status, JSONArray mimeTypes,
 		boolean includeMountFolders) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -230,6 +375,25 @@ public class DLFolderService extends BaseService {
 
 			_command.put("/dlfolder/get-folders-and-file-entries-and-file-shortcuts-count",
 				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getFoldersCount(long groupId, long parentFolderId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("parentFolderId", parentFolderId);
+
+			_command.put("/dlfolder/get-folders-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -298,6 +462,26 @@ public class DLFolderService extends BaseService {
 		}
 
 		return (Integer)session.invoke(_command);
+	}
+
+	public void getSubfolderIds(JSONArray folderIds, long groupId, long folderId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("folderIds", folderIds);
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+
+			_command.put("/dlfolder/get-subfolder-ids", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 	public JSONArray getSubfolderIds(long groupId, long folderId,
@@ -371,6 +555,23 @@ public class DLFolderService extends BaseService {
 		return (Boolean)session.invoke(_command);
 	}
 
+	public JSONObject lockFolder(long folderId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("folderId", folderId);
+
+			_command.put("/dlfolder/lock-folder", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject lockFolder(long folderId, String owner,
 		boolean inheritable, long expirationTime) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -430,6 +631,25 @@ public class DLFolderService extends BaseService {
 		}
 
 		return (JSONObject)session.invoke(_command);
+	}
+
+	public void unlockFolder(long folderId, String lockUuid)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("folderId", folderId);
+			_params.put("lockUuid", lockUuid);
+
+			_command.put("/dlfolder/unlock-folder", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 	public void unlockFolder(long groupId, long parentFolderId, String name,

@@ -132,6 +132,55 @@ public class UserService extends BaseService {
 		int prefixId, int suffixId, boolean male, int birthdayMonth,
 		int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds,
 		JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds,
+		boolean sendEmail, JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("autoPassword", autoPassword);
+			_params.put("password1", password1);
+			_params.put("password2", password2);
+			_params.put("autoScreenName", autoScreenName);
+			_params.put("screenName", screenName);
+			_params.put("emailAddress", emailAddress);
+			_params.put("facebookId", facebookId);
+			_params.put("openId", openId);
+			_params.put("locale", locale);
+			_params.put("firstName", firstName);
+			_params.put("middleName", middleName);
+			_params.put("lastName", lastName);
+			_params.put("prefixId", prefixId);
+			_params.put("suffixId", suffixId);
+			_params.put("male", male);
+			_params.put("birthdayMonth", birthdayMonth);
+			_params.put("birthdayDay", birthdayDay);
+			_params.put("birthdayYear", birthdayYear);
+			_params.put("jobTitle", jobTitle);
+			_params.put("groupIds", groupIds);
+			_params.put("organizationIds", organizationIds);
+			_params.put("roleIds", roleIds);
+			_params.put("userGroupIds", userGroupIds);
+			_params.put("sendEmail", sendEmail);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/user/add-user", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addUser(long companyId, boolean autoPassword,
+		String password1, String password2, boolean autoScreenName,
+		String screenName, String emailAddress, long facebookId, String openId,
+		String locale, String firstName, String middleName, String lastName,
+		int prefixId, int suffixId, boolean male, int birthdayMonth,
+		int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds,
+		JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds,
 		JSONArray addresses, JSONArray emailAddresses, JSONArray phones,
 		JSONArray websites, JSONArray announcementsDelivers, boolean sendEmail,
 		JSONObject serviceContext) throws Exception {
@@ -198,6 +247,55 @@ public class UserService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject addUserWithWorkflow(long companyId, boolean autoPassword,
+		String password1, String password2, boolean autoScreenName,
+		String screenName, String emailAddress, long facebookId, String openId,
+		String locale, String firstName, String middleName, String lastName,
+		int prefixId, int suffixId, boolean male, int birthdayMonth,
+		int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds,
+		JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds,
+		boolean sendEmail, JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("autoPassword", autoPassword);
+			_params.put("password1", password1);
+			_params.put("password2", password2);
+			_params.put("autoScreenName", autoScreenName);
+			_params.put("screenName", screenName);
+			_params.put("emailAddress", emailAddress);
+			_params.put("facebookId", facebookId);
+			_params.put("openId", openId);
+			_params.put("locale", locale);
+			_params.put("firstName", firstName);
+			_params.put("middleName", middleName);
+			_params.put("lastName", lastName);
+			_params.put("prefixId", prefixId);
+			_params.put("suffixId", suffixId);
+			_params.put("male", male);
+			_params.put("birthdayMonth", birthdayMonth);
+			_params.put("birthdayDay", birthdayDay);
+			_params.put("birthdayYear", birthdayYear);
+			_params.put("jobTitle", jobTitle);
+			_params.put("groupIds", groupIds);
+			_params.put("organizationIds", organizationIds);
+			_params.put("roleIds", roleIds);
+			_params.put("userGroupIds", userGroupIds);
+			_params.put("sendEmail", sendEmail);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/user/add-user-with-workflow", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject addUserWithWorkflow(long companyId, boolean autoPassword,
@@ -556,6 +654,25 @@ public class UserService extends BaseService {
 			_params.put("userId", userId);
 
 			_command.put("/user/has-group-user", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Boolean)session.invoke(_command);
+	}
+
+	public Boolean hasRoleUser(long roleId, long userId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("roleId", roleId);
+			_params.put("userId", userId);
+
+			_command.put("/user/has-role-user", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -993,6 +1110,75 @@ public class UserService extends BaseService {
 			_params.put("status", status);
 
 			_command.put("/user/update-status", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject updateUser(long userId, String oldPassword,
+		String newPassword1, String newPassword2, boolean passwordReset,
+		String reminderQueryQuestion, String reminderQueryAnswer,
+		String screenName, String emailAddress, long facebookId, String openId,
+		String languageId, String timeZoneId, String greeting, String comments,
+		String firstName, String middleName, String lastName, int prefixId,
+		int suffixId, boolean male, int birthdayMonth, int birthdayDay,
+		int birthdayYear, String smsSn, String aimSn, String facebookSn,
+		String icqSn, String jabberSn, String msnSn, String mySpaceSn,
+		String skypeSn, String twitterSn, String ymSn, String jobTitle,
+		JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds,
+		JSONArray userGroupRoles, JSONArray userGroupIds,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("userId", userId);
+			_params.put("oldPassword", oldPassword);
+			_params.put("newPassword1", newPassword1);
+			_params.put("newPassword2", newPassword2);
+			_params.put("passwordReset", passwordReset);
+			_params.put("reminderQueryQuestion", reminderQueryQuestion);
+			_params.put("reminderQueryAnswer", reminderQueryAnswer);
+			_params.put("screenName", screenName);
+			_params.put("emailAddress", emailAddress);
+			_params.put("facebookId", facebookId);
+			_params.put("openId", openId);
+			_params.put("languageId", languageId);
+			_params.put("timeZoneId", timeZoneId);
+			_params.put("greeting", greeting);
+			_params.put("comments", comments);
+			_params.put("firstName", firstName);
+			_params.put("middleName", middleName);
+			_params.put("lastName", lastName);
+			_params.put("prefixId", prefixId);
+			_params.put("suffixId", suffixId);
+			_params.put("male", male);
+			_params.put("birthdayMonth", birthdayMonth);
+			_params.put("birthdayDay", birthdayDay);
+			_params.put("birthdayYear", birthdayYear);
+			_params.put("smsSn", smsSn);
+			_params.put("aimSn", aimSn);
+			_params.put("facebookSn", facebookSn);
+			_params.put("icqSn", icqSn);
+			_params.put("jabberSn", jabberSn);
+			_params.put("msnSn", msnSn);
+			_params.put("mySpaceSn", mySpaceSn);
+			_params.put("skypeSn", skypeSn);
+			_params.put("twitterSn", twitterSn);
+			_params.put("ymSn", ymSn);
+			_params.put("jobTitle", jobTitle);
+			_params.put("groupIds", groupIds);
+			_params.put("organizationIds", organizationIds);
+			_params.put("roleIds", roleIds);
+			_params.put("userGroupRoles", userGroupRoles);
+			_params.put("userGroupIds", userGroupIds);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/user/update-user", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

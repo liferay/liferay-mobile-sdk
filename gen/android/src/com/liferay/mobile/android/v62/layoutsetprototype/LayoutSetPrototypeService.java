@@ -110,6 +110,26 @@ public class LayoutSetPrototypeService extends BaseService {
 	}
 
 	public JSONObject updateLayoutSetPrototype(long layoutSetPrototypeId,
+		String settings) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("layoutSetPrototypeId", layoutSetPrototypeId);
+			_params.put("settings", settings);
+
+			_command.put("/layoutsetprototype/update-layout-set-prototype",
+				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject updateLayoutSetPrototype(long layoutSetPrototypeId,
 		JSONObject nameMap, String description, boolean active,
 		boolean layoutsUpdateable, JSONObject serviceContext)
 		throws Exception {

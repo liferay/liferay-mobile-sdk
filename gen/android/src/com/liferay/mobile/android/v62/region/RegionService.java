@@ -69,6 +69,23 @@ public class RegionService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public JSONObject getRegion(long regionId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("regionId", regionId);
+
+			_command.put("/region/get-region", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject getRegion(long countryId, String regionCode)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -86,6 +103,55 @@ public class RegionService extends BaseService {
 		}
 
 		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONArray getRegions() throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_command.put("/region/get-regions", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getRegions(boolean active) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("active", active);
+
+			_command.put("/region/get-regions", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getRegions(long countryId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("countryId", countryId);
+
+			_command.put("/region/get-regions", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getRegions(long countryId, boolean active)

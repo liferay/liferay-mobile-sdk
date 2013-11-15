@@ -83,6 +83,23 @@ public class TeamService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
+	public JSONObject getTeam(long teamId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("teamId", teamId);
+
+			_command.put("/team/get-team", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject getTeam(long groupId, String name)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -100,6 +117,23 @@ public class TeamService extends BaseService {
 		}
 
 		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONArray getUserTeams(long userId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("userId", userId);
+
+			_command.put("/team/get-user-teams", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getUserTeams(long userId, long groupId)

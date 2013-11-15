@@ -133,6 +133,38 @@ public class CompanyService extends BaseService {
 	}
 
 	public JSONObject updateCompany(long companyId, String virtualHost,
+		String mx, String homeURL, String name, String legalName,
+		String legalId, String legalType, String sicCode, String tickerSymbol,
+		String industry, String type, String size) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("virtualHost", virtualHost);
+			_params.put("mx", mx);
+			_params.put("homeURL", homeURL);
+			_params.put("name", name);
+			_params.put("legalName", legalName);
+			_params.put("legalId", legalId);
+			_params.put("legalType", legalType);
+			_params.put("sicCode", sicCode);
+			_params.put("tickerSymbol", tickerSymbol);
+			_params.put("industry", industry);
+			_params.put("type", type);
+			_params.put("size", size);
+
+			_command.put("/company/update-company", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject updateCompany(long companyId, String virtualHost,
 		String mx, int maxUsers, boolean active) throws Exception {
 		JSONObject _command = new JSONObject();
 

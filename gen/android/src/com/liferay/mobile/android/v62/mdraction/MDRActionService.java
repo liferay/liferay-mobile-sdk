@@ -30,6 +30,30 @@ public class MDRActionService extends BaseService {
 	}
 
 	public JSONObject addAction(long ruleGroupInstanceId, JSONObject nameMap,
+		JSONObject descriptionMap, String type, String typeSettings,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("ruleGroupInstanceId", ruleGroupInstanceId);
+			_params.put("nameMap", nameMap);
+			_params.put("descriptionMap", descriptionMap);
+			_params.put("type", type);
+			_params.put("typeSettings", typeSettings);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/mdraction/add-action", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addAction(long ruleGroupInstanceId, JSONObject nameMap,
 		JSONObject descriptionMap, String type,
 		JSONObject typeSettingsProperties, JSONObject serviceContext)
 		throws Exception {
@@ -97,6 +121,30 @@ public class MDRActionService extends BaseService {
 			_params.put("actionId", actionId);
 
 			_command.put("/mdraction/get-action", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject updateAction(long actionId, JSONObject nameMap,
+		JSONObject descriptionMap, String type, String typeSettings,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("actionId", actionId);
+			_params.put("nameMap", nameMap);
+			_params.put("descriptionMap", descriptionMap);
+			_params.put("type", type);
+			_params.put("typeSettings", typeSettings);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/mdraction/update-action", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

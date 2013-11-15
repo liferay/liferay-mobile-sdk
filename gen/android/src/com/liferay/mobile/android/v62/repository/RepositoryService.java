@@ -90,6 +90,24 @@ public class RepositoryService extends BaseService {
 		session.invoke(_command);
 	}
 
+	public JSONObject getLocalRepositoryImpl(long repositoryId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+
+			_command.put("/repository/get-local-repository-impl", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject getLocalRepositoryImpl(long folderId, long fileEntryId,
 		long fileVersionId) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -120,6 +138,24 @@ public class RepositoryService extends BaseService {
 			_params.put("repositoryId", repositoryId);
 
 			_command.put("/repository/get-repository", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject getRepositoryImpl(long repositoryId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+
+			_command.put("/repository/get-repository-impl", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

@@ -66,6 +66,23 @@ public class WikiNodeService extends BaseService {
 		session.invoke(_command);
 	}
 
+	public JSONObject getNode(long nodeId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("nodeId", nodeId);
+
+			_command.put("/wikinode/get-node", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject getNode(long groupId, String name)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -85,25 +102,117 @@ public class WikiNodeService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void importPages(long nodeId, String importer,
-		JSONArray inputStreams, JSONObject options) throws Exception {
+	public JSONArray getNodes(long groupId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("nodeId", nodeId);
-			_params.put("importer", importer);
-			_params.put("inputStreams", inputStreams);
-			_params.put("options", options);
+			_params.put("groupId", groupId);
 
-			_command.put("/wikinode/import-pages", _params);
+			_command.put("/wikinode/get-nodes", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getNodes(long groupId, int status)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("status", status);
+
+			_command.put("/wikinode/get-nodes", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getNodes(long groupId, int start, int end)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/wikinode/get-nodes", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getNodes(long groupId, int status, int start, int end)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("status", status);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/wikinode/get-nodes", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public Integer getNodesCount(long groupId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+
+			_command.put("/wikinode/get-nodes-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getNodesCount(long groupId, int status)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("status", status);
+
+			_command.put("/wikinode/get-nodes-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
 	}
 
 	public JSONObject moveNodeToTrash(long nodeId) throws Exception {

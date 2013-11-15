@@ -31,6 +31,34 @@ public class DLAppService extends BaseService {
 
 	public JSONObject addFileEntry(long repositoryId, long folderId,
 		String sourceFileName, String mimeType, String title,
+		String description, String changeLog, JSONArray bytes,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("folderId", folderId);
+			_params.put("sourceFileName", sourceFileName);
+			_params.put("mimeType", mimeType);
+			_params.put("title", title);
+			_params.put("description", description);
+			_params.put("changeLog", changeLog);
+			_params.put("bytes", bytes);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/dlapp/add-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addFileEntry(long repositoryId, long folderId,
+		String sourceFileName, String mimeType, String title,
 		String description, String changeLog, JSONObject file,
 		JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -143,6 +171,45 @@ public class DLAppService extends BaseService {
 		session.invoke(_command);
 	}
 
+	public void checkInFileEntry(long fileEntryId, String lockUuid)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+			_params.put("lockUuid", lockUuid);
+
+			_command.put("/dlapp/check-in-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void checkInFileEntry(long fileEntryId, String lockUuid,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+			_params.put("lockUuid", lockUuid);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/dlapp/check-in-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public void checkInFileEntry(long fileEntryId, boolean majorVersion,
 		String changeLog, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -156,6 +223,25 @@ public class DLAppService extends BaseService {
 			_params.put("serviceContext", serviceContext);
 
 			_command.put("/dlapp/check-in-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void checkOutFileEntry(long fileEntryId, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/dlapp/check-out-file-entry", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -284,6 +370,23 @@ public class DLAppService extends BaseService {
 		session.invoke(_command);
 	}
 
+	public void deleteFolder(long folderId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("folderId", folderId);
+
+			_command.put("/dlapp/delete-folder", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public void deleteFolder(long repositoryId, long parentFolderId, String name)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -323,6 +426,130 @@ public class DLAppService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONArray getFileEntries(long repositoryId, long folderId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("folderId", folderId);
+
+			_command.put("/dlapp/get-file-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getFileEntries(long repositoryId, long folderId,
+		long fileEntryTypeId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("folderId", folderId);
+			_params.put("fileEntryTypeId", fileEntryTypeId);
+
+			_command.put("/dlapp/get-file-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getFileEntries(long repositoryId, long folderId,
+		JSONArray mimeTypes) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("folderId", folderId);
+			_params.put("mimeTypes", mimeTypes);
+
+			_command.put("/dlapp/get-file-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getFileEntries(long repositoryId, long folderId,
+		int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("folderId", folderId);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/dlapp/get-file-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getFileEntries(long repositoryId, long folderId,
+		long fileEntryTypeId, int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("folderId", folderId);
+			_params.put("fileEntryTypeId", fileEntryTypeId);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/dlapp/get-file-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getFileEntries(long repositoryId, long folderId,
+		int start, int end, JSONObject obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("folderId", folderId);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/dlapp/get-file-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getFileEntries(long repositoryId, long folderId,
@@ -373,6 +600,27 @@ public class DLAppService extends BaseService {
 	}
 
 	public Integer getFileEntriesAndFileShortcutsCount(long repositoryId,
+		long folderId, int status) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("folderId", folderId);
+			_params.put("status", status);
+
+			_command.put("/dlapp/get-file-entries-and-file-shortcuts-count",
+				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getFileEntriesAndFileShortcutsCount(long repositoryId,
 		long folderId, int status, JSONArray mimeTypes)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -387,6 +635,25 @@ public class DLAppService extends BaseService {
 
 			_command.put("/dlapp/get-file-entries-and-file-shortcuts-count",
 				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getFileEntriesCount(long repositoryId, long folderId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("folderId", folderId);
+
+			_command.put("/dlapp/get-file-entries-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -413,6 +680,23 @@ public class DLAppService extends BaseService {
 		}
 
 		return (Integer)session.invoke(_command);
+	}
+
+	public JSONObject getFileEntry(long fileEntryId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+
+			_command.put("/dlapp/get-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getFileEntry(long groupId, long folderId, String title)
@@ -472,6 +756,23 @@ public class DLAppService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public JSONObject getFolder(long folderId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("folderId", folderId);
+
+			_command.put("/dlapp/get-folder", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject getFolder(long repositoryId, long parentFolderId,
 		String name) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -492,6 +793,135 @@ public class DLAppService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public JSONArray getFolders(long repositoryId, long parentFolderId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("parentFolderId", parentFolderId);
+
+			_command.put("/dlapp/get-folders", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getFolders(long repositoryId, long parentFolderId,
+		boolean includeMountFolders) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("parentFolderId", parentFolderId);
+			_params.put("includeMountFolders", includeMountFolders);
+
+			_command.put("/dlapp/get-folders", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getFolders(long repositoryId, long parentFolderId,
+		int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("parentFolderId", parentFolderId);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/dlapp/get-folders", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getFolders(long repositoryId, long parentFolderId,
+		boolean includeMountFolders, int start, int end)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("parentFolderId", parentFolderId);
+			_params.put("includeMountFolders", includeMountFolders);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/dlapp/get-folders", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getFolders(long repositoryId, long parentFolderId,
+		int start, int end, JSONObject obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("parentFolderId", parentFolderId);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/dlapp/get-folders", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getFolders(long repositoryId, long parentFolderId,
+		boolean includeMountFolders, int start, int end, JSONObject obc)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("parentFolderId", parentFolderId);
+			_params.put("includeMountFolders", includeMountFolders);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/dlapp/get-folders", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray getFolders(long repositoryId, long parentFolderId,
 		int status, boolean includeMountFolders, int start, int end,
 		JSONObject obc) throws Exception {
@@ -509,6 +939,59 @@ public class DLAppService extends BaseService {
 			_params.put("obc", obc);
 
 			_command.put("/dlapp/get-folders", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getFoldersAndFileEntriesAndFileShortcuts(
+		long repositoryId, long folderId, int status,
+		boolean includeMountFolders, int start, int end)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("folderId", folderId);
+			_params.put("status", status);
+			_params.put("includeMountFolders", includeMountFolders);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/dlapp/get-folders-and-file-entries-and-file-shortcuts",
+				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getFoldersAndFileEntriesAndFileShortcuts(
+		long repositoryId, long folderId, int status,
+		boolean includeMountFolders, int start, int end, JSONObject obc)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("folderId", folderId);
+			_params.put("status", status);
+			_params.put("includeMountFolders", includeMountFolders);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/dlapp/get-folders-and-file-entries-and-file-shortcuts",
+				_params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -546,6 +1029,29 @@ public class DLAppService extends BaseService {
 	}
 
 	public Integer getFoldersAndFileEntriesAndFileShortcutsCount(
+		long repositoryId, long folderId, int status,
+		boolean includeMountFolders) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("folderId", folderId);
+			_params.put("status", status);
+			_params.put("includeMountFolders", includeMountFolders);
+
+			_command.put("/dlapp/get-folders-and-file-entries-and-file-shortcuts-count",
+				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getFoldersAndFileEntriesAndFileShortcutsCount(
 		long repositoryId, long folderId, int status, JSONArray mimeTypes,
 		boolean includeMountFolders) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -561,6 +1067,45 @@ public class DLAppService extends BaseService {
 
 			_command.put("/dlapp/get-folders-and-file-entries-and-file-shortcuts-count",
 				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getFoldersCount(long repositoryId, long parentFolderId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("parentFolderId", parentFolderId);
+
+			_command.put("/dlapp/get-folders-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getFoldersCount(long repositoryId, long parentFolderId,
+		boolean includeMountFolders) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("parentFolderId", parentFolderId);
+			_params.put("includeMountFolders", includeMountFolders);
+
+			_command.put("/dlapp/get-folders-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -610,6 +1155,95 @@ public class DLAppService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
+	public JSONArray getGroupFileEntries(long groupId, long userId, int start,
+		int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/dlapp/get-group-file-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getGroupFileEntries(long groupId, long userId,
+		long rootFolderId, int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("rootFolderId", rootFolderId);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/dlapp/get-group-file-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getGroupFileEntries(long groupId, long userId, int start,
+		int end, JSONObject obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/dlapp/get-group-file-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getGroupFileEntries(long groupId, long userId,
+		long rootFolderId, int start, int end, JSONObject obc)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("rootFolderId", rootFolderId);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/dlapp/get-group-file-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray getGroupFileEntries(long groupId, long userId,
 		long rootFolderId, JSONArray mimeTypes, int status, int start, int end,
 		JSONObject obc) throws Exception {
@@ -636,6 +1270,45 @@ public class DLAppService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
+	public Integer getGroupFileEntriesCount(long groupId, long userId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+
+			_command.put("/dlapp/get-group-file-entries-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getGroupFileEntriesCount(long groupId, long userId,
+		long rootFolderId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("rootFolderId", rootFolderId);
+
+			_command.put("/dlapp/get-group-file-entries-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
 	public Integer getGroupFileEntriesCount(long groupId, long userId,
 		long rootFolderId, JSONArray mimeTypes, int status)
 		throws Exception {
@@ -657,6 +1330,46 @@ public class DLAppService extends BaseService {
 		}
 
 		return (Integer)session.invoke(_command);
+	}
+
+	public JSONArray getMountFolders(long repositoryId, long parentFolderId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("parentFolderId", parentFolderId);
+
+			_command.put("/dlapp/get-mount-folders", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getMountFolders(long repositoryId, long parentFolderId,
+		int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("parentFolderId", parentFolderId);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/dlapp/get-mount-folders", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getMountFolders(long repositoryId, long parentFolderId,
@@ -700,6 +1413,45 @@ public class DLAppService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
+	public JSONArray getSubfolderIds(long repositoryId, long folderId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("folderId", folderId);
+
+			_command.put("/dlapp/get-subfolder-ids", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getSubfolderIds(long repositoryId, long folderId,
+		boolean recurse) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("folderId", folderId);
+			_params.put("recurse", recurse);
+
+			_command.put("/dlapp/get-subfolder-ids", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public void getSubfolderIds(long repositoryId, JSONArray folderIds,
 		long folderId) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -740,6 +1492,23 @@ public class DLAppService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
+	public JSONObject lockFileEntry(long fileEntryId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+
+			_command.put("/dlapp/lock-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject lockFileEntry(long fileEntryId, String owner,
 		long expirationTime) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -752,6 +1521,25 @@ public class DLAppService extends BaseService {
 			_params.put("expirationTime", expirationTime);
 
 			_command.put("/dlapp/lock-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject lockFolder(long repositoryId, long folderId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("folderId", folderId);
+
+			_command.put("/dlapp/lock-folder", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -1050,6 +1838,67 @@ public class DLAppService extends BaseService {
 		session.invoke(_command);
 	}
 
+	public JSONObject search(long repositoryId, JSONObject searchContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("searchContext", searchContext);
+
+			_command.put("/dlapp/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject search(long repositoryId, JSONObject searchContext,
+		JSONObject query) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("searchContext", searchContext);
+			_params.put("query", query);
+
+			_command.put("/dlapp/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject search(long repositoryId, long creatorUserId, int status,
+		int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("creatorUserId", creatorUserId);
+			_params.put("status", status);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/dlapp/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject search(long repositoryId, long creatorUserId,
 		long folderId, JSONArray mimeTypes, int status, int start, int end)
 		throws Exception {
@@ -1113,6 +1962,23 @@ public class DLAppService extends BaseService {
 		session.invoke(_command);
 	}
 
+	public void unlockFileEntry(long fileEntryId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+
+			_command.put("/dlapp/unlock-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public void unlockFileEntry(long fileEntryId, String lockUuid)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -1124,6 +1990,26 @@ public class DLAppService extends BaseService {
 			_params.put("lockUuid", lockUuid);
 
 			_command.put("/dlapp/unlock-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void unlockFolder(long repositoryId, long folderId, String lockUuid)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("folderId", folderId);
+			_params.put("lockUuid", lockUuid);
+
+			_command.put("/dlapp/unlock-folder", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -1189,6 +2075,34 @@ public class DLAppService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName,
+		String mimeType, String title, String description, String changeLog,
+		boolean majorVersion, JSONArray bytes, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+			_params.put("sourceFileName", sourceFileName);
+			_params.put("mimeType", mimeType);
+			_params.put("title", title);
+			_params.put("description", description);
+			_params.put("changeLog", changeLog);
+			_params.put("majorVersion", majorVersion);
+			_params.put("bytes", bytes);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/dlapp/update-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName,

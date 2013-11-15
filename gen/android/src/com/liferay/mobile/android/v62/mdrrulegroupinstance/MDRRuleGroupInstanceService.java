@@ -30,6 +30,30 @@ public class MDRRuleGroupInstanceService extends BaseService {
 	}
 
 	public JSONObject addRuleGroupInstance(long groupId, String className,
+		long classPK, long ruleGroupId, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("className", className);
+			_params.put("classPK", classPK);
+			_params.put("ruleGroupId", ruleGroupId);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/mdrrulegroupinstance/add-rule-group-instance",
+				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addRuleGroupInstance(long groupId, String className,
 		long classPK, long ruleGroupId, int priority, JSONObject serviceContext)
 		throws Exception {
 		JSONObject _command = new JSONObject();

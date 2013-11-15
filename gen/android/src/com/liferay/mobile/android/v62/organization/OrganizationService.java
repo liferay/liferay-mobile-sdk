@@ -49,6 +49,106 @@ public class OrganizationService extends BaseService {
 	}
 
 	public JSONObject addOrganization(long parentOrganizationId, String name,
+		String type, boolean recursable, long regionId, long countryId,
+		int statusId, String comments, boolean site, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("parentOrganizationId", parentOrganizationId);
+			_params.put("name", name);
+			_params.put("type", type);
+			_params.put("recursable", recursable);
+			_params.put("regionId", regionId);
+			_params.put("countryId", countryId);
+			_params.put("statusId", statusId);
+			_params.put("comments", comments);
+			_params.put("site", site);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/organization/add-organization", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addOrganization(long parentOrganizationId, String name,
+		String type, long regionId, long countryId, int statusId,
+		String comments, boolean site, JSONArray addresses,
+		JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones,
+		JSONArray websites, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("parentOrganizationId", parentOrganizationId);
+			_params.put("name", name);
+			_params.put("type", type);
+			_params.put("regionId", regionId);
+			_params.put("countryId", countryId);
+			_params.put("statusId", statusId);
+			_params.put("comments", comments);
+			_params.put("site", site);
+			_params.put("addresses", addresses);
+			_params.put("emailAddresses", emailAddresses);
+			_params.put("orgLabors", orgLabors);
+			_params.put("phones", phones);
+			_params.put("websites", websites);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/organization/add-organization", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addOrganization(long parentOrganizationId, String name,
+		String type, boolean recursable, long regionId, long countryId,
+		int statusId, String comments, boolean site, JSONArray addresses,
+		JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones,
+		JSONArray websites, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("parentOrganizationId", parentOrganizationId);
+			_params.put("name", name);
+			_params.put("type", type);
+			_params.put("recursable", recursable);
+			_params.put("regionId", regionId);
+			_params.put("countryId", countryId);
+			_params.put("statusId", statusId);
+			_params.put("comments", comments);
+			_params.put("site", site);
+			_params.put("addresses", addresses);
+			_params.put("emailAddresses", emailAddresses);
+			_params.put("orgLabors", orgLabors);
+			_params.put("phones", phones);
+			_params.put("websites", websites);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/organization/add-organization", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addOrganization(long parentOrganizationId, String name,
 		String type, long regionId, long countryId, int statusId,
 		String comments, boolean site, JSONObject serviceContext)
 		throws Exception {
@@ -187,6 +287,25 @@ public class OrganizationService extends BaseService {
 		return (Long)session.invoke(_command);
 	}
 
+	public JSONArray getOrganizations(long companyId, long parentOrganizationId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("parentOrganizationId", parentOrganizationId);
+
+			_command.put("/organization/get-organizations", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray getOrganizations(long companyId,
 		long parentOrganizationId, int start, int end)
 		throws Exception {
@@ -302,6 +421,102 @@ public class OrganizationService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject updateOrganization(long organizationId,
+		long parentOrganizationId, String name, String type, long regionId,
+		long countryId, int statusId, String comments, boolean site,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("organizationId", organizationId);
+			_params.put("parentOrganizationId", parentOrganizationId);
+			_params.put("name", name);
+			_params.put("type", type);
+			_params.put("regionId", regionId);
+			_params.put("countryId", countryId);
+			_params.put("statusId", statusId);
+			_params.put("comments", comments);
+			_params.put("site", site);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/organization/update-organization", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject updateOrganization(long organizationId,
+		long parentOrganizationId, String name, String type,
+		boolean recursable, long regionId, long countryId, int statusId,
+		String comments, boolean site, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("organizationId", organizationId);
+			_params.put("parentOrganizationId", parentOrganizationId);
+			_params.put("name", name);
+			_params.put("type", type);
+			_params.put("recursable", recursable);
+			_params.put("regionId", regionId);
+			_params.put("countryId", countryId);
+			_params.put("statusId", statusId);
+			_params.put("comments", comments);
+			_params.put("site", site);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/organization/update-organization", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject updateOrganization(long organizationId,
+		long parentOrganizationId, String name, String type, long regionId,
+		long countryId, int statusId, String comments, boolean site,
+		JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors,
+		JSONArray phones, JSONArray websites, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("organizationId", organizationId);
+			_params.put("parentOrganizationId", parentOrganizationId);
+			_params.put("name", name);
+			_params.put("type", type);
+			_params.put("regionId", regionId);
+			_params.put("countryId", countryId);
+			_params.put("statusId", statusId);
+			_params.put("comments", comments);
+			_params.put("site", site);
+			_params.put("addresses", addresses);
+			_params.put("emailAddresses", emailAddresses);
+			_params.put("orgLabors", orgLabors);
+			_params.put("phones", phones);
+			_params.put("websites", websites);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/organization/update-organization", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateOrganization(long organizationId,

@@ -46,6 +46,23 @@ public class ClassNameService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public Long fetchClassNameId(JSONObject clazz) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("clazz", clazz);
+
+			_command.put("/classname/fetch-class-name-id", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Long)session.invoke(_command);
+	}
+
 	public Long fetchClassNameId(String value) throws Exception {
 		JSONObject _command = new JSONObject();
 

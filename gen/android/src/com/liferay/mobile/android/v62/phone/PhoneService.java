@@ -30,6 +30,30 @@ public class PhoneService extends BaseService {
 	}
 
 	public JSONObject addPhone(String className, long classPK, String number,
+		String extension, int typeId, boolean primary)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("className", className);
+			_params.put("classPK", classPK);
+			_params.put("number", number);
+			_params.put("extension", extension);
+			_params.put("typeId", typeId);
+			_params.put("primary", primary);
+
+			_command.put("/phone/add-phone", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addPhone(String className, long classPK, String number,
 		String extension, int typeId, boolean primary, JSONObject serviceContext)
 		throws Exception {
 		JSONObject _command = new JSONObject();

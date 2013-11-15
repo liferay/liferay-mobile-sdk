@@ -30,6 +30,28 @@ public class WebsiteService extends BaseService {
 	}
 
 	public JSONObject addWebsite(String className, long classPK, String url,
+		int typeId, boolean primary) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("className", className);
+			_params.put("classPK", classPK);
+			_params.put("url", url);
+			_params.put("typeId", typeId);
+			_params.put("primary", primary);
+
+			_command.put("/website/add-website", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addWebsite(String className, long classPK, String url,
 		int typeId, boolean primary, JSONObject serviceContext)
 		throws Exception {
 		JSONObject _command = new JSONObject();

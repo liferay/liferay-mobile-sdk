@@ -29,7 +29,7 @@ public class PermissionService extends BaseService {
 		super(session);
 	}
 
-	public void checkPermission(long groupId, String name, long primKey)
+	public void checkPermission(long groupId, String name, String primKey)
 		throws Exception {
 		JSONObject _command = new JSONObject();
 

@@ -47,4 +47,25 @@ public class BackgroundTaskService extends BaseService {
 
 		return (String)session.invoke(_command);
 	}
+
+	public Integer getBackgroundTasksCount(long groupId,
+		String taskExecutorClassName, String completed)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("taskExecutorClassName", taskExecutorClassName);
+			_params.put("completed", completed);
+
+			_command.put("/backgroundtask/get-background-tasks-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
 }

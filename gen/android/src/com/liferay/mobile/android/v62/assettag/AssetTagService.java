@@ -83,6 +83,23 @@ public class AssetTagService extends BaseService {
 		session.invoke(_command);
 	}
 
+	public JSONArray getGroupTags(long groupId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+
+			_command.put("/assettag/get-group-tags", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray getGroupTags(long groupId, int start, int end,
 		JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -198,6 +215,89 @@ public class AssetTagService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public JSONArray getTags(String className, long classPK)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("className", className);
+			_params.put("classPK", classPK);
+
+			_command.put("/assettag/get-tags", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getTags(long groupId, long classNameId, String name)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
+			_params.put("name", name);
+
+			_command.put("/assettag/get-tags", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getTags(long groupId, String name,
+		JSONArray tagProperties, int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("name", name);
+			_params.put("tagProperties", tagProperties);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/assettag/get-tags", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getTags(JSONArray groupIds, String name,
+		JSONArray tagProperties, int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupIds", groupIds);
+			_params.put("name", name);
+			_params.put("tagProperties", tagProperties);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/assettag/get-tags", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray getTags(long groupId, long classNameId, String name,
 		int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -221,6 +321,45 @@ public class AssetTagService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
+	public Integer getTagsCount(long groupId, String name)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("name", name);
+
+			_command.put("/assettag/get-tags-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getTagsCount(long groupId, long classNameId, String name)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
+			_params.put("name", name);
+
+			_command.put("/assettag/get-tags-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
 	public Integer getTagsCount(long groupId, String name,
 		JSONArray tagProperties) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -241,6 +380,26 @@ public class AssetTagService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
+	public void mergeTags(long fromTagId, long toTagId,
+		boolean overrideProperties) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fromTagId", fromTagId);
+			_params.put("toTagId", toTagId);
+			_params.put("overrideProperties", overrideProperties);
+
+			_command.put("/assettag/merge-tags", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public void mergeTags(JSONArray fromTagIds, long toTagId,
 		boolean overrideProperties) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -259,6 +418,28 @@ public class AssetTagService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject search(long groupId, String name,
+		JSONArray tagProperties, int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("name", name);
+			_params.put("tagProperties", tagProperties);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/assettag/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject search(JSONArray groupIds, String name,

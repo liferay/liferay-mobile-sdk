@@ -32,6 +32,37 @@ public class JournalTemplateService extends BaseService {
 	public JSONObject addTemplate(long groupId, String templateId,
 		boolean autoTemplateId, String structureId, JSONObject nameMap,
 		JSONObject descriptionMap, String xsl, boolean formatXsl,
+		String langType, boolean cacheable, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("templateId", templateId);
+			_params.put("autoTemplateId", autoTemplateId);
+			_params.put("structureId", structureId);
+			_params.put("nameMap", nameMap);
+			_params.put("descriptionMap", descriptionMap);
+			_params.put("xsl", xsl);
+			_params.put("formatXsl", formatXsl);
+			_params.put("langType", langType);
+			_params.put("cacheable", cacheable);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/journaltemplate/add-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addTemplate(long groupId, String templateId,
+		boolean autoTemplateId, String structureId, JSONObject nameMap,
+		JSONObject descriptionMap, String xsl, boolean formatXsl,
 		String langType, boolean cacheable, boolean smallImage,
 		String smallImageURL, JSONObject smallFile, JSONObject serviceContext)
 		throws Exception {
@@ -123,6 +154,25 @@ public class JournalTemplateService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
+	public JSONObject getTemplate(long groupId, String templateId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("templateId", templateId);
+
+			_command.put("/journaltemplate/get-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject getTemplate(long groupId, String templateId,
 		boolean includeGlobalTemplates) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -141,6 +191,36 @@ public class JournalTemplateService extends BaseService {
 		}
 
 		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONArray search(long companyId, JSONArray groupIds,
+		String templateId, String structureId, String structureIdComparator,
+		String name, String description, boolean andOperator, int start,
+		int end, JSONObject obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupIds", groupIds);
+			_params.put("templateId", templateId);
+			_params.put("structureId", structureId);
+			_params.put("structureIdComparator", structureIdComparator);
+			_params.put("name", name);
+			_params.put("description", description);
+			_params.put("andOperator", andOperator);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/journaltemplate/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray search(long companyId, JSONArray groupIds,
@@ -170,6 +250,29 @@ public class JournalTemplateService extends BaseService {
 	}
 
 	public Integer searchCount(long companyId, JSONArray groupIds,
+		String keywords, String structureId, String structureIdComparator)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupIds", groupIds);
+			_params.put("keywords", keywords);
+			_params.put("structureId", structureId);
+			_params.put("structureIdComparator", structureIdComparator);
+
+			_command.put("/journaltemplate/search-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer searchCount(long companyId, JSONArray groupIds,
 		String templateId, String structureId, String structureIdComparator,
 		String name, String description, boolean andOperator)
 		throws Exception {
@@ -194,6 +297,35 @@ public class JournalTemplateService extends BaseService {
 		}
 
 		return (Integer)session.invoke(_command);
+	}
+
+	public JSONObject updateTemplate(long groupId, String templateId,
+		String structureId, JSONObject nameMap, JSONObject descriptionMap,
+		String xsl, boolean formatXsl, String langType, boolean cacheable,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("templateId", templateId);
+			_params.put("structureId", structureId);
+			_params.put("nameMap", nameMap);
+			_params.put("descriptionMap", descriptionMap);
+			_params.put("xsl", xsl);
+			_params.put("formatXsl", formatXsl);
+			_params.put("langType", langType);
+			_params.put("cacheable", cacheable);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/journaltemplate/update-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateTemplate(long groupId, String templateId,

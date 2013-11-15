@@ -96,6 +96,23 @@ public class BlogsEntryService extends BaseService {
 		return (String)session.invoke(_command);
 	}
 
+	public JSONObject getEntry(long entryId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("entryId", entryId);
+
+			_command.put("/blogsentry/get-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject getEntry(long groupId, String urlTitle)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -113,6 +130,68 @@ public class BlogsEntryService extends BaseService {
 		}
 
 		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONArray getGroupEntries(long groupId, int status, int max)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("status", status);
+			_params.put("max", max);
+
+			_command.put("/blogsentry/get-group-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getGroupEntries(long groupId, long displayDate,
+		int status, int max) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("displayDate", displayDate);
+			_params.put("status", status);
+			_params.put("max", max);
+
+			_command.put("/blogsentry/get-group-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getGroupEntries(long groupId, int status, int start,
+		int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("status", status);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/blogsentry/get-group-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getGroupEntries(long groupId, long displayDate,
@@ -135,6 +214,25 @@ public class BlogsEntryService extends BaseService {
 		}
 
 		return (JSONArray)session.invoke(_command);
+	}
+
+	public Integer getGroupEntriesCount(long groupId, int status)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("status", status);
+
+			_command.put("/blogsentry/get-group-entries-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
 	}
 
 	public Integer getGroupEntriesCount(long groupId, long displayDate,

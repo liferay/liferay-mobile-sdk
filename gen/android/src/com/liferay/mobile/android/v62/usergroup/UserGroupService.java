@@ -67,6 +67,25 @@ public class UserGroupService extends BaseService {
 		session.invoke(_command);
 	}
 
+	public JSONObject addUserGroup(String name, String description)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("name", name);
+			_params.put("description", description);
+
+			_command.put("/usergroup/add-user-group", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject addUserGroup(String name, String description,
 		JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -102,6 +121,23 @@ public class UserGroupService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject getUserGroup(String name) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("name", name);
+
+			_command.put("/usergroup/get-user-group", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getUserGroup(long userGroupId) throws Exception {
@@ -174,6 +210,26 @@ public class UserGroupService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject updateUserGroup(long userGroupId, String name,
+		String description) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("userGroupId", userGroupId);
+			_params.put("name", name);
+			_params.put("description", description);
+
+			_command.put("/usergroup/update-user-group", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updateUserGroup(long userGroupId, String name,

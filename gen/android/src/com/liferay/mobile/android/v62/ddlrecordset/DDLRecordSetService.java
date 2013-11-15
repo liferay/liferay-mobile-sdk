@@ -90,6 +90,103 @@ public class DDLRecordSetService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public JSONArray search(long companyId, long groupId, String keywords,
+		int scope, int start, int end, JSONObject orderByComparator)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("keywords", keywords);
+			_params.put("scope", scope);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("orderByComparator", orderByComparator);
+
+			_command.put("/ddlrecordset/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray search(long companyId, long groupId, String name,
+		String description, int scope, boolean andOperator, int start, int end,
+		JSONObject orderByComparator) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("name", name);
+			_params.put("description", description);
+			_params.put("scope", scope);
+			_params.put("andOperator", andOperator);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("orderByComparator", orderByComparator);
+
+			_command.put("/ddlrecordset/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public Integer searchCount(long companyId, long groupId, String keywords,
+		int scope) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("keywords", keywords);
+			_params.put("scope", scope);
+
+			_command.put("/ddlrecordset/search-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer searchCount(long companyId, long groupId, String name,
+		String description, int scope, boolean andOperator)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("name", name);
+			_params.put("description", description);
+			_params.put("scope", scope);
+			_params.put("andOperator", andOperator);
+
+			_command.put("/ddlrecordset/search-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
 	public JSONObject updateMinDisplayRows(long recordSetId,
 		int minDisplayRows, JSONObject serviceContext)
 		throws Exception {
@@ -103,6 +200,30 @@ public class DDLRecordSetService extends BaseService {
 			_params.put("serviceContext", serviceContext);
 
 			_command.put("/ddlrecordset/update-min-display-rows", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject updateRecordSet(long recordSetId, long ddmStructureId,
+		JSONObject nameMap, JSONObject descriptionMap, int minDisplayRows,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("recordSetId", recordSetId);
+			_params.put("ddmStructureId", ddmStructureId);
+			_params.put("nameMap", nameMap);
+			_params.put("descriptionMap", descriptionMap);
+			_params.put("minDisplayRows", minDisplayRows);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/ddlrecordset/update-record-set", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

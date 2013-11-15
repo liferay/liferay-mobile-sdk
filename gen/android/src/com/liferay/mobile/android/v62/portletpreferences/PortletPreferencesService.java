@@ -48,6 +48,54 @@ public class PortletPreferencesService extends BaseService {
 		session.invoke(_command);
 	}
 
+	public void restoreArchivedPreferences(long groupId, JSONObject layout,
+		String portletId, JSONObject portletItem, JSONObject preferences)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("layout", layout);
+			_params.put("portletId", portletId);
+			_params.put("portletItem", portletItem);
+			_params.put("preferences", preferences);
+
+			_command.put("/portletpreferences/restore-archived-preferences",
+				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void restoreArchivedPreferences(long groupId, JSONObject layout,
+		String portletId, long portletItemId, JSONObject preferences)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("layout", layout);
+			_params.put("portletId", portletId);
+			_params.put("portletItemId", portletItemId);
+			_params.put("preferences", preferences);
+
+			_command.put("/portletpreferences/restore-archived-preferences",
+				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public void restoreArchivedPreferences(long groupId, String name,
 		JSONObject layout, String portletId, JSONObject preferences)
 		throws Exception {

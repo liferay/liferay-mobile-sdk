@@ -70,6 +70,27 @@ public class BookmarksEntryService extends BaseService {
 		session.invoke(_command);
 	}
 
+	public JSONArray getEntries(long groupId, long folderId, int start, int end)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/bookmarksentry/get-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray getEntries(long groupId, long folderId, int start,
 		int end, JSONObject orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -90,6 +111,25 @@ public class BookmarksEntryService extends BaseService {
 		}
 
 		return (JSONArray)session.invoke(_command);
+	}
+
+	public Integer getEntriesCount(long groupId, long folderId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+
+			_command.put("/bookmarksentry/get-entries-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
 	}
 
 	public Integer getEntriesCount(long groupId, long folderId, int status)
@@ -148,6 +188,47 @@ public class BookmarksEntryService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
+	public JSONArray getGroupEntries(long groupId, int start, int end)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/bookmarksentry/get-group-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getGroupEntries(long groupId, long userId, int start,
+		int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/bookmarksentry/get-group-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray getGroupEntries(long groupId, long userId,
 		long rootFolderId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -168,6 +249,42 @@ public class BookmarksEntryService extends BaseService {
 		}
 
 		return (JSONArray)session.invoke(_command);
+	}
+
+	public Integer getGroupEntriesCount(long groupId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+
+			_command.put("/bookmarksentry/get-group-entries-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getGroupEntriesCount(long groupId, long userId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+
+			_command.put("/bookmarksentry/get-group-entries-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
 	}
 
 	public Integer getGroupEntriesCount(long groupId, long userId,
@@ -237,6 +354,23 @@ public class BookmarksEntryService extends BaseService {
 			_params.put("entryId", entryId);
 
 			_command.put("/bookmarksentry/move-entry-to-trash", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject openEntry(JSONObject entry) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("entry", entry);
+
+			_command.put("/bookmarksentry/open-entry", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

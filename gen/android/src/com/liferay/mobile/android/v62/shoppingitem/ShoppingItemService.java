@@ -149,6 +149,25 @@ public class ShoppingItemService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public JSONArray getItems(long groupId, long categoryId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("categoryId", categoryId);
+
+			_command.put("/shoppingitem/get-items", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray getItems(long groupId, long categoryId, int start,
 		int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();

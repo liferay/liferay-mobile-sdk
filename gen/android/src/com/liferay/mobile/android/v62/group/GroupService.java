@@ -29,6 +29,61 @@ public class GroupService extends BaseService {
 		super(session);
 	}
 
+	public JSONObject addGroup(long parentGroupId, long liveGroupId,
+		String name, String description, int type, boolean manualMembership,
+		int membershipRestriction, String friendlyURL, boolean site,
+		boolean active, JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("parentGroupId", parentGroupId);
+			_params.put("liveGroupId", liveGroupId);
+			_params.put("name", name);
+			_params.put("description", description);
+			_params.put("type", type);
+			_params.put("manualMembership", manualMembership);
+			_params.put("membershipRestriction", membershipRestriction);
+			_params.put("friendlyURL", friendlyURL);
+			_params.put("site", site);
+			_params.put("active", active);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/group/add-group", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addGroup(String name, String description, int type,
+		String friendlyURL, boolean site, boolean active,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("name", name);
+			_params.put("description", description);
+			_params.put("type", type);
+			_params.put("friendlyURL", friendlyURL);
+			_params.put("site", site);
+			_params.put("active", active);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/group/add-group", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject addGroup(long parentGroupId, String name,
 		String description, int type, String friendlyURL, boolean site,
 		boolean active, JSONObject serviceContext) throws Exception {
@@ -151,6 +206,23 @@ public class GroupService extends BaseService {
 			_params.put("companyId", companyId);
 
 			_command.put("/group/get-company-group", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject getGroup(long groupId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+
+			_command.put("/group/get-group", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -311,9 +383,27 @@ public class GroupService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getUserPlaces(long userId, JSONArray classNames,
-		String name, boolean active, boolean includeControlPanel, int start,
-		int end) throws Exception {
+	public JSONArray getUserPlaces(JSONArray classNames, int max)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("classNames", classNames);
+			_params.put("max", max);
+
+			_command.put("/group/get-user-places", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getUserPlaces(long userId, JSONArray classNames, int max)
+		throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -321,11 +411,28 @@ public class GroupService extends BaseService {
 
 			_params.put("userId", userId);
 			_params.put("classNames", classNames);
-			_params.put("name", name);
-			_params.put("active", active);
+			_params.put("max", max);
+
+			_command.put("/group/get-user-places", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getUserPlaces(long userId, JSONArray classNames,
+		boolean includeControlPanel, int max) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("userId", userId);
+			_params.put("classNames", classNames);
 			_params.put("includeControlPanel", includeControlPanel);
-			_params.put("start", start);
-			_params.put("end", end);
+			_params.put("max", max);
 
 			_command.put("/group/get-user-places", _params);
 		}
@@ -366,9 +473,42 @@ public class GroupService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
+	public JSONArray getUserSitesGroups() throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_command.put("/group/get-user-sites-groups", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getUserSitesGroups(JSONArray classNames, int max)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("classNames", classNames);
+			_params.put("max", max);
+
+			_command.put("/group/get-user-sites-groups", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray getUserSitesGroups(long userId, JSONArray classNames,
-		String name, boolean active, boolean includeControlPanel, int start,
-		int end) throws Exception {
+		int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -376,11 +516,28 @@ public class GroupService extends BaseService {
 
 			_params.put("userId", userId);
 			_params.put("classNames", classNames);
-			_params.put("name", name);
-			_params.put("active", active);
+			_params.put("max", max);
+
+			_command.put("/group/get-user-sites-groups", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getUserSitesGroups(long userId, JSONArray classNames,
+		boolean includeControlPanel, int max) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("userId", userId);
+			_params.put("classNames", classNames);
 			_params.put("includeControlPanel", includeControlPanel);
-			_params.put("start", start);
-			_params.put("end", end);
+			_params.put("max", max);
 
 			_command.put("/group/get-user-sites-groups", _params);
 		}
@@ -518,6 +675,35 @@ public class GroupService extends BaseService {
 			_params.put("friendlyURL", friendlyURL);
 
 			_command.put("/group/update-friendly-url", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject updateGroup(long groupId, long parentGroupId,
+		String name, String description, int type, boolean manualMembership,
+		int membershipRestriction, String friendlyURL, boolean active,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("parentGroupId", parentGroupId);
+			_params.put("name", name);
+			_params.put("description", description);
+			_params.put("type", type);
+			_params.put("manualMembership", manualMembership);
+			_params.put("membershipRestriction", membershipRestriction);
+			_params.put("friendlyURL", friendlyURL);
+			_params.put("active", active);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/group/update-group", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

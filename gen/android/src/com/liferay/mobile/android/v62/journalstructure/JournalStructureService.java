@@ -97,6 +97,25 @@ public class JournalStructureService extends BaseService {
 		session.invoke(_command);
 	}
 
+	public JSONObject getStructure(long groupId, String structureId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("structureId", structureId);
+
+			_command.put("/journalstructure/get-structure", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject getStructure(long groupId, String structureId,
 		boolean includeGlobalStructures) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -117,6 +136,23 @@ public class JournalStructureService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public JSONArray getStructures(long groupId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+
+			_command.put("/journalstructure/get-structures", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray getStructures(JSONArray groupIds)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -127,6 +163,30 @@ public class JournalStructureService extends BaseService {
 			_params.put("groupIds", groupIds);
 
 			_command.put("/journalstructure/get-structures", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray search(long companyId, JSONArray groupIds,
+		String keywords, int start, int end, JSONObject obc)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupIds", groupIds);
+			_params.put("keywords", keywords);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/journalstructure/search", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -161,6 +221,26 @@ public class JournalStructureService extends BaseService {
 		}
 
 		return (JSONArray)session.invoke(_command);
+	}
+
+	public Integer searchCount(long companyId, JSONArray groupIds,
+		String keywords) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupIds", groupIds);
+			_params.put("keywords", keywords);
+
+			_command.put("/journalstructure/search-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
 	}
 
 	public Integer searchCount(long companyId, JSONArray groupIds,

@@ -30,6 +30,28 @@ public class EmailAddressService extends BaseService {
 	}
 
 	public JSONObject addEmailAddress(String className, long classPK,
+		String address, int typeId, boolean primary) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("className", className);
+			_params.put("classPK", classPK);
+			_params.put("address", address);
+			_params.put("typeId", typeId);
+			_params.put("primary", primary);
+
+			_command.put("/emailaddress/add-email-address", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addEmailAddress(String className, long classPK,
 		String address, int typeId, boolean primary, JSONObject serviceContext)
 		throws Exception {
 		JSONObject _command = new JSONObject();

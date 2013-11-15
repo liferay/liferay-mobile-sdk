@@ -103,6 +103,21 @@ public class CountryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public JSONArray getCountries() throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_command.put("/country/get-countries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray getCountries(boolean active) throws Exception {
 		JSONObject _command = new JSONObject();
 

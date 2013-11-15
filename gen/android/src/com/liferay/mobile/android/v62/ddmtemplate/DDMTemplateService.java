@@ -30,6 +30,35 @@ public class DDMTemplateService extends BaseService {
 	}
 
 	public JSONObject addTemplate(long groupId, long classNameId, long classPK,
+		JSONObject nameMap, JSONObject descriptionMap, String type,
+		String mode, String language, String script, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
+			_params.put("classPK", classPK);
+			_params.put("nameMap", nameMap);
+			_params.put("descriptionMap", descriptionMap);
+			_params.put("type", type);
+			_params.put("mode", mode);
+			_params.put("language", language);
+			_params.put("script", script);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/ddmtemplate/add-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addTemplate(long groupId, long classNameId, long classPK,
 		String templateKey, JSONObject nameMap, JSONObject descriptionMap,
 		String type, String mode, String language, String script,
 		boolean cacheable, boolean smallImage, String smallImageURL,
@@ -57,6 +86,25 @@ public class DDMTemplateService extends BaseService {
 			_params.put("serviceContext", serviceContext);
 
 			_command.put("/ddmtemplate/add-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject copyTemplate(long templateId, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("templateId", templateId);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/ddmtemplate/copy-template", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -147,6 +195,43 @@ public class DDMTemplateService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public JSONObject getTemplate(long templateId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("templateId", templateId);
+
+			_command.put("/ddmtemplate/get-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject getTemplate(long groupId, long classNameId,
+		String templateKey) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
+			_params.put("templateKey", templateKey);
+
+			_command.put("/ddmtemplate/get-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject getTemplate(long groupId, long classNameId,
 		String templateKey, boolean includeGlobalTemplates)
 		throws Exception {
@@ -167,6 +252,66 @@ public class DDMTemplateService extends BaseService {
 		}
 
 		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONArray getTemplates(long groupId, long classNameId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
+
+			_command.put("/ddmtemplate/get-templates", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getTemplates(long groupId, long classNameId, long classPK)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
+			_params.put("classPK", classPK);
+
+			_command.put("/ddmtemplate/get-templates", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getTemplates(long groupId, long classNameId, long classPK,
+		String type) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
+			_params.put("classPK", classPK);
+			_params.put("type", type);
+
+			_command.put("/ddmtemplate/get-templates", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
 	}
 
 	public JSONArray getTemplates(long groupId, long classNameId, long classPK,
@@ -254,6 +399,95 @@ public class DDMTemplateService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
+	public JSONArray search(long companyId, long groupId, long classNameId,
+		long classPK, String keywords, String type, String mode, int start,
+		int end, JSONObject orderByComparator) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
+			_params.put("classPK", classPK);
+			_params.put("keywords", keywords);
+			_params.put("type", type);
+			_params.put("mode", mode);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("orderByComparator", orderByComparator);
+
+			_command.put("/ddmtemplate/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray search(long companyId, JSONArray groupIds,
+		JSONArray classNameIds, JSONArray classPKs, String keywords,
+		String type, String mode, int start, int end,
+		JSONObject orderByComparator) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupIds", groupIds);
+			_params.put("classNameIds", classNameIds);
+			_params.put("classPKs", classPKs);
+			_params.put("keywords", keywords);
+			_params.put("type", type);
+			_params.put("mode", mode);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("orderByComparator", orderByComparator);
+
+			_command.put("/ddmtemplate/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray search(long companyId, long groupId, long classNameId,
+		long classPK, String name, String description, String type,
+		String mode, String language, boolean andOperator, int start, int end,
+		JSONObject orderByComparator) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
+			_params.put("classPK", classPK);
+			_params.put("name", name);
+			_params.put("description", description);
+			_params.put("type", type);
+			_params.put("mode", mode);
+			_params.put("language", language);
+			_params.put("andOperator", andOperator);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("orderByComparator", orderByComparator);
+
+			_command.put("/ddmtemplate/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray search(long companyId, JSONArray groupIds,
 		JSONArray classNameIds, JSONArray classPKs, String name,
 		String description, String type, String mode, String language,
@@ -285,6 +519,89 @@ public class DDMTemplateService extends BaseService {
 		}
 
 		return (JSONArray)session.invoke(_command);
+	}
+
+	public Integer searchCount(long companyId, long groupId, long classNameId,
+		long classPK, String name, String description, String type,
+		String mode, String language, boolean andOperator)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
+			_params.put("classPK", classPK);
+			_params.put("name", name);
+			_params.put("description", description);
+			_params.put("type", type);
+			_params.put("mode", mode);
+			_params.put("language", language);
+			_params.put("andOperator", andOperator);
+
+			_command.put("/ddmtemplate/search-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer searchCount(long companyId, JSONArray groupIds,
+		JSONArray classNameIds, JSONArray classPKs, String name,
+		String description, String type, String mode, String language,
+		boolean andOperator) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupIds", groupIds);
+			_params.put("classNameIds", classNameIds);
+			_params.put("classPKs", classPKs);
+			_params.put("name", name);
+			_params.put("description", description);
+			_params.put("type", type);
+			_params.put("mode", mode);
+			_params.put("language", language);
+			_params.put("andOperator", andOperator);
+
+			_command.put("/ddmtemplate/search-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer searchCount(long companyId, long groupId, long classNameId,
+		long classPK, String keywords, String type, String mode)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
+			_params.put("classPK", classPK);
+			_params.put("keywords", keywords);
+			_params.put("type", type);
+			_params.put("mode", mode);
+
+			_command.put("/ddmtemplate/search-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
 	}
 
 	public Integer searchCount(long companyId, JSONArray groupIds,

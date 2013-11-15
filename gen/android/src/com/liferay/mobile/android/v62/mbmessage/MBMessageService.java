@@ -60,6 +60,88 @@ public class MBMessageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public JSONObject addMessage(long groupId, long categoryId, String subject,
+		String body, String format, JSONArray inputStreamOVPs,
+		boolean anonymous, double priority, boolean allowPingbacks,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("categoryId", categoryId);
+			_params.put("subject", subject);
+			_params.put("body", body);
+			_params.put("format", format);
+			_params.put("inputStreamOVPs", inputStreamOVPs);
+			_params.put("anonymous", anonymous);
+			_params.put("priority", priority);
+			_params.put("allowPingbacks", allowPingbacks);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/mbmessage/add-message", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addMessage(long groupId, long categoryId, long threadId,
+		long parentMessageId, String subject, String body, String format,
+		JSONArray inputStreamOVPs, boolean anonymous, double priority,
+		boolean allowPingbacks, JSONObject serviceContext)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("categoryId", categoryId);
+			_params.put("threadId", threadId);
+			_params.put("parentMessageId", parentMessageId);
+			_params.put("subject", subject);
+			_params.put("body", body);
+			_params.put("format", format);
+			_params.put("inputStreamOVPs", inputStreamOVPs);
+			_params.put("anonymous", anonymous);
+			_params.put("priority", priority);
+			_params.put("allowPingbacks", allowPingbacks);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/mbmessage/add-message", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addMessage(long categoryId, String subject, String body,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("categoryId", categoryId);
+			_params.put("subject", subject);
+			_params.put("body", body);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/mbmessage/add-message", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
 	public JSONObject addMessage(long parentMessageId, String subject,
 		String body, String format, JSONArray inputStreamOVPs,
 		boolean anonymous, double priority, boolean allowPingbacks,
@@ -263,6 +345,35 @@ public class MBMessageService extends BaseService {
 		}
 
 		return (Integer)session.invoke(_command);
+	}
+
+	public String getGroupMessagesRss(long groupId, long userId, int status,
+		int max, String type, double version, String displayStyle,
+		String feedURL, String entryURL, JSONObject themeDisplay)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("status", status);
+			_params.put("max", max);
+			_params.put("type", type);
+			_params.put("version", version);
+			_params.put("displayStyle", displayStyle);
+			_params.put("feedURL", feedURL);
+			_params.put("entryURL", entryURL);
+			_params.put("themeDisplay", themeDisplay);
+
+			_command.put("/mbmessage/get-group-messages-rss", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (String)session.invoke(_command);
 	}
 
 	public String getGroupMessagesRss(long groupId, int status, int max,

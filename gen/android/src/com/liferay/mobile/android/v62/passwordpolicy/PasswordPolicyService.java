@@ -33,6 +33,54 @@ public class PasswordPolicyService extends BaseService {
 		boolean changeable, boolean changeRequired, long minAge,
 		boolean checkSyntax, boolean allowDictionaryWords, int minAlphanumeric,
 		int minLength, int minLowerCase, int minNumbers, int minSymbols,
+		int minUpperCase, boolean history, int historyCount,
+		boolean expireable, long maxAge, long warningTime, int graceLimit,
+		boolean lockout, int maxFailure, long lockoutDuration,
+		long resetFailureCount, long resetTicketMaxAge)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("name", name);
+			_params.put("description", description);
+			_params.put("changeable", changeable);
+			_params.put("changeRequired", changeRequired);
+			_params.put("minAge", minAge);
+			_params.put("checkSyntax", checkSyntax);
+			_params.put("allowDictionaryWords", allowDictionaryWords);
+			_params.put("minAlphanumeric", minAlphanumeric);
+			_params.put("minLength", minLength);
+			_params.put("minLowerCase", minLowerCase);
+			_params.put("minNumbers", minNumbers);
+			_params.put("minSymbols", minSymbols);
+			_params.put("minUpperCase", minUpperCase);
+			_params.put("history", history);
+			_params.put("historyCount", historyCount);
+			_params.put("expireable", expireable);
+			_params.put("maxAge", maxAge);
+			_params.put("warningTime", warningTime);
+			_params.put("graceLimit", graceLimit);
+			_params.put("lockout", lockout);
+			_params.put("maxFailure", maxFailure);
+			_params.put("lockoutDuration", lockoutDuration);
+			_params.put("resetFailureCount", resetFailureCount);
+			_params.put("resetTicketMaxAge", resetTicketMaxAge);
+
+			_command.put("/passwordpolicy/add-password-policy", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addPasswordPolicy(String name, String description,
+		boolean changeable, boolean changeRequired, long minAge,
+		boolean checkSyntax, boolean allowDictionaryWords, int minAlphanumeric,
+		int minLength, int minLowerCase, int minNumbers, int minSymbols,
 		int minUpperCase, String regex, boolean history, int historyCount,
 		boolean expireable, long maxAge, long warningTime, int graceLimit,
 		boolean lockout, int maxFailure, long lockoutDuration,
@@ -95,6 +143,55 @@ public class PasswordPolicyService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject updatePasswordPolicy(long passwordPolicyId, String name,
+		String description, boolean changeable, boolean changeRequired,
+		long minAge, boolean checkSyntax, boolean allowDictionaryWords,
+		int minAlphanumeric, int minLength, int minLowerCase, int minNumbers,
+		int minSymbols, int minUpperCase, boolean history, int historyCount,
+		boolean expireable, long maxAge, long warningTime, int graceLimit,
+		boolean lockout, int maxFailure, long lockoutDuration,
+		long resetFailureCount, long resetTicketMaxAge)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("passwordPolicyId", passwordPolicyId);
+			_params.put("name", name);
+			_params.put("description", description);
+			_params.put("changeable", changeable);
+			_params.put("changeRequired", changeRequired);
+			_params.put("minAge", minAge);
+			_params.put("checkSyntax", checkSyntax);
+			_params.put("allowDictionaryWords", allowDictionaryWords);
+			_params.put("minAlphanumeric", minAlphanumeric);
+			_params.put("minLength", minLength);
+			_params.put("minLowerCase", minLowerCase);
+			_params.put("minNumbers", minNumbers);
+			_params.put("minSymbols", minSymbols);
+			_params.put("minUpperCase", minUpperCase);
+			_params.put("history", history);
+			_params.put("historyCount", historyCount);
+			_params.put("expireable", expireable);
+			_params.put("maxAge", maxAge);
+			_params.put("warningTime", warningTime);
+			_params.put("graceLimit", graceLimit);
+			_params.put("lockout", lockout);
+			_params.put("maxFailure", maxFailure);
+			_params.put("lockoutDuration", lockoutDuration);
+			_params.put("resetFailureCount", resetFailureCount);
+			_params.put("resetTicketMaxAge", resetTicketMaxAge);
+
+			_command.put("/passwordpolicy/update-password-policy", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject updatePasswordPolicy(long passwordPolicyId, String name,

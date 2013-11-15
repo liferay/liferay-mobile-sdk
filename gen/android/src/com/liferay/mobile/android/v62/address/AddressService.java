@@ -32,6 +32,37 @@ public class AddressService extends BaseService {
 	public JSONObject addAddress(String className, long classPK,
 		String street1, String street2, String street3, String city,
 		String zip, long regionId, long countryId, int typeId, boolean mailing,
+		boolean primary) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("className", className);
+			_params.put("classPK", classPK);
+			_params.put("street1", street1);
+			_params.put("street2", street2);
+			_params.put("street3", street3);
+			_params.put("city", city);
+			_params.put("zip", zip);
+			_params.put("regionId", regionId);
+			_params.put("countryId", countryId);
+			_params.put("typeId", typeId);
+			_params.put("mailing", mailing);
+			_params.put("primary", primary);
+
+			_command.put("/address/add-address", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject addAddress(String className, long classPK,
+		String street1, String street2, String street3, String city,
+		String zip, long regionId, long countryId, int typeId, boolean mailing,
 		boolean primary, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 

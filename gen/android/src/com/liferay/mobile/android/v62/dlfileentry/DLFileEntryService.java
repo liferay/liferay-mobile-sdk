@@ -47,6 +47,45 @@ public class DLFileEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public void checkInFileEntry(long fileEntryId, String lockUuid)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+			_params.put("lockUuid", lockUuid);
+
+			_command.put("/dlfileentry/check-in-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void checkInFileEntry(long fileEntryId, String lockUuid,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+			_params.put("lockUuid", lockUuid);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/dlfileentry/check-in-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public void checkInFileEntry(long fileEntryId, boolean major,
 		String changeLog, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -66,6 +105,63 @@ public class DLFileEntryService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject checkOutFileEntry(long fileEntryId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+
+			_command.put("/dlfileentry/check-out-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject checkOutFileEntry(long fileEntryId,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/dlfileentry/check-out-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject checkOutFileEntry(long fileEntryId, String owner,
+		long expirationTime) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+			_params.put("owner", owner);
+			_params.put("expirationTime", expirationTime);
+
+			_command.put("/dlfileentry/check-out-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject checkOutFileEntry(long fileEntryId, String owner,
@@ -111,6 +207,23 @@ public class DLFileEntryService extends BaseService {
 		}
 
 		return (JSONObject)session.invoke(_command);
+	}
+
+	public void deleteFileEntry(long fileEntryId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+
+			_command.put("/dlfileentry/delete-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 	public void deleteFileEntry(long groupId, long folderId, String title)
@@ -170,6 +283,76 @@ public class DLFileEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
+	public JSONArray getFileEntries(long groupId, long folderId, int start,
+		int end, JSONObject obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/dlfileentry/get-file-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getFileEntries(long groupId, long folderId,
+		long fileEntryTypeId, int start, int end, JSONObject obc)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+			_params.put("fileEntryTypeId", fileEntryTypeId);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/dlfileentry/get-file-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getFileEntries(long groupId, long folderId,
+		JSONArray mimeTypes, int start, int end, JSONObject obc)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+			_params.put("mimeTypes", mimeTypes);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/dlfileentry/get-file-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray getFileEntries(long groupId, long folderId, int status,
 		int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -193,6 +376,65 @@ public class DLFileEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
+	public Integer getFileEntriesCount(long groupId, long folderId)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+
+			_command.put("/dlfileentry/get-file-entries-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getFileEntriesCount(long groupId, long folderId,
+		long fileEntryTypeId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+			_params.put("fileEntryTypeId", fileEntryTypeId);
+
+			_command.put("/dlfileentry/get-file-entries-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
+	public Integer getFileEntriesCount(long groupId, long folderId,
+		JSONArray mimeTypes) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+			_params.put("mimeTypes", mimeTypes);
+
+			_command.put("/dlfileentry/get-file-entries-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
 	public Integer getFileEntriesCount(long groupId, long folderId, int status)
 		throws Exception {
 		JSONObject _command = new JSONObject();
@@ -211,6 +453,23 @@ public class DLFileEntryService extends BaseService {
 		}
 
 		return (Integer)session.invoke(_command);
+	}
+
+	public JSONObject getFileEntry(long fileEntryId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+
+			_command.put("/dlfileentry/get-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject getFileEntry(long groupId, long folderId, String title)
@@ -292,6 +551,30 @@ public class DLFileEntryService extends BaseService {
 	}
 
 	public JSONArray getGroupFileEntries(long groupId, long userId,
+		long rootFolderId, int start, int end, JSONObject obc)
+		throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("rootFolderId", rootFolderId);
+			_params.put("start", start);
+			_params.put("end", end);
+			_params.put("obc", obc);
+
+			_command.put("/dlfileentry/get-group-file-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray getGroupFileEntries(long groupId, long userId,
 		long rootFolderId, JSONArray mimeTypes, int status, int start, int end,
 		JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
@@ -315,6 +598,26 @@ public class DLFileEntryService extends BaseService {
 		}
 
 		return (JSONArray)session.invoke(_command);
+	}
+
+	public Integer getGroupFileEntriesCount(long groupId, long userId,
+		long rootFolderId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("rootFolderId", rootFolderId);
+
+			_command.put("/dlfileentry/get-group-file-entries-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
 	}
 
 	public Integer getGroupFileEntriesCount(long groupId, long userId,
@@ -433,6 +736,28 @@ public class DLFileEntryService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject search(long groupId, long creatorUserId, int status,
+		int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("creatorUserId", creatorUserId);
+			_params.put("status", status);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/dlfileentry/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
 	}
 
 	public JSONObject search(long groupId, long creatorUserId, long folderId,

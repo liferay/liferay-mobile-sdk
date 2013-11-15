@@ -63,6 +63,24 @@ public class ListTypeService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
+	public void validate(int listTypeId, String type) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("listTypeId", listTypeId);
+			_params.put("type", type);
+
+			_command.put("/listtype/validate", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public void validate(int listTypeId, long classNameId, String type)
 		throws Exception {
 		JSONObject _command = new JSONObject();

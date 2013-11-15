@@ -68,6 +68,23 @@ public class ShoppingCategoryService extends BaseService {
 		session.invoke(_command);
 	}
 
+	public JSONArray getCategories(long groupId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+
+			_command.put("/shoppingcategory/get-categories", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public JSONArray getCategories(long groupId, long parentCategoryId,
 		int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();

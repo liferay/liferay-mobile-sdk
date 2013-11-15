@@ -109,6 +109,27 @@ public class SocialActivitySettingService extends BaseService {
 	}
 
 	public void updateActivitySetting(long groupId, String className,
+		boolean enabled) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("className", className);
+			_params.put("enabled", enabled);
+
+			_command.put("/socialactivitysetting/update-activity-setting",
+				_params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void updateActivitySetting(long groupId, String className,
 		int activityType, JSONObject activityCounterDefinition)
 		throws Exception {
 		JSONObject _command = new JSONObject();
