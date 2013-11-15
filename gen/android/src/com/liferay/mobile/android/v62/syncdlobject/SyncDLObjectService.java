@@ -11,6 +11,7 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
+
 package com.liferay.mobile.android.v62.syncdlobject;
 
 import com.liferay.mobile.android.service.BaseService;
@@ -111,6 +112,25 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("serviceContext", serviceContext);
 
 			_command.put("/sync-web/syncdlobject/check-in-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject checkOutFileEntry(long fileEntryId,
+		JSONObject serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+			_params.put("serviceContext", serviceContext);
+
+			_command.put("/sync-web/syncdlobject/check-out-file-entry", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
