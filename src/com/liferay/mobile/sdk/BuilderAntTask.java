@@ -18,7 +18,6 @@ import com.liferay.mobile.sdk.android.AndroidBuilder;
 import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.http.DiscoveryResponseHandler;
 import com.liferay.mobile.sdk.http.HttpUtil;
-import com.liferay.mobile.sdk.http.PortalVersion;
 import com.liferay.mobile.sdk.ios.iOSBuilder;
 import com.liferay.mobile.sdk.util.Validator;
 
@@ -83,13 +82,13 @@ public class BuilderAntTask {
 
 			Discovery discovery = client.execute(get, handler);
 
-			PortalVersion version = HttpUtil.getPortalVersion(url);
+			int version = HttpUtil.getPortalVersion(url);
 
 			if (Validator.isNull(filter)) {
-				builder.buildAll(version, discovery);
+				builder.buildAll(discovery, version);
 			}
 			else {
-				builder.build(filter, version, discovery);
+				builder.build(discovery, version, filter);
 			}
 		}
 		catch (Exception e) {

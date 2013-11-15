@@ -32,8 +32,10 @@ import org.apache.http.util.EntityUtils;
  */
 public class HttpUtil {
 
-	public static PortalVersion getPortalVersion(String url) {
-		PortalVersion version = null;
+	public static final int UNKNOWN_VERSION = -1;
+
+	public static int getPortalVersion(String url) {
+		Integer version = null;
 
 		try {
 			version = _versions.get(url);
@@ -49,9 +51,7 @@ public class HttpUtil {
 			Header portalHeader = response.getFirstHeader("Liferay-Portal");
 
 			if (portalHeader == null) {
-				version = PortalVersion.UNKNOWN;
-
-				return version;
+				return UNKNOWN_VERSION;
 			}
 
 			String portalField = portalHeader.getValue();
@@ -59,7 +59,7 @@ public class HttpUtil {
 			int indexOfBuild = portalField.indexOf("Build");
 
 			if (indexOfBuild == -1) {
-				version = PortalVersion.UNKNOWN;
+				version = UNKNOWN_VERSION;
 			}
 			else {
 				String buildNumber = portalField.substring(
@@ -67,11 +67,11 @@ public class HttpUtil {
 
 				buildNumber = buildNumber.replaceAll("0*$", "");
 
-				version = PortalVersion.getValue(Integer.valueOf(buildNumber));
+				version = Integer.valueOf(buildNumber);
 			}
 		}
 		catch (Exception e) {
-			version = PortalVersion.UNKNOWN;
+			version = UNKNOWN_VERSION;
 		}
 		finally {
 			_versions.put(url, version);
@@ -92,7 +92,7 @@ public class HttpUtil {
 		return EntityUtils.toString(entity);
 	}
 
-	private static final Map<String, PortalVersion> _versions =
-		new HashMap<String, PortalVersion>();
+	private static final Map<String, Integer> _versions =
+		new HashMap<String, Integer>();
 
 }

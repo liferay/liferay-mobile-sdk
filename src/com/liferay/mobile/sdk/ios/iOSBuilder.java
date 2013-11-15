@@ -16,7 +16,7 @@ package com.liferay.mobile.sdk.ios;
 
 import com.liferay.mobile.sdk.BaseBuilder;
 import com.liferay.mobile.sdk.http.Discovery;
-import com.liferay.mobile.sdk.http.PortalVersion;
+import com.liferay.mobile.sdk.http.HttpUtil;
 import com.liferay.mobile.sdk.velocity.VelocityUtil;
 
 import java.io.File;
@@ -29,11 +29,11 @@ import org.apache.velocity.tools.generic.EscapeTool;
  */
 public class iOSBuilder extends BaseBuilder {
 
-	public void build(String filter, PortalVersion version, Discovery discovery)
+	public void build(Discovery discovery, int version, String filter)
 		throws Exception {
 
 		VelocityContext context = getVelocityContext(
-			filter, version, discovery);
+			discovery, version, filter);
 
 		String headerTemplate = "com/liferay/mobile/sdk/ios/h.vm";
 		String headerPath = getFilePath(context, version, true);
@@ -47,7 +47,7 @@ public class iOSBuilder extends BaseBuilder {
 	}
 
 	protected String getFilePath(
-		VelocityContext context, PortalVersion version, boolean header) {
+		VelocityContext context, int version, boolean header) {
 
 		String className = (String)context.get(CLASS_NAME);
 
@@ -55,9 +55,9 @@ public class iOSBuilder extends BaseBuilder {
 
 		sb.append("gen/ios/");
 
-		if (version != PortalVersion.UNKNOWN) {
+		if (version != HttpUtil.UNKNOWN_VERSION) {
 			sb.append("v");
-			sb.append(version.getValue());
+			sb.append(version);
 			sb.append("/");
 		}
 
@@ -84,7 +84,7 @@ public class iOSBuilder extends BaseBuilder {
 	}
 
 	protected VelocityContext getVelocityContext(
-		String filter, PortalVersion version, Discovery discovery) {
+		Discovery discovery, int version, String filter) {
 
 		VelocityContext context = new VelocityContext();
 
@@ -94,7 +94,7 @@ public class iOSBuilder extends BaseBuilder {
 			objectiveCUtil.getServiceClassName(filter));
 
 		className.append("_v");
-		className.append(version.getValue());
+		className.append(version);
 
 		context.put(CLASS_NAME, className.toString());
 		context.put(DISCOVERY, discovery);

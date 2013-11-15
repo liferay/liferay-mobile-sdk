@@ -16,7 +16,7 @@ package com.liferay.mobile.sdk.android;
 
 import com.liferay.mobile.sdk.BaseBuilder;
 import com.liferay.mobile.sdk.http.Discovery;
-import com.liferay.mobile.sdk.http.PortalVersion;
+import com.liferay.mobile.sdk.http.HttpUtil;
 import com.liferay.mobile.sdk.velocity.VelocityUtil;
 
 import java.io.File;
@@ -29,11 +29,11 @@ import org.apache.velocity.tools.generic.EscapeTool;
  */
 public class AndroidBuilder extends BaseBuilder {
 
-	public void build(String filter, PortalVersion version, Discovery discovery)
+	public void build(Discovery discovery, int version, String filter)
 		throws Exception {
 
 		VelocityContext context = getVelocityContext(
-			filter, version, discovery);
+			discovery, version, filter);
 
 		String templatePath = "com/liferay/mobile/sdk/android/service.vm";
 		String filePath = getServiceFilePath(context);
@@ -63,7 +63,7 @@ public class AndroidBuilder extends BaseBuilder {
 	}
 
 	protected VelocityContext getVelocityContext(
-		String filter, PortalVersion version, Discovery discovery) {
+		Discovery discovery, int version, String filter) {
 
 		VelocityContext context = new VelocityContext();
 
@@ -71,9 +71,9 @@ public class AndroidBuilder extends BaseBuilder {
 
 		StringBuilder sb = new StringBuilder("com.liferay.mobile.android");
 
-		if (version != PortalVersion.UNKNOWN) {
+		if (version != HttpUtil.UNKNOWN_VERSION) {
 			sb.append(".v");
-			sb.append(version.getValue());
+			sb.append(version);
 		}
 
 		sb.append(".");

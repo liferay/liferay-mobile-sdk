@@ -17,28 +17,10 @@ package com.liferay.mobile.android.http;
 /**
  * @author Bruno Farache
  */
-public enum PortalVersion {
+public class PortalVersion {
 
-	UNKNOWN(-1), V_6_2(62);
+	public static final int UNKNOWN = -1;
 
-	public static PortalVersion getValue(int version) {
-		for (PortalVersion value : PortalVersion.values()) {
-			if (value.getValue() == version) {
-				return value;
-			}
-		}
-
-		return UNKNOWN;
-	}
-
-	public int getValue() {
-		return _version;
-	}
-
-	private PortalVersion(int version) {
-		_version = version;
-	}
-
-	private int _version;
+	public static final int V_6_2 = 6200;
 
 }

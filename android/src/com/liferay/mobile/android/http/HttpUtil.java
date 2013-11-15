@@ -56,12 +56,12 @@ public class HttpUtil {
 		return client;
 	}
 
-	public static PortalVersion getPortalVersion(Session session) {
+	public static int getPortalVersion(Session session) {
 		return getPortalVersion(session.getServer());
 	}
 
-	public static PortalVersion getPortalVersion(String url) {
-		PortalVersion version = null;
+	public static int getPortalVersion(String url) {
+		Integer version = null;
 
 		try {
 			version = _versions.get(url);
@@ -77,9 +77,7 @@ public class HttpUtil {
 			Header portalHeader = response.getFirstHeader("Liferay-Portal");
 
 			if (portalHeader == null) {
-				version = PortalVersion.UNKNOWN;
-
-				return version;
+				return PortalVersion.UNKNOWN;
 			}
 
 			String portalField = portalHeader.getValue();
@@ -93,9 +91,7 @@ public class HttpUtil {
 				String buildNumber = portalField.substring(
 					indexOfBuild + 6, indexOfBuild + 10);
 
-				buildNumber = buildNumber.replaceAll("0*$", "");
-
-				version = PortalVersion.getValue(Integer.valueOf(buildNumber));
+				version = Integer.valueOf(buildNumber);
 			}
 		}
 		catch (Exception e) {
@@ -215,7 +211,7 @@ public class HttpUtil {
 
 	private static final String _CLASS_NAME = HttpUtil.class.getSimpleName();
 
-	private static final Map<String, PortalVersion> _versions =
-		new HashMap<String, PortalVersion>();
+	private static final Map<String, Integer> _versions =
+		new HashMap<String, Integer>();
 
 }

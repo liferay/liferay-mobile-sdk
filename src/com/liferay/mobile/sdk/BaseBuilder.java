@@ -16,7 +16,6 @@ package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.http.Action;
 import com.liferay.mobile.sdk.http.Discovery;
-import com.liferay.mobile.sdk.http.PortalVersion;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,7 +26,7 @@ import java.util.Map.Entry;
  */
 public abstract class BaseBuilder implements Builder {
 
-	public void buildAll(PortalVersion version, Discovery discovery)
+	public void buildAll(Discovery discovery, int version)
 		throws Exception {
 
 		HashMap<String, ArrayList<Action>> actionsMap =
@@ -53,7 +52,7 @@ public abstract class BaseBuilder implements Builder {
 		for (Entry<String, ArrayList<Action>> entry : actionsMap.entrySet()) {
 			discovery.setActions(entry.getValue());
 
-			build(entry.getKey(), version, discovery);
+			build(discovery, version, entry.getKey());
 		}
 	}
 

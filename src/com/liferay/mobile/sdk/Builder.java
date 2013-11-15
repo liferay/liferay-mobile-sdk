@@ -15,17 +15,15 @@
 package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.http.Discovery;
-import com.liferay.mobile.sdk.http.PortalVersion;
 
 /**
  * @author Bruno Farache
  */
 public interface Builder {
 
-	public void build(String filter, PortalVersion version, Discovery discovery)
+	public void build(Discovery discovery, int version, String filter)
 		throws Exception;
 
-	public void buildAll(PortalVersion version, Discovery discovery)
-		throws Exception;
+	public void buildAll(Discovery discovery, int version) throws Exception;
 
 }
