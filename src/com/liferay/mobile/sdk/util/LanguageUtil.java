@@ -24,6 +24,10 @@ import org.apache.commons.lang.WordUtils;
  */
 public class LanguageUtil {
 
+	public String capitalize(String word) {
+		return WordUtils.capitalize(word);
+	}
+
 	public String getMethodName(String path) {
 		String last = getMethodURL(path);
 
@@ -35,7 +39,7 @@ public class LanguageUtil {
 			String word = methodName[i];
 
 			if (i > 0) {
-				word = WordUtils.capitalize(word);
+				word = capitalize(word);
 			}
 
 			sb.append(word);

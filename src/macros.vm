@@ -4,22 +4,22 @@
 	#set ($parameters = $action.parameters)
 	#set ($parameterList = "")
 
+	#if ($parameters.size() == 0)
+		#set ($suffix = ":(NSError **)error$suffix")
+	#else
+		#set ($suffix = " error:(NSError **)error$suffix")
+	#end
+
 	#foreach ($parameter in $parameters)
 		#set ($parameterName = $parameter.name)
 		#set ($parameterType = $languageUtil.getType($parameter.type))
-		#set ($prefix = "")
+		#set ($prefix = " $parameterName:")
 
-		#if ($velocityCount > 1)
-			#set ($prefix = "$parameterName:")
-		#else
-			#set ($parameterList = ":")
+		#if ($velocityCount == 1)
+			#set ($prefix = "With$languageUtil.capitalize($parameterName):")
 		#end
 
 		#set ($parameterList = "$parameterList$prefix($parameterType)$parameterName")
-
-		#if ($foreach.hasNext)
-			#set ($parameterList = "$parameterList ")
-		#end
 	#end
 
 	- ($returnType)$methodName$parameterList$suffix

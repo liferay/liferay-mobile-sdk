@@ -20,8 +20,8 @@
  */
 @implementation Session
 
-- (id)invoke:(NSDictionary *)command {
-	NSArray *json = [HttpUtil post:self command:command];
+- (id)invoke:(NSDictionary *)command error:(NSError **)error {
+	NSArray *json = [HttpUtil post:self command:command error:error];
 
 	return [json objectAtIndex:0];
 }

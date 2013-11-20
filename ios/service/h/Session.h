@@ -26,6 +26,6 @@
 @property (nonatomic, strong) NSString *server;
 @property (nonatomic, strong) NSString *username;
 
-- (id)invoke:(NSDictionary *)command;
+- (id)invoke:(NSDictionary *)command error:(NSError **)error;
 
 @end

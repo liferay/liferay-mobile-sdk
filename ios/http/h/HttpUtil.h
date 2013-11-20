@@ -18,11 +18,20 @@
 /**
  * author Bruno Farache
  */
+
+#define ERROR_DOMAIN @"com.liferay.mobile.sync.ErrorDomain"
+#define SERVER_EXCEPTION 1
+#define STATUS_OK 200
+#define STATUS_UNAUTHORIZED 401
+
 @interface HttpUtil : NSObject
 
 typedef void (^Handler)(NSURLResponse *response, NSData *data, NSError *error);
 
-+ (NSArray *)post:(Session *)session command:(NSDictionary *)command;
-+ (NSArray *)post:(Session *)session commands:(NSArray *)commands;
++ (NSArray *)post:(Session *)session command:(NSDictionary *)command
+	error:(NSError **)error;
+
++ (NSArray *)post:(Session *)session commands:(NSArray *)commands
+	error:(NSError **)error;
 
 @end

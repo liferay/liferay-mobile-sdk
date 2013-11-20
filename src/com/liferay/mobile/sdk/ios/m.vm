@@ -58,9 +58,9 @@ ${esc.h}import "${className}.h"
 	##n
 
 	#if ($returnType == "void")
-		##t	[self.session invoke:_command];
+		##t	[self.session invoke:_command error:error];
 	#else
-		##t	return ($returnType)[self.session invoke:_command];
+		##t	return ($returnType)[self.session invoke:_command error:error];
 	#end
 
 	}

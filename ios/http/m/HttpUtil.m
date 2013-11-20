@@ -20,7 +20,7 @@
 @implementation HttpUtil
 
 + (NSMutableURLRequest *)getRequest:(Session *)session
-		commands:(NSArray *)commands {
+		commands:(NSArray *)commands error:(NSError **)error {
 
 	NSURL *URL = [self getURL:session];
 
@@ -33,9 +33,8 @@
 	NSData *auth = [credentials dataUsingEncoding:NSUTF8StringEncoding];
 	NSString *encoded = [auth base64EncodedStringWithOptions:0];
 	NSString *authHeader = [NSString stringWithFormat:@"Basic %@", encoded];
-	NSError *error;
 	NSData *body = [NSJSONSerialization dataWithJSONObject:commands options:0
-		error:&error];
+		error:error];
 
 	[request setHTTPMethod:@"POST"];
 	[request setTimeoutInterval:session.connectionTimeout];
@@ -55,17 +54,23 @@
 	return [NSURL URLWithString:URL];
 }
 
-+ (NSArray *)post:(Session *)session command:(NSDictionary *)command {
++ (NSArray *)post:(Session *)session command:(NSDictionary *)command
+		error:(NSError **)error {
+
 	NSArray *commands = [NSArray arrayWithObject:command];
 
-	return [self post:session commands:commands];
+	return [self post:session commands:commands error:error];
 }
 
-+ (NSArray *)post:(Session *)session commands:(NSArray *)commands {
-	NSURLRequest *request = [self getRequest:session commands:commands];
++ (NSArray *)post:(Session *)session commands:(NSArray *)commands
+		error:(NSError **)error {
 
-	NSURLResponse *response;
-	__block NSError *error;
+	NSURLRequest *request = [self getRequest:session commands:commands error:error];
+
+	if (*error) {
+		return nil;
+	}
+
 	id<Callback> callback = session.callback;
 
 	if (callback) {
@@ -76,8 +81,17 @@
 				[callback onFailure:e];
 			}
 			else {
-				NSArray *json = [NSJSONSerialization JSONObjectWithData:d
-					options:0 error:&error];
+				NSError *serverError;
+
+				NSArray *json =
+					[self handleServerException:d
+						response:(NSHTTPURLResponse *)r error:&serverError];
+
+				if (serverError) {
+					[callback onFailure:serverError];
+
+					return;
+				}
 
 				[callback onSuccess:[json objectAtIndex:0]];
 			}
@@ -89,14 +103,69 @@
 		return nil;
 	}
 	else {
+		NSHTTPURLResponse *response;
+
 		NSData *data = [NSURLConnection sendSynchronousRequest:request
-			returningResponse:&response error:&error];
+			returningResponse:&response error:error];
 
-		NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:0
-			error:&error];
+		if (*error) {
+			return nil;
+		}
 
-		return json;
+		return [self handleServerException:data response:response error:error];
 	}
+}
+
++ (NSArray *)handleServerException:(NSData *)data
+		response:(NSHTTPURLResponse *)response error:(NSError **) error {
+
+	int statusCode = [response statusCode];
+
+	if (statusCode == STATUS_UNAUTHORIZED) {
+		NSDictionary *userInfo = @{
+		   NSLocalizedDescriptionKey: @"wrong-credentials"
+		};
+
+		*error = [NSError errorWithDomain:ERROR_DOMAIN code:STATUS_UNAUTHORIZED
+			userInfo:userInfo];
+
+		return nil;
+	}
+
+	if (statusCode != STATUS_OK) {
+		NSDictionary *userInfo = @{
+			NSLocalizedDescriptionKey: @"http-error"
+		};
+
+		*error = [NSError errorWithDomain:ERROR_DOMAIN code:statusCode
+			userInfo:userInfo];
+
+		return nil;
+	}
+
+	id jsonObj = [NSJSONSerialization JSONObjectWithData:data options:0
+		error:error];
+
+	if (*error) {
+		return nil;
+	}
+
+	if ([jsonObj isKindOfClass:[NSDictionary class]]) {
+		NSString *message = [jsonObj objectForKey:@"exception"];
+
+		if (message) {
+			NSDictionary *userInfo = @{
+				NSLocalizedDescriptionKey: message
+			};
+
+			*error = [NSError errorWithDomain:ERROR_DOMAIN code:-1
+				userInfo:userInfo];
+
+			return nil;
+		}
+	}
+
+	return jsonObj;
 }
 
 @end
