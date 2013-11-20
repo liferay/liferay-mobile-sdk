@@ -19,38 +19,19 @@
  */
 @implementation ShoppingItemService_v62
 
-- (int)getCategoriesItemsCount:(long)groupId categoryIds:(NSArray *)categoryIds {
+- (void)addBookItemsWithGroupId:(long)groupId categoryId:(long)categoryId isbns:(NSArray *)isbns error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
-		@"categoryIds": categoryIds
+		@"categoryId": @(categoryId),
+		@"isbns": isbns
 	};
 
-	NSDictionary *_command = @{@"/shoppingitem/get-categories-items-count": _params};
+	NSDictionary *_command = @{@"/shoppingitem/add-book-items": _params};
 
-	return (int)[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getItem:(long)itemId {
-	NSDictionary *_params = @{
-		@"itemId": @(itemId)
-	};
-
-	NSDictionary *_command = @{@"/shoppingitem/get-item": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (void)deleteItem:(long)itemId {
-	NSDictionary *_params = @{
-		@"itemId": @(itemId)
-	};
-
-	NSDictionary *_command = @{@"/shoppingitem/delete-item": _params};
-
-	[self.session invoke:_command];
-}
-
-- (NSDictionary *)addItem:(long)groupId categoryId:(long)categoryId sku:(NSString *)sku name:(NSString *)name description:(NSString *)description properties:(NSString *)properties fieldsQuantities:(NSString *)fieldsQuantities requiresShipping:(BOOL)requiresShipping stockQuantity:(int)stockQuantity featured:(BOOL)featured sale:(NSDictionary *)sale smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(NSDictionary *)smallFile mediumImage:(BOOL)mediumImage mediumImageURL:(NSString *)mediumImageURL mediumFile:(NSDictionary *)mediumFile largeImage:(BOOL)largeImage largeImageURL:(NSString *)largeImageURL largeFile:(NSDictionary *)largeFile itemFields:(NSArray *)itemFields itemPrices:(NSArray *)itemPrices serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addItemWithGroupId:(long)groupId categoryId:(long)categoryId sku:(NSString *)sku name:(NSString *)name description:(NSString *)description properties:(NSString *)properties fieldsQuantities:(NSString *)fieldsQuantities requiresShipping:(BOOL)requiresShipping stockQuantity:(int)stockQuantity featured:(BOOL)featured sale:(NSDictionary *)sale smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(NSDictionary *)smallFile mediumImage:(BOOL)mediumImage mediumImageURL:(NSString *)mediumImageURL mediumFile:(NSDictionary *)mediumFile largeImage:(BOOL)largeImage largeImageURL:(NSString *)largeImageURL largeFile:(NSDictionary *)largeFile itemFields:(NSArray *)itemFields itemPrices:(NSArray *)itemPrices serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
@@ -79,10 +60,66 @@
 
 	NSDictionary *_command = @{@"/shoppingitem/add-item": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (int)getItemsCount:(long)groupId categoryId:(long)categoryId {
+- (void)deleteItemWithItemId:(long)itemId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"itemId": @(itemId)
+	};
+
+	NSDictionary *_command = @{@"/shoppingitem/delete-item": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (int)getCategoriesItemsCountWithGroupId:(long)groupId categoryIds:(NSArray *)categoryIds error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"categoryIds": categoryIds
+	};
+
+	NSDictionary *_command = @{@"/shoppingitem/get-categories-items-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getItemWithItemId:(long)itemId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"itemId": @(itemId)
+	};
+
+	NSDictionary *_command = @{@"/shoppingitem/get-item": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getItemsWithGroupId:(long)groupId categoryId:(long)categoryId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"categoryId": @(categoryId)
+	};
+
+	NSDictionary *_command = @{@"/shoppingitem/get-items": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getItemsWithGroupId:(long)groupId categoryId:(long)categoryId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"categoryId": @(categoryId),
+		@"start": @(start),
+		@"end": @(end),
+		@"obc": obc
+	};
+
+	NSDictionary *_command = @{@"/shoppingitem/get-items": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (int)getItemsCountWithGroupId:(long)groupId categoryId:(long)categoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId)
@@ -90,10 +127,21 @@
 
 	NSDictionary *_command = @{@"/shoppingitem/get-items-count": _params};
 
-	return (int)[self.session invoke:_command];
+	return (int)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateItem:(long)itemId groupId:(long)groupId categoryId:(long)categoryId sku:(NSString *)sku name:(NSString *)name description:(NSString *)description properties:(NSString *)properties fieldsQuantities:(NSString *)fieldsQuantities requiresShipping:(BOOL)requiresShipping stockQuantity:(int)stockQuantity featured:(BOOL)featured sale:(NSDictionary *)sale smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(NSDictionary *)smallFile mediumImage:(BOOL)mediumImage mediumImageURL:(NSString *)mediumImageURL mediumFile:(NSDictionary *)mediumFile largeImage:(BOOL)largeImage largeImageURL:(NSString *)largeImageURL largeFile:(NSDictionary *)largeFile itemFields:(NSArray *)itemFields itemPrices:(NSArray *)itemPrices serviceContext:(NSDictionary *)serviceContext {
+- (NSArray *)getItemsPrevAndNextWithItemId:(long)itemId obc:(NSDictionary *)obc error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"itemId": @(itemId),
+		@"obc": obc
+	};
+
+	NSDictionary *_command = @{@"/shoppingitem/get-items-prev-and-next": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateItemWithItemId:(long)itemId groupId:(long)groupId categoryId:(long)categoryId sku:(NSString *)sku name:(NSString *)name description:(NSString *)description properties:(NSString *)properties fieldsQuantities:(NSString *)fieldsQuantities requiresShipping:(BOOL)requiresShipping stockQuantity:(int)stockQuantity featured:(BOOL)featured sale:(NSDictionary *)sale smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(NSDictionary *)smallFile mediumImage:(BOOL)mediumImage mediumImageURL:(NSString *)mediumImageURL mediumFile:(NSDictionary *)mediumFile largeImage:(BOOL)largeImage largeImageURL:(NSString *)largeImageURL largeFile:(NSDictionary *)largeFile itemFields:(NSArray *)itemFields itemPrices:(NSArray *)itemPrices serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"itemId": @(itemId),
 		@"groupId": @(groupId),
@@ -123,44 +171,7 @@
 
 	NSDictionary *_command = @{@"/shoppingitem/update-item": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSArray *)getItems:(long)groupId categoryId:(long)categoryId start:(int)start end:(int)end obc:(NSDictionary *)obc {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"categoryId": @(categoryId),
-		@"start": @(start),
-		@"end": @(end),
-		@"obc": obc
-	};
-
-	NSDictionary *_command = @{@"/shoppingitem/get-items": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (void)addBookItems:(long)groupId categoryId:(long)categoryId isbns:(NSArray *)isbns {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"categoryId": @(categoryId),
-		@"isbns": isbns
-	};
-
-	NSDictionary *_command = @{@"/shoppingitem/add-book-items": _params};
-
-	[self.session invoke:_command];
-}
-
-- (NSArray *)getItemsPrevAndNext:(long)itemId obc:(NSDictionary *)obc {
-	NSDictionary *_params = @{
-		@"itemId": @(itemId),
-		@"obc": obc
-	};
-
-	NSDictionary *_command = @{@"/shoppingitem/get-items-prev-and-next": _params};
-
-	return (NSArray *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

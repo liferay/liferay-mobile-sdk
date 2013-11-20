@@ -19,7 +19,7 @@
  */
 @implementation PluginSettingService_v62
 
-- (NSDictionary *)updatePluginSetting:(long)companyId pluginId:(NSString *)pluginId pluginType:(NSString *)pluginType roles:(NSString *)roles active:(BOOL)active {
+- (NSDictionary *)updatePluginSettingWithCompanyId:(long)companyId pluginId:(NSString *)pluginId pluginType:(NSString *)pluginType roles:(NSString *)roles active:(BOOL)active error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"pluginId": pluginId,
@@ -30,7 +30,7 @@
 
 	NSDictionary *_command = @{@"/pluginsetting/update-plugin-setting": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

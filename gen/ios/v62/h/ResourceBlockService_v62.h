@@ -20,15 +20,16 @@
  */
 @interface ResourceBlockService_v62 : BaseService
 
-- (void)setCompanyScopePermissions:(long)scopeGroupId companyId:(long)companyId name:(NSString *)name roleId:(long)roleId actionIds:(NSArray *)actionIds;
-- (void)addGroupScopePermission:(long)scopeGroupId companyId:(long)companyId groupId:(long)groupId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId;
-- (void)addCompanyScopePermission:(long)scopeGroupId companyId:(long)companyId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId;
-- (void)removeGroupScopePermission:(long)scopeGroupId companyId:(long)companyId groupId:(long)groupId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId;
-- (void)setGroupScopePermissions:(long)scopeGroupId companyId:(long)companyId groupId:(long)groupId name:(NSString *)name roleId:(long)roleId actionIds:(NSArray *)actionIds;
-- (void)removeCompanyScopePermission:(long)scopeGroupId companyId:(long)companyId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId;
-- (void)removeIndividualScopePermission:(long)companyId groupId:(long)groupId name:(NSString *)name primKey:(long)primKey roleId:(long)roleId actionId:(NSString *)actionId;
-- (void)removeAllGroupScopePermissions:(long)scopeGroupId companyId:(long)companyId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId;
-- (void)addIndividualScopePermission:(long)companyId groupId:(long)groupId name:(NSString *)name primKey:(long)primKey roleId:(long)roleId actionId:(NSString *)actionId;
-- (void)setIndividualScopePermissions:(long)companyId groupId:(long)groupId name:(NSString *)name primKey:(long)primKey roleId:(long)roleId actionIds:(NSArray *)actionIds;
+- (void)addCompanyScopePermissionWithScopeGroupId:(long)scopeGroupId companyId:(long)companyId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error;
+- (void)addGroupScopePermissionWithScopeGroupId:(long)scopeGroupId companyId:(long)companyId groupId:(long)groupId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error;
+- (void)addIndividualScopePermissionWithCompanyId:(long)companyId groupId:(long)groupId name:(NSString *)name primKey:(long)primKey roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error;
+- (void)removeAllGroupScopePermissionsWithScopeGroupId:(long)scopeGroupId companyId:(long)companyId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error;
+- (void)removeCompanyScopePermissionWithScopeGroupId:(long)scopeGroupId companyId:(long)companyId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error;
+- (void)removeGroupScopePermissionWithScopeGroupId:(long)scopeGroupId companyId:(long)companyId groupId:(long)groupId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error;
+- (void)removeIndividualScopePermissionWithCompanyId:(long)companyId groupId:(long)groupId name:(NSString *)name primKey:(long)primKey roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error;
+- (void)setCompanyScopePermissionsWithScopeGroupId:(long)scopeGroupId companyId:(long)companyId name:(NSString *)name roleId:(long)roleId actionIds:(NSArray *)actionIds error:(NSError **)error;
+- (void)setGroupScopePermissionsWithScopeGroupId:(long)scopeGroupId companyId:(long)companyId groupId:(long)groupId name:(NSString *)name roleId:(long)roleId actionIds:(NSArray *)actionIds error:(NSError **)error;
+- (void)setIndividualScopePermissionsWithCompanyId:(long)companyId groupId:(long)groupId name:(NSString *)name primKey:(long)primKey roleIdsToActionIds:(NSDictionary *)roleIdsToActionIds error:(NSError **)error;
+- (void)setIndividualScopePermissionsWithCompanyId:(long)companyId groupId:(long)groupId name:(NSString *)name primKey:(long)primKey roleId:(long)roleId actionIds:(NSArray *)actionIds error:(NSError **)error;
 
 @end

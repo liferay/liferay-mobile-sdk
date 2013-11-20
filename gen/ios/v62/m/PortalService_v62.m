@@ -19,117 +19,117 @@
  */
 @implementation PortalService_v62
 
-- (void)testGetUserId {
+- (NSString *)getAutoDeployDirectory:(NSError **)error {
 	NSDictionary *_params = @{
 	};
 
-	NSDictionary *_command = @{@"/portal/test-get-user-id": _params};
+	NSDictionary *_command = @{@"/portal/get-auto-deploy-directory": _params};
 
-	[self.session invoke:_command];
+	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (void)testAutoSyncHibernateSessionStateOnTxCreation {
+- (int)getBuildNumber:(NSError **)error {
 	NSDictionary *_params = @{
 	};
 
-	NSDictionary *_command = @{@"/portal/test-auto-sync-hibernate-session-state-on-tx-creation": _params};
+	NSDictionary *_command = @{@"/portal/get-build-number": _params};
 
-	[self.session invoke:_command];
+	return (int)[self.session invoke:_command error:error];
 }
 
-- (void)testAddClassNameAndTestTransactionPortletBar_PortalRollback:(NSString *)transactionPortletBarText {
+- (void)testAddClassNameAndTestTransactionPortletBar_PortalRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"transactionPortletBarText": transactionPortletBarText
 	};
 
 	NSDictionary *_command = @{@"/portal/test-add-class-name-and-test-transaction-portlet-bar_-portal-rollback": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (void)testAddClassNameAndTestTransactionPortletBar_Success:(NSString *)transactionPortletBarText {
-	NSDictionary *_params = @{
-		@"transactionPortletBarText": transactionPortletBarText
-	};
-
-	NSDictionary *_command = @{@"/portal/test-add-class-name-and-test-transaction-portlet-bar_-success": _params};
-
-	[self.session invoke:_command];
-}
-
-- (void)testDeleteClassName {
-	NSDictionary *_params = @{
-	};
-
-	NSDictionary *_command = @{@"/portal/test-delete-class-name": _params};
-
-	[self.session invoke:_command];
-}
-
-- (void)testAddClassNameAndTestTransactionPortletBar_PortletRollback:(NSString *)transactionPortletBarText {
+- (void)testAddClassNameAndTestTransactionPortletBar_PortletRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"transactionPortletBarText": transactionPortletBarText
 	};
 
 	NSDictionary *_command = @{@"/portal/test-add-class-name-and-test-transaction-portlet-bar_-portlet-rollback": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (BOOL)testHasClassName {
+- (void)testAddClassNameAndTestTransactionPortletBar_SuccessWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error {
 	NSDictionary *_params = @{
+		@"transactionPortletBarText": transactionPortletBarText
 	};
 
-	NSDictionary *_command = @{@"/portal/test-has-class-name": _params};
+	NSDictionary *_command = @{@"/portal/test-add-class-name-and-test-transaction-portlet-bar_-success": _params};
 
-	return (BOOL)[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (NSString *)getAutoDeployDirectory {
-	NSDictionary *_params = @{
-	};
-
-	NSDictionary *_command = @{@"/portal/get-auto-deploy-directory": _params};
-
-	return (NSString *)[self.session invoke:_command];
-}
-
-- (int)getBuildNumber {
-	NSDictionary *_params = @{
-	};
-
-	NSDictionary *_command = @{@"/portal/get-build-number": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (void)testAddClassName_Success:(NSString *)classNameValue {
-	NSDictionary *_params = @{
-		@"classNameValue": classNameValue
-	};
-
-	NSDictionary *_command = @{@"/portal/test-add-class-name_-success": _params};
-
-	[self.session invoke:_command];
-}
-
-- (void)testAddClassName_Rollback:(NSString *)classNameValue {
+- (void)testAddClassName_RollbackWithClassNameValue:(NSString *)classNameValue error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"classNameValue": classNameValue
 	};
 
 	NSDictionary *_command = @{@"/portal/test-add-class-name_-rollback": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (int)testGetBuildNumber {
+- (void)testAddClassName_SuccessWithClassNameValue:(NSString *)classNameValue error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"classNameValue": classNameValue
+	};
+
+	NSDictionary *_command = @{@"/portal/test-add-class-name_-success": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)testAutoSyncHibernateSessionStateOnTxCreation:(NSError **)error {
+	NSDictionary *_params = @{
+	};
+
+	NSDictionary *_command = @{@"/portal/test-auto-sync-hibernate-session-state-on-tx-creation": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)testDeleteClassName:(NSError **)error {
+	NSDictionary *_params = @{
+	};
+
+	NSDictionary *_command = @{@"/portal/test-delete-class-name": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (int)testGetBuildNumber:(NSError **)error {
 	NSDictionary *_params = @{
 	};
 
 	NSDictionary *_command = @{@"/portal/test-get-build-number": _params};
 
-	return (int)[self.session invoke:_command];
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (void)testGetUserId:(NSError **)error {
+	NSDictionary *_params = @{
+	};
+
+	NSDictionary *_command = @{@"/portal/test-get-user-id": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (BOOL)testHasClassName:(NSError **)error {
+	NSDictionary *_params = @{
+	};
+
+	NSDictionary *_command = @{@"/portal/test-has-class-name": _params};
+
+	return (BOOL)[self.session invoke:_command error:error];
 }
 
 @end

@@ -19,22 +19,22 @@
  */
 @implementation MDRActionService_v62
 
-- (NSDictionary *)updateAction:(long)actionId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addActionWithRuleGroupInstanceId:(long)ruleGroupInstanceId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
-		@"actionId": @(actionId),
+		@"ruleGroupInstanceId": @(ruleGroupInstanceId),
 		@"nameMap": nameMap,
 		@"descriptionMap": descriptionMap,
 		@"type": type,
-		@"typeSettingsProperties": typeSettingsProperties,
+		@"typeSettings": typeSettings,
 		@"serviceContext": serviceContext
 	};
 
-	NSDictionary *_command = @{@"/mdraction/update-action": _params};
+	NSDictionary *_command = @{@"/mdraction/add-action": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addAction:(long)ruleGroupInstanceId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addActionWithRuleGroupInstanceId:(long)ruleGroupInstanceId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleGroupInstanceId": @(ruleGroupInstanceId),
 		@"nameMap": nameMap,
@@ -46,37 +46,67 @@
 
 	NSDictionary *_command = @{@"/mdraction/add-action": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getAction:(long)actionId {
-	NSDictionary *_params = @{
-		@"actionId": @(actionId)
-	};
-
-	NSDictionary *_command = @{@"/mdraction/get-action": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (void)deleteAction:(long)actionId {
+- (void)deleteActionWithActionId:(long)actionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"actionId": @(actionId)
 	};
 
 	NSDictionary *_command = @{@"/mdraction/delete-action": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)fetchAction:(long)actionId {
+- (NSDictionary *)fetchActionWithActionId:(long)actionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"actionId": @(actionId)
 	};
 
 	NSDictionary *_command = @{@"/mdraction/fetch-action": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getActionWithActionId:(long)actionId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"actionId": @(actionId)
+	};
+
+	NSDictionary *_command = @{@"/mdraction/get-action": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateActionWithActionId:(long)actionId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"actionId": @(actionId),
+		@"nameMap": nameMap,
+		@"descriptionMap": descriptionMap,
+		@"type": type,
+		@"typeSettings": typeSettings,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/mdraction/update-action": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateActionWithActionId:(long)actionId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"actionId": @(actionId),
+		@"nameMap": nameMap,
+		@"descriptionMap": descriptionMap,
+		@"type": type,
+		@"typeSettingsProperties": typeSettingsProperties,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/mdraction/update-action": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

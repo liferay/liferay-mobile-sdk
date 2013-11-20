@@ -20,7 +20,7 @@
  */
 @interface RatingsEntryService_v62 : BaseService
 
-- (NSDictionary *)updateEntry:(NSString *)className classPK:(long)classPK score:(double)score;
-- (void)deleteEntry:(NSString *)className classPK:(long)classPK;
+- (void)deleteEntryWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error;
+- (NSDictionary *)updateEntryWithClassName:(NSString *)className classPK:(long)classPK score:(double)score error:(NSError **)error;
 
 @end

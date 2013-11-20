@@ -20,10 +20,10 @@
  */
 @interface AssetTagPropertyService_v62 : BaseService
 
-- (NSArray *)getTagProperties:(long)tagId;
-- (NSDictionary *)updateTagProperty:(long)tagPropertyId key:(NSString *)key value:(NSString *)value;
-- (NSDictionary *)addTagProperty:(long)tagId key:(NSString *)key value:(NSString *)value;
-- (NSArray *)getTagPropertyValues:(long)companyId key:(NSString *)key;
-- (void)deleteTagProperty:(long)tagPropertyId;
+- (NSDictionary *)addTagPropertyWithTagId:(long)tagId key:(NSString *)key value:(NSString *)value error:(NSError **)error;
+- (void)deleteTagPropertyWithTagPropertyId:(long)tagPropertyId error:(NSError **)error;
+- (NSArray *)getTagPropertiesWithTagId:(long)tagId error:(NSError **)error;
+- (NSArray *)getTagPropertyValuesWithCompanyId:(long)companyId key:(NSString *)key error:(NSError **)error;
+- (NSDictionary *)updateTagPropertyWithTagPropertyId:(long)tagPropertyId key:(NSString *)key value:(NSString *)value error:(NSError **)error;
 
 @end

@@ -20,9 +20,9 @@
  */
 @interface SCLicenseService_v62 : BaseService
 
-- (void)deleteLicense:(long)licenseId;
-- (NSDictionary *)updateLicense:(long)licenseId name:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended;
-- (NSDictionary *)getLicense:(long)licenseId;
-- (NSDictionary *)addLicense:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended;
+- (NSDictionary *)addLicenseWithName:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended error:(NSError **)error;
+- (void)deleteLicenseWithLicenseId:(long)licenseId error:(NSError **)error;
+- (NSDictionary *)getLicenseWithLicenseId:(long)licenseId error:(NSError **)error;
+- (NSDictionary *)updateLicenseWithLicenseId:(long)licenseId name:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended error:(NSError **)error;
 
 @end

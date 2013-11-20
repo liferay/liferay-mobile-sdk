@@ -19,28 +19,22 @@
  */
 @implementation PhoneService_v62
 
-- (NSArray *)getPhones:(NSString *)className classPK:(long)classPK {
+- (NSDictionary *)addPhoneWithClassName:(NSString *)className classPK:(long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
-		@"classPK": @(classPK)
+		@"classPK": @(classPK),
+		@"number": number,
+		@"extension": extension,
+		@"typeId": @(typeId),
+		@"primary": @(primary)
 	};
 
-	NSDictionary *_command = @{@"/phone/get-phones": _params};
+	NSDictionary *_command = @{@"/phone/add-phone": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getPhone:(long)phoneId {
-	NSDictionary *_params = @{
-		@"phoneId": @(phoneId)
-	};
-
-	NSDictionary *_command = @{@"/phone/get-phone": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)addPhone:(NSString *)className classPK:(long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addPhoneWithClassName:(NSString *)className classPK:(long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK),
@@ -53,10 +47,41 @@
 
 	NSDictionary *_command = @{@"/phone/add-phone": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updatePhone:(long)phoneId number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary {
+- (void)deletePhoneWithPhoneId:(long)phoneId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"phoneId": @(phoneId)
+	};
+
+	NSDictionary *_command = @{@"/phone/delete-phone": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getPhoneWithPhoneId:(long)phoneId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"phoneId": @(phoneId)
+	};
+
+	NSDictionary *_command = @{@"/phone/get-phone": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getPhonesWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"className": className,
+		@"classPK": @(classPK)
+	};
+
+	NSDictionary *_command = @{@"/phone/get-phones": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updatePhoneWithPhoneId:(long)phoneId number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"phoneId": @(phoneId),
 		@"number": number,
@@ -67,17 +92,7 @@
 
 	NSDictionary *_command = @{@"/phone/update-phone": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (void)deletePhone:(long)phoneId {
-	NSDictionary *_params = @{
-		@"phoneId": @(phoneId)
-	};
-
-	NSDictionary *_command = @{@"/phone/delete-phone": _params};
-
-	[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

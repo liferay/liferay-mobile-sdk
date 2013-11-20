@@ -19,7 +19,7 @@
  */
 @implementation AnnouncementsDeliveryService_v62
 
-- (NSDictionary *)updateDelivery:(long)userId type:(NSString *)type email:(BOOL)email sms:(BOOL)sms website:(BOOL)website {
+- (NSDictionary *)updateDeliveryWithUserId:(long)userId type:(NSString *)type email:(BOOL)email sms:(BOOL)sms website:(BOOL)website error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"type": type,
@@ -30,7 +30,7 @@
 
 	NSDictionary *_command = @{@"/announcementsdelivery/update-delivery": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

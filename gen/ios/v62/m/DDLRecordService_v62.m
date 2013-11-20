@@ -19,7 +19,21 @@
  */
 @implementation DDLRecordService_v62
 
-- (NSDictionary *)addRecord:(long)groupId recordSetId:(long)recordSetId displayIndex:(int)displayIndex fieldsMap:(NSDictionary *)fieldsMap serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addRecordWithGroupId:(long)groupId recordSetId:(long)recordSetId displayIndex:(int)displayIndex fields:(NSDictionary *)fields serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"recordSetId": @(recordSetId),
+		@"displayIndex": @(displayIndex),
+		@"fields": fields,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/ddlrecord/add-record": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)addRecordWithGroupId:(long)groupId recordSetId:(long)recordSetId displayIndex:(int)displayIndex fieldsMap:(NSDictionary *)fieldsMap serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"recordSetId": @(recordSetId),
@@ -30,20 +44,46 @@
 
 	NSDictionary *_command = @{@"/ddlrecord/add-record": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getRecord:(long)recordId {
+- (NSDictionary *)deleteRecordLocaleWithRecordId:(long)recordId locale:(NSString *)locale serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"recordId": @(recordId),
+		@"locale": locale,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/ddlrecord/delete-record-locale": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getRecordWithRecordId:(long)recordId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"recordId": @(recordId)
 	};
 
 	NSDictionary *_command = @{@"/ddlrecord/get-record": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateRecord:(long)recordId majorVersion:(BOOL)majorVersion displayIndex:(int)displayIndex fields:(NSDictionary *)fields mergeFields:(BOOL)mergeFields serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)updateRecordWithRecordId:(long)recordId displayIndex:(int)displayIndex fieldsMap:(NSDictionary *)fieldsMap mergeFields:(BOOL)mergeFields serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"recordId": @(recordId),
+		@"displayIndex": @(displayIndex),
+		@"fieldsMap": fieldsMap,
+		@"mergeFields": @(mergeFields),
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/ddlrecord/update-record": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateRecordWithRecordId:(long)recordId majorVersion:(BOOL)majorVersion displayIndex:(int)displayIndex fields:(NSDictionary *)fields mergeFields:(BOOL)mergeFields serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"recordId": @(recordId),
 		@"majorVersion": @(majorVersion),
@@ -55,19 +95,7 @@
 
 	NSDictionary *_command = @{@"/ddlrecord/update-record": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)deleteRecordLocale:(long)recordId locale:(NSString *)locale serviceContext:(NSDictionary *)serviceContext {
-	NSDictionary *_params = @{
-		@"recordId": @(recordId),
-		@"locale": locale,
-		@"serviceContext": serviceContext
-	};
-
-	NSDictionary *_command = @{@"/ddlrecord/delete-record-locale": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

@@ -19,52 +19,7 @@
  */
 @implementation MDRRuleGroupService_v62
 
-- (NSDictionary *)copyRuleGroup:(long)ruleGroupId groupId:(long)groupId serviceContext:(NSDictionary *)serviceContext {
-	NSDictionary *_params = @{
-		@"ruleGroupId": @(ruleGroupId),
-		@"groupId": @(groupId),
-		@"serviceContext": serviceContext
-	};
-
-	NSDictionary *_command = @{@"/mdrrulegroup/copy-rule-group": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)updateRuleGroup:(long)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext {
-	NSDictionary *_params = @{
-		@"ruleGroupId": @(ruleGroupId),
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
-		@"serviceContext": serviceContext
-	};
-
-	NSDictionary *_command = @{@"/mdrrulegroup/update-rule-group": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (void)deleteRuleGroup:(long)ruleGroupId {
-	NSDictionary *_params = @{
-		@"ruleGroupId": @(ruleGroupId)
-	};
-
-	NSDictionary *_command = @{@"/mdrrulegroup/delete-rule-group": _params};
-
-	[self.session invoke:_command];
-}
-
-- (NSDictionary *)fetchRuleGroup:(long)ruleGroupId {
-	NSDictionary *_params = @{
-		@"ruleGroupId": @(ruleGroupId)
-	};
-
-	NSDictionary *_command = @{@"/mdrrulegroup/fetch-rule-group": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)addRuleGroup:(long)groupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addRuleGroupWithGroupId:(long)groupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"nameMap": nameMap,
@@ -74,17 +29,62 @@
 
 	NSDictionary *_command = @{@"/mdrrulegroup/add-rule-group": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getRuleGroup:(long)ruleGroupId {
+- (NSDictionary *)copyRuleGroupWithRuleGroupId:(long)ruleGroupId groupId:(long)groupId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"ruleGroupId": @(ruleGroupId),
+		@"groupId": @(groupId),
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/mdrrulegroup/copy-rule-group": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteRuleGroupWithRuleGroupId:(long)ruleGroupId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"ruleGroupId": @(ruleGroupId)
+	};
+
+	NSDictionary *_command = @{@"/mdrrulegroup/delete-rule-group": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)fetchRuleGroupWithRuleGroupId:(long)ruleGroupId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"ruleGroupId": @(ruleGroupId)
+	};
+
+	NSDictionary *_command = @{@"/mdrrulegroup/fetch-rule-group": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getRuleGroupWithRuleGroupId:(long)ruleGroupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleGroupId": @(ruleGroupId)
 	};
 
 	NSDictionary *_command = @{@"/mdrrulegroup/get-rule-group": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateRuleGroupWithRuleGroupId:(long)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"ruleGroupId": @(ruleGroupId),
+		@"nameMap": nameMap,
+		@"descriptionMap": descriptionMap,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/mdrrulegroup/update-rule-group": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

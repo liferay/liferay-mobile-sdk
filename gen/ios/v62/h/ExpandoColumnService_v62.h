@@ -20,9 +20,11 @@
  */
 @interface ExpandoColumnService_v62 : BaseService
 
-- (NSDictionary *)addColumn:(long)tableId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData;
-- (void)deleteColumn:(long)columnId;
-- (NSDictionary *)updateTypeSettings:(long)columnId typeSettings:(NSString *)typeSettings;
-- (NSDictionary *)updateColumn:(long)columnId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData;
+- (NSDictionary *)addColumnWithTableId:(long)tableId name:(NSString *)name type:(int)type error:(NSError **)error;
+- (NSDictionary *)addColumnWithTableId:(long)tableId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error;
+- (void)deleteColumnWithColumnId:(long)columnId error:(NSError **)error;
+- (NSDictionary *)updateColumnWithColumnId:(long)columnId name:(NSString *)name type:(int)type error:(NSError **)error;
+- (NSDictionary *)updateColumnWithColumnId:(long)columnId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error;
+- (NSDictionary *)updateTypeSettingsWithColumnId:(long)columnId typeSettings:(NSString *)typeSettings error:(NSError **)error;
 
 @end

@@ -20,10 +20,12 @@
  */
 @interface LayoutPrototypeService_v62 : BaseService
 
-- (NSDictionary *)updateLayoutPrototype:(long)layoutPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteLayoutPrototype:(long)layoutPrototypeId;
-- (NSArray *)search:(long)companyId active:(NSDictionary *)active obc:(NSDictionary *)obc;
-- (NSDictionary *)addLayoutPrototype:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getLayoutPrototype:(long)layoutPrototypeId;
+- (NSDictionary *)addLayoutPrototypeWithNameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active error:(NSError **)error;
+- (NSDictionary *)addLayoutPrototypeWithNameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteLayoutPrototypeWithLayoutPrototypeId:(long)layoutPrototypeId error:(NSError **)error;
+- (NSDictionary *)getLayoutPrototypeWithLayoutPrototypeId:(long)layoutPrototypeId error:(NSError **)error;
+- (NSArray *)searchWithCompanyId:(long)companyId active:(NSDictionary *)active obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSDictionary *)updateLayoutPrototypeWithLayoutPrototypeId:(long)layoutPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active error:(NSError **)error;
+- (NSDictionary *)updateLayoutPrototypeWithLayoutPrototypeId:(long)layoutPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

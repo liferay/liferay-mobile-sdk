@@ -19,90 +19,89 @@
  */
 @implementation CompanyService_v62
 
-- (void)updateDisplay:(long)companyId languageId:(NSString *)languageId timeZoneId:(NSString *)timeZoneId {
-	NSDictionary *_params = @{
-		@"companyId": @(companyId),
-		@"languageId": languageId,
-		@"timeZoneId": timeZoneId
-	};
-
-	NSDictionary *_command = @{@"/company/update-display": _params};
-
-	[self.session invoke:_command];
-}
-
-- (NSDictionary *)getCompanyByWebId:(NSString *)webId {
-	NSDictionary *_params = @{
-		@"webId": webId
-	};
-
-	NSDictionary *_command = @{@"/company/get-company-by-web-id": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getCompanyByLogoId:(long)logoId {
-	NSDictionary *_params = @{
-		@"logoId": @(logoId)
-	};
-
-	NSDictionary *_command = @{@"/company/get-company-by-logo-id": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getCompanyByVirtualHost:(NSString *)virtualHost {
-	NSDictionary *_params = @{
-		@"virtualHost": virtualHost
-	};
-
-	NSDictionary *_command = @{@"/company/get-company-by-virtual-host": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)updateLogo:(long)companyId bytes:(NSArray *)bytes {
-	NSDictionary *_params = @{
-		@"companyId": @(companyId),
-		@"bytes": bytes
-	};
-
-	NSDictionary *_command = @{@"/company/update-logo": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getCompanyById:(long)companyId {
-	NSDictionary *_params = @{
-		@"companyId": @(companyId)
-	};
-
-	NSDictionary *_command = @{@"/company/get-company-by-id": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getCompanyByMx:(NSString *)mx {
-	NSDictionary *_params = @{
-		@"mx": mx
-	};
-
-	NSDictionary *_command = @{@"/company/get-company-by-mx": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (void)deleteLogo:(long)companyId {
+- (void)deleteLogoWithCompanyId:(long)companyId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId)
 	};
 
 	NSDictionary *_command = @{@"/company/delete-logo": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateCompany:(long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx maxUsers:(int)maxUsers active:(BOOL)active {
+- (NSDictionary *)getCompanyByIdWithCompanyId:(long)companyId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"companyId": @(companyId)
+	};
+
+	NSDictionary *_command = @{@"/company/get-company-by-id": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getCompanyByLogoIdWithLogoId:(long)logoId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"logoId": @(logoId)
+	};
+
+	NSDictionary *_command = @{@"/company/get-company-by-logo-id": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getCompanyByMxWithMx:(NSString *)mx error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"mx": mx
+	};
+
+	NSDictionary *_command = @{@"/company/get-company-by-mx": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getCompanyByVirtualHostWithVirtualHost:(NSString *)virtualHost error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"virtualHost": virtualHost
+	};
+
+	NSDictionary *_command = @{@"/company/get-company-by-virtual-host": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getCompanyByWebIdWithWebId:(NSString *)webId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"webId": webId
+	};
+
+	NSDictionary *_command = @{@"/company/get-company-by-web-id": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateCompanyWithCompanyId:(long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx homeURL:(NSString *)homeURL name:(NSString *)name legalName:(NSString *)legalName legalId:(NSString *)legalId legalType:(NSString *)legalType sicCode:(NSString *)sicCode tickerSymbol:(NSString *)tickerSymbol industry:(NSString *)industry type:(NSString *)type size:(NSString *)size error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"companyId": @(companyId),
+		@"virtualHost": virtualHost,
+		@"mx": mx,
+		@"homeURL": homeURL,
+		@"name": name,
+		@"legalName": legalName,
+		@"legalId": legalId,
+		@"legalType": legalType,
+		@"sicCode": sicCode,
+		@"tickerSymbol": tickerSymbol,
+		@"industry": industry,
+		@"type": type,
+		@"size": size
+	};
+
+	NSDictionary *_command = @{@"/company/update-company": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateCompanyWithCompanyId:(long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx maxUsers:(int)maxUsers active:(BOOL)active error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"virtualHost": virtualHost,
@@ -113,7 +112,30 @@
 
 	NSDictionary *_command = @{@"/company/update-company": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)updateDisplayWithCompanyId:(long)companyId languageId:(NSString *)languageId timeZoneId:(NSString *)timeZoneId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"companyId": @(companyId),
+		@"languageId": languageId,
+		@"timeZoneId": timeZoneId
+	};
+
+	NSDictionary *_command = @{@"/company/update-display": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateLogoWithCompanyId:(long)companyId bytes:(NSArray *)bytes error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"companyId": @(companyId),
+		@"bytes": bytes
+	};
+
+	NSDictionary *_command = @{@"/company/update-logo": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

@@ -19,7 +19,7 @@
  */
 @implementation LayoutRevisionService_v62
 
-- (NSDictionary *)addLayoutRevision:(long)userId layoutSetBranchId:(long)layoutSetBranchId layoutBranchId:(long)layoutBranchId parentLayoutRevisionId:(long)parentLayoutRevisionId head:(BOOL)head plid:(long)plid portletPreferencesPlid:(long)portletPreferencesPlid privateLayout:(BOOL)privateLayout name:(NSString *)name title:(NSString *)title description:(NSString *)description keywords:(NSString *)keywords robots:(NSString *)robots typeSettings:(NSString *)typeSettings iconImage:(BOOL)iconImage iconImageId:(long)iconImageId themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId wapThemeId:(NSString *)wapThemeId wapColorSchemeId:(NSString *)wapColorSchemeId css:(NSString *)css serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addLayoutRevisionWithUserId:(long)userId layoutSetBranchId:(long)layoutSetBranchId layoutBranchId:(long)layoutBranchId parentLayoutRevisionId:(long)parentLayoutRevisionId head:(BOOL)head plid:(long)plid portletPreferencesPlid:(long)portletPreferencesPlid privateLayout:(BOOL)privateLayout name:(NSString *)name title:(NSString *)title description:(NSString *)description keywords:(NSString *)keywords robots:(NSString *)robots typeSettings:(NSString *)typeSettings iconImage:(BOOL)iconImage iconImageId:(long)iconImageId themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId wapThemeId:(NSString *)wapThemeId wapColorSchemeId:(NSString *)wapColorSchemeId css:(NSString *)css serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"layoutSetBranchId": @(layoutSetBranchId),
@@ -47,7 +47,7 @@
 
 	NSDictionary *_command = @{@"/layoutrevision/add-layout-revision": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

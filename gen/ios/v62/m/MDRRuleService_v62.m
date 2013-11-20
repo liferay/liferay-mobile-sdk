@@ -19,32 +19,7 @@
  */
 @implementation MDRRuleService_v62
 
-- (NSDictionary *)updateRule:(long)ruleId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext {
-	NSDictionary *_params = @{
-		@"ruleId": @(ruleId),
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
-		@"type": type,
-		@"typeSettingsProperties": typeSettingsProperties,
-		@"serviceContext": serviceContext
-	};
-
-	NSDictionary *_command = @{@"/mdrrule/update-rule": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (void)deleteRule:(long)ruleId {
-	NSDictionary *_params = @{
-		@"ruleId": @(ruleId)
-	};
-
-	NSDictionary *_command = @{@"/mdrrule/delete-rule": _params};
-
-	[self.session invoke:_command];
-}
-
-- (NSDictionary *)addRule:(long)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addRuleWithRuleGroupId:(long)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleGroupId": @(ruleGroupId),
 		@"nameMap": nameMap,
@@ -56,27 +31,67 @@
 
 	NSDictionary *_command = @{@"/mdrrule/add-rule": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getRule:(long)ruleId {
+- (void)deleteRuleWithRuleId:(long)ruleId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleId": @(ruleId)
 	};
 
-	NSDictionary *_command = @{@"/mdrrule/get-rule": _params};
+	NSDictionary *_command = @{@"/mdrrule/delete-rule": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)fetchRule:(long)ruleId {
+- (NSDictionary *)fetchRuleWithRuleId:(long)ruleId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleId": @(ruleId)
 	};
 
 	NSDictionary *_command = @{@"/mdrrule/fetch-rule": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getRuleWithRuleId:(long)ruleId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"ruleId": @(ruleId)
+	};
+
+	NSDictionary *_command = @{@"/mdrrule/get-rule": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateRuleWithRuleId:(long)ruleId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"ruleId": @(ruleId),
+		@"nameMap": nameMap,
+		@"descriptionMap": descriptionMap,
+		@"type": type,
+		@"typeSettings": typeSettings,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/mdrrule/update-rule": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateRuleWithRuleId:(long)ruleId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"ruleId": @(ruleId),
+		@"nameMap": nameMap,
+		@"descriptionMap": descriptionMap,
+		@"type": type,
+		@"typeSettingsProperties": typeSettingsProperties,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/mdrrule/update-rule": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

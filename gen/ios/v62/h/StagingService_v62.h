@@ -20,10 +20,10 @@
  */
 @interface StagingService_v62 : BaseService
 
-- (NSDictionary *)validateStagingRequest:(long)stagingRequestId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap;
-- (long)createStagingRequest:(long)groupId checksum:(NSString *)checksum;
-- (void)cleanUpStagingRequest:(long)stagingRequestId;
-- (void)updateStagingRequest:(long)stagingRequestId fileName:(NSString *)fileName bytes:(NSArray *)bytes;
-- (void)publishStagingRequest:(long)stagingRequestId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap;
+- (void)cleanUpStagingRequestWithStagingRequestId:(long)stagingRequestId error:(NSError **)error;
+- (long)createStagingRequestWithGroupId:(long)groupId checksum:(NSString *)checksum error:(NSError **)error;
+- (void)publishStagingRequestWithStagingRequestId:(long)stagingRequestId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap error:(NSError **)error;
+- (void)updateStagingRequestWithStagingRequestId:(long)stagingRequestId fileName:(NSString *)fileName bytes:(NSArray *)bytes error:(NSError **)error;
+- (NSDictionary *)validateStagingRequestWithStagingRequestId:(long)stagingRequestId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap error:(NSError **)error;
 
 @end

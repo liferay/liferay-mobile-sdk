@@ -19,14 +19,26 @@
  */
 @implementation BackgroundTaskService_v62
 
-- (NSString *)getBackgroundTaskStatusJson:(long)backgroundTaskId {
+- (NSString *)getBackgroundTaskStatusJsonWithBackgroundTaskId:(long)backgroundTaskId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"backgroundTaskId": @(backgroundTaskId)
 	};
 
 	NSDictionary *_command = @{@"/backgroundtask/get-background-task-status-json": _params};
 
-	return (NSString *)[self.session invoke:_command];
+	return (NSString *)[self.session invoke:_command error:error];
+}
+
+- (int)getBackgroundTasksCountWithGroupId:(long)groupId taskExecutorClassName:(NSString *)taskExecutorClassName completed:(NSString *)completed error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"taskExecutorClassName": taskExecutorClassName,
+		@"completed": completed
+	};
+
+	NSDictionary *_command = @{@"/backgroundtask/get-background-tasks-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
 }
 
 @end

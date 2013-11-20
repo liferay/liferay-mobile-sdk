@@ -20,12 +20,14 @@
  */
 @interface TeamService_v62 : BaseService
 
-- (NSDictionary *)addTeam:(long)groupId name:(NSString *)name description:(NSString *)description;
-- (NSArray *)getUserTeams:(long)userId groupId:(long)groupId;
-- (NSDictionary *)updateTeam:(long)teamId name:(NSString *)name description:(NSString *)description;
-- (BOOL)hasUserTeam:(long)userId teamId:(long)teamId;
-- (NSDictionary *)getTeam:(long)groupId name:(NSString *)name;
-- (NSArray *)getGroupTeams:(long)groupId;
-- (void)deleteTeam:(long)teamId;
+- (NSDictionary *)addTeamWithGroupId:(long)groupId name:(NSString *)name description:(NSString *)description error:(NSError **)error;
+- (void)deleteTeamWithTeamId:(long)teamId error:(NSError **)error;
+- (NSArray *)getGroupTeamsWithGroupId:(long)groupId error:(NSError **)error;
+- (NSDictionary *)getTeamWithTeamId:(long)teamId error:(NSError **)error;
+- (NSDictionary *)getTeamWithGroupId:(long)groupId name:(NSString *)name error:(NSError **)error;
+- (NSArray *)getUserTeamsWithUserId:(long)userId error:(NSError **)error;
+- (NSArray *)getUserTeamsWithUserId:(long)userId groupId:(long)groupId error:(NSError **)error;
+- (BOOL)hasUserTeamWithUserId:(long)userId teamId:(long)teamId error:(NSError **)error;
+- (NSDictionary *)updateTeamWithTeamId:(long)teamId name:(NSString *)name description:(NSString *)description error:(NSError **)error;
 
 @end

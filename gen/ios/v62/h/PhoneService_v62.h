@@ -20,10 +20,11 @@
  */
 @interface PhoneService_v62 : BaseService
 
-- (NSArray *)getPhones:(NSString *)className classPK:(long)classPK;
-- (NSDictionary *)getPhone:(long)phoneId;
-- (NSDictionary *)addPhone:(NSString *)className classPK:(long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)updatePhone:(long)phoneId number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary;
-- (void)deletePhone:(long)phoneId;
+- (NSDictionary *)addPhoneWithClassName:(NSString *)className classPK:(long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error;
+- (NSDictionary *)addPhoneWithClassName:(NSString *)className classPK:(long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deletePhoneWithPhoneId:(long)phoneId error:(NSError **)error;
+- (NSDictionary *)getPhoneWithPhoneId:(long)phoneId error:(NSError **)error;
+- (NSArray *)getPhonesWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error;
+- (NSDictionary *)updatePhoneWithPhoneId:(long)phoneId number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error;
 
 @end

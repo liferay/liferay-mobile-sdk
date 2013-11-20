@@ -20,9 +20,9 @@
  */
 @interface DLFileVersionService_v62 : BaseService
 
-- (NSDictionary *)getFileVersion:(long)fileVersionId;
-- (NSDictionary *)getLatestFileVersion:(long)fileEntryId;
-- (NSArray *)getFileVersions:(long)fileEntryId status:(int)status;
-- (int)getFileVersionsCount:(long)fileEntryId status:(int)status;
+- (NSDictionary *)getFileVersionWithFileVersionId:(long)fileVersionId error:(NSError **)error;
+- (NSArray *)getFileVersionsWithFileEntryId:(long)fileEntryId status:(int)status error:(NSError **)error;
+- (int)getFileVersionsCountWithFileEntryId:(long)fileEntryId status:(int)status error:(NSError **)error;
+- (NSDictionary *)getLatestFileVersionWithFileEntryId:(long)fileEntryId error:(NSError **)error;
 
 @end

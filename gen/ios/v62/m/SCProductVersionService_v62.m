@@ -19,34 +19,7 @@
  */
 @implementation SCProductVersionService_v62
 
-- (int)getProductVersionsCount:(long)productEntryId {
-	NSDictionary *_params = @{
-		@"productEntryId": @(productEntryId)
-	};
-
-	NSDictionary *_command = @{@"/scproductversion/get-product-versions-count": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (NSDictionary *)updateProductVersion:(long)productVersionId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds {
-	NSDictionary *_params = @{
-		@"productVersionId": @(productVersionId),
-		@"version": version,
-		@"changeLog": changeLog,
-		@"downloadPageURL": downloadPageURL,
-		@"directDownloadURL": directDownloadURL,
-		@"testDirectDownloadURL": @(testDirectDownloadURL),
-		@"repoStoreArtifact": @(repoStoreArtifact),
-		@"frameworkVersionIds": frameworkVersionIds
-	};
-
-	NSDictionary *_command = @{@"/scproductversion/update-product-version": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)addProductVersion:(long)productEntryId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addProductVersionWithProductEntryId:(long)productEntryId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"productEntryId": @(productEntryId),
 		@"version": version,
@@ -61,30 +34,30 @@
 
 	NSDictionary *_command = @{@"/scproductversion/add-product-version": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteProductVersion:(long)productVersionId {
+- (void)deleteProductVersionWithProductVersionId:(long)productVersionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"productVersionId": @(productVersionId)
 	};
 
 	NSDictionary *_command = @{@"/scproductversion/delete-product-version": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getProductVersion:(long)productVersionId {
+- (NSDictionary *)getProductVersionWithProductVersionId:(long)productVersionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"productVersionId": @(productVersionId)
 	};
 
 	NSDictionary *_command = @{@"/scproductversion/get-product-version": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getProductVersions:(long)productEntryId start:(int)start end:(int)end {
+- (NSArray *)getProductVersionsWithProductEntryId:(long)productEntryId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"productEntryId": @(productEntryId),
 		@"start": @(start),
@@ -93,7 +66,34 @@
 
 	NSDictionary *_command = @{@"/scproductversion/get-product-versions": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (int)getProductVersionsCountWithProductEntryId:(long)productEntryId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"productEntryId": @(productEntryId)
+	};
+
+	NSDictionary *_command = @{@"/scproductversion/get-product-versions-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateProductVersionWithProductVersionId:(long)productVersionId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"productVersionId": @(productVersionId),
+		@"version": version,
+		@"changeLog": changeLog,
+		@"downloadPageURL": downloadPageURL,
+		@"directDownloadURL": directDownloadURL,
+		@"testDirectDownloadURL": @(testDirectDownloadURL),
+		@"repoStoreArtifact": @(repoStoreArtifact),
+		@"frameworkVersionIds": frameworkVersionIds
+	};
+
+	NSDictionary *_command = @{@"/scproductversion/update-product-version": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

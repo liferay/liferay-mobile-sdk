@@ -19,28 +19,21 @@
  */
 @implementation MDRRuleGroupInstanceService_v62
 
-- (void)deleteRuleGroupInstance:(long)ruleGroupInstanceId {
+- (NSDictionary *)addRuleGroupInstanceWithGroupId:(long)groupId className:(NSString *)className classPK:(long)classPK ruleGroupId:(long)ruleGroupId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
-		@"ruleGroupInstanceId": @(ruleGroupInstanceId)
+		@"groupId": @(groupId),
+		@"className": className,
+		@"classPK": @(classPK),
+		@"ruleGroupId": @(ruleGroupId),
+		@"serviceContext": serviceContext
 	};
 
-	NSDictionary *_command = @{@"/mdrrulegroupinstance/delete-rule-group-instance": _params};
+	NSDictionary *_command = @{@"/mdrrulegroupinstance/add-rule-group-instance": _params};
 
-	[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateRuleGroupInstance:(long)ruleGroupInstanceId priority:(int)priority {
-	NSDictionary *_params = @{
-		@"ruleGroupInstanceId": @(ruleGroupInstanceId),
-		@"priority": @(priority)
-	};
-
-	NSDictionary *_command = @{@"/mdrrulegroupinstance/update-rule-group-instance": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)addRuleGroupInstance:(long)groupId className:(NSString *)className classPK:(long)classPK ruleGroupId:(long)ruleGroupId priority:(int)priority serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addRuleGroupInstanceWithGroupId:(long)groupId className:(NSString *)className classPK:(long)classPK ruleGroupId:(long)ruleGroupId priority:(int)priority serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"className": className,
@@ -52,10 +45,20 @@
 
 	NSDictionary *_command = @{@"/mdrrulegroupinstance/add-rule-group-instance": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getRuleGroupInstances:(NSString *)className classPK:(long)classPK start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator {
+- (void)deleteRuleGroupInstanceWithRuleGroupInstanceId:(long)ruleGroupInstanceId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"ruleGroupInstanceId": @(ruleGroupInstanceId)
+	};
+
+	NSDictionary *_command = @{@"/mdrrulegroupinstance/delete-rule-group-instance": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getRuleGroupInstancesWithClassName:(NSString *)className classPK:(long)classPK start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK),
@@ -66,10 +69,10 @@
 
 	NSDictionary *_command = @{@"/mdrrulegroupinstance/get-rule-group-instances": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getRuleGroupInstancesCount:(NSString *)className classPK:(long)classPK {
+- (int)getRuleGroupInstancesCountWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK)
@@ -77,7 +80,18 @@
 
 	NSDictionary *_command = @{@"/mdrrulegroupinstance/get-rule-group-instances-count": _params};
 
-	return (int)[self.session invoke:_command];
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateRuleGroupInstanceWithRuleGroupInstanceId:(long)ruleGroupInstanceId priority:(int)priority error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"ruleGroupInstanceId": @(ruleGroupInstanceId),
+		@"priority": @(priority)
+	};
+
+	NSDictionary *_command = @{@"/mdrrulegroupinstance/update-rule-group-instance": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

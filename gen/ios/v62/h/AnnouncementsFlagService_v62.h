@@ -20,8 +20,8 @@
  */
 @interface AnnouncementsFlagService_v62 : BaseService
 
-- (void)addFlag:(long)entryId value:(int)value;
-- (void)deleteFlag:(long)flagId;
-- (NSDictionary *)getFlag:(long)entryId value:(int)value;
+- (void)addFlagWithEntryId:(long)entryId value:(int)value error:(NSError **)error;
+- (void)deleteFlagWithFlagId:(long)flagId error:(NSError **)error;
+- (NSDictionary *)getFlagWithEntryId:(long)entryId value:(int)value error:(NSError **)error;
 
 @end

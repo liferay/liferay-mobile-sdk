@@ -20,8 +20,9 @@
  */
 @interface ListTypeService_v62 : BaseService
 
-- (void)validate:(int)listTypeId classNameId:(long)classNameId type:(NSString *)type;
-- (NSArray *)getListTypes:(NSString *)type;
-- (NSDictionary *)getListType:(int)listTypeId;
+- (NSDictionary *)getListTypeWithListTypeId:(int)listTypeId error:(NSError **)error;
+- (NSArray *)getListTypesWithType:(NSString *)type error:(NSError **)error;
+- (void)validateWithListTypeId:(int)listTypeId type:(NSString *)type error:(NSError **)error;
+- (void)validateWithListTypeId:(int)listTypeId classNameId:(long)classNameId type:(NSString *)type error:(NSError **)error;
 
 @end

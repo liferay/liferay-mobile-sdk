@@ -20,8 +20,8 @@
  */
 @interface LayoutBranchService_v62 : BaseService
 
-- (NSDictionary *)addLayoutBranch:(long)layoutRevisionId name:(NSString *)name description:(NSString *)description master:(BOOL)master serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)updateLayoutBranch:(long)layoutBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteLayoutBranch:(long)layoutBranchId;
+- (NSDictionary *)addLayoutBranchWithLayoutRevisionId:(long)layoutRevisionId name:(NSString *)name description:(NSString *)description master:(BOOL)master serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteLayoutBranchWithLayoutBranchId:(long)layoutBranchId error:(NSError **)error;
+- (NSDictionary *)updateLayoutBranchWithLayoutBranchId:(long)layoutBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

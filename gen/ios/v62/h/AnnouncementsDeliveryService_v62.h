@@ -20,6 +20,6 @@
  */
 @interface AnnouncementsDeliveryService_v62 : BaseService
 
-- (NSDictionary *)updateDelivery:(long)userId type:(NSString *)type email:(BOOL)email sms:(BOOL)sms website:(BOOL)website;
+- (NSDictionary *)updateDeliveryWithUserId:(long)userId type:(NSString *)type email:(BOOL)email sms:(BOOL)sms website:(BOOL)website error:(NSError **)error;
 
 @end

@@ -19,22 +19,7 @@
  */
 @implementation ResourcePermissionService_v62
 
-- (void)removeResourcePermissions:(long)groupId companyId:(long)companyId name:(NSString *)name scope:(int)scope roleId:(long)roleId actionId:(NSString *)actionId {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"companyId": @(companyId),
-		@"name": name,
-		@"scope": @(scope),
-		@"roleId": @(roleId),
-		@"actionId": actionId
-	};
-
-	NSDictionary *_command = @{@"/resourcepermission/remove-resource-permissions": _params};
-
-	[self.session invoke:_command];
-}
-
-- (void)addResourcePermission:(long)groupId companyId:(long)companyId name:(NSString *)name scope:(int)scope primKey:(NSString *)primKey roleId:(long)roleId actionId:(NSString *)actionId {
+- (void)addResourcePermissionWithGroupId:(long)groupId companyId:(long)companyId name:(NSString *)name scope:(int)scope primKey:(NSString *)primKey roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"companyId": @(companyId),
@@ -47,25 +32,10 @@
 
 	NSDictionary *_command = @{@"/resourcepermission/add-resource-permission": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (void)setIndividualResourcePermissions:(long)groupId companyId:(long)companyId name:(NSString *)name primKey:(NSString *)primKey roleId:(long)roleId actionIds:(NSArray *)actionIds {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"companyId": @(companyId),
-		@"name": name,
-		@"primKey": primKey,
-		@"roleId": @(roleId),
-		@"actionIds": actionIds
-	};
-
-	NSDictionary *_command = @{@"/resourcepermission/set-individual-resource-permissions": _params};
-
-	[self.session invoke:_command];
-}
-
-- (void)removeResourcePermission:(long)groupId companyId:(long)companyId name:(NSString *)name scope:(int)scope primKey:(NSString *)primKey roleId:(long)roleId actionId:(NSString *)actionId {
+- (void)removeResourcePermissionWithGroupId:(long)groupId companyId:(long)companyId name:(NSString *)name scope:(int)scope primKey:(NSString *)primKey roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"companyId": @(companyId),
@@ -78,7 +48,51 @@
 
 	NSDictionary *_command = @{@"/resourcepermission/remove-resource-permission": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
+}
+
+- (void)removeResourcePermissionsWithGroupId:(long)groupId companyId:(long)companyId name:(NSString *)name scope:(int)scope roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"companyId": @(companyId),
+		@"name": name,
+		@"scope": @(scope),
+		@"roleId": @(roleId),
+		@"actionId": actionId
+	};
+
+	NSDictionary *_command = @{@"/resourcepermission/remove-resource-permissions": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)setIndividualResourcePermissionsWithGroupId:(long)groupId companyId:(long)companyId name:(NSString *)name primKey:(NSString *)primKey roleIdsToActionIds:(NSDictionary *)roleIdsToActionIds error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"companyId": @(companyId),
+		@"name": name,
+		@"primKey": primKey,
+		@"roleIdsToActionIds": roleIdsToActionIds
+	};
+
+	NSDictionary *_command = @{@"/resourcepermission/set-individual-resource-permissions": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)setIndividualResourcePermissionsWithGroupId:(long)groupId companyId:(long)companyId name:(NSString *)name primKey:(NSString *)primKey roleId:(long)roleId actionIds:(NSArray *)actionIds error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"companyId": @(companyId),
+		@"name": name,
+		@"primKey": primKey,
+		@"roleId": @(roleId),
+		@"actionIds": actionIds
+	};
+
+	NSDictionary *_command = @{@"/resourcepermission/set-individual-resource-permissions": _params};
+
+	[self.session invoke:_command error:error];
 }
 
 @end

@@ -20,7 +20,8 @@
  */
 @interface ClassNameService_v62 : BaseService
 
-- (NSDictionary *)fetchClassName:(NSString *)value;
-- (long)fetchClassNameId:(NSString *)value;
+- (NSDictionary *)fetchClassNameWithValue:(NSString *)value error:(NSError **)error;
+- (long)fetchClassNameIdWithClazz:(NSDictionary *)clazz error:(NSError **)error;
+- (long)fetchClassNameIdWithValue:(NSString *)value error:(NSError **)error;
 
 @end

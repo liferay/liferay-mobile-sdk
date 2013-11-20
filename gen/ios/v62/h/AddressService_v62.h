@@ -20,10 +20,11 @@
  */
 @interface AddressService_v62 : BaseService
 
-- (void)deleteAddress:(long)addressId;
-- (NSDictionary *)getAddress:(long)addressId;
-- (NSDictionary *)updateAddress:(long)addressId street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long)regionId countryId:(long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary;
-- (NSArray *)getAddresses:(NSString *)className classPK:(long)classPK;
-- (NSDictionary *)addAddress:(NSString *)className classPK:(long)classPK street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long)regionId countryId:(long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)addAddressWithClassName:(NSString *)className classPK:(long)classPK street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long)regionId countryId:(long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary error:(NSError **)error;
+- (NSDictionary *)addAddressWithClassName:(NSString *)className classPK:(long)classPK street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long)regionId countryId:(long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteAddressWithAddressId:(long)addressId error:(NSError **)error;
+- (NSDictionary *)getAddressWithAddressId:(long)addressId error:(NSError **)error;
+- (NSArray *)getAddressesWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error;
+- (NSDictionary *)updateAddressWithAddressId:(long)addressId street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long)regionId countryId:(long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary error:(NSError **)error;
 
 @end

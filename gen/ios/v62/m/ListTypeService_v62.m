@@ -19,7 +19,38 @@
  */
 @implementation ListTypeService_v62
 
-- (void)validate:(int)listTypeId classNameId:(long)classNameId type:(NSString *)type {
+- (NSDictionary *)getListTypeWithListTypeId:(int)listTypeId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"listTypeId": @(listTypeId)
+	};
+
+	NSDictionary *_command = @{@"/listtype/get-list-type": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getListTypesWithType:(NSString *)type error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"type": type
+	};
+
+	NSDictionary *_command = @{@"/listtype/get-list-types": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (void)validateWithListTypeId:(int)listTypeId type:(NSString *)type error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"listTypeId": @(listTypeId),
+		@"type": type
+	};
+
+	NSDictionary *_command = @{@"/listtype/validate": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)validateWithListTypeId:(int)listTypeId classNameId:(long)classNameId type:(NSString *)type error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"listTypeId": @(listTypeId),
 		@"classNameId": @(classNameId),
@@ -28,27 +59,7 @@
 
 	NSDictionary *_command = @{@"/listtype/validate": _params};
 
-	[self.session invoke:_command];
-}
-
-- (NSArray *)getListTypes:(NSString *)type {
-	NSDictionary *_params = @{
-		@"type": type
-	};
-
-	NSDictionary *_command = @{@"/listtype/get-list-types": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getListType:(int)listTypeId {
-	NSDictionary *_params = @{
-		@"listTypeId": @(listTypeId)
-	};
-
-	NSDictionary *_command = @{@"/listtype/get-list-type": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
 @end

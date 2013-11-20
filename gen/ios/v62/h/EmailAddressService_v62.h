@@ -20,10 +20,11 @@
  */
 @interface EmailAddressService_v62 : BaseService
 
-- (NSDictionary *)updateEmailAddress:(long)emailAddressId address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary;
-- (NSArray *)getEmailAddresses:(NSString *)className classPK:(long)classPK;
-- (NSDictionary *)getEmailAddress:(long)emailAddressId;
-- (NSDictionary *)addEmailAddress:(NSString *)className classPK:(long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteEmailAddress:(long)emailAddressId;
+- (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error;
+- (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteEmailAddressWithEmailAddressId:(long)emailAddressId error:(NSError **)error;
+- (NSDictionary *)getEmailAddressWithEmailAddressId:(long)emailAddressId error:(NSError **)error;
+- (NSArray *)getEmailAddressesWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error;
+- (NSDictionary *)updateEmailAddressWithEmailAddressId:(long)emailAddressId address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error;
 
 @end

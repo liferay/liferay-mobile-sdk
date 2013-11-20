@@ -20,10 +20,11 @@
  */
 @interface WebsiteService_v62 : BaseService
 
-- (NSArray *)getWebsites:(NSString *)className classPK:(long)classPK;
-- (NSDictionary *)updateWebsite:(long)websiteId url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary;
-- (void)deleteWebsite:(long)websiteId;
-- (NSDictionary *)addWebsite:(NSString *)className classPK:(long)classPK url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getWebsite:(long)websiteId;
+- (NSDictionary *)addWebsiteWithClassName:(NSString *)className classPK:(long)classPK url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error;
+- (NSDictionary *)addWebsiteWithClassName:(NSString *)className classPK:(long)classPK url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteWebsiteWithWebsiteId:(long)websiteId error:(NSError **)error;
+- (NSDictionary *)getWebsiteWithWebsiteId:(long)websiteId error:(NSError **)error;
+- (NSArray *)getWebsitesWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error;
+- (NSDictionary *)updateWebsiteWithWebsiteId:(long)websiteId url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error;
 
 @end

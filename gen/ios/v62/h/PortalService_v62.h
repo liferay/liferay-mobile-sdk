@@ -20,17 +20,17 @@
  */
 @interface PortalService_v62 : BaseService
 
-- (void)testGetUserId;
-- (void)testAutoSyncHibernateSessionStateOnTxCreation;
-- (void)testAddClassNameAndTestTransactionPortletBar_PortalRollback:(NSString *)transactionPortletBarText;
-- (void)testAddClassNameAndTestTransactionPortletBar_Success:(NSString *)transactionPortletBarText;
-- (void)testDeleteClassName;
-- (void)testAddClassNameAndTestTransactionPortletBar_PortletRollback:(NSString *)transactionPortletBarText;
-- (BOOL)testHasClassName;
-- (NSString *)getAutoDeployDirectory;
-- (int)getBuildNumber;
-- (void)testAddClassName_Success:(NSString *)classNameValue;
-- (void)testAddClassName_Rollback:(NSString *)classNameValue;
-- (int)testGetBuildNumber;
+- (NSString *)getAutoDeployDirectory:(NSError **)error;
+- (int)getBuildNumber:(NSError **)error;
+- (void)testAddClassNameAndTestTransactionPortletBar_PortalRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error;
+- (void)testAddClassNameAndTestTransactionPortletBar_PortletRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error;
+- (void)testAddClassNameAndTestTransactionPortletBar_SuccessWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error;
+- (void)testAddClassName_RollbackWithClassNameValue:(NSString *)classNameValue error:(NSError **)error;
+- (void)testAddClassName_SuccessWithClassNameValue:(NSString *)classNameValue error:(NSError **)error;
+- (void)testAutoSyncHibernateSessionStateOnTxCreation:(NSError **)error;
+- (void)testDeleteClassName:(NSError **)error;
+- (int)testGetBuildNumber:(NSError **)error;
+- (void)testGetUserId:(NSError **)error;
+- (BOOL)testHasClassName:(NSError **)error;
 
 @end

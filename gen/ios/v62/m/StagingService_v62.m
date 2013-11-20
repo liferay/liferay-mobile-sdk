@@ -19,19 +19,17 @@
  */
 @implementation StagingService_v62
 
-- (NSDictionary *)validateStagingRequest:(long)stagingRequestId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap {
+- (void)cleanUpStagingRequestWithStagingRequestId:(long)stagingRequestId error:(NSError **)error {
 	NSDictionary *_params = @{
-		@"stagingRequestId": @(stagingRequestId),
-		@"privateLayout": @(privateLayout),
-		@"parameterMap": parameterMap
+		@"stagingRequestId": @(stagingRequestId)
 	};
 
-	NSDictionary *_command = @{@"/staging/validate-staging-request": _params};
+	NSDictionary *_command = @{@"/staging/clean-up-staging-request": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (long)createStagingRequest:(long)groupId checksum:(NSString *)checksum {
+- (long)createStagingRequestWithGroupId:(long)groupId checksum:(NSString *)checksum error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"checksum": checksum
@@ -39,32 +37,10 @@
 
 	NSDictionary *_command = @{@"/staging/create-staging-request": _params};
 
-	return (long)[self.session invoke:_command];
+	return (long)[self.session invoke:_command error:error];
 }
 
-- (void)cleanUpStagingRequest:(long)stagingRequestId {
-	NSDictionary *_params = @{
-		@"stagingRequestId": @(stagingRequestId)
-	};
-
-	NSDictionary *_command = @{@"/staging/clean-up-staging-request": _params};
-
-	[self.session invoke:_command];
-}
-
-- (void)updateStagingRequest:(long)stagingRequestId fileName:(NSString *)fileName bytes:(NSArray *)bytes {
-	NSDictionary *_params = @{
-		@"stagingRequestId": @(stagingRequestId),
-		@"fileName": fileName,
-		@"bytes": bytes
-	};
-
-	NSDictionary *_command = @{@"/staging/update-staging-request": _params};
-
-	[self.session invoke:_command];
-}
-
-- (void)publishStagingRequest:(long)stagingRequestId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap {
+- (void)publishStagingRequestWithStagingRequestId:(long)stagingRequestId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"stagingRequestId": @(stagingRequestId),
 		@"privateLayout": @(privateLayout),
@@ -73,7 +49,31 @@
 
 	NSDictionary *_command = @{@"/staging/publish-staging-request": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
+}
+
+- (void)updateStagingRequestWithStagingRequestId:(long)stagingRequestId fileName:(NSString *)fileName bytes:(NSArray *)bytes error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"stagingRequestId": @(stagingRequestId),
+		@"fileName": fileName,
+		@"bytes": bytes
+	};
+
+	NSDictionary *_command = @{@"/staging/update-staging-request": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)validateStagingRequestWithStagingRequestId:(long)stagingRequestId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"stagingRequestId": @(stagingRequestId),
+		@"privateLayout": @(privateLayout),
+		@"parameterMap": parameterMap
+	};
+
+	NSDictionary *_command = @{@"/staging/validate-staging-request": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

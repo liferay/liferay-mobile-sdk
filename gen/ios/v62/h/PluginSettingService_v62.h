@@ -20,6 +20,6 @@
  */
 @interface PluginSettingService_v62 : BaseService
 
-- (NSDictionary *)updatePluginSetting:(long)companyId pluginId:(NSString *)pluginId pluginType:(NSString *)pluginType roles:(NSString *)roles active:(BOOL)active;
+- (NSDictionary *)updatePluginSettingWithCompanyId:(long)companyId pluginId:(NSString *)pluginId pluginType:(NSString *)pluginType roles:(NSString *)roles active:(BOOL)active error:(NSError **)error;
 
 @end

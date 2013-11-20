@@ -19,7 +19,16 @@
  */
 @implementation PortletService_v62
 
-- (NSDictionary *)updatePortlet:(long)companyId portletId:(NSString *)portletId roles:(NSString *)roles active:(BOOL)active {
+- (NSDictionary *)getWarPortlets:(NSError **)error {
+	NSDictionary *_params = @{
+	};
+
+	NSDictionary *_command = @{@"/portlet/get-war-portlets": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updatePortletWithCompanyId:(long)companyId portletId:(NSString *)portletId roles:(NSString *)roles active:(BOOL)active error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"portletId": portletId,
@@ -29,16 +38,7 @@
 
 	NSDictionary *_command = @{@"/portlet/update-portlet": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getWarPortlets {
-	NSDictionary *_params = @{
-	};
-
-	NSDictionary *_command = @{@"/portlet/get-war-portlets": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

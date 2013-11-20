@@ -20,6 +20,6 @@
  */
 @interface ImageService_v62 : BaseService
 
-- (NSDictionary *)getImage:(long)imageId;
+- (NSDictionary *)getImageWithImageId:(long)imageId error:(NSError **)error;
 
 @end

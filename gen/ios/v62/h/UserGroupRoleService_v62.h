@@ -20,7 +20,9 @@
  */
 @interface UserGroupRoleService_v62 : BaseService
 
-- (void)addUserGroupRoles:(NSArray *)userIds groupId:(long)groupId roleId:(long)roleId;
-- (void)deleteUserGroupRoles:(NSArray *)userIds groupId:(long)groupId roleId:(long)roleId;
+- (void)addUserGroupRolesWithUserId:(long)userId groupId:(long)groupId roleIds:(NSArray *)roleIds error:(NSError **)error;
+- (void)addUserGroupRolesWithUserIds:(NSArray *)userIds groupId:(long)groupId roleId:(long)roleId error:(NSError **)error;
+- (void)deleteUserGroupRolesWithUserId:(long)userId groupId:(long)groupId roleIds:(NSArray *)roleIds error:(NSError **)error;
+- (void)deleteUserGroupRolesWithUserIds:(NSArray *)userIds groupId:(long)groupId roleId:(long)roleId error:(NSError **)error;
 
 @end

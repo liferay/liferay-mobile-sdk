@@ -19,61 +19,7 @@
  */
 @implementation JournalStructureService_v62
 
-- (NSArray *)getStructures:(NSArray *)groupIds {
-	NSDictionary *_params = @{
-		@"groupIds": groupIds
-	};
-
-	NSDictionary *_command = @{@"/journalstructure/get-structures": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (int)searchCount:(long)companyId groupIds:(NSArray *)groupIds structureId:(NSString *)structureId name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator {
-	NSDictionary *_params = @{
-		@"companyId": @(companyId),
-		@"groupIds": groupIds,
-		@"structureId": structureId,
-		@"name": name,
-		@"description": description,
-		@"andOperator": @(andOperator)
-	};
-
-	NSDictionary *_command = @{@"/journalstructure/search-count": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (NSDictionary *)copyStructure:(long)groupId oldStructureId:(NSString *)oldStructureId newStructureId:(NSString *)newStructureId autoStructureId:(BOOL)autoStructureId {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"oldStructureId": oldStructureId,
-		@"newStructureId": newStructureId,
-		@"autoStructureId": @(autoStructureId)
-	};
-
-	NSDictionary *_command = @{@"/journalstructure/copy-structure": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)updateStructure:(long)groupId structureId:(NSString *)structureId parentStructureId:(NSString *)parentStructureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(NSDictionary *)serviceContext {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"structureId": structureId,
-		@"parentStructureId": parentStructureId,
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
-		@"xsd": xsd,
-		@"serviceContext": serviceContext
-	};
-
-	NSDictionary *_command = @{@"/journalstructure/update-structure": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)addStructure:(long)groupId structureId:(NSString *)structureId autoStructureId:(BOOL)autoStructureId parentStructureId:(NSString *)parentStructureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addStructureWithGroupId:(long)groupId structureId:(NSString *)structureId autoStructureId:(BOOL)autoStructureId parentStructureId:(NSString *)parentStructureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"structureId": structureId,
@@ -87,10 +33,23 @@
 
 	NSDictionary *_command = @{@"/journalstructure/add-structure": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteStructure:(long)groupId structureId:(NSString *)structureId {
+- (NSDictionary *)copyStructureWithGroupId:(long)groupId oldStructureId:(NSString *)oldStructureId newStructureId:(NSString *)newStructureId autoStructureId:(BOOL)autoStructureId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"oldStructureId": oldStructureId,
+		@"newStructureId": newStructureId,
+		@"autoStructureId": @(autoStructureId)
+	};
+
+	NSDictionary *_command = @{@"/journalstructure/copy-structure": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteStructureWithGroupId:(long)groupId structureId:(NSString *)structureId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"structureId": structureId
@@ -98,10 +57,21 @@
 
 	NSDictionary *_command = @{@"/journalstructure/delete-structure": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getStructure:(long)groupId structureId:(NSString *)structureId includeGlobalStructures:(BOOL)includeGlobalStructures {
+- (NSDictionary *)getStructureWithGroupId:(long)groupId structureId:(NSString *)structureId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"structureId": structureId
+	};
+
+	NSDictionary *_command = @{@"/journalstructure/get-structure": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getStructureWithGroupId:(long)groupId structureId:(NSString *)structureId includeGlobalStructures:(BOOL)includeGlobalStructures error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"structureId": structureId,
@@ -110,10 +80,45 @@
 
 	NSDictionary *_command = @{@"/journalstructure/get-structure": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)search:(long)companyId groupIds:(NSArray *)groupIds structureId:(NSString *)structureId name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(NSDictionary *)obc {
+- (NSArray *)getStructuresWithGroupId:(long)groupId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId)
+	};
+
+	NSDictionary *_command = @{@"/journalstructure/get-structures": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getStructuresWithGroupIds:(NSArray *)groupIds error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupIds": groupIds
+	};
+
+	NSDictionary *_command = @{@"/journalstructure/get-structures": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)searchWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"companyId": @(companyId),
+		@"groupIds": groupIds,
+		@"keywords": keywords,
+		@"start": @(start),
+		@"end": @(end),
+		@"obc": obc
+	};
+
+	NSDictionary *_command = @{@"/journalstructure/search": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)searchWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds structureId:(NSString *)structureId name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"groupIds": groupIds,
@@ -128,7 +133,50 @@
 
 	NSDictionary *_command = @{@"/journalstructure/search": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (int)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"companyId": @(companyId),
+		@"groupIds": groupIds,
+		@"keywords": keywords
+	};
+
+	NSDictionary *_command = @{@"/journalstructure/search-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (int)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds structureId:(NSString *)structureId name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"companyId": @(companyId),
+		@"groupIds": groupIds,
+		@"structureId": structureId,
+		@"name": name,
+		@"description": description,
+		@"andOperator": @(andOperator)
+	};
+
+	NSDictionary *_command = @{@"/journalstructure/search-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateStructureWithGroupId:(long)groupId structureId:(NSString *)structureId parentStructureId:(NSString *)parentStructureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"structureId": structureId,
+		@"parentStructureId": parentStructureId,
+		@"nameMap": nameMap,
+		@"descriptionMap": descriptionMap,
+		@"xsd": xsd,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/journalstructure/update-structure": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

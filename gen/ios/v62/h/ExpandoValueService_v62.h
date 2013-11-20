@@ -20,9 +20,10 @@
  */
 @interface ExpandoValueService_v62 : BaseService
 
-- (NSDictionary *)getData:(long)companyId className:(NSString *)className tableName:(NSString *)tableName columnNames:(NSDictionary *)columnNames classPK:(long)classPK;
-- (void)addValues:(long)companyId className:(NSString *)className tableName:(NSString *)tableName classPK:(long)classPK attributeValues:(NSDictionary *)attributeValues;
-- (NSDictionary *)addValue:(long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long)classPK data:(NSDictionary *)data;
-- (NSDictionary *)getJsonData:(long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long)classPK;
+- (NSDictionary *)addValueWithCompanyId:(long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long)classPK data:(NSString *)data error:(NSError **)error;
+- (void)addValuesWithCompanyId:(long)companyId className:(NSString *)className tableName:(NSString *)tableName classPK:(long)classPK attributeValues:(NSDictionary *)attributeValues error:(NSError **)error;
+- (NSDictionary *)getDataWithCompanyId:(long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long)classPK error:(NSError **)error;
+- (NSDictionary *)getDataWithCompanyId:(long)companyId className:(NSString *)className tableName:(NSString *)tableName columnNames:(NSDictionary *)columnNames classPK:(long)classPK error:(NSError **)error;
+- (NSDictionary *)getJsonDataWithCompanyId:(long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long)classPK error:(NSError **)error;
 
 @end

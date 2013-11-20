@@ -19,7 +19,30 @@
  */
 @implementation BookmarksFolderService_v62
 
-- (void)deleteFolder:(long)folderId includeTrashedEntries:(BOOL)includeTrashedEntries {
+- (NSDictionary *)addFolderWithParentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"parentFolderId": @(parentFolderId),
+		@"name": name,
+		@"description": description,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/add-folder": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteFolderWithFolderId:(long)folderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"folderId": @(folderId)
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/delete-folder": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)deleteFolderWithFolderId:(long)folderId includeTrashedEntries:(BOOL)includeTrashedEntries error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"folderId": @(folderId),
 		@"includeTrashedEntries": @(includeTrashedEntries)
@@ -27,54 +50,102 @@
 
 	NSDictionary *_command = @{@"/bookmarksfolder/delete-folder": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (void)unsubscribeFolder:(long)groupId folderId:(long)folderId {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"folderId": @(folderId)
-	};
-
-	NSDictionary *_command = @{@"/bookmarksfolder/unsubscribe-folder": _params};
-
-	[self.session invoke:_command];
-}
-
-- (NSDictionary *)getFolder:(long)folderId {
+- (NSDictionary *)getFolderWithFolderId:(long)folderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"folderId": @(folderId)
 	};
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folder": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersAndEntriesCount:(long)groupId folderId:(long)folderId status:(int)status {
+- (NSArray *)getFolderIdsWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"folderId": @(folderId)
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/get-folder-ids": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getFoldersWithGroupId:(long)groupId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId)
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/get-folders": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getFoldersWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"parentFolderId": @(parentFolderId)
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/get-folders": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getFoldersWithGroupId:(long)groupId parentFolderId:(long)parentFolderId start:(int)start end:(int)end error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"parentFolderId": @(parentFolderId),
+		@"start": @(start),
+		@"end": @(end)
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/get-folders": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getFoldersWithGroupId:(long)groupId parentFolderId:(long)parentFolderId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"parentFolderId": @(parentFolderId),
+		@"status": @(status),
+		@"start": @(start),
+		@"end": @(end)
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/get-folders": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getFoldersAndEntriesWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"folderId": @(folderId)
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-and-entries": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getFoldersAndEntriesWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"status": @(status)
 	};
 
-	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-and-entries-count": _params};
+	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-and-entries": _params};
 
-	return (int)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (void)subscribeFolder:(long)groupId folderId:(long)folderId {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"folderId": @(folderId)
-	};
-
-	NSDictionary *_command = @{@"/bookmarksfolder/subscribe-folder": _params};
-
-	[self.session invoke:_command];
-}
-
-- (NSArray *)getFoldersAndEntries:(long)groupId folderId:(long)folderId status:(int)status start:(int)start end:(int)end {
+- (NSArray *)getFoldersAndEntriesWithGroupId:(long)groupId folderId:(long)folderId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -85,31 +156,144 @@
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-and-entries": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)moveFolderToTrash:(long)folderId {
+- (int)getFoldersAndEntriesCountWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"folderId": @(folderId)
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-and-entries-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (int)getFoldersAndEntriesCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"folderId": @(folderId),
+		@"status": @(status)
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-and-entries-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (int)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"parentFolderId": @(parentFolderId)
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (int)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId status:(int)status error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"parentFolderId": @(parentFolderId),
+		@"status": @(status)
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (void)getSubfolderIdsWithFolderIds:(NSArray *)folderIds groupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"folderIds": folderIds,
+		@"groupId": @(groupId),
+		@"folderId": @(folderId)
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/get-subfolder-ids": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getSubfolderIdsWithGroupId:(long)groupId folderId:(long)folderId recurse:(BOOL)recurse error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"folderId": @(folderId),
+		@"recurse": @(recurse)
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/get-subfolder-ids": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)moveFolderWithFolderId:(long)folderId parentFolderId:(long)parentFolderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"folderId": @(folderId),
+		@"parentFolderId": @(parentFolderId)
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/move-folder": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)moveFolderFromTrashWithFolderId:(long)folderId parentFolderId:(long)parentFolderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"folderId": @(folderId),
+		@"parentFolderId": @(parentFolderId)
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/move-folder-from-trash": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)moveFolderToTrashWithFolderId:(long)folderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"folderId": @(folderId)
 	};
 
 	NSDictionary *_command = @{@"/bookmarksfolder/move-folder-to-trash": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFolderIds:(long)groupId folderId:(long)folderId {
+- (void)restoreFolderFromTrashWithFolderId:(long)folderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"folderId": @(folderId)
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/restore-folder-from-trash": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)subscribeFolderWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId)
 	};
 
-	NSDictionary *_command = @{@"/bookmarksfolder/get-folder-ids": _params};
+	NSDictionary *_command = @{@"/bookmarksfolder/subscribe-folder": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateFolder:(long)folderId parentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description mergeWithParentFolder:(BOOL)mergeWithParentFolder serviceContext:(NSDictionary *)serviceContext {
+- (void)unsubscribeFolderWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"folderId": @(folderId)
+	};
+
+	NSDictionary *_command = @{@"/bookmarksfolder/unsubscribe-folder": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateFolderWithFolderId:(long)folderId parentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description mergeWithParentFolder:(BOOL)mergeWithParentFolder serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"folderId": @(folderId),
 		@"parentFolderId": @(parentFolderId),
@@ -121,90 +305,7 @@
 
 	NSDictionary *_command = @{@"/bookmarksfolder/update-folder": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSArray *)getSubfolderIds:(long)groupId folderId:(long)folderId recurse:(BOOL)recurse {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"folderId": @(folderId),
-		@"recurse": @(recurse)
-	};
-
-	NSDictionary *_command = @{@"/bookmarksfolder/get-subfolder-ids": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (NSArray *)getFolders:(long)groupId parentFolderId:(long)parentFolderId status:(int)status start:(int)start end:(int)end {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"parentFolderId": @(parentFolderId),
-		@"status": @(status),
-		@"start": @(start),
-		@"end": @(end)
-	};
-
-	NSDictionary *_command = @{@"/bookmarksfolder/get-folders": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (void)restoreFolderFromTrash:(long)folderId {
-	NSDictionary *_params = @{
-		@"folderId": @(folderId)
-	};
-
-	NSDictionary *_command = @{@"/bookmarksfolder/restore-folder-from-trash": _params};
-
-	[self.session invoke:_command];
-}
-
-- (NSDictionary *)moveFolder:(long)folderId parentFolderId:(long)parentFolderId {
-	NSDictionary *_params = @{
-		@"folderId": @(folderId),
-		@"parentFolderId": @(parentFolderId)
-	};
-
-	NSDictionary *_command = @{@"/bookmarksfolder/move-folder": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (int)getFoldersCount:(long)groupId parentFolderId:(long)parentFolderId status:(int)status {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"parentFolderId": @(parentFolderId),
-		@"status": @(status)
-	};
-
-	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-count": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (NSDictionary *)addFolder:(long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext {
-	NSDictionary *_params = @{
-		@"parentFolderId": @(parentFolderId),
-		@"name": name,
-		@"description": description,
-		@"serviceContext": serviceContext
-	};
-
-	NSDictionary *_command = @{@"/bookmarksfolder/add-folder": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)moveFolderFromTrash:(long)folderId parentFolderId:(long)parentFolderId {
-	NSDictionary *_params = @{
-		@"folderId": @(folderId),
-		@"parentFolderId": @(parentFolderId)
-	};
-
-	NSDictionary *_command = @{@"/bookmarksfolder/move-folder-from-trash": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

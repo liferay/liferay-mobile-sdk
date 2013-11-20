@@ -19,17 +19,41 @@
  */
 @implementation SCLicenseService_v62
 
-- (void)deleteLicense:(long)licenseId {
+- (NSDictionary *)addLicenseWithName:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"name": name,
+		@"url": url,
+		@"openSource": @(openSource),
+		@"active": @(active),
+		@"recommended": @(recommended)
+	};
+
+	NSDictionary *_command = @{@"/sclicense/add-license": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteLicenseWithLicenseId:(long)licenseId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"licenseId": @(licenseId)
 	};
 
 	NSDictionary *_command = @{@"/sclicense/delete-license": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateLicense:(long)licenseId name:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended {
+- (NSDictionary *)getLicenseWithLicenseId:(long)licenseId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"licenseId": @(licenseId)
+	};
+
+	NSDictionary *_command = @{@"/sclicense/get-license": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateLicenseWithLicenseId:(long)licenseId name:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"licenseId": @(licenseId),
 		@"name": name,
@@ -41,31 +65,7 @@
 
 	NSDictionary *_command = @{@"/sclicense/update-license": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getLicense:(long)licenseId {
-	NSDictionary *_params = @{
-		@"licenseId": @(licenseId)
-	};
-
-	NSDictionary *_command = @{@"/sclicense/get-license": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)addLicense:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended {
-	NSDictionary *_params = @{
-		@"name": name,
-		@"url": url,
-		@"openSource": @(openSource),
-		@"active": @(active),
-		@"recommended": @(recommended)
-	};
-
-	NSDictionary *_command = @{@"/sclicense/add-license": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

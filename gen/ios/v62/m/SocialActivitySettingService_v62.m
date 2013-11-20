@@ -19,7 +19,7 @@
  */
 @implementation SocialActivitySettingService_v62
 
-- (NSDictionary *)getActivityDefinition:(long)groupId className:(NSString *)className activityType:(int)activityType {
+- (NSDictionary *)getActivityDefinitionWithGroupId:(long)groupId className:(NSString *)className activityType:(int)activityType error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"className": className,
@@ -28,10 +28,10 @@
 
 	NSDictionary *_command = @{@"/socialactivitysetting/get-activity-definition": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getActivityDefinitions:(long)groupId className:(NSString *)className {
+- (NSArray *)getActivityDefinitionsWithGroupId:(long)groupId className:(NSString *)className error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"className": className
@@ -39,10 +39,20 @@
 
 	NSDictionary *_command = @{@"/socialactivitysetting/get-activity-definitions": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getJsonActivityDefinitions:(long)groupId className:(NSString *)className {
+- (NSArray *)getActivitySettingsWithGroupId:(long)groupId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId)
+	};
+
+	NSDictionary *_command = @{@"/socialactivitysetting/get-activity-settings": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getJsonActivityDefinitionsWithGroupId:(long)groupId className:(NSString *)className error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"className": className
@@ -50,33 +60,22 @@
 
 	NSDictionary *_command = @{@"/socialactivitysetting/get-json-activity-definitions": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)updateActivitySettings:(long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinitions:(NSArray *)activityCounterDefinitions {
+- (void)updateActivitySettingWithGroupId:(long)groupId className:(NSString *)className enabled:(BOOL)enabled error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"className": className,
-		@"activityType": @(activityType),
-		@"activityCounterDefinitions": activityCounterDefinitions
+		@"enabled": @(enabled)
 	};
 
-	NSDictionary *_command = @{@"/socialactivitysetting/update-activity-settings": _params};
+	NSDictionary *_command = @{@"/socialactivitysetting/update-activity-setting": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getActivitySettings:(long)groupId {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId)
-	};
-
-	NSDictionary *_command = @{@"/socialactivitysetting/get-activity-settings": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (void)updateActivitySetting:(long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinition:(NSDictionary *)activityCounterDefinition {
+- (void)updateActivitySettingWithGroupId:(long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinition:(NSDictionary *)activityCounterDefinition error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"className": className,
@@ -86,7 +85,20 @@
 
 	NSDictionary *_command = @{@"/socialactivitysetting/update-activity-setting": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
+}
+
+- (void)updateActivitySettingsWithGroupId:(long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinitions:(NSArray *)activityCounterDefinitions error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"className": className,
+		@"activityType": @(activityType),
+		@"activityCounterDefinitions": activityCounterDefinitions
+	};
+
+	NSDictionary *_command = @{@"/socialactivitysetting/update-activity-settings": _params};
+
+	[self.session invoke:_command error:error];
 }
 
 @end

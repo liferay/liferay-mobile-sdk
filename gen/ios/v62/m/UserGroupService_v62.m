@@ -19,29 +19,7 @@
  */
 @implementation UserGroupService_v62
 
-- (void)unsetTeamUserGroups:(long)teamId userGroupIds:(NSArray *)userGroupIds {
-	NSDictionary *_params = @{
-		@"teamId": @(teamId),
-		@"userGroupIds": userGroupIds
-	};
-
-	NSDictionary *_command = @{@"/usergroup/unset-team-user-groups": _params};
-
-	[self.session invoke:_command];
-}
-
-- (void)addTeamUserGroups:(long)teamId userGroupIds:(NSArray *)userGroupIds {
-	NSDictionary *_params = @{
-		@"teamId": @(teamId),
-		@"userGroupIds": userGroupIds
-	};
-
-	NSDictionary *_command = @{@"/usergroup/add-team-user-groups": _params};
-
-	[self.session invoke:_command];
-}
-
-- (void)addGroupUserGroups:(long)groupId userGroupIds:(NSArray *)userGroupIds {
+- (void)addGroupUserGroupsWithGroupId:(long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userGroupIds": userGroupIds
@@ -49,20 +27,118 @@
 
 	NSDictionary *_command = @{@"/usergroup/add-group-user-groups": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getUserGroup:(long)userGroupId {
+- (void)addTeamUserGroupsWithTeamId:(long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"teamId": @(teamId),
+		@"userGroupIds": userGroupIds
+	};
+
+	NSDictionary *_command = @{@"/usergroup/add-team-user-groups": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)addUserGroupWithName:(NSString *)name description:(NSString *)description error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"name": name,
+		@"description": description
+	};
+
+	NSDictionary *_command = @{@"/usergroup/add-user-group": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)addUserGroupWithName:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"name": name,
+		@"description": description,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/usergroup/add-user-group": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteUserGroupWithUserGroupId:(long)userGroupId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"userGroupId": @(userGroupId)
+	};
+
+	NSDictionary *_command = @{@"/usergroup/delete-user-group": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getUserGroupWithName:(NSString *)name error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"name": name
+	};
+
+	NSDictionary *_command = @{@"/usergroup/get-user-group": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getUserGroupWithUserGroupId:(long)userGroupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userGroupId": @(userGroupId)
 	};
 
 	NSDictionary *_command = @{@"/usergroup/get-user-group": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateUserGroup:(long)userGroupId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext {
+- (NSArray *)getUserUserGroupsWithUserId:(long)userId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"userId": @(userId)
+	};
+
+	NSDictionary *_command = @{@"/usergroup/get-user-user-groups": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (void)unsetGroupUserGroupsWithGroupId:(long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"userGroupIds": userGroupIds
+	};
+
+	NSDictionary *_command = @{@"/usergroup/unset-group-user-groups": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)unsetTeamUserGroupsWithTeamId:(long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"teamId": @(teamId),
+		@"userGroupIds": userGroupIds
+	};
+
+	NSDictionary *_command = @{@"/usergroup/unset-team-user-groups": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateUserGroupWithUserGroupId:(long)userGroupId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"userGroupId": @(userGroupId),
+		@"name": name,
+		@"description": description
+	};
+
+	NSDictionary *_command = @{@"/usergroup/update-user-group": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateUserGroupWithUserGroupId:(long)userGroupId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userGroupId": @(userGroupId),
 		@"name": name,
@@ -72,50 +148,7 @@
 
 	NSDictionary *_command = @{@"/usergroup/update-user-group": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)addUserGroup:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext {
-	NSDictionary *_params = @{
-		@"name": name,
-		@"description": description,
-		@"serviceContext": serviceContext
-	};
-
-	NSDictionary *_command = @{@"/usergroup/add-user-group": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (void)deleteUserGroup:(long)userGroupId {
-	NSDictionary *_params = @{
-		@"userGroupId": @(userGroupId)
-	};
-
-	NSDictionary *_command = @{@"/usergroup/delete-user-group": _params};
-
-	[self.session invoke:_command];
-}
-
-- (void)unsetGroupUserGroups:(long)groupId userGroupIds:(NSArray *)userGroupIds {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"userGroupIds": userGroupIds
-	};
-
-	NSDictionary *_command = @{@"/usergroup/unset-group-user-groups": _params};
-
-	[self.session invoke:_command];
-}
-
-- (NSArray *)getUserUserGroups:(long)userId {
-	NSDictionary *_params = @{
-		@"userId": @(userId)
-	};
-
-	NSDictionary *_command = @{@"/usergroup/get-user-user-groups": _params};
-
-	return (NSArray *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

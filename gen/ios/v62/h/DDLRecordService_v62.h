@@ -20,9 +20,11 @@
  */
 @interface DDLRecordService_v62 : BaseService
 
-- (NSDictionary *)addRecord:(long)groupId recordSetId:(long)recordSetId displayIndex:(int)displayIndex fieldsMap:(NSDictionary *)fieldsMap serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getRecord:(long)recordId;
-- (NSDictionary *)updateRecord:(long)recordId majorVersion:(BOOL)majorVersion displayIndex:(int)displayIndex fields:(NSDictionary *)fields mergeFields:(BOOL)mergeFields serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)deleteRecordLocale:(long)recordId locale:(NSString *)locale serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)addRecordWithGroupId:(long)groupId recordSetId:(long)recordSetId displayIndex:(int)displayIndex fields:(NSDictionary *)fields serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addRecordWithGroupId:(long)groupId recordSetId:(long)recordSetId displayIndex:(int)displayIndex fieldsMap:(NSDictionary *)fieldsMap serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)deleteRecordLocaleWithRecordId:(long)recordId locale:(NSString *)locale serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)getRecordWithRecordId:(long)recordId error:(NSError **)error;
+- (NSDictionary *)updateRecordWithRecordId:(long)recordId displayIndex:(int)displayIndex fieldsMap:(NSDictionary *)fieldsMap mergeFields:(BOOL)mergeFields serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)updateRecordWithRecordId:(long)recordId majorVersion:(BOOL)majorVersion displayIndex:(int)displayIndex fields:(NSDictionary *)fields mergeFields:(BOOL)mergeFields serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

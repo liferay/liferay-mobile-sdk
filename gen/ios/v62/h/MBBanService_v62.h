@@ -20,7 +20,7 @@
  */
 @interface MBBanService_v62 : BaseService
 
-- (void)deleteBan:(long)banUserId serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)addBan:(long)banUserId serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)addBanWithBanUserId:(long)banUserId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteBanWithBanUserId:(long)banUserId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

@@ -19,10 +19,11 @@
  */
 @implementation JournalTemplateService_v62
 
-- (NSDictionary *)updateTemplate:(long)groupId templateId:(NSString *)templateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(NSDictionary *)smallFile serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addTemplateWithGroupId:(long)groupId templateId:(NSString *)templateId autoTemplateId:(BOOL)autoTemplateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"templateId": templateId,
+		@"autoTemplateId": @(autoTemplateId),
 		@"structureId": structureId,
 		@"nameMap": nameMap,
 		@"descriptionMap": descriptionMap,
@@ -30,59 +31,15 @@
 		@"formatXsl": @(formatXsl),
 		@"langType": langType,
 		@"cacheable": @(cacheable),
-		@"smallImage": @(smallImage),
-		@"smallImageURL": smallImageURL,
-		@"smallFile": smallFile,
 		@"serviceContext": serviceContext
 	};
 
-	NSDictionary *_command = @{@"/journaltemplate/update-template": _params};
+	NSDictionary *_command = @{@"/journaltemplate/add-template": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)copyTemplate:(long)groupId oldTemplateId:(NSString *)oldTemplateId newTemplateId:(NSString *)newTemplateId autoTemplateId:(BOOL)autoTemplateId {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"oldTemplateId": oldTemplateId,
-		@"newTemplateId": newTemplateId,
-		@"autoTemplateId": @(autoTemplateId)
-	};
-
-	NSDictionary *_command = @{@"/journaltemplate/copy-template": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (void)deleteTemplate:(long)groupId templateId:(NSString *)templateId {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"templateId": templateId
-	};
-
-	NSDictionary *_command = @{@"/journaltemplate/delete-template": _params};
-
-	[self.session invoke:_command];
-}
-
-- (int)searchCount:(long)companyId groupIds:(NSArray *)groupIds templateId:(NSString *)templateId structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator {
-	NSDictionary *_params = @{
-		@"companyId": @(companyId),
-		@"groupIds": groupIds,
-		@"templateId": templateId,
-		@"structureId": structureId,
-		@"structureIdComparator": structureIdComparator,
-		@"name": name,
-		@"description": description,
-		@"andOperator": @(andOperator)
-	};
-
-	NSDictionary *_command = @{@"/journaltemplate/search-count": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (NSDictionary *)addTemplate:(long)groupId templateId:(NSString *)templateId autoTemplateId:(BOOL)autoTemplateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(NSDictionary *)smallFile serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addTemplateWithGroupId:(long)groupId templateId:(NSString *)templateId autoTemplateId:(BOOL)autoTemplateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(NSDictionary *)smallFile serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"templateId": templateId,
@@ -102,10 +59,88 @@
 
 	NSDictionary *_command = @{@"/journaltemplate/add-template": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)search:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator start:(int)start end:(int)end obc:(NSDictionary *)obc {
+- (NSDictionary *)copyTemplateWithGroupId:(long)groupId oldTemplateId:(NSString *)oldTemplateId newTemplateId:(NSString *)newTemplateId autoTemplateId:(BOOL)autoTemplateId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"oldTemplateId": oldTemplateId,
+		@"newTemplateId": newTemplateId,
+		@"autoTemplateId": @(autoTemplateId)
+	};
+
+	NSDictionary *_command = @{@"/journaltemplate/copy-template": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteTemplateWithGroupId:(long)groupId templateId:(NSString *)templateId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"templateId": templateId
+	};
+
+	NSDictionary *_command = @{@"/journaltemplate/delete-template": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getStructureTemplatesWithGroupId:(long)groupId structureId:(NSString *)structureId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"structureId": structureId
+	};
+
+	NSDictionary *_command = @{@"/journaltemplate/get-structure-templates": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getTemplateWithGroupId:(long)groupId templateId:(NSString *)templateId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"templateId": templateId
+	};
+
+	NSDictionary *_command = @{@"/journaltemplate/get-template": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getTemplateWithGroupId:(long)groupId templateId:(NSString *)templateId includeGlobalTemplates:(BOOL)includeGlobalTemplates error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"templateId": templateId,
+		@"includeGlobalTemplates": @(includeGlobalTemplates)
+	};
+
+	NSDictionary *_command = @{@"/journaltemplate/get-template": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)searchWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds templateId:(NSString *)templateId structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"companyId": @(companyId),
+		@"groupIds": groupIds,
+		@"templateId": templateId,
+		@"structureId": structureId,
+		@"structureIdComparator": structureIdComparator,
+		@"name": name,
+		@"description": description,
+		@"andOperator": @(andOperator),
+		@"start": @(start),
+		@"end": @(end),
+		@"obc": obc
+	};
+
+	NSDictionary *_command = @{@"/journaltemplate/search": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)searchWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"groupIds": groupIds,
@@ -119,30 +154,79 @@
 
 	NSDictionary *_command = @{@"/journaltemplate/search": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getTemplate:(long)groupId templateId:(NSString *)templateId includeGlobalTemplates:(BOOL)includeGlobalTemplates {
+- (int)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"companyId": @(companyId),
+		@"groupIds": groupIds,
+		@"keywords": keywords,
+		@"structureId": structureId,
+		@"structureIdComparator": structureIdComparator
+	};
+
+	NSDictionary *_command = @{@"/journaltemplate/search-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (int)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds templateId:(NSString *)templateId structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"companyId": @(companyId),
+		@"groupIds": groupIds,
+		@"templateId": templateId,
+		@"structureId": structureId,
+		@"structureIdComparator": structureIdComparator,
+		@"name": name,
+		@"description": description,
+		@"andOperator": @(andOperator)
+	};
+
+	NSDictionary *_command = @{@"/journaltemplate/search-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateTemplateWithGroupId:(long)groupId templateId:(NSString *)templateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"templateId": templateId,
-		@"includeGlobalTemplates": @(includeGlobalTemplates)
+		@"structureId": structureId,
+		@"nameMap": nameMap,
+		@"descriptionMap": descriptionMap,
+		@"xsl": xsl,
+		@"formatXsl": @(formatXsl),
+		@"langType": langType,
+		@"cacheable": @(cacheable),
+		@"serviceContext": serviceContext
 	};
 
-	NSDictionary *_command = @{@"/journaltemplate/get-template": _params};
+	NSDictionary *_command = @{@"/journaltemplate/update-template": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getStructureTemplates:(long)groupId structureId:(NSString *)structureId {
+- (NSDictionary *)updateTemplateWithGroupId:(long)groupId templateId:(NSString *)templateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(NSDictionary *)smallFile serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
-		@"structureId": structureId
+		@"templateId": templateId,
+		@"structureId": structureId,
+		@"nameMap": nameMap,
+		@"descriptionMap": descriptionMap,
+		@"xsl": xsl,
+		@"formatXsl": @(formatXsl),
+		@"langType": langType,
+		@"cacheable": @(cacheable),
+		@"smallImage": @(smallImage),
+		@"smallImageURL": smallImageURL,
+		@"smallFile": smallFile,
+		@"serviceContext": serviceContext
 	};
 
-	NSDictionary *_command = @{@"/journaltemplate/get-structure-templates": _params};
+	NSDictionary *_command = @{@"/journaltemplate/update-template": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

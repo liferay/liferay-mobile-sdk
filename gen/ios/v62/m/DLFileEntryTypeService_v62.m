@@ -19,44 +19,100 @@
  */
 @implementation DLFileEntryTypeService_v62
 
-- (void)updateFileEntryType:(long)fileEntryTypeId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addFileEntryTypeWithGroupId:(long)groupId name:(NSString *)name description:(NSString *)description ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
-		@"fileEntryTypeId": @(fileEntryTypeId),
+		@"groupId": @(groupId),
+		@"name": name,
+		@"description": description,
+		@"ddmStructureIds": ddmStructureIds,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/dlfileentrytype/add-file-entry-type": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)addFileEntryTypeWithGroupId:(long)groupId fileEntryTypeKey:(NSString *)fileEntryTypeKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"fileEntryTypeKey": fileEntryTypeKey,
 		@"nameMap": nameMap,
 		@"descriptionMap": descriptionMap,
 		@"ddmStructureIds": ddmStructureIds,
 		@"serviceContext": serviceContext
 	};
 
-	NSDictionary *_command = @{@"/dlfileentrytype/update-file-entry-type": _params};
+	NSDictionary *_command = @{@"/dlfileentrytype/add-file-entry-type": _params};
 
-	[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (int)searchCount:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType {
+- (void)deleteFileEntryTypeWithFileEntryTypeId:(long)fileEntryTypeId error:(NSError **)error {
 	NSDictionary *_params = @{
-		@"companyId": @(companyId),
-		@"groupIds": groupIds,
-		@"keywords": keywords,
-		@"includeBasicFileEntryType": @(includeBasicFileEntryType)
+		@"fileEntryTypeId": @(fileEntryTypeId)
 	};
 
-	NSDictionary *_command = @{@"/dlfileentrytype/search-count": _params};
+	NSDictionary *_command = @{@"/dlfileentrytype/delete-file-entry-type": _params};
 
-	return (int)[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (int)getFileEntryTypesCount:(NSArray *)groupIds {
+- (NSDictionary *)getFileEntryTypeWithFileEntryTypeId:(long)fileEntryTypeId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"fileEntryTypeId": @(fileEntryTypeId)
+	};
+
+	NSDictionary *_command = @{@"/dlfileentrytype/get-file-entry-type": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getFileEntryTypesWithGroupIds:(NSArray *)groupIds error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupIds": groupIds
+	};
+
+	NSDictionary *_command = @{@"/dlfileentrytype/get-file-entry-types": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getFileEntryTypesWithGroupIds:(NSArray *)groupIds start:(int)start end:(int)end error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupIds": groupIds,
+		@"start": @(start),
+		@"end": @(end)
+	};
+
+	NSDictionary *_command = @{@"/dlfileentrytype/get-file-entry-types": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (int)getFileEntryTypesCountWithGroupIds:(NSArray *)groupIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupIds": groupIds
 	};
 
 	NSDictionary *_command = @{@"/dlfileentrytype/get-file-entry-types-count": _params};
 
-	return (int)[self.session invoke:_command];
+	return (int)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)search:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator {
+- (NSArray *)getFolderFileEntryTypesWithGroupIds:(NSArray *)groupIds folderId:(long)folderId inherited:(BOOL)inherited error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupIds": groupIds,
+		@"folderId": @(folderId),
+		@"inherited": @(inherited)
+	};
+
+	NSDictionary *_command = @{@"/dlfileentrytype/get-folder-file-entry-types": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)searchWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"groupIds": groupIds,
@@ -69,66 +125,48 @@
 
 	NSDictionary *_command = @{@"/dlfileentrytype/search": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFolderFileEntryTypes:(NSArray *)groupIds folderId:(long)folderId inherited:(BOOL)inherited {
+- (int)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType error:(NSError **)error {
 	NSDictionary *_params = @{
+		@"companyId": @(companyId),
 		@"groupIds": groupIds,
-		@"folderId": @(folderId),
-		@"inherited": @(inherited)
+		@"keywords": keywords,
+		@"includeBasicFileEntryType": @(includeBasicFileEntryType)
 	};
 
-	NSDictionary *_command = @{@"/dlfileentrytype/get-folder-file-entry-types": _params};
+	NSDictionary *_command = @{@"/dlfileentrytype/search-count": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (int)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addFileEntryType:(long)groupId fileEntryTypeKey:(NSString *)fileEntryTypeKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext {
+- (void)updateFileEntryTypeWithFileEntryTypeId:(long)fileEntryTypeId name:(NSString *)name description:(NSString *)description ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"fileEntryTypeKey": fileEntryTypeKey,
+		@"fileEntryTypeId": @(fileEntryTypeId),
+		@"name": name,
+		@"description": description,
+		@"ddmStructureIds": ddmStructureIds,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/dlfileentrytype/update-file-entry-type": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)updateFileEntryTypeWithFileEntryTypeId:(long)fileEntryTypeId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"fileEntryTypeId": @(fileEntryTypeId),
 		@"nameMap": nameMap,
 		@"descriptionMap": descriptionMap,
 		@"ddmStructureIds": ddmStructureIds,
 		@"serviceContext": serviceContext
 	};
 
-	NSDictionary *_command = @{@"/dlfileentrytype/add-file-entry-type": _params};
+	NSDictionary *_command = @{@"/dlfileentrytype/update-file-entry-type": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSArray *)getFileEntryTypes:(NSArray *)groupIds start:(int)start end:(int)end {
-	NSDictionary *_params = @{
-		@"groupIds": groupIds,
-		@"start": @(start),
-		@"end": @(end)
-	};
-
-	NSDictionary *_command = @{@"/dlfileentrytype/get-file-entry-types": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getFileEntryType:(long)fileEntryTypeId {
-	NSDictionary *_params = @{
-		@"fileEntryTypeId": @(fileEntryTypeId)
-	};
-
-	NSDictionary *_command = @{@"/dlfileentrytype/get-file-entry-type": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (void)deleteFileEntryType:(long)fileEntryTypeId {
-	NSDictionary *_params = @{
-		@"fileEntryTypeId": @(fileEntryTypeId)
-	};
-
-	NSDictionary *_command = @{@"/dlfileentrytype/delete-file-entry-type": _params};
-
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
 @end

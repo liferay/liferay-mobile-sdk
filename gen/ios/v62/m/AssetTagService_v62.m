@@ -19,7 +19,95 @@
  */
 @implementation AssetTagService_v62
 
-- (NSDictionary *)getJsonGroupTags:(long)groupId name:(NSString *)name start:(int)start end:(int)end {
+- (NSDictionary *)addTagWithName:(NSString *)name tagProperties:(NSArray *)tagProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"name": name,
+		@"tagProperties": tagProperties,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/assettag/add-tag": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteTagWithTagId:(long)tagId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"tagId": @(tagId)
+	};
+
+	NSDictionary *_command = @{@"/assettag/delete-tag": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)deleteTagsWithTagIds:(NSArray *)tagIds error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"tagIds": tagIds
+	};
+
+	NSDictionary *_command = @{@"/assettag/delete-tags": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getGroupTagsWithGroupId:(long)groupId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId)
+	};
+
+	NSDictionary *_command = @{@"/assettag/get-group-tags": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getGroupTagsWithGroupId:(long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"start": @(start),
+		@"end": @(end),
+		@"obc": obc
+	};
+
+	NSDictionary *_command = @{@"/assettag/get-group-tags": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (int)getGroupTagsCountWithGroupId:(long)groupId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId)
+	};
+
+	NSDictionary *_command = @{@"/assettag/get-group-tags-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getGroupTagsDisplayWithGroupId:(long)groupId name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"name": name,
+		@"start": @(start),
+		@"end": @(end)
+	};
+
+	NSDictionary *_command = @{@"/assettag/get-group-tags-display": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getGroupsTagsWithGroupIds:(NSArray *)groupIds error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupIds": groupIds
+	};
+
+	NSDictionary *_command = @{@"/assettag/get-groups-tags": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getJsonGroupTagsWithGroupId:(long)groupId name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"name": name,
@@ -29,62 +117,71 @@
 
 	NSDictionary *_command = @{@"/assettag/get-json-group-tags": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteTag:(long)tagId {
-	NSDictionary *_params = @{
-		@"tagId": @(tagId)
-	};
-
-	NSDictionary *_command = @{@"/assettag/delete-tag": _params};
-
-	[self.session invoke:_command];
-}
-
-- (int)getGroupTagsCount:(long)groupId {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId)
-	};
-
-	NSDictionary *_command = @{@"/assettag/get-group-tags-count": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getTag:(long)tagId {
+- (NSDictionary *)getTagWithTagId:(long)tagId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"tagId": @(tagId)
 	};
 
 	NSDictionary *_command = @{@"/assettag/get-tag": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteTags:(NSArray *)tagIds {
+- (NSArray *)getTagsWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error {
 	NSDictionary *_params = @{
-		@"tagIds": tagIds
+		@"className": className,
+		@"classPK": @(classPK)
 	};
 
-	NSDictionary *_command = @{@"/assettag/delete-tags": _params};
+	NSDictionary *_command = @{@"/assettag/get-tags": _params};
 
-	[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (void)mergeTags:(NSArray *)fromTagIds toTagId:(long)toTagId overrideProperties:(BOOL)overrideProperties {
+- (NSArray *)getTagsWithGroupId:(long)groupId classNameId:(long)classNameId name:(NSString *)name error:(NSError **)error {
 	NSDictionary *_params = @{
-		@"fromTagIds": fromTagIds,
-		@"toTagId": @(toTagId),
-		@"overrideProperties": @(overrideProperties)
+		@"groupId": @(groupId),
+		@"classNameId": @(classNameId),
+		@"name": name
 	};
 
-	NSDictionary *_command = @{@"/assettag/merge-tags": _params};
+	NSDictionary *_command = @{@"/assettag/get-tags": _params};
 
-	[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getTags:(long)groupId classNameId:(long)classNameId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc {
+- (NSArray *)getTagsWithGroupId:(long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"name": name,
+		@"tagProperties": tagProperties,
+		@"start": @(start),
+		@"end": @(end)
+	};
+
+	NSDictionary *_command = @{@"/assettag/get-tags": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getTagsWithGroupIds:(NSArray *)groupIds name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupIds": groupIds,
+		@"name": name,
+		@"tagProperties": tagProperties,
+		@"start": @(start),
+		@"end": @(end)
+	};
+
+	NSDictionary *_command = @{@"/assettag/get-tags": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getTagsWithGroupId:(long)groupId classNameId:(long)classNameId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
@@ -96,33 +193,33 @@
 
 	NSDictionary *_command = @{@"/assettag/get-tags": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateTag:(long)tagId name:(NSString *)name tagProperties:(NSArray *)tagProperties serviceContext:(NSDictionary *)serviceContext {
+- (int)getTagsCountWithGroupId:(long)groupId name:(NSString *)name error:(NSError **)error {
 	NSDictionary *_params = @{
-		@"tagId": @(tagId),
-		@"name": name,
-		@"tagProperties": tagProperties,
-		@"serviceContext": serviceContext
+		@"groupId": @(groupId),
+		@"name": name
 	};
 
-	NSDictionary *_command = @{@"/assettag/update-tag": _params};
+	NSDictionary *_command = @{@"/assettag/get-tags-count": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (int)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupsTags:(NSArray *)groupIds {
+- (int)getTagsCountWithGroupId:(long)groupId classNameId:(long)classNameId name:(NSString *)name error:(NSError **)error {
 	NSDictionary *_params = @{
-		@"groupIds": groupIds
+		@"groupId": @(groupId),
+		@"classNameId": @(classNameId),
+		@"name": name
 	};
 
-	NSDictionary *_command = @{@"/assettag/get-groups-tags": _params};
+	NSDictionary *_command = @{@"/assettag/get-tags-count": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (int)[self.session invoke:_command error:error];
 }
 
-- (int)getTagsCount:(long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties {
+- (int)getTagsCountWithGroupId:(long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"name": name,
@@ -131,36 +228,48 @@
 
 	NSDictionary *_command = @{@"/assettag/get-tags-count": _params};
 
-	return (int)[self.session invoke:_command];
+	return (int)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getGroupTagsDisplay:(long)groupId name:(NSString *)name start:(int)start end:(int)end {
+- (void)mergeTagsWithFromTagId:(long)fromTagId toTagId:(long)toTagId overrideProperties:(BOOL)overrideProperties error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"fromTagId": @(fromTagId),
+		@"toTagId": @(toTagId),
+		@"overrideProperties": @(overrideProperties)
+	};
+
+	NSDictionary *_command = @{@"/assettag/merge-tags": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)mergeTagsWithFromTagIds:(NSArray *)fromTagIds toTagId:(long)toTagId overrideProperties:(BOOL)overrideProperties error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"fromTagIds": fromTagIds,
+		@"toTagId": @(toTagId),
+		@"overrideProperties": @(overrideProperties)
+	};
+
+	NSDictionary *_command = @{@"/assettag/merge-tags": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)searchWithGroupId:(long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"name": name,
+		@"tagProperties": tagProperties,
 		@"start": @(start),
 		@"end": @(end)
 	};
 
-	NSDictionary *_command = @{@"/assettag/get-group-tags-display": _params};
+	NSDictionary *_command = @{@"/assettag/search": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupTags:(long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"start": @(start),
-		@"end": @(end),
-		@"obc": obc
-	};
-
-	NSDictionary *_command = @{@"/assettag/get-group-tags": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)search:(NSArray *)groupIds name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end {
+- (NSDictionary *)searchWithGroupIds:(NSArray *)groupIds name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupIds": groupIds,
 		@"name": name,
@@ -171,19 +280,20 @@
 
 	NSDictionary *_command = @{@"/assettag/search": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addTag:(NSString *)name tagProperties:(NSArray *)tagProperties serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)updateTagWithTagId:(long)tagId name:(NSString *)name tagProperties:(NSArray *)tagProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
+		@"tagId": @(tagId),
 		@"name": name,
 		@"tagProperties": tagProperties,
 		@"serviceContext": serviceContext
 	};
 
-	NSDictionary *_command = @{@"/assettag/add-tag": _params};
+	NSDictionary *_command = @{@"/assettag/update-tag": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

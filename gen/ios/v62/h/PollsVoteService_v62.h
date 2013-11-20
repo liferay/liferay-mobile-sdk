@@ -20,6 +20,6 @@
  */
 @interface PollsVoteService_v62 : BaseService
 
-- (NSDictionary *)addVote:(long)questionId choiceId:(long)choiceId serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)addVoteWithQuestionId:(long)questionId choiceId:(long)choiceId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

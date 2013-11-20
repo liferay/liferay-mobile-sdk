@@ -19,17 +19,7 @@
  */
 @implementation WikiNodeService_v62
 
-- (void)deleteNode:(long)nodeId {
-	NSDictionary *_params = @{
-		@"nodeId": @(nodeId)
-	};
-
-	NSDictionary *_command = @{@"/wikinode/delete-node": _params};
-
-	[self.session invoke:_command];
-}
-
-- (NSDictionary *)addNode:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addNodeWithName:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"name": name,
 		@"description": description,
@@ -38,67 +28,30 @@
 
 	NSDictionary *_command = @{@"/wikinode/add-node": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)restoreNodeFromTrash:(long)nodeId {
+- (void)deleteNodeWithNodeId:(long)nodeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId)
 	};
 
-	NSDictionary *_command = @{@"/wikinode/restore-node-from-trash": _params};
+	NSDictionary *_command = @{@"/wikinode/delete-node": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (void)unsubscribeNode:(long)nodeId {
+- (NSDictionary *)getNodeWithNodeId:(long)nodeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId)
 	};
 
-	NSDictionary *_command = @{@"/wikinode/unsubscribe-node": _params};
+	NSDictionary *_command = @{@"/wikinode/get-node": _params};
 
-	[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)importPages:(long)nodeId importer:(NSString *)importer inputStreams:(NSArray *)inputStreams options:(NSDictionary *)options {
-	NSDictionary *_params = @{
-		@"nodeId": @(nodeId),
-		@"importer": importer,
-		@"inputStreams": inputStreams,
-		@"options": options
-	};
-
-	NSDictionary *_command = @{@"/wikinode/import-pages": _params};
-
-	[self.session invoke:_command];
-}
-
-- (int)getNodesCount:(long)groupId status:(int)status {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"status": @(status)
-	};
-
-	NSDictionary *_command = @{@"/wikinode/get-nodes-count": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (NSDictionary *)updateNode:(long)nodeId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext {
-	NSDictionary *_params = @{
-		@"nodeId": @(nodeId),
-		@"name": name,
-		@"description": description,
-		@"serviceContext": serviceContext
-	};
-
-	NSDictionary *_command = @{@"/wikinode/update-node": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getNode:(long)groupId name:(NSString *)name {
+- (NSDictionary *)getNodeWithGroupId:(long)groupId name:(NSString *)name error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"name": name
@@ -106,20 +59,43 @@
 
 	NSDictionary *_command = @{@"/wikinode/get-node": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)moveNodeToTrash:(long)nodeId {
+- (NSArray *)getNodesWithGroupId:(long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
-		@"nodeId": @(nodeId)
+		@"groupId": @(groupId)
 	};
 
-	NSDictionary *_command = @{@"/wikinode/move-node-to-trash": _params};
+	NSDictionary *_command = @{@"/wikinode/get-nodes": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getNodes:(long)groupId status:(int)status start:(int)start end:(int)end {
+- (NSArray *)getNodesWithGroupId:(long)groupId status:(int)status error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"status": @(status)
+	};
+
+	NSDictionary *_command = @{@"/wikinode/get-nodes": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getNodesWithGroupId:(long)groupId start:(int)start end:(int)end error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"start": @(start),
+		@"end": @(end)
+	};
+
+	NSDictionary *_command = @{@"/wikinode/get-nodes": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getNodesWithGroupId:(long)groupId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"status": @(status),
@@ -129,17 +105,81 @@
 
 	NSDictionary *_command = @{@"/wikinode/get-nodes": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (void)subscribeNode:(long)nodeId {
+- (int)getNodesCountWithGroupId:(long)groupId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId)
+	};
+
+	NSDictionary *_command = @{@"/wikinode/get-nodes-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (int)getNodesCountWithGroupId:(long)groupId status:(int)status error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"status": @(status)
+	};
+
+	NSDictionary *_command = @{@"/wikinode/get-nodes-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)moveNodeToTrashWithNodeId:(long)nodeId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"nodeId": @(nodeId)
+	};
+
+	NSDictionary *_command = @{@"/wikinode/move-node-to-trash": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)restoreNodeFromTrashWithNodeId:(long)nodeId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"nodeId": @(nodeId)
+	};
+
+	NSDictionary *_command = @{@"/wikinode/restore-node-from-trash": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)subscribeNodeWithNodeId:(long)nodeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId)
 	};
 
 	NSDictionary *_command = @{@"/wikinode/subscribe-node": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
+}
+
+- (void)unsubscribeNodeWithNodeId:(long)nodeId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"nodeId": @(nodeId)
+	};
+
+	NSDictionary *_command = @{@"/wikinode/unsubscribe-node": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateNodeWithNodeId:(long)nodeId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"nodeId": @(nodeId),
+		@"name": name,
+		@"description": description,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/wikinode/update-node": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

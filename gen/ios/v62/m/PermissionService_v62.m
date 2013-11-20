@@ -19,16 +19,16 @@
  */
 @implementation PermissionService_v62
 
-- (void)checkPermission:(long)groupId name:(NSString *)name primKey:(long)primKey {
+- (void)checkPermissionWithGroupId:(long)groupId name:(NSString *)name primKey:(NSString *)primKey error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"name": name,
-		@"primKey": @(primKey)
+		@"primKey": primKey
 	};
 
 	NSDictionary *_command = @{@"/permission/check-permission": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
 @end

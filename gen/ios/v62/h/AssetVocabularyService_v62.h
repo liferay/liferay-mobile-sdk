@@ -20,17 +20,27 @@
  */
 @interface AssetVocabularyService_v62 : BaseService
 
-- (NSDictionary *)addVocabulary:(NSString *)title titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getJsonGroupVocabularies:(long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc;
-- (NSArray *)getVocabularies:(NSArray *)vocabularyIds;
-- (int)getGroupVocabulariesCount:(long)groupId name:(NSString *)name;
-- (NSArray *)getCompanyVocabularies:(long)companyId;
-- (NSDictionary *)getVocabulary:(long)vocabularyId;
-- (NSDictionary *)updateVocabulary:(long)vocabularyId title:(NSString *)title titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(NSDictionary *)serviceContext;
-- (NSArray *)getGroupVocabularies:(long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc;
-- (NSArray *)getGroupsVocabularies:(NSArray *)groupIds className:(NSString *)className;
-- (NSDictionary *)getGroupVocabulariesDisplay:(long)groupId name:(NSString *)name start:(int)start end:(int)end addDefaultVocabulary:(BOOL)addDefaultVocabulary obc:(NSDictionary *)obc;
-- (void)deleteVocabulary:(long)vocabularyId;
-- (NSArray *)deleteVocabularies:(NSArray *)vocabularyIds serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)addVocabularyWithTitle:(NSString *)title serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addVocabularyWithTitleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addVocabularyWithTitle:(NSString *)title titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteVocabulariesWithVocabularyIds:(NSArray *)vocabularyIds error:(NSError **)error;
+- (NSArray *)deleteVocabulariesWithVocabularyIds:(NSArray *)vocabularyIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteVocabularyWithVocabularyId:(long)vocabularyId error:(NSError **)error;
+- (NSArray *)getCompanyVocabulariesWithCompanyId:(long)companyId error:(NSError **)error;
+- (NSArray *)getGroupVocabulariesWithGroupId:(long)groupId error:(NSError **)error;
+- (NSArray *)getGroupVocabulariesWithGroupId:(long)groupId createDefaultVocabulary:(BOOL)createDefaultVocabulary error:(NSError **)error;
+- (NSArray *)getGroupVocabulariesWithGroupId:(long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSArray *)getGroupVocabulariesWithGroupId:(long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (int)getGroupVocabulariesCountWithGroupId:(long)groupId error:(NSError **)error;
+- (int)getGroupVocabulariesCountWithGroupId:(long)groupId name:(NSString *)name error:(NSError **)error;
+- (NSDictionary *)getGroupVocabulariesDisplayWithGroupId:(long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSDictionary *)getGroupVocabulariesDisplayWithGroupId:(long)groupId name:(NSString *)name start:(int)start end:(int)end addDefaultVocabulary:(BOOL)addDefaultVocabulary obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSArray *)getGroupsVocabulariesWithGroupIds:(NSArray *)groupIds error:(NSError **)error;
+- (NSArray *)getGroupsVocabulariesWithGroupIds:(NSArray *)groupIds className:(NSString *)className error:(NSError **)error;
+- (NSDictionary *)getJsonGroupVocabulariesWithGroupId:(long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSArray *)getVocabulariesWithVocabularyIds:(NSArray *)vocabularyIds error:(NSError **)error;
+- (NSDictionary *)getVocabularyWithVocabularyId:(long)vocabularyId error:(NSError **)error;
+- (NSDictionary *)updateVocabularyWithVocabularyId:(long)vocabularyId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)updateVocabularyWithVocabularyId:(long)vocabularyId title:(NSString *)title titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

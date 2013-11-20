@@ -20,18 +20,20 @@
  */
 @interface RoleService_v62 : BaseService
 
-- (BOOL)hasUserRole:(long)userId companyId:(long)companyId name:(NSString *)name inherited:(BOOL)inherited;
-- (NSArray *)getUserGroupRoles:(long)userId groupId:(long)groupId;
-- (NSDictionary *)addRole:(NSString *)className classPK:(long)classPK name:(NSString *)name titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap type:(int)type subtype:(NSString *)subtype serviceContext:(NSDictionary *)serviceContext;
-- (void)unsetUserRoles:(long)userId roleIds:(NSArray *)roleIds;
-- (NSArray *)getUserRoles:(long)userId;
-- (NSArray *)getUserRelatedRoles:(long)userId groups:(NSArray *)groups;
-- (NSDictionary *)getRole:(long)companyId name:(NSString *)name;
-- (NSDictionary *)updateRole:(long)roleId name:(NSString *)name titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap subtype:(NSString *)subtype serviceContext:(NSDictionary *)serviceContext;
-- (NSArray *)getGroupRoles:(long)groupId;
-- (void)deleteRole:(long)roleId;
-- (BOOL)hasUserRoles:(long)userId companyId:(long)companyId names:(NSArray *)names inherited:(BOOL)inherited;
-- (void)addUserRoles:(long)userId roleIds:(NSArray *)roleIds;
-- (NSArray *)getUserGroupGroupRoles:(long)userId groupId:(long)groupId;
+- (NSDictionary *)addRoleWithName:(NSString *)name titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap type:(int)type error:(NSError **)error;
+- (NSDictionary *)addRoleWithClassName:(NSString *)className classPK:(long)classPK name:(NSString *)name titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap type:(int)type subtype:(NSString *)subtype serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)addUserRolesWithUserId:(long)userId roleIds:(NSArray *)roleIds error:(NSError **)error;
+- (void)deleteRoleWithRoleId:(long)roleId error:(NSError **)error;
+- (NSArray *)getGroupRolesWithGroupId:(long)groupId error:(NSError **)error;
+- (NSDictionary *)getRoleWithRoleId:(long)roleId error:(NSError **)error;
+- (NSDictionary *)getRoleWithCompanyId:(long)companyId name:(NSString *)name error:(NSError **)error;
+- (NSArray *)getUserGroupGroupRolesWithUserId:(long)userId groupId:(long)groupId error:(NSError **)error;
+- (NSArray *)getUserGroupRolesWithUserId:(long)userId groupId:(long)groupId error:(NSError **)error;
+- (NSArray *)getUserRelatedRolesWithUserId:(long)userId groups:(NSArray *)groups error:(NSError **)error;
+- (NSArray *)getUserRolesWithUserId:(long)userId error:(NSError **)error;
+- (BOOL)hasUserRoleWithUserId:(long)userId companyId:(long)companyId name:(NSString *)name inherited:(BOOL)inherited error:(NSError **)error;
+- (BOOL)hasUserRolesWithUserId:(long)userId companyId:(long)companyId names:(NSArray *)names inherited:(BOOL)inherited error:(NSError **)error;
+- (void)unsetUserRolesWithUserId:(long)userId roleIds:(NSArray *)roleIds error:(NSError **)error;
+- (NSDictionary *)updateRoleWithRoleId:(long)roleId name:(NSString *)name titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap subtype:(NSString *)subtype serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

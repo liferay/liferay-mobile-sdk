@@ -20,11 +20,11 @@
  */
 @interface MDRRuleGroupService_v62 : BaseService
 
-- (NSDictionary *)copyRuleGroup:(long)ruleGroupId groupId:(long)groupId serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)updateRuleGroup:(long)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteRuleGroup:(long)ruleGroupId;
-- (NSDictionary *)fetchRuleGroup:(long)ruleGroupId;
-- (NSDictionary *)addRuleGroup:(long)groupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getRuleGroup:(long)ruleGroupId;
+- (NSDictionary *)addRuleGroupWithGroupId:(long)groupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)copyRuleGroupWithRuleGroupId:(long)ruleGroupId groupId:(long)groupId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteRuleGroupWithRuleGroupId:(long)ruleGroupId error:(NSError **)error;
+- (NSDictionary *)fetchRuleGroupWithRuleGroupId:(long)ruleGroupId error:(NSError **)error;
+- (NSDictionary *)getRuleGroupWithRuleGroupId:(long)ruleGroupId error:(NSError **)error;
+- (NSDictionary *)updateRuleGroupWithRuleGroupId:(long)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

@@ -19,7 +19,109 @@
  */
 @implementation JournalFolderService_v62
 
-- (NSArray *)getFolders:(long)groupId parentFolderId:(long)parentFolderId status:(int)status start:(int)start end:(int)end {
+- (NSDictionary *)addFolderWithGroupId:(long)groupId parentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"parentFolderId": @(parentFolderId),
+		@"name": name,
+		@"description": description,
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/add-folder": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteFolderWithFolderId:(long)folderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"folderId": @(folderId)
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/delete-folder": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)deleteFolderWithFolderId:(long)folderId includeTrashedEntries:(BOOL)includeTrashedEntries error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"folderId": @(folderId),
+		@"includeTrashedEntries": @(includeTrashedEntries)
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/delete-folder": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getFolderWithFolderId:(long)folderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"folderId": @(folderId)
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/get-folder": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getFolderIdsWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"folderId": @(folderId)
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/get-folder-ids": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getFoldersWithGroupId:(long)groupId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId)
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/get-folders": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getFoldersWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"parentFolderId": @(parentFolderId)
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/get-folders": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getFoldersWithGroupId:(long)groupId parentFolderId:(long)parentFolderId status:(int)status error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"parentFolderId": @(parentFolderId),
+		@"status": @(status)
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/get-folders": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getFoldersWithGroupId:(long)groupId parentFolderId:(long)parentFolderId start:(int)start end:(int)end error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"parentFolderId": @(parentFolderId),
+		@"start": @(start),
+		@"end": @(end)
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/get-folders": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getFoldersWithGroupId:(long)groupId parentFolderId:(long)parentFolderId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId),
@@ -30,22 +132,24 @@
 
 	NSDictionary *_command = @{@"/journalfolder/get-folders": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)moveFolder:(long)folderId parentFolderId:(long)parentFolderId serviceContext:(NSDictionary *)serviceContext {
+- (NSArray *)getFoldersAndArticlesWithGroupId:(long)groupId folderId:(long)folderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSDictionary *_params = @{
+		@"groupId": @(groupId),
 		@"folderId": @(folderId),
-		@"parentFolderId": @(parentFolderId),
-		@"serviceContext": serviceContext
+		@"start": @(start),
+		@"end": @(end),
+		@"obc": obc
 	};
 
-	NSDictionary *_command = @{@"/journalfolder/move-folder": _params};
+	NSDictionary *_command = @{@"/journalfolder/get-folders-and-articles": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFoldersAndArticles:(long)groupId folderId:(long)folderId status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc {
+- (NSArray *)getFoldersAndArticlesWithGroupId:(long)groupId folderId:(long)folderId status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -57,10 +161,104 @@
 
 	NSDictionary *_command = @{@"/journalfolder/get-folders-and-articles": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)moveFolderFromTrash:(long)folderId parentFolderId:(long)parentFolderId serviceContext:(NSDictionary *)serviceContext {
+- (int)getFoldersAndArticlesCountWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"folderId": @(folderId)
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/get-folders-and-articles-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (int)getFoldersAndArticlesCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"folderId": @(folderId),
+		@"status": @(status)
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/get-folders-and-articles-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (int)getFoldersAndArticlesCountWithGroupId:(long)groupId folderIds:(NSArray *)folderIds status:(int)status error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"folderIds": folderIds,
+		@"status": @(status)
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/get-folders-and-articles-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (int)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"parentFolderId": @(parentFolderId)
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/get-folders-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (int)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId status:(int)status error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"parentFolderId": @(parentFolderId),
+		@"status": @(status)
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/get-folders-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (void)getSubfolderIdsWithFolderIds:(NSArray *)folderIds groupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"folderIds": folderIds,
+		@"groupId": @(groupId),
+		@"folderId": @(folderId)
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/get-subfolder-ids": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getSubfolderIdsWithGroupId:(long)groupId folderId:(long)folderId recurse:(BOOL)recurse error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"folderId": @(folderId),
+		@"recurse": @(recurse)
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/get-subfolder-ids": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)moveFolderWithFolderId:(long)folderId parentFolderId:(long)parentFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"folderId": @(folderId),
+		@"parentFolderId": @(parentFolderId),
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/move-folder": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)moveFolderFromTrashWithFolderId:(long)folderId parentFolderId:(long)parentFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"folderId": @(folderId),
 		@"parentFolderId": @(parentFolderId),
@@ -69,31 +267,30 @@
 
 	NSDictionary *_command = @{@"/journalfolder/move-folder-from-trash": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)restoreFolderFromTrash:(long)folderId {
+- (NSDictionary *)moveFolderToTrashWithFolderId:(long)folderId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"folderId": @(folderId)
+	};
+
+	NSDictionary *_command = @{@"/journalfolder/move-folder-to-trash": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)restoreFolderFromTrashWithFolderId:(long)folderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"folderId": @(folderId)
 	};
 
 	NSDictionary *_command = @{@"/journalfolder/restore-folder-from-trash": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (void)deleteFolder:(long)folderId includeTrashedEntries:(BOOL)includeTrashedEntries {
-	NSDictionary *_params = @{
-		@"folderId": @(folderId),
-		@"includeTrashedEntries": @(includeTrashedEntries)
-	};
-
-	NSDictionary *_command = @{@"/journalfolder/delete-folder": _params};
-
-	[self.session invoke:_command];
-}
-
-- (NSDictionary *)updateFolder:(long)folderId parentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description mergeWithParentFolder:(BOOL)mergeWithParentFolder serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)updateFolderWithFolderId:(long)folderId parentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description mergeWithParentFolder:(BOOL)mergeWithParentFolder serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"folderId": @(folderId),
 		@"parentFolderId": @(parentFolderId),
@@ -105,88 +302,7 @@
 
 	NSDictionary *_command = @{@"/journalfolder/update-folder": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSArray *)getSubfolderIds:(long)groupId folderId:(long)folderId recurse:(BOOL)recurse {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"folderId": @(folderId),
-		@"recurse": @(recurse)
-	};
-
-	NSDictionary *_command = @{@"/journalfolder/get-subfolder-ids": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)addFolder:(long)groupId parentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"parentFolderId": @(parentFolderId),
-		@"name": name,
-		@"description": description,
-		@"serviceContext": serviceContext
-	};
-
-	NSDictionary *_command = @{@"/journalfolder/add-folder": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getFolder:(long)folderId {
-	NSDictionary *_params = @{
-		@"folderId": @(folderId)
-	};
-
-	NSDictionary *_command = @{@"/journalfolder/get-folder": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (int)getFoldersAndArticlesCount:(long)groupId folderIds:(NSArray *)folderIds status:(int)status {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"folderIds": folderIds,
-		@"status": @(status)
-	};
-
-	NSDictionary *_command = @{@"/journalfolder/get-folders-and-articles-count": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (NSDictionary *)moveFolderToTrash:(long)folderId {
-	NSDictionary *_params = @{
-		@"folderId": @(folderId)
-	};
-
-	NSDictionary *_command = @{@"/journalfolder/move-folder-to-trash": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSArray *)getFolderIds:(long)groupId folderId:(long)folderId {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"folderId": @(folderId)
-	};
-
-	NSDictionary *_command = @{@"/journalfolder/get-folder-ids": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (int)getFoldersCount:(long)groupId parentFolderId:(long)parentFolderId status:(int)status {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"parentFolderId": @(parentFolderId),
-		@"status": @(status)
-	};
-
-	NSDictionary *_command = @{@"/journalfolder/get-folders-count": _params};
-
-	return (int)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

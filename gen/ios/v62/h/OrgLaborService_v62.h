@@ -20,10 +20,10 @@
  */
 @interface OrgLaborService_v62 : BaseService
 
-- (NSArray *)getOrgLabors:(long)organizationId;
-- (NSDictionary *)addOrgLabor:(long)organizationId typeId:(int)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose;
-- (void)deleteOrgLabor:(long)orgLaborId;
-- (NSDictionary *)updateOrgLabor:(long)orgLaborId typeId:(int)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose;
-- (NSDictionary *)getOrgLabor:(long)orgLaborId;
+- (NSDictionary *)addOrgLaborWithOrganizationId:(long)organizationId typeId:(int)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose error:(NSError **)error;
+- (void)deleteOrgLaborWithOrgLaborId:(long)orgLaborId error:(NSError **)error;
+- (NSDictionary *)getOrgLaborWithOrgLaborId:(long)orgLaborId error:(NSError **)error;
+- (NSArray *)getOrgLaborsWithOrganizationId:(long)organizationId error:(NSError **)error;
+- (NSDictionary *)updateOrgLaborWithOrgLaborId:(long)orgLaborId typeId:(int)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose error:(NSError **)error;
 
 @end

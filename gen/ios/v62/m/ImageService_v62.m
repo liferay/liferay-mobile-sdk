@@ -19,14 +19,14 @@
  */
 @implementation ImageService_v62
 
-- (NSDictionary *)getImage:(long)imageId {
+- (NSDictionary *)getImageWithImageId:(long)imageId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"imageId": @(imageId)
 	};
 
 	NSDictionary *_command = @{@"/image/get-image": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

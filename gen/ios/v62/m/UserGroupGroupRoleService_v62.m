@@ -19,19 +19,19 @@
  */
 @implementation UserGroupGroupRoleService_v62
 
-- (void)deleteUserGroupGroupRoles:(NSArray *)userGroupIds groupId:(long)groupId roleId:(long)roleId {
+- (void)addUserGroupGroupRolesWithUserGroupId:(long)userGroupId groupId:(long)groupId roleIds:(NSArray *)roleIds error:(NSError **)error {
 	NSDictionary *_params = @{
-		@"userGroupIds": userGroupIds,
+		@"userGroupId": @(userGroupId),
 		@"groupId": @(groupId),
-		@"roleId": @(roleId)
+		@"roleIds": roleIds
 	};
 
-	NSDictionary *_command = @{@"/usergroupgrouprole/delete-user-group-group-roles": _params};
+	NSDictionary *_command = @{@"/usergroupgrouprole/add-user-group-group-roles": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (void)addUserGroupGroupRoles:(NSArray *)userGroupIds groupId:(long)groupId roleId:(long)roleId {
+- (void)addUserGroupGroupRolesWithUserGroupIds:(NSArray *)userGroupIds groupId:(long)groupId roleId:(long)roleId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userGroupIds": userGroupIds,
 		@"groupId": @(groupId),
@@ -40,7 +40,31 @@
 
 	NSDictionary *_command = @{@"/usergroupgrouprole/add-user-group-group-roles": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
+}
+
+- (void)deleteUserGroupGroupRolesWithUserGroupId:(long)userGroupId groupId:(long)groupId roleIds:(NSArray *)roleIds error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"userGroupId": @(userGroupId),
+		@"groupId": @(groupId),
+		@"roleIds": roleIds
+	};
+
+	NSDictionary *_command = @{@"/usergroupgrouprole/delete-user-group-group-roles": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)deleteUserGroupGroupRolesWithUserGroupIds:(NSArray *)userGroupIds groupId:(long)groupId roleId:(long)roleId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"userGroupIds": userGroupIds,
+		@"groupId": @(groupId),
+		@"roleId": @(roleId)
+	};
+
+	NSDictionary *_command = @{@"/usergroupgrouprole/delete-user-group-group-roles": _params};
+
+	[self.session invoke:_command error:error];
 }
 
 @end

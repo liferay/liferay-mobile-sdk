@@ -20,14 +20,17 @@
  */
 @interface DLFileEntryTypeService_v62 : BaseService
 
-- (void)updateFileEntryType:(long)fileEntryTypeId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext;
-- (int)searchCount:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType;
-- (int)getFileEntryTypesCount:(NSArray *)groupIds;
-- (NSArray *)search:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator;
-- (NSArray *)getFolderFileEntryTypes:(NSArray *)groupIds folderId:(long)folderId inherited:(BOOL)inherited;
-- (NSDictionary *)addFileEntryType:(long)groupId fileEntryTypeKey:(NSString *)fileEntryTypeKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext;
-- (NSArray *)getFileEntryTypes:(NSArray *)groupIds start:(int)start end:(int)end;
-- (NSDictionary *)getFileEntryType:(long)fileEntryTypeId;
-- (void)deleteFileEntryType:(long)fileEntryTypeId;
+- (NSDictionary *)addFileEntryTypeWithGroupId:(long)groupId name:(NSString *)name description:(NSString *)description ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addFileEntryTypeWithGroupId:(long)groupId fileEntryTypeKey:(NSString *)fileEntryTypeKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteFileEntryTypeWithFileEntryTypeId:(long)fileEntryTypeId error:(NSError **)error;
+- (NSDictionary *)getFileEntryTypeWithFileEntryTypeId:(long)fileEntryTypeId error:(NSError **)error;
+- (NSArray *)getFileEntryTypesWithGroupIds:(NSArray *)groupIds error:(NSError **)error;
+- (NSArray *)getFileEntryTypesWithGroupIds:(NSArray *)groupIds start:(int)start end:(int)end error:(NSError **)error;
+- (int)getFileEntryTypesCountWithGroupIds:(NSArray *)groupIds error:(NSError **)error;
+- (NSArray *)getFolderFileEntryTypesWithGroupIds:(NSArray *)groupIds folderId:(long)folderId inherited:(BOOL)inherited error:(NSError **)error;
+- (NSArray *)searchWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;
+- (int)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType error:(NSError **)error;
+- (void)updateFileEntryTypeWithFileEntryTypeId:(long)fileEntryTypeId name:(NSString *)name description:(NSString *)description ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)updateFileEntryTypeWithFileEntryTypeId:(long)fileEntryTypeId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

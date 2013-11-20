@@ -20,10 +20,12 @@
  */
 @interface MDRActionService_v62 : BaseService
 
-- (NSDictionary *)updateAction:(long)actionId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)addAction:(long)ruleGroupInstanceId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getAction:(long)actionId;
-- (void)deleteAction:(long)actionId;
-- (NSDictionary *)fetchAction:(long)actionId;
+- (NSDictionary *)addActionWithRuleGroupInstanceId:(long)ruleGroupInstanceId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addActionWithRuleGroupInstanceId:(long)ruleGroupInstanceId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteActionWithActionId:(long)actionId error:(NSError **)error;
+- (NSDictionary *)fetchActionWithActionId:(long)actionId error:(NSError **)error;
+- (NSDictionary *)getActionWithActionId:(long)actionId error:(NSError **)error;
+- (NSDictionary *)updateActionWithActionId:(long)actionId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)updateActionWithActionId:(long)actionId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

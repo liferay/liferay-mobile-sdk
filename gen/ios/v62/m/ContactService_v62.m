@@ -19,28 +19,17 @@
  */
 @implementation ContactService_v62
 
-- (NSDictionary *)getContact:(long)contactId {
+- (NSDictionary *)getContactWithContactId:(long)contactId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"contactId": @(contactId)
 	};
 
 	NSDictionary *_command = @{@"/contact/get-contact": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (int)getContactsCount:(long)classNameId classPK:(long)classPK {
-	NSDictionary *_params = @{
-		@"classNameId": @(classNameId),
-		@"classPK": @(classPK)
-	};
-
-	NSDictionary *_command = @{@"/contact/get-contacts-count": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (NSArray *)getContacts:(long)classNameId classPK:(long)classPK start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator {
+- (NSArray *)getContactsWithClassNameId:(long)classNameId classPK:(long)classPK start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
@@ -51,7 +40,18 @@
 
 	NSDictionary *_command = @{@"/contact/get-contacts": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (int)getContactsCountWithClassNameId:(long)classNameId classPK:(long)classPK error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"classNameId": @(classNameId),
+		@"classPK": @(classPK)
+	};
+
+	NSDictionary *_command = @{@"/contact/get-contacts-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
 }
 
 @end

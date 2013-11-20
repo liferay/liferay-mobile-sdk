@@ -20,10 +20,10 @@
  */
 @interface AssetCategoryPropertyService_v62 : BaseService
 
-- (NSArray *)getCategoryPropertyValues:(long)companyId key:(NSString *)key;
-- (void)deleteCategoryProperty:(long)categoryPropertyId;
-- (NSDictionary *)updateCategoryProperty:(long)categoryPropertyId key:(NSString *)key value:(NSString *)value;
-- (NSDictionary *)addCategoryProperty:(long)entryId key:(NSString *)key value:(NSString *)value;
-- (NSArray *)getCategoryProperties:(long)entryId;
+- (NSDictionary *)addCategoryPropertyWithEntryId:(long)entryId key:(NSString *)key value:(NSString *)value error:(NSError **)error;
+- (void)deleteCategoryPropertyWithCategoryPropertyId:(long)categoryPropertyId error:(NSError **)error;
+- (NSArray *)getCategoryPropertiesWithEntryId:(long)entryId error:(NSError **)error;
+- (NSArray *)getCategoryPropertyValuesWithCompanyId:(long)companyId key:(NSString *)key error:(NSError **)error;
+- (NSDictionary *)updateCategoryPropertyWithCategoryPropertyId:(long)categoryPropertyId key:(NSString *)key value:(NSString *)value error:(NSError **)error;
 
 @end

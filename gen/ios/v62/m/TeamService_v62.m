@@ -19,7 +19,7 @@
  */
 @implementation TeamService_v62
 
-- (NSDictionary *)addTeam:(long)groupId name:(NSString *)name description:(NSString *)description {
+- (NSDictionary *)addTeamWithGroupId:(long)groupId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"name": name,
@@ -28,10 +28,61 @@
 
 	NSDictionary *_command = @{@"/team/add-team": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getUserTeams:(long)userId groupId:(long)groupId {
+- (void)deleteTeamWithTeamId:(long)teamId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"teamId": @(teamId)
+	};
+
+	NSDictionary *_command = @{@"/team/delete-team": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getGroupTeamsWithGroupId:(long)groupId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId)
+	};
+
+	NSDictionary *_command = @{@"/team/get-group-teams": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getTeamWithTeamId:(long)teamId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"teamId": @(teamId)
+	};
+
+	NSDictionary *_command = @{@"/team/get-team": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getTeamWithGroupId:(long)groupId name:(NSString *)name error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"name": name
+	};
+
+	NSDictionary *_command = @{@"/team/get-team": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getUserTeamsWithUserId:(long)userId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"userId": @(userId)
+	};
+
+	NSDictionary *_command = @{@"/team/get-user-teams": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getUserTeamsWithUserId:(long)userId groupId:(long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"groupId": @(groupId)
@@ -39,10 +90,21 @@
 
 	NSDictionary *_command = @{@"/team/get-user-teams": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateTeam:(long)teamId name:(NSString *)name description:(NSString *)description {
+- (BOOL)hasUserTeamWithUserId:(long)userId teamId:(long)teamId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"userId": @(userId),
+		@"teamId": @(teamId)
+	};
+
+	NSDictionary *_command = @{@"/team/has-user-team": _params};
+
+	return (BOOL)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateTeamWithTeamId:(long)teamId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"teamId": @(teamId),
 		@"name": name,
@@ -51,49 +113,7 @@
 
 	NSDictionary *_command = @{@"/team/update-team": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (BOOL)hasUserTeam:(long)userId teamId:(long)teamId {
-	NSDictionary *_params = @{
-		@"userId": @(userId),
-		@"teamId": @(teamId)
-	};
-
-	NSDictionary *_command = @{@"/team/has-user-team": _params};
-
-	return (BOOL)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getTeam:(long)groupId name:(NSString *)name {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"name": name
-	};
-
-	NSDictionary *_command = @{@"/team/get-team": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSArray *)getGroupTeams:(long)groupId {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId)
-	};
-
-	NSDictionary *_command = @{@"/team/get-group-teams": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (void)deleteTeam:(long)teamId {
-	NSDictionary *_params = @{
-		@"teamId": @(teamId)
-	};
-
-	NSDictionary *_command = @{@"/team/delete-team": _params};
-
-	[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

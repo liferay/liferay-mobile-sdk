@@ -19,17 +19,7 @@
  */
 @implementation OrgLaborService_v62
 
-- (NSArray *)getOrgLabors:(long)organizationId {
-	NSDictionary *_params = @{
-		@"organizationId": @(organizationId)
-	};
-
-	NSDictionary *_command = @{@"/orglabor/get-org-labors": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)addOrgLabor:(long)organizationId typeId:(int)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose {
+- (NSDictionary *)addOrgLaborWithOrganizationId:(long)organizationId typeId:(int)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"organizationId": @(organizationId),
 		@"typeId": @(typeId),
@@ -51,20 +41,40 @@
 
 	NSDictionary *_command = @{@"/orglabor/add-org-labor": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteOrgLabor:(long)orgLaborId {
+- (void)deleteOrgLaborWithOrgLaborId:(long)orgLaborId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"orgLaborId": @(orgLaborId)
 	};
 
 	NSDictionary *_command = @{@"/orglabor/delete-org-labor": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateOrgLabor:(long)orgLaborId typeId:(int)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose {
+- (NSDictionary *)getOrgLaborWithOrgLaborId:(long)orgLaborId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"orgLaborId": @(orgLaborId)
+	};
+
+	NSDictionary *_command = @{@"/orglabor/get-org-labor": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getOrgLaborsWithOrganizationId:(long)organizationId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"organizationId": @(organizationId)
+	};
+
+	NSDictionary *_command = @{@"/orglabor/get-org-labors": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateOrgLaborWithOrgLaborId:(long)orgLaborId typeId:(int)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"orgLaborId": @(orgLaborId),
 		@"typeId": @(typeId),
@@ -86,17 +96,7 @@
 
 	NSDictionary *_command = @{@"/orglabor/update-org-labor": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getOrgLabor:(long)orgLaborId {
-	NSDictionary *_params = @{
-		@"orgLaborId": @(orgLaborId)
-	};
-
-	NSDictionary *_command = @{@"/orglabor/get-org-labor": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

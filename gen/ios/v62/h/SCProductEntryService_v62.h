@@ -20,9 +20,9 @@
  */
 @interface SCProductEntryService_v62 : BaseService
 
-- (NSDictionary *)addProductEntry:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)updateProductEntry:(long)productEntryId name:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages;
-- (NSDictionary *)getProductEntry:(long)productEntryId;
-- (void)deleteProductEntry:(long)productEntryId;
+- (NSDictionary *)addProductEntryWithName:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteProductEntryWithProductEntryId:(long)productEntryId error:(NSError **)error;
+- (NSDictionary *)getProductEntryWithProductEntryId:(long)productEntryId error:(NSError **)error;
+- (NSDictionary *)updateProductEntryWithProductEntryId:(long)productEntryId name:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages error:(NSError **)error;
 
 @end

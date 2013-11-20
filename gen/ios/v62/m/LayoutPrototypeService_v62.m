@@ -19,7 +19,77 @@
  */
 @implementation LayoutPrototypeService_v62
 
-- (NSDictionary *)updateLayoutPrototype:(long)layoutPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addLayoutPrototypeWithNameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"nameMap": nameMap,
+		@"description": description,
+		@"active": @(active)
+	};
+
+	NSDictionary *_command = @{@"/layoutprototype/add-layout-prototype": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)addLayoutPrototypeWithNameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"nameMap": nameMap,
+		@"description": description,
+		@"active": @(active),
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/layoutprototype/add-layout-prototype": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteLayoutPrototypeWithLayoutPrototypeId:(long)layoutPrototypeId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"layoutPrototypeId": @(layoutPrototypeId)
+	};
+
+	NSDictionary *_command = @{@"/layoutprototype/delete-layout-prototype": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getLayoutPrototypeWithLayoutPrototypeId:(long)layoutPrototypeId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"layoutPrototypeId": @(layoutPrototypeId)
+	};
+
+	NSDictionary *_command = @{@"/layoutprototype/get-layout-prototype": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)searchWithCompanyId:(long)companyId active:(NSDictionary *)active obc:(NSDictionary *)obc error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"companyId": @(companyId),
+		@"active": active,
+		@"obc": obc
+	};
+
+	NSDictionary *_command = @{@"/layoutprototype/search": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateLayoutPrototypeWithLayoutPrototypeId:(long)layoutPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"layoutPrototypeId": @(layoutPrototypeId),
+		@"nameMap": nameMap,
+		@"description": description,
+		@"active": @(active)
+	};
+
+	NSDictionary *_command = @{@"/layoutprototype/update-layout-prototype": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateLayoutPrototypeWithLayoutPrototypeId:(long)layoutPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"layoutPrototypeId": @(layoutPrototypeId),
 		@"nameMap": nameMap,
@@ -30,52 +100,7 @@
 
 	NSDictionary *_command = @{@"/layoutprototype/update-layout-prototype": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (void)deleteLayoutPrototype:(long)layoutPrototypeId {
-	NSDictionary *_params = @{
-		@"layoutPrototypeId": @(layoutPrototypeId)
-	};
-
-	NSDictionary *_command = @{@"/layoutprototype/delete-layout-prototype": _params};
-
-	[self.session invoke:_command];
-}
-
-- (NSArray *)search:(long)companyId active:(NSDictionary *)active obc:(NSDictionary *)obc {
-	NSDictionary *_params = @{
-		@"companyId": @(companyId),
-		@"active": active,
-		@"obc": obc
-	};
-
-	NSDictionary *_command = @{@"/layoutprototype/search": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)addLayoutPrototype:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active serviceContext:(NSDictionary *)serviceContext {
-	NSDictionary *_params = @{
-		@"nameMap": nameMap,
-		@"description": description,
-		@"active": @(active),
-		@"serviceContext": serviceContext
-	};
-
-	NSDictionary *_command = @{@"/layoutprototype/add-layout-prototype": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getLayoutPrototype:(long)layoutPrototypeId {
-	NSDictionary *_params = @{
-		@"layoutPrototypeId": @(layoutPrototypeId)
-	};
-
-	NSDictionary *_command = @{@"/layoutprototype/get-layout-prototype": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

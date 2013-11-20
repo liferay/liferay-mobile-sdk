@@ -20,9 +20,9 @@
  */
 @interface DLFileShortcutService_v62 : BaseService
 
-- (void)deleteFileShortcut:(long)fileShortcutId;
-- (NSDictionary *)getFileShortcut:(long)fileShortcutId;
-- (NSDictionary *)updateFileShortcut:(long)fileShortcutId folderId:(long)folderId toFileEntryId:(long)toFileEntryId serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)addFileShortcut:(long)groupId folderId:(long)folderId toFileEntryId:(long)toFileEntryId serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)addFileShortcutWithGroupId:(long)groupId folderId:(long)folderId toFileEntryId:(long)toFileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteFileShortcutWithFileShortcutId:(long)fileShortcutId error:(NSError **)error;
+- (NSDictionary *)getFileShortcutWithFileShortcutId:(long)fileShortcutId error:(NSError **)error;
+- (NSDictionary *)updateFileShortcutWithFileShortcutId:(long)fileShortcutId folderId:(long)folderId toFileEntryId:(long)toFileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

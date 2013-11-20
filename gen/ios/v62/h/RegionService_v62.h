@@ -20,9 +20,13 @@
  */
 @interface RegionService_v62 : BaseService
 
-- (NSDictionary *)fetchRegion:(long)countryId regionCode:(NSString *)regionCode;
-- (NSArray *)getRegions:(long)countryId active:(BOOL)active;
-- (NSDictionary *)getRegion:(long)countryId regionCode:(NSString *)regionCode;
-- (NSDictionary *)addRegion:(long)countryId regionCode:(NSString *)regionCode name:(NSString *)name active:(BOOL)active;
+- (NSDictionary *)addRegionWithCountryId:(long)countryId regionCode:(NSString *)regionCode name:(NSString *)name active:(BOOL)active error:(NSError **)error;
+- (NSDictionary *)fetchRegionWithCountryId:(long)countryId regionCode:(NSString *)regionCode error:(NSError **)error;
+- (NSDictionary *)getRegionWithRegionId:(long)regionId error:(NSError **)error;
+- (NSDictionary *)getRegionWithCountryId:(long)countryId regionCode:(NSString *)regionCode error:(NSError **)error;
+- (NSArray *)getRegions:(NSError **)error;
+- (NSArray *)getRegionsWithActive:(BOOL)active error:(NSError **)error;
+- (NSArray *)getRegionsWithCountryId:(long)countryId error:(NSError **)error;
+- (NSArray *)getRegionsWithCountryId:(long)countryId active:(BOOL)active error:(NSError **)error;
 
 @end

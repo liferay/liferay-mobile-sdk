@@ -20,20 +20,27 @@
  */
 @interface OrganizationService_v62 : BaseService
 
-- (int)getOrganizationsCount:(long)companyId parentOrganizationId:(long)parentOrganizationId;
-- (void)unsetGroupOrganizations:(long)groupId organizationIds:(NSArray *)organizationIds;
-- (NSArray *)getUserOrganizations:(long)userId;
-- (NSArray *)getOrganizations:(long)companyId parentOrganizationId:(long)parentOrganizationId start:(int)start end:(int)end;
-- (void)addPasswordPolicyOrganizations:(long)passwordPolicyId organizationIds:(NSArray *)organizationIds;
-- (void)deleteOrganization:(long)organizationId;
-- (NSDictionary *)updateOrganization:(long)organizationId parentOrganizationId:(long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long)regionId countryId:(long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)getOrganization:(long)organizationId;
-- (void)deleteLogo:(long)organizationId;
-- (long)getOrganizationId:(long)companyId name:(NSString *)name;
-- (NSDictionary *)addOrganization:(long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long)regionId countryId:(long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext;
-- (void)addGroupOrganizations:(long)groupId organizationIds:(NSArray *)organizationIds;
-- (void)unsetPasswordPolicyOrganizations:(long)passwordPolicyId organizationIds:(NSArray *)organizationIds;
-- (NSArray *)getManageableOrganizations:(NSString *)actionId max:(int)max;
-- (void)setGroupOrganizations:(long)groupId organizationIds:(NSArray *)organizationIds;
+- (void)addGroupOrganizationsWithGroupId:(long)groupId organizationIds:(NSArray *)organizationIds error:(NSError **)error;
+- (NSDictionary *)addOrganizationWithParentOrganizationId:(long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long)regionId countryId:(long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addOrganizationWithParentOrganizationId:(long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long)regionId countryId:(long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addOrganizationWithParentOrganizationId:(long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long)regionId countryId:(long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addOrganizationWithParentOrganizationId:(long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long)regionId countryId:(long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)addPasswordPolicyOrganizationsWithPasswordPolicyId:(long)passwordPolicyId organizationIds:(NSArray *)organizationIds error:(NSError **)error;
+- (void)deleteLogoWithOrganizationId:(long)organizationId error:(NSError **)error;
+- (void)deleteOrganizationWithOrganizationId:(long)organizationId error:(NSError **)error;
+- (NSArray *)getManageableOrganizationsWithActionId:(NSString *)actionId max:(int)max error:(NSError **)error;
+- (NSDictionary *)getOrganizationWithOrganizationId:(long)organizationId error:(NSError **)error;
+- (long)getOrganizationIdWithCompanyId:(long)companyId name:(NSString *)name error:(NSError **)error;
+- (NSArray *)getOrganizationsWithCompanyId:(long)companyId parentOrganizationId:(long)parentOrganizationId error:(NSError **)error;
+- (NSArray *)getOrganizationsWithCompanyId:(long)companyId parentOrganizationId:(long)parentOrganizationId start:(int)start end:(int)end error:(NSError **)error;
+- (int)getOrganizationsCountWithCompanyId:(long)companyId parentOrganizationId:(long)parentOrganizationId error:(NSError **)error;
+- (NSArray *)getUserOrganizationsWithUserId:(long)userId error:(NSError **)error;
+- (void)setGroupOrganizationsWithGroupId:(long)groupId organizationIds:(NSArray *)organizationIds error:(NSError **)error;
+- (void)unsetGroupOrganizationsWithGroupId:(long)groupId organizationIds:(NSArray *)organizationIds error:(NSError **)error;
+- (void)unsetPasswordPolicyOrganizationsWithPasswordPolicyId:(long)passwordPolicyId organizationIds:(NSArray *)organizationIds error:(NSError **)error;
+- (NSDictionary *)updateOrganizationWithOrganizationId:(long)organizationId parentOrganizationId:(long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long)regionId countryId:(long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)updateOrganizationWithOrganizationId:(long)organizationId parentOrganizationId:(long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long)regionId countryId:(long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)updateOrganizationWithOrganizationId:(long)organizationId parentOrganizationId:(long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long)regionId countryId:(long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)updateOrganizationWithOrganizationId:(long)organizationId parentOrganizationId:(long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long)regionId countryId:(long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

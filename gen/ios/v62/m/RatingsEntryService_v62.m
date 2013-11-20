@@ -19,7 +19,18 @@
  */
 @implementation RatingsEntryService_v62
 
-- (NSDictionary *)updateEntry:(NSString *)className classPK:(long)classPK score:(double)score {
+- (void)deleteEntryWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"className": className,
+		@"classPK": @(classPK)
+	};
+
+	NSDictionary *_command = @{@"/ratingsentry/delete-entry": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateEntryWithClassName:(NSString *)className classPK:(long)classPK score:(double)score error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK),
@@ -28,18 +39,7 @@
 
 	NSDictionary *_command = @{@"/ratingsentry/update-entry": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (void)deleteEntry:(NSString *)className classPK:(long)classPK {
-	NSDictionary *_params = @{
-		@"className": className,
-		@"classPK": @(classPK)
-	};
-
-	NSDictionary *_command = @{@"/ratingsentry/delete-entry": _params};
-
-	[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

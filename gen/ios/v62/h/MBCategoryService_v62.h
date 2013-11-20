@@ -20,21 +20,31 @@
  */
 @interface MBCategoryService_v62 : BaseService
 
-- (int)getSubscribedCategoriesCount:(long)groupId userId:(long)userId;
-- (NSDictionary *)moveCategoryToTrash:(long)categoryId;
-- (NSDictionary *)moveCategory:(long)categoryId parentCategoryId:(long)parentCategoryId mergeWithParentCategory:(BOOL)mergeWithParentCategory;
-- (NSDictionary *)addCategory:(long)userId parentCategoryId:(long)parentCategoryId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)moveCategoryFromTrash:(long)categoryId newCategoryId:(long)newCategoryId;
-- (NSArray *)getCategories:(long)groupId parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status start:(int)start end:(int)end;
-- (void)deleteCategory:(long)groupId categoryId:(long)categoryId;
-- (void)restoreCategoryFromTrash:(long)categoryId;
-- (int)getCategoriesCount:(long)groupId parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status;
-- (NSArray *)getSubcategoryIds:(NSArray *)categoryIds groupId:(long)groupId categoryId:(long)categoryId;
-- (NSArray *)getCategoryIds:(long)groupId categoryId:(long)categoryId;
-- (NSDictionary *)updateCategory:(long)categoryId parentCategoryId:(long)parentCategoryId name:(NSString *)name description:(NSString *)description displayStyle:(NSString *)displayStyle emailAddress:(NSString *)emailAddress inProtocol:(NSString *)inProtocol inServerName:(NSString *)inServerName inServerPort:(int)inServerPort inUseSSL:(BOOL)inUseSSL inUserName:(NSString *)inUserName inPassword:(NSString *)inPassword inReadInterval:(int)inReadInterval outEmailAddress:(NSString *)outEmailAddress outCustom:(BOOL)outCustom outServerName:(NSString *)outServerName outServerPort:(int)outServerPort outUseSSL:(BOOL)outUseSSL outUserName:(NSString *)outUserName outPassword:(NSString *)outPassword mailingListActive:(BOOL)mailingListActive allowAnonymousEmail:(BOOL)allowAnonymousEmail mergeWithParentCategory:(BOOL)mergeWithParentCategory serviceContext:(NSDictionary *)serviceContext;
-- (NSArray *)getSubscribedCategories:(long)groupId userId:(long)userId start:(int)start end:(int)end;
-- (void)unsubscribeCategory:(long)groupId categoryId:(long)categoryId;
-- (void)subscribeCategory:(long)groupId categoryId:(long)categoryId;
-- (NSDictionary *)getCategory:(long)categoryId;
+- (NSDictionary *)addCategoryWithParentCategoryId:(long)parentCategoryId name:(NSString *)name description:(NSString *)description displayStyle:(NSString *)displayStyle emailAddress:(NSString *)emailAddress inProtocol:(NSString *)inProtocol inServerName:(NSString *)inServerName inServerPort:(int)inServerPort inUseSSL:(BOOL)inUseSSL inUserName:(NSString *)inUserName inPassword:(NSString *)inPassword inReadInterval:(int)inReadInterval outEmailAddress:(NSString *)outEmailAddress outCustom:(BOOL)outCustom outServerName:(NSString *)outServerName outServerPort:(int)outServerPort outUseSSL:(BOOL)outUseSSL outUserName:(NSString *)outUserName outPassword:(NSString *)outPassword mailingListActive:(BOOL)mailingListActive allowAnonymousEmail:(BOOL)allowAnonymousEmail serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addCategoryWithUserId:(long)userId parentCategoryId:(long)parentCategoryId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteCategoryWithCategoryId:(long)categoryId includeTrashedEntries:(BOOL)includeTrashedEntries error:(NSError **)error;
+- (void)deleteCategoryWithGroupId:(long)groupId categoryId:(long)categoryId error:(NSError **)error;
+- (NSArray *)getCategoriesWithGroupId:(long)groupId error:(NSError **)error;
+- (NSArray *)getCategoriesWithGroupId:(long)groupId status:(int)status error:(NSError **)error;
+- (NSArray *)getCategoriesWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getCategoriesWithGroupId:(long)groupId parentCategoryIds:(NSArray *)parentCategoryIds start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getCategoriesWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getCategoriesWithGroupId:(long)groupId parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status start:(int)start end:(int)end error:(NSError **)error;
+- (int)getCategoriesCountWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId error:(NSError **)error;
+- (int)getCategoriesCountWithGroupId:(long)groupId parentCategoryIds:(NSArray *)parentCategoryIds error:(NSError **)error;
+- (int)getCategoriesCountWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId status:(int)status error:(NSError **)error;
+- (int)getCategoriesCountWithGroupId:(long)groupId parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status error:(NSError **)error;
+- (NSDictionary *)getCategoryWithCategoryId:(long)categoryId error:(NSError **)error;
+- (NSArray *)getCategoryIdsWithGroupId:(long)groupId categoryId:(long)categoryId error:(NSError **)error;
+- (NSArray *)getSubcategoryIdsWithCategoryIds:(NSArray *)categoryIds groupId:(long)groupId categoryId:(long)categoryId error:(NSError **)error;
+- (NSArray *)getSubscribedCategoriesWithGroupId:(long)groupId userId:(long)userId start:(int)start end:(int)end error:(NSError **)error;
+- (int)getSubscribedCategoriesCountWithGroupId:(long)groupId userId:(long)userId error:(NSError **)error;
+- (NSDictionary *)moveCategoryWithCategoryId:(long)categoryId parentCategoryId:(long)parentCategoryId mergeWithParentCategory:(BOOL)mergeWithParentCategory error:(NSError **)error;
+- (NSDictionary *)moveCategoryFromTrashWithCategoryId:(long)categoryId newCategoryId:(long)newCategoryId error:(NSError **)error;
+- (NSDictionary *)moveCategoryToTrashWithCategoryId:(long)categoryId error:(NSError **)error;
+- (void)restoreCategoryFromTrashWithCategoryId:(long)categoryId error:(NSError **)error;
+- (void)subscribeCategoryWithGroupId:(long)groupId categoryId:(long)categoryId error:(NSError **)error;
+- (void)unsubscribeCategoryWithGroupId:(long)groupId categoryId:(long)categoryId error:(NSError **)error;
+- (NSDictionary *)updateCategoryWithCategoryId:(long)categoryId parentCategoryId:(long)parentCategoryId name:(NSString *)name description:(NSString *)description displayStyle:(NSString *)displayStyle emailAddress:(NSString *)emailAddress inProtocol:(NSString *)inProtocol inServerName:(NSString *)inServerName inServerPort:(int)inServerPort inUseSSL:(BOOL)inUseSSL inUserName:(NSString *)inUserName inPassword:(NSString *)inPassword inReadInterval:(int)inReadInterval outEmailAddress:(NSString *)outEmailAddress outCustom:(BOOL)outCustom outServerName:(NSString *)outServerName outServerPort:(int)outServerPort outUseSSL:(BOOL)outUseSSL outUserName:(NSString *)outUserName outPassword:(NSString *)outPassword mailingListActive:(BOOL)mailingListActive allowAnonymousEmail:(BOOL)allowAnonymousEmail mergeWithParentCategory:(BOOL)mergeWithParentCategory serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

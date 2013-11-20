@@ -20,19 +20,24 @@
  */
 @interface BlogsEntryService_v62 : BaseService
 
-- (void)unsubscribe:(long)groupId;
-- (NSDictionary *)getEntry:(long)groupId urlTitle:(NSString *)urlTitle;
-- (NSArray *)getGroupsEntries:(long)companyId groupId:(long)groupId displayDate:(long)displayDate status:(int)status max:(int)max;
-- (NSArray *)getCompanyEntries:(long)companyId displayDate:(long)displayDate status:(int)status max:(int)max;
-- (void)deleteEntry:(long)entryId;
-- (NSDictionary *)moveEntryToTrash:(long)entryId;
-- (NSString *)getCompanyEntriesRss:(long)companyId displayDate:(long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay;
-- (NSString *)getGroupEntriesRss:(long)groupId displayDate:(long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay;
-- (NSArray *)getGroupEntries:(long)groupId displayDate:(long)displayDate status:(int)status start:(int)start end:(int)end;
-- (int)getGroupEntriesCount:(long)groupId displayDate:(long)displayDate status:(int)status;
-- (void)restoreEntryFromTrash:(long)entryId;
-- (void)subscribe:(long)groupId;
-- (NSString *)getOrganizationEntriesRss:(long)organizationId displayDate:(long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay;
-- (NSArray *)getOrganizationEntries:(long)organizationId displayDate:(long)displayDate status:(int)status max:(int)max;
+- (void)deleteEntryWithEntryId:(long)entryId error:(NSError **)error;
+- (NSArray *)getCompanyEntriesWithCompanyId:(long)companyId displayDate:(long)displayDate status:(int)status max:(int)max error:(NSError **)error;
+- (NSString *)getCompanyEntriesRssWithCompanyId:(long)companyId displayDate:(long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error;
+- (NSDictionary *)getEntryWithEntryId:(long)entryId error:(NSError **)error;
+- (NSDictionary *)getEntryWithGroupId:(long)groupId urlTitle:(NSString *)urlTitle error:(NSError **)error;
+- (NSArray *)getGroupEntriesWithGroupId:(long)groupId status:(int)status max:(int)max error:(NSError **)error;
+- (NSArray *)getGroupEntriesWithGroupId:(long)groupId displayDate:(long)displayDate status:(int)status max:(int)max error:(NSError **)error;
+- (NSArray *)getGroupEntriesWithGroupId:(long)groupId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getGroupEntriesWithGroupId:(long)groupId displayDate:(long)displayDate status:(int)status start:(int)start end:(int)end error:(NSError **)error;
+- (int)getGroupEntriesCountWithGroupId:(long)groupId status:(int)status error:(NSError **)error;
+- (int)getGroupEntriesCountWithGroupId:(long)groupId displayDate:(long)displayDate status:(int)status error:(NSError **)error;
+- (NSString *)getGroupEntriesRssWithGroupId:(long)groupId displayDate:(long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error;
+- (NSArray *)getGroupsEntriesWithCompanyId:(long)companyId groupId:(long)groupId displayDate:(long)displayDate status:(int)status max:(int)max error:(NSError **)error;
+- (NSArray *)getOrganizationEntriesWithOrganizationId:(long)organizationId displayDate:(long)displayDate status:(int)status max:(int)max error:(NSError **)error;
+- (NSString *)getOrganizationEntriesRssWithOrganizationId:(long)organizationId displayDate:(long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error;
+- (NSDictionary *)moveEntryToTrashWithEntryId:(long)entryId error:(NSError **)error;
+- (void)restoreEntryFromTrashWithEntryId:(long)entryId error:(NSError **)error;
+- (void)subscribeWithGroupId:(long)groupId error:(NSError **)error;
+- (void)unsubscribeWithGroupId:(long)groupId error:(NSError **)error;
 
 @end

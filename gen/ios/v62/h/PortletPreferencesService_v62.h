@@ -20,8 +20,10 @@
  */
 @interface PortletPreferencesService_v62 : BaseService
 
-- (void)updateArchivePreferences:(long)userId groupId:(long)groupId name:(NSString *)name portletId:(NSString *)portletId preferences:(NSDictionary *)preferences;
-- (void)restoreArchivedPreferences:(long)groupId name:(NSString *)name layout:(NSDictionary *)layout portletId:(NSString *)portletId preferences:(NSDictionary *)preferences;
-- (void)deleteArchivedPreferences:(long)portletItemId;
+- (void)deleteArchivedPreferencesWithPortletItemId:(long)portletItemId error:(NSError **)error;
+- (void)restoreArchivedPreferencesWithGroupId:(long)groupId layout:(NSDictionary *)layout portletId:(NSString *)portletId portletItem:(NSDictionary *)portletItem preferences:(NSDictionary *)preferences error:(NSError **)error;
+- (void)restoreArchivedPreferencesWithGroupId:(long)groupId layout:(NSDictionary *)layout portletId:(NSString *)portletId portletItemId:(long)portletItemId preferences:(NSDictionary *)preferences error:(NSError **)error;
+- (void)restoreArchivedPreferencesWithGroupId:(long)groupId name:(NSString *)name layout:(NSDictionary *)layout portletId:(NSString *)portletId preferences:(NSDictionary *)preferences error:(NSError **)error;
+- (void)updateArchivePreferencesWithUserId:(long)userId groupId:(long)groupId name:(NSString *)name portletId:(NSString *)portletId preferences:(NSDictionary *)preferences error:(NSError **)error;
 
 @end

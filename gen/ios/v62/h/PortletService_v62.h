@@ -20,7 +20,7 @@
  */
 @interface PortletService_v62 : BaseService
 
-- (NSDictionary *)updatePortlet:(long)companyId portletId:(NSString *)portletId roles:(NSString *)roles active:(BOOL)active;
-- (NSDictionary *)getWarPortlets;
+- (NSDictionary *)getWarPortlets:(NSError **)error;
+- (NSDictionary *)updatePortletWithCompanyId:(long)companyId portletId:(NSString *)portletId roles:(NSString *)roles active:(BOOL)active error:(NSError **)error;
 
 @end

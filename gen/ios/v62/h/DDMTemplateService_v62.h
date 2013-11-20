@@ -20,18 +20,31 @@
  */
 @interface DDMTemplateService_v62 : BaseService
 
-- (NSDictionary *)getTemplate:(long)groupId classNameId:(long)classNameId templateKey:(NSString *)templateKey includeGlobalTemplates:(BOOL)includeGlobalTemplates;
-- (NSArray *)getTemplatesByClassPk:(long)groupId classPK:(long)classPK;
-- (int)getTemplatesByStructureClassNameIdCount:(long)groupId structureClassNameId:(long)structureClassNameId;
-- (NSDictionary *)updateTemplate:(long)templateId classPK:(long)classPK nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type mode:(NSString *)mode language:(NSString *)language script:(NSString *)script cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallImageFile:(NSDictionary *)smallImageFile serviceContext:(NSDictionary *)serviceContext;
-- (NSArray *)getTemplatesByStructureClassNameId:(long)groupId structureClassNameId:(long)structureClassNameId start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator;
-- (NSDictionary *)copyTemplate:(long)templateId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)fetchTemplate:(long)groupId classNameId:(long)classNameId templateKey:(NSString *)templateKey;
-- (NSArray *)copyTemplates:(long)classNameId classPK:(long)classPK newClassPK:(long)newClassPK type:(NSString *)type serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteTemplate:(long)templateId;
-- (NSArray *)getTemplates:(long)groupId classNameId:(long)classNameId classPK:(long)classPK type:(NSString *)type mode:(NSString *)mode;
-- (NSDictionary *)addTemplate:(long)groupId classNameId:(long)classNameId classPK:(long)classPK templateKey:(NSString *)templateKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type mode:(NSString *)mode language:(NSString *)language script:(NSString *)script cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallImageFile:(NSDictionary *)smallImageFile serviceContext:(NSDictionary *)serviceContext;
-- (int)searchCount:(long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs keywords:(NSString *)keywords type:(NSString *)type mode:(NSString *)mode;
-- (NSArray *)search:(long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs name:(NSString *)name description:(NSString *)description type:(NSString *)type mode:(NSString *)mode language:(NSString *)language andOperator:(BOOL)andOperator start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator;
+- (NSDictionary *)addTemplateWithGroupId:(long)groupId classNameId:(long)classNameId classPK:(long)classPK nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type mode:(NSString *)mode language:(NSString *)language script:(NSString *)script serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addTemplateWithGroupId:(long)groupId classNameId:(long)classNameId classPK:(long)classPK templateKey:(NSString *)templateKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type mode:(NSString *)mode language:(NSString *)language script:(NSString *)script cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallImageFile:(NSDictionary *)smallImageFile serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)copyTemplateWithTemplateId:(long)templateId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)copyTemplateWithTemplateId:(long)templateId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSArray *)copyTemplatesWithClassNameId:(long)classNameId classPK:(long)classPK newClassPK:(long)newClassPK type:(NSString *)type serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteTemplateWithTemplateId:(long)templateId error:(NSError **)error;
+- (NSDictionary *)fetchTemplateWithGroupId:(long)groupId classNameId:(long)classNameId templateKey:(NSString *)templateKey error:(NSError **)error;
+- (NSDictionary *)getTemplateWithTemplateId:(long)templateId error:(NSError **)error;
+- (NSDictionary *)getTemplateWithGroupId:(long)groupId classNameId:(long)classNameId templateKey:(NSString *)templateKey error:(NSError **)error;
+- (NSDictionary *)getTemplateWithGroupId:(long)groupId classNameId:(long)classNameId templateKey:(NSString *)templateKey includeGlobalTemplates:(BOOL)includeGlobalTemplates error:(NSError **)error;
+- (NSArray *)getTemplatesWithGroupId:(long)groupId classNameId:(long)classNameId error:(NSError **)error;
+- (NSArray *)getTemplatesWithGroupId:(long)groupId classNameId:(long)classNameId classPK:(long)classPK error:(NSError **)error;
+- (NSArray *)getTemplatesWithGroupId:(long)groupId classNameId:(long)classNameId classPK:(long)classPK type:(NSString *)type error:(NSError **)error;
+- (NSArray *)getTemplatesWithGroupId:(long)groupId classNameId:(long)classNameId classPK:(long)classPK type:(NSString *)type mode:(NSString *)mode error:(NSError **)error;
+- (NSArray *)getTemplatesByClassPkWithGroupId:(long)groupId classPK:(long)classPK error:(NSError **)error;
+- (NSArray *)getTemplatesByStructureClassNameIdWithGroupId:(long)groupId structureClassNameId:(long)structureClassNameId start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;
+- (int)getTemplatesByStructureClassNameIdCountWithGroupId:(long)groupId structureClassNameId:(long)structureClassNameId error:(NSError **)error;
+- (NSArray *)searchWithCompanyId:(long)companyId groupId:(long)groupId classNameId:(long)classNameId classPK:(long)classPK keywords:(NSString *)keywords type:(NSString *)type mode:(NSString *)mode start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;
+- (NSArray *)searchWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs keywords:(NSString *)keywords type:(NSString *)type mode:(NSString *)mode start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;
+- (NSArray *)searchWithCompanyId:(long)companyId groupId:(long)groupId classNameId:(long)classNameId classPK:(long)classPK name:(NSString *)name description:(NSString *)description type:(NSString *)type mode:(NSString *)mode language:(NSString *)language andOperator:(BOOL)andOperator start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;
+- (NSArray *)searchWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs name:(NSString *)name description:(NSString *)description type:(NSString *)type mode:(NSString *)mode language:(NSString *)language andOperator:(BOOL)andOperator start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;
+- (int)searchCountWithCompanyId:(long)companyId groupId:(long)groupId classNameId:(long)classNameId classPK:(long)classPK name:(NSString *)name description:(NSString *)description type:(NSString *)type mode:(NSString *)mode language:(NSString *)language andOperator:(BOOL)andOperator error:(NSError **)error;
+- (int)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs name:(NSString *)name description:(NSString *)description type:(NSString *)type mode:(NSString *)mode language:(NSString *)language andOperator:(BOOL)andOperator error:(NSError **)error;
+- (int)searchCountWithCompanyId:(long)companyId groupId:(long)groupId classNameId:(long)classNameId classPK:(long)classPK keywords:(NSString *)keywords type:(NSString *)type mode:(NSString *)mode error:(NSError **)error;
+- (int)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs keywords:(NSString *)keywords type:(NSString *)type mode:(NSString *)mode error:(NSError **)error;
+- (NSDictionary *)updateTemplateWithTemplateId:(long)templateId classPK:(long)classPK nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type mode:(NSString *)mode language:(NSString *)language script:(NSString *)script cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallImageFile:(NSDictionary *)smallImageFile serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

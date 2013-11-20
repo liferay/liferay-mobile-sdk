@@ -20,10 +20,14 @@
  */
 @interface TrashEntryService_v62 : BaseService
 
-- (NSDictionary *)restoreEntry:(long)entryId overrideClassPK:(long)overrideClassPK name:(NSString *)name;
-- (void)deleteEntry:(NSString *)className classPK:(long)classPK;
-- (void)moveEntry:(NSString *)className classPK:(long)classPK destinationContainerModelId:(long)destinationContainerModelId serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteEntries:(long)groupId;
-- (NSDictionary *)getEntries:(long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc;
+- (void)deleteEntriesWithEntryIds:(NSArray *)entryIds error:(NSError **)error;
+- (void)deleteEntriesWithGroupId:(long)groupId error:(NSError **)error;
+- (void)deleteEntryWithEntryId:(long)entryId error:(NSError **)error;
+- (void)deleteEntryWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error;
+- (NSDictionary *)getEntriesWithGroupId:(long)groupId error:(NSError **)error;
+- (NSDictionary *)getEntriesWithGroupId:(long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (void)moveEntryWithClassName:(NSString *)className classPK:(long)classPK destinationContainerModelId:(long)destinationContainerModelId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)restoreEntryWithEntryId:(long)entryId error:(NSError **)error;
+- (NSDictionary *)restoreEntryWithEntryId:(long)entryId overrideClassPK:(long)overrideClassPK name:(NSString *)name error:(NSError **)error;
 
 @end

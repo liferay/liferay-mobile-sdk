@@ -20,11 +20,11 @@
  */
 @interface SCProductVersionService_v62 : BaseService
 
-- (int)getProductVersionsCount:(long)productEntryId;
-- (NSDictionary *)updateProductVersion:(long)productVersionId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds;
-- (NSDictionary *)addProductVersion:(long)productEntryId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteProductVersion:(long)productVersionId;
-- (NSDictionary *)getProductVersion:(long)productVersionId;
-- (NSArray *)getProductVersions:(long)productEntryId start:(int)start end:(int)end;
+- (NSDictionary *)addProductVersionWithProductEntryId:(long)productEntryId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteProductVersionWithProductVersionId:(long)productVersionId error:(NSError **)error;
+- (NSDictionary *)getProductVersionWithProductVersionId:(long)productVersionId error:(NSError **)error;
+- (NSArray *)getProductVersionsWithProductEntryId:(long)productEntryId start:(int)start end:(int)end error:(NSError **)error;
+- (int)getProductVersionsCountWithProductEntryId:(long)productEntryId error:(NSError **)error;
+- (NSDictionary *)updateProductVersionWithProductVersionId:(long)productVersionId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds error:(NSError **)error;
 
 @end

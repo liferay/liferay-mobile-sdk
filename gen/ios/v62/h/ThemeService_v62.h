@@ -20,7 +20,7 @@
  */
 @interface ThemeService_v62 : BaseService
 
-- (NSArray *)getThemes:(long)companyId;
-- (NSDictionary *)getWarThemes;
+- (NSArray *)getThemesWithCompanyId:(long)companyId error:(NSError **)error;
+- (NSDictionary *)getWarThemes:(NSError **)error;
 
 @end

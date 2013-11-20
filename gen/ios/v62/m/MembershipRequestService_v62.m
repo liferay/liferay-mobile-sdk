@@ -19,7 +19,7 @@
  */
 @implementation MembershipRequestService_v62
 
-- (NSDictionary *)addMembershipRequest:(long)groupId comments:(NSString *)comments serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addMembershipRequestWithGroupId:(long)groupId comments:(NSString *)comments serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"comments": comments,
@@ -28,20 +28,31 @@
 
 	NSDictionary *_command = @{@"/membershiprequest/add-membership-request": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getMembershipRequest:(long)membershipRequestId {
+- (void)deleteMembershipRequestsWithGroupId:(long)groupId statusId:(int)statusId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"statusId": @(statusId)
+	};
+
+	NSDictionary *_command = @{@"/membershiprequest/delete-membership-requests": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getMembershipRequestWithMembershipRequestId:(long)membershipRequestId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"membershipRequestId": @(membershipRequestId)
 	};
 
 	NSDictionary *_command = @{@"/membershiprequest/get-membership-request": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)updateStatus:(long)membershipRequestId reviewComments:(NSString *)reviewComments statusId:(int)statusId serviceContext:(NSDictionary *)serviceContext {
+- (void)updateStatusWithMembershipRequestId:(long)membershipRequestId reviewComments:(NSString *)reviewComments statusId:(int)statusId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"membershipRequestId": @(membershipRequestId),
 		@"reviewComments": reviewComments,
@@ -51,18 +62,7 @@
 
 	NSDictionary *_command = @{@"/membershiprequest/update-status": _params};
 
-	[self.session invoke:_command];
-}
-
-- (void)deleteMembershipRequests:(long)groupId statusId:(int)statusId {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"statusId": @(statusId)
-	};
-
-	NSDictionary *_command = @{@"/membershiprequest/delete-membership-requests": _params};
-
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
 @end

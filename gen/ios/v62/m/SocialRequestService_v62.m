@@ -19,7 +19,7 @@
  */
 @implementation SocialRequestService_v62
 
-- (NSDictionary *)updateRequest:(long)requestId status:(int)status themeDisplay:(NSDictionary *)themeDisplay {
+- (NSDictionary *)updateRequestWithRequestId:(long)requestId status:(int)status themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"requestId": @(requestId),
 		@"status": @(status),
@@ -28,7 +28,7 @@
 
 	NSDictionary *_command = @{@"/socialrequest/update-request": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

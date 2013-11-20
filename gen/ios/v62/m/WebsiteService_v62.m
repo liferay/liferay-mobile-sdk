@@ -19,41 +19,21 @@
  */
 @implementation WebsiteService_v62
 
-- (NSArray *)getWebsites:(NSString *)className classPK:(long)classPK {
+- (NSDictionary *)addWebsiteWithClassName:(NSString *)className classPK:(long)classPK url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
-		@"classPK": @(classPK)
-	};
-
-	NSDictionary *_command = @{@"/website/get-websites": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)updateWebsite:(long)websiteId url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary {
-	NSDictionary *_params = @{
-		@"websiteId": @(websiteId),
+		@"classPK": @(classPK),
 		@"url": url,
 		@"typeId": @(typeId),
 		@"primary": @(primary)
 	};
 
-	NSDictionary *_command = @{@"/website/update-website": _params};
+	NSDictionary *_command = @{@"/website/add-website": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteWebsite:(long)websiteId {
-	NSDictionary *_params = @{
-		@"websiteId": @(websiteId)
-	};
-
-	NSDictionary *_command = @{@"/website/delete-website": _params};
-
-	[self.session invoke:_command];
-}
-
-- (NSDictionary *)addWebsite:(NSString *)className classPK:(long)classPK url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addWebsiteWithClassName:(NSString *)className classPK:(long)classPK url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK),
@@ -65,17 +45,51 @@
 
 	NSDictionary *_command = @{@"/website/add-website": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getWebsite:(long)websiteId {
+- (void)deleteWebsiteWithWebsiteId:(long)websiteId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"websiteId": @(websiteId)
+	};
+
+	NSDictionary *_command = @{@"/website/delete-website": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getWebsiteWithWebsiteId:(long)websiteId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"websiteId": @(websiteId)
 	};
 
 	NSDictionary *_command = @{@"/website/get-website": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getWebsitesWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"className": className,
+		@"classPK": @(classPK)
+	};
+
+	NSDictionary *_command = @{@"/website/get-websites": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateWebsiteWithWebsiteId:(long)websiteId url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"websiteId": @(websiteId),
+		@"url": url,
+		@"typeId": @(typeId),
+		@"primary": @(primary)
+	};
+
+	NSDictionary *_command = @{@"/website/update-website": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

@@ -19,24 +19,34 @@
  */
 @implementation ClassNameService_v62
 
-- (NSDictionary *)fetchClassName:(NSString *)value {
+- (NSDictionary *)fetchClassNameWithValue:(NSString *)value error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"value": value
 	};
 
 	NSDictionary *_command = @{@"/classname/fetch-class-name": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (long)fetchClassNameId:(NSString *)value {
+- (long)fetchClassNameIdWithClazz:(NSDictionary *)clazz error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"clazz": clazz
+	};
+
+	NSDictionary *_command = @{@"/classname/fetch-class-name-id": _params};
+
+	return (long)[self.session invoke:_command error:error];
+}
+
+- (long)fetchClassNameIdWithValue:(NSString *)value error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"value": value
 	};
 
 	NSDictionary *_command = @{@"/classname/fetch-class-name-id": _params};
 
-	return (long)[self.session invoke:_command];
+	return (long)[self.session invoke:_command error:error];
 }
 
 @end

@@ -12,211 +12,52 @@
  * details.
  */
 
-#import "SocialactivityService_v62.h"
+#import "SocialActivityService_v62.h"
 
 /**
  * author Bruno Farache
  */
-@implementation SocialactivityService_v62
+@implementation SocialActivityService_v62
 
-- (int)getUserActivitiesCount:(long)userId {
+- (NSArray *)getActivitiesWithClassName:(NSString *)className start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
-		@"userId": @(userId)
-	};
-
-	NSDictionary *_command = @{@"/socialactivity/get-user-activities-count": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (NSArray *)getUserGroupsActivities:(long)userId start:(int)start end:(int)end {
-	NSDictionary *_params = @{
-		@"userId": @(userId),
+		@"className": className,
 		@"start": @(start),
 		@"end": @(end)
 	};
 
-	NSDictionary *_command = @{@"/socialactivity/get-user-groups-activities": _params};
+	NSDictionary *_command = @{@"/socialactivity/get-activities": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getRelationActivitiesCount:(long)userId type:(int)type {
+- (NSArray *)getActivitiesWithClassNameId:(long)classNameId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
-		@"userId": @(userId),
-		@"type": @(type)
-	};
-
-	NSDictionary *_command = @{@"/socialactivity/get-relation-activities-count": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getMirrorActivity:(long)mirrorActivityId {
-	NSDictionary *_params = @{
-		@"mirrorActivityId": @(mirrorActivityId)
-	};
-
-	NSDictionary *_command = @{@"/socialactivity/get-mirror-activity": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSArray *)getUserGroupsAndOrganizationsActivities:(long)userId start:(int)start end:(int)end {
-	NSDictionary *_params = @{
-		@"userId": @(userId),
+		@"classNameId": @(classNameId),
 		@"start": @(start),
 		@"end": @(end)
 	};
 
-	NSDictionary *_command = @{@"/socialactivity/get-user-groups-and-organizations-activities": _params};
+	NSDictionary *_command = @{@"/socialactivity/get-activities": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getUserOrganizationsActivitiesCount:(long)userId {
-	NSDictionary *_params = @{
-		@"userId": @(userId)
-	};
-
-	NSDictionary *_command = @{@"/socialactivity/get-user-organizations-activities-count": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getActivity:(long)activityId {
-	NSDictionary *_params = @{
-		@"activityId": @(activityId)
-	};
-
-	NSDictionary *_command = @{@"/socialactivity/get-activity": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (int)getActivitiesCount:(long)mirrorActivityId classNameId:(long)classNameId classPK:(long)classPK {
+- (NSArray *)getActivitiesWithMirrorActivityId:(long)mirrorActivityId className:(NSString *)className classPK:(long)classPK start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"mirrorActivityId": @(mirrorActivityId),
-		@"classNameId": @(classNameId),
-		@"classPK": @(classPK)
-	};
-
-	NSDictionary *_command = @{@"/socialactivity/get-activities-count": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (NSArray *)getGroupUsersActivities:(long)groupId start:(int)start end:(int)end {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
+		@"className": className,
+		@"classPK": @(classPK),
 		@"start": @(start),
 		@"end": @(end)
 	};
 
-	NSDictionary *_command = @{@"/socialactivity/get-group-users-activities": _params};
+	NSDictionary *_command = @{@"/socialactivity/get-activities": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getOrganizationUsersActivities:(long)organizationId start:(int)start end:(int)end {
-	NSDictionary *_params = @{
-		@"organizationId": @(organizationId),
-		@"start": @(start),
-		@"end": @(end)
-	};
-
-	NSDictionary *_command = @{@"/socialactivity/get-organization-users-activities": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (NSArray *)getActivitySetActivities:(long)activitySetId start:(int)start end:(int)end {
-	NSDictionary *_params = @{
-		@"activitySetId": @(activitySetId),
-		@"start": @(start),
-		@"end": @(end)
-	};
-
-	NSDictionary *_command = @{@"/socialactivity/get-activity-set-activities": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (NSArray *)getOrganizationActivities:(long)organizationId start:(int)start end:(int)end {
-	NSDictionary *_params = @{
-		@"organizationId": @(organizationId),
-		@"start": @(start),
-		@"end": @(end)
-	};
-
-	NSDictionary *_command = @{@"/socialactivity/get-organization-activities": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (int)getGroupUsersActivitiesCount:(long)groupId {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId)
-	};
-
-	NSDictionary *_command = @{@"/socialactivity/get-group-users-activities-count": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (int)getGroupActivitiesCount:(long)groupId {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId)
-	};
-
-	NSDictionary *_command = @{@"/socialactivity/get-group-activities-count": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (int)getUserGroupsAndOrganizationsActivitiesCount:(long)userId {
-	NSDictionary *_params = @{
-		@"userId": @(userId)
-	};
-
-	NSDictionary *_command = @{@"/socialactivity/get-user-groups-and-organizations-activities-count": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (NSArray *)getGroupActivities:(long)groupId start:(int)start end:(int)end {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"start": @(start),
-		@"end": @(end)
-	};
-
-	NSDictionary *_command = @{@"/socialactivity/get-group-activities": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (int)getUserGroupsActivitiesCount:(long)userId {
-	NSDictionary *_params = @{
-		@"userId": @(userId)
-	};
-
-	NSDictionary *_command = @{@"/socialactivity/get-user-groups-activities-count": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (int)getOrganizationUsersActivitiesCount:(long)organizationId {
-	NSDictionary *_params = @{
-		@"organizationId": @(organizationId)
-	};
-
-	NSDictionary *_command = @{@"/socialactivity/get-organization-users-activities-count": _params};
-
-	return (int)[self.session invoke:_command];
-}
-
-- (NSArray *)getActivities:(long)mirrorActivityId classNameId:(long)classNameId classPK:(long)classPK start:(int)start end:(int)end {
+- (NSArray *)getActivitiesWithMirrorActivityId:(long)mirrorActivityId classNameId:(long)classNameId classPK:(long)classPK start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"mirrorActivityId": @(mirrorActivityId),
 		@"classNameId": @(classNameId),
@@ -227,22 +68,186 @@
 
 	NSDictionary *_command = @{@"/socialactivity/get-activities": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getUserActivities:(long)userId start:(int)start end:(int)end {
+- (int)getActivitiesCountWithClassName:(NSString *)className error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"className": className
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-activities-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (int)getActivitiesCountWithClassNameId:(long)classNameId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"classNameId": @(classNameId)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-activities-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (int)getActivitiesCountWithMirrorActivityId:(long)mirrorActivityId className:(NSString *)className classPK:(long)classPK error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"mirrorActivityId": @(mirrorActivityId),
+		@"className": className,
+		@"classPK": @(classPK)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-activities-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (int)getActivitiesCountWithMirrorActivityId:(long)mirrorActivityId classNameId:(long)classNameId classPK:(long)classPK error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"mirrorActivityId": @(mirrorActivityId),
+		@"classNameId": @(classNameId),
+		@"classPK": @(classPK)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-activities-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getActivityWithActivityId:(long)activityId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"activityId": @(activityId)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-activity": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getActivitySetActivitiesWithActivitySetId:(long)activitySetId start:(int)start end:(int)end error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"activitySetId": @(activitySetId),
+		@"start": @(start),
+		@"end": @(end)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-activity-set-activities": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getGroupActivitiesWithGroupId:(long)groupId start:(int)start end:(int)end error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"start": @(start),
+		@"end": @(end)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-group-activities": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (int)getGroupActivitiesCountWithGroupId:(long)groupId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-group-activities-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getGroupUsersActivitiesWithGroupId:(long)groupId start:(int)start end:(int)end error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"start": @(start),
+		@"end": @(end)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-group-users-activities": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (int)getGroupUsersActivitiesCountWithGroupId:(long)groupId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-group-users-activities-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getMirrorActivityWithMirrorActivityId:(long)mirrorActivityId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"mirrorActivityId": @(mirrorActivityId)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-mirror-activity": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getOrganizationActivitiesWithOrganizationId:(long)organizationId start:(int)start end:(int)end error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"organizationId": @(organizationId),
+		@"start": @(start),
+		@"end": @(end)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-organization-activities": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (int)getOrganizationActivitiesCountWithOrganizationId:(long)organizationId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"organizationId": @(organizationId)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-organization-activities-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getOrganizationUsersActivitiesWithOrganizationId:(long)organizationId start:(int)start end:(int)end error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"organizationId": @(organizationId),
+		@"start": @(start),
+		@"end": @(end)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-organization-users-activities": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (int)getOrganizationUsersActivitiesCountWithOrganizationId:(long)organizationId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"organizationId": @(organizationId)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-organization-users-activities-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getRelationActivitiesWithUserId:(long)userId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"start": @(start),
 		@"end": @(end)
 	};
 
-	NSDictionary *_command = @{@"/socialactivity/get-user-activities": _params};
+	NSDictionary *_command = @{@"/socialactivity/get-relation-activities": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getRelationActivities:(long)userId type:(int)type start:(int)start end:(int)end {
+- (NSArray *)getRelationActivitiesWithUserId:(long)userId type:(int)type start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"type": @(type),
@@ -252,10 +257,97 @@
 
 	NSDictionary *_command = @{@"/socialactivity/get-relation-activities": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getUserOrganizationsActivities:(long)userId start:(int)start end:(int)end {
+- (int)getRelationActivitiesCountWithUserId:(long)userId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"userId": @(userId)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-relation-activities-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (int)getRelationActivitiesCountWithUserId:(long)userId type:(int)type error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"userId": @(userId),
+		@"type": @(type)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-relation-activities-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getUserActivitiesWithUserId:(long)userId start:(int)start end:(int)end error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"userId": @(userId),
+		@"start": @(start),
+		@"end": @(end)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-user-activities": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (int)getUserActivitiesCountWithUserId:(long)userId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"userId": @(userId)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-user-activities-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getUserGroupsActivitiesWithUserId:(long)userId start:(int)start end:(int)end error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"userId": @(userId),
+		@"start": @(start),
+		@"end": @(end)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-user-groups-activities": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (int)getUserGroupsActivitiesCountWithUserId:(long)userId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"userId": @(userId)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-user-groups-activities-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getUserGroupsAndOrganizationsActivitiesWithUserId:(long)userId start:(int)start end:(int)end error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"userId": @(userId),
+		@"start": @(start),
+		@"end": @(end)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-user-groups-and-organizations-activities": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (int)getUserGroupsAndOrganizationsActivitiesCountWithUserId:(long)userId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"userId": @(userId)
+	};
+
+	NSDictionary *_command = @{@"/socialactivity/get-user-groups-and-organizations-activities-count": _params};
+
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getUserOrganizationsActivitiesWithUserId:(long)userId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"start": @(start),
@@ -264,17 +356,17 @@
 
 	NSDictionary *_command = @{@"/socialactivity/get-user-organizations-activities": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getOrganizationActivitiesCount:(long)organizationId {
+- (int)getUserOrganizationsActivitiesCountWithUserId:(long)userId error:(NSError **)error {
 	NSDictionary *_params = @{
-		@"organizationId": @(organizationId)
+		@"userId": @(userId)
 	};
 
-	NSDictionary *_command = @{@"/socialactivity/get-organization-activities-count": _params};
+	NSDictionary *_command = @{@"/socialactivity/get-user-organizations-activities-count": _params};
 
-	return (int)[self.session invoke:_command];
+	return (int)[self.session invoke:_command error:error];
 }
 
 @end

@@ -20,6 +20,6 @@
  */
 @interface SocialRequestService_v62 : BaseService
 
-- (NSDictionary *)updateRequest:(long)requestId status:(int)status themeDisplay:(NSDictionary *)themeDisplay;
+- (NSDictionary *)updateRequestWithRequestId:(long)requestId status:(int)status themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error;
 
 @end

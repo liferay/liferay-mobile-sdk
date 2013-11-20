@@ -19,40 +19,7 @@
  */
 @implementation AssetCategoryPropertyService_v62
 
-- (NSArray *)getCategoryPropertyValues:(long)companyId key:(NSString *)key {
-	NSDictionary *_params = @{
-		@"companyId": @(companyId),
-		@"key": key
-	};
-
-	NSDictionary *_command = @{@"/assetcategoryproperty/get-category-property-values": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (void)deleteCategoryProperty:(long)categoryPropertyId {
-	NSDictionary *_params = @{
-		@"categoryPropertyId": @(categoryPropertyId)
-	};
-
-	NSDictionary *_command = @{@"/assetcategoryproperty/delete-category-property": _params};
-
-	[self.session invoke:_command];
-}
-
-- (NSDictionary *)updateCategoryProperty:(long)categoryPropertyId key:(NSString *)key value:(NSString *)value {
-	NSDictionary *_params = @{
-		@"categoryPropertyId": @(categoryPropertyId),
-		@"key": key,
-		@"value": value
-	};
-
-	NSDictionary *_command = @{@"/assetcategoryproperty/update-category-property": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)addCategoryProperty:(long)entryId key:(NSString *)key value:(NSString *)value {
+- (NSDictionary *)addCategoryPropertyWithEntryId:(long)entryId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"entryId": @(entryId),
 		@"key": key,
@@ -61,17 +28,50 @@
 
 	NSDictionary *_command = @{@"/assetcategoryproperty/add-category-property": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCategoryProperties:(long)entryId {
+- (void)deleteCategoryPropertyWithCategoryPropertyId:(long)categoryPropertyId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"categoryPropertyId": @(categoryPropertyId)
+	};
+
+	NSDictionary *_command = @{@"/assetcategoryproperty/delete-category-property": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getCategoryPropertiesWithEntryId:(long)entryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"entryId": @(entryId)
 	};
 
 	NSDictionary *_command = @{@"/assetcategoryproperty/get-category-properties": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getCategoryPropertyValuesWithCompanyId:(long)companyId key:(NSString *)key error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"companyId": @(companyId),
+		@"key": key
+	};
+
+	NSDictionary *_command = @{@"/assetcategoryproperty/get-category-property-values": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateCategoryPropertyWithCategoryPropertyId:(long)categoryPropertyId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"categoryPropertyId": @(categoryPropertyId),
+		@"key": key,
+		@"value": value
+	};
+
+	NSDictionary *_command = @{@"/assetcategoryproperty/update-category-property": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

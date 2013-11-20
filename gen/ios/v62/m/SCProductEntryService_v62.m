@@ -19,7 +19,7 @@
  */
 @implementation SCProductEntryService_v62
 
-- (NSDictionary *)addProductEntry:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addProductEntryWithName:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"name": name,
 		@"type": type,
@@ -38,10 +38,30 @@
 
 	NSDictionary *_command = @{@"/scproductentry/add-product-entry": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateProductEntry:(long)productEntryId name:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages {
+- (void)deleteProductEntryWithProductEntryId:(long)productEntryId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"productEntryId": @(productEntryId)
+	};
+
+	NSDictionary *_command = @{@"/scproductentry/delete-product-entry": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getProductEntryWithProductEntryId:(long)productEntryId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"productEntryId": @(productEntryId)
+	};
+
+	NSDictionary *_command = @{@"/scproductentry/get-product-entry": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateProductEntryWithProductEntryId:(long)productEntryId name:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"productEntryId": @(productEntryId),
 		@"name": name,
@@ -60,27 +80,7 @@
 
 	NSDictionary *_command = @{@"/scproductentry/update-product-entry": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getProductEntry:(long)productEntryId {
-	NSDictionary *_params = @{
-		@"productEntryId": @(productEntryId)
-	};
-
-	NSDictionary *_command = @{@"/scproductentry/get-product-entry": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (void)deleteProductEntry:(long)productEntryId {
-	NSDictionary *_params = @{
-		@"productEntryId": @(productEntryId)
-	};
-
-	NSDictionary *_command = @{@"/scproductentry/delete-product-entry": _params};
-
-	[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

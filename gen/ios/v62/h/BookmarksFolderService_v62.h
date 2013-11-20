@@ -20,21 +20,30 @@
  */
 @interface BookmarksFolderService_v62 : BaseService
 
-- (void)deleteFolder:(long)folderId includeTrashedEntries:(BOOL)includeTrashedEntries;
-- (void)unsubscribeFolder:(long)groupId folderId:(long)folderId;
-- (NSDictionary *)getFolder:(long)folderId;
-- (int)getFoldersAndEntriesCount:(long)groupId folderId:(long)folderId status:(int)status;
-- (void)subscribeFolder:(long)groupId folderId:(long)folderId;
-- (NSArray *)getFoldersAndEntries:(long)groupId folderId:(long)folderId status:(int)status start:(int)start end:(int)end;
-- (NSDictionary *)moveFolderToTrash:(long)folderId;
-- (NSArray *)getFolderIds:(long)groupId folderId:(long)folderId;
-- (NSDictionary *)updateFolder:(long)folderId parentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description mergeWithParentFolder:(BOOL)mergeWithParentFolder serviceContext:(NSDictionary *)serviceContext;
-- (NSArray *)getSubfolderIds:(long)groupId folderId:(long)folderId recurse:(BOOL)recurse;
-- (NSArray *)getFolders:(long)groupId parentFolderId:(long)parentFolderId status:(int)status start:(int)start end:(int)end;
-- (void)restoreFolderFromTrash:(long)folderId;
-- (NSDictionary *)moveFolder:(long)folderId parentFolderId:(long)parentFolderId;
-- (int)getFoldersCount:(long)groupId parentFolderId:(long)parentFolderId status:(int)status;
-- (NSDictionary *)addFolder:(long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)moveFolderFromTrash:(long)folderId parentFolderId:(long)parentFolderId;
+- (NSDictionary *)addFolderWithParentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteFolderWithFolderId:(long)folderId error:(NSError **)error;
+- (void)deleteFolderWithFolderId:(long)folderId includeTrashedEntries:(BOOL)includeTrashedEntries error:(NSError **)error;
+- (NSDictionary *)getFolderWithFolderId:(long)folderId error:(NSError **)error;
+- (NSArray *)getFolderIdsWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error;
+- (NSArray *)getFoldersWithGroupId:(long)groupId error:(NSError **)error;
+- (NSArray *)getFoldersWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error;
+- (NSArray *)getFoldersWithGroupId:(long)groupId parentFolderId:(long)parentFolderId start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getFoldersWithGroupId:(long)groupId parentFolderId:(long)parentFolderId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getFoldersAndEntriesWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error;
+- (NSArray *)getFoldersAndEntriesWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error;
+- (NSArray *)getFoldersAndEntriesWithGroupId:(long)groupId folderId:(long)folderId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
+- (int)getFoldersAndEntriesCountWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error;
+- (int)getFoldersAndEntriesCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error;
+- (int)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error;
+- (int)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId status:(int)status error:(NSError **)error;
+- (void)getSubfolderIdsWithFolderIds:(NSArray *)folderIds groupId:(long)groupId folderId:(long)folderId error:(NSError **)error;
+- (NSArray *)getSubfolderIdsWithGroupId:(long)groupId folderId:(long)folderId recurse:(BOOL)recurse error:(NSError **)error;
+- (NSDictionary *)moveFolderWithFolderId:(long)folderId parentFolderId:(long)parentFolderId error:(NSError **)error;
+- (NSDictionary *)moveFolderFromTrashWithFolderId:(long)folderId parentFolderId:(long)parentFolderId error:(NSError **)error;
+- (NSDictionary *)moveFolderToTrashWithFolderId:(long)folderId error:(NSError **)error;
+- (void)restoreFolderFromTrashWithFolderId:(long)folderId error:(NSError **)error;
+- (void)subscribeFolderWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error;
+- (void)unsubscribeFolderWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error;
+- (NSDictionary *)updateFolderWithFolderId:(long)folderId parentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description mergeWithParentFolder:(BOOL)mergeWithParentFolder serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

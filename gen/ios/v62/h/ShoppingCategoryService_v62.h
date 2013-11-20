@@ -20,12 +20,13 @@
  */
 @interface ShoppingCategoryService_v62 : BaseService
 
-- (NSDictionary *)addCategory:(long)parentCategoryId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteCategory:(long)categoryId;
-- (NSDictionary *)getCategory:(long)categoryId;
-- (void)getSubcategoryIds:(NSArray *)categoryIds groupId:(long)groupId categoryId:(long)categoryId;
-- (NSArray *)getCategories:(long)groupId parentCategoryId:(long)parentCategoryId start:(int)start end:(int)end;
-- (NSDictionary *)updateCategory:(long)categoryId parentCategoryId:(long)parentCategoryId name:(NSString *)name description:(NSString *)description mergeWithParentCategory:(BOOL)mergeWithParentCategory serviceContext:(NSDictionary *)serviceContext;
-- (int)getCategoriesCount:(long)groupId parentCategoryId:(long)parentCategoryId;
+- (NSDictionary *)addCategoryWithParentCategoryId:(long)parentCategoryId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteCategoryWithCategoryId:(long)categoryId error:(NSError **)error;
+- (NSArray *)getCategoriesWithGroupId:(long)groupId error:(NSError **)error;
+- (NSArray *)getCategoriesWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId start:(int)start end:(int)end error:(NSError **)error;
+- (int)getCategoriesCountWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId error:(NSError **)error;
+- (NSDictionary *)getCategoryWithCategoryId:(long)categoryId error:(NSError **)error;
+- (void)getSubcategoryIdsWithCategoryIds:(NSArray *)categoryIds groupId:(long)groupId categoryId:(long)categoryId error:(NSError **)error;
+- (NSDictionary *)updateCategoryWithCategoryId:(long)categoryId parentCategoryId:(long)parentCategoryId name:(NSString *)name description:(NSString *)description mergeWithParentCategory:(BOOL)mergeWithParentCategory serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

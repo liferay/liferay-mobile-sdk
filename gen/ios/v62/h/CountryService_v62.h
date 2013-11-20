@@ -20,14 +20,15 @@
  */
 @interface CountryService_v62 : BaseService
 
-- (NSDictionary *)getCountryByName:(NSString *)name;
-- (NSDictionary *)getCountryByA2:(NSString *)a2;
-- (NSDictionary *)getCountryByA3:(NSString *)a3;
-- (NSDictionary *)fetchCountry:(long)countryId;
-- (NSDictionary *)getCountry:(long)countryId;
-- (NSDictionary *)fetchCountryByA3:(NSString *)a3;
-- (NSDictionary *)fetchCountryByA2:(NSString *)a2;
-- (NSArray *)getCountries:(BOOL)active;
-- (NSDictionary *)addCountry:(NSString *)name a2:(NSString *)a2 a3:(NSString *)a3 number:(NSString *)number idd:(NSString *)idd active:(BOOL)active;
+- (NSDictionary *)addCountryWithName:(NSString *)name a2:(NSString *)a2 a3:(NSString *)a3 number:(NSString *)number idd:(NSString *)idd active:(BOOL)active error:(NSError **)error;
+- (NSDictionary *)fetchCountryWithCountryId:(long)countryId error:(NSError **)error;
+- (NSDictionary *)fetchCountryByA2WithA2:(NSString *)a2 error:(NSError **)error;
+- (NSDictionary *)fetchCountryByA3WithA3:(NSString *)a3 error:(NSError **)error;
+- (NSArray *)getCountries:(NSError **)error;
+- (NSArray *)getCountriesWithActive:(BOOL)active error:(NSError **)error;
+- (NSDictionary *)getCountryWithCountryId:(long)countryId error:(NSError **)error;
+- (NSDictionary *)getCountryByA2WithA2:(NSString *)a2 error:(NSError **)error;
+- (NSDictionary *)getCountryByA3WithA3:(NSString *)a3 error:(NSError **)error;
+- (NSDictionary *)getCountryByNameWithName:(NSString *)name error:(NSError **)error;
 
 @end

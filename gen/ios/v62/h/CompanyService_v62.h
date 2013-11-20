@@ -20,14 +20,15 @@
  */
 @interface CompanyService_v62 : BaseService
 
-- (void)updateDisplay:(long)companyId languageId:(NSString *)languageId timeZoneId:(NSString *)timeZoneId;
-- (NSDictionary *)getCompanyByWebId:(NSString *)webId;
-- (NSDictionary *)getCompanyByLogoId:(long)logoId;
-- (NSDictionary *)getCompanyByVirtualHost:(NSString *)virtualHost;
-- (NSDictionary *)updateLogo:(long)companyId bytes:(NSArray *)bytes;
-- (NSDictionary *)getCompanyById:(long)companyId;
-- (NSDictionary *)getCompanyByMx:(NSString *)mx;
-- (void)deleteLogo:(long)companyId;
-- (NSDictionary *)updateCompany:(long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx maxUsers:(int)maxUsers active:(BOOL)active;
+- (void)deleteLogoWithCompanyId:(long)companyId error:(NSError **)error;
+- (NSDictionary *)getCompanyByIdWithCompanyId:(long)companyId error:(NSError **)error;
+- (NSDictionary *)getCompanyByLogoIdWithLogoId:(long)logoId error:(NSError **)error;
+- (NSDictionary *)getCompanyByMxWithMx:(NSString *)mx error:(NSError **)error;
+- (NSDictionary *)getCompanyByVirtualHostWithVirtualHost:(NSString *)virtualHost error:(NSError **)error;
+- (NSDictionary *)getCompanyByWebIdWithWebId:(NSString *)webId error:(NSError **)error;
+- (NSDictionary *)updateCompanyWithCompanyId:(long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx homeURL:(NSString *)homeURL name:(NSString *)name legalName:(NSString *)legalName legalId:(NSString *)legalId legalType:(NSString *)legalType sicCode:(NSString *)sicCode tickerSymbol:(NSString *)tickerSymbol industry:(NSString *)industry type:(NSString *)type size:(NSString *)size error:(NSError **)error;
+- (NSDictionary *)updateCompanyWithCompanyId:(long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx maxUsers:(int)maxUsers active:(BOOL)active error:(NSError **)error;
+- (void)updateDisplayWithCompanyId:(long)companyId languageId:(NSString *)languageId timeZoneId:(NSString *)timeZoneId error:(NSError **)error;
+- (NSDictionary *)updateLogoWithCompanyId:(long)companyId bytes:(NSArray *)bytes error:(NSError **)error;
 
 @end

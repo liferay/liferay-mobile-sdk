@@ -20,22 +20,29 @@
  */
 @interface BookmarksEntryService_v62 : BaseService
 
-- (NSDictionary *)moveEntryToTrash:(long)entryId;
-- (NSDictionary *)search:(long)groupId creatorUserId:(long)creatorUserId status:(int)status start:(int)start end:(int)end;
-- (NSArray *)getEntries:(long)groupId folderId:(long)folderId start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator;
-- (void)restoreEntryFromTrash:(long)entryId;
-- (int)getEntriesCount:(long)groupId folderId:(long)folderId status:(int)status;
-- (NSDictionary *)moveEntryFromTrash:(long)entryId parentFolderId:(long)parentFolderId;
-- (NSDictionary *)moveEntry:(long)entryId parentFolderId:(long)parentFolderId;
-- (int)getFoldersEntriesCount:(long)groupId folderIds:(NSArray *)folderIds;
-- (NSArray *)getGroupEntries:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId start:(int)start end:(int)end;
-- (NSDictionary *)openEntry:(long)entryId;
-- (NSDictionary *)addEntry:(long)groupId folderId:(long)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
-- (void)deleteEntry:(long)entryId;
-- (NSDictionary *)getEntry:(long)entryId;
-- (int)getGroupEntriesCount:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId;
-- (NSDictionary *)updateEntry:(long)entryId groupId:(long)groupId folderId:(long)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
-- (void)subscribeEntry:(long)entryId;
-- (void)unsubscribeEntry:(long)entryId;
+- (NSDictionary *)addEntryWithGroupId:(long)groupId folderId:(long)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteEntryWithEntryId:(long)entryId error:(NSError **)error;
+- (NSArray *)getEntriesWithGroupId:(long)groupId folderId:(long)folderId start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getEntriesWithGroupId:(long)groupId folderId:(long)folderId start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;
+- (int)getEntriesCountWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error;
+- (int)getEntriesCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error;
+- (NSDictionary *)getEntryWithEntryId:(long)entryId error:(NSError **)error;
+- (int)getFoldersEntriesCountWithGroupId:(long)groupId folderIds:(NSArray *)folderIds error:(NSError **)error;
+- (NSArray *)getGroupEntriesWithGroupId:(long)groupId start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getGroupEntriesWithGroupId:(long)groupId userId:(long)userId start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getGroupEntriesWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId start:(int)start end:(int)end error:(NSError **)error;
+- (int)getGroupEntriesCountWithGroupId:(long)groupId error:(NSError **)error;
+- (int)getGroupEntriesCountWithGroupId:(long)groupId userId:(long)userId error:(NSError **)error;
+- (int)getGroupEntriesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId error:(NSError **)error;
+- (NSDictionary *)moveEntryWithEntryId:(long)entryId parentFolderId:(long)parentFolderId error:(NSError **)error;
+- (NSDictionary *)moveEntryFromTrashWithEntryId:(long)entryId parentFolderId:(long)parentFolderId error:(NSError **)error;
+- (NSDictionary *)moveEntryToTrashWithEntryId:(long)entryId error:(NSError **)error;
+- (NSDictionary *)openEntryWithEntry:(NSDictionary *)entry error:(NSError **)error;
+- (NSDictionary *)openEntryWithEntryId:(long)entryId error:(NSError **)error;
+- (void)restoreEntryFromTrashWithEntryId:(long)entryId error:(NSError **)error;
+- (NSDictionary *)searchWithGroupId:(long)groupId creatorUserId:(long)creatorUserId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
+- (void)subscribeEntryWithEntryId:(long)entryId error:(NSError **)error;
+- (void)unsubscribeEntryWithEntryId:(long)entryId error:(NSError **)error;
+- (NSDictionary *)updateEntryWithEntryId:(long)entryId groupId:(long)groupId folderId:(long)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

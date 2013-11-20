@@ -20,10 +20,11 @@
  */
 @interface MDRRuleGroupInstanceService_v62 : BaseService
 
-- (void)deleteRuleGroupInstance:(long)ruleGroupInstanceId;
-- (NSDictionary *)updateRuleGroupInstance:(long)ruleGroupInstanceId priority:(int)priority;
-- (NSDictionary *)addRuleGroupInstance:(long)groupId className:(NSString *)className classPK:(long)classPK ruleGroupId:(long)ruleGroupId priority:(int)priority serviceContext:(NSDictionary *)serviceContext;
-- (NSArray *)getRuleGroupInstances:(NSString *)className classPK:(long)classPK start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator;
-- (int)getRuleGroupInstancesCount:(NSString *)className classPK:(long)classPK;
+- (NSDictionary *)addRuleGroupInstanceWithGroupId:(long)groupId className:(NSString *)className classPK:(long)classPK ruleGroupId:(long)ruleGroupId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addRuleGroupInstanceWithGroupId:(long)groupId className:(NSString *)className classPK:(long)classPK ruleGroupId:(long)ruleGroupId priority:(int)priority serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteRuleGroupInstanceWithRuleGroupInstanceId:(long)ruleGroupInstanceId error:(NSError **)error;
+- (NSArray *)getRuleGroupInstancesWithClassName:(NSString *)className classPK:(long)classPK start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;
+- (int)getRuleGroupInstancesCountWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error;
+- (NSDictionary *)updateRuleGroupInstanceWithRuleGroupInstanceId:(long)ruleGroupInstanceId priority:(int)priority error:(NSError **)error;
 
 @end

@@ -20,11 +20,12 @@
  */
 @interface SocialActivitySettingService_v62 : BaseService
 
-- (NSDictionary *)getActivityDefinition:(long)groupId className:(NSString *)className activityType:(int)activityType;
-- (NSArray *)getActivityDefinitions:(long)groupId className:(NSString *)className;
-- (NSDictionary *)getJsonActivityDefinitions:(long)groupId className:(NSString *)className;
-- (void)updateActivitySettings:(long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinitions:(NSArray *)activityCounterDefinitions;
-- (NSArray *)getActivitySettings:(long)groupId;
-- (void)updateActivitySetting:(long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinition:(NSDictionary *)activityCounterDefinition;
+- (NSDictionary *)getActivityDefinitionWithGroupId:(long)groupId className:(NSString *)className activityType:(int)activityType error:(NSError **)error;
+- (NSArray *)getActivityDefinitionsWithGroupId:(long)groupId className:(NSString *)className error:(NSError **)error;
+- (NSArray *)getActivitySettingsWithGroupId:(long)groupId error:(NSError **)error;
+- (NSDictionary *)getJsonActivityDefinitionsWithGroupId:(long)groupId className:(NSString *)className error:(NSError **)error;
+- (void)updateActivitySettingWithGroupId:(long)groupId className:(NSString *)className enabled:(BOOL)enabled error:(NSError **)error;
+- (void)updateActivitySettingWithGroupId:(long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinition:(NSDictionary *)activityCounterDefinition error:(NSError **)error;
+- (void)updateActivitySettingsWithGroupId:(long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinitions:(NSArray *)activityCounterDefinitions error:(NSError **)error;
 
 @end

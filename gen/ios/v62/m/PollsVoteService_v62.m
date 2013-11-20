@@ -19,7 +19,7 @@
  */
 @implementation PollsVoteService_v62
 
-- (NSDictionary *)addVote:(long)questionId choiceId:(long)choiceId serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addVoteWithQuestionId:(long)questionId choiceId:(long)choiceId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"questionId": @(questionId),
 		@"choiceId": @(choiceId),
@@ -28,7 +28,7 @@
 
 	NSDictionary *_command = @{@"/pollsvote/add-vote": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

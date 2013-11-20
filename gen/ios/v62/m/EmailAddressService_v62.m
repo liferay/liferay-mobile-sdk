@@ -19,41 +19,21 @@
  */
 @implementation EmailAddressService_v62
 
-- (NSDictionary *)updateEmailAddress:(long)emailAddressId address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary {
+- (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
 	NSDictionary *_params = @{
-		@"emailAddressId": @(emailAddressId),
+		@"className": className,
+		@"classPK": @(classPK),
 		@"address": address,
 		@"typeId": @(typeId),
 		@"primary": @(primary)
 	};
 
-	NSDictionary *_command = @{@"/emailaddress/update-email-address": _params};
+	NSDictionary *_command = @{@"/emailaddress/add-email-address": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getEmailAddresses:(NSString *)className classPK:(long)classPK {
-	NSDictionary *_params = @{
-		@"className": className,
-		@"classPK": @(classPK)
-	};
-
-	NSDictionary *_command = @{@"/emailaddress/get-email-addresses": _params};
-
-	return (NSArray *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)getEmailAddress:(long)emailAddressId {
-	NSDictionary *_params = @{
-		@"emailAddressId": @(emailAddressId)
-	};
-
-	NSDictionary *_command = @{@"/emailaddress/get-email-address": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)addEmailAddress:(NSString *)className classPK:(long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK),
@@ -65,17 +45,51 @@
 
 	NSDictionary *_command = @{@"/emailaddress/add-email-address": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteEmailAddress:(long)emailAddressId {
+- (void)deleteEmailAddressWithEmailAddressId:(long)emailAddressId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"emailAddressId": @(emailAddressId)
 	};
 
 	NSDictionary *_command = @{@"/emailaddress/delete-email-address": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getEmailAddressWithEmailAddressId:(long)emailAddressId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"emailAddressId": @(emailAddressId)
+	};
+
+	NSDictionary *_command = @{@"/emailaddress/get-email-address": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getEmailAddressesWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"className": className,
+		@"classPK": @(classPK)
+	};
+
+	NSDictionary *_command = @{@"/emailaddress/get-email-addresses": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateEmailAddressWithEmailAddressId:(long)emailAddressId address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"emailAddressId": @(emailAddressId),
+		@"address": address,
+		@"typeId": @(typeId),
+		@"primary": @(primary)
+	};
+
+	NSDictionary *_command = @{@"/emailaddress/update-email-address": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

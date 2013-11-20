@@ -19,27 +19,17 @@
  */
 @implementation DLFileVersionService_v62
 
-- (NSDictionary *)getFileVersion:(long)fileVersionId {
+- (NSDictionary *)getFileVersionWithFileVersionId:(long)fileVersionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileVersionId": @(fileVersionId)
 	};
 
 	NSDictionary *_command = @{@"/dlfileversion/get-file-version": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getLatestFileVersion:(long)fileEntryId {
-	NSDictionary *_params = @{
-		@"fileEntryId": @(fileEntryId)
-	};
-
-	NSDictionary *_command = @{@"/dlfileversion/get-latest-file-version": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSArray *)getFileVersions:(long)fileEntryId status:(int)status {
+- (NSArray *)getFileVersionsWithFileEntryId:(long)fileEntryId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId),
 		@"status": @(status)
@@ -47,10 +37,10 @@
 
 	NSDictionary *_command = @{@"/dlfileversion/get-file-versions": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getFileVersionsCount:(long)fileEntryId status:(int)status {
+- (int)getFileVersionsCountWithFileEntryId:(long)fileEntryId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId),
 		@"status": @(status)
@@ -58,7 +48,17 @@
 
 	NSDictionary *_command = @{@"/dlfileversion/get-file-versions-count": _params};
 
-	return (int)[self.session invoke:_command];
+	return (int)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getLatestFileVersionWithFileEntryId:(long)fileEntryId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"fileEntryId": @(fileEntryId)
+	};
+
+	NSDictionary *_command = @{@"/dlfileversion/get-latest-file-version": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

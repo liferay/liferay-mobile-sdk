@@ -20,6 +20,6 @@
  */
 @interface PermissionService_v62 : BaseService
 
-- (void)checkPermission:(long)groupId name:(NSString *)name primKey:(long)primKey;
+- (void)checkPermissionWithGroupId:(long)groupId name:(NSString *)name primKey:(NSString *)primKey error:(NSError **)error;
 
 @end

@@ -20,10 +20,10 @@
  */
 @interface LayoutSetBranchService_v62 : BaseService
 
-- (void)deleteLayoutSetBranch:(long)layoutSetBranchId;
-- (NSArray *)getLayoutSetBranches:(long)groupId privateLayout:(BOOL)privateLayout;
-- (NSDictionary *)addLayoutSetBranch:(long)groupId privateLayout:(BOOL)privateLayout name:(NSString *)name description:(NSString *)description master:(BOOL)master copyLayoutSetBranchId:(long)copyLayoutSetBranchId serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)updateLayoutSetBranch:(long)groupId layoutSetBranchId:(long)layoutSetBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext;
-- (NSDictionary *)mergeLayoutSetBranch:(long)layoutSetBranchId mergeLayoutSetBranchId:(long)mergeLayoutSetBranchId serviceContext:(NSDictionary *)serviceContext;
+- (NSDictionary *)addLayoutSetBranchWithGroupId:(long)groupId privateLayout:(BOOL)privateLayout name:(NSString *)name description:(NSString *)description master:(BOOL)master copyLayoutSetBranchId:(long)copyLayoutSetBranchId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteLayoutSetBranchWithLayoutSetBranchId:(long)layoutSetBranchId error:(NSError **)error;
+- (NSArray *)getLayoutSetBranchesWithGroupId:(long)groupId privateLayout:(BOOL)privateLayout error:(NSError **)error;
+- (NSDictionary *)mergeLayoutSetBranchWithLayoutSetBranchId:(long)layoutSetBranchId mergeLayoutSetBranchId:(long)mergeLayoutSetBranchId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)updateLayoutSetBranchWithGroupId:(long)groupId layoutSetBranchId:(long)layoutSetBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

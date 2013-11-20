@@ -19,7 +19,7 @@
  */
 @implementation AnnouncementsFlagService_v62
 
-- (void)addFlag:(long)entryId value:(int)value {
+- (void)addFlagWithEntryId:(long)entryId value:(int)value error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"entryId": @(entryId),
 		@"value": @(value)
@@ -27,20 +27,20 @@
 
 	NSDictionary *_command = @{@"/announcementsflag/add-flag": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (void)deleteFlag:(long)flagId {
+- (void)deleteFlagWithFlagId:(long)flagId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"flagId": @(flagId)
 	};
 
 	NSDictionary *_command = @{@"/announcementsflag/delete-flag": _params};
 
-	[self.session invoke:_command];
+	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getFlag:(long)entryId value:(int)value {
+- (NSDictionary *)getFlagWithEntryId:(long)entryId value:(int)value error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"entryId": @(entryId),
 		@"value": @(value)
@@ -48,7 +48,7 @@
 
 	NSDictionary *_command = @{@"/announcementsflag/get-flag": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

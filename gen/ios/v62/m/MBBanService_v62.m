@@ -19,18 +19,7 @@
  */
 @implementation MBBanService_v62
 
-- (void)deleteBan:(long)banUserId serviceContext:(NSDictionary *)serviceContext {
-	NSDictionary *_params = @{
-		@"banUserId": @(banUserId),
-		@"serviceContext": serviceContext
-	};
-
-	NSDictionary *_command = @{@"/mbban/delete-ban": _params};
-
-	[self.session invoke:_command];
-}
-
-- (NSDictionary *)addBan:(long)banUserId serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addBanWithBanUserId:(long)banUserId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"banUserId": @(banUserId),
 		@"serviceContext": serviceContext
@@ -38,7 +27,18 @@
 
 	NSDictionary *_command = @{@"/mbban/add-ban": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteBanWithBanUserId:(long)banUserId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"banUserId": @(banUserId),
+		@"serviceContext": serviceContext
+	};
+
+	NSDictionary *_command = @{@"/mbban/delete-ban": _params};
+
+	[self.session invoke:_command error:error];
 }
 
 @end

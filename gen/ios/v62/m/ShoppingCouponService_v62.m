@@ -19,37 +19,7 @@
  */
 @implementation ShoppingCouponService_v62
 
-- (NSDictionary *)updateCoupon:(long)couponId name:(NSString *)name description:(NSString *)description startDateMonth:(int)startDateMonth startDateDay:(int)startDateDay startDateYear:(int)startDateYear startDateHour:(int)startDateHour startDateMinute:(int)startDateMinute endDateMonth:(int)endDateMonth endDateDay:(int)endDateDay endDateYear:(int)endDateYear endDateHour:(int)endDateHour endDateMinute:(int)endDateMinute neverExpire:(BOOL)neverExpire active:(BOOL)active limitCategories:(NSString *)limitCategories limitSkus:(NSString *)limitSkus minOrder:(double)minOrder discount:(double)discount discountType:(NSString *)discountType serviceContext:(NSDictionary *)serviceContext {
-	NSDictionary *_params = @{
-		@"couponId": @(couponId),
-		@"name": name,
-		@"description": description,
-		@"startDateMonth": @(startDateMonth),
-		@"startDateDay": @(startDateDay),
-		@"startDateYear": @(startDateYear),
-		@"startDateHour": @(startDateHour),
-		@"startDateMinute": @(startDateMinute),
-		@"endDateMonth": @(endDateMonth),
-		@"endDateDay": @(endDateDay),
-		@"endDateYear": @(endDateYear),
-		@"endDateHour": @(endDateHour),
-		@"endDateMinute": @(endDateMinute),
-		@"neverExpire": @(neverExpire),
-		@"active": @(active),
-		@"limitCategories": limitCategories,
-		@"limitSkus": limitSkus,
-		@"minOrder": @(minOrder),
-		@"discount": @(discount),
-		@"discountType": discountType,
-		@"serviceContext": serviceContext
-	};
-
-	NSDictionary *_command = @{@"/shoppingcoupon/update-coupon": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
-}
-
-- (NSDictionary *)addCoupon:(NSString *)code autoCode:(BOOL)autoCode name:(NSString *)name description:(NSString *)description startDateMonth:(int)startDateMonth startDateDay:(int)startDateDay startDateYear:(int)startDateYear startDateHour:(int)startDateHour startDateMinute:(int)startDateMinute endDateMonth:(int)endDateMonth endDateDay:(int)endDateDay endDateYear:(int)endDateYear endDateHour:(int)endDateHour endDateMinute:(int)endDateMinute neverExpire:(BOOL)neverExpire active:(BOOL)active limitCategories:(NSString *)limitCategories limitSkus:(NSString *)limitSkus minOrder:(double)minOrder discount:(double)discount discountType:(NSString *)discountType serviceContext:(NSDictionary *)serviceContext {
+- (NSDictionary *)addCouponWithCode:(NSString *)code autoCode:(BOOL)autoCode name:(NSString *)name description:(NSString *)description startDateMonth:(int)startDateMonth startDateDay:(int)startDateDay startDateYear:(int)startDateYear startDateHour:(int)startDateHour startDateMinute:(int)startDateMinute endDateMonth:(int)endDateMonth endDateDay:(int)endDateDay endDateYear:(int)endDateYear endDateHour:(int)endDateHour endDateMinute:(int)endDateMinute neverExpire:(BOOL)neverExpire active:(BOOL)active limitCategories:(NSString *)limitCategories limitSkus:(NSString *)limitSkus minOrder:(double)minOrder discount:(double)discount discountType:(NSString *)discountType serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"code": code,
 		@"autoCode": @(autoCode),
@@ -77,10 +47,32 @@
 
 	NSDictionary *_command = @{@"/shoppingcoupon/add-coupon": _params};
 
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)search:(long)groupId companyId:(long)companyId code:(NSString *)code active:(BOOL)active discountType:(NSString *)discountType andOperator:(BOOL)andOperator start:(int)start end:(int)end {
+- (void)deleteCouponWithGroupId:(long)groupId couponId:(long)couponId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"couponId": @(couponId)
+	};
+
+	NSDictionary *_command = @{@"/shoppingcoupon/delete-coupon": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getCouponWithGroupId:(long)groupId couponId:(long)couponId error:(NSError **)error {
+	NSDictionary *_params = @{
+		@"groupId": @(groupId),
+		@"couponId": @(couponId)
+	};
+
+	NSDictionary *_command = @{@"/shoppingcoupon/get-coupon": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)searchWithGroupId:(long)groupId companyId:(long)companyId code:(NSString *)code active:(BOOL)active discountType:(NSString *)discountType andOperator:(BOOL)andOperator start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"companyId": @(companyId),
@@ -94,29 +86,37 @@
 
 	NSDictionary *_command = @{@"/shoppingcoupon/search": _params};
 
-	return (NSArray *)[self.session invoke:_command];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteCoupon:(long)groupId couponId:(long)couponId {
+- (NSDictionary *)updateCouponWithCouponId:(long)couponId name:(NSString *)name description:(NSString *)description startDateMonth:(int)startDateMonth startDateDay:(int)startDateDay startDateYear:(int)startDateYear startDateHour:(int)startDateHour startDateMinute:(int)startDateMinute endDateMonth:(int)endDateMonth endDateDay:(int)endDateDay endDateYear:(int)endDateYear endDateHour:(int)endDateHour endDateMinute:(int)endDateMinute neverExpire:(BOOL)neverExpire active:(BOOL)active limitCategories:(NSString *)limitCategories limitSkus:(NSString *)limitSkus minOrder:(double)minOrder discount:(double)discount discountType:(NSString *)discountType serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"couponId": @(couponId)
+		@"couponId": @(couponId),
+		@"name": name,
+		@"description": description,
+		@"startDateMonth": @(startDateMonth),
+		@"startDateDay": @(startDateDay),
+		@"startDateYear": @(startDateYear),
+		@"startDateHour": @(startDateHour),
+		@"startDateMinute": @(startDateMinute),
+		@"endDateMonth": @(endDateMonth),
+		@"endDateDay": @(endDateDay),
+		@"endDateYear": @(endDateYear),
+		@"endDateHour": @(endDateHour),
+		@"endDateMinute": @(endDateMinute),
+		@"neverExpire": @(neverExpire),
+		@"active": @(active),
+		@"limitCategories": limitCategories,
+		@"limitSkus": limitSkus,
+		@"minOrder": @(minOrder),
+		@"discount": @(discount),
+		@"discountType": discountType,
+		@"serviceContext": serviceContext
 	};
 
-	NSDictionary *_command = @{@"/shoppingcoupon/delete-coupon": _params};
+	NSDictionary *_command = @{@"/shoppingcoupon/update-coupon": _params};
 
-	[self.session invoke:_command];
-}
-
-- (NSDictionary *)getCoupon:(long)groupId couponId:(long)couponId {
-	NSDictionary *_params = @{
-		@"groupId": @(groupId),
-		@"couponId": @(couponId)
-	};
-
-	NSDictionary *_command = @{@"/shoppingcoupon/get-coupon": _params};
-
-	return (NSDictionary *)[self.session invoke:_command];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end
