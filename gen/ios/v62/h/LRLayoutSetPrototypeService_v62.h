@@ -13,7 +13,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "BaseService.h"
+#import "LRBaseService.h"
 
 /**
  * author Bruno Farache
