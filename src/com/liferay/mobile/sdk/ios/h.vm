@@ -15,7 +15,7 @@
 ##n
 
 ${esc.h}import <Foundation/Foundation.h>
-${esc.h}import "BaseService.h"
+${esc.h}import "LRBaseService.h"
 
 ##n
 
