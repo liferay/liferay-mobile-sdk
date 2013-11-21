@@ -25,7 +25,7 @@ ${esc.h}import "LRBaseService.h"
 
 #set ($actions = $discovery.actions)
 
-@interface $className : BaseService
+@interface $className : LRBaseService
 
 ##n
 
