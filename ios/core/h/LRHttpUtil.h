@@ -13,7 +13,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "BatchSession.h"
+#import "LRBatchSession.h"
 
 /**
  * author Bruno Farache
@@ -30,17 +30,18 @@
 #define STATUS_OK 200
 #define STATUS_UNAUTHORIZED 401
 
-@interface HttpUtil : NSObject
+@interface LRHttpUtil : NSObject
 
 typedef void (^Handler)(NSURLResponse *response, NSData *data, NSError *error);
 
-+ (int)getPortalVersion:(Session *)session error:(NSError **)error;
+
++ (int)getPortalVersion:(LRSession *)session error:(NSError **)error;
 + (int)getPortalVersionWithURL:(NSString *)URL error:(NSError **)error;
 
-+ (NSArray *)post:(Session *)session command:(NSDictionary *)command
++ (NSArray *)post:(LRSession *)session command:(NSDictionary *)command
 	error:(NSError **)error;
 
-+ (NSArray *)post:(Session *)session commands:(NSArray *)commands
++ (NSArray *)post:(LRSession *)session commands:(NSArray *)commands
 	error:(NSError **)error;
 
 @end

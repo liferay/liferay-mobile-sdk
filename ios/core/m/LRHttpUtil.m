@@ -12,12 +12,12 @@
  * details.
  */
 
-#import "HttpUtil.h"
+#import "LRHttpUtil.h"
 
 /**
  * author Bruno Farache
  */
-@implementation HttpUtil
+@implementation LRHttpUtil
 
 static NSMutableDictionary *_versions;
 
@@ -27,7 +27,7 @@ static NSMutableDictionary *_versions;
 	}
 }
 
-+ (int)getPortalVersion:(Session *)session error:(NSError **)error {
++ (int)getPortalVersion:(LRSession *)session error:(NSError **)error {
 	return [self getPortalVersionWithURL:session.server error:error];
 }
 
@@ -86,7 +86,7 @@ static NSMutableDictionary *_versions;
 	return [version intValue];
 }
 
-+ (NSArray *)post:(Session *)session command:(NSDictionary *)command
++ (NSArray *)post:(LRSession *)session command:(NSDictionary *)command
 		error:(NSError **)error {
 
 	NSArray *commands = [NSArray arrayWithObject:command];
@@ -94,7 +94,7 @@ static NSMutableDictionary *_versions;
 	return [self post:session commands:commands error:error];
 }
 
-+ (NSArray *)post:(Session *)session commands:(NSArray *)commands
++ (NSArray *)post:(LRSession *)session commands:(NSArray *)commands
 		error:(NSError **)error {
 
 	NSURLRequest *request = [self _getRequest:session commands:commands
@@ -104,7 +104,7 @@ static NSMutableDictionary *_versions;
 		return nil;
 	}
 
-	id<Callback> callback = session.callback;
+	id<LRCallback> callback = session.callback;
 
 	if (callback) {
 		NSOperationQueue *queue = [[NSOperationQueue alloc] init];
@@ -126,7 +126,7 @@ static NSMutableDictionary *_versions;
 					return;
 				}
 
-				if ([session isKindOfClass:[BatchSession class]]) {
+				if ([session isKindOfClass:[LRBatchSession class]]) {
 					[callback onSuccess:jsonArray];
 				}
 				else {
@@ -154,7 +154,7 @@ static NSMutableDictionary *_versions;
 	}
 }
 
-+ (NSMutableURLRequest *)_getRequest:(Session *)session
++ (NSMutableURLRequest *)_getRequest:(LRSession *)session
 		commands:(NSArray *)commands error:(NSError **)error {
 
 	NSURL *URL = [self _getURL:session];
@@ -182,7 +182,7 @@ static NSMutableDictionary *_versions;
 	return request;
 }
 
-+ (NSURL *)_getURL:(Session *)session {
++ (NSURL *)_getURL:(LRSession *)session {
 	NSString *URL =
 		[NSString stringWithFormat:@"%@/api/jsonws/invoke", session.server];
 

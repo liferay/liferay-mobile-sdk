@@ -13,19 +13,13 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "Callback.h"
 
 /**
  * author Bruno Farache
  */
-@interface Session : NSObject
+@protocol LRCallback <NSObject>
 
-@property (nonatomic, strong) id<Callback> callback;
-@property (nonatomic) int connectionTimeout;
-@property (nonatomic, strong) NSString *password;
-@property (nonatomic, strong) NSString *server;
-@property (nonatomic, strong) NSString *username;
-
-- (id)invoke:(NSDictionary *)command error:(NSError **)error;
+- (void)onFailure:(NSError *)error;
+- (void)onSuccess:(id)result;
 
 @end

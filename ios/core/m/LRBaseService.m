@@ -12,18 +12,10 @@
  * details.
  */
 
-#import "HttpUtil.h"
-#import "Session.h"
+#import "LRBaseService.h"
 
 /**
  * author Bruno Farache
  */
-@implementation Session
-
-- (id)invoke:(NSDictionary *)command error:(NSError **)error {
-	NSArray *json = [HttpUtil post:self command:command error:error];
-
-	return [json objectAtIndex:0];
-}
-
+@implementation LRBaseService
 @end

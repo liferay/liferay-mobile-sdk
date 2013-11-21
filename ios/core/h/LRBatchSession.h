@@ -13,13 +13,15 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "LRSession.h"
 
 /**
  * author Bruno Farache
  */
-@protocol Callback <NSObject>
+@interface LRBatchSession : LRSession
 
-- (void)onFailure:(NSError *)error;
-- (void)onSuccess:(id)result;
+@property (nonatomic, strong) NSMutableArray *commands;
+
+- (NSArray *)invoke:(NSError **)error;
 
 @end

@@ -13,13 +13,19 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "Session.h"
+#import "LRCallback.h"
 
 /**
  * author Bruno Farache
  */
-@interface BaseService : NSObject
+@interface LRSession : NSObject
 
-@property (nonatomic, strong) Session *session;
+@property (nonatomic, strong) id<LRCallback> callback;
+@property (nonatomic) int connectionTimeout;
+@property (nonatomic, strong) NSString *password;
+@property (nonatomic, strong) NSString *server;
+@property (nonatomic, strong) NSString *username;
+
+- (id)invoke:(NSDictionary *)command error:(NSError **)error;
 
 @end

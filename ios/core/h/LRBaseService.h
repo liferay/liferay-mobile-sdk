@@ -13,15 +13,13 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "Session.h"
+#import "LRSession.h"
 
 /**
  * author Bruno Farache
  */
-@interface BatchSession : Session
+@interface LRBaseService : NSObject
 
-@property (nonatomic, strong) NSMutableArray *commands;
-
-- (NSArray *)invoke:(NSError **)error;
+@property (nonatomic, strong) LRSession *session;
 
 @end

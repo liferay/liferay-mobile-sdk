@@ -12,13 +12,13 @@
  * details.
  */
 
-#import "HttpUtil.h"
-#import "BatchSession.h"
+#import "LRHttpUtil.h"
+#import "LRBatchSession.h"
 
 /**
  * author Bruno Farache
  */
-@implementation BatchSession
+@implementation LRBatchSession
 
 - (id)init {
 	self = [super init];
@@ -31,7 +31,8 @@
 }
 
 - (NSArray *)invoke:(NSError **)error {
-	NSArray *results = [HttpUtil post:self commands:self.commands error:error];
+	NSArray *results = [LRHttpUtil post:self commands:self.commands
+		error:error];
 
 	self.commands = [[NSMutableArray alloc] init];
 
