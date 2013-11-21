@@ -19,6 +19,12 @@
  * author Bruno Farache
  */
 
+#define HEAD @"HEAD"
+#define POST @"POST"
+
+#define UNKNOWN -1
+#define V_6_2 6200
+
 #define ERROR_DOMAIN @"com.liferay.mobile.sync.ErrorDomain"
 #define SERVER_EXCEPTION 1
 #define STATUS_OK 200
@@ -27,6 +33,9 @@
 @interface HttpUtil : NSObject
 
 typedef void (^Handler)(NSURLResponse *response, NSData *data, NSError *error);
+
++ (int)getPortalVersion:(Session *)session error:(NSError **)error;
++ (int)getPortalVersionWithURL:(NSString *)URL error:(NSError **)error;
 
 + (NSArray *)post:(Session *)session command:(NSDictionary *)command
 	error:(NSError **)error;

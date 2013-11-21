@@ -19,6 +19,73 @@
  */
 @implementation HttpUtil
 
+static NSMutableDictionary *_versions;
+
++ (void)initialize {
+	if (!_versions) {
+		_versions = [[NSMutableDictionary alloc] init];
+	}
+}
+
++ (int)getPortalVersion:(Session *)session error:(NSError **)error {
+	return [self getPortalVersionWithURL:session.server error:error];
+}
+
++ (int)getPortalVersionWithURL:(NSString *)URL error:(NSError **)error {
+	NSNumber *version = [_versions objectForKey:URL];
+
+	if (version) {
+		return [version intValue];
+	}
+
+	NSMutableURLRequest *request =
+		[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL]];
+
+	[request setHTTPMethod:HEAD];
+
+	NSHTTPURLResponse *response;
+
+	[NSURLConnection sendSynchronousRequest:request returningResponse:&response
+		error:error];
+
+	if (*error) {
+		return UNKNOWN;
+	}
+
+	NSDictionary *headers = [response allHeaderFields];
+	NSString *portalHeader = [headers objectForKey:@"Liferay-Portal"];
+
+	if (!portalHeader) {
+		version = @(UNKNOWN);
+
+		[_versions setObject:version forKey:URL];
+
+		return [version intValue];
+	}
+
+	NSRange buildRange;
+	NSRange searchRange = NSMakeRange(0, [portalHeader length]);
+
+	buildRange =
+		[portalHeader rangeOfString:@"Build" options:NSCaseInsensitiveSearch
+			range:searchRange];
+
+	if (buildRange.location == NSNotFound) {
+		version = @(UNKNOWN);
+	}
+	else {
+		int indexOfBuild = buildRange.location + buildRange.length;
+		NSRange versionRange = NSMakeRange(indexOfBuild, 5);
+		NSString *buildNumber = [portalHeader substringWithRange:versionRange];
+
+		version = [NSNumber numberWithInt:[buildNumber intValue]];
+	}
+
+	[_versions setObject:version forKey:URL];
+
+	return [version intValue];
+}
+
 + (NSArray *)post:(Session *)session command:(NSDictionary *)command
 		error:(NSError **)error {
 
@@ -99,7 +166,7 @@
 	NSData *body = [NSJSONSerialization dataWithJSONObject:commands options:0
 		error:error];
 
-	[request setHTTPMethod:@"POST"];
+	[request setHTTPMethod:POST];
 	[request setTimeoutInterval:session.connectionTimeout];
 	[request setValue:authHeader forHTTPHeaderField:@"Authorization"];
 	[request setValue:@"application/json; charset=utf-8"

@@ -77,7 +77,9 @@ public class HttpUtil {
 			Header portalHeader = response.getFirstHeader("Liferay-Portal");
 
 			if (portalHeader == null) {
-				return PortalVersion.UNKNOWN;
+				version = PortalVersion.UNKNOWN;
+
+				return version;
 			}
 
 			String portalField = portalHeader.getValue();
