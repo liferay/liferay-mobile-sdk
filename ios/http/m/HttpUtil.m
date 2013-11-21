@@ -19,41 +19,6 @@
  */
 @implementation HttpUtil
 
-+ (NSMutableURLRequest *)getRequest:(Session *)session
-		commands:(NSArray *)commands error:(NSError **)error {
-
-	NSURL *URL = [self getURL:session];
-
-	NSMutableURLRequest *request =
-		[[NSMutableURLRequest alloc] initWithURL:URL];
-
-	NSString *credentials = [NSString stringWithFormat:@"%@:%@",
-		session.username, session.password];
-
-	NSData *auth = [credentials dataUsingEncoding:NSUTF8StringEncoding];
-	NSString *encoded = [auth base64EncodedStringWithOptions:0];
-	NSString *authHeader = [NSString stringWithFormat:@"Basic %@", encoded];
-	NSData *body = [NSJSONSerialization dataWithJSONObject:commands options:0
-		error:error];
-
-	[request setHTTPMethod:@"POST"];
-	[request setTimeoutInterval:session.connectionTimeout];
-	[request setValue:authHeader forHTTPHeaderField:@"Authorization"];
-	[request setValue:@"application/json; charset=utf-8"
-		forHTTPHeaderField:@"Content-Type"];
-
-	[request setHTTPBody:body];
-
-	return request;
-}
-
-+ (NSURL *)getURL:(Session *)session {
-	NSString *URL =
-		[NSString stringWithFormat:@"%@/api/jsonws/invoke", session.server];
-
-	return [NSURL URLWithString:URL];
-}
-
 + (NSArray *)post:(Session *)session command:(NSDictionary *)command
 		error:(NSError **)error {
 
@@ -65,7 +30,8 @@
 + (NSArray *)post:(Session *)session commands:(NSArray *)commands
 		error:(NSError **)error {
 
-	NSURLRequest *request = [self getRequest:session commands:commands error:error];
+	NSURLRequest *request = [self _getRequest:session commands:commands
+		error:error];
 
 	if (*error) {
 		return nil;
@@ -84,7 +50,7 @@
 				NSError *serverError;
 
 				NSArray *json =
-					[self handleServerException:d
+					[self _handleServerException:d
 						response:(NSHTTPURLResponse *)r error:&serverError];
 
 				if (serverError) {
@@ -112,11 +78,46 @@
 			return nil;
 		}
 
-		return [self handleServerException:data response:response error:error];
+		return [self _handleServerException:data response:response error:error];
 	}
 }
 
-+ (NSArray *)handleServerException:(NSData *)data
++ (NSMutableURLRequest *)_getRequest:(Session *)session
+		commands:(NSArray *)commands error:(NSError **)error {
+
+	NSURL *URL = [self _getURL:session];
+
+	NSMutableURLRequest *request =
+		[[NSMutableURLRequest alloc] initWithURL:URL];
+
+	NSString *credentials = [NSString stringWithFormat:@"%@:%@",
+		session.username, session.password];
+
+	NSData *auth = [credentials dataUsingEncoding:NSUTF8StringEncoding];
+	NSString *encoded = [auth base64EncodedStringWithOptions:0];
+	NSString *authHeader = [NSString stringWithFormat:@"Basic %@", encoded];
+	NSData *body = [NSJSONSerialization dataWithJSONObject:commands options:0
+		error:error];
+
+	[request setHTTPMethod:@"POST"];
+	[request setTimeoutInterval:session.connectionTimeout];
+	[request setValue:authHeader forHTTPHeaderField:@"Authorization"];
+	[request setValue:@"application/json; charset=utf-8"
+		forHTTPHeaderField:@"Content-Type"];
+
+	[request setHTTPBody:body];
+
+	return request;
+}
+
++ (NSURL *)_getURL:(Session *)session {
+	NSString *URL =
+		[NSString stringWithFormat:@"%@/api/jsonws/invoke", session.server];
+
+	return [NSURL URLWithString:URL];
+}
+
++ (NSArray *)_handleServerException:(NSData *)data
 		response:(NSHTTPURLResponse *)response error:(NSError **) error {
 
 	int statusCode = [response statusCode];

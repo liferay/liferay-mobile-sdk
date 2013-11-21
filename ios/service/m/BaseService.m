@@ -18,5 +18,4 @@
  * author Bruno Farache
  */
 @implementation BaseService
-
 @end
