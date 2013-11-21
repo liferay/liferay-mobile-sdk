@@ -116,7 +116,7 @@ static NSMutableDictionary *_versions;
 			else {
 				NSError *serverError;
 
-				NSArray *json =
+				NSArray *jsonArray =
 					[self _handleServerException:d
 						response:(NSHTTPURLResponse *)r error:&serverError];
 
@@ -126,7 +126,12 @@ static NSMutableDictionary *_versions;
 					return;
 				}
 
-				[callback onSuccess:[json objectAtIndex:0]];
+				if ([session isKindOfClass:[BatchSession class]]) {
+					[callback onSuccess:jsonArray];
+				}
+				else {
+					[callback onSuccess:[jsonArray objectAtIndex:0]];
+				}
 			}
 		};
 
@@ -211,15 +216,15 @@ static NSMutableDictionary *_versions;
 		return nil;
 	}
 
-	id jsonObj = [NSJSONSerialization JSONObjectWithData:data options:0
+	id jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0
 		error:error];
 
 	if (*error) {
 		return nil;
 	}
 
-	if ([jsonObj isKindOfClass:[NSDictionary class]]) {
-		NSString *message = [jsonObj objectForKey:@"exception"];
+	if ([jsonArray isKindOfClass:[NSDictionary class]]) {
+		NSString *message = [jsonArray objectForKey:@"exception"];
 
 		if (message) {
 			NSDictionary *userInfo = @{
@@ -233,7 +238,7 @@ static NSMutableDictionary *_versions;
 		}
 	}
 
-	return jsonObj;
+	return jsonArray;
 }
 
 @end

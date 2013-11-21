@@ -13,7 +13,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "Session.h"
+#import "BatchSession.h"
 
 /**
  * author Bruno Farache
