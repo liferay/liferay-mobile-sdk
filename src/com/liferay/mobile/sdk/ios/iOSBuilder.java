@@ -90,9 +90,9 @@ public class iOSBuilder extends BaseBuilder {
 
 		ObjectiveCUtil objectiveCUtil = new ObjectiveCUtil();
 
-		StringBuilder className = new StringBuilder(
-			objectiveCUtil.getServiceClassName(filter));
+		StringBuilder className = new StringBuilder("LR");
 
+		className.append(objectiveCUtil.getServiceClassName(filter));
 		className.append("_v");
 		className.append(version);
 
