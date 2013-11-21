@@ -15,6 +15,8 @@
 #import <Foundation/Foundation.h>
 #import "LRCallback.h"
 
+#define DEFAULT_CONNECTION_TIMEOUT 15
+
 /**
  * author Bruno Farache
  */
@@ -25,6 +27,18 @@
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *server;
 @property (nonatomic, strong) NSString *username;
+
+- (id)init:(LRSession *)session;
+
+- (id)init:(NSString *)server username:(NSString *)username
+	password:(NSString *)password;
+
+- (id)init:(NSString *)server username:(NSString *)username
+	password:(NSString *)password callback:(id<LRCallback>)callback;
+
+- (id)init:(NSString *)server username:(NSString *)username
+	password:(NSString *)password connectionTimeout:(int)connectionTimeout
+	callback:(id<LRCallback>)callback;
 
 - (id)invoke:(NSDictionary *)command error:(NSError **)error;
 

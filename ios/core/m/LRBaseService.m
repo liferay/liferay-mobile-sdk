@@ -18,4 +18,15 @@
  * author Bruno Farache
  */
 @implementation LRBaseService
+
+- (id)init:(LRSession *)session {
+	self = [super init];
+
+	if (self) {
+		self.session = session;
+	}
+
+	return self;
+}
+
 @end

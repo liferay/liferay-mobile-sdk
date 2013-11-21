@@ -22,4 +22,6 @@
 
 @property (nonatomic, strong) LRSession *session;
 
+- (id)init:(LRSession *)session;
+
 @end

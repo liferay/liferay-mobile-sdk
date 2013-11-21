@@ -20,6 +20,42 @@
  */
 @implementation LRSession
 
+- (id)init:(LRSession *)session {
+	return [self init:session.server username:session.username
+		password:session.password connectionTimeout:session.connectionTimeout
+		callback:session.callback];
+}
+
+- (id)init:(NSString *)server username:(NSString *)username
+  		password:(NSString *)password {
+
+	return [self init:server username:username password:password callback:nil];
+}
+
+- (id)init:(NSString *)server username:(NSString *)username
+		password:(NSString *)password callback:(id<LRCallback>)callback {
+
+	return [self init:server username:username password:password
+		connectionTimeout:DEFAULT_CONNECTION_TIMEOUT callback:callback];
+}
+
+- (id)init:(NSString *)server username:(NSString *)username
+		password:(NSString *)password connectionTimeout:(int)connectionTimeout
+		callback:(id<LRCallback>)callback {
+
+	self = [super init];
+
+	if (self) {
+		self.server = server;
+		self.username = username;
+		self.password = password;
+		self.connectionTimeout = connectionTimeout;
+		self.callback = callback;
+	}
+
+	return self;
+}
+
 - (id)invoke:(NSDictionary *)command error:(NSError **)error {
 	NSArray *json = [LRHttpUtil post:self command:command error:error];
 
