@@ -109,7 +109,7 @@ static NSMutableDictionary *_versions;
 	if (callback) {
 		NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
-		Handler handler = ^(NSURLResponse *r, NSData *d, NSError *e) {
+		LRHandler handler = ^(NSURLResponse *r, NSData *d, NSError *e) {
 			if (e) {
 				[callback onFailure:e];
 			}

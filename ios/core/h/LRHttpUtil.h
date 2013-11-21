@@ -32,8 +32,7 @@
 
 @interface LRHttpUtil : NSObject
 
-typedef void (^Handler)(NSURLResponse *response, NSData *data, NSError *error);
-
+typedef void (^LRHandler)(NSURLResponse *r, NSData *d, NSError *e);
 
 + (int)getPortalVersion:(LRSession *)session error:(NSError **)error;
 + (int)getPortalVersionWithURL:(NSString *)URL error:(NSError **)error;
