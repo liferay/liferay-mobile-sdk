@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRMDRRuleGroupService_v62 : BaseService
+@interface LRMDRRuleGroupService_v62 : LRBaseService
 
 - (NSDictionary *)addRuleGroupWithGroupId:(long)groupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)copyRuleGroupWithRuleGroupId:(long)ruleGroupId groupId:(long)groupId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

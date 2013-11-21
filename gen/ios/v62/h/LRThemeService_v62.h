@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRThemeService_v62 : BaseService
+@interface LRThemeService_v62 : LRBaseService
 
 - (NSArray *)getThemesWithCompanyId:(long)companyId error:(NSError **)error;
 - (NSDictionary *)getWarThemes:(NSError **)error;

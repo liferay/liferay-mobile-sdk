@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRLayoutSetService_v62 : BaseService
+@interface LRLayoutSetService_v62 : LRBaseService
 
 - (void)updateLayoutSetPrototypeLinkEnabledWithGroupId:(long)groupId privateLayout:(BOOL)privateLayout layoutSetPrototypeLinkEnabled:(BOOL)layoutSetPrototypeLinkEnabled layoutSetPrototypeUuid:(NSString *)layoutSetPrototypeUuid error:(NSError **)error;
 - (void)updateLogoWithGroupId:(long)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo bytes:(NSArray *)bytes error:(NSError **)error;

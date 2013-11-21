@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRDDLRecordSetService_v62 : BaseService
+@interface LRDDLRecordSetService_v62 : LRBaseService
 
 - (NSDictionary *)addRecordSetWithGroupId:(long)groupId ddmStructureId:(long)ddmStructureId recordSetKey:(NSString *)recordSetKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap minDisplayRows:(int)minDisplayRows scope:(int)scope serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteRecordSetWithRecordSetId:(long)recordSetId error:(NSError **)error;

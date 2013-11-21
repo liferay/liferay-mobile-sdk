@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRWikiNodeService_v62 : BaseService
+@interface LRWikiNodeService_v62 : LRBaseService
 
 - (NSDictionary *)addNodeWithName:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteNodeWithNodeId:(long)nodeId error:(NSError **)error;

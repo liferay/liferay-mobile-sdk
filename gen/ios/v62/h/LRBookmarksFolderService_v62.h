@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRBookmarksFolderService_v62 : BaseService
+@interface LRBookmarksFolderService_v62 : LRBaseService
 
 - (NSDictionary *)addFolderWithParentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteFolderWithFolderId:(long)folderId error:(NSError **)error;

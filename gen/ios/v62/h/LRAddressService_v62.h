@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRAddressService_v62 : BaseService
+@interface LRAddressService_v62 : LRBaseService
 
 - (NSDictionary *)addAddressWithClassName:(NSString *)className classPK:(long)classPK street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long)regionId countryId:(long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary error:(NSError **)error;
 - (NSDictionary *)addAddressWithClassName:(NSString *)className classPK:(long)classPK street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long)regionId countryId:(long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

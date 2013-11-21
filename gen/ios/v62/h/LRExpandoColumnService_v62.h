@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRExpandoColumnService_v62 : BaseService
+@interface LRExpandoColumnService_v62 : LRBaseService
 
 - (NSDictionary *)addColumnWithTableId:(long)tableId name:(NSString *)name type:(int)type error:(NSError **)error;
 - (NSDictionary *)addColumnWithTableId:(long)tableId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error;

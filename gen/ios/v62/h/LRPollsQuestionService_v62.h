@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRPollsQuestionService_v62 : BaseService
+@interface LRPollsQuestionService_v62 : LRBaseService
 
 - (NSDictionary *)addQuestionWithTitleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap expirationDateMonth:(int)expirationDateMonth expirationDateDay:(int)expirationDateDay expirationDateYear:(int)expirationDateYear expirationDateHour:(int)expirationDateHour expirationDateMinute:(int)expirationDateMinute neverExpire:(BOOL)neverExpire choices:(NSArray *)choices serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteQuestionWithQuestionId:(long)questionId error:(NSError **)error;

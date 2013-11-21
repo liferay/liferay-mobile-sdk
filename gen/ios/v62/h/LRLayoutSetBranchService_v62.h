@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRLayoutSetBranchService_v62 : BaseService
+@interface LRLayoutSetBranchService_v62 : LRBaseService
 
 - (NSDictionary *)addLayoutSetBranchWithGroupId:(long)groupId privateLayout:(BOOL)privateLayout name:(NSString *)name description:(NSString *)description master:(BOOL)master copyLayoutSetBranchId:(long)copyLayoutSetBranchId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteLayoutSetBranchWithLayoutSetBranchId:(long)layoutSetBranchId error:(NSError **)error;

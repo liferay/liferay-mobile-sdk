@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRBookmarksEntryService_v62 : BaseService
+@interface LRBookmarksEntryService_v62 : LRBaseService
 
 - (NSDictionary *)addEntryWithGroupId:(long)groupId folderId:(long)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteEntryWithEntryId:(long)entryId error:(NSError **)error;

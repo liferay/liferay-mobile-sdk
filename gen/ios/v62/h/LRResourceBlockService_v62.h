@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRResourceBlockService_v62 : BaseService
+@interface LRResourceBlockService_v62 : LRBaseService
 
 - (void)addCompanyScopePermissionWithScopeGroupId:(long)scopeGroupId companyId:(long)companyId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error;
 - (void)addGroupScopePermissionWithScopeGroupId:(long)scopeGroupId companyId:(long)companyId groupId:(long)groupId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error;

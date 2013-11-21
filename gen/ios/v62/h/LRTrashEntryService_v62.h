@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRTrashEntryService_v62 : BaseService
+@interface LRTrashEntryService_v62 : LRBaseService
 
 - (void)deleteEntriesWithEntryIds:(NSArray *)entryIds error:(NSError **)error;
 - (void)deleteEntriesWithGroupId:(long)groupId error:(NSError **)error;

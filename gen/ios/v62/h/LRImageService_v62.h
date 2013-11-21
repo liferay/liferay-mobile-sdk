@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRImageService_v62 : BaseService
+@interface LRImageService_v62 : LRBaseService
 
 - (NSDictionary *)getImageWithImageId:(long)imageId error:(NSError **)error;
 

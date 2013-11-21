@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRCountryService_v62 : BaseService
+@interface LRCountryService_v62 : LRBaseService
 
 - (NSDictionary *)addCountryWithName:(NSString *)name a2:(NSString *)a2 a3:(NSString *)a3 number:(NSString *)number idd:(NSString *)idd active:(BOOL)active error:(NSError **)error;
 - (NSDictionary *)fetchCountryWithCountryId:(long)countryId error:(NSError **)error;

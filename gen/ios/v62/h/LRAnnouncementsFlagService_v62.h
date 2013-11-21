@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRAnnouncementsFlagService_v62 : BaseService
+@interface LRAnnouncementsFlagService_v62 : LRBaseService
 
 - (void)addFlagWithEntryId:(long)entryId value:(int)value error:(NSError **)error;
 - (void)deleteFlagWithFlagId:(long)flagId error:(NSError **)error;

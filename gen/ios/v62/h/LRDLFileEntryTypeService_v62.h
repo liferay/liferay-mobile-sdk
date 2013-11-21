@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRDLFileEntryTypeService_v62 : BaseService
+@interface LRDLFileEntryTypeService_v62 : LRBaseService
 
 - (NSDictionary *)addFileEntryTypeWithGroupId:(long)groupId name:(NSString *)name description:(NSString *)description ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addFileEntryTypeWithGroupId:(long)groupId fileEntryTypeKey:(NSString *)fileEntryTypeKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

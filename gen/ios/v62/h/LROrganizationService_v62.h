@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LROrganizationService_v62 : BaseService
+@interface LROrganizationService_v62 : LRBaseService
 
 - (void)addGroupOrganizationsWithGroupId:(long)groupId organizationIds:(NSArray *)organizationIds error:(NSError **)error;
 - (NSDictionary *)addOrganizationWithParentOrganizationId:(long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long)regionId countryId:(long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

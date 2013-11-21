@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRSCProductVersionService_v62 : BaseService
+@interface LRSCProductVersionService_v62 : LRBaseService
 
 - (NSDictionary *)addProductVersionWithProductEntryId:(long)productEntryId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteProductVersionWithProductVersionId:(long)productVersionId error:(NSError **)error;

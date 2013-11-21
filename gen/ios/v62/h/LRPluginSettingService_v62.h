@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRPluginSettingService_v62 : BaseService
+@interface LRPluginSettingService_v62 : LRBaseService
 
 - (NSDictionary *)updatePluginSettingWithCompanyId:(long)companyId pluginId:(NSString *)pluginId pluginType:(NSString *)pluginType roles:(NSString *)roles active:(BOOL)active error:(NSError **)error;
 

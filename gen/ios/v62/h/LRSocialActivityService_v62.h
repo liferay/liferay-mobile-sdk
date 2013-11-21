@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRSocialActivityService_v62 : BaseService
+@interface LRSocialActivityService_v62 : LRBaseService
 
 - (NSArray *)getActivitiesWithClassName:(NSString *)className start:(int)start end:(int)end error:(NSError **)error;
 - (NSArray *)getActivitiesWithClassNameId:(long)classNameId start:(int)start end:(int)end error:(NSError **)error;

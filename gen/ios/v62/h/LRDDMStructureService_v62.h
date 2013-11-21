@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRDDMStructureService_v62 : BaseService
+@interface LRDDMStructureService_v62 : LRBaseService
 
 - (NSDictionary *)addStructureWithGroupId:(long)groupId parentStructureId:(long)parentStructureId classNameId:(long)classNameId structureKey:(NSString *)structureKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd storageType:(NSString *)storageType type:(int)type serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addStructureWithUserId:(long)userId groupId:(long)groupId parentStructureKey:(NSString *)parentStructureKey classNameId:(long)classNameId structureKey:(NSString *)structureKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd storageType:(NSString *)storageType type:(int)type serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

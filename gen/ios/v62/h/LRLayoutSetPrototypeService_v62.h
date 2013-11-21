@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRLayoutSetPrototypeService_v62 : BaseService
+@interface LRLayoutSetPrototypeService_v62 : LRBaseService
 
 - (NSDictionary *)addLayoutSetPrototypeWithNameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active layoutsUpdateable:(BOOL)layoutsUpdateable serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteLayoutSetPrototypeWithLayoutSetPrototypeId:(long)layoutSetPrototypeId error:(NSError **)error;

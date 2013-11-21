@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRDLFolderService_v62 : BaseService
+@interface LRDLFolderService_v62 : LRBaseService
 
 - (NSDictionary *)addFolderWithGroupId:(long)groupId repositoryId:(long)repositoryId mountPoint:(BOOL)mountPoint parentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteFolderWithFolderId:(long)folderId error:(NSError **)error;

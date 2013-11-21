@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRLayoutService_v62 : BaseService
+@interface LRLayoutService_v62 : LRBaseService
 
 - (NSDictionary *)addLayoutWithGroupId:(long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long)parentLayoutId name:(NSString *)name title:(NSString *)title description:(NSString *)description type:(NSString *)type hidden:(BOOL)hidden friendlyURL:(NSString *)friendlyURL serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addLayoutWithGroupId:(long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long)parentLayoutId localeNamesMap:(NSDictionary *)localeNamesMap localeTitlesMap:(NSDictionary *)localeTitlesMap descriptionMap:(NSDictionary *)descriptionMap keywordsMap:(NSDictionary *)keywordsMap robotsMap:(NSDictionary *)robotsMap type:(NSString *)type hidden:(BOOL)hidden friendlyURL:(NSString *)friendlyURL serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

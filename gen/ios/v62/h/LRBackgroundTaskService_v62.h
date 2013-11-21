@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRBackgroundTaskService_v62 : BaseService
+@interface LRBackgroundTaskService_v62 : LRBaseService
 
 - (NSString *)getBackgroundTaskStatusJsonWithBackgroundTaskId:(long)backgroundTaskId error:(NSError **)error;
 - (int)getBackgroundTasksCountWithGroupId:(long)groupId taskExecutorClassName:(NSString *)taskExecutorClassName completed:(NSString *)completed error:(NSError **)error;

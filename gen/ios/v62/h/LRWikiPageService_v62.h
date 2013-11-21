@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRWikiPageService_v62 : BaseService
+@interface LRWikiPageService_v62 : LRBaseService
 
 - (NSDictionary *)addPageWithNodeId:(long)nodeId title:(NSString *)title content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addPageWithNodeId:(long)nodeId title:(NSString *)title content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit format:(NSString *)format parentTitle:(NSString *)parentTitle redirectTitle:(NSString *)redirectTitle serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

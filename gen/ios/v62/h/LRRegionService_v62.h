@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRRegionService_v62 : BaseService
+@interface LRRegionService_v62 : LRBaseService
 
 - (NSDictionary *)addRegionWithCountryId:(long)countryId regionCode:(NSString *)regionCode name:(NSString *)name active:(BOOL)active error:(NSError **)error;
 - (NSDictionary *)fetchRegionWithCountryId:(long)countryId regionCode:(NSString *)regionCode error:(NSError **)error;

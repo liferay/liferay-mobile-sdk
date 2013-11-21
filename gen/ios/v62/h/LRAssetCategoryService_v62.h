@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRAssetCategoryService_v62 : BaseService
+@interface LRAssetCategoryService_v62 : LRBaseService
 
 - (NSDictionary *)addCategoryWithTitle:(NSString *)title vocabularyId:(long)vocabularyId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addCategoryWithParentCategoryId:(long)parentCategoryId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap vocabularyId:(long)vocabularyId categoryProperties:(NSArray *)categoryProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRMBThreadService_v62 : BaseService
+@interface LRMBThreadService_v62 : LRBaseService
 
 - (void)deleteThreadWithThreadId:(long)threadId error:(NSError **)error;
 - (NSArray *)getGroupThreadsWithGroupId:(long)groupId userId:(long)userId status:(int)status start:(int)start end:(int)end error:(NSError **)error;

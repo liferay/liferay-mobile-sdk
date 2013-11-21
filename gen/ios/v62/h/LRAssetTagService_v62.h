@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRAssetTagService_v62 : BaseService
+@interface LRAssetTagService_v62 : LRBaseService
 
 - (NSDictionary *)addTagWithName:(NSString *)name tagProperties:(NSArray *)tagProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteTagWithTagId:(long)tagId error:(NSError **)error;

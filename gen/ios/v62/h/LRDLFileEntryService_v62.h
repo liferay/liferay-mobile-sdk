@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRDLFileEntryService_v62 : BaseService
+@interface LRDLFileEntryService_v62 : LRBaseService
 
 - (NSDictionary *)cancelCheckOutWithFileEntryId:(long)fileEntryId error:(NSError **)error;
 - (void)checkInFileEntryWithFileEntryId:(long)fileEntryId lockUuid:(NSString *)lockUuid error:(NSError **)error;

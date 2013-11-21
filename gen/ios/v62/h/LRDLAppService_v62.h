@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRDLAppService_v62 : BaseService
+@interface LRDLAppService_v62 : LRBaseService
 
 - (NSDictionary *)addFileEntryWithRepositoryId:(long)repositoryId folderId:(long)folderId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog bytes:(NSArray *)bytes serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addFileEntryWithRepositoryId:(long)repositoryId folderId:(long)folderId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog file:(NSDictionary *)file serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

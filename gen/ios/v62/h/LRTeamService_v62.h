@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRTeamService_v62 : BaseService
+@interface LRTeamService_v62 : LRBaseService
 
 - (NSDictionary *)addTeamWithGroupId:(long)groupId name:(NSString *)name description:(NSString *)description error:(NSError **)error;
 - (void)deleteTeamWithTeamId:(long)teamId error:(NSError **)error;

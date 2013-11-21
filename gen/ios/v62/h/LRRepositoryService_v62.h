@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRRepositoryService_v62 : BaseService
+@interface LRRepositoryService_v62 : LRBaseService
 
 - (NSDictionary *)addRepositoryWithGroupId:(long)groupId classNameId:(long)classNameId parentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description portletId:(NSString *)portletId typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)checkRepositoryWithRepositoryId:(long)repositoryId error:(NSError **)error;

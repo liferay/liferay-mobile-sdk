@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRDDMTemplateService_v62 : BaseService
+@interface LRDDMTemplateService_v62 : LRBaseService
 
 - (NSDictionary *)addTemplateWithGroupId:(long)groupId classNameId:(long)classNameId classPK:(long)classPK nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type mode:(NSString *)mode language:(NSString *)language script:(NSString *)script serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addTemplateWithGroupId:(long)groupId classNameId:(long)classNameId classPK:(long)classPK templateKey:(NSString *)templateKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type mode:(NSString *)mode language:(NSString *)language script:(NSString *)script cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallImageFile:(NSDictionary *)smallImageFile serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

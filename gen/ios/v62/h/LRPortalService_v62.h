@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRPortalService_v62 : BaseService
+@interface LRPortalService_v62 : LRBaseService
 
 - (NSString *)getAutoDeployDirectory:(NSError **)error;
 - (int)getBuildNumber:(NSError **)error;

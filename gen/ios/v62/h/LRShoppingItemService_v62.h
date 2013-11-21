@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRShoppingItemService_v62 : BaseService
+@interface LRShoppingItemService_v62 : LRBaseService
 
 - (void)addBookItemsWithGroupId:(long)groupId categoryId:(long)categoryId isbns:(NSArray *)isbns error:(NSError **)error;
 - (NSDictionary *)addItemWithGroupId:(long)groupId categoryId:(long)categoryId sku:(NSString *)sku name:(NSString *)name description:(NSString *)description properties:(NSString *)properties fieldsQuantities:(NSString *)fieldsQuantities requiresShipping:(BOOL)requiresShipping stockQuantity:(int)stockQuantity featured:(BOOL)featured sale:(NSDictionary *)sale smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(NSDictionary *)smallFile mediumImage:(BOOL)mediumImage mediumImageURL:(NSString *)mediumImageURL mediumFile:(NSDictionary *)mediumFile largeImage:(BOOL)largeImage largeImageURL:(NSString *)largeImageURL largeFile:(NSDictionary *)largeFile itemFields:(NSArray *)itemFields itemPrices:(NSArray *)itemPrices serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

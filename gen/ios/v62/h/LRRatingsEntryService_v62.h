@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRRatingsEntryService_v62 : BaseService
+@interface LRRatingsEntryService_v62 : LRBaseService
 
 - (void)deleteEntryWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error;
 - (NSDictionary *)updateEntryWithClassName:(NSString *)className classPK:(long)classPK score:(double)score error:(NSError **)error;

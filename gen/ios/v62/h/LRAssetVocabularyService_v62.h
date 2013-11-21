@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRAssetVocabularyService_v62 : BaseService
+@interface LRAssetVocabularyService_v62 : LRBaseService
 
 - (NSDictionary *)addVocabularyWithTitle:(NSString *)title serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addVocabularyWithTitleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

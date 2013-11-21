@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRJournalFolderService_v62 : BaseService
+@interface LRJournalFolderService_v62 : LRBaseService
 
 - (NSDictionary *)addFolderWithGroupId:(long)groupId parentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteFolderWithFolderId:(long)folderId error:(NSError **)error;

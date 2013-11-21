@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRUserGroupRoleService_v62 : BaseService
+@interface LRUserGroupRoleService_v62 : LRBaseService
 
 - (void)addUserGroupRolesWithUserId:(long)userId groupId:(long)groupId roleIds:(NSArray *)roleIds error:(NSError **)error;
 - (void)addUserGroupRolesWithUserIds:(NSArray *)userIds groupId:(long)groupId roleId:(long)roleId error:(NSError **)error;

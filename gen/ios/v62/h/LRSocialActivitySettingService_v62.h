@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRSocialActivitySettingService_v62 : BaseService
+@interface LRSocialActivitySettingService_v62 : LRBaseService
 
 - (NSDictionary *)getActivityDefinitionWithGroupId:(long)groupId className:(NSString *)className activityType:(int)activityType error:(NSError **)error;
 - (NSArray *)getActivityDefinitionsWithGroupId:(long)groupId className:(NSString *)className error:(NSError **)error;

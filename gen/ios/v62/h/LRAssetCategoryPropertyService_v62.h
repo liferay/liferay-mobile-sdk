@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRAssetCategoryPropertyService_v62 : BaseService
+@interface LRAssetCategoryPropertyService_v62 : LRBaseService
 
 - (NSDictionary *)addCategoryPropertyWithEntryId:(long)entryId key:(NSString *)key value:(NSString *)value error:(NSError **)error;
 - (void)deleteCategoryPropertyWithCategoryPropertyId:(long)categoryPropertyId error:(NSError **)error;

@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRJournalStructureService_v62 : BaseService
+@interface LRJournalStructureService_v62 : LRBaseService
 
 - (NSDictionary *)addStructureWithGroupId:(long)groupId structureId:(NSString *)structureId autoStructureId:(BOOL)autoStructureId parentStructureId:(NSString *)parentStructureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)copyStructureWithGroupId:(long)groupId oldStructureId:(NSString *)oldStructureId newStructureId:(NSString *)newStructureId autoStructureId:(BOOL)autoStructureId error:(NSError **)error;

@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRGroupService_v62 : BaseService
+@interface LRGroupService_v62 : LRBaseService
 
 - (NSDictionary *)addGroupWithParentGroupId:(long)parentGroupId liveGroupId:(long)liveGroupId name:(NSString *)name description:(NSString *)description type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addGroupWithName:(NSString *)name description:(NSString *)description type:(int)type friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

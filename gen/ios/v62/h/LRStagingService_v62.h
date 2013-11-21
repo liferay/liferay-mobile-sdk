@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRStagingService_v62 : BaseService
+@interface LRStagingService_v62 : LRBaseService
 
 - (void)cleanUpStagingRequestWithStagingRequestId:(long)stagingRequestId error:(NSError **)error;
 - (long)createStagingRequestWithGroupId:(long)groupId checksum:(NSString *)checksum error:(NSError **)error;

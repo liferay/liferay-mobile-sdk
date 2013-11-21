@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LREmailAddressService_v62 : BaseService
+@interface LREmailAddressService_v62 : LRBaseService
 
 - (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error;
 - (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

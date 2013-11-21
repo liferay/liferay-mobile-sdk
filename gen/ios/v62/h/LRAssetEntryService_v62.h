@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRAssetEntryService_v62 : BaseService
+@interface LRAssetEntryService_v62 : LRBaseService
 
 - (NSArray *)getCompanyEntriesWithCompanyId:(long)companyId start:(int)start end:(int)end error:(NSError **)error;
 - (int)getCompanyEntriesCountWithCompanyId:(long)companyId error:(NSError **)error;

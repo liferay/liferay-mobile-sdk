@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRAnnouncementsDeliveryService_v62 : BaseService
+@interface LRAnnouncementsDeliveryService_v62 : LRBaseService
 
 - (NSDictionary *)updateDeliveryWithUserId:(long)userId type:(NSString *)type email:(BOOL)email sms:(BOOL)sms website:(BOOL)website error:(NSError **)error;
 

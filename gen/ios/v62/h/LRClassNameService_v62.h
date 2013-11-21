@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRClassNameService_v62 : BaseService
+@interface LRClassNameService_v62 : LRBaseService
 
 - (NSDictionary *)fetchClassNameWithValue:(NSString *)value error:(NSError **)error;
 - (long)fetchClassNameIdWithClazz:(NSDictionary *)clazz error:(NSError **)error;

@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRResourcePermissionService_v62 : BaseService
+@interface LRResourcePermissionService_v62 : LRBaseService
 
 - (void)addResourcePermissionWithGroupId:(long)groupId companyId:(long)companyId name:(NSString *)name scope:(int)scope primKey:(NSString *)primKey roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error;
 - (void)removeResourcePermissionWithGroupId:(long)groupId companyId:(long)companyId name:(NSString *)name scope:(int)scope primKey:(NSString *)primKey roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error;

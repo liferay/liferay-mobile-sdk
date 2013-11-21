@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRShoppingOrderService_v62 : BaseService
+@interface LRShoppingOrderService_v62 : LRBaseService
 
 - (void)completeOrderWithGroupId:(long)groupId number:(NSString *)number ppTxnId:(NSString *)ppTxnId ppPaymentStatus:(NSString *)ppPaymentStatus ppPaymentGross:(double)ppPaymentGross ppReceiverEmail:(NSString *)ppReceiverEmail ppPayerEmail:(NSString *)ppPayerEmail serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteOrderWithGroupId:(long)groupId orderId:(long)orderId error:(NSError **)error;

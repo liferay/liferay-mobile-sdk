@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRCompanyService_v62 : BaseService
+@interface LRCompanyService_v62 : LRBaseService
 
 - (void)deleteLogoWithCompanyId:(long)companyId error:(NSError **)error;
 - (NSDictionary *)getCompanyByIdWithCompanyId:(long)companyId error:(NSError **)error;

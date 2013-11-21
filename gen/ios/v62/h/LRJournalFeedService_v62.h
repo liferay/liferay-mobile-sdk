@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRJournalFeedService_v62 : BaseService
+@interface LRJournalFeedService_v62 : LRBaseService
 
 - (NSDictionary *)addFeedWithGroupId:(long)groupId feedId:(NSString *)feedId autoFeedId:(BOOL)autoFeedId name:(NSString *)name description:(NSString *)description type:(NSString *)type structureId:(NSString *)structureId templateId:(NSString *)templateId rendererTemplateId:(NSString *)rendererTemplateId delta:(int)delta orderByCol:(NSString *)orderByCol orderByType:(NSString *)orderByType targetLayoutFriendlyUrl:(NSString *)targetLayoutFriendlyUrl targetPortletId:(NSString *)targetPortletId contentField:(NSString *)contentField feedType:(NSString *)feedType feedVersion:(double)feedVersion serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteFeedWithFeedId:(long)feedId error:(NSError **)error;

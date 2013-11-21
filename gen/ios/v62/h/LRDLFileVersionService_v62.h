@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRDLFileVersionService_v62 : BaseService
+@interface LRDLFileVersionService_v62 : LRBaseService
 
 - (NSDictionary *)getFileVersionWithFileVersionId:(long)fileVersionId error:(NSError **)error;
 - (NSArray *)getFileVersionsWithFileEntryId:(long)fileEntryId status:(int)status error:(NSError **)error;

@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRLayoutPrototypeService_v62 : BaseService
+@interface LRLayoutPrototypeService_v62 : LRBaseService
 
 - (NSDictionary *)addLayoutPrototypeWithNameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active error:(NSError **)error;
 - (NSDictionary *)addLayoutPrototypeWithNameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

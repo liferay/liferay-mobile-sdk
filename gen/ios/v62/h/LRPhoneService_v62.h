@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRPhoneService_v62 : BaseService
+@interface LRPhoneService_v62 : LRBaseService
 
 - (NSDictionary *)addPhoneWithClassName:(NSString *)className classPK:(long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error;
 - (NSDictionary *)addPhoneWithClassName:(NSString *)className classPK:(long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

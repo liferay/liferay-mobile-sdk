@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRUserGroupService_v62 : BaseService
+@interface LRUserGroupService_v62 : LRBaseService
 
 - (void)addGroupUserGroupsWithGroupId:(long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error;
 - (void)addTeamUserGroupsWithTeamId:(long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error;

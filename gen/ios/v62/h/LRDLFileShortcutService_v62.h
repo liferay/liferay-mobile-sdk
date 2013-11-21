@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRDLFileShortcutService_v62 : BaseService
+@interface LRDLFileShortcutService_v62 : LRBaseService
 
 - (NSDictionary *)addFileShortcutWithGroupId:(long)groupId folderId:(long)folderId toFileEntryId:(long)toFileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteFileShortcutWithFileShortcutId:(long)fileShortcutId error:(NSError **)error;

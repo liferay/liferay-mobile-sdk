@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRContactService_v62 : BaseService
+@interface LRContactService_v62 : LRBaseService
 
 - (NSDictionary *)getContactWithContactId:(long)contactId error:(NSError **)error;
 - (NSArray *)getContactsWithClassNameId:(long)classNameId classPK:(long)classPK start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;

@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRBlogsEntryService_v62 : BaseService
+@interface LRBlogsEntryService_v62 : LRBaseService
 
 - (void)deleteEntryWithEntryId:(long)entryId error:(NSError **)error;
 - (NSArray *)getCompanyEntriesWithCompanyId:(long)companyId displayDate:(long)displayDate status:(int)status max:(int)max error:(NSError **)error;

@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRSCFrameworkVersionService_v62 : BaseService
+@interface LRSCFrameworkVersionService_v62 : LRBaseService
 
 - (NSDictionary *)addFrameworkVersionWithName:(NSString *)name url:(NSString *)url active:(BOOL)active priority:(int)priority serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteFrameworkVersionWithFrameworkVersionId:(long)frameworkVersionId error:(NSError **)error;

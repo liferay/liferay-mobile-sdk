@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRMDRRuleGroupInstanceService_v62 : BaseService
+@interface LRMDRRuleGroupInstanceService_v62 : LRBaseService
 
 - (NSDictionary *)addRuleGroupInstanceWithGroupId:(long)groupId className:(NSString *)className classPK:(long)classPK ruleGroupId:(long)ruleGroupId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addRuleGroupInstanceWithGroupId:(long)groupId className:(NSString *)className classPK:(long)classPK ruleGroupId:(long)ruleGroupId priority:(int)priority serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRMBMessageService_v62 : BaseService
+@interface LRMBMessageService_v62 : LRBaseService
 
 - (NSDictionary *)addDiscussionMessageWithGroupId:(long)groupId className:(NSString *)className classPK:(long)classPK permissionClassName:(NSString *)permissionClassName permissionClassPK:(long)permissionClassPK permissionOwnerId:(long)permissionOwnerId threadId:(long)threadId parentMessageId:(long)parentMessageId subject:(NSString *)subject body:(NSString *)body serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addMessageWithGroupId:(long)groupId categoryId:(long)categoryId subject:(NSString *)subject body:(NSString *)body format:(NSString *)format inputStreamOVPs:(NSArray *)inputStreamOVPs anonymous:(BOOL)anonymous priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

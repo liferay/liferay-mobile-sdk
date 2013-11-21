@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LROrgLaborService_v62 : BaseService
+@interface LROrgLaborService_v62 : LRBaseService
 
 - (NSDictionary *)addOrgLaborWithOrganizationId:(long)organizationId typeId:(int)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose error:(NSError **)error;
 - (void)deleteOrgLaborWithOrgLaborId:(long)orgLaborId error:(NSError **)error;

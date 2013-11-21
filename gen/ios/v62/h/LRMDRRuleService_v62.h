@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRMDRRuleService_v62 : BaseService
+@interface LRMDRRuleService_v62 : LRBaseService
 
 - (NSDictionary *)addRuleWithRuleGroupId:(long)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteRuleWithRuleId:(long)ruleId error:(NSError **)error;

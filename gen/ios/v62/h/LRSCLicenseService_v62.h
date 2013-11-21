@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRSCLicenseService_v62 : BaseService
+@interface LRSCLicenseService_v62 : LRBaseService
 
 - (NSDictionary *)addLicenseWithName:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended error:(NSError **)error;
 - (void)deleteLicenseWithLicenseId:(long)licenseId error:(NSError **)error;

@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRWebsiteService_v62 : BaseService
+@interface LRWebsiteService_v62 : LRBaseService
 
 - (NSDictionary *)addWebsiteWithClassName:(NSString *)className classPK:(long)classPK url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error;
 - (NSDictionary *)addWebsiteWithClassName:(NSString *)className classPK:(long)classPK url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

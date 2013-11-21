@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRLayoutBranchService_v62 : BaseService
+@interface LRLayoutBranchService_v62 : LRBaseService
 
 - (NSDictionary *)addLayoutBranchWithLayoutRevisionId:(long)layoutRevisionId name:(NSString *)name description:(NSString *)description master:(BOOL)master serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteLayoutBranchWithLayoutBranchId:(long)layoutBranchId error:(NSError **)error;

@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRMembershipRequestService_v62 : BaseService
+@interface LRMembershipRequestService_v62 : LRBaseService
 
 - (NSDictionary *)addMembershipRequestWithGroupId:(long)groupId comments:(NSString *)comments serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteMembershipRequestsWithGroupId:(long)groupId statusId:(int)statusId error:(NSError **)error;

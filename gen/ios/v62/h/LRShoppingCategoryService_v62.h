@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRShoppingCategoryService_v62 : BaseService
+@interface LRShoppingCategoryService_v62 : LRBaseService
 
 - (NSDictionary *)addCategoryWithParentCategoryId:(long)parentCategoryId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteCategoryWithCategoryId:(long)categoryId error:(NSError **)error;

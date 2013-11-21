@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRPortletPreferencesService_v62 : BaseService
+@interface LRPortletPreferencesService_v62 : LRBaseService
 
 - (void)deleteArchivedPreferencesWithPortletItemId:(long)portletItemId error:(NSError **)error;
 - (void)restoreArchivedPreferencesWithGroupId:(long)groupId layout:(NSDictionary *)layout portletId:(NSString *)portletId portletItem:(NSDictionary *)portletItem preferences:(NSDictionary *)preferences error:(NSError **)error;

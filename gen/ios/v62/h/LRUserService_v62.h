@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRUserService_v62 : BaseService
+@interface LRUserService_v62 : LRBaseService
 
 - (void)addGroupUsersWithGroupId:(long)groupId userIds:(NSArray *)userIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)addOrganizationUsersWithOrganizationId:(long)organizationId userIds:(NSArray *)userIds error:(NSError **)error;

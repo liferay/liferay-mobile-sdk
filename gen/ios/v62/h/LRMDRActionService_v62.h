@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRMDRActionService_v62 : BaseService
+@interface LRMDRActionService_v62 : LRBaseService
 
 - (NSDictionary *)addActionWithRuleGroupInstanceId:(long)ruleGroupInstanceId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addActionWithRuleGroupInstanceId:(long)ruleGroupInstanceId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

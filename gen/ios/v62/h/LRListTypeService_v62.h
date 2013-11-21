@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRListTypeService_v62 : BaseService
+@interface LRListTypeService_v62 : LRBaseService
 
 - (NSDictionary *)getListTypeWithListTypeId:(int)listTypeId error:(NSError **)error;
 - (NSArray *)getListTypesWithType:(NSString *)type error:(NSError **)error;

@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRExpandoValueService_v62 : BaseService
+@interface LRExpandoValueService_v62 : LRBaseService
 
 - (NSDictionary *)addValueWithCompanyId:(long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long)classPK data:(NSString *)data error:(NSError **)error;
 - (void)addValuesWithCompanyId:(long)companyId className:(NSString *)className tableName:(NSString *)tableName classPK:(long)classPK attributeValues:(NSDictionary *)attributeValues error:(NSError **)error;

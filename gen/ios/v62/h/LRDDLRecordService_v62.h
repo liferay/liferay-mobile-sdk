@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRDDLRecordService_v62 : BaseService
+@interface LRDDLRecordService_v62 : LRBaseService
 
 - (NSDictionary *)addRecordWithGroupId:(long)groupId recordSetId:(long)recordSetId displayIndex:(int)displayIndex fields:(NSDictionary *)fields serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addRecordWithGroupId:(long)groupId recordSetId:(long)recordSetId displayIndex:(int)displayIndex fieldsMap:(NSDictionary *)fieldsMap serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

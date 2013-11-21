@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRPollsVoteService_v62 : BaseService
+@interface LRPollsVoteService_v62 : LRBaseService
 
 - (NSDictionary *)addVoteWithQuestionId:(long)questionId choiceId:(long)choiceId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 

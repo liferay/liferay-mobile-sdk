@@ -18,7 +18,7 @@
 /**
  * author Bruno Farache
  */
-@interface LRSocialRequestService_v62 : BaseService
+@interface LRSocialRequestService_v62 : LRBaseService
 
 - (NSDictionary *)updateRequestWithRequestId:(long)requestId status:(int)status themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error;
 
