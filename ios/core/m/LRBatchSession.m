@@ -20,16 +20,6 @@
  */
 @implementation LRBatchSession
 
-- (id)init {
-	self = [super init];
-
-	if (self) {
-		self.commands = [[NSMutableArray alloc] init];
-	}
-
-	return self;
-}
-
 - (NSArray *)invoke:(NSError **)error {
 	NSArray *results = [LRHttpUtil post:self commands:self.commands
 		error:error];
@@ -40,6 +30,10 @@
 }
 
 - (NSArray *)invoke:(NSDictionary *)command error:(NSError **)error {
+	if (!self.commands) {
+		self.commands = [[NSMutableArray alloc] init];
+	}
+
 	[self.commands addObject:command];
 
 	return nil;

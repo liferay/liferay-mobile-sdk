@@ -183,8 +183,13 @@ static NSMutableDictionary *_versions;
 }
 
 + (NSURL *)_getURL:(LRSession *)session {
-	NSString *URL =
-		[NSString stringWithFormat:@"%@/api/jsonws/invoke", session.server];
+	NSString *server = session.server;
+
+	if (![server hasSuffix:@"/"]) {
+		server = [NSString stringWithFormat:@"%@/", server];
+	}
+
+	NSString *URL = [NSString stringWithFormat:@"%@api/jsonws/invoke", server];
 
 	return [NSURL URLWithString:URL];
 }

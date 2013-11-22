@@ -138,8 +138,15 @@ public class HttpUtil {
 	public static String getUrl(Session session) {
 		StringBuilder sb = new StringBuilder();
 
-		sb.append(session.getServer());
-		sb.append("/api/jsonws/invoke");
+		String server = session.getServer();
+
+		sb.append(server);
+
+		if (!server.endsWith("/")) {
+			sb.append("/");
+		}
+
+		sb.append("api/jsonws/invoke");
 
 		return sb.toString();
 	}
