@@ -104,39 +104,8 @@ static NSMutableDictionary *_versions;
 		return nil;
 	}
 
-	id<LRCallback> callback = session.callback;
-
-	if (callback) {
-		NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-
-		LRHandler handler = ^(NSURLResponse *r, NSData *d, NSError *e) {
-			if (e) {
-				[callback onFailure:e];
-			}
-			else {
-				NSError *serverError;
-
-				NSArray *jsonArray =
-					[self _handleServerException:d
-						response:(NSHTTPURLResponse *)r error:&serverError];
-
-				if (serverError) {
-					[callback onFailure:serverError];
-
-					return;
-				}
-
-				if ([session isKindOfClass:[LRBatchSession class]]) {
-					[callback onSuccess:jsonArray];
-				}
-				else {
-					[callback onSuccess:[jsonArray objectAtIndex:0]];
-				}
-			}
-		};
-
-		[NSURLConnection sendAsynchronousRequest:request queue:queue
-			completionHandler:handler];
+	if (session.callback) {
+		[self _sendAsynchronousRequest:request session:session];
 
 		return nil;
 	}
@@ -212,7 +181,7 @@ static NSMutableDictionary *_versions;
 
 	if (statusCode != STATUS_OK) {
 		NSDictionary *userInfo = @{
-			NSLocalizedDescriptionKey: @"http-error"
+			NSLocalizedDescriptionKey: @"server-error"
 		};
 
 		*error = [NSError errorWithDomain:ERROR_DOMAIN code:statusCode
@@ -244,6 +213,44 @@ static NSMutableDictionary *_versions;
 	}
 
 	return jsonArray;
+}
+
++ (void)_sendAsynchronousRequest:(NSURLRequest *)request
+		session:(LRSession *)session {
+
+	id<LRCallback> callback = session.callback;
+
+	NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+
+	LRHandler handler = ^(NSURLResponse *r, NSData *d, NSError *e) {
+		dispatch_async(dispatch_get_main_queue(), ^{
+			if (e) {
+				[callback onFailure:e];
+			}
+			else {
+				NSError *serverError;
+
+				NSArray *jsonArray = [self _handleServerException:d
+					response:(NSHTTPURLResponse *)r error:&serverError];
+
+				if (serverError) {
+					[callback onFailure:serverError];
+
+					return;
+				}
+
+				if ([session isKindOfClass:[LRBatchSession class]]) {
+					[callback onSuccess:jsonArray];
+				}
+				else {
+					[callback onSuccess:[jsonArray objectAtIndex:0]];
+				}
+			}
+		});
+	};
+
+	[NSURLConnection sendAsynchronousRequest:request queue:queue
+		completionHandler:handler];
 }
 
 @end
