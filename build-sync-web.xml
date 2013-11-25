@@ -20,6 +20,10 @@
 
 		<antcall target="build-common.build-service">
 			<param name="builder" value="ios" />
+		</antcall>
+
+		<antcall target="build-common.build-service">
+			<param name="builder" value="ios" />
 			<param name="context" value="sync-web" />
 		</antcall>
 	</target>
