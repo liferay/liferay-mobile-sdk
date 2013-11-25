@@ -411,7 +411,7 @@
 
 	NSDictionary *_command = @{@"/user/has-group-user": _params};
 
-	return (BOOL)[self.session invoke:_command error:error];
+	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
 - (BOOL)hasRoleUserWithRoleId:(long)roleId userId:(long)userId error:(NSError **)error {
@@ -422,7 +422,7 @@
 
 	NSDictionary *_command = @{@"/user/has-role-user": _params};
 
-	return (BOOL)[self.session invoke:_command error:error];
+	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
 - (BOOL)hasRoleUserWithCompanyId:(long)companyId name:(NSString *)name userId:(long)userId inherited:(BOOL)inherited error:(NSError **)error {
@@ -435,7 +435,7 @@
 
 	NSDictionary *_command = @{@"/user/has-role-user": _params};
 
-	return (BOOL)[self.session invoke:_command error:error];
+	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
 - (void)setRoleUsersWithRoleId:(long)roleId userIds:(NSArray *)userIds error:(NSError **)error {

@@ -129,7 +129,7 @@
 
 	NSDictionary *_command = @{@"/portal/test-has-class-name": _params};
 
-	return (BOOL)[self.session invoke:_command error:error];
+	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
 @end

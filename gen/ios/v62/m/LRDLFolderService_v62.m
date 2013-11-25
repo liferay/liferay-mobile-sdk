@@ -310,7 +310,7 @@
 
 	NSDictionary *_command = @{@"/dlfolder/has-folder-lock": _params};
 
-	return (BOOL)[self.session invoke:_command error:error];
+	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
 - (BOOL)hasInheritableLockWithFolderId:(long)folderId error:(NSError **)error {
@@ -320,7 +320,7 @@
 
 	NSDictionary *_command = @{@"/dlfolder/has-inheritable-lock": _params};
 
-	return (BOOL)[self.session invoke:_command error:error];
+	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
 - (BOOL)isFolderLockedWithFolderId:(long)folderId error:(NSError **)error {
@@ -330,7 +330,7 @@
 
 	NSDictionary *_command = @{@"/dlfolder/is-folder-locked": _params};
 
-	return (BOOL)[self.session invoke:_command error:error];
+	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
 - (NSDictionary *)lockFolderWithFolderId:(long)folderId error:(NSError **)error {
@@ -428,7 +428,7 @@
 
 	NSDictionary *_command = @{@"/dlfolder/verify-inheritable-lock": _params};
 
-	return (BOOL)[self.session invoke:_command error:error];
+	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
 @end

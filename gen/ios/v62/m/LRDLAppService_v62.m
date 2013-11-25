@@ -1337,7 +1337,7 @@
 
 	NSDictionary *_command = @{@"/dlapp/verify-file-entry-check-out": _params};
 
-	return (BOOL)[self.session invoke:_command error:error];
+	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
 - (BOOL)verifyFileEntryLockWithRepositoryId:(long)repositoryId fileEntryId:(long)fileEntryId lockUuid:(NSString *)lockUuid error:(NSError **)error {
@@ -1349,7 +1349,7 @@
 
 	NSDictionary *_command = @{@"/dlapp/verify-file-entry-lock": _params};
 
-	return (BOOL)[self.session invoke:_command error:error];
+	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
 - (BOOL)verifyInheritableLockWithRepositoryId:(long)repositoryId folderId:(long)folderId lockUuid:(NSString *)lockUuid error:(NSError **)error {
@@ -1361,7 +1361,7 @@
 
 	NSDictionary *_command = @{@"/dlapp/verify-inheritable-lock": _params};
 
-	return (BOOL)[self.session invoke:_command error:error];
+	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
 @end

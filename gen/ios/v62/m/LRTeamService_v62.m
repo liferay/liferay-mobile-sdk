@@ -101,7 +101,7 @@
 
 	NSDictionary *_command = @{@"/team/has-user-team": _params};
 
-	return (BOOL)[self.session invoke:_command error:error];
+	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
 - (NSDictionary *)updateTeamWithTeamId:(long)teamId name:(NSString *)name description:(NSString *)description error:(NSError **)error {

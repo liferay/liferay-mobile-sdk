@@ -347,7 +347,7 @@
 
 	NSDictionary *_command = @{@"/group/has-user-group": _params};
 
-	return (BOOL)[self.session invoke:_command error:error];
+	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
 - (NSArray *)searchWithCompanyId:(long)companyId name:(NSString *)name description:(NSString *)description params:(NSArray *)params start:(int)start end:(int)end error:(NSError **)error {
