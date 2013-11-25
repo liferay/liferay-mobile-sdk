@@ -2,9 +2,10 @@
 
 <project name="sync-web" basedir="." default="build-service">
 	<import file="build-android.xml" />
+	<import file="build-ios.xml" />
 
 	<target name="build-service" depends="build-common.compile">
-		<antcall target="clear-gen" />
+		<antcall target="android-sdk.clear-gen" />
 
 		<antcall target="build-common.build-service">
 			<param name="builder" value="android" />
@@ -15,7 +16,12 @@
 			<param name="context" value="sync-web" />
 		</antcall>
 
-		<antcall target="format-source-gen" />
+		<antcall target="android-sdk.format-source-gen" />
+
+		<antcall target="build-common.build-service">
+			<param name="builder" value="ios" />
+			<param name="context" value="sync-web" />
+		</antcall>
 	</target>
 
 	<target name="compile-test" depends="compile">
