@@ -43,7 +43,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getContactsCountWithClassNameId:(long)classNameId classPK:(long)classPK error:(NSError **)error {
+- (NSNumber *)getContactsCountWithClassNameId:(long)classNameId classPK:(long)classPK error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK)
@@ -51,7 +51,7 @@
 
 	NSDictionary *_command = @{@"/contact/get-contacts-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 @end

@@ -146,17 +146,17 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupVocabulariesCountWithGroupId:(long)groupId error:(NSError **)error {
+- (NSNumber *)getGroupVocabulariesCountWithGroupId:(long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId)
 	};
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-group-vocabularies-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupVocabulariesCountWithGroupId:(long)groupId name:(NSString *)name error:(NSError **)error {
+- (NSNumber *)getGroupVocabulariesCountWithGroupId:(long)groupId name:(NSString *)name error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"name": name
@@ -164,7 +164,7 @@
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-group-vocabularies-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getGroupVocabulariesDisplayWithGroupId:(long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {

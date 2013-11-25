@@ -25,8 +25,8 @@
 - (NSDictionary *)getRecordSetWithRecordSetId:(long)recordSetId error:(NSError **)error;
 - (NSArray *)searchWithCompanyId:(long)companyId groupId:(long)groupId keywords:(NSString *)keywords scope:(int)scope start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;
 - (NSArray *)searchWithCompanyId:(long)companyId groupId:(long)groupId name:(NSString *)name description:(NSString *)description scope:(int)scope andOperator:(BOOL)andOperator start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;
-- (int)searchCountWithCompanyId:(long)companyId groupId:(long)groupId keywords:(NSString *)keywords scope:(int)scope error:(NSError **)error;
-- (int)searchCountWithCompanyId:(long)companyId groupId:(long)groupId name:(NSString *)name description:(NSString *)description scope:(int)scope andOperator:(BOOL)andOperator error:(NSError **)error;
+- (NSNumber *)searchCountWithCompanyId:(long)companyId groupId:(long)groupId keywords:(NSString *)keywords scope:(int)scope error:(NSError **)error;
+- (NSNumber *)searchCountWithCompanyId:(long)companyId groupId:(long)groupId name:(NSString *)name description:(NSString *)description scope:(int)scope andOperator:(BOOL)andOperator error:(NSError **)error;
 - (NSDictionary *)updateMinDisplayRowsWithRecordSetId:(long)recordSetId minDisplayRows:(int)minDisplayRows serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)updateRecordSetWithRecordSetId:(long)recordSetId ddmStructureId:(long)ddmStructureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap minDisplayRows:(int)minDisplayRows serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)updateRecordSetWithGroupId:(long)groupId ddmStructureId:(long)ddmStructureId recordSetKey:(NSString *)recordSetKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap minDisplayRows:(int)minDisplayRows serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

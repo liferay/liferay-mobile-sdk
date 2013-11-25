@@ -35,13 +35,13 @@
 - (NSArray *)getVocabularyCategoriesWithVocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)getVocabularyCategoriesWithParentCategoryId:(long)parentCategoryId vocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)getVocabularyCategoriesWithGroupId:(long)groupId name:(NSString *)name vocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (int)getVocabularyCategoriesCountWithGroupId:(long)groupId vocabularyId:(long)vocabularyId error:(NSError **)error;
-- (int)getVocabularyCategoriesCountWithGroupId:(long)groupId name:(NSString *)name vocabularyId:(long)vocabularyId error:(NSError **)error;
+- (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long)groupId vocabularyId:(long)vocabularyId error:(NSError **)error;
+- (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long)groupId name:(NSString *)name vocabularyId:(long)vocabularyId error:(NSError **)error;
 - (NSDictionary *)getVocabularyCategoriesDisplayWithVocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSDictionary *)getVocabularyCategoriesDisplayWithGroupId:(long)groupId name:(NSString *)name vocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)getVocabularyRootCategoriesWithVocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)getVocabularyRootCategoriesWithGroupId:(long)groupId vocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (int)getVocabularyRootCategoriesCountWithGroupId:(long)groupId vocabularyId:(long)vocabularyId error:(NSError **)error;
+- (NSNumber *)getVocabularyRootCategoriesCountWithGroupId:(long)groupId vocabularyId:(long)vocabularyId error:(NSError **)error;
 - (NSDictionary *)moveCategoryWithCategoryId:(long)categoryId parentCategoryId:(long)parentCategoryId vocabularyId:(long)vocabularyId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)searchWithGroupId:(long)groupId name:(NSString *)name categoryProperties:(NSArray *)categoryProperties start:(int)start end:(int)end error:(NSError **)error;
 - (NSDictionary *)searchWithGroupIds:(NSArray *)groupIds name:(NSString *)name vocabularyIds:(NSArray *)vocabularyIds start:(int)start end:(int)end error:(NSError **)error;

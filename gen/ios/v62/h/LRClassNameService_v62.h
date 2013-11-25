@@ -21,7 +21,7 @@
 @interface LRClassNameService_v62 : LRBaseService
 
 - (NSDictionary *)fetchClassNameWithValue:(NSString *)value error:(NSError **)error;
-- (long)fetchClassNameIdWithClazz:(NSDictionary *)clazz error:(NSError **)error;
-- (long)fetchClassNameIdWithValue:(NSString *)value error:(NSError **)error;
+- (NSNumber *)fetchClassNameIdWithClazz:(NSDictionary *)clazz error:(NSError **)error;
+- (NSNumber *)fetchClassNameIdWithValue:(NSString *)value error:(NSError **)error;
 
 @end

@@ -29,8 +29,8 @@
 - (NSArray *)getStructuresWithGroupIds:(NSArray *)groupIds error:(NSError **)error;
 - (NSArray *)searchWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)searchWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds structureId:(NSString *)structureId name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (int)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords error:(NSError **)error;
-- (int)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds structureId:(NSString *)structureId name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator error:(NSError **)error;
+- (NSNumber *)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords error:(NSError **)error;
+- (NSNumber *)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds structureId:(NSString *)structureId name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator error:(NSError **)error;
 - (NSDictionary *)updateStructureWithGroupId:(long)groupId structureId:(NSString *)structureId parentStructureId:(NSString *)parentStructureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

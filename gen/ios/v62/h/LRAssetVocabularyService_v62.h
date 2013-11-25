@@ -31,8 +31,8 @@
 - (NSArray *)getGroupVocabulariesWithGroupId:(long)groupId createDefaultVocabulary:(BOOL)createDefaultVocabulary error:(NSError **)error;
 - (NSArray *)getGroupVocabulariesWithGroupId:(long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)getGroupVocabulariesWithGroupId:(long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (int)getGroupVocabulariesCountWithGroupId:(long)groupId error:(NSError **)error;
-- (int)getGroupVocabulariesCountWithGroupId:(long)groupId name:(NSString *)name error:(NSError **)error;
+- (NSNumber *)getGroupVocabulariesCountWithGroupId:(long)groupId error:(NSError **)error;
+- (NSNumber *)getGroupVocabulariesCountWithGroupId:(long)groupId name:(NSString *)name error:(NSError **)error;
 - (NSDictionary *)getGroupVocabulariesDisplayWithGroupId:(long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSDictionary *)getGroupVocabulariesDisplayWithGroupId:(long)groupId name:(NSString *)name start:(int)start end:(int)end addDefaultVocabulary:(BOOL)addDefaultVocabulary obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)getGroupsVocabulariesWithGroupIds:(NSArray *)groupIds error:(NSError **)error;

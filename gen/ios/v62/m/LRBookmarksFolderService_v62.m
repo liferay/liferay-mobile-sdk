@@ -159,7 +159,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersAndEntriesCountWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
+- (NSNumber *)getFoldersAndEntriesCountWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId)
@@ -167,10 +167,10 @@
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-and-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersAndEntriesCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error {
+- (NSNumber *)getFoldersAndEntriesCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -179,10 +179,10 @@
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-and-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error {
+- (NSNumber *)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId)
@@ -190,10 +190,10 @@
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId status:(int)status error:(NSError **)error {
+- (NSNumber *)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId),
@@ -202,7 +202,7 @@
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (void)getSubfolderIdsWithFolderIds:(NSArray *)folderIds groupId:(long)groupId folderId:(long)folderId error:(NSError **)error {

@@ -25,12 +25,12 @@
 - (NSArray *)getGroupThreadsWithGroupId:(long)groupId userId:(long)userId modifiedDate:(long)modifiedDate status:(int)status start:(int)start end:(int)end error:(NSError **)error;
 - (NSArray *)getGroupThreadsWithGroupId:(long)groupId userId:(long)userId status:(int)status subscribed:(BOOL)subscribed start:(int)start end:(int)end error:(NSError **)error;
 - (NSArray *)getGroupThreadsWithGroupId:(long)groupId userId:(long)userId status:(int)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous start:(int)start end:(int)end error:(NSError **)error;
-- (int)getGroupThreadsCountWithGroupId:(long)groupId userId:(long)userId status:(int)status error:(NSError **)error;
-- (int)getGroupThreadsCountWithGroupId:(long)groupId userId:(long)userId modifiedDate:(long)modifiedDate status:(int)status error:(NSError **)error;
-- (int)getGroupThreadsCountWithGroupId:(long)groupId userId:(long)userId status:(int)status subscribed:(BOOL)subscribed error:(NSError **)error;
-- (int)getGroupThreadsCountWithGroupId:(long)groupId userId:(long)userId status:(int)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous error:(NSError **)error;
+- (NSNumber *)getGroupThreadsCountWithGroupId:(long)groupId userId:(long)userId status:(int)status error:(NSError **)error;
+- (NSNumber *)getGroupThreadsCountWithGroupId:(long)groupId userId:(long)userId modifiedDate:(long)modifiedDate status:(int)status error:(NSError **)error;
+- (NSNumber *)getGroupThreadsCountWithGroupId:(long)groupId userId:(long)userId status:(int)status subscribed:(BOOL)subscribed error:(NSError **)error;
+- (NSNumber *)getGroupThreadsCountWithGroupId:(long)groupId userId:(long)userId status:(int)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous error:(NSError **)error;
 - (NSArray *)getThreadsWithGroupId:(long)groupId categoryId:(long)categoryId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
-- (int)getThreadsCountWithGroupId:(long)groupId categoryId:(long)categoryId status:(int)status error:(NSError **)error;
+- (NSNumber *)getThreadsCountWithGroupId:(long)groupId categoryId:(long)categoryId status:(int)status error:(NSError **)error;
 - (NSDictionary *)lockThreadWithThreadId:(long)threadId error:(NSError **)error;
 - (NSDictionary *)moveThreadWithCategoryId:(long)categoryId threadId:(long)threadId error:(NSError **)error;
 - (NSDictionary *)moveThreadFromTrashWithCategoryId:(long)categoryId threadId:(long)threadId error:(NSError **)error;

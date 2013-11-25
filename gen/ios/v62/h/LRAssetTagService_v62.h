@@ -25,7 +25,7 @@
 - (void)deleteTagsWithTagIds:(NSArray *)tagIds error:(NSError **)error;
 - (NSArray *)getGroupTagsWithGroupId:(long)groupId error:(NSError **)error;
 - (NSArray *)getGroupTagsWithGroupId:(long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (int)getGroupTagsCountWithGroupId:(long)groupId error:(NSError **)error;
+- (NSNumber *)getGroupTagsCountWithGroupId:(long)groupId error:(NSError **)error;
 - (NSDictionary *)getGroupTagsDisplayWithGroupId:(long)groupId name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error;
 - (NSArray *)getGroupsTagsWithGroupIds:(NSArray *)groupIds error:(NSError **)error;
 - (NSDictionary *)getJsonGroupTagsWithGroupId:(long)groupId name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error;
@@ -35,9 +35,9 @@
 - (NSArray *)getTagsWithGroupId:(long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error;
 - (NSArray *)getTagsWithGroupIds:(NSArray *)groupIds name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error;
 - (NSArray *)getTagsWithGroupId:(long)groupId classNameId:(long)classNameId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (int)getTagsCountWithGroupId:(long)groupId name:(NSString *)name error:(NSError **)error;
-- (int)getTagsCountWithGroupId:(long)groupId classNameId:(long)classNameId name:(NSString *)name error:(NSError **)error;
-- (int)getTagsCountWithGroupId:(long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties error:(NSError **)error;
+- (NSNumber *)getTagsCountWithGroupId:(long)groupId name:(NSString *)name error:(NSError **)error;
+- (NSNumber *)getTagsCountWithGroupId:(long)groupId classNameId:(long)classNameId name:(NSString *)name error:(NSError **)error;
+- (NSNumber *)getTagsCountWithGroupId:(long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties error:(NSError **)error;
 - (void)mergeTagsWithFromTagId:(long)fromTagId toTagId:(long)toTagId overrideProperties:(BOOL)overrideProperties error:(NSError **)error;
 - (void)mergeTagsWithFromTagIds:(NSArray *)fromTagIds toTagId:(long)toTagId overrideProperties:(BOOL)overrideProperties error:(NSError **)error;
 - (NSDictionary *)searchWithGroupId:(long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error;

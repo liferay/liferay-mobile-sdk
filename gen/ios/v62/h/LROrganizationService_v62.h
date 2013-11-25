@@ -30,10 +30,10 @@
 - (void)deleteOrganizationWithOrganizationId:(long)organizationId error:(NSError **)error;
 - (NSArray *)getManageableOrganizationsWithActionId:(NSString *)actionId max:(int)max error:(NSError **)error;
 - (NSDictionary *)getOrganizationWithOrganizationId:(long)organizationId error:(NSError **)error;
-- (long)getOrganizationIdWithCompanyId:(long)companyId name:(NSString *)name error:(NSError **)error;
+- (NSNumber *)getOrganizationIdWithCompanyId:(long)companyId name:(NSString *)name error:(NSError **)error;
 - (NSArray *)getOrganizationsWithCompanyId:(long)companyId parentOrganizationId:(long)parentOrganizationId error:(NSError **)error;
 - (NSArray *)getOrganizationsWithCompanyId:(long)companyId parentOrganizationId:(long)parentOrganizationId start:(int)start end:(int)end error:(NSError **)error;
-- (int)getOrganizationsCountWithCompanyId:(long)companyId parentOrganizationId:(long)parentOrganizationId error:(NSError **)error;
+- (NSNumber *)getOrganizationsCountWithCompanyId:(long)companyId parentOrganizationId:(long)parentOrganizationId error:(NSError **)error;
 - (NSArray *)getUserOrganizationsWithUserId:(long)userId error:(NSError **)error;
 - (void)setGroupOrganizationsWithGroupId:(long)groupId organizationIds:(NSArray *)organizationIds error:(NSError **)error;
 - (void)unsetGroupOrganizationsWithGroupId:(long)groupId organizationIds:(NSArray *)organizationIds error:(NSError **)error;

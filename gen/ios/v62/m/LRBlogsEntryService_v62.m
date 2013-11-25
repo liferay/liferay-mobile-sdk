@@ -134,7 +134,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupEntriesCountWithGroupId:(long)groupId status:(int)status error:(NSError **)error {
+- (NSNumber *)getGroupEntriesCountWithGroupId:(long)groupId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"status": @(status)
@@ -142,10 +142,10 @@
 
 	NSDictionary *_command = @{@"/blogsentry/get-group-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupEntriesCountWithGroupId:(long)groupId displayDate:(long)displayDate status:(int)status error:(NSError **)error {
+- (NSNumber *)getGroupEntriesCountWithGroupId:(long)groupId displayDate:(long)displayDate status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"displayDate": @(displayDate),
@@ -154,7 +154,7 @@
 
 	NSDictionary *_command = @{@"/blogsentry/get-group-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSString *)getGroupEntriesRssWithGroupId:(long)groupId displayDate:(long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {

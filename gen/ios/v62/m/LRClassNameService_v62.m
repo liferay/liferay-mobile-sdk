@@ -29,24 +29,24 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (long)fetchClassNameIdWithClazz:(NSDictionary *)clazz error:(NSError **)error {
+- (NSNumber *)fetchClassNameIdWithClazz:(NSDictionary *)clazz error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"clazz": clazz
 	};
 
 	NSDictionary *_command = @{@"/classname/fetch-class-name-id": _params};
 
-	return (long)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (long)fetchClassNameIdWithValue:(NSString *)value error:(NSError **)error {
+- (NSNumber *)fetchClassNameIdWithValue:(NSString *)value error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"value": value
 	};
 
 	NSDictionary *_command = @{@"/classname/fetch-class-name-id": _params};
 
-	return (long)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 @end

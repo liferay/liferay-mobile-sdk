@@ -31,14 +31,14 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getCompanyEntriesCountWithCompanyId:(long)companyId error:(NSError **)error {
+- (NSNumber *)getCompanyEntriesCountWithCompanyId:(long)companyId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId)
 	};
 
 	NSDictionary *_command = @{@"/assetentry/get-company-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getEntriesWithEntryQuery:(NSDictionary *)entryQuery error:(NSError **)error {
@@ -51,14 +51,14 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getEntriesCountWithEntryQuery:(NSDictionary *)entryQuery error:(NSError **)error {
+- (NSNumber *)getEntriesCountWithEntryQuery:(NSDictionary *)entryQuery error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"entryQuery": entryQuery
 	};
 
 	NSDictionary *_command = @{@"/assetentry/get-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getEntryWithEntryId:(long)entryId error:(NSError **)error {

@@ -28,13 +28,13 @@
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (int)getBuildNumber:(NSError **)error {
+- (NSNumber *)getBuildNumber:(NSError **)error {
 	NSDictionary *_params = @{
 	};
 
 	NSDictionary *_command = @{@"/portal/get-build-number": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (void)testAddClassNameAndTestTransactionPortletBar_PortalRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error {
@@ -105,13 +105,13 @@
 	[self.session invoke:_command error:error];
 }
 
-- (int)testGetBuildNumber:(NSError **)error {
+- (NSNumber *)testGetBuildNumber:(NSError **)error {
 	NSDictionary *_params = @{
 	};
 
 	NSDictionary *_command = @{@"/portal/test-get-build-number": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (void)testGetUserId:(NSError **)error {

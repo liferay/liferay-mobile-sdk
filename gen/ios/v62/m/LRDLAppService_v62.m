@@ -365,7 +365,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getFileEntriesAndFileShortcutsCountWithRepositoryId:(long)repositoryId folderId:(long)folderId status:(int)status error:(NSError **)error {
+- (NSNumber *)getFileEntriesAndFileShortcutsCountWithRepositoryId:(long)repositoryId folderId:(long)folderId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
@@ -374,10 +374,10 @@
 
 	NSDictionary *_command = @{@"/dlapp/get-file-entries-and-file-shortcuts-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFileEntriesAndFileShortcutsCountWithRepositoryId:(long)repositoryId folderId:(long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes error:(NSError **)error {
+- (NSNumber *)getFileEntriesAndFileShortcutsCountWithRepositoryId:(long)repositoryId folderId:(long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
@@ -387,10 +387,10 @@
 
 	NSDictionary *_command = @{@"/dlapp/get-file-entries-and-file-shortcuts-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFileEntriesCountWithRepositoryId:(long)repositoryId folderId:(long)folderId error:(NSError **)error {
+- (NSNumber *)getFileEntriesCountWithRepositoryId:(long)repositoryId folderId:(long)folderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId)
@@ -398,10 +398,10 @@
 
 	NSDictionary *_command = @{@"/dlapp/get-file-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFileEntriesCountWithRepositoryId:(long)repositoryId folderId:(long)folderId fileEntryTypeId:(long)fileEntryTypeId error:(NSError **)error {
+- (NSNumber *)getFileEntriesCountWithRepositoryId:(long)repositoryId folderId:(long)folderId fileEntryTypeId:(long)fileEntryTypeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
@@ -410,7 +410,7 @@
 
 	NSDictionary *_command = @{@"/dlapp/get-file-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getFileEntryWithFileEntryId:(long)fileEntryId error:(NSError **)error {
@@ -621,7 +621,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersAndFileEntriesAndFileShortcutsCountWithRepositoryId:(long)repositoryId folderId:(long)folderId status:(int)status includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error {
+- (NSNumber *)getFoldersAndFileEntriesAndFileShortcutsCountWithRepositoryId:(long)repositoryId folderId:(long)folderId status:(int)status includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
@@ -631,10 +631,10 @@
 
 	NSDictionary *_command = @{@"/dlapp/get-folders-and-file-entries-and-file-shortcuts-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersAndFileEntriesAndFileShortcutsCountWithRepositoryId:(long)repositoryId folderId:(long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error {
+- (NSNumber *)getFoldersAndFileEntriesAndFileShortcutsCountWithRepositoryId:(long)repositoryId folderId:(long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
@@ -645,10 +645,10 @@
 
 	NSDictionary *_command = @{@"/dlapp/get-folders-and-file-entries-and-file-shortcuts-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersCountWithRepositoryId:(long)repositoryId parentFolderId:(long)parentFolderId error:(NSError **)error {
+- (NSNumber *)getFoldersCountWithRepositoryId:(long)repositoryId parentFolderId:(long)parentFolderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId),
 		@"parentFolderId": @(parentFolderId)
@@ -656,10 +656,10 @@
 
 	NSDictionary *_command = @{@"/dlapp/get-folders-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersCountWithRepositoryId:(long)repositoryId parentFolderId:(long)parentFolderId includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error {
+- (NSNumber *)getFoldersCountWithRepositoryId:(long)repositoryId parentFolderId:(long)parentFolderId includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId),
 		@"parentFolderId": @(parentFolderId),
@@ -668,10 +668,10 @@
 
 	NSDictionary *_command = @{@"/dlapp/get-folders-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersCountWithRepositoryId:(long)repositoryId parentFolderId:(long)parentFolderId status:(int)status includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error {
+- (NSNumber *)getFoldersCountWithRepositoryId:(long)repositoryId parentFolderId:(long)parentFolderId status:(int)status includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId),
 		@"parentFolderId": @(parentFolderId),
@@ -681,10 +681,10 @@
 
 	NSDictionary *_command = @{@"/dlapp/get-folders-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersFileEntriesCountWithRepositoryId:(long)repositoryId folderIds:(NSArray *)folderIds status:(int)status error:(NSError **)error {
+- (NSNumber *)getFoldersFileEntriesCountWithRepositoryId:(long)repositoryId folderIds:(NSArray *)folderIds status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId),
 		@"folderIds": folderIds,
@@ -693,7 +693,7 @@
 
 	NSDictionary *_command = @{@"/dlapp/get-folders-file-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getGroupFileEntriesWithGroupId:(long)groupId userId:(long)userId start:(int)start end:(int)end error:(NSError **)error {
@@ -769,7 +769,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupFileEntriesCountWithGroupId:(long)groupId userId:(long)userId error:(NSError **)error {
+- (NSNumber *)getGroupFileEntriesCountWithGroupId:(long)groupId userId:(long)userId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId)
@@ -777,10 +777,10 @@
 
 	NSDictionary *_command = @{@"/dlapp/get-group-file-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupFileEntriesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId error:(NSError **)error {
+- (NSNumber *)getGroupFileEntriesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -789,10 +789,10 @@
 
 	NSDictionary *_command = @{@"/dlapp/get-group-file-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupFileEntriesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId mimeTypes:(NSArray *)mimeTypes status:(int)status error:(NSError **)error {
+- (NSNumber *)getGroupFileEntriesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId mimeTypes:(NSArray *)mimeTypes status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -803,7 +803,7 @@
 
 	NSDictionary *_command = @{@"/dlapp/get-group-file-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getMountFoldersWithRepositoryId:(long)repositoryId parentFolderId:(long)parentFolderId error:(NSError **)error {
@@ -844,7 +844,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getMountFoldersCountWithRepositoryId:(long)repositoryId parentFolderId:(long)parentFolderId error:(NSError **)error {
+- (NSNumber *)getMountFoldersCountWithRepositoryId:(long)repositoryId parentFolderId:(long)parentFolderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId),
 		@"parentFolderId": @(parentFolderId)
@@ -852,7 +852,7 @@
 
 	NSDictionary *_command = @{@"/dlapp/get-mount-folders-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getSubfolderIdsWithRepositoryId:(long)repositoryId folderId:(long)folderId error:(NSError **)error {

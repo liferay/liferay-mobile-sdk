@@ -73,7 +73,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (int)getCategoriesItemsCountWithGroupId:(long)groupId categoryIds:(NSArray *)categoryIds error:(NSError **)error {
+- (NSNumber *)getCategoriesItemsCountWithGroupId:(long)groupId categoryIds:(NSArray *)categoryIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryIds": categoryIds
@@ -81,7 +81,7 @@
 
 	NSDictionary *_command = @{@"/shoppingitem/get-categories-items-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getItemWithItemId:(long)itemId error:(NSError **)error {
@@ -119,7 +119,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getItemsCountWithGroupId:(long)groupId categoryId:(long)categoryId error:(NSError **)error {
+- (NSNumber *)getItemsCountWithGroupId:(long)groupId categoryId:(long)categoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId)
@@ -127,7 +127,7 @@
 
 	NSDictionary *_command = @{@"/shoppingitem/get-items-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getItemsPrevAndNextWithItemId:(long)itemId obc:(NSDictionary *)obc error:(NSError **)error {

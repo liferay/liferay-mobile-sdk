@@ -32,7 +32,7 @@
 - (NSDictionary *)getFolderSyncDlObjectWithFolderId:(long)folderId error:(NSError **)error;
 - (NSArray *)getFolderSyncDlObjectsWithRepositoryId:(long)repositoryId parentFolderId:(long)parentFolderId error:(NSError **)error;
 - (NSDictionary *)getGroupWithGroupId:(long)groupId error:(NSError **)error;
-- (long)getLatestModifiedTime:(NSError **)error;
+- (NSNumber *)getLatestModifiedTime:(NSError **)error;
 - (NSDictionary *)getSyncContextWithUuid:(NSString *)uuid error:(NSError **)error;
 - (NSDictionary *)getSyncDlObjectUpdateWithCompanyId:(long)companyId repositoryId:(long)repositoryId lastAccessTime:(long)lastAccessTime error:(NSError **)error;
 - (NSArray *)getUserSitesGroups:(NSError **)error;

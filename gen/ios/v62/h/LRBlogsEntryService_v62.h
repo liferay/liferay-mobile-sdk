@@ -29,8 +29,8 @@
 - (NSArray *)getGroupEntriesWithGroupId:(long)groupId displayDate:(long)displayDate status:(int)status max:(int)max error:(NSError **)error;
 - (NSArray *)getGroupEntriesWithGroupId:(long)groupId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
 - (NSArray *)getGroupEntriesWithGroupId:(long)groupId displayDate:(long)displayDate status:(int)status start:(int)start end:(int)end error:(NSError **)error;
-- (int)getGroupEntriesCountWithGroupId:(long)groupId status:(int)status error:(NSError **)error;
-- (int)getGroupEntriesCountWithGroupId:(long)groupId displayDate:(long)displayDate status:(int)status error:(NSError **)error;
+- (NSNumber *)getGroupEntriesCountWithGroupId:(long)groupId status:(int)status error:(NSError **)error;
+- (NSNumber *)getGroupEntriesCountWithGroupId:(long)groupId displayDate:(long)displayDate status:(int)status error:(NSError **)error;
 - (NSString *)getGroupEntriesRssWithGroupId:(long)groupId displayDate:(long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error;
 - (NSArray *)getGroupsEntriesWithCompanyId:(long)companyId groupId:(long)groupId displayDate:(long)displayDate status:(int)status max:(int)max error:(NSError **)error;
 - (NSArray *)getOrganizationEntriesWithOrganizationId:(long)organizationId displayDate:(long)displayDate status:(int)status max:(int)max error:(NSError **)error;

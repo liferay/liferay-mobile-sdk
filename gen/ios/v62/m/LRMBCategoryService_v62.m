@@ -161,7 +161,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getCategoriesCountWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId error:(NSError **)error {
+- (NSNumber *)getCategoriesCountWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentCategoryId": @(parentCategoryId)
@@ -169,10 +169,10 @@
 
 	NSDictionary *_command = @{@"/mbcategory/get-categories-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getCategoriesCountWithGroupId:(long)groupId parentCategoryIds:(NSArray *)parentCategoryIds error:(NSError **)error {
+- (NSNumber *)getCategoriesCountWithGroupId:(long)groupId parentCategoryIds:(NSArray *)parentCategoryIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentCategoryIds": parentCategoryIds
@@ -180,10 +180,10 @@
 
 	NSDictionary *_command = @{@"/mbcategory/get-categories-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getCategoriesCountWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId status:(int)status error:(NSError **)error {
+- (NSNumber *)getCategoriesCountWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentCategoryId": @(parentCategoryId),
@@ -192,10 +192,10 @@
 
 	NSDictionary *_command = @{@"/mbcategory/get-categories-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getCategoriesCountWithGroupId:(long)groupId parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status error:(NSError **)error {
+- (NSNumber *)getCategoriesCountWithGroupId:(long)groupId parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentCategoryIds": parentCategoryIds,
@@ -204,7 +204,7 @@
 
 	NSDictionary *_command = @{@"/mbcategory/get-categories-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getCategoryWithCategoryId:(long)categoryId error:(NSError **)error {
@@ -253,7 +253,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getSubscribedCategoriesCountWithGroupId:(long)groupId userId:(long)userId error:(NSError **)error {
+- (NSNumber *)getSubscribedCategoriesCountWithGroupId:(long)groupId userId:(long)userId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId)
@@ -261,7 +261,7 @@
 
 	NSDictionary *_command = @{@"/mbcategory/get-subscribed-categories-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)moveCategoryWithCategoryId:(long)categoryId parentCategoryId:(long)parentCategoryId mergeWithParentCategory:(BOOL)mergeWithParentCategory error:(NSError **)error {

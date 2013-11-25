@@ -136,7 +136,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords error:(NSError **)error {
+- (NSNumber *)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"groupIds": groupIds,
@@ -145,10 +145,10 @@
 
 	NSDictionary *_command = @{@"/journalstructure/search-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds structureId:(NSString *)structureId name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator error:(NSError **)error {
+- (NSNumber *)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds structureId:(NSString *)structureId name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"groupIds": groupIds,
@@ -160,7 +160,7 @@
 
 	NSDictionary *_command = @{@"/journalstructure/search-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)updateStructureWithGroupId:(long)groupId structureId:(NSString *)structureId parentStructureId:(NSString *)parentStructureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {

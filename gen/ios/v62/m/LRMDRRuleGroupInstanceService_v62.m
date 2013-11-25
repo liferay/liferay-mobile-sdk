@@ -72,7 +72,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getRuleGroupInstancesCountWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error {
+- (NSNumber *)getRuleGroupInstancesCountWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK)
@@ -80,7 +80,7 @@
 
 	NSDictionary *_command = @{@"/mdrrulegroupinstance/get-rule-group-instances-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)updateRuleGroupInstanceWithRuleGroupInstanceId:(long)ruleGroupInstanceId priority:(int)priority error:(NSError **)error {

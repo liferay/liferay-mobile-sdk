@@ -90,7 +90,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)searchCountWithCompanyId:(long)companyId groupId:(long)groupId keywords:(NSString *)keywords scope:(int)scope error:(NSError **)error {
+- (NSNumber *)searchCountWithCompanyId:(long)companyId groupId:(long)groupId keywords:(NSString *)keywords scope:(int)scope error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
@@ -100,10 +100,10 @@
 
 	NSDictionary *_command = @{@"/ddlrecordset/search-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)searchCountWithCompanyId:(long)companyId groupId:(long)groupId name:(NSString *)name description:(NSString *)description scope:(int)scope andOperator:(BOOL)andOperator error:(NSError **)error {
+- (NSNumber *)searchCountWithCompanyId:(long)companyId groupId:(long)groupId name:(NSString *)name description:(NSString *)description scope:(int)scope andOperator:(BOOL)andOperator error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
@@ -115,7 +115,7 @@
 
 	NSDictionary *_command = @{@"/ddlrecordset/search-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)updateMinDisplayRowsWithRecordSetId:(long)recordSetId minDisplayRows:(int)minDisplayRows serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {

@@ -26,10 +26,10 @@
 - (NSDictionary *)getFileEntryTypeWithFileEntryTypeId:(long)fileEntryTypeId error:(NSError **)error;
 - (NSArray *)getFileEntryTypesWithGroupIds:(NSArray *)groupIds error:(NSError **)error;
 - (NSArray *)getFileEntryTypesWithGroupIds:(NSArray *)groupIds start:(int)start end:(int)end error:(NSError **)error;
-- (int)getFileEntryTypesCountWithGroupIds:(NSArray *)groupIds error:(NSError **)error;
+- (NSNumber *)getFileEntryTypesCountWithGroupIds:(NSArray *)groupIds error:(NSError **)error;
 - (NSArray *)getFolderFileEntryTypesWithGroupIds:(NSArray *)groupIds folderId:(long)folderId inherited:(BOOL)inherited error:(NSError **)error;
 - (NSArray *)searchWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;
-- (int)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType error:(NSError **)error;
+- (NSNumber *)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType error:(NSError **)error;
 - (void)updateFileEntryTypeWithFileEntryTypeId:(long)fileEntryTypeId name:(NSString *)name description:(NSString *)description ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)updateFileEntryTypeWithFileEntryTypeId:(long)fileEntryTypeId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 

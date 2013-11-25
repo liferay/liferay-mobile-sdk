@@ -29,7 +29,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (long)createStagingRequestWithGroupId:(long)groupId checksum:(NSString *)checksum error:(NSError **)error {
+- (NSNumber *)createStagingRequestWithGroupId:(long)groupId checksum:(NSString *)checksum error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"checksum": checksum
@@ -37,7 +37,7 @@
 
 	NSDictionary *_command = @{@"/staging/create-staging-request": _params};
 
-	return (long)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (void)publishStagingRequestWithStagingRequestId:(long)stagingRequestId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap error:(NSError **)error {

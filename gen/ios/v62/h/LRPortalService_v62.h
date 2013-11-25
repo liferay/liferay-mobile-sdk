@@ -21,7 +21,7 @@
 @interface LRPortalService_v62 : LRBaseService
 
 - (NSString *)getAutoDeployDirectory:(NSError **)error;
-- (int)getBuildNumber:(NSError **)error;
+- (NSNumber *)getBuildNumber:(NSError **)error;
 - (void)testAddClassNameAndTestTransactionPortletBar_PortalRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error;
 - (void)testAddClassNameAndTestTransactionPortletBar_PortletRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error;
 - (void)testAddClassNameAndTestTransactionPortletBar_SuccessWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error;
@@ -29,7 +29,7 @@
 - (void)testAddClassName_SuccessWithClassNameValue:(NSString *)classNameValue error:(NSError **)error;
 - (void)testAutoSyncHibernateSessionStateOnTxCreation:(NSError **)error;
 - (void)testDeleteClassName:(NSError **)error;
-- (int)testGetBuildNumber:(NSError **)error;
+- (NSNumber *)testGetBuildNumber:(NSError **)error;
 - (void)testGetUserId:(NSError **)error;
 - (BOOL)testHasClassName:(NSError **)error;
 

@@ -205,7 +205,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getVocabularyCategoriesCountWithGroupId:(long)groupId vocabularyId:(long)vocabularyId error:(NSError **)error {
+- (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long)groupId vocabularyId:(long)vocabularyId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"vocabularyId": @(vocabularyId)
@@ -213,10 +213,10 @@
 
 	NSDictionary *_command = @{@"/assetcategory/get-vocabulary-categories-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getVocabularyCategoriesCountWithGroupId:(long)groupId name:(NSString *)name vocabularyId:(long)vocabularyId error:(NSError **)error {
+- (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long)groupId name:(NSString *)name vocabularyId:(long)vocabularyId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"name": name,
@@ -225,7 +225,7 @@
 
 	NSDictionary *_command = @{@"/assetcategory/get-vocabulary-categories-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getVocabularyCategoriesDisplayWithVocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
@@ -283,7 +283,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getVocabularyRootCategoriesCountWithGroupId:(long)groupId vocabularyId:(long)vocabularyId error:(NSError **)error {
+- (NSNumber *)getVocabularyRootCategoriesCountWithGroupId:(long)groupId vocabularyId:(long)vocabularyId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"vocabularyId": @(vocabularyId)
@@ -291,7 +291,7 @@
 
 	NSDictionary *_command = @{@"/assetcategory/get-vocabulary-root-categories-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)moveCategoryWithCategoryId:(long)categoryId parentCategoryId:(long)parentCategoryId vocabularyId:(long)vocabularyId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {

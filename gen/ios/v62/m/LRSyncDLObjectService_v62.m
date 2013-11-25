@@ -164,13 +164,13 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (long)getLatestModifiedTime:(NSError **)error {
+- (NSNumber *)getLatestModifiedTime:(NSError **)error {
 	NSDictionary *_params = @{
 	};
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-latest-modified-time": _params};
 
-	return (long)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getSyncContextWithUuid:(NSString *)uuid error:(NSError **)error {

@@ -267,13 +267,13 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getUserPlacesCount:(NSError **)error {
+- (NSNumber *)getUserPlacesCount:(NSError **)error {
 	NSDictionary *_params = @{
 	};
 
 	NSDictionary *_command = @{@"/group/get-user-places-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getUserSites:(NSError **)error {
@@ -330,13 +330,13 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getUserSitesGroupsCount:(NSError **)error {
+- (NSNumber *)getUserSitesGroupsCount:(NSError **)error {
 	NSDictionary *_params = @{
 	};
 
 	NSDictionary *_command = @{@"/group/get-user-sites-groups-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (BOOL)hasUserGroupWithUserId:(long)userId groupId:(long)groupId error:(NSError **)error {
@@ -365,7 +365,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)searchCountWithCompanyId:(long)companyId name:(NSString *)name description:(NSString *)description params:(NSArray *)params error:(NSError **)error {
+- (NSNumber *)searchCountWithCompanyId:(long)companyId name:(NSString *)name description:(NSString *)description params:(NSArray *)params error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"name": name,
@@ -375,7 +375,7 @@
 
 	NSDictionary *_command = @{@"/group/search-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (void)setRoleGroupsWithRoleId:(long)roleId groupIds:(NSArray *)groupIds error:(NSError **)error {

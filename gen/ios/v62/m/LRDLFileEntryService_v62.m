@@ -227,7 +227,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getFileEntriesCountWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
+- (NSNumber *)getFileEntriesCountWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId)
@@ -235,10 +235,10 @@
 
 	NSDictionary *_command = @{@"/dlfileentry/get-file-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFileEntriesCountWithGroupId:(long)groupId folderId:(long)folderId fileEntryTypeId:(long)fileEntryTypeId error:(NSError **)error {
+- (NSNumber *)getFileEntriesCountWithGroupId:(long)groupId folderId:(long)folderId fileEntryTypeId:(long)fileEntryTypeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -247,10 +247,10 @@
 
 	NSDictionary *_command = @{@"/dlfileentry/get-file-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFileEntriesCountWithGroupId:(long)groupId folderId:(long)folderId mimeTypes:(NSArray *)mimeTypes error:(NSError **)error {
+- (NSNumber *)getFileEntriesCountWithGroupId:(long)groupId folderId:(long)folderId mimeTypes:(NSArray *)mimeTypes error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -259,10 +259,10 @@
 
 	NSDictionary *_command = @{@"/dlfileentry/get-file-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFileEntriesCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error {
+- (NSNumber *)getFileEntriesCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -271,7 +271,7 @@
 
 	NSDictionary *_command = @{@"/dlfileentry/get-file-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getFileEntryWithFileEntryId:(long)fileEntryId error:(NSError **)error {
@@ -317,7 +317,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersFileEntriesCountWithGroupId:(long)groupId folderIds:(NSArray *)folderIds status:(int)status error:(NSError **)error {
+- (NSNumber *)getFoldersFileEntriesCountWithGroupId:(long)groupId folderIds:(NSArray *)folderIds status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderIds": folderIds,
@@ -326,7 +326,7 @@
 
 	NSDictionary *_command = @{@"/dlfileentry/get-folders-file-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getGroupFileEntriesWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
@@ -361,7 +361,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupFileEntriesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId error:(NSError **)error {
+- (NSNumber *)getGroupFileEntriesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -370,10 +370,10 @@
 
 	NSDictionary *_command = @{@"/dlfileentry/get-group-file-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupFileEntriesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId mimeTypes:(NSArray *)mimeTypes status:(int)status error:(NSError **)error {
+- (NSNumber *)getGroupFileEntriesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId mimeTypes:(NSArray *)mimeTypes status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -384,7 +384,7 @@
 
 	NSDictionary *_command = @{@"/dlfileentry/get-group-file-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (BOOL)hasFileEntryLockWithFileEntryId:(long)fileEntryId error:(NSError **)error {

@@ -22,6 +22,6 @@
 
 - (NSDictionary *)getContactWithContactId:(long)contactId error:(NSError **)error;
 - (NSArray *)getContactsWithClassNameId:(long)classNameId classPK:(long)classPK start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;
-- (int)getContactsCountWithClassNameId:(long)classNameId classPK:(long)classPK error:(NSError **)error;
+- (NSNumber *)getContactsCountWithClassNameId:(long)classNameId classPK:(long)classPK error:(NSError **)error;
 
 @end

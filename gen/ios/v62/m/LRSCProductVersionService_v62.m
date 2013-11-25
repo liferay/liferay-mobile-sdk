@@ -69,14 +69,14 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getProductVersionsCountWithProductEntryId:(long)productEntryId error:(NSError **)error {
+- (NSNumber *)getProductVersionsCountWithProductEntryId:(long)productEntryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"productEntryId": @(productEntryId)
 	};
 
 	NSDictionary *_command = @{@"/scproductversion/get-product-versions-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)updateProductVersionWithProductVersionId:(long)productVersionId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds error:(NSError **)error {

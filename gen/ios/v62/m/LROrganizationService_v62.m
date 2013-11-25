@@ -166,7 +166,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (long)getOrganizationIdWithCompanyId:(long)companyId name:(NSString *)name error:(NSError **)error {
+- (NSNumber *)getOrganizationIdWithCompanyId:(long)companyId name:(NSString *)name error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"name": name
@@ -174,7 +174,7 @@
 
 	NSDictionary *_command = @{@"/organization/get-organization-id": _params};
 
-	return (long)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getOrganizationsWithCompanyId:(long)companyId parentOrganizationId:(long)parentOrganizationId error:(NSError **)error {
@@ -201,7 +201,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getOrganizationsCountWithCompanyId:(long)companyId parentOrganizationId:(long)parentOrganizationId error:(NSError **)error {
+- (NSNumber *)getOrganizationsCountWithCompanyId:(long)companyId parentOrganizationId:(long)parentOrganizationId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"parentOrganizationId": @(parentOrganizationId)
@@ -209,7 +209,7 @@
 
 	NSDictionary *_command = @{@"/organization/get-organizations-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getUserOrganizationsWithUserId:(long)userId error:(NSError **)error {

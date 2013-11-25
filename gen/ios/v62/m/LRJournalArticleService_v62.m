@@ -338,7 +338,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getArticlesCountWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
+- (NSNumber *)getArticlesCountWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId)
@@ -346,10 +346,10 @@
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getArticlesCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error {
+- (NSNumber *)getArticlesCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -358,10 +358,10 @@
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getArticlesCountByArticleIdWithGroupId:(long)groupId articleId:(NSString *)articleId error:(NSError **)error {
+- (NSNumber *)getArticlesCountByArticleIdWithGroupId:(long)groupId articleId:(NSString *)articleId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"articleId": articleId
@@ -369,10 +369,10 @@
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles-count-by-article-id": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getArticlesCountByStructureIdWithGroupId:(long)groupId ddmStructureKey:(NSString *)ddmStructureKey error:(NSError **)error {
+- (NSNumber *)getArticlesCountByStructureIdWithGroupId:(long)groupId ddmStructureKey:(NSString *)ddmStructureKey error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"ddmStructureKey": ddmStructureKey
@@ -380,10 +380,10 @@
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles-count-by-structure-id": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getArticlesCountByStructureIdWithGroupId:(long)groupId classNameId:(long)classNameId ddmStructureKey:(NSString *)ddmStructureKey status:(int)status error:(NSError **)error {
+- (NSNumber *)getArticlesCountByStructureIdWithGroupId:(long)groupId classNameId:(long)classNameId ddmStructureKey:(NSString *)ddmStructureKey status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
@@ -393,7 +393,7 @@
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles-count-by-structure-id": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getDisplayArticleByUrlTitleWithGroupId:(long)groupId urlTitle:(NSString *)urlTitle error:(NSError **)error {
@@ -407,7 +407,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersAndArticlesCountWithGroupId:(long)groupId folderIds:(NSArray *)folderIds error:(NSError **)error {
+- (NSNumber *)getFoldersAndArticlesCountWithGroupId:(long)groupId folderIds:(NSArray *)folderIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderIds": folderIds
@@ -415,7 +415,7 @@
 
 	NSDictionary *_command = @{@"/journalarticle/get-folders-and-articles-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getGroupArticlesWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
@@ -449,7 +449,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupArticlesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId error:(NSError **)error {
+- (NSNumber *)getGroupArticlesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -458,10 +458,10 @@
 
 	NSDictionary *_command = @{@"/journalarticle/get-group-articles-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupArticlesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId status:(int)status error:(NSError **)error {
+- (NSNumber *)getGroupArticlesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -471,7 +471,7 @@
 
 	NSDictionary *_command = @{@"/journalarticle/get-group-articles-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getLatestArticleWithResourcePrimKey:(long)resourcePrimKey error:(NSError **)error {
@@ -699,7 +699,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (int)searchCountWithCompanyId:(long)companyId groupId:(long)groupId folderIds:(NSArray *)folderIds classNameId:(long)classNameId keywords:(NSString *)keywords version:(NSDictionary *)version type:(NSString *)type ddmStructureKey:(NSString *)ddmStructureKey ddmTemplateKey:(NSString *)ddmTemplateKey displayDateGT:(long)displayDateGT displayDateLT:(long)displayDateLT status:(int)status reviewDate:(long)reviewDate error:(NSError **)error {
+- (NSNumber *)searchCountWithCompanyId:(long)companyId groupId:(long)groupId folderIds:(NSArray *)folderIds classNameId:(long)classNameId keywords:(NSString *)keywords version:(NSDictionary *)version type:(NSString *)type ddmStructureKey:(NSString *)ddmStructureKey ddmTemplateKey:(NSString *)ddmTemplateKey displayDateGT:(long)displayDateGT displayDateLT:(long)displayDateLT status:(int)status reviewDate:(long)reviewDate error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
@@ -718,10 +718,10 @@
 
 	NSDictionary *_command = @{@"/journalarticle/search-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)searchCountWithCompanyId:(long)companyId groupId:(long)groupId folderIds:(NSArray *)folderIds classNameId:(long)classNameId articleId:(NSString *)articleId version:(NSDictionary *)version title:(NSString *)title description:(NSString *)description content:(NSString *)content type:(NSString *)type ddmStructureKey:(NSString *)ddmStructureKey ddmTemplateKey:(NSString *)ddmTemplateKey displayDateGT:(long)displayDateGT displayDateLT:(long)displayDateLT status:(int)status reviewDate:(long)reviewDate andOperator:(BOOL)andOperator error:(NSError **)error {
+- (NSNumber *)searchCountWithCompanyId:(long)companyId groupId:(long)groupId folderIds:(NSArray *)folderIds classNameId:(long)classNameId articleId:(NSString *)articleId version:(NSDictionary *)version title:(NSString *)title description:(NSString *)description content:(NSString *)content type:(NSString *)type ddmStructureKey:(NSString *)ddmStructureKey ddmTemplateKey:(NSString *)ddmTemplateKey displayDateGT:(long)displayDateGT displayDateLT:(long)displayDateLT status:(int)status reviewDate:(long)reviewDate andOperator:(BOOL)andOperator error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
@@ -744,10 +744,10 @@
 
 	NSDictionary *_command = @{@"/journalarticle/search-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)searchCountWithCompanyId:(long)companyId groupId:(long)groupId folderIds:(NSArray *)folderIds classNameId:(long)classNameId articleId:(NSString *)articleId version:(NSDictionary *)version title:(NSString *)title description:(NSString *)description content:(NSString *)content type:(NSString *)type ddmStructureKeys:(NSArray *)ddmStructureKeys ddmTemplateKeys:(NSArray *)ddmTemplateKeys displayDateGT:(long)displayDateGT displayDateLT:(long)displayDateLT status:(int)status reviewDate:(long)reviewDate andOperator:(BOOL)andOperator error:(NSError **)error {
+- (NSNumber *)searchCountWithCompanyId:(long)companyId groupId:(long)groupId folderIds:(NSArray *)folderIds classNameId:(long)classNameId articleId:(NSString *)articleId version:(NSDictionary *)version title:(NSString *)title description:(NSString *)description content:(NSString *)content type:(NSString *)type ddmStructureKeys:(NSArray *)ddmStructureKeys ddmTemplateKeys:(NSArray *)ddmTemplateKeys displayDateGT:(long)displayDateGT displayDateLT:(long)displayDateLT status:(int)status reviewDate:(long)reviewDate andOperator:(BOOL)andOperator error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
@@ -770,7 +770,7 @@
 
 	NSDictionary *_command = @{@"/journalarticle/search-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (void)subscribeWithGroupId:(long)groupId error:(NSError **)error {

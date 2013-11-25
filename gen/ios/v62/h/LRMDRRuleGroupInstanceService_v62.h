@@ -24,7 +24,7 @@
 - (NSDictionary *)addRuleGroupInstanceWithGroupId:(long)groupId className:(NSString *)className classPK:(long)classPK ruleGroupId:(long)ruleGroupId priority:(int)priority serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteRuleGroupInstanceWithRuleGroupInstanceId:(long)ruleGroupInstanceId error:(NSError **)error;
 - (NSArray *)getRuleGroupInstancesWithClassName:(NSString *)className classPK:(long)classPK start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;
-- (int)getRuleGroupInstancesCountWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error;
+- (NSNumber *)getRuleGroupInstancesCountWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error;
 - (NSDictionary *)updateRuleGroupInstanceWithRuleGroupInstanceId:(long)ruleGroupInstanceId priority:(int)priority error:(NSError **)error;
 
 @end

@@ -65,7 +65,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getCategoriesCountWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId error:(NSError **)error {
+- (NSNumber *)getCategoriesCountWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentCategoryId": @(parentCategoryId)
@@ -73,7 +73,7 @@
 
 	NSDictionary *_command = @{@"/shoppingcategory/get-categories-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getCategoryWithCategoryId:(long)categoryId error:(NSError **)error {

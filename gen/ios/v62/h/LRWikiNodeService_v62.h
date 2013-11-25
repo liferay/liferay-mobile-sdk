@@ -28,8 +28,8 @@
 - (NSArray *)getNodesWithGroupId:(long)groupId status:(int)status error:(NSError **)error;
 - (NSArray *)getNodesWithGroupId:(long)groupId start:(int)start end:(int)end error:(NSError **)error;
 - (NSArray *)getNodesWithGroupId:(long)groupId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
-- (int)getNodesCountWithGroupId:(long)groupId error:(NSError **)error;
-- (int)getNodesCountWithGroupId:(long)groupId status:(int)status error:(NSError **)error;
+- (NSNumber *)getNodesCountWithGroupId:(long)groupId error:(NSError **)error;
+- (NSNumber *)getNodesCountWithGroupId:(long)groupId status:(int)status error:(NSError **)error;
 - (NSDictionary *)moveNodeToTrashWithNodeId:(long)nodeId error:(NSError **)error;
 - (void)restoreNodeFromTrashWithNodeId:(long)nodeId error:(NSError **)error;
 - (void)subscribeNodeWithNodeId:(long)nodeId error:(NSError **)error;

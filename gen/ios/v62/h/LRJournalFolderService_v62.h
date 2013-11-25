@@ -32,11 +32,11 @@
 - (NSArray *)getFoldersWithGroupId:(long)groupId parentFolderId:(long)parentFolderId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
 - (NSArray *)getFoldersAndArticlesWithGroupId:(long)groupId folderId:(long)folderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)getFoldersAndArticlesWithGroupId:(long)groupId folderId:(long)folderId status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (int)getFoldersAndArticlesCountWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error;
-- (int)getFoldersAndArticlesCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error;
-- (int)getFoldersAndArticlesCountWithGroupId:(long)groupId folderIds:(NSArray *)folderIds status:(int)status error:(NSError **)error;
-- (int)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error;
-- (int)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId status:(int)status error:(NSError **)error;
+- (NSNumber *)getFoldersAndArticlesCountWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error;
+- (NSNumber *)getFoldersAndArticlesCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error;
+- (NSNumber *)getFoldersAndArticlesCountWithGroupId:(long)groupId folderIds:(NSArray *)folderIds status:(int)status error:(NSError **)error;
+- (NSNumber *)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error;
+- (NSNumber *)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId status:(int)status error:(NSError **)error;
 - (void)getSubfolderIdsWithFolderIds:(NSArray *)folderIds groupId:(long)groupId folderId:(long)folderId error:(NSError **)error;
 - (NSArray *)getSubfolderIdsWithGroupId:(long)groupId folderId:(long)folderId recurse:(BOOL)recurse error:(NSError **)error;
 - (NSDictionary *)moveFolderWithFolderId:(long)folderId parentFolderId:(long)parentFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

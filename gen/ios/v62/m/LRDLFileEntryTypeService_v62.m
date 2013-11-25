@@ -90,14 +90,14 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getFileEntryTypesCountWithGroupIds:(NSArray *)groupIds error:(NSError **)error {
+- (NSNumber *)getFileEntryTypesCountWithGroupIds:(NSArray *)groupIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupIds": groupIds
 	};
 
 	NSDictionary *_command = @{@"/dlfileentrytype/get-file-entry-types-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getFolderFileEntryTypesWithGroupIds:(NSArray *)groupIds folderId:(long)folderId inherited:(BOOL)inherited error:(NSError **)error {
@@ -128,7 +128,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType error:(NSError **)error {
+- (NSNumber *)searchCountWithCompanyId:(long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"groupIds": groupIds,
@@ -138,7 +138,7 @@
 
 	NSDictionary *_command = @{@"/dlfileentrytype/search-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (void)updateFileEntryTypeWithFileEntryTypeId:(long)fileEntryTypeId name:(NSString *)name description:(NSString *)description ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {

@@ -24,7 +24,7 @@
 - (void)deleteProductVersionWithProductVersionId:(long)productVersionId error:(NSError **)error;
 - (NSDictionary *)getProductVersionWithProductVersionId:(long)productVersionId error:(NSError **)error;
 - (NSArray *)getProductVersionsWithProductEntryId:(long)productEntryId start:(int)start end:(int)end error:(NSError **)error;
-- (int)getProductVersionsCountWithProductEntryId:(long)productEntryId error:(NSError **)error;
+- (NSNumber *)getProductVersionsCountWithProductEntryId:(long)productEntryId error:(NSError **)error;
 - (NSDictionary *)updateProductVersionWithProductVersionId:(long)productVersionId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds error:(NSError **)error;
 
 @end

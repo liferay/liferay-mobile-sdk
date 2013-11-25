@@ -279,14 +279,14 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getCompanyUsersCountWithCompanyId:(long)companyId error:(NSError **)error {
+- (NSNumber *)getCompanyUsersCountWithCompanyId:(long)companyId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId)
 	};
 
 	NSDictionary *_command = @{@"/user/get-company-users-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getGroupUserIdsWithGroupId:(long)groupId error:(NSError **)error {
@@ -381,7 +381,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (long)getUserIdByEmailAddressWithCompanyId:(long)companyId emailAddress:(NSString *)emailAddress error:(NSError **)error {
+- (NSNumber *)getUserIdByEmailAddressWithCompanyId:(long)companyId emailAddress:(NSString *)emailAddress error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"emailAddress": emailAddress
@@ -389,10 +389,10 @@
 
 	NSDictionary *_command = @{@"/user/get-user-id-by-email-address": _params};
 
-	return (long)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (long)getUserIdByScreenNameWithCompanyId:(long)companyId screenName:(NSString *)screenName error:(NSError **)error {
+- (NSNumber *)getUserIdByScreenNameWithCompanyId:(long)companyId screenName:(NSString *)screenName error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"screenName": screenName
@@ -400,7 +400,7 @@
 
 	NSDictionary *_command = @{@"/user/get-user-id-by-screen-name": _params};
 
-	return (long)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (BOOL)hasGroupUserWithGroupId:(long)groupId userId:(long)userId error:(NSError **)error {

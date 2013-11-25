@@ -25,8 +25,8 @@
 - (void)deleteFolderWithFolderId:(long)folderId includeTrashedEntries:(BOOL)includeTrashedEntries error:(NSError **)error;
 - (void)deleteFolderWithGroupId:(long)groupId parentFolderId:(long)parentFolderId name:(NSString *)name error:(NSError **)error;
 - (NSArray *)getFileEntriesAndFileShortcutsWithGroupId:(long)groupId folderId:(long)folderId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
-- (int)getFileEntriesAndFileShortcutsCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error;
-- (int)getFileEntriesAndFileShortcutsCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes error:(NSError **)error;
+- (NSNumber *)getFileEntriesAndFileShortcutsCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error;
+- (NSNumber *)getFileEntriesAndFileShortcutsCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes error:(NSError **)error;
 - (NSDictionary *)getFolderWithFolderId:(long)folderId error:(NSError **)error;
 - (NSDictionary *)getFolderWithGroupId:(long)groupId parentFolderId:(long)parentFolderId name:(NSString *)name error:(NSError **)error;
 - (NSArray *)getFolderIdsWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error;
@@ -34,12 +34,12 @@
 - (NSArray *)getFoldersWithGroupId:(long)groupId parentFolderId:(long)parentFolderId status:(int)status includeMountfolders:(BOOL)includeMountfolders start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)getFoldersAndFileEntriesAndFileShortcutsWithGroupId:(long)groupId folderId:(long)folderId status:(int)status includeMountFolders:(BOOL)includeMountFolders start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)getFoldersAndFileEntriesAndFileShortcutsWithGroupId:(long)groupId folderId:(long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes includeMountFolders:(BOOL)includeMountFolders start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (int)getFoldersAndFileEntriesAndFileShortcutsCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error;
-- (int)getFoldersAndFileEntriesAndFileShortcutsCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error;
-- (int)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error;
-- (int)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId status:(int)status includeMountfolders:(BOOL)includeMountfolders error:(NSError **)error;
+- (NSNumber *)getFoldersAndFileEntriesAndFileShortcutsCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error;
+- (NSNumber *)getFoldersAndFileEntriesAndFileShortcutsCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error;
+- (NSNumber *)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error;
+- (NSNumber *)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId status:(int)status includeMountfolders:(BOOL)includeMountfolders error:(NSError **)error;
 - (NSArray *)getMountFoldersWithGroupId:(long)groupId parentFolderId:(long)parentFolderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (int)getMountFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error;
+- (NSNumber *)getMountFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error;
 - (void)getSubfolderIdsWithFolderIds:(NSArray *)folderIds groupId:(long)groupId folderId:(long)folderId error:(NSError **)error;
 - (NSArray *)getSubfolderIdsWithGroupId:(long)groupId folderId:(long)folderId recurse:(BOOL)recurse error:(NSError **)error;
 - (BOOL)hasFolderLockWithFolderId:(long)folderId error:(NSError **)error;

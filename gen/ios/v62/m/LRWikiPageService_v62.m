@@ -342,7 +342,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getPagesCountWithGroupId:(long)groupId nodeId:(long)nodeId head:(BOOL)head error:(NSError **)error {
+- (NSNumber *)getPagesCountWithGroupId:(long)groupId nodeId:(long)nodeId head:(BOOL)head error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"nodeId": @(nodeId),
@@ -351,10 +351,10 @@
 
 	NSDictionary *_command = @{@"/wikipage/get-pages-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getPagesCountWithGroupId:(long)groupId userId:(long)userId nodeId:(long)nodeId status:(int)status error:(NSError **)error {
+- (NSNumber *)getPagesCountWithGroupId:(long)groupId userId:(long)userId nodeId:(long)nodeId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -364,7 +364,7 @@
 
 	NSDictionary *_command = @{@"/wikipage/get-pages-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSString *)getPagesRssWithCompanyId:(long)companyId nodeId:(long)nodeId title:(NSString *)title max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL locale:(NSString *)locale error:(NSError **)error {
@@ -419,7 +419,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getRecentChangesCountWithGroupId:(long)groupId nodeId:(long)nodeId error:(NSError **)error {
+- (NSNumber *)getRecentChangesCountWithGroupId:(long)groupId nodeId:(long)nodeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"nodeId": @(nodeId)
@@ -427,7 +427,7 @@
 
 	NSDictionary *_command = @{@"/wikipage/get-recent-changes-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getTempPageAttachmentNamesWithNodeId:(long)nodeId tempFolderName:(NSString *)tempFolderName error:(NSError **)error {

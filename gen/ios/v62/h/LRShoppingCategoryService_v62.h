@@ -24,7 +24,7 @@
 - (void)deleteCategoryWithCategoryId:(long)categoryId error:(NSError **)error;
 - (NSArray *)getCategoriesWithGroupId:(long)groupId error:(NSError **)error;
 - (NSArray *)getCategoriesWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId start:(int)start end:(int)end error:(NSError **)error;
-- (int)getCategoriesCountWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId error:(NSError **)error;
+- (NSNumber *)getCategoriesCountWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId error:(NSError **)error;
 - (NSDictionary *)getCategoryWithCategoryId:(long)categoryId error:(NSError **)error;
 - (void)getSubcategoryIdsWithCategoryIds:(NSArray *)categoryIds groupId:(long)groupId categoryId:(long)categoryId error:(NSError **)error;
 - (NSDictionary *)updateCategoryWithCategoryId:(long)categoryId parentCategoryId:(long)parentCategoryId name:(NSString *)name description:(NSString *)description mergeWithParentCategory:(BOOL)mergeWithParentCategory serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

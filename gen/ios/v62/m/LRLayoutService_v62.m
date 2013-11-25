@@ -161,7 +161,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (long)exportLayoutsAsFileInBackgroundWithTaskName:(NSString *)taskName groupId:(long)groupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap startDate:(long)startDate endDate:(long)endDate fileName:(NSString *)fileName error:(NSError **)error {
+- (NSNumber *)exportLayoutsAsFileInBackgroundWithTaskName:(NSString *)taskName groupId:(long)groupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap startDate:(long)startDate endDate:(long)endDate fileName:(NSString *)fileName error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"taskName": taskName,
 		@"groupId": @(groupId),
@@ -175,7 +175,7 @@
 
 	NSDictionary *_command = @{@"/layout/export-layouts-as-file-in-background": _params};
 
-	return (long)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)exportPortletInfoWithCompanyId:(long)companyId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long)startDate endDate:(long)endDate error:(NSError **)error {
@@ -235,7 +235,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (long)exportPortletInfoAsFileInBackgroundWithTaskName:(NSString *)taskName portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long)startDate endDate:(long)endDate fileName:(NSString *)fileName error:(NSError **)error {
+- (NSNumber *)exportPortletInfoAsFileInBackgroundWithTaskName:(NSString *)taskName portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long)startDate endDate:(long)endDate fileName:(NSString *)fileName error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"taskName": taskName,
 		@"portletId": portletId,
@@ -247,10 +247,10 @@
 
 	NSDictionary *_command = @{@"/layout/export-portlet-info-as-file-in-background": _params};
 
-	return (long)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (long)exportPortletInfoAsFileInBackgroundWithTaskName:(NSString *)taskName plid:(long)plid groupId:(long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long)startDate endDate:(long)endDate fileName:(NSString *)fileName error:(NSError **)error {
+- (NSNumber *)exportPortletInfoAsFileInBackgroundWithTaskName:(NSString *)taskName plid:(long)plid groupId:(long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long)startDate endDate:(long)endDate fileName:(NSString *)fileName error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"taskName": taskName,
 		@"plid": @(plid),
@@ -264,7 +264,7 @@
 
 	NSDictionary *_command = @{@"/layout/export-portlet-info-as-file-in-background": _params};
 
-	return (long)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getAncestorLayoutsWithPlid:(long)plid error:(NSError **)error {
@@ -277,7 +277,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (long)getDefaultPlidWithGroupId:(long)groupId scopeGroupId:(long)scopeGroupId portletId:(NSString *)portletId error:(NSError **)error {
+- (NSNumber *)getDefaultPlidWithGroupId:(long)groupId scopeGroupId:(long)scopeGroupId portletId:(NSString *)portletId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"scopeGroupId": @(scopeGroupId),
@@ -286,10 +286,10 @@
 
 	NSDictionary *_command = @{@"/layout/get-default-plid": _params};
 
-	return (long)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (long)getDefaultPlidWithGroupId:(long)groupId scopeGroupId:(long)scopeGroupId privateLayout:(BOOL)privateLayout portletId:(NSString *)portletId error:(NSError **)error {
+- (NSNumber *)getDefaultPlidWithGroupId:(long)groupId scopeGroupId:(long)scopeGroupId privateLayout:(BOOL)privateLayout portletId:(NSString *)portletId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"scopeGroupId": @(scopeGroupId),
@@ -299,7 +299,7 @@
 
 	NSDictionary *_command = @{@"/layout/get-default-plid": _params};
 
-	return (long)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getLayoutByUuidAndGroupIdWithUuid:(NSString *)uuid groupId:(long)groupId privateLayout:(BOOL)privateLayout error:(NSError **)error {
@@ -415,7 +415,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (long)importLayoutsInBackgroundWithTaskName:(NSString *)taskName groupId:(long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
+- (NSNumber *)importLayoutsInBackgroundWithTaskName:(NSString *)taskName groupId:(long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"taskName": taskName,
 		@"groupId": @(groupId),
@@ -426,7 +426,7 @@
 
 	NSDictionary *_command = @{@"/layout/import-layouts-in-background": _params};
 
-	return (long)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (void)importPortletInfoWithPortletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
@@ -468,7 +468,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (long)importPortletInfoInBackgroundWithTaskName:(NSString *)taskName plid:(long)plid groupId:(long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
+- (NSNumber *)importPortletInfoInBackgroundWithTaskName:(NSString *)taskName plid:(long)plid groupId:(long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"taskName": taskName,
 		@"plid": @(plid),
@@ -480,7 +480,7 @@
 
 	NSDictionary *_command = @{@"/layout/import-portlet-info-in-background": _params};
 
-	return (long)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (void)schedulePublishToLiveWithSourceGroupId:(long)sourceGroupId targetGroupId:(long)targetGroupId privateLayout:(BOOL)privateLayout layoutIdMap:(NSDictionary *)layoutIdMap parameterMap:(NSDictionary *)parameterMap scope:(NSString *)scope startDate:(long)startDate endDate:(long)endDate groupName:(NSString *)groupName cronText:(NSString *)cronText schedulerStartDate:(long)schedulerStartDate schedulerEndDate:(long)schedulerEndDate description:(NSString *)description error:(NSError **)error {

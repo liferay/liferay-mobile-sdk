@@ -71,7 +71,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getEntriesCountWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
+- (NSNumber *)getEntriesCountWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId)
@@ -79,10 +79,10 @@
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getEntriesCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error {
+- (NSNumber *)getEntriesCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -91,7 +91,7 @@
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getEntryWithEntryId:(long)entryId error:(NSError **)error {
@@ -104,7 +104,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersEntriesCountWithGroupId:(long)groupId folderIds:(NSArray *)folderIds error:(NSError **)error {
+- (NSNumber *)getFoldersEntriesCountWithGroupId:(long)groupId folderIds:(NSArray *)folderIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderIds": folderIds
@@ -112,7 +112,7 @@
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-folders-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getGroupEntriesWithGroupId:(long)groupId start:(int)start end:(int)end error:(NSError **)error {
@@ -154,17 +154,17 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupEntriesCountWithGroupId:(long)groupId error:(NSError **)error {
+- (NSNumber *)getGroupEntriesCountWithGroupId:(long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId)
 	};
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-group-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupEntriesCountWithGroupId:(long)groupId userId:(long)userId error:(NSError **)error {
+- (NSNumber *)getGroupEntriesCountWithGroupId:(long)groupId userId:(long)userId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId)
@@ -172,10 +172,10 @@
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-group-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupEntriesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId error:(NSError **)error {
+- (NSNumber *)getGroupEntriesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -184,7 +184,7 @@
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-group-entries-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)moveEntryWithEntryId:(long)entryId parentFolderId:(long)parentFolderId error:(NSError **)error {

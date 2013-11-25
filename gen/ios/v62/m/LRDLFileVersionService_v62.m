@@ -40,7 +40,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getFileVersionsCountWithFileEntryId:(long)fileEntryId status:(int)status error:(NSError **)error {
+- (NSNumber *)getFileVersionsCountWithFileEntryId:(long)fileEntryId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId),
 		@"status": @(status)
@@ -48,7 +48,7 @@
 
 	NSDictionary *_command = @{@"/dlfileversion/get-file-versions-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getLatestFileVersionWithFileEntryId:(long)fileEntryId error:(NSError **)error {

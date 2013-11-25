@@ -160,7 +160,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getCategoryMessagesCountWithGroupId:(long)groupId categoryId:(long)categoryId status:(int)status error:(NSError **)error {
+- (NSNumber *)getCategoryMessagesCountWithGroupId:(long)groupId categoryId:(long)categoryId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
@@ -169,7 +169,7 @@
 
 	NSDictionary *_command = @{@"/mbmessage/get-category-messages-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSString *)getCategoryMessagesRssWithGroupId:(long)groupId categoryId:(long)categoryId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
@@ -209,7 +209,7 @@
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupMessagesCountWithGroupId:(long)groupId status:(int)status error:(NSError **)error {
+- (NSNumber *)getGroupMessagesCountWithGroupId:(long)groupId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"status": @(status)
@@ -217,7 +217,7 @@
 
 	NSDictionary *_command = @{@"/mbmessage/get-group-messages-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSString *)getGroupMessagesRssWithGroupId:(long)groupId userId:(long)userId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
@@ -280,7 +280,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (int)getThreadAnswersCountWithGroupId:(long)groupId categoryId:(long)categoryId threadId:(long)threadId error:(NSError **)error {
+- (NSNumber *)getThreadAnswersCountWithGroupId:(long)groupId categoryId:(long)categoryId threadId:(long)threadId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
@@ -289,7 +289,7 @@
 
 	NSDictionary *_command = @{@"/mbmessage/get-thread-answers-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getThreadMessagesWithGroupId:(long)groupId categoryId:(long)categoryId threadId:(long)threadId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
@@ -307,7 +307,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getThreadMessagesCountWithGroupId:(long)groupId categoryId:(long)categoryId threadId:(long)threadId status:(int)status error:(NSError **)error {
+- (NSNumber *)getThreadMessagesCountWithGroupId:(long)groupId categoryId:(long)categoryId threadId:(long)threadId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
@@ -317,7 +317,7 @@
 
 	NSDictionary *_command = @{@"/mbmessage/get-thread-messages-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSString *)getThreadMessagesRssWithThreadId:(long)threadId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {

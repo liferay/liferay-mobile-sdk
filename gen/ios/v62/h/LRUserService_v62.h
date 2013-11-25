@@ -34,7 +34,7 @@
 - (void)deleteRoleUserWithRoleId:(long)roleId userId:(long)userId error:(NSError **)error;
 - (void)deleteUserWithUserId:(long)userId error:(NSError **)error;
 - (NSArray *)getCompanyUsersWithCompanyId:(long)companyId start:(int)start end:(int)end error:(NSError **)error;
-- (int)getCompanyUsersCountWithCompanyId:(long)companyId error:(NSError **)error;
+- (NSNumber *)getCompanyUsersCountWithCompanyId:(long)companyId error:(NSError **)error;
 - (NSArray *)getGroupUserIdsWithGroupId:(long)groupId error:(NSError **)error;
 - (NSArray *)getGroupUsersWithGroupId:(long)groupId error:(NSError **)error;
 - (NSArray *)getOrganizationUserIdsWithOrganizationId:(long)organizationId error:(NSError **)error;
@@ -44,8 +44,8 @@
 - (NSDictionary *)getUserByIdWithUserId:(long)userId error:(NSError **)error;
 - (NSDictionary *)getUserByScreenNameWithCompanyId:(long)companyId screenName:(NSString *)screenName error:(NSError **)error;
 - (NSArray *)getUserGroupUsersWithUserGroupId:(long)userGroupId error:(NSError **)error;
-- (long)getUserIdByEmailAddressWithCompanyId:(long)companyId emailAddress:(NSString *)emailAddress error:(NSError **)error;
-- (long)getUserIdByScreenNameWithCompanyId:(long)companyId screenName:(NSString *)screenName error:(NSError **)error;
+- (NSNumber *)getUserIdByEmailAddressWithCompanyId:(long)companyId emailAddress:(NSString *)emailAddress error:(NSError **)error;
+- (NSNumber *)getUserIdByScreenNameWithCompanyId:(long)companyId screenName:(NSString *)screenName error:(NSError **)error;
 - (BOOL)hasGroupUserWithGroupId:(long)groupId userId:(long)userId error:(NSError **)error;
 - (BOOL)hasRoleUserWithRoleId:(long)roleId userId:(long)userId error:(NSError **)error;
 - (BOOL)hasRoleUserWithCompanyId:(long)companyId name:(NSString *)name userId:(long)userId inherited:(BOOL)inherited error:(NSError **)error;

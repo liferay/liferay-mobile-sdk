@@ -45,12 +45,12 @@
 - (NSDictionary *)getPageWithNodeId:(long)nodeId title:(NSString *)title version:(double)version error:(NSError **)error;
 - (NSArray *)getPagesWithGroupId:(long)groupId userId:(long)userId nodeId:(long)nodeId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
 - (NSArray *)getPagesWithGroupId:(long)groupId nodeId:(long)nodeId head:(BOOL)head status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (int)getPagesCountWithGroupId:(long)groupId nodeId:(long)nodeId head:(BOOL)head error:(NSError **)error;
-- (int)getPagesCountWithGroupId:(long)groupId userId:(long)userId nodeId:(long)nodeId status:(int)status error:(NSError **)error;
+- (NSNumber *)getPagesCountWithGroupId:(long)groupId nodeId:(long)nodeId head:(BOOL)head error:(NSError **)error;
+- (NSNumber *)getPagesCountWithGroupId:(long)groupId userId:(long)userId nodeId:(long)nodeId status:(int)status error:(NSError **)error;
 - (NSString *)getPagesRssWithCompanyId:(long)companyId nodeId:(long)nodeId title:(NSString *)title max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL locale:(NSString *)locale error:(NSError **)error;
 - (NSString *)getPagesRssWithCompanyId:(long)companyId nodeId:(long)nodeId title:(NSString *)title max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL attachmentURLPrefix:(NSString *)attachmentURLPrefix locale:(NSString *)locale error:(NSError **)error;
 - (NSArray *)getRecentChangesWithGroupId:(long)groupId nodeId:(long)nodeId start:(int)start end:(int)end error:(NSError **)error;
-- (int)getRecentChangesCountWithGroupId:(long)groupId nodeId:(long)nodeId error:(NSError **)error;
+- (NSNumber *)getRecentChangesCountWithGroupId:(long)groupId nodeId:(long)nodeId error:(NSError **)error;
 - (NSArray *)getTempPageAttachmentNamesWithNodeId:(long)nodeId tempFolderName:(NSString *)tempFolderName error:(NSError **)error;
 - (void)movePageWithNodeId:(long)nodeId title:(NSString *)title newTitle:(NSString *)newTitle serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)movePageAttachmentToTrashWithNodeId:(long)nodeId title:(NSString *)title fileName:(NSString *)fileName error:(NSError **)error;

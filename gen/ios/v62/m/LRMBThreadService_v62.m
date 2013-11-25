@@ -89,7 +89,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupThreadsCountWithGroupId:(long)groupId userId:(long)userId status:(int)status error:(NSError **)error {
+- (NSNumber *)getGroupThreadsCountWithGroupId:(long)groupId userId:(long)userId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -98,10 +98,10 @@
 
 	NSDictionary *_command = @{@"/mbthread/get-group-threads-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupThreadsCountWithGroupId:(long)groupId userId:(long)userId modifiedDate:(long)modifiedDate status:(int)status error:(NSError **)error {
+- (NSNumber *)getGroupThreadsCountWithGroupId:(long)groupId userId:(long)userId modifiedDate:(long)modifiedDate status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -111,10 +111,10 @@
 
 	NSDictionary *_command = @{@"/mbthread/get-group-threads-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupThreadsCountWithGroupId:(long)groupId userId:(long)userId status:(int)status subscribed:(BOOL)subscribed error:(NSError **)error {
+- (NSNumber *)getGroupThreadsCountWithGroupId:(long)groupId userId:(long)userId status:(int)status subscribed:(BOOL)subscribed error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -124,10 +124,10 @@
 
 	NSDictionary *_command = @{@"/mbthread/get-group-threads-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupThreadsCountWithGroupId:(long)groupId userId:(long)userId status:(int)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous error:(NSError **)error {
+- (NSNumber *)getGroupThreadsCountWithGroupId:(long)groupId userId:(long)userId status:(int)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -138,7 +138,7 @@
 
 	NSDictionary *_command = @{@"/mbthread/get-group-threads-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getThreadsWithGroupId:(long)groupId categoryId:(long)categoryId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
@@ -155,7 +155,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getThreadsCountWithGroupId:(long)groupId categoryId:(long)categoryId status:(int)status error:(NSError **)error {
+- (NSNumber *)getThreadsCountWithGroupId:(long)groupId categoryId:(long)categoryId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
@@ -164,7 +164,7 @@
 
 	NSDictionary *_command = @{@"/mbthread/get-threads-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)lockThreadWithThreadId:(long)threadId error:(NSError **)error {

@@ -82,7 +82,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getFileEntriesAndFileShortcutsCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error {
+- (NSNumber *)getFileEntriesAndFileShortcutsCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -91,10 +91,10 @@
 
 	NSDictionary *_command = @{@"/dlfolder/get-file-entries-and-file-shortcuts-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFileEntriesAndFileShortcutsCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes error:(NSError **)error {
+- (NSNumber *)getFileEntriesAndFileShortcutsCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -104,7 +104,7 @@
 
 	NSDictionary *_command = @{@"/dlfolder/get-file-entries-and-file-shortcuts-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getFolderWithFolderId:(long)folderId error:(NSError **)error {
@@ -203,7 +203,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersAndFileEntriesAndFileShortcutsCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error {
+- (NSNumber *)getFoldersAndFileEntriesAndFileShortcutsCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -213,10 +213,10 @@
 
 	NSDictionary *_command = @{@"/dlfolder/get-folders-and-file-entries-and-file-shortcuts-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersAndFileEntriesAndFileShortcutsCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error {
+- (NSNumber *)getFoldersAndFileEntriesAndFileShortcutsCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -227,10 +227,10 @@
 
 	NSDictionary *_command = @{@"/dlfolder/get-folders-and-file-entries-and-file-shortcuts-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error {
+- (NSNumber *)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId)
@@ -238,10 +238,10 @@
 
 	NSDictionary *_command = @{@"/dlfolder/get-folders-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId status:(int)status includeMountfolders:(BOOL)includeMountfolders error:(NSError **)error {
+- (NSNumber *)getFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId status:(int)status includeMountfolders:(BOOL)includeMountfolders error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId),
@@ -251,7 +251,7 @@
 
 	NSDictionary *_command = @{@"/dlfolder/get-folders-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getMountFoldersWithGroupId:(long)groupId parentFolderId:(long)parentFolderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
@@ -268,7 +268,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getMountFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error {
+- (NSNumber *)getMountFoldersCountWithGroupId:(long)groupId parentFolderId:(long)parentFolderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId)
@@ -276,7 +276,7 @@
 
 	NSDictionary *_command = @{@"/dlfolder/get-mount-folders-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (void)getSubfolderIdsWithFolderIds:(NSArray *)folderIds groupId:(long)groupId folderId:(long)folderId error:(NSError **)error {

@@ -21,7 +21,7 @@
 @interface LRStagingService_v62 : LRBaseService
 
 - (void)cleanUpStagingRequestWithStagingRequestId:(long)stagingRequestId error:(NSError **)error;
-- (long)createStagingRequestWithGroupId:(long)groupId checksum:(NSString *)checksum error:(NSError **)error;
+- (NSNumber *)createStagingRequestWithGroupId:(long)groupId checksum:(NSString *)checksum error:(NSError **)error;
 - (void)publishStagingRequestWithStagingRequestId:(long)stagingRequestId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap error:(NSError **)error;
 - (void)updateStagingRequestWithStagingRequestId:(long)stagingRequestId fileName:(NSString *)fileName bytes:(NSArray *)bytes error:(NSError **)error;
 - (NSDictionary *)validateStagingRequestWithStagingRequestId:(long)stagingRequestId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap error:(NSError **)error;

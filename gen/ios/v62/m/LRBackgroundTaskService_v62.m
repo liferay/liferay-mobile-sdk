@@ -29,7 +29,7 @@
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (int)getBackgroundTasksCountWithGroupId:(long)groupId taskExecutorClassName:(NSString *)taskExecutorClassName completed:(NSString *)completed error:(NSError **)error {
+- (NSNumber *)getBackgroundTasksCountWithGroupId:(long)groupId taskExecutorClassName:(NSString *)taskExecutorClassName completed:(NSString *)completed error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"taskExecutorClassName": taskExecutorClassName,
@@ -38,7 +38,7 @@
 
 	NSDictionary *_command = @{@"/backgroundtask/get-background-tasks-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 @end

@@ -74,14 +74,14 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getGroupTagsCountWithGroupId:(long)groupId error:(NSError **)error {
+- (NSNumber *)getGroupTagsCountWithGroupId:(long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId)
 	};
 
 	NSDictionary *_command = @{@"/assettag/get-group-tags-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getGroupTagsDisplayWithGroupId:(long)groupId name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error {
@@ -196,7 +196,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getTagsCountWithGroupId:(long)groupId name:(NSString *)name error:(NSError **)error {
+- (NSNumber *)getTagsCountWithGroupId:(long)groupId name:(NSString *)name error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"name": name
@@ -204,10 +204,10 @@
 
 	NSDictionary *_command = @{@"/assettag/get-tags-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getTagsCountWithGroupId:(long)groupId classNameId:(long)classNameId name:(NSString *)name error:(NSError **)error {
+- (NSNumber *)getTagsCountWithGroupId:(long)groupId classNameId:(long)classNameId name:(NSString *)name error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
@@ -216,10 +216,10 @@
 
 	NSDictionary *_command = @{@"/assettag/get-tags-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getTagsCountWithGroupId:(long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties error:(NSError **)error {
+- (NSNumber *)getTagsCountWithGroupId:(long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"name": name,
@@ -228,7 +228,7 @@
 
 	NSDictionary *_command = @{@"/assettag/get-tags-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (void)mergeTagsWithFromTagId:(long)fromTagId toTagId:(long)toTagId overrideProperties:(BOOL)overrideProperties error:(NSError **)error {

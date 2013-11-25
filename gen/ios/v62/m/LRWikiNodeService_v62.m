@@ -108,17 +108,17 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (int)getNodesCountWithGroupId:(long)groupId error:(NSError **)error {
+- (NSNumber *)getNodesCountWithGroupId:(long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId)
 	};
 
 	NSDictionary *_command = @{@"/wikinode/get-nodes-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (int)getNodesCountWithGroupId:(long)groupId status:(int)status error:(NSError **)error {
+- (NSNumber *)getNodesCountWithGroupId:(long)groupId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"status": @(status)
@@ -126,7 +126,7 @@
 
 	NSDictionary *_command = @{@"/wikinode/get-nodes-count": _params};
 
-	return (int)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)moveNodeToTrashWithNodeId:(long)nodeId error:(NSError **)error {
