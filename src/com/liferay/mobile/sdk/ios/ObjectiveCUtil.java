@@ -25,7 +25,7 @@ public class ObjectiveCUtil extends LanguageUtil {
 		type = getType(type);
 
 		if (type.equals("BOOL") || type.equals("double") ||
-			type.equals("int") || type.equals("long")) {
+			type.equals("int") || type.equals("long long")) {
 
 			name = "@("  + name + ")";
 		}
@@ -37,7 +37,7 @@ public class ObjectiveCUtil extends LanguageUtil {
 		type = getType(type);
 
 		if (type.equals("double") || type.equals("int") ||
-			type.equals("long")) {
+			type.equals("long long")) {
 
 			type =  "NSNumber *";
 		}
@@ -58,6 +58,10 @@ public class ObjectiveCUtil extends LanguageUtil {
 
 		if (type.equals("boolean")) {
 			return "BOOL";
+		}
+
+		if (type.equals("long")) {
+			return "long long";
 		}
 
 		if (type.equals("double") || type.equals("int") ||
