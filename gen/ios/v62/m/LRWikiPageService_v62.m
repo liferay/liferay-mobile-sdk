@@ -19,7 +19,7 @@
  */
 @implementation LRWikiPageService_v62
 
-- (NSDictionary *)addPageWithNodeId:(long)nodeId title:(NSString *)title content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addPageWithNodeId:(long long)nodeId title:(NSString *)title content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -34,7 +34,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addPageWithNodeId:(long)nodeId title:(NSString *)title content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit format:(NSString *)format parentTitle:(NSString *)parentTitle redirectTitle:(NSString *)redirectTitle serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addPageWithNodeId:(long long)nodeId title:(NSString *)title content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit format:(NSString *)format parentTitle:(NSString *)parentTitle redirectTitle:(NSString *)redirectTitle serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -52,7 +52,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)addPageAttachmentWithNodeId:(long)nodeId title:(NSString *)title fileName:(NSString *)fileName file:(NSDictionary *)file mimeType:(NSString *)mimeType error:(NSError **)error {
+- (void)addPageAttachmentWithNodeId:(long long)nodeId title:(NSString *)title fileName:(NSString *)fileName file:(NSDictionary *)file mimeType:(NSString *)mimeType error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -66,7 +66,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)addPageAttachmentsWithNodeId:(long)nodeId title:(NSString *)title inputStreamOVPs:(NSArray *)inputStreamOVPs error:(NSError **)error {
+- (void)addPageAttachmentsWithNodeId:(long long)nodeId title:(NSString *)title inputStreamOVPs:(NSArray *)inputStreamOVPs error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -78,7 +78,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)changeParentWithNodeId:(long)nodeId title:(NSString *)title newParentTitle:(NSString *)newParentTitle serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (void)changeParentWithNodeId:(long long)nodeId title:(NSString *)title newParentTitle:(NSString *)newParentTitle serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -91,7 +91,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)copyPageAttachmentsWithTemplateNodeId:(long)templateNodeId templateTitle:(NSString *)templateTitle nodeId:(long)nodeId title:(NSString *)title error:(NSError **)error {
+- (void)copyPageAttachmentsWithTemplateNodeId:(long long)templateNodeId templateTitle:(NSString *)templateTitle nodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"templateNodeId": @(templateNodeId),
 		@"templateTitle": templateTitle,
@@ -104,7 +104,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deletePageWithNodeId:(long)nodeId title:(NSString *)title error:(NSError **)error {
+- (void)deletePageWithNodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title
@@ -115,7 +115,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deletePageWithNodeId:(long)nodeId title:(NSString *)title version:(double)version error:(NSError **)error {
+- (void)deletePageWithNodeId:(long long)nodeId title:(NSString *)title version:(double)version error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -127,7 +127,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deletePageAttachmentWithNodeId:(long)nodeId title:(NSString *)title fileName:(NSString *)fileName error:(NSError **)error {
+- (void)deletePageAttachmentWithNodeId:(long long)nodeId title:(NSString *)title fileName:(NSString *)fileName error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -139,7 +139,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deletePageAttachmentsWithNodeId:(long)nodeId title:(NSString *)title error:(NSError **)error {
+- (void)deletePageAttachmentsWithNodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title
@@ -150,7 +150,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteTempPageAttachmentWithNodeId:(long)nodeId fileName:(NSString *)fileName tempFolderName:(NSString *)tempFolderName error:(NSError **)error {
+- (void)deleteTempPageAttachmentWithNodeId:(long long)nodeId fileName:(NSString *)fileName tempFolderName:(NSString *)tempFolderName error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"fileName": fileName,
@@ -162,7 +162,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteTrashPageAttachmentsWithNodeId:(long)nodeId title:(NSString *)title error:(NSError **)error {
+- (void)deleteTrashPageAttachmentsWithNodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title
@@ -173,7 +173,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)discardDraftWithNodeId:(long)nodeId title:(NSString *)title version:(double)version error:(NSError **)error {
+- (void)discardDraftWithNodeId:(long long)nodeId title:(NSString *)title version:(double)version error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -185,7 +185,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getChildrenWithGroupId:(long)groupId nodeId:(long)nodeId head:(BOOL)head parentTitle:(NSString *)parentTitle error:(NSError **)error {
+- (NSArray *)getChildrenWithGroupId:(long long)groupId nodeId:(long long)nodeId head:(BOOL)head parentTitle:(NSString *)parentTitle error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"nodeId": @(nodeId),
@@ -198,7 +198,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getDraftPageWithNodeId:(long)nodeId title:(NSString *)title error:(NSError **)error {
+- (NSDictionary *)getDraftPageWithNodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title
@@ -209,7 +209,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getNodePagesWithNodeId:(long)nodeId max:(int)max error:(NSError **)error {
+- (NSArray *)getNodePagesWithNodeId:(long long)nodeId max:(int)max error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"max": @(max)
@@ -220,7 +220,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getNodePagesRssWithNodeId:(long)nodeId max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL error:(NSError **)error {
+- (NSString *)getNodePagesRssWithNodeId:(long long)nodeId max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"max": @(max),
@@ -236,7 +236,7 @@
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getNodePagesRssWithNodeId:(long)nodeId max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL attachmentURLPrefix:(NSString *)attachmentURLPrefix error:(NSError **)error {
+- (NSString *)getNodePagesRssWithNodeId:(long long)nodeId max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL attachmentURLPrefix:(NSString *)attachmentURLPrefix error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"max": @(max),
@@ -253,7 +253,7 @@
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getOrphansWithGroupId:(long)groupId nodeId:(long)nodeId error:(NSError **)error {
+- (NSArray *)getOrphansWithGroupId:(long long)groupId nodeId:(long long)nodeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"nodeId": @(nodeId)
@@ -264,7 +264,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getPageWithNodeId:(long)nodeId title:(NSString *)title error:(NSError **)error {
+- (NSDictionary *)getPageWithNodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title
@@ -275,7 +275,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getPageWithGroupId:(long)groupId nodeId:(long)nodeId title:(NSString *)title error:(NSError **)error {
+- (NSDictionary *)getPageWithGroupId:(long long)groupId nodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"nodeId": @(nodeId),
@@ -287,7 +287,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getPageWithNodeId:(long)nodeId title:(NSString *)title head:(NSDictionary *)head error:(NSError **)error {
+- (NSDictionary *)getPageWithNodeId:(long long)nodeId title:(NSString *)title head:(NSDictionary *)head error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -299,7 +299,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getPageWithNodeId:(long)nodeId title:(NSString *)title version:(double)version error:(NSError **)error {
+- (NSDictionary *)getPageWithNodeId:(long long)nodeId title:(NSString *)title version:(double)version error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -311,7 +311,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getPagesWithGroupId:(long)groupId userId:(long)userId nodeId:(long)nodeId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getPagesWithGroupId:(long long)groupId userId:(long long)userId nodeId:(long long)nodeId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -326,7 +326,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getPagesWithGroupId:(long)groupId nodeId:(long)nodeId head:(BOOL)head status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+- (NSArray *)getPagesWithGroupId:(long long)groupId nodeId:(long long)nodeId head:(BOOL)head status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"nodeId": @(nodeId),
@@ -342,7 +342,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getPagesCountWithGroupId:(long)groupId nodeId:(long)nodeId head:(BOOL)head error:(NSError **)error {
+- (NSNumber *)getPagesCountWithGroupId:(long long)groupId nodeId:(long long)nodeId head:(BOOL)head error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"nodeId": @(nodeId),
@@ -354,7 +354,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getPagesCountWithGroupId:(long)groupId userId:(long)userId nodeId:(long)nodeId status:(int)status error:(NSError **)error {
+- (NSNumber *)getPagesCountWithGroupId:(long long)groupId userId:(long long)userId nodeId:(long long)nodeId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -367,7 +367,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getPagesRssWithCompanyId:(long)companyId nodeId:(long)nodeId title:(NSString *)title max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL locale:(NSString *)locale error:(NSError **)error {
+- (NSString *)getPagesRssWithCompanyId:(long long)companyId nodeId:(long long)nodeId title:(NSString *)title max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL locale:(NSString *)locale error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"nodeId": @(nodeId),
@@ -386,7 +386,7 @@
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getPagesRssWithCompanyId:(long)companyId nodeId:(long)nodeId title:(NSString *)title max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL attachmentURLPrefix:(NSString *)attachmentURLPrefix locale:(NSString *)locale error:(NSError **)error {
+- (NSString *)getPagesRssWithCompanyId:(long long)companyId nodeId:(long long)nodeId title:(NSString *)title max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL attachmentURLPrefix:(NSString *)attachmentURLPrefix locale:(NSString *)locale error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"nodeId": @(nodeId),
@@ -406,7 +406,7 @@
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getRecentChangesWithGroupId:(long)groupId nodeId:(long)nodeId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getRecentChangesWithGroupId:(long long)groupId nodeId:(long long)nodeId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"nodeId": @(nodeId),
@@ -419,7 +419,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getRecentChangesCountWithGroupId:(long)groupId nodeId:(long)nodeId error:(NSError **)error {
+- (NSNumber *)getRecentChangesCountWithGroupId:(long long)groupId nodeId:(long long)nodeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"nodeId": @(nodeId)
@@ -430,7 +430,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getTempPageAttachmentNamesWithNodeId:(long)nodeId tempFolderName:(NSString *)tempFolderName error:(NSError **)error {
+- (NSArray *)getTempPageAttachmentNamesWithNodeId:(long long)nodeId tempFolderName:(NSString *)tempFolderName error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"tempFolderName": tempFolderName
@@ -441,7 +441,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (void)movePageWithNodeId:(long)nodeId title:(NSString *)title newTitle:(NSString *)newTitle serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (void)movePageWithNodeId:(long long)nodeId title:(NSString *)title newTitle:(NSString *)newTitle serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -454,7 +454,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)movePageAttachmentToTrashWithNodeId:(long)nodeId title:(NSString *)title fileName:(NSString *)fileName error:(NSError **)error {
+- (NSDictionary *)movePageAttachmentToTrashWithNodeId:(long long)nodeId title:(NSString *)title fileName:(NSString *)fileName error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -466,7 +466,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)movePageToTrashWithNodeId:(long)nodeId title:(NSString *)title error:(NSError **)error {
+- (NSDictionary *)movePageToTrashWithNodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title
@@ -477,7 +477,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)movePageToTrashWithNodeId:(long)nodeId title:(NSString *)title version:(double)version error:(NSError **)error {
+- (NSDictionary *)movePageToTrashWithNodeId:(long long)nodeId title:(NSString *)title version:(double)version error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -489,7 +489,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)restorePageAttachmentFromTrashWithNodeId:(long)nodeId title:(NSString *)title fileName:(NSString *)fileName error:(NSError **)error {
+- (void)restorePageAttachmentFromTrashWithNodeId:(long long)nodeId title:(NSString *)title fileName:(NSString *)fileName error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -501,7 +501,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)restorePageFromTrashWithResourcePrimKey:(long)resourcePrimKey error:(NSError **)error {
+- (void)restorePageFromTrashWithResourcePrimKey:(long long)resourcePrimKey error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"resourcePrimKey": @(resourcePrimKey)
 	};
@@ -511,7 +511,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)revertPageWithNodeId:(long)nodeId title:(NSString *)title version:(double)version serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)revertPageWithNodeId:(long long)nodeId title:(NSString *)title version:(double)version serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -524,7 +524,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)subscribePageWithNodeId:(long)nodeId title:(NSString *)title error:(NSError **)error {
+- (void)subscribePageWithNodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title
@@ -535,7 +535,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)unsubscribePageWithNodeId:(long)nodeId title:(NSString *)title error:(NSError **)error {
+- (void)unsubscribePageWithNodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title
@@ -546,7 +546,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updatePageWithNodeId:(long)nodeId title:(NSString *)title version:(double)version content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit format:(NSString *)format parentTitle:(NSString *)parentTitle redirectTitle:(NSString *)redirectTitle serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updatePageWithNodeId:(long long)nodeId title:(NSString *)title version:(double)version content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit format:(NSString *)format parentTitle:(NSString *)parentTitle redirectTitle:(NSString *)redirectTitle serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"title": title,

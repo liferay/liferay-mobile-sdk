@@ -19,7 +19,7 @@
  */
 @implementation LREmailAddressService_v62
 
-- (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
+- (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK),
@@ -33,7 +33,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK),
@@ -48,7 +48,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteEmailAddressWithEmailAddressId:(long)emailAddressId error:(NSError **)error {
+- (void)deleteEmailAddressWithEmailAddressId:(long long)emailAddressId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"emailAddressId": @(emailAddressId)
 	};
@@ -58,7 +58,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getEmailAddressWithEmailAddressId:(long)emailAddressId error:(NSError **)error {
+- (NSDictionary *)getEmailAddressWithEmailAddressId:(long long)emailAddressId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"emailAddressId": @(emailAddressId)
 	};
@@ -68,7 +68,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getEmailAddressesWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error {
+- (NSArray *)getEmailAddressesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK)
@@ -79,7 +79,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateEmailAddressWithEmailAddressId:(long)emailAddressId address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
+- (NSDictionary *)updateEmailAddressWithEmailAddressId:(long long)emailAddressId address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"emailAddressId": @(emailAddressId),
 		@"address": address,

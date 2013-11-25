@@ -19,7 +19,7 @@
  */
 @implementation LRBlogsEntryService_v62
 
-- (void)deleteEntryWithEntryId:(long)entryId error:(NSError **)error {
+- (void)deleteEntryWithEntryId:(long long)entryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"entryId": @(entryId)
 	};
@@ -29,7 +29,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCompanyEntriesWithCompanyId:(long)companyId displayDate:(long)displayDate status:(int)status max:(int)max error:(NSError **)error {
+- (NSArray *)getCompanyEntriesWithCompanyId:(long long)companyId displayDate:(long long)displayDate status:(int)status max:(int)max error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"displayDate": @(displayDate),
@@ -42,7 +42,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getCompanyEntriesRssWithCompanyId:(long)companyId displayDate:(long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
+- (NSString *)getCompanyEntriesRssWithCompanyId:(long long)companyId displayDate:(long long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"displayDate": @(displayDate),
@@ -61,7 +61,7 @@
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getEntryWithEntryId:(long)entryId error:(NSError **)error {
+- (NSDictionary *)getEntryWithEntryId:(long long)entryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"entryId": @(entryId)
 	};
@@ -71,7 +71,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getEntryWithGroupId:(long)groupId urlTitle:(NSString *)urlTitle error:(NSError **)error {
+- (NSDictionary *)getEntryWithGroupId:(long long)groupId urlTitle:(NSString *)urlTitle error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"urlTitle": urlTitle
@@ -82,7 +82,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupEntriesWithGroupId:(long)groupId status:(int)status max:(int)max error:(NSError **)error {
+- (NSArray *)getGroupEntriesWithGroupId:(long long)groupId status:(int)status max:(int)max error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"status": @(status),
@@ -94,7 +94,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupEntriesWithGroupId:(long)groupId displayDate:(long)displayDate status:(int)status max:(int)max error:(NSError **)error {
+- (NSArray *)getGroupEntriesWithGroupId:(long long)groupId displayDate:(long long)displayDate status:(int)status max:(int)max error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"displayDate": @(displayDate),
@@ -107,7 +107,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupEntriesWithGroupId:(long)groupId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getGroupEntriesWithGroupId:(long long)groupId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"status": @(status),
@@ -120,7 +120,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupEntriesWithGroupId:(long)groupId displayDate:(long)displayDate status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getGroupEntriesWithGroupId:(long long)groupId displayDate:(long long)displayDate status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"displayDate": @(displayDate),
@@ -134,7 +134,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getGroupEntriesCountWithGroupId:(long)groupId status:(int)status error:(NSError **)error {
+- (NSNumber *)getGroupEntriesCountWithGroupId:(long long)groupId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"status": @(status)
@@ -145,7 +145,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getGroupEntriesCountWithGroupId:(long)groupId displayDate:(long)displayDate status:(int)status error:(NSError **)error {
+- (NSNumber *)getGroupEntriesCountWithGroupId:(long long)groupId displayDate:(long long)displayDate status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"displayDate": @(displayDate),
@@ -157,7 +157,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getGroupEntriesRssWithGroupId:(long)groupId displayDate:(long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
+- (NSString *)getGroupEntriesRssWithGroupId:(long long)groupId displayDate:(long long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"displayDate": @(displayDate),
@@ -176,7 +176,7 @@
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupsEntriesWithCompanyId:(long)companyId groupId:(long)groupId displayDate:(long)displayDate status:(int)status max:(int)max error:(NSError **)error {
+- (NSArray *)getGroupsEntriesWithCompanyId:(long long)companyId groupId:(long long)groupId displayDate:(long long)displayDate status:(int)status max:(int)max error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
@@ -190,7 +190,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getOrganizationEntriesWithOrganizationId:(long)organizationId displayDate:(long)displayDate status:(int)status max:(int)max error:(NSError **)error {
+- (NSArray *)getOrganizationEntriesWithOrganizationId:(long long)organizationId displayDate:(long long)displayDate status:(int)status max:(int)max error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"organizationId": @(organizationId),
 		@"displayDate": @(displayDate),
@@ -203,7 +203,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getOrganizationEntriesRssWithOrganizationId:(long)organizationId displayDate:(long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
+- (NSString *)getOrganizationEntriesRssWithOrganizationId:(long long)organizationId displayDate:(long long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"organizationId": @(organizationId),
 		@"displayDate": @(displayDate),
@@ -222,7 +222,7 @@
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)moveEntryToTrashWithEntryId:(long)entryId error:(NSError **)error {
+- (NSDictionary *)moveEntryToTrashWithEntryId:(long long)entryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"entryId": @(entryId)
 	};
@@ -232,7 +232,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)restoreEntryFromTrashWithEntryId:(long)entryId error:(NSError **)error {
+- (void)restoreEntryFromTrashWithEntryId:(long long)entryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"entryId": @(entryId)
 	};
@@ -242,7 +242,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)subscribeWithGroupId:(long)groupId error:(NSError **)error {
+- (void)subscribeWithGroupId:(long long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId)
 	};
@@ -252,7 +252,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)unsubscribeWithGroupId:(long)groupId error:(NSError **)error {
+- (void)unsubscribeWithGroupId:(long long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId)
 	};

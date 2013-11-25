@@ -19,7 +19,7 @@
  */
 @implementation LRAssetTagPropertyService_v62
 
-- (NSDictionary *)addTagPropertyWithTagId:(long)tagId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
+- (NSDictionary *)addTagPropertyWithTagId:(long long)tagId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"tagId": @(tagId),
 		@"key": key,
@@ -31,7 +31,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteTagPropertyWithTagPropertyId:(long)tagPropertyId error:(NSError **)error {
+- (void)deleteTagPropertyWithTagPropertyId:(long long)tagPropertyId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"tagPropertyId": @(tagPropertyId)
 	};
@@ -41,7 +41,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getTagPropertiesWithTagId:(long)tagId error:(NSError **)error {
+- (NSArray *)getTagPropertiesWithTagId:(long long)tagId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"tagId": @(tagId)
 	};
@@ -51,7 +51,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getTagPropertyValuesWithCompanyId:(long)companyId key:(NSString *)key error:(NSError **)error {
+- (NSArray *)getTagPropertyValuesWithCompanyId:(long long)companyId key:(NSString *)key error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"key": key
@@ -62,7 +62,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateTagPropertyWithTagPropertyId:(long)tagPropertyId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
+- (NSDictionary *)updateTagPropertyWithTagPropertyId:(long long)tagPropertyId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"tagPropertyId": @(tagPropertyId),
 		@"key": key,

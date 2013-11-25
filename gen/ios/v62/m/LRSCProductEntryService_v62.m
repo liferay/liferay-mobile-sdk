@@ -41,7 +41,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteProductEntryWithProductEntryId:(long)productEntryId error:(NSError **)error {
+- (void)deleteProductEntryWithProductEntryId:(long long)productEntryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"productEntryId": @(productEntryId)
 	};
@@ -51,7 +51,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getProductEntryWithProductEntryId:(long)productEntryId error:(NSError **)error {
+- (NSDictionary *)getProductEntryWithProductEntryId:(long long)productEntryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"productEntryId": @(productEntryId)
 	};
@@ -61,7 +61,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateProductEntryWithProductEntryId:(long)productEntryId name:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages error:(NSError **)error {
+- (NSDictionary *)updateProductEntryWithProductEntryId:(long long)productEntryId name:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"productEntryId": @(productEntryId),
 		@"name": name,

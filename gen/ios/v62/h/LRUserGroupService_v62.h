@@ -20,17 +20,17 @@
  */
 @interface LRUserGroupService_v62 : LRBaseService
 
-- (void)addGroupUserGroupsWithGroupId:(long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error;
-- (void)addTeamUserGroupsWithTeamId:(long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error;
+- (void)addGroupUserGroupsWithGroupId:(long long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error;
+- (void)addTeamUserGroupsWithTeamId:(long long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error;
 - (NSDictionary *)addUserGroupWithName:(NSString *)name description:(NSString *)description error:(NSError **)error;
 - (NSDictionary *)addUserGroupWithName:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (void)deleteUserGroupWithUserGroupId:(long)userGroupId error:(NSError **)error;
+- (void)deleteUserGroupWithUserGroupId:(long long)userGroupId error:(NSError **)error;
 - (NSDictionary *)getUserGroupWithName:(NSString *)name error:(NSError **)error;
-- (NSDictionary *)getUserGroupWithUserGroupId:(long)userGroupId error:(NSError **)error;
-- (NSArray *)getUserUserGroupsWithUserId:(long)userId error:(NSError **)error;
-- (void)unsetGroupUserGroupsWithGroupId:(long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error;
-- (void)unsetTeamUserGroupsWithTeamId:(long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error;
-- (NSDictionary *)updateUserGroupWithUserGroupId:(long)userGroupId name:(NSString *)name description:(NSString *)description error:(NSError **)error;
-- (NSDictionary *)updateUserGroupWithUserGroupId:(long)userGroupId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)getUserGroupWithUserGroupId:(long long)userGroupId error:(NSError **)error;
+- (NSArray *)getUserUserGroupsWithUserId:(long long)userId error:(NSError **)error;
+- (void)unsetGroupUserGroupsWithGroupId:(long long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error;
+- (void)unsetTeamUserGroupsWithTeamId:(long long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error;
+- (NSDictionary *)updateUserGroupWithUserGroupId:(long long)userGroupId name:(NSString *)name description:(NSString *)description error:(NSError **)error;
+- (NSDictionary *)updateUserGroupWithUserGroupId:(long long)userGroupId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

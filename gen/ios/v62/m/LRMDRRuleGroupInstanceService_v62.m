@@ -19,7 +19,7 @@
  */
 @implementation LRMDRRuleGroupInstanceService_v62
 
-- (NSDictionary *)addRuleGroupInstanceWithGroupId:(long)groupId className:(NSString *)className classPK:(long)classPK ruleGroupId:(long)ruleGroupId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addRuleGroupInstanceWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK ruleGroupId:(long long)ruleGroupId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"className": className,
@@ -33,7 +33,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addRuleGroupInstanceWithGroupId:(long)groupId className:(NSString *)className classPK:(long)classPK ruleGroupId:(long)ruleGroupId priority:(int)priority serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addRuleGroupInstanceWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK ruleGroupId:(long long)ruleGroupId priority:(int)priority serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"className": className,
@@ -48,7 +48,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteRuleGroupInstanceWithRuleGroupInstanceId:(long)ruleGroupInstanceId error:(NSError **)error {
+- (void)deleteRuleGroupInstanceWithRuleGroupInstanceId:(long long)ruleGroupInstanceId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleGroupInstanceId": @(ruleGroupInstanceId)
 	};
@@ -58,7 +58,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getRuleGroupInstancesWithClassName:(NSString *)className classPK:(long)classPK start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
+- (NSArray *)getRuleGroupInstancesWithClassName:(NSString *)className classPK:(long long)classPK start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK),
@@ -72,7 +72,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getRuleGroupInstancesCountWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error {
+- (NSNumber *)getRuleGroupInstancesCountWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK)
@@ -83,7 +83,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateRuleGroupInstanceWithRuleGroupInstanceId:(long)ruleGroupInstanceId priority:(int)priority error:(NSError **)error {
+- (NSDictionary *)updateRuleGroupInstanceWithRuleGroupInstanceId:(long long)ruleGroupInstanceId priority:(int)priority error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleGroupInstanceId": @(ruleGroupInstanceId),
 		@"priority": @(priority)

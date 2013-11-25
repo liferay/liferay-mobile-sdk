@@ -20,9 +20,9 @@
  */
 @interface LRMembershipRequestService_v62 : LRBaseService
 
-- (NSDictionary *)addMembershipRequestWithGroupId:(long)groupId comments:(NSString *)comments serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (void)deleteMembershipRequestsWithGroupId:(long)groupId statusId:(int)statusId error:(NSError **)error;
-- (NSDictionary *)getMembershipRequestWithMembershipRequestId:(long)membershipRequestId error:(NSError **)error;
-- (void)updateStatusWithMembershipRequestId:(long)membershipRequestId reviewComments:(NSString *)reviewComments statusId:(int)statusId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addMembershipRequestWithGroupId:(long long)groupId comments:(NSString *)comments serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteMembershipRequestsWithGroupId:(long long)groupId statusId:(int)statusId error:(NSError **)error;
+- (NSDictionary *)getMembershipRequestWithMembershipRequestId:(long long)membershipRequestId error:(NSError **)error;
+- (void)updateStatusWithMembershipRequestId:(long long)membershipRequestId reviewComments:(NSString *)reviewComments statusId:(int)statusId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

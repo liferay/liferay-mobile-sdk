@@ -31,7 +31,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getActivitiesWithClassNameId:(long)classNameId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getActivitiesWithClassNameId:(long long)classNameId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"classNameId": @(classNameId),
 		@"start": @(start),
@@ -43,7 +43,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getActivitiesWithMirrorActivityId:(long)mirrorActivityId className:(NSString *)className classPK:(long)classPK start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getActivitiesWithMirrorActivityId:(long long)mirrorActivityId className:(NSString *)className classPK:(long long)classPK start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"mirrorActivityId": @(mirrorActivityId),
 		@"className": className,
@@ -57,7 +57,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getActivitiesWithMirrorActivityId:(long)mirrorActivityId classNameId:(long)classNameId classPK:(long)classPK start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getActivitiesWithMirrorActivityId:(long long)mirrorActivityId classNameId:(long long)classNameId classPK:(long long)classPK start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"mirrorActivityId": @(mirrorActivityId),
 		@"classNameId": @(classNameId),
@@ -81,7 +81,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getActivitiesCountWithClassNameId:(long)classNameId error:(NSError **)error {
+- (NSNumber *)getActivitiesCountWithClassNameId:(long long)classNameId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"classNameId": @(classNameId)
 	};
@@ -91,7 +91,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getActivitiesCountWithMirrorActivityId:(long)mirrorActivityId className:(NSString *)className classPK:(long)classPK error:(NSError **)error {
+- (NSNumber *)getActivitiesCountWithMirrorActivityId:(long long)mirrorActivityId className:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"mirrorActivityId": @(mirrorActivityId),
 		@"className": className,
@@ -103,7 +103,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getActivitiesCountWithMirrorActivityId:(long)mirrorActivityId classNameId:(long)classNameId classPK:(long)classPK error:(NSError **)error {
+- (NSNumber *)getActivitiesCountWithMirrorActivityId:(long long)mirrorActivityId classNameId:(long long)classNameId classPK:(long long)classPK error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"mirrorActivityId": @(mirrorActivityId),
 		@"classNameId": @(classNameId),
@@ -115,7 +115,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getActivityWithActivityId:(long)activityId error:(NSError **)error {
+- (NSDictionary *)getActivityWithActivityId:(long long)activityId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"activityId": @(activityId)
 	};
@@ -125,7 +125,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getActivitySetActivitiesWithActivitySetId:(long)activitySetId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getActivitySetActivitiesWithActivitySetId:(long long)activitySetId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"activitySetId": @(activitySetId),
 		@"start": @(start),
@@ -137,7 +137,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupActivitiesWithGroupId:(long)groupId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getGroupActivitiesWithGroupId:(long long)groupId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"start": @(start),
@@ -149,7 +149,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getGroupActivitiesCountWithGroupId:(long)groupId error:(NSError **)error {
+- (NSNumber *)getGroupActivitiesCountWithGroupId:(long long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId)
 	};
@@ -159,7 +159,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupUsersActivitiesWithGroupId:(long)groupId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getGroupUsersActivitiesWithGroupId:(long long)groupId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"start": @(start),
@@ -171,7 +171,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getGroupUsersActivitiesCountWithGroupId:(long)groupId error:(NSError **)error {
+- (NSNumber *)getGroupUsersActivitiesCountWithGroupId:(long long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId)
 	};
@@ -181,7 +181,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getMirrorActivityWithMirrorActivityId:(long)mirrorActivityId error:(NSError **)error {
+- (NSDictionary *)getMirrorActivityWithMirrorActivityId:(long long)mirrorActivityId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"mirrorActivityId": @(mirrorActivityId)
 	};
@@ -191,7 +191,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getOrganizationActivitiesWithOrganizationId:(long)organizationId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getOrganizationActivitiesWithOrganizationId:(long long)organizationId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"organizationId": @(organizationId),
 		@"start": @(start),
@@ -203,7 +203,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getOrganizationActivitiesCountWithOrganizationId:(long)organizationId error:(NSError **)error {
+- (NSNumber *)getOrganizationActivitiesCountWithOrganizationId:(long long)organizationId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"organizationId": @(organizationId)
 	};
@@ -213,7 +213,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getOrganizationUsersActivitiesWithOrganizationId:(long)organizationId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getOrganizationUsersActivitiesWithOrganizationId:(long long)organizationId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"organizationId": @(organizationId),
 		@"start": @(start),
@@ -225,7 +225,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getOrganizationUsersActivitiesCountWithOrganizationId:(long)organizationId error:(NSError **)error {
+- (NSNumber *)getOrganizationUsersActivitiesCountWithOrganizationId:(long long)organizationId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"organizationId": @(organizationId)
 	};
@@ -235,7 +235,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getRelationActivitiesWithUserId:(long)userId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getRelationActivitiesWithUserId:(long long)userId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"start": @(start),
@@ -247,7 +247,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getRelationActivitiesWithUserId:(long)userId type:(int)type start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getRelationActivitiesWithUserId:(long long)userId type:(int)type start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"type": @(type),
@@ -260,7 +260,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getRelationActivitiesCountWithUserId:(long)userId error:(NSError **)error {
+- (NSNumber *)getRelationActivitiesCountWithUserId:(long long)userId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId)
 	};
@@ -270,7 +270,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getRelationActivitiesCountWithUserId:(long)userId type:(int)type error:(NSError **)error {
+- (NSNumber *)getRelationActivitiesCountWithUserId:(long long)userId type:(int)type error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"type": @(type)
@@ -281,7 +281,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getUserActivitiesWithUserId:(long)userId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getUserActivitiesWithUserId:(long long)userId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"start": @(start),
@@ -293,7 +293,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getUserActivitiesCountWithUserId:(long)userId error:(NSError **)error {
+- (NSNumber *)getUserActivitiesCountWithUserId:(long long)userId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId)
 	};
@@ -303,7 +303,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getUserGroupsActivitiesWithUserId:(long)userId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getUserGroupsActivitiesWithUserId:(long long)userId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"start": @(start),
@@ -315,7 +315,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getUserGroupsActivitiesCountWithUserId:(long)userId error:(NSError **)error {
+- (NSNumber *)getUserGroupsActivitiesCountWithUserId:(long long)userId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId)
 	};
@@ -325,7 +325,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getUserGroupsAndOrganizationsActivitiesWithUserId:(long)userId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getUserGroupsAndOrganizationsActivitiesWithUserId:(long long)userId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"start": @(start),
@@ -337,7 +337,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getUserGroupsAndOrganizationsActivitiesCountWithUserId:(long)userId error:(NSError **)error {
+- (NSNumber *)getUserGroupsAndOrganizationsActivitiesCountWithUserId:(long long)userId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId)
 	};
@@ -347,7 +347,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getUserOrganizationsActivitiesWithUserId:(long)userId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getUserOrganizationsActivitiesWithUserId:(long long)userId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"start": @(start),
@@ -359,7 +359,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getUserOrganizationsActivitiesCountWithUserId:(long)userId error:(NSError **)error {
+- (NSNumber *)getUserOrganizationsActivitiesCountWithUserId:(long long)userId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId)
 	};

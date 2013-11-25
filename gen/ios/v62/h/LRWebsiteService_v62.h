@@ -20,11 +20,11 @@
  */
 @interface LRWebsiteService_v62 : LRBaseService
 
-- (NSDictionary *)addWebsiteWithClassName:(NSString *)className classPK:(long)classPK url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error;
-- (NSDictionary *)addWebsiteWithClassName:(NSString *)className classPK:(long)classPK url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (void)deleteWebsiteWithWebsiteId:(long)websiteId error:(NSError **)error;
-- (NSDictionary *)getWebsiteWithWebsiteId:(long)websiteId error:(NSError **)error;
-- (NSArray *)getWebsitesWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error;
-- (NSDictionary *)updateWebsiteWithWebsiteId:(long)websiteId url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error;
+- (NSDictionary *)addWebsiteWithClassName:(NSString *)className classPK:(long long)classPK url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error;
+- (NSDictionary *)addWebsiteWithClassName:(NSString *)className classPK:(long long)classPK url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteWebsiteWithWebsiteId:(long long)websiteId error:(NSError **)error;
+- (NSDictionary *)getWebsiteWithWebsiteId:(long long)websiteId error:(NSError **)error;
+- (NSArray *)getWebsitesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
+- (NSDictionary *)updateWebsiteWithWebsiteId:(long long)websiteId url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error;
 
 @end

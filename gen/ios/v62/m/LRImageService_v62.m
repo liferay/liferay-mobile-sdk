@@ -19,7 +19,7 @@
  */
 @implementation LRImageService_v62
 
-- (NSDictionary *)getImageWithImageId:(long)imageId error:(NSError **)error {
+- (NSDictionary *)getImageWithImageId:(long long)imageId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"imageId": @(imageId)
 	};

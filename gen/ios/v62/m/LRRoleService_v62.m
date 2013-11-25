@@ -32,7 +32,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addRoleWithClassName:(NSString *)className classPK:(long)classPK name:(NSString *)name titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap type:(int)type subtype:(NSString *)subtype serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addRoleWithClassName:(NSString *)className classPK:(long long)classPK name:(NSString *)name titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap type:(int)type subtype:(NSString *)subtype serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK),
@@ -49,7 +49,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)addUserRolesWithUserId:(long)userId roleIds:(NSArray *)roleIds error:(NSError **)error {
+- (void)addUserRolesWithUserId:(long long)userId roleIds:(NSArray *)roleIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"roleIds": roleIds
@@ -60,7 +60,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteRoleWithRoleId:(long)roleId error:(NSError **)error {
+- (void)deleteRoleWithRoleId:(long long)roleId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"roleId": @(roleId)
 	};
@@ -70,7 +70,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupRolesWithGroupId:(long)groupId error:(NSError **)error {
+- (NSArray *)getGroupRolesWithGroupId:(long long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId)
 	};
@@ -80,7 +80,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getRoleWithRoleId:(long)roleId error:(NSError **)error {
+- (NSDictionary *)getRoleWithRoleId:(long long)roleId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"roleId": @(roleId)
 	};
@@ -90,7 +90,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getRoleWithCompanyId:(long)companyId name:(NSString *)name error:(NSError **)error {
+- (NSDictionary *)getRoleWithCompanyId:(long long)companyId name:(NSString *)name error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"name": name
@@ -101,7 +101,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getUserGroupGroupRolesWithUserId:(long)userId groupId:(long)groupId error:(NSError **)error {
+- (NSArray *)getUserGroupGroupRolesWithUserId:(long long)userId groupId:(long long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"groupId": @(groupId)
@@ -112,7 +112,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getUserGroupRolesWithUserId:(long)userId groupId:(long)groupId error:(NSError **)error {
+- (NSArray *)getUserGroupRolesWithUserId:(long long)userId groupId:(long long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"groupId": @(groupId)
@@ -123,7 +123,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getUserRelatedRolesWithUserId:(long)userId groups:(NSArray *)groups error:(NSError **)error {
+- (NSArray *)getUserRelatedRolesWithUserId:(long long)userId groups:(NSArray *)groups error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"groups": groups
@@ -134,7 +134,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getUserRolesWithUserId:(long)userId error:(NSError **)error {
+- (NSArray *)getUserRolesWithUserId:(long long)userId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId)
 	};
@@ -144,7 +144,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (BOOL)hasUserRoleWithUserId:(long)userId companyId:(long)companyId name:(NSString *)name inherited:(BOOL)inherited error:(NSError **)error {
+- (BOOL)hasUserRoleWithUserId:(long long)userId companyId:(long long)companyId name:(NSString *)name inherited:(BOOL)inherited error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"companyId": @(companyId),
@@ -157,7 +157,7 @@
 	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
-- (BOOL)hasUserRolesWithUserId:(long)userId companyId:(long)companyId names:(NSArray *)names inherited:(BOOL)inherited error:(NSError **)error {
+- (BOOL)hasUserRolesWithUserId:(long long)userId companyId:(long long)companyId names:(NSArray *)names inherited:(BOOL)inherited error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"companyId": @(companyId),
@@ -170,7 +170,7 @@
 	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
-- (void)unsetUserRolesWithUserId:(long)userId roleIds:(NSArray *)roleIds error:(NSError **)error {
+- (void)unsetUserRolesWithUserId:(long long)userId roleIds:(NSArray *)roleIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"roleIds": roleIds
@@ -181,7 +181,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateRoleWithRoleId:(long)roleId name:(NSString *)name titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap subtype:(NSString *)subtype serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateRoleWithRoleId:(long long)roleId name:(NSString *)name titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap subtype:(NSString *)subtype serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"roleId": @(roleId),
 		@"name": name,

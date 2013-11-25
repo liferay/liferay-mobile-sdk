@@ -19,7 +19,7 @@
  */
 @implementation LRMBBanService_v62
 
-- (NSDictionary *)addBanWithBanUserId:(long)banUserId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addBanWithBanUserId:(long long)banUserId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"banUserId": @(banUserId),
 		@"serviceContext": serviceContext
@@ -30,7 +30,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteBanWithBanUserId:(long)banUserId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (void)deleteBanWithBanUserId:(long long)banUserId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"banUserId": @(banUserId),
 		@"serviceContext": serviceContext

@@ -23,6 +23,6 @@
 - (NSDictionary *)getListTypeWithListTypeId:(int)listTypeId error:(NSError **)error;
 - (NSArray *)getListTypesWithType:(NSString *)type error:(NSError **)error;
 - (void)validateWithListTypeId:(int)listTypeId type:(NSString *)type error:(NSError **)error;
-- (void)validateWithListTypeId:(int)listTypeId classNameId:(long)classNameId type:(NSString *)type error:(NSError **)error;
+- (void)validateWithListTypeId:(int)listTypeId classNameId:(long long)classNameId type:(NSString *)type error:(NSError **)error;
 
 @end

@@ -19,7 +19,7 @@
  */
 @implementation LRMDRRuleGroupService_v62
 
-- (NSDictionary *)addRuleGroupWithGroupId:(long)groupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addRuleGroupWithGroupId:(long long)groupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"nameMap": nameMap,
@@ -32,7 +32,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)copyRuleGroupWithRuleGroupId:(long)ruleGroupId groupId:(long)groupId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)copyRuleGroupWithRuleGroupId:(long long)ruleGroupId groupId:(long long)groupId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleGroupId": @(ruleGroupId),
 		@"groupId": @(groupId),
@@ -44,7 +44,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteRuleGroupWithRuleGroupId:(long)ruleGroupId error:(NSError **)error {
+- (void)deleteRuleGroupWithRuleGroupId:(long long)ruleGroupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleGroupId": @(ruleGroupId)
 	};
@@ -54,7 +54,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)fetchRuleGroupWithRuleGroupId:(long)ruleGroupId error:(NSError **)error {
+- (NSDictionary *)fetchRuleGroupWithRuleGroupId:(long long)ruleGroupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleGroupId": @(ruleGroupId)
 	};
@@ -64,7 +64,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getRuleGroupWithRuleGroupId:(long)ruleGroupId error:(NSError **)error {
+- (NSDictionary *)getRuleGroupWithRuleGroupId:(long long)ruleGroupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleGroupId": @(ruleGroupId)
 	};
@@ -74,7 +74,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateRuleGroupWithRuleGroupId:(long)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateRuleGroupWithRuleGroupId:(long long)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleGroupId": @(ruleGroupId),
 		@"nameMap": nameMap,

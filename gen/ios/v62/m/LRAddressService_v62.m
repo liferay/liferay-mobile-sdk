@@ -19,7 +19,7 @@
  */
 @implementation LRAddressService_v62
 
-- (NSDictionary *)addAddressWithClassName:(NSString *)className classPK:(long)classPK street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long)regionId countryId:(long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary error:(NSError **)error {
+- (NSDictionary *)addAddressWithClassName:(NSString *)className classPK:(long long)classPK street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long long)regionId countryId:(long long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK),
@@ -40,7 +40,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addAddressWithClassName:(NSString *)className classPK:(long)classPK street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long)regionId countryId:(long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addAddressWithClassName:(NSString *)className classPK:(long long)classPK street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long long)regionId countryId:(long long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK),
@@ -62,7 +62,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteAddressWithAddressId:(long)addressId error:(NSError **)error {
+- (void)deleteAddressWithAddressId:(long long)addressId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"addressId": @(addressId)
 	};
@@ -72,7 +72,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getAddressWithAddressId:(long)addressId error:(NSError **)error {
+- (NSDictionary *)getAddressWithAddressId:(long long)addressId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"addressId": @(addressId)
 	};
@@ -82,7 +82,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getAddressesWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error {
+- (NSArray *)getAddressesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK)
@@ -93,7 +93,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateAddressWithAddressId:(long)addressId street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long)regionId countryId:(long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary error:(NSError **)error {
+- (NSDictionary *)updateAddressWithAddressId:(long long)addressId street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long long)regionId countryId:(long long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"addressId": @(addressId),
 		@"street1": street1,

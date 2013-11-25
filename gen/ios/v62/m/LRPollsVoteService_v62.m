@@ -19,7 +19,7 @@
  */
 @implementation LRPollsVoteService_v62
 
-- (NSDictionary *)addVoteWithQuestionId:(long)questionId choiceId:(long)choiceId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addVoteWithQuestionId:(long long)questionId choiceId:(long long)choiceId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"questionId": @(questionId),
 		@"choiceId": @(choiceId),

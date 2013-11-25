@@ -20,11 +20,11 @@
  */
 @interface LREmailAddressService_v62 : LRBaseService
 
-- (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error;
-- (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (void)deleteEmailAddressWithEmailAddressId:(long)emailAddressId error:(NSError **)error;
-- (NSDictionary *)getEmailAddressWithEmailAddressId:(long)emailAddressId error:(NSError **)error;
-- (NSArray *)getEmailAddressesWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error;
-- (NSDictionary *)updateEmailAddressWithEmailAddressId:(long)emailAddressId address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error;
+- (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error;
+- (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteEmailAddressWithEmailAddressId:(long long)emailAddressId error:(NSError **)error;
+- (NSDictionary *)getEmailAddressWithEmailAddressId:(long long)emailAddressId error:(NSError **)error;
+- (NSArray *)getEmailAddressesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
+- (NSDictionary *)updateEmailAddressWithEmailAddressId:(long long)emailAddressId address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error;
 
 @end

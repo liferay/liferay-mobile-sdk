@@ -19,7 +19,7 @@
  */
 @implementation LRThemeService_v62
 
-- (NSArray *)getThemesWithCompanyId:(long)companyId error:(NSError **)error {
+- (NSArray *)getThemesWithCompanyId:(long long)companyId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId)
 	};

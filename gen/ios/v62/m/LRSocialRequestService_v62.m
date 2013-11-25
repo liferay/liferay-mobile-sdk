@@ -19,7 +19,7 @@
  */
 @implementation LRSocialRequestService_v62
 
-- (NSDictionary *)updateRequestWithRequestId:(long)requestId status:(int)status themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
+- (NSDictionary *)updateRequestWithRequestId:(long long)requestId status:(int)status themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"requestId": @(requestId),
 		@"status": @(status),

@@ -20,13 +20,13 @@
  */
 @interface LRRegionService_v62 : LRBaseService
 
-- (NSDictionary *)addRegionWithCountryId:(long)countryId regionCode:(NSString *)regionCode name:(NSString *)name active:(BOOL)active error:(NSError **)error;
-- (NSDictionary *)fetchRegionWithCountryId:(long)countryId regionCode:(NSString *)regionCode error:(NSError **)error;
-- (NSDictionary *)getRegionWithRegionId:(long)regionId error:(NSError **)error;
-- (NSDictionary *)getRegionWithCountryId:(long)countryId regionCode:(NSString *)regionCode error:(NSError **)error;
+- (NSDictionary *)addRegionWithCountryId:(long long)countryId regionCode:(NSString *)regionCode name:(NSString *)name active:(BOOL)active error:(NSError **)error;
+- (NSDictionary *)fetchRegionWithCountryId:(long long)countryId regionCode:(NSString *)regionCode error:(NSError **)error;
+- (NSDictionary *)getRegionWithRegionId:(long long)regionId error:(NSError **)error;
+- (NSDictionary *)getRegionWithCountryId:(long long)countryId regionCode:(NSString *)regionCode error:(NSError **)error;
 - (NSArray *)getRegions:(NSError **)error;
 - (NSArray *)getRegionsWithActive:(BOOL)active error:(NSError **)error;
-- (NSArray *)getRegionsWithCountryId:(long)countryId error:(NSError **)error;
-- (NSArray *)getRegionsWithCountryId:(long)countryId active:(BOOL)active error:(NSError **)error;
+- (NSArray *)getRegionsWithCountryId:(long long)countryId error:(NSError **)error;
+- (NSArray *)getRegionsWithCountryId:(long long)countryId active:(BOOL)active error:(NSError **)error;
 
 @end

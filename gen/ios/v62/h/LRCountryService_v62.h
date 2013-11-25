@@ -21,12 +21,12 @@
 @interface LRCountryService_v62 : LRBaseService
 
 - (NSDictionary *)addCountryWithName:(NSString *)name a2:(NSString *)a2 a3:(NSString *)a3 number:(NSString *)number idd:(NSString *)idd active:(BOOL)active error:(NSError **)error;
-- (NSDictionary *)fetchCountryWithCountryId:(long)countryId error:(NSError **)error;
+- (NSDictionary *)fetchCountryWithCountryId:(long long)countryId error:(NSError **)error;
 - (NSDictionary *)fetchCountryByA2WithA2:(NSString *)a2 error:(NSError **)error;
 - (NSDictionary *)fetchCountryByA3WithA3:(NSString *)a3 error:(NSError **)error;
 - (NSArray *)getCountries:(NSError **)error;
 - (NSArray *)getCountriesWithActive:(BOOL)active error:(NSError **)error;
-- (NSDictionary *)getCountryWithCountryId:(long)countryId error:(NSError **)error;
+- (NSDictionary *)getCountryWithCountryId:(long long)countryId error:(NSError **)error;
 - (NSDictionary *)getCountryByA2WithA2:(NSString *)a2 error:(NSError **)error;
 - (NSDictionary *)getCountryByA3WithA3:(NSString *)a3 error:(NSError **)error;
 - (NSDictionary *)getCountryByNameWithName:(NSString *)name error:(NSError **)error;

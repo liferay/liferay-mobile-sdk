@@ -20,9 +20,9 @@
  */
 @interface LRDLFileShortcutService_v62 : LRBaseService
 
-- (NSDictionary *)addFileShortcutWithGroupId:(long)groupId folderId:(long)folderId toFileEntryId:(long)toFileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (void)deleteFileShortcutWithFileShortcutId:(long)fileShortcutId error:(NSError **)error;
-- (NSDictionary *)getFileShortcutWithFileShortcutId:(long)fileShortcutId error:(NSError **)error;
-- (NSDictionary *)updateFileShortcutWithFileShortcutId:(long)fileShortcutId folderId:(long)folderId toFileEntryId:(long)toFileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addFileShortcutWithGroupId:(long long)groupId folderId:(long long)folderId toFileEntryId:(long long)toFileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteFileShortcutWithFileShortcutId:(long long)fileShortcutId error:(NSError **)error;
+- (NSDictionary *)getFileShortcutWithFileShortcutId:(long long)fileShortcutId error:(NSError **)error;
+- (NSDictionary *)updateFileShortcutWithFileShortcutId:(long long)fileShortcutId folderId:(long long)folderId toFileEntryId:(long long)toFileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

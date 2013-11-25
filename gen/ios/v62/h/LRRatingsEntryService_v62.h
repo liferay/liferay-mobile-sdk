@@ -20,7 +20,7 @@
  */
 @interface LRRatingsEntryService_v62 : LRBaseService
 
-- (void)deleteEntryWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error;
-- (NSDictionary *)updateEntryWithClassName:(NSString *)className classPK:(long)classPK score:(double)score error:(NSError **)error;
+- (void)deleteEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
+- (NSDictionary *)updateEntryWithClassName:(NSString *)className classPK:(long long)classPK score:(double)score error:(NSError **)error;
 
 @end

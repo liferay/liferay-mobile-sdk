@@ -19,7 +19,7 @@
  */
 @implementation LRResourceBlockService_v62
 
-- (void)addCompanyScopePermissionWithScopeGroupId:(long)scopeGroupId companyId:(long)companyId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error {
+- (void)addCompanyScopePermissionWithScopeGroupId:(long long)scopeGroupId companyId:(long long)companyId name:(NSString *)name roleId:(long long)roleId actionId:(NSString *)actionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
@@ -33,7 +33,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)addGroupScopePermissionWithScopeGroupId:(long)scopeGroupId companyId:(long)companyId groupId:(long)groupId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error {
+- (void)addGroupScopePermissionWithScopeGroupId:(long long)scopeGroupId companyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name roleId:(long long)roleId actionId:(NSString *)actionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
@@ -48,7 +48,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)addIndividualScopePermissionWithCompanyId:(long)companyId groupId:(long)groupId name:(NSString *)name primKey:(long)primKey roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error {
+- (void)addIndividualScopePermissionWithCompanyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name primKey:(long long)primKey roleId:(long long)roleId actionId:(NSString *)actionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
@@ -63,7 +63,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)removeAllGroupScopePermissionsWithScopeGroupId:(long)scopeGroupId companyId:(long)companyId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error {
+- (void)removeAllGroupScopePermissionsWithScopeGroupId:(long long)scopeGroupId companyId:(long long)companyId name:(NSString *)name roleId:(long long)roleId actionId:(NSString *)actionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
@@ -77,7 +77,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)removeCompanyScopePermissionWithScopeGroupId:(long)scopeGroupId companyId:(long)companyId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error {
+- (void)removeCompanyScopePermissionWithScopeGroupId:(long long)scopeGroupId companyId:(long long)companyId name:(NSString *)name roleId:(long long)roleId actionId:(NSString *)actionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
@@ -91,7 +91,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)removeGroupScopePermissionWithScopeGroupId:(long)scopeGroupId companyId:(long)companyId groupId:(long)groupId name:(NSString *)name roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error {
+- (void)removeGroupScopePermissionWithScopeGroupId:(long long)scopeGroupId companyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name roleId:(long long)roleId actionId:(NSString *)actionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
@@ -106,7 +106,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)removeIndividualScopePermissionWithCompanyId:(long)companyId groupId:(long)groupId name:(NSString *)name primKey:(long)primKey roleId:(long)roleId actionId:(NSString *)actionId error:(NSError **)error {
+- (void)removeIndividualScopePermissionWithCompanyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name primKey:(long long)primKey roleId:(long long)roleId actionId:(NSString *)actionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
@@ -121,7 +121,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)setCompanyScopePermissionsWithScopeGroupId:(long)scopeGroupId companyId:(long)companyId name:(NSString *)name roleId:(long)roleId actionIds:(NSArray *)actionIds error:(NSError **)error {
+- (void)setCompanyScopePermissionsWithScopeGroupId:(long long)scopeGroupId companyId:(long long)companyId name:(NSString *)name roleId:(long long)roleId actionIds:(NSArray *)actionIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
@@ -135,7 +135,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)setGroupScopePermissionsWithScopeGroupId:(long)scopeGroupId companyId:(long)companyId groupId:(long)groupId name:(NSString *)name roleId:(long)roleId actionIds:(NSArray *)actionIds error:(NSError **)error {
+- (void)setGroupScopePermissionsWithScopeGroupId:(long long)scopeGroupId companyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name roleId:(long long)roleId actionIds:(NSArray *)actionIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
@@ -150,7 +150,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)setIndividualScopePermissionsWithCompanyId:(long)companyId groupId:(long)groupId name:(NSString *)name primKey:(long)primKey roleIdsToActionIds:(NSDictionary *)roleIdsToActionIds error:(NSError **)error {
+- (void)setIndividualScopePermissionsWithCompanyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name primKey:(long long)primKey roleIdsToActionIds:(NSDictionary *)roleIdsToActionIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
@@ -164,7 +164,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)setIndividualScopePermissionsWithCompanyId:(long)companyId groupId:(long)groupId name:(NSString *)name primKey:(long)primKey roleId:(long)roleId actionIds:(NSArray *)actionIds error:(NSError **)error {
+- (void)setIndividualScopePermissionsWithCompanyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name primKey:(long long)primKey roleId:(long long)roleId actionIds:(NSArray *)actionIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),

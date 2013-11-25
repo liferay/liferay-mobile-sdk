@@ -19,7 +19,7 @@
  */
 @implementation LRPasswordPolicyService_v62
 
-- (NSDictionary *)addPasswordPolicyWithName:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long)maxAge warningTime:(long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long)lockoutDuration resetFailureCount:(long)resetFailureCount resetTicketMaxAge:(long)resetTicketMaxAge error:(NSError **)error {
+- (NSDictionary *)addPasswordPolicyWithName:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long long)maxAge warningTime:(long long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long long)lockoutDuration resetFailureCount:(long long)resetFailureCount resetTicketMaxAge:(long long)resetTicketMaxAge error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"name": name,
 		@"description": description,
@@ -52,7 +52,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addPasswordPolicyWithName:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase regex:(NSString *)regex history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long)maxAge warningTime:(long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long)lockoutDuration resetFailureCount:(long)resetFailureCount resetTicketMaxAge:(long)resetTicketMaxAge serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addPasswordPolicyWithName:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase regex:(NSString *)regex history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long long)maxAge warningTime:(long long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long long)lockoutDuration resetFailureCount:(long long)resetFailureCount resetTicketMaxAge:(long long)resetTicketMaxAge serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"name": name,
 		@"description": description,
@@ -87,7 +87,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deletePasswordPolicyWithPasswordPolicyId:(long)passwordPolicyId error:(NSError **)error {
+- (void)deletePasswordPolicyWithPasswordPolicyId:(long long)passwordPolicyId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"passwordPolicyId": @(passwordPolicyId)
 	};
@@ -97,7 +97,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updatePasswordPolicyWithPasswordPolicyId:(long)passwordPolicyId name:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long)maxAge warningTime:(long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long)lockoutDuration resetFailureCount:(long)resetFailureCount resetTicketMaxAge:(long)resetTicketMaxAge error:(NSError **)error {
+- (NSDictionary *)updatePasswordPolicyWithPasswordPolicyId:(long long)passwordPolicyId name:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long long)maxAge warningTime:(long long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long long)lockoutDuration resetFailureCount:(long long)resetFailureCount resetTicketMaxAge:(long long)resetTicketMaxAge error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"passwordPolicyId": @(passwordPolicyId),
 		@"name": name,
@@ -131,7 +131,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updatePasswordPolicyWithPasswordPolicyId:(long)passwordPolicyId name:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase regex:(NSString *)regex history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long)maxAge warningTime:(long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long)lockoutDuration resetFailureCount:(long)resetFailureCount resetTicketMaxAge:(long)resetTicketMaxAge serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updatePasswordPolicyWithPasswordPolicyId:(long long)passwordPolicyId name:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase regex:(NSString *)regex history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long long)maxAge warningTime:(long long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long long)lockoutDuration resetFailureCount:(long long)resetFailureCount resetTicketMaxAge:(long long)resetTicketMaxAge serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"passwordPolicyId": @(passwordPolicyId),
 		@"name": name,

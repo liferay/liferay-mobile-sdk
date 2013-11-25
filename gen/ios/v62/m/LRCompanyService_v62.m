@@ -19,7 +19,7 @@
  */
 @implementation LRCompanyService_v62
 
-- (void)deleteLogoWithCompanyId:(long)companyId error:(NSError **)error {
+- (void)deleteLogoWithCompanyId:(long long)companyId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId)
 	};
@@ -29,7 +29,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getCompanyByIdWithCompanyId:(long)companyId error:(NSError **)error {
+- (NSDictionary *)getCompanyByIdWithCompanyId:(long long)companyId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId)
 	};
@@ -39,7 +39,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getCompanyByLogoIdWithLogoId:(long)logoId error:(NSError **)error {
+- (NSDictionary *)getCompanyByLogoIdWithLogoId:(long long)logoId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"logoId": @(logoId)
 	};
@@ -79,7 +79,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateCompanyWithCompanyId:(long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx homeURL:(NSString *)homeURL name:(NSString *)name legalName:(NSString *)legalName legalId:(NSString *)legalId legalType:(NSString *)legalType sicCode:(NSString *)sicCode tickerSymbol:(NSString *)tickerSymbol industry:(NSString *)industry type:(NSString *)type size:(NSString *)size error:(NSError **)error {
+- (NSDictionary *)updateCompanyWithCompanyId:(long long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx homeURL:(NSString *)homeURL name:(NSString *)name legalName:(NSString *)legalName legalId:(NSString *)legalId legalType:(NSString *)legalType sicCode:(NSString *)sicCode tickerSymbol:(NSString *)tickerSymbol industry:(NSString *)industry type:(NSString *)type size:(NSString *)size error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"virtualHost": virtualHost,
@@ -101,7 +101,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateCompanyWithCompanyId:(long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx maxUsers:(int)maxUsers active:(BOOL)active error:(NSError **)error {
+- (NSDictionary *)updateCompanyWithCompanyId:(long long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx maxUsers:(int)maxUsers active:(BOOL)active error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"virtualHost": virtualHost,
@@ -115,7 +115,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)updateDisplayWithCompanyId:(long)companyId languageId:(NSString *)languageId timeZoneId:(NSString *)timeZoneId error:(NSError **)error {
+- (void)updateDisplayWithCompanyId:(long long)companyId languageId:(NSString *)languageId timeZoneId:(NSString *)timeZoneId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"languageId": languageId,
@@ -127,7 +127,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateLogoWithCompanyId:(long)companyId bytes:(NSArray *)bytes error:(NSError **)error {
+- (NSDictionary *)updateLogoWithCompanyId:(long long)companyId bytes:(NSArray *)bytes error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"bytes": bytes

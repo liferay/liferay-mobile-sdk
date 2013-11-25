@@ -20,6 +20,6 @@
  */
 @interface LRPluginSettingService_v62 : LRBaseService
 
-- (NSDictionary *)updatePluginSettingWithCompanyId:(long)companyId pluginId:(NSString *)pluginId pluginType:(NSString *)pluginType roles:(NSString *)roles active:(BOOL)active error:(NSError **)error;
+- (NSDictionary *)updatePluginSettingWithCompanyId:(long long)companyId pluginId:(NSString *)pluginId pluginType:(NSString *)pluginType roles:(NSString *)roles active:(BOOL)active error:(NSError **)error;
 
 @end

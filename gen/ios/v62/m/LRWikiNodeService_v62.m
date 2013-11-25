@@ -31,7 +31,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteNodeWithNodeId:(long)nodeId error:(NSError **)error {
+- (void)deleteNodeWithNodeId:(long long)nodeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId)
 	};
@@ -41,7 +41,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getNodeWithNodeId:(long)nodeId error:(NSError **)error {
+- (NSDictionary *)getNodeWithNodeId:(long long)nodeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId)
 	};
@@ -51,7 +51,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getNodeWithGroupId:(long)groupId name:(NSString *)name error:(NSError **)error {
+- (NSDictionary *)getNodeWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"name": name
@@ -62,7 +62,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getNodesWithGroupId:(long)groupId error:(NSError **)error {
+- (NSArray *)getNodesWithGroupId:(long long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId)
 	};
@@ -72,7 +72,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getNodesWithGroupId:(long)groupId status:(int)status error:(NSError **)error {
+- (NSArray *)getNodesWithGroupId:(long long)groupId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"status": @(status)
@@ -83,7 +83,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getNodesWithGroupId:(long)groupId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getNodesWithGroupId:(long long)groupId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"start": @(start),
@@ -95,7 +95,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getNodesWithGroupId:(long)groupId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getNodesWithGroupId:(long long)groupId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"status": @(status),
@@ -108,7 +108,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getNodesCountWithGroupId:(long)groupId error:(NSError **)error {
+- (NSNumber *)getNodesCountWithGroupId:(long long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId)
 	};
@@ -118,7 +118,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getNodesCountWithGroupId:(long)groupId status:(int)status error:(NSError **)error {
+- (NSNumber *)getNodesCountWithGroupId:(long long)groupId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"status": @(status)
@@ -129,7 +129,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)moveNodeToTrashWithNodeId:(long)nodeId error:(NSError **)error {
+- (NSDictionary *)moveNodeToTrashWithNodeId:(long long)nodeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId)
 	};
@@ -139,7 +139,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)restoreNodeFromTrashWithNodeId:(long)nodeId error:(NSError **)error {
+- (void)restoreNodeFromTrashWithNodeId:(long long)nodeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId)
 	};
@@ -149,7 +149,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)subscribeNodeWithNodeId:(long)nodeId error:(NSError **)error {
+- (void)subscribeNodeWithNodeId:(long long)nodeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId)
 	};
@@ -159,7 +159,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)unsubscribeNodeWithNodeId:(long)nodeId error:(NSError **)error {
+- (void)unsubscribeNodeWithNodeId:(long long)nodeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId)
 	};
@@ -169,7 +169,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateNodeWithNodeId:(long)nodeId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateNodeWithNodeId:(long long)nodeId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"nodeId": @(nodeId),
 		@"name": name,

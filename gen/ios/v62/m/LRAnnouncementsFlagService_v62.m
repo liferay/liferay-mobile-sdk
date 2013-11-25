@@ -19,7 +19,7 @@
  */
 @implementation LRAnnouncementsFlagService_v62
 
-- (void)addFlagWithEntryId:(long)entryId value:(int)value error:(NSError **)error {
+- (void)addFlagWithEntryId:(long long)entryId value:(int)value error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"entryId": @(entryId),
 		@"value": @(value)
@@ -30,7 +30,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteFlagWithFlagId:(long)flagId error:(NSError **)error {
+- (void)deleteFlagWithFlagId:(long long)flagId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"flagId": @(flagId)
 	};
@@ -40,7 +40,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getFlagWithEntryId:(long)entryId value:(int)value error:(NSError **)error {
+- (NSDictionary *)getFlagWithEntryId:(long long)entryId value:(int)value error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"entryId": @(entryId),
 		@"value": @(value)

@@ -20,8 +20,8 @@
  */
 @interface LRContactService_v62 : LRBaseService
 
-- (NSDictionary *)getContactWithContactId:(long)contactId error:(NSError **)error;
-- (NSArray *)getContactsWithClassNameId:(long)classNameId classPK:(long)classPK start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;
-- (NSNumber *)getContactsCountWithClassNameId:(long)classNameId classPK:(long)classPK error:(NSError **)error;
+- (NSDictionary *)getContactWithContactId:(long long)contactId error:(NSError **)error;
+- (NSArray *)getContactsWithClassNameId:(long long)classNameId classPK:(long long)classPK start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;
+- (NSNumber *)getContactsCountWithClassNameId:(long long)classNameId classPK:(long long)classPK error:(NSError **)error;
 
 @end

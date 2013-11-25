@@ -19,7 +19,7 @@
  */
 @implementation LRMBMessageService_v62
 
-- (NSDictionary *)addDiscussionMessageWithGroupId:(long)groupId className:(NSString *)className classPK:(long)classPK permissionClassName:(NSString *)permissionClassName permissionClassPK:(long)permissionClassPK permissionOwnerId:(long)permissionOwnerId threadId:(long)threadId parentMessageId:(long)parentMessageId subject:(NSString *)subject body:(NSString *)body serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addDiscussionMessageWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK permissionClassName:(NSString *)permissionClassName permissionClassPK:(long long)permissionClassPK permissionOwnerId:(long long)permissionOwnerId threadId:(long long)threadId parentMessageId:(long long)parentMessageId subject:(NSString *)subject body:(NSString *)body serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"className": className,
@@ -39,7 +39,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addMessageWithGroupId:(long)groupId categoryId:(long)categoryId subject:(NSString *)subject body:(NSString *)body format:(NSString *)format inputStreamOVPs:(NSArray *)inputStreamOVPs anonymous:(BOOL)anonymous priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addMessageWithGroupId:(long long)groupId categoryId:(long long)categoryId subject:(NSString *)subject body:(NSString *)body format:(NSString *)format inputStreamOVPs:(NSArray *)inputStreamOVPs anonymous:(BOOL)anonymous priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
@@ -58,7 +58,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addMessageWithGroupId:(long)groupId categoryId:(long)categoryId threadId:(long)threadId parentMessageId:(long)parentMessageId subject:(NSString *)subject body:(NSString *)body format:(NSString *)format inputStreamOVPs:(NSArray *)inputStreamOVPs anonymous:(BOOL)anonymous priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addMessageWithGroupId:(long long)groupId categoryId:(long long)categoryId threadId:(long long)threadId parentMessageId:(long long)parentMessageId subject:(NSString *)subject body:(NSString *)body format:(NSString *)format inputStreamOVPs:(NSArray *)inputStreamOVPs anonymous:(BOOL)anonymous priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
@@ -79,7 +79,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addMessageWithCategoryId:(long)categoryId subject:(NSString *)subject body:(NSString *)body serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addMessageWithCategoryId:(long long)categoryId subject:(NSString *)subject body:(NSString *)body serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"categoryId": @(categoryId),
 		@"subject": subject,
@@ -92,7 +92,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addMessageWithParentMessageId:(long)parentMessageId subject:(NSString *)subject body:(NSString *)body format:(NSString *)format inputStreamOVPs:(NSArray *)inputStreamOVPs anonymous:(BOOL)anonymous priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addMessageWithParentMessageId:(long long)parentMessageId subject:(NSString *)subject body:(NSString *)body format:(NSString *)format inputStreamOVPs:(NSArray *)inputStreamOVPs anonymous:(BOOL)anonymous priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"parentMessageId": @(parentMessageId),
 		@"subject": subject,
@@ -110,7 +110,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteDiscussionMessageWithGroupId:(long)groupId className:(NSString *)className classPK:(long)classPK permissionClassName:(NSString *)permissionClassName permissionClassPK:(long)permissionClassPK permissionOwnerId:(long)permissionOwnerId messageId:(long)messageId error:(NSError **)error {
+- (void)deleteDiscussionMessageWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK permissionClassName:(NSString *)permissionClassName permissionClassPK:(long long)permissionClassPK permissionOwnerId:(long long)permissionOwnerId messageId:(long long)messageId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"className": className,
@@ -126,7 +126,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteMessageWithMessageId:(long)messageId error:(NSError **)error {
+- (void)deleteMessageWithMessageId:(long long)messageId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"messageId": @(messageId)
 	};
@@ -136,7 +136,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteMessageAttachmentsWithMessageId:(long)messageId error:(NSError **)error {
+- (void)deleteMessageAttachmentsWithMessageId:(long long)messageId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"messageId": @(messageId)
 	};
@@ -146,7 +146,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCategoryMessagesWithGroupId:(long)groupId categoryId:(long)categoryId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getCategoryMessagesWithGroupId:(long long)groupId categoryId:(long long)categoryId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
@@ -160,7 +160,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getCategoryMessagesCountWithGroupId:(long)groupId categoryId:(long)categoryId status:(int)status error:(NSError **)error {
+- (NSNumber *)getCategoryMessagesCountWithGroupId:(long long)groupId categoryId:(long long)categoryId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
@@ -172,7 +172,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getCategoryMessagesRssWithGroupId:(long)groupId categoryId:(long)categoryId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
+- (NSString *)getCategoryMessagesRssWithGroupId:(long long)groupId categoryId:(long long)categoryId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
@@ -191,7 +191,7 @@
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getCompanyMessagesRssWithCompanyId:(long)companyId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
+- (NSString *)getCompanyMessagesRssWithCompanyId:(long long)companyId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"status": @(status),
@@ -209,7 +209,7 @@
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getGroupMessagesCountWithGroupId:(long)groupId status:(int)status error:(NSError **)error {
+- (NSNumber *)getGroupMessagesCountWithGroupId:(long long)groupId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"status": @(status)
@@ -220,7 +220,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getGroupMessagesRssWithGroupId:(long)groupId userId:(long)userId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
+- (NSString *)getGroupMessagesRssWithGroupId:(long long)groupId userId:(long long)userId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -239,7 +239,7 @@
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getGroupMessagesRssWithGroupId:(long)groupId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
+- (NSString *)getGroupMessagesRssWithGroupId:(long long)groupId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"status": @(status),
@@ -257,7 +257,7 @@
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getMessageWithMessageId:(long)messageId error:(NSError **)error {
+- (NSDictionary *)getMessageWithMessageId:(long long)messageId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"messageId": @(messageId)
 	};
@@ -267,7 +267,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getMessageDisplayWithMessageId:(long)messageId status:(int)status threadView:(NSString *)threadView includePrevAndNext:(BOOL)includePrevAndNext error:(NSError **)error {
+- (NSDictionary *)getMessageDisplayWithMessageId:(long long)messageId status:(int)status threadView:(NSString *)threadView includePrevAndNext:(BOOL)includePrevAndNext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"messageId": @(messageId),
 		@"status": @(status),
@@ -280,7 +280,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getThreadAnswersCountWithGroupId:(long)groupId categoryId:(long)categoryId threadId:(long)threadId error:(NSError **)error {
+- (NSNumber *)getThreadAnswersCountWithGroupId:(long long)groupId categoryId:(long long)categoryId threadId:(long long)threadId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
@@ -292,7 +292,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getThreadMessagesWithGroupId:(long)groupId categoryId:(long)categoryId threadId:(long)threadId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getThreadMessagesWithGroupId:(long long)groupId categoryId:(long long)categoryId threadId:(long long)threadId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
@@ -307,7 +307,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getThreadMessagesCountWithGroupId:(long)groupId categoryId:(long)categoryId threadId:(long)threadId status:(int)status error:(NSError **)error {
+- (NSNumber *)getThreadMessagesCountWithGroupId:(long long)groupId categoryId:(long long)categoryId threadId:(long long)threadId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
@@ -320,7 +320,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getThreadMessagesRssWithThreadId:(long)threadId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
+- (NSString *)getThreadMessagesRssWithThreadId:(long long)threadId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"threadId": @(threadId),
 		@"status": @(status),
@@ -338,7 +338,7 @@
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (void)restoreMessageAttachmentFromTrashWithMessageId:(long)messageId fileName:(NSString *)fileName error:(NSError **)error {
+- (void)restoreMessageAttachmentFromTrashWithMessageId:(long long)messageId fileName:(NSString *)fileName error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"messageId": @(messageId),
 		@"fileName": fileName
@@ -349,7 +349,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)subscribeMessageWithMessageId:(long)messageId error:(NSError **)error {
+- (void)subscribeMessageWithMessageId:(long long)messageId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"messageId": @(messageId)
 	};
@@ -359,7 +359,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)unsubscribeMessageWithMessageId:(long)messageId error:(NSError **)error {
+- (void)unsubscribeMessageWithMessageId:(long long)messageId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"messageId": @(messageId)
 	};
@@ -369,7 +369,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)updateAnswerWithMessageId:(long)messageId answer:(BOOL)answer cascade:(BOOL)cascade error:(NSError **)error {
+- (void)updateAnswerWithMessageId:(long long)messageId answer:(BOOL)answer cascade:(BOOL)cascade error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"messageId": @(messageId),
 		@"answer": @(answer),
@@ -381,7 +381,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateDiscussionMessageWithClassName:(NSString *)className classPK:(long)classPK permissionClassName:(NSString *)permissionClassName permissionClassPK:(long)permissionClassPK permissionOwnerId:(long)permissionOwnerId messageId:(long)messageId subject:(NSString *)subject body:(NSString *)body serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateDiscussionMessageWithClassName:(NSString *)className classPK:(long long)classPK permissionClassName:(NSString *)permissionClassName permissionClassPK:(long long)permissionClassPK permissionOwnerId:(long long)permissionOwnerId messageId:(long long)messageId subject:(NSString *)subject body:(NSString *)body serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK),
@@ -399,7 +399,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateMessageWithMessageId:(long)messageId subject:(NSString *)subject body:(NSString *)body inputStreamOVPs:(NSArray *)inputStreamOVPs existingFiles:(NSArray *)existingFiles priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateMessageWithMessageId:(long long)messageId subject:(NSString *)subject body:(NSString *)body inputStreamOVPs:(NSArray *)inputStreamOVPs existingFiles:(NSArray *)existingFiles priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"messageId": @(messageId),
 		@"subject": subject,

@@ -19,7 +19,7 @@
  */
 @implementation LRMDRRuleService_v62
 
-- (NSDictionary *)addRuleWithRuleGroupId:(long)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addRuleWithRuleGroupId:(long long)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleGroupId": @(ruleGroupId),
 		@"nameMap": nameMap,
@@ -34,7 +34,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteRuleWithRuleId:(long)ruleId error:(NSError **)error {
+- (void)deleteRuleWithRuleId:(long long)ruleId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleId": @(ruleId)
 	};
@@ -44,7 +44,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)fetchRuleWithRuleId:(long)ruleId error:(NSError **)error {
+- (NSDictionary *)fetchRuleWithRuleId:(long long)ruleId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleId": @(ruleId)
 	};
@@ -54,7 +54,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getRuleWithRuleId:(long)ruleId error:(NSError **)error {
+- (NSDictionary *)getRuleWithRuleId:(long long)ruleId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleId": @(ruleId)
 	};
@@ -64,7 +64,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateRuleWithRuleId:(long)ruleId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateRuleWithRuleId:(long long)ruleId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleId": @(ruleId),
 		@"nameMap": nameMap,
@@ -79,7 +79,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateRuleWithRuleId:(long)ruleId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateRuleWithRuleId:(long long)ruleId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"ruleId": @(ruleId),
 		@"nameMap": nameMap,

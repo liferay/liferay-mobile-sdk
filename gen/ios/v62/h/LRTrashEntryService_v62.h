@@ -21,13 +21,13 @@
 @interface LRTrashEntryService_v62 : LRBaseService
 
 - (void)deleteEntriesWithEntryIds:(NSArray *)entryIds error:(NSError **)error;
-- (void)deleteEntriesWithGroupId:(long)groupId error:(NSError **)error;
-- (void)deleteEntryWithEntryId:(long)entryId error:(NSError **)error;
-- (void)deleteEntryWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error;
-- (NSDictionary *)getEntriesWithGroupId:(long)groupId error:(NSError **)error;
-- (NSDictionary *)getEntriesWithGroupId:(long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (void)moveEntryWithClassName:(NSString *)className classPK:(long)classPK destinationContainerModelId:(long)destinationContainerModelId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (NSDictionary *)restoreEntryWithEntryId:(long)entryId error:(NSError **)error;
-- (NSDictionary *)restoreEntryWithEntryId:(long)entryId overrideClassPK:(long)overrideClassPK name:(NSString *)name error:(NSError **)error;
+- (void)deleteEntriesWithGroupId:(long long)groupId error:(NSError **)error;
+- (void)deleteEntryWithEntryId:(long long)entryId error:(NSError **)error;
+- (void)deleteEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
+- (NSDictionary *)getEntriesWithGroupId:(long long)groupId error:(NSError **)error;
+- (NSDictionary *)getEntriesWithGroupId:(long long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (void)moveEntryWithClassName:(NSString *)className classPK:(long long)classPK destinationContainerModelId:(long long)destinationContainerModelId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)restoreEntryWithEntryId:(long long)entryId error:(NSError **)error;
+- (NSDictionary *)restoreEntryWithEntryId:(long long)entryId overrideClassPK:(long long)overrideClassPK name:(NSString *)name error:(NSError **)error;
 
 @end

@@ -19,7 +19,7 @@
  */
 @implementation LRRatingsEntryService_v62
 
-- (void)deleteEntryWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error {
+- (void)deleteEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK)
@@ -30,7 +30,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateEntryWithClassName:(NSString *)className classPK:(long)classPK score:(double)score error:(NSError **)error {
+- (NSDictionary *)updateEntryWithClassName:(NSString *)className classPK:(long long)classPK score:(double)score error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"className": className,
 		@"classPK": @(classPK),

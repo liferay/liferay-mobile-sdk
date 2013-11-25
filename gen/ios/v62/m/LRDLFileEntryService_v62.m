@@ -19,7 +19,7 @@
  */
 @implementation LRDLFileEntryService_v62
 
-- (NSDictionary *)cancelCheckOutWithFileEntryId:(long)fileEntryId error:(NSError **)error {
+- (NSDictionary *)cancelCheckOutWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId)
 	};
@@ -29,7 +29,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)checkInFileEntryWithFileEntryId:(long)fileEntryId lockUuid:(NSString *)lockUuid error:(NSError **)error {
+- (void)checkInFileEntryWithFileEntryId:(long long)fileEntryId lockUuid:(NSString *)lockUuid error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId),
 		@"lockUuid": lockUuid
@@ -40,7 +40,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)checkInFileEntryWithFileEntryId:(long)fileEntryId lockUuid:(NSString *)lockUuid serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (void)checkInFileEntryWithFileEntryId:(long long)fileEntryId lockUuid:(NSString *)lockUuid serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId),
 		@"lockUuid": lockUuid,
@@ -52,7 +52,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)checkInFileEntryWithFileEntryId:(long)fileEntryId major:(BOOL)major changeLog:(NSString *)changeLog serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (void)checkInFileEntryWithFileEntryId:(long long)fileEntryId major:(BOOL)major changeLog:(NSString *)changeLog serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId),
 		@"major": @(major),
@@ -65,7 +65,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)checkOutFileEntryWithFileEntryId:(long)fileEntryId error:(NSError **)error {
+- (NSDictionary *)checkOutFileEntryWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId)
 	};
@@ -75,7 +75,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)checkOutFileEntryWithFileEntryId:(long)fileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)checkOutFileEntryWithFileEntryId:(long long)fileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId),
 		@"serviceContext": serviceContext
@@ -86,7 +86,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)checkOutFileEntryWithFileEntryId:(long)fileEntryId owner:(NSString *)owner expirationTime:(long)expirationTime error:(NSError **)error {
+- (NSDictionary *)checkOutFileEntryWithFileEntryId:(long long)fileEntryId owner:(NSString *)owner expirationTime:(long long)expirationTime error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId),
 		@"owner": owner,
@@ -98,7 +98,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)checkOutFileEntryWithFileEntryId:(long)fileEntryId owner:(NSString *)owner expirationTime:(long)expirationTime serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)checkOutFileEntryWithFileEntryId:(long long)fileEntryId owner:(NSString *)owner expirationTime:(long long)expirationTime serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId),
 		@"owner": owner,
@@ -111,7 +111,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)copyFileEntryWithGroupId:(long)groupId repositoryId:(long)repositoryId fileEntryId:(long)fileEntryId destFolderId:(long)destFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)copyFileEntryWithGroupId:(long long)groupId repositoryId:(long long)repositoryId fileEntryId:(long long)fileEntryId destFolderId:(long long)destFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"repositoryId": @(repositoryId),
@@ -125,7 +125,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteFileEntryWithFileEntryId:(long)fileEntryId error:(NSError **)error {
+- (void)deleteFileEntryWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId)
 	};
@@ -135,7 +135,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteFileEntryWithGroupId:(long)groupId folderId:(long)folderId title:(NSString *)title error:(NSError **)error {
+- (void)deleteFileEntryWithGroupId:(long long)groupId folderId:(long long)folderId title:(NSString *)title error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -147,7 +147,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteFileVersionWithFileEntryId:(long)fileEntryId version:(NSString *)version error:(NSError **)error {
+- (void)deleteFileVersionWithFileEntryId:(long long)fileEntryId version:(NSString *)version error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId),
 		@"version": version
@@ -158,7 +158,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)fetchFileEntryByImageIdWithImageId:(long)imageId error:(NSError **)error {
+- (NSDictionary *)fetchFileEntryByImageIdWithImageId:(long long)imageId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"imageId": @(imageId)
 	};
@@ -168,7 +168,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFileEntriesWithGroupId:(long)groupId folderId:(long)folderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+- (NSArray *)getFileEntriesWithGroupId:(long long)groupId folderId:(long long)folderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -182,7 +182,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFileEntriesWithGroupId:(long)groupId folderId:(long)folderId fileEntryTypeId:(long)fileEntryTypeId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+- (NSArray *)getFileEntriesWithGroupId:(long long)groupId folderId:(long long)folderId fileEntryTypeId:(long long)fileEntryTypeId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -197,7 +197,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFileEntriesWithGroupId:(long)groupId folderId:(long)folderId mimeTypes:(NSArray *)mimeTypes start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+- (NSArray *)getFileEntriesWithGroupId:(long long)groupId folderId:(long long)folderId mimeTypes:(NSArray *)mimeTypes start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -212,7 +212,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFileEntriesWithGroupId:(long)groupId folderId:(long)folderId status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+- (NSArray *)getFileEntriesWithGroupId:(long long)groupId folderId:(long long)folderId status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -227,7 +227,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getFileEntriesCountWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error {
+- (NSNumber *)getFileEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId)
@@ -238,7 +238,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getFileEntriesCountWithGroupId:(long)groupId folderId:(long)folderId fileEntryTypeId:(long)fileEntryTypeId error:(NSError **)error {
+- (NSNumber *)getFileEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId fileEntryTypeId:(long long)fileEntryTypeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -250,7 +250,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getFileEntriesCountWithGroupId:(long)groupId folderId:(long)folderId mimeTypes:(NSArray *)mimeTypes error:(NSError **)error {
+- (NSNumber *)getFileEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId mimeTypes:(NSArray *)mimeTypes error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -262,7 +262,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getFileEntriesCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error {
+- (NSNumber *)getFileEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -274,7 +274,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getFileEntryWithFileEntryId:(long)fileEntryId error:(NSError **)error {
+- (NSDictionary *)getFileEntryWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId)
 	};
@@ -284,7 +284,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getFileEntryWithGroupId:(long)groupId folderId:(long)folderId title:(NSString *)title error:(NSError **)error {
+- (NSDictionary *)getFileEntryWithGroupId:(long long)groupId folderId:(long long)folderId title:(NSString *)title error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -296,7 +296,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getFileEntryByUuidAndGroupIdWithUuid:(NSString *)uuid groupId:(long)groupId error:(NSError **)error {
+- (NSDictionary *)getFileEntryByUuidAndGroupIdWithUuid:(NSString *)uuid groupId:(long long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"uuid": uuid,
 		@"groupId": @(groupId)
@@ -307,7 +307,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getFileEntryLockWithFileEntryId:(long)fileEntryId error:(NSError **)error {
+- (NSDictionary *)getFileEntryLockWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId)
 	};
@@ -317,7 +317,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getFoldersFileEntriesCountWithGroupId:(long)groupId folderIds:(NSArray *)folderIds status:(int)status error:(NSError **)error {
+- (NSNumber *)getFoldersFileEntriesCountWithGroupId:(long long)groupId folderIds:(NSArray *)folderIds status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderIds": folderIds,
@@ -329,7 +329,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupFileEntriesWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+- (NSArray *)getGroupFileEntriesWithGroupId:(long long)groupId userId:(long long)userId rootFolderId:(long long)rootFolderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -344,7 +344,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupFileEntriesWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId mimeTypes:(NSArray *)mimeTypes status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+- (NSArray *)getGroupFileEntriesWithGroupId:(long long)groupId userId:(long long)userId rootFolderId:(long long)rootFolderId mimeTypes:(NSArray *)mimeTypes status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -361,7 +361,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getGroupFileEntriesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId error:(NSError **)error {
+- (NSNumber *)getGroupFileEntriesCountWithGroupId:(long long)groupId userId:(long long)userId rootFolderId:(long long)rootFolderId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -373,7 +373,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getGroupFileEntriesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId mimeTypes:(NSArray *)mimeTypes status:(int)status error:(NSError **)error {
+- (NSNumber *)getGroupFileEntriesCountWithGroupId:(long long)groupId userId:(long long)userId rootFolderId:(long long)rootFolderId mimeTypes:(NSArray *)mimeTypes status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -387,7 +387,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (BOOL)hasFileEntryLockWithFileEntryId:(long)fileEntryId error:(NSError **)error {
+- (BOOL)hasFileEntryLockWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId)
 	};
@@ -397,7 +397,7 @@
 	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
-- (BOOL)isFileEntryCheckedOutWithFileEntryId:(long)fileEntryId error:(NSError **)error {
+- (BOOL)isFileEntryCheckedOutWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId)
 	};
@@ -407,7 +407,7 @@
 	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
-- (NSDictionary *)moveFileEntryWithFileEntryId:(long)fileEntryId newFolderId:(long)newFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)moveFileEntryWithFileEntryId:(long long)fileEntryId newFolderId:(long long)newFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId),
 		@"newFolderId": @(newFolderId),
@@ -419,7 +419,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)refreshFileEntryLockWithLockUuid:(NSString *)lockUuid companyId:(long)companyId expirationTime:(long)expirationTime error:(NSError **)error {
+- (NSDictionary *)refreshFileEntryLockWithLockUuid:(NSString *)lockUuid companyId:(long long)companyId expirationTime:(long long)expirationTime error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"lockUuid": lockUuid,
 		@"companyId": @(companyId),
@@ -431,7 +431,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)revertFileEntryWithFileEntryId:(long)fileEntryId version:(NSString *)version serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (void)revertFileEntryWithFileEntryId:(long long)fileEntryId version:(NSString *)version serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId),
 		@"version": version,
@@ -443,7 +443,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)searchWithGroupId:(long)groupId creatorUserId:(long)creatorUserId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+- (NSDictionary *)searchWithGroupId:(long long)groupId creatorUserId:(long long)creatorUserId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"creatorUserId": @(creatorUserId),
@@ -457,7 +457,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)searchWithGroupId:(long)groupId creatorUserId:(long)creatorUserId folderId:(long)folderId mimeTypes:(NSArray *)mimeTypes status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+- (NSDictionary *)searchWithGroupId:(long long)groupId creatorUserId:(long long)creatorUserId folderId:(long long)folderId mimeTypes:(NSArray *)mimeTypes status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"creatorUserId": @(creatorUserId),
@@ -473,7 +473,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (BOOL)verifyFileEntryCheckOutWithFileEntryId:(long)fileEntryId lockUuid:(NSString *)lockUuid error:(NSError **)error {
+- (BOOL)verifyFileEntryCheckOutWithFileEntryId:(long long)fileEntryId lockUuid:(NSString *)lockUuid error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId),
 		@"lockUuid": lockUuid
@@ -484,7 +484,7 @@
 	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
-- (BOOL)verifyFileEntryLockWithFileEntryId:(long)fileEntryId lockUuid:(NSString *)lockUuid error:(NSError **)error {
+- (BOOL)verifyFileEntryLockWithFileEntryId:(long long)fileEntryId lockUuid:(NSString *)lockUuid error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId),
 		@"lockUuid": lockUuid

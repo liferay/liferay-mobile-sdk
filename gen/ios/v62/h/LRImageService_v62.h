@@ -20,6 +20,6 @@
  */
 @interface LRImageService_v62 : LRBaseService
 
-- (NSDictionary *)getImageWithImageId:(long)imageId error:(NSError **)error;
+- (NSDictionary *)getImageWithImageId:(long long)imageId error:(NSError **)error;
 
 @end

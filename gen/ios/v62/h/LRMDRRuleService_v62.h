@@ -20,11 +20,11 @@
  */
 @interface LRMDRRuleService_v62 : LRBaseService
 
-- (NSDictionary *)addRuleWithRuleGroupId:(long)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (void)deleteRuleWithRuleId:(long)ruleId error:(NSError **)error;
-- (NSDictionary *)fetchRuleWithRuleId:(long)ruleId error:(NSError **)error;
-- (NSDictionary *)getRuleWithRuleId:(long)ruleId error:(NSError **)error;
-- (NSDictionary *)updateRuleWithRuleId:(long)ruleId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (NSDictionary *)updateRuleWithRuleId:(long)ruleId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addRuleWithRuleGroupId:(long long)ruleGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteRuleWithRuleId:(long long)ruleId error:(NSError **)error;
+- (NSDictionary *)fetchRuleWithRuleId:(long long)ruleId error:(NSError **)error;
+- (NSDictionary *)getRuleWithRuleId:(long long)ruleId error:(NSError **)error;
+- (NSDictionary *)updateRuleWithRuleId:(long long)ruleId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettings:(NSString *)typeSettings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)updateRuleWithRuleId:(long long)ruleId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

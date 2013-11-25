@@ -34,7 +34,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)fetchCountryWithCountryId:(long)countryId error:(NSError **)error {
+- (NSDictionary *)fetchCountryWithCountryId:(long long)countryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"countryId": @(countryId)
 	};
@@ -83,7 +83,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getCountryWithCountryId:(long)countryId error:(NSError **)error {
+- (NSDictionary *)getCountryWithCountryId:(long long)countryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"countryId": @(countryId)
 	};

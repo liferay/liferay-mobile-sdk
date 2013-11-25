@@ -19,7 +19,7 @@
  */
 @implementation LRDLFileShortcutService_v62
 
-- (NSDictionary *)addFileShortcutWithGroupId:(long)groupId folderId:(long)folderId toFileEntryId:(long)toFileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addFileShortcutWithGroupId:(long long)groupId folderId:(long long)folderId toFileEntryId:(long long)toFileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
@@ -32,7 +32,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteFileShortcutWithFileShortcutId:(long)fileShortcutId error:(NSError **)error {
+- (void)deleteFileShortcutWithFileShortcutId:(long long)fileShortcutId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileShortcutId": @(fileShortcutId)
 	};
@@ -42,7 +42,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getFileShortcutWithFileShortcutId:(long)fileShortcutId error:(NSError **)error {
+- (NSDictionary *)getFileShortcutWithFileShortcutId:(long long)fileShortcutId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileShortcutId": @(fileShortcutId)
 	};
@@ -52,7 +52,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateFileShortcutWithFileShortcutId:(long)fileShortcutId folderId:(long)folderId toFileEntryId:(long)toFileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateFileShortcutWithFileShortcutId:(long long)fileShortcutId folderId:(long long)folderId toFileEntryId:(long long)toFileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileShortcutId": @(fileShortcutId),
 		@"folderId": @(folderId),

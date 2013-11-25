@@ -20,32 +20,32 @@
  */
 @interface LRAssetCategoryService_v62 : LRBaseService
 
-- (NSDictionary *)addCategoryWithTitle:(NSString *)title vocabularyId:(long)vocabularyId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (NSDictionary *)addCategoryWithParentCategoryId:(long)parentCategoryId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap vocabularyId:(long)vocabularyId categoryProperties:(NSArray *)categoryProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addCategoryWithTitle:(NSString *)title vocabularyId:(long long)vocabularyId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addCategoryWithParentCategoryId:(long long)parentCategoryId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap vocabularyId:(long long)vocabularyId categoryProperties:(NSArray *)categoryProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteCategoriesWithCategoryIds:(NSArray *)categoryIds error:(NSError **)error;
 - (NSArray *)deleteCategoriesWithCategoryIds:(NSArray *)categoryIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (void)deleteCategoryWithCategoryId:(long)categoryId error:(NSError **)error;
-- (NSArray *)getCategoriesWithClassName:(NSString *)className classPK:(long)classPK error:(NSError **)error;
-- (NSDictionary *)getCategoryWithCategoryId:(long)categoryId error:(NSError **)error;
-- (NSArray *)getChildCategoriesWithParentCategoryId:(long)parentCategoryId error:(NSError **)error;
-- (NSArray *)getChildCategoriesWithParentCategoryId:(long)parentCategoryId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (NSDictionary *)getJsonSearchWithGroupId:(long)groupId name:(NSString *)name vocabularyIds:(NSArray *)vocabularyIds start:(int)start end:(int)end error:(NSError **)error;
-- (NSDictionary *)getJsonVocabularyCategoriesWithVocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (NSDictionary *)getJsonVocabularyCategoriesWithGroupId:(long)groupId name:(NSString *)name vocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (NSArray *)getVocabularyCategoriesWithVocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (NSArray *)getVocabularyCategoriesWithParentCategoryId:(long)parentCategoryId vocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (NSArray *)getVocabularyCategoriesWithGroupId:(long)groupId name:(NSString *)name vocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long)groupId vocabularyId:(long)vocabularyId error:(NSError **)error;
-- (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long)groupId name:(NSString *)name vocabularyId:(long)vocabularyId error:(NSError **)error;
-- (NSDictionary *)getVocabularyCategoriesDisplayWithVocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (NSDictionary *)getVocabularyCategoriesDisplayWithGroupId:(long)groupId name:(NSString *)name vocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (NSArray *)getVocabularyRootCategoriesWithVocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (NSArray *)getVocabularyRootCategoriesWithGroupId:(long)groupId vocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (NSNumber *)getVocabularyRootCategoriesCountWithGroupId:(long)groupId vocabularyId:(long)vocabularyId error:(NSError **)error;
-- (NSDictionary *)moveCategoryWithCategoryId:(long)categoryId parentCategoryId:(long)parentCategoryId vocabularyId:(long)vocabularyId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (NSDictionary *)searchWithGroupId:(long)groupId name:(NSString *)name categoryProperties:(NSArray *)categoryProperties start:(int)start end:(int)end error:(NSError **)error;
+- (void)deleteCategoryWithCategoryId:(long long)categoryId error:(NSError **)error;
+- (NSArray *)getCategoriesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
+- (NSDictionary *)getCategoryWithCategoryId:(long long)categoryId error:(NSError **)error;
+- (NSArray *)getChildCategoriesWithParentCategoryId:(long long)parentCategoryId error:(NSError **)error;
+- (NSArray *)getChildCategoriesWithParentCategoryId:(long long)parentCategoryId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSDictionary *)getJsonSearchWithGroupId:(long long)groupId name:(NSString *)name vocabularyIds:(NSArray *)vocabularyIds start:(int)start end:(int)end error:(NSError **)error;
+- (NSDictionary *)getJsonVocabularyCategoriesWithVocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSDictionary *)getJsonVocabularyCategoriesWithGroupId:(long long)groupId name:(NSString *)name vocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSArray *)getVocabularyCategoriesWithVocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSArray *)getVocabularyCategoriesWithParentCategoryId:(long long)parentCategoryId vocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSArray *)getVocabularyCategoriesWithGroupId:(long long)groupId name:(NSString *)name vocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long long)groupId vocabularyId:(long long)vocabularyId error:(NSError **)error;
+- (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long long)groupId name:(NSString *)name vocabularyId:(long long)vocabularyId error:(NSError **)error;
+- (NSDictionary *)getVocabularyCategoriesDisplayWithVocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSDictionary *)getVocabularyCategoriesDisplayWithGroupId:(long long)groupId name:(NSString *)name vocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSArray *)getVocabularyRootCategoriesWithVocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSArray *)getVocabularyRootCategoriesWithGroupId:(long long)groupId vocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSNumber *)getVocabularyRootCategoriesCountWithGroupId:(long long)groupId vocabularyId:(long long)vocabularyId error:(NSError **)error;
+- (NSDictionary *)moveCategoryWithCategoryId:(long long)categoryId parentCategoryId:(long long)parentCategoryId vocabularyId:(long long)vocabularyId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)searchWithGroupId:(long long)groupId name:(NSString *)name categoryProperties:(NSArray *)categoryProperties start:(int)start end:(int)end error:(NSError **)error;
 - (NSDictionary *)searchWithGroupIds:(NSArray *)groupIds name:(NSString *)name vocabularyIds:(NSArray *)vocabularyIds start:(int)start end:(int)end error:(NSError **)error;
-- (NSArray *)searchWithGroupId:(long)groupId keywords:(NSString *)keywords vocabularyId:(long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (NSDictionary *)updateCategoryWithCategoryId:(long)categoryId parentCategoryId:(long)parentCategoryId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap vocabularyId:(long)vocabularyId categoryProperties:(NSArray *)categoryProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSArray *)searchWithGroupId:(long long)groupId keywords:(NSString *)keywords vocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSDictionary *)updateCategoryWithCategoryId:(long long)categoryId parentCategoryId:(long long)parentCategoryId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap vocabularyId:(long long)vocabularyId categoryProperties:(NSArray *)categoryProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

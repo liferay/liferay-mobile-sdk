@@ -21,19 +21,19 @@
 @interface LRWikiNodeService_v62 : LRBaseService
 
 - (NSDictionary *)addNodeWithName:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (void)deleteNodeWithNodeId:(long)nodeId error:(NSError **)error;
-- (NSDictionary *)getNodeWithNodeId:(long)nodeId error:(NSError **)error;
-- (NSDictionary *)getNodeWithGroupId:(long)groupId name:(NSString *)name error:(NSError **)error;
-- (NSArray *)getNodesWithGroupId:(long)groupId error:(NSError **)error;
-- (NSArray *)getNodesWithGroupId:(long)groupId status:(int)status error:(NSError **)error;
-- (NSArray *)getNodesWithGroupId:(long)groupId start:(int)start end:(int)end error:(NSError **)error;
-- (NSArray *)getNodesWithGroupId:(long)groupId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
-- (NSNumber *)getNodesCountWithGroupId:(long)groupId error:(NSError **)error;
-- (NSNumber *)getNodesCountWithGroupId:(long)groupId status:(int)status error:(NSError **)error;
-- (NSDictionary *)moveNodeToTrashWithNodeId:(long)nodeId error:(NSError **)error;
-- (void)restoreNodeFromTrashWithNodeId:(long)nodeId error:(NSError **)error;
-- (void)subscribeNodeWithNodeId:(long)nodeId error:(NSError **)error;
-- (void)unsubscribeNodeWithNodeId:(long)nodeId error:(NSError **)error;
-- (NSDictionary *)updateNodeWithNodeId:(long)nodeId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteNodeWithNodeId:(long long)nodeId error:(NSError **)error;
+- (NSDictionary *)getNodeWithNodeId:(long long)nodeId error:(NSError **)error;
+- (NSDictionary *)getNodeWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error;
+- (NSArray *)getNodesWithGroupId:(long long)groupId error:(NSError **)error;
+- (NSArray *)getNodesWithGroupId:(long long)groupId status:(int)status error:(NSError **)error;
+- (NSArray *)getNodesWithGroupId:(long long)groupId start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getNodesWithGroupId:(long long)groupId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
+- (NSNumber *)getNodesCountWithGroupId:(long long)groupId error:(NSError **)error;
+- (NSNumber *)getNodesCountWithGroupId:(long long)groupId status:(int)status error:(NSError **)error;
+- (NSDictionary *)moveNodeToTrashWithNodeId:(long long)nodeId error:(NSError **)error;
+- (void)restoreNodeFromTrashWithNodeId:(long long)nodeId error:(NSError **)error;
+- (void)subscribeNodeWithNodeId:(long long)nodeId error:(NSError **)error;
+- (void)unsubscribeNodeWithNodeId:(long long)nodeId error:(NSError **)error;
+- (NSDictionary *)updateNodeWithNodeId:(long long)nodeId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

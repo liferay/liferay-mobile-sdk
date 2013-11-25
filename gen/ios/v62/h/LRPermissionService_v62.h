@@ -20,6 +20,6 @@
  */
 @interface LRPermissionService_v62 : LRBaseService
 
-- (void)checkPermissionWithGroupId:(long)groupId name:(NSString *)name primKey:(NSString *)primKey error:(NSError **)error;
+- (void)checkPermissionWithGroupId:(long long)groupId name:(NSString *)name primKey:(NSString *)primKey error:(NSError **)error;
 
 @end

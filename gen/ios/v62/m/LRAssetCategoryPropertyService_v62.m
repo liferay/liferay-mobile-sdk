@@ -19,7 +19,7 @@
  */
 @implementation LRAssetCategoryPropertyService_v62
 
-- (NSDictionary *)addCategoryPropertyWithEntryId:(long)entryId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
+- (NSDictionary *)addCategoryPropertyWithEntryId:(long long)entryId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"entryId": @(entryId),
 		@"key": key,
@@ -31,7 +31,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteCategoryPropertyWithCategoryPropertyId:(long)categoryPropertyId error:(NSError **)error {
+- (void)deleteCategoryPropertyWithCategoryPropertyId:(long long)categoryPropertyId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"categoryPropertyId": @(categoryPropertyId)
 	};
@@ -41,7 +41,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCategoryPropertiesWithEntryId:(long)entryId error:(NSError **)error {
+- (NSArray *)getCategoryPropertiesWithEntryId:(long long)entryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"entryId": @(entryId)
 	};
@@ -51,7 +51,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCategoryPropertyValuesWithCompanyId:(long)companyId key:(NSString *)key error:(NSError **)error {
+- (NSArray *)getCategoryPropertyValuesWithCompanyId:(long long)companyId key:(NSString *)key error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"key": key
@@ -62,7 +62,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateCategoryPropertyWithCategoryPropertyId:(long)categoryPropertyId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
+- (NSDictionary *)updateCategoryPropertyWithCategoryPropertyId:(long long)categoryPropertyId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"categoryPropertyId": @(categoryPropertyId),
 		@"key": key,

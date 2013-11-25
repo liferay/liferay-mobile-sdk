@@ -20,6 +20,6 @@
  */
 @interface LRAnnouncementsDeliveryService_v62 : LRBaseService
 
-- (NSDictionary *)updateDeliveryWithUserId:(long)userId type:(NSString *)type email:(BOOL)email sms:(BOOL)sms website:(BOOL)website error:(NSError **)error;
+- (NSDictionary *)updateDeliveryWithUserId:(long long)userId type:(NSString *)type email:(BOOL)email sms:(BOOL)sms website:(BOOL)website error:(NSError **)error;
 
 @end

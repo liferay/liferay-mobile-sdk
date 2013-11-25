@@ -20,10 +20,10 @@
  */
 @interface LRExpandoValueService_v62 : LRBaseService
 
-- (NSDictionary *)addValueWithCompanyId:(long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long)classPK data:(NSString *)data error:(NSError **)error;
-- (void)addValuesWithCompanyId:(long)companyId className:(NSString *)className tableName:(NSString *)tableName classPK:(long)classPK attributeValues:(NSDictionary *)attributeValues error:(NSError **)error;
-- (NSDictionary *)getDataWithCompanyId:(long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long)classPK error:(NSError **)error;
-- (NSDictionary *)getDataWithCompanyId:(long)companyId className:(NSString *)className tableName:(NSString *)tableName columnNames:(NSDictionary *)columnNames classPK:(long)classPK error:(NSError **)error;
-- (NSDictionary *)getJsonDataWithCompanyId:(long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long)classPK error:(NSError **)error;
+- (NSDictionary *)addValueWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long long)classPK data:(NSString *)data error:(NSError **)error;
+- (void)addValuesWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName classPK:(long long)classPK attributeValues:(NSDictionary *)attributeValues error:(NSError **)error;
+- (NSDictionary *)getDataWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long long)classPK error:(NSError **)error;
+- (NSDictionary *)getDataWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnNames:(NSDictionary *)columnNames classPK:(long long)classPK error:(NSError **)error;
+- (NSDictionary *)getJsonDataWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long long)classPK error:(NSError **)error;
 
 @end

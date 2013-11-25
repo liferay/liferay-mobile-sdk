@@ -19,7 +19,7 @@
  */
 @implementation LROrgLaborService_v62
 
-- (NSDictionary *)addOrgLaborWithOrganizationId:(long)organizationId typeId:(int)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose error:(NSError **)error {
+- (NSDictionary *)addOrgLaborWithOrganizationId:(long long)organizationId typeId:(int)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"organizationId": @(organizationId),
 		@"typeId": @(typeId),
@@ -44,7 +44,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteOrgLaborWithOrgLaborId:(long)orgLaborId error:(NSError **)error {
+- (void)deleteOrgLaborWithOrgLaborId:(long long)orgLaborId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"orgLaborId": @(orgLaborId)
 	};
@@ -54,7 +54,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getOrgLaborWithOrgLaborId:(long)orgLaborId error:(NSError **)error {
+- (NSDictionary *)getOrgLaborWithOrgLaborId:(long long)orgLaborId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"orgLaborId": @(orgLaborId)
 	};
@@ -64,7 +64,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getOrgLaborsWithOrganizationId:(long)organizationId error:(NSError **)error {
+- (NSArray *)getOrgLaborsWithOrganizationId:(long long)organizationId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"organizationId": @(organizationId)
 	};
@@ -74,7 +74,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateOrgLaborWithOrgLaborId:(long)orgLaborId typeId:(int)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose error:(NSError **)error {
+- (NSDictionary *)updateOrgLaborWithOrgLaborId:(long long)orgLaborId typeId:(int)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"orgLaborId": @(orgLaborId),
 		@"typeId": @(typeId),

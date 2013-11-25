@@ -19,7 +19,7 @@
  */
 @implementation LRMembershipRequestService_v62
 
-- (NSDictionary *)addMembershipRequestWithGroupId:(long)groupId comments:(NSString *)comments serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addMembershipRequestWithGroupId:(long long)groupId comments:(NSString *)comments serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"comments": comments,
@@ -31,7 +31,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteMembershipRequestsWithGroupId:(long)groupId statusId:(int)statusId error:(NSError **)error {
+- (void)deleteMembershipRequestsWithGroupId:(long long)groupId statusId:(int)statusId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"statusId": @(statusId)
@@ -42,7 +42,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getMembershipRequestWithMembershipRequestId:(long)membershipRequestId error:(NSError **)error {
+- (NSDictionary *)getMembershipRequestWithMembershipRequestId:(long long)membershipRequestId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"membershipRequestId": @(membershipRequestId)
 	};
@@ -52,7 +52,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)updateStatusWithMembershipRequestId:(long)membershipRequestId reviewComments:(NSString *)reviewComments statusId:(int)statusId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (void)updateStatusWithMembershipRequestId:(long long)membershipRequestId reviewComments:(NSString *)reviewComments statusId:(int)statusId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"membershipRequestId": @(membershipRequestId),
 		@"reviewComments": reviewComments,

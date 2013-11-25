@@ -20,10 +20,10 @@
  */
 @interface LRAssetCategoryPropertyService_v62 : LRBaseService
 
-- (NSDictionary *)addCategoryPropertyWithEntryId:(long)entryId key:(NSString *)key value:(NSString *)value error:(NSError **)error;
-- (void)deleteCategoryPropertyWithCategoryPropertyId:(long)categoryPropertyId error:(NSError **)error;
-- (NSArray *)getCategoryPropertiesWithEntryId:(long)entryId error:(NSError **)error;
-- (NSArray *)getCategoryPropertyValuesWithCompanyId:(long)companyId key:(NSString *)key error:(NSError **)error;
-- (NSDictionary *)updateCategoryPropertyWithCategoryPropertyId:(long)categoryPropertyId key:(NSString *)key value:(NSString *)value error:(NSError **)error;
+- (NSDictionary *)addCategoryPropertyWithEntryId:(long long)entryId key:(NSString *)key value:(NSString *)value error:(NSError **)error;
+- (void)deleteCategoryPropertyWithCategoryPropertyId:(long long)categoryPropertyId error:(NSError **)error;
+- (NSArray *)getCategoryPropertiesWithEntryId:(long long)entryId error:(NSError **)error;
+- (NSArray *)getCategoryPropertyValuesWithCompanyId:(long long)companyId key:(NSString *)key error:(NSError **)error;
+- (NSDictionary *)updateCategoryPropertyWithCategoryPropertyId:(long long)categoryPropertyId key:(NSString *)key value:(NSString *)value error:(NSError **)error;
 
 @end

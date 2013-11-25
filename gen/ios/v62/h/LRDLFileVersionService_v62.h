@@ -20,9 +20,9 @@
  */
 @interface LRDLFileVersionService_v62 : LRBaseService
 
-- (NSDictionary *)getFileVersionWithFileVersionId:(long)fileVersionId error:(NSError **)error;
-- (NSArray *)getFileVersionsWithFileEntryId:(long)fileEntryId status:(int)status error:(NSError **)error;
-- (NSNumber *)getFileVersionsCountWithFileEntryId:(long)fileEntryId status:(int)status error:(NSError **)error;
-- (NSDictionary *)getLatestFileVersionWithFileEntryId:(long)fileEntryId error:(NSError **)error;
+- (NSDictionary *)getFileVersionWithFileVersionId:(long long)fileVersionId error:(NSError **)error;
+- (NSArray *)getFileVersionsWithFileEntryId:(long long)fileEntryId status:(int)status error:(NSError **)error;
+- (NSNumber *)getFileVersionsCountWithFileEntryId:(long long)fileEntryId status:(int)status error:(NSError **)error;
+- (NSDictionary *)getLatestFileVersionWithFileEntryId:(long long)fileEntryId error:(NSError **)error;
 
 @end

@@ -19,7 +19,7 @@
  */
 @implementation LRMBCategoryService_v62
 
-- (NSDictionary *)addCategoryWithParentCategoryId:(long)parentCategoryId name:(NSString *)name description:(NSString *)description displayStyle:(NSString *)displayStyle emailAddress:(NSString *)emailAddress inProtocol:(NSString *)inProtocol inServerName:(NSString *)inServerName inServerPort:(int)inServerPort inUseSSL:(BOOL)inUseSSL inUserName:(NSString *)inUserName inPassword:(NSString *)inPassword inReadInterval:(int)inReadInterval outEmailAddress:(NSString *)outEmailAddress outCustom:(BOOL)outCustom outServerName:(NSString *)outServerName outServerPort:(int)outServerPort outUseSSL:(BOOL)outUseSSL outUserName:(NSString *)outUserName outPassword:(NSString *)outPassword mailingListActive:(BOOL)mailingListActive allowAnonymousEmail:(BOOL)allowAnonymousEmail serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addCategoryWithParentCategoryId:(long long)parentCategoryId name:(NSString *)name description:(NSString *)description displayStyle:(NSString *)displayStyle emailAddress:(NSString *)emailAddress inProtocol:(NSString *)inProtocol inServerName:(NSString *)inServerName inServerPort:(int)inServerPort inUseSSL:(BOOL)inUseSSL inUserName:(NSString *)inUserName inPassword:(NSString *)inPassword inReadInterval:(int)inReadInterval outEmailAddress:(NSString *)outEmailAddress outCustom:(BOOL)outCustom outServerName:(NSString *)outServerName outServerPort:(int)outServerPort outUseSSL:(BOOL)outUseSSL outUserName:(NSString *)outUserName outPassword:(NSString *)outPassword mailingListActive:(BOOL)mailingListActive allowAnonymousEmail:(BOOL)allowAnonymousEmail serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"parentCategoryId": @(parentCategoryId),
 		@"name": name,
@@ -50,7 +50,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addCategoryWithUserId:(long)userId parentCategoryId:(long)parentCategoryId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addCategoryWithUserId:(long long)userId parentCategoryId:(long long)parentCategoryId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"parentCategoryId": @(parentCategoryId),
@@ -64,7 +64,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteCategoryWithCategoryId:(long)categoryId includeTrashedEntries:(BOOL)includeTrashedEntries error:(NSError **)error {
+- (void)deleteCategoryWithCategoryId:(long long)categoryId includeTrashedEntries:(BOOL)includeTrashedEntries error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"categoryId": @(categoryId),
 		@"includeTrashedEntries": @(includeTrashedEntries)
@@ -75,7 +75,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteCategoryWithGroupId:(long)groupId categoryId:(long)categoryId error:(NSError **)error {
+- (void)deleteCategoryWithGroupId:(long long)groupId categoryId:(long long)categoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId)
@@ -86,7 +86,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCategoriesWithGroupId:(long)groupId error:(NSError **)error {
+- (NSArray *)getCategoriesWithGroupId:(long long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId)
 	};
@@ -96,7 +96,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCategoriesWithGroupId:(long)groupId status:(int)status error:(NSError **)error {
+- (NSArray *)getCategoriesWithGroupId:(long long)groupId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"status": @(status)
@@ -107,7 +107,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCategoriesWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getCategoriesWithGroupId:(long long)groupId parentCategoryId:(long long)parentCategoryId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentCategoryId": @(parentCategoryId),
@@ -120,7 +120,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCategoriesWithGroupId:(long)groupId parentCategoryIds:(NSArray *)parentCategoryIds start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getCategoriesWithGroupId:(long long)groupId parentCategoryIds:(NSArray *)parentCategoryIds start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentCategoryIds": parentCategoryIds,
@@ -133,7 +133,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCategoriesWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getCategoriesWithGroupId:(long long)groupId parentCategoryId:(long long)parentCategoryId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentCategoryId": @(parentCategoryId),
@@ -147,7 +147,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCategoriesWithGroupId:(long)groupId parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getCategoriesWithGroupId:(long long)groupId parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentCategoryIds": parentCategoryIds,
@@ -161,7 +161,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getCategoriesCountWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId error:(NSError **)error {
+- (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId parentCategoryId:(long long)parentCategoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentCategoryId": @(parentCategoryId)
@@ -172,7 +172,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getCategoriesCountWithGroupId:(long)groupId parentCategoryIds:(NSArray *)parentCategoryIds error:(NSError **)error {
+- (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId parentCategoryIds:(NSArray *)parentCategoryIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentCategoryIds": parentCategoryIds
@@ -183,7 +183,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getCategoriesCountWithGroupId:(long)groupId parentCategoryId:(long)parentCategoryId status:(int)status error:(NSError **)error {
+- (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId parentCategoryId:(long long)parentCategoryId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentCategoryId": @(parentCategoryId),
@@ -195,7 +195,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getCategoriesCountWithGroupId:(long)groupId parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status error:(NSError **)error {
+- (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"parentCategoryIds": parentCategoryIds,
@@ -207,7 +207,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getCategoryWithCategoryId:(long)categoryId error:(NSError **)error {
+- (NSDictionary *)getCategoryWithCategoryId:(long long)categoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"categoryId": @(categoryId)
 	};
@@ -217,7 +217,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCategoryIdsWithGroupId:(long)groupId categoryId:(long)categoryId error:(NSError **)error {
+- (NSArray *)getCategoryIdsWithGroupId:(long long)groupId categoryId:(long long)categoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId)
@@ -228,7 +228,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getSubcategoryIdsWithCategoryIds:(NSArray *)categoryIds groupId:(long)groupId categoryId:(long)categoryId error:(NSError **)error {
+- (NSArray *)getSubcategoryIdsWithCategoryIds:(NSArray *)categoryIds groupId:(long long)groupId categoryId:(long long)categoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"categoryIds": categoryIds,
 		@"groupId": @(groupId),
@@ -240,7 +240,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getSubscribedCategoriesWithGroupId:(long)groupId userId:(long)userId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getSubscribedCategoriesWithGroupId:(long long)groupId userId:(long long)userId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
@@ -253,7 +253,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getSubscribedCategoriesCountWithGroupId:(long)groupId userId:(long)userId error:(NSError **)error {
+- (NSNumber *)getSubscribedCategoriesCountWithGroupId:(long long)groupId userId:(long long)userId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userId": @(userId)
@@ -264,7 +264,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)moveCategoryWithCategoryId:(long)categoryId parentCategoryId:(long)parentCategoryId mergeWithParentCategory:(BOOL)mergeWithParentCategory error:(NSError **)error {
+- (NSDictionary *)moveCategoryWithCategoryId:(long long)categoryId parentCategoryId:(long long)parentCategoryId mergeWithParentCategory:(BOOL)mergeWithParentCategory error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"categoryId": @(categoryId),
 		@"parentCategoryId": @(parentCategoryId),
@@ -276,7 +276,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)moveCategoryFromTrashWithCategoryId:(long)categoryId newCategoryId:(long)newCategoryId error:(NSError **)error {
+- (NSDictionary *)moveCategoryFromTrashWithCategoryId:(long long)categoryId newCategoryId:(long long)newCategoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"categoryId": @(categoryId),
 		@"newCategoryId": @(newCategoryId)
@@ -287,7 +287,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)moveCategoryToTrashWithCategoryId:(long)categoryId error:(NSError **)error {
+- (NSDictionary *)moveCategoryToTrashWithCategoryId:(long long)categoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"categoryId": @(categoryId)
 	};
@@ -297,7 +297,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)restoreCategoryFromTrashWithCategoryId:(long)categoryId error:(NSError **)error {
+- (void)restoreCategoryFromTrashWithCategoryId:(long long)categoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"categoryId": @(categoryId)
 	};
@@ -307,7 +307,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)subscribeCategoryWithGroupId:(long)groupId categoryId:(long)categoryId error:(NSError **)error {
+- (void)subscribeCategoryWithGroupId:(long long)groupId categoryId:(long long)categoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId)
@@ -318,7 +318,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)unsubscribeCategoryWithGroupId:(long)groupId categoryId:(long)categoryId error:(NSError **)error {
+- (void)unsubscribeCategoryWithGroupId:(long long)groupId categoryId:(long long)categoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId)
@@ -329,7 +329,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateCategoryWithCategoryId:(long)categoryId parentCategoryId:(long)parentCategoryId name:(NSString *)name description:(NSString *)description displayStyle:(NSString *)displayStyle emailAddress:(NSString *)emailAddress inProtocol:(NSString *)inProtocol inServerName:(NSString *)inServerName inServerPort:(int)inServerPort inUseSSL:(BOOL)inUseSSL inUserName:(NSString *)inUserName inPassword:(NSString *)inPassword inReadInterval:(int)inReadInterval outEmailAddress:(NSString *)outEmailAddress outCustom:(BOOL)outCustom outServerName:(NSString *)outServerName outServerPort:(int)outServerPort outUseSSL:(BOOL)outUseSSL outUserName:(NSString *)outUserName outPassword:(NSString *)outPassword mailingListActive:(BOOL)mailingListActive allowAnonymousEmail:(BOOL)allowAnonymousEmail mergeWithParentCategory:(BOOL)mergeWithParentCategory serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateCategoryWithCategoryId:(long long)categoryId parentCategoryId:(long long)parentCategoryId name:(NSString *)name description:(NSString *)description displayStyle:(NSString *)displayStyle emailAddress:(NSString *)emailAddress inProtocol:(NSString *)inProtocol inServerName:(NSString *)inServerName inServerPort:(int)inServerPort inUseSSL:(BOOL)inUseSSL inUserName:(NSString *)inUserName inPassword:(NSString *)inPassword inReadInterval:(int)inReadInterval outEmailAddress:(NSString *)outEmailAddress outCustom:(BOOL)outCustom outServerName:(NSString *)outServerName outServerPort:(int)outServerPort outUseSSL:(BOOL)outUseSSL outUserName:(NSString *)outUserName outPassword:(NSString *)outPassword mailingListActive:(BOOL)mailingListActive allowAnonymousEmail:(BOOL)allowAnonymousEmail mergeWithParentCategory:(BOOL)mergeWithParentCategory serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"categoryId": @(categoryId),
 		@"parentCategoryId": @(parentCategoryId),

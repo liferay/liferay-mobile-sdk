@@ -21,6 +21,6 @@
 @interface LRPortletService_v62 : LRBaseService
 
 - (NSDictionary *)getWarPortlets:(NSError **)error;
-- (NSDictionary *)updatePortletWithCompanyId:(long)companyId portletId:(NSString *)portletId roles:(NSString *)roles active:(BOOL)active error:(NSError **)error;
+- (NSDictionary *)updatePortletWithCompanyId:(long long)companyId portletId:(NSString *)portletId roles:(NSString *)roles active:(BOOL)active error:(NSError **)error;
 
 @end

@@ -33,7 +33,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteFrameworkVersionWithFrameworkVersionId:(long)frameworkVersionId error:(NSError **)error {
+- (void)deleteFrameworkVersionWithFrameworkVersionId:(long long)frameworkVersionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"frameworkVersionId": @(frameworkVersionId)
 	};
@@ -43,7 +43,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getFrameworkVersionWithFrameworkVersionId:(long)frameworkVersionId error:(NSError **)error {
+- (NSDictionary *)getFrameworkVersionWithFrameworkVersionId:(long long)frameworkVersionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"frameworkVersionId": @(frameworkVersionId)
 	};
@@ -53,7 +53,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFrameworkVersionsWithGroupId:(long)groupId active:(BOOL)active error:(NSError **)error {
+- (NSArray *)getFrameworkVersionsWithGroupId:(long long)groupId active:(BOOL)active error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"active": @(active)
@@ -64,7 +64,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFrameworkVersionsWithGroupId:(long)groupId active:(BOOL)active start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getFrameworkVersionsWithGroupId:(long long)groupId active:(BOOL)active start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"active": @(active),
@@ -77,7 +77,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateFrameworkVersionWithFrameworkVersionId:(long)frameworkVersionId name:(NSString *)name url:(NSString *)url active:(BOOL)active priority:(int)priority error:(NSError **)error {
+- (NSDictionary *)updateFrameworkVersionWithFrameworkVersionId:(long long)frameworkVersionId name:(NSString *)name url:(NSString *)url active:(BOOL)active priority:(int)priority error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"frameworkVersionId": @(frameworkVersionId),
 		@"name": name,

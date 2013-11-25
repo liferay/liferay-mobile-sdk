@@ -38,7 +38,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteQuestionWithQuestionId:(long)questionId error:(NSError **)error {
+- (void)deleteQuestionWithQuestionId:(long long)questionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"questionId": @(questionId)
 	};
@@ -48,7 +48,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getQuestionWithQuestionId:(long)questionId error:(NSError **)error {
+- (NSDictionary *)getQuestionWithQuestionId:(long long)questionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"questionId": @(questionId)
 	};
@@ -58,7 +58,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateQuestionWithQuestionId:(long)questionId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap expirationDateMonth:(int)expirationDateMonth expirationDateDay:(int)expirationDateDay expirationDateYear:(int)expirationDateYear expirationDateHour:(int)expirationDateHour expirationDateMinute:(int)expirationDateMinute neverExpire:(BOOL)neverExpire choices:(NSArray *)choices serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateQuestionWithQuestionId:(long long)questionId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap expirationDateMonth:(int)expirationDateMonth expirationDateDay:(int)expirationDateDay expirationDateYear:(int)expirationDateYear expirationDateHour:(int)expirationDateHour expirationDateMinute:(int)expirationDateMinute neverExpire:(BOOL)neverExpire choices:(NSArray *)choices serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"questionId": @(questionId),
 		@"titleMap": titleMap,

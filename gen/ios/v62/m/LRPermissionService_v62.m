@@ -19,7 +19,7 @@
  */
 @implementation LRPermissionService_v62
 
-- (void)checkPermissionWithGroupId:(long)groupId name:(NSString *)name primKey:(NSString *)primKey error:(NSError **)error {
+- (void)checkPermissionWithGroupId:(long long)groupId name:(NSString *)name primKey:(NSString *)primKey error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"name": name,

@@ -33,7 +33,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteLicenseWithLicenseId:(long)licenseId error:(NSError **)error {
+- (void)deleteLicenseWithLicenseId:(long long)licenseId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"licenseId": @(licenseId)
 	};
@@ -43,7 +43,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getLicenseWithLicenseId:(long)licenseId error:(NSError **)error {
+- (NSDictionary *)getLicenseWithLicenseId:(long long)licenseId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"licenseId": @(licenseId)
 	};
@@ -53,7 +53,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateLicenseWithLicenseId:(long)licenseId name:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended error:(NSError **)error {
+- (NSDictionary *)updateLicenseWithLicenseId:(long long)licenseId name:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"licenseId": @(licenseId),
 		@"name": name,

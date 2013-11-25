@@ -19,7 +19,7 @@
  */
 @implementation LRAnnouncementsDeliveryService_v62
 
-- (NSDictionary *)updateDeliveryWithUserId:(long)userId type:(NSString *)type email:(BOOL)email sms:(BOOL)sms website:(BOOL)website error:(NSError **)error {
+- (NSDictionary *)updateDeliveryWithUserId:(long long)userId type:(NSString *)type email:(BOOL)email sms:(BOOL)sms website:(BOOL)website error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"type": type,

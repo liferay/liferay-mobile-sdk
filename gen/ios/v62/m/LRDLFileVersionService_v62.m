@@ -19,7 +19,7 @@
  */
 @implementation LRDLFileVersionService_v62
 
-- (NSDictionary *)getFileVersionWithFileVersionId:(long)fileVersionId error:(NSError **)error {
+- (NSDictionary *)getFileVersionWithFileVersionId:(long long)fileVersionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileVersionId": @(fileVersionId)
 	};
@@ -29,7 +29,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFileVersionsWithFileEntryId:(long)fileEntryId status:(int)status error:(NSError **)error {
+- (NSArray *)getFileVersionsWithFileEntryId:(long long)fileEntryId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId),
 		@"status": @(status)
@@ -40,7 +40,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getFileVersionsCountWithFileEntryId:(long)fileEntryId status:(int)status error:(NSError **)error {
+- (NSNumber *)getFileVersionsCountWithFileEntryId:(long long)fileEntryId status:(int)status error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId),
 		@"status": @(status)
@@ -51,7 +51,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getLatestFileVersionWithFileEntryId:(long)fileEntryId error:(NSError **)error {
+- (NSDictionary *)getLatestFileVersionWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"fileEntryId": @(fileEntryId)
 	};

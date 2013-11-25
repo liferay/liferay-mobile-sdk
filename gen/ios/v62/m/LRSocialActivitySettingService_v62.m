@@ -19,7 +19,7 @@
  */
 @implementation LRSocialActivitySettingService_v62
 
-- (NSDictionary *)getActivityDefinitionWithGroupId:(long)groupId className:(NSString *)className activityType:(int)activityType error:(NSError **)error {
+- (NSDictionary *)getActivityDefinitionWithGroupId:(long long)groupId className:(NSString *)className activityType:(int)activityType error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"className": className,
@@ -31,7 +31,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getActivityDefinitionsWithGroupId:(long)groupId className:(NSString *)className error:(NSError **)error {
+- (NSArray *)getActivityDefinitionsWithGroupId:(long long)groupId className:(NSString *)className error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"className": className
@@ -42,7 +42,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getActivitySettingsWithGroupId:(long)groupId error:(NSError **)error {
+- (NSArray *)getActivitySettingsWithGroupId:(long long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId)
 	};
@@ -52,7 +52,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getJsonActivityDefinitionsWithGroupId:(long)groupId className:(NSString *)className error:(NSError **)error {
+- (NSDictionary *)getJsonActivityDefinitionsWithGroupId:(long long)groupId className:(NSString *)className error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"className": className
@@ -63,7 +63,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)updateActivitySettingWithGroupId:(long)groupId className:(NSString *)className enabled:(BOOL)enabled error:(NSError **)error {
+- (void)updateActivitySettingWithGroupId:(long long)groupId className:(NSString *)className enabled:(BOOL)enabled error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"className": className,
@@ -75,7 +75,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)updateActivitySettingWithGroupId:(long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinition:(NSDictionary *)activityCounterDefinition error:(NSError **)error {
+- (void)updateActivitySettingWithGroupId:(long long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinition:(NSDictionary *)activityCounterDefinition error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"className": className,
@@ -88,7 +88,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)updateActivitySettingsWithGroupId:(long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinitions:(NSArray *)activityCounterDefinitions error:(NSError **)error {
+- (void)updateActivitySettingsWithGroupId:(long long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinitions:(NSArray *)activityCounterDefinitions error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"className": className,

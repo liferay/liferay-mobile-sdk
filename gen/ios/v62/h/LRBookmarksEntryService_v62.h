@@ -20,29 +20,29 @@
  */
 @interface LRBookmarksEntryService_v62 : LRBaseService
 
-- (NSDictionary *)addEntryWithGroupId:(long)groupId folderId:(long)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (void)deleteEntryWithEntryId:(long)entryId error:(NSError **)error;
-- (NSArray *)getEntriesWithGroupId:(long)groupId folderId:(long)folderId start:(int)start end:(int)end error:(NSError **)error;
-- (NSArray *)getEntriesWithGroupId:(long)groupId folderId:(long)folderId start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;
-- (NSNumber *)getEntriesCountWithGroupId:(long)groupId folderId:(long)folderId error:(NSError **)error;
-- (NSNumber *)getEntriesCountWithGroupId:(long)groupId folderId:(long)folderId status:(int)status error:(NSError **)error;
-- (NSDictionary *)getEntryWithEntryId:(long)entryId error:(NSError **)error;
-- (NSNumber *)getFoldersEntriesCountWithGroupId:(long)groupId folderIds:(NSArray *)folderIds error:(NSError **)error;
-- (NSArray *)getGroupEntriesWithGroupId:(long)groupId start:(int)start end:(int)end error:(NSError **)error;
-- (NSArray *)getGroupEntriesWithGroupId:(long)groupId userId:(long)userId start:(int)start end:(int)end error:(NSError **)error;
-- (NSArray *)getGroupEntriesWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId start:(int)start end:(int)end error:(NSError **)error;
-- (NSNumber *)getGroupEntriesCountWithGroupId:(long)groupId error:(NSError **)error;
-- (NSNumber *)getGroupEntriesCountWithGroupId:(long)groupId userId:(long)userId error:(NSError **)error;
-- (NSNumber *)getGroupEntriesCountWithGroupId:(long)groupId userId:(long)userId rootFolderId:(long)rootFolderId error:(NSError **)error;
-- (NSDictionary *)moveEntryWithEntryId:(long)entryId parentFolderId:(long)parentFolderId error:(NSError **)error;
-- (NSDictionary *)moveEntryFromTrashWithEntryId:(long)entryId parentFolderId:(long)parentFolderId error:(NSError **)error;
-- (NSDictionary *)moveEntryToTrashWithEntryId:(long)entryId error:(NSError **)error;
+- (NSDictionary *)addEntryWithGroupId:(long long)groupId folderId:(long long)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteEntryWithEntryId:(long long)entryId error:(NSError **)error;
+- (NSArray *)getEntriesWithGroupId:(long long)groupId folderId:(long long)folderId start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getEntriesWithGroupId:(long long)groupId folderId:(long long)folderId start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error;
+- (NSNumber *)getEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error;
+- (NSNumber *)getEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId status:(int)status error:(NSError **)error;
+- (NSDictionary *)getEntryWithEntryId:(long long)entryId error:(NSError **)error;
+- (NSNumber *)getFoldersEntriesCountWithGroupId:(long long)groupId folderIds:(NSArray *)folderIds error:(NSError **)error;
+- (NSArray *)getGroupEntriesWithGroupId:(long long)groupId start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getGroupEntriesWithGroupId:(long long)groupId userId:(long long)userId start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getGroupEntriesWithGroupId:(long long)groupId userId:(long long)userId rootFolderId:(long long)rootFolderId start:(int)start end:(int)end error:(NSError **)error;
+- (NSNumber *)getGroupEntriesCountWithGroupId:(long long)groupId error:(NSError **)error;
+- (NSNumber *)getGroupEntriesCountWithGroupId:(long long)groupId userId:(long long)userId error:(NSError **)error;
+- (NSNumber *)getGroupEntriesCountWithGroupId:(long long)groupId userId:(long long)userId rootFolderId:(long long)rootFolderId error:(NSError **)error;
+- (NSDictionary *)moveEntryWithEntryId:(long long)entryId parentFolderId:(long long)parentFolderId error:(NSError **)error;
+- (NSDictionary *)moveEntryFromTrashWithEntryId:(long long)entryId parentFolderId:(long long)parentFolderId error:(NSError **)error;
+- (NSDictionary *)moveEntryToTrashWithEntryId:(long long)entryId error:(NSError **)error;
 - (NSDictionary *)openEntryWithEntry:(NSDictionary *)entry error:(NSError **)error;
-- (NSDictionary *)openEntryWithEntryId:(long)entryId error:(NSError **)error;
-- (void)restoreEntryFromTrashWithEntryId:(long)entryId error:(NSError **)error;
-- (NSDictionary *)searchWithGroupId:(long)groupId creatorUserId:(long)creatorUserId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
-- (void)subscribeEntryWithEntryId:(long)entryId error:(NSError **)error;
-- (void)unsubscribeEntryWithEntryId:(long)entryId error:(NSError **)error;
-- (NSDictionary *)updateEntryWithEntryId:(long)entryId groupId:(long)groupId folderId:(long)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)openEntryWithEntryId:(long long)entryId error:(NSError **)error;
+- (void)restoreEntryFromTrashWithEntryId:(long long)entryId error:(NSError **)error;
+- (NSDictionary *)searchWithGroupId:(long long)groupId creatorUserId:(long long)creatorUserId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
+- (void)subscribeEntryWithEntryId:(long long)entryId error:(NSError **)error;
+- (void)unsubscribeEntryWithEntryId:(long long)entryId error:(NSError **)error;
+- (NSDictionary *)updateEntryWithEntryId:(long long)entryId groupId:(long long)groupId folderId:(long long)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

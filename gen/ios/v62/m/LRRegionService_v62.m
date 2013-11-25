@@ -19,7 +19,7 @@
  */
 @implementation LRRegionService_v62
 
-- (NSDictionary *)addRegionWithCountryId:(long)countryId regionCode:(NSString *)regionCode name:(NSString *)name active:(BOOL)active error:(NSError **)error {
+- (NSDictionary *)addRegionWithCountryId:(long long)countryId regionCode:(NSString *)regionCode name:(NSString *)name active:(BOOL)active error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"countryId": @(countryId),
 		@"regionCode": regionCode,
@@ -32,7 +32,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)fetchRegionWithCountryId:(long)countryId regionCode:(NSString *)regionCode error:(NSError **)error {
+- (NSDictionary *)fetchRegionWithCountryId:(long long)countryId regionCode:(NSString *)regionCode error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"countryId": @(countryId),
 		@"regionCode": regionCode
@@ -43,7 +43,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getRegionWithRegionId:(long)regionId error:(NSError **)error {
+- (NSDictionary *)getRegionWithRegionId:(long long)regionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"regionId": @(regionId)
 	};
@@ -53,7 +53,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getRegionWithCountryId:(long)countryId regionCode:(NSString *)regionCode error:(NSError **)error {
+- (NSDictionary *)getRegionWithCountryId:(long long)countryId regionCode:(NSString *)regionCode error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"countryId": @(countryId),
 		@"regionCode": regionCode
@@ -83,7 +83,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getRegionsWithCountryId:(long)countryId error:(NSError **)error {
+- (NSArray *)getRegionsWithCountryId:(long long)countryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"countryId": @(countryId)
 	};
@@ -93,7 +93,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getRegionsWithCountryId:(long)countryId active:(BOOL)active error:(NSError **)error {
+- (NSArray *)getRegionsWithCountryId:(long long)countryId active:(BOOL)active error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"countryId": @(countryId),
 		@"active": @(active)

@@ -19,7 +19,7 @@
  */
 @implementation LRTeamService_v62
 
-- (NSDictionary *)addTeamWithGroupId:(long)groupId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
+- (NSDictionary *)addTeamWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"name": name,
@@ -31,7 +31,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteTeamWithTeamId:(long)teamId error:(NSError **)error {
+- (void)deleteTeamWithTeamId:(long long)teamId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"teamId": @(teamId)
 	};
@@ -41,7 +41,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupTeamsWithGroupId:(long)groupId error:(NSError **)error {
+- (NSArray *)getGroupTeamsWithGroupId:(long long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId)
 	};
@@ -51,7 +51,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getTeamWithTeamId:(long)teamId error:(NSError **)error {
+- (NSDictionary *)getTeamWithTeamId:(long long)teamId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"teamId": @(teamId)
 	};
@@ -61,7 +61,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getTeamWithGroupId:(long)groupId name:(NSString *)name error:(NSError **)error {
+- (NSDictionary *)getTeamWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"name": name
@@ -72,7 +72,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getUserTeamsWithUserId:(long)userId error:(NSError **)error {
+- (NSArray *)getUserTeamsWithUserId:(long long)userId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId)
 	};
@@ -82,7 +82,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getUserTeamsWithUserId:(long)userId groupId:(long)groupId error:(NSError **)error {
+- (NSArray *)getUserTeamsWithUserId:(long long)userId groupId:(long long)groupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"groupId": @(groupId)
@@ -93,7 +93,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (BOOL)hasUserTeamWithUserId:(long)userId teamId:(long)teamId error:(NSError **)error {
+- (BOOL)hasUserTeamWithUserId:(long long)userId teamId:(long long)teamId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId),
 		@"teamId": @(teamId)
@@ -104,7 +104,7 @@
 	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
-- (NSDictionary *)updateTeamWithTeamId:(long)teamId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
+- (NSDictionary *)updateTeamWithTeamId:(long long)teamId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"teamId": @(teamId),
 		@"name": name,

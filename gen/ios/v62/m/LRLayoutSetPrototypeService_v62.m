@@ -33,7 +33,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteLayoutSetPrototypeWithLayoutSetPrototypeId:(long)layoutSetPrototypeId error:(NSError **)error {
+- (void)deleteLayoutSetPrototypeWithLayoutSetPrototypeId:(long long)layoutSetPrototypeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"layoutSetPrototypeId": @(layoutSetPrototypeId)
 	};
@@ -43,7 +43,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getLayoutSetPrototypeWithLayoutSetPrototypeId:(long)layoutSetPrototypeId error:(NSError **)error {
+- (NSDictionary *)getLayoutSetPrototypeWithLayoutSetPrototypeId:(long long)layoutSetPrototypeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"layoutSetPrototypeId": @(layoutSetPrototypeId)
 	};
@@ -53,7 +53,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long)companyId active:(NSDictionary *)active obc:(NSDictionary *)obc error:(NSError **)error {
+- (NSArray *)searchWithCompanyId:(long long)companyId active:(NSDictionary *)active obc:(NSDictionary *)obc error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"active": active,
@@ -65,7 +65,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateLayoutSetPrototypeWithLayoutSetPrototypeId:(long)layoutSetPrototypeId settings:(NSString *)settings error:(NSError **)error {
+- (NSDictionary *)updateLayoutSetPrototypeWithLayoutSetPrototypeId:(long long)layoutSetPrototypeId settings:(NSString *)settings error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"layoutSetPrototypeId": @(layoutSetPrototypeId),
 		@"settings": settings
@@ -76,7 +76,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateLayoutSetPrototypeWithLayoutSetPrototypeId:(long)layoutSetPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active layoutsUpdateable:(BOOL)layoutsUpdateable serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateLayoutSetPrototypeWithLayoutSetPrototypeId:(long long)layoutSetPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active layoutsUpdateable:(BOOL)layoutsUpdateable serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"layoutSetPrototypeId": @(layoutSetPrototypeId),
 		@"nameMap": nameMap,

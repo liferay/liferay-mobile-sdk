@@ -19,7 +19,7 @@
  */
 @implementation LRUserGroupService_v62
 
-- (void)addGroupUserGroupsWithGroupId:(long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
+- (void)addGroupUserGroupsWithGroupId:(long long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userGroupIds": userGroupIds
@@ -30,7 +30,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)addTeamUserGroupsWithTeamId:(long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
+- (void)addTeamUserGroupsWithTeamId:(long long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"teamId": @(teamId),
 		@"userGroupIds": userGroupIds
@@ -64,7 +64,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteUserGroupWithUserGroupId:(long)userGroupId error:(NSError **)error {
+- (void)deleteUserGroupWithUserGroupId:(long long)userGroupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userGroupId": @(userGroupId)
 	};
@@ -84,7 +84,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getUserGroupWithUserGroupId:(long)userGroupId error:(NSError **)error {
+- (NSDictionary *)getUserGroupWithUserGroupId:(long long)userGroupId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userGroupId": @(userGroupId)
 	};
@@ -94,7 +94,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getUserUserGroupsWithUserId:(long)userId error:(NSError **)error {
+- (NSArray *)getUserUserGroupsWithUserId:(long long)userId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userId": @(userId)
 	};
@@ -104,7 +104,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (void)unsetGroupUserGroupsWithGroupId:(long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
+- (void)unsetGroupUserGroupsWithGroupId:(long long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"userGroupIds": userGroupIds
@@ -115,7 +115,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)unsetTeamUserGroupsWithTeamId:(long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
+- (void)unsetTeamUserGroupsWithTeamId:(long long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"teamId": @(teamId),
 		@"userGroupIds": userGroupIds
@@ -126,7 +126,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateUserGroupWithUserGroupId:(long)userGroupId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
+- (NSDictionary *)updateUserGroupWithUserGroupId:(long long)userGroupId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userGroupId": @(userGroupId),
 		@"name": name,
@@ -138,7 +138,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateUserGroupWithUserGroupId:(long)userGroupId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateUserGroupWithUserGroupId:(long long)userGroupId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userGroupId": @(userGroupId),
 		@"name": name,

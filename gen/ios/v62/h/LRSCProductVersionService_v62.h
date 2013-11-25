@@ -20,11 +20,11 @@
  */
 @interface LRSCProductVersionService_v62 : LRBaseService
 
-- (NSDictionary *)addProductVersionWithProductEntryId:(long)productEntryId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (void)deleteProductVersionWithProductVersionId:(long)productVersionId error:(NSError **)error;
-- (NSDictionary *)getProductVersionWithProductVersionId:(long)productVersionId error:(NSError **)error;
-- (NSArray *)getProductVersionsWithProductEntryId:(long)productEntryId start:(int)start end:(int)end error:(NSError **)error;
-- (NSNumber *)getProductVersionsCountWithProductEntryId:(long)productEntryId error:(NSError **)error;
-- (NSDictionary *)updateProductVersionWithProductVersionId:(long)productVersionId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds error:(NSError **)error;
+- (NSDictionary *)addProductVersionWithProductEntryId:(long long)productEntryId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteProductVersionWithProductVersionId:(long long)productVersionId error:(NSError **)error;
+- (NSDictionary *)getProductVersionWithProductVersionId:(long long)productVersionId error:(NSError **)error;
+- (NSArray *)getProductVersionsWithProductEntryId:(long long)productEntryId start:(int)start end:(int)end error:(NSError **)error;
+- (NSNumber *)getProductVersionsCountWithProductEntryId:(long long)productEntryId error:(NSError **)error;
+- (NSDictionary *)updateProductVersionWithProductVersionId:(long long)productVersionId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds error:(NSError **)error;
 
 @end

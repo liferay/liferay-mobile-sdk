@@ -50,7 +50,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)validateWithListTypeId:(int)listTypeId classNameId:(long)classNameId type:(NSString *)type error:(NSError **)error {
+- (void)validateWithListTypeId:(int)listTypeId classNameId:(long long)classNameId type:(NSString *)type error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"listTypeId": @(listTypeId),
 		@"classNameId": @(classNameId),

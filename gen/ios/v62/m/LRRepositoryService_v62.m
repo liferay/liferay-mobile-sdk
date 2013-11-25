@@ -19,7 +19,7 @@
  */
 @implementation LRRepositoryService_v62
 
-- (NSDictionary *)addRepositoryWithGroupId:(long)groupId classNameId:(long)classNameId parentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description portletId:(NSString *)portletId typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addRepositoryWithGroupId:(long long)groupId classNameId:(long long)classNameId parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description portletId:(NSString *)portletId typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
@@ -36,7 +36,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)checkRepositoryWithRepositoryId:(long)repositoryId error:(NSError **)error {
+- (void)checkRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId)
 	};
@@ -46,7 +46,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteRepositoryWithRepositoryId:(long)repositoryId error:(NSError **)error {
+- (void)deleteRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId)
 	};
@@ -56,7 +56,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getLocalRepositoryImplWithRepositoryId:(long)repositoryId error:(NSError **)error {
+- (NSDictionary *)getLocalRepositoryImplWithRepositoryId:(long long)repositoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId)
 	};
@@ -66,7 +66,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getLocalRepositoryImplWithFolderId:(long)folderId fileEntryId:(long)fileEntryId fileVersionId:(long)fileVersionId error:(NSError **)error {
+- (NSDictionary *)getLocalRepositoryImplWithFolderId:(long long)folderId fileEntryId:(long long)fileEntryId fileVersionId:(long long)fileVersionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"folderId": @(folderId),
 		@"fileEntryId": @(fileEntryId),
@@ -78,7 +78,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getRepositoryWithRepositoryId:(long)repositoryId error:(NSError **)error {
+- (NSDictionary *)getRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId)
 	};
@@ -88,7 +88,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getRepositoryImplWithRepositoryId:(long)repositoryId error:(NSError **)error {
+- (NSDictionary *)getRepositoryImplWithRepositoryId:(long long)repositoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId)
 	};
@@ -98,7 +98,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getRepositoryImplWithFolderId:(long)folderId fileEntryId:(long)fileEntryId fileVersionId:(long)fileVersionId error:(NSError **)error {
+- (NSDictionary *)getRepositoryImplWithFolderId:(long long)folderId fileEntryId:(long long)fileEntryId fileVersionId:(long long)fileVersionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"folderId": @(folderId),
 		@"fileEntryId": @(fileEntryId),
@@ -110,7 +110,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getSupportedConfigurationsWithClassNameId:(long)classNameId error:(NSError **)error {
+- (NSArray *)getSupportedConfigurationsWithClassNameId:(long long)classNameId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"classNameId": @(classNameId)
 	};
@@ -120,7 +120,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getSupportedParametersWithClassNameId:(long)classNameId configuration:(NSString *)configuration error:(NSError **)error {
+- (NSArray *)getSupportedParametersWithClassNameId:(long long)classNameId configuration:(NSString *)configuration error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"classNameId": @(classNameId),
 		@"configuration": configuration
@@ -131,7 +131,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getTypeSettingsPropertiesWithRepositoryId:(long)repositoryId error:(NSError **)error {
+- (NSDictionary *)getTypeSettingsPropertiesWithRepositoryId:(long long)repositoryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId)
 	};
@@ -141,7 +141,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)updateRepositoryWithRepositoryId:(long)repositoryId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
+- (void)updateRepositoryWithRepositoryId:(long long)repositoryId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"repositoryId": @(repositoryId),
 		@"name": name,

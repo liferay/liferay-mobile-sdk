@@ -19,7 +19,7 @@
  */
 @implementation LRUserGroupGroupRoleService_v62
 
-- (void)addUserGroupGroupRolesWithUserGroupId:(long)userGroupId groupId:(long)groupId roleIds:(NSArray *)roleIds error:(NSError **)error {
+- (void)addUserGroupGroupRolesWithUserGroupId:(long long)userGroupId groupId:(long long)groupId roleIds:(NSArray *)roleIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userGroupId": @(userGroupId),
 		@"groupId": @(groupId),
@@ -31,7 +31,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)addUserGroupGroupRolesWithUserGroupIds:(NSArray *)userGroupIds groupId:(long)groupId roleId:(long)roleId error:(NSError **)error {
+- (void)addUserGroupGroupRolesWithUserGroupIds:(NSArray *)userGroupIds groupId:(long long)groupId roleId:(long long)roleId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userGroupIds": userGroupIds,
 		@"groupId": @(groupId),
@@ -43,7 +43,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteUserGroupGroupRolesWithUserGroupId:(long)userGroupId groupId:(long)groupId roleIds:(NSArray *)roleIds error:(NSError **)error {
+- (void)deleteUserGroupGroupRolesWithUserGroupId:(long long)userGroupId groupId:(long long)groupId roleIds:(NSArray *)roleIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userGroupId": @(userGroupId),
 		@"groupId": @(groupId),
@@ -55,7 +55,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteUserGroupGroupRolesWithUserGroupIds:(NSArray *)userGroupIds groupId:(long)groupId roleId:(long)roleId error:(NSError **)error {
+- (void)deleteUserGroupGroupRolesWithUserGroupIds:(NSArray *)userGroupIds groupId:(long long)groupId roleId:(long long)roleId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"userGroupIds": userGroupIds,
 		@"groupId": @(groupId),

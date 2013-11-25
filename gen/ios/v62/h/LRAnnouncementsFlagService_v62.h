@@ -20,8 +20,8 @@
  */
 @interface LRAnnouncementsFlagService_v62 : LRBaseService
 
-- (void)addFlagWithEntryId:(long)entryId value:(int)value error:(NSError **)error;
-- (void)deleteFlagWithFlagId:(long)flagId error:(NSError **)error;
-- (NSDictionary *)getFlagWithEntryId:(long)entryId value:(int)value error:(NSError **)error;
+- (void)addFlagWithEntryId:(long long)entryId value:(int)value error:(NSError **)error;
+- (void)deleteFlagWithFlagId:(long long)flagId error:(NSError **)error;
+- (NSDictionary *)getFlagWithEntryId:(long long)entryId value:(int)value error:(NSError **)error;
 
 @end

@@ -19,7 +19,7 @@
  */
 @implementation LRLayoutSetBranchService_v62
 
-- (NSDictionary *)addLayoutSetBranchWithGroupId:(long)groupId privateLayout:(BOOL)privateLayout name:(NSString *)name description:(NSString *)description master:(BOOL)master copyLayoutSetBranchId:(long)copyLayoutSetBranchId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addLayoutSetBranchWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout name:(NSString *)name description:(NSString *)description master:(BOOL)master copyLayoutSetBranchId:(long long)copyLayoutSetBranchId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
@@ -35,7 +35,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteLayoutSetBranchWithLayoutSetBranchId:(long)layoutSetBranchId error:(NSError **)error {
+- (void)deleteLayoutSetBranchWithLayoutSetBranchId:(long long)layoutSetBranchId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"layoutSetBranchId": @(layoutSetBranchId)
 	};
@@ -45,7 +45,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getLayoutSetBranchesWithGroupId:(long)groupId privateLayout:(BOOL)privateLayout error:(NSError **)error {
+- (NSArray *)getLayoutSetBranchesWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout)
@@ -56,7 +56,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)mergeLayoutSetBranchWithLayoutSetBranchId:(long)layoutSetBranchId mergeLayoutSetBranchId:(long)mergeLayoutSetBranchId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)mergeLayoutSetBranchWithLayoutSetBranchId:(long long)layoutSetBranchId mergeLayoutSetBranchId:(long long)mergeLayoutSetBranchId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"layoutSetBranchId": @(layoutSetBranchId),
 		@"mergeLayoutSetBranchId": @(mergeLayoutSetBranchId),
@@ -68,7 +68,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateLayoutSetBranchWithGroupId:(long)groupId layoutSetBranchId:(long)layoutSetBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateLayoutSetBranchWithGroupId:(long long)groupId layoutSetBranchId:(long long)layoutSetBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"layoutSetBranchId": @(layoutSetBranchId),

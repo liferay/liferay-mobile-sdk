@@ -21,8 +21,8 @@
 @interface LRSCProductEntryService_v62 : LRBaseService
 
 - (NSDictionary *)addProductEntryWithName:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (void)deleteProductEntryWithProductEntryId:(long)productEntryId error:(NSError **)error;
-- (NSDictionary *)getProductEntryWithProductEntryId:(long)productEntryId error:(NSError **)error;
-- (NSDictionary *)updateProductEntryWithProductEntryId:(long)productEntryId name:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages error:(NSError **)error;
+- (void)deleteProductEntryWithProductEntryId:(long long)productEntryId error:(NSError **)error;
+- (NSDictionary *)getProductEntryWithProductEntryId:(long long)productEntryId error:(NSError **)error;
+- (NSDictionary *)updateProductEntryWithProductEntryId:(long long)productEntryId name:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages error:(NSError **)error;
 
 @end

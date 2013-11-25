@@ -19,7 +19,7 @@
  */
 @implementation LRExpandoColumnService_v62
 
-- (NSDictionary *)addColumnWithTableId:(long)tableId name:(NSString *)name type:(int)type error:(NSError **)error {
+- (NSDictionary *)addColumnWithTableId:(long long)tableId name:(NSString *)name type:(int)type error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"tableId": @(tableId),
 		@"name": name,
@@ -31,7 +31,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addColumnWithTableId:(long)tableId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error {
+- (NSDictionary *)addColumnWithTableId:(long long)tableId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"tableId": @(tableId),
 		@"name": name,
@@ -44,7 +44,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteColumnWithColumnId:(long)columnId error:(NSError **)error {
+- (void)deleteColumnWithColumnId:(long long)columnId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"columnId": @(columnId)
 	};
@@ -54,7 +54,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateColumnWithColumnId:(long)columnId name:(NSString *)name type:(int)type error:(NSError **)error {
+- (NSDictionary *)updateColumnWithColumnId:(long long)columnId name:(NSString *)name type:(int)type error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"columnId": @(columnId),
 		@"name": name,
@@ -66,7 +66,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateColumnWithColumnId:(long)columnId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error {
+- (NSDictionary *)updateColumnWithColumnId:(long long)columnId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"columnId": @(columnId),
 		@"name": name,
@@ -79,7 +79,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateTypeSettingsWithColumnId:(long)columnId typeSettings:(NSString *)typeSettings error:(NSError **)error {
+- (NSDictionary *)updateTypeSettingsWithColumnId:(long long)columnId typeSettings:(NSString *)typeSettings error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"columnId": @(columnId),
 		@"typeSettings": typeSettings

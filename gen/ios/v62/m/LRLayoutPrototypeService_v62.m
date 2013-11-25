@@ -44,7 +44,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteLayoutPrototypeWithLayoutPrototypeId:(long)layoutPrototypeId error:(NSError **)error {
+- (void)deleteLayoutPrototypeWithLayoutPrototypeId:(long long)layoutPrototypeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"layoutPrototypeId": @(layoutPrototypeId)
 	};
@@ -54,7 +54,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getLayoutPrototypeWithLayoutPrototypeId:(long)layoutPrototypeId error:(NSError **)error {
+- (NSDictionary *)getLayoutPrototypeWithLayoutPrototypeId:(long long)layoutPrototypeId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"layoutPrototypeId": @(layoutPrototypeId)
 	};
@@ -64,7 +64,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long)companyId active:(NSDictionary *)active obc:(NSDictionary *)obc error:(NSError **)error {
+- (NSArray *)searchWithCompanyId:(long long)companyId active:(NSDictionary *)active obc:(NSDictionary *)obc error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"companyId": @(companyId),
 		@"active": active,
@@ -76,7 +76,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateLayoutPrototypeWithLayoutPrototypeId:(long)layoutPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active error:(NSError **)error {
+- (NSDictionary *)updateLayoutPrototypeWithLayoutPrototypeId:(long long)layoutPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"layoutPrototypeId": @(layoutPrototypeId),
 		@"nameMap": nameMap,
@@ -89,7 +89,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateLayoutPrototypeWithLayoutPrototypeId:(long)layoutPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateLayoutPrototypeWithLayoutPrototypeId:(long long)layoutPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"layoutPrototypeId": @(layoutPrototypeId),
 		@"nameMap": nameMap,

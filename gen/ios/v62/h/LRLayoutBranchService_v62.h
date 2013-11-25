@@ -20,8 +20,8 @@
  */
 @interface LRLayoutBranchService_v62 : LRBaseService
 
-- (NSDictionary *)addLayoutBranchWithLayoutRevisionId:(long)layoutRevisionId name:(NSString *)name description:(NSString *)description master:(BOOL)master serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (void)deleteLayoutBranchWithLayoutBranchId:(long)layoutBranchId error:(NSError **)error;
-- (NSDictionary *)updateLayoutBranchWithLayoutBranchId:(long)layoutBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addLayoutBranchWithLayoutRevisionId:(long long)layoutRevisionId name:(NSString *)name description:(NSString *)description master:(BOOL)master serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteLayoutBranchWithLayoutBranchId:(long long)layoutBranchId error:(NSError **)error;
+- (NSDictionary *)updateLayoutBranchWithLayoutBranchId:(long long)layoutBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

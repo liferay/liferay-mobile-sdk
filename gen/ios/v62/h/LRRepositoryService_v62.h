@@ -20,17 +20,17 @@
  */
 @interface LRRepositoryService_v62 : LRBaseService
 
-- (NSDictionary *)addRepositoryWithGroupId:(long)groupId classNameId:(long)classNameId parentFolderId:(long)parentFolderId name:(NSString *)name description:(NSString *)description portletId:(NSString *)portletId typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (void)checkRepositoryWithRepositoryId:(long)repositoryId error:(NSError **)error;
-- (void)deleteRepositoryWithRepositoryId:(long)repositoryId error:(NSError **)error;
-- (NSDictionary *)getLocalRepositoryImplWithRepositoryId:(long)repositoryId error:(NSError **)error;
-- (NSDictionary *)getLocalRepositoryImplWithFolderId:(long)folderId fileEntryId:(long)fileEntryId fileVersionId:(long)fileVersionId error:(NSError **)error;
-- (NSDictionary *)getRepositoryWithRepositoryId:(long)repositoryId error:(NSError **)error;
-- (NSDictionary *)getRepositoryImplWithRepositoryId:(long)repositoryId error:(NSError **)error;
-- (NSDictionary *)getRepositoryImplWithFolderId:(long)folderId fileEntryId:(long)fileEntryId fileVersionId:(long)fileVersionId error:(NSError **)error;
-- (NSArray *)getSupportedConfigurationsWithClassNameId:(long)classNameId error:(NSError **)error;
-- (NSArray *)getSupportedParametersWithClassNameId:(long)classNameId configuration:(NSString *)configuration error:(NSError **)error;
-- (NSDictionary *)getTypeSettingsPropertiesWithRepositoryId:(long)repositoryId error:(NSError **)error;
-- (void)updateRepositoryWithRepositoryId:(long)repositoryId name:(NSString *)name description:(NSString *)description error:(NSError **)error;
+- (NSDictionary *)addRepositoryWithGroupId:(long long)groupId classNameId:(long long)classNameId parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description portletId:(NSString *)portletId typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)checkRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error;
+- (void)deleteRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error;
+- (NSDictionary *)getLocalRepositoryImplWithRepositoryId:(long long)repositoryId error:(NSError **)error;
+- (NSDictionary *)getLocalRepositoryImplWithFolderId:(long long)folderId fileEntryId:(long long)fileEntryId fileVersionId:(long long)fileVersionId error:(NSError **)error;
+- (NSDictionary *)getRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error;
+- (NSDictionary *)getRepositoryImplWithRepositoryId:(long long)repositoryId error:(NSError **)error;
+- (NSDictionary *)getRepositoryImplWithFolderId:(long long)folderId fileEntryId:(long long)fileEntryId fileVersionId:(long long)fileVersionId error:(NSError **)error;
+- (NSArray *)getSupportedConfigurationsWithClassNameId:(long long)classNameId error:(NSError **)error;
+- (NSArray *)getSupportedParametersWithClassNameId:(long long)classNameId configuration:(NSString *)configuration error:(NSError **)error;
+- (NSDictionary *)getTypeSettingsPropertiesWithRepositoryId:(long long)repositoryId error:(NSError **)error;
+- (void)updateRepositoryWithRepositoryId:(long long)repositoryId name:(NSString *)name description:(NSString *)description error:(NSError **)error;
 
 @end

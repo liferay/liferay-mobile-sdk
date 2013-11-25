@@ -19,7 +19,7 @@
  */
 @implementation LRSCProductVersionService_v62
 
-- (NSDictionary *)addProductVersionWithProductEntryId:(long)productEntryId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addProductVersionWithProductEntryId:(long long)productEntryId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"productEntryId": @(productEntryId),
 		@"version": version,
@@ -37,7 +37,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteProductVersionWithProductVersionId:(long)productVersionId error:(NSError **)error {
+- (void)deleteProductVersionWithProductVersionId:(long long)productVersionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"productVersionId": @(productVersionId)
 	};
@@ -47,7 +47,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getProductVersionWithProductVersionId:(long)productVersionId error:(NSError **)error {
+- (NSDictionary *)getProductVersionWithProductVersionId:(long long)productVersionId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"productVersionId": @(productVersionId)
 	};
@@ -57,7 +57,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getProductVersionsWithProductEntryId:(long)productEntryId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getProductVersionsWithProductEntryId:(long long)productEntryId start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"productEntryId": @(productEntryId),
 		@"start": @(start),
@@ -69,7 +69,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getProductVersionsCountWithProductEntryId:(long)productEntryId error:(NSError **)error {
+- (NSNumber *)getProductVersionsCountWithProductEntryId:(long long)productEntryId error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"productEntryId": @(productEntryId)
 	};
@@ -79,7 +79,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateProductVersionWithProductVersionId:(long)productVersionId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds error:(NSError **)error {
+- (NSDictionary *)updateProductVersionWithProductVersionId:(long long)productVersionId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"productVersionId": @(productVersionId),
 		@"version": version,
