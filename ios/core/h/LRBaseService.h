@@ -23,5 +23,6 @@
 @property (nonatomic, strong) LRSession *session;
 
 - (id)init:(LRSession *)session;
+- (BOOL)boolValue:(NSNumber *)number;
 
 @end

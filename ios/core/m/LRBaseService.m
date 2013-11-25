@@ -29,4 +29,8 @@
 	return self;
 }
 
+- (BOOL)boolValue:(NSNumber *)number {
+	return [number boolValue];
+}
+
 @end

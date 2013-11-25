@@ -59,6 +59,8 @@ ${esc.h}import "${className}.h"
 
 	#if ($returnType == "void")
 		##t	[self.session invoke:_command error:error];
+	#elseif ($returnType == "BOOL")
+		##t	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 	#else
 		##t	return ($returnType)[self.session invoke:_command error:error];
 	#end
