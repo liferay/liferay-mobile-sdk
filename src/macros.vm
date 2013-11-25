@@ -1,5 +1,5 @@
 #macro(signature $action $suffix)
-	#set ($returnType = $languageUtil.getType($action.response))
+	#set ($returnType = $languageUtil.getReturnType($action.response))
 	#set ($methodName = $languageUtil.getMethodName($action.path))
 	#set ($parameters = $action.parameters)
 	#set ($parameterList = "")

@@ -33,6 +33,18 @@ public class ObjectiveCUtil extends LanguageUtil {
 		return name;
 	}
 
+	public String getReturnType(String type) {
+		type = getType(type);
+
+		if (type.equals("double") || type.equals("int") ||
+			type.equals("long")) {
+
+			type =  "NSNumber *";
+		}
+
+		return type;
+	}
+
 	public String getType(String type) {
 		if (type.endsWith("[]") || type.equals("object<list>") ||
 			type.startsWith("list")) {
