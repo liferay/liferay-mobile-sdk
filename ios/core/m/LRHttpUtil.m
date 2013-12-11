@@ -135,7 +135,7 @@ static NSMutableDictionary *_versions;
 		session.username, session.password];
 
 	NSData *auth = [credentials dataUsingEncoding:NSUTF8StringEncoding];
-	NSString *encoded = [auth base64EncodedStringWithOptions:0];
+	NSString *encoded = [auth base64Encoding];
 	NSString *authHeader = [NSString stringWithFormat:@"Basic %@", encoded];
 	NSData *body = [NSJSONSerialization dataWithJSONObject:commands options:0
 		error:error];
