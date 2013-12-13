@@ -4,27 +4,34 @@
 	<import file="build-android.xml" />
 	<import file="build-ios.xml" />
 
+	<property name="android.gen" value="${project.dir}/gen/android/src" />
+	<property name="ios.gen" value="${project.dir}/gen/ios" />
+
 	<target name="build-service" depends="build-common.compile">
 		<antcall target="android-sdk.clear-gen" />
 
 		<antcall target="build-common.build-service">
-			<param name="builder" value="android" />
+			<param name="platform" value="android" />
+			<param name="destination" value="${android.gen}" />
 		</antcall>
 
 		<antcall target="build-common.build-service">
-			<param name="builder" value="android" />
+			<param name="platform" value="android" />
 			<param name="context" value="sync-web" />
+			<param name="destination" value="${android.gen}" />
 		</antcall>
 
 		<antcall target="android-sdk.format-source-gen" />
 
 		<antcall target="build-common.build-service">
-			<param name="builder" value="ios" />
+			<param name="platform" value="ios" />
+			<param name="destination" value="${ios.gen}" />
 		</antcall>
 
 		<antcall target="build-common.build-service">
-			<param name="builder" value="ios" />
+			<param name="platform" value="ios" />
 			<param name="context" value="sync-web" />
+			<param name="destination" value="${ios.gen}" />
 		</antcall>
 	</target>
 

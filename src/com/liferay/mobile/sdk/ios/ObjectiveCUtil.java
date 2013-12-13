@@ -39,7 +39,7 @@ public class ObjectiveCUtil extends LanguageUtil {
 		if (type.equals("double") || type.equals("int") ||
 			type.equals("long long")) {
 
-			type =  "NSNumber *";
+			type = "NSNumber *";
 		}
 
 		return type;

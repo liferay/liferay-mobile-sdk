@@ -29,31 +29,36 @@ import org.apache.velocity.tools.generic.EscapeTool;
  */
 public class iOSBuilder extends BaseBuilder {
 
-	public void build(Discovery discovery, int version, String filter)
+	@Override
+	public void build(
+			Discovery discovery, String packageName, int version, String filter,
+			String destination)
 		throws Exception {
 
 		VelocityContext context = getVelocityContext(
 			discovery, version, filter);
 
 		String headerTemplate = "com/liferay/mobile/sdk/ios/h.vm";
-		String headerPath = getFilePath(context, version, true);
+		String headerPath = getFilePath(context, version, true, destination);
 
 		VelocityUtil.generate(context, headerTemplate, headerPath, true);
 
 		String implTemplate = "com/liferay/mobile/sdk/ios/m.vm";
-		String implPath = getFilePath(context, version, false);
+		String implPath = getFilePath(context, version, false, destination);
 
 		VelocityUtil.generate(context, implTemplate, implPath, true);
 	}
 
 	protected String getFilePath(
-		VelocityContext context, int version, boolean header) {
+		VelocityContext context, int version, boolean header,
+		String destination) {
 
 		String className = (String)context.get(CLASS_NAME);
 
 		StringBuilder sb = new StringBuilder();
 
-		sb.append("gen/ios/");
+		sb.append(destination);
+		sb.append("/");
 
 		if (version != HttpUtil.UNKNOWN_VERSION) {
 			sb.append("v");

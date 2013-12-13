@@ -26,7 +26,12 @@ import java.util.Map.Entry;
  */
 public abstract class BaseBuilder implements Builder {
 
-	public void buildAll(Discovery discovery, int version) throws Exception {
+	@Override
+	public void buildAll(
+			Discovery discovery, String packageName, int version,
+			String destination)
+		throws Exception {
+
 		HashMap<String, ArrayList<Action>> actionsMap =
 			new HashMap<String, ArrayList<Action>>();
 
@@ -50,7 +55,7 @@ public abstract class BaseBuilder implements Builder {
 		for (Entry<String, ArrayList<Action>> entry : actionsMap.entrySet()) {
 			discovery.setActions(entry.getValue());
 
-			build(discovery, version, entry.getKey());
+			build(discovery, packageName, version, entry.getKey(), destination);
 		}
 	}
 

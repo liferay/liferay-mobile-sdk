@@ -28,7 +28,7 @@ public class PropertiesUtil {
 
 	public static final String PASSWORD = "password";
 
-	public static final String SERVER = "server";
+	public static final String URL = "url";
 
 	public PropertiesUtil() throws IOException {
 		_properties = new Properties();
@@ -68,17 +68,17 @@ public class PropertiesUtil {
 		return _properties.getProperty(key);
 	}
 
-	public String getServer() {
-		if (_server == null) {
-			_server = getProperty(SERVER);
+	public String getUrl() {
+		if (_url == null) {
+			_url = getProperty(URL);
 		}
 
-		return _server;
+		return _url;
 	}
 
 	private String _login;
 	private String _password;
 	private Properties _properties;
-	private String _server;
+	private String _url;
 
 }

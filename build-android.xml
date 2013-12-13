@@ -29,7 +29,8 @@
 		<antcall target="clear-gen" />
 
 		<antcall target="build-common.build-service">
-			<param name="builder" value="android" />
+			<param name="platform" value="android" />
+			<param name="destination" value="${gen.src}" />
 		</antcall>
 
 		<antcall target="format-source-gen" />

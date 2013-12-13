@@ -29,7 +29,7 @@ public abstract class BaseTest {
 		props = new PropertiesUtil();
 
 		session = new SessionImpl(
-			props.getServer(), props.getLogin(), props.getPassword());
+			props.getUrl(), props.getLogin(), props.getPassword());
 	}
 
 	protected PropertiesUtil props;

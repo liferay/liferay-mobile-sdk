@@ -32,72 +32,22 @@ import org.apache.velocity.tools.generic.EscapeTool;
  */
 public class AndroidBuilder extends BaseBuilder {
 
-	public void build(Discovery discovery, int version, String filter)
+	@Override
+	public void build(
+			Discovery discovery, String packageName, int version, String filter,
+			String destination)
 		throws Exception {
 
 		VelocityContext context = getVelocityContext(
-			discovery, version, filter);
+			discovery, packageName, version, filter);
 
 		String templatePath = "com/liferay/mobile/sdk/android/service.vm";
-		String filePath = getServiceFilePath(context);
+		String filePath = getServiceFilePath(context, destination);
 
 		VelocityUtil.generate(context, templatePath, filePath);
 	}
 
-	protected String getServiceFilePath(VelocityContext context) {
-		String packageName = (String)context.get(PACKAGE);
-		String className = (String)context.get(CLASS_NAME);
-
-		String packagePath = packageName.replace(".", "/");
-
-		StringBuilder sb = new StringBuilder();
-
-		sb.append("gen/android/src/");
-		sb.append(packagePath);
-		sb.append("/");
-
-		File file = new File(sb.toString());
-		file.mkdirs();
-
-		sb.append(className);
-		sb.append(".java");
-
-		return sb.toString();
-	}
-
-	protected VelocityContext getVelocityContext(
-		Discovery discovery, int version, String filter) {
-
-		VelocityContext context = new VelocityContext();
-
-		JavaUtil javaUtil = new JavaUtil();
-
-		StringBuilder sb = new StringBuilder("com.liferay.mobile.android");
-
-		if (version != HttpUtil.UNKNOWN_VERSION) {
-			sb.append(".v");
-			sb.append(version);
-		}
-
-		sb.append(".");
-		sb.append(filter);
-
-		String packageName = sb.toString();
-
-		context.put(CLASS_NAME, javaUtil.getServiceClassName(filter));
-		context.put(DISCOVERY, discovery);
-		context.put(ESCAPE_TOOL, new EscapeTool());
-		context.put(LANGUAGE_UTIL, javaUtil);
-		context.put(PACKAGE, packageName);
-
-		_excludeMethods(context);
-
-		return context;
-	}
-
-	protected static final String PACKAGE = "package";
-
-	private void _excludeMethods(VelocityContext context) {
+	protected void excludeMethods(VelocityContext context) {
 		String className = (String)context.get(CLASS_NAME);
 		Discovery discovery = (Discovery)context.get(DISCOVERY);
 
@@ -117,5 +67,61 @@ public class AndroidBuilder extends BaseBuilder {
 			}
 		}
 	}
+
+	protected String getServiceFilePath(
+		VelocityContext context, String destination) {
+
+		String packageName = (String)context.get(PACKAGE);
+		String className = (String)context.get(CLASS_NAME);
+
+		String packagePath = packageName.replace(".", "/");
+
+		StringBuilder sb = new StringBuilder();
+
+		sb.append(destination);
+		sb.append("/");
+		sb.append(packagePath);
+		sb.append("/");
+
+		File file = new File(sb.toString());
+		file.mkdirs();
+
+		sb.append(className);
+		sb.append(".java");
+
+		return sb.toString();
+	}
+
+	protected VelocityContext getVelocityContext(
+		Discovery discovery, String packageName, int version, String filter) {
+
+		VelocityContext context = new VelocityContext();
+
+		JavaUtil javaUtil = new JavaUtil();
+
+		StringBuilder sb = new StringBuilder(packageName);
+
+		if (version != HttpUtil.UNKNOWN_VERSION) {
+			sb.append(".v");
+			sb.append(version);
+		}
+
+		sb.append(".");
+		sb.append(filter);
+
+		packageName = sb.toString();
+
+		context.put(CLASS_NAME, javaUtil.getServiceClassName(filter));
+		context.put(DISCOVERY, discovery);
+		context.put(ESCAPE_TOOL, new EscapeTool());
+		context.put(LANGUAGE_UTIL, javaUtil);
+		context.put(PACKAGE, packageName);
+
+		excludeMethods(context);
+
+		return context;
+	}
+
+	protected static final String PACKAGE = "package";
 
 }

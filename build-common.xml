@@ -56,7 +56,7 @@
 
 	<target name="build-service" depends="compile">
 		<java
-			classname="com.liferay.mobile.sdk.BuilderAntTask"
+			classname="com.liferay.mobile.sdk.MobileSDKBuilder"
 			classpathref="builder.classpath"
 			fork="true"
 			newenvironment="true"
@@ -69,10 +69,12 @@
 			<jvmarg value="${jvmarg.debug}" />
 			<jvmarg value="${jvmarg.debug.port}" />
 
-			<arg value="builder=${builder}" />
-			<arg value="url=${server.url}" />
+			<arg value="platform=${platform}" />
+			<arg value="url=${url}" />
 			<arg value="context=${context}" />
 			<arg value="filter=${filter}" />
+			<arg value="package=${package}" />
+			<arg value="destination=${destination}" />
 		</java>
 	</target>
 

@@ -31,16 +31,26 @@ import org.apache.http.impl.client.DefaultHttpClient;
 /**
  * @author Bruno Farache
  */
-public class BuilderAntTask {
+public class MobileSDKBuilder {
+
+	public static final String ANDROID = "android";
+
+	public static final String IOS = "ios";
 
 	public static final String UNKOWN_PORTAL_VERSION = "0";
 
-	public static void main(String[] args) {
-		Map<String, String> arguments = parseArguments(args);
+	public static void build(
+			String platform, String url, String context, String packageName,
+			String destination)
+		throws Exception {
 
-		String url = arguments.get("url");
-		String context = arguments.get("context");
-		String filter = arguments.get("filter");
+		build(platform, url, context, packageName, null);
+	}
+
+	public static void build(
+			String platform, String url, String context, String packageName,
+			String filter, String destination)
+		throws Exception {
 
 		StringBuilder sb = new StringBuilder();
 
@@ -63,33 +73,41 @@ public class BuilderAntTask {
 		}
 
 		HttpClient client = new DefaultHttpClient();
-
 		HttpGet get = new HttpGet(sb.toString());
-
 		DiscoveryResponseHandler handler = new DiscoveryResponseHandler();
+		Discovery discovery = client.execute(get, handler);
+
+		Builder builder = null;
+
+		if (platform.equals(ANDROID)) {
+			builder = new AndroidBuilder();
+		}
+		else if (platform.equals(IOS)) {
+			builder = new iOSBuilder();
+		}
+
+		int version = HttpUtil.getPortalVersion(url);
+
+		if (Validator.isNull(filter)) {
+			builder.buildAll(discovery, packageName, version, destination);
+		}
+		else {
+			builder.build(discovery, packageName, version, filter, destination);
+		}
+	}
+
+	public static void main(String[] args) {
+		Map<String, String> arguments = parseArguments(args);
+
+		String platform = arguments.get("platform");
+		String url = arguments.get("url");
+		String context = arguments.get("context");
+		String packageName = arguments.get("package");
+		String filter = arguments.get("filter");
+		String destination = arguments.get("destination");
 
 		try {
-			String builderType = arguments.get("builder");
-
-			Builder builder = null;
-
-			if (builderType.equals("android")) {
-				builder = new AndroidBuilder();
-			}
-			else if (builderType.equals("ios")) {
-				builder = new iOSBuilder();
-			}
-
-			Discovery discovery = client.execute(get, handler);
-
-			int version = HttpUtil.getPortalVersion(url);
-
-			if (Validator.isNull(filter)) {
-				builder.buildAll(discovery, version);
-			}
-			else {
-				builder.build(discovery, version, filter);
-			}
+			build(platform, url, context, packageName, filter, destination);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

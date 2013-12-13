@@ -9,7 +9,8 @@
 		<antcall target="clear-gen" />
 
 		<antcall target="build-common.build-service">
-			<param name="builder" value="ios" />
+			<param name="platform" value="ios" />
+			<param name="destination" value="${gen.src}" />
 		</antcall>
 	</target>
 
