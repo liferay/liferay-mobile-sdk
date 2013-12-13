@@ -5,6 +5,7 @@
 
     <property name="dist.dir" value="${project.dir}/dist" />
 	<property name="src.dir" value="${project.dir}/src" />
+	<property name="classes.dir" value="${project.dir}/classes" />
     <property name="lib.dir" value="${project.dir}/lib" />
     <property name="development.dir" value="${lib.dir}/development" />
 
@@ -32,25 +33,25 @@
 	</path>
 
 	<target name="compile">
-		<delete dir="classes" />
+		<delete dir="${classes.dir}" />
 
-		<mkdir dir="classes" />
+		<mkdir dir="${classes.dir}" />
 
 		<copy file="src/com/liferay/mobile/sdk/android/service.vm"
-			todir="classes/com/liferay/mobile/sdk/android" />
+			todir="${classes.dir}/com/liferay/mobile/sdk/android" />
 		
-		<copy file="src/macros.vm" todir="classes" />
+		<copy file="src/macros.vm" todir="${classes.dir}" />
 
 		<copy file="src/com/liferay/mobile/sdk/ios/h.vm"
-			todir="classes/com/liferay/mobile/sdk/ios" />
+			todir="${classes.dir}/com/liferay/mobile/sdk/ios" />
 
 		<copy file="src/com/liferay/mobile/sdk/ios/m.vm"
-			todir="classes/com/liferay/mobile/sdk/ios" />
+			todir="${classes.dir}/com/liferay/mobile/sdk/ios" />
 
 		<javac
 			classpathref="builder.classpath"
 			debug="on"
-			destdir="classes"
+			destdir="${classes.dir}"
 			srcdir="src" />
 	</target>
 
@@ -90,5 +91,11 @@
 		</java>
 
 		<delete file="ServiceBuilder.temp" />
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="${dist.dir}/liferay-mobile-sdk-builder.jar">
+			<fileset dir="${classes.dir}" />
+		</jar>
 	</target>
 </project>
