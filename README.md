@@ -215,9 +215,19 @@ destination=gen
 	* `url` should point to your Liferay instance.
 	* `context` is your portlet web context. Say for example you are generating a SDK for Liferay's Calendar portlet, this portlet is generally deployed to the `calendar-portlet` context, then you should set `context=calendar-portlet`. Under the hood, the SDK Builder will try to access `http://localhost:8080/calendar-portlet/api/jsonws?discover` to find out which services are available for this portlet. Check if this URL is working before running the SDK, if it's not, check the [About](#about) section, you probably forgot to run `ant build-wsdd`.
 	* `filter` is used to filter which entities services will be available. If your service.xml has several entities, you can create a SDK for a given entity only. For example, the Calendar portlet has entities such as `CalendarBooking` and `CalendarResource`, if you want to generate a SDK only for `CalendarBooking`, set it to `filter=calendarbooking`. Builder will do the request to the following URL: `http://localhost:8080/calendar-portlet/api/jsonws?discover=/calendarbooking/*`.
-	* `package` is used to generated the root package name for Android classes. The Liferay version is appended to the end of this package name, for example `com.liferay.mobile.android.v62`. This way, there's no package name collision if you are using the SDK with several Liferay versions at the same time.
+	* `package` (Android only) is used to generated the root package name classes. The Liferay version is appended to the end of this package name, for example `com.liferay.mobile.android.v62`. This way, there's no package name collision if you are using the SDK with several Liferay versions at the same time.
 	* `destination` is the root folder to which your generated files will be saved. Android files will be saved by default to `gen/android/src` and iOS to `gen/ios`.
+	
+	The only property that you generally want to change is `context`, all others are for specific cases.
 
-4. From the root folder, run `ant -f build-android.xml`, this will generate the services classes into the `gen` folder. In order to build a jar file containing the generated service and utility classes, run `ant -f build-android.xml jar`, the jar file will be created at `/dist/android/liferay-android-sdk.jar`.
+##### Android
 
-5. You are ready to use `liferay-android-sdk.jar` in your Android project, no other dependencies are needed.
+1. From the root folder, run `ant -f build-android.xml`, this will generate the services classes into the `gen` folder. In order to build a jar file containing the generated service and utility classes, run `ant -f build-android.xml jar`, the jar file will be created at `dist/android/liferay-android-sdk.jar`.
+
+2. You are ready to use `liferay-android-sdk.jar` in your Android project, no other external dependencies are needed.
+
+##### iOS
+
+1. From the root folder, run `ant -f build-ios.xml`, this will generate the services classes into the `gen/ios` folder. In order to generate a zip file containing the generated service and utility classes, run `ant -f build-ios.xml zip`, the zip file will be created at `dist/ios/liferay-ios-sdk.zip`.
+
+2. You are ready to use `liferay-ios-sdk.zip` in your iOS project, unzip and add all files to your XCode project, no other external dependencies are needed.
