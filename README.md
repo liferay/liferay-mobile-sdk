@@ -177,7 +177,9 @@ Check out the [Android sample app](https://github.com/brunofarache/liferay-mobil
 
 With the SDK Builder, you can generate SDKs for custom portlets. Think it as a Service Builder on the client side, it generates code that allows your mobile app to access your own custom services.
 
-First thing you need to do is to build your services with Service Builder and expose them remotely by setting `remote-service="true"` in service.xml. After deploying your portlet, you can point the SDK Builder to your Liferay instance and ask it to generate code.
+First thing you need to do is to build your services with Service Builder: set `remote-service="true"` in your portlet's service.xml, run `ant build-service`, implement your remote services in `MyCustomServiceImpl.java`, run `ant build-service` again and finally run `ant build-wsdd`. This last step is very important, the SDK Builder won't be able to figure out which services are available if you don't run `ant build-wsdd` beforing deploying the portlet.
+
+After deploying your portlet (`ant deploy`), you can point the SDK Builder to your Liferay instance and run it to generate your custom SDK.
 
 You will be able to do things like `MyCustomService.foo();` from your mobile app, Liferay Mobile SDK will take care of making the JSON Web Services request to your portlet.
 
