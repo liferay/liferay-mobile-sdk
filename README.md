@@ -208,7 +208,7 @@ url=http://localhost:8080
 context=
 filter=
 package=com.liferay.mobile.android
-destination=gen/
+destination=gen
 	```
 
 	Change them accordingly:
