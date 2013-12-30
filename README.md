@@ -177,13 +177,21 @@ Check out the [Android sample app](https://github.com/brunofarache/liferay-mobil
 
 With the SDK Builder, you can generate SDKs for custom portlets. Think it as a Service Builder on the client side, it generates code that allows your mobile app to access your own custom services.
 
-First thing you need to do is to build your services with Service Builder: set `remote-service="true"` in your portlet's service.xml, run `ant build-service`, implement your remote services in `MyCustomServiceImpl.java`, run `ant build-service` again and finally run `ant build-wsdd`. This last step is very important, the SDK Builder won't be able to figure out which services are available if you don't run `ant build-wsdd` beforing deploying the portlet.
+First thing you need to do is to build your services with Service Builder:
 
-After deploying your portlet (`ant deploy`), you can point the SDK Builder to your Liferay instance and run it to generate your custom SDK.
+1. Set `remote-service="true"` in your portlet's service.xml
 
-You will be able to do things like `MyCustomService.foo();` from your mobile app, Liferay Mobile SDK will take care of making the JSON Web Services request to your portlet.
+2. Run `ant build-service` and implement your remote services in the generated `FooServiceImpl.java`
+
+3. Run `ant build-service` again and finally run `ant build-wsdd`.This last step is very important, the SDK Builder won't be able to figure out which services are remotely available if you don't run `ant build-wsdd` before deploying the portlet.
+
+4. After deploying your portlet (`ant deploy`), you are ready to use the SDK Builder to generate your custom SDK.
+
+You will be able to do things like `FooService.bar();` from your mobile app, Liferay Mobile SDK will take care of making the JSON Web Services request to your portlet.
 
 ### Use
+
+#### Ant task
 
 1. Download the Mobile SDK source code:
 
@@ -196,17 +204,20 @@ You will be able to do things like `MyCustomService.foo();` from your mobile app
 3. Here are the important properties:
 
 	```
-server.url=http://localhost:8080
+url=http://localhost:8080
 context=
 filter=
+package=com.liferay.mobile.android
+destination=gen/
 	```
 
 	Change them accordingly:
-	* `server.url` should point to your Liferay instance.
-	* `context` is your portlet web context. Say for example you are generating a SDK for Liferay's Calendar portlet, this portlet is generally deployed to the `calendar-portlet` context, then you should set `context=calendar-portlet`. Under the hood, the SDK Builder will try to access `http://localhost:8080/calendar-portlet/api/jsonws?discover` to find out which services are available for this portlet.
-	* `filter` is used to filter which entities services will be available. If your service.xml has several entities, you can create a SDK for a given entity only. For example, the Calendar portlet has entities such as `CalendarBooking` and `CalendarResource`, if you want to generate a SDK only for `CalendarBooking`, set it to `filter=calendarbooking`. Builder will do the request to the following URL: `http://localhost:8080/calendar-portlet/api/jsonws?discover=/calendarbooking/*`
+	* `url` should point to your Liferay instance.
+	* `context` is your portlet web context. Say for example you are generating a SDK for Liferay's Calendar portlet, this portlet is generally deployed to the `calendar-portlet` context, then you should set `context=calendar-portlet`. Under the hood, the SDK Builder will try to access `http://localhost:8080/calendar-portlet/api/jsonws?discover` to find out which services are available for this portlet. Check if this URL is working before running the SDK, if it's not, check the [About](#about) section, you probably forgot to run `ant build-wsdd`.
+	* `filter` is used to filter which entities services will be available. If your service.xml has several entities, you can create a SDK for a given entity only. For example, the Calendar portlet has entities such as `CalendarBooking` and `CalendarResource`, if you want to generate a SDK only for `CalendarBooking`, set it to `filter=calendarbooking`. Builder will do the request to the following URL: `http://localhost:8080/calendar-portlet/api/jsonws?discover=/calendarbooking/*`.
+	* `package` is used to generated the root package name for Android classes. The Liferay version is appended to the end of this package name, for example `com.liferay.mobile.android.v62`. This way, there's no package name collision if you are using the SDK with several Liferay versions at the same time.
+	* `destination` is the root folder to which your generated files will be saved. Android files will be saved by default to `gen/android/src` and iOS to `gen/ios`.
 
 4. From the root folder, run `ant -f build-android.xml`, this will generate the services classes into the `gen` folder. In order to build a jar file containing the generated service and utility classes, run `ant -f build-android.xml jar`, the jar file will be created at `/dist/android/liferay-android-sdk.jar`.
 
 5. You are ready to use `liferay-android-sdk.jar` in your Android project, no other dependencies are needed.
-
