@@ -20,7 +20,7 @@ Internally, it's a wrapper for Liferay JSON Web Services...but it is much more! 
 
 It does not only help you to access all out-of-the-box Liferay Portal web services, but also any custom plugins or portlets that were built with Liferay's Service Builder.
 
-For the moment we provide support for Android apps, but it's an extensible system and we plan to make it available for other platforms in the near future, like iOS or PhoneGap.
+For the moment we provide support for Android and iOS apps, but it's an extensible system and we plan to make it available for other platforms in the near future like PhoneGap or Titanium.
 
 Currently it is compatible with Liferay Portal 6.2 and later. 
 
