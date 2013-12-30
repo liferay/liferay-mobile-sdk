@@ -3,7 +3,7 @@
 <project name="android-sdk" basedir="." default="build-service">
 	<import file="build-common.xml" />
 
-	<property name="dist.dir.android" value="${dist.dir}/android" />
+	<property name="android.dist.dir" value="${dist.dir}/android" />
 
 	<property name="android.dir" value="${project.dir}/android" />
 	<property name="android.classes" value="${android.dir}/classes" />
@@ -49,7 +49,7 @@
 		<jar
 			basedir="${android.classes}"
 			includes="com/liferay/mobile/android/**/dlapp/**"
-			jarfile="${dist.dir.android}/dlapp.jar"
+			jarfile="${android.dist.dir}/dlapp.jar"
 		/>
 	</target>
 	-->
@@ -140,19 +140,19 @@
 	</taskdef>
 
 	<target name="jar" depends="compile">
-		<jar destfile="${dist.dir.android}/liferay-android-sdk.jar">
+		<jar destfile="${android.dist.dir}/liferay-android-sdk.jar">
 			<fileset dir="${android.classes}" includes="**/*.class" />
 		</jar>
 	</target>
 
 	<target name="jar-common" depends="compile-common">
-		<jar destfile="${dist.dir.android}/liferay-android-sdk-common.jar">
+		<jar destfile="${android.dist.dir}/liferay-android-sdk-common.jar">
 			<fileset dir="${android.classes}" includes="**/*.class" />
 		</jar>
 	</target>
 
 	<target name="jar-sources">
-		<jar destfile="${dist.dir.android}/liferay-android-sdk-sources.jar">
+		<jar destfile="${android.dist.dir}/liferay-android-sdk-sources.jar">
 			<fileset dir="${android.src}" includes="**/*.java" />
 			<fileset dir="${gen.src}" includes="**/*.java" />
 		</jar>
