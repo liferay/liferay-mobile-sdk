@@ -9,7 +9,7 @@
 	<property name="android.classes" value="${android.dir}/classes" />
 	<property name="android.src" value="${android.dir}/src" />
 
-	<property name="gen.src" value="${project.dir}/gen/android/src" />
+	<property name="gen.src" value="${destination}/android/src" />
 
 	<property name="test.dir" value="${project.dir}/test" />
 	<property name="test.classes" value="${test.dir}/classes" />

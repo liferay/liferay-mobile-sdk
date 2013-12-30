@@ -3,7 +3,7 @@
 <project name="ios-sdk" basedir="." default="build-service">
 	<import file="build-common.xml" />
 
-	<property name="gen.src" value="${project.dir}/gen/ios" />
+	<property name="gen.src" value="${destination}/ios" />
 
 	<target name="build-service" depends="build-common.compile">
 		<antcall target="clear-gen" />

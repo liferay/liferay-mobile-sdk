@@ -27,6 +27,8 @@
 		<fileset dir="${portal.dir}/lib/portal" includes="*.jar" />
 	</path>
 
+	<property name="destination" value="${project.dir}/${destination}" />
+
 	<path id="builder.classpath">
 		<pathelement path="${project.dir}/classes"/>
 		<fileset dir="${development.dir}" includes="**/*.jar"/>

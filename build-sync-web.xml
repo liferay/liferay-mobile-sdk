@@ -4,8 +4,8 @@
 	<import file="build-android.xml" />
 	<import file="build-ios.xml" />
 
-	<property name="android.gen" value="${project.dir}/gen/android/src" />
-	<property name="ios.gen" value="${project.dir}/gen/ios" />
+	<property name="android.gen" value="${destination}/android/src" />
+	<property name="ios.gen" value="${destination}/ios" />
 
 	<target name="build-service" depends="build-common.compile">
 		<antcall target="android-sdk.clear-gen" />
