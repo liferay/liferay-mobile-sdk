@@ -10,6 +10,9 @@
 * [Generating SDKs for custom services](#generating-sdks-for-custom-services)
 	* [About](#about)
 	* [Use](#use-1)
+		* [Ant task](#ant-task)
+			* [Android](#android)
+			* [iOS](#ios)
 
 
 ## What's the Liferay Mobile SDK?
@@ -213,9 +216,13 @@ destination=gen
 
 	Change them accordingly:
 	* `url` should point to your Liferay instance.
+
 	* `context` is your portlet web context. Say for example you are generating a SDK for Liferay's Calendar portlet, this portlet is generally deployed to the `calendar-portlet` context, then you should set `context=calendar-portlet`. Under the hood, the SDK Builder will try to access `http://localhost:8080/calendar-portlet/api/jsonws?discover` to find out which services are available for this portlet. Check if this URL is working before running the SDK, if it's not, check the [About](#about) section, you probably forgot to run `ant build-wsdd`.
+
 	* `filter` is used to filter which entities services will be available. If your service.xml has several entities, you can create a SDK for a given entity only. For example, the Calendar portlet has entities such as `CalendarBooking` and `CalendarResource`, if you want to generate a SDK only for `CalendarBooking`, set it to `filter=calendarbooking`. Builder will do the request to the following URL: `http://localhost:8080/calendar-portlet/api/jsonws?discover=/calendarbooking/*`.
+
 	* `package` (Android only) is used to generated the root package name classes. The Liferay version is appended to the end of this package name, for example `com.liferay.mobile.android.v62`. This way, there's no package name collision if you are using the SDK with several Liferay versions at the same time.
+
 	* `destination` is the root folder to which your generated files will be saved. Android files will be saved by default to `gen/android/src` and iOS to `gen/ios`.
 	
 	The only property that you generally want to change is `context`, all others are for specific cases.
