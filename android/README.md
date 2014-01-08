@@ -117,7 +117,7 @@ Check out the [Android sample app](https://github.com/brunofarache/liferay-mobil
 	```java
 	import com.liferay.mobile.android.service.BatchSessionImpl;
 
-	BatchSessionImpl batch = new BatchSessionImpl("http://10.0.2.2:8080", "test@liferay.com", "test");
+	BatchSessionImpl batch = new BatchSessionImpl(session);
 	BlogsEntryService service = new BlogsEntryService(session);
 		
 	service.deleteEntry(1);
