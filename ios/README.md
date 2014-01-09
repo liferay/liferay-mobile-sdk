@@ -28,7 +28,7 @@ Check out the [iOS sample app](https://github.com/brunofarache/liferay-mobile-sd
 1. Create a `Session` with the user credentials:
 
 	```objective-c
-	\#import "LRSession.h"
+	#import "LRSession.h"
 	
 	LRSession *session = [[LRSession alloc] init:@"http://localhost:8080" username:@"test@liferay.com" password:@"test"]
 	```
@@ -48,14 +48,14 @@ Check out the [iOS sample app](https://github.com/brunofarache/liferay-mobile-sd
 3. If you are building a blogs app, for example, you can import `BlogsEntryService`.
 
 	```objective-c
-	\#import "LRBlogsEntryService_v62.h"
+	#import "LRBlogsEntryService_v62.h"
 	```
 
 	Since the SDK is built for a specific Liferay version, service classes names have the Liferay version they are built for. In this case it's `_v62`, which means this SDK is built for Liferay 6.2. You can use several SDKs at the same time to support different Liferay versions.
 
 4. Create a `LRBlogsEntryService_v62` object and make a service call.
 
-	```java
+	```objective-c
 	LRBlogsEntryService_v62 *service = [[LRBlogsEntryService_v62 alloc] init:session];
 
 	NSError *error;
