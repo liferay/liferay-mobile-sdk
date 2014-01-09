@@ -24,7 +24,7 @@
 
 	<target name="zip">
 		<zip destfile="${ios.dist.dir}/liferay-ios-sdk.zip" update="true">
-			<fileset dir="${ios.src}" />
+			<fileset dir="${ios.src}" excludes="**/*.md" />
 			<fileset dir="${gen.src}" />
 		</zip>
 	</target>

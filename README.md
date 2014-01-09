@@ -1,8 +1,8 @@
 ## Table of Contents
 
 * [What's the Liferay Mobile SDK?](#whats-the-liferay-mobile-sdk)
-* [Liferay Android SDK](https://github.com/brunofarache/liferay-mobile-sdk/tree/master/android)
-* [Liferay iOS SDK](https://github.com/brunofarache/liferay-mobile-sdk/tree/master/ios)
+* [Liferay Android SDK](blob/master/android/README.md)
+* [Liferay iOS SDK](blob/master/ios/README.md)
 * [Generating SDKs for custom services](#generating-sdks-for-custom-services)
 	* [About](#about)
 	* [Use](#use)
@@ -27,11 +27,11 @@ The project is divided in 2 sections: the SDK (for Android) and a SDK Builder. T
 
 ## Liferay Android SDK
 
-Check the Android SDK documentation [here](https://github.com/brunofarache/liferay-mobile-sdk/tree/master/android).
+Check the Android SDK documentation [here](blob/master/android/README.md).
 
 ## Liferay iOS SDK
 
-Check the iOS SDK documentation [here](https://github.com/brunofarache/liferay-mobile-sdk/tree/master/ios).
+Check the iOS SDK documentation [here](blob/master/ios/README.md).
 
 ## Generating SDKs for custom services
 
@@ -58,7 +58,7 @@ You will be able to do things like `FooService.bar();` from your mobile app, Lif
 1. Download the Mobile SDK source code:
 
 	```sh
-	git clone git@github.com:brunofarache/liferay-mobile-sdk.git
+	git clone git@github.com:liferay/liferay-mobile-sdk.git
 	```
 
 2. Create a file in the root folder called `build.${user.name}.properties`, where `${user.name}` is your computer user name. If you can't figure out your user name, just change `build.properties` directly.
