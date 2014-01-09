@@ -15,7 +15,7 @@ Check out the [iOS sample app](https://github.com/brunofarache/liferay-mobile-sd
 
 ### Setup
 
-1. [Download](https://github.com/brunofarache/liferay-mobile-sdk/releases/) the latest version of `liferay-ios-sdk.zip`.
+1. [Download](https://github.com/liferay/liferay-mobile-sdk/releases/) the latest version of `liferay-ios-sdk.zip`.
 
 2. Unzip the file into your XCode project. 
 
@@ -59,7 +59,6 @@ Check out the [iOS sample app](https://github.com/brunofarache/liferay-mobile-sd
 	LRBlogsEntryService_v62 *service = [[LRBlogsEntryService_v62 alloc] init:session];
 
 	NSError *error;
-
 	NSArray *entries = [service getGroupEntriesWithGroupId:1084 status:0 start:-1 end:-1 error:&error];
 	```
 	
@@ -73,46 +72,56 @@ Check out the [iOS sample app](https://github.com/brunofarache/liferay-mobile-sd
 
 	#### Asynchronous
 	
-	Android doesn't allow synchronous HTTP requests like the above from the main UI thread, you can only make them from different threads, for example, from within a AsyncTask instance.
+	The SDK allows asynchronous HTTP requests, all you need to do is to set a callback to the session object.  Set it back to `nil` if you want to make synchronous requests again.
 	
-	The SDK can help you to make asynchronous HTTP requests if you don't want to create an AsyncTask yourself. It makes the service call from an AsyncTask and you can pass a callback that will be called after the request finishes.
+	First thing you need to do is to create a class that conforms to the `LRCallback` protocol, for example:
 	
-	Set a callback class implementation to the session, while the callback is not null, all the following services calls will be asynchronous, set it back to null if you want to make synchronous calls again.
-	
-	```java
-	import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
-	import com.liferay.mobile.android.task.callback.typed.JSONArrayAsyncTaskCallback;
-	
-	AsyncTaskCallback callback = new JSONArrayAsyncTaskCallback() {
-	
-		public void onFailure(Exception exception) {
-			// Implement exception handling code
-		}
+	```objective-c
+	#import "LRCallback.h"
 
-		public void onSuccess(JSONArray result) {
-			// Called after request has finished successfully
-		}
+	@interface BlogsEntriesCallback : NSObject <LRCallback>
+
+	@end
+	```
+
+	```objective-c
+	#import "BlogsEntriesCallback.h"
+
+	@implementation BlogsEntriesCallback
+
+	- (void)onFailure:(NSError *)error {
+		// Implement error handling code
+	}
+
+	- (void)onSuccess:(id)result {
+		// Called after request has finished successfully
+	}
+
+	@end
+	```
+
+	Then, set this callback to the session and call your service as usual:
+
+	```objective-c
+	BlogsEntriesCallback *callback = [[BlogsEntriesCallback alloc] init];
 	
-	};
-	
-	session.setCallback(callback);
-	service.getGroupEntries(10184, 0, 0, -1, -1);
+	[session setCallback:callback];
+	[service getGroupEntriesWithGroupId:1084 status:0 start:-1 end:-1 error:&error]
 	```
 	
-	If an exception happens during the request, `onFailure` method will be called. It can be either a connection exception (a request timeout, for example) or a `ServerException`.
+	If a server side exception or a connection error occurs during the request, `onFailure` method will be called with a `NSError` instance that contains information about the error.
 	
-	When a `ServerException` happens, it's because something went wrong on the server side. For example, if you pass a `groupId` that doesn't exist, the portal will complain about it and the SDK will wrap the error message with a `ServerException`.
-	
-	There are many `AsyncTaskCallback` implementations, one for each service method return type: `JSONObjectAsyncTaskCallback`, `JSONArrayAsyncTaskCallback`, `StringAsyncTaskCallback`, `BooleanAsyncTaskCallback`, `IntegerAsyncTaskCallback`, `LongAsyncTaskCallback` and `DoubleAsyncTaskCallback`. Pick the appropriate implementation, in the example above, since `getGroupEntries` returns a JSONArray, you must use a `JSONArrayAsyncTaskCallback` instance.
-	
-	It's also possible to use a generic `AsyncTaskCallback` implementation called `GenericAsyncTaskCallback`, you must implement a transform method and handle parsing by yourself.
-	
-	> If you still don't want to use any of these callbacks, you can implement `AsyncTaskCallback` directly, but be careful, you should always get the first element of the JSONArray passed as parameter to the `onPostExecute(JSONArray jsonArray)` method, i.e. `jsonArray.get(0)`.
-	
+	Since the request is asynchronous, `getGroupEntriesWithGroupId` returns immediately with nil, the `onSuccess` method of your callback is called instead with the results once the request has finished successfully.
+
+	As you can see, the `onSuccess` result parameter is not typed. You need to check the service method signature in order to figure out which type you can cast to safely. In this example, the `getGroupEntriesWithGroupId` method returns a `NSArray`, so you can cast to this type:
+
+	```objective-c
+	- (void)onSuccess:(id)result {
+		NSArray *entries = (NSArray *)result;
+	}
+	```	
 	`onSuccess` is called on the main UI thread after the request has finished.
-	
-	Since the request is asynchronous, `service.getGroupEntries` will return right away, with a null object, the result will be passed to the callback `onSuccess` method instead.
-	
+
 	#### Batch
 	
 	The SDK allows sending requests in batch, this can be much more efficient in some cases. Say for example you want to delete 10 blog entries at the same time, instead of making one request for each delete call, you can create a batch of calls and send them all together.
