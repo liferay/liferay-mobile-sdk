@@ -69,7 +69,7 @@ Check out the [iOS sample app](https://github.com/brunofarache/liferay-mobile-sd
 	
 	Service methods return types can be `void`, `NSString`, `NSArray`, `NSDictionary`, `NSNumber` and `BOOL`.
 
-	> Many service methods require groupId as a parameter, you can get the user's groups by calling the `getUserSites()` method from `[LRGroupService_v62 getUserSites:&error]`.
+	> Many service methods require groupId as a parameter, you can get the user's groups by calling `[LRGroupService_v62 getUserSites:&error]`.
 
 	#### Asynchronous
 	
