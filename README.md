@@ -1,8 +1,8 @@
 ## Table of Contents
 
 * [What's the Liferay Mobile SDK?](#whats-the-liferay-mobile-sdk)
-* [Liferay Android SDK](blob/master/android/README.md)
-* [Liferay iOS SDK](blob/master/ios/README.md)
+* [Liferay Android SDK](android/README.md)
+* [Liferay iOS SDK](ios/README.md)
 * [Generating SDKs for custom services](#generating-sdks-for-custom-services)
 	* [About](#about)
 	* [Use](#use)
@@ -27,11 +27,11 @@ The project is divided in 2 sections: the SDK (for Android) and a SDK Builder. T
 
 ## Liferay Android SDK
 
-Check the Android SDK documentation [here](blob/master/android/README.md).
+Check the Android SDK documentation [here](android/README.md).
 
 ## Liferay iOS SDK
 
-Check the iOS SDK documentation [here](blob/master/ios/README.md).
+Check the iOS SDK documentation [here](ios/README.md).
 
 ## Generating SDKs for custom services
 
