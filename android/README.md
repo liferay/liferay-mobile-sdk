@@ -15,7 +15,7 @@ Check out the [Android sample app](https://github.com/brunofarache/liferay-mobil
 
 ### Setup
 
-1. [Download](https://github.com/brunofarache/liferay-mobile-sdk/releases/) the latest version of `liferay-android-sdk.jar`. If you want to debug the SDK source code, you can also download `liferay-android-sdk-sources.jar` and attach the source code to your IDE project.
+1. [Download](https://github.com/liferay/liferay-mobile-sdk/releases/) the latest version of `liferay-android-sdk.jar`. If you want to debug the SDK source code, you can also download `liferay-android-sdk-sources.jar` and attach the source code to your IDE project.
 
 2. Within your Android project, drop the jar into the `/libs` folder. Android Developer Tools should automatically add this jar to your classpath, if you are using a different IDE, make sure this jar is added to the project classpath.
 
