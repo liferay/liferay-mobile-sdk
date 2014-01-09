@@ -30,7 +30,7 @@ Check out the [iOS sample app](https://github.com/brunofarache/liferay-mobile-sd
 	```objective-c
 	#import "LRSession.h"
 	
-	LRSession *session = [[LRSession alloc] init:@"http://localhost:8080" username:@"test@liferay.com" password:@"test"]
+	LRSession *session = [[LRSession alloc] init:@"http://localhost:8080" username:@"test@liferay.com" password:@"test"];
 	```
 
 	The first parameter is the URL of the Liferay instance you are connecting to. In this case, emulator and Liferay are running in the same machine.
@@ -106,7 +106,7 @@ Check out the [iOS sample app](https://github.com/brunofarache/liferay-mobile-sd
 	BlogsEntriesCallback *callback = [[BlogsEntriesCallback alloc] init];
 	
 	[session setCallback:callback];
-	[service getGroupEntriesWithGroupId:1084 status:0 start:-1 end:-1 error:&error]
+	[service getGroupEntriesWithGroupId:1084 status:0 start:-1 end:-1 error:&error];
 	```
 	
 	If a server side exception or a connection error occurs during the request, `onFailure` method will be called with a `NSError` instance that contains information about the error.
@@ -126,40 +126,30 @@ Check out the [iOS sample app](https://github.com/brunofarache/liferay-mobile-sd
 	
 	The SDK allows sending requests in batch, this can be much more efficient in some cases. Say for example you want to delete 10 blog entries at the same time, instead of making one request for each delete call, you can create a batch of calls and send them all together.
 	
-	```java
-	import com.liferay.mobile.android.service.BatchSessionImpl;
+	```objective-c
+	#import "LRBatchSession.h"
 
-	BatchSessionImpl batch = new BatchSessionImpl("http://10.0.2.2:8080", "test@liferay.com", "test");
-	BlogsEntryService service = new BlogsEntryService(session);
-		
-	service.deleteEntry(1);
-	service.deleteEntry(2);
-	service.deleteEntry(3);
+	LRBatchSession *batch = [[LRBatchSession alloc] init:@"http://localhost:8080" username:@"test@liferay.com" password:@"test"];
+	LRBlogsEntryService_v62 *service = [[LRBlogsEntryService_v62 alloc] init:batch];
+	NSError *error;
 	
-	JSONArray jsonArray = batch.invoke();
+	[service deleteEntryWithEntryId:1 error:&error];
+	[service deleteEntryWithEntryId:2 error:&error];
+	[service deleteEntryWithEntryId:3 error:&error];
+	
+	NSArray *entries = [batch invoke:&error];
 	```
 	
-	First, create a `BatchSessionImpl` session. You can either pass credentials or another `session` to the constructor, this is useful when you already have a `session` object and want to reuse the same credentials.
+	First, create a `LRBatchSession` session. You can either pass credentials or another `session` to the constructor, this is useful when you already have a `session` object and want to reuse the same credentials.
 	
-	Then, make the service calls as usual, as with asynchronous calls, these methods will return a null object right away.
+	Then, make the service calls as usual, as with asynchronous calls, these methods will return nil right away.
 	
-	Finally, call the `invoke()` from the session object, it will return a JSONArray containing the results for each service call. Since there were 3 `deleteEntry` calls, the jsonArray will contain 3 objects. The order of the results will match the order of the service calls.
+	Finally, call `[batch invoke:&error]`, it will return a NSArray containing the results for each service call. Since there were 3 `deleteEntryWithEntryId` calls, the entries array will contain 3 objects. The order of the results will match the order of the service calls.
 	
-	If you want to make batch calls asynchronously, set the callback as a `BatchAsyncTaskCallback` instance:
+	If you want to make batch calls asynchronously, set the callback to the session as usual:
 	
-	```java
-	import com.liferay.mobile.android.task.callback.BatchAsyncTaskCallback;
-
-	batch.setCallback(new BatchAsyncTaskCallback() {
-			
-		public void onFailure(Exception exception) {
-		}
-		
-		public void onSuccess(JSONArray results) {
-			// The result is always a JSONArray 
-		}
-
-	});
+	```objective-c
+	[batch setCallback:callback];
 	```
 
-	As you can see, the return type is always a JSONArray.
+	The return type for batch calls is always a NSArray.
