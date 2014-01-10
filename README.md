@@ -4,12 +4,9 @@
 * [Liferay Android SDK](android/README.md)
 * [Liferay iOS SDK](ios/README.md)
 * [Generating SDKs for custom services](#generating-sdks-for-custom-services)
-	* [About](#about)
-	* [Use](#use)
-		* [Ant task](#ant-task)
-			* [Android](#android)
-			* [iOS](#ios)
-
+	* [Configuring the SDK Builder](#configuring-the-sdk-builder)
+	* [Building a Liferay Android SDK](#building-a-liferay-android-sdk)
+	* [Building a Liferay iOS SDK](#building-a-liferay-android-sdk)
 
 ## What's the Liferay Mobile SDK?
 
@@ -44,16 +41,18 @@ Check the Android SDK documentation [here](android/README.md).
 
 Check the iOS SDK documentation [here](ios/README.md).
 
-## Generating SDKs for custom services
+## Generating SDKs for Custom Services
 
-### About
-
-With the SDK Builder, you can generate SDKs for custom portlets. Think of it as
+The SDK Builder enables you to generate SDKs for custom portlets. Think of it as
 a Service Builder on the client side; it generates code that allows your mobile
-app to access your own custom services.
+app to access a portlet's custom services.
 
-First, you need to generate your portlet's web services, using Service Builder,
-and deploy your portlet:
+In order for the SDK Builder to discover a portlet's remote services, the
+portlet's services must be made available and be accompanied by a Web Service
+Deployment Descriptor (WSDD).
+
+If you're developing the portlet, follow these steps to implement remote
+services for your portlet and make them accessible to the SDK Builder:
 
 1. Set `remote-service="true"` in your portlet's service.xml and run `ant
 build-service`.
@@ -73,21 +72,24 @@ You will be able to invoke your service's methods, like `FooService.bar();`,
 from your mobile app. The Liferay Mobile SDK takes care of making JSON Web
 Services requests to your portlet.
 
-### Use
+### Configuring the SDK Builder
 
-#### Ant task
-
-1. Download the Mobile SDK source code:
+If you haven't done so already, download the Mobile SDK source code:
 
 	```sh
 	git clone git@github.com:liferay/liferay-mobile-sdk.git
 	```
 
-2. Create a file in the root folder called `build.${user.name}.properties`,
+The SDK Builder is invoked using Ant. But, running the target to build an SDK,
+you must set some properties so that the SDK Builder can communicate with your
+portlet services and create an SDK for your mobile platform. Follow these steps
+to specify these properties:
+
+1. Create a file in the root folder called `build.${user.name}.properties`,
 where `${user.name}` is your computer user name. If you can't figure out your
 user name, just change `build.properties` directly.
 
-3. Here are the important properties:
+2. Here are the important properties:
 
 	```
 url=http://localhost:8080
@@ -106,9 +108,8 @@ destination=gen
 	`context=calendar-portlet`. Under the hood, the SDK Builder will try to
 	access `http://localhost:8080/calendar-portlet/api/jsonws?discover` to find
 	out which services are available for this portlet. Check if this URL is
-	working before running the SDK. If it's not running, read the
-	[About](#about) section. You may have forgotten to run `ant build-wsdd` on
-	the portlet.
+	working before running the SDK. If it's not running, you may have forgotten
+	to run `ant build-wsdd` on the portlet.
 
 	* `filter` is used to filter on a single entity's services. If your portlet
 	has several service entities, as defined in its `service.xml` file, select
@@ -132,7 +133,10 @@ destination=gen
 	The only property that you generally want to change is `context`, all others
 	are for specific cases.
 
-##### Android
+Now that you've configured the SDK Builder, you're ready to build a platform
+specific SDK for the portlet's remote services. 
+
+### Building a Liferay Android SDK
 
 1. From the root folder, run `ant -f build-android.xml`, to generate the
 services classes into the `gen` folder. In order to build a `.jar` file
@@ -143,7 +147,10 @@ build-android.xml jar`. This saves the `.jar` file at
 2. You are ready to use the `liferay-android-sdk.jar` in your Android project
 and have no external dependencies.
 
-##### iOS
+To learn how to use the Liferay Android SDK, see the [Liferay Android SDK
+documentation](android/README.md).
+
+### Building a Liferay iOS SDK
 
 1. From the root folder, run `ant -f build-ios.xml`, to generate the services
 classes into the `gen/ios` folder. In order to generate a `.zip` file containing
@@ -152,4 +159,7 @@ the generated service and utility classes, run `ant -f build-ios.xml zip`. The
 
 2. You are ready to use `liferay-ios-sdk.zip` in your iOS project. Simply unzip
 it and add all the files to your XCode project. The SDK is free of any
-external dependencies. 
+external dependencies.
+
+To learn how to use the Liferay iOS SDK, see the [Liferay iOS SDK
+documentation](ios/README.md).
