@@ -76,9 +76,9 @@ Services requests to your portlet.
 
 If you haven't done so already, download the Mobile SDK source code:
 
-	```sh
-	git clone git@github.com:liferay/liferay-mobile-sdk.git
-	```
+```sh
+git clone git@github.com:liferay/liferay-mobile-sdk.git
+```
 
 The SDK Builder is invoked using Ant. But, running the target to build an SDK,
 you must set some properties so that the SDK Builder can communicate with your
