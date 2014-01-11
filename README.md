@@ -16,19 +16,20 @@ out-of-the-box web services and the web services of your custom portlets. It
 wraps Liferay JSON web services, takes care of authentication, makes RESTful
 requests (synchronously or asynchronously), parses JSON results, handles server
 side exceptions, and much more. The Liferay Mobile SDK is compatible with
-Liferay Portal 6.2 and later, and it comes with Liferay Android SDK and Liferay
-iOS SDK ready for you to download and use.
+Liferay Portal 6.2 and later, and it comes with the Liferay Android SDK and
+Liferay iOS SDK ready for you to download and use.
 
 <!-- Provide links to the download pages. Jim -->
 
 The Liferay Mobile SDK project comes with an SDK Builder that generates the
 Liferay Mobile SDK for the Android and iOS platforms. Think of it as a Service
 Builder on the client side; it generates code that allows your mobile app to
-access a portlet's custom services. It is template-based, making it easy to
-extend to various mobile platforms. In the near future we plan to make SDKs for
-more platforms, like PhoneGap or Titanium. The SDK Builder can also generate
-client libraries that allow your native mobile apps to invoke remote web
-services of any custom portlets built with Liferay's [Service
+access your portal instance's core services and its portlet's custom services.
+It is template-based, making it easy to extend to various mobile platforms. In
+the near future we plan to make SDKs for more platforms, like PhoneGap or
+Titanium. The SDK Builder generates client libraries that allow your native
+mobile apps to invoke remote web services of a portal instance and any of it's
+custom portlets built with Liferay's [Service
 Builder](http://www.liferay.com/documentation/liferay-portal/6.2/development/-/ai/generating-your-service-layer-liferay-portal-6-2-dev-guide-04-en).
 The project contains the the SDK Builder, the Liferay Android SDK, and the
 Liferay iOS SDK. These SDKs were built with the SDK Builder.
@@ -39,8 +40,8 @@ each of the SDKs are available at the following links:
 - [Liferay Android SDK documentation](android/README.md)
 - [Liferay iOS SDK documentation](ios/README.md)
 
-We'll demonstrate how easy it is to generate SDKs for your custom portlet's
-services. 
+Next, we'll demonstrate how easy it is to generate SDKs for your custom
+portlet's services. 
 
 ## Generating SDKs for Custom Portlet Services
 
@@ -57,14 +58,14 @@ and make them available for the SDK Builder to discover:
 1. Set your entity's `remote-service="true"` in your portlet's `service.xml`
 file and run `ant build-service`.
 
-2. Implement your remote services in the generated `FooServiceImpl.java` source
-file and run `ant build-service` again. 
+2. Implement your remote services in the generated `[Entity]ServiceImpl.java`
+source files and run `ant build-service` again. 
 
 3. Run `ant build-wsdd` to build your Web Service Deployment Descriptor (WSDD).
 The SDK Builder relies on the WSDD to discover your portlet's remote services;
-so, make sure to run `ant build-wsdd` before deploying your portlet.
+so make sure to run `ant build-wsdd` before deploying your portlet.
 
-4. Run `ant deploy` to deploy your portlet.
+4. Run `ant deploy` to deploy your portlet with its WSDD.
 
 Now, you are ready to use the SDK Builder to generate a custom portlet SDK for
 developing your mobile app. You'll be able to invoke your service's methods,
@@ -106,14 +107,14 @@ user name, just change `build.properties` directly.
 	to run `ant build-wsdd` on the portlet.
 
 	* `filter` - Specifies your portlet's entities whose services to access; a
-	blank value indicates all of the portlet's entities. For example, the
-	Calendar portlet has entities such as `CalendarBooking` and
+	blank value indicates the services of all of the portlet's entities. For
+	example, the Calendar portlet has entities such as `CalendarBooking` and
 	`CalendarResource`. To generate an SDK the for only the `CalendarBooking`
 	entity, set the filter's value to `calendarbooking`, all in lowercase. The
 	SDK Builder will then make requests to the
 	`http://localhost:8080/calendar-portlet/api/jsonws?discover=/calendarbooking/*`.
 	If you set `filter=`, specifying no filter value, the remote services of
-	*all* of the portlet's entities are make available to your mobile SDK.
+	*all* of the portlet's entities will be made available to your mobile SDK.
 
 	* `package` - On Android, this is the package to which your SDK's classes
 	are written. The iOS platform does not use packages. Note, that the Liferay
@@ -157,7 +158,7 @@ section like `### Configuring the SDK Builder`
 
 ### Building a Liferay Android SDK
 
-To build the service related source files for your Android SDK, run the
+To build the service related source files for your Liferay Android SDK, run the
 following command from the `liferay-mobile-sdk` project's root folder:
 
     ant -f build-android.xml
@@ -178,8 +179,8 @@ documentation](android/README.md).
 
 ### Building a Liferay iOS SDK
 
-To build the service related source files for your iOS SDK, run the following
-command from the `liferay-mobile-sdk` project's root folder:
+To build the service related source files for your Liferay iOS SDK, run the
+following command from the `liferay-mobile-sdk` project's root folder:
 
     ant -f build-ios.xml
 
@@ -191,9 +192,9 @@ the following command:
     ant -f build-ios.xml zip
 
 The `liferay-ios-sdk.jar` file is written to your `dist/ios` folder. You're
-ready to use `liferay-ios-sdk.zip` in your iOS project. Simply unzip it and add
-all the files to your XCode project. The SDK is free of any external
-dependencies.
+ready to use the contents of your `liferay-ios-sdk.zip` file in your iOS
+project. Simply unzip its contents and add all of the files to your XCode
+project. The SDK is free of any external dependencies.
 
 To learn how to use the Liferay iOS SDK, see the [Liferay iOS SDK
 documentation](ios/README.md).
