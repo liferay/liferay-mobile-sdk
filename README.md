@@ -13,7 +13,7 @@ you to download and use.
 Stable releases and documentation for each of the SDKs are available at the
 following links:
 
-- [Download Android and iOS SDKs](releases) 
+- [Download Android and iOS SDKs](../../releases) 
 - [Liferay Android SDK documentation](android/README.md)
 - [Liferay iOS SDK documentation](ios/README.md)
 
