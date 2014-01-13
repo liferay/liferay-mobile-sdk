@@ -136,7 +136,7 @@ You're ready to use the `liferay-android-sdk.jar` in your Android project and
 have no external dependencies.
 
 To learn how to use the Liferay Android SDK, see the [Liferay Android SDK
-documentation](android/README.md).
+documentation](../android/README.md).
 
 ### Building a Liferay iOS SDK
 
@@ -158,4 +158,4 @@ project. Simply unzip its contents and add all of the files to your XCode
 project. The SDK is free of any external dependencies.
 
 To learn how to use the Liferay iOS SDK, see the [Liferay iOS SDK
-documentation](ios/README.md).
+documentation](../ios/README.md).
