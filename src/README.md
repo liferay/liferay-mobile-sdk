@@ -2,7 +2,7 @@
 
 * [What's the SDK Builder](#whats-the-sdk-builder)
     * [Configuring your Portlet's Remote Services](#configuring-your-portlets-remote-services)
-    * [Configuring the SDK Builder](#configuring-sdk-builder)
+    * [Configuring the SDK Builder](#configuring-the-sdk-builder)
     * [Building a Liferay Android SDK](#building-a-liferay-android-sdk)
     * [Building a Liferay iOS SDK](#building-a-liferay-android-sdk)
 
