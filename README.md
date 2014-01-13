@@ -12,33 +12,32 @@
 The Liferay Mobile SDK is a framework for building native mobile apps that
 integrate with your different Liferay Portal instances and their portlets. The
 SDK provides the means for your mobile apps to easily consume Liferay Portal's
-out-of-the-box web services and the web services of your custom portlets. It
-wraps Liferay JSON web services, takes care of authentication, makes RESTful
-requests (synchronously or asynchronously), parses JSON results, handles server
-side exceptions, and much more. The Liferay Mobile SDK is compatible with
-Liferay Portal 6.2 and later, and it comes with the Liferay Android SDK and
-Liferay iOS SDK ready for you to download and use.
+core web services and the web services of your custom portlets. It wraps Liferay
+JSON web services, takes care of authentication, makes RESTful requests
+(synchronously or asynchronously), parses JSON results and handles server side
+exceptions. The Liferay Mobile SDK is compatible with Liferay Portal 6.2 and
+later, and it comes with the Liferay Android SDK and Liferay iOS SDK ready for
+you to download and use.
 
-<!-- Provide links to the download pages. Jim -->
+Stable releases and documentation for
+each of the SDKs are available at the following links:
+
+- [Download Android and iOS SDKs](releases) 
+- [Liferay Android SDK documentation](android/README.md)
+- [Liferay iOS SDK documentation](ios/README.md)
+
+If all you want is to access Liferay's core services from a mobile app, follow
+the links above.
 
 The Liferay Mobile SDK project comes with an SDK Builder that generates the
 Liferay Mobile SDK for the Android and iOS platforms. Think of it as a Service
 Builder on the client side; it generates code that allows your mobile app to
-access your portal instance's core services and its portlet's custom services.
-It is template-based, making it easy to extend to various mobile platforms. In
-the near future we plan to make SDKs for more platforms, like PhoneGap or
-Titanium. The SDK Builder generates client libraries that allow your native
-mobile apps to invoke remote web services of a portal instance and any of it's
-custom portlets built with Liferay's [Service
+access your portlet's custom services. It is template-based, making it easy to
+extend to various mobile platforms. In the near future we plan to make SDKs
+for more platforms, like PhoneGap or Titanium. The SDK Builder generates client
+libraries that allow your native mobile apps to invoke remote web services of a
+portal instance and any of it's custom portlets built with Liferay's [Service
 Builder](http://www.liferay.com/documentation/liferay-portal/6.2/development/-/ai/generating-your-service-layer-liferay-portal-6-2-dev-guide-04-en).
-The project contains the the SDK Builder, the Liferay Android SDK, and the
-Liferay iOS SDK. These SDKs were built with the SDK Builder.
-
-Documentation for
-each of the SDKs are available at the following links:
-
-- [Liferay Android SDK documentation](android/README.md)
-- [Liferay iOS SDK documentation](ios/README.md)
 
 Next, we'll demonstrate how easy it is to generate SDKs for your custom
 portlet's services. 
