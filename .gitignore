@@ -4,3 +4,4 @@
 velocity.log*
 .idea
 *.iml
+/out
