@@ -25,8 +25,8 @@ latest version of `liferay-ios-sdk.zip`.
 
 2. Unzip the file into your XCode project. 
 
-3. Within XCode, right click on your project and click on *Add Files to 'Your
-Project Name'*.
+3. Within XCode, right click on your project and click on *Add Files to
+'Project Name'*.
 
 4. Add both `core` and `v62` folders. The `v62` folder name can change for each
 Liferay version. In this example, the SDK is built for Liferay 6.2.
@@ -50,9 +50,9 @@ Liferay version. In this example, the SDK is built for Liferay 6.2.
 
 	The third parameter is the user's password.
 
-	> Be careful to use these credentials on a production Liferay instance. They
-	are typically the administrator credentials, which means you have permission
-	to call any service and change any data.
+	> Be careful to use these credentials on a production Liferay instance. If
+	you're using the administrator credentials, you have permission to call any
+	service and can change any data by accident. 
 
 
 2. Check which Liferay services you need in order to build your app by
