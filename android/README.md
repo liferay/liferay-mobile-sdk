@@ -25,8 +25,8 @@ latest version of `liferay-android-sdk.jar`. If you want to debug the SDK source
 code, you can also download `liferay-android-sdk-sources.jar` and attach the
 source code to your IDE project.
 
-2. Within your Android project, drop the jar into the `/libs` folder. Android
-Developer Tools should automatically add this jar to your classpath. If you are
+2. Within your Android project, drop the JAR into the `/libs` folder. Android
+Developer Tools should automatically add this JAR to your classpath. If you are
 using a different IDE, make sure this JAR is added to the project classpath.
 
 3. Import the necessary classes and start using it!
@@ -54,9 +54,9 @@ using a different IDE, make sure this JAR is added to the project classpath.
 
 	The third parameter is the user's password.
 
-	> Be careful to use these credentials on a production Liferay instance. They
-	are typically the administrator credentials, which means you have permission
-	to call any service and change any data. 
+	> Be careful to use these credentials on a production Liferay instance. If
+	you're using the administrator credentials, you have permission to call any
+	service and can change any data by accident. 
 
 2. Check which Liferay services you need in order to build your app by
 navigating to
@@ -89,8 +89,8 @@ lists all available portal services and plugin services.
 	This is a basic example of a synchronous service call; the method will only
 	return after the request is finished.
 	
-	Service method return types can be `void`, `String`, `JSONArray`, and,
-	`JSONObject`, and primitive type wrappers can be `Boolean`, `Integer`,
+	Service method return types can be `void`, `String`, `JSONArray`, and
+	`JSONObject`. Primitive type wrappers can be `Boolean`, `Integer`,
 	`Long`, and `Double`.
 
 	> Many service methods require `groupId` as a parameter. You can get the
@@ -106,9 +106,9 @@ The SDK can help you make asynchronous HTTP requests if you don't want to create
 an `AsyncTask` yourself. It makes the service call from an AsyncTask and you can
 pass a callback that is invoked after the request finishes.
 
-Set a callback class implementation to the session while the callback is not
-null, and all the following service calls will be asynchronous. Set it back to
-null if you want to make synchronous calls again.
+Set a callback class implementation to the session and all the following
+service calls will be asynchronous. Set it back to null if you want to make
+synchronous calls again.
 
 ```java
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
@@ -149,7 +149,7 @@ JSONArray, you must use the `JSONArrayAsyncTaskCallback` instance.
 
 It's also possible to use a generic `AsyncTaskCallback` implementation called
 `GenericAsyncTaskCallback`. For this implementation, you must implement a
-transform method and handle parsing by yourself.
+transform method and handle JSON parsing by yourself.
 
 > If you still don't want to use any of these callbacks, you can implement
 `AsyncTaskCallback` directly, but be careful, you should always get the first
@@ -160,7 +160,7 @@ The `onSuccess` method is called on the main UI thread after the request has
 finished.
 
 Since the request is asynchronous, `service.getGroupEntries` returns
-immediately. With a null object, the result will be passed to the callback
+immediately with a null object. The result will be passed to the callback
 `onSuccess` method instead.
 
 #### Batch
