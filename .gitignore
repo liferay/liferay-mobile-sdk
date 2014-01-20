@@ -2,3 +2,5 @@
 /classes/
 /build.*.properties
 velocity.log*
+.idea
+*.iml
