@@ -1,12 +1,12 @@
-## Table of Contents
+![Liferay Mobile SDK logo](../logo.png)
 
 * [What's the SDK Builder](#whats-the-sdk-builder)
-    * [Configuring your Portlet's Remote Services](#configuring-your-portlets-remote-services)
-    * [Configuring the SDK Builder](#configuring-the-sdk-builder)
-    * [Building a Liferay Android SDK](#building-a-liferay-android-sdk)
-    * [Building a Liferay iOS SDK](#building-a-liferay-android-sdk)
+* [Configuring your Portlet's Remote Services](#configuring-your-portlets-remote-services)
+* [Configuring the SDK Builder](#configuring-the-sdk-builder)
+* [Building a Liferay Android SDK](#building-a-liferay-android-sdk)
+* [Building a Liferay iOS SDK](#building-a-liferay-android-sdk)
 
-## What's the SDK Builder?
+### What's the SDK Builder?
 
 The Liferay Mobile SDK project comes with an SDK Builder that generates the
 Liferay Mobile SDK for the Android and iOS platforms. Think of it as a Service

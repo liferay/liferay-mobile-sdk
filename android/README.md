@@ -1,13 +1,12 @@
-## Table of Contents
-
-* [Liferay Android SDK](#liferay-android-sdk)
-	* [Sample](#sample)
-	* [Setup](#setup)
-	* [Use](#use)
-		* [Asynchronous](#asynchronous)
-		* [Batch](#batch)
+![Liferay Mobile SDK logo](../logo.png)
 
 ## Liferay Android SDK
+
+* [Sample](#sample)
+* [Setup](#setup)
+* [Use](#use)
+	* [Asynchronous](#asynchronous)
+	* [Batch](#batch)
 
 ### Sample
 

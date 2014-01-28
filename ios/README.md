@@ -1,13 +1,10 @@
-## Table of Contents
+![Liferay Mobile SDK logo](../logo.png)
 
-* [Liferay iOS SDK](#liferay-ios-sdk)
-	* [Sample](#sample)
-	* [Setup](#setup)
-	* [Use](#use)
-		* [Asynchronous](#asynchronous)
-		* [Batch](#batch)
-
-## Liferay iOS SDK
+* [Sample](#sample)
+* [Setup](#setup)
+* [Use](#use)
+	* [Asynchronous](#asynchronous)
+	* [Batch](#batch)
 
 ### Sample
 
