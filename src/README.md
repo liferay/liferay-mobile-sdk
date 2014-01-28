@@ -1,5 +1,7 @@
 ![Liferay Mobile SDK logo](../logo.png)
 
+## Liferay Mobile SDK Builder
+
 * [What's the SDK Builder](#whats-the-sdk-builder)
 * [Configuring your Portlet's Remote Services](#configuring-your-portlets-remote-services)
 * [Configuring the SDK Builder](#configuring-the-sdk-builder)

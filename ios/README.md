@@ -1,5 +1,7 @@
 ![Liferay Mobile SDK logo](../logo.png)
 
+## Liferay iOS SDK
+
 * [Sample](#sample)
 * [Setup](#setup)
 * [Use](#use)
