@@ -16,7 +16,7 @@
 #import "LRBatchSession.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRBatchSession
 

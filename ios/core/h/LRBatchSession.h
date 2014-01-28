@@ -12,11 +12,10 @@
  * details.
  */
 
-#import <Foundation/Foundation.h>
 #import "LRSession.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @interface LRBatchSession : LRSession
 

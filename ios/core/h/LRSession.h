@@ -12,13 +12,12 @@
  * details.
  */
 
-#import <Foundation/Foundation.h>
 #import "LRCallback.h"
 
 #define DEFAULT_CONNECTION_TIMEOUT 15
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @interface LRSession : NSObject
 

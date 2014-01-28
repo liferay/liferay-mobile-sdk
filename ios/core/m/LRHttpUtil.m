@@ -15,7 +15,7 @@
 #import "LRHttpUtil.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRHttpUtil
 

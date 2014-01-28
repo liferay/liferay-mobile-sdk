@@ -14,13 +14,12 @@
 
 ##n
 
-${esc.h}import <Foundation/Foundation.h>
 ${esc.h}import "LRBaseService.h"
 
 ##n
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 
 #set ($actions = $discovery.actions)

@@ -19,7 +19,7 @@ ${esc.h}import "${className}.h"
 ##n
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 
 #set ($actions = $discovery.actions)

@@ -12,12 +12,7 @@
  * details.
  */
 
-#import <Foundation/Foundation.h>
 #import "LRBatchSession.h"
-
-/**
- * author Bruno Farache
- */
 
 #define HEAD @"HEAD"
 #define POST @"POST"
@@ -30,6 +25,9 @@
 #define STATUS_OK 200
 #define STATUS_UNAUTHORIZED 401
 
+/**
+ * @author Bruno Farache
+ */
 @interface LRHttpUtil : NSObject
 
 typedef void (^LRHandler)(NSURLResponse *r, NSData *d, NSError *e);

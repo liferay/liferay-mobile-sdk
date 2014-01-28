@@ -12,10 +12,8 @@
  * details.
  */
 
-#import <Foundation/Foundation.h>
-
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @protocol LRCallback <NSObject>
 
