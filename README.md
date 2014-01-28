@@ -1,4 +1,4 @@
-## Liferay Mobile SDK
+![Liferay Mobile SDK logo](logo.png)
 
 Stable releases and documentation for each of the SDKs are available at the
 following links:
