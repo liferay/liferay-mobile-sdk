@@ -12,36 +12,34 @@
  * details.
  */
 
-package com.liferay.mobile.android.service;
+#import "LRServiceFactory.h"
 
-import java.util.HashMap;
-import java.util.Map;
+static NSMutableDictionary *_services;
 
 /**
  * @author Bruno Farache
  */
-public class ServiceFactory {
+@implementation LRServiceFactory
 
-	public static <T extends BaseService> T getService(
-			Class<T> clazz, Session session)
-		throws Exception {
++ (void)initialize {
+	if (!_services) {
+		_services = [[NSMutableDictionary alloc] init];
+	}
+}
 
-		T instance = (T)_services.get(clazz.getName());
++ (LRBaseService *)getService:(Class)clazz session:(LRSession *)session {
+	LRBaseService *service = [_services objectForKey:NSStringFromClass(clazz)];
 
-		if (instance == null) {
-			instance = clazz.getDeclaredConstructor(Session.class).newInstance(
-				session);
+	if (!service) {
+		service = [[clazz alloc] init:session];
 
-			_services.put(clazz.getName(), instance);
-		}
-		else {
-			instance.setSession(session);
-		}
-
-		return instance;
+		[_services setObject:service forKey:NSStringFromClass(clazz)];
+	}
+	else {
+		[service setSession:session];
 	}
 
-	private static Map<String, BaseService> _services =
-		new HashMap<String, BaseService>();
-
+	return service;
 }
+
+@end
