@@ -69,6 +69,17 @@ public class LanguageUtil {
 		return sb.toString();
 	}
 
+	public boolean isArray(String type) {
+		if (type.endsWith("[]") || type.equals("object<list>") ||
+			type.equals("object<com.liferay.portal.kernel.json.JSONArray>") ||
+			type.startsWith("list")) {
+
+			return true;
+		}
+
+		return false;
+	}
+
 	protected static final Map<String, String> CLASS_NAMES =
 		new HashMap<String, String>();
 

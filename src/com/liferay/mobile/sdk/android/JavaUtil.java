@@ -38,9 +38,7 @@ public class JavaUtil extends LanguageUtil {
 	}
 
 	public String getType(String type) {
-		if (type.endsWith("[]") || type.equals("object<list>") ||
-			type.startsWith("list")) {
-
+		if (isArray(type)) {
 			return "JSONArray";
 		}
 

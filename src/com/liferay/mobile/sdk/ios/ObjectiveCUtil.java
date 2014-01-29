@@ -46,14 +46,8 @@ public class ObjectiveCUtil extends LanguageUtil {
 	}
 
 	public String getType(String type) {
-		if (type.endsWith("[]") || type.equals("object<list>") ||
-			type.startsWith("list")) {
-
+		if (isArray(type)) {
 			return "NSArray *";
-		}
-
-		if (type.equals("void")) {
-			return "void";
 		}
 
 		if (type.equals("boolean")) {
@@ -65,7 +59,7 @@ public class ObjectiveCUtil extends LanguageUtil {
 		}
 
 		if (type.equals("double") || type.equals("int") ||
-			type.equals("long")) {
+			type.equals("void")) {
 
 			return type;
 		}
