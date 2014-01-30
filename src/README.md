@@ -17,7 +17,7 @@ access your portlet's custom services. It is template-based, making it easy to
 extend to various mobile platforms. In the near future we plan to make SDKs
 for more platforms, like PhoneGap or Titanium. The SDK Builder generates client
 libraries that allow your native mobile apps to invoke remote web services of a
-portal instance and any of it's custom portlets built with Liferay's [Service
+portal instance and any of its custom portlets built with Liferay's [Service
 Builder](http://www.liferay.com/documentation/liferay-portal/6.2/development/-/ai/generating-your-service-layer-liferay-portal-6-2-dev-guide-04-en).
 
 ### Configuring your Portlet's Remote Services
@@ -61,7 +61,7 @@ Mobile SDK project using Git:
 git clone git@github.com:liferay/liferay-mobile-sdk.git
 ```
 
-The SDK Builder is invoked using Ant. But, before building an SDK, you must set
+The SDK Builder is invoked using Ant, but before building an SDK, you must set
 some properties so that the SDK Builder can communicate with your portlet
 services and create an SDK specific to your mobile platform. Follow these steps
 to set these properties:
@@ -86,7 +86,7 @@ user name, just change `build.properties` directly.
 	* `filter` - Specifies your portlet's entities whose services to access; a
 	blank value indicates the services of all of the portlet's entities. For
 	example, the Calendar portlet has entities such as `CalendarBooking` and
-	`CalendarResource`. To generate an SDK the for only the `CalendarBooking`
+	`CalendarResource`. To generate an SDK for only the `CalendarBooking`
 	entity, set the filter's value to `calendarbooking`, all in lowercase. The
 	SDK Builder will then make requests to the
 	`http://localhost:8080/calendar-portlet/api/jsonws?discover=/calendarbooking/*`.
