@@ -52,6 +52,7 @@
 
 		<javac
 			classpathref="builder.classpath"
+			compiler="${javac.compiler}"
 			debug="on"
 			destdir="${classes.dir}"
 			srcdir="src" />
