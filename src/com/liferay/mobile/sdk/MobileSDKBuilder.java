@@ -37,8 +37,6 @@ public class MobileSDKBuilder {
 
 	public static final String IOS = "ios";
 
-	public static final String UNKOWN_PORTAL_VERSION = "0";
-
 	public static void build(
 			String platform, String url, String context, String packageName,
 			String destination)

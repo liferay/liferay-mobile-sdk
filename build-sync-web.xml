@@ -46,6 +46,7 @@
 
 		<javac
 			classpathref="test.classpath"
+			compiler="${javac.compiler}"
 			debug="on"
 			destdir="${test.classes}"
 			sourcepath=""
