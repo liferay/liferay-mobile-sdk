@@ -44,7 +44,7 @@ public class MobileSDKBuilder {
 			String destination)
 		throws Exception {
 
-		build(platform, url, context, packageName, null);
+		build(platform, url, context, packageName, null, destination);
 	}
 
 	public static void build(
