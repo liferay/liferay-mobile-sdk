@@ -1,5 +1,5 @@
 /.settings/
-/classes/
+classes/
 /build.*.properties
 velocity.log*
 .idea
