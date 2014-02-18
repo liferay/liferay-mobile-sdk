@@ -29,10 +29,7 @@ public class ShoppingOrderService extends BaseService {
 		super(session);
 	}
 
-	public void completeOrder(long groupId, String number, String ppTxnId,
-		String ppPaymentStatus, double ppPaymentGross, String ppReceiverEmail,
-		String ppPayerEmail, JSONObject serviceContext)
-		throws Exception {
+	public void completeOrder(long groupId, String number, String ppTxnId, String ppPaymentStatus, double ppPaymentGross, String ppReceiverEmail, String ppPayerEmail, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -56,8 +53,7 @@ public class ShoppingOrderService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteOrder(long groupId, long orderId)
-		throws Exception {
+	public void deleteOrder(long groupId, long orderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -75,8 +71,7 @@ public class ShoppingOrderService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject getOrder(long groupId, long orderId)
-		throws Exception {
+	public JSONObject getOrder(long groupId, long orderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -94,8 +89,7 @@ public class ShoppingOrderService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void sendEmail(long groupId, long orderId, String emailType,
-		JSONObject serviceContext) throws Exception {
+	public void sendEmail(long groupId, long orderId, String emailType, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -115,18 +109,7 @@ public class ShoppingOrderService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateOrder(long groupId, long orderId,
-		String billingFirstName, String billingLastName,
-		String billingEmailAddress, String billingCompany,
-		String billingStreet, String billingCity, String billingState,
-		String billingZip, String billingCountry, String billingPhone,
-		boolean shipToBilling, String shippingFirstName,
-		String shippingLastName, String shippingEmailAddress,
-		String shippingCompany, String shippingStreet, String shippingCity,
-		String shippingState, String shippingZip, String shippingCountry,
-		String shippingPhone, String ccName, String ccType, String ccNumber,
-		int ccExpMonth, int ccExpYear, String ccVerNumber, String comments)
-		throws Exception {
+	public JSONObject updateOrder(long groupId, long orderId, String billingFirstName, String billingLastName, String billingEmailAddress, String billingCompany, String billingStreet, String billingCity, String billingState, String billingZip, String billingCountry, String billingPhone, boolean shipToBilling, String shippingFirstName, String shippingLastName, String shippingEmailAddress, String shippingCompany, String shippingStreet, String shippingCity, String shippingState, String shippingZip, String shippingCountry, String shippingPhone, String ccName, String ccType, String ccNumber, int ccExpMonth, int ccExpYear, String ccVerNumber, String comments) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -172,9 +155,7 @@ public class ShoppingOrderService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateOrder(long groupId, long orderId, String ppTxnId,
-		String ppPaymentStatus, double ppPaymentGross, String ppReceiverEmail,
-		String ppPayerEmail) throws Exception {
+	public JSONObject updateOrder(long groupId, long orderId, String ppTxnId, String ppPaymentStatus, double ppPaymentGross, String ppReceiverEmail, String ppPayerEmail) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -196,4 +177,5 @@ public class ShoppingOrderService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

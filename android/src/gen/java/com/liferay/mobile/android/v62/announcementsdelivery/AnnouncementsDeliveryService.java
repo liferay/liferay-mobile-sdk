@@ -29,8 +29,7 @@ public class AnnouncementsDeliveryService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject updateDelivery(long userId, String type, boolean email,
-		boolean sms, boolean website) throws Exception {
+	public JSONObject updateDelivery(long userId, String type, boolean email, boolean sms, boolean website) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -50,4 +49,5 @@ public class AnnouncementsDeliveryService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

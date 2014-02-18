@@ -29,11 +29,7 @@ public class PollsQuestionService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addQuestion(JSONObject titleMap,
-		JSONObject descriptionMap, int expirationDateMonth,
-		int expirationDateDay, int expirationDateYear, int expirationDateHour,
-		int expirationDateMinute, boolean neverExpire, JSONArray choices,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addQuestion(JSONObject titleMap, JSONObject descriptionMap, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, boolean neverExpire, JSONArray choices, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -93,11 +89,7 @@ public class PollsQuestionService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateQuestion(long questionId, JSONObject titleMap,
-		JSONObject descriptionMap, int expirationDateMonth,
-		int expirationDateDay, int expirationDateYear, int expirationDateHour,
-		int expirationDateMinute, boolean neverExpire, JSONArray choices,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject updateQuestion(long questionId, JSONObject titleMap, JSONObject descriptionMap, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, boolean neverExpire, JSONArray choices, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -123,4 +115,5 @@ public class PollsQuestionService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

@@ -29,8 +29,7 @@ public class SCLicenseService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addLicense(String name, String url, boolean openSource,
-		boolean active, boolean recommended) throws Exception {
+	public JSONObject addLicense(String name, String url, boolean openSource, boolean active, boolean recommended) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -85,9 +84,7 @@ public class SCLicenseService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateLicense(long licenseId, String name, String url,
-		boolean openSource, boolean active, boolean recommended)
-		throws Exception {
+	public JSONObject updateLicense(long licenseId, String name, String url, boolean openSource, boolean active, boolean recommended) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -108,4 +105,5 @@ public class SCLicenseService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

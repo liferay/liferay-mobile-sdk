@@ -29,8 +29,7 @@ public class MBBanService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addBan(long banUserId, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addBan(long banUserId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -48,8 +47,7 @@ public class MBBanService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteBan(long banUserId, JSONObject serviceContext)
-		throws Exception {
+	public void deleteBan(long banUserId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -66,4 +64,5 @@ public class MBBanService extends BaseService {
 
 		session.invoke(_command);
 	}
+
 }

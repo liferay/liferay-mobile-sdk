@@ -29,10 +29,7 @@ public class FlagsEntryService extends BaseService {
 		super(session);
 	}
 
-	public void addEntry(String className, long classPK,
-		String reporterEmailAddress, long reportedUserId, String contentTitle,
-		String contentURL, String reason, JSONObject serviceContext)
-		throws Exception {
+	public void addEntry(String className, long classPK, String reporterEmailAddress, long reportedUserId, String contentTitle, String contentURL, String reason, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -55,4 +52,5 @@ public class FlagsEntryService extends BaseService {
 
 		session.invoke(_command);
 	}
+
 }

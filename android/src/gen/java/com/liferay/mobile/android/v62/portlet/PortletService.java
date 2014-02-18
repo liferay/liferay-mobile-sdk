@@ -29,7 +29,7 @@ public class PortletService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject getWarPortlets() throws Exception {
+	public JSONArray getWarPortlets() throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -41,11 +41,10 @@ public class PortletService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject updatePortlet(long companyId, String portletId,
-		String roles, boolean active) throws Exception {
+	public JSONObject updatePortlet(long companyId, String portletId, String roles, boolean active) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -64,4 +63,5 @@ public class PortletService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

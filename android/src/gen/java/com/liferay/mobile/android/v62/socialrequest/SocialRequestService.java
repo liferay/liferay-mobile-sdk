@@ -29,8 +29,7 @@ public class SocialRequestService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject updateRequest(long requestId, int status,
-		JSONObject themeDisplay) throws Exception {
+	public JSONObject updateRequest(long requestId, int status, JSONObject themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -48,4 +47,5 @@ public class SocialRequestService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

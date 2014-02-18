@@ -29,9 +29,7 @@ public class LayoutSetPrototypeService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addLayoutSetPrototype(JSONObject nameMap,
-		String description, boolean active, boolean layoutsUpdateable,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addLayoutSetPrototype(JSONObject nameMap, String description, boolean active, boolean layoutsUpdateable, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -52,8 +50,7 @@ public class LayoutSetPrototypeService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteLayoutSetPrototype(long layoutSetPrototypeId)
-		throws Exception {
+	public void deleteLayoutSetPrototype(long layoutSetPrototypeId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -61,8 +58,7 @@ public class LayoutSetPrototypeService extends BaseService {
 
 			_params.put("layoutSetPrototypeId", layoutSetPrototypeId);
 
-			_command.put("/layoutsetprototype/delete-layout-set-prototype",
-				_params);
+			_command.put("/layoutsetprototype/delete-layout-set-prototype", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -71,8 +67,7 @@ public class LayoutSetPrototypeService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject getLayoutSetPrototype(long layoutSetPrototypeId)
-		throws Exception {
+	public JSONObject getLayoutSetPrototype(long layoutSetPrototypeId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -89,8 +84,7 @@ public class LayoutSetPrototypeService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, JSONObject active, JSONObject obc)
-		throws Exception {
+	public JSONArray search(long companyId, JSONObject active, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -109,8 +103,7 @@ public class LayoutSetPrototypeService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject updateLayoutSetPrototype(long layoutSetPrototypeId,
-		String settings) throws Exception {
+	public JSONObject updateLayoutSetPrototype(long layoutSetPrototypeId, String settings) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -119,8 +112,7 @@ public class LayoutSetPrototypeService extends BaseService {
 			_params.put("layoutSetPrototypeId", layoutSetPrototypeId);
 			_params.put("settings", settings);
 
-			_command.put("/layoutsetprototype/update-layout-set-prototype",
-				_params);
+			_command.put("/layoutsetprototype/update-layout-set-prototype", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -129,10 +121,7 @@ public class LayoutSetPrototypeService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateLayoutSetPrototype(long layoutSetPrototypeId,
-		JSONObject nameMap, String description, boolean active,
-		boolean layoutsUpdateable, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateLayoutSetPrototype(long layoutSetPrototypeId, JSONObject nameMap, String description, boolean active, boolean layoutsUpdateable, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -145,8 +134,7 @@ public class LayoutSetPrototypeService extends BaseService {
 			_params.put("layoutsUpdateable", layoutsUpdateable);
 			_params.put("serviceContext", serviceContext);
 
-			_command.put("/layoutsetprototype/update-layout-set-prototype",
-				_params);
+			_command.put("/layoutsetprototype/update-layout-set-prototype", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -154,4 +142,5 @@ public class LayoutSetPrototypeService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

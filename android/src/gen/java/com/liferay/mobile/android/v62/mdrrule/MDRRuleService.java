@@ -29,9 +29,7 @@ public class MDRRuleService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addRule(long ruleGroupId, JSONObject nameMap,
-		JSONObject descriptionMap, String type, String typeSettings,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addRule(long ruleGroupId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -104,9 +102,7 @@ public class MDRRuleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateRule(long ruleId, JSONObject nameMap,
-		JSONObject descriptionMap, String type, String typeSettings,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject updateRule(long ruleId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -128,10 +124,7 @@ public class MDRRuleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateRule(long ruleId, JSONObject nameMap,
-		JSONObject descriptionMap, String type,
-		JSONObject typeSettingsProperties, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateRule(long ruleId, JSONObject nameMap, JSONObject descriptionMap, String type, JSONObject typeSettingsProperties, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -152,4 +145,5 @@ public class MDRRuleService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

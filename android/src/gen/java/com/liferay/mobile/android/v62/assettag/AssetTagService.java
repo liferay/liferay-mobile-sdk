@@ -29,8 +29,7 @@ public class AssetTagService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addTag(String name, JSONArray tagProperties,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addTag(String name, JSONArray tagProperties, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -100,8 +99,7 @@ public class AssetTagService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getGroupTags(long groupId, int start, int end,
-		JSONObject obc) throws Exception {
+	public JSONArray getGroupTags(long groupId, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -138,8 +136,7 @@ public class AssetTagService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONObject getGroupTagsDisplay(long groupId, String name, int start,
-		int end) throws Exception {
+	public JSONObject getGroupTagsDisplay(long groupId, String name, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -159,8 +156,7 @@ public class AssetTagService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getGroupsTags(JSONArray groupIds)
-		throws Exception {
+	public JSONArray getGroupsTags(JSONArray groupIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -177,8 +173,7 @@ public class AssetTagService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject getJsonGroupTags(long groupId, String name, int start,
-		int end) throws Exception {
+	public JSONObject getJsonGroupTags(long groupId, String name, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -215,8 +210,7 @@ public class AssetTagService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getTags(String className, long classPK)
-		throws Exception {
+	public JSONArray getTags(String className, long classPK) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -234,8 +228,7 @@ public class AssetTagService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getTags(long groupId, long classNameId, String name)
-		throws Exception {
+	public JSONArray getTags(long groupId, long classNameId, String name) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -254,8 +247,7 @@ public class AssetTagService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getTags(long groupId, String name,
-		JSONArray tagProperties, int start, int end) throws Exception {
+	public JSONArray getTags(long groupId, String name, JSONArray tagProperties, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -276,8 +268,7 @@ public class AssetTagService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getTags(JSONArray groupIds, String name,
-		JSONArray tagProperties, int start, int end) throws Exception {
+	public JSONArray getTags(JSONArray groupIds, String name, JSONArray tagProperties, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -298,8 +289,7 @@ public class AssetTagService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getTags(long groupId, long classNameId, String name,
-		int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getTags(long groupId, long classNameId, String name, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -321,8 +311,7 @@ public class AssetTagService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getTagsCount(long groupId, String name)
-		throws Exception {
+	public Integer getTagsCount(long groupId, String name) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -340,8 +329,7 @@ public class AssetTagService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getTagsCount(long groupId, long classNameId, String name)
-		throws Exception {
+	public Integer getTagsCount(long groupId, long classNameId, String name) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -360,8 +348,7 @@ public class AssetTagService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getTagsCount(long groupId, String name,
-		JSONArray tagProperties) throws Exception {
+	public Integer getTagsCount(long groupId, String name, JSONArray tagProperties) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -380,8 +367,7 @@ public class AssetTagService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public void mergeTags(long fromTagId, long toTagId,
-		boolean overrideProperties) throws Exception {
+	public void mergeTags(long fromTagId, long toTagId, boolean overrideProperties) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -400,8 +386,7 @@ public class AssetTagService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void mergeTags(JSONArray fromTagIds, long toTagId,
-		boolean overrideProperties) throws Exception {
+	public void mergeTags(JSONArray fromTagIds, long toTagId, boolean overrideProperties) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -420,8 +405,7 @@ public class AssetTagService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject search(long groupId, String name,
-		JSONArray tagProperties, int start, int end) throws Exception {
+	public JSONArray search(long groupId, String name, JSONArray tagProperties, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -439,11 +423,10 @@ public class AssetTagService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject search(JSONArray groupIds, String name,
-		JSONArray tagProperties, int start, int end) throws Exception {
+	public JSONArray search(JSONArray groupIds, String name, JSONArray tagProperties, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -461,12 +444,10 @@ public class AssetTagService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject updateTag(long tagId, String name,
-		JSONArray tagProperties, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateTag(long tagId, String name, JSONArray tagProperties, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -485,4 +466,5 @@ public class AssetTagService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

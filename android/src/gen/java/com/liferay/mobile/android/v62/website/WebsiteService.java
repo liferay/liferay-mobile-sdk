@@ -29,8 +29,7 @@ public class WebsiteService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addWebsite(String className, long classPK, String url,
-		int typeId, boolean primary) throws Exception {
+	public JSONObject addWebsite(String className, long classPK, String url, int typeId, boolean primary) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -51,9 +50,7 @@ public class WebsiteService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addWebsite(String className, long classPK, String url,
-		int typeId, boolean primary, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addWebsite(String className, long classPK, String url, int typeId, boolean primary, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -109,8 +106,7 @@ public class WebsiteService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getWebsites(String className, long classPK)
-		throws Exception {
+	public JSONArray getWebsites(String className, long classPK) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -128,8 +124,7 @@ public class WebsiteService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject updateWebsite(long websiteId, String url, int typeId,
-		boolean primary) throws Exception {
+	public JSONObject updateWebsite(long websiteId, String url, int typeId, boolean primary) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -148,4 +143,5 @@ public class WebsiteService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

@@ -29,8 +29,7 @@ public class RoleService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addRole(String name, JSONObject titleMap,
-		JSONObject descriptionMap, int type) throws Exception {
+	public JSONObject addRole(String name, JSONObject titleMap, JSONObject descriptionMap, int type) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -50,9 +49,7 @@ public class RoleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addRole(String className, long classPK, String name,
-		JSONObject titleMap, JSONObject descriptionMap, int type,
-		String subtype, JSONObject serviceContext) throws Exception {
+	public JSONObject addRole(String className, long classPK, String name, JSONObject titleMap, JSONObject descriptionMap, int type, String subtype, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -76,8 +73,7 @@ public class RoleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void addUserRoles(long userId, JSONArray roleIds)
-		throws Exception {
+	public void addUserRoles(long userId, JSONArray roleIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -146,8 +142,7 @@ public class RoleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getRole(long companyId, String name)
-		throws Exception {
+	public JSONObject getRole(long companyId, String name) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -165,8 +160,7 @@ public class RoleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getUserGroupGroupRoles(long userId, long groupId)
-		throws Exception {
+	public JSONArray getUserGroupGroupRoles(long userId, long groupId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -184,8 +178,7 @@ public class RoleService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getUserGroupRoles(long userId, long groupId)
-		throws Exception {
+	public JSONArray getUserGroupRoles(long userId, long groupId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -203,8 +196,7 @@ public class RoleService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getUserRelatedRoles(long userId, JSONArray groups)
-		throws Exception {
+	public JSONArray getUserRelatedRoles(long userId, JSONArray groups) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -239,8 +231,7 @@ public class RoleService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Boolean hasUserRole(long userId, long companyId, String name,
-		boolean inherited) throws Exception {
+	public Boolean hasUserRole(long userId, long companyId, String name, boolean inherited) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -260,8 +251,7 @@ public class RoleService extends BaseService {
 		return (Boolean)session.invoke(_command);
 	}
 
-	public Boolean hasUserRoles(long userId, long companyId, JSONArray names,
-		boolean inherited) throws Exception {
+	public Boolean hasUserRoles(long userId, long companyId, JSONArray names, boolean inherited) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -281,8 +271,7 @@ public class RoleService extends BaseService {
 		return (Boolean)session.invoke(_command);
 	}
 
-	public void unsetUserRoles(long userId, JSONArray roleIds)
-		throws Exception {
+	public void unsetUserRoles(long userId, JSONArray roleIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -300,9 +289,7 @@ public class RoleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateRole(long roleId, String name, JSONObject titleMap,
-		JSONObject descriptionMap, String subtype, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateRole(long roleId, String name, JSONObject titleMap, JSONObject descriptionMap, String subtype, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -323,4 +310,5 @@ public class RoleService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

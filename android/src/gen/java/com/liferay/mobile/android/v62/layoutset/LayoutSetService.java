@@ -29,9 +29,7 @@ public class LayoutSetService extends BaseService {
 		super(session);
 	}
 
-	public void updateLayoutSetPrototypeLinkEnabled(long groupId,
-		boolean privateLayout, boolean layoutSetPrototypeLinkEnabled,
-		String layoutSetPrototypeUuid) throws Exception {
+	public void updateLayoutSetPrototypeLinkEnabled(long groupId, boolean privateLayout, boolean layoutSetPrototypeLinkEnabled, String layoutSetPrototypeUuid) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -39,12 +37,10 @@ public class LayoutSetService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("layoutSetPrototypeLinkEnabled",
-				layoutSetPrototypeLinkEnabled);
+			_params.put("layoutSetPrototypeLinkEnabled", layoutSetPrototypeLinkEnabled);
 			_params.put("layoutSetPrototypeUuid", layoutSetPrototypeUuid);
 
-			_command.put("/layoutset/update-layout-set-prototype-link-enabled",
-				_params);
+			_command.put("/layoutset/update-layout-set-prototype-link-enabled", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -53,8 +49,7 @@ public class LayoutSetService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateLogo(long groupId, boolean privateLayout, boolean logo,
-		JSONArray bytes) throws Exception {
+	public void updateLogo(long groupId, boolean privateLayout, boolean logo, JSONArray bytes) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -74,8 +69,7 @@ public class LayoutSetService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateLogo(long groupId, boolean privateLayout, boolean logo,
-		JSONObject file) throws Exception {
+	public void updateLogo(long groupId, boolean privateLayout, boolean logo, JSONObject file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -95,9 +89,7 @@ public class LayoutSetService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateLookAndFeel(long groupId, boolean privateLayout,
-		String themeId, String colorSchemeId, String css, boolean wapTheme)
-		throws Exception {
+	public JSONObject updateLookAndFeel(long groupId, boolean privateLayout, String themeId, String colorSchemeId, String css, boolean wapTheme) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -119,8 +111,7 @@ public class LayoutSetService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateSettings(long groupId, boolean privateLayout,
-		String settings) throws Exception {
+	public JSONObject updateSettings(long groupId, boolean privateLayout, String settings) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -139,8 +130,7 @@ public class LayoutSetService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateVirtualHost(long groupId, boolean privateLayout,
-		String virtualHost) throws Exception {
+	public JSONObject updateVirtualHost(long groupId, boolean privateLayout, String virtualHost) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -158,4 +148,5 @@ public class LayoutSetService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

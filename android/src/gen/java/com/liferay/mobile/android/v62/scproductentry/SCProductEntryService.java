@@ -29,11 +29,7 @@ public class SCProductEntryService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addProductEntry(String name, String type, String tags,
-		String shortDescription, String longDescription, String pageURL,
-		String author, String repoGroupId, String repoArtifactId,
-		JSONArray licenseIds, JSONArray thumbnails, JSONArray fullImages,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addProductEntry(String name, String type, String tags, String shortDescription, String longDescription, String pageURL, String author, String repoGroupId, String repoArtifactId, JSONArray licenseIds, JSONArray thumbnails, JSONArray fullImages, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -62,8 +58,7 @@ public class SCProductEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteProductEntry(long productEntryId)
-		throws Exception {
+	public void deleteProductEntry(long productEntryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -80,8 +75,7 @@ public class SCProductEntryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject getProductEntry(long productEntryId)
-		throws Exception {
+	public JSONObject getProductEntry(long productEntryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -98,11 +92,7 @@ public class SCProductEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateProductEntry(long productEntryId, String name,
-		String type, String tags, String shortDescription,
-		String longDescription, String pageURL, String author,
-		String repoGroupId, String repoArtifactId, JSONArray licenseIds,
-		JSONArray thumbnails, JSONArray fullImages) throws Exception {
+	public JSONObject updateProductEntry(long productEntryId, String name, String type, String tags, String shortDescription, String longDescription, String pageURL, String author, String repoGroupId, String repoArtifactId, JSONArray licenseIds, JSONArray thumbnails, JSONArray fullImages) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -130,4 +120,5 @@ public class SCProductEntryService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

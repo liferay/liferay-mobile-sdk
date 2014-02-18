@@ -29,15 +29,7 @@ public class PasswordPolicyService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addPasswordPolicy(String name, String description,
-		boolean changeable, boolean changeRequired, long minAge,
-		boolean checkSyntax, boolean allowDictionaryWords, int minAlphanumeric,
-		int minLength, int minLowerCase, int minNumbers, int minSymbols,
-		int minUpperCase, boolean history, int historyCount,
-		boolean expireable, long maxAge, long warningTime, int graceLimit,
-		boolean lockout, int maxFailure, long lockoutDuration,
-		long resetFailureCount, long resetTicketMaxAge)
-		throws Exception {
+	public JSONObject addPasswordPolicy(String name, String description, boolean changeable, boolean changeRequired, long minAge, boolean checkSyntax, boolean allowDictionaryWords, int minAlphanumeric, int minLength, int minLowerCase, int minNumbers, int minSymbols, int minUpperCase, boolean history, int historyCount, boolean expireable, long maxAge, long warningTime, int graceLimit, boolean lockout, int maxFailure, long lockoutDuration, long resetFailureCount, long resetTicketMaxAge) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -77,15 +69,7 @@ public class PasswordPolicyService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addPasswordPolicy(String name, String description,
-		boolean changeable, boolean changeRequired, long minAge,
-		boolean checkSyntax, boolean allowDictionaryWords, int minAlphanumeric,
-		int minLength, int minLowerCase, int minNumbers, int minSymbols,
-		int minUpperCase, String regex, boolean history, int historyCount,
-		boolean expireable, long maxAge, long warningTime, int graceLimit,
-		boolean lockout, int maxFailure, long lockoutDuration,
-		long resetFailureCount, long resetTicketMaxAge,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addPasswordPolicy(String name, String description, boolean changeable, boolean changeRequired, long minAge, boolean checkSyntax, boolean allowDictionaryWords, int minAlphanumeric, int minLength, int minLowerCase, int minNumbers, int minSymbols, int minUpperCase, String regex, boolean history, int historyCount, boolean expireable, long maxAge, long warningTime, int graceLimit, boolean lockout, int maxFailure, long lockoutDuration, long resetFailureCount, long resetTicketMaxAge, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -127,8 +111,7 @@ public class PasswordPolicyService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deletePasswordPolicy(long passwordPolicyId)
-		throws Exception {
+	public void deletePasswordPolicy(long passwordPolicyId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -145,15 +128,7 @@ public class PasswordPolicyService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updatePasswordPolicy(long passwordPolicyId, String name,
-		String description, boolean changeable, boolean changeRequired,
-		long minAge, boolean checkSyntax, boolean allowDictionaryWords,
-		int minAlphanumeric, int minLength, int minLowerCase, int minNumbers,
-		int minSymbols, int minUpperCase, boolean history, int historyCount,
-		boolean expireable, long maxAge, long warningTime, int graceLimit,
-		boolean lockout, int maxFailure, long lockoutDuration,
-		long resetFailureCount, long resetTicketMaxAge)
-		throws Exception {
+	public JSONObject updatePasswordPolicy(long passwordPolicyId, String name, String description, boolean changeable, boolean changeRequired, long minAge, boolean checkSyntax, boolean allowDictionaryWords, int minAlphanumeric, int minLength, int minLowerCase, int minNumbers, int minSymbols, int minUpperCase, boolean history, int historyCount, boolean expireable, long maxAge, long warningTime, int graceLimit, boolean lockout, int maxFailure, long lockoutDuration, long resetFailureCount, long resetTicketMaxAge) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -194,15 +169,7 @@ public class PasswordPolicyService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updatePasswordPolicy(long passwordPolicyId, String name,
-		String description, boolean changeable, boolean changeRequired,
-		long minAge, boolean checkSyntax, boolean allowDictionaryWords,
-		int minAlphanumeric, int minLength, int minLowerCase, int minNumbers,
-		int minSymbols, int minUpperCase, String regex, boolean history,
-		int historyCount, boolean expireable, long maxAge, long warningTime,
-		int graceLimit, boolean lockout, int maxFailure, long lockoutDuration,
-		long resetFailureCount, long resetTicketMaxAge,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject updatePasswordPolicy(long passwordPolicyId, String name, String description, boolean changeable, boolean changeRequired, long minAge, boolean checkSyntax, boolean allowDictionaryWords, int minAlphanumeric, int minLength, int minLowerCase, int minNumbers, int minSymbols, int minUpperCase, String regex, boolean history, int historyCount, boolean expireable, long maxAge, long warningTime, int graceLimit, boolean lockout, int maxFailure, long lockoutDuration, long resetFailureCount, long resetTicketMaxAge, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -244,4 +211,5 @@ public class PasswordPolicyService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

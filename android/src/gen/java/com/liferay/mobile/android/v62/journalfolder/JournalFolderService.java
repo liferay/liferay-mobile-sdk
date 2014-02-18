@@ -29,9 +29,7 @@ public class JournalFolderService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFolder(long groupId, long parentFolderId, String name,
-		String description, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addFolder(long groupId, long parentFolderId, String name, String description, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -69,8 +67,7 @@ public class JournalFolderService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteFolder(long folderId, boolean includeTrashedEntries)
-		throws Exception {
+	public void deleteFolder(long folderId, boolean includeTrashedEntries) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -105,8 +102,7 @@ public class JournalFolderService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getFolderIds(long groupId, long folderId)
-		throws Exception {
+	public JSONArray getFolderIds(long groupId, long folderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -141,8 +137,7 @@ public class JournalFolderService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getFolders(long groupId, long parentFolderId)
-		throws Exception {
+	public JSONArray getFolders(long groupId, long parentFolderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -160,8 +155,7 @@ public class JournalFolderService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getFolders(long groupId, long parentFolderId, int status)
-		throws Exception {
+	public JSONArray getFolders(long groupId, long parentFolderId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -180,8 +174,7 @@ public class JournalFolderService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getFolders(long groupId, long parentFolderId, int start,
-		int end) throws Exception {
+	public JSONArray getFolders(long groupId, long parentFolderId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -201,8 +194,7 @@ public class JournalFolderService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getFolders(long groupId, long parentFolderId, int status,
-		int start, int end) throws Exception {
+	public JSONArray getFolders(long groupId, long parentFolderId, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -223,8 +215,7 @@ public class JournalFolderService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getFoldersAndArticles(long groupId, long folderId,
-		int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getFoldersAndArticles(long groupId, long folderId, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -245,9 +236,7 @@ public class JournalFolderService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getFoldersAndArticles(long groupId, long folderId,
-		int status, int start, int end, JSONObject obc)
-		throws Exception {
+	public JSONArray getFoldersAndArticles(long groupId, long folderId, int status, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -269,8 +258,7 @@ public class JournalFolderService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getFoldersAndArticlesCount(long groupId, long folderId)
-		throws Exception {
+	public Integer getFoldersAndArticlesCount(long groupId, long folderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -279,8 +267,7 @@ public class JournalFolderService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
 
-			_command.put("/journalfolder/get-folders-and-articles-count",
-				_params);
+			_command.put("/journalfolder/get-folders-and-articles-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -289,8 +276,7 @@ public class JournalFolderService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getFoldersAndArticlesCount(long groupId, long folderId,
-		int status) throws Exception {
+	public Integer getFoldersAndArticlesCount(long groupId, long folderId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -300,8 +286,7 @@ public class JournalFolderService extends BaseService {
 			_params.put("folderId", folderId);
 			_params.put("status", status);
 
-			_command.put("/journalfolder/get-folders-and-articles-count",
-				_params);
+			_command.put("/journalfolder/get-folders-and-articles-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -310,8 +295,7 @@ public class JournalFolderService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getFoldersAndArticlesCount(long groupId,
-		JSONArray folderIds, int status) throws Exception {
+	public Integer getFoldersAndArticlesCount(long groupId, JSONArray folderIds, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -321,8 +305,7 @@ public class JournalFolderService extends BaseService {
 			_params.put("folderIds", folderIds);
 			_params.put("status", status);
 
-			_command.put("/journalfolder/get-folders-and-articles-count",
-				_params);
+			_command.put("/journalfolder/get-folders-and-articles-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -331,8 +314,7 @@ public class JournalFolderService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getFoldersCount(long groupId, long parentFolderId)
-		throws Exception {
+	public Integer getFoldersCount(long groupId, long parentFolderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -350,8 +332,7 @@ public class JournalFolderService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getFoldersCount(long groupId, long parentFolderId, int status)
-		throws Exception {
+	public Integer getFoldersCount(long groupId, long parentFolderId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -370,8 +351,7 @@ public class JournalFolderService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public void getSubfolderIds(JSONArray folderIds, long groupId, long folderId)
-		throws Exception {
+	public void getSubfolderIds(JSONArray folderIds, long groupId, long folderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -390,8 +370,7 @@ public class JournalFolderService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONArray getSubfolderIds(long groupId, long folderId,
-		boolean recurse) throws Exception {
+	public JSONArray getSubfolderIds(long groupId, long folderId, boolean recurse) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -410,8 +389,7 @@ public class JournalFolderService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject moveFolder(long folderId, long parentFolderId,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject moveFolder(long folderId, long parentFolderId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -430,8 +408,7 @@ public class JournalFolderService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject moveFolderFromTrash(long folderId, long parentFolderId,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject moveFolderFromTrash(long folderId, long parentFolderId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -450,8 +427,7 @@ public class JournalFolderService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject moveFolderToTrash(long folderId)
-		throws Exception {
+	public JSONObject moveFolderToTrash(long folderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -485,9 +461,7 @@ public class JournalFolderService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateFolder(long folderId, long parentFolderId,
-		String name, String description, boolean mergeWithParentFolder,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject updateFolder(long folderId, long parentFolderId, String name, String description, boolean mergeWithParentFolder, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -508,4 +482,5 @@ public class JournalFolderService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

@@ -64,8 +64,7 @@ public class AnnouncementsFlagService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject getFlag(long entryId, int value)
-		throws Exception {
+	public JSONObject getFlag(long entryId, int value) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -82,4 +81,5 @@ public class AnnouncementsFlagService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

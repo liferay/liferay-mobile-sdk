@@ -29,8 +29,7 @@ public class BackgroundTaskService extends BaseService {
 		super(session);
 	}
 
-	public String getBackgroundTaskStatusJson(long backgroundTaskId)
-		throws Exception {
+	public String getBackgroundTaskStatusJson(long backgroundTaskId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -38,8 +37,7 @@ public class BackgroundTaskService extends BaseService {
 
 			_params.put("backgroundTaskId", backgroundTaskId);
 
-			_command.put("/backgroundtask/get-background-task-status-json",
-				_params);
+			_command.put("/backgroundtask/get-background-task-status-json", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -48,9 +46,7 @@ public class BackgroundTaskService extends BaseService {
 		return (String)session.invoke(_command);
 	}
 
-	public Integer getBackgroundTasksCount(long groupId,
-		String taskExecutorClassName, String completed)
-		throws Exception {
+	public Integer getBackgroundTasksCount(long groupId, String taskExecutorClassName, String completed) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -68,4 +64,5 @@ public class BackgroundTaskService extends BaseService {
 
 		return (Integer)session.invoke(_command);
 	}
+
 }

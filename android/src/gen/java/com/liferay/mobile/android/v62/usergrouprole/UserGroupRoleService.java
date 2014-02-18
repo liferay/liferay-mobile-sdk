@@ -29,8 +29,7 @@ public class UserGroupRoleService extends BaseService {
 		super(session);
 	}
 
-	public void addUserGroupRoles(long userId, long groupId, JSONArray roleIds)
-		throws Exception {
+	public void addUserGroupRoles(long userId, long groupId, JSONArray roleIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -49,8 +48,7 @@ public class UserGroupRoleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void addUserGroupRoles(JSONArray userIds, long groupId, long roleId)
-		throws Exception {
+	public void addUserGroupRoles(JSONArray userIds, long groupId, long roleId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -69,8 +67,7 @@ public class UserGroupRoleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteUserGroupRoles(long userId, long groupId,
-		JSONArray roleIds) throws Exception {
+	public void deleteUserGroupRoles(long userId, long groupId, JSONArray roleIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -89,8 +86,7 @@ public class UserGroupRoleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteUserGroupRoles(JSONArray userIds, long groupId,
-		long roleId) throws Exception {
+	public void deleteUserGroupRoles(JSONArray userIds, long groupId, long roleId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -108,4 +104,5 @@ public class UserGroupRoleService extends BaseService {
 
 		session.invoke(_command);
 	}
+
 }

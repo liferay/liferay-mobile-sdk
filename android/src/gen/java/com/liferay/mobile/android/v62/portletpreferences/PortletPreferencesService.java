@@ -29,8 +29,7 @@ public class PortletPreferencesService extends BaseService {
 		super(session);
 	}
 
-	public void deleteArchivedPreferences(long portletItemId)
-		throws Exception {
+	public void deleteArchivedPreferences(long portletItemId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -38,8 +37,7 @@ public class PortletPreferencesService extends BaseService {
 
 			_params.put("portletItemId", portletItemId);
 
-			_command.put("/portletpreferences/delete-archived-preferences",
-				_params);
+			_command.put("/portletpreferences/delete-archived-preferences", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -48,9 +46,7 @@ public class PortletPreferencesService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void restoreArchivedPreferences(long groupId, JSONObject layout,
-		String portletId, JSONObject portletItem, JSONObject preferences)
-		throws Exception {
+	public void restoreArchivedPreferences(long groupId, JSONObject layout, String portletId, JSONObject portletItem, JSONObject preferences) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -62,8 +58,7 @@ public class PortletPreferencesService extends BaseService {
 			_params.put("portletItem", portletItem);
 			_params.put("preferences", preferences);
 
-			_command.put("/portletpreferences/restore-archived-preferences",
-				_params);
+			_command.put("/portletpreferences/restore-archived-preferences", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -72,9 +67,7 @@ public class PortletPreferencesService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void restoreArchivedPreferences(long groupId, JSONObject layout,
-		String portletId, long portletItemId, JSONObject preferences)
-		throws Exception {
+	public void restoreArchivedPreferences(long groupId, JSONObject layout, String portletId, long portletItemId, JSONObject preferences) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -86,8 +79,7 @@ public class PortletPreferencesService extends BaseService {
 			_params.put("portletItemId", portletItemId);
 			_params.put("preferences", preferences);
 
-			_command.put("/portletpreferences/restore-archived-preferences",
-				_params);
+			_command.put("/portletpreferences/restore-archived-preferences", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -96,9 +88,7 @@ public class PortletPreferencesService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void restoreArchivedPreferences(long groupId, String name,
-		JSONObject layout, String portletId, JSONObject preferences)
-		throws Exception {
+	public void restoreArchivedPreferences(long groupId, String name, JSONObject layout, String portletId, JSONObject preferences) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -110,8 +100,7 @@ public class PortletPreferencesService extends BaseService {
 			_params.put("portletId", portletId);
 			_params.put("preferences", preferences);
 
-			_command.put("/portletpreferences/restore-archived-preferences",
-				_params);
+			_command.put("/portletpreferences/restore-archived-preferences", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -120,9 +109,7 @@ public class PortletPreferencesService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateArchivePreferences(long userId, long groupId,
-		String name, String portletId, JSONObject preferences)
-		throws Exception {
+	public void updateArchivePreferences(long userId, long groupId, String name, String portletId, JSONObject preferences) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -134,8 +121,7 @@ public class PortletPreferencesService extends BaseService {
 			_params.put("portletId", portletId);
 			_params.put("preferences", preferences);
 
-			_command.put("/portletpreferences/update-archive-preferences",
-				_params);
+			_command.put("/portletpreferences/update-archive-preferences", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -143,4 +129,5 @@ public class PortletPreferencesService extends BaseService {
 
 		session.invoke(_command);
 	}
+
 }

@@ -29,10 +29,7 @@ public class RepositoryService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addRepository(long groupId, long classNameId,
-		long parentFolderId, String name, String description, String portletId,
-		JSONObject typeSettingsProperties, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addRepository(long groupId, long classNameId, long parentFolderId, String name, String description, String portletId, JSONObject typeSettingsProperties, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -90,8 +87,7 @@ public class RepositoryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject getLocalRepositoryImpl(long repositoryId)
-		throws Exception {
+	public JSONObject getLocalRepositoryImpl(long repositoryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -108,8 +104,7 @@ public class RepositoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getLocalRepositoryImpl(long folderId, long fileEntryId,
-		long fileVersionId) throws Exception {
+	public JSONObject getLocalRepositoryImpl(long folderId, long fileEntryId, long fileVersionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -128,8 +123,7 @@ public class RepositoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getRepository(long repositoryId)
-		throws Exception {
+	public JSONObject getRepository(long repositoryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -146,8 +140,7 @@ public class RepositoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getRepositoryImpl(long repositoryId)
-		throws Exception {
+	public JSONObject getRepositoryImpl(long repositoryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -164,8 +157,7 @@ public class RepositoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getRepositoryImpl(long folderId, long fileEntryId,
-		long fileVersionId) throws Exception {
+	public JSONObject getRepositoryImpl(long folderId, long fileEntryId, long fileVersionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -184,8 +176,7 @@ public class RepositoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getSupportedConfigurations(long classNameId)
-		throws Exception {
+	public JSONArray getSupportedConfigurations(long classNameId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -202,8 +193,7 @@ public class RepositoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getSupportedParameters(long classNameId,
-		String configuration) throws Exception {
+	public JSONArray getSupportedParameters(long classNameId, String configuration) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -221,8 +211,7 @@ public class RepositoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject getTypeSettingsProperties(long repositoryId)
-		throws Exception {
+	public JSONObject getTypeSettingsProperties(long repositoryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -239,8 +228,7 @@ public class RepositoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void updateRepository(long repositoryId, String name,
-		String description) throws Exception {
+	public void updateRepository(long repositoryId, String name, String description) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -258,4 +246,5 @@ public class RepositoryService extends BaseService {
 
 		session.invoke(_command);
 	}
+
 }

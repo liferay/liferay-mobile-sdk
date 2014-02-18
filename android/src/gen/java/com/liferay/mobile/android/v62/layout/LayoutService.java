@@ -29,10 +29,7 @@ public class LayoutService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addLayout(long groupId, boolean privateLayout,
-		long parentLayoutId, String name, String title, String description,
-		String type, boolean hidden, String friendlyURL,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addLayout(long groupId, boolean privateLayout, long parentLayoutId, String name, String title, String description, String type, boolean hidden, String friendlyURL, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -58,12 +55,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addLayout(long groupId, boolean privateLayout,
-		long parentLayoutId, JSONObject localeNamesMap,
-		JSONObject localeTitlesMap, JSONObject descriptionMap,
-		JSONObject keywordsMap, JSONObject robotsMap, String type,
-		boolean hidden, String friendlyURL, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addLayout(long groupId, boolean privateLayout, long parentLayoutId, JSONObject localeNamesMap, JSONObject localeTitlesMap, JSONObject descriptionMap, JSONObject keywordsMap, JSONObject robotsMap, String type, boolean hidden, String friendlyURL, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -91,12 +83,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addLayout(long groupId, boolean privateLayout,
-		long parentLayoutId, JSONObject localeNamesMap,
-		JSONObject localeTitlesMap, JSONObject descriptionMap,
-		JSONObject keywordsMap, JSONObject robotsMap, String type,
-		String typeSettings, boolean hidden, JSONObject friendlyURLMap,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addLayout(long groupId, boolean privateLayout, long parentLayoutId, JSONObject localeNamesMap, JSONObject localeTitlesMap, JSONObject descriptionMap, JSONObject keywordsMap, JSONObject robotsMap, String type, String typeSettings, boolean hidden, JSONObject friendlyURLMap, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -125,8 +112,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteLayout(long plid, JSONObject serviceContext)
-		throws Exception {
+	public void deleteLayout(long plid, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -144,8 +130,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteLayout(long groupId, boolean privateLayout,
-		long layoutId, JSONObject serviceContext) throws Exception {
+	public void deleteLayout(long groupId, boolean privateLayout, long layoutId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -165,8 +150,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteTempFileEntry(long groupId, String fileName,
-		String tempFolderName) throws Exception {
+	public void deleteTempFileEntry(long groupId, String fileName, String tempFolderName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -185,9 +169,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONArray exportLayouts(long groupId, boolean privateLayout,
-		JSONObject parameterMap, long startDate, long endDate)
-		throws Exception {
+	public JSONArray exportLayouts(long groupId, boolean privateLayout, JSONObject parameterMap, long startDate, long endDate) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -208,9 +190,7 @@ public class LayoutService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray exportLayouts(long groupId, boolean privateLayout,
-		JSONArray layoutIds, JSONObject parameterMap, long startDate,
-		long endDate) throws Exception {
+	public JSONArray exportLayouts(long groupId, boolean privateLayout, JSONArray layoutIds, JSONObject parameterMap, long startDate, long endDate) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -232,9 +212,7 @@ public class LayoutService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject exportLayoutsAsFile(long groupId, boolean privateLayout,
-		JSONArray layoutIds, JSONObject parameterMap, long startDate,
-		long endDate) throws Exception {
+	public JSONObject exportLayoutsAsFile(long groupId, boolean privateLayout, JSONArray layoutIds, JSONObject parameterMap, long startDate, long endDate) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -256,10 +234,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public Long exportLayoutsAsFileInBackground(String taskName, long groupId,
-		boolean privateLayout, JSONArray layoutIds, JSONObject parameterMap,
-		long startDate, long endDate, String fileName)
-		throws Exception {
+	public Long exportLayoutsAsFileInBackground(String taskName, long groupId, boolean privateLayout, JSONArray layoutIds, JSONObject parameterMap, long startDate, long endDate, String fileName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -283,9 +258,7 @@ public class LayoutService extends BaseService {
 		return (Long)session.invoke(_command);
 	}
 
-	public JSONArray exportPortletInfo(long companyId, String portletId,
-		JSONObject parameterMap, long startDate, long endDate)
-		throws Exception {
+	public JSONArray exportPortletInfo(long companyId, String portletId, JSONObject parameterMap, long startDate, long endDate) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -306,9 +279,7 @@ public class LayoutService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray exportPortletInfo(long plid, long groupId,
-		String portletId, JSONObject parameterMap, long startDate, long endDate)
-		throws Exception {
+	public JSONArray exportPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, long startDate, long endDate) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -330,9 +301,7 @@ public class LayoutService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject exportPortletInfoAsFile(String portletId,
-		JSONObject parameterMap, long startDate, long endDate)
-		throws Exception {
+	public JSONObject exportPortletInfoAsFile(String portletId, JSONObject parameterMap, long startDate, long endDate) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -352,9 +321,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject exportPortletInfoAsFile(long plid, long groupId,
-		String portletId, JSONObject parameterMap, long startDate, long endDate)
-		throws Exception {
+	public JSONObject exportPortletInfoAsFile(long plid, long groupId, String portletId, JSONObject parameterMap, long startDate, long endDate) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -376,9 +343,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public Long exportPortletInfoAsFileInBackground(String taskName,
-		String portletId, JSONObject parameterMap, long startDate,
-		long endDate, String fileName) throws Exception {
+	public Long exportPortletInfoAsFileInBackground(String taskName, String portletId, JSONObject parameterMap, long startDate, long endDate, String fileName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -391,8 +356,7 @@ public class LayoutService extends BaseService {
 			_params.put("endDate", endDate);
 			_params.put("fileName", fileName);
 
-			_command.put("/layout/export-portlet-info-as-file-in-background",
-				_params);
+			_command.put("/layout/export-portlet-info-as-file-in-background", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -401,10 +365,7 @@ public class LayoutService extends BaseService {
 		return (Long)session.invoke(_command);
 	}
 
-	public Long exportPortletInfoAsFileInBackground(String taskName, long plid,
-		long groupId, String portletId, JSONObject parameterMap,
-		long startDate, long endDate, String fileName)
-		throws Exception {
+	public Long exportPortletInfoAsFileInBackground(String taskName, long plid, long groupId, String portletId, JSONObject parameterMap, long startDate, long endDate, String fileName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -419,8 +380,7 @@ public class LayoutService extends BaseService {
 			_params.put("endDate", endDate);
 			_params.put("fileName", fileName);
 
-			_command.put("/layout/export-portlet-info-as-file-in-background",
-				_params);
+			_command.put("/layout/export-portlet-info-as-file-in-background", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -446,8 +406,7 @@ public class LayoutService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Long getDefaultPlid(long groupId, long scopeGroupId, String portletId)
-		throws Exception {
+	public Long getDefaultPlid(long groupId, long scopeGroupId, String portletId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -466,8 +425,7 @@ public class LayoutService extends BaseService {
 		return (Long)session.invoke(_command);
 	}
 
-	public Long getDefaultPlid(long groupId, long scopeGroupId,
-		boolean privateLayout, String portletId) throws Exception {
+	public Long getDefaultPlid(long groupId, long scopeGroupId, boolean privateLayout, String portletId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -487,8 +445,7 @@ public class LayoutService extends BaseService {
 		return (Long)session.invoke(_command);
 	}
 
-	public JSONObject getLayoutByUuidAndGroupId(String uuid, long groupId,
-		boolean privateLayout) throws Exception {
+	public JSONObject getLayoutByUuidAndGroupId(String uuid, long groupId, boolean privateLayout) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -507,8 +464,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public String getLayoutName(long groupId, boolean privateLayout,
-		long layoutId, String languageId) throws Exception {
+	public String getLayoutName(long groupId, boolean privateLayout, long layoutId, String languageId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -528,9 +484,7 @@ public class LayoutService extends BaseService {
 		return (String)session.invoke(_command);
 	}
 
-	public JSONArray getLayoutReferences(long companyId, String portletId,
-		String preferencesKey, String preferencesValue)
-		throws Exception {
+	public JSONArray getLayoutReferences(long companyId, String portletId, String preferencesKey, String preferencesValue) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -550,8 +504,7 @@ public class LayoutService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getLayouts(long groupId, boolean privateLayout)
-		throws Exception {
+	public JSONArray getLayouts(long groupId, boolean privateLayout) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -569,8 +522,7 @@ public class LayoutService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getLayouts(long groupId, boolean privateLayout,
-		long parentLayoutId) throws Exception {
+	public JSONArray getLayouts(long groupId, boolean privateLayout, long parentLayoutId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -589,9 +541,7 @@ public class LayoutService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getLayouts(long groupId, boolean privateLayout,
-		long parentLayoutId, boolean incomplete, int start, int end)
-		throws Exception {
+	public JSONArray getLayouts(long groupId, boolean privateLayout, long parentLayoutId, boolean incomplete, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -613,8 +563,7 @@ public class LayoutService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getTempFileEntryNames(long groupId, String tempFolderName)
-		throws Exception {
+	public JSONArray getTempFileEntryNames(long groupId, String tempFolderName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -632,8 +581,7 @@ public class LayoutService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public void importLayouts(long groupId, boolean privateLayout,
-		JSONObject parameterMap, JSONArray bytes) throws Exception {
+	public void importLayouts(long groupId, boolean privateLayout, JSONObject parameterMap, JSONArray bytes) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -653,8 +601,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void importLayouts(long groupId, boolean privateLayout,
-		JSONObject parameterMap, JSONObject file) throws Exception {
+	public void importLayouts(long groupId, boolean privateLayout, JSONObject parameterMap, JSONObject file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -674,9 +621,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public Long importLayoutsInBackground(String taskName, long groupId,
-		boolean privateLayout, JSONObject parameterMap, JSONObject file)
-		throws Exception {
+	public Long importLayoutsInBackground(String taskName, long groupId, boolean privateLayout, JSONObject parameterMap, JSONObject file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -697,8 +642,7 @@ public class LayoutService extends BaseService {
 		return (Long)session.invoke(_command);
 	}
 
-	public void importPortletInfo(String portletId, JSONObject parameterMap,
-		JSONObject file) throws Exception {
+	public void importPortletInfo(String portletId, JSONObject parameterMap, JSONObject file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -717,8 +661,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void importPortletInfo(long plid, long groupId, String portletId,
-		JSONObject parameterMap, JSONObject file) throws Exception {
+	public void importPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, JSONObject file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -739,9 +682,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void importPortletInfoInBackground(String taskName,
-		String portletId, JSONObject parameterMap, JSONObject file)
-		throws Exception {
+	public void importPortletInfoInBackground(String taskName, String portletId, JSONObject parameterMap, JSONObject file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -761,9 +702,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public Long importPortletInfoInBackground(String taskName, long plid,
-		long groupId, String portletId, JSONObject parameterMap, JSONObject file)
-		throws Exception {
+	public Long importPortletInfoInBackground(String taskName, long plid, long groupId, String portletId, JSONObject parameterMap, JSONObject file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -785,11 +724,7 @@ public class LayoutService extends BaseService {
 		return (Long)session.invoke(_command);
 	}
 
-	public void schedulePublishToLive(long sourceGroupId, long targetGroupId,
-		boolean privateLayout, JSONObject layoutIdMap, JSONObject parameterMap,
-		String scope, long startDate, long endDate, String groupName,
-		String cronText, long schedulerStartDate, long schedulerEndDate,
-		String description) throws Exception {
+	public void schedulePublishToLive(long sourceGroupId, long targetGroupId, boolean privateLayout, JSONObject layoutIdMap, JSONObject parameterMap, String scope, long startDate, long endDate, String groupName, String cronText, long schedulerStartDate, long schedulerEndDate, String description) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -818,13 +753,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void schedulePublishToRemote(long sourceGroupId,
-		boolean privateLayout, JSONObject layoutIdMap, JSONObject parameterMap,
-		String remoteAddress, int remotePort, String remotePathContext,
-		boolean secureConnection, long remoteGroupId,
-		boolean remotePrivateLayout, long startDate, long endDate,
-		String groupName, String cronText, long schedulerStartDate,
-		long schedulerEndDate, String description) throws Exception {
+	public void schedulePublishToRemote(long sourceGroupId, boolean privateLayout, JSONObject layoutIdMap, JSONObject parameterMap, String remoteAddress, int remotePort, String remotePathContext, boolean secureConnection, long remoteGroupId, boolean remotePrivateLayout, long startDate, long endDate, String groupName, String cronText, long schedulerStartDate, long schedulerEndDate, String description) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -857,9 +786,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void setLayouts(long groupId, boolean privateLayout,
-		long parentLayoutId, JSONArray layoutIds, JSONObject serviceContext)
-		throws Exception {
+	public void setLayouts(long groupId, boolean privateLayout, long parentLayoutId, JSONArray layoutIds, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -880,8 +807,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void unschedulePublishToLive(long groupId, String jobName,
-		String groupName) throws Exception {
+	public void unschedulePublishToLive(long groupId, String jobName, String groupName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -900,8 +826,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void unschedulePublishToRemote(long groupId, String jobName,
-		String groupName) throws Exception {
+	public void unschedulePublishToRemote(long groupId, String jobName, String groupName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -920,13 +845,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateLayout(long groupId, boolean privateLayout,
-		long layoutId, long parentLayoutId, JSONObject localeNamesMap,
-		JSONObject localeTitlesMap, JSONObject descriptionMap,
-		JSONObject keywordsMap, JSONObject robotsMap, String type,
-		boolean hidden, String friendlyURL, JSONObject iconImage,
-		JSONArray iconBytes, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateLayout(long groupId, boolean privateLayout, long layoutId, long parentLayoutId, JSONObject localeNamesMap, JSONObject localeTitlesMap, JSONObject descriptionMap, JSONObject keywordsMap, JSONObject robotsMap, String type, boolean hidden, String friendlyURL, JSONObject iconImage, JSONArray iconBytes, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -957,13 +876,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateLayout(long groupId, boolean privateLayout,
-		long layoutId, long parentLayoutId, JSONObject localeNamesMap,
-		JSONObject localeTitlesMap, JSONObject descriptionMap,
-		JSONObject keywordsMap, JSONObject robotsMap, String type,
-		boolean hidden, JSONObject friendlyURLMap, JSONObject iconImage,
-		JSONArray iconBytes, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateLayout(long groupId, boolean privateLayout, long layoutId, long parentLayoutId, JSONObject localeNamesMap, JSONObject localeTitlesMap, JSONObject descriptionMap, JSONObject keywordsMap, JSONObject robotsMap, String type, boolean hidden, JSONObject friendlyURLMap, JSONObject iconImage, JSONArray iconBytes, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -994,8 +907,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateLayout(long groupId, boolean privateLayout,
-		long layoutId, String typeSettings) throws Exception {
+	public JSONObject updateLayout(long groupId, boolean privateLayout, long layoutId, String typeSettings) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1015,9 +927,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateLookAndFeel(long groupId, boolean privateLayout,
-		long layoutId, String themeId, String colorSchemeId, String css,
-		boolean wapTheme) throws Exception {
+	public JSONObject updateLookAndFeel(long groupId, boolean privateLayout, long layoutId, String themeId, String colorSchemeId, String css, boolean wapTheme) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1040,8 +950,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateName(long plid, String name, String languageId)
-		throws Exception {
+	public JSONObject updateName(long plid, String name, String languageId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1060,9 +969,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateName(long groupId, boolean privateLayout,
-		long layoutId, String name, String languageId)
-		throws Exception {
+	public JSONObject updateName(long groupId, boolean privateLayout, long layoutId, String name, String languageId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1083,8 +990,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateParentLayoutId(long plid, long parentPlid)
-		throws Exception {
+	public JSONObject updateParentLayoutId(long plid, long parentPlid) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1102,8 +1008,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateParentLayoutId(long groupId, boolean privateLayout,
-		long layoutId, long parentLayoutId) throws Exception {
+	public JSONObject updateParentLayoutId(long groupId, boolean privateLayout, long layoutId, long parentLayoutId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1123,8 +1028,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updatePriority(long plid, int priority)
-		throws Exception {
+	public JSONObject updatePriority(long plid, int priority) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1142,8 +1046,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updatePriority(long groupId, boolean privateLayout,
-		long layoutId, int priority) throws Exception {
+	public JSONObject updatePriority(long groupId, boolean privateLayout, long layoutId, int priority) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1163,9 +1066,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updatePriority(long groupId, boolean privateLayout,
-		long layoutId, long nextLayoutId, long previousLayoutId)
-		throws Exception {
+	public JSONObject updatePriority(long groupId, boolean privateLayout, long layoutId, long nextLayoutId, long previousLayoutId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1186,9 +1087,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject validateImportLayoutsFile(long groupId,
-		boolean privateLayout, JSONObject parameterMap, JSONObject file)
-		throws Exception {
+	public JSONObject validateImportLayoutsFile(long groupId, boolean privateLayout, JSONObject parameterMap, JSONObject file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1208,9 +1107,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject validateImportPortletInfo(long plid, long groupId,
-		String portletId, JSONObject parameterMap, JSONObject file)
-		throws Exception {
+	public JSONObject validateImportPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, JSONObject file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1230,4 +1127,5 @@ public class LayoutService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

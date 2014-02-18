@@ -29,8 +29,7 @@ public class SocialActivitySettingService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject getActivityDefinition(long groupId, String className,
-		int activityType) throws Exception {
+	public JSONObject getActivityDefinition(long groupId, String className, int activityType) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -40,8 +39,7 @@ public class SocialActivitySettingService extends BaseService {
 			_params.put("className", className);
 			_params.put("activityType", activityType);
 
-			_command.put("/socialactivitysetting/get-activity-definition",
-				_params);
+			_command.put("/socialactivitysetting/get-activity-definition", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -50,8 +48,7 @@ public class SocialActivitySettingService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getActivityDefinitions(long groupId, String className)
-		throws Exception {
+	public JSONArray getActivityDefinitions(long groupId, String className) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -60,8 +57,7 @@ public class SocialActivitySettingService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("className", className);
 
-			_command.put("/socialactivitysetting/get-activity-definitions",
-				_params);
+			_command.put("/socialactivitysetting/get-activity-definitions", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -70,8 +66,7 @@ public class SocialActivitySettingService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getActivitySettings(long groupId)
-		throws Exception {
+	public JSONArray getActivitySettings(long groupId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -88,8 +83,7 @@ public class SocialActivitySettingService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject getJsonActivityDefinitions(long groupId, String className)
-		throws Exception {
+	public JSONArray getJsonActivityDefinitions(long groupId, String className) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -98,18 +92,16 @@ public class SocialActivitySettingService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("className", className);
 
-			_command.put("/socialactivitysetting/get-json-activity-definitions",
-				_params);
+			_command.put("/socialactivitysetting/get-json-activity-definitions", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONArray)session.invoke(_command);
 	}
 
-	public void updateActivitySetting(long groupId, String className,
-		boolean enabled) throws Exception {
+	public void updateActivitySetting(long groupId, String className, boolean enabled) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -119,8 +111,7 @@ public class SocialActivitySettingService extends BaseService {
 			_params.put("className", className);
 			_params.put("enabled", enabled);
 
-			_command.put("/socialactivitysetting/update-activity-setting",
-				_params);
+			_command.put("/socialactivitysetting/update-activity-setting", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -129,9 +120,7 @@ public class SocialActivitySettingService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateActivitySetting(long groupId, String className,
-		int activityType, JSONObject activityCounterDefinition)
-		throws Exception {
+	public void updateActivitySetting(long groupId, String className, int activityType, JSONObject activityCounterDefinition) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -142,8 +131,7 @@ public class SocialActivitySettingService extends BaseService {
 			_params.put("activityType", activityType);
 			_params.put("activityCounterDefinition", activityCounterDefinition);
 
-			_command.put("/socialactivitysetting/update-activity-setting",
-				_params);
+			_command.put("/socialactivitysetting/update-activity-setting", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -152,9 +140,7 @@ public class SocialActivitySettingService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateActivitySettings(long groupId, String className,
-		int activityType, JSONArray activityCounterDefinitions)
-		throws Exception {
+	public void updateActivitySettings(long groupId, String className, int activityType, JSONArray activityCounterDefinitions) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -165,8 +151,7 @@ public class SocialActivitySettingService extends BaseService {
 			_params.put("activityType", activityType);
 			_params.put("activityCounterDefinitions", activityCounterDefinitions);
 
-			_command.put("/socialactivitysetting/update-activity-settings",
-				_params);
+			_command.put("/socialactivitysetting/update-activity-settings", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -174,4 +159,5 @@ public class SocialActivitySettingService extends BaseService {
 
 		session.invoke(_command);
 	}
+
 }

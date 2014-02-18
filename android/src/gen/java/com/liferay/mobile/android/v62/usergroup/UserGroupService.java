@@ -29,8 +29,7 @@ public class UserGroupService extends BaseService {
 		super(session);
 	}
 
-	public void addGroupUserGroups(long groupId, JSONArray userGroupIds)
-		throws Exception {
+	public void addGroupUserGroups(long groupId, JSONArray userGroupIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -48,8 +47,7 @@ public class UserGroupService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void addTeamUserGroups(long teamId, JSONArray userGroupIds)
-		throws Exception {
+	public void addTeamUserGroups(long teamId, JSONArray userGroupIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -67,8 +65,7 @@ public class UserGroupService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject addUserGroup(String name, String description)
-		throws Exception {
+	public JSONObject addUserGroup(String name, String description) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -86,8 +83,7 @@ public class UserGroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addUserGroup(String name, String description,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addUserGroup(String name, String description, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -174,8 +170,7 @@ public class UserGroupService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public void unsetGroupUserGroups(long groupId, JSONArray userGroupIds)
-		throws Exception {
+	public void unsetGroupUserGroups(long groupId, JSONArray userGroupIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -193,8 +188,7 @@ public class UserGroupService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void unsetTeamUserGroups(long teamId, JSONArray userGroupIds)
-		throws Exception {
+	public void unsetTeamUserGroups(long teamId, JSONArray userGroupIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -212,8 +206,7 @@ public class UserGroupService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateUserGroup(long userGroupId, String name,
-		String description) throws Exception {
+	public JSONObject updateUserGroup(long userGroupId, String name, String description) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -232,9 +225,7 @@ public class UserGroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateUserGroup(long userGroupId, String name,
-		String description, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateUserGroup(long userGroupId, String name, String description, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -253,4 +244,5 @@ public class UserGroupService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

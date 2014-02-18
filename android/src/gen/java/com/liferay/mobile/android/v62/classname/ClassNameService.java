@@ -79,4 +79,5 @@ public class ClassNameService extends BaseService {
 
 		return (Long)session.invoke(_command);
 	}
+
 }

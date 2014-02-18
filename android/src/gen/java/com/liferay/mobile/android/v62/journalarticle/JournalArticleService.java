@@ -29,18 +29,7 @@ public class JournalArticleService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addArticle(long groupId, long folderId, long classNameId,
-		long classPK, String articleId, boolean autoArticleId,
-		JSONObject titleMap, JSONObject descriptionMap, String content,
-		String type, String ddmStructureKey, String ddmTemplateKey,
-		String layoutUuid, int displayDateMonth, int displayDateDay,
-		int displayDateYear, int displayDateHour, int displayDateMinute,
-		int expirationDateMonth, int expirationDateDay, int expirationDateYear,
-		int expirationDateHour, int expirationDateMinute, boolean neverExpire,
-		int reviewDateMonth, int reviewDateDay, int reviewDateYear,
-		int reviewDateHour, int reviewDateMinute, boolean neverReview,
-		boolean indexable, String articleURL, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addArticle(long groupId, long folderId, long classNameId, long classPK, String articleId, boolean autoArticleId, JSONObject titleMap, JSONObject descriptionMap, String content, String type, String ddmStructureKey, String ddmTemplateKey, String layoutUuid, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, boolean neverExpire, int reviewDateMonth, int reviewDateDay, int reviewDateYear, int reviewDateHour, int reviewDateMinute, boolean neverReview, boolean indexable, String articleURL, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -89,19 +78,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addArticle(long groupId, long folderId, long classNameId,
-		long classPK, String articleId, boolean autoArticleId,
-		JSONObject titleMap, JSONObject descriptionMap, String content,
-		String type, String ddmStructureKey, String ddmTemplateKey,
-		String layoutUuid, int displayDateMonth, int displayDateDay,
-		int displayDateYear, int displayDateHour, int displayDateMinute,
-		int expirationDateMonth, int expirationDateDay, int expirationDateYear,
-		int expirationDateHour, int expirationDateMinute, boolean neverExpire,
-		int reviewDateMonth, int reviewDateDay, int reviewDateYear,
-		int reviewDateHour, int reviewDateMinute, boolean neverReview,
-		boolean indexable, boolean smallImage, String smallImageURL,
-		JSONObject smallFile, JSONObject images, String articleURL,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addArticle(long groupId, long folderId, long classNameId, long classPK, String articleId, boolean autoArticleId, JSONObject titleMap, JSONObject descriptionMap, String content, String type, String ddmStructureKey, String ddmTemplateKey, String layoutUuid, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, boolean neverExpire, int reviewDateMonth, int reviewDateDay, int reviewDateYear, int reviewDateHour, int reviewDateMinute, boolean neverReview, boolean indexable, boolean smallImage, String smallImageURL, JSONObject smallFile, JSONObject images, String articleURL, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -154,9 +131,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject copyArticle(long groupId, String oldArticleId,
-		String newArticleId, boolean autoArticleId, double version)
-		throws Exception {
+	public JSONObject copyArticle(long groupId, String oldArticleId, String newArticleId, boolean autoArticleId, double version) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -177,8 +152,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteArticle(long groupId, String articleId,
-		String articleURL, JSONObject serviceContext) throws Exception {
+	public void deleteArticle(long groupId, String articleId, String articleURL, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -198,8 +172,7 @@ public class JournalArticleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteArticle(long groupId, String articleId, double version,
-		String articleURL, JSONObject serviceContext) throws Exception {
+	public void deleteArticle(long groupId, String articleId, double version, String articleURL, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -220,8 +193,7 @@ public class JournalArticleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void expireArticle(long groupId, String articleId,
-		String articleURL, JSONObject serviceContext) throws Exception {
+	public void expireArticle(long groupId, String articleId, String articleURL, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -241,9 +213,7 @@ public class JournalArticleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject expireArticle(long groupId, String articleId,
-		double version, String articleURL, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject expireArticle(long groupId, String articleId, double version, String articleURL, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -281,8 +251,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getArticle(long groupId, String articleId)
-		throws Exception {
+	public JSONObject getArticle(long groupId, String articleId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -300,8 +269,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getArticle(long groupId, String articleId, double version)
-		throws Exception {
+	public JSONObject getArticle(long groupId, String articleId, double version) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -320,8 +288,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getArticle(long groupId, String className, long classPK)
-		throws Exception {
+	public JSONObject getArticle(long groupId, String className, long classPK) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -340,8 +307,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getArticleByUrlTitle(long groupId, String urlTitle)
-		throws Exception {
+	public JSONObject getArticleByUrlTitle(long groupId, String urlTitle) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -359,8 +325,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public String getArticleContent(long groupId, String articleId,
-		String languageId, JSONObject themeDisplay) throws Exception {
+	public String getArticleContent(long groupId, String articleId, String languageId, JSONObject themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -380,9 +345,7 @@ public class JournalArticleService extends BaseService {
 		return (String)session.invoke(_command);
 	}
 
-	public String getArticleContent(long groupId, String articleId,
-		double version, String languageId, JSONObject themeDisplay)
-		throws Exception {
+	public String getArticleContent(long groupId, String articleId, double version, String languageId, JSONObject themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -403,8 +366,7 @@ public class JournalArticleService extends BaseService {
 		return (String)session.invoke(_command);
 	}
 
-	public JSONArray getArticles(long groupId, long folderId)
-		throws Exception {
+	public JSONArray getArticles(long groupId, long folderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -422,8 +384,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getArticles(long groupId, long folderId, int start,
-		int end, JSONObject obc) throws Exception {
+	public JSONArray getArticles(long groupId, long folderId, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -444,8 +405,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getArticlesByArticleId(long groupId, String articleId,
-		int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getArticlesByArticleId(long groupId, String articleId, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -466,8 +426,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getArticlesByLayoutUuid(long groupId, String layoutUuid)
-		throws Exception {
+	public JSONArray getArticlesByLayoutUuid(long groupId, String layoutUuid) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -485,9 +444,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getArticlesByStructureId(long groupId,
-		String ddmStructureKey, int start, int end, JSONObject obc)
-		throws Exception {
+	public JSONArray getArticlesByStructureId(long groupId, String ddmStructureKey, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -508,9 +465,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getArticlesByStructureId(long groupId, long classNameId,
-		String ddmStructureKey, int status, int start, int end, JSONObject obc)
-		throws Exception {
+	public JSONArray getArticlesByStructureId(long groupId, long classNameId, String ddmStructureKey, int status, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -533,8 +488,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getArticlesCount(long groupId, long folderId)
-		throws Exception {
+	public Integer getArticlesCount(long groupId, long folderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -552,8 +506,7 @@ public class JournalArticleService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getArticlesCount(long groupId, long folderId, int status)
-		throws Exception {
+	public Integer getArticlesCount(long groupId, long folderId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -572,8 +525,7 @@ public class JournalArticleService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getArticlesCountByArticleId(long groupId, String articleId)
-		throws Exception {
+	public Integer getArticlesCountByArticleId(long groupId, String articleId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -582,8 +534,7 @@ public class JournalArticleService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("articleId", articleId);
 
-			_command.put("/journalarticle/get-articles-count-by-article-id",
-				_params);
+			_command.put("/journalarticle/get-articles-count-by-article-id", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -592,8 +543,7 @@ public class JournalArticleService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getArticlesCountByStructureId(long groupId,
-		String ddmStructureKey) throws Exception {
+	public Integer getArticlesCountByStructureId(long groupId, String ddmStructureKey) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -602,8 +552,7 @@ public class JournalArticleService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("ddmStructureKey", ddmStructureKey);
 
-			_command.put("/journalarticle/get-articles-count-by-structure-id",
-				_params);
+			_command.put("/journalarticle/get-articles-count-by-structure-id", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -612,9 +561,7 @@ public class JournalArticleService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getArticlesCountByStructureId(long groupId,
-		long classNameId, String ddmStructureKey, int status)
-		throws Exception {
+	public Integer getArticlesCountByStructureId(long groupId, long classNameId, String ddmStructureKey, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -625,8 +572,7 @@ public class JournalArticleService extends BaseService {
 			_params.put("ddmStructureKey", ddmStructureKey);
 			_params.put("status", status);
 
-			_command.put("/journalarticle/get-articles-count-by-structure-id",
-				_params);
+			_command.put("/journalarticle/get-articles-count-by-structure-id", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -635,8 +581,7 @@ public class JournalArticleService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONObject getDisplayArticleByUrlTitle(long groupId, String urlTitle)
-		throws Exception {
+	public JSONObject getDisplayArticleByUrlTitle(long groupId, String urlTitle) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -645,8 +590,7 @@ public class JournalArticleService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("urlTitle", urlTitle);
 
-			_command.put("/journalarticle/get-display-article-by-url-title",
-				_params);
+			_command.put("/journalarticle/get-display-article-by-url-title", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -655,8 +599,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public Integer getFoldersAndArticlesCount(long groupId, JSONArray folderIds)
-		throws Exception {
+	public Integer getFoldersAndArticlesCount(long groupId, JSONArray folderIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -665,8 +608,7 @@ public class JournalArticleService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("folderIds", folderIds);
 
-			_command.put("/journalarticle/get-folders-and-articles-count",
-				_params);
+			_command.put("/journalarticle/get-folders-and-articles-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -675,9 +617,7 @@ public class JournalArticleService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getGroupArticles(long groupId, long userId,
-		long rootFolderId, int start, int end, JSONObject orderByComparator)
-		throws Exception {
+	public JSONArray getGroupArticles(long groupId, long userId, long rootFolderId, int start, int end, JSONObject orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -699,9 +639,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getGroupArticles(long groupId, long userId,
-		long rootFolderId, int status, int start, int end,
-		JSONObject orderByComparator) throws Exception {
+	public JSONArray getGroupArticles(long groupId, long userId, long rootFolderId, int status, int start, int end, JSONObject orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -724,8 +662,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getGroupArticlesCount(long groupId, long userId,
-		long rootFolderId) throws Exception {
+	public Integer getGroupArticlesCount(long groupId, long userId, long rootFolderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -744,8 +681,7 @@ public class JournalArticleService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getGroupArticlesCount(long groupId, long userId,
-		long rootFolderId, int status) throws Exception {
+	public Integer getGroupArticlesCount(long groupId, long userId, long rootFolderId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -765,8 +701,7 @@ public class JournalArticleService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONObject getLatestArticle(long resourcePrimKey)
-		throws Exception {
+	public JSONObject getLatestArticle(long resourcePrimKey) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -783,8 +718,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getLatestArticle(long groupId, String articleId,
-		int status) throws Exception {
+	public JSONObject getLatestArticle(long groupId, String articleId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -803,8 +737,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getLatestArticle(long groupId, String className,
-		long classPK) throws Exception {
+	public JSONObject getLatestArticle(long groupId, String className, long classPK) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -823,8 +756,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void moveArticle(long groupId, String articleId, long newFolderId)
-		throws Exception {
+	public void moveArticle(long groupId, String articleId, long newFolderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -843,8 +775,7 @@ public class JournalArticleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject moveArticleFromTrash(long groupId, String articleId,
-		long newFolderId, JSONObject serviceContext) throws Exception {
+	public JSONObject moveArticleFromTrash(long groupId, String articleId, long newFolderId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -864,8 +795,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject moveArticleFromTrash(long groupId, long resourcePrimKey,
-		long newFolderId, JSONObject serviceContext) throws Exception {
+	public JSONObject moveArticleFromTrash(long groupId, long resourcePrimKey, long newFolderId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -885,8 +815,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject moveArticleToTrash(long groupId, String articleId)
-		throws Exception {
+	public JSONObject moveArticleToTrash(long groupId, String articleId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -904,8 +833,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void removeArticleLocale(long companyId, String languageId)
-		throws Exception {
+	public void removeArticleLocale(long companyId, String languageId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -923,8 +851,7 @@ public class JournalArticleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject removeArticleLocale(long groupId, String articleId,
-		double version, String languageId) throws Exception {
+	public JSONObject removeArticleLocale(long groupId, String articleId, double version, String languageId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -944,8 +871,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void restoreArticleFromTrash(long resourcePrimKey)
-		throws Exception {
+	public void restoreArticleFromTrash(long resourcePrimKey) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -962,8 +888,7 @@ public class JournalArticleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void restoreArticleFromTrash(long groupId, String articleId)
-		throws Exception {
+	public void restoreArticleFromTrash(long groupId, String articleId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -981,11 +906,7 @@ public class JournalArticleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, long groupId, JSONArray folderIds,
-		long classNameId, String keywords, JSONObject version, String type,
-		String ddmStructureKey, String ddmTemplateKey, long displayDateGT,
-		long displayDateLT, int status, long reviewDate, int start, int end,
-		JSONObject obc) throws Exception {
+	public JSONArray search(long companyId, long groupId, JSONArray folderIds, long classNameId, String keywords, JSONObject version, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1017,12 +938,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, long groupId, JSONArray folderIds,
-		long classNameId, String articleId, JSONObject version, String title,
-		String description, String content, String type,
-		String ddmStructureKey, String ddmTemplateKey, long displayDateGT,
-		long displayDateLT, int status, long reviewDate, boolean andOperator,
-		int start, int end, JSONObject obc) throws Exception {
+	public JSONArray search(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, JSONObject version, String title, String description, String content, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1058,13 +974,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, long groupId, JSONArray folderIds,
-		long classNameId, String articleId, JSONObject version, String title,
-		String description, String content, String type,
-		JSONArray ddmStructureKeys, JSONArray ddmTemplateKeys,
-		long displayDateGT, long displayDateLT, int status, long reviewDate,
-		boolean andOperator, int start, int end, JSONObject obc)
-		throws Exception {
+	public JSONArray search(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, JSONObject version, String title, String description, String content, String type, JSONArray ddmStructureKeys, JSONArray ddmTemplateKeys, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1100,8 +1010,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject search(long groupId, long creatorUserId, int status,
-		int start, int end) throws Exception {
+	public JSONObject search(long groupId, long creatorUserId, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1122,11 +1031,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public Integer searchCount(long companyId, long groupId,
-		JSONArray folderIds, long classNameId, String keywords,
-		JSONObject version, String type, String ddmStructureKey,
-		String ddmTemplateKey, long displayDateGT, long displayDateLT,
-		int status, long reviewDate) throws Exception {
+	public Integer searchCount(long companyId, long groupId, JSONArray folderIds, long classNameId, String keywords, JSONObject version, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1155,12 +1060,7 @@ public class JournalArticleService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer searchCount(long companyId, long groupId,
-		JSONArray folderIds, long classNameId, String articleId,
-		JSONObject version, String title, String description, String content,
-		String type, String ddmStructureKey, String ddmTemplateKey,
-		long displayDateGT, long displayDateLT, int status, long reviewDate,
-		boolean andOperator) throws Exception {
+	public Integer searchCount(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, JSONObject version, String title, String description, String content, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1193,12 +1093,7 @@ public class JournalArticleService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer searchCount(long companyId, long groupId,
-		JSONArray folderIds, long classNameId, String articleId,
-		JSONObject version, String title, String description, String content,
-		String type, JSONArray ddmStructureKeys, JSONArray ddmTemplateKeys,
-		long displayDateGT, long displayDateLT, int status, long reviewDate,
-		boolean andOperator) throws Exception {
+	public Integer searchCount(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, JSONObject version, String title, String description, String content, String type, JSONArray ddmStructureKeys, JSONArray ddmTemplateKeys, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1265,10 +1160,7 @@ public class JournalArticleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateArticle(long userId, long groupId, long folderId,
-		String articleId, double version, JSONObject titleMap,
-		JSONObject descriptionMap, String content, String layoutUuid,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject updateArticle(long userId, long groupId, long folderId, String articleId, double version, JSONObject titleMap, JSONObject descriptionMap, String content, String layoutUuid, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1294,19 +1186,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateArticle(long groupId, long folderId,
-		String articleId, double version, JSONObject titleMap,
-		JSONObject descriptionMap, String content, String type,
-		String ddmStructureKey, String ddmTemplateKey, String layoutUuid,
-		int displayDateMonth, int displayDateDay, int displayDateYear,
-		int displayDateHour, int displayDateMinute, int expirationDateMonth,
-		int expirationDateDay, int expirationDateYear, int expirationDateHour,
-		int expirationDateMinute, boolean neverExpire, int reviewDateMonth,
-		int reviewDateDay, int reviewDateYear, int reviewDateHour,
-		int reviewDateMinute, boolean neverReview, boolean indexable,
-		boolean smallImage, String smallImageURL, JSONObject smallFile,
-		JSONObject images, String articleURL, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateArticle(long groupId, long folderId, String articleId, double version, JSONObject titleMap, JSONObject descriptionMap, String content, String type, String ddmStructureKey, String ddmTemplateKey, String layoutUuid, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, boolean neverExpire, int reviewDateMonth, int reviewDateDay, int reviewDateYear, int reviewDateHour, int reviewDateMinute, boolean neverReview, boolean indexable, boolean smallImage, String smallImageURL, JSONObject smallFile, JSONObject images, String articleURL, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1357,9 +1237,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateArticle(long groupId, long folderId,
-		String articleId, double version, String content,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject updateArticle(long groupId, long folderId, String articleId, double version, String content, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1381,9 +1259,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateArticleTranslation(long groupId, String articleId,
-		double version, String locale, String title, String description,
-		String content, JSONObject images) throws Exception {
+	public JSONObject updateArticleTranslation(long groupId, String articleId, double version, String locale, String title, String description, String content, JSONObject images) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1407,10 +1283,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateArticleTranslation(long groupId, String articleId,
-		double version, String locale, String title, String description,
-		String content, JSONObject images, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateArticleTranslation(long groupId, String articleId, double version, String locale, String title, String description, String content, JSONObject images, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1435,8 +1308,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateContent(long groupId, String articleId,
-		double version, String content) throws Exception {
+	public JSONObject updateContent(long groupId, String articleId, double version, String content) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1456,9 +1328,7 @@ public class JournalArticleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateStatus(long groupId, String articleId,
-		double version, int status, String articleURL, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateStatus(long groupId, String articleId, double version, int status, String articleURL, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1479,4 +1349,5 @@ public class JournalArticleService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

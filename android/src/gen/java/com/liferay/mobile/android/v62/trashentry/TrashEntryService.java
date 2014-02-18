@@ -80,8 +80,7 @@ public class TrashEntryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteEntry(String className, long classPK)
-		throws Exception {
+	public void deleteEntry(String className, long classPK) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -116,8 +115,7 @@ public class TrashEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getEntries(long groupId, int start, int end,
-		JSONObject obc) throws Exception {
+	public JSONObject getEntries(long groupId, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -137,9 +135,7 @@ public class TrashEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void moveEntry(String className, long classPK,
-		long destinationContainerModelId, JSONObject serviceContext)
-		throws Exception {
+	public void moveEntry(String className, long classPK, long destinationContainerModelId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -147,8 +143,7 @@ public class TrashEntryService extends BaseService {
 
 			_params.put("className", className);
 			_params.put("classPK", classPK);
-			_params.put("destinationContainerModelId",
-				destinationContainerModelId);
+			_params.put("destinationContainerModelId", destinationContainerModelId);
 			_params.put("serviceContext", serviceContext);
 
 			_command.put("/trashentry/move-entry", _params);
@@ -177,8 +172,7 @@ public class TrashEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject restoreEntry(long entryId, long overrideClassPK,
-		String name) throws Exception {
+	public JSONObject restoreEntry(long entryId, long overrideClassPK, String name) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -196,4 +190,5 @@ public class TrashEntryService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

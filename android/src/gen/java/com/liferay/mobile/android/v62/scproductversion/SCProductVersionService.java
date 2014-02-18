@@ -29,11 +29,7 @@ public class SCProductVersionService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addProductVersion(long productEntryId, String version,
-		String changeLog, String downloadPageURL, String directDownloadURL,
-		boolean testDirectDownloadURL, boolean repoStoreArtifact,
-		JSONArray frameworkVersionIds, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addProductVersion(long productEntryId, String version, String changeLog, String downloadPageURL, String directDownloadURL, boolean testDirectDownloadURL, boolean repoStoreArtifact, JSONArray frameworkVersionIds, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -58,8 +54,7 @@ public class SCProductVersionService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteProductVersion(long productVersionId)
-		throws Exception {
+	public void deleteProductVersion(long productVersionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -76,8 +71,7 @@ public class SCProductVersionService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject getProductVersion(long productVersionId)
-		throws Exception {
+	public JSONObject getProductVersion(long productVersionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -94,8 +88,7 @@ public class SCProductVersionService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getProductVersions(long productEntryId, int start, int end)
-		throws Exception {
+	public JSONArray getProductVersions(long productEntryId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -114,8 +107,7 @@ public class SCProductVersionService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getProductVersionsCount(long productEntryId)
-		throws Exception {
+	public Integer getProductVersionsCount(long productEntryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -132,11 +124,7 @@ public class SCProductVersionService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONObject updateProductVersion(long productVersionId,
-		String version, String changeLog, String downloadPageURL,
-		String directDownloadURL, boolean testDirectDownloadURL,
-		boolean repoStoreArtifact, JSONArray frameworkVersionIds)
-		throws Exception {
+	public JSONObject updateProductVersion(long productVersionId, String version, String changeLog, String downloadPageURL, String directDownloadURL, boolean testDirectDownloadURL, boolean repoStoreArtifact, JSONArray frameworkVersionIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -159,4 +147,5 @@ public class SCProductVersionService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

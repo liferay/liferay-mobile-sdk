@@ -29,9 +29,7 @@ public class ShoppingCategoryService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addCategory(long parentCategoryId, String name,
-		String description, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addCategory(long parentCategoryId, String name, String description, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -85,8 +83,7 @@ public class ShoppingCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getCategories(long groupId, long parentCategoryId,
-		int start, int end) throws Exception {
+	public JSONArray getCategories(long groupId, long parentCategoryId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -106,8 +103,7 @@ public class ShoppingCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getCategoriesCount(long groupId, long parentCategoryId)
-		throws Exception {
+	public Integer getCategoriesCount(long groupId, long parentCategoryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -142,8 +138,7 @@ public class ShoppingCategoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void getSubcategoryIds(JSONArray categoryIds, long groupId,
-		long categoryId) throws Exception {
+	public void getSubcategoryIds(JSONArray categoryIds, long groupId, long categoryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -162,9 +157,7 @@ public class ShoppingCategoryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateCategory(long categoryId, long parentCategoryId,
-		String name, String description, boolean mergeWithParentCategory,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject updateCategory(long categoryId, long parentCategoryId, String name, String description, boolean mergeWithParentCategory, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -185,4 +178,5 @@ public class ShoppingCategoryService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

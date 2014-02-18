@@ -29,9 +29,7 @@ public class DLFileShortcutService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFileShortcut(long groupId, long folderId,
-		long toFileEntryId, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addFileShortcut(long groupId, long folderId, long toFileEntryId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -51,8 +49,7 @@ public class DLFileShortcutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteFileShortcut(long fileShortcutId)
-		throws Exception {
+	public void deleteFileShortcut(long fileShortcutId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -69,8 +66,7 @@ public class DLFileShortcutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject getFileShortcut(long fileShortcutId)
-		throws Exception {
+	public JSONObject getFileShortcut(long fileShortcutId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -87,9 +83,7 @@ public class DLFileShortcutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateFileShortcut(long fileShortcutId, long folderId,
-		long toFileEntryId, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateFileShortcut(long fileShortcutId, long folderId, long toFileEntryId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -108,4 +102,5 @@ public class DLFileShortcutService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

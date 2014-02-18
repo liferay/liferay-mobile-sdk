@@ -29,8 +29,7 @@ public class CountryService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addCountry(String name, String a2, String a3,
-		String number, String idd, boolean active) throws Exception {
+	public JSONObject addCountry(String name, String a2, String a3, String number, String idd, boolean active) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -202,4 +201,5 @@ public class CountryService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

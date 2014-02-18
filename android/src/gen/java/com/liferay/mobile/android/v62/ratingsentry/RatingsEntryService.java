@@ -29,8 +29,7 @@ public class RatingsEntryService extends BaseService {
 		super(session);
 	}
 
-	public void deleteEntry(String className, long classPK)
-		throws Exception {
+	public void deleteEntry(String className, long classPK) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -48,8 +47,7 @@ public class RatingsEntryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateEntry(String className, long classPK, double score)
-		throws Exception {
+	public JSONObject updateEntry(String className, long classPK, double score) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -67,4 +65,5 @@ public class RatingsEntryService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

@@ -29,9 +29,7 @@ public class PhoneService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addPhone(String className, long classPK, String number,
-		String extension, int typeId, boolean primary)
-		throws Exception {
+	public JSONObject addPhone(String className, long classPK, String number, String extension, int typeId, boolean primary) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -53,9 +51,7 @@ public class PhoneService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addPhone(String className, long classPK, String number,
-		String extension, int typeId, boolean primary, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addPhone(String className, long classPK, String number, String extension, int typeId, boolean primary, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -112,8 +108,7 @@ public class PhoneService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getPhones(String className, long classPK)
-		throws Exception {
+	public JSONArray getPhones(String className, long classPK) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -131,9 +126,7 @@ public class PhoneService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject updatePhone(long phoneId, String number,
-		String extension, int typeId, boolean primary)
-		throws Exception {
+	public JSONObject updatePhone(long phoneId, String number, String extension, int typeId, boolean primary) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -153,4 +146,5 @@ public class PhoneService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

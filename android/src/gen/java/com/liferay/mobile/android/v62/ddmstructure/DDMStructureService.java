@@ -29,10 +29,7 @@ public class DDMStructureService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addStructure(long groupId, long parentStructureId,
-		long classNameId, String structureKey, JSONObject nameMap,
-		JSONObject descriptionMap, String xsd, String storageType, int type,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addStructure(long groupId, long parentStructureId, long classNameId, String structureKey, JSONObject nameMap, JSONObject descriptionMap, String xsd, String storageType, int type, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -58,11 +55,7 @@ public class DDMStructureService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addStructure(long userId, long groupId,
-		String parentStructureKey, long classNameId, String structureKey,
-		JSONObject nameMap, JSONObject descriptionMap, String xsd,
-		String storageType, int type, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addStructure(long userId, long groupId, String parentStructureKey, long classNameId, String structureKey, JSONObject nameMap, JSONObject descriptionMap, String xsd, String storageType, int type, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -89,9 +82,7 @@ public class DDMStructureService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addStructure(long userId, long groupId, long classNameId,
-		JSONObject nameMap, JSONObject descriptionMap, String xsd,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addStructure(long userId, long groupId, long classNameId, JSONObject nameMap, JSONObject descriptionMap, String xsd, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -114,8 +105,7 @@ public class DDMStructureService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject copyStructure(long structureId, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject copyStructure(long structureId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -133,9 +123,7 @@ public class DDMStructureService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject copyStructure(long structureId, JSONObject nameMap,
-		JSONObject descriptionMap, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject copyStructure(long structureId, JSONObject nameMap, JSONObject descriptionMap, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -172,8 +160,7 @@ public class DDMStructureService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject fetchStructure(long groupId, long classNameId,
-		String structureKey) throws Exception {
+	public JSONObject fetchStructure(long groupId, long classNameId, String structureKey) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -209,8 +196,7 @@ public class DDMStructureService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getStructure(long groupId, long classNameId,
-		String structureKey) throws Exception {
+	public JSONObject getStructure(long groupId, long classNameId, String structureKey) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -229,9 +215,7 @@ public class DDMStructureService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getStructure(long groupId, long classNameId,
-		String structureKey, boolean includeGlobalStructures)
-		throws Exception {
+	public JSONObject getStructure(long groupId, long classNameId, String structureKey, boolean includeGlobalStructures) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -268,8 +252,7 @@ public class DDMStructureService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getStructures(JSONArray groupIds)
-		throws Exception {
+	public JSONArray getStructures(JSONArray groupIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -286,10 +269,7 @@ public class DDMStructureService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, JSONArray groupIds,
-		JSONArray classNameIds, String name, String description,
-		String storageType, int type, boolean andOperator, int start, int end,
-		JSONObject orderByComparator) throws Exception {
+	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, String name, String description, String storageType, int type, boolean andOperator, int start, int end, JSONObject orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -316,9 +296,7 @@ public class DDMStructureService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, JSONArray groupIds,
-		JSONArray classNameIds, String keywords, int start, int end,
-		JSONObject orderByComparator) throws Exception {
+	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, String keywords, int start, int end, JSONObject orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -341,8 +319,7 @@ public class DDMStructureService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer searchCount(long companyId, JSONArray groupIds,
-		JSONArray classNameIds, String keywords) throws Exception {
+	public Integer searchCount(long companyId, JSONArray groupIds, JSONArray classNameIds, String keywords) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -362,10 +339,7 @@ public class DDMStructureService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer searchCount(long companyId, JSONArray groupIds,
-		JSONArray classNameIds, String name, String description,
-		String storageType, int type, boolean andOperator)
-		throws Exception {
+	public Integer searchCount(long companyId, JSONArray groupIds, JSONArray classNameIds, String name, String description, String storageType, int type, boolean andOperator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -389,9 +363,7 @@ public class DDMStructureService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONObject updateStructure(long structureId, long parentStructureId,
-		JSONObject nameMap, JSONObject descriptionMap, String xsd,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject updateStructure(long structureId, long parentStructureId, JSONObject nameMap, JSONObject descriptionMap, String xsd, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -413,10 +385,7 @@ public class DDMStructureService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateStructure(long groupId, long parentStructureId,
-		long classNameId, String structureKey, JSONObject nameMap,
-		JSONObject descriptionMap, String xsd, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateStructure(long groupId, long parentStructureId, long classNameId, String structureKey, JSONObject nameMap, JSONObject descriptionMap, String xsd, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -439,4 +408,5 @@ public class DDMStructureService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

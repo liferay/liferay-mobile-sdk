@@ -29,9 +29,7 @@ public class MDRRuleGroupService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addRuleGroup(long groupId, JSONObject nameMap,
-		JSONObject descriptionMap, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addRuleGroup(long groupId, JSONObject nameMap, JSONObject descriptionMap, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -51,8 +49,7 @@ public class MDRRuleGroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject copyRuleGroup(long ruleGroupId, long groupId,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject copyRuleGroup(long ruleGroupId, long groupId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -88,8 +85,7 @@ public class MDRRuleGroupService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject fetchRuleGroup(long ruleGroupId)
-		throws Exception {
+	public JSONObject fetchRuleGroup(long ruleGroupId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -123,9 +119,7 @@ public class MDRRuleGroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateRuleGroup(long ruleGroupId, JSONObject nameMap,
-		JSONObject descriptionMap, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateRuleGroup(long ruleGroupId, JSONObject nameMap, JSONObject descriptionMap, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -144,4 +138,5 @@ public class MDRRuleGroupService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

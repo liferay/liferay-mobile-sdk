@@ -29,15 +29,7 @@ public class MBCategoryService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addCategory(long parentCategoryId, String name,
-		String description, String displayStyle, String emailAddress,
-		String inProtocol, String inServerName, int inServerPort,
-		boolean inUseSSL, String inUserName, String inPassword,
-		int inReadInterval, String outEmailAddress, boolean outCustom,
-		String outServerName, int outServerPort, boolean outUseSSL,
-		String outUserName, String outPassword, boolean mailingListActive,
-		boolean allowAnonymousEmail, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addCategory(long parentCategoryId, String name, String description, String displayStyle, String emailAddress, String inProtocol, String inServerName, int inServerPort, boolean inUseSSL, String inUserName, String inPassword, int inReadInterval, String outEmailAddress, boolean outCustom, String outServerName, int outServerPort, boolean outUseSSL, String outUserName, String outPassword, boolean mailingListActive, boolean allowAnonymousEmail, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -75,9 +67,7 @@ public class MBCategoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addCategory(long userId, long parentCategoryId,
-		String name, String description, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addCategory(long userId, long parentCategoryId, String name, String description, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -98,8 +88,7 @@ public class MBCategoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteCategory(long categoryId, boolean includeTrashedEntries)
-		throws Exception {
+	public void deleteCategory(long categoryId, boolean includeTrashedEntries) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -117,8 +106,7 @@ public class MBCategoryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteCategory(long groupId, long categoryId)
-		throws Exception {
+	public void deleteCategory(long groupId, long categoryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -153,8 +141,7 @@ public class MBCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getCategories(long groupId, int status)
-		throws Exception {
+	public JSONArray getCategories(long groupId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -172,8 +159,7 @@ public class MBCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getCategories(long groupId, long parentCategoryId,
-		int start, int end) throws Exception {
+	public JSONArray getCategories(long groupId, long parentCategoryId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -193,8 +179,7 @@ public class MBCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getCategories(long groupId, JSONArray parentCategoryIds,
-		int start, int end) throws Exception {
+	public JSONArray getCategories(long groupId, JSONArray parentCategoryIds, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -214,8 +199,7 @@ public class MBCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getCategories(long groupId, long parentCategoryId,
-		int status, int start, int end) throws Exception {
+	public JSONArray getCategories(long groupId, long parentCategoryId, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -236,8 +220,7 @@ public class MBCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getCategories(long groupId, JSONArray parentCategoryIds,
-		int status, int start, int end) throws Exception {
+	public JSONArray getCategories(long groupId, JSONArray parentCategoryIds, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -258,8 +241,7 @@ public class MBCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getCategoriesCount(long groupId, long parentCategoryId)
-		throws Exception {
+	public Integer getCategoriesCount(long groupId, long parentCategoryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -277,8 +259,7 @@ public class MBCategoryService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getCategoriesCount(long groupId, JSONArray parentCategoryIds)
-		throws Exception {
+	public Integer getCategoriesCount(long groupId, JSONArray parentCategoryIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -296,8 +277,7 @@ public class MBCategoryService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getCategoriesCount(long groupId, long parentCategoryId,
-		int status) throws Exception {
+	public Integer getCategoriesCount(long groupId, long parentCategoryId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -316,8 +296,7 @@ public class MBCategoryService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getCategoriesCount(long groupId,
-		JSONArray parentCategoryIds, int status) throws Exception {
+	public Integer getCategoriesCount(long groupId, JSONArray parentCategoryIds, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -353,8 +332,7 @@ public class MBCategoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getCategoryIds(long groupId, long categoryId)
-		throws Exception {
+	public JSONArray getCategoryIds(long groupId, long categoryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -372,8 +350,7 @@ public class MBCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getSubcategoryIds(JSONArray categoryIds, long groupId,
-		long categoryId) throws Exception {
+	public JSONArray getSubcategoryIds(JSONArray categoryIds, long groupId, long categoryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -392,8 +369,7 @@ public class MBCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getSubscribedCategories(long groupId, long userId,
-		int start, int end) throws Exception {
+	public JSONArray getSubscribedCategories(long groupId, long userId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -413,8 +389,7 @@ public class MBCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getSubscribedCategoriesCount(long groupId, long userId)
-		throws Exception {
+	public Integer getSubscribedCategoriesCount(long groupId, long userId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -432,8 +407,7 @@ public class MBCategoryService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONObject moveCategory(long categoryId, long parentCategoryId,
-		boolean mergeWithParentCategory) throws Exception {
+	public JSONObject moveCategory(long categoryId, long parentCategoryId, boolean mergeWithParentCategory) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -452,8 +426,7 @@ public class MBCategoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject moveCategoryFromTrash(long categoryId, long newCategoryId)
-		throws Exception {
+	public JSONObject moveCategoryFromTrash(long categoryId, long newCategoryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -471,8 +444,7 @@ public class MBCategoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject moveCategoryToTrash(long categoryId)
-		throws Exception {
+	public JSONObject moveCategoryToTrash(long categoryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -489,8 +461,7 @@ public class MBCategoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void restoreCategoryFromTrash(long categoryId)
-		throws Exception {
+	public void restoreCategoryFromTrash(long categoryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -507,8 +478,7 @@ public class MBCategoryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void subscribeCategory(long groupId, long categoryId)
-		throws Exception {
+	public void subscribeCategory(long groupId, long categoryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -526,8 +496,7 @@ public class MBCategoryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void unsubscribeCategory(long groupId, long categoryId)
-		throws Exception {
+	public void unsubscribeCategory(long groupId, long categoryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -545,16 +514,7 @@ public class MBCategoryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateCategory(long categoryId, long parentCategoryId,
-		String name, String description, String displayStyle,
-		String emailAddress, String inProtocol, String inServerName,
-		int inServerPort, boolean inUseSSL, String inUserName,
-		String inPassword, int inReadInterval, String outEmailAddress,
-		boolean outCustom, String outServerName, int outServerPort,
-		boolean outUseSSL, String outUserName, String outPassword,
-		boolean mailingListActive, boolean allowAnonymousEmail,
-		boolean mergeWithParentCategory, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateCategory(long categoryId, long parentCategoryId, String name, String description, String displayStyle, String emailAddress, String inProtocol, String inServerName, int inServerPort, boolean inUseSSL, String inUserName, String inPassword, int inReadInterval, String outEmailAddress, boolean outCustom, String outServerName, int outServerPort, boolean outUseSSL, String outUserName, String outPassword, boolean mailingListActive, boolean allowAnonymousEmail, boolean mergeWithParentCategory, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -593,4 +553,5 @@ public class MBCategoryService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

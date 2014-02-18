@@ -29,14 +29,7 @@ public class ShoppingCouponService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addCoupon(String code, boolean autoCode, String name,
-		String description, int startDateMonth, int startDateDay,
-		int startDateYear, int startDateHour, int startDateMinute,
-		int endDateMonth, int endDateDay, int endDateYear, int endDateHour,
-		int endDateMinute, boolean neverExpire, boolean active,
-		String limitCategories, String limitSkus, double minOrder,
-		double discount, String discountType, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addCoupon(String code, boolean autoCode, String name, String description, int startDateMonth, int startDateDay, int startDateYear, int startDateHour, int startDateMinute, int endDateMonth, int endDateDay, int endDateYear, int endDateHour, int endDateMinute, boolean neverExpire, boolean active, String limitCategories, String limitSkus, double minOrder, double discount, String discountType, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -74,8 +67,7 @@ public class ShoppingCouponService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteCoupon(long groupId, long couponId)
-		throws Exception {
+	public void deleteCoupon(long groupId, long couponId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -93,8 +85,7 @@ public class ShoppingCouponService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject getCoupon(long groupId, long couponId)
-		throws Exception {
+	public JSONObject getCoupon(long groupId, long couponId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -112,9 +103,7 @@ public class ShoppingCouponService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray search(long groupId, long companyId, String code,
-		boolean active, String discountType, boolean andOperator, int start,
-		int end) throws Exception {
+	public JSONArray search(long groupId, long companyId, String code, boolean active, String discountType, boolean andOperator, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -138,14 +127,7 @@ public class ShoppingCouponService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject updateCoupon(long couponId, String name,
-		String description, int startDateMonth, int startDateDay,
-		int startDateYear, int startDateHour, int startDateMinute,
-		int endDateMonth, int endDateDay, int endDateYear, int endDateHour,
-		int endDateMinute, boolean neverExpire, boolean active,
-		String limitCategories, String limitSkus, double minOrder,
-		double discount, String discountType, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateCoupon(long couponId, String name, String description, int startDateMonth, int startDateDay, int startDateYear, int startDateHour, int startDateMinute, int endDateMonth, int endDateDay, int endDateYear, int endDateHour, int endDateMinute, boolean neverExpire, boolean active, String limitCategories, String limitSkus, double minOrder, double discount, String discountType, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -181,4 +163,5 @@ public class ShoppingCouponService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

@@ -59,8 +59,7 @@ public class PortalService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public void testAddClassNameAndTestTransactionPortletBar_PortalRollback(
-		String transactionPortletBarText) throws Exception {
+	public void testAddClassNameAndTestTransactionPortletBar_PortalRollback(String transactionPortletBarText) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -68,8 +67,7 @@ public class PortalService extends BaseService {
 
 			_params.put("transactionPortletBarText", transactionPortletBarText);
 
-			_command.put("/portal/test-add-class-name-and-test-transaction-portlet-bar_-portal-rollback",
-				_params);
+			_command.put("/portal/test-add-class-name-and-test-transaction-portlet-bar_-portal-rollback", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -78,8 +76,7 @@ public class PortalService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void testAddClassNameAndTestTransactionPortletBar_PortletRollback(
-		String transactionPortletBarText) throws Exception {
+	public void testAddClassNameAndTestTransactionPortletBar_PortletRollback(String transactionPortletBarText) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -87,8 +84,7 @@ public class PortalService extends BaseService {
 
 			_params.put("transactionPortletBarText", transactionPortletBarText);
 
-			_command.put("/portal/test-add-class-name-and-test-transaction-portlet-bar_-portlet-rollback",
-				_params);
+			_command.put("/portal/test-add-class-name-and-test-transaction-portlet-bar_-portlet-rollback", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -97,8 +93,7 @@ public class PortalService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void testAddClassNameAndTestTransactionPortletBar_Success(
-		String transactionPortletBarText) throws Exception {
+	public void testAddClassNameAndTestTransactionPortletBar_Success(String transactionPortletBarText) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -106,8 +101,7 @@ public class PortalService extends BaseService {
 
 			_params.put("transactionPortletBarText", transactionPortletBarText);
 
-			_command.put("/portal/test-add-class-name-and-test-transaction-portlet-bar_-success",
-				_params);
+			_command.put("/portal/test-add-class-name-and-test-transaction-portlet-bar_-success", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -116,8 +110,7 @@ public class PortalService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void testAddClassName_Rollback(String classNameValue)
-		throws Exception {
+	public void testAddClassName_Rollback(String classNameValue) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -134,8 +127,7 @@ public class PortalService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void testAddClassName_Success(String classNameValue)
-		throws Exception {
+	public void testAddClassName_Success(String classNameValue) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -152,15 +144,13 @@ public class PortalService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void testAutoSyncHibernateSessionStateOnTxCreation()
-		throws Exception {
+	public void testAutoSyncHibernateSessionStateOnTxCreation() throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_command.put("/portal/test-auto-sync-hibernate-session-state-on-tx-creation",
-				_params);
+			_command.put("/portal/test-auto-sync-hibernate-session-state-on-tx-creation", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -228,4 +218,5 @@ public class PortalService extends BaseService {
 
 		return (Boolean)session.invoke(_command);
 	}
+
 }

@@ -29,9 +29,7 @@ public class LayoutBranchService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addLayoutBranch(long layoutRevisionId, String name,
-		String description, boolean master, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addLayoutBranch(long layoutRevisionId, String name, String description, boolean master, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -52,8 +50,7 @@ public class LayoutBranchService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteLayoutBranch(long layoutBranchId)
-		throws Exception {
+	public void deleteLayoutBranch(long layoutBranchId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -70,9 +67,7 @@ public class LayoutBranchService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateLayoutBranch(long layoutBranchId, String name,
-		String description, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateLayoutBranch(long layoutBranchId, String name, String description, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -91,4 +86,5 @@ public class LayoutBranchService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

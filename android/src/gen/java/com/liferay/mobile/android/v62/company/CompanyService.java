@@ -97,8 +97,7 @@ public class CompanyService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getCompanyByVirtualHost(String virtualHost)
-		throws Exception {
+	public JSONObject getCompanyByVirtualHost(String virtualHost) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -132,10 +131,7 @@ public class CompanyService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateCompany(long companyId, String virtualHost,
-		String mx, String homeURL, String name, String legalName,
-		String legalId, String legalType, String sicCode, String tickerSymbol,
-		String industry, String type, String size) throws Exception {
+	public JSONObject updateCompany(long companyId, String virtualHost, String mx, String homeURL, String name, String legalName, String legalId, String legalType, String sicCode, String tickerSymbol, String industry, String type, String size) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -164,8 +160,7 @@ public class CompanyService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateCompany(long companyId, String virtualHost,
-		String mx, int maxUsers, boolean active) throws Exception {
+	public JSONObject updateCompany(long companyId, String virtualHost, String mx, int maxUsers, boolean active) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -186,8 +181,7 @@ public class CompanyService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void updateDisplay(long companyId, String languageId,
-		String timeZoneId) throws Exception {
+	public void updateDisplay(long companyId, String languageId, String timeZoneId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -206,8 +200,7 @@ public class CompanyService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateLogo(long companyId, JSONArray bytes)
-		throws Exception {
+	public JSONObject updateLogo(long companyId, JSONArray bytes) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -224,4 +217,5 @@ public class CompanyService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

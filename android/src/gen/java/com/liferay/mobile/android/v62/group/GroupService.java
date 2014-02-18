@@ -29,10 +29,7 @@ public class GroupService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addGroup(long parentGroupId, long liveGroupId,
-		String name, String description, int type, boolean manualMembership,
-		int membershipRestriction, String friendlyURL, boolean site,
-		boolean active, JSONObject serviceContext) throws Exception {
+	public JSONObject addGroup(long parentGroupId, long liveGroupId, String name, String description, int type, boolean manualMembership, int membershipRestriction, String friendlyURL, boolean site, boolean active, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -59,9 +56,7 @@ public class GroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addGroup(String name, String description, int type,
-		String friendlyURL, boolean site, boolean active,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addGroup(String name, String description, int type, String friendlyURL, boolean site, boolean active, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -84,9 +79,7 @@ public class GroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addGroup(long parentGroupId, String name,
-		String description, int type, String friendlyURL, boolean site,
-		boolean active, JSONObject serviceContext) throws Exception {
+	public JSONObject addGroup(long parentGroupId, String name, String description, int type, String friendlyURL, boolean site, boolean active, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -110,8 +103,7 @@ public class GroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void addRoleGroups(long roleId, JSONArray groupIds)
-		throws Exception {
+	public void addRoleGroups(long roleId, JSONArray groupIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -231,8 +223,7 @@ public class GroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getGroup(long companyId, String name)
-		throws Exception {
+	public JSONObject getGroup(long companyId, String name) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -250,8 +241,7 @@ public class GroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getGroups(long companyId, long parentGroupId, boolean site)
-		throws Exception {
+	public JSONArray getGroups(long companyId, long parentGroupId, boolean site) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -270,8 +260,7 @@ public class GroupService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getManageableSiteGroups(JSONObject portlets, int max)
-		throws Exception {
+	public JSONArray getManageableSiteGroups(JSONObject portlets, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -289,8 +278,7 @@ public class GroupService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getManageableSites(JSONObject portlets, int max)
-		throws Exception {
+	public JSONArray getManageableSites(JSONObject portlets, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -308,8 +296,7 @@ public class GroupService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getOrganizationsGroups(JSONArray organizations)
-		throws Exception {
+	public JSONArray getOrganizationsGroups(JSONArray organizations) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -326,8 +313,7 @@ public class GroupService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject getUserGroup(long companyId, long userId)
-		throws Exception {
+	public JSONObject getUserGroup(long companyId, long userId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -345,8 +331,7 @@ public class GroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getUserGroupsGroups(JSONArray userGroups)
-		throws Exception {
+	public JSONArray getUserGroupsGroups(JSONArray userGroups) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -363,8 +348,7 @@ public class GroupService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getUserOrganizationsGroups(long userId, int start, int end)
-		throws Exception {
+	public JSONArray getUserOrganizationsGroups(long userId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -383,8 +367,7 @@ public class GroupService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getUserPlaces(JSONArray classNames, int max)
-		throws Exception {
+	public JSONArray getUserPlaces(JSONArray classNames, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -402,8 +385,7 @@ public class GroupService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getUserPlaces(long userId, JSONArray classNames, int max)
-		throws Exception {
+	public JSONArray getUserPlaces(long userId, JSONArray classNames, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -422,8 +404,7 @@ public class GroupService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getUserPlaces(long userId, JSONArray classNames,
-		boolean includeControlPanel, int max) throws Exception {
+	public JSONArray getUserPlaces(long userId, JSONArray classNames, boolean includeControlPanel, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -488,8 +469,7 @@ public class GroupService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getUserSitesGroups(JSONArray classNames, int max)
-		throws Exception {
+	public JSONArray getUserSitesGroups(JSONArray classNames, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -507,8 +487,7 @@ public class GroupService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getUserSitesGroups(long userId, JSONArray classNames,
-		int max) throws Exception {
+	public JSONArray getUserSitesGroups(long userId, JSONArray classNames, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -527,8 +506,7 @@ public class GroupService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getUserSitesGroups(long userId, JSONArray classNames,
-		boolean includeControlPanel, int max) throws Exception {
+	public JSONArray getUserSitesGroups(long userId, JSONArray classNames, boolean includeControlPanel, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -563,8 +541,7 @@ public class GroupService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Boolean hasUserGroup(long userId, long groupId)
-		throws Exception {
+	public Boolean hasUserGroup(long userId, long groupId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -582,8 +559,7 @@ public class GroupService extends BaseService {
 		return (Boolean)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, String name, String description,
-		JSONArray params, int start, int end) throws Exception {
+	public JSONArray search(long companyId, String name, String description, JSONArray params, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -605,8 +581,7 @@ public class GroupService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer searchCount(long companyId, String name, String description,
-		JSONArray params) throws Exception {
+	public Integer searchCount(long companyId, String name, String description, JSONArray params) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -626,8 +601,7 @@ public class GroupService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public void setRoleGroups(long roleId, JSONArray groupIds)
-		throws Exception {
+	public void setRoleGroups(long roleId, JSONArray groupIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -645,8 +619,7 @@ public class GroupService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void unsetRoleGroups(long roleId, JSONArray groupIds)
-		throws Exception {
+	public void unsetRoleGroups(long roleId, JSONArray groupIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -664,8 +637,7 @@ public class GroupService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateFriendlyUrl(long groupId, String friendlyURL)
-		throws Exception {
+	public JSONObject updateFriendlyUrl(long groupId, String friendlyURL) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -683,10 +655,7 @@ public class GroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateGroup(long groupId, long parentGroupId,
-		String name, String description, int type, boolean manualMembership,
-		int membershipRestriction, String friendlyURL, boolean active,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject updateGroup(long groupId, long parentGroupId, String name, String description, int type, boolean manualMembership, int membershipRestriction, String friendlyURL, boolean active, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -712,8 +681,7 @@ public class GroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateGroup(long groupId, String typeSettings)
-		throws Exception {
+	public JSONObject updateGroup(long groupId, String typeSettings) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -731,8 +699,7 @@ public class GroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void updateStagedPortlets(long groupId, JSONObject stagedPortletIds)
-		throws Exception {
+	public void updateStagedPortlets(long groupId, JSONObject stagedPortletIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -749,4 +716,5 @@ public class GroupService extends BaseService {
 
 		session.invoke(_command);
 	}
+
 }

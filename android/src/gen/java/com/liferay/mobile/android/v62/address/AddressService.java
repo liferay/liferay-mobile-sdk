@@ -29,10 +29,7 @@ public class AddressService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addAddress(String className, long classPK,
-		String street1, String street2, String street3, String city,
-		String zip, long regionId, long countryId, int typeId, boolean mailing,
-		boolean primary) throws Exception {
+	public JSONObject addAddress(String className, long classPK, String street1, String street2, String street3, String city, String zip, long regionId, long countryId, int typeId, boolean mailing, boolean primary) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -60,10 +57,7 @@ public class AddressService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addAddress(String className, long classPK,
-		String street1, String street2, String street3, String city,
-		String zip, long regionId, long countryId, int typeId, boolean mailing,
-		boolean primary, JSONObject serviceContext) throws Exception {
+	public JSONObject addAddress(String className, long classPK, String street1, String street2, String street3, String city, String zip, long regionId, long countryId, int typeId, boolean mailing, boolean primary, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -126,8 +120,7 @@ public class AddressService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getAddresses(String className, long classPK)
-		throws Exception {
+	public JSONArray getAddresses(String className, long classPK) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -145,10 +138,7 @@ public class AddressService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject updateAddress(long addressId, String street1,
-		String street2, String street3, String city, String zip, long regionId,
-		long countryId, int typeId, boolean mailing, boolean primary)
-		throws Exception {
+	public JSONObject updateAddress(long addressId, String street1, String street2, String street3, String city, String zip, long regionId, long countryId, int typeId, boolean mailing, boolean primary) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -174,4 +164,5 @@ public class AddressService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

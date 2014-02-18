@@ -46,8 +46,7 @@ public class ContactService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getContacts(long classNameId, long classPK, int start,
-		int end, JSONObject orderByComparator) throws Exception {
+	public JSONArray getContacts(long classNameId, long classPK, int start, int end, JSONObject orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -68,8 +67,7 @@ public class ContactService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getContactsCount(long classNameId, long classPK)
-		throws Exception {
+	public Integer getContactsCount(long classNameId, long classPK) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -86,4 +84,5 @@ public class ContactService extends BaseService {
 
 		return (Integer)session.invoke(_command);
 	}
+
 }

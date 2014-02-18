@@ -29,8 +29,7 @@ public class AssetCategoryPropertyService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addCategoryProperty(long entryId, String key, String value)
-		throws Exception {
+	public JSONObject addCategoryProperty(long entryId, String key, String value) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -49,8 +48,7 @@ public class AssetCategoryPropertyService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteCategoryProperty(long categoryPropertyId)
-		throws Exception {
+	public void deleteCategoryProperty(long categoryPropertyId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -58,8 +56,7 @@ public class AssetCategoryPropertyService extends BaseService {
 
 			_params.put("categoryPropertyId", categoryPropertyId);
 
-			_command.put("/assetcategoryproperty/delete-category-property",
-				_params);
+			_command.put("/assetcategoryproperty/delete-category-property", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -68,8 +65,7 @@ public class AssetCategoryPropertyService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONArray getCategoryProperties(long entryId)
-		throws Exception {
+	public JSONArray getCategoryProperties(long entryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -77,8 +73,7 @@ public class AssetCategoryPropertyService extends BaseService {
 
 			_params.put("entryId", entryId);
 
-			_command.put("/assetcategoryproperty/get-category-properties",
-				_params);
+			_command.put("/assetcategoryproperty/get-category-properties", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -87,8 +82,7 @@ public class AssetCategoryPropertyService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getCategoryPropertyValues(long companyId, String key)
-		throws Exception {
+	public JSONArray getCategoryPropertyValues(long companyId, String key) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -97,8 +91,7 @@ public class AssetCategoryPropertyService extends BaseService {
 			_params.put("companyId", companyId);
 			_params.put("key", key);
 
-			_command.put("/assetcategoryproperty/get-category-property-values",
-				_params);
+			_command.put("/assetcategoryproperty/get-category-property-values", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -107,8 +100,7 @@ public class AssetCategoryPropertyService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject updateCategoryProperty(long categoryPropertyId,
-		String key, String value) throws Exception {
+	public JSONObject updateCategoryProperty(long categoryPropertyId, String key, String value) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -118,8 +110,7 @@ public class AssetCategoryPropertyService extends BaseService {
 			_params.put("key", key);
 			_params.put("value", value);
 
-			_command.put("/assetcategoryproperty/update-category-property",
-				_params);
+			_command.put("/assetcategoryproperty/update-category-property", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -127,4 +118,5 @@ public class AssetCategoryPropertyService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

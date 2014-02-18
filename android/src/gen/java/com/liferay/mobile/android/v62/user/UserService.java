@@ -29,8 +29,7 @@ public class UserService extends BaseService {
 		super(session);
 	}
 
-	public void addGroupUsers(long groupId, JSONArray userIds,
-		JSONObject serviceContext) throws Exception {
+	public void addGroupUsers(long groupId, JSONArray userIds, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -49,8 +48,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void addOrganizationUsers(long organizationId, JSONArray userIds)
-		throws Exception {
+	public void addOrganizationUsers(long organizationId, JSONArray userIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -68,8 +66,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void addPasswordPolicyUsers(long passwordPolicyId, JSONArray userIds)
-		throws Exception {
+	public void addPasswordPolicyUsers(long passwordPolicyId, JSONArray userIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -87,8 +84,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void addRoleUsers(long roleId, JSONArray userIds)
-		throws Exception {
+	public void addRoleUsers(long roleId, JSONArray userIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -106,8 +102,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void addTeamUsers(long teamId, JSONArray userIds)
-		throws Exception {
+	public void addTeamUsers(long teamId, JSONArray userIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -125,14 +120,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject addUser(long companyId, boolean autoPassword,
-		String password1, String password2, boolean autoScreenName,
-		String screenName, String emailAddress, long facebookId, String openId,
-		String locale, String firstName, String middleName, String lastName,
-		int prefixId, int suffixId, boolean male, int birthdayMonth,
-		int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds,
-		JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds,
-		boolean sendEmail, JSONObject serviceContext) throws Exception {
+	public JSONObject addUser(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds, boolean sendEmail, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -174,16 +162,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addUser(long companyId, boolean autoPassword,
-		String password1, String password2, boolean autoScreenName,
-		String screenName, String emailAddress, long facebookId, String openId,
-		String locale, String firstName, String middleName, String lastName,
-		int prefixId, int suffixId, boolean male, int birthdayMonth,
-		int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds,
-		JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds,
-		JSONArray addresses, JSONArray emailAddresses, JSONArray phones,
-		JSONArray websites, JSONArray announcementsDelivers, boolean sendEmail,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addUser(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds, JSONArray addresses, JSONArray emailAddresses, JSONArray phones, JSONArray websites, JSONArray announcementsDelivers, boolean sendEmail, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -230,8 +209,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void addUserGroupUsers(long userGroupId, JSONArray userIds)
-		throws Exception {
+	public void addUserGroupUsers(long userGroupId, JSONArray userIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -249,14 +227,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject addUserWithWorkflow(long companyId, boolean autoPassword,
-		String password1, String password2, boolean autoScreenName,
-		String screenName, String emailAddress, long facebookId, String openId,
-		String locale, String firstName, String middleName, String lastName,
-		int prefixId, int suffixId, boolean male, int birthdayMonth,
-		int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds,
-		JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds,
-		boolean sendEmail, JSONObject serviceContext) throws Exception {
+	public JSONObject addUserWithWorkflow(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds, boolean sendEmail, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -298,16 +269,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addUserWithWorkflow(long companyId, boolean autoPassword,
-		String password1, String password2, boolean autoScreenName,
-		String screenName, String emailAddress, long facebookId, String openId,
-		String locale, String firstName, String middleName, String lastName,
-		int prefixId, int suffixId, boolean male, int birthdayMonth,
-		int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds,
-		JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds,
-		JSONArray addresses, JSONArray emailAddresses, JSONArray phones,
-		JSONArray websites, JSONArray announcementsDelivers, boolean sendEmail,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addUserWithWorkflow(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds, JSONArray addresses, JSONArray emailAddresses, JSONArray phones, JSONArray websites, JSONArray announcementsDelivers, boolean sendEmail, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -371,8 +333,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteRoleUser(long roleId, long userId)
-		throws Exception {
+	public void deleteRoleUser(long roleId, long userId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -407,8 +368,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONArray getCompanyUsers(long companyId, int start, int end)
-		throws Exception {
+	public JSONArray getCompanyUsers(long companyId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -427,8 +387,7 @@ public class UserService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getCompanyUsersCount(long companyId)
-		throws Exception {
+	public Integer getCompanyUsersCount(long companyId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -479,8 +438,7 @@ public class UserService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getOrganizationUserIds(long organizationId)
-		throws Exception {
+	public JSONArray getOrganizationUserIds(long organizationId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -497,8 +455,7 @@ public class UserService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getOrganizationUsers(long organizationId)
-		throws Exception {
+	public JSONArray getOrganizationUsers(long organizationId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -532,8 +489,7 @@ public class UserService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject getUserByEmailAddress(long companyId, String emailAddress)
-		throws Exception {
+	public JSONObject getUserByEmailAddress(long companyId, String emailAddress) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -568,8 +524,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getUserByScreenName(long companyId, String screenName)
-		throws Exception {
+	public JSONObject getUserByScreenName(long companyId, String screenName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -587,8 +542,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getUserGroupUsers(long userGroupId)
-		throws Exception {
+	public JSONArray getUserGroupUsers(long userGroupId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -605,8 +559,7 @@ public class UserService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Long getUserIdByEmailAddress(long companyId, String emailAddress)
-		throws Exception {
+	public Long getUserIdByEmailAddress(long companyId, String emailAddress) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -624,8 +577,7 @@ public class UserService extends BaseService {
 		return (Long)session.invoke(_command);
 	}
 
-	public Long getUserIdByScreenName(long companyId, String screenName)
-		throws Exception {
+	public Long getUserIdByScreenName(long companyId, String screenName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -643,8 +595,7 @@ public class UserService extends BaseService {
 		return (Long)session.invoke(_command);
 	}
 
-	public Boolean hasGroupUser(long groupId, long userId)
-		throws Exception {
+	public Boolean hasGroupUser(long groupId, long userId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -662,8 +613,7 @@ public class UserService extends BaseService {
 		return (Boolean)session.invoke(_command);
 	}
 
-	public Boolean hasRoleUser(long roleId, long userId)
-		throws Exception {
+	public Boolean hasRoleUser(long roleId, long userId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -681,8 +631,7 @@ public class UserService extends BaseService {
 		return (Boolean)session.invoke(_command);
 	}
 
-	public Boolean hasRoleUser(long companyId, String name, long userId,
-		boolean inherited) throws Exception {
+	public Boolean hasRoleUser(long companyId, String name, long userId, boolean inherited) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -702,8 +651,7 @@ public class UserService extends BaseService {
 		return (Boolean)session.invoke(_command);
 	}
 
-	public void setRoleUsers(long roleId, JSONArray userIds)
-		throws Exception {
+	public void setRoleUsers(long roleId, JSONArray userIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -721,8 +669,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void setUserGroupUsers(long userGroupId, JSONArray userIds)
-		throws Exception {
+	public void setUserGroupUsers(long userGroupId, JSONArray userIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -740,8 +687,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void unsetGroupTeamsUsers(long groupId, JSONArray userIds)
-		throws Exception {
+	public void unsetGroupTeamsUsers(long groupId, JSONArray userIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -759,8 +705,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void unsetGroupUsers(long groupId, JSONArray userIds,
-		JSONObject serviceContext) throws Exception {
+	public void unsetGroupUsers(long groupId, JSONArray userIds, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -779,8 +724,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void unsetOrganizationUsers(long organizationId, JSONArray userIds)
-		throws Exception {
+	public void unsetOrganizationUsers(long organizationId, JSONArray userIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -798,8 +742,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void unsetPasswordPolicyUsers(long passwordPolicyId,
-		JSONArray userIds) throws Exception {
+	public void unsetPasswordPolicyUsers(long passwordPolicyId, JSONArray userIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -817,8 +760,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void unsetRoleUsers(long roleId, JSONArray userIds)
-		throws Exception {
+	public void unsetRoleUsers(long roleId, JSONArray userIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -836,8 +778,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void unsetTeamUsers(long teamId, JSONArray userIds)
-		throws Exception {
+	public void unsetTeamUsers(long teamId, JSONArray userIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -855,8 +796,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void unsetUserGroupUsers(long userGroupId, JSONArray userIds)
-		throws Exception {
+	public void unsetUserGroupUsers(long userGroupId, JSONArray userIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -874,8 +814,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateAgreedToTermsOfUse(long userId,
-		boolean agreedToTermsOfUse) throws Exception {
+	public JSONObject updateAgreedToTermsOfUse(long userId, boolean agreedToTermsOfUse) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -893,9 +832,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateEmailAddress(long userId, String password,
-		String emailAddress1, String emailAddress2, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateEmailAddress(long userId, String password, String emailAddress1, String emailAddress2, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -916,14 +853,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateIncompleteUser(long companyId,
-		boolean autoPassword, String password1, String password2,
-		boolean autoScreenName, String screenName, String emailAddress,
-		long facebookId, String openId, String locale, String firstName,
-		String middleName, String lastName, int prefixId, int suffixId,
-		boolean male, int birthdayMonth, int birthdayDay, int birthdayYear,
-		String jobTitle, boolean updateUserInformation, boolean sendEmail,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject updateIncompleteUser(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, boolean updateUserInformation, boolean sendEmail, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -962,8 +892,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateLockoutById(long userId, boolean lockout)
-		throws Exception {
+	public JSONObject updateLockoutById(long userId, boolean lockout) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -981,8 +910,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateOpenId(long userId, String openId)
-		throws Exception {
+	public JSONObject updateOpenId(long userId, String openId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1000,8 +928,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void updateOrganizations(long userId, JSONArray organizationIds,
-		JSONObject serviceContext) throws Exception {
+	public void updateOrganizations(long userId, JSONArray organizationIds, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1020,8 +947,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updatePassword(long userId, String password1,
-		String password2, boolean passwordReset) throws Exception {
+	public JSONObject updatePassword(long userId, String password1, String password2, boolean passwordReset) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1041,8 +967,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updatePortrait(long userId, JSONArray bytes)
-		throws Exception {
+	public JSONObject updatePortrait(long userId, JSONArray bytes) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1060,8 +985,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateReminderQuery(long userId, String question,
-		String answer) throws Exception {
+	public JSONObject updateReminderQuery(long userId, String question, String answer) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1080,8 +1004,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateScreenName(long userId, String screenName)
-		throws Exception {
+	public JSONObject updateScreenName(long userId, String screenName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1099,8 +1022,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateStatus(long userId, int status)
-		throws Exception {
+	public JSONObject updateStatus(long userId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1118,19 +1040,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateUser(long userId, String oldPassword,
-		String newPassword1, String newPassword2, boolean passwordReset,
-		String reminderQueryQuestion, String reminderQueryAnswer,
-		String screenName, String emailAddress, long facebookId, String openId,
-		String languageId, String timeZoneId, String greeting, String comments,
-		String firstName, String middleName, String lastName, int prefixId,
-		int suffixId, boolean male, int birthdayMonth, int birthdayDay,
-		int birthdayYear, String smsSn, String aimSn, String facebookSn,
-		String icqSn, String jabberSn, String msnSn, String mySpaceSn,
-		String skypeSn, String twitterSn, String ymSn, String jobTitle,
-		JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds,
-		JSONArray userGroupRoles, JSONArray userGroupIds,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject updateUser(long userId, String oldPassword, String newPassword1, String newPassword2, boolean passwordReset, String reminderQueryQuestion, String reminderQueryAnswer, String screenName, String emailAddress, long facebookId, String openId, String languageId, String timeZoneId, String greeting, String comments, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String smsSn, String aimSn, String facebookSn, String icqSn, String jabberSn, String msnSn, String mySpaceSn, String skypeSn, String twitterSn, String ymSn, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupRoles, JSONArray userGroupIds, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1187,21 +1097,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateUser(long userId, String oldPassword,
-		String newPassword1, String newPassword2, boolean passwordReset,
-		String reminderQueryQuestion, String reminderQueryAnswer,
-		String screenName, String emailAddress, long facebookId, String openId,
-		String languageId, String timeZoneId, String greeting, String comments,
-		String firstName, String middleName, String lastName, int prefixId,
-		int suffixId, boolean male, int birthdayMonth, int birthdayDay,
-		int birthdayYear, String smsSn, String aimSn, String facebookSn,
-		String icqSn, String jabberSn, String msnSn, String mySpaceSn,
-		String skypeSn, String twitterSn, String ymSn, String jobTitle,
-		JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds,
-		JSONArray userGroupRoles, JSONArray userGroupIds, JSONArray addresses,
-		JSONArray emailAddresses, JSONArray phones, JSONArray websites,
-		JSONArray announcementsDelivers, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateUser(long userId, String oldPassword, String newPassword1, String newPassword2, boolean passwordReset, String reminderQueryQuestion, String reminderQueryAnswer, String screenName, String emailAddress, long facebookId, String openId, String languageId, String timeZoneId, String greeting, String comments, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String smsSn, String aimSn, String facebookSn, String icqSn, String jabberSn, String msnSn, String mySpaceSn, String skypeSn, String twitterSn, String ymSn, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupRoles, JSONArray userGroupIds, JSONArray addresses, JSONArray emailAddresses, JSONArray phones, JSONArray websites, JSONArray announcementsDelivers, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1262,4 +1158,5 @@ public class UserService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

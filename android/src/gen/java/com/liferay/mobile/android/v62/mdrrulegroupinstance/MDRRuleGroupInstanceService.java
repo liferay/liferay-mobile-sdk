@@ -29,9 +29,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addRuleGroupInstance(long groupId, String className,
-		long classPK, long ruleGroupId, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addRuleGroupInstance(long groupId, String className, long classPK, long ruleGroupId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -43,8 +41,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			_params.put("ruleGroupId", ruleGroupId);
 			_params.put("serviceContext", serviceContext);
 
-			_command.put("/mdrrulegroupinstance/add-rule-group-instance",
-				_params);
+			_command.put("/mdrrulegroupinstance/add-rule-group-instance", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -53,9 +50,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addRuleGroupInstance(long groupId, String className,
-		long classPK, long ruleGroupId, int priority, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addRuleGroupInstance(long groupId, String className, long classPK, long ruleGroupId, int priority, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -68,8 +63,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			_params.put("priority", priority);
 			_params.put("serviceContext", serviceContext);
 
-			_command.put("/mdrrulegroupinstance/add-rule-group-instance",
-				_params);
+			_command.put("/mdrrulegroupinstance/add-rule-group-instance", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -78,8 +72,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteRuleGroupInstance(long ruleGroupInstanceId)
-		throws Exception {
+	public void deleteRuleGroupInstance(long ruleGroupInstanceId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -87,8 +80,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 
 			_params.put("ruleGroupInstanceId", ruleGroupInstanceId);
 
-			_command.put("/mdrrulegroupinstance/delete-rule-group-instance",
-				_params);
+			_command.put("/mdrrulegroupinstance/delete-rule-group-instance", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -97,9 +89,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONArray getRuleGroupInstances(String className, long classPK,
-		int start, int end, JSONObject orderByComparator)
-		throws Exception {
+	public JSONArray getRuleGroupInstances(String className, long classPK, int start, int end, JSONObject orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -111,8 +101,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			_params.put("end", end);
 			_params.put("orderByComparator", orderByComparator);
 
-			_command.put("/mdrrulegroupinstance/get-rule-group-instances",
-				_params);
+			_command.put("/mdrrulegroupinstance/get-rule-group-instances", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -121,8 +110,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getRuleGroupInstancesCount(String className, long classPK)
-		throws Exception {
+	public Integer getRuleGroupInstancesCount(String className, long classPK) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -131,8 +119,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			_params.put("className", className);
 			_params.put("classPK", classPK);
 
-			_command.put("/mdrrulegroupinstance/get-rule-group-instances-count",
-				_params);
+			_command.put("/mdrrulegroupinstance/get-rule-group-instances-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -141,8 +128,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONObject updateRuleGroupInstance(long ruleGroupInstanceId,
-		int priority) throws Exception {
+	public JSONObject updateRuleGroupInstance(long ruleGroupInstanceId, int priority) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -151,8 +137,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			_params.put("ruleGroupInstanceId", ruleGroupInstanceId);
 			_params.put("priority", priority);
 
-			_command.put("/mdrrulegroupinstance/update-rule-group-instance",
-				_params);
+			_command.put("/mdrrulegroupinstance/update-rule-group-instance", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -160,4 +145,5 @@ public class MDRRuleGroupInstanceService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

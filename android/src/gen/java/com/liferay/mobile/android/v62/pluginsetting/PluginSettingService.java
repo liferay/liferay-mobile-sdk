@@ -29,9 +29,7 @@ public class PluginSettingService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject updatePluginSetting(long companyId, String pluginId,
-		String pluginType, String roles, boolean active)
-		throws Exception {
+	public JSONObject updatePluginSetting(long companyId, String pluginId, String pluginType, String roles, boolean active) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -51,4 +49,5 @@ public class PluginSettingService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

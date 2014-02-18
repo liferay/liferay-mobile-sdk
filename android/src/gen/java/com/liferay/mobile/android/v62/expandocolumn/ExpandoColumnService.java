@@ -29,8 +29,7 @@ public class ExpandoColumnService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addColumn(long tableId, String name, int type)
-		throws Exception {
+	public JSONObject addColumn(long tableId, String name, int type) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -49,8 +48,7 @@ public class ExpandoColumnService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addColumn(long tableId, String name, int type,
-		JSONObject defaultData) throws Exception {
+	public JSONObject addColumn(long tableId, String name, int type, JSONObject defaultData) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -87,8 +85,7 @@ public class ExpandoColumnService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateColumn(long columnId, String name, int type)
-		throws Exception {
+	public JSONObject updateColumn(long columnId, String name, int type) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -107,8 +104,7 @@ public class ExpandoColumnService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateColumn(long columnId, String name, int type,
-		JSONObject defaultData) throws Exception {
+	public JSONObject updateColumn(long columnId, String name, int type, JSONObject defaultData) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -128,8 +124,7 @@ public class ExpandoColumnService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateTypeSettings(long columnId, String typeSettings)
-		throws Exception {
+	public JSONObject updateTypeSettings(long columnId, String typeSettings) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -146,4 +141,5 @@ public class ExpandoColumnService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

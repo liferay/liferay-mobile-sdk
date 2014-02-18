@@ -29,8 +29,7 @@ public class TeamService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addTeam(long groupId, String name, String description)
-		throws Exception {
+	public JSONObject addTeam(long groupId, String name, String description) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -100,8 +99,7 @@ public class TeamService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getTeam(long groupId, String name)
-		throws Exception {
+	public JSONObject getTeam(long groupId, String name) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -136,8 +134,7 @@ public class TeamService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getUserTeams(long userId, long groupId)
-		throws Exception {
+	public JSONArray getUserTeams(long userId, long groupId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -155,8 +152,7 @@ public class TeamService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Boolean hasUserTeam(long userId, long teamId)
-		throws Exception {
+	public Boolean hasUserTeam(long userId, long teamId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -174,8 +170,7 @@ public class TeamService extends BaseService {
 		return (Boolean)session.invoke(_command);
 	}
 
-	public JSONObject updateTeam(long teamId, String name, String description)
-		throws Exception {
+	public JSONObject updateTeam(long teamId, String name, String description) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -193,4 +188,5 @@ public class TeamService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

@@ -29,8 +29,7 @@ public class SocialActivityService extends BaseService {
 		super(session);
 	}
 
-	public JSONArray getActivities(String className, int start, int end)
-		throws Exception {
+	public JSONArray getActivities(String className, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -49,8 +48,7 @@ public class SocialActivityService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getActivities(long classNameId, int start, int end)
-		throws Exception {
+	public JSONArray getActivities(long classNameId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -69,8 +67,7 @@ public class SocialActivityService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getActivities(long mirrorActivityId, String className,
-		long classPK, int start, int end) throws Exception {
+	public JSONArray getActivities(long mirrorActivityId, String className, long classPK, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -91,8 +88,7 @@ public class SocialActivityService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getActivities(long mirrorActivityId, long classNameId,
-		long classPK, int start, int end) throws Exception {
+	public JSONArray getActivities(long mirrorActivityId, long classNameId, long classPK, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -113,8 +109,7 @@ public class SocialActivityService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getActivitiesCount(String className)
-		throws Exception {
+	public Integer getActivitiesCount(String className) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -131,8 +126,7 @@ public class SocialActivityService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getActivitiesCount(long classNameId)
-		throws Exception {
+	public Integer getActivitiesCount(long classNameId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -149,8 +143,7 @@ public class SocialActivityService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getActivitiesCount(long mirrorActivityId, String className,
-		long classPK) throws Exception {
+	public Integer getActivitiesCount(long mirrorActivityId, String className, long classPK) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -169,8 +162,7 @@ public class SocialActivityService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getActivitiesCount(long mirrorActivityId, long classNameId,
-		long classPK) throws Exception {
+	public Integer getActivitiesCount(long mirrorActivityId, long classNameId, long classPK) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -206,8 +198,7 @@ public class SocialActivityService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getActivitySetActivities(long activitySetId, int start,
-		int end) throws Exception {
+	public JSONArray getActivitySetActivities(long activitySetId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -226,8 +217,7 @@ public class SocialActivityService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getGroupActivities(long groupId, int start, int end)
-		throws Exception {
+	public JSONArray getGroupActivities(long groupId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -246,8 +236,7 @@ public class SocialActivityService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getGroupActivitiesCount(long groupId)
-		throws Exception {
+	public Integer getGroupActivitiesCount(long groupId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -264,8 +253,7 @@ public class SocialActivityService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getGroupUsersActivities(long groupId, int start, int end)
-		throws Exception {
+	public JSONArray getGroupUsersActivities(long groupId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -284,8 +272,7 @@ public class SocialActivityService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getGroupUsersActivitiesCount(long groupId)
-		throws Exception {
+	public Integer getGroupUsersActivitiesCount(long groupId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -293,8 +280,7 @@ public class SocialActivityService extends BaseService {
 
 			_params.put("groupId", groupId);
 
-			_command.put("/socialactivity/get-group-users-activities-count",
-				_params);
+			_command.put("/socialactivity/get-group-users-activities-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -303,8 +289,7 @@ public class SocialActivityService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONObject getMirrorActivity(long mirrorActivityId)
-		throws Exception {
+	public JSONObject getMirrorActivity(long mirrorActivityId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -321,8 +306,7 @@ public class SocialActivityService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getOrganizationActivities(long organizationId, int start,
-		int end) throws Exception {
+	public JSONArray getOrganizationActivities(long organizationId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -341,8 +325,7 @@ public class SocialActivityService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getOrganizationActivitiesCount(long organizationId)
-		throws Exception {
+	public Integer getOrganizationActivitiesCount(long organizationId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -350,8 +333,7 @@ public class SocialActivityService extends BaseService {
 
 			_params.put("organizationId", organizationId);
 
-			_command.put("/socialactivity/get-organization-activities-count",
-				_params);
+			_command.put("/socialactivity/get-organization-activities-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -360,8 +342,7 @@ public class SocialActivityService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getOrganizationUsersActivities(long organizationId,
-		int start, int end) throws Exception {
+	public JSONArray getOrganizationUsersActivities(long organizationId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -371,8 +352,7 @@ public class SocialActivityService extends BaseService {
 			_params.put("start", start);
 			_params.put("end", end);
 
-			_command.put("/socialactivity/get-organization-users-activities",
-				_params);
+			_command.put("/socialactivity/get-organization-users-activities", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -381,8 +361,7 @@ public class SocialActivityService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getOrganizationUsersActivitiesCount(long organizationId)
-		throws Exception {
+	public Integer getOrganizationUsersActivitiesCount(long organizationId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -390,8 +369,7 @@ public class SocialActivityService extends BaseService {
 
 			_params.put("organizationId", organizationId);
 
-			_command.put("/socialactivity/get-organization-users-activities-count",
-				_params);
+			_command.put("/socialactivity/get-organization-users-activities-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -400,8 +378,7 @@ public class SocialActivityService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getRelationActivities(long userId, int start, int end)
-		throws Exception {
+	public JSONArray getRelationActivities(long userId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -420,8 +397,7 @@ public class SocialActivityService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getRelationActivities(long userId, int type, int start,
-		int end) throws Exception {
+	public JSONArray getRelationActivities(long userId, int type, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -441,8 +417,7 @@ public class SocialActivityService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getRelationActivitiesCount(long userId)
-		throws Exception {
+	public Integer getRelationActivitiesCount(long userId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -450,8 +425,7 @@ public class SocialActivityService extends BaseService {
 
 			_params.put("userId", userId);
 
-			_command.put("/socialactivity/get-relation-activities-count",
-				_params);
+			_command.put("/socialactivity/get-relation-activities-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -460,8 +434,7 @@ public class SocialActivityService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getRelationActivitiesCount(long userId, int type)
-		throws Exception {
+	public Integer getRelationActivitiesCount(long userId, int type) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -470,8 +443,7 @@ public class SocialActivityService extends BaseService {
 			_params.put("userId", userId);
 			_params.put("type", type);
 
-			_command.put("/socialactivity/get-relation-activities-count",
-				_params);
+			_command.put("/socialactivity/get-relation-activities-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -480,8 +452,7 @@ public class SocialActivityService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getUserActivities(long userId, int start, int end)
-		throws Exception {
+	public JSONArray getUserActivities(long userId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -500,8 +471,7 @@ public class SocialActivityService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getUserActivitiesCount(long userId)
-		throws Exception {
+	public Integer getUserActivitiesCount(long userId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -518,8 +488,7 @@ public class SocialActivityService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getUserGroupsActivities(long userId, int start, int end)
-		throws Exception {
+	public JSONArray getUserGroupsActivities(long userId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -538,8 +507,7 @@ public class SocialActivityService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getUserGroupsActivitiesCount(long userId)
-		throws Exception {
+	public Integer getUserGroupsActivitiesCount(long userId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -547,8 +515,7 @@ public class SocialActivityService extends BaseService {
 
 			_params.put("userId", userId);
 
-			_command.put("/socialactivity/get-user-groups-activities-count",
-				_params);
+			_command.put("/socialactivity/get-user-groups-activities-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -557,8 +524,7 @@ public class SocialActivityService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getUserGroupsAndOrganizationsActivities(long userId,
-		int start, int end) throws Exception {
+	public JSONArray getUserGroupsAndOrganizationsActivities(long userId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -568,8 +534,7 @@ public class SocialActivityService extends BaseService {
 			_params.put("start", start);
 			_params.put("end", end);
 
-			_command.put("/socialactivity/get-user-groups-and-organizations-activities",
-				_params);
+			_command.put("/socialactivity/get-user-groups-and-organizations-activities", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -578,8 +543,7 @@ public class SocialActivityService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getUserGroupsAndOrganizationsActivitiesCount(long userId)
-		throws Exception {
+	public Integer getUserGroupsAndOrganizationsActivitiesCount(long userId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -587,8 +551,7 @@ public class SocialActivityService extends BaseService {
 
 			_params.put("userId", userId);
 
-			_command.put("/socialactivity/get-user-groups-and-organizations-activities-count",
-				_params);
+			_command.put("/socialactivity/get-user-groups-and-organizations-activities-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -597,8 +560,7 @@ public class SocialActivityService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getUserOrganizationsActivities(long userId, int start,
-		int end) throws Exception {
+	public JSONArray getUserOrganizationsActivities(long userId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -608,8 +570,7 @@ public class SocialActivityService extends BaseService {
 			_params.put("start", start);
 			_params.put("end", end);
 
-			_command.put("/socialactivity/get-user-organizations-activities",
-				_params);
+			_command.put("/socialactivity/get-user-organizations-activities", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -618,8 +579,7 @@ public class SocialActivityService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getUserOrganizationsActivitiesCount(long userId)
-		throws Exception {
+	public Integer getUserOrganizationsActivitiesCount(long userId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -627,8 +587,7 @@ public class SocialActivityService extends BaseService {
 
 			_params.put("userId", userId);
 
-			_command.put("/socialactivity/get-user-organizations-activities-count",
-				_params);
+			_command.put("/socialactivity/get-user-organizations-activities-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -636,4 +595,5 @@ public class SocialActivityService extends BaseService {
 
 		return (Integer)session.invoke(_command);
 	}
+
 }

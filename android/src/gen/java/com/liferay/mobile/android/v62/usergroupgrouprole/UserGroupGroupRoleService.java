@@ -29,8 +29,7 @@ public class UserGroupGroupRoleService extends BaseService {
 		super(session);
 	}
 
-	public void addUserGroupGroupRoles(long userGroupId, long groupId,
-		JSONArray roleIds) throws Exception {
+	public void addUserGroupGroupRoles(long userGroupId, long groupId, JSONArray roleIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -40,8 +39,7 @@ public class UserGroupGroupRoleService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("roleIds", roleIds);
 
-			_command.put("/usergroupgrouprole/add-user-group-group-roles",
-				_params);
+			_command.put("/usergroupgrouprole/add-user-group-group-roles", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -50,8 +48,7 @@ public class UserGroupGroupRoleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void addUserGroupGroupRoles(JSONArray userGroupIds, long groupId,
-		long roleId) throws Exception {
+	public void addUserGroupGroupRoles(JSONArray userGroupIds, long groupId, long roleId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -61,8 +58,7 @@ public class UserGroupGroupRoleService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("roleId", roleId);
 
-			_command.put("/usergroupgrouprole/add-user-group-group-roles",
-				_params);
+			_command.put("/usergroupgrouprole/add-user-group-group-roles", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -71,8 +67,7 @@ public class UserGroupGroupRoleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteUserGroupGroupRoles(long userGroupId, long groupId,
-		JSONArray roleIds) throws Exception {
+	public void deleteUserGroupGroupRoles(long userGroupId, long groupId, JSONArray roleIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -82,8 +77,7 @@ public class UserGroupGroupRoleService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("roleIds", roleIds);
 
-			_command.put("/usergroupgrouprole/delete-user-group-group-roles",
-				_params);
+			_command.put("/usergroupgrouprole/delete-user-group-group-roles", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -92,8 +86,7 @@ public class UserGroupGroupRoleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteUserGroupGroupRoles(JSONArray userGroupIds, long groupId,
-		long roleId) throws Exception {
+	public void deleteUserGroupGroupRoles(JSONArray userGroupIds, long groupId, long roleId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -103,8 +96,7 @@ public class UserGroupGroupRoleService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("roleId", roleId);
 
-			_command.put("/usergroupgrouprole/delete-user-group-group-roles",
-				_params);
+			_command.put("/usergroupgrouprole/delete-user-group-group-roles", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -112,4 +104,5 @@ public class UserGroupGroupRoleService extends BaseService {
 
 		session.invoke(_command);
 	}
+
 }

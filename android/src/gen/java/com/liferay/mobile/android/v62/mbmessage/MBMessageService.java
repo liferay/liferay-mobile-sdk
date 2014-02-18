@@ -29,11 +29,7 @@ public class MBMessageService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addDiscussionMessage(long groupId, String className,
-		long classPK, String permissionClassName, long permissionClassPK,
-		long permissionOwnerId, long threadId, long parentMessageId,
-		String subject, String body, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addDiscussionMessage(long groupId, String className, long classPK, String permissionClassName, long permissionClassPK, long permissionOwnerId, long threadId, long parentMessageId, String subject, String body, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -60,10 +56,7 @@ public class MBMessageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addMessage(long groupId, long categoryId, String subject,
-		String body, String format, JSONArray inputStreamOVPs,
-		boolean anonymous, double priority, boolean allowPingbacks,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addMessage(long groupId, long categoryId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -89,11 +82,7 @@ public class MBMessageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addMessage(long groupId, long categoryId, long threadId,
-		long parentMessageId, String subject, String body, String format,
-		JSONArray inputStreamOVPs, boolean anonymous, double priority,
-		boolean allowPingbacks, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addMessage(long groupId, long categoryId, long threadId, long parentMessageId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -121,8 +110,7 @@ public class MBMessageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addMessage(long categoryId, String subject, String body,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addMessage(long categoryId, String subject, String body, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -142,10 +130,7 @@ public class MBMessageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addMessage(long parentMessageId, String subject,
-		String body, String format, JSONArray inputStreamOVPs,
-		boolean anonymous, double priority, boolean allowPingbacks,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addMessage(long parentMessageId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -170,9 +155,7 @@ public class MBMessageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteDiscussionMessage(long groupId, String className,
-		long classPK, String permissionClassName, long permissionClassPK,
-		long permissionOwnerId, long messageId) throws Exception {
+	public void deleteDiscussionMessage(long groupId, String className, long classPK, String permissionClassName, long permissionClassPK, long permissionOwnerId, long messageId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -212,8 +195,7 @@ public class MBMessageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteMessageAttachments(long messageId)
-		throws Exception {
+	public void deleteMessageAttachments(long messageId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -230,8 +212,7 @@ public class MBMessageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONArray getCategoryMessages(long groupId, long categoryId,
-		int status, int start, int end) throws Exception {
+	public JSONArray getCategoryMessages(long groupId, long categoryId, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -252,8 +233,7 @@ public class MBMessageService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getCategoryMessagesCount(long groupId, long categoryId,
-		int status) throws Exception {
+	public Integer getCategoryMessagesCount(long groupId, long categoryId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -272,10 +252,7 @@ public class MBMessageService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public String getCategoryMessagesRss(long groupId, long categoryId,
-		int status, int max, String type, double version, String displayStyle,
-		String feedURL, String entryURL, JSONObject themeDisplay)
-		throws Exception {
+	public String getCategoryMessagesRss(long groupId, long categoryId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObject themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -301,9 +278,7 @@ public class MBMessageService extends BaseService {
 		return (String)session.invoke(_command);
 	}
 
-	public String getCompanyMessagesRss(long companyId, int status, int max,
-		String type, double version, String displayStyle, String feedURL,
-		String entryURL, JSONObject themeDisplay) throws Exception {
+	public String getCompanyMessagesRss(long companyId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObject themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -328,8 +303,7 @@ public class MBMessageService extends BaseService {
 		return (String)session.invoke(_command);
 	}
 
-	public Integer getGroupMessagesCount(long groupId, int status)
-		throws Exception {
+	public Integer getGroupMessagesCount(long groupId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -347,10 +321,7 @@ public class MBMessageService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public String getGroupMessagesRss(long groupId, long userId, int status,
-		int max, String type, double version, String displayStyle,
-		String feedURL, String entryURL, JSONObject themeDisplay)
-		throws Exception {
+	public String getGroupMessagesRss(long groupId, long userId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObject themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -376,9 +347,7 @@ public class MBMessageService extends BaseService {
 		return (String)session.invoke(_command);
 	}
 
-	public String getGroupMessagesRss(long groupId, int status, int max,
-		String type, double version, String displayStyle, String feedURL,
-		String entryURL, JSONObject themeDisplay) throws Exception {
+	public String getGroupMessagesRss(long groupId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObject themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -420,9 +389,7 @@ public class MBMessageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getMessageDisplay(long messageId, int status,
-		String threadView, boolean includePrevAndNext)
-		throws Exception {
+	public JSONObject getMessageDisplay(long messageId, int status, String threadView, boolean includePrevAndNext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -442,8 +409,7 @@ public class MBMessageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public Integer getThreadAnswersCount(long groupId, long categoryId,
-		long threadId) throws Exception {
+	public Integer getThreadAnswersCount(long groupId, long categoryId, long threadId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -462,9 +428,7 @@ public class MBMessageService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getThreadMessages(long groupId, long categoryId,
-		long threadId, int status, int start, int end)
-		throws Exception {
+	public JSONArray getThreadMessages(long groupId, long categoryId, long threadId, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -486,8 +450,7 @@ public class MBMessageService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getThreadMessagesCount(long groupId, long categoryId,
-		long threadId, int status) throws Exception {
+	public Integer getThreadMessagesCount(long groupId, long categoryId, long threadId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -507,9 +470,7 @@ public class MBMessageService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public String getThreadMessagesRss(long threadId, int status, int max,
-		String type, double version, String displayStyle, String feedURL,
-		String entryURL, JSONObject themeDisplay) throws Exception {
+	public String getThreadMessagesRss(long threadId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObject themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -534,8 +495,7 @@ public class MBMessageService extends BaseService {
 		return (String)session.invoke(_command);
 	}
 
-	public void restoreMessageAttachmentFromTrash(long messageId,
-		String fileName) throws Exception {
+	public void restoreMessageAttachmentFromTrash(long messageId, String fileName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -544,8 +504,7 @@ public class MBMessageService extends BaseService {
 			_params.put("messageId", messageId);
 			_params.put("fileName", fileName);
 
-			_command.put("/mbmessage/restore-message-attachment-from-trash",
-				_params);
+			_command.put("/mbmessage/restore-message-attachment-from-trash", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -588,8 +547,7 @@ public class MBMessageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateAnswer(long messageId, boolean answer, boolean cascade)
-		throws Exception {
+	public void updateAnswer(long messageId, boolean answer, boolean cascade) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -608,10 +566,7 @@ public class MBMessageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateDiscussionMessage(String className, long classPK,
-		String permissionClassName, long permissionClassPK,
-		long permissionOwnerId, long messageId, String subject, String body,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject updateDiscussionMessage(String className, long classPK, String permissionClassName, long permissionClassPK, long permissionOwnerId, long messageId, String subject, String body, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -636,10 +591,7 @@ public class MBMessageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateMessage(long messageId, String subject,
-		String body, JSONArray inputStreamOVPs, JSONArray existingFiles,
-		double priority, boolean allowPingbacks, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateMessage(long messageId, String subject, String body, JSONArray inputStreamOVPs, JSONArray existingFiles, double priority, boolean allowPingbacks, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -662,4 +614,5 @@ public class MBMessageService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

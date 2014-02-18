@@ -29,9 +29,7 @@ public class WikiPageService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addPage(long nodeId, String title, String content,
-		String summary, boolean minorEdit, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addPage(long nodeId, String title, String content, String summary, boolean minorEdit, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -53,10 +51,7 @@ public class WikiPageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addPage(long nodeId, String title, String content,
-		String summary, boolean minorEdit, String format, String parentTitle,
-		String redirectTitle, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addPage(long nodeId, String title, String content, String summary, boolean minorEdit, String format, String parentTitle, String redirectTitle, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -81,8 +76,7 @@ public class WikiPageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void addPageAttachment(long nodeId, String title, String fileName,
-		JSONObject file, String mimeType) throws Exception {
+	public void addPageAttachment(long nodeId, String title, String fileName, JSONObject file, String mimeType) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -103,8 +97,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void addPageAttachments(long nodeId, String title,
-		JSONArray inputStreamOVPs) throws Exception {
+	public void addPageAttachments(long nodeId, String title, JSONArray inputStreamOVPs) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -123,8 +116,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void changeParent(long nodeId, String title, String newParentTitle,
-		JSONObject serviceContext) throws Exception {
+	public void changeParent(long nodeId, String title, String newParentTitle, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -144,8 +136,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void copyPageAttachments(long templateNodeId, String templateTitle,
-		long nodeId, String title) throws Exception {
+	public void copyPageAttachments(long templateNodeId, String templateTitle, long nodeId, String title) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -183,8 +174,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deletePage(long nodeId, String title, double version)
-		throws Exception {
+	public void deletePage(long nodeId, String title, double version) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -203,8 +193,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deletePageAttachment(long nodeId, String title, String fileName)
-		throws Exception {
+	public void deletePageAttachment(long nodeId, String title, String fileName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -223,8 +212,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deletePageAttachments(long nodeId, String title)
-		throws Exception {
+	public void deletePageAttachments(long nodeId, String title) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -242,8 +230,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteTempPageAttachment(long nodeId, String fileName,
-		String tempFolderName) throws Exception {
+	public void deleteTempPageAttachment(long nodeId, String fileName, String tempFolderName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -262,8 +249,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteTrashPageAttachments(long nodeId, String title)
-		throws Exception {
+	public void deleteTrashPageAttachments(long nodeId, String title) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -281,8 +267,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void discardDraft(long nodeId, String title, double version)
-		throws Exception {
+	public void discardDraft(long nodeId, String title, double version) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -301,8 +286,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONArray getChildren(long groupId, long nodeId, boolean head,
-		String parentTitle) throws Exception {
+	public JSONArray getChildren(long groupId, long nodeId, boolean head, String parentTitle) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -322,8 +306,7 @@ public class WikiPageService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject getDraftPage(long nodeId, String title)
-		throws Exception {
+	public JSONObject getDraftPage(long nodeId, String title) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -341,8 +324,7 @@ public class WikiPageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getNodePages(long nodeId, int max)
-		throws Exception {
+	public JSONArray getNodePages(long nodeId, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -360,9 +342,7 @@ public class WikiPageService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public String getNodePagesRss(long nodeId, int max, String type,
-		double version, String displayStyle, String feedURL, String entryURL)
-		throws Exception {
+	public String getNodePagesRss(long nodeId, int max, String type, double version, String displayStyle, String feedURL, String entryURL) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -385,9 +365,7 @@ public class WikiPageService extends BaseService {
 		return (String)session.invoke(_command);
 	}
 
-	public String getNodePagesRss(long nodeId, int max, String type,
-		double version, String displayStyle, String feedURL, String entryURL,
-		String attachmentURLPrefix) throws Exception {
+	public String getNodePagesRss(long nodeId, int max, String type, double version, String displayStyle, String feedURL, String entryURL, String attachmentURLPrefix) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -411,8 +389,7 @@ public class WikiPageService extends BaseService {
 		return (String)session.invoke(_command);
 	}
 
-	public JSONArray getOrphans(long groupId, long nodeId)
-		throws Exception {
+	public JSONArray getOrphans(long groupId, long nodeId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -430,8 +407,7 @@ public class WikiPageService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject getPage(long nodeId, String title)
-		throws Exception {
+	public JSONObject getPage(long nodeId, String title) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -449,8 +425,7 @@ public class WikiPageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getPage(long groupId, long nodeId, String title)
-		throws Exception {
+	public JSONObject getPage(long groupId, long nodeId, String title) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -469,8 +444,7 @@ public class WikiPageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getPage(long nodeId, String title, JSONObject head)
-		throws Exception {
+	public JSONObject getPage(long nodeId, String title, JSONObject head) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -489,8 +463,7 @@ public class WikiPageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getPage(long nodeId, String title, double version)
-		throws Exception {
+	public JSONObject getPage(long nodeId, String title, double version) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -509,8 +482,7 @@ public class WikiPageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getPages(long groupId, long userId, long nodeId,
-		int status, int start, int end) throws Exception {
+	public JSONArray getPages(long groupId, long userId, long nodeId, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -532,9 +504,7 @@ public class WikiPageService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getPages(long groupId, long nodeId, boolean head,
-		int status, int start, int end, JSONObject obc)
-		throws Exception {
+	public JSONArray getPages(long groupId, long nodeId, boolean head, int status, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -557,8 +527,7 @@ public class WikiPageService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getPagesCount(long groupId, long nodeId, boolean head)
-		throws Exception {
+	public Integer getPagesCount(long groupId, long nodeId, boolean head) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -577,8 +546,7 @@ public class WikiPageService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getPagesCount(long groupId, long userId, long nodeId,
-		int status) throws Exception {
+	public Integer getPagesCount(long groupId, long userId, long nodeId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -598,10 +566,7 @@ public class WikiPageService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public String getPagesRss(long companyId, long nodeId, String title,
-		int max, String type, double version, String displayStyle,
-		String feedURL, String entryURL, String locale)
-		throws Exception {
+	public String getPagesRss(long companyId, long nodeId, String title, int max, String type, double version, String displayStyle, String feedURL, String entryURL, String locale) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -627,10 +592,7 @@ public class WikiPageService extends BaseService {
 		return (String)session.invoke(_command);
 	}
 
-	public String getPagesRss(long companyId, long nodeId, String title,
-		int max, String type, double version, String displayStyle,
-		String feedURL, String entryURL, String attachmentURLPrefix,
-		String locale) throws Exception {
+	public String getPagesRss(long companyId, long nodeId, String title, int max, String type, double version, String displayStyle, String feedURL, String entryURL, String attachmentURLPrefix, String locale) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -657,8 +619,7 @@ public class WikiPageService extends BaseService {
 		return (String)session.invoke(_command);
 	}
 
-	public JSONArray getRecentChanges(long groupId, long nodeId, int start,
-		int end) throws Exception {
+	public JSONArray getRecentChanges(long groupId, long nodeId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -678,8 +639,7 @@ public class WikiPageService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getRecentChangesCount(long groupId, long nodeId)
-		throws Exception {
+	public Integer getRecentChangesCount(long groupId, long nodeId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -697,8 +657,7 @@ public class WikiPageService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getTempPageAttachmentNames(long nodeId,
-		String tempFolderName) throws Exception {
+	public JSONArray getTempPageAttachmentNames(long nodeId, String tempFolderName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -716,8 +675,7 @@ public class WikiPageService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public void movePage(long nodeId, String title, String newTitle,
-		JSONObject serviceContext) throws Exception {
+	public void movePage(long nodeId, String title, String newTitle, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -737,8 +695,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject movePageAttachmentToTrash(long nodeId, String title,
-		String fileName) throws Exception {
+	public JSONObject movePageAttachmentToTrash(long nodeId, String title, String fileName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -757,8 +714,7 @@ public class WikiPageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject movePageToTrash(long nodeId, String title)
-		throws Exception {
+	public JSONObject movePageToTrash(long nodeId, String title) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -776,8 +732,7 @@ public class WikiPageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject movePageToTrash(long nodeId, String title, double version)
-		throws Exception {
+	public JSONObject movePageToTrash(long nodeId, String title, double version) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -796,8 +751,7 @@ public class WikiPageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void restorePageAttachmentFromTrash(long nodeId, String title,
-		String fileName) throws Exception {
+	public void restorePageAttachmentFromTrash(long nodeId, String title, String fileName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -816,8 +770,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void restorePageFromTrash(long resourcePrimKey)
-		throws Exception {
+	public void restorePageFromTrash(long resourcePrimKey) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -834,8 +787,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject revertPage(long nodeId, String title, double version,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject revertPage(long nodeId, String title, double version, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -855,8 +807,7 @@ public class WikiPageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void subscribePage(long nodeId, String title)
-		throws Exception {
+	public void subscribePage(long nodeId, String title) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -874,8 +825,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void unsubscribePage(long nodeId, String title)
-		throws Exception {
+	public void unsubscribePage(long nodeId, String title) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -893,10 +843,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updatePage(long nodeId, String title, double version,
-		String content, String summary, boolean minorEdit, String format,
-		String parentTitle, String redirectTitle, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updatePage(long nodeId, String title, double version, String content, String summary, boolean minorEdit, String format, String parentTitle, String redirectTitle, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -921,4 +868,5 @@ public class WikiPageService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

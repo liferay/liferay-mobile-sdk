@@ -29,8 +29,7 @@ public class ResourceBlockService extends BaseService {
 		super(session);
 	}
 
-	public void addCompanyScopePermission(long scopeGroupId, long companyId,
-		String name, long roleId, String actionId) throws Exception {
+	public void addCompanyScopePermission(long scopeGroupId, long companyId, String name, long roleId, String actionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -51,9 +50,7 @@ public class ResourceBlockService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void addGroupScopePermission(long scopeGroupId, long companyId,
-		long groupId, String name, long roleId, String actionId)
-		throws Exception {
+	public void addGroupScopePermission(long scopeGroupId, long companyId, long groupId, String name, long roleId, String actionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -75,9 +72,7 @@ public class ResourceBlockService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void addIndividualScopePermission(long companyId, long groupId,
-		String name, long primKey, long roleId, String actionId)
-		throws Exception {
+	public void addIndividualScopePermission(long companyId, long groupId, String name, long primKey, long roleId, String actionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -90,8 +85,7 @@ public class ResourceBlockService extends BaseService {
 			_params.put("roleId", roleId);
 			_params.put("actionId", actionId);
 
-			_command.put("/resourceblock/add-individual-scope-permission",
-				_params);
+			_command.put("/resourceblock/add-individual-scope-permission", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -100,9 +94,7 @@ public class ResourceBlockService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void removeAllGroupScopePermissions(long scopeGroupId,
-		long companyId, String name, long roleId, String actionId)
-		throws Exception {
+	public void removeAllGroupScopePermissions(long scopeGroupId, long companyId, String name, long roleId, String actionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -114,8 +106,7 @@ public class ResourceBlockService extends BaseService {
 			_params.put("roleId", roleId);
 			_params.put("actionId", actionId);
 
-			_command.put("/resourceblock/remove-all-group-scope-permissions",
-				_params);
+			_command.put("/resourceblock/remove-all-group-scope-permissions", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -124,8 +115,7 @@ public class ResourceBlockService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void removeCompanyScopePermission(long scopeGroupId, long companyId,
-		String name, long roleId, String actionId) throws Exception {
+	public void removeCompanyScopePermission(long scopeGroupId, long companyId, String name, long roleId, String actionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -137,8 +127,7 @@ public class ResourceBlockService extends BaseService {
 			_params.put("roleId", roleId);
 			_params.put("actionId", actionId);
 
-			_command.put("/resourceblock/remove-company-scope-permission",
-				_params);
+			_command.put("/resourceblock/remove-company-scope-permission", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -147,9 +136,7 @@ public class ResourceBlockService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void removeGroupScopePermission(long scopeGroupId, long companyId,
-		long groupId, String name, long roleId, String actionId)
-		throws Exception {
+	public void removeGroupScopePermission(long scopeGroupId, long companyId, long groupId, String name, long roleId, String actionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -171,9 +158,7 @@ public class ResourceBlockService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void removeIndividualScopePermission(long companyId, long groupId,
-		String name, long primKey, long roleId, String actionId)
-		throws Exception {
+	public void removeIndividualScopePermission(long companyId, long groupId, String name, long primKey, long roleId, String actionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -186,8 +171,7 @@ public class ResourceBlockService extends BaseService {
 			_params.put("roleId", roleId);
 			_params.put("actionId", actionId);
 
-			_command.put("/resourceblock/remove-individual-scope-permission",
-				_params);
+			_command.put("/resourceblock/remove-individual-scope-permission", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -196,9 +180,7 @@ public class ResourceBlockService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void setCompanyScopePermissions(long scopeGroupId, long companyId,
-		String name, long roleId, JSONArray actionIds)
-		throws Exception {
+	public void setCompanyScopePermissions(long scopeGroupId, long companyId, String name, long roleId, JSONArray actionIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -219,9 +201,7 @@ public class ResourceBlockService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void setGroupScopePermissions(long scopeGroupId, long companyId,
-		long groupId, String name, long roleId, JSONArray actionIds)
-		throws Exception {
+	public void setGroupScopePermissions(long scopeGroupId, long companyId, long groupId, String name, long roleId, JSONArray actionIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -243,9 +223,7 @@ public class ResourceBlockService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void setIndividualScopePermissions(long companyId, long groupId,
-		String name, long primKey, JSONObject roleIdsToActionIds)
-		throws Exception {
+	public void setIndividualScopePermissions(long companyId, long groupId, String name, long primKey, JSONObject roleIdsToActionIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -257,8 +235,7 @@ public class ResourceBlockService extends BaseService {
 			_params.put("primKey", primKey);
 			_params.put("roleIdsToActionIds", roleIdsToActionIds);
 
-			_command.put("/resourceblock/set-individual-scope-permissions",
-				_params);
+			_command.put("/resourceblock/set-individual-scope-permissions", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -267,9 +244,7 @@ public class ResourceBlockService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void setIndividualScopePermissions(long companyId, long groupId,
-		String name, long primKey, long roleId, JSONArray actionIds)
-		throws Exception {
+	public void setIndividualScopePermissions(long companyId, long groupId, String name, long primKey, long roleId, JSONArray actionIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -282,8 +257,7 @@ public class ResourceBlockService extends BaseService {
 			_params.put("roleId", roleId);
 			_params.put("actionIds", actionIds);
 
-			_command.put("/resourceblock/set-individual-scope-permissions",
-				_params);
+			_command.put("/resourceblock/set-individual-scope-permissions", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -291,4 +265,5 @@ public class ResourceBlockService extends BaseService {
 
 		session.invoke(_command);
 	}
+
 }

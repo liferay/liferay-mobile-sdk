@@ -29,8 +29,7 @@ public class WikiNodeService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addNode(String name, String description,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addNode(String name, String description, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -83,8 +82,7 @@ public class WikiNodeService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getNode(long groupId, String name)
-		throws Exception {
+	public JSONObject getNode(long groupId, String name) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -119,8 +117,7 @@ public class WikiNodeService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getNodes(long groupId, int status)
-		throws Exception {
+	public JSONArray getNodes(long groupId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -138,8 +135,7 @@ public class WikiNodeService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getNodes(long groupId, int start, int end)
-		throws Exception {
+	public JSONArray getNodes(long groupId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -158,8 +154,7 @@ public class WikiNodeService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getNodes(long groupId, int status, int start, int end)
-		throws Exception {
+	public JSONArray getNodes(long groupId, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -196,8 +191,7 @@ public class WikiNodeService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getNodesCount(long groupId, int status)
-		throws Exception {
+	public Integer getNodesCount(long groupId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -283,8 +277,7 @@ public class WikiNodeService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateNode(long nodeId, String name, String description,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject updateNode(long nodeId, String name, String description, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -303,4 +296,5 @@ public class WikiNodeService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

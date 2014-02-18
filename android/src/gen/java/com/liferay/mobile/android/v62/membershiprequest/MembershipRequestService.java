@@ -29,8 +29,7 @@ public class MembershipRequestService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addMembershipRequest(long groupId, String comments,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addMembershipRequest(long groupId, String comments, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -49,8 +48,7 @@ public class MembershipRequestService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteMembershipRequests(long groupId, int statusId)
-		throws Exception {
+	public void deleteMembershipRequests(long groupId, int statusId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -59,8 +57,7 @@ public class MembershipRequestService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("statusId", statusId);
 
-			_command.put("/membershiprequest/delete-membership-requests",
-				_params);
+			_command.put("/membershiprequest/delete-membership-requests", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -69,8 +66,7 @@ public class MembershipRequestService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject getMembershipRequest(long membershipRequestId)
-		throws Exception {
+	public JSONObject getMembershipRequest(long membershipRequestId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -87,8 +83,7 @@ public class MembershipRequestService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void updateStatus(long membershipRequestId, String reviewComments,
-		int statusId, JSONObject serviceContext) throws Exception {
+	public void updateStatus(long membershipRequestId, String reviewComments, int statusId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -107,4 +102,5 @@ public class MembershipRequestService extends BaseService {
 
 		session.invoke(_command);
 	}
+
 }

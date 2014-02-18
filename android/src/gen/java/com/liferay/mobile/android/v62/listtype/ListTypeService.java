@@ -81,8 +81,7 @@ public class ListTypeService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void validate(int listTypeId, long classNameId, String type)
-		throws Exception {
+	public void validate(int listTypeId, long classNameId, String type) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -100,4 +99,5 @@ public class ListTypeService extends BaseService {
 
 		session.invoke(_command);
 	}
+
 }

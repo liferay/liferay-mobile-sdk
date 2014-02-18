@@ -29,9 +29,7 @@ public class ResourcePermissionService extends BaseService {
 		super(session);
 	}
 
-	public void addResourcePermission(long groupId, long companyId,
-		String name, int scope, String primKey, long roleId, String actionId)
-		throws Exception {
+	public void addResourcePermission(long groupId, long companyId, String name, int scope, String primKey, long roleId, String actionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -54,9 +52,7 @@ public class ResourcePermissionService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void removeResourcePermission(long groupId, long companyId,
-		String name, int scope, String primKey, long roleId, String actionId)
-		throws Exception {
+	public void removeResourcePermission(long groupId, long companyId, String name, int scope, String primKey, long roleId, String actionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -70,8 +66,7 @@ public class ResourcePermissionService extends BaseService {
 			_params.put("roleId", roleId);
 			_params.put("actionId", actionId);
 
-			_command.put("/resourcepermission/remove-resource-permission",
-				_params);
+			_command.put("/resourcepermission/remove-resource-permission", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -80,9 +75,7 @@ public class ResourcePermissionService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void removeResourcePermissions(long groupId, long companyId,
-		String name, int scope, long roleId, String actionId)
-		throws Exception {
+	public void removeResourcePermissions(long groupId, long companyId, String name, int scope, long roleId, String actionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -95,8 +88,7 @@ public class ResourcePermissionService extends BaseService {
 			_params.put("roleId", roleId);
 			_params.put("actionId", actionId);
 
-			_command.put("/resourcepermission/remove-resource-permissions",
-				_params);
+			_command.put("/resourcepermission/remove-resource-permissions", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -105,9 +97,7 @@ public class ResourcePermissionService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void setIndividualResourcePermissions(long groupId, long companyId,
-		String name, String primKey, JSONObject roleIdsToActionIds)
-		throws Exception {
+	public void setIndividualResourcePermissions(long groupId, long companyId, String name, String primKey, JSONObject roleIdsToActionIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -119,8 +109,7 @@ public class ResourcePermissionService extends BaseService {
 			_params.put("primKey", primKey);
 			_params.put("roleIdsToActionIds", roleIdsToActionIds);
 
-			_command.put("/resourcepermission/set-individual-resource-permissions",
-				_params);
+			_command.put("/resourcepermission/set-individual-resource-permissions", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -129,9 +118,7 @@ public class ResourcePermissionService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void setIndividualResourcePermissions(long groupId, long companyId,
-		String name, String primKey, long roleId, JSONArray actionIds)
-		throws Exception {
+	public void setIndividualResourcePermissions(long groupId, long companyId, String name, String primKey, long roleId, JSONArray actionIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -144,8 +131,7 @@ public class ResourcePermissionService extends BaseService {
 			_params.put("roleId", roleId);
 			_params.put("actionIds", actionIds);
 
-			_command.put("/resourcepermission/set-individual-resource-permissions",
-				_params);
+			_command.put("/resourcepermission/set-individual-resource-permissions", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -153,4 +139,5 @@ public class ResourcePermissionService extends BaseService {
 
 		session.invoke(_command);
 	}
+
 }

@@ -29,9 +29,7 @@ public class MDRActionService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addAction(long ruleGroupInstanceId, JSONObject nameMap,
-		JSONObject descriptionMap, String type, String typeSettings,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addAction(long ruleGroupInstanceId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -53,10 +51,7 @@ public class MDRActionService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addAction(long ruleGroupInstanceId, JSONObject nameMap,
-		JSONObject descriptionMap, String type,
-		JSONObject typeSettingsProperties, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addAction(long ruleGroupInstanceId, JSONObject nameMap, JSONObject descriptionMap, String type, JSONObject typeSettingsProperties, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -129,9 +124,7 @@ public class MDRActionService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateAction(long actionId, JSONObject nameMap,
-		JSONObject descriptionMap, String type, String typeSettings,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject updateAction(long actionId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -153,10 +146,7 @@ public class MDRActionService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateAction(long actionId, JSONObject nameMap,
-		JSONObject descriptionMap, String type,
-		JSONObject typeSettingsProperties, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateAction(long actionId, JSONObject nameMap, JSONObject descriptionMap, String type, JSONObject typeSettingsProperties, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -177,4 +167,5 @@ public class MDRActionService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

@@ -29,8 +29,7 @@ public class StagingService extends BaseService {
 		super(session);
 	}
 
-	public void cleanUpStagingRequest(long stagingRequestId)
-		throws Exception {
+	public void cleanUpStagingRequest(long stagingRequestId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -47,8 +46,7 @@ public class StagingService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public Long createStagingRequest(long groupId, String checksum)
-		throws Exception {
+	public Long createStagingRequest(long groupId, String checksum) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -66,9 +64,7 @@ public class StagingService extends BaseService {
 		return (Long)session.invoke(_command);
 	}
 
-	public void publishStagingRequest(long stagingRequestId,
-		boolean privateLayout, JSONObject parameterMap)
-		throws Exception {
+	public void publishStagingRequest(long stagingRequestId, boolean privateLayout, JSONObject parameterMap) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -87,8 +83,7 @@ public class StagingService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateStagingRequest(long stagingRequestId, String fileName,
-		JSONArray bytes) throws Exception {
+	public void updateStagingRequest(long stagingRequestId, String fileName, JSONArray bytes) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -107,9 +102,7 @@ public class StagingService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject validateStagingRequest(long stagingRequestId,
-		boolean privateLayout, JSONObject parameterMap)
-		throws Exception {
+	public JSONObject validateStagingRequest(long stagingRequestId, boolean privateLayout, JSONObject parameterMap) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -127,4 +120,5 @@ public class StagingService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

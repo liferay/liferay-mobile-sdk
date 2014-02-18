@@ -29,9 +29,7 @@ public class DLFileEntryTypeService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFileEntryType(long groupId, String name,
-		String description, JSONArray ddmStructureIds, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addFileEntryType(long groupId, String name, String description, JSONArray ddmStructureIds, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -52,10 +50,7 @@ public class DLFileEntryTypeService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addFileEntryType(long groupId, String fileEntryTypeKey,
-		JSONObject nameMap, JSONObject descriptionMap,
-		JSONArray ddmStructureIds, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addFileEntryType(long groupId, String fileEntryTypeKey, JSONObject nameMap, JSONObject descriptionMap, JSONArray ddmStructureIds, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -77,8 +72,7 @@ public class DLFileEntryTypeService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteFileEntryType(long fileEntryTypeId)
-		throws Exception {
+	public void deleteFileEntryType(long fileEntryTypeId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -95,8 +89,7 @@ public class DLFileEntryTypeService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject getFileEntryType(long fileEntryTypeId)
-		throws Exception {
+	public JSONObject getFileEntryType(long fileEntryTypeId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -113,8 +106,7 @@ public class DLFileEntryTypeService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getFileEntryTypes(JSONArray groupIds)
-		throws Exception {
+	public JSONArray getFileEntryTypes(JSONArray groupIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -131,8 +123,7 @@ public class DLFileEntryTypeService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getFileEntryTypes(JSONArray groupIds, int start, int end)
-		throws Exception {
+	public JSONArray getFileEntryTypes(JSONArray groupIds, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -151,8 +142,7 @@ public class DLFileEntryTypeService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getFileEntryTypesCount(JSONArray groupIds)
-		throws Exception {
+	public Integer getFileEntryTypesCount(JSONArray groupIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -169,8 +159,7 @@ public class DLFileEntryTypeService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getFolderFileEntryTypes(JSONArray groupIds, long folderId,
-		boolean inherited) throws Exception {
+	public JSONArray getFolderFileEntryTypes(JSONArray groupIds, long folderId, boolean inherited) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -189,9 +178,7 @@ public class DLFileEntryTypeService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, JSONArray groupIds,
-		String keywords, boolean includeBasicFileEntryType, int start, int end,
-		JSONObject orderByComparator) throws Exception {
+	public JSONArray search(long companyId, JSONArray groupIds, String keywords, boolean includeBasicFileEntryType, int start, int end, JSONObject orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -214,9 +201,7 @@ public class DLFileEntryTypeService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer searchCount(long companyId, JSONArray groupIds,
-		String keywords, boolean includeBasicFileEntryType)
-		throws Exception {
+	public Integer searchCount(long companyId, JSONArray groupIds, String keywords, boolean includeBasicFileEntryType) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -236,9 +221,7 @@ public class DLFileEntryTypeService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public void updateFileEntryType(long fileEntryTypeId, String name,
-		String description, JSONArray ddmStructureIds, JSONObject serviceContext)
-		throws Exception {
+	public void updateFileEntryType(long fileEntryTypeId, String name, String description, JSONArray ddmStructureIds, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -259,9 +242,7 @@ public class DLFileEntryTypeService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateFileEntryType(long fileEntryTypeId, JSONObject nameMap,
-		JSONObject descriptionMap, JSONArray ddmStructureIds,
-		JSONObject serviceContext) throws Exception {
+	public void updateFileEntryType(long fileEntryTypeId, JSONObject nameMap, JSONObject descriptionMap, JSONArray ddmStructureIds, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -281,4 +262,5 @@ public class DLFileEntryTypeService extends BaseService {
 
 		session.invoke(_command);
 	}
+
 }

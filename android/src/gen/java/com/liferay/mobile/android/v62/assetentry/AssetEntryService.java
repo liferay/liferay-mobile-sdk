@@ -29,8 +29,7 @@ public class AssetEntryService extends BaseService {
 		super(session);
 	}
 
-	public JSONArray getCompanyEntries(long companyId, int start, int end)
-		throws Exception {
+	public JSONArray getCompanyEntries(long companyId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -49,8 +48,7 @@ public class AssetEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getCompanyEntriesCount(long companyId)
-		throws Exception {
+	public Integer getCompanyEntriesCount(long companyId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -67,8 +65,7 @@ public class AssetEntryService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getEntries(JSONObject entryQuery)
-		throws Exception {
+	public JSONArray getEntries(JSONObject entryQuery) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -85,8 +82,7 @@ public class AssetEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getEntriesCount(JSONObject entryQuery)
-		throws Exception {
+	public Integer getEntriesCount(JSONObject entryQuery) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -120,8 +116,7 @@ public class AssetEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject incrementViewCounter(String className, long classPK)
-		throws Exception {
+	public JSONObject incrementViewCounter(String className, long classPK) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -139,12 +134,7 @@ public class AssetEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateEntry(long groupId, String className, long classPK,
-		String classUuid, long classTypeId, JSONArray categoryIds,
-		JSONArray tagNames, boolean visible, long startDate, long endDate,
-		long expirationDate, String mimeType, String title, String description,
-		String summary, String url, String layoutUuid, int height, int width,
-		JSONObject priority, boolean sync) throws Exception {
+	public JSONObject updateEntry(long groupId, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, JSONObject priority, boolean sync) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -181,13 +171,7 @@ public class AssetEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateEntry(long groupId, String className, long classPK,
-		String classUuid, long classTypeId, JSONArray categoryIds,
-		JSONArray tagNames, boolean visible, long startDate, long endDate,
-		long publishDate, long expirationDate, String mimeType, String title,
-		String description, String summary, String url, String layoutUuid,
-		int height, int width, JSONObject priority, boolean sync)
-		throws Exception {
+	public JSONObject updateEntry(long groupId, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long publishDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, JSONObject priority, boolean sync) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -225,13 +209,7 @@ public class AssetEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateEntry(long groupId, long createDate,
-		long modifiedDate, String className, long classPK, String classUuid,
-		long classTypeId, JSONArray categoryIds, JSONArray tagNames,
-		boolean visible, long startDate, long endDate, long expirationDate,
-		String mimeType, String title, String description, String summary,
-		String url, String layoutUuid, int height, int width,
-		JSONObject priority, boolean sync) throws Exception {
+	public JSONObject updateEntry(long groupId, long createDate, long modifiedDate, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, JSONObject priority, boolean sync) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -269,4 +247,5 @@ public class AssetEntryService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

@@ -29,8 +29,7 @@ public class DLFileVersionService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject getFileVersion(long fileVersionId)
-		throws Exception {
+	public JSONObject getFileVersion(long fileVersionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -47,8 +46,7 @@ public class DLFileVersionService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getFileVersions(long fileEntryId, int status)
-		throws Exception {
+	public JSONArray getFileVersions(long fileEntryId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -66,8 +64,7 @@ public class DLFileVersionService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getFileVersionsCount(long fileEntryId, int status)
-		throws Exception {
+	public Integer getFileVersionsCount(long fileEntryId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -85,8 +82,7 @@ public class DLFileVersionService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONObject getLatestFileVersion(long fileEntryId)
-		throws Exception {
+	public JSONObject getLatestFileVersion(long fileEntryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -102,4 +98,5 @@ public class DLFileVersionService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

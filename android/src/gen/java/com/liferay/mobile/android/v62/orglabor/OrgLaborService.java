@@ -29,10 +29,7 @@ public class OrgLaborService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addOrgLabor(long organizationId, int typeId, int sunOpen,
-		int sunClose, int monOpen, int monClose, int tueOpen, int tueClose,
-		int wedOpen, int wedClose, int thuOpen, int thuClose, int friOpen,
-		int friClose, int satOpen, int satClose) throws Exception {
+	public JSONObject addOrgLabor(long organizationId, int typeId, int sunOpen, int sunClose, int monOpen, int monClose, int tueOpen, int tueClose, int wedOpen, int wedClose, int thuOpen, int thuClose, int friOpen, int friClose, int satOpen, int satClose) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -98,8 +95,7 @@ public class OrgLaborService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getOrgLabors(long organizationId)
-		throws Exception {
+	public JSONArray getOrgLabors(long organizationId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -116,10 +112,7 @@ public class OrgLaborService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject updateOrgLabor(long orgLaborId, int typeId, int sunOpen,
-		int sunClose, int monOpen, int monClose, int tueOpen, int tueClose,
-		int wedOpen, int wedClose, int thuOpen, int thuClose, int friOpen,
-		int friClose, int satOpen, int satClose) throws Exception {
+	public JSONObject updateOrgLabor(long orgLaborId, int typeId, int sunOpen, int sunClose, int monOpen, int monClose, int tueOpen, int tueClose, int wedOpen, int wedClose, int thuOpen, int thuClose, int friOpen, int friClose, int satOpen, int satClose) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -150,4 +143,5 @@ public class OrgLaborService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

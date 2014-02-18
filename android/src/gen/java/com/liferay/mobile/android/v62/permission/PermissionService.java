@@ -29,8 +29,7 @@ public class PermissionService extends BaseService {
 		super(session);
 	}
 
-	public void checkPermission(long groupId, String name, String primKey)
-		throws Exception {
+	public void checkPermission(long groupId, String name, String primKey) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -48,4 +47,5 @@ public class PermissionService extends BaseService {
 
 		session.invoke(_command);
 	}
+
 }

@@ -29,8 +29,7 @@ public class EmailAddressService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addEmailAddress(String className, long classPK,
-		String address, int typeId, boolean primary) throws Exception {
+	public JSONObject addEmailAddress(String className, long classPK, String address, int typeId, boolean primary) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -51,9 +50,7 @@ public class EmailAddressService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addEmailAddress(String className, long classPK,
-		String address, int typeId, boolean primary, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addEmailAddress(String className, long classPK, String address, int typeId, boolean primary, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -75,8 +72,7 @@ public class EmailAddressService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteEmailAddress(long emailAddressId)
-		throws Exception {
+	public void deleteEmailAddress(long emailAddressId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -93,8 +89,7 @@ public class EmailAddressService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject getEmailAddress(long emailAddressId)
-		throws Exception {
+	public JSONObject getEmailAddress(long emailAddressId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -111,8 +106,7 @@ public class EmailAddressService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getEmailAddresses(String className, long classPK)
-		throws Exception {
+	public JSONArray getEmailAddresses(String className, long classPK) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -130,8 +124,7 @@ public class EmailAddressService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject updateEmailAddress(long emailAddressId, String address,
-		int typeId, boolean primary) throws Exception {
+	public JSONObject updateEmailAddress(long emailAddressId, String address, int typeId, boolean primary) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -150,4 +143,5 @@ public class EmailAddressService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

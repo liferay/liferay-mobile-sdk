@@ -29,8 +29,7 @@ public class RegionService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addRegion(long countryId, String regionCode, String name,
-		boolean active) throws Exception {
+	public JSONObject addRegion(long countryId, String regionCode, String name, boolean active) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -50,8 +49,7 @@ public class RegionService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject fetchRegion(long countryId, String regionCode)
-		throws Exception {
+	public JSONObject fetchRegion(long countryId, String regionCode) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -86,8 +84,7 @@ public class RegionService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getRegion(long countryId, String regionCode)
-		throws Exception {
+	public JSONObject getRegion(long countryId, String regionCode) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -154,8 +151,7 @@ public class RegionService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getRegions(long countryId, boolean active)
-		throws Exception {
+	public JSONArray getRegions(long countryId, boolean active) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -172,4 +168,5 @@ public class RegionService extends BaseService {
 
 		return (JSONArray)session.invoke(_command);
 	}
+
 }

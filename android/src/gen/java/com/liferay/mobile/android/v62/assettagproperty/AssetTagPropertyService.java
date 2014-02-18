@@ -29,8 +29,7 @@ public class AssetTagPropertyService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addTagProperty(long tagId, String key, String value)
-		throws Exception {
+	public JSONObject addTagProperty(long tagId, String key, String value) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -83,8 +82,7 @@ public class AssetTagPropertyService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getTagPropertyValues(long companyId, String key)
-		throws Exception {
+	public JSONArray getTagPropertyValues(long companyId, String key) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -102,8 +100,7 @@ public class AssetTagPropertyService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject updateTagProperty(long tagPropertyId, String key,
-		String value) throws Exception {
+	public JSONObject updateTagProperty(long tagPropertyId, String key, String value) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -121,4 +118,5 @@ public class AssetTagPropertyService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

@@ -29,9 +29,7 @@ public class SCFrameworkVersionService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFrameworkVersion(String name, String url,
-		boolean active, int priority, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addFrameworkVersion(String name, String url, boolean active, int priority, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -52,8 +50,7 @@ public class SCFrameworkVersionService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteFrameworkVersion(long frameworkVersionId)
-		throws Exception {
+	public void deleteFrameworkVersion(long frameworkVersionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -70,8 +67,7 @@ public class SCFrameworkVersionService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject getFrameworkVersion(long frameworkVersionId)
-		throws Exception {
+	public JSONObject getFrameworkVersion(long frameworkVersionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -88,8 +84,7 @@ public class SCFrameworkVersionService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getFrameworkVersions(long groupId, boolean active)
-		throws Exception {
+	public JSONArray getFrameworkVersions(long groupId, boolean active) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -107,8 +102,7 @@ public class SCFrameworkVersionService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getFrameworkVersions(long groupId, boolean active,
-		int start, int end) throws Exception {
+	public JSONArray getFrameworkVersions(long groupId, boolean active, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -128,9 +122,7 @@ public class SCFrameworkVersionService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject updateFrameworkVersion(long frameworkVersionId,
-		String name, String url, boolean active, int priority)
-		throws Exception {
+	public JSONObject updateFrameworkVersion(long frameworkVersionId, String name, String url, boolean active, int priority) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -150,4 +142,5 @@ public class SCFrameworkVersionService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

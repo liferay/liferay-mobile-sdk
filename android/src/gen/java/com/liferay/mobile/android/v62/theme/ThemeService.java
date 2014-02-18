@@ -46,7 +46,7 @@ public class ThemeService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject getWarThemes() throws Exception {
+	public JSONArray getWarThemes() throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -58,6 +58,7 @@ public class ThemeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONArray)session.invoke(_command);
 	}
+
 }

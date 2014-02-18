@@ -45,4 +45,5 @@ public class ImageService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

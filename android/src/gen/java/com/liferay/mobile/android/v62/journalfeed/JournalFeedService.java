@@ -29,13 +29,7 @@ public class JournalFeedService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFeed(long groupId, String feedId, boolean autoFeedId,
-		String name, String description, String type, String structureId,
-		String templateId, String rendererTemplateId, int delta,
-		String orderByCol, String orderByType, String targetLayoutFriendlyUrl,
-		String targetPortletId, String contentField, String feedType,
-		double feedVersion, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addFeed(long groupId, String feedId, boolean autoFeedId, String name, String description, String type, String structureId, String templateId, String rendererTemplateId, int delta, String orderByCol, String orderByType, String targetLayoutFriendlyUrl, String targetPortletId, String contentField, String feedType, double feedVersion, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -86,8 +80,7 @@ public class JournalFeedService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteFeed(long groupId, String feedId)
-		throws Exception {
+	public void deleteFeed(long groupId, String feedId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -122,8 +115,7 @@ public class JournalFeedService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getFeed(long groupId, String feedId)
-		throws Exception {
+	public JSONObject getFeed(long groupId, String feedId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -141,13 +133,7 @@ public class JournalFeedService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateFeed(long groupId, String feedId, String name,
-		String description, String type, String structureId, String templateId,
-		String rendererTemplateId, int delta, String orderByCol,
-		String orderByType, String targetLayoutFriendlyUrl,
-		String targetPortletId, String contentField, String feedType,
-		double feedVersion, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateFeed(long groupId, String feedId, String name, String description, String type, String structureId, String templateId, String rendererTemplateId, int delta, String orderByCol, String orderByType, String targetLayoutFriendlyUrl, String targetPortletId, String contentField, String feedType, double feedVersion, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -179,4 +165,5 @@ public class JournalFeedService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

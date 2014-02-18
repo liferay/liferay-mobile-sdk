@@ -29,8 +29,7 @@ public class ShoppingItemService extends BaseService {
 		super(session);
 	}
 
-	public void addBookItems(long groupId, long categoryId, JSONArray isbns)
-		throws Exception {
+	public void addBookItems(long groupId, long categoryId, JSONArray isbns) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -49,15 +48,7 @@ public class ShoppingItemService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject addItem(long groupId, long categoryId, String sku,
-		String name, String description, String properties,
-		String fieldsQuantities, boolean requiresShipping, int stockQuantity,
-		boolean featured, JSONObject sale, boolean smallImage,
-		String smallImageURL, JSONObject smallFile, boolean mediumImage,
-		String mediumImageURL, JSONObject mediumFile, boolean largeImage,
-		String largeImageURL, JSONObject largeFile, JSONArray itemFields,
-		JSONArray itemPrices, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addItem(long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, JSONObject sale, boolean smallImage, String smallImageURL, JSONObject smallFile, boolean mediumImage, String mediumImageURL, JSONObject mediumFile, boolean largeImage, String largeImageURL, JSONObject largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -113,8 +104,7 @@ public class ShoppingItemService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public Integer getCategoriesItemsCount(long groupId, JSONArray categoryIds)
-		throws Exception {
+	public Integer getCategoriesItemsCount(long groupId, JSONArray categoryIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -149,8 +139,7 @@ public class ShoppingItemService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getItems(long groupId, long categoryId)
-		throws Exception {
+	public JSONArray getItems(long groupId, long categoryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -168,8 +157,7 @@ public class ShoppingItemService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getItems(long groupId, long categoryId, int start,
-		int end, JSONObject obc) throws Exception {
+	public JSONArray getItems(long groupId, long categoryId, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -190,8 +178,7 @@ public class ShoppingItemService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getItemsCount(long groupId, long categoryId)
-		throws Exception {
+	public Integer getItemsCount(long groupId, long categoryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -209,8 +196,7 @@ public class ShoppingItemService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getItemsPrevAndNext(long itemId, JSONObject obc)
-		throws Exception {
+	public JSONArray getItemsPrevAndNext(long itemId, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -228,15 +214,7 @@ public class ShoppingItemService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject updateItem(long itemId, long groupId, long categoryId,
-		String sku, String name, String description, String properties,
-		String fieldsQuantities, boolean requiresShipping, int stockQuantity,
-		boolean featured, JSONObject sale, boolean smallImage,
-		String smallImageURL, JSONObject smallFile, boolean mediumImage,
-		String mediumImageURL, JSONObject mediumFile, boolean largeImage,
-		String largeImageURL, JSONObject largeFile, JSONArray itemFields,
-		JSONArray itemPrices, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateItem(long itemId, long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, JSONObject sale, boolean smallImage, String smallImageURL, JSONObject smallFile, boolean mediumImage, String mediumImageURL, JSONObject mediumFile, boolean largeImage, String largeImageURL, JSONObject largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -275,4 +253,5 @@ public class ShoppingItemService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

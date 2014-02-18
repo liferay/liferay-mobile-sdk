@@ -29,8 +29,7 @@ public class PollsVoteService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addVote(long questionId, long choiceId,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addVote(long questionId, long choiceId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -48,4 +47,5 @@ public class PollsVoteService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

@@ -29,8 +29,7 @@ public class DLFileEntryService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject cancelCheckOut(long fileEntryId)
-		throws Exception {
+	public JSONObject cancelCheckOut(long fileEntryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -47,8 +46,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void checkInFileEntry(long fileEntryId, String lockUuid)
-		throws Exception {
+	public void checkInFileEntry(long fileEntryId, String lockUuid) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -66,8 +64,7 @@ public class DLFileEntryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void checkInFileEntry(long fileEntryId, String lockUuid,
-		JSONObject serviceContext) throws Exception {
+	public void checkInFileEntry(long fileEntryId, String lockUuid, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -86,8 +83,7 @@ public class DLFileEntryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void checkInFileEntry(long fileEntryId, boolean major,
-		String changeLog, JSONObject serviceContext) throws Exception {
+	public void checkInFileEntry(long fileEntryId, boolean major, String changeLog, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -107,8 +103,7 @@ public class DLFileEntryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject checkOutFileEntry(long fileEntryId)
-		throws Exception {
+	public JSONObject checkOutFileEntry(long fileEntryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -125,8 +120,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject checkOutFileEntry(long fileEntryId,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject checkOutFileEntry(long fileEntryId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -144,8 +138,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject checkOutFileEntry(long fileEntryId, String owner,
-		long expirationTime) throws Exception {
+	public JSONObject checkOutFileEntry(long fileEntryId, String owner, long expirationTime) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -164,9 +157,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject checkOutFileEntry(long fileEntryId, String owner,
-		long expirationTime, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject checkOutFileEntry(long fileEntryId, String owner, long expirationTime, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -186,9 +177,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject copyFileEntry(long groupId, long repositoryId,
-		long fileEntryId, long destFolderId, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject copyFileEntry(long groupId, long repositoryId, long fileEntryId, long destFolderId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -226,8 +215,7 @@ public class DLFileEntryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteFileEntry(long groupId, long folderId, String title)
-		throws Exception {
+	public void deleteFileEntry(long groupId, long folderId, String title) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -246,8 +234,7 @@ public class DLFileEntryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteFileVersion(long fileEntryId, String version)
-		throws Exception {
+	public void deleteFileVersion(long fileEntryId, String version) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -265,8 +252,7 @@ public class DLFileEntryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject fetchFileEntryByImageId(long imageId)
-		throws Exception {
+	public JSONObject fetchFileEntryByImageId(long imageId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -283,8 +269,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getFileEntries(long groupId, long folderId, int start,
-		int end, JSONObject obc) throws Exception {
+	public JSONArray getFileEntries(long groupId, long folderId, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -305,9 +290,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getFileEntries(long groupId, long folderId,
-		long fileEntryTypeId, int start, int end, JSONObject obc)
-		throws Exception {
+	public JSONArray getFileEntries(long groupId, long folderId, long fileEntryTypeId, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -329,9 +312,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getFileEntries(long groupId, long folderId,
-		JSONArray mimeTypes, int start, int end, JSONObject obc)
-		throws Exception {
+	public JSONArray getFileEntries(long groupId, long folderId, JSONArray mimeTypes, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -353,8 +334,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getFileEntries(long groupId, long folderId, int status,
-		int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getFileEntries(long groupId, long folderId, int status, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -376,8 +356,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getFileEntriesCount(long groupId, long folderId)
-		throws Exception {
+	public Integer getFileEntriesCount(long groupId, long folderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -395,8 +374,7 @@ public class DLFileEntryService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getFileEntriesCount(long groupId, long folderId,
-		long fileEntryTypeId) throws Exception {
+	public Integer getFileEntriesCount(long groupId, long folderId, long fileEntryTypeId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -415,8 +393,7 @@ public class DLFileEntryService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getFileEntriesCount(long groupId, long folderId,
-		JSONArray mimeTypes) throws Exception {
+	public Integer getFileEntriesCount(long groupId, long folderId, JSONArray mimeTypes) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -435,8 +412,7 @@ public class DLFileEntryService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getFileEntriesCount(long groupId, long folderId, int status)
-		throws Exception {
+	public Integer getFileEntriesCount(long groupId, long folderId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -472,8 +448,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getFileEntry(long groupId, long folderId, String title)
-		throws Exception {
+	public JSONObject getFileEntry(long groupId, long folderId, String title) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -492,8 +467,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getFileEntryByUuidAndGroupId(String uuid, long groupId)
-		throws Exception {
+	public JSONObject getFileEntryByUuidAndGroupId(String uuid, long groupId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -502,8 +476,7 @@ public class DLFileEntryService extends BaseService {
 			_params.put("uuid", uuid);
 			_params.put("groupId", groupId);
 
-			_command.put("/dlfileentry/get-file-entry-by-uuid-and-group-id",
-				_params);
+			_command.put("/dlfileentry/get-file-entry-by-uuid-and-group-id", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -512,8 +485,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getFileEntryLock(long fileEntryId)
-		throws Exception {
+	public JSONObject getFileEntryLock(long fileEntryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -530,8 +502,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public Integer getFoldersFileEntriesCount(long groupId,
-		JSONArray folderIds, int status) throws Exception {
+	public Integer getFoldersFileEntriesCount(long groupId, JSONArray folderIds, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -550,9 +521,7 @@ public class DLFileEntryService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getGroupFileEntries(long groupId, long userId,
-		long rootFolderId, int start, int end, JSONObject obc)
-		throws Exception {
+	public JSONArray getGroupFileEntries(long groupId, long userId, long rootFolderId, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -574,9 +543,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getGroupFileEntries(long groupId, long userId,
-		long rootFolderId, JSONArray mimeTypes, int status, int start, int end,
-		JSONObject obc) throws Exception {
+	public JSONArray getGroupFileEntries(long groupId, long userId, long rootFolderId, JSONArray mimeTypes, int status, int start, int end, JSONObject obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -600,8 +567,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getGroupFileEntriesCount(long groupId, long userId,
-		long rootFolderId) throws Exception {
+	public Integer getGroupFileEntriesCount(long groupId, long userId, long rootFolderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -620,9 +586,7 @@ public class DLFileEntryService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getGroupFileEntriesCount(long groupId, long userId,
-		long rootFolderId, JSONArray mimeTypes, int status)
-		throws Exception {
+	public Integer getGroupFileEntriesCount(long groupId, long userId, long rootFolderId, JSONArray mimeTypes, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -660,8 +624,7 @@ public class DLFileEntryService extends BaseService {
 		return (Boolean)session.invoke(_command);
 	}
 
-	public Boolean isFileEntryCheckedOut(long fileEntryId)
-		throws Exception {
+	public Boolean isFileEntryCheckedOut(long fileEntryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -678,8 +641,7 @@ public class DLFileEntryService extends BaseService {
 		return (Boolean)session.invoke(_command);
 	}
 
-	public JSONObject moveFileEntry(long fileEntryId, long newFolderId,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject moveFileEntry(long fileEntryId, long newFolderId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -698,8 +660,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject refreshFileEntryLock(String lockUuid, long companyId,
-		long expirationTime) throws Exception {
+	public JSONObject refreshFileEntryLock(String lockUuid, long companyId, long expirationTime) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -718,8 +679,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void revertFileEntry(long fileEntryId, String version,
-		JSONObject serviceContext) throws Exception {
+	public void revertFileEntry(long fileEntryId, String version, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -738,8 +698,7 @@ public class DLFileEntryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject search(long groupId, long creatorUserId, int status,
-		int start, int end) throws Exception {
+	public JSONObject search(long groupId, long creatorUserId, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -760,9 +719,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject search(long groupId, long creatorUserId, long folderId,
-		JSONArray mimeTypes, int status, int start, int end)
-		throws Exception {
+	public JSONObject search(long groupId, long creatorUserId, long folderId, JSONArray mimeTypes, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -785,8 +742,7 @@ public class DLFileEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public Boolean verifyFileEntryCheckOut(long fileEntryId, String lockUuid)
-		throws Exception {
+	public Boolean verifyFileEntryCheckOut(long fileEntryId, String lockUuid) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -804,8 +760,7 @@ public class DLFileEntryService extends BaseService {
 		return (Boolean)session.invoke(_command);
 	}
 
-	public Boolean verifyFileEntryLock(long fileEntryId, String lockUuid)
-		throws Exception {
+	public Boolean verifyFileEntryLock(long fileEntryId, String lockUuid) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -822,4 +777,5 @@ public class DLFileEntryService extends BaseService {
 
 		return (Boolean)session.invoke(_command);
 	}
+
 }

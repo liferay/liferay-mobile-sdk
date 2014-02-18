@@ -46,8 +46,7 @@ public class MBThreadService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONArray getGroupThreads(long groupId, long userId, int status,
-		int start, int end) throws Exception {
+	public JSONArray getGroupThreads(long groupId, long userId, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -68,9 +67,7 @@ public class MBThreadService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getGroupThreads(long groupId, long userId,
-		long modifiedDate, int status, int start, int end)
-		throws Exception {
+	public JSONArray getGroupThreads(long groupId, long userId, long modifiedDate, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -92,8 +89,7 @@ public class MBThreadService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getGroupThreads(long groupId, long userId, int status,
-		boolean subscribed, int start, int end) throws Exception {
+	public JSONArray getGroupThreads(long groupId, long userId, int status, boolean subscribed, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -115,9 +111,7 @@ public class MBThreadService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getGroupThreads(long groupId, long userId, int status,
-		boolean subscribed, boolean includeAnonymous, int start, int end)
-		throws Exception {
+	public JSONArray getGroupThreads(long groupId, long userId, int status, boolean subscribed, boolean includeAnonymous, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -140,8 +134,7 @@ public class MBThreadService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getGroupThreadsCount(long groupId, long userId, int status)
-		throws Exception {
+	public Integer getGroupThreadsCount(long groupId, long userId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -160,8 +153,7 @@ public class MBThreadService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getGroupThreadsCount(long groupId, long userId,
-		long modifiedDate, int status) throws Exception {
+	public Integer getGroupThreadsCount(long groupId, long userId, long modifiedDate, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -181,8 +173,7 @@ public class MBThreadService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getGroupThreadsCount(long groupId, long userId, int status,
-		boolean subscribed) throws Exception {
+	public Integer getGroupThreadsCount(long groupId, long userId, int status, boolean subscribed) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -202,8 +193,7 @@ public class MBThreadService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getGroupThreadsCount(long groupId, long userId, int status,
-		boolean subscribed, boolean includeAnonymous) throws Exception {
+	public Integer getGroupThreadsCount(long groupId, long userId, int status, boolean subscribed, boolean includeAnonymous) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -224,8 +214,7 @@ public class MBThreadService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getThreads(long groupId, long categoryId, int status,
-		int start, int end) throws Exception {
+	public JSONArray getThreads(long groupId, long categoryId, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -246,8 +235,7 @@ public class MBThreadService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getThreadsCount(long groupId, long categoryId, int status)
-		throws Exception {
+	public Integer getThreadsCount(long groupId, long categoryId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -283,8 +271,7 @@ public class MBThreadService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject moveThread(long categoryId, long threadId)
-		throws Exception {
+	public JSONObject moveThread(long categoryId, long threadId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -302,8 +289,7 @@ public class MBThreadService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject moveThreadFromTrash(long categoryId, long threadId)
-		throws Exception {
+	public JSONObject moveThreadFromTrash(long categoryId, long threadId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -321,8 +307,7 @@ public class MBThreadService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject moveThreadToTrash(long threadId)
-		throws Exception {
+	public JSONObject moveThreadToTrash(long threadId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -356,8 +341,7 @@ public class MBThreadService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject search(long groupId, long creatorUserId, int status,
-		int start, int end) throws Exception {
+	public JSONObject search(long groupId, long creatorUserId, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -378,8 +362,7 @@ public class MBThreadService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject search(long groupId, long creatorUserId, long startDate,
-		long endDate, int status, int start, int end) throws Exception {
+	public JSONObject search(long groupId, long creatorUserId, long startDate, long endDate, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -402,8 +385,7 @@ public class MBThreadService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject splitThread(long messageId, String subject,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject splitThread(long messageId, String subject, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -438,4 +420,5 @@ public class MBThreadService extends BaseService {
 
 		session.invoke(_command);
 	}
+
 }

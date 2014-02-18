@@ -46,8 +46,7 @@ public class BlogsEntryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONArray getCompanyEntries(long companyId, long displayDate,
-		int status, int max) throws Exception {
+	public JSONArray getCompanyEntries(long companyId, long displayDate, int status, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -67,10 +66,7 @@ public class BlogsEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public String getCompanyEntriesRss(long companyId, long displayDate,
-		int status, int max, String type, double version, String displayStyle,
-		String feedURL, String entryURL, JSONObject themeDisplay)
-		throws Exception {
+	public String getCompanyEntriesRss(long companyId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObject themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -113,8 +109,7 @@ public class BlogsEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getEntry(long groupId, String urlTitle)
-		throws Exception {
+	public JSONObject getEntry(long groupId, String urlTitle) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -132,8 +127,7 @@ public class BlogsEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getGroupEntries(long groupId, int status, int max)
-		throws Exception {
+	public JSONArray getGroupEntries(long groupId, int status, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -152,8 +146,7 @@ public class BlogsEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getGroupEntries(long groupId, long displayDate,
-		int status, int max) throws Exception {
+	public JSONArray getGroupEntries(long groupId, long displayDate, int status, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -173,8 +166,7 @@ public class BlogsEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getGroupEntries(long groupId, int status, int start,
-		int end) throws Exception {
+	public JSONArray getGroupEntries(long groupId, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -194,8 +186,7 @@ public class BlogsEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getGroupEntries(long groupId, long displayDate,
-		int status, int start, int end) throws Exception {
+	public JSONArray getGroupEntries(long groupId, long displayDate, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -216,8 +207,7 @@ public class BlogsEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getGroupEntriesCount(long groupId, int status)
-		throws Exception {
+	public Integer getGroupEntriesCount(long groupId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -235,8 +225,7 @@ public class BlogsEntryService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public Integer getGroupEntriesCount(long groupId, long displayDate,
-		int status) throws Exception {
+	public Integer getGroupEntriesCount(long groupId, long displayDate, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -255,10 +244,7 @@ public class BlogsEntryService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public String getGroupEntriesRss(long groupId, long displayDate,
-		int status, int max, String type, double version, String displayStyle,
-		String feedURL, String entryURL, JSONObject themeDisplay)
-		throws Exception {
+	public String getGroupEntriesRss(long groupId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObject themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -284,8 +270,7 @@ public class BlogsEntryService extends BaseService {
 		return (String)session.invoke(_command);
 	}
 
-	public JSONArray getGroupsEntries(long companyId, long groupId,
-		long displayDate, int status, int max) throws Exception {
+	public JSONArray getGroupsEntries(long companyId, long groupId, long displayDate, int status, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -306,8 +291,7 @@ public class BlogsEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getOrganizationEntries(long organizationId,
-		long displayDate, int status, int max) throws Exception {
+	public JSONArray getOrganizationEntries(long organizationId, long displayDate, int status, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -327,10 +311,7 @@ public class BlogsEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public String getOrganizationEntriesRss(long organizationId,
-		long displayDate, int status, int max, String type, double version,
-		String displayStyle, String feedURL, String entryURL,
-		JSONObject themeDisplay) throws Exception {
+	public String getOrganizationEntriesRss(long organizationId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObject themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -423,4 +404,5 @@ public class BlogsEntryService extends BaseService {
 
 		session.invoke(_command);
 	}
+
 }

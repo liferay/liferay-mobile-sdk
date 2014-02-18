@@ -29,9 +29,7 @@ public class DDLRecordService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addRecord(long groupId, long recordSetId,
-		int displayIndex, JSONObject fieldsMap, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addRecord(long groupId, long recordSetId, int displayIndex, JSONObject fieldsMap, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -52,8 +50,7 @@ public class DDLRecordService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject deleteRecordLocale(long recordId, String locale,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject deleteRecordLocale(long recordId, String locale, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -89,9 +86,7 @@ public class DDLRecordService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateRecord(long recordId, int displayIndex,
-		JSONObject fieldsMap, boolean mergeFields, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateRecord(long recordId, int displayIndex, JSONObject fieldsMap, boolean mergeFields, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -112,9 +107,7 @@ public class DDLRecordService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateRecord(long recordId, boolean majorVersion,
-		int displayIndex, JSONObject fields, boolean mergeFields,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject updateRecord(long recordId, boolean majorVersion, int displayIndex, JSONObject fields, boolean mergeFields, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -135,4 +128,5 @@ public class DDLRecordService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }

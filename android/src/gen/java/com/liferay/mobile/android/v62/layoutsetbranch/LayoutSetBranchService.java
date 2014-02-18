@@ -29,10 +29,7 @@ public class LayoutSetBranchService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addLayoutSetBranch(long groupId, boolean privateLayout,
-		String name, String description, boolean master,
-		long copyLayoutSetBranchId, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addLayoutSetBranch(long groupId, boolean privateLayout, String name, String description, boolean master, long copyLayoutSetBranchId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -55,8 +52,7 @@ public class LayoutSetBranchService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteLayoutSetBranch(long layoutSetBranchId)
-		throws Exception {
+	public void deleteLayoutSetBranch(long layoutSetBranchId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -73,8 +69,7 @@ public class LayoutSetBranchService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONArray getLayoutSetBranches(long groupId, boolean privateLayout)
-		throws Exception {
+	public JSONArray getLayoutSetBranches(long groupId, boolean privateLayout) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -92,9 +87,7 @@ public class LayoutSetBranchService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject mergeLayoutSetBranch(long layoutSetBranchId,
-		long mergeLayoutSetBranchId, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject mergeLayoutSetBranch(long layoutSetBranchId, long mergeLayoutSetBranchId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -113,9 +106,7 @@ public class LayoutSetBranchService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateLayoutSetBranch(long groupId,
-		long layoutSetBranchId, String name, String description,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject updateLayoutSetBranch(long groupId, long layoutSetBranchId, String name, String description, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -135,4 +126,5 @@ public class LayoutSetBranchService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }
