@@ -1,9 +1,5 @@
 apply plugin: 'java'
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.2.5'
     compile group: 'org.json', name: 'json', version: '20140107'
