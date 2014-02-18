@@ -17,3 +17,7 @@ allprojects {
         workingDir = projectDir
     }
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.10'
+}
