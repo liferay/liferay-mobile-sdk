@@ -17,16 +17,6 @@
 	<property file="build.${env.HOSTNAME}.properties" />
 	<property file="build.properties" />
 
-	<path id="portal.classpath">
-		<pathelement location="${portal.dir}/portal-impl/classes" />
-		<pathelement location="${portal.dir}/portal-service/classes" />
-		<pathelement location="${portal.dir}/portal-web/docroot/WEB-INF/classes" />
-		<pathelement location="${portal.dir}/util-java/classes" />
-		<fileset dir="${portal.dir}/lib/development" includes="*.jar" />
-		<fileset dir="${portal.dir}/lib/global" includes="*.jar" />
-		<fileset dir="${portal.dir}/lib/portal" includes="*.jar" />
-	</path>
-
 	<property name="destination" value="${project.dir}/${destination}" />
 
 	<path id="builder.classpath">
@@ -41,7 +31,7 @@
 
 		<copy file="src/com/liferay/mobile/sdk/android/service.vm"
 			todir="${classes.dir}/com/liferay/mobile/sdk/android" />
-		
+
 		<copy file="src/macros.vm" todir="${classes.dir}" />
 
 		<copy file="src/com/liferay/mobile/sdk/ios/h.vm"
@@ -80,20 +70,6 @@
 			<arg value="package=${package}" />
 			<arg value="destination=${destination}" />
 		</java>
-	</target>
-
-	<target name="format-source">
-		<java
-			classname="com.liferay.portal.tools.sourceformatter.SourceFormatter"
-			classpathref="portal.classpath"
-			dir="${src.dir}"
-			fork="true"
-			newenvironment="true"
-		>
-			<jvmarg value="-Xmx128m" />
-		</java>
-
-		<delete file="ServiceBuilder.temp" />
 	</target>
 
 	<target name="jar" depends="compile">

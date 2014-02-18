@@ -112,12 +112,6 @@
 		</javac>
 	</target>
 
-	<target name="format-source-common">
-		<antcall target="build-common.format-source">
-			<param name="src.dir" value="${android.dir}" />
-		</antcall>
-	</target>
-
 	<target name="format-source-gen">
 		<jalopy fileformat="unix"
 				convention="jalopy.xml">
@@ -126,12 +120,6 @@
 				<include name="**/*.java" />
 			</fileset>
 		</jalopy>
-	</target>
-
-	<target name="format-source-test">
-		<antcall target="build-common.format-source">
-			<param name="src.dir" value="${test.dir}" />
-		</antcall>
 	</target>
 
 	<taskdef name="jalopy" classname="de.hunsicker.jalopy.plugin.ant.AntPlugin">
