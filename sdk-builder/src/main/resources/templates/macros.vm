@@ -1,4 +1,23 @@
-#macro(signature $action $suffix)
+#macro(javaMethodSignature $action)
+	#set ($returnType = $languageUtil.getReturnType($action.response))
+	#set ($methodName = $languageUtil.getMethodName($action.path))
+	#set ($parameters = $action.parameters)
+	#set ($parameterList = "")
+
+	#foreach ($parameter in $parameters)
+		#set ($parameterName = $parameter.name)
+		#set ($parameterType = $languageUtil.getType($parameter.type))
+		#set ($parameterList = "$parameterList$parameterType $parameterName")
+
+		#if ($foreach.hasNext)
+			#set ($parameterList = "$parameterList, ")
+		#end
+	#end
+
+	public $returnType $methodName($parameterList) throws Exception {
+#end
+
+#macro(objectiveCMethodSignature $action $suffix)
 	#set ($returnType = $languageUtil.getReturnType($action.response))
 	#set ($methodName = $languageUtil.getMethodName($action.path))
 	#set ($parameters = $action.parameters)

@@ -32,7 +32,7 @@ ${esc.h}import "${className}.h"
 #foreach ($action in $actions)
 	#set ($parameters = $action.parameters)
 
-	#signature($action " {")
+	#objectiveCMethodSignature($action " {")
 
 	##t	NSDictionary *_params = @{
 

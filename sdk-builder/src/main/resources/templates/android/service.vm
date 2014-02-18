@@ -44,23 +44,10 @@ public class $className extends BaseService {
 ##n
 
 #foreach ($action in $actions)
-	#set ($returnType = $languageUtil.getReturnType($action.response))
-	#set ($methodName = $languageUtil.getMethodName($action.path))
 	#set ($parameters = $action.parameters)
 
-	#set ($parameterList = "")
+	##t	#javaMethodSignature($action)
 
-	#foreach ($parameter in $parameters)
-		#set ($parameterName = $parameter.name)
-		#set ($parameterType = $languageUtil.getType($parameter.type))
-		#set ($parameterList = "$parameterList$parameterType $parameterName")
-
-		#if ($foreach.hasNext)
-			#set ($parameterList = "$parameterList, ")
-		#end
-	#end
-
-	##t	public $returnType $methodName($parameterList) throws Exception {
 	##t		JSONObject _command = new JSONObject();
 
 	##n
@@ -72,9 +59,11 @@ public class $className extends BaseService {
 
 	#foreach ($param in $parameters)
 		##t			_params.put(${esc.q}$param.name${esc.q}, $param.name);
-	#end
 
-	##n
+		#if (!$foreach.hasNext)
+			##n
+		#end
+	#end
 
 	##t			_command.put(${esc.q}$context$action.path${esc.q}, _params);
 	##t		}

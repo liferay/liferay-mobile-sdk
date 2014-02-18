@@ -29,7 +29,7 @@ ${esc.h}import "LRBaseService.h"
 ##n
 
 #foreach ($action in $actions)
-	#signature($action ";")
+	#objectiveCMethodSignature($action ";")
 #end
 
 ##n
