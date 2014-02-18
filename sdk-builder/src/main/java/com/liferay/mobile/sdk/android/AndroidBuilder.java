@@ -44,7 +44,7 @@ public class AndroidBuilder extends BaseBuilder {
 		String templatePath = "templates/android/service.vm";
 		String filePath = getServiceFilePath(context, destination);
 
-		VelocityUtil.generate(context, templatePath, filePath);
+		VelocityUtil.generate(context, templatePath, filePath, true);
 	}
 
 	protected void excludeMethods(VelocityContext context) {
