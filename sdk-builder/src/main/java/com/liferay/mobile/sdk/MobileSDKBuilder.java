@@ -100,7 +100,7 @@ public class MobileSDKBuilder {
 		String platform = arguments.get("platform");
 		String url = arguments.get("url");
 		String context = arguments.get("context");
-		String packageName = arguments.get("package");
+		String packageName = arguments.get("packageName");
 		String filter = arguments.get("filter");
 		String destination = arguments.get("destination");
 

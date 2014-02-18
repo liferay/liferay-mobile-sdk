@@ -6,3 +6,15 @@ dependencies {
     compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
     compile group: 'org.apache.velocity', name: 'velocity-tools', version: '2.0'
 }
+
+task generateService(type: JavaExec) {
+    main = 'com.liferay.mobile.sdk.MobileSDKBuilder'
+    classpath = sourceSets.main.runtimeClasspath
+
+    args += 'platform=android'
+    args += 'url=' + url
+    args += 'context=' + context
+    args += 'filter=' + filter
+    args += 'packageName=' + packageName
+    args += 'destination=' + destination
+}
