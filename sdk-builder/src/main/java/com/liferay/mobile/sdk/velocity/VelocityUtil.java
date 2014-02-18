@@ -46,7 +46,9 @@ public class VelocityUtil {
 			resourceLoader = FormatterResourceLoader.class.getName();
 		}
 
-		Velocity.setProperty(RuntimeConstants.VM_LIBRARY, "macros.vm");
+		Velocity.setProperty(
+			RuntimeConstants.VM_LIBRARY, "templates/macros.vm");
+
 		Velocity.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
 		Velocity.setProperty("classpath.resource.loader.class", resourceLoader);
 

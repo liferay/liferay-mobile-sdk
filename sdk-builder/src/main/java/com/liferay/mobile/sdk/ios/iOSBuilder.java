@@ -38,12 +38,12 @@ public class iOSBuilder extends BaseBuilder {
 		VelocityContext context = getVelocityContext(
 			discovery, version, filter);
 
-		String headerTemplate = "com/liferay/mobile/sdk/ios/h.vm";
+		String headerTemplate = "templates/ios/h.vm";
 		String headerPath = getFilePath(context, version, true, destination);
 
 		VelocityUtil.generate(context, headerTemplate, headerPath, true);
 
-		String implTemplate = "com/liferay/mobile/sdk/ios/m.vm";
+		String implTemplate = "templates/ios/m.vm";
 		String implPath = getFilePath(context, version, false, destination);
 
 		VelocityUtil.generate(context, implTemplate, implPath, true);

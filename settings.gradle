@@ -1,1 +1,1 @@
-include 'android', 'src', 'test'
+include 'android', 'sdk-builder', 'test'

@@ -4,5 +4,7 @@
 velocity.log*
 .idea
 *.iml
-/out
+out/
 local.properties
+.gradle
+build/

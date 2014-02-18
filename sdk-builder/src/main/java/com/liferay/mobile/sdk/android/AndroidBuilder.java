@@ -41,7 +41,7 @@ public class AndroidBuilder extends BaseBuilder {
 		VelocityContext context = getVelocityContext(
 			discovery, packageName, version, filter);
 
-		String templatePath = "com/liferay/mobile/sdk/android/service.vm";
+		String templatePath = "templates/android/service.vm";
 		String filePath = getServiceFilePath(context, destination);
 
 		VelocityUtil.generate(context, templatePath, filePath);
