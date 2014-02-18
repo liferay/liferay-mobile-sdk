@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class DLFileShortcutService extends BaseService {
+
 	public DLFileShortcutService(Session session) {
 		super(session);
 	}

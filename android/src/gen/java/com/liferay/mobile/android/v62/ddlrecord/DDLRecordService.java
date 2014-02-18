@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class DDLRecordService extends BaseService {
+
 	public DDLRecordService(Session session) {
 		super(session);
 	}

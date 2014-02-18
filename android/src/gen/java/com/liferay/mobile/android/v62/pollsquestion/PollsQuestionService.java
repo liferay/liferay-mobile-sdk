@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class PollsQuestionService extends BaseService {
+
 	public PollsQuestionService(Session session) {
 		super(session);
 	}

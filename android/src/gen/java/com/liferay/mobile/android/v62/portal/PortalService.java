@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class PortalService extends BaseService {
+
 	public PortalService(Session session) {
 		super(session);
 	}

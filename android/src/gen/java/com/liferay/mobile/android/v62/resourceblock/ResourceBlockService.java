@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ResourceBlockService extends BaseService {
+
 	public ResourceBlockService(Session session) {
 		super(session);
 	}

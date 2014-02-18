@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class AssetTagService extends BaseService {
+
 	public AssetTagService(Session session) {
 		super(session);
 	}

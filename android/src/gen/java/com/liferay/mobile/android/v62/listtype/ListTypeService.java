@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ListTypeService extends BaseService {
+
 	public ListTypeService(Session session) {
 		super(session);
 	}

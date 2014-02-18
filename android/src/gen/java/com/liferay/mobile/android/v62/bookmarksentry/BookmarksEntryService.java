@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class BookmarksEntryService extends BaseService {
+
 	public BookmarksEntryService(Session session) {
 		super(session);
 	}

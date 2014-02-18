@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class TeamService extends BaseService {
+
 	public TeamService(Session session) {
 		super(session);
 	}

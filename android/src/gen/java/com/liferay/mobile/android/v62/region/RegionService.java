@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class RegionService extends BaseService {
+
 	public RegionService(Session session) {
 		super(session);
 	}

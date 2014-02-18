@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ImageService extends BaseService {
+
 	public ImageService(Session session) {
 		super(session);
 	}

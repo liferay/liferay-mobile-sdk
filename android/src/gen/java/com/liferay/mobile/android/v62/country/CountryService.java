@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class CountryService extends BaseService {
+
 	public CountryService(Session session) {
 		super(session);
 	}

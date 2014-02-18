@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class BlogsEntryService extends BaseService {
+
 	public BlogsEntryService(Session session) {
 		super(session);
 	}

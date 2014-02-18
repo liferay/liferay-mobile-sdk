@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class DLFolderService extends BaseService {
+
 	public DLFolderService(Session session) {
 		super(session);
 	}

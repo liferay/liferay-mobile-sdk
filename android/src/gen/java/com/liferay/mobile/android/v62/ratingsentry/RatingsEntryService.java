@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class RatingsEntryService extends BaseService {
+
 	public RatingsEntryService(Session session) {
 		super(session);
 	}

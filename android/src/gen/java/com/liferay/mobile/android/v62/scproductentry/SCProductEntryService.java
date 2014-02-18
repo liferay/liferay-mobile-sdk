@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class SCProductEntryService extends BaseService {
+
 	public SCProductEntryService(Session session) {
 		super(session);
 	}

@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ShoppingCouponService extends BaseService {
+
 	public ShoppingCouponService(Session session) {
 		super(session);
 	}

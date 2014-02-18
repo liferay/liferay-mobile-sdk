@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class AssetVocabularyService extends BaseService {
+
 	public AssetVocabularyService(Session session) {
 		super(session);
 	}

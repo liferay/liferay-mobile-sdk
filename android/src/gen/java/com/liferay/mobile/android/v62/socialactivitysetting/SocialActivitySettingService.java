@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class SocialActivitySettingService extends BaseService {
+
 	public SocialActivitySettingService(Session session) {
 		super(session);
 	}

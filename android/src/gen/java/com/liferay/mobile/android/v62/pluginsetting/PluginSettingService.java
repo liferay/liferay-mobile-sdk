@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class PluginSettingService extends BaseService {
+
 	public PluginSettingService(Session session) {
 		super(session);
 	}

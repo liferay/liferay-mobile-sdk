@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class PasswordPolicyService extends BaseService {
+
 	public PasswordPolicyService(Session session) {
 		super(session);
 	}

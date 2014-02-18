@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class DDMStructureService extends BaseService {
+
 	public DDMStructureService(Session session) {
 		super(session);
 	}

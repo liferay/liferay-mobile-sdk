@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class MBCategoryService extends BaseService {
+
 	public MBCategoryService(Session session) {
 		super(session);
 	}

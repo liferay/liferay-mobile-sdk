@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class MDRRuleGroupService extends BaseService {
+
 	public MDRRuleGroupService(Session session) {
 		super(session);
 	}

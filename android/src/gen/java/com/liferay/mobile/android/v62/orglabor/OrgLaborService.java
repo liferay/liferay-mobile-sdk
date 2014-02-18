@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class OrgLaborService extends BaseService {
+
 	public OrgLaborService(Session session) {
 		super(session);
 	}

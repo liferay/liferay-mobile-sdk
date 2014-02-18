@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class MBThreadService extends BaseService {
+
 	public MBThreadService(Session session) {
 		super(session);
 	}

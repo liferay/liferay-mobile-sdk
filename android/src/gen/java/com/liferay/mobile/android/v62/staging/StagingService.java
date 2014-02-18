@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class StagingService extends BaseService {
+
 	public StagingService(Session session) {
 		super(session);
 	}

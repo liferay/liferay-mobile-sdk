@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ExpandoColumnService extends BaseService {
+
 	public ExpandoColumnService(Session session) {
 		super(session);
 	}

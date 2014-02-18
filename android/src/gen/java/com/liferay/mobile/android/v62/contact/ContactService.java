@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ContactService extends BaseService {
+
 	public ContactService(Session session) {
 		super(session);
 	}

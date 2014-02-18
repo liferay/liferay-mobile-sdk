@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class AddressService extends BaseService {
+
 	public AddressService(Session session) {
 		super(session);
 	}

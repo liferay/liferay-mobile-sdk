@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class WikiNodeService extends BaseService {
+
 	public WikiNodeService(Session session) {
 		super(session);
 	}

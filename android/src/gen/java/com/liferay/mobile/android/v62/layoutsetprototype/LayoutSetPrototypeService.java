@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class LayoutSetPrototypeService extends BaseService {
+
 	public LayoutSetPrototypeService(Session session) {
 		super(session);
 	}

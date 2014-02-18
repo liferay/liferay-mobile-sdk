@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class MDRActionService extends BaseService {
+
 	public MDRActionService(Session session) {
 		super(session);
 	}

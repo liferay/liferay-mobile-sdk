@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ThemeService extends BaseService {
+
 	public ThemeService(Session session) {
 		super(session);
 	}

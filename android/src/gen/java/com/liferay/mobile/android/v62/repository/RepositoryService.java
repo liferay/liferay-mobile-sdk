@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class RepositoryService extends BaseService {
+
 	public RepositoryService(Session session) {
 		super(session);
 	}

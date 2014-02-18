@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class AssetCategoryService extends BaseService {
+
 	public AssetCategoryService(Session session) {
 		super(session);
 	}

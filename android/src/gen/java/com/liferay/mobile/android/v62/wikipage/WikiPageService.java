@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class WikiPageService extends BaseService {
+
 	public WikiPageService(Session session) {
 		super(session);
 	}

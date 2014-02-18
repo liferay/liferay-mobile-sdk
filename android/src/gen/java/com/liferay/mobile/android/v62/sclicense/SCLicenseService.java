@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class SCLicenseService extends BaseService {
+
 	public SCLicenseService(Session session) {
 		super(session);
 	}

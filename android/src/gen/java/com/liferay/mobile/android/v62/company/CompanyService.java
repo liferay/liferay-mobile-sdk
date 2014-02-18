@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class CompanyService extends BaseService {
+
 	public CompanyService(Session session) {
 		super(session);
 	}

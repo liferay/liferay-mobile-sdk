@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class MBBanService extends BaseService {
+
 	public MBBanService(Session session) {
 		super(session);
 	}

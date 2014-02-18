@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class PermissionService extends BaseService {
+
 	public PermissionService(Session session) {
 		super(session);
 	}

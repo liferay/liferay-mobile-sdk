@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ClassNameService extends BaseService {
+
 	public ClassNameService(Session session) {
 		super(session);
 	}

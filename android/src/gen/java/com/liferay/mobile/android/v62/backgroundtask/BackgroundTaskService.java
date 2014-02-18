@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class BackgroundTaskService extends BaseService {
+
 	public BackgroundTaskService(Session session) {
 		super(session);
 	}

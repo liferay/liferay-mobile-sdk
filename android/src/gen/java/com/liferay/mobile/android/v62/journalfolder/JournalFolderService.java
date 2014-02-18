@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class JournalFolderService extends BaseService {
+
 	public JournalFolderService(Session session) {
 		super(session);
 	}

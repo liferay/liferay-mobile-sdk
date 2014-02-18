@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class DLFileEntryService extends BaseService {
+
 	public DLFileEntryService(Session session) {
 		super(session);
 	}

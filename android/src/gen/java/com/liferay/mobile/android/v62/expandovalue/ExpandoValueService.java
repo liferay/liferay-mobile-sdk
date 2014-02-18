@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class ExpandoValueService extends BaseService {
+
 	public ExpandoValueService(Session session) {
 		super(session);
 	}

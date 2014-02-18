@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class MBMessageService extends BaseService {
+
 	public MBMessageService(Session session) {
 		super(session);
 	}

@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class FlagsEntryService extends BaseService {
+
 	public FlagsEntryService(Session session) {
 		super(session);
 	}

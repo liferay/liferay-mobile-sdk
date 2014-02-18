@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class SCProductVersionService extends BaseService {
+
 	public SCProductVersionService(Session session) {
 		super(session);
 	}

@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class TrashEntryService extends BaseService {
+
 	public TrashEntryService(Session session) {
 		super(session);
 	}

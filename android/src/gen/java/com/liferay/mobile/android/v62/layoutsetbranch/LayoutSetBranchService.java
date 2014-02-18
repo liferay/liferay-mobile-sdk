@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class LayoutSetBranchService extends BaseService {
+
 	public LayoutSetBranchService(Session session) {
 		super(session);
 	}

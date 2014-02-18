@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class RoleService extends BaseService {
+
 	public RoleService(Session session) {
 		super(session);
 	}

@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class AnnouncementsFlagService extends BaseService {
+
 	public AnnouncementsFlagService(Session session) {
 		super(session);
 	}

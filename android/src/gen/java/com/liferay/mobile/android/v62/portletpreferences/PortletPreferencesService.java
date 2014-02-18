@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class PortletPreferencesService extends BaseService {
+
 	public PortletPreferencesService(Session session) {
 		super(session);
 	}
