@@ -22,13 +22,13 @@ subprojects {
     }
 }
 
-configure(subprojects.findAll {it.name != 'sdk-builder'}) {
+configure(subprojects.findAll {it.name != 'builder'}) {
 	configurations {
 		builder
 	}
 
 	dependencies {
-		builder project(':sdk-builder')
+		builder project(':builder')
 	}
 
 	task buildService(type: JavaExec) {
