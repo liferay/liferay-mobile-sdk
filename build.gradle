@@ -10,7 +10,7 @@ ext {
     )
 }
 
-allprojects {
+subprojects {
     repositories {
         mavenCentral()
     }
@@ -20,6 +20,28 @@ allprojects {
         classpath = portalClasspath
         workingDir = projectDir
     }
+}
+
+configure(subprojects.findAll {it.name != 'sdk-builder'}) {
+	configurations {
+		builder
+	}
+
+	dependencies {
+		builder project(':sdk-builder')
+	}
+
+	task buildService(type: JavaExec) {
+		main = 'com.liferay.mobile.sdk.MobileSDKBuilder'
+		classpath = configurations.builder
+
+		args 'platform=' + project.name
+		args 'url=' + url
+		args 'context=' + context
+		args 'filter=' + filter
+		args 'packageName=' + packageName
+		args 'destination=' + destination
+	}
 }
 
 task wrapper(type: Wrapper) {
