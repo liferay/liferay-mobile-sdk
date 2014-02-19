@@ -72,6 +72,7 @@ public class LanguageUtil {
 	public boolean isArray(String type) {
 		if (type.endsWith("[]") || type.equals("object<list>") ||
 			type.equals("object<com.liferay.portal.kernel.json.JSONArray>") ||
+			type.startsWith("java.util.Collection") ||
 			type.startsWith("list")) {
 
 			return true;
