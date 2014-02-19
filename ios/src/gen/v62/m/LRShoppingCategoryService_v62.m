@@ -15,7 +15,7 @@
 #import "LRShoppingCategoryService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRShoppingCategoryService_v62
 

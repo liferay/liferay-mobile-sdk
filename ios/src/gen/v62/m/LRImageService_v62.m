@@ -15,7 +15,7 @@
 #import "LRImageService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRImageService_v62
 

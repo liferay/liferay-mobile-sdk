@@ -15,7 +15,7 @@
 #import "LRRoleService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRRoleService_v62
 

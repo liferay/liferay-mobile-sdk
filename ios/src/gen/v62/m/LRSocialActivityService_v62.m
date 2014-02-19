@@ -15,7 +15,7 @@
 #import "LRSocialActivityService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRSocialActivityService_v62
 

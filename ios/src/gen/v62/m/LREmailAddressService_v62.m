@@ -15,7 +15,7 @@
 #import "LREmailAddressService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LREmailAddressService_v62
 

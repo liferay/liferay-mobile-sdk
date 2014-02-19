@@ -15,7 +15,7 @@
 #import "LRDLFileVersionService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRDLFileVersionService_v62
 

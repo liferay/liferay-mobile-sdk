@@ -15,7 +15,7 @@
 #import "LRStagingService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRStagingService_v62
 

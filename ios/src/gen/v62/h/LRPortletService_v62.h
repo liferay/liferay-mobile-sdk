@@ -12,15 +12,14 @@
  * details.
  */
 
-#import <Foundation/Foundation.h>
 #import "LRBaseService.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @interface LRPortletService_v62 : LRBaseService
 
-- (NSDictionary *)getWarPortlets:(NSError **)error;
+- (NSArray *)getWarPortlets:(NSError **)error;
 - (NSDictionary *)updatePortletWithCompanyId:(long long)companyId portletId:(NSString *)portletId roles:(NSString *)roles active:(BOOL)active error:(NSError **)error;
 
 @end

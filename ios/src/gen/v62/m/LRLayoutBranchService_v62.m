@@ -15,7 +15,7 @@
 #import "LRLayoutBranchService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRLayoutBranchService_v62
 

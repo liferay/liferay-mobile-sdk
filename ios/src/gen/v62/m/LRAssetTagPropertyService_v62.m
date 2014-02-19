@@ -15,7 +15,7 @@
 #import "LRAssetTagPropertyService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRAssetTagPropertyService_v62
 

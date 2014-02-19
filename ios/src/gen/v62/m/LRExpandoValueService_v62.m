@@ -15,7 +15,7 @@
 #import "LRExpandoValueService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRExpandoValueService_v62
 

@@ -12,11 +12,10 @@
  * details.
  */
 
-#import <Foundation/Foundation.h>
 #import "LRBaseService.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @interface LRResourceBlockService_v62 : LRBaseService
 

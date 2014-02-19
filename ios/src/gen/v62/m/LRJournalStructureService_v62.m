@@ -15,7 +15,7 @@
 #import "LRJournalStructureService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRJournalStructureService_v62
 

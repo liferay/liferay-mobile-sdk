@@ -12,11 +12,10 @@
  * details.
  */
 
-#import <Foundation/Foundation.h>
 #import "LRBaseService.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @interface LRAssetTagService_v62 : LRBaseService
 
@@ -40,8 +39,8 @@
 - (NSNumber *)getTagsCountWithGroupId:(long long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties error:(NSError **)error;
 - (void)mergeTagsWithFromTagId:(long long)fromTagId toTagId:(long long)toTagId overrideProperties:(BOOL)overrideProperties error:(NSError **)error;
 - (void)mergeTagsWithFromTagIds:(NSArray *)fromTagIds toTagId:(long long)toTagId overrideProperties:(BOOL)overrideProperties error:(NSError **)error;
-- (NSDictionary *)searchWithGroupId:(long long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error;
-- (NSDictionary *)searchWithGroupIds:(NSArray *)groupIds name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)searchWithGroupId:(long long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)searchWithGroupIds:(NSArray *)groupIds name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error;
 - (NSDictionary *)updateTagWithTagId:(long long)tagId name:(NSString *)name tagProperties:(NSArray *)tagProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 
 @end

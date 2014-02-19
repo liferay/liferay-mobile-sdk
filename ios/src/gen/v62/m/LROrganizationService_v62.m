@@ -15,7 +15,7 @@
 #import "LROrganizationService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LROrganizationService_v62
 

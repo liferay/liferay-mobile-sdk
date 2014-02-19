@@ -15,7 +15,7 @@
 #import "LRAssetEntryService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRAssetEntryService_v62
 

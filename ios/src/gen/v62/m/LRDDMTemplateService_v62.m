@@ -15,7 +15,7 @@
 #import "LRDDMTemplateService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRDDMTemplateService_v62
 

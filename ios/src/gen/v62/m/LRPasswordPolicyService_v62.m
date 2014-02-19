@@ -15,7 +15,7 @@
 #import "LRPasswordPolicyService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRPasswordPolicyService_v62
 

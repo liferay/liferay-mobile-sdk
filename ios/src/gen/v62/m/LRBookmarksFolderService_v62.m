@@ -15,7 +15,7 @@
 #import "LRBookmarksFolderService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRBookmarksFolderService_v62
 

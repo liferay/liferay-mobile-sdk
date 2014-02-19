@@ -15,7 +15,7 @@
 #import "LRCompanyService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRCompanyService_v62
 

@@ -15,7 +15,7 @@
 #import "LRRegionService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRRegionService_v62
 

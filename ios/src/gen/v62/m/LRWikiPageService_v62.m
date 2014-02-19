@@ -15,7 +15,7 @@
 #import "LRWikiPageService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRWikiPageService_v62
 

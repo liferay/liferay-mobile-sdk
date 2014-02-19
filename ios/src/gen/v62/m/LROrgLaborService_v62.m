@@ -15,7 +15,7 @@
 #import "LROrgLaborService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LROrgLaborService_v62
 

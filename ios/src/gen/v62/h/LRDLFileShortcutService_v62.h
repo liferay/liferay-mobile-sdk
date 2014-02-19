@@ -12,11 +12,10 @@
  * details.
  */
 
-#import <Foundation/Foundation.h>
 #import "LRBaseService.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @interface LRDLFileShortcutService_v62 : LRBaseService
 

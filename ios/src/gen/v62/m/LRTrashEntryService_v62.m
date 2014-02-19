@@ -15,7 +15,7 @@
 #import "LRTrashEntryService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRTrashEntryService_v62
 

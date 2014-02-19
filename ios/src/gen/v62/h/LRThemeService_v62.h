@@ -12,15 +12,14 @@
  * details.
  */
 
-#import <Foundation/Foundation.h>
 #import "LRBaseService.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @interface LRThemeService_v62 : LRBaseService
 
 - (NSArray *)getThemesWithCompanyId:(long long)companyId error:(NSError **)error;
-- (NSDictionary *)getWarThemes:(NSError **)error;
+- (NSArray *)getWarThemes:(NSError **)error;
 
 @end

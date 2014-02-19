@@ -15,7 +15,7 @@
 #import "LRAssetTagService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRAssetTagService_v62
 
@@ -255,7 +255,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)searchWithGroupId:(long long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)searchWithGroupId:(long long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupId": @(groupId),
 		@"name": name,
@@ -266,10 +266,10 @@
 
 	NSDictionary *_command = @{@"/assettag/search": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)searchWithGroupIds:(NSArray *)groupIds name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)searchWithGroupIds:(NSArray *)groupIds name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error {
 	NSDictionary *_params = @{
 		@"groupIds": groupIds,
 		@"name": name,
@@ -280,7 +280,7 @@
 
 	NSDictionary *_command = @{@"/assettag/search": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)updateTagWithTagId:(long long)tagId name:(NSString *)name tagProperties:(NSArray *)tagProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {

@@ -15,7 +15,7 @@
 #import "LRDLAppService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRDLAppService_v62
 

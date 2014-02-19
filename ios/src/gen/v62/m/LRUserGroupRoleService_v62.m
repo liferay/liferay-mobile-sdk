@@ -15,7 +15,7 @@
 #import "LRUserGroupRoleService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRUserGroupRoleService_v62
 

@@ -15,7 +15,7 @@
 #import "LRTeamService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRTeamService_v62
 

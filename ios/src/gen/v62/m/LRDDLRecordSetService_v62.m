@@ -15,7 +15,7 @@
 #import "LRDDLRecordSetService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRDDLRecordSetService_v62
 

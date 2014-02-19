@@ -15,7 +15,7 @@
 #import "LRPollsVoteService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRPollsVoteService_v62
 

@@ -15,7 +15,7 @@
 #import "LRJournalTemplateService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRJournalTemplateService_v62
 

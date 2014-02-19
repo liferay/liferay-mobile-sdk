@@ -15,7 +15,7 @@
 #import "LRGroupService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRGroupService_v62
 

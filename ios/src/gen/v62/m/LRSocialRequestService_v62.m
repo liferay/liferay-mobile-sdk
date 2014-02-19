@@ -15,7 +15,7 @@
 #import "LRSocialRequestService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRSocialRequestService_v62
 

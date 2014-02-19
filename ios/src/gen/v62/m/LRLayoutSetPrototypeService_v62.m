@@ -15,7 +15,7 @@
 #import "LRLayoutSetPrototypeService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRLayoutSetPrototypeService_v62
 

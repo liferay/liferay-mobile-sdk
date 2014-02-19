@@ -15,7 +15,7 @@
 #import "LRPluginSettingService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRPluginSettingService_v62
 

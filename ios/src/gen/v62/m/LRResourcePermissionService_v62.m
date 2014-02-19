@@ -15,7 +15,7 @@
 #import "LRResourcePermissionService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRResourcePermissionService_v62
 

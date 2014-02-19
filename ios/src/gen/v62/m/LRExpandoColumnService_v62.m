@@ -15,7 +15,7 @@
 #import "LRExpandoColumnService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRExpandoColumnService_v62
 

@@ -15,7 +15,7 @@
 #import "LRRatingsEntryService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRRatingsEntryService_v62
 

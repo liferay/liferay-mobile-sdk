@@ -15,7 +15,7 @@
 #import "LRThemeService_v62.h"
 
 /**
- * author Bruno Farache
+ * @author Bruno Farache
  */
 @implementation LRThemeService_v62
 
@@ -29,13 +29,13 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getWarThemes:(NSError **)error {
+- (NSArray *)getWarThemes:(NSError **)error {
 	NSDictionary *_params = @{
 	};
 
 	NSDictionary *_command = @{@"/theme/get-war-themes": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
 @end
