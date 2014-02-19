@@ -1,1 +1,1 @@
-include 'android', 'builder'
+include 'android', 'builder', 'ios'

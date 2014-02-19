@@ -1,4 +1,4 @@
-apply plugin: 'java'
+apply plugin:'java'
 
 dependencies {
     compile group:'org.apache.httpcomponents', name:'httpclient', version:'4.2.5'

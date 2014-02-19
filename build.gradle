@@ -14,15 +14,17 @@ subprojects {
     repositories {
         mavenCentral()
     }
-
-    task format(type: JavaExec) {
-        main = 'com.liferay.portal.tools.sourceformatter.SourceFormatter'
-        classpath = portalClasspath
-        workingDir = projectDir
-    }
 }
 
-configure(subprojects.findAll {it.name != 'builder'}) {
+configure(subprojects.findAll { it.name != 'ios' }) {
+	task format(type: JavaExec) {
+		main = 'com.liferay.portal.tools.sourceformatter.SourceFormatter'
+		classpath = portalClasspath
+		workingDir = projectDir
+	}
+}
+
+configure(subprojects.findAll { it.name != 'builder' }) {
 	configurations {
 		builder
 	}
