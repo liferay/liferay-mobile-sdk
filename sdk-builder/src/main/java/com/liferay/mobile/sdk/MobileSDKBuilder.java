@@ -50,6 +50,30 @@ public class MobileSDKBuilder {
 			String filter, String destination)
 		throws Exception {
 
+		Discovery discovery = discover(url, context, filter);
+
+		Builder builder = null;
+
+		if (platform.equals(ANDROID)) {
+			builder = new AndroidBuilder();
+		}
+		else if (platform.equals(IOS)) {
+			builder = new iOSBuilder();
+		}
+
+		int version = HttpUtil.getPortalVersion(url);
+
+		if (Validator.isNull(filter)) {
+			builder.buildAll(discovery, packageName, version, destination);
+		}
+		else {
+			builder.build(discovery, packageName, version, filter, destination);
+		}
+	}
+
+	public static Discovery discover(String url, String context, String filter)
+		throws Exception {
+
 		StringBuilder sb = new StringBuilder();
 
 		sb.append(url);
@@ -73,25 +97,8 @@ public class MobileSDKBuilder {
 		HttpClient client = new DefaultHttpClient();
 		HttpGet get = new HttpGet(sb.toString());
 		DiscoveryResponseHandler handler = new DiscoveryResponseHandler();
-		Discovery discovery = client.execute(get, handler);
 
-		Builder builder = null;
-
-		if (platform.equals(ANDROID)) {
-			builder = new AndroidBuilder();
-		}
-		else if (platform.equals(IOS)) {
-			builder = new iOSBuilder();
-		}
-
-		int version = HttpUtil.getPortalVersion(url);
-
-		if (Validator.isNull(filter)) {
-			builder.buildAll(discovery, packageName, version, destination);
-		}
-		else {
-			builder.build(discovery, packageName, version, filter, destination);
-		}
+		return client.execute(get, handler);
 	}
 
 	public static void main(String[] args) {
