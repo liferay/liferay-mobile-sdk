@@ -31,7 +31,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 /**
  * @author Bruno Farache
  */
-public class MobileSDKBuilder {
+public class SDKBuilder {
 
 	public static final String ANDROID = "android";
 

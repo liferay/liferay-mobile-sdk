@@ -16,11 +16,11 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 	}
 
 	dependencies {
-		formatter group:'com.liferay.portal', name:'portal-impl', version:'6.2.0-ga1'
-		formatter group:'com.liferay.portal', name:'portal-service', version:'6.2.0-ga1'
-		formatter group:'com.liferay.portal', name:'util-java', version:'6.2.0-ga1'
-		formatter group:'dom4j', name:'dom4j', version:'1.6.1'
-		formatter group:'org.apache.ant', name:'ant', version:'1.8.2'
+		formatter group: 'com.liferay.portal', name: 'portal-impl', version: '6.2.0-ga1'
+		formatter group: 'com.liferay.portal', name: 'portal-service', version: '6.2.0-ga1'
+		formatter group: 'com.liferay.portal', name: 'util-java', version: '6.2.0-ga1'
+		formatter group: 'dom4j', name: 'dom4j', version: '1.6.1'
+		formatter group: 'org.apache.ant', name: 'ant', version: '1.8.2'
 	}
 
 	task format(type: JavaExec) {
@@ -40,7 +40,7 @@ configure(subprojects.findAll { it.name != 'builder' }) {
 	}
 
 	ext {
-		builderMainClass = 'com.liferay.mobile.sdk.MobileSDKBuilder'
+		builderMainClass = 'com.liferay.mobile.sdk.SDKBuilder'
 		builderClasspath = configurations.builder
 		platform = project.name
 	}
