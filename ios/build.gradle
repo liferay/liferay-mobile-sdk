@@ -1,1 +1,7 @@
-// apply plugin:'objective-c'
+task zip(type:Zip) {
+	baseName = 'liferay-ios-sdk'
+	destinationDir = new File('build/')
+	version = project.version
+	from 'src/main'
+	from 'src/gen'
+}
