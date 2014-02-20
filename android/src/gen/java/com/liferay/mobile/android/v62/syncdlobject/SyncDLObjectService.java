@@ -25,14 +25,12 @@ import org.json.JSONObject;
  * @author Bruno Farache
  */
 public class SyncDLObjectService extends BaseService {
+
 	public SyncDLObjectService(Session session) {
 		super(session);
 	}
 
-	public JSONObject addFileEntry(long repositoryId, long folderId,
-		String sourceFileName, String mimeType, String title,
-		String description, String changeLog, JSONObject file, String checksum,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, JSONObject file, String checksum, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -58,9 +56,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addFolder(long repositoryId, long parentFolderId,
-		String name, String description, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject addFolder(long repositoryId, long parentFolderId, String name, String description, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -81,8 +77,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject cancelCheckOut(long fileEntryId)
-		throws Exception {
+	public JSONObject cancelCheckOut(long fileEntryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -99,8 +94,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject checkInFileEntry(long fileEntryId, boolean majorVersion,
-		String changeLog, JSONObject serviceContext) throws Exception {
+	public JSONObject checkInFileEntry(long fileEntryId, boolean majorVersion, String changeLog, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -120,8 +114,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject checkOutFileEntry(long fileEntryId,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject checkOutFileEntry(long fileEntryId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -139,9 +132,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject checkOutFileEntry(long fileEntryId, String owner,
-		long expirationTime, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject checkOutFileEntry(long fileEntryId, String owner, long expirationTime, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -161,8 +152,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getAllSyncDlObjects(long repositoryId, long folderId)
-		throws Exception {
+	public JSONObject getAllSyncDlObjects(long repositoryId, long folderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -171,8 +161,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("repositoryId", repositoryId);
 			_params.put("folderId", folderId);
 
-			_command.put("/sync-web/syncdlobject/get-all-sync-dl-objects",
-				_params);
+			_command.put("/sync-web/syncdlobject/get-all-sync-dl-objects", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -181,8 +170,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getFileEntrySyncDlObject(long groupId, long folderId,
-		String title) throws Exception {
+	public JSONObject getFileEntrySyncDlObject(long groupId, long folderId, String title) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -192,8 +180,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("folderId", folderId);
 			_params.put("title", title);
 
-			_command.put("/sync-web/syncdlobject/get-file-entry-sync-dl-object",
-				_params);
+			_command.put("/sync-web/syncdlobject/get-file-entry-sync-dl-object", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -202,8 +189,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getFileEntrySyncDlObjects(long repositoryId, long folderId)
-		throws Exception {
+	public JSONArray getFileEntrySyncDlObjects(long repositoryId, long folderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -212,8 +198,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("repositoryId", repositoryId);
 			_params.put("folderId", folderId);
 
-			_command.put("/sync-web/syncdlobject/get-file-entry-sync-dl-objects",
-				_params);
+			_command.put("/sync-web/syncdlobject/get-file-entry-sync-dl-objects", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -222,8 +207,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject getFolderSyncDlObject(long folderId)
-		throws Exception {
+	public JSONObject getFolderSyncDlObject(long folderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -231,8 +215,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("folderId", folderId);
 
-			_command.put("/sync-web/syncdlobject/get-folder-sync-dl-object",
-				_params);
+			_command.put("/sync-web/syncdlobject/get-folder-sync-dl-object", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -241,8 +224,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getFolderSyncDlObjects(long repositoryId,
-		long parentFolderId) throws Exception {
+	public JSONArray getFolderSyncDlObjects(long repositoryId, long parentFolderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -251,8 +233,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("repositoryId", repositoryId);
 			_params.put("parentFolderId", parentFolderId);
 
-			_command.put("/sync-web/syncdlobject/get-folder-sync-dl-objects",
-				_params);
+			_command.put("/sync-web/syncdlobject/get-folder-sync-dl-objects", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -284,8 +265,7 @@ public class SyncDLObjectService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_command.put("/sync-web/syncdlobject/get-latest-modified-time",
-				_params);
+			_command.put("/sync-web/syncdlobject/get-latest-modified-time", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -311,8 +291,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getSyncDlObjectUpdate(long companyId, long repositoryId,
-		long lastAccessTime) throws Exception {
+	public JSONObject getSyncDlObjectUpdate(long companyId, long repositoryId, long lastAccessTime) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -322,8 +301,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("repositoryId", repositoryId);
 			_params.put("lastAccessTime", lastAccessTime);
 
-			_command.put("/sync-web/syncdlobject/get-sync-dl-object-update",
-				_params);
+			_command.put("/sync-web/syncdlobject/get-sync-dl-object-update", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -347,8 +325,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject moveFileEntry(long fileEntryId, long newFolderId,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject moveFileEntry(long fileEntryId, long newFolderId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -367,8 +344,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject moveFileEntryToTrash(long fileEntryId)
-		throws Exception {
+	public JSONObject moveFileEntryToTrash(long fileEntryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -376,8 +352,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("fileEntryId", fileEntryId);
 
-			_command.put("/sync-web/syncdlobject/move-file-entry-to-trash",
-				_params);
+			_command.put("/sync-web/syncdlobject/move-file-entry-to-trash", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -386,8 +361,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject moveFolder(long folderId, long parentFolderId,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject moveFolder(long folderId, long parentFolderId, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -406,8 +380,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject moveFolderToTrash(long folderId)
-		throws Exception {
+	public JSONObject moveFolderToTrash(long folderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -424,11 +397,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject patchFileEntry(long fileEntryId, String sourceVersion,
-		String sourceFileName, String mimeType, String title,
-		String description, String changeLog, boolean majorVersion,
-		JSONObject deltaFile, String checksum, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject patchFileEntry(long fileEntryId, String sourceVersion, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, JSONObject deltaFile, String checksum, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -455,8 +424,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject restoreFileEntryFromTrash(long fileEntryId)
-		throws Exception {
+	public JSONObject restoreFileEntryFromTrash(long fileEntryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -464,8 +432,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("fileEntryId", fileEntryId);
 
-			_command.put("/sync-web/syncdlobject/restore-file-entry-from-trash",
-				_params);
+			_command.put("/sync-web/syncdlobject/restore-file-entry-from-trash", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -474,8 +441,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject restoreFolderFromTrash(long folderId)
-		throws Exception {
+	public JSONObject restoreFolderFromTrash(long folderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -483,8 +449,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("folderId", folderId);
 
-			_command.put("/sync-web/syncdlobject/restore-folder-from-trash",
-				_params);
+			_command.put("/sync-web/syncdlobject/restore-folder-from-trash", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -493,10 +458,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName,
-		String mimeType, String title, String description, String changeLog,
-		boolean majorVersion, JSONObject file, String checksum,
-		JSONObject serviceContext) throws Exception {
+	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, JSONObject file, String checksum, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -522,9 +484,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateFolder(long folderId, String name,
-		String description, JSONObject serviceContext)
-		throws Exception {
+	public JSONObject updateFolder(long folderId, String name, String description, JSONObject serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -543,4 +503,5 @@ public class SyncDLObjectService extends BaseService {
 
 		return (JSONObject)session.invoke(_command);
 	}
+
 }
