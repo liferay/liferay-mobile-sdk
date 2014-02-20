@@ -26,7 +26,7 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 	task format(type: JavaExec) {
 		main = 'com.liferay.portal.tools.sourceformatter.SourceFormatter'
 		classpath = configurations.formatter
-		workingDir = projectDir
+		workingDir = 'src/main/java'
 	}
 }
 
