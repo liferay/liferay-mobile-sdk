@@ -17,7 +17,6 @@ package com.liferay.mobile.android.exception;
 /**
  * @author Bruno Farache
  */
-@SuppressWarnings("serial")
 public class ServerException extends Exception {
 
 	public ServerException() {
