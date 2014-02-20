@@ -47,34 +47,36 @@ configure(subprojects.findAll { it.name != 'builder' }) {
 		builder project(':builder')
 	}
 
-	ext {
-		builderMainClass = 'com.liferay.mobile.sdk.SDKBuilder'
-		builderClasspath = configurations.builder
-		platform = project.name
-	}
+	def builderMainClass = 'com.liferay.mobile.sdk.SDKBuilder'
+	def builderClasspath = configurations.builder
+	def platform = project.name
 
 	task buildSyncWebService(type: JavaExec) {
 		main = builderMainClass
 		classpath = builderClasspath
 
-		args 'platform=' + platform
-		args 'url=' + url
-		args 'context=sync-web'
-		args 'filter=' + filter
-		args 'packageName=' + packageName
-		args 'destination=' + destination
+		args = [
+			"platform=$platform",
+			"url=$url",
+			"context=sync-web",
+			"filter=$filter",
+			"packageName=$packageName",
+			"destination=$destination"
+		]
 	}
 
 	task buildService(type: JavaExec, dependsOn: buildSyncWebService) {
 		main = builderMainClass
 		classpath = builderClasspath
 
-		args 'platform=' + platform
-		args 'url=' + url
-		args 'context=' + context
-		args 'filter=' + filter
-		args 'packageName=' + packageName
-		args 'destination=' + destination
+		args = [
+			"platform=$platform",
+			"url=$url",
+			"context=$context",
+			"filter=$filter",
+			"packageName=$packageName",
+			"destination=$destination"
+		]
 	}
 }
 

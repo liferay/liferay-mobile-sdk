@@ -23,10 +23,7 @@ task formatTest(type: JavaExec) {
 }
 
 task jarCore(type: Jar, dependsOn: classes) {
-	ext {
-		excluded = packageName.replaceAll('\\.', '/')
-		excluded += '/v*/**'
-	}
+	def excluded = "${packageName.replaceAll('\\.', '/')}/v*/**"
 
 	classifier = 'core'
 	from sourceSets.main.output
