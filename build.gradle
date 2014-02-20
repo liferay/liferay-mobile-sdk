@@ -1,15 +1,3 @@
-ext {
-    portalClasspath = files(
-        new File(portalDir + '/lib/development').listFiles(),
-        new File(portalDir + '/lib/global').listFiles(),
-        new File(portalDir + '/lib/portal').listFiles(),
-        new File(portalDir + '/portal-impl/portal-impl.jar'),
-        new File(portalDir + '/portal-service/portal-service.jar'),
-        new File(portalDir + '/portal-web/portal-web.jar'),
-        new File(portalDir + '/util-java/util-java.jar')
-    )
-}
-
 subprojects {
     repositories {
         mavenCentral()
@@ -17,9 +5,27 @@ subprojects {
 }
 
 configure(subprojects.findAll { it.name != 'ios' }) {
+	repositories {
+		maven {
+			url 'https://repository.liferay.com/nexus/content/groups/liferay-ce'
+		}
+	}
+
+	configurations {
+		formatter
+	}
+
+	dependencies {
+		formatter group:'com.liferay.portal', name:'portal-impl', version:'6.2.0-ga1'
+		formatter group:'com.liferay.portal', name:'portal-service', version:'6.2.0-ga1'
+		formatter group:'com.liferay.portal', name:'util-java', version:'6.2.0-ga1'
+		formatter group:'dom4j', name:'dom4j', version:'1.6.1'
+		formatter group:'org.apache.ant', name:'ant', version:'1.8.2'
+	}
+
 	task format(type: JavaExec) {
 		main = 'com.liferay.portal.tools.sourceformatter.SourceFormatter'
-		classpath = portalClasspath
+		classpath = configurations.formatter
 		workingDir = projectDir
 	}
 }
