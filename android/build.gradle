@@ -1,4 +1,4 @@
-apply plugin:'java'
+apply plugin: 'java'
 archivesBaseName = 'liferay-android-sdk'
 
 sourceSets {
@@ -10,8 +10,8 @@ sourceSets {
 }
 
 dependencies {
-	compile group:'com.google.android', name:'android', version:'2.3.3'
-	testCompile group:'junit', name:'junit', version:'4.+'
+	compile group: 'com.google.android', name: 'android', version: '2.3.3'
+	testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
 task formatTest(type: JavaExec) {
@@ -20,7 +20,7 @@ task formatTest(type: JavaExec) {
 	workingDir = 'src/test/java'
 }
 
-task jarCore(type:Jar, dependsOn:classes) {
+task jarCore(type: Jar, dependsOn: classes) {
 	ext {
 		excluded = packageName.replaceAll('\\.', '/')
 		excluded += '/v*/**'
@@ -31,7 +31,7 @@ task jarCore(type:Jar, dependsOn:classes) {
 	exclude(excluded)
 }
 
-task jarSources(type:Jar, dependsOn:classes) {
+task jarSources(type: Jar, dependsOn: classes) {
 	classifier = 'sources'
 	from sourceSets.main.allSource
 }
