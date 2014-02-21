@@ -2,9 +2,9 @@ subprojects {
 	repositories {
 		mavenLocal()
 
-		if (project.hasProperty('internalRepositoryUrl') ) {
+		if (hasProperty('mavenUrl') ) {
 			maven {
-				url project.internalRepositoryUrl
+				url mavenUrl
 			}
 		}
 
