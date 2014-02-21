@@ -1,4 +1,4 @@
-/.settings/
+.settings/
 classes/
 /build.*.properties
 velocity.log*
@@ -8,3 +8,5 @@ out/
 local.properties
 .gradle
 build/
+.project
+.classpath
