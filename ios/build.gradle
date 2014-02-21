@@ -1,5 +1,3 @@
-apply plugin: 'idea'
-
 task zip(type: Zip) {
 	baseName = 'liferay-ios-sdk'
 	destinationDir = new File('build/')
