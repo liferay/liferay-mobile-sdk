@@ -1,11 +1,13 @@
-*.iml
-*.log
-
 .classpath
 .gradle
 .idea
 .project
 .settings
+
+*.iml
+*.log
+
+local.properties
 
 bin/
 build/
