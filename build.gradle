@@ -1,7 +1,15 @@
 subprojects {
-    repositories {
-        mavenCentral()
-    }
+	repositories {
+		mavenLocal()
+
+		if (project.hasProperty('internalRepositoryUrl') ) {
+			maven {
+				url project.internalRepositoryUrl
+			}
+		}
+
+		mavenCentral()
+	}
 }
 
 configure(subprojects.findAll { it.name != 'ios' }) {
