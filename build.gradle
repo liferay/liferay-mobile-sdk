@@ -39,6 +39,8 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 }
 
 configure(subprojects.findAll { it.name != 'builder' }) {
+	defaultTasks 'buildService'
+
 	configurations {
 		builder
 	}
