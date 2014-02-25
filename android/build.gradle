@@ -22,9 +22,9 @@ task formatTest(type: JavaExec) {
 	workingDir = 'src/test/java'
 }
 
-task jarCore(type: Jar, dependsOn: classes) {
-	def excluded = "${packageName.replaceAll('\\.', '/')}/v*/**"
+def excluded = "${packageName.replaceAll('\\.', '/')}/v*/**"
 
+task jarCore(type: Jar, dependsOn: classes) {
 	classifier = 'core'
 	from sourceSets.main.output
 	exclude(excluded)
@@ -33,4 +33,10 @@ task jarCore(type: Jar, dependsOn: classes) {
 task jarSources(type: Jar, dependsOn: classes) {
 	classifier = 'sources'
 	from sourceSets.main.allSource
+}
+
+task jarCoreSources(type: Jar, dependsOn: classes) {
+	classifier = 'core-sources'
+	from sourceSets.main.allSource
+	exclude(excluded)
 }
