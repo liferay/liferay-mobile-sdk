@@ -30,13 +30,13 @@ task jarCore(type: Jar, dependsOn: classes) {
 	exclude(excluded)
 }
 
-task jarSources(type: Jar, dependsOn: classes) {
-	classifier = 'sources'
-	from sourceSets.main.allSource
-}
-
 task jarCoreSources(type: Jar, dependsOn: classes) {
 	classifier = 'core-sources'
 	from sourceSets.main.allSource
 	exclude(excluded)
+}
+
+task jarSources(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
 }
