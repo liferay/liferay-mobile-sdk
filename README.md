@@ -21,4 +21,4 @@ you to download and use.
 
 If all you want is to access Liferay's core services from a mobile app, follow
 the links above. However, if you want to generate services for your custom
-portlet, read the [SDK Builder documentation](src/README.md).
+portlet, read the [SDK Builder documentation](builder/README.md).
