@@ -47,6 +47,10 @@ import org.json.JSONObject;
  */
 public class HttpUtil {
 
+	public static final String IF_MODIFIED_SINCE = "If-Modified-Since";
+
+	public static final String LAST_MODIFIED = "Last-Modified";
+
 	public static HttpClient getClient(Session session) {
 		DefaultHttpClient client = new DefaultHttpClient();
 
@@ -109,7 +113,7 @@ public class HttpUtil {
 	}
 
 	public static HttpPost getPost(Session session) {
-		HttpPost post = new HttpPost(getUrl(session));
+		HttpPost post = new HttpPost(getURL(session));
 
 		UsernamePasswordCredentials credentials =
 			new UsernamePasswordCredentials(
@@ -135,7 +139,7 @@ public class HttpUtil {
 		return EntityUtils.toString(entity);
 	}
 
-	public static String getUrl(Session session) {
+	public static String getURL(Session session) {
 		StringBuilder sb = new StringBuilder();
 
 		String server = session.getServer();
@@ -159,7 +163,7 @@ public class HttpUtil {
 
 		post.setEntity(new StringEntity(commands.toString()));
 
-		HttpResponse response = client.execute(post);;
+		HttpResponse response = client.execute(post);
 
 		String json = HttpUtil.getResponseString(response);
 
