@@ -1,6 +1,6 @@
 task zip(type: Zip) {
 	baseName = 'liferay-ios-sdk'
-	destinationDir = new File('build/')
+	destinationDir = project.buildDir
 	version = project.version
 	from 'src/main'
 	from 'src/gen'
