@@ -42,20 +42,19 @@ import org.apache.http.client.methods.HttpGet;
 public class PortraitUtil {
 
 	public static String downloadPortrait(
-			Session session, String portraitURL, String filePath)
+			Session session, String portraitURL, OutputStream os)
 		throws Exception {
 
-		return downloadPortrait(session, portraitURL, filePath, null);
+		return downloadPortrait(session, portraitURL, os, null);
 	}
 
 	public static String downloadPortrait(
-			Session session, String portraitURL, String filePath,
+			Session session, String portraitURL, OutputStream os,
 			String modifiedDate)
 		throws Exception {
 
 		String lastModified = null;
 		InputStream is = null;
-		OutputStream os = null;
 
 		try {
 			HttpGet get = new HttpGet(portraitURL);
@@ -71,7 +70,6 @@ public class PortraitUtil {
 
 			if (status == HttpStatus.SC_OK) {
 				is = response.getEntity().getContent();
-				os = new FileOutputStream(filePath);
 
 				int count;
 				byte data[] = new byte[8192];
@@ -95,6 +93,22 @@ public class PortraitUtil {
 		}
 
 		return lastModified;
+	}
+
+	public static String downloadPortrait(
+			Session session, String portraitURL, String filePath)
+		throws Exception {
+
+		return downloadPortrait(session, portraitURL, filePath, null);
+	}
+
+	public static String downloadPortrait(
+			Session session, String portraitURL, String filePath,
+			String modifiedDate)
+		throws Exception {
+
+		return downloadPortrait(
+			session, portraitURL, new FileOutputStream(filePath), modifiedDate);
 	}
 
 	public static String getPortraitURL(
