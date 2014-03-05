@@ -10,6 +10,15 @@ subprojects {
 
 		mavenCentral()
 	}
+
+	task release << { task ->
+		println "-----------------------"
+	}
+
+	release.dependsOn {
+		project.tasks.withType(Jar)
+		project.tasks.withType(Zip)
+	}
 }
 
 configure(subprojects.findAll { it.name != 'ios' }) {
