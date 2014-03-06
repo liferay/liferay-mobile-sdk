@@ -22,6 +22,10 @@ subprojects {
 }
 
 configure(subprojects.findAll { it.name != 'ios' }) {
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+	apply plugin: 'maven'
+
 	repositories {
 		maven {
 			url 'https://repository.liferay.com/nexus/content/groups/liferay-ce'
@@ -38,6 +42,12 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 		formatter group: 'com.liferay.portal', name: 'util-java', version: '6.2.0-ga1'
 		formatter group: 'dom4j', name: 'dom4j', version: '1.6.1'
 		formatter group: 'org.apache.ant', name: 'ant', version: '1.8.2'
+	}
+
+	install {
+		repositories.mavenInstaller {
+			pom.groupId = 'com.liferay.mobile'
+		}
 	}
 
 	task format(type: JavaExec) {
@@ -92,5 +102,5 @@ configure(subprojects.findAll { it.name != 'builder' }) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+	gradleVersion = '1.11'
 }
