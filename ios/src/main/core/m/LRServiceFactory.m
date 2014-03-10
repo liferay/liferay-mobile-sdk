@@ -31,7 +31,7 @@ static NSMutableDictionary *_services;
 	LRBaseService *service = [_services objectForKey:NSStringFromClass(clazz)];
 
 	if (!service) {
-		service = [[clazz alloc] init:session];
+		service = [[clazz alloc] initWithSession:session];
 
 		[_services setObject:service forKey:NSStringFromClass(clazz)];
 	}

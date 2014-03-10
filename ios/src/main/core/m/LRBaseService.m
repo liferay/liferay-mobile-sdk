@@ -19,7 +19,7 @@
  */
 @implementation LRBaseService
 
-- (id)init:(LRSession *)session {
+- (id)initWithSession:(LRSession *)session {
 	self = [super init];
 
 	if (self) {
