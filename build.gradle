@@ -1,13 +1,6 @@
 subprojects {
 	repositories {
 		mavenLocal()
-
-		if (hasProperty('mavenUrl') ) {
-			maven {
-				url mavenUrl
-			}
-		}
-
 		mavenCentral()
 	}
 
@@ -43,6 +36,9 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 		formatter group: 'dom4j', name: 'dom4j', version: '1.6.1'
 		formatter group: 'org.apache.ant', name: 'ant', version: '1.8.2'
 	}
+
+	sourceCompatibility = 1.6
+	targetCompatibility = 1.6
 
 	install {
 		repositories.mavenInstaller {
