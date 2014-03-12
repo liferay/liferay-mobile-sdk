@@ -21,6 +21,13 @@
  */
 @interface LRPortraitUtil : NSObject
 
++ (NSString *)downloadPortrait:(LRSession *)session
+	portraitURL:(NSString *)portraitURL data:(NSData **)data;
+
++ (NSString *)downloadPortrait:(LRSession *)session
+	portraitURL:(NSString *)portraitURL data:(NSData **)data
+	modifiedDate:(NSString *)modifiedDate;
+
 + (NSString *)getPortraitURL:(LRSession *)session male:(BOOL)male
 	portraitId:(long long)portraitId;
 

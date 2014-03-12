@@ -19,6 +19,47 @@
  */
 @implementation LRPortraitUtil
 
++ (NSString *)downloadPortrait:(LRSession *)session
+		portraitURL:(NSString *)portraitURL data:(NSData **)data {
+
+	return
+		[self downloadPortrait:session portraitURL:portraitURL data:data
+			modifiedDate:nil];
+}
+
++ (NSString *)downloadPortrait:(LRSession *)session
+		portraitURL:(NSString *)portraitURL data:(NSData **)data
+		modifiedDate:(NSString *)modifiedDate {
+
+	NSString* lastModified;
+
+	NSMutableURLRequest *request =
+		[[NSMutableURLRequest alloc]
+			initWithURL:[NSURL URLWithString:portraitURL]];
+
+	[request setHTTPMethod:GET];
+	[request setTimeoutInterval:session.connectionTimeout];
+
+	if (modifiedDate) {
+		[request setValue:modifiedDate forHTTPHeaderField:IF_MODIFIED_SINCE];
+	}
+
+	NSHTTPURLResponse *response;
+
+	*data =
+		[NSURLConnection sendSynchronousRequest:request
+			returningResponse:&response error:nil];
+
+	int status = response.statusCode;
+
+	if (status == STATUS_OK) {
+		NSDictionary *headers = [response allHeaderFields];
+		lastModified = [headers valueForKey:LAST_MODIFIED];
+	}
+
+	return lastModified;
+}
+
 + (NSString *)getPortraitURL:(LRSession *)session male:(BOOL)male
 		portraitId:(long long)portraitId {
 

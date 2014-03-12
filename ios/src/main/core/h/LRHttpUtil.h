@@ -14,6 +14,7 @@
 
 #import "LRBatchSession.h"
 
+#define GET @"GET"
 #define HEAD @"HEAD"
 #define POST @"POST"
 
@@ -21,6 +22,8 @@
 #define V_6_2 6200
 
 #define ERROR_DOMAIN @"com.liferay.mobile.sync.ErrorDomain"
+#define IF_MODIFIED_SINCE @"If-Modified-Since"
+#define LAST_MODIFIED @"Last-Modified"
 #define SERVER_EXCEPTION 1
 #define STATUS_OK 200
 #define STATUS_UNAUTHORIZED 401
