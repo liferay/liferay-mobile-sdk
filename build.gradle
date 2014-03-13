@@ -37,9 +37,6 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 		formatter group: 'org.apache.ant', name: 'ant', version: '1.8.2'
 	}
 
-	sourceCompatibility = 1.6
-	targetCompatibility = 1.6
-
 	install {
 		repositories.mavenInstaller {
 			pom.groupId = 'com.liferay.mobile'
