@@ -4,6 +4,8 @@
 
 * [Sample](#sample)
 * [Setup](#setup)
+	* [Manually](#manually)
+	* [CocoaPods](#cocoapods)
 * [Use](#use)
 	* [Asynchronous](#asynchronous)
 	* [Batch](#batch)
@@ -19,6 +21,8 @@ applications.
 
 ### Setup
 
+#### Manually
+
 1. [Download](https://github.com/liferay/liferay-mobile-sdk/releases/) the
 latest version of `liferay-ios-sdk.zip`.
 
@@ -29,6 +33,23 @@ latest version of `liferay-ios-sdk.zip`.
 
 4. Add both `core` and `v62` folders. The `v62` folder name can change for each
 Liferay version. In this example, the SDK is built for Liferay 6.2.
+
+#### CocoaPods
+
+1. You need CocoaPods installed.
+
+2. Create a file called `Podfile` in your project and add the following line:
+
+	```ruby
+		pod 'Liferay-iOS-SDK'
+	```
+3. Run `$ pod install`.
+
+4. This will download the latest version of the SDK and create a .xcworkspace
+file, use that file to open your project in XCode.
+
+For more information on how CocoaPods works, read their
+[documentation](http://guides.cocoapods.org/using/index.html).
 
 ### Use
 
@@ -74,7 +95,7 @@ lists all available portal services and plugin services.
 4. Create an `LRBlogsEntryService_v62` object and make a service call.
 
 	```objective-c
-	LRBlogsEntryService_v62 *service = [[LRBlogsEntryService_v62 alloc] init:session];
+	LRBlogsEntryService_v62 *service = [[LRBlogsEntryService_v62 alloc] initWithSession:session];
 
 	NSError *error;
 	NSArray *entries = [service getGroupEntriesWithGroupId:1084 status:0 start:-1 end:-1 error:&error];
@@ -166,7 +187,7 @@ batch of calls and send them all together.
 #import "LRBatchSession.h"
 
 LRBatchSession *batch = [[LRBatchSession alloc] init:@"http://localhost:8080" username:@"test@liferay.com" password:@"test"];
-LRBlogsEntryService_v62 *service = [[LRBlogsEntryService_v62 alloc] init:batch];
+LRBlogsEntryService_v62 *service = [[LRBlogsEntryService_v62 alloc] initWithSession:batch];
 NSError *error;
 
 [service deleteEntryWithEntryId:1 error:&error];
