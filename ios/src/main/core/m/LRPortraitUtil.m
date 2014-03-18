@@ -16,6 +16,7 @@
 
 /**
  * @author Bruno Farache
+ * @author Josiane Bezerra
  */
 @implementation LRPortraitUtil
 

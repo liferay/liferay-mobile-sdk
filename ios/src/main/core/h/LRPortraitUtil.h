@@ -18,6 +18,7 @@
 
 /**
  * @author Bruno Farache
+ * @author Josiane Bezerra
  */
 @interface LRPortraitUtil : NSObject
 
