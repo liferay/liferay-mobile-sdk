@@ -41,7 +41,7 @@ Liferay version. In this example, the SDK is built for Liferay 6.2.
 2. Create a file called `Podfile` in your project and add the following line:
 
 	```ruby
-		pod 'Liferay-iOS-SDK'
+	pod 'Liferay-iOS-SDK'
 	```
 3. Run `$ pod install`.
 
