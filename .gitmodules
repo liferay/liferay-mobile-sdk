@@ -1,0 +1,6 @@
+[submodule "samples/liferay-android-sdk-sample"]
+	path = samples/liferay-android-sdk-sample
+	url = https://github.com/brunofarache/liferay-android-sdk-sample.git
+[submodule "samples/liferay-ios-sdk-sample"]
+	path = samples/liferay-ios-sdk-sample
+	url = https://github.com/brunofarache/liferay-ios-sdk-sample.git
