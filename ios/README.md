@@ -67,7 +67,7 @@ release a version called 6.2.0.2 with the bug fix.
 
 This doesn't mean you can't support several Liferay versions in the same
 app though. You can add to your project both versions 6.2.0.1 and 7.0.0.1.
-There won't be conflicts because service classes names are prefixed with
+There won't be conflicts because service classes names are suffixed with
 their version number as well: *_v62.m, *_v7.m, etc.
 
 To find out which Liferay versions you are connecting to, use the
