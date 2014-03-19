@@ -19,6 +19,8 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 	apply plugin: 'eclipse'
 	apply plugin: 'maven'
 
+	sourceCompatibility = JavaVersion.VERSION_1_6
+
 	repositories {
 		maven {
 			url 'https://repository.liferay.com/nexus/content/groups/liferay-ce'
