@@ -6,6 +6,7 @@
 * [Setup](#setup)
 	* [Manually](#manually)
 	* [CocoaPods](#cocoapods)
+* [Versioning](#versioning)
 * [Use](#use)
 	* [Asynchronous](#asynchronous)
 	* [Batch](#batch)
@@ -50,6 +51,27 @@ file, use that file to open your project in XCode.
 
 For more information on how CocoaPods works, read their
 [documentation](http://guides.cocoapods.org/using/index.html).
+
+### Versioning
+
+Each Liferay Mobile SDK is designed to work with a specific Liferay Portal
+version. Because of that, its version scheme reflects the compatible Liferay
+version.
+
+For example, Liferay Mobile SDK 6.2.0.1 is built to work with Liferay Portal
+6.2.0, while Liferay Mobile SDK 7.0.0.1 works with Liferay Portal 7.0.0.
+
+The fourth integer in the version (6.2.0.x) is related to internal Liferay
+Mobile SDK versions. For example, if a bug is found on 6.2.0.1, we will
+release a version called 6.2.0.2 with the bug fix.
+
+This doesn't mean you can't support several Liferay versions in the same
+app though. You can add to your project both versions 6.2.0.1 and 7.0.0.1.
+There won't be conflicts because service classes names are prefixed with
+their version number as well: *_v62.m, *_v7.m, etc.
+
+To find out which Liferay versions you are connecting to, use the
+`[LRHttpUtil getPortalVersion:…]` method.
 
 ### Use
 
