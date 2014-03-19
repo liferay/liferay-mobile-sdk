@@ -4,6 +4,9 @@
 
 * [Sample](#sample)
 * [Setup](#setup)
+	* [Manually](#manually)
+	* [Gradle](#gradle)
+* [Versioning](#versioning)
 * [Use](#use)
 	* [Asynchronous](#asynchronous)
 	* [Batch](#batch)
@@ -19,6 +22,8 @@ applications.
 
 ### Setup
 
+#### Manually
+
 1. [Download](https://github.com/liferay/liferay-mobile-sdk/releases/) the
 latest version of `liferay-android-sdk.jar`. If you want to debug the SDK source
 code, you can also download `liferay-android-sdk-sources.jar` and attach the
@@ -29,6 +34,45 @@ Developer Tools should automatically add this JAR to your classpath. If you are
 using a different IDE, make sure this JAR is added to the project classpath.
 
 3. Import the necessary classes and start using it!
+
+#### Gradle
+
+If your Android project is using Gradle as the build system, you can add Liferay
+Android SDK as a dependency to your project, all versions are available at the
+JCenter Maven repository:
+
+	```groovy
+	repositories {
+		jcenter()
+	}
+
+	dependencies {
+		compile group: 'com.liferay.mobile', name: 'liferay-android-sdk', version: '6.2.0.1'
+	}
+	```
+
+You can do the same and add to your pom.xml if you are using Maven.
+
+### Versioning
+
+Each Liferay Mobile SDK is designed to work with a specific Liferay Portal
+version. Because of that, its version scheme reflects the compatible Liferay
+version.
+
+For example, Liferay Mobile SDK 6.2.0.1 is built to work with Liferay Portal
+6.2.0, while Liferay Mobile SDK 7.0.0.1 works with Liferay Portal 7.0.0.
+
+The fourth integer in the version (6.2.0.x) is related to internal Liferay
+Mobile SDK versions. For example, if a bug is found on 6.2.0.1, we will
+release a version called 6.2.0.2 with the bug fix.
+
+This doesn't mean you can't support several Liferay versions in the same
+app though. You can add to your classpath both versions 6.2.0.1 and 7.0.0.1.
+There won't be conflicts because service classes packages are separated by
+their version number as well: *.v62, *.v7, etc.
+
+To find out which Liferay versions you are connecting to, use the
+`HttpUtil.getPortalVersion(…)` method.
 
 ### Use
 
