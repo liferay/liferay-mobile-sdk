@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
 					:file => "ios/copyright.txt"
 				}
 	s.authors		= {
-						"Bruno Farache" => "bruno.farache@liferay.com"
+					"Bruno Farache" => "bruno.farache@liferay.com"
 				}
 	s.platform		= :ios
 	s.source		= {
