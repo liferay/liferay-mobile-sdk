@@ -41,15 +41,15 @@ If your Android project is using Gradle as the build system, you can add Liferay
 Android SDK as a dependency to your project, all versions are available at the
 JCenter Maven repository:
 
-	```groovy
-	repositories {
-		jcenter()
-	}
+```groovy
+repositories {
+	jcenter()
+}
 
-	dependencies {
-		compile group: 'com.liferay.mobile', name: 'liferay-android-sdk', version: '6.2.0.1'
-	}
-	```
+dependencies {
+	compile group: 'com.liferay.mobile', name: 'liferay-android-sdk', version: '6.2.0.1'
+}
+```
 
 You can do the same and add to your pom.xml if you are using Maven.
 
