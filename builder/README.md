@@ -61,14 +61,14 @@ Mobile SDK project using Git:
 git clone git@github.com:liferay/liferay-mobile-sdk.git
 ```
 
-The SDK Builder is invoked using Ant, but before building an SDK, you must set
-some properties so that the SDK Builder can communicate with your portlet
-services and create an SDK specific to your mobile platform. Follow these steps
+The SDK Builder can be invoked using Gradle or command line, but before running
+the builder, you must set some properties so it can communicate with your
+portlet and create an SDK specific to your mobile platform. Follow these steps
 to set these properties:
 
-1. Create a file in the root folder called `build.${user.name}.properties`,
-where `${user.name}` is your computer user name. If you can't figure out your
-user name, just change `build.properties` directly.
+1. Edit `gradle.properties`, if you don't want to change that file directly,
+you can also copy it to `~/.gradle` and modify it there. Alternatively, you can
+also edit the `gradle.properties` inside each platform folder (ios/ or android/).
 
 2. Here are the important properties to set:
 
@@ -103,9 +103,11 @@ user name, just change `build.properties` directly.
 	different versions of Liferay Portal.
 
 	* `destination` - Specifies the root folder in which to save your generated
-	files. The default destination root folder is `gen`. On Android, the files
-	are saved to `[destination]/android/src`. On iOS, the files are saved to
-	`[destination]/ios`.
+	files. On Android, by default, the files are saved to `android/src/gen/java`.
+	On iOS, the files are saved by default to `ios/src/gen`.
+	
+	* `version` - The version number is appended to the jar and zip file names,
+	see more about that in the following sections.
 
 Here's an example of configuring the SDK Builder to generate a mobile SDK for
 a portlet with a web context value `my-portlet`:
@@ -122,20 +124,23 @@ specific SDK for your portlet's remote services.
 ### Building a Liferay Android SDK
 
 To build the service related source files for your Liferay Android SDK, run the
-following command from the `liferay-mobile-sdk` project's root folder:
+following command from the `android/` folder:
 
-    ant -f build-android.xml
+    ../gradlew buildService
 
-The source files are written to your `[destination]/android/src` folder.
+The source files are written to the `android/src/gen/java` folder by default.
 
 To build a `.jar` file containing the generated service and utility classes, run
 the following command:
 
-    ant -f build-android.xml jar
+    ../gradlew jar
 
-The `liferay-android-sdk.jar` file is written to your `dist/android/` folder.
-You're ready to use the `liferay-android-sdk.jar` in your Android project and
-have no external dependencies.
+The `liferay-android-sdk-[version].jar` file is written to your `android/build/libs`
+folder. You're ready to use the `liferay-android-sdk-[version].jar` in your
+Android project, there are no external dependencies.
+
+As you can see, the `version` property defined in `gradle.properties` is
+appended to the jar file name.
 
 To learn how to use the Liferay Android SDK in your mobile app, see the
 [Liferay Android SDK documentation](../android/README.md).
@@ -143,21 +148,24 @@ To learn how to use the Liferay Android SDK in your mobile app, see the
 ### Building a Liferay iOS SDK
 
 To build the service related source files for your Liferay iOS SDK, run the
-following command from the `liferay-mobile-sdk` project's root folder:
+following command from the `ios/` folder:
 
-    ant -f build-ios.xml
+	../gradlew buildService
 
-The source files are written to your `[destination]/ios` folder.
+The source files are written to your `ios/src/gen` folder by default.
 
 To build a `.zip` file containing the generated service and utility classes, run
 the following command:
 
-    ant -f build-ios.xml zip
+    ../gradlew zip
 
-The `liferay-ios-sdk.jar` file is written to your `dist/ios` folder. You're
-ready to use the contents of your `liferay-ios-sdk.zip` file in your iOS
-project. Simply unzip its contents and add all of the files to your XCode
-project. The SDK is free of any external dependencies.
+The `liferay-ios-sdk-[version].zip` file is written to your `ios/build` folder.
+You're ready to use the contents of your `liferay-ios-sdk-[version].zip` file in
+your iOS project. Simply unzip its contents and add all of the files to your
+XCode project. The SDK is free of any external dependencies.
+
+As you can see, the `version` property defined in `gradle.properties` is
+appended to the zip file name.
 
 To learn how to use the Liferay iOS SDK in your mobile app, see the
 [Liferay iOS SDK documentation](../ios/README.md).
