@@ -18,6 +18,7 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 	apply plugin: 'java'
 	apply plugin: 'eclipse'
 	apply plugin: 'maven'
+	apply plugin: 'signing'
 
 	sourceCompatibility = JavaVersion.VERSION_1_6
 
@@ -42,6 +43,35 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 	install {
 		repositories.mavenInstaller {
 			pom.groupId = 'com.liferay.mobile'
+			def pomName = 'Liferay Android SDK'
+
+			if (project.name == 'builder') {
+				pomName = 'Liferay SDK Builder'
+			}
+
+			pom.project {
+				name pomName
+				description pomName
+				url 'https://www.liferay.com/community/liferay-projects/liferay-mobile-sdk/overview'
+				licenses {
+					license {
+						name 'LGPL 2.1'
+						url 'http://opensource.org/licenses/lgpl-2.1.php'
+						distribution 'repo'
+					}
+				}
+				scm {
+					url 'https://github.com/liferay/liferay-mobile-sdk'
+					connection 'scm:git:git://github.com/liferay/liferay-mobile-sdk.git'
+				}
+				developers {
+					developer {
+						id 'brunofarache'
+						name 'Bruno Farache'
+						email 'bruno.farache@liferay.com'
+					}
+				}
+			}
 		}
 	}
 
@@ -49,6 +79,26 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 		main = 'com.liferay.portal.tools.sourceformatter.SourceFormatter'
 		classpath = configurations.formatter
 		workingDir = 'src/main/java'
+	}
+
+	task jarSources(type: Jar, dependsOn: classes) {
+		classifier = 'sources'
+		from sourceSets.main.allSource
+	}
+
+	task jarJavadoc(type: Jar, dependsOn:javadoc) {
+		classifier = 'javadoc'
+		from javadoc.destinationDir
+	}
+
+	artifacts {
+		archives file('build/poms/pom-default.xml')
+		archives jarSources
+		archives jarJavadoc
+	}
+
+	signing {
+		sign configurations.archives
 	}
 }
 
