@@ -92,13 +92,16 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 	}
 
 	artifacts {
-		archives file('build/poms/pom-default.xml')
 		archives jarSources
 		archives jarJavadoc
 	}
 
 	signing {
 		sign configurations.archives
+	}
+
+	task signPom(type: Sign, dependsOn: install) {
+		sign file('build/poms/pom-default.xml')
 	}
 }
 
