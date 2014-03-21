@@ -84,6 +84,9 @@ main method to see how this class can be called from the command line.
 After you have downloaded the source code from Git, follow these steps to
 run it with Gradle.
 
+This project already ships the Gradle Wrapper (gradlew) with it, you don't need
+to install Gradle's command line tool (gradle).
+
 The SDK Builder can be invoked using Gradle or command line, but before running
 the builder, you must set some properties so it can communicate with your
 portlet and create an SDK specific to your mobile platform. Follow these steps
