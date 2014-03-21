@@ -35,7 +35,7 @@ using a different IDE, make sure this JAR is added to the project classpath.
 
 3. Import the necessary classes and start using it!
 
-#### Gradle
+#### Gradle and Maven
 
 If your Android project is using Gradle as the build system, you can add Liferay
 Android SDK as a dependency to your project, all versions are available at
