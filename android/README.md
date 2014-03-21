@@ -38,12 +38,13 @@ using a different IDE, make sure this JAR is added to the project classpath.
 #### Gradle
 
 If your Android project is using Gradle as the build system, you can add Liferay
-Android SDK as a dependency to your project, all versions are available at the
-JCenter Maven repository:
+Android SDK as a dependency to your project, all versions are available at
+JCenter and Maven Central repositories:
 
 ```groovy
 repositories {
 	jcenter()
+	mavenCentral()
 }
 
 dependencies {
@@ -51,7 +52,15 @@ dependencies {
 }
 ```
 
-You can do the same and add to your pom.xml if you are using Maven.
+You can do the same and add to your pom.xml if you are using Maven:
+
+```xml
+<dependency>
+    <groupId>com.liferay.mobile</groupId>
+    <artifactId>liferay-android-sdk</artifactId>
+    <version>6.2.0.1</version>
+</dependency>
+```
 
 ### Versioning
 
