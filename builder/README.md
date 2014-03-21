@@ -4,7 +4,9 @@
 
 * [What's the SDK Builder](#whats-the-sdk-builder)
 * [Configuring your Portlet's Remote Services](#configuring-your-portlets-remote-services)
-* [Configuring the SDK Builder](#configuring-the-sdk-builder)
+* [Setup](#setup)
+	* [Download](#download)
+	* [Configuring the SDK Builder](#configuring-the-sdk-builder)
 * [Building a Liferay Android SDK](#building-a-liferay-android-sdk)
 * [Building a Liferay iOS SDK](#building-a-liferay-android-sdk)
 
@@ -51,15 +53,36 @@ takes care of making JSON Web Services requests to your portlet.
 
 Next, let's configure the SDK builder for building your custom portlet SDK.
 
-### Configuring the SDK Builder
+### Setup
 
-In order to user the SDK Builder, you'll need to have the Liferay Mobile SDK
+#### Download
+
+In order to use the SDK Builder, you'll need to have the Liferay Mobile SDK
 project on your local machine. If you haven't done so already, download the
 Mobile SDK project using Git: 
 
 ```sh
 git clone git@github.com:liferay/liferay-mobile-sdk.git
 ```
+
+Alternatively, you can use the SDK Builder as a standalone library, its jar
+is available of both JCenter and Maven Central repositories:
+
+```xml
+<dependency>
+    <groupId>com.liferay.mobile</groupId>
+    <artifactId>liferay-sdk-builder</artifactId>
+    <version>6.2.0.1</version>
+</dependency>
+```
+
+Check the [SDKBuilder.java](src/main/java/com/liferay/mobile/sdk/SDKBuilder.java)
+main method to see how this class can be called from the command line.
+
+#### Configuring the SDK Builder
+
+After you have downloaded the source code from Git, follow these steps to
+run it with Gradle.
 
 The SDK Builder can be invoked using Gradle or command line, but before running
 the builder, you must set some properties so it can communicate with your
