@@ -1,12 +1,12 @@
 ![Liferay Mobile SDK logo](../logo.png)
 
-## Liferay Mobile SDK Builder
+## Liferay SDK Builder
 
 * [What's the SDK Builder](#whats-the-sdk-builder)
 * [Configuring your Portlet's Remote Services](#configuring-your-portlets-remote-services)
 * [Setup](#setup)
 	* [Download](#download)
-	* [Configuring the SDK Builder](#configuring-the-sdk-builder)
+	* [Configuring](#configuring)
 * [Building a Liferay Android SDK](#building-a-liferay-android-sdk)
 * [Building a Liferay iOS SDK](#building-a-liferay-android-sdk)
 
@@ -79,7 +79,7 @@ is available of both JCenter and Maven Central repositories:
 Check the [SDKBuilder.java](src/main/java/com/liferay/mobile/sdk/SDKBuilder.java)
 main method to see how this class can be called from the command line.
 
-#### Configuring the SDK Builder
+#### Configuring
 
 After you have downloaded the source code from Git, follow these steps to
 run it with Gradle.
