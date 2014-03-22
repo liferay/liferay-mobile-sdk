@@ -3,9 +3,9 @@
 Stable releases and documentation for each of the SDKs are available at the
 following links:
 
-- [Download Android and iOS SDKs](../../releases) 
-- [Liferay Android SDK documentation](android/README.md)
-- [Liferay iOS SDK documentation](ios/README.md)
+- [Download](../../releases) 
+- [Liferay Android SDK docs](android/README.md)
+- [Liferay iOS SDK docs](ios/README.md)
 
 The Liferay Mobile SDK is a framework for building native mobile apps that
 integrate with your different Liferay Portal instances and their portlets. The
