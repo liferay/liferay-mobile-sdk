@@ -22,11 +22,12 @@
 @interface LRPortraitUtil : NSObject
 
 + (NSString *)downloadPortrait:(LRSession *)session
-	portraitURL:(NSString *)portraitURL data:(NSData **)data;
+	portraitURL:(NSString *)portraitURL data:(NSData **)data
+	error:(NSError **)error;
 
 + (NSString *)downloadPortrait:(LRSession *)session
 	portraitURL:(NSString *)portraitURL data:(NSData **)data
-	modifiedDate:(NSString *)modifiedDate;
+	modifiedDate:(NSString *)modifiedDate error:(NSError **)error;
 
 + (NSString *)getPortraitURL:(LRSession *)session male:(BOOL)male
 	portraitId:(long long)portraitId;

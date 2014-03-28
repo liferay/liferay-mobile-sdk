@@ -21,18 +21,17 @@
 @implementation LRPortraitUtil
 
 + (NSString *)downloadPortrait:(LRSession *)session
-		portraitURL:(NSString *)portraitURL data:(NSData **)data {
+		portraitURL:(NSString *)portraitURL data:(NSData **)data
+		error:(NSError **)error {
 
 	return
 		[self downloadPortrait:session portraitURL:portraitURL data:data
-			modifiedDate:nil];
+			modifiedDate:nil error:error];
 }
 
 + (NSString *)downloadPortrait:(LRSession *)session
 		portraitURL:(NSString *)portraitURL data:(NSData **)data
-		modifiedDate:(NSString *)modifiedDate {
-
-	NSString* lastModified;
+		modifiedDate:(NSString *)modifiedDate error:(NSError **)error {
 
 	NSMutableURLRequest *request =
 		[[NSMutableURLRequest alloc]
@@ -49,16 +48,20 @@
 
 	*data =
 		[NSURLConnection sendSynchronousRequest:request
-			returningResponse:&response error:nil];
+			returningResponse:&response error:error];
 
 	int status = response.statusCode;
 
 	if (status == STATUS_OK) {
 		NSDictionary *headers = [response allHeaderFields];
-		lastModified = [headers valueForKey:LAST_MODIFIED];
+		NSString *lastModified = [headers valueForKey:LAST_MODIFIED];
+
+		if (![lastModified isEqualToString:modifiedDate]) {
+			return lastModified;
+		}
 	}
 
-	return lastModified;
+	return nil;
 }
 
 + (NSString *)getPortraitURL:(LRSession *)session male:(BOOL)male
