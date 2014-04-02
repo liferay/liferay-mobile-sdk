@@ -15,6 +15,6 @@ Pod::Spec.new do |s|
 					:git => "https://github.com/liferay/liferay-mobile-sdk.git",
 					:tag => "6.2.0.1"
 				}
-	s.source_files	= "ios/src/gen/**/*.{h,m}", "ios/src/main/**/*.{h,m}"
+	s.source_files	= "ios/Source/**/*.{h,m}"
 	s.requires_arc	= true
 end
