@@ -39,19 +39,21 @@ public class iOSBuilder extends BaseBuilder {
 			discovery, version, filter);
 
 		String headerTemplate = "templates/ios/h.vm";
-		String headerPath = getFilePath(context, version, true, destination);
+		String headerPath = getFilePath(
+			context, version, true, destination, filter);
 
 		VelocityUtil.generate(context, headerTemplate, headerPath, true);
 
 		String implTemplate = "templates/ios/m.vm";
-		String implPath = getFilePath(context, version, false, destination);
+		String implPath = getFilePath(
+			context, version, false, destination, filter);
 
 		VelocityUtil.generate(context, implTemplate, implPath, true);
 	}
 
 	protected String getFilePath(
 		VelocityContext context, int version, boolean header,
-		String destination) {
+		String destination, String filter) {
 
 		String className = (String)context.get(CLASS_NAME);
 
@@ -66,12 +68,8 @@ public class iOSBuilder extends BaseBuilder {
 			sb.append("/");
 		}
 
-		if (header) {
-			sb.append("h/");
-		}
-		else {
-			sb.append("m/");
-		}
+		sb.append(filter);
+		sb.append("/");
 
 		File file = new File(sb.toString());
 		file.mkdirs();
