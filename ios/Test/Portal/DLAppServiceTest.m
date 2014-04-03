@@ -7,6 +7,8 @@
 //
 
 #import "DLAppServiceTest.h"
+#import "LRBatchSession.h"
+#import "LRDLAppService_v62.h"
 
 @implementation DLAppServiceTest
 
@@ -35,46 +37,11 @@
 
     long long folderId = [result[@"folderId"] longLongValue];
 
-    [self getFolderWithId:folderId exists:YES];
-    [self deleteFolderWithId:folderId];
+    [self _getFolder:folderId exists:YES];
+    [self _deleteFolder:folderId];
 }
 
-- (void)deleteFolderWithId:(long long)folderId {
-	LRDLAppService_v62 *service =
-		[[LRDLAppService_v62 alloc] initWithSession:self.session];
-
-    NSError *error = nil;
-    [service deleteFolderWithFolderId:folderId error:&error];
-
-    XCTAssertNil(error);
-
-    [self getFolderWithId:folderId exists:NO];
-}
-
-- (void)getFolderWithId:(long long)folderId exists:(BOOL)exists {
-	LRDLAppService_v62 *service =
-		[[LRDLAppService_v62 alloc] initWithSession:self.session];
-
-    NSError *error = nil;
-    NSDictionary *result =
-		[service getFolderWithFolderId:folderId error:&error];
-
-    if (exists) {
-        XCTAssertNil(error);
-        XCTAssertNotNil(result);
-        XCTAssertEqualObjects(result[@"folderId"], @(folderId));
-    }
-    else {
-        XCTAssertNil(result);
-        XCTAssertNotNil(error);
-
-		NSString *description = [error localizedDescription];
-        XCTAssertTrue(
-			[description hasPrefix:@"No DLFolder exists with the primary key"]);
-    }
-}
-
-- (void)testBatchAddFolders {
+- (void)testAddFoldersBatch {
     LRBatchSession *batch = [[LRBatchSession alloc] init:self.session];
     LRDLAppService_v62 *service =
 		[[LRDLAppService_v62 alloc] initWithSession:batch];
@@ -95,7 +62,7 @@
     NSString *description2 =
 		[NSString stringWithFormat:@"2-test-desc-%@", uuid];
 
-    NSError *error = nil;
+    NSError *error;
     [service addFolderWithRepositoryId:repositoryId parentFolderId:0 name:name1
 		description:description1 serviceContext:@{} error:&error];
 
@@ -119,17 +86,29 @@
 
     NSArray *ids = [result valueForKey:@"folderId"];
 
-    [self batchGetFoldersWithIds:ids exists:YES];
-    [self batchDeleteFoldersWithIds:ids];
+    [self _getFolders:ids exists:YES];
+    [self _deleteFoldersBatch:ids];
 }
 
-- (void)batchDeleteFoldersWithIds:(NSArray *)folderIds {
+- (void)_deleteFolder:(long long)folderId {
+	LRDLAppService_v62 *service =
+		[[LRDLAppService_v62 alloc] initWithSession:self.session];
+
+    NSError *error;
+    [service deleteFolderWithFolderId:folderId error:&error];
+
+    XCTAssertNil(error);
+
+    [self _getFolder:folderId exists:NO];
+}
+
+- (void)_deleteFoldersBatch:(NSArray *)folderIds {
     LRBatchSession *batch = [[LRBatchSession alloc] init:self.session];
 
 	LRDLAppService_v62 *service =
 		[[LRDLAppService_v62 alloc] initWithSession:batch];
 
-    NSError *error = nil;
+    NSError *error;
 
     for (id folderId in folderIds) {
         [service deleteFolderWithFolderId:[folderId longLongValue]
@@ -144,16 +123,39 @@
     XCTAssertNotNil(results);
     XCTAssertEqual([folderIds count], [results count]);
 
-    [self batchGetFoldersWithIds:folderIds exists:NO];
+    [self _getFolders:folderIds exists:NO];
 }
 
-- (void)batchGetFoldersWithIds:(NSArray*)folderIds exists:(BOOL)exists {
+- (void)_getFolder:(long long)folderId exists:(BOOL)exists {
+	LRDLAppService_v62 *service =
+		[[LRDLAppService_v62 alloc] initWithSession:self.session];
+
+    NSError *error;
+    NSDictionary *result =
+		[service getFolderWithFolderId:folderId error:&error];
+
+    if (exists) {
+        XCTAssertNil(error);
+        XCTAssertNotNil(result);
+        XCTAssertEqualObjects(result[@"folderId"], @(folderId));
+    }
+    else {
+        XCTAssertNil(result);
+        XCTAssertNotNil(error);
+
+		NSString *description = [error localizedDescription];
+        XCTAssertTrue(
+			[description hasPrefix:@"No DLFolder exists with the primary key"]);
+    }
+}
+
+- (void)_getFolders:(NSArray *)folderIds exists:(BOOL)exists {
     LRBatchSession *batch = [[LRBatchSession alloc] init:self.session];
 
 	LRDLAppService_v62 *service =
 		[[LRDLAppService_v62 alloc] initWithSession:batch];
 
-    NSError *error = nil;
+    NSError *error;
 
     for (id folderId in folderIds) {
         [service getFolderWithFolderId:[folderId longLongValue] error:&error];

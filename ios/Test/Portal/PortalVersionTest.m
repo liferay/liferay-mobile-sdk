@@ -6,12 +6,13 @@
 //	Bruno Farache
 //
 
+#import "LRHttpUtil.h"
 #import "PortalVersionTest.h"
 
 @implementation PortalVersion
 
 - (void)testGetPortalVersion {
-	NSError *error = nil;
+	NSError *error;
 	int version = [LRHttpUtil getPortalVersion:self.session error:&error];
 
 	XCTAssertNil(error);

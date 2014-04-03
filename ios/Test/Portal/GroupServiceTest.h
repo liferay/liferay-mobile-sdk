@@ -7,7 +7,6 @@
 //
 
 #import "BaseTest.h"
-#import "LRGroupService_v62.h"
 
 @interface GroupServiceTest : BaseTest
 

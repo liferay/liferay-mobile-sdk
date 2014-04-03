@@ -7,8 +7,6 @@
 //
 
 #import "BaseTest.h"
-#import "LRBatchSession.h"
-#import "LRDLAppService_v62.h"
 
 @interface DLAppServiceTest : BaseTest
 

@@ -7,7 +7,6 @@
 //
 
 #import "BaseTest.h"
-#import "LRHttpUtil.h"
 
 @interface PortalVersion : BaseTest
 

@@ -6,6 +6,7 @@
 //
 
 #import "SyncWebServiceTest.h"
+#import "LRSyncDLObjectService_v62.h"
 
 @implementation SyncWebServiceTest
 

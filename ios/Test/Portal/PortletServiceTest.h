@@ -6,7 +6,6 @@
 //
 
 #import "BaseTest.h"
-#import "LRPortletService_v62.h"
 
 @interface PortletServiceTest : BaseTest
 

@@ -7,6 +7,7 @@
 //
 
 #import "GroupServiceTest.h"
+#import "LRGroupService_v62.h"
 
 @implementation GroupServiceTest
 
@@ -14,7 +15,7 @@
     LRGroupService_v62 *service =
 		[[LRGroupService_v62 alloc] initWithSession:self.session];
 
-    NSError *error = nil;
+    NSError *error;
     NSArray *groups = [service getUserSites:&error];
 
     XCTAssertNil(error);

@@ -5,6 +5,7 @@
 //  Bruno Farache
 //
 
+#import "LRPortletService_v62.h"
 #import "PortletServiceTest.h"
 
 @implementation PortletServiceTest
@@ -13,7 +14,7 @@
 	LRPortletService_v62 *service =
 		[[LRPortletService_v62 alloc] initWithSession:self.session];
 
-	NSError *error = nil;
+	NSError *error;
 	NSArray *array = [service getWarPortlets:&error];
 
 	XCTAssertNil(error);
