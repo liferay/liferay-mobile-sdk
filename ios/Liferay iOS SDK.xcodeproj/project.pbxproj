@@ -114,6 +114,7 @@
 		CC03FD2718EDA05B00F3F16C /* GroupServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FD2018EDA05B00F3F16C /* GroupServiceTest.m */; };
 		CC03FD2818EDA05B00F3F16C /* PortalVersionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FD2218EDA05B00F3F16C /* PortalVersionTest.m */; };
 		CC03FD2918EDA05B00F3F16C /* PortletServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FD2418EDA05B00F3F16C /* PortletServiceTest.m */; };
+		CC03FD2C18EDA10B00F3F16C /* DLAppServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FD2B18EDA10B00F3F16C /* DLAppServiceTest.m */; };
 		CC677D2718EC511900F3DFAB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595218EC4BE800957D20 /* XCTest.framework */; };
 		CC677D2818EC511900F3DFAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
 		CC677D2918EC511900F3DFAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595518EC4BE800957D20 /* UIKit.framework */; };
@@ -360,6 +361,8 @@
 		CC03FD2218EDA05B00F3F16C /* PortalVersionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalVersionTest.m; sourceTree = "<group>"; };
 		CC03FD2318EDA05B00F3F16C /* PortletServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortletServiceTest.h; sourceTree = "<group>"; };
 		CC03FD2418EDA05B00F3F16C /* PortletServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortletServiceTest.m; sourceTree = "<group>"; };
+		CC03FD2A18EDA10B00F3F16C /* DLAppServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAppServiceTest.h; sourceTree = "<group>"; };
+		CC03FD2B18EDA10B00F3F16C /* DLAppServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAppServiceTest.m; sourceTree = "<group>"; };
 		CC677D2618EC511900F3DFAB /* Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC83D48D18ED693600CFA142 /* BaseTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTest.h; sourceTree = "<group>"; };
 		CC83D48E18ED6BE300CFA142 /* BaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTest.m; sourceTree = "<group>"; };
@@ -1433,6 +1436,8 @@
 		CC03FD1C18EDA05B00F3F16C /* Portal */ = {
 			isa = PBXGroup;
 			children = (
+				CC03FD2A18EDA10B00F3F16C /* DLAppServiceTest.h */,
+				CC03FD2B18EDA10B00F3F16C /* DLAppServiceTest.m */,
 				CC03FD1F18EDA05B00F3F16C /* GroupServiceTest.h */,
 				CC03FD2018EDA05B00F3F16C /* GroupServiceTest.m */,
 				CC03FD2118EDA05B00F3F16C /* PortalVersionTest.h */,
@@ -1645,6 +1650,7 @@
 				CC03FCCA18ED7DCD00F3F16C /* LRImageService_v62.m in Sources */,
 				CC03FD2918EDA05B00F3F16C /* PortletServiceTest.m in Sources */,
 				CC03FCBD18ED7DCD00F3F16C /* LRDDMStructureService_v62.m in Sources */,
+				CC03FD2C18EDA10B00F3F16C /* DLAppServiceTest.m in Sources */,
 				CC03FCF318ED7DCD00F3F16C /* LRSCLicenseService_v62.m in Sources */,
 				CC03FCAA18ED7DCD00F3F16C /* LRAnnouncementsDeliveryService_v62.m in Sources */,
 				CC03FCFB18ED7DCD00F3F16C /* LRSocialActivitySettingService_v62.m in Sources */,
