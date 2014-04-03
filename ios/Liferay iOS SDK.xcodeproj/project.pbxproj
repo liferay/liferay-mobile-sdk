@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CC03FB6518ED71E800F3F16C /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC03FB6418ED71E800F3F16C /* settings.plist */; };
+		CC03FB6F18ED7BA000F3F16C /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC03FB6C18ED7BA000F3F16C /* settings.plist */; };
 		CC677D2718EC511900F3DFAB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595218EC4BE800957D20 /* XCTest.framework */; };
 		CC677D2818EC511900F3DFAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
 		CC677D2918EC511900F3DFAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595518EC4BE800957D20 /* UIKit.framework */; };
-		CC677D2F18EC511900F3DFAB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC677D2D18EC511900F3DFAB /* InfoPlist.strings */; };
 		CC83D48F18ED6BE300CFA142 /* BaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC83D48E18ED6BE300CFA142 /* BaseTest.m */; };
 		CCA6594518EC4BE800957D20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -39,12 +38,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CC03FB6418ED71E800F3F16C /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
-		CC677D1B18EC4F7300F3DFAB /* Liferay iOS SDK-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Liferay iOS SDK-Prefix.pch"; sourceTree = "<group>"; };
+		CC03FB6C18ED7BA000F3F16C /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
+		CC03FB6D18ED7BA000F3F16C /* Test-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Test-Info.plist"; sourceTree = "<group>"; };
+		CC03FB6E18ED7BA000F3F16C /* Test-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Test-Prefix.pch"; sourceTree = "<group>"; };
 		CC677D2618EC511900F3DFAB /* Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC677D2C18EC511900F3DFAB /* Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Test-Info.plist"; sourceTree = "<group>"; };
-		CC677D2E18EC511900F3DFAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CC677D3218EC511900F3DFAB /* Test-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Test-Prefix.pch"; sourceTree = "<group>"; };
 		CC83D48D18ED693600CFA142 /* BaseTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTest.h; sourceTree = "<group>"; };
 		CC83D48E18ED6BE300CFA142 /* BaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTest.m; sourceTree = "<group>"; };
 		CCA6594118EC4BE800957D20 /* libLiferay iOS SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libLiferay iOS SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,10 +72,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CC677D1A18EC4F7300F3DFAB /* Supporting Files */ = {
+		CC03FB6B18ED7BA000F3F16C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CC677D1B18EC4F7300F3DFAB /* Liferay iOS SDK-Prefix.pch */,
+				CC03FB6C18ED7BA000F3F16C /* settings.plist */,
+				CC03FB6D18ED7BA000F3F16C /* Test-Info.plist */,
+				CC03FB6E18ED7BA000F3F16C /* Test-Prefix.pch */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -86,29 +85,17 @@
 		CC677D2A18EC511900F3DFAB /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				CC677D2B18EC511900F3DFAB /* Supporting Files */,
+				CC03FB6B18ED7BA000F3F16C /* Supporting Files */,
 				CC83D48D18ED693600CFA142 /* BaseTest.h */,
 				CC83D48E18ED6BE300CFA142 /* BaseTest.m */,
-				CC03FB6418ED71E800F3F16C /* settings.plist */,
 			);
 			path = Test;
-			sourceTree = "<group>";
-		};
-		CC677D2B18EC511900F3DFAB /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CC677D2D18EC511900F3DFAB /* InfoPlist.strings */,
-				CC677D2C18EC511900F3DFAB /* Test-Info.plist */,
-				CC677D3218EC511900F3DFAB /* Test-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		CCA6593818EC4BE800957D20 = {
 			isa = PBXGroup;
 			children = (
 				CC677D2A18EC511900F3DFAB /* Test */,
-				CC677D1A18EC4F7300F3DFAB /* Supporting Files */,
 				CCA6594318EC4BE800957D20 /* Frameworks */,
 				CCA6594218EC4BE800957D20 /* Products */,
 			);
@@ -208,8 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC677D2F18EC511900F3DFAB /* InfoPlist.strings in Resources */,
-				CC03FB6518ED71E800F3F16C /* settings.plist in Resources */,
+				CC03FB6F18ED7BA000F3F16C /* settings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,17 +227,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		CC677D2D18EC511900F3DFAB /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CC677D2E18EC511900F3DFAB /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		CC677D3618EC511900F3DFAB /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -262,12 +237,12 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Test/Test-Prefix.pch";
+				GCC_PREFIX_HEADER = "Test/Supporting Files/Test-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Test/Test-Info.plist";
+				INFOPLIST_FILE = "Test/Supporting Files/Test-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -282,8 +257,8 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Test/Test-Prefix.pch";
-				INFOPLIST_FILE = "Test/Test-Info.plist";
+				GCC_PREFIX_HEADER = "Test/Supporting Files/Test-Prefix.pch";
+				INFOPLIST_FILE = "Test/Supporting Files/Test-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -362,7 +337,6 @@
 			buildSettings = {
 				DSTROOT = /tmp/Liferay_iOS_SDK.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Supporting Files/Liferay iOS SDK-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -374,7 +348,6 @@
 			buildSettings = {
 				DSTROOT = /tmp/Liferay_iOS_SDK.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Supporting Files/Liferay iOS SDK-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
