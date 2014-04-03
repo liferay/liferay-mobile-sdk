@@ -1,0 +1,410 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CC677D2718EC511900F3DFAB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595218EC4BE800957D20 /* XCTest.framework */; };
+		CC677D2818EC511900F3DFAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
+		CC677D2918EC511900F3DFAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595518EC4BE800957D20 /* UIKit.framework */; };
+		CC677D2F18EC511900F3DFAB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC677D2D18EC511900F3DFAB /* InfoPlist.strings */; };
+		CC677D3118EC511900F3DFAB /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = CC677D3018EC511900F3DFAB /* Test.m */; };
+		CCA6594518EC4BE800957D20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CC677D3318EC511900F3DFAB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CCA6593918EC4BE800957D20 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CCA6594018EC4BE800957D20;
+			remoteInfo = "Liferay iOS SDK";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CCA6593F18EC4BE800957D20 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		CC677D1B18EC4F7300F3DFAB /* Liferay iOS SDK-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Liferay iOS SDK-Prefix.pch"; sourceTree = "<group>"; };
+		CC677D2618EC511900F3DFAB /* Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC677D2C18EC511900F3DFAB /* Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Test-Info.plist"; sourceTree = "<group>"; };
+		CC677D2E18EC511900F3DFAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CC677D3018EC511900F3DFAB /* Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
+		CC677D3218EC511900F3DFAB /* Test-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Test-Prefix.pch"; sourceTree = "<group>"; };
+		CCA6594118EC4BE800957D20 /* libLiferay iOS SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libLiferay iOS SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCA6594418EC4BE800957D20 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CCA6595218EC4BE800957D20 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		CCA6595518EC4BE800957D20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CC677D2318EC511900F3DFAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC677D2718EC511900F3DFAB /* XCTest.framework in Frameworks */,
+				CC677D2918EC511900F3DFAB /* UIKit.framework in Frameworks */,
+				CC677D2818EC511900F3DFAB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCA6593E18EC4BE800957D20 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCA6594518EC4BE800957D20 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CC677D1A18EC4F7300F3DFAB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CC677D1B18EC4F7300F3DFAB /* Liferay iOS SDK-Prefix.pch */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CC677D2A18EC511900F3DFAB /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				CC677D3018EC511900F3DFAB /* Test.m */,
+				CC677D2B18EC511900F3DFAB /* Supporting Files */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		CC677D2B18EC511900F3DFAB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CC677D2C18EC511900F3DFAB /* Test-Info.plist */,
+				CC677D2D18EC511900F3DFAB /* InfoPlist.strings */,
+				CC677D3218EC511900F3DFAB /* Test-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CCA6593818EC4BE800957D20 = {
+			isa = PBXGroup;
+			children = (
+				CC677D1A18EC4F7300F3DFAB /* Supporting Files */,
+				CC677D2A18EC511900F3DFAB /* Test */,
+				CCA6594318EC4BE800957D20 /* Frameworks */,
+				CCA6594218EC4BE800957D20 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CCA6594218EC4BE800957D20 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CCA6594118EC4BE800957D20 /* libLiferay iOS SDK.a */,
+				CC677D2618EC511900F3DFAB /* Test.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CCA6594318EC4BE800957D20 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CCA6594418EC4BE800957D20 /* Foundation.framework */,
+				CCA6595218EC4BE800957D20 /* XCTest.framework */,
+				CCA6595518EC4BE800957D20 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CC677D2518EC511900F3DFAB /* Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC677D3518EC511900F3DFAB /* Build configuration list for PBXNativeTarget "Test" */;
+			buildPhases = (
+				CC677D2218EC511900F3DFAB /* Sources */,
+				CC677D2318EC511900F3DFAB /* Frameworks */,
+				CC677D2418EC511900F3DFAB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CC677D3418EC511900F3DFAB /* PBXTargetDependency */,
+			);
+			name = Test;
+			productName = Test;
+			productReference = CC677D2618EC511900F3DFAB /* Test.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CCA6594018EC4BE800957D20 /* Liferay iOS SDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCA6596418EC4BE800957D20 /* Build configuration list for PBXNativeTarget "Liferay iOS SDK" */;
+			buildPhases = (
+				CCA6593D18EC4BE800957D20 /* Sources */,
+				CCA6593E18EC4BE800957D20 /* Frameworks */,
+				CCA6593F18EC4BE800957D20 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Liferay iOS SDK";
+			productName = "Liferay iOS SDK";
+			productReference = CCA6594118EC4BE800957D20 /* libLiferay iOS SDK.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CCA6593918EC4BE800957D20 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Liferay Inc.";
+				TargetAttributes = {
+					CC677D2518EC511900F3DFAB = {
+						TestTargetID = CCA6594018EC4BE800957D20;
+					};
+				};
+			};
+			buildConfigurationList = CCA6593C18EC4BE800957D20 /* Build configuration list for PBXProject "Liferay iOS SDK" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CCA6593818EC4BE800957D20;
+			productRefGroup = CCA6594218EC4BE800957D20 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CCA6594018EC4BE800957D20 /* Liferay iOS SDK */,
+				CC677D2518EC511900F3DFAB /* Test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC677D2418EC511900F3DFAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC677D2F18EC511900F3DFAB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CC677D2218EC511900F3DFAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC677D3118EC511900F3DFAB /* Test.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCA6593D18EC4BE800957D20 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CC677D3418EC511900F3DFAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CCA6594018EC4BE800957D20 /* Liferay iOS SDK */;
+			targetProxy = CC677D3318EC511900F3DFAB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CC677D2D18EC511900F3DFAB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC677D2E18EC511900F3DFAB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CC677D3618EC511900F3DFAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Test/Test-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Test/Test-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		CC677D3718EC511900F3DFAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Test/Test-Prefix.pch";
+				INFOPLIST_FILE = "Test/Test-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		CCA6596218EC4BE800957D20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CCA6596318EC4BE800957D20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CCA6596518EC4BE800957D20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Liferay_iOS_SDK.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Supporting Files/Liferay iOS SDK-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CCA6596618EC4BE800957D20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Liferay_iOS_SDK.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Supporting Files/Liferay iOS SDK-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CC677D3518EC511900F3DFAB /* Build configuration list for PBXNativeTarget "Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC677D3618EC511900F3DFAB /* Debug */,
+				CC677D3718EC511900F3DFAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CCA6593C18EC4BE800957D20 /* Build configuration list for PBXProject "Liferay iOS SDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCA6596218EC4BE800957D20 /* Debug */,
+				CCA6596318EC4BE800957D20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CCA6596418EC4BE800957D20 /* Build configuration list for PBXNativeTarget "Liferay iOS SDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCA6596518EC4BE800957D20 /* Debug */,
+				CCA6596618EC4BE800957D20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CCA6593918EC4BE800957D20 /* Project object */;
+}
