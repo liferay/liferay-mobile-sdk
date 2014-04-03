@@ -111,6 +111,9 @@
 		CC03FD0818ED7DCD00F3F16C /* LRWikiPageService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FCA018ED7DCD00F3F16C /* LRWikiPageService_v62.m */; };
 		CC03FD0918ED7DCD00F3F16C /* LRPortraitUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FCA318ED7DCD00F3F16C /* LRPortraitUtil.m */; };
 		CC03FD0C18ED959D00F3F16C /* PortalVersionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FD0B18ED959D00F3F16C /* PortalVersionTest.m */; };
+		CC03FD0F18ED982C00F3F16C /* GroupServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FD0E18ED982C00F3F16C /* GroupServiceTest.m */; };
+		CC03FD1218ED9B7A00F3F16C /* SyncWebServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FD1118ED9B7A00F3F16C /* SyncWebServiceTest.m */; };
+		CC03FD1518ED9D4800F3F16C /* PortletServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FD1418ED9D4800F3F16C /* PortletServiceTest.m */; };
 		CC677D2718EC511900F3DFAB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595218EC4BE800957D20 /* XCTest.framework */; };
 		CC677D2818EC511900F3DFAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
 		CC677D2918EC511900F3DFAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595518EC4BE800957D20 /* UIKit.framework */; };
@@ -351,6 +354,12 @@
 		CC03FCA318ED7DCD00F3F16C /* LRPortraitUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPortraitUtil.m; sourceTree = "<group>"; };
 		CC03FD0A18ED959D00F3F16C /* PortalVersionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalVersionTest.h; sourceTree = "<group>"; };
 		CC03FD0B18ED959D00F3F16C /* PortalVersionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalVersionTest.m; sourceTree = "<group>"; };
+		CC03FD0D18ED982C00F3F16C /* GroupServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupServiceTest.h; sourceTree = "<group>"; };
+		CC03FD0E18ED982C00F3F16C /* GroupServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupServiceTest.m; sourceTree = "<group>"; };
+		CC03FD1018ED9B7A00F3F16C /* SyncWebServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncWebServiceTest.h; sourceTree = "<group>"; };
+		CC03FD1118ED9B7A00F3F16C /* SyncWebServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncWebServiceTest.m; sourceTree = "<group>"; };
+		CC03FD1318ED9D4800F3F16C /* PortletServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortletServiceTest.h; sourceTree = "<group>"; };
+		CC03FD1418ED9D4800F3F16C /* PortletServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortletServiceTest.m; sourceTree = "<group>"; };
 		CC677D2618EC511900F3DFAB /* Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC83D48D18ED693600CFA142 /* BaseTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTest.h; sourceTree = "<group>"; };
 		CC83D48E18ED6BE300CFA142 /* BaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTest.m; sourceTree = "<group>"; };
@@ -1418,8 +1427,14 @@
 				CC03FB6B18ED7BA000F3F16C /* Supporting Files */,
 				CC83D48D18ED693600CFA142 /* BaseTest.h */,
 				CC83D48E18ED6BE300CFA142 /* BaseTest.m */,
+				CC03FD0D18ED982C00F3F16C /* GroupServiceTest.h */,
+				CC03FD0E18ED982C00F3F16C /* GroupServiceTest.m */,
 				CC03FD0A18ED959D00F3F16C /* PortalVersionTest.h */,
 				CC03FD0B18ED959D00F3F16C /* PortalVersionTest.m */,
+				CC03FD1318ED9D4800F3F16C /* PortletServiceTest.h */,
+				CC03FD1418ED9D4800F3F16C /* PortletServiceTest.m */,
+				CC03FD1018ED9B7A00F3F16C /* SyncWebServiceTest.h */,
+				CC03FD1118ED9B7A00F3F16C /* SyncWebServiceTest.m */,
 			);
 			path = Test;
 			sourceTree = SOURCE_ROOT;
@@ -1540,6 +1555,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC03FCD918ED7DCD00F3F16C /* LRMBCategoryService_v62.m in Sources */,
+				CC03FD0F18ED982C00F3F16C /* GroupServiceTest.m in Sources */,
 				CC03FCB518ED7DCD00F3F16C /* LRBookmarksEntryService_v62.m in Sources */,
 				CC03FCC018ED7DCD00F3F16C /* LRDLFileEntryService_v62.m in Sources */,
 				CC03FCD518ED7DCD00F3F16C /* LRLayoutSetBranchService_v62.m in Sources */,
@@ -1605,6 +1621,7 @@
 				CC03FCFC18ED7DCD00F3F16C /* LRSocialRequestService_v62.m in Sources */,
 				CC03FCDC18ED7DCD00F3F16C /* LRMDRActionService_v62.m in Sources */,
 				CC03FCDA18ED7DCD00F3F16C /* LRMBMessageService_v62.m in Sources */,
+				CC03FD1218ED9B7A00F3F16C /* SyncWebServiceTest.m in Sources */,
 				CC03FCCB18ED7DCD00F3F16C /* LRJournalArticleService_v62.m in Sources */,
 				CC03FCB718ED7DCD00F3F16C /* LRClassNameService_v62.m in Sources */,
 				CC03FD0118ED7DCD00F3F16C /* LRTrashEntryService_v62.m in Sources */,
@@ -1634,6 +1651,7 @@
 				CC03FCFD18ED7DCD00F3F16C /* LRStagingService_v62.m in Sources */,
 				CC03FCEF18ED7DCD00F3F16C /* LRResourceBlockService_v62.m in Sources */,
 				CC03FCC918ED7DCD00F3F16C /* LRGroupService_v62.m in Sources */,
+				CC03FD1518ED9D4800F3F16C /* PortletServiceTest.m in Sources */,
 				CC03FCF918ED7DCD00F3F16C /* LRShoppingOrderService_v62.m in Sources */,
 				CC03FCFF18ED7DCD00F3F16C /* LRTeamService_v62.m in Sources */,
 				CC03FCED18ED7DCD00F3F16C /* LRRegionService_v62.m in Sources */,
