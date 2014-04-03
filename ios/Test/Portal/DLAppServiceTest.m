@@ -33,7 +33,7 @@
 	NSString *description =
 		[NSString stringWithFormat:@"test-desc-%@", [[NSUUID UUID] UUIDString]];
 
-    NSError *error = nil;
+    NSError *error;
     NSDictionary *result = [service addFolderWithRepositoryId:repositoryId
 		parentFolderId:0 name:name description:description serviceContext:@{}
 		error:&error];

@@ -9,6 +9,6 @@
 	<key>password</key>
 	<string>test</string>
 	<key>repositoryId</key>
-	<integer>10184</integer>
+	<integer>-1</integer>
 </dict>
 </plist>
