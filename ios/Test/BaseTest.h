@@ -6,8 +6,11 @@
 //	Bruno Farache
 //
 
+#import "LRSession.h"
+
 @interface BaseTest : XCTestCase
 
-@property (strong) NSDictionary *settings;
+@property (nonatomic, strong) LRSession *session;
+@property (nonatomic, strong) NSDictionary *settings;
 
 @end

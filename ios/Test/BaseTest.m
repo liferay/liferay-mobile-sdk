@@ -19,12 +19,13 @@
 	NSString *path = [bundle pathForResource:@"settings" ofType:@"plist"];
 
     self.settings = [[NSDictionary alloc] initWithContentsOfFile:path];
-}
 
-- (void)test {
-	NSString *url = [self.settings objectForKey:@"url"];
-
-	XCTFail(@"%@", url);
+	NSString *url = self.settings[@"url"];
+	NSString *username = self.settings[@"username"];
+	NSString *password = self.settings[@"password"];
+	
+	self.session =
+		[[LRSession alloc] init:url username:username password:password];
 }
 
 - (void)tearDown {

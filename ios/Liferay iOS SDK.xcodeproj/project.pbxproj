@@ -110,6 +110,7 @@
 		CC03FD0718ED7DCD00F3F16C /* LRWikiNodeService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FC9D18ED7DCD00F3F16C /* LRWikiNodeService_v62.m */; };
 		CC03FD0818ED7DCD00F3F16C /* LRWikiPageService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FCA018ED7DCD00F3F16C /* LRWikiPageService_v62.m */; };
 		CC03FD0918ED7DCD00F3F16C /* LRPortraitUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FCA318ED7DCD00F3F16C /* LRPortraitUtil.m */; };
+		CC03FD0C18ED959D00F3F16C /* PortalVersionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FD0B18ED959D00F3F16C /* PortalVersionTest.m */; };
 		CC677D2718EC511900F3DFAB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595218EC4BE800957D20 /* XCTest.framework */; };
 		CC677D2818EC511900F3DFAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
 		CC677D2918EC511900F3DFAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595518EC4BE800957D20 /* UIKit.framework */; };
@@ -348,6 +349,8 @@
 		CC03FCA018ED7DCD00F3F16C /* LRWikiPageService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRWikiPageService_v62.m; sourceTree = "<group>"; };
 		CC03FCA218ED7DCD00F3F16C /* LRPortraitUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPortraitUtil.h; sourceTree = "<group>"; };
 		CC03FCA318ED7DCD00F3F16C /* LRPortraitUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPortraitUtil.m; sourceTree = "<group>"; };
+		CC03FD0A18ED959D00F3F16C /* PortalVersionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalVersionTest.h; sourceTree = "<group>"; };
+		CC03FD0B18ED959D00F3F16C /* PortalVersionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalVersionTest.m; sourceTree = "<group>"; };
 		CC677D2618EC511900F3DFAB /* Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC83D48D18ED693600CFA142 /* BaseTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTest.h; sourceTree = "<group>"; };
 		CC83D48E18ED6BE300CFA142 /* BaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTest.m; sourceTree = "<group>"; };
@@ -1415,9 +1418,11 @@
 				CC03FB6B18ED7BA000F3F16C /* Supporting Files */,
 				CC83D48D18ED693600CFA142 /* BaseTest.h */,
 				CC83D48E18ED6BE300CFA142 /* BaseTest.m */,
+				CC03FD0A18ED959D00F3F16C /* PortalVersionTest.h */,
+				CC03FD0B18ED959D00F3F16C /* PortalVersionTest.m */,
 			);
 			path = Test;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		CCA6593818EC4BE800957D20 = {
 			isa = PBXGroup;
@@ -1580,6 +1585,7 @@
 				CC03FCC818ED7DCD00F3F16C /* LRFlagsEntryService_v62.m in Sources */,
 				CC03FCE018ED7DCD00F3F16C /* LRMembershipRequestService_v62.m in Sources */,
 				CC03FCC218ED7DCD00F3F16C /* LRDLFileShortcutService_v62.m in Sources */,
+				CC03FD0C18ED959D00F3F16C /* PortalVersionTest.m in Sources */,
 				CC03FCB318ED7DCD00F3F16C /* LRBackgroundTaskService_v62.m in Sources */,
 				CC03FCF418ED7DCD00F3F16C /* LRSCProductEntryService_v62.m in Sources */,
 				CC03FCC718ED7DCD00F3F16C /* LRExpandoValueService_v62.m in Sources */,
