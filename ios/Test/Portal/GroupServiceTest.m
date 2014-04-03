@@ -21,20 +21,20 @@
 @implementation GroupServiceTest
 
 - (void)testGetUserSites {
-    LRGroupService_v62 *service =
+	LRGroupService_v62 *service =
 		[[LRGroupService_v62 alloc] initWithSession:self.session];
 
-    NSError *error;
-    NSArray *groups = [service getUserSites:&error];
+	NSError *error;
+	NSArray *groups = [service getUserSites:&error];
 
-    XCTAssertNil(error);
-    XCTAssertEqual(2, [groups count]);
+	XCTAssertNil(error);
+	XCTAssertEqual(2, [groups count]);
 
-    NSDictionary *group = groups[0];
-    XCTAssertEqualObjects(@"/test", group[@"friendlyURL"]);
+	NSDictionary *group = groups[0];
+	XCTAssertEqualObjects(@"/test", group[@"friendlyURL"]);
 
-    group = groups[1];
-    XCTAssertEqualObjects(@"/guest", group[@"friendlyURL"]);
+	group = groups[1];
+	XCTAssertEqualObjects(@"/guest", group[@"friendlyURL"]);
 }
 
 @end

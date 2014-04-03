@@ -24,9 +24,9 @@
 	LRSyncDLObjectService_v62 *service =
 		[[LRSyncDLObjectService_v62 alloc] initWithSession:self.session];
 
-	NSError *error = nil;
-
+	NSError *error;
 	NSArray *groups = [service getUserSitesGroups:&error];
+
 	XCTAssertNil(error);
 	XCTAssertEqual(2, [groups count]);
 
