@@ -1412,7 +1412,6 @@
 		CC677D2A18EC511900F3DFAB /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				CC03FB7118ED7DCC00F3F16C /* Source */,
 				CC03FB6B18ED7BA000F3F16C /* Supporting Files */,
 				CC83D48D18ED693600CFA142 /* BaseTest.h */,
 				CC83D48E18ED6BE300CFA142 /* BaseTest.m */,
@@ -1423,6 +1422,7 @@
 		CCA6593818EC4BE800957D20 = {
 			isa = PBXGroup;
 			children = (
+				CC03FB7118ED7DCC00F3F16C /* Source */,
 				CC677D2A18EC511900F3DFAB /* Test */,
 				CCA6594318EC4BE800957D20 /* Frameworks */,
 				CCA6594218EC4BE800957D20 /* Products */,
