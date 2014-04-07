@@ -11,7 +11,7 @@ The Liferay Mobile SDK is a framework for building native mobile apps that
 integrate with your different Liferay Portal instances and their portlets. The
 SDK provides the means for your mobile apps to easily consume Liferay Portal's
 core web services and the web services of your custom portlets. It wraps Liferay
-JSON web services, takes care of authentication, makes RESTful requests
+JSON web services, takes care of authentication, makes HTTP requests
 (synchronously or asynchronously), parses JSON results and handles server side
 exceptions.
 
