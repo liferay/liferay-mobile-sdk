@@ -6,7 +6,9 @@
 * [Setup](#setup)
 	* [Manually](#manually)
 	* [CocoaPods](#cocoapods)
-* [Versioning](#versioning)
+* [Compatibility](#compatibility)
+	* [Liferay](#liferay)
+	* [iOS](#ios)
 * [Use](#use)
 	* [Asynchronous](#asynchronous)
 	* [Batch](#batch)
@@ -52,7 +54,9 @@ file, use that file to open your project in XCode.
 For more information on how CocoaPods works, read their
 [documentation](http://guides.cocoapods.org/using/index.html).
 
-### Versioning
+### Compatibility
+
+#### Liferay
 
 Each Liferay Mobile SDK is designed to work with a specific Liferay Portal
 version. Because of that, its version scheme reflects the compatible Liferay
@@ -72,6 +76,11 @@ their version number as well: *_v62.m, *_v7.m, etc.
 
 To find out which Liferay versions you are connecting to, use the
 `[LRHttpUtil getPortalVersion:…]` method.
+
+#### iOS
+
+The Liferay iOS SDK is compatible with iOS versions 6.1 and up. It may work with
+older versions, but these are the versions we use to run our unit tests.
 
 ### Use
 

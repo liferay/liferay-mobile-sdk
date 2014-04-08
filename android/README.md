@@ -6,7 +6,9 @@
 * [Setup](#setup)
 	* [Manually](#manually)
 	* [Gradle](#gradle)
-* [Versioning](#versioning)
+* [Compatibility](#compatibility)
+	* [Liferay](#liferay)
+	* [Android](#android)
 * [Use](#use)
 	* [Asynchronous](#asynchronous)
 	* [Batch](#batch)
@@ -62,7 +64,9 @@ You can do the same and add to your pom.xml if you are using Maven:
 </dependency>
 ```
 
-### Versioning
+### Compatibility
+
+#### Liferay
 
 Each Liferay Mobile SDK is designed to work with a specific Liferay Portal
 version. Because of that, its version scheme reflects the compatible Liferay
@@ -82,6 +86,12 @@ their version number as well: *.v62, *.v7, etc.
 
 To find out which Liferay versions you are connecting to, use the
 `HttpUtil.getPortalVersion(…)` method.
+
+#### Android
+
+The Liferay Android SDK is compatible with Android versions 2.3.3 and up. It may
+work with older versions, but these are the versions we use to run our unit
+tests.
 
 ### Use
 
