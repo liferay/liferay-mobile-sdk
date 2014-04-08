@@ -53,7 +53,7 @@ takes care of making JSON Web Services requests to your portlet.
 
 Next, let's configure the SDK builder for building your custom portlet SDK.
 
-### Setup
+## Setup
 
 #### Download
 
