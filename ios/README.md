@@ -1,6 +1,6 @@
 ![Liferay Mobile SDK logo](../logo.png)
 
-## Liferay iOS SDK
+# Liferay iOS SDK
 
 * [Sample](#sample)
 * [Setup](#setup)
@@ -13,7 +13,7 @@
 	* [Asynchronous](#asynchronous)
 	* [Batch](#batch)
 
-### Sample
+## Sample
 
 Check out the [iOS sample
 app](https://github.com/brunofarache/liferay-mobile-sdk-sample-ios). It's a
@@ -22,7 +22,7 @@ It contains many examples on how to use the Liferay Mobile SDK and it's a good
 way to learn how to use the Liferay Mobile SDK to build your own native
 applications.
 
-### Setup
+## Setup
 
 #### Manually
 
@@ -54,7 +54,7 @@ file, use that file to open your project in XCode.
 For more information on how CocoaPods works, read their
 [documentation](http://guides.cocoapods.org/using/index.html).
 
-### Compatibility
+## Compatibility
 
 #### Liferay
 
@@ -82,7 +82,7 @@ To find out which Liferay versions you are connecting to, use the
 The Liferay iOS SDK is compatible with iOS versions 6.1 and up. It may work with
 older versions, but these are the versions we use to run our unit tests.
 
-### Use
+## Use
 
 1.  Create a `Session` with the user credentials:
 

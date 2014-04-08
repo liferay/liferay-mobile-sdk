@@ -1,6 +1,6 @@
 ![Liferay Mobile SDK logo](../logo.png)
 
-## Liferay SDK Builder
+# Liferay SDK Builder
 
 * [What's the SDK Builder](#whats-the-sdk-builder)
 * [Configuring your Portlet's Remote Services](#configuring-your-portlets-remote-services)
@@ -10,7 +10,7 @@
 * [Building a Liferay Android SDK](#building-a-liferay-android-sdk)
 * [Building a Liferay iOS SDK](#building-a-liferay-android-sdk)
 
-### What's the SDK Builder?
+## What's the SDK Builder?
 
 The Liferay Mobile SDK project comes with an SDK Builder that generates the
 Liferay Mobile SDK for the Android and iOS platforms. Think of it as a Service
@@ -22,7 +22,7 @@ libraries that allow your native mobile apps to invoke remote web services of a
 portal instance and any of its custom portlets built with Liferay's [Service
 Builder](http://www.liferay.com/documentation/liferay-portal/6.2/development/-/ai/generating-your-service-layer-liferay-portal-6-2-dev-guide-04-en).
 
-### Configuring your Portlet's Remote Services
+## Configuring your Portlet's Remote Services
 
 In order for the SDK Builder to discover a portlet's remote services, the
 portlet's services must be made available and be accompanied by a Web Service

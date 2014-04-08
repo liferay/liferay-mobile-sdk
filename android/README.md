@@ -1,6 +1,6 @@
 ![Liferay Mobile SDK logo](../logo.png)
 
-## Liferay Android SDK
+# Liferay Android SDK
 
 * [Sample](#sample)
 * [Setup](#setup)
@@ -13,7 +13,7 @@
 	* [Asynchronous](#asynchronous)
 	* [Batch](#batch)
 
-### Sample
+## Sample
 
 Check out the [Android sample
 app](https://github.com/brunofarache/liferay-mobile-sdk-sample-android). It's a
@@ -22,7 +22,7 @@ It contains many examples on how to use the Liferay Mobile SDK and it's a good
 way to learn how to use the Liferay Mobile SDK to build your own native
 applications.
 
-### Setup
+## Setup
 
 #### Manually
 
@@ -64,7 +64,7 @@ You can do the same and add to your pom.xml if you are using Maven:
 </dependency>
 ```
 
-### Compatibility
+## Compatibility
 
 #### Liferay
 
@@ -93,7 +93,7 @@ The Liferay Android SDK is compatible with Android versions 2.3.3 and up. It may
 work with older versions, but these are the versions we use to run our unit
 tests.
 
-### Use
+## Use
 
 1. Create a `Session` with the user credentials:
 
