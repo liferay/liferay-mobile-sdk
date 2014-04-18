@@ -14,6 +14,21 @@
 
 #import "LRHttpUtil.h"
 
+const int V_UNKNOWN = -1;
+const int V_6_2 = 6200;
+
+NSString *const ERROR_DOMAIN = @"com.liferay.mobile.sync.ErrorDomain";
+
+static NSString *const GET = @"GET";
+static NSString *const HEAD = @"HEAD";
+static NSString *const POST = @"POST";
+
+static NSString *const IF_MODIFIED_SINCE = @"If-Modified-Since";
+static NSString *const LAST_MODIFIED = @"Last-Modified";
+
+static const int STATUS_OK = 200;
+static const int STATUS_UNAUTHORIZED = 401;
+
 /**
  * @author Bruno Farache
  */
@@ -49,14 +64,14 @@ static NSMutableDictionary *_versions;
 		error:error];
 
 	if (*error) {
-		return UNKNOWN;
+		return V_UNKNOWN;
 	}
 
 	NSDictionary *headers = [response allHeaderFields];
 	NSString *portalHeader = [headers objectForKey:@"Liferay-Portal"];
 
 	if (!portalHeader) {
-		version = @(UNKNOWN);
+		version = @(V_UNKNOWN);
 
 		[_versions setObject:version forKey:URL];
 
@@ -71,7 +86,7 @@ static NSMutableDictionary *_versions;
 			range:searchRange];
 
 	if (buildRange.location == NSNotFound) {
-		version = @(UNKNOWN);
+		version = @(V_UNKNOWN);
 	}
 	else {
 		int indexOfBuild = buildRange.location + buildRange.length;

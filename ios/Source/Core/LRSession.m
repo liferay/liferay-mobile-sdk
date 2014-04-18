@@ -15,6 +15,8 @@
 #import "LRHttpUtil.h"
 #import "LRSession.h"
 
+static const int DEFAULT_CONNECTION_TIMEOUT = 15;
+
 /**
  * @author Bruno Farache
  */

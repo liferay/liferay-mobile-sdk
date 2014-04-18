@@ -14,8 +14,6 @@
 
 #import "LRCallback.h"
 
-#define DEFAULT_CONNECTION_TIMEOUT 15
-
 /**
  * @author Bruno Farache
  */
