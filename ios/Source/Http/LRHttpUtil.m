@@ -260,8 +260,16 @@ static NSMutableDictionary *_versions;
 		});
 	};
 
-	[NSURLConnection sendAsynchronousRequest:request
-		queue:[LRDefaultHttpQueue sharedQueue] completionHandler:handler];
+	NSOperationQueue* queue;
+	if (session.queue) {
+		queue = session.queue;
+	}
+	else {
+		queue = [LRDefaultHttpQueue sharedQueue];
+	}
+
+	[NSURLConnection sendAsynchronousRequest:request queue:queue
+		completionHandler:handler];
 }
 
 @end

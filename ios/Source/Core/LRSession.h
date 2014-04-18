@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *server;
 @property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSOperationQueue *queue;
 
 - (id)init:(LRSession *)session;
 
