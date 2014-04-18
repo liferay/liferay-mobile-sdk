@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8872F9D419018BA10079A929 /* LRDefaultHttpQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8872F9D319018BA10079A929 /* LRDefaultHttpQueue.m */; };
 		CC03FB6F18ED7BA000F3F16C /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC03FB6C18ED7BA000F3F16C /* settings.plist */; };
 		CC03FCA418ED7DCD00F3F16C /* LRBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FB7418ED7DCC00F3F16C /* LRBaseService.m */; };
 		CC03FCA518ED7DCD00F3F16C /* LRBatchSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FB7618ED7DCC00F3F16C /* LRBatchSession.m */; };
@@ -145,6 +146,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8872F9D219018BA10079A929 /* LRDefaultHttpQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDefaultHttpQueue.h; sourceTree = "<group>"; };
+		8872F9D319018BA10079A929 /* LRDefaultHttpQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDefaultHttpQueue.m; sourceTree = "<group>"; };
 		CC03FB6C18ED7BA000F3F16C /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		CC03FB6D18ED7BA000F3F16C /* Test-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Test-Info.plist"; sourceTree = "<group>"; };
 		CC03FB6E18ED7BA000F3F16C /* Test-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Test-Prefix.pch"; sourceTree = "<group>"; };
@@ -434,6 +437,8 @@
 		CC03FB7C18ED7DCC00F3F16C /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				8872F9D219018BA10079A929 /* LRDefaultHttpQueue.h */,
+				8872F9D319018BA10079A929 /* LRDefaultHttpQueue.m */,
 				CC03FB7D18ED7DCC00F3F16C /* LRHttpUtil.h */,
 				CC03FB7E18ED7DCC00F3F16C /* LRHttpUtil.m */,
 			);
@@ -1690,6 +1695,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8872F9D419018BA10079A929 /* LRDefaultHttpQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
