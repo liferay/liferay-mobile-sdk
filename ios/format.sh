@@ -1,7 +1,7 @@
 #! /bin/sh
 
 if [ -z "$1" ]; then
-	for file in $(find . -name "*.[hm]" -not -path "./Source/*"); do
+	for file in $(find . -name "*.[hm]" -not -path "./Source/Service/*"); do
 		uncrustify -l OC -c uncrustify.cfg --no-backup $file
 	done
 else
