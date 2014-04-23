@@ -19,15 +19,15 @@ const int V_6_2 = 6200;
 
 NSString *const ERROR_DOMAIN = @"com.liferay.mobile.sync.ErrorDomain";
 
-static NSString *const GET = @"GET";
-static NSString *const HEAD = @"HEAD";
-static NSString *const POST = @"POST";
+static NSString *const _GET = @"GET";
+static NSString *const _HEAD = @"HEAD";
+static NSString *const _POST = @"POST";
 
-static NSString *const IF_MODIFIED_SINCE = @"If-Modified-Since";
-static NSString *const LAST_MODIFIED = @"Last-Modified";
+static NSString *const _IF_MODIFIED_SINCE = @"If-Modified-Since";
+static NSString *const _LAST_MODIFIED = @"Last-Modified";
 
-static const int STATUS_OK = 200;
-static const int STATUS_UNAUTHORIZED = 401;
+static const int _STATUS_OK = 200;
+static const int _STATUS_UNAUTHORIZED = 401;
 
 /**
  * @author Bruno Farache
@@ -56,7 +56,7 @@ static NSMutableDictionary *_versions;
 	NSMutableURLRequest *request =
 		[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL]];
 
-	[request setHTTPMethod:HEAD];
+	[request setHTTPMethod:_HEAD];
 
 	NSHTTPURLResponse *response;
 
@@ -155,7 +155,7 @@ static NSMutableDictionary *_versions;
 	NSData *body = [NSJSONSerialization dataWithJSONObject:commands options:0
 		error:error];
 
-	[request setHTTPMethod:POST];
+	[request setHTTPMethod:_POST];
 	[request setTimeoutInterval:session.connectionTimeout];
 	[request setValue:authHeader forHTTPHeaderField:@"Authorization"];
 	[request setValue:@"application/json; charset=utf-8"
@@ -183,18 +183,18 @@ static NSMutableDictionary *_versions;
 
 	int statusCode = [response statusCode];
 
-	if (statusCode == STATUS_UNAUTHORIZED) {
+	if (statusCode == _STATUS_UNAUTHORIZED) {
 		NSDictionary *userInfo = @{
 		   NSLocalizedDescriptionKey: @"wrong-credentials"
 		};
 
-		*error = [NSError errorWithDomain:ERROR_DOMAIN code:STATUS_UNAUTHORIZED
+		*error = [NSError errorWithDomain:ERROR_DOMAIN code:_STATUS_UNAUTHORIZED
 			userInfo:userInfo];
 
 		return nil;
 	}
 
-	if (statusCode != STATUS_OK) {
+	if (statusCode != _STATUS_OK) {
 		NSDictionary *userInfo = @{
 			NSLocalizedDescriptionKey: @"server-error"
 		};

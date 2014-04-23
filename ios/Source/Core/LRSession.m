@@ -15,7 +15,7 @@
 #import "LRHttpUtil.h"
 #import "LRSession.h"
 
-static const int DEFAULT_CONNECTION_TIMEOUT = 15;
+static const int _DEFAULT_CONNECTION_TIMEOUT = 15;
 
 /**
  * @author Bruno Farache
@@ -38,7 +38,7 @@ static const int DEFAULT_CONNECTION_TIMEOUT = 15;
 		password:(NSString *)password callback:(id<LRCallback>)callback {
 
 	return [self init:server username:username password:password
-		connectionTimeout:DEFAULT_CONNECTION_TIMEOUT callback:callback];
+		connectionTimeout:_DEFAULT_CONNECTION_TIMEOUT callback:callback];
 }
 
 - (id)init:(NSString *)server username:(NSString *)username
