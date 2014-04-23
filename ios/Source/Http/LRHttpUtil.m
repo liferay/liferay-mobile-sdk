@@ -14,18 +14,15 @@
 
 #import "LRHttpUtil.h"
 
+NSString *const ERROR_DOMAIN = @"com.liferay.mobile";
 const int V_UNKNOWN = -1;
 const int V_6_2 = 6200;
 
-NSString *const ERROR_DOMAIN = @"com.liferay.mobile.sync.ErrorDomain";
-
 static NSString *const _GET = @"GET";
 static NSString *const _HEAD = @"HEAD";
-static NSString *const _POST = @"POST";
-
 static NSString *const _IF_MODIFIED_SINCE = @"If-Modified-Since";
 static NSString *const _LAST_MODIFIED = @"Last-Modified";
-
+static NSString *const _POST = @"POST";
 static const int _STATUS_OK = 200;
 static const int _STATUS_UNAUTHORIZED = 401;
 
