@@ -176,13 +176,13 @@ static NSMutableDictionary *_versions;
 }
 
 + (NSArray *)_handleServerException:(NSData *)data
-		response:(NSHTTPURLResponse *)response error:(NSError **) error {
+		response:(NSHTTPURLResponse *)response error:(NSError **)error {
 
 	int statusCode = [response statusCode];
 
 	if (statusCode == LR_STATUS_UNAUTHORIZED) {
 		NSDictionary *userInfo = @{
-		   NSLocalizedDescriptionKey: @"wrong-credentials"
+			NSLocalizedDescriptionKey: @"wrong-credentials"
 		};
 
 		*error = [NSError errorWithDomain:LR_ERROR_DOMAIN
