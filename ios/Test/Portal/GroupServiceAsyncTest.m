@@ -12,33 +12,41 @@
  * details.
  */
 
-#import "GroupServiceTest.h"
+#import "GroupServiceAsyncTest.h"
+
 #import "LRGroupService_v62.h"
 
 /**
- * @author Jose Navarro
+ * @author Bruno Farache
  */
-@implementation GroupServiceTest
+@implementation GroupServiceAsyncTest
 
-- (void)testGetUserSites {
-	LRGroupService_v62 *service =
-		[[LRGroupService_v62 alloc] initWithSession:self.session];
-
-	NSError *error;
-	NSArray *groups = [service getUserSites:&error];
-
-	[self assert:groups error:error];
+- (void)onFailure:(NSError *)error {
+	self.error = error;
+	[self.monitor signal];
 }
 
-- (void)assert:(NSArray *)groups error:(NSError *)error {
+- (void)onSuccess:(NSArray *)groups {
+	self.groups = groups;
+	[self.monitor signal];
+}
+
+- (void)testGetUserSites {
+	self.monitor = [TRVSMonitor monitor];
+
+	LRSession *session = [[LRSession alloc] init:self.session];
+	[session setCallback:self];
+
+	LRGroupService_v62 *service =
+		[[LRGroupService_v62 alloc] initWithSession:session];
+
+	NSError *error;
+	[service getUserSites:&error];
+	[self.monitor wait];
+
 	XCTAssertNil(error);
-	XCTAssertEqual(2, [groups count]);
 
-	NSDictionary *group = groups[0];
-	XCTAssertEqualObjects(@"/test", group[@"friendlyURL"]);
-
-	group = groups[1];
-	XCTAssertEqualObjects(@"/guest", group[@"friendlyURL"]);
+	[self assert:self.groups error:self.error];
 }
 
 @end

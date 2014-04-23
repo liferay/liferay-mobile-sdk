@@ -12,13 +12,17 @@
  * details.
  */
 
-#import "BaseTest.h"
+#import "GroupServiceTest.h"
+#import "LRCallback.h"
+#import "TRVSMonitor.h"
 
 /**
- * @author Jose Navarro
+ * @author Bruno Farache
  */
-@interface GroupServiceTest : BaseTest
+@interface GroupServiceAsyncTest : GroupServiceTest <LRCallback>
 
-- (void)assert:(NSArray *)groups error:(NSError *)error;
+@property (nonatomic, strong) NSError *error;
+@property (nonatomic, strong) NSArray *groups;
+@property (nonatomic, strong) TRVSMonitor *monitor;
 
 @end
