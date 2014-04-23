@@ -14,9 +14,9 @@
 
 #import "LRHttpUtil.h"
 
-NSString *const ERROR_DOMAIN = @"com.liferay.mobile";
-const int V_UNKNOWN = -1;
-const int V_6_2 = 6200;
+NSString *const LR_ERROR_DOMAIN = @"com.liferay.mobile";
+const int LR_UNKNOWN_VERSION = -1;
+const int LR_VERSION_6_2 = 6200;
 
 static NSString *const _GET = @"GET";
 static NSString *const _HEAD = @"HEAD";
@@ -61,14 +61,14 @@ static NSMutableDictionary *_versions;
 		error:error];
 
 	if (*error) {
-		return V_UNKNOWN;
+		return LR_UNKNOWN_VERSION;
 	}
 
 	NSDictionary *headers = [response allHeaderFields];
 	NSString *portalHeader = [headers objectForKey:@"Liferay-Portal"];
 
 	if (!portalHeader) {
-		version = @(V_UNKNOWN);
+		version = @(LR_UNKNOWN_VERSION);
 
 		[_versions setObject:version forKey:URL];
 
@@ -83,7 +83,7 @@ static NSMutableDictionary *_versions;
 			range:searchRange];
 
 	if (buildRange.location == NSNotFound) {
-		version = @(V_UNKNOWN);
+		version = @(LR_UNKNOWN_VERSION);
 	}
 	else {
 		int indexOfBuild = buildRange.location + buildRange.length;
@@ -185,8 +185,8 @@ static NSMutableDictionary *_versions;
 		   NSLocalizedDescriptionKey: @"wrong-credentials"
 		};
 
-		*error = [NSError errorWithDomain:ERROR_DOMAIN code:_STATUS_UNAUTHORIZED
-			userInfo:userInfo];
+		*error = [NSError errorWithDomain:LR_ERROR_DOMAIN
+			code:_STATUS_UNAUTHORIZED userInfo:userInfo];
 
 		return nil;
 	}
@@ -196,7 +196,7 @@ static NSMutableDictionary *_versions;
 			NSLocalizedDescriptionKey: @"server-error"
 		};
 
-		*error = [NSError errorWithDomain:ERROR_DOMAIN code:statusCode
+		*error = [NSError errorWithDomain:LR_ERROR_DOMAIN code:statusCode
 			userInfo:userInfo];
 
 		return nil;
@@ -217,7 +217,7 @@ static NSMutableDictionary *_versions;
 				NSLocalizedDescriptionKey: message
 			};
 
-			*error = [NSError errorWithDomain:ERROR_DOMAIN code:-1
+			*error = [NSError errorWithDomain:LR_ERROR_DOMAIN code:-1
 				userInfo:userInfo];
 
 			return nil;

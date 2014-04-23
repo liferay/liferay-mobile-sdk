@@ -14,9 +14,9 @@
 
 #import "LRBatchSession.h"
 
-extern NSString *const ERROR_DOMAIN;
-extern const int V_UNKNOWN;
-extern const int V_6_2;
+extern NSString *const LR_ERROR_DOMAIN;
+extern const int LR_UNKNOWN_VERSION;
+extern const int LR_VERSION_6_2;
 
 /**
  * @author Bruno Farache
