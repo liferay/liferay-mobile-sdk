@@ -16,6 +16,7 @@
 #import "LRSession.h"
 
 static const int _DEFAULT_CONNECTION_TIMEOUT = 15;
+static NSOperationQueue *_QUEUE_INSTANCE;
 
 /**
  * @author Bruno Farache
@@ -62,6 +63,21 @@ static const int _DEFAULT_CONNECTION_TIMEOUT = 15;
 	NSArray *json = [LRHttpUtil post:self command:command error:error];
 
 	return [json objectAtIndex:0];
+}
+
+- (NSOperationQueue *)queue {
+	if (_queue) {
+		return _queue;
+	}
+
+	if (!_QUEUE_INSTANCE) {
+		_QUEUE_INSTANCE = [[NSOperationQueue alloc] init];
+
+		[_QUEUE_INSTANCE setName:@"com.liferay.mobile.DefaultHttpQueue"];
+		[_QUEUE_INSTANCE setMaxConcurrentOperationCount:1];
+	}
+
+	return _QUEUE_INSTANCE;
 }
 
 @end
