@@ -15,16 +15,16 @@
 #import "LRHttpUtil.h"
 
 NSString *const LR_ERROR_DOMAIN = @"com.liferay.mobile";
+NSString *const LR_GET = @"GET";
+NSString *const LR_IF_MODIFIED_SINCE = @"If-Modified-Since";
+NSString *const LR_LAST_MODIFIED = @"Last-Modified";
+const int LR_STATUS_OK = 200;
+const int LR_STATUS_UNAUTHORIZED = 401;
 const int LR_UNKNOWN_VERSION = -1;
 const int LR_VERSION_6_2 = 6200;
 
-static NSString *const _GET = @"GET";
 static NSString *const _HEAD = @"HEAD";
-static NSString *const _IF_MODIFIED_SINCE = @"If-Modified-Since";
-static NSString *const _LAST_MODIFIED = @"Last-Modified";
 static NSString *const _POST = @"POST";
-static const int _STATUS_OK = 200;
-static const int _STATUS_UNAUTHORIZED = 401;
 
 /**
  * @author Bruno Farache
@@ -180,18 +180,18 @@ static NSMutableDictionary *_versions;
 
 	int statusCode = [response statusCode];
 
-	if (statusCode == _STATUS_UNAUTHORIZED) {
+	if (statusCode == LR_STATUS_UNAUTHORIZED) {
 		NSDictionary *userInfo = @{
 		   NSLocalizedDescriptionKey: @"wrong-credentials"
 		};
 
 		*error = [NSError errorWithDomain:LR_ERROR_DOMAIN
-			code:_STATUS_UNAUTHORIZED userInfo:userInfo];
+			code:LR_STATUS_UNAUTHORIZED userInfo:userInfo];
 
 		return nil;
 	}
 
-	if (statusCode != _STATUS_OK) {
+	if (statusCode != LR_STATUS_OK) {
 		NSDictionary *userInfo = @{
 			NSLocalizedDescriptionKey: @"server-error"
 		};

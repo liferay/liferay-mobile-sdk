@@ -15,6 +15,11 @@
 #import "LRBatchSession.h"
 
 extern NSString *const LR_ERROR_DOMAIN;
+extern NSString *const LR_GET;
+extern NSString *const LR_IF_MODIFIED_SINCE;
+extern NSString *const LR_LAST_MODIFIED;
+extern const int LR_STATUS_OK;
+extern const int LR_STATUS_UNAUTHORIZED;
 extern const int LR_UNKNOWN_VERSION;
 extern const int LR_VERSION_6_2;
 

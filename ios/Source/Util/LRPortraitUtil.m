@@ -37,11 +37,11 @@
 		[[NSMutableURLRequest alloc]
 			initWithURL:[NSURL URLWithString:portraitURL]];
 
-	[request setHTTPMethod:GET];
+	[request setHTTPMethod:LR_GET];
 	[request setTimeoutInterval:session.connectionTimeout];
 
 	if (modifiedDate) {
-		[request setValue:modifiedDate forHTTPHeaderField:IF_MODIFIED_SINCE];
+		[request setValue:modifiedDate forHTTPHeaderField:LR_IF_MODIFIED_SINCE];
 	}
 
 	NSHTTPURLResponse *response;
@@ -52,9 +52,9 @@
 
 	int status = response.statusCode;
 
-	if (status == STATUS_OK) {
+	if (status == LR_STATUS_OK) {
 		NSDictionary *headers = [response allHeaderFields];
-		NSString *lastModified = [headers valueForKey:LAST_MODIFIED];
+		NSString *lastModified = [headers valueForKey:LR_LAST_MODIFIED];
 
 		if (![lastModified isEqualToString:modifiedDate]) {
 			return lastModified;
@@ -83,7 +83,7 @@
 	NSError *error;
 	int version = [LRHttpUtil getPortalVersion:session error:&error];
 
-	if (!error && version > V_6_2) {
+	if (!error && version > LR_VERSION_6_2) {
 		portraitURL = [self appendToken:portraitURL uuid:uuid];
 	}
 
