@@ -23,6 +23,15 @@ static NSOperationQueue *_QUEUE_INSTANCE;
  */
 @implementation LRSession
 
++ (void)initialize {
+	if (self == [LRSession self]) {
+		_QUEUE_INSTANCE = [[NSOperationQueue alloc] init];
+
+		[_QUEUE_INSTANCE setName:@"com.liferay.mobile.DefaultHttpQueue"];
+		[_QUEUE_INSTANCE setMaxConcurrentOperationCount:1];
+	}
+}
+
 - (id)init:(LRSession *)session {
 	return [self init:session.server username:session.username
 		password:session.password connectionTimeout:session.connectionTimeout
@@ -68,13 +77,6 @@ static NSOperationQueue *_QUEUE_INSTANCE;
 - (NSOperationQueue *)queue {
 	if (_queue) {
 		return _queue;
-	}
-
-	if (!_QUEUE_INSTANCE) {
-		_QUEUE_INSTANCE = [[NSOperationQueue alloc] init];
-
-		[_QUEUE_INSTANCE setName:@"com.liferay.mobile.DefaultHttpQueue"];
-		[_QUEUE_INSTANCE setMaxConcurrentOperationCount:1];
 	}
 
 	return _QUEUE_INSTANCE;
