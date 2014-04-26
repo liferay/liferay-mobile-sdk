@@ -16,7 +16,7 @@
 #import "LRSession.h"
 
 static const int _DEFAULT_CONNECTION_TIMEOUT = 15;
-static NSOperationQueue *_QUEUE_INSTANCE;
+static NSOperationQueue *_QUEUE;
 
 /**
  * @author Bruno Farache
@@ -25,10 +25,10 @@ static NSOperationQueue *_QUEUE_INSTANCE;
 
 + (void)initialize {
 	if (self == [LRSession self]) {
-		_QUEUE_INSTANCE = [[NSOperationQueue alloc] init];
+		_QUEUE = [[NSOperationQueue alloc] init];
 
-		[_QUEUE_INSTANCE setName:@"com.liferay.mobile.DefaultHttpQueue"];
-		[_QUEUE_INSTANCE setMaxConcurrentOperationCount:1];
+		[_QUEUE setName:@"com.liferay.mobile.LRSessionQueue"];
+		[_QUEUE setMaxConcurrentOperationCount:1];
 	}
 }
 
@@ -55,6 +55,14 @@ static NSOperationQueue *_QUEUE_INSTANCE;
 		password:(NSString *)password connectionTimeout:(int)connectionTimeout
 		callback:(id<LRCallback>)callback {
 
+	return [self init:server username:username password:password
+		connectionTimeout:connectionTimeout callback:callback queue:nil];
+}
+
+- (id)init:(NSString *)server username:(NSString *)username
+		password:(NSString *)password connectionTimeout:(int)connectionTimeout
+		callback:(id<LRCallback>)callback queue:(NSOperationQueue *)queue {
+
 	self = [super init];
 
 	if (self) {
@@ -63,6 +71,7 @@ static NSOperationQueue *_QUEUE_INSTANCE;
 		self.password = password;
 		self.connectionTimeout = connectionTimeout;
 		self.callback = callback;
+		self.queue = queue;
 	}
 
 	return self;
@@ -79,7 +88,7 @@ static NSOperationQueue *_QUEUE_INSTANCE;
 		return _queue;
 	}
 
-	return _QUEUE_INSTANCE;
+	return _QUEUE;
 }
 
 @end

@@ -84,24 +84,24 @@
 	int version = [LRHttpUtil getPortalVersion:session error:&error];
 
 	if (!error && version > LR_VERSION_6_2) {
-		portraitURL = [self appendToken:portraitURL uuid:uuid];
+		portraitURL = [self _appendToken:portraitURL uuid:uuid];
 	}
 
 	return portraitURL;
 }
 
-+ (NSString *)appendToken:(NSString *)portraitURL uuid:(NSString *)uuid {
++ (NSString *)_appendToken:(NSString *)portraitURL uuid:(NSString *)uuid {
 	if (!uuid) {
 		return portraitURL;
 	}
 
-	NSString *token = [self sha1:uuid];
+	NSString *token = [self _sha1:uuid];
 
 	return [NSString stringWithFormat:@"%@&img_id_token=%@",
 		portraitURL, token];
 }
 
-+ (NSString *)sha1:(NSString *)input {
++ (NSString *)_sha1:(NSString *)input {
 	unsigned char result[CC_SHA1_DIGEST_LENGTH];
 	const char *string = [input UTF8String];
 
