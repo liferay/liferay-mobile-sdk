@@ -19,6 +19,7 @@ package $package;
 ##n
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 ##n
@@ -59,8 +60,15 @@ public class $className extends BaseService {
 
 	##n
 
-	#foreach ($param in $parameters)
-		##t			_params.put(${esc.q}$param.name${esc.q}, $param.name);
+	#foreach ($parameter in $parameters)
+		#set ($parameterName = $parameter.name)
+    	#set ($parameterType = $languageUtil.getType($parameter.type))
+
+		#if ($parameterType == "JSONObjectWrapper")
+			##t			explode(_params, ${esc.q}$languageUtil.getJSONWrapperType($parameter.type)${esc.q}, ${esc.q}$parameterName${esc.q}, $parameterName);
+		#else
+			##t			_params.put(${esc.q}$parameterName${esc.q}, $parameterName);
+		#end
 
 		#if (!$foreach.hasNext)
 			##n
