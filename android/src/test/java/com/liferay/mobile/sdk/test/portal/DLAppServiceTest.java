@@ -40,14 +40,15 @@ public class DLAppServiceTest extends BaseTest {
 	@Test
 	public void addFolder() throws Exception {
 		DLAppService service = new DLAppService(session);
+		long repositoryId = props.getGroupId();
 
 		JSONObject jsonObj = service.addFolder(
-			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
+			repositoryId, _PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
 
 		assertEquals(_FOLDER_NAME, jsonObj.get(_NAME));
 
 		int count = service.getFoldersCount(
-			_getRepositoryId(), _PARENT_FOLDER_ID, 0, false);
+			repositoryId, _PARENT_FOLDER_ID, 0, false);
 
 		assertEquals(1, count);
 
@@ -59,12 +60,13 @@ public class DLAppServiceTest extends BaseTest {
 		BatchSessionImpl batch = new BatchSessionImpl(session);
 
 		DLAppService service = new DLAppService(batch);
+		long repositoryId = props.getGroupId();
 
 		service.addFolder(
-			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
+			repositoryId, _PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
 
 		service.addFolder(
-			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME_2, "", null);
+			repositoryId, _PARENT_FOLDER_ID, _FOLDER_NAME_2, "", null);
 
 		JSONArray jsonArray = batch.invoke();
 
@@ -76,13 +78,12 @@ public class DLAppServiceTest extends BaseTest {
 
 	public void deleteFolder() throws Exception {
 		DLAppService service = new DLAppService(session);
+		long repositoryId = props.getGroupId();
 
-		service.deleteFolder(
-			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME);
+		service.deleteFolder(repositoryId, _PARENT_FOLDER_ID, _FOLDER_NAME);
 
 		try {
-			service.getFolder(
-				_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME);
+			service.getFolder(repositoryId, _PARENT_FOLDER_ID, _FOLDER_NAME);
 
 			fail();
 		}
@@ -95,20 +96,14 @@ public class DLAppServiceTest extends BaseTest {
 
 	public void deleteFoldersBatch(BatchSessionImpl batch) throws Exception {
 		DLAppService service = new DLAppService(batch);
+		long repositoryId = props.getGroupId();
 
-		service.deleteFolder(
-			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME);
-
-		service.deleteFolder(
-			_getRepositoryId(), _PARENT_FOLDER_ID, _FOLDER_NAME_2);
+		service.deleteFolder(repositoryId, _PARENT_FOLDER_ID, _FOLDER_NAME);
+		service.deleteFolder(repositoryId, _PARENT_FOLDER_ID, _FOLDER_NAME_2);
 
 		JSONArray jsonArray = batch.invoke();
 
 		assertEquals(2, jsonArray.length());
-	}
-
-	private long _getRepositoryId() {
-		return Long.valueOf(props.getProperty("repositoryId"));
 	}
 
 	private static final String _FOLDER_NAME = "test";

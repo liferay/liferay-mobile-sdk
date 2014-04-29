@@ -24,6 +24,8 @@ import java.util.Properties;
  */
 public class PropertiesUtil {
 
+	public static final String GROUP_ID = "groupId";
+
 	public static final String LOGIN = "login";
 
 	public static final String PASSWORD = "password";
@@ -46,6 +48,10 @@ public class PropertiesUtil {
 
 			_properties.putAll(localProperties);
 		}
+	}
+
+	public long getGroupId() {
+		return Long.valueOf(_properties.getProperty(GROUP_ID));
 	}
 
 	public String getLogin() {
