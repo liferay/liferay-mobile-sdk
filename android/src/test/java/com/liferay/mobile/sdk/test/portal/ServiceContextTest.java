@@ -33,27 +33,41 @@ import static org.junit.Assert.*;
  */
 public class ServiceContextTest extends BaseTest {
 
+	public static final long PARENT_FOLDER_ID = 0;
+
 	public ServiceContextTest() throws IOException {
 		super();
 	}
 
 	@Test
-	public void testServiceContext() throws Exception {
-		BookmarksEntryService service = new BookmarksEntryService(session);
-		long groupId = props.getGroupId();
-
+	public void addEntry() throws Exception {
 		Random random = new Random();
 		String uuid = String.valueOf(Math.abs(random.nextInt()));
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("uuid", uuid);
-
 		JSONObjectWrapper serviceContext = new JSONObjectWrapper(jsonObject);
 
-		JSONObject entry = service.addEntry(
-			groupId, 0, "test", "http://www.liferay.com", "", serviceContext);
+		JSONObject entry = addEntry("test", serviceContext);
 
 		assertEquals(uuid, entry.getString("uuid"));
+
+		deleteEntry(entry);
+	}
+
+	public JSONObject addEntry(String name, JSONObjectWrapper serviceContext)
+		throws Exception {
+
+		BookmarksEntryService service = new BookmarksEntryService(session);
+		long groupId = props.getGroupId();
+
+		return service.addEntry(
+			groupId, PARENT_FOLDER_ID, name, "http://www.liferay.com", "",
+			serviceContext);
+	}
+
+	public void deleteEntry(JSONObject entry) throws Exception {
+		BookmarksEntryService service = new BookmarksEntryService(session);
 		service.deleteEntry(entry.getLong("entryId"));
 	}
 
