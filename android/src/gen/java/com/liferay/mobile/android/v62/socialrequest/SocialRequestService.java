@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.socialrequest;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class SocialRequestService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject updateRequest(long requestId, int status, JSONObject themeDisplay) throws Exception {
+	public JSONObject updateRequest(long requestId, int status, JSONObjectWrapper themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -38,7 +39,7 @@ public class SocialRequestService extends BaseService {
 
 			_params.put("requestId", requestId);
 			_params.put("status", status);
-			_params.put("themeDisplay", themeDisplay);
+			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/socialrequest/update-request", _params);
 		}

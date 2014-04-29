@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.contact;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -47,7 +48,7 @@ public class ContactService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getContacts(long classNameId, long classPK, int start, int end, JSONObject orderByComparator) throws Exception {
+	public JSONArray getContacts(long classNameId, long classPK, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -57,7 +58,7 @@ public class ContactService extends BaseService {
 			_params.put("classPK", classPK);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("orderByComparator", orderByComparator);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
 
 			_command.put("/contact/get-contacts", _params);
 		}

@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.scproductentry;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class SCProductEntryService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addProductEntry(String name, String type, String tags, String shortDescription, String longDescription, String pageURL, String author, String repoGroupId, String repoArtifactId, JSONArray licenseIds, JSONArray thumbnails, JSONArray fullImages, JSONObject serviceContext) throws Exception {
+	public JSONObject addProductEntry(String name, String type, String tags, String shortDescription, String longDescription, String pageURL, String author, String repoGroupId, String repoArtifactId, JSONArray licenseIds, JSONArray thumbnails, JSONArray fullImages, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -48,7 +49,7 @@ public class SCProductEntryService extends BaseService {
 			_params.put("licenseIds", licenseIds);
 			_params.put("thumbnails", thumbnails);
 			_params.put("fullImages", fullImages);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/scproductentry/add-product-entry", _params);
 		}

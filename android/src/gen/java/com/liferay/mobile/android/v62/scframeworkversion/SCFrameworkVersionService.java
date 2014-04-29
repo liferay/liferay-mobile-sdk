@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.scframeworkversion;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class SCFrameworkVersionService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFrameworkVersion(String name, String url, boolean active, int priority, JSONObject serviceContext) throws Exception {
+	public JSONObject addFrameworkVersion(String name, String url, boolean active, int priority, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -40,7 +41,7 @@ public class SCFrameworkVersionService extends BaseService {
 			_params.put("url", url);
 			_params.put("active", active);
 			_params.put("priority", priority);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/scframeworkversion/add-framework-version", _params);
 		}

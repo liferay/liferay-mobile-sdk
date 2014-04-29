@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.membershiprequest;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class MembershipRequestService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addMembershipRequest(long groupId, String comments, JSONObject serviceContext) throws Exception {
+	public JSONObject addMembershipRequest(long groupId, String comments, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -38,7 +39,7 @@ public class MembershipRequestService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("comments", comments);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/membershiprequest/add-membership-request", _params);
 		}
@@ -84,7 +85,7 @@ public class MembershipRequestService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void updateStatus(long membershipRequestId, String reviewComments, int statusId, JSONObject serviceContext) throws Exception {
+	public void updateStatus(long membershipRequestId, String reviewComments, int statusId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -93,7 +94,7 @@ public class MembershipRequestService extends BaseService {
 			_params.put("membershipRequestId", membershipRequestId);
 			_params.put("reviewComments", reviewComments);
 			_params.put("statusId", statusId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/membershiprequest/update-status", _params);
 		}

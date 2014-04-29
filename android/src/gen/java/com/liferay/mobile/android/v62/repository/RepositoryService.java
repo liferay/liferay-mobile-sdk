@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.repository;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class RepositoryService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addRepository(long groupId, long classNameId, long parentFolderId, String name, String description, String portletId, JSONObject typeSettingsProperties, JSONObject serviceContext) throws Exception {
+	public JSONObject addRepository(long groupId, long classNameId, long parentFolderId, String name, String description, String portletId, JSONObjectWrapper typeSettingsProperties, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -42,8 +43,8 @@ public class RepositoryService extends BaseService {
 			_params.put("name", name);
 			_params.put("description", description);
 			_params.put("portletId", portletId);
-			_params.put("typeSettingsProperties", typeSettingsProperties);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "typeSettingsProperties", "com.liferay.portal.kernel.util.UnicodeProperties", typeSettingsProperties);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/repository/add-repository", _params);
 		}

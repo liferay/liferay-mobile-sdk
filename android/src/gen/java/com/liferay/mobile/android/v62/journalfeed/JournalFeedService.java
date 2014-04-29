@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.journalfeed;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class JournalFeedService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFeed(long groupId, String feedId, boolean autoFeedId, String name, String description, String type, String structureId, String templateId, String rendererTemplateId, int delta, String orderByCol, String orderByType, String targetLayoutFriendlyUrl, String targetPortletId, String contentField, String feedType, double feedVersion, JSONObject serviceContext) throws Exception {
+	public JSONObject addFeed(long groupId, String feedId, boolean autoFeedId, String name, String description, String type, String structureId, String templateId, String rendererTemplateId, int delta, String orderByCol, String orderByType, String targetLayoutFriendlyUrl, String targetPortletId, String contentField, String feedType, double feedVersion, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -53,7 +54,7 @@ public class JournalFeedService extends BaseService {
 			_params.put("contentField", contentField);
 			_params.put("feedType", feedType);
 			_params.put("feedVersion", feedVersion);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalfeed/add-feed", _params);
 		}
@@ -134,7 +135,7 @@ public class JournalFeedService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateFeed(long groupId, String feedId, String name, String description, String type, String structureId, String templateId, String rendererTemplateId, int delta, String orderByCol, String orderByType, String targetLayoutFriendlyUrl, String targetPortletId, String contentField, String feedType, double feedVersion, JSONObject serviceContext) throws Exception {
+	public JSONObject updateFeed(long groupId, String feedId, String name, String description, String type, String structureId, String templateId, String rendererTemplateId, int delta, String orderByCol, String orderByType, String targetLayoutFriendlyUrl, String targetPortletId, String contentField, String feedType, double feedVersion, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -156,7 +157,7 @@ public class JournalFeedService extends BaseService {
 			_params.put("contentField", contentField);
 			_params.put("feedType", feedType);
 			_params.put("feedVersion", feedVersion);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalfeed/update-feed", _params);
 		}

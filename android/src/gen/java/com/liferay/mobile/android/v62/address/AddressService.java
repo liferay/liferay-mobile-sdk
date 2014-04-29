@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.address;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -58,7 +59,7 @@ public class AddressService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addAddress(String className, long classPK, String street1, String street2, String street3, String city, String zip, long regionId, long countryId, int typeId, boolean mailing, boolean primary, JSONObject serviceContext) throws Exception {
+	public JSONObject addAddress(String className, long classPK, String street1, String street2, String street3, String city, String zip, long regionId, long countryId, int typeId, boolean mailing, boolean primary, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -76,7 +77,7 @@ public class AddressService extends BaseService {
 			_params.put("typeId", typeId);
 			_params.put("mailing", mailing);
 			_params.put("primary", primary);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/address/add-address", _params);
 		}

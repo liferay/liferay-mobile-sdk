@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.mdrrulegroupinstance;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addRuleGroupInstance(long groupId, String className, long classPK, long ruleGroupId, JSONObject serviceContext) throws Exception {
+	public JSONObject addRuleGroupInstance(long groupId, String className, long classPK, long ruleGroupId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -40,7 +41,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			_params.put("className", className);
 			_params.put("classPK", classPK);
 			_params.put("ruleGroupId", ruleGroupId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdrrulegroupinstance/add-rule-group-instance", _params);
 		}
@@ -51,7 +52,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addRuleGroupInstance(long groupId, String className, long classPK, long ruleGroupId, int priority, JSONObject serviceContext) throws Exception {
+	public JSONObject addRuleGroupInstance(long groupId, String className, long classPK, long ruleGroupId, int priority, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -62,7 +63,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			_params.put("classPK", classPK);
 			_params.put("ruleGroupId", ruleGroupId);
 			_params.put("priority", priority);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdrrulegroupinstance/add-rule-group-instance", _params);
 		}
@@ -90,7 +91,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONArray getRuleGroupInstances(String className, long classPK, int start, int end, JSONObject orderByComparator) throws Exception {
+	public JSONArray getRuleGroupInstances(String className, long classPK, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -100,7 +101,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			_params.put("classPK", classPK);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("orderByComparator", orderByComparator);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
 
 			_command.put("/mdrrulegroupinstance/get-rule-group-instances", _params);
 		}

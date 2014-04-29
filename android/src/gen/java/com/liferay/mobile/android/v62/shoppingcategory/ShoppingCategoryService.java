@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.shoppingcategory;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class ShoppingCategoryService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addCategory(long parentCategoryId, String name, String description, JSONObject serviceContext) throws Exception {
+	public JSONObject addCategory(long parentCategoryId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -39,7 +40,7 @@ public class ShoppingCategoryService extends BaseService {
 			_params.put("parentCategoryId", parentCategoryId);
 			_params.put("name", name);
 			_params.put("description", description);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/shoppingcategory/add-category", _params);
 		}
@@ -158,7 +159,7 @@ public class ShoppingCategoryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateCategory(long categoryId, long parentCategoryId, String name, String description, boolean mergeWithParentCategory, JSONObject serviceContext) throws Exception {
+	public JSONObject updateCategory(long categoryId, long parentCategoryId, String name, String description, boolean mergeWithParentCategory, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -169,7 +170,7 @@ public class ShoppingCategoryService extends BaseService {
 			_params.put("name", name);
 			_params.put("description", description);
 			_params.put("mergeWithParentCategory", mergeWithParentCategory);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/shoppingcategory/update-category", _params);
 		}

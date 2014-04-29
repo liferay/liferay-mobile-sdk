@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.user;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class UserService extends BaseService {
 		super(session);
 	}
 
-	public void addGroupUsers(long groupId, JSONArray userIds, JSONObject serviceContext) throws Exception {
+	public void addGroupUsers(long groupId, JSONArray userIds, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -38,7 +39,7 @@ public class UserService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("userIds", userIds);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/user/add-group-users", _params);
 		}
@@ -121,7 +122,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject addUser(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds, boolean sendEmail, JSONObject serviceContext) throws Exception {
+	public JSONObject addUser(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds, boolean sendEmail, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -152,7 +153,7 @@ public class UserService extends BaseService {
 			_params.put("roleIds", roleIds);
 			_params.put("userGroupIds", userGroupIds);
 			_params.put("sendEmail", sendEmail);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/user/add-user", _params);
 		}
@@ -163,7 +164,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addUser(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds, JSONArray addresses, JSONArray emailAddresses, JSONArray phones, JSONArray websites, JSONArray announcementsDelivers, boolean sendEmail, JSONObject serviceContext) throws Exception {
+	public JSONObject addUser(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds, JSONArray addresses, JSONArray emailAddresses, JSONArray phones, JSONArray websites, JSONArray announcementsDelivers, boolean sendEmail, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -199,7 +200,7 @@ public class UserService extends BaseService {
 			_params.put("websites", websites);
 			_params.put("announcementsDelivers", announcementsDelivers);
 			_params.put("sendEmail", sendEmail);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/user/add-user", _params);
 		}
@@ -228,7 +229,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject addUserWithWorkflow(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds, boolean sendEmail, JSONObject serviceContext) throws Exception {
+	public JSONObject addUserWithWorkflow(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds, boolean sendEmail, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -259,7 +260,7 @@ public class UserService extends BaseService {
 			_params.put("roleIds", roleIds);
 			_params.put("userGroupIds", userGroupIds);
 			_params.put("sendEmail", sendEmail);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/user/add-user-with-workflow", _params);
 		}
@@ -270,7 +271,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addUserWithWorkflow(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds, JSONArray addresses, JSONArray emailAddresses, JSONArray phones, JSONArray websites, JSONArray announcementsDelivers, boolean sendEmail, JSONObject serviceContext) throws Exception {
+	public JSONObject addUserWithWorkflow(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds, JSONArray addresses, JSONArray emailAddresses, JSONArray phones, JSONArray websites, JSONArray announcementsDelivers, boolean sendEmail, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -306,7 +307,7 @@ public class UserService extends BaseService {
 			_params.put("websites", websites);
 			_params.put("announcementsDelivers", announcementsDelivers);
 			_params.put("sendEmail", sendEmail);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/user/add-user-with-workflow", _params);
 		}
@@ -706,7 +707,7 @@ public class UserService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void unsetGroupUsers(long groupId, JSONArray userIds, JSONObject serviceContext) throws Exception {
+	public void unsetGroupUsers(long groupId, JSONArray userIds, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -714,7 +715,7 @@ public class UserService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("userIds", userIds);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/user/unset-group-users", _params);
 		}
@@ -833,7 +834,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateEmailAddress(long userId, String password, String emailAddress1, String emailAddress2, JSONObject serviceContext) throws Exception {
+	public JSONObject updateEmailAddress(long userId, String password, String emailAddress1, String emailAddress2, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -843,7 +844,7 @@ public class UserService extends BaseService {
 			_params.put("password", password);
 			_params.put("emailAddress1", emailAddress1);
 			_params.put("emailAddress2", emailAddress2);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/user/update-email-address", _params);
 		}
@@ -854,7 +855,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateIncompleteUser(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, boolean updateUserInformation, boolean sendEmail, JSONObject serviceContext) throws Exception {
+	public JSONObject updateIncompleteUser(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, boolean updateUserInformation, boolean sendEmail, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -882,7 +883,7 @@ public class UserService extends BaseService {
 			_params.put("jobTitle", jobTitle);
 			_params.put("updateUserInformation", updateUserInformation);
 			_params.put("sendEmail", sendEmail);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/user/update-incomplete-user", _params);
 		}
@@ -929,7 +930,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void updateOrganizations(long userId, JSONArray organizationIds, JSONObject serviceContext) throws Exception {
+	public void updateOrganizations(long userId, JSONArray organizationIds, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -937,7 +938,7 @@ public class UserService extends BaseService {
 
 			_params.put("userId", userId);
 			_params.put("organizationIds", organizationIds);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/user/update-organizations", _params);
 		}
@@ -1041,7 +1042,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateUser(long userId, String oldPassword, String newPassword1, String newPassword2, boolean passwordReset, String reminderQueryQuestion, String reminderQueryAnswer, String screenName, String emailAddress, long facebookId, String openId, String languageId, String timeZoneId, String greeting, String comments, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String smsSn, String aimSn, String facebookSn, String icqSn, String jabberSn, String msnSn, String mySpaceSn, String skypeSn, String twitterSn, String ymSn, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupRoles, JSONArray userGroupIds, JSONObject serviceContext) throws Exception {
+	public JSONObject updateUser(long userId, String oldPassword, String newPassword1, String newPassword2, boolean passwordReset, String reminderQueryQuestion, String reminderQueryAnswer, String screenName, String emailAddress, long facebookId, String openId, String languageId, String timeZoneId, String greeting, String comments, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String smsSn, String aimSn, String facebookSn, String icqSn, String jabberSn, String msnSn, String mySpaceSn, String skypeSn, String twitterSn, String ymSn, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupRoles, JSONArray userGroupIds, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1087,7 +1088,7 @@ public class UserService extends BaseService {
 			_params.put("roleIds", roleIds);
 			_params.put("userGroupRoles", userGroupRoles);
 			_params.put("userGroupIds", userGroupIds);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/user/update-user", _params);
 		}
@@ -1098,7 +1099,7 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateUser(long userId, String oldPassword, String newPassword1, String newPassword2, boolean passwordReset, String reminderQueryQuestion, String reminderQueryAnswer, String screenName, String emailAddress, long facebookId, String openId, String languageId, String timeZoneId, String greeting, String comments, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String smsSn, String aimSn, String facebookSn, String icqSn, String jabberSn, String msnSn, String mySpaceSn, String skypeSn, String twitterSn, String ymSn, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupRoles, JSONArray userGroupIds, JSONArray addresses, JSONArray emailAddresses, JSONArray phones, JSONArray websites, JSONArray announcementsDelivers, JSONObject serviceContext) throws Exception {
+	public JSONObject updateUser(long userId, String oldPassword, String newPassword1, String newPassword2, boolean passwordReset, String reminderQueryQuestion, String reminderQueryAnswer, String screenName, String emailAddress, long facebookId, String openId, String languageId, String timeZoneId, String greeting, String comments, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String smsSn, String aimSn, String facebookSn, String icqSn, String jabberSn, String msnSn, String mySpaceSn, String skypeSn, String twitterSn, String ymSn, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupRoles, JSONArray userGroupIds, JSONArray addresses, JSONArray emailAddresses, JSONArray phones, JSONArray websites, JSONArray announcementsDelivers, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1149,7 +1150,7 @@ public class UserService extends BaseService {
 			_params.put("phones", phones);
 			_params.put("websites", websites);
 			_params.put("announcementsDelivers", announcementsDelivers);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/user/update-user", _params);
 		}

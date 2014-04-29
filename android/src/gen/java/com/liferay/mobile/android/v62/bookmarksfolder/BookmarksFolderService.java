@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.bookmarksfolder;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class BookmarksFolderService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFolder(long parentFolderId, String name, String description, JSONObject serviceContext) throws Exception {
+	public JSONObject addFolder(long parentFolderId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -39,7 +40,7 @@ public class BookmarksFolderService extends BaseService {
 			_params.put("parentFolderId", parentFolderId);
 			_params.put("name", name);
 			_params.put("description", description);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/bookmarksfolder/add-folder", _params);
 		}
@@ -472,7 +473,7 @@ public class BookmarksFolderService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateFolder(long folderId, long parentFolderId, String name, String description, boolean mergeWithParentFolder, JSONObject serviceContext) throws Exception {
+	public JSONObject updateFolder(long folderId, long parentFolderId, String name, String description, boolean mergeWithParentFolder, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -483,7 +484,7 @@ public class BookmarksFolderService extends BaseService {
 			_params.put("name", name);
 			_params.put("description", description);
 			_params.put("mergeWithParentFolder", mergeWithParentFolder);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/bookmarksfolder/update-folder", _params);
 		}

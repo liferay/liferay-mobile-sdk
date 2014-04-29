@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.bookmarksentry;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class BookmarksEntryService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addEntry(long groupId, long folderId, String name, String url, String description, JSONObject serviceContext) throws Exception {
+	public JSONObject addEntry(long groupId, long folderId, String name, String url, String description, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -41,7 +42,7 @@ public class BookmarksEntryService extends BaseService {
 			_params.put("name", name);
 			_params.put("url", url);
 			_params.put("description", description);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/bookmarksentry/add-entry", _params);
 		}
@@ -89,7 +90,7 @@ public class BookmarksEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getEntries(long groupId, long folderId, int start, int end, JSONObject orderByComparator) throws Exception {
+	public JSONArray getEntries(long groupId, long folderId, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -99,7 +100,7 @@ public class BookmarksEntryService extends BaseService {
 			_params.put("folderId", folderId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("orderByComparator", orderByComparator);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
 
 			_command.put("/bookmarksentry/get-entries", _params);
 		}
@@ -349,13 +350,13 @@ public class BookmarksEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject openEntry(JSONObject entry) throws Exception {
+	public JSONObject openEntry(JSONObjectWrapper entry) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("entry", entry);
+			mangleWrapper(_params, "entry", "com.liferay.portlet.bookmarks.model.BookmarksEntry", entry);
 
 			_command.put("/bookmarksentry/open-entry", _params);
 		}
@@ -455,7 +456,7 @@ public class BookmarksEntryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateEntry(long entryId, long groupId, long folderId, String name, String url, String description, JSONObject serviceContext) throws Exception {
+	public JSONObject updateEntry(long entryId, long groupId, long folderId, String name, String url, String description, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -467,7 +468,7 @@ public class BookmarksEntryService extends BaseService {
 			_params.put("name", name);
 			_params.put("url", url);
 			_params.put("description", description);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/bookmarksentry/update-entry", _params);
 		}

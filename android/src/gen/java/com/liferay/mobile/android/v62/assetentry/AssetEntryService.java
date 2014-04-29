@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.assetentry;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -66,13 +67,13 @@ public class AssetEntryService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getEntries(JSONObject entryQuery) throws Exception {
+	public JSONArray getEntries(JSONObjectWrapper entryQuery) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("entryQuery", entryQuery);
+			mangleWrapper(_params, "entryQuery", "com.liferay.portlet.asset.service.persistence.AssetEntryQuery", entryQuery);
 
 			_command.put("/assetentry/get-entries", _params);
 		}
@@ -83,13 +84,13 @@ public class AssetEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public Integer getEntriesCount(JSONObject entryQuery) throws Exception {
+	public Integer getEntriesCount(JSONObjectWrapper entryQuery) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("entryQuery", entryQuery);
+			mangleWrapper(_params, "entryQuery", "com.liferay.portlet.asset.service.persistence.AssetEntryQuery", entryQuery);
 
 			_command.put("/assetentry/get-entries-count", _params);
 		}
@@ -135,7 +136,7 @@ public class AssetEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateEntry(long groupId, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, JSONObject priority, boolean sync) throws Exception {
+	public JSONObject updateEntry(long groupId, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, JSONObjectWrapper priority, boolean sync) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -160,7 +161,7 @@ public class AssetEntryService extends BaseService {
 			_params.put("layoutUuid", layoutUuid);
 			_params.put("height", height);
 			_params.put("width", width);
-			_params.put("priority", priority);
+			mangleWrapper(_params, "priority", "java.lang.Integer", priority);
 			_params.put("sync", sync);
 
 			_command.put("/assetentry/update-entry", _params);
@@ -172,7 +173,7 @@ public class AssetEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateEntry(long groupId, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long publishDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, JSONObject priority, boolean sync) throws Exception {
+	public JSONObject updateEntry(long groupId, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long publishDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, JSONObjectWrapper priority, boolean sync) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -198,7 +199,7 @@ public class AssetEntryService extends BaseService {
 			_params.put("layoutUuid", layoutUuid);
 			_params.put("height", height);
 			_params.put("width", width);
-			_params.put("priority", priority);
+			mangleWrapper(_params, "priority", "java.lang.Integer", priority);
 			_params.put("sync", sync);
 
 			_command.put("/assetentry/update-entry", _params);
@@ -210,7 +211,7 @@ public class AssetEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateEntry(long groupId, long createDate, long modifiedDate, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, JSONObject priority, boolean sync) throws Exception {
+	public JSONObject updateEntry(long groupId, long createDate, long modifiedDate, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, JSONObjectWrapper priority, boolean sync) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -237,7 +238,7 @@ public class AssetEntryService extends BaseService {
 			_params.put("layoutUuid", layoutUuid);
 			_params.put("height", height);
 			_params.put("width", width);
-			_params.put("priority", priority);
+			mangleWrapper(_params, "priority", "java.lang.Integer", priority);
 			_params.put("sync", sync);
 
 			_command.put("/assetentry/update-entry", _params);

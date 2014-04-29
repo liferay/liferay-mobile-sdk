@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.group;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class GroupService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addGroup(long parentGroupId, long liveGroupId, String name, String description, int type, boolean manualMembership, int membershipRestriction, String friendlyURL, boolean site, boolean active, JSONObject serviceContext) throws Exception {
+	public JSONObject addGroup(long parentGroupId, long liveGroupId, String name, String description, int type, boolean manualMembership, int membershipRestriction, String friendlyURL, boolean site, boolean active, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -46,7 +47,7 @@ public class GroupService extends BaseService {
 			_params.put("friendlyURL", friendlyURL);
 			_params.put("site", site);
 			_params.put("active", active);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/group/add-group", _params);
 		}
@@ -57,7 +58,7 @@ public class GroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addGroup(String name, String description, int type, String friendlyURL, boolean site, boolean active, JSONObject serviceContext) throws Exception {
+	public JSONObject addGroup(String name, String description, int type, String friendlyURL, boolean site, boolean active, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -69,7 +70,7 @@ public class GroupService extends BaseService {
 			_params.put("friendlyURL", friendlyURL);
 			_params.put("site", site);
 			_params.put("active", active);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/group/add-group", _params);
 		}
@@ -80,7 +81,7 @@ public class GroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addGroup(long parentGroupId, String name, String description, int type, String friendlyURL, boolean site, boolean active, JSONObject serviceContext) throws Exception {
+	public JSONObject addGroup(long parentGroupId, String name, String description, int type, String friendlyURL, boolean site, boolean active, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -93,7 +94,7 @@ public class GroupService extends BaseService {
 			_params.put("friendlyURL", friendlyURL);
 			_params.put("site", site);
 			_params.put("active", active);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/group/add-group", _params);
 		}
@@ -656,7 +657,7 @@ public class GroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateGroup(long groupId, long parentGroupId, String name, String description, int type, boolean manualMembership, int membershipRestriction, String friendlyURL, boolean active, JSONObject serviceContext) throws Exception {
+	public JSONObject updateGroup(long groupId, long parentGroupId, String name, String description, int type, boolean manualMembership, int membershipRestriction, String friendlyURL, boolean active, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -671,7 +672,7 @@ public class GroupService extends BaseService {
 			_params.put("membershipRestriction", membershipRestriction);
 			_params.put("friendlyURL", friendlyURL);
 			_params.put("active", active);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/group/update-group", _params);
 		}

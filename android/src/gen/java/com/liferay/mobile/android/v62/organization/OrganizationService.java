@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.organization;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -48,7 +49,7 @@ public class OrganizationService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject addOrganization(long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONObject serviceContext) throws Exception {
+	public JSONObject addOrganization(long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -63,7 +64,7 @@ public class OrganizationService extends BaseService {
 			_params.put("statusId", statusId);
 			_params.put("comments", comments);
 			_params.put("site", site);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/organization/add-organization", _params);
 		}
@@ -74,7 +75,7 @@ public class OrganizationService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addOrganization(long parentOrganizationId, String name, String type, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObject serviceContext) throws Exception {
+	public JSONObject addOrganization(long parentOrganizationId, String name, String type, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -93,7 +94,7 @@ public class OrganizationService extends BaseService {
 			_params.put("orgLabors", orgLabors);
 			_params.put("phones", phones);
 			_params.put("websites", websites);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/organization/add-organization", _params);
 		}
@@ -104,7 +105,7 @@ public class OrganizationService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addOrganization(long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObject serviceContext) throws Exception {
+	public JSONObject addOrganization(long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -124,7 +125,7 @@ public class OrganizationService extends BaseService {
 			_params.put("orgLabors", orgLabors);
 			_params.put("phones", phones);
 			_params.put("websites", websites);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/organization/add-organization", _params);
 		}
@@ -135,7 +136,7 @@ public class OrganizationService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addOrganization(long parentOrganizationId, String name, String type, long regionId, long countryId, int statusId, String comments, boolean site, JSONObject serviceContext) throws Exception {
+	public JSONObject addOrganization(long parentOrganizationId, String name, String type, long regionId, long countryId, int statusId, String comments, boolean site, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -149,7 +150,7 @@ public class OrganizationService extends BaseService {
 			_params.put("statusId", statusId);
 			_params.put("comments", comments);
 			_params.put("site", site);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/organization/add-organization", _params);
 		}
@@ -392,7 +393,7 @@ public class OrganizationService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, long regionId, long countryId, int statusId, String comments, boolean site, JSONObject serviceContext) throws Exception {
+	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, long regionId, long countryId, int statusId, String comments, boolean site, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -407,7 +408,7 @@ public class OrganizationService extends BaseService {
 			_params.put("statusId", statusId);
 			_params.put("comments", comments);
 			_params.put("site", site);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/organization/update-organization", _params);
 		}
@@ -418,7 +419,7 @@ public class OrganizationService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONObject serviceContext) throws Exception {
+	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -434,7 +435,7 @@ public class OrganizationService extends BaseService {
 			_params.put("statusId", statusId);
 			_params.put("comments", comments);
 			_params.put("site", site);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/organization/update-organization", _params);
 		}
@@ -445,7 +446,7 @@ public class OrganizationService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObject serviceContext) throws Exception {
+	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -465,7 +466,7 @@ public class OrganizationService extends BaseService {
 			_params.put("orgLabors", orgLabors);
 			_params.put("phones", phones);
 			_params.put("websites", websites);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/organization/update-organization", _params);
 		}
@@ -476,7 +477,7 @@ public class OrganizationService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObject serviceContext) throws Exception {
+	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -497,7 +498,7 @@ public class OrganizationService extends BaseService {
 			_params.put("orgLabors", orgLabors);
 			_params.put("phones", phones);
 			_params.put("websites", websites);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/organization/update-organization", _params);
 		}

@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.journalstructure;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class JournalStructureService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addStructure(long groupId, String structureId, boolean autoStructureId, String parentStructureId, JSONObject nameMap, JSONObject descriptionMap, String xsd, JSONObject serviceContext) throws Exception {
+	public JSONObject addStructure(long groupId, String structureId, boolean autoStructureId, String parentStructureId, JSONObject nameMap, JSONObject descriptionMap, String xsd, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -43,7 +44,7 @@ public class JournalStructureService extends BaseService {
 			_params.put("nameMap", nameMap);
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("xsd", xsd);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalstructure/add-structure", _params);
 		}
@@ -163,7 +164,7 @@ public class JournalStructureService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, JSONArray groupIds, String keywords, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray search(long companyId, JSONArray groupIds, String keywords, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -174,7 +175,7 @@ public class JournalStructureService extends BaseService {
 			_params.put("keywords", keywords);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/journalstructure/search", _params);
 		}
@@ -185,7 +186,7 @@ public class JournalStructureService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, JSONArray groupIds, String structureId, String name, String description, boolean andOperator, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray search(long companyId, JSONArray groupIds, String structureId, String name, String description, boolean andOperator, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -199,7 +200,7 @@ public class JournalStructureService extends BaseService {
 			_params.put("andOperator", andOperator);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/journalstructure/search", _params);
 		}
@@ -251,7 +252,7 @@ public class JournalStructureService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONObject updateStructure(long groupId, String structureId, String parentStructureId, JSONObject nameMap, JSONObject descriptionMap, String xsd, JSONObject serviceContext) throws Exception {
+	public JSONObject updateStructure(long groupId, String structureId, String parentStructureId, JSONObject nameMap, JSONObject descriptionMap, String xsd, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -263,7 +264,7 @@ public class JournalStructureService extends BaseService {
 			_params.put("nameMap", nameMap);
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("xsd", xsd);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalstructure/update-structure", _params);
 		}

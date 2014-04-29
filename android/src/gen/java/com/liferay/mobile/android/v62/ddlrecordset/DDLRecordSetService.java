@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.ddlrecordset;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class DDLRecordSetService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addRecordSet(long groupId, long ddmStructureId, String recordSetKey, JSONObject nameMap, JSONObject descriptionMap, int minDisplayRows, int scope, JSONObject serviceContext) throws Exception {
+	public JSONObject addRecordSet(long groupId, long ddmStructureId, String recordSetKey, JSONObject nameMap, JSONObject descriptionMap, int minDisplayRows, int scope, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -43,7 +44,7 @@ public class DDLRecordSetService extends BaseService {
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("minDisplayRows", minDisplayRows);
 			_params.put("scope", scope);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddlrecordset/add-record-set", _params);
 		}
@@ -88,7 +89,7 @@ public class DDLRecordSetService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, long groupId, String keywords, int scope, int start, int end, JSONObject orderByComparator) throws Exception {
+	public JSONArray search(long companyId, long groupId, String keywords, int scope, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -100,7 +101,7 @@ public class DDLRecordSetService extends BaseService {
 			_params.put("scope", scope);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("orderByComparator", orderByComparator);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
 
 			_command.put("/ddlrecordset/search", _params);
 		}
@@ -111,7 +112,7 @@ public class DDLRecordSetService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, long groupId, String name, String description, int scope, boolean andOperator, int start, int end, JSONObject orderByComparator) throws Exception {
+	public JSONArray search(long companyId, long groupId, String name, String description, int scope, boolean andOperator, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -125,7 +126,7 @@ public class DDLRecordSetService extends BaseService {
 			_params.put("andOperator", andOperator);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("orderByComparator", orderByComparator);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
 
 			_command.put("/ddlrecordset/search", _params);
 		}
@@ -178,7 +179,7 @@ public class DDLRecordSetService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONObject updateMinDisplayRows(long recordSetId, int minDisplayRows, JSONObject serviceContext) throws Exception {
+	public JSONObject updateMinDisplayRows(long recordSetId, int minDisplayRows, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -186,7 +187,7 @@ public class DDLRecordSetService extends BaseService {
 
 			_params.put("recordSetId", recordSetId);
 			_params.put("minDisplayRows", minDisplayRows);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddlrecordset/update-min-display-rows", _params);
 		}
@@ -197,7 +198,7 @@ public class DDLRecordSetService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateRecordSet(long recordSetId, long ddmStructureId, JSONObject nameMap, JSONObject descriptionMap, int minDisplayRows, JSONObject serviceContext) throws Exception {
+	public JSONObject updateRecordSet(long recordSetId, long ddmStructureId, JSONObject nameMap, JSONObject descriptionMap, int minDisplayRows, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -208,7 +209,7 @@ public class DDLRecordSetService extends BaseService {
 			_params.put("nameMap", nameMap);
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("minDisplayRows", minDisplayRows);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddlrecordset/update-record-set", _params);
 		}
@@ -219,7 +220,7 @@ public class DDLRecordSetService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateRecordSet(long groupId, long ddmStructureId, String recordSetKey, JSONObject nameMap, JSONObject descriptionMap, int minDisplayRows, JSONObject serviceContext) throws Exception {
+	public JSONObject updateRecordSet(long groupId, long ddmStructureId, String recordSetKey, JSONObject nameMap, JSONObject descriptionMap, int minDisplayRows, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -231,7 +232,7 @@ public class DDLRecordSetService extends BaseService {
 			_params.put("nameMap", nameMap);
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("minDisplayRows", minDisplayRows);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddlrecordset/update-record-set", _params);
 		}

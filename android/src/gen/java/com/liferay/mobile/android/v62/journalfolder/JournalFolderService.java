@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.journalfolder;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class JournalFolderService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFolder(long groupId, long parentFolderId, String name, String description, JSONObject serviceContext) throws Exception {
+	public JSONObject addFolder(long groupId, long parentFolderId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -40,7 +41,7 @@ public class JournalFolderService extends BaseService {
 			_params.put("parentFolderId", parentFolderId);
 			_params.put("name", name);
 			_params.put("description", description);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalfolder/add-folder", _params);
 		}
@@ -216,7 +217,7 @@ public class JournalFolderService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getFoldersAndArticles(long groupId, long folderId, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getFoldersAndArticles(long groupId, long folderId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -226,7 +227,7 @@ public class JournalFolderService extends BaseService {
 			_params.put("folderId", folderId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/journalfolder/get-folders-and-articles", _params);
 		}
@@ -237,7 +238,7 @@ public class JournalFolderService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getFoldersAndArticles(long groupId, long folderId, int status, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getFoldersAndArticles(long groupId, long folderId, int status, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -248,7 +249,7 @@ public class JournalFolderService extends BaseService {
 			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/journalfolder/get-folders-and-articles", _params);
 		}
@@ -390,7 +391,7 @@ public class JournalFolderService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject moveFolder(long folderId, long parentFolderId, JSONObject serviceContext) throws Exception {
+	public JSONObject moveFolder(long folderId, long parentFolderId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -398,7 +399,7 @@ public class JournalFolderService extends BaseService {
 
 			_params.put("folderId", folderId);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalfolder/move-folder", _params);
 		}
@@ -409,7 +410,7 @@ public class JournalFolderService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject moveFolderFromTrash(long folderId, long parentFolderId, JSONObject serviceContext) throws Exception {
+	public JSONObject moveFolderFromTrash(long folderId, long parentFolderId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -417,7 +418,7 @@ public class JournalFolderService extends BaseService {
 
 			_params.put("folderId", folderId);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalfolder/move-folder-from-trash", _params);
 		}
@@ -462,7 +463,7 @@ public class JournalFolderService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateFolder(long folderId, long parentFolderId, String name, String description, boolean mergeWithParentFolder, JSONObject serviceContext) throws Exception {
+	public JSONObject updateFolder(long folderId, long parentFolderId, String name, String description, boolean mergeWithParentFolder, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -473,7 +474,7 @@ public class JournalFolderService extends BaseService {
 			_params.put("name", name);
 			_params.put("description", description);
 			_params.put("mergeWithParentFolder", mergeWithParentFolder);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalfolder/update-folder", _params);
 		}

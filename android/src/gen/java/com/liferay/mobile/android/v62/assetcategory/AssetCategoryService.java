@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.assetcategory;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class AssetCategoryService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addCategory(String title, long vocabularyId, JSONObject serviceContext) throws Exception {
+	public JSONObject addCategory(String title, long vocabularyId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -38,7 +39,7 @@ public class AssetCategoryService extends BaseService {
 
 			_params.put("title", title);
 			_params.put("vocabularyId", vocabularyId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assetcategory/add-category", _params);
 		}
@@ -49,7 +50,7 @@ public class AssetCategoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addCategory(long parentCategoryId, JSONObject titleMap, JSONObject descriptionMap, long vocabularyId, JSONArray categoryProperties, JSONObject serviceContext) throws Exception {
+	public JSONObject addCategory(long parentCategoryId, JSONObject titleMap, JSONObject descriptionMap, long vocabularyId, JSONArray categoryProperties, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -60,7 +61,7 @@ public class AssetCategoryService extends BaseService {
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("vocabularyId", vocabularyId);
 			_params.put("categoryProperties", categoryProperties);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assetcategory/add-category", _params);
 		}
@@ -88,14 +89,14 @@ public class AssetCategoryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONArray deleteCategories(JSONArray categoryIds, JSONObject serviceContext) throws Exception {
+	public JSONArray deleteCategories(JSONArray categoryIds, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("categoryIds", categoryIds);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assetcategory/delete-categories", _params);
 		}
@@ -175,7 +176,7 @@ public class AssetCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getChildCategories(long parentCategoryId, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getChildCategories(long parentCategoryId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -184,7 +185,7 @@ public class AssetCategoryService extends BaseService {
 			_params.put("parentCategoryId", parentCategoryId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/assetcategory/get-child-categories", _params);
 		}
@@ -216,7 +217,7 @@ public class AssetCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject getJsonVocabularyCategories(long vocabularyId, int start, int end, JSONObject obc) throws Exception {
+	public JSONObject getJsonVocabularyCategories(long vocabularyId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -225,7 +226,7 @@ public class AssetCategoryService extends BaseService {
 			_params.put("vocabularyId", vocabularyId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/assetcategory/get-json-vocabulary-categories", _params);
 		}
@@ -236,7 +237,7 @@ public class AssetCategoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getJsonVocabularyCategories(long groupId, String name, long vocabularyId, int start, int end, JSONObject obc) throws Exception {
+	public JSONObject getJsonVocabularyCategories(long groupId, String name, long vocabularyId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -247,7 +248,7 @@ public class AssetCategoryService extends BaseService {
 			_params.put("vocabularyId", vocabularyId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/assetcategory/get-json-vocabulary-categories", _params);
 		}
@@ -258,7 +259,7 @@ public class AssetCategoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getVocabularyCategories(long vocabularyId, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getVocabularyCategories(long vocabularyId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -267,7 +268,7 @@ public class AssetCategoryService extends BaseService {
 			_params.put("vocabularyId", vocabularyId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/assetcategory/get-vocabulary-categories", _params);
 		}
@@ -278,7 +279,7 @@ public class AssetCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getVocabularyCategories(long parentCategoryId, long vocabularyId, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getVocabularyCategories(long parentCategoryId, long vocabularyId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -288,7 +289,7 @@ public class AssetCategoryService extends BaseService {
 			_params.put("vocabularyId", vocabularyId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/assetcategory/get-vocabulary-categories", _params);
 		}
@@ -299,7 +300,7 @@ public class AssetCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getVocabularyCategories(long groupId, String name, long vocabularyId, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getVocabularyCategories(long groupId, String name, long vocabularyId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -310,7 +311,7 @@ public class AssetCategoryService extends BaseService {
 			_params.put("vocabularyId", vocabularyId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/assetcategory/get-vocabulary-categories", _params);
 		}
@@ -358,7 +359,7 @@ public class AssetCategoryService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONObject getVocabularyCategoriesDisplay(long vocabularyId, int start, int end, JSONObject obc) throws Exception {
+	public JSONObject getVocabularyCategoriesDisplay(long vocabularyId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -367,7 +368,7 @@ public class AssetCategoryService extends BaseService {
 			_params.put("vocabularyId", vocabularyId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/assetcategory/get-vocabulary-categories-display", _params);
 		}
@@ -378,7 +379,7 @@ public class AssetCategoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getVocabularyCategoriesDisplay(long groupId, String name, long vocabularyId, int start, int end, JSONObject obc) throws Exception {
+	public JSONObject getVocabularyCategoriesDisplay(long groupId, String name, long vocabularyId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -389,7 +390,7 @@ public class AssetCategoryService extends BaseService {
 			_params.put("vocabularyId", vocabularyId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/assetcategory/get-vocabulary-categories-display", _params);
 		}
@@ -400,7 +401,7 @@ public class AssetCategoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray getVocabularyRootCategories(long vocabularyId, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getVocabularyRootCategories(long vocabularyId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -409,7 +410,7 @@ public class AssetCategoryService extends BaseService {
 			_params.put("vocabularyId", vocabularyId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/assetcategory/get-vocabulary-root-categories", _params);
 		}
@@ -420,7 +421,7 @@ public class AssetCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getVocabularyRootCategories(long groupId, long vocabularyId, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getVocabularyRootCategories(long groupId, long vocabularyId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -430,7 +431,7 @@ public class AssetCategoryService extends BaseService {
 			_params.put("vocabularyId", vocabularyId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/assetcategory/get-vocabulary-root-categories", _params);
 		}
@@ -459,7 +460,7 @@ public class AssetCategoryService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONObject moveCategory(long categoryId, long parentCategoryId, long vocabularyId, JSONObject serviceContext) throws Exception {
+	public JSONObject moveCategory(long categoryId, long parentCategoryId, long vocabularyId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -468,7 +469,7 @@ public class AssetCategoryService extends BaseService {
 			_params.put("categoryId", categoryId);
 			_params.put("parentCategoryId", parentCategoryId);
 			_params.put("vocabularyId", vocabularyId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assetcategory/move-category", _params);
 		}
@@ -521,7 +522,7 @@ public class AssetCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray search(long groupId, String keywords, long vocabularyId, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray search(long groupId, String keywords, long vocabularyId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -532,7 +533,7 @@ public class AssetCategoryService extends BaseService {
 			_params.put("vocabularyId", vocabularyId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/assetcategory/search", _params);
 		}
@@ -543,7 +544,7 @@ public class AssetCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject updateCategory(long categoryId, long parentCategoryId, JSONObject titleMap, JSONObject descriptionMap, long vocabularyId, JSONArray categoryProperties, JSONObject serviceContext) throws Exception {
+	public JSONObject updateCategory(long categoryId, long parentCategoryId, JSONObject titleMap, JSONObject descriptionMap, long vocabularyId, JSONArray categoryProperties, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -555,7 +556,7 @@ public class AssetCategoryService extends BaseService {
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("vocabularyId", vocabularyId);
 			_params.put("categoryProperties", categoryProperties);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assetcategory/update-category", _params);
 		}

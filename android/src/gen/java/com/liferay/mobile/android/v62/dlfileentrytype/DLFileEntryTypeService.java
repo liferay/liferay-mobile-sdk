@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.dlfileentrytype;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class DLFileEntryTypeService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFileEntryType(long groupId, String name, String description, JSONArray ddmStructureIds, JSONObject serviceContext) throws Exception {
+	public JSONObject addFileEntryType(long groupId, String name, String description, JSONArray ddmStructureIds, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -40,7 +41,7 @@ public class DLFileEntryTypeService extends BaseService {
 			_params.put("name", name);
 			_params.put("description", description);
 			_params.put("ddmStructureIds", ddmStructureIds);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfileentrytype/add-file-entry-type", _params);
 		}
@@ -51,7 +52,7 @@ public class DLFileEntryTypeService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addFileEntryType(long groupId, String fileEntryTypeKey, JSONObject nameMap, JSONObject descriptionMap, JSONArray ddmStructureIds, JSONObject serviceContext) throws Exception {
+	public JSONObject addFileEntryType(long groupId, String fileEntryTypeKey, JSONObject nameMap, JSONObject descriptionMap, JSONArray ddmStructureIds, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -62,7 +63,7 @@ public class DLFileEntryTypeService extends BaseService {
 			_params.put("nameMap", nameMap);
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("ddmStructureIds", ddmStructureIds);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfileentrytype/add-file-entry-type", _params);
 		}
@@ -179,7 +180,7 @@ public class DLFileEntryTypeService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, JSONArray groupIds, String keywords, boolean includeBasicFileEntryType, int start, int end, JSONObject orderByComparator) throws Exception {
+	public JSONArray search(long companyId, JSONArray groupIds, String keywords, boolean includeBasicFileEntryType, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -191,7 +192,7 @@ public class DLFileEntryTypeService extends BaseService {
 			_params.put("includeBasicFileEntryType", includeBasicFileEntryType);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("orderByComparator", orderByComparator);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
 
 			_command.put("/dlfileentrytype/search", _params);
 		}
@@ -222,7 +223,7 @@ public class DLFileEntryTypeService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public void updateFileEntryType(long fileEntryTypeId, String name, String description, JSONArray ddmStructureIds, JSONObject serviceContext) throws Exception {
+	public void updateFileEntryType(long fileEntryTypeId, String name, String description, JSONArray ddmStructureIds, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -232,7 +233,7 @@ public class DLFileEntryTypeService extends BaseService {
 			_params.put("name", name);
 			_params.put("description", description);
 			_params.put("ddmStructureIds", ddmStructureIds);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfileentrytype/update-file-entry-type", _params);
 		}
@@ -243,7 +244,7 @@ public class DLFileEntryTypeService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateFileEntryType(long fileEntryTypeId, JSONObject nameMap, JSONObject descriptionMap, JSONArray ddmStructureIds, JSONObject serviceContext) throws Exception {
+	public void updateFileEntryType(long fileEntryTypeId, JSONObject nameMap, JSONObject descriptionMap, JSONArray ddmStructureIds, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -253,7 +254,7 @@ public class DLFileEntryTypeService extends BaseService {
 			_params.put("nameMap", nameMap);
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("ddmStructureIds", ddmStructureIds);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfileentrytype/update-file-entry-type", _params);
 		}

@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.mbcategory;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class MBCategoryService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addCategory(long parentCategoryId, String name, String description, String displayStyle, String emailAddress, String inProtocol, String inServerName, int inServerPort, boolean inUseSSL, String inUserName, String inPassword, int inReadInterval, String outEmailAddress, boolean outCustom, String outServerName, int outServerPort, boolean outUseSSL, String outUserName, String outPassword, boolean mailingListActive, boolean allowAnonymousEmail, JSONObject serviceContext) throws Exception {
+	public JSONObject addCategory(long parentCategoryId, String name, String description, String displayStyle, String emailAddress, String inProtocol, String inServerName, int inServerPort, boolean inUseSSL, String inUserName, String inPassword, int inReadInterval, String outEmailAddress, boolean outCustom, String outServerName, int outServerPort, boolean outUseSSL, String outUserName, String outPassword, boolean mailingListActive, boolean allowAnonymousEmail, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -57,7 +58,7 @@ public class MBCategoryService extends BaseService {
 			_params.put("outPassword", outPassword);
 			_params.put("mailingListActive", mailingListActive);
 			_params.put("allowAnonymousEmail", allowAnonymousEmail);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbcategory/add-category", _params);
 		}
@@ -68,7 +69,7 @@ public class MBCategoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addCategory(long userId, long parentCategoryId, String name, String description, JSONObject serviceContext) throws Exception {
+	public JSONObject addCategory(long userId, long parentCategoryId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -78,7 +79,7 @@ public class MBCategoryService extends BaseService {
 			_params.put("parentCategoryId", parentCategoryId);
 			_params.put("name", name);
 			_params.put("description", description);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbcategory/add-category", _params);
 		}
@@ -515,7 +516,7 @@ public class MBCategoryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateCategory(long categoryId, long parentCategoryId, String name, String description, String displayStyle, String emailAddress, String inProtocol, String inServerName, int inServerPort, boolean inUseSSL, String inUserName, String inPassword, int inReadInterval, String outEmailAddress, boolean outCustom, String outServerName, int outServerPort, boolean outUseSSL, String outUserName, String outPassword, boolean mailingListActive, boolean allowAnonymousEmail, boolean mergeWithParentCategory, JSONObject serviceContext) throws Exception {
+	public JSONObject updateCategory(long categoryId, long parentCategoryId, String name, String description, String displayStyle, String emailAddress, String inProtocol, String inServerName, int inServerPort, boolean inUseSSL, String inUserName, String inPassword, int inReadInterval, String outEmailAddress, boolean outCustom, String outServerName, int outServerPort, boolean outUseSSL, String outUserName, String outPassword, boolean mailingListActive, boolean allowAnonymousEmail, boolean mergeWithParentCategory, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -544,7 +545,7 @@ public class MBCategoryService extends BaseService {
 			_params.put("mailingListActive", mailingListActive);
 			_params.put("allowAnonymousEmail", allowAnonymousEmail);
 			_params.put("mergeWithParentCategory", mergeWithParentCategory);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbcategory/update-category", _params);
 		}

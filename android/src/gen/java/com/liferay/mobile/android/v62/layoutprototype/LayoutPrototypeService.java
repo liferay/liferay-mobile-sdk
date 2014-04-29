@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.layoutprototype;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -49,7 +50,7 @@ public class LayoutPrototypeService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addLayoutPrototype(JSONObject nameMap, String description, boolean active, JSONObject serviceContext) throws Exception {
+	public JSONObject addLayoutPrototype(JSONObject nameMap, String description, boolean active, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -58,7 +59,7 @@ public class LayoutPrototypeService extends BaseService {
 			_params.put("nameMap", nameMap);
 			_params.put("description", description);
 			_params.put("active", active);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/layoutprototype/add-layout-prototype", _params);
 		}
@@ -103,15 +104,15 @@ public class LayoutPrototypeService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, JSONObject active, JSONObject obc) throws Exception {
+	public JSONArray search(long companyId, JSONObjectWrapper active, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("active", active);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "active", "java.lang.Boolean", active);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/layoutprototype/search", _params);
 		}
@@ -142,7 +143,7 @@ public class LayoutPrototypeService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateLayoutPrototype(long layoutPrototypeId, JSONObject nameMap, String description, boolean active, JSONObject serviceContext) throws Exception {
+	public JSONObject updateLayoutPrototype(long layoutPrototypeId, JSONObject nameMap, String description, boolean active, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -152,7 +153,7 @@ public class LayoutPrototypeService extends BaseService {
 			_params.put("nameMap", nameMap);
 			_params.put("description", description);
 			_params.put("active", active);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/layoutprototype/update-layout-prototype", _params);
 		}

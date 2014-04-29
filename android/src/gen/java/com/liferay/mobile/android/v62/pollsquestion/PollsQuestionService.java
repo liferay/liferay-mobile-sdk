@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.pollsquestion;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class PollsQuestionService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addQuestion(JSONObject titleMap, JSONObject descriptionMap, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, boolean neverExpire, JSONArray choices, JSONObject serviceContext) throws Exception {
+	public JSONObject addQuestion(JSONObject titleMap, JSONObject descriptionMap, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, boolean neverExpire, JSONArray choices, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -45,7 +46,7 @@ public class PollsQuestionService extends BaseService {
 			_params.put("expirationDateMinute", expirationDateMinute);
 			_params.put("neverExpire", neverExpire);
 			_params.put("choices", choices);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/pollsquestion/add-question", _params);
 		}
@@ -90,7 +91,7 @@ public class PollsQuestionService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateQuestion(long questionId, JSONObject titleMap, JSONObject descriptionMap, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, boolean neverExpire, JSONArray choices, JSONObject serviceContext) throws Exception {
+	public JSONObject updateQuestion(long questionId, JSONObject titleMap, JSONObject descriptionMap, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, boolean neverExpire, JSONArray choices, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -106,7 +107,7 @@ public class PollsQuestionService extends BaseService {
 			_params.put("expirationDateMinute", expirationDateMinute);
 			_params.put("neverExpire", neverExpire);
 			_params.put("choices", choices);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/pollsquestion/update-question", _params);
 		}

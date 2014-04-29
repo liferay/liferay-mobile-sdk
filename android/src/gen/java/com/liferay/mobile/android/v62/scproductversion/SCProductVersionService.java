@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.scproductversion;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class SCProductVersionService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addProductVersion(long productEntryId, String version, String changeLog, String downloadPageURL, String directDownloadURL, boolean testDirectDownloadURL, boolean repoStoreArtifact, JSONArray frameworkVersionIds, JSONObject serviceContext) throws Exception {
+	public JSONObject addProductVersion(long productEntryId, String version, String changeLog, String downloadPageURL, String directDownloadURL, boolean testDirectDownloadURL, boolean repoStoreArtifact, JSONArray frameworkVersionIds, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -44,7 +45,7 @@ public class SCProductVersionService extends BaseService {
 			_params.put("testDirectDownloadURL", testDirectDownloadURL);
 			_params.put("repoStoreArtifact", repoStoreArtifact);
 			_params.put("frameworkVersionIds", frameworkVersionIds);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/scproductversion/add-product-version", _params);
 		}

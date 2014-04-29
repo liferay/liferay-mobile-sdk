@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.blogsentry;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -67,7 +68,7 @@ public class BlogsEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public String getCompanyEntriesRss(long companyId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObject themeDisplay) throws Exception {
+	public String getCompanyEntriesRss(long companyId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -82,7 +83,7 @@ public class BlogsEntryService extends BaseService {
 			_params.put("displayStyle", displayStyle);
 			_params.put("feedURL", feedURL);
 			_params.put("entryURL", entryURL);
-			_params.put("themeDisplay", themeDisplay);
+			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/blogsentry/get-company-entries-rss", _params);
 		}
@@ -245,7 +246,7 @@ public class BlogsEntryService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public String getGroupEntriesRss(long groupId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObject themeDisplay) throws Exception {
+	public String getGroupEntriesRss(long groupId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -260,7 +261,7 @@ public class BlogsEntryService extends BaseService {
 			_params.put("displayStyle", displayStyle);
 			_params.put("feedURL", feedURL);
 			_params.put("entryURL", entryURL);
-			_params.put("themeDisplay", themeDisplay);
+			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/blogsentry/get-group-entries-rss", _params);
 		}
@@ -312,7 +313,7 @@ public class BlogsEntryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public String getOrganizationEntriesRss(long organizationId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObject themeDisplay) throws Exception {
+	public String getOrganizationEntriesRss(long organizationId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -327,7 +328,7 @@ public class BlogsEntryService extends BaseService {
 			_params.put("displayStyle", displayStyle);
 			_params.put("feedURL", feedURL);
 			_params.put("entryURL", entryURL);
-			_params.put("themeDisplay", themeDisplay);
+			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/blogsentry/get-organization-entries-rss", _params);
 		}

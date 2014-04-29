@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.mbthread;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -386,7 +387,7 @@ public class MBThreadService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject splitThread(long messageId, String subject, JSONObject serviceContext) throws Exception {
+	public JSONObject splitThread(long messageId, String subject, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -394,7 +395,7 @@ public class MBThreadService extends BaseService {
 
 			_params.put("messageId", messageId);
 			_params.put("subject", subject);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbthread/split-thread", _params);
 		}

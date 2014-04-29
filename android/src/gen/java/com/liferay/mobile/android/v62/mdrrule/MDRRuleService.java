@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.mdrrule;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class MDRRuleService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addRule(long ruleGroupId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObject serviceContext) throws Exception {
+	public JSONObject addRule(long ruleGroupId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -41,7 +42,7 @@ public class MDRRuleService extends BaseService {
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("type", type);
 			_params.put("typeSettings", typeSettings);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdrrule/add-rule", _params);
 		}
@@ -103,7 +104,7 @@ public class MDRRuleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateRule(long ruleId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObject serviceContext) throws Exception {
+	public JSONObject updateRule(long ruleId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -114,7 +115,7 @@ public class MDRRuleService extends BaseService {
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("type", type);
 			_params.put("typeSettings", typeSettings);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdrrule/update-rule", _params);
 		}
@@ -125,7 +126,7 @@ public class MDRRuleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateRule(long ruleId, JSONObject nameMap, JSONObject descriptionMap, String type, JSONObject typeSettingsProperties, JSONObject serviceContext) throws Exception {
+	public JSONObject updateRule(long ruleId, JSONObject nameMap, JSONObject descriptionMap, String type, JSONObjectWrapper typeSettingsProperties, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -135,8 +136,8 @@ public class MDRRuleService extends BaseService {
 			_params.put("nameMap", nameMap);
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("type", type);
-			_params.put("typeSettingsProperties", typeSettingsProperties);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "typeSettingsProperties", "com.liferay.portal.kernel.util.UnicodeProperties", typeSettingsProperties);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdrrule/update-rule", _params);
 		}

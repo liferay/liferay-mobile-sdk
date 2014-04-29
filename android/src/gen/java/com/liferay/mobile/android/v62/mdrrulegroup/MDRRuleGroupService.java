@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.mdrrulegroup;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class MDRRuleGroupService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addRuleGroup(long groupId, JSONObject nameMap, JSONObject descriptionMap, JSONObject serviceContext) throws Exception {
+	public JSONObject addRuleGroup(long groupId, JSONObject nameMap, JSONObject descriptionMap, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -39,7 +40,7 @@ public class MDRRuleGroupService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("nameMap", nameMap);
 			_params.put("descriptionMap", descriptionMap);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdrrulegroup/add-rule-group", _params);
 		}
@@ -50,7 +51,7 @@ public class MDRRuleGroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject copyRuleGroup(long ruleGroupId, long groupId, JSONObject serviceContext) throws Exception {
+	public JSONObject copyRuleGroup(long ruleGroupId, long groupId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -58,7 +59,7 @@ public class MDRRuleGroupService extends BaseService {
 
 			_params.put("ruleGroupId", ruleGroupId);
 			_params.put("groupId", groupId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdrrulegroup/copy-rule-group", _params);
 		}
@@ -120,7 +121,7 @@ public class MDRRuleGroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateRuleGroup(long ruleGroupId, JSONObject nameMap, JSONObject descriptionMap, JSONObject serviceContext) throws Exception {
+	public JSONObject updateRuleGroup(long ruleGroupId, JSONObject nameMap, JSONObject descriptionMap, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -129,7 +130,7 @@ public class MDRRuleGroupService extends BaseService {
 			_params.put("ruleGroupId", ruleGroupId);
 			_params.put("nameMap", nameMap);
 			_params.put("descriptionMap", descriptionMap);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdrrulegroup/update-rule-group", _params);
 		}

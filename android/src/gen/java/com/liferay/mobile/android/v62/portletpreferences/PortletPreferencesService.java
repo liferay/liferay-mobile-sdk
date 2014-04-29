@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.portletpreferences;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -47,17 +48,17 @@ public class PortletPreferencesService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void restoreArchivedPreferences(long groupId, JSONObject layout, String portletId, JSONObject portletItem, JSONObject preferences) throws Exception {
+	public void restoreArchivedPreferences(long groupId, JSONObjectWrapper layout, String portletId, JSONObjectWrapper portletItem, JSONObjectWrapper preferences) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("layout", layout);
+			mangleWrapper(_params, "layout", "com.liferay.portal.model.Layout", layout);
 			_params.put("portletId", portletId);
-			_params.put("portletItem", portletItem);
-			_params.put("preferences", preferences);
+			mangleWrapper(_params, "portletItem", "com.liferay.portal.model.PortletItem", portletItem);
+			mangleWrapper(_params, "preferences", "javax.portlet.PortletPreferences", preferences);
 
 			_command.put("/portletpreferences/restore-archived-preferences", _params);
 		}
@@ -68,17 +69,17 @@ public class PortletPreferencesService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void restoreArchivedPreferences(long groupId, JSONObject layout, String portletId, long portletItemId, JSONObject preferences) throws Exception {
+	public void restoreArchivedPreferences(long groupId, JSONObjectWrapper layout, String portletId, long portletItemId, JSONObjectWrapper preferences) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("layout", layout);
+			mangleWrapper(_params, "layout", "com.liferay.portal.model.Layout", layout);
 			_params.put("portletId", portletId);
 			_params.put("portletItemId", portletItemId);
-			_params.put("preferences", preferences);
+			mangleWrapper(_params, "preferences", "javax.portlet.PortletPreferences", preferences);
 
 			_command.put("/portletpreferences/restore-archived-preferences", _params);
 		}
@@ -89,7 +90,7 @@ public class PortletPreferencesService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void restoreArchivedPreferences(long groupId, String name, JSONObject layout, String portletId, JSONObject preferences) throws Exception {
+	public void restoreArchivedPreferences(long groupId, String name, JSONObjectWrapper layout, String portletId, JSONObjectWrapper preferences) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -97,9 +98,9 @@ public class PortletPreferencesService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("name", name);
-			_params.put("layout", layout);
+			mangleWrapper(_params, "layout", "com.liferay.portal.model.Layout", layout);
 			_params.put("portletId", portletId);
-			_params.put("preferences", preferences);
+			mangleWrapper(_params, "preferences", "javax.portlet.PortletPreferences", preferences);
 
 			_command.put("/portletpreferences/restore-archived-preferences", _params);
 		}
@@ -110,7 +111,7 @@ public class PortletPreferencesService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateArchivePreferences(long userId, long groupId, String name, String portletId, JSONObject preferences) throws Exception {
+	public void updateArchivePreferences(long userId, long groupId, String name, String portletId, JSONObjectWrapper preferences) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -120,7 +121,7 @@ public class PortletPreferencesService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("name", name);
 			_params.put("portletId", portletId);
-			_params.put("preferences", preferences);
+			mangleWrapper(_params, "preferences", "javax.portlet.PortletPreferences", preferences);
 
 			_command.put("/portletpreferences/update-archive-preferences", _params);
 		}

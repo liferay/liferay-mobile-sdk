@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.syncdlobject;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class SyncDLObjectService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, JSONObject file, String checksum, JSONObject serviceContext) throws Exception {
+	public JSONObject addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, JSONObjectWrapper file, String checksum, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -43,9 +44,9 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("title", title);
 			_params.put("description", description);
 			_params.put("changeLog", changeLog);
-			_params.put("file", file);
+			mangleWrapper(_params, "file", "java.io.File", file);
 			_params.put("checksum", checksum);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/sync-web/syncdlobject/add-file-entry", _params);
 		}
@@ -56,7 +57,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addFolder(long repositoryId, long parentFolderId, String name, String description, JSONObject serviceContext) throws Exception {
+	public JSONObject addFolder(long repositoryId, long parentFolderId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -66,7 +67,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("parentFolderId", parentFolderId);
 			_params.put("name", name);
 			_params.put("description", description);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/sync-web/syncdlobject/add-folder", _params);
 		}
@@ -94,7 +95,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject checkInFileEntry(long fileEntryId, boolean majorVersion, String changeLog, JSONObject serviceContext) throws Exception {
+	public JSONObject checkInFileEntry(long fileEntryId, boolean majorVersion, String changeLog, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -103,7 +104,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("fileEntryId", fileEntryId);
 			_params.put("majorVersion", majorVersion);
 			_params.put("changeLog", changeLog);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/sync-web/syncdlobject/check-in-file-entry", _params);
 		}
@@ -114,14 +115,14 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject checkOutFileEntry(long fileEntryId, JSONObject serviceContext) throws Exception {
+	public JSONObject checkOutFileEntry(long fileEntryId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/sync-web/syncdlobject/check-out-file-entry", _params);
 		}
@@ -132,7 +133,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject checkOutFileEntry(long fileEntryId, String owner, long expirationTime, JSONObject serviceContext) throws Exception {
+	public JSONObject checkOutFileEntry(long fileEntryId, String owner, long expirationTime, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -141,7 +142,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("fileEntryId", fileEntryId);
 			_params.put("owner", owner);
 			_params.put("expirationTime", expirationTime);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/sync-web/syncdlobject/check-out-file-entry", _params);
 		}
@@ -325,7 +326,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject moveFileEntry(long fileEntryId, long newFolderId, JSONObject serviceContext) throws Exception {
+	public JSONObject moveFileEntry(long fileEntryId, long newFolderId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -333,7 +334,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("fileEntryId", fileEntryId);
 			_params.put("newFolderId", newFolderId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/sync-web/syncdlobject/move-file-entry", _params);
 		}
@@ -361,7 +362,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject moveFolder(long folderId, long parentFolderId, JSONObject serviceContext) throws Exception {
+	public JSONObject moveFolder(long folderId, long parentFolderId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -369,7 +370,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("folderId", folderId);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/sync-web/syncdlobject/move-folder", _params);
 		}
@@ -397,7 +398,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject patchFileEntry(long fileEntryId, String sourceVersion, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, JSONObject deltaFile, String checksum, JSONObject serviceContext) throws Exception {
+	public JSONObject patchFileEntry(long fileEntryId, String sourceVersion, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, JSONObjectWrapper deltaFile, String checksum, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -411,9 +412,9 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("description", description);
 			_params.put("changeLog", changeLog);
 			_params.put("majorVersion", majorVersion);
-			_params.put("deltaFile", deltaFile);
+			mangleWrapper(_params, "deltaFile", "java.io.File", deltaFile);
 			_params.put("checksum", checksum);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/sync-web/syncdlobject/patch-file-entry", _params);
 		}
@@ -458,7 +459,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, JSONObject file, String checksum, JSONObject serviceContext) throws Exception {
+	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, JSONObjectWrapper file, String checksum, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -471,9 +472,9 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("description", description);
 			_params.put("changeLog", changeLog);
 			_params.put("majorVersion", majorVersion);
-			_params.put("file", file);
+			mangleWrapper(_params, "file", "java.io.File", file);
 			_params.put("checksum", checksum);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/sync-web/syncdlobject/update-file-entry", _params);
 		}
@@ -484,7 +485,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateFolder(long folderId, String name, String description, JSONObject serviceContext) throws Exception {
+	public JSONObject updateFolder(long folderId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -493,7 +494,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("folderId", folderId);
 			_params.put("name", name);
 			_params.put("description", description);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/sync-web/syncdlobject/update-folder", _params);
 		}

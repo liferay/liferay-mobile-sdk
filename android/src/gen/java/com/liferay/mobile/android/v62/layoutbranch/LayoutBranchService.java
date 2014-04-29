@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.layoutbranch;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class LayoutBranchService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addLayoutBranch(long layoutRevisionId, String name, String description, boolean master, JSONObject serviceContext) throws Exception {
+	public JSONObject addLayoutBranch(long layoutRevisionId, String name, String description, boolean master, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -40,7 +41,7 @@ public class LayoutBranchService extends BaseService {
 			_params.put("name", name);
 			_params.put("description", description);
 			_params.put("master", master);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/layoutbranch/add-layout-branch", _params);
 		}
@@ -68,7 +69,7 @@ public class LayoutBranchService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateLayoutBranch(long layoutBranchId, String name, String description, JSONObject serviceContext) throws Exception {
+	public JSONObject updateLayoutBranch(long layoutBranchId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -77,7 +78,7 @@ public class LayoutBranchService extends BaseService {
 			_params.put("layoutBranchId", layoutBranchId);
 			_params.put("name", name);
 			_params.put("description", description);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/layoutbranch/update-layout-branch", _params);
 		}

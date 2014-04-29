@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.mbban;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,14 +31,14 @@ public class MBBanService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addBan(long banUserId, JSONObject serviceContext) throws Exception {
+	public JSONObject addBan(long banUserId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("banUserId", banUserId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbban/add-ban", _params);
 		}
@@ -48,14 +49,14 @@ public class MBBanService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void deleteBan(long banUserId, JSONObject serviceContext) throws Exception {
+	public void deleteBan(long banUserId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("banUserId", banUserId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbban/delete-ban", _params);
 		}

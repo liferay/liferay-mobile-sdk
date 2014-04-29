@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.mbmessage;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class MBMessageService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addDiscussionMessage(long groupId, String className, long classPK, String permissionClassName, long permissionClassPK, long permissionOwnerId, long threadId, long parentMessageId, String subject, String body, JSONObject serviceContext) throws Exception {
+	public JSONObject addDiscussionMessage(long groupId, String className, long classPK, String permissionClassName, long permissionClassPK, long permissionOwnerId, long threadId, long parentMessageId, String subject, String body, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -46,7 +47,7 @@ public class MBMessageService extends BaseService {
 			_params.put("parentMessageId", parentMessageId);
 			_params.put("subject", subject);
 			_params.put("body", body);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbmessage/add-discussion-message", _params);
 		}
@@ -57,7 +58,7 @@ public class MBMessageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addMessage(long groupId, long categoryId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObject serviceContext) throws Exception {
+	public JSONObject addMessage(long groupId, long categoryId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -72,7 +73,7 @@ public class MBMessageService extends BaseService {
 			_params.put("anonymous", anonymous);
 			_params.put("priority", priority);
 			_params.put("allowPingbacks", allowPingbacks);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbmessage/add-message", _params);
 		}
@@ -83,7 +84,7 @@ public class MBMessageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addMessage(long groupId, long categoryId, long threadId, long parentMessageId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObject serviceContext) throws Exception {
+	public JSONObject addMessage(long groupId, long categoryId, long threadId, long parentMessageId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -100,7 +101,7 @@ public class MBMessageService extends BaseService {
 			_params.put("anonymous", anonymous);
 			_params.put("priority", priority);
 			_params.put("allowPingbacks", allowPingbacks);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbmessage/add-message", _params);
 		}
@@ -111,7 +112,7 @@ public class MBMessageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addMessage(long categoryId, String subject, String body, JSONObject serviceContext) throws Exception {
+	public JSONObject addMessage(long categoryId, String subject, String body, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -120,7 +121,7 @@ public class MBMessageService extends BaseService {
 			_params.put("categoryId", categoryId);
 			_params.put("subject", subject);
 			_params.put("body", body);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbmessage/add-message", _params);
 		}
@@ -131,7 +132,7 @@ public class MBMessageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addMessage(long parentMessageId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObject serviceContext) throws Exception {
+	public JSONObject addMessage(long parentMessageId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -145,7 +146,7 @@ public class MBMessageService extends BaseService {
 			_params.put("anonymous", anonymous);
 			_params.put("priority", priority);
 			_params.put("allowPingbacks", allowPingbacks);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbmessage/add-message", _params);
 		}
@@ -253,7 +254,7 @@ public class MBMessageService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public String getCategoryMessagesRss(long groupId, long categoryId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObject themeDisplay) throws Exception {
+	public String getCategoryMessagesRss(long groupId, long categoryId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -268,7 +269,7 @@ public class MBMessageService extends BaseService {
 			_params.put("displayStyle", displayStyle);
 			_params.put("feedURL", feedURL);
 			_params.put("entryURL", entryURL);
-			_params.put("themeDisplay", themeDisplay);
+			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/mbmessage/get-category-messages-rss", _params);
 		}
@@ -279,7 +280,7 @@ public class MBMessageService extends BaseService {
 		return (String)session.invoke(_command);
 	}
 
-	public String getCompanyMessagesRss(long companyId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObject themeDisplay) throws Exception {
+	public String getCompanyMessagesRss(long companyId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -293,7 +294,7 @@ public class MBMessageService extends BaseService {
 			_params.put("displayStyle", displayStyle);
 			_params.put("feedURL", feedURL);
 			_params.put("entryURL", entryURL);
-			_params.put("themeDisplay", themeDisplay);
+			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/mbmessage/get-company-messages-rss", _params);
 		}
@@ -322,7 +323,7 @@ public class MBMessageService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public String getGroupMessagesRss(long groupId, long userId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObject themeDisplay) throws Exception {
+	public String getGroupMessagesRss(long groupId, long userId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -337,7 +338,7 @@ public class MBMessageService extends BaseService {
 			_params.put("displayStyle", displayStyle);
 			_params.put("feedURL", feedURL);
 			_params.put("entryURL", entryURL);
-			_params.put("themeDisplay", themeDisplay);
+			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/mbmessage/get-group-messages-rss", _params);
 		}
@@ -348,7 +349,7 @@ public class MBMessageService extends BaseService {
 		return (String)session.invoke(_command);
 	}
 
-	public String getGroupMessagesRss(long groupId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObject themeDisplay) throws Exception {
+	public String getGroupMessagesRss(long groupId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -362,7 +363,7 @@ public class MBMessageService extends BaseService {
 			_params.put("displayStyle", displayStyle);
 			_params.put("feedURL", feedURL);
 			_params.put("entryURL", entryURL);
-			_params.put("themeDisplay", themeDisplay);
+			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/mbmessage/get-group-messages-rss", _params);
 		}
@@ -471,7 +472,7 @@ public class MBMessageService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public String getThreadMessagesRss(long threadId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObject themeDisplay) throws Exception {
+	public String getThreadMessagesRss(long threadId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -485,7 +486,7 @@ public class MBMessageService extends BaseService {
 			_params.put("displayStyle", displayStyle);
 			_params.put("feedURL", feedURL);
 			_params.put("entryURL", entryURL);
-			_params.put("themeDisplay", themeDisplay);
+			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/mbmessage/get-thread-messages-rss", _params);
 		}
@@ -567,7 +568,7 @@ public class MBMessageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateDiscussionMessage(String className, long classPK, String permissionClassName, long permissionClassPK, long permissionOwnerId, long messageId, String subject, String body, JSONObject serviceContext) throws Exception {
+	public JSONObject updateDiscussionMessage(String className, long classPK, String permissionClassName, long permissionClassPK, long permissionOwnerId, long messageId, String subject, String body, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -581,7 +582,7 @@ public class MBMessageService extends BaseService {
 			_params.put("messageId", messageId);
 			_params.put("subject", subject);
 			_params.put("body", body);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbmessage/update-discussion-message", _params);
 		}
@@ -592,7 +593,7 @@ public class MBMessageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateMessage(long messageId, String subject, String body, JSONArray inputStreamOVPs, JSONArray existingFiles, double priority, boolean allowPingbacks, JSONObject serviceContext) throws Exception {
+	public JSONObject updateMessage(long messageId, String subject, String body, JSONArray inputStreamOVPs, JSONArray existingFiles, double priority, boolean allowPingbacks, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -605,7 +606,7 @@ public class MBMessageService extends BaseService {
 			_params.put("existingFiles", existingFiles);
 			_params.put("priority", priority);
 			_params.put("allowPingbacks", allowPingbacks);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbmessage/update-message", _params);
 		}

@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.emailaddress;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -51,7 +52,7 @@ public class EmailAddressService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addEmailAddress(String className, long classPK, String address, int typeId, boolean primary, JSONObject serviceContext) throws Exception {
+	public JSONObject addEmailAddress(String className, long classPK, String address, int typeId, boolean primary, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -62,7 +63,7 @@ public class EmailAddressService extends BaseService {
 			_params.put("address", address);
 			_params.put("typeId", typeId);
 			_params.put("primary", primary);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/emailaddress/add-email-address", _params);
 		}

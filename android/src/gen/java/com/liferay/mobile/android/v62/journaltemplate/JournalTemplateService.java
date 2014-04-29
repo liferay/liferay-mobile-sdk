@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.journaltemplate;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class JournalTemplateService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addTemplate(long groupId, String templateId, boolean autoTemplateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, JSONObject serviceContext) throws Exception {
+	public JSONObject addTemplate(long groupId, String templateId, boolean autoTemplateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -46,7 +47,7 @@ public class JournalTemplateService extends BaseService {
 			_params.put("formatXsl", formatXsl);
 			_params.put("langType", langType);
 			_params.put("cacheable", cacheable);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journaltemplate/add-template", _params);
 		}
@@ -57,7 +58,7 @@ public class JournalTemplateService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addTemplate(long groupId, String templateId, boolean autoTemplateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, JSONObject smallFile, JSONObject serviceContext) throws Exception {
+	public JSONObject addTemplate(long groupId, String templateId, boolean autoTemplateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, JSONObjectWrapper smallFile, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -75,8 +76,8 @@ public class JournalTemplateService extends BaseService {
 			_params.put("cacheable", cacheable);
 			_params.put("smallImage", smallImage);
 			_params.put("smallImageURL", smallImageURL);
-			_params.put("smallFile", smallFile);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "smallFile", "java.io.File", smallFile);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journaltemplate/add-template", _params);
 		}
@@ -180,7 +181,7 @@ public class JournalTemplateService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, JSONArray groupIds, String templateId, String structureId, String structureIdComparator, String name, String description, boolean andOperator, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray search(long companyId, JSONArray groupIds, String templateId, String structureId, String structureIdComparator, String name, String description, boolean andOperator, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -196,7 +197,7 @@ public class JournalTemplateService extends BaseService {
 			_params.put("andOperator", andOperator);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/journaltemplate/search", _params);
 		}
@@ -207,7 +208,7 @@ public class JournalTemplateService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, JSONArray groupIds, String keywords, String structureId, String structureIdComparator, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray search(long companyId, JSONArray groupIds, String keywords, String structureId, String structureIdComparator, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -220,7 +221,7 @@ public class JournalTemplateService extends BaseService {
 			_params.put("structureIdComparator", structureIdComparator);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/journaltemplate/search", _params);
 		}
@@ -276,7 +277,7 @@ public class JournalTemplateService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONObject updateTemplate(long groupId, String templateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, JSONObject serviceContext) throws Exception {
+	public JSONObject updateTemplate(long groupId, String templateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -291,7 +292,7 @@ public class JournalTemplateService extends BaseService {
 			_params.put("formatXsl", formatXsl);
 			_params.put("langType", langType);
 			_params.put("cacheable", cacheable);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journaltemplate/update-template", _params);
 		}
@@ -302,7 +303,7 @@ public class JournalTemplateService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateTemplate(long groupId, String templateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, JSONObject smallFile, JSONObject serviceContext) throws Exception {
+	public JSONObject updateTemplate(long groupId, String templateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, JSONObjectWrapper smallFile, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -319,8 +320,8 @@ public class JournalTemplateService extends BaseService {
 			_params.put("cacheable", cacheable);
 			_params.put("smallImage", smallImage);
 			_params.put("smallImageURL", smallImageURL);
-			_params.put("smallFile", smallFile);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "smallFile", "java.io.File", smallFile);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journaltemplate/update-template", _params);
 		}

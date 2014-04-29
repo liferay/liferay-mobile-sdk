@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.usergroup;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -84,7 +85,7 @@ public class UserGroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addUserGroup(String name, String description, JSONObject serviceContext) throws Exception {
+	public JSONObject addUserGroup(String name, String description, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -92,7 +93,7 @@ public class UserGroupService extends BaseService {
 
 			_params.put("name", name);
 			_params.put("description", description);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/usergroup/add-user-group", _params);
 		}
@@ -226,7 +227,7 @@ public class UserGroupService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateUserGroup(long userGroupId, String name, String description, JSONObject serviceContext) throws Exception {
+	public JSONObject updateUserGroup(long userGroupId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -235,7 +236,7 @@ public class UserGroupService extends BaseService {
 			_params.put("userGroupId", userGroupId);
 			_params.put("name", name);
 			_params.put("description", description);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/usergroup/update-user-group", _params);
 		}

@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.ddlrecord;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class DDLRecordService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addRecord(long groupId, long recordSetId, int displayIndex, JSONObject fieldsMap, JSONObject serviceContext) throws Exception {
+	public JSONObject addRecord(long groupId, long recordSetId, int displayIndex, JSONObject fieldsMap, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -40,7 +41,7 @@ public class DDLRecordService extends BaseService {
 			_params.put("recordSetId", recordSetId);
 			_params.put("displayIndex", displayIndex);
 			_params.put("fieldsMap", fieldsMap);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddlrecord/add-record", _params);
 		}
@@ -51,7 +52,7 @@ public class DDLRecordService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject deleteRecordLocale(long recordId, String locale, JSONObject serviceContext) throws Exception {
+	public JSONObject deleteRecordLocale(long recordId, String locale, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -59,7 +60,7 @@ public class DDLRecordService extends BaseService {
 
 			_params.put("recordId", recordId);
 			_params.put("locale", locale);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddlrecord/delete-record-locale", _params);
 		}
@@ -87,7 +88,7 @@ public class DDLRecordService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateRecord(long recordId, int displayIndex, JSONObject fieldsMap, boolean mergeFields, JSONObject serviceContext) throws Exception {
+	public JSONObject updateRecord(long recordId, int displayIndex, JSONObject fieldsMap, boolean mergeFields, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -97,7 +98,7 @@ public class DDLRecordService extends BaseService {
 			_params.put("displayIndex", displayIndex);
 			_params.put("fieldsMap", fieldsMap);
 			_params.put("mergeFields", mergeFields);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddlrecord/update-record", _params);
 		}
@@ -108,7 +109,7 @@ public class DDLRecordService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateRecord(long recordId, boolean majorVersion, int displayIndex, JSONObject fields, boolean mergeFields, JSONObject serviceContext) throws Exception {
+	public JSONObject updateRecord(long recordId, boolean majorVersion, int displayIndex, JSONObjectWrapper fields, boolean mergeFields, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -117,9 +118,9 @@ public class DDLRecordService extends BaseService {
 			_params.put("recordId", recordId);
 			_params.put("majorVersion", majorVersion);
 			_params.put("displayIndex", displayIndex);
-			_params.put("fields", fields);
+			mangleWrapper(_params, "fields", "com.liferay.portlet.dynamicdatamapping.storage.Fields", fields);
 			_params.put("mergeFields", mergeFields);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddlrecord/update-record", _params);
 		}

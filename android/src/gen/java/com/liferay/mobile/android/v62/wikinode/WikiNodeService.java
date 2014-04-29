@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.wikinode;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class WikiNodeService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addNode(String name, String description, JSONObject serviceContext) throws Exception {
+	public JSONObject addNode(String name, String description, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -38,7 +39,7 @@ public class WikiNodeService extends BaseService {
 
 			_params.put("name", name);
 			_params.put("description", description);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/wikinode/add-node", _params);
 		}
@@ -278,7 +279,7 @@ public class WikiNodeService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateNode(long nodeId, String name, String description, JSONObject serviceContext) throws Exception {
+	public JSONObject updateNode(long nodeId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -287,7 +288,7 @@ public class WikiNodeService extends BaseService {
 			_params.put("nodeId", nodeId);
 			_params.put("name", name);
 			_params.put("description", description);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/wikinode/update-node", _params);
 		}

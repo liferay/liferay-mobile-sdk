@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.layoutrevision;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class LayoutRevisionService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addLayoutRevision(long userId, long layoutSetBranchId, long layoutBranchId, long parentLayoutRevisionId, boolean head, long plid, long portletPreferencesPlid, boolean privateLayout, String name, String title, String description, String keywords, String robots, String typeSettings, boolean iconImage, long iconImageId, String themeId, String colorSchemeId, String wapThemeId, String wapColorSchemeId, String css, JSONObject serviceContext) throws Exception {
+	public JSONObject addLayoutRevision(long userId, long layoutSetBranchId, long layoutBranchId, long parentLayoutRevisionId, boolean head, long plid, long portletPreferencesPlid, boolean privateLayout, String name, String title, String description, String keywords, String robots, String typeSettings, boolean iconImage, long iconImageId, String themeId, String colorSchemeId, String wapThemeId, String wapColorSchemeId, String css, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -57,7 +58,7 @@ public class LayoutRevisionService extends BaseService {
 			_params.put("wapThemeId", wapThemeId);
 			_params.put("wapColorSchemeId", wapColorSchemeId);
 			_params.put("css", css);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/layoutrevision/add-layout-revision", _params);
 		}

@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.dlfolder;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class DLFolderService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFolder(long groupId, long repositoryId, boolean mountPoint, long parentFolderId, String name, String description, JSONObject serviceContext) throws Exception {
+	public JSONObject addFolder(long groupId, long repositoryId, boolean mountPoint, long parentFolderId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -42,7 +43,7 @@ public class DLFolderService extends BaseService {
 			_params.put("parentFolderId", parentFolderId);
 			_params.put("name", name);
 			_params.put("description", description);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfolder/add-folder", _params);
 		}
@@ -221,7 +222,7 @@ public class DLFolderService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getFolders(long groupId, long parentFolderId, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getFolders(long groupId, long parentFolderId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -231,7 +232,7 @@ public class DLFolderService extends BaseService {
 			_params.put("parentFolderId", parentFolderId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/dlfolder/get-folders", _params);
 		}
@@ -242,7 +243,7 @@ public class DLFolderService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getFolders(long groupId, long parentFolderId, int status, boolean includeMountfolders, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getFolders(long groupId, long parentFolderId, int status, boolean includeMountfolders, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -254,7 +255,7 @@ public class DLFolderService extends BaseService {
 			_params.put("includeMountfolders", includeMountfolders);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/dlfolder/get-folders", _params);
 		}
@@ -265,7 +266,7 @@ public class DLFolderService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getFoldersAndFileEntriesAndFileShortcuts(long groupId, long folderId, int status, boolean includeMountFolders, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getFoldersAndFileEntriesAndFileShortcuts(long groupId, long folderId, int status, boolean includeMountFolders, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -277,7 +278,7 @@ public class DLFolderService extends BaseService {
 			_params.put("includeMountFolders", includeMountFolders);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/dlfolder/get-folders-and-file-entries-and-file-shortcuts", _params);
 		}
@@ -288,7 +289,7 @@ public class DLFolderService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getFoldersAndFileEntriesAndFileShortcuts(long groupId, long folderId, int status, JSONArray mimeTypes, boolean includeMountFolders, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getFoldersAndFileEntriesAndFileShortcuts(long groupId, long folderId, int status, JSONArray mimeTypes, boolean includeMountFolders, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -301,7 +302,7 @@ public class DLFolderService extends BaseService {
 			_params.put("includeMountFolders", includeMountFolders);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/dlfolder/get-folders-and-file-entries-and-file-shortcuts", _params);
 		}
@@ -391,7 +392,7 @@ public class DLFolderService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getMountFolders(long groupId, long parentFolderId, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getMountFolders(long groupId, long parentFolderId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -401,7 +402,7 @@ public class DLFolderService extends BaseService {
 			_params.put("parentFolderId", parentFolderId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/dlfolder/get-mount-folders", _params);
 		}
@@ -556,7 +557,7 @@ public class DLFolderService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject moveFolder(long folderId, long parentFolderId, JSONObject serviceContext) throws Exception {
+	public JSONObject moveFolder(long folderId, long parentFolderId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -564,7 +565,7 @@ public class DLFolderService extends BaseService {
 
 			_params.put("folderId", folderId);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfolder/move-folder", _params);
 		}
@@ -632,7 +633,7 @@ public class DLFolderService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateFolder(long folderId, String name, String description, long defaultFileEntryTypeId, JSONArray fileEntryTypeIds, boolean overrideFileEntryTypes, JSONObject serviceContext) throws Exception {
+	public JSONObject updateFolder(long folderId, String name, String description, long defaultFileEntryTypeId, JSONArray fileEntryTypeIds, boolean overrideFileEntryTypes, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -644,7 +645,7 @@ public class DLFolderService extends BaseService {
 			_params.put("defaultFileEntryTypeId", defaultFileEntryTypeId);
 			_params.put("fileEntryTypeIds", fileEntryTypeIds);
 			_params.put("overrideFileEntryTypes", overrideFileEntryTypes);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfolder/update-folder", _params);
 		}

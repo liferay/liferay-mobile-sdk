@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.assettag;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class AssetTagService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addTag(String name, JSONArray tagProperties, JSONObject serviceContext) throws Exception {
+	public JSONObject addTag(String name, JSONArray tagProperties, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -38,7 +39,7 @@ public class AssetTagService extends BaseService {
 
 			_params.put("name", name);
 			_params.put("tagProperties", tagProperties);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assettag/add-tag", _params);
 		}
@@ -100,7 +101,7 @@ public class AssetTagService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getGroupTags(long groupId, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getGroupTags(long groupId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -109,7 +110,7 @@ public class AssetTagService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/assettag/get-group-tags", _params);
 		}
@@ -290,7 +291,7 @@ public class AssetTagService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getTags(long groupId, long classNameId, String name, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getTags(long groupId, long classNameId, String name, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -301,7 +302,7 @@ public class AssetTagService extends BaseService {
 			_params.put("name", name);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/assettag/get-tags", _params);
 		}
@@ -448,7 +449,7 @@ public class AssetTagService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject updateTag(long tagId, String name, JSONArray tagProperties, JSONObject serviceContext) throws Exception {
+	public JSONObject updateTag(long tagId, String name, JSONArray tagProperties, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -457,7 +458,7 @@ public class AssetTagService extends BaseService {
 			_params.put("tagId", tagId);
 			_params.put("name", name);
 			_params.put("tagProperties", tagProperties);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assettag/update-tag", _params);
 		}

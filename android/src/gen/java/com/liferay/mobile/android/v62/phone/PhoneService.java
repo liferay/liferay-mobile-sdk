@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.phone;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -52,7 +53,7 @@ public class PhoneService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addPhone(String className, long classPK, String number, String extension, int typeId, boolean primary, JSONObject serviceContext) throws Exception {
+	public JSONObject addPhone(String className, long classPK, String number, String extension, int typeId, boolean primary, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -64,7 +65,7 @@ public class PhoneService extends BaseService {
 			_params.put("extension", extension);
 			_params.put("typeId", typeId);
 			_params.put("primary", primary);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/phone/add-phone", _params);
 		}

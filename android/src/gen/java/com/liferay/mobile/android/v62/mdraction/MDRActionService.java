@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.mdraction;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class MDRActionService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addAction(long ruleGroupInstanceId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObject serviceContext) throws Exception {
+	public JSONObject addAction(long ruleGroupInstanceId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -41,7 +42,7 @@ public class MDRActionService extends BaseService {
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("type", type);
 			_params.put("typeSettings", typeSettings);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdraction/add-action", _params);
 		}
@@ -52,7 +53,7 @@ public class MDRActionService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addAction(long ruleGroupInstanceId, JSONObject nameMap, JSONObject descriptionMap, String type, JSONObject typeSettingsProperties, JSONObject serviceContext) throws Exception {
+	public JSONObject addAction(long ruleGroupInstanceId, JSONObject nameMap, JSONObject descriptionMap, String type, JSONObjectWrapper typeSettingsProperties, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -62,8 +63,8 @@ public class MDRActionService extends BaseService {
 			_params.put("nameMap", nameMap);
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("type", type);
-			_params.put("typeSettingsProperties", typeSettingsProperties);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "typeSettingsProperties", "com.liferay.portal.kernel.util.UnicodeProperties", typeSettingsProperties);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdraction/add-action", _params);
 		}
@@ -125,7 +126,7 @@ public class MDRActionService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateAction(long actionId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObject serviceContext) throws Exception {
+	public JSONObject updateAction(long actionId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -136,7 +137,7 @@ public class MDRActionService extends BaseService {
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("type", type);
 			_params.put("typeSettings", typeSettings);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdraction/update-action", _params);
 		}
@@ -147,7 +148,7 @@ public class MDRActionService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateAction(long actionId, JSONObject nameMap, JSONObject descriptionMap, String type, JSONObject typeSettingsProperties, JSONObject serviceContext) throws Exception {
+	public JSONObject updateAction(long actionId, JSONObject nameMap, JSONObject descriptionMap, String type, JSONObjectWrapper typeSettingsProperties, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -157,8 +158,8 @@ public class MDRActionService extends BaseService {
 			_params.put("nameMap", nameMap);
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("type", type);
-			_params.put("typeSettingsProperties", typeSettingsProperties);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "typeSettingsProperties", "com.liferay.portal.kernel.util.UnicodeProperties", typeSettingsProperties);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdraction/update-action", _params);
 		}

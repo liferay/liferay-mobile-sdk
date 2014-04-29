@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.ddmtemplate;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class DDMTemplateService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addTemplate(long groupId, long classNameId, long classPK, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, JSONObject serviceContext) throws Exception {
+	public JSONObject addTemplate(long groupId, long classNameId, long classPK, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -45,7 +46,7 @@ public class DDMTemplateService extends BaseService {
 			_params.put("mode", mode);
 			_params.put("language", language);
 			_params.put("script", script);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmtemplate/add-template", _params);
 		}
@@ -56,7 +57,7 @@ public class DDMTemplateService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addTemplate(long groupId, long classNameId, long classPK, String templateKey, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, boolean smallImage, String smallImageURL, JSONObject smallImageFile, JSONObject serviceContext) throws Exception {
+	public JSONObject addTemplate(long groupId, long classNameId, long classPK, String templateKey, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, boolean smallImage, String smallImageURL, JSONObjectWrapper smallImageFile, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -75,8 +76,8 @@ public class DDMTemplateService extends BaseService {
 			_params.put("cacheable", cacheable);
 			_params.put("smallImage", smallImage);
 			_params.put("smallImageURL", smallImageURL);
-			_params.put("smallImageFile", smallImageFile);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "smallImageFile", "java.io.File", smallImageFile);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmtemplate/add-template", _params);
 		}
@@ -87,14 +88,14 @@ public class DDMTemplateService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject copyTemplate(long templateId, JSONObject serviceContext) throws Exception {
+	public JSONObject copyTemplate(long templateId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("templateId", templateId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmtemplate/copy-template", _params);
 		}
@@ -105,7 +106,7 @@ public class DDMTemplateService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject copyTemplate(long templateId, JSONObject nameMap, JSONObject descriptionMap, JSONObject serviceContext) throws Exception {
+	public JSONObject copyTemplate(long templateId, JSONObject nameMap, JSONObject descriptionMap, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -114,7 +115,7 @@ public class DDMTemplateService extends BaseService {
 			_params.put("templateId", templateId);
 			_params.put("nameMap", nameMap);
 			_params.put("descriptionMap", descriptionMap);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmtemplate/copy-template", _params);
 		}
@@ -125,7 +126,7 @@ public class DDMTemplateService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONArray copyTemplates(long classNameId, long classPK, long newClassPK, String type, JSONObject serviceContext) throws Exception {
+	public JSONArray copyTemplates(long classNameId, long classPK, long newClassPK, String type, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -135,7 +136,7 @@ public class DDMTemplateService extends BaseService {
 			_params.put("classPK", classPK);
 			_params.put("newClassPK", newClassPK);
 			_params.put("type", type);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmtemplate/copy-templates", _params);
 		}
@@ -334,7 +335,7 @@ public class DDMTemplateService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getTemplatesByStructureClassNameId(long groupId, long structureClassNameId, int start, int end, JSONObject orderByComparator) throws Exception {
+	public JSONArray getTemplatesByStructureClassNameId(long groupId, long structureClassNameId, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -344,7 +345,7 @@ public class DDMTemplateService extends BaseService {
 			_params.put("structureClassNameId", structureClassNameId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("orderByComparator", orderByComparator);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
 
 			_command.put("/ddmtemplate/get-templates-by-structure-class-name-id", _params);
 		}
@@ -373,7 +374,7 @@ public class DDMTemplateService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, long groupId, long classNameId, long classPK, String keywords, String type, String mode, int start, int end, JSONObject orderByComparator) throws Exception {
+	public JSONArray search(long companyId, long groupId, long classNameId, long classPK, String keywords, String type, String mode, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -388,7 +389,7 @@ public class DDMTemplateService extends BaseService {
 			_params.put("mode", mode);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("orderByComparator", orderByComparator);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
 
 			_command.put("/ddmtemplate/search", _params);
 		}
@@ -399,7 +400,7 @@ public class DDMTemplateService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, String keywords, String type, String mode, int start, int end, JSONObject orderByComparator) throws Exception {
+	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, String keywords, String type, String mode, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -414,7 +415,7 @@ public class DDMTemplateService extends BaseService {
 			_params.put("mode", mode);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("orderByComparator", orderByComparator);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
 
 			_command.put("/ddmtemplate/search", _params);
 		}
@@ -425,7 +426,7 @@ public class DDMTemplateService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, long groupId, long classNameId, long classPK, String name, String description, String type, String mode, String language, boolean andOperator, int start, int end, JSONObject orderByComparator) throws Exception {
+	public JSONArray search(long companyId, long groupId, long classNameId, long classPK, String name, String description, String type, String mode, String language, boolean andOperator, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -443,7 +444,7 @@ public class DDMTemplateService extends BaseService {
 			_params.put("andOperator", andOperator);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("orderByComparator", orderByComparator);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
 
 			_command.put("/ddmtemplate/search", _params);
 		}
@@ -454,7 +455,7 @@ public class DDMTemplateService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, String name, String description, String type, String mode, String language, boolean andOperator, int start, int end, JSONObject orderByComparator) throws Exception {
+	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, String name, String description, String type, String mode, String language, boolean andOperator, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -472,7 +473,7 @@ public class DDMTemplateService extends BaseService {
 			_params.put("andOperator", andOperator);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("orderByComparator", orderByComparator);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
 
 			_command.put("/ddmtemplate/search", _params);
 		}
@@ -581,7 +582,7 @@ public class DDMTemplateService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONObject updateTemplate(long templateId, long classPK, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, boolean smallImage, String smallImageURL, JSONObject smallImageFile, JSONObject serviceContext) throws Exception {
+	public JSONObject updateTemplate(long templateId, long classPK, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, boolean smallImage, String smallImageURL, JSONObjectWrapper smallImageFile, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -598,8 +599,8 @@ public class DDMTemplateService extends BaseService {
 			_params.put("cacheable", cacheable);
 			_params.put("smallImage", smallImage);
 			_params.put("smallImageURL", smallImageURL);
-			_params.put("smallImageFile", smallImageFile);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "smallImageFile", "java.io.File", smallImageFile);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmtemplate/update-template", _params);
 		}

@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.dlfileshortcut;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class DLFileShortcutService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFileShortcut(long groupId, long folderId, long toFileEntryId, JSONObject serviceContext) throws Exception {
+	public JSONObject addFileShortcut(long groupId, long folderId, long toFileEntryId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -39,7 +40,7 @@ public class DLFileShortcutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
 			_params.put("toFileEntryId", toFileEntryId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfileshortcut/add-file-shortcut", _params);
 		}
@@ -84,7 +85,7 @@ public class DLFileShortcutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateFileShortcut(long fileShortcutId, long folderId, long toFileEntryId, JSONObject serviceContext) throws Exception {
+	public JSONObject updateFileShortcut(long fileShortcutId, long folderId, long toFileEntryId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -93,7 +94,7 @@ public class DLFileShortcutService extends BaseService {
 			_params.put("fileShortcutId", fileShortcutId);
 			_params.put("folderId", folderId);
 			_params.put("toFileEntryId", toFileEntryId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfileshortcut/update-file-shortcut", _params);
 		}

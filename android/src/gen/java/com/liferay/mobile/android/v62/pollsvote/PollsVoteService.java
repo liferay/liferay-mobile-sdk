@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.pollsvote;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class PollsVoteService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addVote(long questionId, long choiceId, JSONObject serviceContext) throws Exception {
+	public JSONObject addVote(long questionId, long choiceId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -38,7 +39,7 @@ public class PollsVoteService extends BaseService {
 
 			_params.put("questionId", questionId);
 			_params.put("choiceId", choiceId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/pollsvote/add-vote", _params);
 		}

@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.flagsentry;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class FlagsEntryService extends BaseService {
 		super(session);
 	}
 
-	public void addEntry(String className, long classPK, String reporterEmailAddress, long reportedUserId, String contentTitle, String contentURL, String reason, JSONObject serviceContext) throws Exception {
+	public void addEntry(String className, long classPK, String reporterEmailAddress, long reportedUserId, String contentTitle, String contentURL, String reason, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -43,7 +44,7 @@ public class FlagsEntryService extends BaseService {
 			_params.put("contentTitle", contentTitle);
 			_params.put("contentURL", contentURL);
 			_params.put("reason", reason);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/flagsentry/add-entry", _params);
 		}

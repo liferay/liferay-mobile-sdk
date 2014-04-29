@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.socialactivitysetting;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -121,7 +122,7 @@ public class SocialActivitySettingService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateActivitySetting(long groupId, String className, int activityType, JSONObject activityCounterDefinition) throws Exception {
+	public void updateActivitySetting(long groupId, String className, int activityType, JSONObjectWrapper activityCounterDefinition) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -130,7 +131,7 @@ public class SocialActivitySettingService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("className", className);
 			_params.put("activityType", activityType);
-			_params.put("activityCounterDefinition", activityCounterDefinition);
+			mangleWrapper(_params, "activityCounterDefinition", "com.liferay.portlet.social.model.SocialActivityCounterDefinition", activityCounterDefinition);
 
 			_command.put("/socialactivitysetting/update-activity-setting", _params);
 		}

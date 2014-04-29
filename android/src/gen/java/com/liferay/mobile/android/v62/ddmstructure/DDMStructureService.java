@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.ddmstructure;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class DDMStructureService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addStructure(long groupId, long parentStructureId, long classNameId, String structureKey, JSONObject nameMap, JSONObject descriptionMap, String xsd, String storageType, int type, JSONObject serviceContext) throws Exception {
+	public JSONObject addStructure(long groupId, long parentStructureId, long classNameId, String structureKey, JSONObject nameMap, JSONObject descriptionMap, String xsd, String storageType, int type, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -45,7 +46,7 @@ public class DDMStructureService extends BaseService {
 			_params.put("xsd", xsd);
 			_params.put("storageType", storageType);
 			_params.put("type", type);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmstructure/add-structure", _params);
 		}
@@ -56,7 +57,7 @@ public class DDMStructureService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addStructure(long userId, long groupId, String parentStructureKey, long classNameId, String structureKey, JSONObject nameMap, JSONObject descriptionMap, String xsd, String storageType, int type, JSONObject serviceContext) throws Exception {
+	public JSONObject addStructure(long userId, long groupId, String parentStructureKey, long classNameId, String structureKey, JSONObject nameMap, JSONObject descriptionMap, String xsd, String storageType, int type, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -72,7 +73,7 @@ public class DDMStructureService extends BaseService {
 			_params.put("xsd", xsd);
 			_params.put("storageType", storageType);
 			_params.put("type", type);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmstructure/add-structure", _params);
 		}
@@ -83,7 +84,7 @@ public class DDMStructureService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addStructure(long userId, long groupId, long classNameId, JSONObject nameMap, JSONObject descriptionMap, String xsd, JSONObject serviceContext) throws Exception {
+	public JSONObject addStructure(long userId, long groupId, long classNameId, JSONObject nameMap, JSONObject descriptionMap, String xsd, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -95,7 +96,7 @@ public class DDMStructureService extends BaseService {
 			_params.put("nameMap", nameMap);
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("xsd", xsd);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmstructure/add-structure", _params);
 		}
@@ -106,14 +107,14 @@ public class DDMStructureService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject copyStructure(long structureId, JSONObject serviceContext) throws Exception {
+	public JSONObject copyStructure(long structureId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("structureId", structureId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmstructure/copy-structure", _params);
 		}
@@ -124,7 +125,7 @@ public class DDMStructureService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject copyStructure(long structureId, JSONObject nameMap, JSONObject descriptionMap, JSONObject serviceContext) throws Exception {
+	public JSONObject copyStructure(long structureId, JSONObject nameMap, JSONObject descriptionMap, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -133,7 +134,7 @@ public class DDMStructureService extends BaseService {
 			_params.put("structureId", structureId);
 			_params.put("nameMap", nameMap);
 			_params.put("descriptionMap", descriptionMap);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmstructure/copy-structure", _params);
 		}
@@ -270,7 +271,7 @@ public class DDMStructureService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, String name, String description, String storageType, int type, boolean andOperator, int start, int end, JSONObject orderByComparator) throws Exception {
+	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, String name, String description, String storageType, int type, boolean andOperator, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -286,7 +287,7 @@ public class DDMStructureService extends BaseService {
 			_params.put("andOperator", andOperator);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("orderByComparator", orderByComparator);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
 
 			_command.put("/ddmstructure/search", _params);
 		}
@@ -297,7 +298,7 @@ public class DDMStructureService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, String keywords, int start, int end, JSONObject orderByComparator) throws Exception {
+	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, String keywords, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -309,7 +310,7 @@ public class DDMStructureService extends BaseService {
 			_params.put("keywords", keywords);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("orderByComparator", orderByComparator);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
 
 			_command.put("/ddmstructure/search", _params);
 		}
@@ -364,7 +365,7 @@ public class DDMStructureService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONObject updateStructure(long structureId, long parentStructureId, JSONObject nameMap, JSONObject descriptionMap, String xsd, JSONObject serviceContext) throws Exception {
+	public JSONObject updateStructure(long structureId, long parentStructureId, JSONObject nameMap, JSONObject descriptionMap, String xsd, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -375,7 +376,7 @@ public class DDMStructureService extends BaseService {
 			_params.put("nameMap", nameMap);
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("xsd", xsd);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmstructure/update-structure", _params);
 		}
@@ -386,7 +387,7 @@ public class DDMStructureService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateStructure(long groupId, long parentStructureId, long classNameId, String structureKey, JSONObject nameMap, JSONObject descriptionMap, String xsd, JSONObject serviceContext) throws Exception {
+	public JSONObject updateStructure(long groupId, long parentStructureId, long classNameId, String structureKey, JSONObject nameMap, JSONObject descriptionMap, String xsd, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -399,7 +400,7 @@ public class DDMStructureService extends BaseService {
 			_params.put("nameMap", nameMap);
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("xsd", xsd);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmstructure/update-structure", _params);
 		}

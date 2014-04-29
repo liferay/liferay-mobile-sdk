@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.website;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -51,7 +52,7 @@ public class WebsiteService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addWebsite(String className, long classPK, String url, int typeId, boolean primary, JSONObject serviceContext) throws Exception {
+	public JSONObject addWebsite(String className, long classPK, String url, int typeId, boolean primary, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -62,7 +63,7 @@ public class WebsiteService extends BaseService {
 			_params.put("url", url);
 			_params.put("typeId", typeId);
 			_params.put("primary", primary);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/website/add-website", _params);
 		}

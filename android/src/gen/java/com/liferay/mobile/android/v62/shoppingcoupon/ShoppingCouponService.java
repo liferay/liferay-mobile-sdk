@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.shoppingcoupon;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class ShoppingCouponService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addCoupon(String code, boolean autoCode, String name, String description, int startDateMonth, int startDateDay, int startDateYear, int startDateHour, int startDateMinute, int endDateMonth, int endDateDay, int endDateYear, int endDateHour, int endDateMinute, boolean neverExpire, boolean active, String limitCategories, String limitSkus, double minOrder, double discount, String discountType, JSONObject serviceContext) throws Exception {
+	public JSONObject addCoupon(String code, boolean autoCode, String name, String description, int startDateMonth, int startDateDay, int startDateYear, int startDateHour, int startDateMinute, int endDateMonth, int endDateDay, int endDateYear, int endDateHour, int endDateMinute, boolean neverExpire, boolean active, String limitCategories, String limitSkus, double minOrder, double discount, String discountType, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -57,7 +58,7 @@ public class ShoppingCouponService extends BaseService {
 			_params.put("minOrder", minOrder);
 			_params.put("discount", discount);
 			_params.put("discountType", discountType);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/shoppingcoupon/add-coupon", _params);
 		}
@@ -128,7 +129,7 @@ public class ShoppingCouponService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject updateCoupon(long couponId, String name, String description, int startDateMonth, int startDateDay, int startDateYear, int startDateHour, int startDateMinute, int endDateMonth, int endDateDay, int endDateYear, int endDateHour, int endDateMinute, boolean neverExpire, boolean active, String limitCategories, String limitSkus, double minOrder, double discount, String discountType, JSONObject serviceContext) throws Exception {
+	public JSONObject updateCoupon(long couponId, String name, String description, int startDateMonth, int startDateDay, int startDateYear, int startDateHour, int startDateMinute, int endDateMonth, int endDateDay, int endDateYear, int endDateHour, int endDateMinute, boolean neverExpire, boolean active, String limitCategories, String limitSkus, double minOrder, double discount, String discountType, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -154,7 +155,7 @@ public class ShoppingCouponService extends BaseService {
 			_params.put("minOrder", minOrder);
 			_params.put("discount", discount);
 			_params.put("discountType", discountType);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/shoppingcoupon/update-coupon", _params);
 		}

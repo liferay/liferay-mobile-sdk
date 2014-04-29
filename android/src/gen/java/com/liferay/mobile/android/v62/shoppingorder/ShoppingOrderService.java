@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.shoppingorder;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class ShoppingOrderService extends BaseService {
 		super(session);
 	}
 
-	public void completeOrder(long groupId, String number, String ppTxnId, String ppPaymentStatus, double ppPaymentGross, String ppReceiverEmail, String ppPayerEmail, JSONObject serviceContext) throws Exception {
+	public void completeOrder(long groupId, String number, String ppTxnId, String ppPaymentStatus, double ppPaymentGross, String ppReceiverEmail, String ppPayerEmail, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -43,7 +44,7 @@ public class ShoppingOrderService extends BaseService {
 			_params.put("ppPaymentGross", ppPaymentGross);
 			_params.put("ppReceiverEmail", ppReceiverEmail);
 			_params.put("ppPayerEmail", ppPayerEmail);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/shoppingorder/complete-order", _params);
 		}
@@ -90,7 +91,7 @@ public class ShoppingOrderService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void sendEmail(long groupId, long orderId, String emailType, JSONObject serviceContext) throws Exception {
+	public void sendEmail(long groupId, long orderId, String emailType, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -99,7 +100,7 @@ public class ShoppingOrderService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("orderId", orderId);
 			_params.put("emailType", emailType);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/shoppingorder/send-email", _params);
 		}

@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.shoppingitem;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -49,7 +50,7 @@ public class ShoppingItemService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject addItem(long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, JSONObject sale, boolean smallImage, String smallImageURL, JSONObject smallFile, boolean mediumImage, String mediumImageURL, JSONObject mediumFile, boolean largeImage, String largeImageURL, JSONObject largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObject serviceContext) throws Exception {
+	public JSONObject addItem(long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, JSONObjectWrapper sale, boolean smallImage, String smallImageURL, JSONObjectWrapper smallFile, boolean mediumImage, String mediumImageURL, JSONObjectWrapper mediumFile, boolean largeImage, String largeImageURL, JSONObjectWrapper largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -65,19 +66,19 @@ public class ShoppingItemService extends BaseService {
 			_params.put("requiresShipping", requiresShipping);
 			_params.put("stockQuantity", stockQuantity);
 			_params.put("featured", featured);
-			_params.put("sale", sale);
+			mangleWrapper(_params, "sale", "java.lang.Boolean", sale);
 			_params.put("smallImage", smallImage);
 			_params.put("smallImageURL", smallImageURL);
-			_params.put("smallFile", smallFile);
+			mangleWrapper(_params, "smallFile", "java.io.File", smallFile);
 			_params.put("mediumImage", mediumImage);
 			_params.put("mediumImageURL", mediumImageURL);
-			_params.put("mediumFile", mediumFile);
+			mangleWrapper(_params, "mediumFile", "java.io.File", mediumFile);
 			_params.put("largeImage", largeImage);
 			_params.put("largeImageURL", largeImageURL);
-			_params.put("largeFile", largeFile);
+			mangleWrapper(_params, "largeFile", "java.io.File", largeFile);
 			_params.put("itemFields", itemFields);
 			_params.put("itemPrices", itemPrices);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/shoppingitem/add-item", _params);
 		}
@@ -158,7 +159,7 @@ public class ShoppingItemService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getItems(long groupId, long categoryId, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getItems(long groupId, long categoryId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -168,7 +169,7 @@ public class ShoppingItemService extends BaseService {
 			_params.put("categoryId", categoryId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/shoppingitem/get-items", _params);
 		}
@@ -197,14 +198,14 @@ public class ShoppingItemService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONArray getItemsPrevAndNext(long itemId, JSONObject obc) throws Exception {
+	public JSONArray getItemsPrevAndNext(long itemId, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("itemId", itemId);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/shoppingitem/get-items-prev-and-next", _params);
 		}
@@ -215,7 +216,7 @@ public class ShoppingItemService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONObject updateItem(long itemId, long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, JSONObject sale, boolean smallImage, String smallImageURL, JSONObject smallFile, boolean mediumImage, String mediumImageURL, JSONObject mediumFile, boolean largeImage, String largeImageURL, JSONObject largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObject serviceContext) throws Exception {
+	public JSONObject updateItem(long itemId, long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, JSONObjectWrapper sale, boolean smallImage, String smallImageURL, JSONObjectWrapper smallFile, boolean mediumImage, String mediumImageURL, JSONObjectWrapper mediumFile, boolean largeImage, String largeImageURL, JSONObjectWrapper largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -232,19 +233,19 @@ public class ShoppingItemService extends BaseService {
 			_params.put("requiresShipping", requiresShipping);
 			_params.put("stockQuantity", stockQuantity);
 			_params.put("featured", featured);
-			_params.put("sale", sale);
+			mangleWrapper(_params, "sale", "java.lang.Boolean", sale);
 			_params.put("smallImage", smallImage);
 			_params.put("smallImageURL", smallImageURL);
-			_params.put("smallFile", smallFile);
+			mangleWrapper(_params, "smallFile", "java.io.File", smallFile);
 			_params.put("mediumImage", mediumImage);
 			_params.put("mediumImageURL", mediumImageURL);
-			_params.put("mediumFile", mediumFile);
+			mangleWrapper(_params, "mediumFile", "java.io.File", mediumFile);
 			_params.put("largeImage", largeImage);
 			_params.put("largeImageURL", largeImageURL);
-			_params.put("largeFile", largeFile);
+			mangleWrapper(_params, "largeFile", "java.io.File", largeFile);
 			_params.put("itemFields", itemFields);
 			_params.put("itemPrices", itemPrices);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/shoppingitem/update-item", _params);
 		}

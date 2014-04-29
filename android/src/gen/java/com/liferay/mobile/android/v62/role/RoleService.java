@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.role;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -50,7 +51,7 @@ public class RoleService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addRole(String className, long classPK, String name, JSONObject titleMap, JSONObject descriptionMap, int type, String subtype, JSONObject serviceContext) throws Exception {
+	public JSONObject addRole(String className, long classPK, String name, JSONObject titleMap, JSONObject descriptionMap, int type, String subtype, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -63,7 +64,7 @@ public class RoleService extends BaseService {
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("type", type);
 			_params.put("subtype", subtype);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/role/add-role", _params);
 		}
@@ -290,7 +291,7 @@ public class RoleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateRole(long roleId, String name, JSONObject titleMap, JSONObject descriptionMap, String subtype, JSONObject serviceContext) throws Exception {
+	public JSONObject updateRole(long roleId, String name, JSONObject titleMap, JSONObject descriptionMap, String subtype, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -301,7 +302,7 @@ public class RoleService extends BaseService {
 			_params.put("titleMap", titleMap);
 			_params.put("descriptionMap", descriptionMap);
 			_params.put("subtype", subtype);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/role/update-role", _params);
 		}

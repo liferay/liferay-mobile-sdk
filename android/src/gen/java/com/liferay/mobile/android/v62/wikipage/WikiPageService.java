@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.wikipage;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class WikiPageService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addPage(long nodeId, String title, String content, String summary, boolean minorEdit, JSONObject serviceContext) throws Exception {
+	public JSONObject addPage(long nodeId, String title, String content, String summary, boolean minorEdit, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -41,7 +42,7 @@ public class WikiPageService extends BaseService {
 			_params.put("content", content);
 			_params.put("summary", summary);
 			_params.put("minorEdit", minorEdit);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/wikipage/add-page", _params);
 		}
@@ -52,7 +53,7 @@ public class WikiPageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addPage(long nodeId, String title, String content, String summary, boolean minorEdit, String format, String parentTitle, String redirectTitle, JSONObject serviceContext) throws Exception {
+	public JSONObject addPage(long nodeId, String title, String content, String summary, boolean minorEdit, String format, String parentTitle, String redirectTitle, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -66,7 +67,7 @@ public class WikiPageService extends BaseService {
 			_params.put("format", format);
 			_params.put("parentTitle", parentTitle);
 			_params.put("redirectTitle", redirectTitle);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/wikipage/add-page", _params);
 		}
@@ -77,7 +78,7 @@ public class WikiPageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void addPageAttachment(long nodeId, String title, String fileName, JSONObject file, String mimeType) throws Exception {
+	public void addPageAttachment(long nodeId, String title, String fileName, JSONObjectWrapper file, String mimeType) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -86,7 +87,7 @@ public class WikiPageService extends BaseService {
 			_params.put("nodeId", nodeId);
 			_params.put("title", title);
 			_params.put("fileName", fileName);
-			_params.put("file", file);
+			mangleWrapper(_params, "file", "java.io.File", file);
 			_params.put("mimeType", mimeType);
 
 			_command.put("/wikipage/add-page-attachment", _params);
@@ -117,7 +118,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void changeParent(long nodeId, String title, String newParentTitle, JSONObject serviceContext) throws Exception {
+	public void changeParent(long nodeId, String title, String newParentTitle, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -126,7 +127,7 @@ public class WikiPageService extends BaseService {
 			_params.put("nodeId", nodeId);
 			_params.put("title", title);
 			_params.put("newParentTitle", newParentTitle);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/wikipage/change-parent", _params);
 		}
@@ -445,7 +446,7 @@ public class WikiPageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getPage(long nodeId, String title, JSONObject head) throws Exception {
+	public JSONObject getPage(long nodeId, String title, JSONObjectWrapper head) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -453,7 +454,7 @@ public class WikiPageService extends BaseService {
 
 			_params.put("nodeId", nodeId);
 			_params.put("title", title);
-			_params.put("head", head);
+			mangleWrapper(_params, "head", "java.lang.Boolean", head);
 
 			_command.put("/wikipage/get-page", _params);
 		}
@@ -505,7 +506,7 @@ public class WikiPageService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray getPages(long groupId, long nodeId, boolean head, int status, int start, int end, JSONObject obc) throws Exception {
+	public JSONArray getPages(long groupId, long nodeId, boolean head, int status, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -517,7 +518,7 @@ public class WikiPageService extends BaseService {
 			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/wikipage/get-pages", _params);
 		}
@@ -676,7 +677,7 @@ public class WikiPageService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public void movePage(long nodeId, String title, String newTitle, JSONObject serviceContext) throws Exception {
+	public void movePage(long nodeId, String title, String newTitle, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -685,7 +686,7 @@ public class WikiPageService extends BaseService {
 			_params.put("nodeId", nodeId);
 			_params.put("title", title);
 			_params.put("newTitle", newTitle);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/wikipage/move-page", _params);
 		}
@@ -788,7 +789,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject revertPage(long nodeId, String title, double version, JSONObject serviceContext) throws Exception {
+	public JSONObject revertPage(long nodeId, String title, double version, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -797,7 +798,7 @@ public class WikiPageService extends BaseService {
 			_params.put("nodeId", nodeId);
 			_params.put("title", title);
 			_params.put("version", version);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/wikipage/revert-page", _params);
 		}
@@ -844,7 +845,7 @@ public class WikiPageService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updatePage(long nodeId, String title, double version, String content, String summary, boolean minorEdit, String format, String parentTitle, String redirectTitle, JSONObject serviceContext) throws Exception {
+	public JSONObject updatePage(long nodeId, String title, double version, String content, String summary, boolean minorEdit, String format, String parentTitle, String redirectTitle, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -859,7 +860,7 @@ public class WikiPageService extends BaseService {
 			_params.put("format", format);
 			_params.put("parentTitle", parentTitle);
 			_params.put("redirectTitle", redirectTitle);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/wikipage/update-page", _params);
 		}

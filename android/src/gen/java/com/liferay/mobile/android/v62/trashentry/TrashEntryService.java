@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v62.trashentry;
 
 import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -116,7 +117,7 @@ public class TrashEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getEntries(long groupId, int start, int end, JSONObject obc) throws Exception {
+	public JSONObject getEntries(long groupId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -125,7 +126,7 @@ public class TrashEntryService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("start", start);
 			_params.put("end", end);
-			_params.put("obc", obc);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/trashentry/get-entries", _params);
 		}
@@ -136,7 +137,7 @@ public class TrashEntryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void moveEntry(String className, long classPK, long destinationContainerModelId, JSONObject serviceContext) throws Exception {
+	public void moveEntry(String className, long classPK, long destinationContainerModelId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -145,7 +146,7 @@ public class TrashEntryService extends BaseService {
 			_params.put("className", className);
 			_params.put("classPK", classPK);
 			_params.put("destinationContainerModelId", destinationContainerModelId);
-			_params.put("serviceContext", serviceContext);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/trashentry/move-entry", _params);
 		}
