@@ -23,6 +23,14 @@ import org.apache.commons.lang.WordUtils;
  */
 public class JavaUtil extends LanguageUtil {
 
+	public String getJSONWrapperClassName(String type) {
+		if (type.startsWith("object<")) {
+			return type.substring(7, type.length() - 1);
+		}
+
+		return type;
+	}
+
 	public String getReturnType(String type) {
 		type = getType(type);
 
@@ -39,14 +47,6 @@ public class JavaUtil extends LanguageUtil {
 		}
 
 		return WordUtils.capitalize(type);
-	}
-
-	public String getJSONWrapperType(String type) {
-		if (type.startsWith("object<")) {
-			return type.substring(7, type.length() - 1);
-		}
-
-		return type;
 	}
 
 	public String getType(String type) {

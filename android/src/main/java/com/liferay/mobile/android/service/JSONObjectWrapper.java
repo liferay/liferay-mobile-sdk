@@ -14,6 +14,12 @@
 
 package com.liferay.mobile.android.service;
 
+import com.liferay.mobile.android.util.CharPool;
+import com.liferay.mobile.android.util.Validator;
+
+import java.util.Iterator;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -38,12 +44,54 @@ public class JSONObjectWrapper {
 		return _jsonObject;
 	}
 
+	public void mangle(JSONObject params, String name, String className)
+		throws JSONException {
+
+		addClassName(params, name, className);
+		addJSONObject(params, name);
+	}
+
 	public void setClassName(String className) {
 		_className = className;
 	}
 
 	public void setJSONObject(JSONObject jsonObject) {
 		_jsonObject = jsonObject;
+	}
+
+	protected void addClassName(
+			JSONObject params, String name, String className)
+		throws JSONException {
+
+		StringBuilder sb = new StringBuilder();
+
+		sb.append(CharPool.PLUS);
+		sb.append(name);
+
+		if (Validator.isNull(_className)) {
+			_className = className;
+		}
+
+		params.put(sb.toString(), _className);
+	}
+
+	protected void addJSONObject(JSONObject params, String name)
+		throws JSONException {
+
+		Iterator<String> it = _jsonObject.keys();
+
+		while (it.hasNext()) {
+			String key = it.next();
+			Object value = _jsonObject.get(key);
+
+			StringBuilder sb = new StringBuilder();
+
+			sb.append(name);
+			sb.append(CharPool.PERIOD);
+			sb.append(key);
+
+			params.put(sb.toString(), value);
+		}
 	}
 
 	private String _className;

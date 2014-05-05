@@ -14,11 +14,6 @@
 
 package com.liferay.mobile.android.service;
 
-import com.liferay.mobile.android.util.CharPool;
-import com.liferay.mobile.android.util.Validator;
-
-import java.util.Iterator;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,8 +26,12 @@ public class BaseService {
 		this.session = session;
 	}
 
-	public void explode(
-			JSONObject params, String type, String name,
+	public Session getSession() {
+		return session;
+	}
+
+	public void mangleWrapper(
+			JSONObject params, String name, String className,
 			JSONObjectWrapper wrapper)
 		throws JSONException {
 
@@ -40,52 +39,11 @@ public class BaseService {
 			return;
 		}
 
-		addClassName(params, type, name, wrapper.getClassName());
-		addJSONObject(params, name, wrapper.getJSONObject());
-	}
-
-	public Session getSession() {
-		return session;
+		wrapper.mangle(params, name, className);
 	}
 
 	public void setSession(Session session) {
 		this.session = session;
-	}
-
-	protected void addClassName(
-			JSONObject params, String type, String name, String className)
-		throws JSONException {
-
-		StringBuilder sb = new StringBuilder();
-
-		sb.append(CharPool.PLUS);
-		sb.append(name);
-
-		if (Validator.isNull(className)) {
-			className = type;
-		}
-
-		params.put(sb.toString(), className);
-	}
-
-	protected void addJSONObject(
-			JSONObject params, String name, JSONObject jsonObject)
-		throws JSONException {
-
-		Iterator<String> it = jsonObject.keys();
-
-		while (it.hasNext()) {
-			String key = it.next();
-			Object value = jsonObject.get(key);
-
-			StringBuilder sb = new StringBuilder();
-
-			sb.append(name);
-			sb.append(CharPool.PERIOD);
-			sb.append(key);
-
-			params.put(sb.toString(), value);
-		}
 	}
 
 	protected Session session;

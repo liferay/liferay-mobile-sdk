@@ -65,7 +65,7 @@ public class $className extends BaseService {
     	#set ($parameterType = $languageUtil.getType($parameter.type))
 
 		#if ($parameterType == "JSONObjectWrapper")
-			##t			explode(_params, ${esc.q}$languageUtil.getJSONWrapperType($parameter.type)${esc.q}, ${esc.q}$parameterName${esc.q}, $parameterName);
+			##t			mangleWrapper(_params, ${esc.q}$parameterName${esc.q}, ${esc.q}$languageUtil.getJSONWrapperClassName($parameter.type)${esc.q}, $parameterName);
 		#else
 			##t			_params.put(${esc.q}$parameterName${esc.q}, $parameterName);
 		#end
