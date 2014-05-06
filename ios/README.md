@@ -12,6 +12,9 @@
 * [Use](#use)
 	* [Asynchronous](#asynchronous)
 	* [Batch](#batch)
+	* [Passing complex objects as argument](#passing-complex-objects-as-argument)
+		* [OrderByComparator](#orderbycomparator)
+		* [ServiceContext](#servicecontext)
 
 ## Sample
 
@@ -248,3 +251,82 @@ as usual:
 ```
 
 The return type for batch calls is always an `NSArray`.
+
+#### Passing complex objects as argument
+
+There are some special cases in which service methods arguments are not
+primitives. In these cases, you should use `LRJSONObjectWrapper`, for example:
+
+```objective-c
+LRJSONObjectWrapper *wrapper = [[LRJSONObjectWrapper alloc] initWithJSONObject:[NSDictionary dictionary]];
+```
+
+You must pass a dictionary containing the object properties and their values. On
+the server side, your object will be instantiated and setters for each property
+will called with the values from the dictionary.
+
+There are some other cases in which server service methods require interfaces or
+abstract classes arguments. Since it's impossible for the SDK to guess which
+implementation you want to use, you must initialize `LRJSONObjectWrapper` with
+the className, like that:
+
+```objective-c
+LRJSONObjectWrapper *wrapper = [[LRJSONObjectWrapper alloc] initWithClassName:@"com.example.MyClass" jsonObject:[NSDictionary dictionary]];
+```
+
+The server will look for the class name in its classpath and instantiate the
+object for you, then call setters just like the previous example.
+`OrderByComparator` is a good example, more about that bellow.
+
+##### OrderByComparator
+
+On the server side, `OrderByComparator` is an abstract class, because of that,
+you must pass the name of a class that implements it, for example:
+
+```objective-c
+NSString *className = @"com.liferay.portlet.bookmarks.util.comparator.EntryNameComparator";
+
+LRJSONObjectWrapper *orderByComparator = [[LRJSONObjectWrapper alloc] initWithClassName:className jsonObject:[NSDictionary dictionary]];
+```
+
+If the service you are calling accepts `null` for a comparator argument, just
+pass `nil` to the service call.
+
+You probably want to set the ascending property for a comparator. Unfortunately,
+as of Liferay 6.2, most Liferay `OrderByComparator` implementations don't have a
+setter for this property and it's not possible to set from the SDK. This will be
+fixed in future portal versions.
+
+If you have a custom `OrderByComparator` which have a setter for ascending you
+can do:
+
+```objective-c
+NSString *className = @"com.example.MyOrderByComparator";
+
+NSDictionary *jsonObject = @{
+	@"ascending": true
+};
+
+LRJSONObjectWrapper *wrapper = [[LRJSONObjectWrapper alloc] initWithClassName:className jsonObject:jsonObject];
+```
+
+For more examples, take a look at this test case: [OrderByComparator.m](Test/Portal/OrderByComparator.m).
+
+##### ServiceContext
+
+`ServiceContext` is a special case because most Liferay services methods require
+it, however, you are not required to pass it to the SDK, you can just pass
+`nil`. The server will create a `ServiceContext` instance with default values
+for you.
+
+If there is some property you want to set for `ServiceContext` you can do:
+
+```objective-c
+NSDictionary *jsonObject = @{
+	@"uuid": uuid
+};
+
+LRJSONObjectWrapper *serviceContext = [[LRJSONObjectWrapper alloc] initWithJSONObject:jsonObject];
+```
+
+For more examples, take a look at this test case: [ServiceContextTest.m](Test/Portal/ServiceContextTest.m).
