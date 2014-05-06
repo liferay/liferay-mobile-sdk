@@ -15,6 +15,8 @@
 #import "BaseTest.h"
 #import "LRJSONObjectWrapper.h"
 
+extern const int PARENT_FOLDER_ID;
+
 /**
  * @author Bruno Farache
  */

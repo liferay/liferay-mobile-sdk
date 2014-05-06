@@ -34,8 +34,9 @@
 
 	NSError *error;
 
-	NSArray *entries = [service getEntriesWithGroupId:groupId folderId:0
-		start:-1 end:-1 orderByComparator:orderByComparatorDesc error:&error];
+	NSArray *entries = [service getEntriesWithGroupId:groupId
+		folderId:PARENT_FOLDER_ID start:-1 end:-1
+		orderByComparator:orderByComparatorDesc error:&error];
 
 	XCTAssertNil(error);
 	XCTAssertNotNil(entries);
@@ -56,8 +57,9 @@
 
 	NSError *error;
 
-	NSArray *entries = [service getEntriesWithGroupId:groupId folderId:0
-		start:-1 end:-1 orderByComparator:nil error:&error];
+	NSArray *entries = [service getEntriesWithGroupId:groupId
+		folderId:PARENT_FOLDER_ID start:-1 end:-1 orderByComparator:nil
+		error:&error];
 
 	XCTAssertNil(error);
 	XCTAssertNotNil(entries);

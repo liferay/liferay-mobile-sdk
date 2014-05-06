@@ -15,6 +15,8 @@
 #import "ServiceContextTest.h"
 #import "LRBookmarksEntryService_v62.h"
 
+const int PARENT_FOLDER_ID = 0;
+
 /**
  * @author Bruno Farache
  */
@@ -53,9 +55,9 @@
 
 	long long groupId = [self.settings[@"groupId"] longLongValue];
 
-	NSDictionary *entry = [service addEntryWithGroupId:groupId folderId:0
-		name:name url:@"http://www.liferay.com" description:@""
-		serviceContext:serviceContext error:&error];
+	NSDictionary *entry = [service addEntryWithGroupId:groupId
+		folderId:PARENT_FOLDER_ID name:name url:@"http://www.liferay.com"
+		description:@"" serviceContext:serviceContext error:&error];
 
 	return entry;
 }
