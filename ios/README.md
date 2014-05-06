@@ -304,10 +304,10 @@ can do:
 NSString *className = @"com.example.MyOrderByComparator";
 
 NSDictionary *jsonObject = @{
-	@"ascending": true
+	@"ascending": @(YES)
 };
 
-LRJSONObjectWrapper *wrapper = [[LRJSONObjectWrapper alloc] initWithClassName:className jsonObject:jsonObject];
+LRJSONObjectWrapper *orderByComparator = [[LRJSONObjectWrapper alloc] initWithClassName:className jsonObject:jsonObject];
 ```
 
 For more examples, take a look at this test case: [OrderByComparator.m](Test/Portal/OrderByComparator.m).
