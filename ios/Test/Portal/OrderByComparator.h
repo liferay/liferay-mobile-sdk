@@ -13,17 +13,15 @@
  */
 
 #import "BaseTest.h"
-#import "LRJSONObjectWrapper.h"
+#import "ServiceContextTest.h"
 
 /**
  * @author Bruno Farache
  */
-@interface ServiceContextTest : BaseTest
+@interface OrderByComparator : BaseTest
 
-- (NSDictionary *)addBookmarkEntry:(NSString *)name
-	serviceContext:(LRJSONObjectWrapper *)serviceContext
-	error:(NSError *)error;
-
-- (void)deleteBookmarkEntry:(NSDictionary *)entry error:(NSError *)error;
+@property (nonatomic, strong) NSDictionary *entryA;
+@property (nonatomic, strong) NSDictionary *entryB;
+@property (nonatomic, strong) ServiceContextTest *serviceContextTest;
 
 @end

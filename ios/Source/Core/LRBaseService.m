@@ -14,6 +14,8 @@
 
 #import "LRBaseService.h"
 
+NSString *const _SERVICE_CONTEXT = @"com.liferay.portal.service.ServiceContext";
+
 /**
  * @author Bruno Farache
  */
@@ -38,6 +40,10 @@
 	wrapper:(LRJSONObjectWrapper *)wrapper {
 
 	if (!wrapper) {
+		if (![className isEqualToString:_SERVICE_CONTEXT]) {
+			[params setObject:[NSNull null] forKey:name];
+		}
+
 		return;
 	}
 

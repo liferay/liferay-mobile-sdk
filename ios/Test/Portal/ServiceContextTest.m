@@ -14,7 +14,6 @@
 
 #import "ServiceContextTest.h"
 #import "LRBookmarksEntryService_v62.h"
-#import "LRJSONObjectWrapper.h"
 
 /**
  * @author Bruno Farache
@@ -22,11 +21,6 @@
 @implementation ServiceContextTest
 
 - (void)testAddBookmarkEntry {
-	LRBookmarksEntryService_v62 *service =
-		[[LRBookmarksEntryService_v62 alloc] initWithSession:self.session];
-
-	long long groupId = [self.settings[@"repositoryId"] longLongValue];
-
 	NSString *uuid = [[NSUUID UUID] UUIDString];
 
 	NSDictionary *jsonObject = @{
@@ -38,18 +32,40 @@
 
 	NSError *error;
 
-	NSDictionary *result = [service addEntryWithGroupId:groupId folderId:0
-		name:@"test" url:@"http://www.liferay.com" description:@""
+	NSDictionary *entry = [self addBookmarkEntry:@"test"
+		serviceContext:serviceContext error:error];
+
+	XCTAssertNil(error);
+	XCTAssertNotNil(entry);
+	XCTAssertEqualObjects(uuid, entry[@"uuid"]);
+
+	[self deleteBookmarkEntry:entry error:error];
+
+	XCTAssertNil(error);
+}
+
+- (NSDictionary *)addBookmarkEntry:(NSString *)name
+		serviceContext:(LRJSONObjectWrapper *)serviceContext
+		error:(NSError *)error {
+
+	LRBookmarksEntryService_v62 *service = [[LRBookmarksEntryService_v62 alloc]
+		initWithSession:self.session];
+
+	long long groupId = [self.settings[@"repositoryId"] longLongValue];
+
+	NSDictionary *entry = [service addEntryWithGroupId:groupId folderId:0
+		name:name url:@"http://www.liferay.com" description:@""
 		serviceContext:serviceContext error:&error];
 
-	XCTAssertNil(error);
-	XCTAssertNotNil(result);
-	XCTAssertEqualObjects(uuid, result[@"uuid"]);
+	return entry;
+}
 
-	[service deleteEntryWithEntryId:[result[@"entryId"] longLongValue]
+- (void)deleteBookmarkEntry:(NSDictionary *)entry error:(NSError *)error {
+	LRBookmarksEntryService_v62 *service = [[LRBookmarksEntryService_v62 alloc]
+		initWithSession:self.session];
+
+	[service deleteEntryWithEntryId:[entry[@"entryId"] longLongValue]
 		error:&error];
-
-	XCTAssertNil(error);
 }
 
 @end

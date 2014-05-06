@@ -20,8 +20,6 @@
 @implementation BaseTest
 
 - (void)setUp {
-	[super setUp];
-
 	NSBundle *bundle =
 		[NSBundle bundleWithIdentifier:@"com.liferay.mobile.sdk.Test"];
 
@@ -35,10 +33,6 @@
 
 	self.session =
 		[[LRSession alloc] init:url username:username password:password];
-}
-
-- (void)tearDown {
-	[super tearDown];
 }
 
 @end
