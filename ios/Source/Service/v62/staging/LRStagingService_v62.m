@@ -20,9 +20,9 @@
 @implementation LRStagingService_v62
 
 - (void)cleanUpStagingRequestWithStagingRequestId:(long long)stagingRequestId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"stagingRequestId": @(stagingRequestId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/staging/clean-up-staging-request": _params};
 
@@ -30,10 +30,10 @@
 }
 
 - (NSNumber *)createStagingRequestWithGroupId:(long long)groupId checksum:(NSString *)checksum error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"checksum": checksum
-	};
+	}];
 
 	NSDictionary *_command = @{@"/staging/create-staging-request": _params};
 
@@ -41,11 +41,11 @@
 }
 
 - (void)publishStagingRequestWithStagingRequestId:(long long)stagingRequestId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"stagingRequestId": @(stagingRequestId),
 		@"privateLayout": @(privateLayout),
 		@"parameterMap": parameterMap
-	};
+	}];
 
 	NSDictionary *_command = @{@"/staging/publish-staging-request": _params};
 
@@ -53,11 +53,11 @@
 }
 
 - (void)updateStagingRequestWithStagingRequestId:(long long)stagingRequestId fileName:(NSString *)fileName bytes:(NSArray *)bytes error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"stagingRequestId": @(stagingRequestId),
 		@"fileName": fileName,
 		@"bytes": bytes
-	};
+	}];
 
 	NSDictionary *_command = @{@"/staging/update-staging-request": _params};
 
@@ -65,11 +65,11 @@
 }
 
 - (NSDictionary *)validateStagingRequestWithStagingRequestId:(long long)stagingRequestId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"stagingRequestId": @(stagingRequestId),
 		@"privateLayout": @(privateLayout),
 		@"parameterMap": parameterMap
-	};
+	}];
 
 	NSDictionary *_command = @{@"/staging/validate-staging-request": _params};
 

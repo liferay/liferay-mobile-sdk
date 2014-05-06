@@ -19,27 +19,27 @@
  */
 @interface LRAssetVocabularyService_v62 : LRBaseService
 
-- (NSDictionary *)addVocabularyWithTitle:(NSString *)title serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (NSDictionary *)addVocabularyWithTitleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (NSDictionary *)addVocabularyWithTitle:(NSString *)title titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addVocabularyWithTitle:(NSString *)title serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addVocabularyWithTitleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addVocabularyWithTitle:(NSString *)title titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (void)deleteVocabulariesWithVocabularyIds:(NSArray *)vocabularyIds error:(NSError **)error;
-- (NSArray *)deleteVocabulariesWithVocabularyIds:(NSArray *)vocabularyIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSArray *)deleteVocabulariesWithVocabularyIds:(NSArray *)vocabularyIds serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (void)deleteVocabularyWithVocabularyId:(long long)vocabularyId error:(NSError **)error;
 - (NSArray *)getCompanyVocabulariesWithCompanyId:(long long)companyId error:(NSError **)error;
 - (NSArray *)getGroupVocabulariesWithGroupId:(long long)groupId error:(NSError **)error;
 - (NSArray *)getGroupVocabulariesWithGroupId:(long long)groupId createDefaultVocabulary:(BOOL)createDefaultVocabulary error:(NSError **)error;
-- (NSArray *)getGroupVocabulariesWithGroupId:(long long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (NSArray *)getGroupVocabulariesWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSArray *)getGroupVocabulariesWithGroupId:(long long)groupId start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error;
+- (NSArray *)getGroupVocabulariesWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error;
 - (NSNumber *)getGroupVocabulariesCountWithGroupId:(long long)groupId error:(NSError **)error;
 - (NSNumber *)getGroupVocabulariesCountWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error;
-- (NSDictionary *)getGroupVocabulariesDisplayWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (NSDictionary *)getGroupVocabulariesDisplayWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end addDefaultVocabulary:(BOOL)addDefaultVocabulary obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSDictionary *)getGroupVocabulariesDisplayWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error;
+- (NSDictionary *)getGroupVocabulariesDisplayWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end addDefaultVocabulary:(BOOL)addDefaultVocabulary obc:(LRJSONObjectWrapper *)obc error:(NSError **)error;
 - (NSArray *)getGroupsVocabulariesWithGroupIds:(NSArray *)groupIds error:(NSError **)error;
 - (NSArray *)getGroupsVocabulariesWithGroupIds:(NSArray *)groupIds className:(NSString *)className error:(NSError **)error;
-- (NSDictionary *)getJsonGroupVocabulariesWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSDictionary *)getJsonGroupVocabulariesWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error;
 - (NSArray *)getVocabulariesWithVocabularyIds:(NSArray *)vocabularyIds error:(NSError **)error;
 - (NSDictionary *)getVocabularyWithVocabularyId:(long long)vocabularyId error:(NSError **)error;
-- (NSDictionary *)updateVocabularyWithVocabularyId:(long long)vocabularyId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (NSDictionary *)updateVocabularyWithVocabularyId:(long long)vocabularyId title:(NSString *)title titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)updateVocabularyWithVocabularyId:(long long)vocabularyId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
+- (NSDictionary *)updateVocabularyWithVocabularyId:(long long)vocabularyId title:(NSString *)title titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 
 @end

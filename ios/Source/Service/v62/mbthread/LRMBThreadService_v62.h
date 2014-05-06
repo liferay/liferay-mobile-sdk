@@ -37,7 +37,7 @@
 - (void)restoreThreadFromTrashWithThreadId:(long long)threadId error:(NSError **)error;
 - (NSDictionary *)searchWithGroupId:(long long)groupId creatorUserId:(long long)creatorUserId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
 - (NSDictionary *)searchWithGroupId:(long long)groupId creatorUserId:(long long)creatorUserId startDate:(long long)startDate endDate:(long long)endDate status:(int)status start:(int)start end:(int)end error:(NSError **)error;
-- (NSDictionary *)splitThreadWithMessageId:(long long)messageId subject:(NSString *)subject serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)splitThreadWithMessageId:(long long)messageId subject:(NSString *)subject serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (void)unlockThreadWithThreadId:(long long)threadId error:(NSError **)error;
 
 @end

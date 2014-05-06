@@ -20,30 +20,31 @@
 @implementation LRPhoneService_v62
 
 - (NSDictionary *)addPhoneWithClassName:(NSString *)className classPK:(long long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": className,
 		@"classPK": @(classPK),
 		@"number": number,
 		@"extension": extension,
 		@"typeId": @(typeId),
 		@"primary": @(primary)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/phone/add-phone": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addPhoneWithClassName:(NSString *)className classPK:(long long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addPhoneWithClassName:(NSString *)className classPK:(long long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": className,
 		@"classPK": @(classPK),
 		@"number": number,
 		@"extension": extension,
 		@"typeId": @(typeId),
 		@"primary": @(primary),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/phone/add-phone": _params};
 
@@ -51,9 +52,9 @@
 }
 
 - (void)deletePhoneWithPhoneId:(long long)phoneId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"phoneId": @(phoneId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/phone/delete-phone": _params};
 
@@ -61,9 +62,9 @@
 }
 
 - (NSDictionary *)getPhoneWithPhoneId:(long long)phoneId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"phoneId": @(phoneId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/phone/get-phone": _params};
 
@@ -71,10 +72,10 @@
 }
 
 - (NSArray *)getPhonesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": className,
 		@"classPK": @(classPK)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/phone/get-phones": _params};
 
@@ -82,13 +83,13 @@
 }
 
 - (NSDictionary *)updatePhoneWithPhoneId:(long long)phoneId number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"phoneId": @(phoneId),
 		@"number": number,
 		@"extension": extension,
 		@"typeId": @(typeId),
 		@"primary": @(primary)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/phone/update-phone": _params};
 

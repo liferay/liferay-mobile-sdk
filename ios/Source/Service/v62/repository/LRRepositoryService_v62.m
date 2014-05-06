@@ -19,17 +19,18 @@
  */
 @implementation LRRepositoryService_v62
 
-- (NSDictionary *)addRepositoryWithGroupId:(long long)groupId classNameId:(long long)classNameId parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description portletId:(NSString *)portletId typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addRepositoryWithGroupId:(long long)groupId classNameId:(long long)classNameId parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description portletId:(NSString *)portletId typeSettingsProperties:(LRJSONObjectWrapper *)typeSettingsProperties serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"parentFolderId": @(parentFolderId),
 		@"name": name,
 		@"description": description,
 		@"portletId": portletId,
-		@"typeSettingsProperties": typeSettingsProperties,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"typeSettingsProperties" className:@"com.liferay.portal.kernel.util.UnicodeProperties" wrapper:typeSettingsProperties];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/repository/add-repository": _params};
 
@@ -37,9 +38,9 @@
 }
 
 - (void)checkRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/repository/check-repository": _params};
 
@@ -47,9 +48,9 @@
 }
 
 - (void)deleteRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/repository/delete-repository": _params};
 
@@ -57,9 +58,9 @@
 }
 
 - (NSDictionary *)getLocalRepositoryImplWithRepositoryId:(long long)repositoryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/repository/get-local-repository-impl": _params};
 
@@ -67,11 +68,11 @@
 }
 
 - (NSDictionary *)getLocalRepositoryImplWithFolderId:(long long)folderId fileEntryId:(long long)fileEntryId fileVersionId:(long long)fileVersionId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
 		@"fileEntryId": @(fileEntryId),
 		@"fileVersionId": @(fileVersionId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/repository/get-local-repository-impl": _params};
 
@@ -79,9 +80,9 @@
 }
 
 - (NSDictionary *)getRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/repository/get-repository": _params};
 
@@ -89,9 +90,9 @@
 }
 
 - (NSDictionary *)getRepositoryImplWithRepositoryId:(long long)repositoryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/repository/get-repository-impl": _params};
 
@@ -99,11 +100,11 @@
 }
 
 - (NSDictionary *)getRepositoryImplWithFolderId:(long long)folderId fileEntryId:(long long)fileEntryId fileVersionId:(long long)fileVersionId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
 		@"fileEntryId": @(fileEntryId),
 		@"fileVersionId": @(fileVersionId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/repository/get-repository-impl": _params};
 
@@ -111,9 +112,9 @@
 }
 
 - (NSArray *)getSupportedConfigurationsWithClassNameId:(long long)classNameId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"classNameId": @(classNameId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/repository/get-supported-configurations": _params};
 
@@ -121,10 +122,10 @@
 }
 
 - (NSArray *)getSupportedParametersWithClassNameId:(long long)classNameId configuration:(NSString *)configuration error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"classNameId": @(classNameId),
 		@"configuration": configuration
-	};
+	}];
 
 	NSDictionary *_command = @{@"/repository/get-supported-parameters": _params};
 
@@ -132,9 +133,9 @@
 }
 
 - (NSDictionary *)getTypeSettingsPropertiesWithRepositoryId:(long long)repositoryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/repository/get-type-settings-properties": _params};
 
@@ -142,11 +143,11 @@
 }
 
 - (void)updateRepositoryWithRepositoryId:(long long)repositoryId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"name": name,
 		@"description": description
-	};
+	}];
 
 	NSDictionary *_command = @{@"/repository/update-repository": _params};
 

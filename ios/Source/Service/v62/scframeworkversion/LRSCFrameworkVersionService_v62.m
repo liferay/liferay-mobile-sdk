@@ -19,14 +19,15 @@
  */
 @implementation LRSCFrameworkVersionService_v62
 
-- (NSDictionary *)addFrameworkVersionWithName:(NSString *)name url:(NSString *)url active:(BOOL)active priority:(int)priority serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addFrameworkVersionWithName:(NSString *)name url:(NSString *)url active:(BOOL)active priority:(int)priority serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"name": name,
 		@"url": url,
 		@"active": @(active),
 		@"priority": @(priority),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/scframeworkversion/add-framework-version": _params};
 
@@ -34,9 +35,9 @@
 }
 
 - (void)deleteFrameworkVersionWithFrameworkVersionId:(long long)frameworkVersionId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"frameworkVersionId": @(frameworkVersionId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/scframeworkversion/delete-framework-version": _params};
 
@@ -44,9 +45,9 @@
 }
 
 - (NSDictionary *)getFrameworkVersionWithFrameworkVersionId:(long long)frameworkVersionId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"frameworkVersionId": @(frameworkVersionId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/scframeworkversion/get-framework-version": _params};
 
@@ -54,10 +55,10 @@
 }
 
 - (NSArray *)getFrameworkVersionsWithGroupId:(long long)groupId active:(BOOL)active error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"active": @(active)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/scframeworkversion/get-framework-versions": _params};
 
@@ -65,12 +66,12 @@
 }
 
 - (NSArray *)getFrameworkVersionsWithGroupId:(long long)groupId active:(BOOL)active start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"active": @(active),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/scframeworkversion/get-framework-versions": _params};
 
@@ -78,13 +79,13 @@
 }
 
 - (NSDictionary *)updateFrameworkVersionWithFrameworkVersionId:(long long)frameworkVersionId name:(NSString *)name url:(NSString *)url active:(BOOL)active priority:(int)priority error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"frameworkVersionId": @(frameworkVersionId),
 		@"name": name,
 		@"url": url,
 		@"active": @(active),
 		@"priority": @(priority)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/scframeworkversion/update-framework-version": _params};
 

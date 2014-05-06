@@ -19,22 +19,24 @@
  */
 @implementation LRMBBanService_v62
 
-- (NSDictionary *)addBanWithBanUserId:(long long)banUserId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addBanWithBanUserId:(long long)banUserId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"banUserId": @(banUserId),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mbban/add-ban": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteBanWithBanUserId:(long long)banUserId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (void)deleteBanWithBanUserId:(long long)banUserId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"banUserId": @(banUserId),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mbban/delete-ban": _params};
 

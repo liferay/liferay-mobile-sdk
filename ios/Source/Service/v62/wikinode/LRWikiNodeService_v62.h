@@ -19,7 +19,7 @@
  */
 @interface LRWikiNodeService_v62 : LRBaseService
 
-- (NSDictionary *)addNodeWithName:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addNodeWithName:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (void)deleteNodeWithNodeId:(long long)nodeId error:(NSError **)error;
 - (NSDictionary *)getNodeWithNodeId:(long long)nodeId error:(NSError **)error;
 - (NSDictionary *)getNodeWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error;
@@ -33,6 +33,6 @@
 - (void)restoreNodeFromTrashWithNodeId:(long long)nodeId error:(NSError **)error;
 - (void)subscribeNodeWithNodeId:(long long)nodeId error:(NSError **)error;
 - (void)unsubscribeNodeWithNodeId:(long long)nodeId error:(NSError **)error;
-- (NSDictionary *)updateNodeWithNodeId:(long long)nodeId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)updateNodeWithNodeId:(long long)nodeId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 
 @end

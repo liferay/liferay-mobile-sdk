@@ -19,8 +19,8 @@
  */
 @implementation LRLayoutService_v62
 
-- (NSDictionary *)addLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId name:(NSString *)name title:(NSString *)title description:(NSString *)description type:(NSString *)type hidden:(BOOL)hidden friendlyURL:(NSString *)friendlyURL serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId name:(NSString *)name title:(NSString *)title description:(NSString *)description type:(NSString *)type hidden:(BOOL)hidden friendlyURL:(NSString *)friendlyURL serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"parentLayoutId": @(parentLayoutId),
@@ -30,16 +30,17 @@
 		@"type": type,
 		@"hidden": @(hidden),
 		@"friendlyURL": friendlyURL,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layout/add-layout": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId localeNamesMap:(NSDictionary *)localeNamesMap localeTitlesMap:(NSDictionary *)localeTitlesMap descriptionMap:(NSDictionary *)descriptionMap keywordsMap:(NSDictionary *)keywordsMap robotsMap:(NSDictionary *)robotsMap type:(NSString *)type hidden:(BOOL)hidden friendlyURL:(NSString *)friendlyURL serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId localeNamesMap:(NSDictionary *)localeNamesMap localeTitlesMap:(NSDictionary *)localeTitlesMap descriptionMap:(NSDictionary *)descriptionMap keywordsMap:(NSDictionary *)keywordsMap robotsMap:(NSDictionary *)robotsMap type:(NSString *)type hidden:(BOOL)hidden friendlyURL:(NSString *)friendlyURL serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"parentLayoutId": @(parentLayoutId),
@@ -51,16 +52,17 @@
 		@"type": type,
 		@"hidden": @(hidden),
 		@"friendlyURL": friendlyURL,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layout/add-layout": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId localeNamesMap:(NSDictionary *)localeNamesMap localeTitlesMap:(NSDictionary *)localeTitlesMap descriptionMap:(NSDictionary *)descriptionMap keywordsMap:(NSDictionary *)keywordsMap robotsMap:(NSDictionary *)robotsMap type:(NSString *)type typeSettings:(NSString *)typeSettings hidden:(BOOL)hidden friendlyURLMap:(NSDictionary *)friendlyURLMap serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId localeNamesMap:(NSDictionary *)localeNamesMap localeTitlesMap:(NSDictionary *)localeTitlesMap descriptionMap:(NSDictionary *)descriptionMap keywordsMap:(NSDictionary *)keywordsMap robotsMap:(NSDictionary *)robotsMap type:(NSString *)type typeSettings:(NSString *)typeSettings hidden:(BOOL)hidden friendlyURLMap:(NSDictionary *)friendlyURLMap serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"parentLayoutId": @(parentLayoutId),
@@ -73,32 +75,35 @@
 		@"typeSettings": typeSettings,
 		@"hidden": @(hidden),
 		@"friendlyURLMap": friendlyURLMap,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layout/add-layout": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteLayoutWithPlid:(long long)plid serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (void)deleteLayoutWithPlid:(long long)plid serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"plid": @(plid),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layout/delete-layout": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (void)deleteLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"layoutId": @(layoutId),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layout/delete-layout": _params};
 
@@ -106,11 +111,11 @@
 }
 
 - (void)deleteTempFileEntryWithGroupId:(long long)groupId fileName:(NSString *)fileName tempFolderName:(NSString *)tempFolderName error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"fileName": fileName,
 		@"tempFolderName": tempFolderName
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/delete-temp-file-entry": _params};
 
@@ -118,13 +123,13 @@
 }
 
 - (NSArray *)exportLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"parameterMap": parameterMap,
 		@"startDate": @(startDate),
 		@"endDate": @(endDate)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/export-layouts": _params};
 
@@ -132,14 +137,14 @@
 }
 
 - (NSArray *)exportLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"layoutIds": layoutIds,
 		@"parameterMap": parameterMap,
 		@"startDate": @(startDate),
 		@"endDate": @(endDate)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/export-layouts": _params};
 
@@ -147,14 +152,14 @@
 }
 
 - (NSDictionary *)exportLayoutsAsFileWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"layoutIds": layoutIds,
 		@"parameterMap": parameterMap,
 		@"startDate": @(startDate),
 		@"endDate": @(endDate)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/export-layouts-as-file": _params};
 
@@ -162,7 +167,7 @@
 }
 
 - (NSNumber *)exportLayoutsAsFileInBackgroundWithTaskName:(NSString *)taskName groupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate fileName:(NSString *)fileName error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"taskName": taskName,
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
@@ -171,7 +176,7 @@
 		@"startDate": @(startDate),
 		@"endDate": @(endDate),
 		@"fileName": fileName
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/export-layouts-as-file-in-background": _params};
 
@@ -179,13 +184,13 @@
 }
 
 - (NSArray *)exportPortletInfoWithCompanyId:(long long)companyId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"portletId": portletId,
 		@"parameterMap": parameterMap,
 		@"startDate": @(startDate),
 		@"endDate": @(endDate)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/export-portlet-info": _params};
 
@@ -193,14 +198,14 @@
 }
 
 - (NSArray *)exportPortletInfoWithPlid:(long long)plid groupId:(long long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"plid": @(plid),
 		@"groupId": @(groupId),
 		@"portletId": portletId,
 		@"parameterMap": parameterMap,
 		@"startDate": @(startDate),
 		@"endDate": @(endDate)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/export-portlet-info": _params};
 
@@ -208,12 +213,12 @@
 }
 
 - (NSDictionary *)exportPortletInfoAsFileWithPortletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"portletId": portletId,
 		@"parameterMap": parameterMap,
 		@"startDate": @(startDate),
 		@"endDate": @(endDate)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/export-portlet-info-as-file": _params};
 
@@ -221,14 +226,14 @@
 }
 
 - (NSDictionary *)exportPortletInfoAsFileWithPlid:(long long)plid groupId:(long long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"plid": @(plid),
 		@"groupId": @(groupId),
 		@"portletId": portletId,
 		@"parameterMap": parameterMap,
 		@"startDate": @(startDate),
 		@"endDate": @(endDate)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/export-portlet-info-as-file": _params};
 
@@ -236,14 +241,14 @@
 }
 
 - (NSNumber *)exportPortletInfoAsFileInBackgroundWithTaskName:(NSString *)taskName portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate fileName:(NSString *)fileName error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"taskName": taskName,
 		@"portletId": portletId,
 		@"parameterMap": parameterMap,
 		@"startDate": @(startDate),
 		@"endDate": @(endDate),
 		@"fileName": fileName
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/export-portlet-info-as-file-in-background": _params};
 
@@ -251,7 +256,7 @@
 }
 
 - (NSNumber *)exportPortletInfoAsFileInBackgroundWithTaskName:(NSString *)taskName plid:(long long)plid groupId:(long long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate fileName:(NSString *)fileName error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"taskName": taskName,
 		@"plid": @(plid),
 		@"groupId": @(groupId),
@@ -260,7 +265,7 @@
 		@"startDate": @(startDate),
 		@"endDate": @(endDate),
 		@"fileName": fileName
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/export-portlet-info-as-file-in-background": _params};
 
@@ -268,9 +273,9 @@
 }
 
 - (NSArray *)getAncestorLayoutsWithPlid:(long long)plid error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"plid": @(plid)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/get-ancestor-layouts": _params};
 
@@ -278,11 +283,11 @@
 }
 
 - (NSNumber *)getDefaultPlidWithGroupId:(long long)groupId scopeGroupId:(long long)scopeGroupId portletId:(NSString *)portletId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"scopeGroupId": @(scopeGroupId),
 		@"portletId": portletId
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/get-default-plid": _params};
 
@@ -290,12 +295,12 @@
 }
 
 - (NSNumber *)getDefaultPlidWithGroupId:(long long)groupId scopeGroupId:(long long)scopeGroupId privateLayout:(BOOL)privateLayout portletId:(NSString *)portletId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"scopeGroupId": @(scopeGroupId),
 		@"privateLayout": @(privateLayout),
 		@"portletId": portletId
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/get-default-plid": _params};
 
@@ -303,11 +308,11 @@
 }
 
 - (NSDictionary *)getLayoutByUuidAndGroupIdWithUuid:(NSString *)uuid groupId:(long long)groupId privateLayout:(BOOL)privateLayout error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"uuid": uuid,
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/get-layout-by-uuid-and-group-id": _params};
 
@@ -315,12 +320,12 @@
 }
 
 - (NSString *)getLayoutNameWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId languageId:(NSString *)languageId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"layoutId": @(layoutId),
 		@"languageId": languageId
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/get-layout-name": _params};
 
@@ -328,12 +333,12 @@
 }
 
 - (NSArray *)getLayoutReferencesWithCompanyId:(long long)companyId portletId:(NSString *)portletId preferencesKey:(NSString *)preferencesKey preferencesValue:(NSString *)preferencesValue error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"portletId": portletId,
 		@"preferencesKey": preferencesKey,
 		@"preferencesValue": preferencesValue
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/get-layout-references": _params};
 
@@ -341,10 +346,10 @@
 }
 
 - (NSArray *)getLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/get-layouts": _params};
 
@@ -352,11 +357,11 @@
 }
 
 - (NSArray *)getLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"parentLayoutId": @(parentLayoutId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/get-layouts": _params};
 
@@ -364,14 +369,14 @@
 }
 
 - (NSArray *)getLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId incomplete:(BOOL)incomplete start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"parentLayoutId": @(parentLayoutId),
 		@"incomplete": @(incomplete),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/get-layouts": _params};
 
@@ -379,10 +384,10 @@
 }
 
 - (NSArray *)getTempFileEntryNamesWithGroupId:(long long)groupId tempFolderName:(NSString *)tempFolderName error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"tempFolderName": tempFolderName
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/get-temp-file-entry-names": _params};
 
@@ -390,93 +395,99 @@
 }
 
 - (void)importLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap bytes:(NSArray *)bytes error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"parameterMap": parameterMap,
 		@"bytes": bytes
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/import-layouts": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (void)importLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
-	NSDictionary *_params = @{
+- (void)importLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"parameterMap": parameterMap,
-		@"file": file
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layout/import-layouts": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)importLayoutsInBackgroundWithTaskName:(NSString *)taskName groupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSNumber *)importLayoutsInBackgroundWithTaskName:(NSString *)taskName groupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"taskName": taskName,
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"parameterMap": parameterMap,
-		@"file": file
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layout/import-layouts-in-background": _params};
 
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (void)importPortletInfoWithPortletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
-	NSDictionary *_params = @{
+- (void)importPortletInfoWithPortletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"portletId": portletId,
 		@"parameterMap": parameterMap,
-		@"file": file
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layout/import-portlet-info": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (void)importPortletInfoWithPlid:(long long)plid groupId:(long long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
-	NSDictionary *_params = @{
+- (void)importPortletInfoWithPlid:(long long)plid groupId:(long long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"plid": @(plid),
 		@"groupId": @(groupId),
 		@"portletId": portletId,
 		@"parameterMap": parameterMap,
-		@"file": file
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layout/import-portlet-info": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (void)importPortletInfoInBackgroundWithTaskName:(NSString *)taskName portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
-	NSDictionary *_params = @{
+- (void)importPortletInfoInBackgroundWithTaskName:(NSString *)taskName portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"taskName": taskName,
 		@"portletId": portletId,
 		@"parameterMap": parameterMap,
-		@"file": file
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layout/import-portlet-info-in-background": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)importPortletInfoInBackgroundWithTaskName:(NSString *)taskName plid:(long long)plid groupId:(long long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSNumber *)importPortletInfoInBackgroundWithTaskName:(NSString *)taskName plid:(long long)plid groupId:(long long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"taskName": taskName,
 		@"plid": @(plid),
 		@"groupId": @(groupId),
 		@"portletId": portletId,
 		@"parameterMap": parameterMap,
-		@"file": file
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layout/import-portlet-info-in-background": _params};
 
@@ -484,7 +495,7 @@
 }
 
 - (void)schedulePublishToLiveWithSourceGroupId:(long long)sourceGroupId targetGroupId:(long long)targetGroupId privateLayout:(BOOL)privateLayout layoutIdMap:(NSDictionary *)layoutIdMap parameterMap:(NSDictionary *)parameterMap scope:(NSString *)scope startDate:(long long)startDate endDate:(long long)endDate groupName:(NSString *)groupName cronText:(NSString *)cronText schedulerStartDate:(long long)schedulerStartDate schedulerEndDate:(long long)schedulerEndDate description:(NSString *)description error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"sourceGroupId": @(sourceGroupId),
 		@"targetGroupId": @(targetGroupId),
 		@"privateLayout": @(privateLayout),
@@ -498,7 +509,7 @@
 		@"schedulerStartDate": @(schedulerStartDate),
 		@"schedulerEndDate": @(schedulerEndDate),
 		@"description": description
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/schedule-publish-to-live": _params};
 
@@ -506,7 +517,7 @@
 }
 
 - (void)schedulePublishToRemoteWithSourceGroupId:(long long)sourceGroupId privateLayout:(BOOL)privateLayout layoutIdMap:(NSDictionary *)layoutIdMap parameterMap:(NSDictionary *)parameterMap remoteAddress:(NSString *)remoteAddress remotePort:(int)remotePort remotePathContext:(NSString *)remotePathContext secureConnection:(BOOL)secureConnection remoteGroupId:(long long)remoteGroupId remotePrivateLayout:(BOOL)remotePrivateLayout startDate:(long long)startDate endDate:(long long)endDate groupName:(NSString *)groupName cronText:(NSString *)cronText schedulerStartDate:(long long)schedulerStartDate schedulerEndDate:(long long)schedulerEndDate description:(NSString *)description error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"sourceGroupId": @(sourceGroupId),
 		@"privateLayout": @(privateLayout),
 		@"layoutIdMap": layoutIdMap,
@@ -524,21 +535,22 @@
 		@"schedulerStartDate": @(schedulerStartDate),
 		@"schedulerEndDate": @(schedulerEndDate),
 		@"description": description
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/schedule-publish-to-remote": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (void)setLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId layoutIds:(NSArray *)layoutIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (void)setLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId layoutIds:(NSArray *)layoutIds serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"parentLayoutId": @(parentLayoutId),
 		@"layoutIds": layoutIds,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layout/set-layouts": _params};
 
@@ -546,11 +558,11 @@
 }
 
 - (void)unschedulePublishToLiveWithGroupId:(long long)groupId jobName:(NSString *)jobName groupName:(NSString *)groupName error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"jobName": jobName,
 		@"groupName": groupName
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/unschedule-publish-to-live": _params};
 
@@ -558,19 +570,19 @@
 }
 
 - (void)unschedulePublishToRemoteWithGroupId:(long long)groupId jobName:(NSString *)jobName groupName:(NSString *)groupName error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"jobName": jobName,
 		@"groupName": groupName
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/unschedule-publish-to-remote": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId parentLayoutId:(long long)parentLayoutId localeNamesMap:(NSDictionary *)localeNamesMap localeTitlesMap:(NSDictionary *)localeTitlesMap descriptionMap:(NSDictionary *)descriptionMap keywordsMap:(NSDictionary *)keywordsMap robotsMap:(NSDictionary *)robotsMap type:(NSString *)type hidden:(BOOL)hidden friendlyURL:(NSString *)friendlyURL iconImage:(NSDictionary *)iconImage iconBytes:(NSArray *)iconBytes serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId parentLayoutId:(long long)parentLayoutId localeNamesMap:(NSDictionary *)localeNamesMap localeTitlesMap:(NSDictionary *)localeTitlesMap descriptionMap:(NSDictionary *)descriptionMap keywordsMap:(NSDictionary *)keywordsMap robotsMap:(NSDictionary *)robotsMap type:(NSString *)type hidden:(BOOL)hidden friendlyURL:(NSString *)friendlyURL iconImage:(LRJSONObjectWrapper *)iconImage iconBytes:(NSArray *)iconBytes serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"layoutId": @(layoutId),
@@ -583,18 +595,19 @@
 		@"type": type,
 		@"hidden": @(hidden),
 		@"friendlyURL": friendlyURL,
-		@"iconImage": iconImage,
 		@"iconBytes": iconBytes,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"iconImage" className:@"java.lang.Boolean" wrapper:iconImage];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layout/update-layout": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId parentLayoutId:(long long)parentLayoutId localeNamesMap:(NSDictionary *)localeNamesMap localeTitlesMap:(NSDictionary *)localeTitlesMap descriptionMap:(NSDictionary *)descriptionMap keywordsMap:(NSDictionary *)keywordsMap robotsMap:(NSDictionary *)robotsMap type:(NSString *)type hidden:(BOOL)hidden friendlyURLMap:(NSDictionary *)friendlyURLMap iconImage:(NSDictionary *)iconImage iconBytes:(NSArray *)iconBytes serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId parentLayoutId:(long long)parentLayoutId localeNamesMap:(NSDictionary *)localeNamesMap localeTitlesMap:(NSDictionary *)localeTitlesMap descriptionMap:(NSDictionary *)descriptionMap keywordsMap:(NSDictionary *)keywordsMap robotsMap:(NSDictionary *)robotsMap type:(NSString *)type hidden:(BOOL)hidden friendlyURLMap:(NSDictionary *)friendlyURLMap iconImage:(LRJSONObjectWrapper *)iconImage iconBytes:(NSArray *)iconBytes serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"layoutId": @(layoutId),
@@ -607,10 +620,11 @@
 		@"type": type,
 		@"hidden": @(hidden),
 		@"friendlyURLMap": friendlyURLMap,
-		@"iconImage": iconImage,
 		@"iconBytes": iconBytes,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"iconImage" className:@"java.lang.Boolean" wrapper:iconImage];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layout/update-layout": _params};
 
@@ -618,12 +632,12 @@
 }
 
 - (NSDictionary *)updateLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId typeSettings:(NSString *)typeSettings error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"layoutId": @(layoutId),
 		@"typeSettings": typeSettings
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/update-layout": _params};
 
@@ -631,7 +645,7 @@
 }
 
 - (NSDictionary *)updateLookAndFeelWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId css:(NSString *)css wapTheme:(BOOL)wapTheme error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"layoutId": @(layoutId),
@@ -639,7 +653,7 @@
 		@"colorSchemeId": colorSchemeId,
 		@"css": css,
 		@"wapTheme": @(wapTheme)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/update-look-and-feel": _params};
 
@@ -647,11 +661,11 @@
 }
 
 - (NSDictionary *)updateNameWithPlid:(long long)plid name:(NSString *)name languageId:(NSString *)languageId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"plid": @(plid),
 		@"name": name,
 		@"languageId": languageId
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/update-name": _params};
 
@@ -659,13 +673,13 @@
 }
 
 - (NSDictionary *)updateNameWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId name:(NSString *)name languageId:(NSString *)languageId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"layoutId": @(layoutId),
 		@"name": name,
 		@"languageId": languageId
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/update-name": _params};
 
@@ -673,10 +687,10 @@
 }
 
 - (NSDictionary *)updateParentLayoutIdWithPlid:(long long)plid parentPlid:(long long)parentPlid error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"plid": @(plid),
 		@"parentPlid": @(parentPlid)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/update-parent-layout-id": _params};
 
@@ -684,12 +698,12 @@
 }
 
 - (NSDictionary *)updateParentLayoutIdWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId parentLayoutId:(long long)parentLayoutId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"layoutId": @(layoutId),
 		@"parentLayoutId": @(parentLayoutId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/update-parent-layout-id": _params};
 
@@ -697,10 +711,10 @@
 }
 
 - (NSDictionary *)updatePriorityWithPlid:(long long)plid priority:(int)priority error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"plid": @(plid),
 		@"priority": @(priority)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/update-priority": _params};
 
@@ -708,12 +722,12 @@
 }
 
 - (NSDictionary *)updatePriorityWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId priority:(int)priority error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"layoutId": @(layoutId),
 		@"priority": @(priority)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/update-priority": _params};
 
@@ -721,40 +735,42 @@
 }
 
 - (NSDictionary *)updatePriorityWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId nextLayoutId:(long long)nextLayoutId previousLayoutId:(long long)previousLayoutId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"layoutId": @(layoutId),
 		@"nextLayoutId": @(nextLayoutId),
 		@"previousLayoutId": @(previousLayoutId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layout/update-priority": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)validateImportLayoutsFileWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)validateImportLayoutsFileWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"parameterMap": parameterMap,
-		@"file": file
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layout/validate-import-layouts-file": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)validateImportPortletInfoWithPlid:(long long)plid groupId:(long long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)validateImportPortletInfoWithPlid:(long long)plid groupId:(long long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"plid": @(plid),
 		@"groupId": @(groupId),
 		@"portletId": portletId,
 		@"parameterMap": parameterMap,
-		@"file": file
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layout/validate-import-portlet-info": _params};
 

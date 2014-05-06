@@ -19,13 +19,14 @@
  */
 @implementation LRShoppingCategoryService_v62
 
-- (NSDictionary *)addCategoryWithParentCategoryId:(long long)parentCategoryId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addCategoryWithParentCategoryId:(long long)parentCategoryId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentCategoryId": @(parentCategoryId),
 		@"name": name,
 		@"description": description,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/shoppingcategory/add-category": _params};
 
@@ -33,9 +34,9 @@
 }
 
 - (void)deleteCategoryWithCategoryId:(long long)categoryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"categoryId": @(categoryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/shoppingcategory/delete-category": _params};
 
@@ -43,9 +44,9 @@
 }
 
 - (NSArray *)getCategoriesWithGroupId:(long long)groupId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/shoppingcategory/get-categories": _params};
 
@@ -53,12 +54,12 @@
 }
 
 - (NSArray *)getCategoriesWithGroupId:(long long)groupId parentCategoryId:(long long)parentCategoryId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentCategoryId": @(parentCategoryId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/shoppingcategory/get-categories": _params};
 
@@ -66,10 +67,10 @@
 }
 
 - (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId parentCategoryId:(long long)parentCategoryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentCategoryId": @(parentCategoryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/shoppingcategory/get-categories-count": _params};
 
@@ -77,9 +78,9 @@
 }
 
 - (NSDictionary *)getCategoryWithCategoryId:(long long)categoryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"categoryId": @(categoryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/shoppingcategory/get-category": _params};
 
@@ -87,26 +88,27 @@
 }
 
 - (void)getSubcategoryIdsWithCategoryIds:(NSArray *)categoryIds groupId:(long long)groupId categoryId:(long long)categoryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"categoryIds": categoryIds,
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/shoppingcategory/get-subcategory-ids": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateCategoryWithCategoryId:(long long)categoryId parentCategoryId:(long long)parentCategoryId name:(NSString *)name description:(NSString *)description mergeWithParentCategory:(BOOL)mergeWithParentCategory serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateCategoryWithCategoryId:(long long)categoryId parentCategoryId:(long long)parentCategoryId name:(NSString *)name description:(NSString *)description mergeWithParentCategory:(BOOL)mergeWithParentCategory serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"categoryId": @(categoryId),
 		@"parentCategoryId": @(parentCategoryId),
 		@"name": name,
 		@"description": description,
 		@"mergeWithParentCategory": @(mergeWithParentCategory),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/shoppingcategory/update-category": _params};
 

@@ -20,8 +20,8 @@
 @implementation LRPortalService_v62
 
 - (NSString *)getAutoDeployDirectory:(NSError **)error {
-	NSDictionary *_params = @{
-	};
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
 
 	NSDictionary *_command = @{@"/portal/get-auto-deploy-directory": _params};
 
@@ -29,8 +29,8 @@
 }
 
 - (NSNumber *)getBuildNumber:(NSError **)error {
-	NSDictionary *_params = @{
-	};
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
 
 	NSDictionary *_command = @{@"/portal/get-build-number": _params};
 
@@ -38,9 +38,9 @@
 }
 
 - (void)testAddClassNameAndTestTransactionPortletBar_PortalRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"transactionPortletBarText": transactionPortletBarText
-	};
+	}];
 
 	NSDictionary *_command = @{@"/portal/test-add-class-name-and-test-transaction-portlet-bar_-portal-rollback": _params};
 
@@ -48,9 +48,9 @@
 }
 
 - (void)testAddClassNameAndTestTransactionPortletBar_PortletRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"transactionPortletBarText": transactionPortletBarText
-	};
+	}];
 
 	NSDictionary *_command = @{@"/portal/test-add-class-name-and-test-transaction-portlet-bar_-portlet-rollback": _params};
 
@@ -58,9 +58,9 @@
 }
 
 - (void)testAddClassNameAndTestTransactionPortletBar_SuccessWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"transactionPortletBarText": transactionPortletBarText
-	};
+	}];
 
 	NSDictionary *_command = @{@"/portal/test-add-class-name-and-test-transaction-portlet-bar_-success": _params};
 
@@ -68,9 +68,9 @@
 }
 
 - (void)testAddClassName_RollbackWithClassNameValue:(NSString *)classNameValue error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"classNameValue": classNameValue
-	};
+	}];
 
 	NSDictionary *_command = @{@"/portal/test-add-class-name_-rollback": _params};
 
@@ -78,9 +78,9 @@
 }
 
 - (void)testAddClassName_SuccessWithClassNameValue:(NSString *)classNameValue error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"classNameValue": classNameValue
-	};
+	}];
 
 	NSDictionary *_command = @{@"/portal/test-add-class-name_-success": _params};
 
@@ -88,8 +88,8 @@
 }
 
 - (void)testAutoSyncHibernateSessionStateOnTxCreation:(NSError **)error {
-	NSDictionary *_params = @{
-	};
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
 
 	NSDictionary *_command = @{@"/portal/test-auto-sync-hibernate-session-state-on-tx-creation": _params};
 
@@ -97,8 +97,8 @@
 }
 
 - (void)testDeleteClassName:(NSError **)error {
-	NSDictionary *_params = @{
-	};
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
 
 	NSDictionary *_command = @{@"/portal/test-delete-class-name": _params};
 
@@ -106,8 +106,8 @@
 }
 
 - (NSNumber *)testGetBuildNumber:(NSError **)error {
-	NSDictionary *_params = @{
-	};
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
 
 	NSDictionary *_command = @{@"/portal/test-get-build-number": _params};
 
@@ -115,8 +115,8 @@
 }
 
 - (void)testGetUserId:(NSError **)error {
-	NSDictionary *_params = @{
-	};
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
 
 	NSDictionary *_command = @{@"/portal/test-get-user-id": _params};
 
@@ -124,8 +124,8 @@
 }
 
 - (BOOL)testHasClassName:(NSError **)error {
-	NSDictionary *_params = @{
-	};
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
 
 	NSDictionary *_command = @{@"/portal/test-has-class-name": _params};
 

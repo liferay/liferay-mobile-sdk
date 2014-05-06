@@ -19,8 +19,8 @@
  */
 @implementation LRSyncDLObjectService_v62
 
-- (NSDictionary *)addFileEntryWithRepositoryId:(long long)repositoryId folderId:(long long)folderId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog file:(NSDictionary *)file checksum:(NSString *)checksum serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addFileEntryWithRepositoryId:(long long)repositoryId folderId:(long long)folderId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog file:(LRJSONObjectWrapper *)file checksum:(NSString *)checksum serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
 		@"sourceFileName": sourceFileName,
@@ -28,24 +28,26 @@
 		@"title": title,
 		@"description": description,
 		@"changeLog": changeLog,
-		@"file": file,
 		@"checksum": checksum,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/add-file-entry": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addFolderWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addFolderWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"parentFolderId": @(parentFolderId),
 		@"name": name,
 		@"description": description,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/add-folder": _params};
 
@@ -53,46 +55,49 @@
 }
 
 - (NSDictionary *)cancelCheckOutWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/cancel-check-out": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)checkInFileEntryWithFileEntryId:(long long)fileEntryId majorVersion:(BOOL)majorVersion changeLog:(NSString *)changeLog serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)checkInFileEntryWithFileEntryId:(long long)fileEntryId majorVersion:(BOOL)majorVersion changeLog:(NSString *)changeLog serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
 		@"majorVersion": @(majorVersion),
 		@"changeLog": changeLog,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/check-in-file-entry": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)checkOutFileEntryWithFileEntryId:(long long)fileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)checkOutFileEntryWithFileEntryId:(long long)fileEntryId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/check-out-file-entry": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)checkOutFileEntryWithFileEntryId:(long long)fileEntryId owner:(NSString *)owner expirationTime:(long long)expirationTime serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)checkOutFileEntryWithFileEntryId:(long long)fileEntryId owner:(NSString *)owner expirationTime:(long long)expirationTime serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
 		@"owner": owner,
 		@"expirationTime": @(expirationTime),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/check-out-file-entry": _params};
 
@@ -100,10 +105,10 @@
 }
 
 - (NSDictionary *)getAllSyncDlObjectsWithRepositoryId:(long long)repositoryId folderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-all-sync-dl-objects": _params};
 
@@ -111,11 +116,11 @@
 }
 
 - (NSDictionary *)getFileEntrySyncDlObjectWithGroupId:(long long)groupId folderId:(long long)folderId title:(NSString *)title error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"title": title
-	};
+	}];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-file-entry-sync-dl-object": _params};
 
@@ -123,10 +128,10 @@
 }
 
 - (NSArray *)getFileEntrySyncDlObjectsWithRepositoryId:(long long)repositoryId folderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-file-entry-sync-dl-objects": _params};
 
@@ -134,9 +139,9 @@
 }
 
 - (NSDictionary *)getFolderSyncDlObjectWithFolderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-folder-sync-dl-object": _params};
 
@@ -144,10 +149,10 @@
 }
 
 - (NSArray *)getFolderSyncDlObjectsWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"parentFolderId": @(parentFolderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-folder-sync-dl-objects": _params};
 
@@ -155,9 +160,9 @@
 }
 
 - (NSDictionary *)getGroupWithGroupId:(long long)groupId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-group": _params};
 
@@ -165,8 +170,8 @@
 }
 
 - (NSNumber *)getLatestModifiedTime:(NSError **)error {
-	NSDictionary *_params = @{
-	};
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-latest-modified-time": _params};
 
@@ -174,9 +179,9 @@
 }
 
 - (NSDictionary *)getSyncContextWithUuid:(NSString *)uuid error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"uuid": uuid
-	};
+	}];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-sync-context": _params};
 
@@ -184,11 +189,11 @@
 }
 
 - (NSDictionary *)getSyncDlObjectUpdateWithCompanyId:(long long)companyId repositoryId:(long long)repositoryId lastAccessTime:(long long)lastAccessTime error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"repositoryId": @(repositoryId),
 		@"lastAccessTime": @(lastAccessTime)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-sync-dl-object-update": _params};
 
@@ -196,20 +201,21 @@
 }
 
 - (NSArray *)getUserSitesGroups:(NSError **)error {
-	NSDictionary *_params = @{
-	};
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-user-sites-groups": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)moveFileEntryWithFileEntryId:(long long)fileEntryId newFolderId:(long long)newFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)moveFileEntryWithFileEntryId:(long long)fileEntryId newFolderId:(long long)newFolderId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
 		@"newFolderId": @(newFolderId),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/move-file-entry": _params};
 
@@ -217,21 +223,22 @@
 }
 
 - (NSDictionary *)moveFileEntryToTrashWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/move-file-entry-to-trash": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)moveFolderWithFolderId:(long long)folderId parentFolderId:(long long)parentFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)moveFolderWithFolderId:(long long)folderId parentFolderId:(long long)parentFolderId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
 		@"parentFolderId": @(parentFolderId),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/move-folder": _params};
 
@@ -239,17 +246,17 @@
 }
 
 - (NSDictionary *)moveFolderToTrashWithFolderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/move-folder-to-trash": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)patchFileEntryWithFileEntryId:(long long)fileEntryId sourceVersion:(NSString *)sourceVersion sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog majorVersion:(BOOL)majorVersion deltaFile:(NSDictionary *)deltaFile checksum:(NSString *)checksum serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)patchFileEntryWithFileEntryId:(long long)fileEntryId sourceVersion:(NSString *)sourceVersion sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog majorVersion:(BOOL)majorVersion deltaFile:(LRJSONObjectWrapper *)deltaFile checksum:(NSString *)checksum serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
 		@"sourceVersion": sourceVersion,
 		@"sourceFileName": sourceFileName,
@@ -258,10 +265,11 @@
 		@"description": description,
 		@"changeLog": changeLog,
 		@"majorVersion": @(majorVersion),
-		@"deltaFile": deltaFile,
 		@"checksum": checksum,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"deltaFile" className:@"java.io.File" wrapper:deltaFile];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/patch-file-entry": _params};
 
@@ -269,9 +277,9 @@
 }
 
 - (NSDictionary *)restoreFileEntryFromTrashWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/restore-file-entry-from-trash": _params};
 
@@ -279,17 +287,17 @@
 }
 
 - (NSDictionary *)restoreFolderFromTrashWithFolderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/restore-folder-from-trash": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateFileEntryWithFileEntryId:(long long)fileEntryId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog majorVersion:(BOOL)majorVersion file:(NSDictionary *)file checksum:(NSString *)checksum serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateFileEntryWithFileEntryId:(long long)fileEntryId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog majorVersion:(BOOL)majorVersion file:(LRJSONObjectWrapper *)file checksum:(NSString *)checksum serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
 		@"sourceFileName": sourceFileName,
 		@"mimeType": mimeType,
@@ -297,23 +305,25 @@
 		@"description": description,
 		@"changeLog": changeLog,
 		@"majorVersion": @(majorVersion),
-		@"file": file,
 		@"checksum": checksum,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/update-file-entry": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateFolderWithFolderId:(long long)folderId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateFolderWithFolderId:(long long)folderId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
 		@"name": name,
 		@"description": description,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/sync-web/syncdlobject/update-folder": _params};
 

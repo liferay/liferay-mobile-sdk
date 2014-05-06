@@ -20,9 +20,9 @@
 @implementation LRDLFileVersionService_v62
 
 - (NSDictionary *)getFileVersionWithFileVersionId:(long long)fileVersionId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileVersionId": @(fileVersionId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfileversion/get-file-version": _params};
 
@@ -30,10 +30,10 @@
 }
 
 - (NSArray *)getFileVersionsWithFileEntryId:(long long)fileEntryId status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfileversion/get-file-versions": _params};
 
@@ -41,10 +41,10 @@
 }
 
 - (NSNumber *)getFileVersionsCountWithFileEntryId:(long long)fileEntryId status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfileversion/get-file-versions-count": _params};
 
@@ -52,9 +52,9 @@
 }
 
 - (NSDictionary *)getLatestFileVersionWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfileversion/get-latest-file-version": _params};
 

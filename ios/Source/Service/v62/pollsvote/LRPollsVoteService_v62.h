@@ -19,6 +19,6 @@
  */
 @interface LRPollsVoteService_v62 : LRBaseService
 
-- (NSDictionary *)addVoteWithQuestionId:(long long)questionId choiceId:(long long)choiceId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addVoteWithQuestionId:(long long)questionId choiceId:(long long)choiceId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 
 @end

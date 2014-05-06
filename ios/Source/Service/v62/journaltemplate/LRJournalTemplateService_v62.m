@@ -19,8 +19,8 @@
  */
 @implementation LRJournalTemplateService_v62
 
-- (NSDictionary *)addTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId autoTemplateId:(BOOL)autoTemplateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId autoTemplateId:(BOOL)autoTemplateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"templateId": templateId,
 		@"autoTemplateId": @(autoTemplateId),
@@ -31,16 +31,17 @@
 		@"formatXsl": @(formatXsl),
 		@"langType": langType,
 		@"cacheable": @(cacheable),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/journaltemplate/add-template": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId autoTemplateId:(BOOL)autoTemplateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(NSDictionary *)smallFile serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId autoTemplateId:(BOOL)autoTemplateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(LRJSONObjectWrapper *)smallFile serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"templateId": templateId,
 		@"autoTemplateId": @(autoTemplateId),
@@ -53,9 +54,10 @@
 		@"cacheable": @(cacheable),
 		@"smallImage": @(smallImage),
 		@"smallImageURL": smallImageURL,
-		@"smallFile": smallFile,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"smallFile" className:@"java.io.File" wrapper:smallFile];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/journaltemplate/add-template": _params};
 
@@ -63,12 +65,12 @@
 }
 
 - (NSDictionary *)copyTemplateWithGroupId:(long long)groupId oldTemplateId:(NSString *)oldTemplateId newTemplateId:(NSString *)newTemplateId autoTemplateId:(BOOL)autoTemplateId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"oldTemplateId": oldTemplateId,
 		@"newTemplateId": newTemplateId,
 		@"autoTemplateId": @(autoTemplateId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/journaltemplate/copy-template": _params};
 
@@ -76,10 +78,10 @@
 }
 
 - (void)deleteTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"templateId": templateId
-	};
+	}];
 
 	NSDictionary *_command = @{@"/journaltemplate/delete-template": _params};
 
@@ -87,10 +89,10 @@
 }
 
 - (NSArray *)getStructureTemplatesWithGroupId:(long long)groupId structureId:(NSString *)structureId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"structureId": structureId
-	};
+	}];
 
 	NSDictionary *_command = @{@"/journaltemplate/get-structure-templates": _params};
 
@@ -98,10 +100,10 @@
 }
 
 - (NSDictionary *)getTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"templateId": templateId
-	};
+	}];
 
 	NSDictionary *_command = @{@"/journaltemplate/get-template": _params};
 
@@ -109,19 +111,19 @@
 }
 
 - (NSDictionary *)getTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId includeGlobalTemplates:(BOOL)includeGlobalTemplates error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"templateId": templateId,
 		@"includeGlobalTemplates": @(includeGlobalTemplates)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/journaltemplate/get-template": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds templateId:(NSString *)templateId structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds templateId:(NSString *)templateId structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupIds": groupIds,
 		@"templateId": templateId,
@@ -132,16 +134,17 @@
 		@"andOperator": @(andOperator),
 		@"start": @(start),
 		@"end": @(end),
-		@"obc": obc
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/journaltemplate/search": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupIds": groupIds,
 		@"keywords": keywords,
@@ -149,8 +152,9 @@
 		@"structureIdComparator": structureIdComparator,
 		@"start": @(start),
 		@"end": @(end),
-		@"obc": obc
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/journaltemplate/search": _params};
 
@@ -158,13 +162,13 @@
 }
 
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupIds": groupIds,
 		@"keywords": keywords,
 		@"structureId": structureId,
 		@"structureIdComparator": structureIdComparator
-	};
+	}];
 
 	NSDictionary *_command = @{@"/journaltemplate/search-count": _params};
 
@@ -172,7 +176,7 @@
 }
 
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds templateId:(NSString *)templateId structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupIds": groupIds,
 		@"templateId": templateId,
@@ -181,15 +185,15 @@
 		@"name": name,
 		@"description": description,
 		@"andOperator": @(andOperator)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/journaltemplate/search-count": _params};
 
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"templateId": templateId,
 		@"structureId": structureId,
@@ -199,16 +203,17 @@
 		@"formatXsl": @(formatXsl),
 		@"langType": langType,
 		@"cacheable": @(cacheable),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/journaltemplate/update-template": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(NSDictionary *)smallFile serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(LRJSONObjectWrapper *)smallFile serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"templateId": templateId,
 		@"structureId": structureId,
@@ -220,9 +225,10 @@
 		@"cacheable": @(cacheable),
 		@"smallImage": @(smallImage),
 		@"smallImageURL": smallImageURL,
-		@"smallFile": smallFile,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"smallFile" className:@"java.io.File" wrapper:smallFile];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/journaltemplate/update-template": _params};
 

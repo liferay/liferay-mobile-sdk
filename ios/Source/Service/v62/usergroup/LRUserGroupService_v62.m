@@ -20,10 +20,10 @@
 @implementation LRUserGroupService_v62
 
 - (void)addGroupUserGroupsWithGroupId:(long long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userGroupIds": userGroupIds
-	};
+	}];
 
 	NSDictionary *_command = @{@"/usergroup/add-group-user-groups": _params};
 
@@ -31,10 +31,10 @@
 }
 
 - (void)addTeamUserGroupsWithTeamId:(long long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"teamId": @(teamId),
 		@"userGroupIds": userGroupIds
-	};
+	}];
 
 	NSDictionary *_command = @{@"/usergroup/add-team-user-groups": _params};
 
@@ -42,22 +42,23 @@
 }
 
 - (NSDictionary *)addUserGroupWithName:(NSString *)name description:(NSString *)description error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"name": name,
 		@"description": description
-	};
+	}];
 
 	NSDictionary *_command = @{@"/usergroup/add-user-group": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addUserGroupWithName:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addUserGroupWithName:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"name": name,
 		@"description": description,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/usergroup/add-user-group": _params};
 
@@ -65,9 +66,9 @@
 }
 
 - (void)deleteUserGroupWithUserGroupId:(long long)userGroupId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userGroupId": @(userGroupId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/usergroup/delete-user-group": _params};
 
@@ -75,9 +76,9 @@
 }
 
 - (NSDictionary *)getUserGroupWithName:(NSString *)name error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"name": name
-	};
+	}];
 
 	NSDictionary *_command = @{@"/usergroup/get-user-group": _params};
 
@@ -85,9 +86,9 @@
 }
 
 - (NSDictionary *)getUserGroupWithUserGroupId:(long long)userGroupId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userGroupId": @(userGroupId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/usergroup/get-user-group": _params};
 
@@ -95,9 +96,9 @@
 }
 
 - (NSArray *)getUserUserGroupsWithUserId:(long long)userId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/usergroup/get-user-user-groups": _params};
 
@@ -105,10 +106,10 @@
 }
 
 - (void)unsetGroupUserGroupsWithGroupId:(long long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userGroupIds": userGroupIds
-	};
+	}];
 
 	NSDictionary *_command = @{@"/usergroup/unset-group-user-groups": _params};
 
@@ -116,10 +117,10 @@
 }
 
 - (void)unsetTeamUserGroupsWithTeamId:(long long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"teamId": @(teamId),
 		@"userGroupIds": userGroupIds
-	};
+	}];
 
 	NSDictionary *_command = @{@"/usergroup/unset-team-user-groups": _params};
 
@@ -127,24 +128,25 @@
 }
 
 - (NSDictionary *)updateUserGroupWithUserGroupId:(long long)userGroupId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userGroupId": @(userGroupId),
 		@"name": name,
 		@"description": description
-	};
+	}];
 
 	NSDictionary *_command = @{@"/usergroup/update-user-group": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateUserGroupWithUserGroupId:(long long)userGroupId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateUserGroupWithUserGroupId:(long long)userGroupId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userGroupId": @(userGroupId),
 		@"name": name,
 		@"description": description,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/usergroup/update-user-group": _params};
 

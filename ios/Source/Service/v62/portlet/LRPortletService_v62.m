@@ -20,8 +20,8 @@
 @implementation LRPortletService_v62
 
 - (NSArray *)getWarPortlets:(NSError **)error {
-	NSDictionary *_params = @{
-	};
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
 
 	NSDictionary *_command = @{@"/portlet/get-war-portlets": _params};
 
@@ -29,12 +29,12 @@
 }
 
 - (NSDictionary *)updatePortletWithCompanyId:(long long)companyId portletId:(NSString *)portletId roles:(NSString *)roles active:(BOOL)active error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"portletId": portletId,
 		@"roles": roles,
 		@"active": @(active)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/portlet/update-portlet": _params};
 

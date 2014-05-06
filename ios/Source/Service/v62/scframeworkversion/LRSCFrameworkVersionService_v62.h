@@ -19,7 +19,7 @@
  */
 @interface LRSCFrameworkVersionService_v62 : LRBaseService
 
-- (NSDictionary *)addFrameworkVersionWithName:(NSString *)name url:(NSString *)url active:(BOOL)active priority:(int)priority serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addFrameworkVersionWithName:(NSString *)name url:(NSString *)url active:(BOOL)active priority:(int)priority serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (void)deleteFrameworkVersionWithFrameworkVersionId:(long long)frameworkVersionId error:(NSError **)error;
 - (NSDictionary *)getFrameworkVersionWithFrameworkVersionId:(long long)frameworkVersionId error:(NSError **)error;
 - (NSArray *)getFrameworkVersionsWithGroupId:(long long)groupId active:(BOOL)active error:(NSError **)error;

@@ -19,13 +19,14 @@
  */
 @implementation LRBookmarksFolderService_v62
 
-- (NSDictionary *)addFolderWithParentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addFolderWithParentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentFolderId": @(parentFolderId),
 		@"name": name,
 		@"description": description,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/add-folder": _params};
 
@@ -33,9 +34,9 @@
 }
 
 - (void)deleteFolderWithFolderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/delete-folder": _params};
 
@@ -43,10 +44,10 @@
 }
 
 - (void)deleteFolderWithFolderId:(long long)folderId includeTrashedEntries:(BOOL)includeTrashedEntries error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
 		@"includeTrashedEntries": @(includeTrashedEntries)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/delete-folder": _params};
 
@@ -54,9 +55,9 @@
 }
 
 - (NSDictionary *)getFolderWithFolderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folder": _params};
 
@@ -64,10 +65,10 @@
 }
 
 - (NSArray *)getFolderIdsWithGroupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folder-ids": _params};
 
@@ -75,9 +76,9 @@
 }
 
 - (NSArray *)getFoldersWithGroupId:(long long)groupId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folders": _params};
 
@@ -85,10 +86,10 @@
 }
 
 - (NSArray *)getFoldersWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folders": _params};
 
@@ -96,12 +97,12 @@
 }
 
 - (NSArray *)getFoldersWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folders": _params};
 
@@ -109,13 +110,13 @@
 }
 
 - (NSArray *)getFoldersWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId),
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folders": _params};
 
@@ -123,10 +124,10 @@
 }
 
 - (NSArray *)getFoldersAndEntriesWithGroupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-and-entries": _params};
 
@@ -134,11 +135,11 @@
 }
 
 - (NSArray *)getFoldersAndEntriesWithGroupId:(long long)groupId folderId:(long long)folderId status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-and-entries": _params};
 
@@ -146,13 +147,13 @@
 }
 
 - (NSArray *)getFoldersAndEntriesWithGroupId:(long long)groupId folderId:(long long)folderId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-and-entries": _params};
 
@@ -160,10 +161,10 @@
 }
 
 - (NSNumber *)getFoldersAndEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-and-entries-count": _params};
 
@@ -171,11 +172,11 @@
 }
 
 - (NSNumber *)getFoldersAndEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-and-entries-count": _params};
 
@@ -183,10 +184,10 @@
 }
 
 - (NSNumber *)getFoldersCountWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-count": _params};
 
@@ -194,11 +195,11 @@
 }
 
 - (NSNumber *)getFoldersCountWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-folders-count": _params};
 
@@ -206,11 +207,11 @@
 }
 
 - (void)getSubfolderIdsWithFolderIds:(NSArray *)folderIds groupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderIds": folderIds,
 		@"groupId": @(groupId),
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-subfolder-ids": _params};
 
@@ -218,11 +219,11 @@
 }
 
 - (NSArray *)getSubfolderIdsWithGroupId:(long long)groupId folderId:(long long)folderId recurse:(BOOL)recurse error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"recurse": @(recurse)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/get-subfolder-ids": _params};
 
@@ -230,10 +231,10 @@
 }
 
 - (NSDictionary *)moveFolderWithFolderId:(long long)folderId parentFolderId:(long long)parentFolderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
 		@"parentFolderId": @(parentFolderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/move-folder": _params};
 
@@ -241,10 +242,10 @@
 }
 
 - (NSDictionary *)moveFolderFromTrashWithFolderId:(long long)folderId parentFolderId:(long long)parentFolderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
 		@"parentFolderId": @(parentFolderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/move-folder-from-trash": _params};
 
@@ -252,9 +253,9 @@
 }
 
 - (NSDictionary *)moveFolderToTrashWithFolderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/move-folder-to-trash": _params};
 
@@ -262,9 +263,9 @@
 }
 
 - (void)restoreFolderFromTrashWithFolderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/restore-folder-from-trash": _params};
 
@@ -272,10 +273,10 @@
 }
 
 - (void)subscribeFolderWithGroupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/subscribe-folder": _params};
 
@@ -283,25 +284,26 @@
 }
 
 - (void)unsubscribeFolderWithGroupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/unsubscribe-folder": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateFolderWithFolderId:(long long)folderId parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description mergeWithParentFolder:(BOOL)mergeWithParentFolder serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateFolderWithFolderId:(long long)folderId parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description mergeWithParentFolder:(BOOL)mergeWithParentFolder serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
 		@"parentFolderId": @(parentFolderId),
 		@"name": name,
 		@"description": description,
 		@"mergeWithParentFolder": @(mergeWithParentFolder),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/bookmarksfolder/update-folder": _params};
 

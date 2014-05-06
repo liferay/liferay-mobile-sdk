@@ -20,20 +20,20 @@
 @implementation LRRoleService_v62
 
 - (NSDictionary *)addRoleWithName:(NSString *)name titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap type:(int)type error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"name": name,
 		@"titleMap": titleMap,
 		@"descriptionMap": descriptionMap,
 		@"type": @(type)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/role/add-role": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addRoleWithClassName:(NSString *)className classPK:(long long)classPK name:(NSString *)name titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap type:(int)type subtype:(NSString *)subtype serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addRoleWithClassName:(NSString *)className classPK:(long long)classPK name:(NSString *)name titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap type:(int)type subtype:(NSString *)subtype serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": className,
 		@"classPK": @(classPK),
 		@"name": name,
@@ -41,8 +41,9 @@
 		@"descriptionMap": descriptionMap,
 		@"type": @(type),
 		@"subtype": subtype,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/role/add-role": _params};
 
@@ -50,10 +51,10 @@
 }
 
 - (void)addUserRolesWithUserId:(long long)userId roleIds:(NSArray *)roleIds error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"roleIds": roleIds
-	};
+	}];
 
 	NSDictionary *_command = @{@"/role/add-user-roles": _params};
 
@@ -61,9 +62,9 @@
 }
 
 - (void)deleteRoleWithRoleId:(long long)roleId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"roleId": @(roleId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/role/delete-role": _params};
 
@@ -71,9 +72,9 @@
 }
 
 - (NSArray *)getGroupRolesWithGroupId:(long long)groupId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/role/get-group-roles": _params};
 
@@ -81,9 +82,9 @@
 }
 
 - (NSDictionary *)getRoleWithRoleId:(long long)roleId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"roleId": @(roleId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/role/get-role": _params};
 
@@ -91,10 +92,10 @@
 }
 
 - (NSDictionary *)getRoleWithCompanyId:(long long)companyId name:(NSString *)name error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"name": name
-	};
+	}];
 
 	NSDictionary *_command = @{@"/role/get-role": _params};
 
@@ -102,10 +103,10 @@
 }
 
 - (NSArray *)getUserGroupGroupRolesWithUserId:(long long)userId groupId:(long long)groupId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"groupId": @(groupId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/role/get-user-group-group-roles": _params};
 
@@ -113,10 +114,10 @@
 }
 
 - (NSArray *)getUserGroupRolesWithUserId:(long long)userId groupId:(long long)groupId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"groupId": @(groupId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/role/get-user-group-roles": _params};
 
@@ -124,10 +125,10 @@
 }
 
 - (NSArray *)getUserRelatedRolesWithUserId:(long long)userId groups:(NSArray *)groups error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"groups": groups
-	};
+	}];
 
 	NSDictionary *_command = @{@"/role/get-user-related-roles": _params};
 
@@ -135,9 +136,9 @@
 }
 
 - (NSArray *)getUserRolesWithUserId:(long long)userId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/role/get-user-roles": _params};
 
@@ -145,12 +146,12 @@
 }
 
 - (BOOL)hasUserRoleWithUserId:(long long)userId companyId:(long long)companyId name:(NSString *)name inherited:(BOOL)inherited error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"companyId": @(companyId),
 		@"name": name,
 		@"inherited": @(inherited)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/role/has-user-role": _params};
 
@@ -158,12 +159,12 @@
 }
 
 - (BOOL)hasUserRolesWithUserId:(long long)userId companyId:(long long)companyId names:(NSArray *)names inherited:(BOOL)inherited error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"companyId": @(companyId),
 		@"names": names,
 		@"inherited": @(inherited)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/role/has-user-roles": _params};
 
@@ -171,25 +172,26 @@
 }
 
 - (void)unsetUserRolesWithUserId:(long long)userId roleIds:(NSArray *)roleIds error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"roleIds": roleIds
-	};
+	}];
 
 	NSDictionary *_command = @{@"/role/unset-user-roles": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateRoleWithRoleId:(long long)roleId name:(NSString *)name titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap subtype:(NSString *)subtype serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateRoleWithRoleId:(long long)roleId name:(NSString *)name titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap subtype:(NSString *)subtype serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"roleId": @(roleId),
 		@"name": name,
 		@"titleMap": titleMap,
 		@"descriptionMap": descriptionMap,
 		@"subtype": subtype,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/role/update-role": _params};
 

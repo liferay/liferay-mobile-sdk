@@ -20,11 +20,11 @@
 @implementation LRSocialActivityService_v62
 
 - (NSArray *)getActivitiesWithClassName:(NSString *)className start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": className,
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-activities": _params};
 
@@ -32,11 +32,11 @@
 }
 
 - (NSArray *)getActivitiesWithClassNameId:(long long)classNameId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"classNameId": @(classNameId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-activities": _params};
 
@@ -44,13 +44,13 @@
 }
 
 - (NSArray *)getActivitiesWithMirrorActivityId:(long long)mirrorActivityId className:(NSString *)className classPK:(long long)classPK start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"mirrorActivityId": @(mirrorActivityId),
 		@"className": className,
 		@"classPK": @(classPK),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-activities": _params};
 
@@ -58,13 +58,13 @@
 }
 
 - (NSArray *)getActivitiesWithMirrorActivityId:(long long)mirrorActivityId classNameId:(long long)classNameId classPK:(long long)classPK start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"mirrorActivityId": @(mirrorActivityId),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-activities": _params};
 
@@ -72,9 +72,9 @@
 }
 
 - (NSNumber *)getActivitiesCountWithClassName:(NSString *)className error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": className
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-activities-count": _params};
 
@@ -82,9 +82,9 @@
 }
 
 - (NSNumber *)getActivitiesCountWithClassNameId:(long long)classNameId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"classNameId": @(classNameId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-activities-count": _params};
 
@@ -92,11 +92,11 @@
 }
 
 - (NSNumber *)getActivitiesCountWithMirrorActivityId:(long long)mirrorActivityId className:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"mirrorActivityId": @(mirrorActivityId),
 		@"className": className,
 		@"classPK": @(classPK)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-activities-count": _params};
 
@@ -104,11 +104,11 @@
 }
 
 - (NSNumber *)getActivitiesCountWithMirrorActivityId:(long long)mirrorActivityId classNameId:(long long)classNameId classPK:(long long)classPK error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"mirrorActivityId": @(mirrorActivityId),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-activities-count": _params};
 
@@ -116,9 +116,9 @@
 }
 
 - (NSDictionary *)getActivityWithActivityId:(long long)activityId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"activityId": @(activityId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-activity": _params};
 
@@ -126,11 +126,11 @@
 }
 
 - (NSArray *)getActivitySetActivitiesWithActivitySetId:(long long)activitySetId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"activitySetId": @(activitySetId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-activity-set-activities": _params};
 
@@ -138,11 +138,11 @@
 }
 
 - (NSArray *)getGroupActivitiesWithGroupId:(long long)groupId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-group-activities": _params};
 
@@ -150,9 +150,9 @@
 }
 
 - (NSNumber *)getGroupActivitiesCountWithGroupId:(long long)groupId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-group-activities-count": _params};
 
@@ -160,11 +160,11 @@
 }
 
 - (NSArray *)getGroupUsersActivitiesWithGroupId:(long long)groupId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-group-users-activities": _params};
 
@@ -172,9 +172,9 @@
 }
 
 - (NSNumber *)getGroupUsersActivitiesCountWithGroupId:(long long)groupId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-group-users-activities-count": _params};
 
@@ -182,9 +182,9 @@
 }
 
 - (NSDictionary *)getMirrorActivityWithMirrorActivityId:(long long)mirrorActivityId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"mirrorActivityId": @(mirrorActivityId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-mirror-activity": _params};
 
@@ -192,11 +192,11 @@
 }
 
 - (NSArray *)getOrganizationActivitiesWithOrganizationId:(long long)organizationId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-organization-activities": _params};
 
@@ -204,9 +204,9 @@
 }
 
 - (NSNumber *)getOrganizationActivitiesCountWithOrganizationId:(long long)organizationId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-organization-activities-count": _params};
 
@@ -214,11 +214,11 @@
 }
 
 - (NSArray *)getOrganizationUsersActivitiesWithOrganizationId:(long long)organizationId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-organization-users-activities": _params};
 
@@ -226,9 +226,9 @@
 }
 
 - (NSNumber *)getOrganizationUsersActivitiesCountWithOrganizationId:(long long)organizationId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-organization-users-activities-count": _params};
 
@@ -236,11 +236,11 @@
 }
 
 - (NSArray *)getRelationActivitiesWithUserId:(long long)userId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-relation-activities": _params};
 
@@ -248,12 +248,12 @@
 }
 
 - (NSArray *)getRelationActivitiesWithUserId:(long long)userId type:(int)type start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"type": @(type),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-relation-activities": _params};
 
@@ -261,9 +261,9 @@
 }
 
 - (NSNumber *)getRelationActivitiesCountWithUserId:(long long)userId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-relation-activities-count": _params};
 
@@ -271,10 +271,10 @@
 }
 
 - (NSNumber *)getRelationActivitiesCountWithUserId:(long long)userId type:(int)type error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"type": @(type)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-relation-activities-count": _params};
 
@@ -282,11 +282,11 @@
 }
 
 - (NSArray *)getUserActivitiesWithUserId:(long long)userId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-user-activities": _params};
 
@@ -294,9 +294,9 @@
 }
 
 - (NSNumber *)getUserActivitiesCountWithUserId:(long long)userId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-user-activities-count": _params};
 
@@ -304,11 +304,11 @@
 }
 
 - (NSArray *)getUserGroupsActivitiesWithUserId:(long long)userId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-user-groups-activities": _params};
 
@@ -316,9 +316,9 @@
 }
 
 - (NSNumber *)getUserGroupsActivitiesCountWithUserId:(long long)userId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-user-groups-activities-count": _params};
 
@@ -326,11 +326,11 @@
 }
 
 - (NSArray *)getUserGroupsAndOrganizationsActivitiesWithUserId:(long long)userId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-user-groups-and-organizations-activities": _params};
 
@@ -338,9 +338,9 @@
 }
 
 - (NSNumber *)getUserGroupsAndOrganizationsActivitiesCountWithUserId:(long long)userId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-user-groups-and-organizations-activities-count": _params};
 
@@ -348,11 +348,11 @@
 }
 
 - (NSArray *)getUserOrganizationsActivitiesWithUserId:(long long)userId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-user-organizations-activities": _params};
 
@@ -360,9 +360,9 @@
 }
 
 - (NSNumber *)getUserOrganizationsActivitiesCountWithUserId:(long long)userId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-user-organizations-activities-count": _params};
 

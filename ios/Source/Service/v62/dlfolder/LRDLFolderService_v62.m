@@ -19,16 +19,17 @@
  */
 @implementation LRDLFolderService_v62
 
-- (NSDictionary *)addFolderWithGroupId:(long long)groupId repositoryId:(long long)repositoryId mountPoint:(BOOL)mountPoint parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addFolderWithGroupId:(long long)groupId repositoryId:(long long)repositoryId mountPoint:(BOOL)mountPoint parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"repositoryId": @(repositoryId),
 		@"mountPoint": @(mountPoint),
 		@"parentFolderId": @(parentFolderId),
 		@"name": name,
 		@"description": description,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlfolder/add-folder": _params};
 
@@ -36,9 +37,9 @@
 }
 
 - (void)deleteFolderWithFolderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/delete-folder": _params};
 
@@ -46,10 +47,10 @@
 }
 
 - (void)deleteFolderWithFolderId:(long long)folderId includeTrashedEntries:(BOOL)includeTrashedEntries error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
 		@"includeTrashedEntries": @(includeTrashedEntries)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/delete-folder": _params};
 
@@ -57,11 +58,11 @@
 }
 
 - (void)deleteFolderWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId name:(NSString *)name error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId),
 		@"name": name
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/delete-folder": _params};
 
@@ -69,13 +70,13 @@
 }
 
 - (NSArray *)getFileEntriesAndFileShortcutsWithGroupId:(long long)groupId folderId:(long long)folderId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/get-file-entries-and-file-shortcuts": _params};
 
@@ -83,11 +84,11 @@
 }
 
 - (NSNumber *)getFileEntriesAndFileShortcutsCountWithGroupId:(long long)groupId folderId:(long long)folderId status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/get-file-entries-and-file-shortcuts-count": _params};
 
@@ -95,12 +96,12 @@
 }
 
 - (NSNumber *)getFileEntriesAndFileShortcutsCountWithGroupId:(long long)groupId folderId:(long long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"status": @(status),
 		@"mimeTypes": mimeTypes
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/get-file-entries-and-file-shortcuts-count": _params};
 
@@ -108,9 +109,9 @@
 }
 
 - (NSDictionary *)getFolderWithFolderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/get-folder": _params};
 
@@ -118,11 +119,11 @@
 }
 
 - (NSDictionary *)getFolderWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId name:(NSString *)name error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId),
 		@"name": name
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/get-folder": _params};
 
@@ -130,64 +131,67 @@
 }
 
 - (NSArray *)getFolderIdsWithGroupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/get-folder-ids": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFoldersWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)getFoldersWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId),
 		@"start": @(start),
 		@"end": @(end),
-		@"obc": obc
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/dlfolder/get-folders": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFoldersWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId status:(int)status includeMountfolders:(BOOL)includeMountfolders start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)getFoldersWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId status:(int)status includeMountfolders:(BOOL)includeMountfolders start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId),
 		@"status": @(status),
 		@"includeMountfolders": @(includeMountfolders),
 		@"start": @(start),
 		@"end": @(end),
-		@"obc": obc
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/dlfolder/get-folders": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFoldersAndFileEntriesAndFileShortcutsWithGroupId:(long long)groupId folderId:(long long)folderId status:(int)status includeMountFolders:(BOOL)includeMountFolders start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)getFoldersAndFileEntriesAndFileShortcutsWithGroupId:(long long)groupId folderId:(long long)folderId status:(int)status includeMountFolders:(BOOL)includeMountFolders start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"status": @(status),
 		@"includeMountFolders": @(includeMountFolders),
 		@"start": @(start),
 		@"end": @(end),
-		@"obc": obc
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/dlfolder/get-folders-and-file-entries-and-file-shortcuts": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFoldersAndFileEntriesAndFileShortcutsWithGroupId:(long long)groupId folderId:(long long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes includeMountFolders:(BOOL)includeMountFolders start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)getFoldersAndFileEntriesAndFileShortcutsWithGroupId:(long long)groupId folderId:(long long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes includeMountFolders:(BOOL)includeMountFolders start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"status": @(status),
@@ -195,8 +199,9 @@
 		@"includeMountFolders": @(includeMountFolders),
 		@"start": @(start),
 		@"end": @(end),
-		@"obc": obc
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/dlfolder/get-folders-and-file-entries-and-file-shortcuts": _params};
 
@@ -204,12 +209,12 @@
 }
 
 - (NSNumber *)getFoldersAndFileEntriesAndFileShortcutsCountWithGroupId:(long long)groupId folderId:(long long)folderId status:(int)status includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"status": @(status),
 		@"includeMountFolders": @(includeMountFolders)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/get-folders-and-file-entries-and-file-shortcuts-count": _params};
 
@@ -217,13 +222,13 @@
 }
 
 - (NSNumber *)getFoldersAndFileEntriesAndFileShortcutsCountWithGroupId:(long long)groupId folderId:(long long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"status": @(status),
 		@"mimeTypes": mimeTypes,
 		@"includeMountFolders": @(includeMountFolders)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/get-folders-and-file-entries-and-file-shortcuts-count": _params};
 
@@ -231,10 +236,10 @@
 }
 
 - (NSNumber *)getFoldersCountWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/get-folders-count": _params};
 
@@ -242,26 +247,27 @@
 }
 
 - (NSNumber *)getFoldersCountWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId status:(int)status includeMountfolders:(BOOL)includeMountfolders error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId),
 		@"status": @(status),
 		@"includeMountfolders": @(includeMountfolders)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/get-folders-count": _params};
 
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getMountFoldersWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)getMountFoldersWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId),
 		@"start": @(start),
 		@"end": @(end),
-		@"obc": obc
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/dlfolder/get-mount-folders": _params};
 
@@ -269,10 +275,10 @@
 }
 
 - (NSNumber *)getMountFoldersCountWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/get-mount-folders-count": _params};
 
@@ -280,11 +286,11 @@
 }
 
 - (void)getSubfolderIdsWithFolderIds:(NSArray *)folderIds groupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderIds": folderIds,
 		@"groupId": @(groupId),
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/get-subfolder-ids": _params};
 
@@ -292,11 +298,11 @@
 }
 
 - (NSArray *)getSubfolderIdsWithGroupId:(long long)groupId folderId:(long long)folderId recurse:(BOOL)recurse error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"recurse": @(recurse)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/get-subfolder-ids": _params};
 
@@ -304,9 +310,9 @@
 }
 
 - (BOOL)hasFolderLockWithFolderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/has-folder-lock": _params};
 
@@ -314,9 +320,9 @@
 }
 
 - (BOOL)hasInheritableLockWithFolderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/has-inheritable-lock": _params};
 
@@ -324,9 +330,9 @@
 }
 
 - (BOOL)isFolderLockedWithFolderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/is-folder-locked": _params};
 
@@ -334,9 +340,9 @@
 }
 
 - (NSDictionary *)lockFolderWithFolderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/lock-folder": _params};
 
@@ -344,24 +350,25 @@
 }
 
 - (NSDictionary *)lockFolderWithFolderId:(long long)folderId owner:(NSString *)owner inheritable:(BOOL)inheritable expirationTime:(long long)expirationTime error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
 		@"owner": owner,
 		@"inheritable": @(inheritable),
 		@"expirationTime": @(expirationTime)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/lock-folder": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)moveFolderWithFolderId:(long long)folderId parentFolderId:(long long)parentFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)moveFolderWithFolderId:(long long)folderId parentFolderId:(long long)parentFolderId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
 		@"parentFolderId": @(parentFolderId),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlfolder/move-folder": _params};
 
@@ -369,11 +376,11 @@
 }
 
 - (NSDictionary *)refreshFolderLockWithLockUuid:(NSString *)lockUuid companyId:(long long)companyId expirationTime:(long long)expirationTime error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"lockUuid": lockUuid,
 		@"companyId": @(companyId),
 		@"expirationTime": @(expirationTime)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/refresh-folder-lock": _params};
 
@@ -381,10 +388,10 @@
 }
 
 - (void)unlockFolderWithFolderId:(long long)folderId lockUuid:(NSString *)lockUuid error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
 		@"lockUuid": lockUuid
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/unlock-folder": _params};
 
@@ -392,28 +399,29 @@
 }
 
 - (void)unlockFolderWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId name:(NSString *)name lockUuid:(NSString *)lockUuid error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentFolderId": @(parentFolderId),
 		@"name": name,
 		@"lockUuid": lockUuid
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/unlock-folder": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateFolderWithFolderId:(long long)folderId name:(NSString *)name description:(NSString *)description defaultFileEntryTypeId:(long long)defaultFileEntryTypeId fileEntryTypeIds:(NSArray *)fileEntryTypeIds overrideFileEntryTypes:(BOOL)overrideFileEntryTypes serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateFolderWithFolderId:(long long)folderId name:(NSString *)name description:(NSString *)description defaultFileEntryTypeId:(long long)defaultFileEntryTypeId fileEntryTypeIds:(NSArray *)fileEntryTypeIds overrideFileEntryTypes:(BOOL)overrideFileEntryTypes serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
 		@"name": name,
 		@"description": description,
 		@"defaultFileEntryTypeId": @(defaultFileEntryTypeId),
 		@"fileEntryTypeIds": fileEntryTypeIds,
 		@"overrideFileEntryTypes": @(overrideFileEntryTypes),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlfolder/update-folder": _params};
 
@@ -421,10 +429,10 @@
 }
 
 - (BOOL)verifyInheritableLockWithFolderId:(long long)folderId lockUuid:(NSString *)lockUuid error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
 		@"lockUuid": lockUuid
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfolder/verify-inheritable-lock": _params};
 

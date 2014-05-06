@@ -19,15 +19,16 @@
  */
 @implementation LRBookmarksEntryService_v62
 
-- (NSDictionary *)addEntryWithGroupId:(long long)groupId folderId:(long long)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addEntryWithGroupId:(long long)groupId folderId:(long long)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"name": name,
 		@"url": url,
 		@"description": description,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/bookmarksentry/add-entry": _params};
 
@@ -35,9 +36,9 @@
 }
 
 - (void)deleteEntryWithEntryId:(long long)entryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/delete-entry": _params};
 
@@ -45,26 +46,27 @@
 }
 
 - (NSArray *)getEntriesWithGroupId:(long long)groupId folderId:(long long)folderId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-entries": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getEntriesWithGroupId:(long long)groupId folderId:(long long)folderId start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)getEntriesWithGroupId:(long long)groupId folderId:(long long)folderId start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"start": @(start),
 		@"end": @(end),
-		@"orderByComparator": orderByComparator
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:orderByComparator];
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-entries": _params};
 
@@ -72,10 +74,10 @@
 }
 
 - (NSNumber *)getEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-entries-count": _params};
 
@@ -83,11 +85,11 @@
 }
 
 - (NSNumber *)getEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-entries-count": _params};
 
@@ -95,9 +97,9 @@
 }
 
 - (NSDictionary *)getEntryWithEntryId:(long long)entryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-entry": _params};
 
@@ -105,10 +107,10 @@
 }
 
 - (NSNumber *)getFoldersEntriesCountWithGroupId:(long long)groupId folderIds:(NSArray *)folderIds error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderIds": folderIds
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-folders-entries-count": _params};
 
@@ -116,11 +118,11 @@
 }
 
 - (NSArray *)getGroupEntriesWithGroupId:(long long)groupId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-group-entries": _params};
 
@@ -128,12 +130,12 @@
 }
 
 - (NSArray *)getGroupEntriesWithGroupId:(long long)groupId userId:(long long)userId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-group-entries": _params};
 
@@ -141,13 +143,13 @@
 }
 
 - (NSArray *)getGroupEntriesWithGroupId:(long long)groupId userId:(long long)userId rootFolderId:(long long)rootFolderId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"rootFolderId": @(rootFolderId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-group-entries": _params};
 
@@ -155,9 +157,9 @@
 }
 
 - (NSNumber *)getGroupEntriesCountWithGroupId:(long long)groupId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-group-entries-count": _params};
 
@@ -165,10 +167,10 @@
 }
 
 - (NSNumber *)getGroupEntriesCountWithGroupId:(long long)groupId userId:(long long)userId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-group-entries-count": _params};
 
@@ -176,11 +178,11 @@
 }
 
 - (NSNumber *)getGroupEntriesCountWithGroupId:(long long)groupId userId:(long long)userId rootFolderId:(long long)rootFolderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"rootFolderId": @(rootFolderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-group-entries-count": _params};
 
@@ -188,10 +190,10 @@
 }
 
 - (NSDictionary *)moveEntryWithEntryId:(long long)entryId parentFolderId:(long long)parentFolderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId),
 		@"parentFolderId": @(parentFolderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/move-entry": _params};
 
@@ -199,10 +201,10 @@
 }
 
 - (NSDictionary *)moveEntryFromTrashWithEntryId:(long long)entryId parentFolderId:(long long)parentFolderId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId),
 		@"parentFolderId": @(parentFolderId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/move-entry-from-trash": _params};
 
@@ -210,19 +212,20 @@
 }
 
 - (NSDictionary *)moveEntryToTrashWithEntryId:(long long)entryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/move-entry-to-trash": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)openEntryWithEntry:(NSDictionary *)entry error:(NSError **)error {
-	NSDictionary *_params = @{
-		@"entry": entry
-	};
+- (NSDictionary *)openEntryWithEntry:(LRJSONObjectWrapper *)entry error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"entry" className:@"com.liferay.portlet.bookmarks.model.BookmarksEntry" wrapper:entry];
 
 	NSDictionary *_command = @{@"/bookmarksentry/open-entry": _params};
 
@@ -230,9 +233,9 @@
 }
 
 - (NSDictionary *)openEntryWithEntryId:(long long)entryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/open-entry": _params};
 
@@ -240,9 +243,9 @@
 }
 
 - (void)restoreEntryFromTrashWithEntryId:(long long)entryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/restore-entry-from-trash": _params};
 
@@ -250,13 +253,13 @@
 }
 
 - (NSDictionary *)searchWithGroupId:(long long)groupId creatorUserId:(long long)creatorUserId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"creatorUserId": @(creatorUserId),
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/search": _params};
 
@@ -264,9 +267,9 @@
 }
 
 - (void)subscribeEntryWithEntryId:(long long)entryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/subscribe-entry": _params};
 
@@ -274,25 +277,26 @@
 }
 
 - (void)unsubscribeEntryWithEntryId:(long long)entryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/unsubscribe-entry": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateEntryWithEntryId:(long long)entryId groupId:(long long)groupId folderId:(long long)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateEntryWithEntryId:(long long)entryId groupId:(long long)groupId folderId:(long long)folderId name:(NSString *)name url:(NSString *)url description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId),
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"name": name,
 		@"url": url,
 		@"description": description,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/bookmarksentry/update-entry": _params};
 

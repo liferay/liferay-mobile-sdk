@@ -20,13 +20,13 @@
 @implementation LRResourceBlockService_v62
 
 - (void)addCompanyScopePermissionWithScopeGroupId:(long long)scopeGroupId companyId:(long long)companyId name:(NSString *)name roleId:(long long)roleId actionId:(NSString *)actionId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
 		@"name": name,
 		@"roleId": @(roleId),
 		@"actionId": actionId
-	};
+	}];
 
 	NSDictionary *_command = @{@"/resourceblock/add-company-scope-permission": _params};
 
@@ -34,14 +34,14 @@
 }
 
 - (void)addGroupScopePermissionWithScopeGroupId:(long long)scopeGroupId companyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name roleId:(long long)roleId actionId:(NSString *)actionId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"name": name,
 		@"roleId": @(roleId),
 		@"actionId": actionId
-	};
+	}];
 
 	NSDictionary *_command = @{@"/resourceblock/add-group-scope-permission": _params};
 
@@ -49,14 +49,14 @@
 }
 
 - (void)addIndividualScopePermissionWithCompanyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name primKey:(long long)primKey roleId:(long long)roleId actionId:(NSString *)actionId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"name": name,
 		@"primKey": @(primKey),
 		@"roleId": @(roleId),
 		@"actionId": actionId
-	};
+	}];
 
 	NSDictionary *_command = @{@"/resourceblock/add-individual-scope-permission": _params};
 
@@ -64,13 +64,13 @@
 }
 
 - (void)removeAllGroupScopePermissionsWithScopeGroupId:(long long)scopeGroupId companyId:(long long)companyId name:(NSString *)name roleId:(long long)roleId actionId:(NSString *)actionId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
 		@"name": name,
 		@"roleId": @(roleId),
 		@"actionId": actionId
-	};
+	}];
 
 	NSDictionary *_command = @{@"/resourceblock/remove-all-group-scope-permissions": _params};
 
@@ -78,13 +78,13 @@
 }
 
 - (void)removeCompanyScopePermissionWithScopeGroupId:(long long)scopeGroupId companyId:(long long)companyId name:(NSString *)name roleId:(long long)roleId actionId:(NSString *)actionId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
 		@"name": name,
 		@"roleId": @(roleId),
 		@"actionId": actionId
-	};
+	}];
 
 	NSDictionary *_command = @{@"/resourceblock/remove-company-scope-permission": _params};
 
@@ -92,14 +92,14 @@
 }
 
 - (void)removeGroupScopePermissionWithScopeGroupId:(long long)scopeGroupId companyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name roleId:(long long)roleId actionId:(NSString *)actionId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"name": name,
 		@"roleId": @(roleId),
 		@"actionId": actionId
-	};
+	}];
 
 	NSDictionary *_command = @{@"/resourceblock/remove-group-scope-permission": _params};
 
@@ -107,14 +107,14 @@
 }
 
 - (void)removeIndividualScopePermissionWithCompanyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name primKey:(long long)primKey roleId:(long long)roleId actionId:(NSString *)actionId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"name": name,
 		@"primKey": @(primKey),
 		@"roleId": @(roleId),
 		@"actionId": actionId
-	};
+	}];
 
 	NSDictionary *_command = @{@"/resourceblock/remove-individual-scope-permission": _params};
 
@@ -122,13 +122,13 @@
 }
 
 - (void)setCompanyScopePermissionsWithScopeGroupId:(long long)scopeGroupId companyId:(long long)companyId name:(NSString *)name roleId:(long long)roleId actionIds:(NSArray *)actionIds error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
 		@"name": name,
 		@"roleId": @(roleId),
 		@"actionIds": actionIds
-	};
+	}];
 
 	NSDictionary *_command = @{@"/resourceblock/set-company-scope-permissions": _params};
 
@@ -136,14 +136,14 @@
 }
 
 - (void)setGroupScopePermissionsWithScopeGroupId:(long long)scopeGroupId companyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name roleId:(long long)roleId actionIds:(NSArray *)actionIds error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"name": name,
 		@"roleId": @(roleId),
 		@"actionIds": actionIds
-	};
+	}];
 
 	NSDictionary *_command = @{@"/resourceblock/set-group-scope-permissions": _params};
 
@@ -151,13 +151,13 @@
 }
 
 - (void)setIndividualScopePermissionsWithCompanyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name primKey:(long long)primKey roleIdsToActionIds:(NSDictionary *)roleIdsToActionIds error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"name": name,
 		@"primKey": @(primKey),
 		@"roleIdsToActionIds": roleIdsToActionIds
-	};
+	}];
 
 	NSDictionary *_command = @{@"/resourceblock/set-individual-scope-permissions": _params};
 
@@ -165,14 +165,14 @@
 }
 
 - (void)setIndividualScopePermissionsWithCompanyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name primKey:(long long)primKey roleId:(long long)roleId actionIds:(NSArray *)actionIds error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"name": name,
 		@"primKey": @(primKey),
 		@"roleId": @(roleId),
 		@"actionIds": actionIds
-	};
+	}];
 
 	NSDictionary *_command = @{@"/resourceblock/set-individual-scope-permissions": _params};
 

@@ -20,9 +20,9 @@
 @implementation LRCompanyService_v62
 
 - (void)deleteLogoWithCompanyId:(long long)companyId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/company/delete-logo": _params};
 
@@ -30,9 +30,9 @@
 }
 
 - (NSDictionary *)getCompanyByIdWithCompanyId:(long long)companyId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/company/get-company-by-id": _params};
 
@@ -40,9 +40,9 @@
 }
 
 - (NSDictionary *)getCompanyByLogoIdWithLogoId:(long long)logoId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"logoId": @(logoId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/company/get-company-by-logo-id": _params};
 
@@ -50,9 +50,9 @@
 }
 
 - (NSDictionary *)getCompanyByMxWithMx:(NSString *)mx error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"mx": mx
-	};
+	}];
 
 	NSDictionary *_command = @{@"/company/get-company-by-mx": _params};
 
@@ -60,9 +60,9 @@
 }
 
 - (NSDictionary *)getCompanyByVirtualHostWithVirtualHost:(NSString *)virtualHost error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"virtualHost": virtualHost
-	};
+	}];
 
 	NSDictionary *_command = @{@"/company/get-company-by-virtual-host": _params};
 
@@ -70,9 +70,9 @@
 }
 
 - (NSDictionary *)getCompanyByWebIdWithWebId:(NSString *)webId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"webId": webId
-	};
+	}];
 
 	NSDictionary *_command = @{@"/company/get-company-by-web-id": _params};
 
@@ -80,7 +80,7 @@
 }
 
 - (NSDictionary *)updateCompanyWithCompanyId:(long long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx homeURL:(NSString *)homeURL name:(NSString *)name legalName:(NSString *)legalName legalId:(NSString *)legalId legalType:(NSString *)legalType sicCode:(NSString *)sicCode tickerSymbol:(NSString *)tickerSymbol industry:(NSString *)industry type:(NSString *)type size:(NSString *)size error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"virtualHost": virtualHost,
 		@"mx": mx,
@@ -94,7 +94,7 @@
 		@"industry": industry,
 		@"type": type,
 		@"size": size
-	};
+	}];
 
 	NSDictionary *_command = @{@"/company/update-company": _params};
 
@@ -102,13 +102,13 @@
 }
 
 - (NSDictionary *)updateCompanyWithCompanyId:(long long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx maxUsers:(int)maxUsers active:(BOOL)active error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"virtualHost": virtualHost,
 		@"mx": mx,
 		@"maxUsers": @(maxUsers),
 		@"active": @(active)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/company/update-company": _params};
 
@@ -116,11 +116,11 @@
 }
 
 - (void)updateDisplayWithCompanyId:(long long)companyId languageId:(NSString *)languageId timeZoneId:(NSString *)timeZoneId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"languageId": languageId,
 		@"timeZoneId": timeZoneId
-	};
+	}];
 
 	NSDictionary *_command = @{@"/company/update-display": _params};
 
@@ -128,10 +128,10 @@
 }
 
 - (NSDictionary *)updateLogoWithCompanyId:(long long)companyId bytes:(NSArray *)bytes error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"bytes": bytes
-	};
+	}];
 
 	NSDictionary *_command = @{@"/company/update-logo": _params};
 

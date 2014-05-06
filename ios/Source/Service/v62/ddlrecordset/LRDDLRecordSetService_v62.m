@@ -19,8 +19,8 @@
  */
 @implementation LRDDLRecordSetService_v62
 
-- (NSDictionary *)addRecordSetWithGroupId:(long long)groupId ddmStructureId:(long long)ddmStructureId recordSetKey:(NSString *)recordSetKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap minDisplayRows:(int)minDisplayRows scope:(int)scope serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addRecordSetWithGroupId:(long long)groupId ddmStructureId:(long long)ddmStructureId recordSetKey:(NSString *)recordSetKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap minDisplayRows:(int)minDisplayRows scope:(int)scope serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"ddmStructureId": @(ddmStructureId),
 		@"recordSetKey": recordSetKey,
@@ -28,8 +28,9 @@
 		@"descriptionMap": descriptionMap,
 		@"minDisplayRows": @(minDisplayRows),
 		@"scope": @(scope),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddlrecordset/add-record-set": _params};
 
@@ -37,9 +38,9 @@
 }
 
 - (void)deleteRecordSetWithRecordSetId:(long long)recordSetId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"recordSetId": @(recordSetId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddlrecordset/delete-record-set": _params};
 
@@ -47,33 +48,34 @@
 }
 
 - (NSDictionary *)getRecordSetWithRecordSetId:(long long)recordSetId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"recordSetId": @(recordSetId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddlrecordset/get-record-set": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long long)companyId groupId:(long long)groupId keywords:(NSString *)keywords scope:(int)scope start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)searchWithCompanyId:(long long)companyId groupId:(long long)groupId keywords:(NSString *)keywords scope:(int)scope start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"keywords": keywords,
 		@"scope": @(scope),
 		@"start": @(start),
 		@"end": @(end),
-		@"orderByComparator": orderByComparator
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:orderByComparator];
 
 	NSDictionary *_command = @{@"/ddlrecordset/search": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name description:(NSString *)description scope:(int)scope andOperator:(BOOL)andOperator start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)searchWithCompanyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name description:(NSString *)description scope:(int)scope andOperator:(BOOL)andOperator start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"name": name,
@@ -82,8 +84,9 @@
 		@"andOperator": @(andOperator),
 		@"start": @(start),
 		@"end": @(end),
-		@"orderByComparator": orderByComparator
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:orderByComparator];
 
 	NSDictionary *_command = @{@"/ddlrecordset/search": _params};
 
@@ -91,12 +94,12 @@
 }
 
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupId:(long long)groupId keywords:(NSString *)keywords scope:(int)scope error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"keywords": keywords,
 		@"scope": @(scope)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddlrecordset/search-count": _params};
 
@@ -104,57 +107,60 @@
 }
 
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name description:(NSString *)description scope:(int)scope andOperator:(BOOL)andOperator error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"name": name,
 		@"description": description,
 		@"scope": @(scope),
 		@"andOperator": @(andOperator)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddlrecordset/search-count": _params};
 
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateMinDisplayRowsWithRecordSetId:(long long)recordSetId minDisplayRows:(int)minDisplayRows serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateMinDisplayRowsWithRecordSetId:(long long)recordSetId minDisplayRows:(int)minDisplayRows serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"recordSetId": @(recordSetId),
 		@"minDisplayRows": @(minDisplayRows),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddlrecordset/update-min-display-rows": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateRecordSetWithRecordSetId:(long long)recordSetId ddmStructureId:(long long)ddmStructureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap minDisplayRows:(int)minDisplayRows serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateRecordSetWithRecordSetId:(long long)recordSetId ddmStructureId:(long long)ddmStructureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap minDisplayRows:(int)minDisplayRows serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"recordSetId": @(recordSetId),
 		@"ddmStructureId": @(ddmStructureId),
 		@"nameMap": nameMap,
 		@"descriptionMap": descriptionMap,
 		@"minDisplayRows": @(minDisplayRows),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddlrecordset/update-record-set": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateRecordSetWithGroupId:(long long)groupId ddmStructureId:(long long)ddmStructureId recordSetKey:(NSString *)recordSetKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap minDisplayRows:(int)minDisplayRows serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateRecordSetWithGroupId:(long long)groupId ddmStructureId:(long long)ddmStructureId recordSetKey:(NSString *)recordSetKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap minDisplayRows:(int)minDisplayRows serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"ddmStructureId": @(ddmStructureId),
 		@"recordSetKey": recordSetKey,
 		@"nameMap": nameMap,
 		@"descriptionMap": descriptionMap,
 		@"minDisplayRows": @(minDisplayRows),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddlrecordset/update-record-set": _params};
 

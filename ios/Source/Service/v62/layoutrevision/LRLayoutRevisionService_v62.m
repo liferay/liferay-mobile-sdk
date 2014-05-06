@@ -19,8 +19,8 @@
  */
 @implementation LRLayoutRevisionService_v62
 
-- (NSDictionary *)addLayoutRevisionWithUserId:(long long)userId layoutSetBranchId:(long long)layoutSetBranchId layoutBranchId:(long long)layoutBranchId parentLayoutRevisionId:(long long)parentLayoutRevisionId head:(BOOL)head plid:(long long)plid portletPreferencesPlid:(long long)portletPreferencesPlid privateLayout:(BOOL)privateLayout name:(NSString *)name title:(NSString *)title description:(NSString *)description keywords:(NSString *)keywords robots:(NSString *)robots typeSettings:(NSString *)typeSettings iconImage:(BOOL)iconImage iconImageId:(long long)iconImageId themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId wapThemeId:(NSString *)wapThemeId wapColorSchemeId:(NSString *)wapColorSchemeId css:(NSString *)css serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addLayoutRevisionWithUserId:(long long)userId layoutSetBranchId:(long long)layoutSetBranchId layoutBranchId:(long long)layoutBranchId parentLayoutRevisionId:(long long)parentLayoutRevisionId head:(BOOL)head plid:(long long)plid portletPreferencesPlid:(long long)portletPreferencesPlid privateLayout:(BOOL)privateLayout name:(NSString *)name title:(NSString *)title description:(NSString *)description keywords:(NSString *)keywords robots:(NSString *)robots typeSettings:(NSString *)typeSettings iconImage:(BOOL)iconImage iconImageId:(long long)iconImageId themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId wapThemeId:(NSString *)wapThemeId wapColorSchemeId:(NSString *)wapColorSchemeId css:(NSString *)css serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"layoutSetBranchId": @(layoutSetBranchId),
 		@"layoutBranchId": @(layoutBranchId),
@@ -42,8 +42,9 @@
 		@"wapThemeId": wapThemeId,
 		@"wapColorSchemeId": wapColorSchemeId,
 		@"css": css,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layoutrevision/add-layout-revision": _params};
 

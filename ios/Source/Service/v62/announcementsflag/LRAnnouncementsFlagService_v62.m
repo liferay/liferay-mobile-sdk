@@ -20,10 +20,10 @@
 @implementation LRAnnouncementsFlagService_v62
 
 - (void)addFlagWithEntryId:(long long)entryId value:(int)value error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId),
 		@"value": @(value)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/announcementsflag/add-flag": _params};
 
@@ -31,9 +31,9 @@
 }
 
 - (void)deleteFlagWithFlagId:(long long)flagId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"flagId": @(flagId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/announcementsflag/delete-flag": _params};
 
@@ -41,10 +41,10 @@
 }
 
 - (NSDictionary *)getFlagWithEntryId:(long long)entryId value:(int)value error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId),
 		@"value": @(value)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/announcementsflag/get-flag": _params};
 

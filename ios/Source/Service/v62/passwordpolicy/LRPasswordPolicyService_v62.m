@@ -20,7 +20,7 @@
 @implementation LRPasswordPolicyService_v62
 
 - (NSDictionary *)addPasswordPolicyWithName:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long long)maxAge warningTime:(long long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long long)lockoutDuration resetFailureCount:(long long)resetFailureCount resetTicketMaxAge:(long long)resetTicketMaxAge error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"name": name,
 		@"description": description,
 		@"changeable": @(changeable),
@@ -45,15 +45,15 @@
 		@"lockoutDuration": @(lockoutDuration),
 		@"resetFailureCount": @(resetFailureCount),
 		@"resetTicketMaxAge": @(resetTicketMaxAge)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/passwordpolicy/add-password-policy": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addPasswordPolicyWithName:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase regex:(NSString *)regex history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long long)maxAge warningTime:(long long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long long)lockoutDuration resetFailureCount:(long long)resetFailureCount resetTicketMaxAge:(long long)resetTicketMaxAge serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addPasswordPolicyWithName:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase regex:(NSString *)regex history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long long)maxAge warningTime:(long long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long long)lockoutDuration resetFailureCount:(long long)resetFailureCount resetTicketMaxAge:(long long)resetTicketMaxAge serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"name": name,
 		@"description": description,
 		@"changeable": @(changeable),
@@ -79,8 +79,9 @@
 		@"lockoutDuration": @(lockoutDuration),
 		@"resetFailureCount": @(resetFailureCount),
 		@"resetTicketMaxAge": @(resetTicketMaxAge),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/passwordpolicy/add-password-policy": _params};
 
@@ -88,9 +89,9 @@
 }
 
 - (void)deletePasswordPolicyWithPasswordPolicyId:(long long)passwordPolicyId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"passwordPolicyId": @(passwordPolicyId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/passwordpolicy/delete-password-policy": _params};
 
@@ -98,7 +99,7 @@
 }
 
 - (NSDictionary *)updatePasswordPolicyWithPasswordPolicyId:(long long)passwordPolicyId name:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long long)maxAge warningTime:(long long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long long)lockoutDuration resetFailureCount:(long long)resetFailureCount resetTicketMaxAge:(long long)resetTicketMaxAge error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"passwordPolicyId": @(passwordPolicyId),
 		@"name": name,
 		@"description": description,
@@ -124,15 +125,15 @@
 		@"lockoutDuration": @(lockoutDuration),
 		@"resetFailureCount": @(resetFailureCount),
 		@"resetTicketMaxAge": @(resetTicketMaxAge)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/passwordpolicy/update-password-policy": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updatePasswordPolicyWithPasswordPolicyId:(long long)passwordPolicyId name:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase regex:(NSString *)regex history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long long)maxAge warningTime:(long long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long long)lockoutDuration resetFailureCount:(long long)resetFailureCount resetTicketMaxAge:(long long)resetTicketMaxAge serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updatePasswordPolicyWithPasswordPolicyId:(long long)passwordPolicyId name:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase regex:(NSString *)regex history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long long)maxAge warningTime:(long long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long long)lockoutDuration resetFailureCount:(long long)resetFailureCount resetTicketMaxAge:(long long)resetTicketMaxAge serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"passwordPolicyId": @(passwordPolicyId),
 		@"name": name,
 		@"description": description,
@@ -159,8 +160,9 @@
 		@"lockoutDuration": @(lockoutDuration),
 		@"resetFailureCount": @(resetFailureCount),
 		@"resetTicketMaxAge": @(resetTicketMaxAge),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/passwordpolicy/update-password-policy": _params};
 

@@ -19,8 +19,8 @@
  */
 @implementation LRSCProductEntryService_v62
 
-- (NSDictionary *)addProductEntryWithName:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addProductEntryWithName:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"name": name,
 		@"type": type,
 		@"tags": tags,
@@ -33,8 +33,9 @@
 		@"licenseIds": licenseIds,
 		@"thumbnails": thumbnails,
 		@"fullImages": fullImages,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/scproductentry/add-product-entry": _params};
 
@@ -42,9 +43,9 @@
 }
 
 - (void)deleteProductEntryWithProductEntryId:(long long)productEntryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"productEntryId": @(productEntryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/scproductentry/delete-product-entry": _params};
 
@@ -52,9 +53,9 @@
 }
 
 - (NSDictionary *)getProductEntryWithProductEntryId:(long long)productEntryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"productEntryId": @(productEntryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/scproductentry/get-product-entry": _params};
 
@@ -62,7 +63,7 @@
 }
 
 - (NSDictionary *)updateProductEntryWithProductEntryId:(long long)productEntryId name:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"productEntryId": @(productEntryId),
 		@"name": name,
 		@"type": type,
@@ -76,7 +77,7 @@
 		@"licenseIds": licenseIds,
 		@"thumbnails": thumbnails,
 		@"fullImages": fullImages
-	};
+	}];
 
 	NSDictionary *_command = @{@"/scproductentry/update-product-entry": _params};
 

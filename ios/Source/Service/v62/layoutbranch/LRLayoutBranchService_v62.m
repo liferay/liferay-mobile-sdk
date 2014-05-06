@@ -19,14 +19,15 @@
  */
 @implementation LRLayoutBranchService_v62
 
-- (NSDictionary *)addLayoutBranchWithLayoutRevisionId:(long long)layoutRevisionId name:(NSString *)name description:(NSString *)description master:(BOOL)master serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addLayoutBranchWithLayoutRevisionId:(long long)layoutRevisionId name:(NSString *)name description:(NSString *)description master:(BOOL)master serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"layoutRevisionId": @(layoutRevisionId),
 		@"name": name,
 		@"description": description,
 		@"master": @(master),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layoutbranch/add-layout-branch": _params};
 
@@ -34,22 +35,23 @@
 }
 
 - (void)deleteLayoutBranchWithLayoutBranchId:(long long)layoutBranchId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"layoutBranchId": @(layoutBranchId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layoutbranch/delete-layout-branch": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateLayoutBranchWithLayoutBranchId:(long long)layoutBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateLayoutBranchWithLayoutBranchId:(long long)layoutBranchId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"layoutBranchId": @(layoutBranchId),
 		@"name": name,
 		@"description": description,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layoutbranch/update-layout-branch": _params};
 

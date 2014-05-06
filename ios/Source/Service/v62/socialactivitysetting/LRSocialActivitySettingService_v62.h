@@ -24,7 +24,7 @@
 - (NSArray *)getActivitySettingsWithGroupId:(long long)groupId error:(NSError **)error;
 - (NSArray *)getJsonActivityDefinitionsWithGroupId:(long long)groupId className:(NSString *)className error:(NSError **)error;
 - (void)updateActivitySettingWithGroupId:(long long)groupId className:(NSString *)className enabled:(BOOL)enabled error:(NSError **)error;
-- (void)updateActivitySettingWithGroupId:(long long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinition:(NSDictionary *)activityCounterDefinition error:(NSError **)error;
+- (void)updateActivitySettingWithGroupId:(long long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinition:(LRJSONObjectWrapper *)activityCounterDefinition error:(NSError **)error;
 - (void)updateActivitySettingsWithGroupId:(long long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinitions:(NSArray *)activityCounterDefinitions error:(NSError **)error;
 
 @end

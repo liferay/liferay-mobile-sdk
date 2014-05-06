@@ -20,10 +20,10 @@
 @implementation LRRatingsEntryService_v62
 
 - (void)deleteEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": className,
 		@"classPK": @(classPK)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ratingsentry/delete-entry": _params};
 
@@ -31,11 +31,11 @@
 }
 
 - (NSDictionary *)updateEntryWithClassName:(NSString *)className classPK:(long long)classPK score:(double)score error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": className,
 		@"classPK": @(classPK),
 		@"score": @(score)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ratingsentry/update-entry": _params};
 

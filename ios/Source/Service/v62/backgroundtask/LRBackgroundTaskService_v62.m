@@ -20,9 +20,9 @@
 @implementation LRBackgroundTaskService_v62
 
 - (NSString *)getBackgroundTaskStatusJsonWithBackgroundTaskId:(long long)backgroundTaskId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"backgroundTaskId": @(backgroundTaskId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/backgroundtask/get-background-task-status-json": _params};
 
@@ -30,11 +30,11 @@
 }
 
 - (NSNumber *)getBackgroundTasksCountWithGroupId:(long long)groupId taskExecutorClassName:(NSString *)taskExecutorClassName completed:(NSString *)completed error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"taskExecutorClassName": taskExecutorClassName,
 		@"completed": completed
-	};
+	}];
 
 	NSDictionary *_command = @{@"/backgroundtask/get-background-tasks-count": _params};
 

@@ -20,9 +20,9 @@
 @implementation LRThemeService_v62
 
 - (NSArray *)getThemesWithCompanyId:(long long)companyId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/theme/get-themes": _params};
 
@@ -30,8 +30,8 @@
 }
 
 - (NSArray *)getWarThemes:(NSError **)error {
-	NSDictionary *_params = @{
-	};
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
 
 	NSDictionary *_command = @{@"/theme/get-war-themes": _params};
 

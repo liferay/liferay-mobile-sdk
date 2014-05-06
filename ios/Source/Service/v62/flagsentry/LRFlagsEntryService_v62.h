@@ -19,6 +19,6 @@
  */
 @interface LRFlagsEntryService_v62 : LRBaseService
 
-- (void)addEntryWithClassName:(NSString *)className classPK:(long long)classPK reporterEmailAddress:(NSString *)reporterEmailAddress reportedUserId:(long long)reportedUserId contentTitle:(NSString *)contentTitle contentURL:(NSString *)contentURL reason:(NSString *)reason serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)addEntryWithClassName:(NSString *)className classPK:(long long)classPK reporterEmailAddress:(NSString *)reporterEmailAddress reportedUserId:(long long)reportedUserId contentTitle:(NSString *)contentTitle contentURL:(NSString *)contentURL reason:(NSString *)reason serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 
 @end

@@ -20,11 +20,11 @@
 @implementation LRExpandoColumnService_v62
 
 - (NSDictionary *)addColumnWithTableId:(long long)tableId name:(NSString *)name type:(int)type error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"tableId": @(tableId),
 		@"name": name,
 		@"type": @(type)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/expandocolumn/add-column": _params};
 
@@ -32,12 +32,12 @@
 }
 
 - (NSDictionary *)addColumnWithTableId:(long long)tableId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"tableId": @(tableId),
 		@"name": name,
 		@"type": @(type),
 		@"defaultData": defaultData
-	};
+	}];
 
 	NSDictionary *_command = @{@"/expandocolumn/add-column": _params};
 
@@ -45,9 +45,9 @@
 }
 
 - (void)deleteColumnWithColumnId:(long long)columnId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"columnId": @(columnId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/expandocolumn/delete-column": _params};
 
@@ -55,11 +55,11 @@
 }
 
 - (NSDictionary *)updateColumnWithColumnId:(long long)columnId name:(NSString *)name type:(int)type error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"columnId": @(columnId),
 		@"name": name,
 		@"type": @(type)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/expandocolumn/update-column": _params};
 
@@ -67,12 +67,12 @@
 }
 
 - (NSDictionary *)updateColumnWithColumnId:(long long)columnId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"columnId": @(columnId),
 		@"name": name,
 		@"type": @(type),
 		@"defaultData": defaultData
-	};
+	}];
 
 	NSDictionary *_command = @{@"/expandocolumn/update-column": _params};
 
@@ -80,10 +80,10 @@
 }
 
 - (NSDictionary *)updateTypeSettingsWithColumnId:(long long)columnId typeSettings:(NSString *)typeSettings error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"columnId": @(columnId),
 		@"typeSettings": typeSettings
-	};
+	}];
 
 	NSDictionary *_command = @{@"/expandocolumn/update-type-settings": _params};
 

@@ -20,7 +20,7 @@
 @implementation LRAnnouncementsEntryService_v62
 
 - (NSDictionary *)addEntryWithPlid:(long long)plid classNameId:(long long)classNameId classPK:(long long)classPK title:(NSString *)title content:(NSString *)content url:(NSString *)url type:(NSString *)type displayDateMonth:(int)displayDateMonth displayDateDay:(int)displayDateDay displayDateYear:(int)displayDateYear displayDateHour:(int)displayDateHour displayDateMinute:(int)displayDateMinute expirationDateMonth:(int)expirationDateMonth expirationDateDay:(int)expirationDateDay expirationDateYear:(int)expirationDateYear expirationDateHour:(int)expirationDateHour expirationDateMinute:(int)expirationDateMinute priority:(int)priority alert:(BOOL)alert error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"plid": @(plid),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
@@ -40,7 +40,7 @@
 		@"expirationDateMinute": @(expirationDateMinute),
 		@"priority": @(priority),
 		@"alert": @(alert)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/announcementsentry/add-entry": _params};
 
@@ -48,7 +48,7 @@
 }
 
 - (NSDictionary *)addEntryWithPlid:(long long)plid classNameId:(long long)classNameId classPK:(long long)classPK title:(NSString *)title content:(NSString *)content url:(NSString *)url type:(NSString *)type displayDateMonth:(int)displayDateMonth displayDateDay:(int)displayDateDay displayDateYear:(int)displayDateYear displayDateHour:(int)displayDateHour displayDateMinute:(int)displayDateMinute displayImmediately:(BOOL)displayImmediately expirationDateMonth:(int)expirationDateMonth expirationDateDay:(int)expirationDateDay expirationDateYear:(int)expirationDateYear expirationDateHour:(int)expirationDateHour expirationDateMinute:(int)expirationDateMinute priority:(int)priority alert:(BOOL)alert error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"plid": @(plid),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
@@ -69,7 +69,7 @@
 		@"expirationDateMinute": @(expirationDateMinute),
 		@"priority": @(priority),
 		@"alert": @(alert)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/announcementsentry/add-entry": _params};
 
@@ -77,9 +77,9 @@
 }
 
 - (void)deleteEntryWithEntryId:(long long)entryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/announcementsentry/delete-entry": _params};
 
@@ -87,9 +87,9 @@
 }
 
 - (NSDictionary *)getEntryWithEntryId:(long long)entryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/announcementsentry/get-entry": _params};
 
@@ -97,7 +97,7 @@
 }
 
 - (NSDictionary *)updateEntryWithEntryId:(long long)entryId title:(NSString *)title content:(NSString *)content url:(NSString *)url type:(NSString *)type displayDateMonth:(int)displayDateMonth displayDateDay:(int)displayDateDay displayDateYear:(int)displayDateYear displayDateHour:(int)displayDateHour displayDateMinute:(int)displayDateMinute displayImmediately:(BOOL)displayImmediately expirationDateMonth:(int)expirationDateMonth expirationDateDay:(int)expirationDateDay expirationDateYear:(int)expirationDateYear expirationDateHour:(int)expirationDateHour expirationDateMinute:(int)expirationDateMinute priority:(int)priority error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId),
 		@"title": title,
 		@"content": content,
@@ -115,7 +115,7 @@
 		@"expirationDateHour": @(expirationDateHour),
 		@"expirationDateMinute": @(expirationDateMinute),
 		@"priority": @(priority)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/announcementsentry/update-entry": _params};
 

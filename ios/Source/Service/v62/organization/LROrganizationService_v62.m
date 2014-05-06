@@ -20,18 +20,18 @@
 @implementation LROrganizationService_v62
 
 - (void)addGroupOrganizationsWithGroupId:(long long)groupId organizationIds:(NSArray *)organizationIds error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"organizationIds": organizationIds
-	};
+	}];
 
 	NSDictionary *_command = @{@"/organization/add-group-organizations": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentOrganizationId": @(parentOrganizationId),
 		@"name": name,
 		@"type": type,
@@ -41,16 +41,17 @@
 		@"statusId": @(statusId),
 		@"comments": comments,
 		@"site": @(site),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/organization/add-organization": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentOrganizationId": @(parentOrganizationId),
 		@"name": name,
 		@"type": type,
@@ -64,16 +65,17 @@
 		@"orgLabors": orgLabors,
 		@"phones": phones,
 		@"websites": websites,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/organization/add-organization": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentOrganizationId": @(parentOrganizationId),
 		@"name": name,
 		@"type": type,
@@ -88,16 +90,17 @@
 		@"orgLabors": orgLabors,
 		@"phones": phones,
 		@"websites": websites,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/organization/add-organization": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentOrganizationId": @(parentOrganizationId),
 		@"name": name,
 		@"type": type,
@@ -106,8 +109,9 @@
 		@"statusId": @(statusId),
 		@"comments": comments,
 		@"site": @(site),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/organization/add-organization": _params};
 
@@ -115,10 +119,10 @@
 }
 
 - (void)addPasswordPolicyOrganizationsWithPasswordPolicyId:(long long)passwordPolicyId organizationIds:(NSArray *)organizationIds error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"passwordPolicyId": @(passwordPolicyId),
 		@"organizationIds": organizationIds
-	};
+	}];
 
 	NSDictionary *_command = @{@"/organization/add-password-policy-organizations": _params};
 
@@ -126,9 +130,9 @@
 }
 
 - (void)deleteLogoWithOrganizationId:(long long)organizationId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/organization/delete-logo": _params};
 
@@ -136,9 +140,9 @@
 }
 
 - (void)deleteOrganizationWithOrganizationId:(long long)organizationId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/organization/delete-organization": _params};
 
@@ -146,10 +150,10 @@
 }
 
 - (NSArray *)getManageableOrganizationsWithActionId:(NSString *)actionId max:(int)max error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"actionId": actionId,
 		@"max": @(max)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/organization/get-manageable-organizations": _params};
 
@@ -157,9 +161,9 @@
 }
 
 - (NSDictionary *)getOrganizationWithOrganizationId:(long long)organizationId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/organization/get-organization": _params};
 
@@ -167,10 +171,10 @@
 }
 
 - (NSNumber *)getOrganizationIdWithCompanyId:(long long)companyId name:(NSString *)name error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"name": name
-	};
+	}];
 
 	NSDictionary *_command = @{@"/organization/get-organization-id": _params};
 
@@ -178,10 +182,10 @@
 }
 
 - (NSArray *)getOrganizationsWithCompanyId:(long long)companyId parentOrganizationId:(long long)parentOrganizationId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"parentOrganizationId": @(parentOrganizationId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/organization/get-organizations": _params};
 
@@ -189,12 +193,12 @@
 }
 
 - (NSArray *)getOrganizationsWithCompanyId:(long long)companyId parentOrganizationId:(long long)parentOrganizationId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"parentOrganizationId": @(parentOrganizationId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/organization/get-organizations": _params};
 
@@ -202,10 +206,10 @@
 }
 
 - (NSNumber *)getOrganizationsCountWithCompanyId:(long long)companyId parentOrganizationId:(long long)parentOrganizationId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"parentOrganizationId": @(parentOrganizationId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/organization/get-organizations-count": _params};
 
@@ -213,9 +217,9 @@
 }
 
 - (NSArray *)getUserOrganizationsWithUserId:(long long)userId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/organization/get-user-organizations": _params};
 
@@ -223,10 +227,10 @@
 }
 
 - (void)setGroupOrganizationsWithGroupId:(long long)groupId organizationIds:(NSArray *)organizationIds error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"organizationIds": organizationIds
-	};
+	}];
 
 	NSDictionary *_command = @{@"/organization/set-group-organizations": _params};
 
@@ -234,10 +238,10 @@
 }
 
 - (void)unsetGroupOrganizationsWithGroupId:(long long)groupId organizationIds:(NSArray *)organizationIds error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"organizationIds": organizationIds
-	};
+	}];
 
 	NSDictionary *_command = @{@"/organization/unset-group-organizations": _params};
 
@@ -245,18 +249,18 @@
 }
 
 - (void)unsetPasswordPolicyOrganizationsWithPasswordPolicyId:(long long)passwordPolicyId organizationIds:(NSArray *)organizationIds error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"passwordPolicyId": @(passwordPolicyId),
 		@"organizationIds": organizationIds
-	};
+	}];
 
 	NSDictionary *_command = @{@"/organization/unset-password-policy-organizations": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateOrganizationWithOrganizationId:(long long)organizationId parentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateOrganizationWithOrganizationId:(long long)organizationId parentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId),
 		@"parentOrganizationId": @(parentOrganizationId),
 		@"name": name,
@@ -266,16 +270,17 @@
 		@"statusId": @(statusId),
 		@"comments": comments,
 		@"site": @(site),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/organization/update-organization": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateOrganizationWithOrganizationId:(long long)organizationId parentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateOrganizationWithOrganizationId:(long long)organizationId parentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId),
 		@"parentOrganizationId": @(parentOrganizationId),
 		@"name": name,
@@ -286,16 +291,17 @@
 		@"statusId": @(statusId),
 		@"comments": comments,
 		@"site": @(site),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/organization/update-organization": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateOrganizationWithOrganizationId:(long long)organizationId parentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateOrganizationWithOrganizationId:(long long)organizationId parentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId),
 		@"parentOrganizationId": @(parentOrganizationId),
 		@"name": name,
@@ -310,16 +316,17 @@
 		@"orgLabors": orgLabors,
 		@"phones": phones,
 		@"websites": websites,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/organization/update-organization": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateOrganizationWithOrganizationId:(long long)organizationId parentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateOrganizationWithOrganizationId:(long long)organizationId parentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId),
 		@"parentOrganizationId": @(parentOrganizationId),
 		@"name": name,
@@ -335,8 +342,9 @@
 		@"orgLabors": orgLabors,
 		@"phones": phones,
 		@"websites": websites,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/organization/update-organization": _params};
 

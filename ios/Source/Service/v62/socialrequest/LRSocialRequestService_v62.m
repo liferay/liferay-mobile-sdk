@@ -19,12 +19,13 @@
  */
 @implementation LRSocialRequestService_v62
 
-- (NSDictionary *)updateRequestWithRequestId:(long long)requestId status:(int)status themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateRequestWithRequestId:(long long)requestId status:(int)status themeDisplay:(LRJSONObjectWrapper *)themeDisplay error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"requestId": @(requestId),
 		@"status": @(status),
-		@"themeDisplay": themeDisplay
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/socialrequest/update-request": _params};
 

@@ -20,13 +20,13 @@
 @implementation LRSCLicenseService_v62
 
 - (NSDictionary *)addLicenseWithName:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"name": name,
 		@"url": url,
 		@"openSource": @(openSource),
 		@"active": @(active),
 		@"recommended": @(recommended)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/sclicense/add-license": _params};
 
@@ -34,9 +34,9 @@
 }
 
 - (void)deleteLicenseWithLicenseId:(long long)licenseId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"licenseId": @(licenseId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/sclicense/delete-license": _params};
 
@@ -44,9 +44,9 @@
 }
 
 - (NSDictionary *)getLicenseWithLicenseId:(long long)licenseId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"licenseId": @(licenseId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/sclicense/get-license": _params};
 
@@ -54,14 +54,14 @@
 }
 
 - (NSDictionary *)updateLicenseWithLicenseId:(long long)licenseId name:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"licenseId": @(licenseId),
 		@"name": name,
 		@"url": url,
 		@"openSource": @(openSource),
 		@"active": @(active),
 		@"recommended": @(recommended)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/sclicense/update-license": _params};
 

@@ -19,29 +19,31 @@
  */
 @implementation LRMDRRuleGroupInstanceService_v62
 
-- (NSDictionary *)addRuleGroupInstanceWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK ruleGroupId:(long long)ruleGroupId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addRuleGroupInstanceWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK ruleGroupId:(long long)ruleGroupId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"className": className,
 		@"classPK": @(classPK),
 		@"ruleGroupId": @(ruleGroupId),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mdrrulegroupinstance/add-rule-group-instance": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addRuleGroupInstanceWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK ruleGroupId:(long long)ruleGroupId priority:(int)priority serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addRuleGroupInstanceWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK ruleGroupId:(long long)ruleGroupId priority:(int)priority serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"className": className,
 		@"classPK": @(classPK),
 		@"ruleGroupId": @(ruleGroupId),
 		@"priority": @(priority),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mdrrulegroupinstance/add-rule-group-instance": _params};
 
@@ -49,23 +51,24 @@
 }
 
 - (void)deleteRuleGroupInstanceWithRuleGroupInstanceId:(long long)ruleGroupInstanceId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"ruleGroupInstanceId": @(ruleGroupInstanceId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mdrrulegroupinstance/delete-rule-group-instance": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getRuleGroupInstancesWithClassName:(NSString *)className classPK:(long long)classPK start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)getRuleGroupInstancesWithClassName:(NSString *)className classPK:(long long)classPK start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": className,
 		@"classPK": @(classPK),
 		@"start": @(start),
 		@"end": @(end),
-		@"orderByComparator": orderByComparator
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:orderByComparator];
 
 	NSDictionary *_command = @{@"/mdrrulegroupinstance/get-rule-group-instances": _params};
 
@@ -73,10 +76,10 @@
 }
 
 - (NSNumber *)getRuleGroupInstancesCountWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": className,
 		@"classPK": @(classPK)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mdrrulegroupinstance/get-rule-group-instances-count": _params};
 
@@ -84,10 +87,10 @@
 }
 
 - (NSDictionary *)updateRuleGroupInstanceWithRuleGroupInstanceId:(long long)ruleGroupInstanceId priority:(int)priority error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"ruleGroupInstanceId": @(ruleGroupInstanceId),
 		@"priority": @(priority)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mdrrulegroupinstance/update-rule-group-instance": _params};
 

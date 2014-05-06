@@ -19,8 +19,8 @@
  */
 @implementation LRDDMTemplateService_v62
 
-- (NSDictionary *)addTemplateWithGroupId:(long long)groupId classNameId:(long long)classNameId classPK:(long long)classPK nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type mode:(NSString *)mode language:(NSString *)language script:(NSString *)script serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addTemplateWithGroupId:(long long)groupId classNameId:(long long)classNameId classPK:(long long)classPK nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type mode:(NSString *)mode language:(NSString *)language script:(NSString *)script serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
@@ -30,16 +30,17 @@
 		@"mode": mode,
 		@"language": language,
 		@"script": script,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddmtemplate/add-template": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addTemplateWithGroupId:(long long)groupId classNameId:(long long)classNameId classPK:(long long)classPK templateKey:(NSString *)templateKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type mode:(NSString *)mode language:(NSString *)language script:(NSString *)script cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallImageFile:(NSDictionary *)smallImageFile serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addTemplateWithGroupId:(long long)groupId classNameId:(long long)classNameId classPK:(long long)classPK templateKey:(NSString *)templateKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type mode:(NSString *)mode language:(NSString *)language script:(NSString *)script cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallImageFile:(LRJSONObjectWrapper *)smallImageFile serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
@@ -53,47 +54,51 @@
 		@"cacheable": @(cacheable),
 		@"smallImage": @(smallImage),
 		@"smallImageURL": smallImageURL,
-		@"smallImageFile": smallImageFile,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"smallImageFile" className:@"java.io.File" wrapper:smallImageFile];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddmtemplate/add-template": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)copyTemplateWithTemplateId:(long long)templateId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)copyTemplateWithTemplateId:(long long)templateId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"templateId": @(templateId),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddmtemplate/copy-template": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)copyTemplateWithTemplateId:(long long)templateId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)copyTemplateWithTemplateId:(long long)templateId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"templateId": @(templateId),
 		@"nameMap": nameMap,
 		@"descriptionMap": descriptionMap,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddmtemplate/copy-template": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)copyTemplatesWithClassNameId:(long long)classNameId classPK:(long long)classPK newClassPK:(long long)newClassPK type:(NSString *)type serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)copyTemplatesWithClassNameId:(long long)classNameId classPK:(long long)classPK newClassPK:(long long)newClassPK type:(NSString *)type serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
 		@"newClassPK": @(newClassPK),
 		@"type": type,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddmtemplate/copy-templates": _params};
 
@@ -101,9 +106,9 @@
 }
 
 - (void)deleteTemplateWithTemplateId:(long long)templateId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"templateId": @(templateId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/delete-template": _params};
 
@@ -111,11 +116,11 @@
 }
 
 - (NSDictionary *)fetchTemplateWithGroupId:(long long)groupId classNameId:(long long)classNameId templateKey:(NSString *)templateKey error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"templateKey": templateKey
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/fetch-template": _params};
 
@@ -123,9 +128,9 @@
 }
 
 - (NSDictionary *)getTemplateWithTemplateId:(long long)templateId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"templateId": @(templateId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/get-template": _params};
 
@@ -133,11 +138,11 @@
 }
 
 - (NSDictionary *)getTemplateWithGroupId:(long long)groupId classNameId:(long long)classNameId templateKey:(NSString *)templateKey error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"templateKey": templateKey
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/get-template": _params};
 
@@ -145,12 +150,12 @@
 }
 
 - (NSDictionary *)getTemplateWithGroupId:(long long)groupId classNameId:(long long)classNameId templateKey:(NSString *)templateKey includeGlobalTemplates:(BOOL)includeGlobalTemplates error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"templateKey": templateKey,
 		@"includeGlobalTemplates": @(includeGlobalTemplates)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/get-template": _params};
 
@@ -158,10 +163,10 @@
 }
 
 - (NSArray *)getTemplatesWithGroupId:(long long)groupId classNameId:(long long)classNameId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/get-templates": _params};
 
@@ -169,11 +174,11 @@
 }
 
 - (NSArray *)getTemplatesWithGroupId:(long long)groupId classNameId:(long long)classNameId classPK:(long long)classPK error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/get-templates": _params};
 
@@ -181,12 +186,12 @@
 }
 
 - (NSArray *)getTemplatesWithGroupId:(long long)groupId classNameId:(long long)classNameId classPK:(long long)classPK type:(NSString *)type error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
 		@"type": type
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/get-templates": _params};
 
@@ -194,13 +199,13 @@
 }
 
 - (NSArray *)getTemplatesWithGroupId:(long long)groupId classNameId:(long long)classNameId classPK:(long long)classPK type:(NSString *)type mode:(NSString *)mode error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
 		@"type": type,
 		@"mode": mode
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/get-templates": _params};
 
@@ -208,24 +213,25 @@
 }
 
 - (NSArray *)getTemplatesByClassPkWithGroupId:(long long)groupId classPK:(long long)classPK error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classPK": @(classPK)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/get-templates-by-class-pk": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getTemplatesByStructureClassNameIdWithGroupId:(long long)groupId structureClassNameId:(long long)structureClassNameId start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)getTemplatesByStructureClassNameIdWithGroupId:(long long)groupId structureClassNameId:(long long)structureClassNameId start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"structureClassNameId": @(structureClassNameId),
 		@"start": @(start),
 		@"end": @(end),
-		@"orderByComparator": orderByComparator
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:orderByComparator];
 
 	NSDictionary *_command = @{@"/ddmtemplate/get-templates-by-structure-class-name-id": _params};
 
@@ -233,18 +239,18 @@
 }
 
 - (NSNumber *)getTemplatesByStructureClassNameIdCountWithGroupId:(long long)groupId structureClassNameId:(long long)structureClassNameId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"structureClassNameId": @(structureClassNameId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/get-templates-by-structure-class-name-id-count": _params};
 
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long long)companyId groupId:(long long)groupId classNameId:(long long)classNameId classPK:(long long)classPK keywords:(NSString *)keywords type:(NSString *)type mode:(NSString *)mode start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)searchWithCompanyId:(long long)companyId groupId:(long long)groupId classNameId:(long long)classNameId classPK:(long long)classPK keywords:(NSString *)keywords type:(NSString *)type mode:(NSString *)mode start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
@@ -254,16 +260,17 @@
 		@"mode": mode,
 		@"start": @(start),
 		@"end": @(end),
-		@"orderByComparator": orderByComparator
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:orderByComparator];
 
 	NSDictionary *_command = @{@"/ddmtemplate/search": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs keywords:(NSString *)keywords type:(NSString *)type mode:(NSString *)mode start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs keywords:(NSString *)keywords type:(NSString *)type mode:(NSString *)mode start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupIds": groupIds,
 		@"classNameIds": classNameIds,
@@ -273,16 +280,17 @@
 		@"mode": mode,
 		@"start": @(start),
 		@"end": @(end),
-		@"orderByComparator": orderByComparator
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:orderByComparator];
 
 	NSDictionary *_command = @{@"/ddmtemplate/search": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long long)companyId groupId:(long long)groupId classNameId:(long long)classNameId classPK:(long long)classPK name:(NSString *)name description:(NSString *)description type:(NSString *)type mode:(NSString *)mode language:(NSString *)language andOperator:(BOOL)andOperator start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)searchWithCompanyId:(long long)companyId groupId:(long long)groupId classNameId:(long long)classNameId classPK:(long long)classPK name:(NSString *)name description:(NSString *)description type:(NSString *)type mode:(NSString *)mode language:(NSString *)language andOperator:(BOOL)andOperator start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
@@ -295,16 +303,17 @@
 		@"andOperator": @(andOperator),
 		@"start": @(start),
 		@"end": @(end),
-		@"orderByComparator": orderByComparator
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:orderByComparator];
 
 	NSDictionary *_command = @{@"/ddmtemplate/search": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs name:(NSString *)name description:(NSString *)description type:(NSString *)type mode:(NSString *)mode language:(NSString *)language andOperator:(BOOL)andOperator start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs name:(NSString *)name description:(NSString *)description type:(NSString *)type mode:(NSString *)mode language:(NSString *)language andOperator:(BOOL)andOperator start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupIds": groupIds,
 		@"classNameIds": classNameIds,
@@ -317,8 +326,9 @@
 		@"andOperator": @(andOperator),
 		@"start": @(start),
 		@"end": @(end),
-		@"orderByComparator": orderByComparator
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:orderByComparator];
 
 	NSDictionary *_command = @{@"/ddmtemplate/search": _params};
 
@@ -326,7 +336,7 @@
 }
 
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupId:(long long)groupId classNameId:(long long)classNameId classPK:(long long)classPK name:(NSString *)name description:(NSString *)description type:(NSString *)type mode:(NSString *)mode language:(NSString *)language andOperator:(BOOL)andOperator error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
@@ -337,7 +347,7 @@
 		@"mode": mode,
 		@"language": language,
 		@"andOperator": @(andOperator)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/search-count": _params};
 
@@ -345,7 +355,7 @@
 }
 
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs name:(NSString *)name description:(NSString *)description type:(NSString *)type mode:(NSString *)mode language:(NSString *)language andOperator:(BOOL)andOperator error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupIds": groupIds,
 		@"classNameIds": classNameIds,
@@ -356,7 +366,7 @@
 		@"mode": mode,
 		@"language": language,
 		@"andOperator": @(andOperator)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/search-count": _params};
 
@@ -364,7 +374,7 @@
 }
 
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupId:(long long)groupId classNameId:(long long)classNameId classPK:(long long)classPK keywords:(NSString *)keywords type:(NSString *)type mode:(NSString *)mode error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
@@ -372,7 +382,7 @@
 		@"keywords": keywords,
 		@"type": type,
 		@"mode": mode
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/search-count": _params};
 
@@ -380,7 +390,7 @@
 }
 
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs keywords:(NSString *)keywords type:(NSString *)type mode:(NSString *)mode error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupIds": groupIds,
 		@"classNameIds": classNameIds,
@@ -388,15 +398,15 @@
 		@"keywords": keywords,
 		@"type": type,
 		@"mode": mode
-	};
+	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/search-count": _params};
 
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateTemplateWithTemplateId:(long long)templateId classPK:(long long)classPK nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type mode:(NSString *)mode language:(NSString *)language script:(NSString *)script cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallImageFile:(NSDictionary *)smallImageFile serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateTemplateWithTemplateId:(long long)templateId classPK:(long long)classPK nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(NSString *)type mode:(NSString *)mode language:(NSString *)language script:(NSString *)script cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallImageFile:(LRJSONObjectWrapper *)smallImageFile serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"templateId": @(templateId),
 		@"classPK": @(classPK),
 		@"nameMap": nameMap,
@@ -408,9 +418,10 @@
 		@"cacheable": @(cacheable),
 		@"smallImage": @(smallImage),
 		@"smallImageURL": smallImageURL,
-		@"smallImageFile": smallImageFile,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"smallImageFile" className:@"java.io.File" wrapper:smallImageFile];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddmtemplate/update-template": _params};
 

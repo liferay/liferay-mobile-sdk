@@ -19,7 +19,7 @@
  */
 @interface LRSCProductVersionService_v62 : LRBaseService
 
-- (NSDictionary *)addProductVersionWithProductEntryId:(long long)productEntryId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addProductVersionWithProductEntryId:(long long)productEntryId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (void)deleteProductVersionWithProductVersionId:(long long)productVersionId error:(NSError **)error;
 - (NSDictionary *)getProductVersionWithProductVersionId:(long long)productVersionId error:(NSError **)error;
 - (NSArray *)getProductVersionsWithProductEntryId:(long long)productEntryId start:(int)start end:(int)end error:(NSError **)error;

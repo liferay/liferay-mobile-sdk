@@ -20,12 +20,12 @@
 @implementation LRLayoutSetService_v62
 
 - (void)updateLayoutSetPrototypeLinkEnabledWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutSetPrototypeLinkEnabled:(BOOL)layoutSetPrototypeLinkEnabled layoutSetPrototypeUuid:(NSString *)layoutSetPrototypeUuid error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"layoutSetPrototypeLinkEnabled": @(layoutSetPrototypeLinkEnabled),
 		@"layoutSetPrototypeUuid": layoutSetPrototypeUuid
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layoutset/update-layout-set-prototype-link-enabled": _params};
 
@@ -33,25 +33,26 @@
 }
 
 - (void)updateLogoWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo bytes:(NSArray *)bytes error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"logo": @(logo),
 		@"bytes": bytes
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layoutset/update-logo": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (void)updateLogoWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo file:(NSDictionary *)file error:(NSError **)error {
-	NSDictionary *_params = @{
+- (void)updateLogoWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"logo": @(logo),
-		@"file": file
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layoutset/update-logo": _params};
 
@@ -59,14 +60,14 @@
 }
 
 - (NSDictionary *)updateLookAndFeelWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId css:(NSString *)css wapTheme:(BOOL)wapTheme error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"themeId": themeId,
 		@"colorSchemeId": colorSchemeId,
 		@"css": css,
 		@"wapTheme": @(wapTheme)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layoutset/update-look-and-feel": _params};
 
@@ -74,11 +75,11 @@
 }
 
 - (NSDictionary *)updateSettingsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout settings:(NSString *)settings error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"settings": settings
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layoutset/update-settings": _params};
 
@@ -86,11 +87,11 @@
 }
 
 - (NSDictionary *)updateVirtualHostWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout virtualHost:(NSString *)virtualHost error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"virtualHost": virtualHost
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layoutset/update-virtual-host": _params};
 

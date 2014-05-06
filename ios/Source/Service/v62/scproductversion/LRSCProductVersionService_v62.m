@@ -19,8 +19,8 @@
  */
 @implementation LRSCProductVersionService_v62
 
-- (NSDictionary *)addProductVersionWithProductEntryId:(long long)productEntryId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addProductVersionWithProductEntryId:(long long)productEntryId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"productEntryId": @(productEntryId),
 		@"version": version,
 		@"changeLog": changeLog,
@@ -29,8 +29,9 @@
 		@"testDirectDownloadURL": @(testDirectDownloadURL),
 		@"repoStoreArtifact": @(repoStoreArtifact),
 		@"frameworkVersionIds": frameworkVersionIds,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/scproductversion/add-product-version": _params};
 
@@ -38,9 +39,9 @@
 }
 
 - (void)deleteProductVersionWithProductVersionId:(long long)productVersionId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"productVersionId": @(productVersionId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/scproductversion/delete-product-version": _params};
 
@@ -48,9 +49,9 @@
 }
 
 - (NSDictionary *)getProductVersionWithProductVersionId:(long long)productVersionId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"productVersionId": @(productVersionId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/scproductversion/get-product-version": _params};
 
@@ -58,11 +59,11 @@
 }
 
 - (NSArray *)getProductVersionsWithProductEntryId:(long long)productEntryId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"productEntryId": @(productEntryId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/scproductversion/get-product-versions": _params};
 
@@ -70,9 +71,9 @@
 }
 
 - (NSNumber *)getProductVersionsCountWithProductEntryId:(long long)productEntryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"productEntryId": @(productEntryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/scproductversion/get-product-versions-count": _params};
 
@@ -80,7 +81,7 @@
 }
 
 - (NSDictionary *)updateProductVersionWithProductVersionId:(long long)productVersionId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"productVersionId": @(productVersionId),
 		@"version": version,
 		@"changeLog": changeLog,
@@ -89,7 +90,7 @@
 		@"testDirectDownloadURL": @(testDirectDownloadURL),
 		@"repoStoreArtifact": @(repoStoreArtifact),
 		@"frameworkVersionIds": frameworkVersionIds
-	};
+	}];
 
 	NSDictionary *_command = @{@"/scproductversion/update-product-version": _params};
 

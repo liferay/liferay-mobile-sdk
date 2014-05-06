@@ -20,14 +20,14 @@
 @implementation LRCountryService_v62
 
 - (NSDictionary *)addCountryWithName:(NSString *)name a2:(NSString *)a2 a3:(NSString *)a3 number:(NSString *)number idd:(NSString *)idd active:(BOOL)active error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"name": name,
 		@"a2": a2,
 		@"a3": a3,
 		@"number": number,
 		@"idd": idd,
 		@"active": @(active)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/country/add-country": _params};
 
@@ -35,9 +35,9 @@
 }
 
 - (NSDictionary *)fetchCountryWithCountryId:(long long)countryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"countryId": @(countryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/country/fetch-country": _params};
 
@@ -45,9 +45,9 @@
 }
 
 - (NSDictionary *)fetchCountryByA2WithA2:(NSString *)a2 error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"a2": a2
-	};
+	}];
 
 	NSDictionary *_command = @{@"/country/fetch-country-by-a2": _params};
 
@@ -55,9 +55,9 @@
 }
 
 - (NSDictionary *)fetchCountryByA3WithA3:(NSString *)a3 error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"a3": a3
-	};
+	}];
 
 	NSDictionary *_command = @{@"/country/fetch-country-by-a3": _params};
 
@@ -65,8 +65,8 @@
 }
 
 - (NSArray *)getCountries:(NSError **)error {
-	NSDictionary *_params = @{
-	};
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
 
 	NSDictionary *_command = @{@"/country/get-countries": _params};
 
@@ -74,9 +74,9 @@
 }
 
 - (NSArray *)getCountriesWithActive:(BOOL)active error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"active": @(active)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/country/get-countries": _params};
 
@@ -84,9 +84,9 @@
 }
 
 - (NSDictionary *)getCountryWithCountryId:(long long)countryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"countryId": @(countryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/country/get-country": _params};
 
@@ -94,9 +94,9 @@
 }
 
 - (NSDictionary *)getCountryByA2WithA2:(NSString *)a2 error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"a2": a2
-	};
+	}];
 
 	NSDictionary *_command = @{@"/country/get-country-by-a2": _params};
 
@@ -104,9 +104,9 @@
 }
 
 - (NSDictionary *)getCountryByA3WithA3:(NSString *)a3 error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"a3": a3
-	};
+	}];
 
 	NSDictionary *_command = @{@"/country/get-country-by-a3": _params};
 
@@ -114,9 +114,9 @@
 }
 
 - (NSDictionary *)getCountryByNameWithName:(NSString *)name error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"name": name
-	};
+	}];
 
 	NSDictionary *_command = @{@"/country/get-country-by-name": _params};
 

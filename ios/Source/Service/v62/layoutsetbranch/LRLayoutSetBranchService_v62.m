@@ -19,16 +19,17 @@
  */
 @implementation LRLayoutSetBranchService_v62
 
-- (NSDictionary *)addLayoutSetBranchWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout name:(NSString *)name description:(NSString *)description master:(BOOL)master copyLayoutSetBranchId:(long long)copyLayoutSetBranchId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addLayoutSetBranchWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout name:(NSString *)name description:(NSString *)description master:(BOOL)master copyLayoutSetBranchId:(long long)copyLayoutSetBranchId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"name": name,
 		@"description": description,
 		@"master": @(master),
 		@"copyLayoutSetBranchId": @(copyLayoutSetBranchId),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layoutsetbranch/add-layout-set-branch": _params};
 
@@ -36,9 +37,9 @@
 }
 
 - (void)deleteLayoutSetBranchWithLayoutSetBranchId:(long long)layoutSetBranchId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"layoutSetBranchId": @(layoutSetBranchId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layoutsetbranch/delete-layout-set-branch": _params};
 
@@ -46,36 +47,38 @@
 }
 
 - (NSArray *)getLayoutSetBranchesWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/layoutsetbranch/get-layout-set-branches": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)mergeLayoutSetBranchWithLayoutSetBranchId:(long long)layoutSetBranchId mergeLayoutSetBranchId:(long long)mergeLayoutSetBranchId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)mergeLayoutSetBranchWithLayoutSetBranchId:(long long)layoutSetBranchId mergeLayoutSetBranchId:(long long)mergeLayoutSetBranchId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"layoutSetBranchId": @(layoutSetBranchId),
 		@"mergeLayoutSetBranchId": @(mergeLayoutSetBranchId),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layoutsetbranch/merge-layout-set-branch": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateLayoutSetBranchWithGroupId:(long long)groupId layoutSetBranchId:(long long)layoutSetBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateLayoutSetBranchWithGroupId:(long long)groupId layoutSetBranchId:(long long)layoutSetBranchId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"layoutSetBranchId": @(layoutSetBranchId),
 		@"name": name,
 		@"description": description,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layoutsetbranch/update-layout-set-branch": _params};
 

@@ -19,13 +19,14 @@
  */
 @implementation LRDLFileShortcutService_v62
 
-- (NSDictionary *)addFileShortcutWithGroupId:(long long)groupId folderId:(long long)folderId toFileEntryId:(long long)toFileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addFileShortcutWithGroupId:(long long)groupId folderId:(long long)folderId toFileEntryId:(long long)toFileEntryId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"toFileEntryId": @(toFileEntryId),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlfileshortcut/add-file-shortcut": _params};
 
@@ -33,9 +34,9 @@
 }
 
 - (void)deleteFileShortcutWithFileShortcutId:(long long)fileShortcutId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileShortcutId": @(fileShortcutId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfileshortcut/delete-file-shortcut": _params};
 
@@ -43,22 +44,23 @@
 }
 
 - (NSDictionary *)getFileShortcutWithFileShortcutId:(long long)fileShortcutId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileShortcutId": @(fileShortcutId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/dlfileshortcut/get-file-shortcut": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateFileShortcutWithFileShortcutId:(long long)fileShortcutId folderId:(long long)folderId toFileEntryId:(long long)toFileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateFileShortcutWithFileShortcutId:(long long)fileShortcutId folderId:(long long)folderId toFileEntryId:(long long)toFileEntryId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileShortcutId": @(fileShortcutId),
 		@"folderId": @(folderId),
 		@"toFileEntryId": @(toFileEntryId),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlfileshortcut/update-file-shortcut": _params};
 

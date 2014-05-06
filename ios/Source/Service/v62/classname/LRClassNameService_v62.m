@@ -20,9 +20,9 @@
 @implementation LRClassNameService_v62
 
 - (NSDictionary *)fetchClassNameWithValue:(NSString *)value error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"value": value
-	};
+	}];
 
 	NSDictionary *_command = @{@"/classname/fetch-class-name": _params};
 
@@ -30,9 +30,9 @@
 }
 
 - (NSNumber *)fetchClassNameIdWithClazz:(NSDictionary *)clazz error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"clazz": clazz
-	};
+	}];
 
 	NSDictionary *_command = @{@"/classname/fetch-class-name-id": _params};
 
@@ -40,9 +40,9 @@
 }
 
 - (NSNumber *)fetchClassNameIdWithValue:(NSString *)value error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"value": value
-	};
+	}];
 
 	NSDictionary *_command = @{@"/classname/fetch-class-name-id": _params};
 

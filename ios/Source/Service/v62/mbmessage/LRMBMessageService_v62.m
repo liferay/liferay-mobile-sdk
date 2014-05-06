@@ -19,8 +19,8 @@
  */
 @implementation LRMBMessageService_v62
 
-- (NSDictionary *)addDiscussionMessageWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK permissionClassName:(NSString *)permissionClassName permissionClassPK:(long long)permissionClassPK permissionOwnerId:(long long)permissionOwnerId threadId:(long long)threadId parentMessageId:(long long)parentMessageId subject:(NSString *)subject body:(NSString *)body serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addDiscussionMessageWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK permissionClassName:(NSString *)permissionClassName permissionClassPK:(long long)permissionClassPK permissionOwnerId:(long long)permissionOwnerId threadId:(long long)threadId parentMessageId:(long long)parentMessageId subject:(NSString *)subject body:(NSString *)body serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"className": className,
 		@"classPK": @(classPK),
@@ -31,16 +31,17 @@
 		@"parentMessageId": @(parentMessageId),
 		@"subject": subject,
 		@"body": body,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mbmessage/add-discussion-message": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addMessageWithGroupId:(long long)groupId categoryId:(long long)categoryId subject:(NSString *)subject body:(NSString *)body format:(NSString *)format inputStreamOVPs:(NSArray *)inputStreamOVPs anonymous:(BOOL)anonymous priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addMessageWithGroupId:(long long)groupId categoryId:(long long)categoryId subject:(NSString *)subject body:(NSString *)body format:(NSString *)format inputStreamOVPs:(NSArray *)inputStreamOVPs anonymous:(BOOL)anonymous priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
 		@"subject": subject,
@@ -50,16 +51,17 @@
 		@"anonymous": @(anonymous),
 		@"priority": @(priority),
 		@"allowPingbacks": @(allowPingbacks),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mbmessage/add-message": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addMessageWithGroupId:(long long)groupId categoryId:(long long)categoryId threadId:(long long)threadId parentMessageId:(long long)parentMessageId subject:(NSString *)subject body:(NSString *)body format:(NSString *)format inputStreamOVPs:(NSArray *)inputStreamOVPs anonymous:(BOOL)anonymous priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addMessageWithGroupId:(long long)groupId categoryId:(long long)categoryId threadId:(long long)threadId parentMessageId:(long long)parentMessageId subject:(NSString *)subject body:(NSString *)body format:(NSString *)format inputStreamOVPs:(NSArray *)inputStreamOVPs anonymous:(BOOL)anonymous priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
 		@"threadId": @(threadId),
@@ -71,29 +73,31 @@
 		@"anonymous": @(anonymous),
 		@"priority": @(priority),
 		@"allowPingbacks": @(allowPingbacks),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mbmessage/add-message": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addMessageWithCategoryId:(long long)categoryId subject:(NSString *)subject body:(NSString *)body serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addMessageWithCategoryId:(long long)categoryId subject:(NSString *)subject body:(NSString *)body serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"categoryId": @(categoryId),
 		@"subject": subject,
 		@"body": body,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mbmessage/add-message": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addMessageWithParentMessageId:(long long)parentMessageId subject:(NSString *)subject body:(NSString *)body format:(NSString *)format inputStreamOVPs:(NSArray *)inputStreamOVPs anonymous:(BOOL)anonymous priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addMessageWithParentMessageId:(long long)parentMessageId subject:(NSString *)subject body:(NSString *)body format:(NSString *)format inputStreamOVPs:(NSArray *)inputStreamOVPs anonymous:(BOOL)anonymous priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentMessageId": @(parentMessageId),
 		@"subject": subject,
 		@"body": body,
@@ -102,8 +106,9 @@
 		@"anonymous": @(anonymous),
 		@"priority": @(priority),
 		@"allowPingbacks": @(allowPingbacks),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mbmessage/add-message": _params};
 
@@ -111,7 +116,7 @@
 }
 
 - (void)deleteDiscussionMessageWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK permissionClassName:(NSString *)permissionClassName permissionClassPK:(long long)permissionClassPK permissionOwnerId:(long long)permissionOwnerId messageId:(long long)messageId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"className": className,
 		@"classPK": @(classPK),
@@ -119,7 +124,7 @@
 		@"permissionClassPK": @(permissionClassPK),
 		@"permissionOwnerId": @(permissionOwnerId),
 		@"messageId": @(messageId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbmessage/delete-discussion-message": _params};
 
@@ -127,9 +132,9 @@
 }
 
 - (void)deleteMessageWithMessageId:(long long)messageId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"messageId": @(messageId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbmessage/delete-message": _params};
 
@@ -137,9 +142,9 @@
 }
 
 - (void)deleteMessageAttachmentsWithMessageId:(long long)messageId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"messageId": @(messageId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbmessage/delete-message-attachments": _params};
 
@@ -147,13 +152,13 @@
 }
 
 - (NSArray *)getCategoryMessagesWithGroupId:(long long)groupId categoryId:(long long)categoryId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbmessage/get-category-messages": _params};
 
@@ -161,19 +166,19 @@
 }
 
 - (NSNumber *)getCategoryMessagesCountWithGroupId:(long long)groupId categoryId:(long long)categoryId status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbmessage/get-category-messages-count": _params};
 
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getCategoryMessagesRssWithGroupId:(long long)groupId categoryId:(long long)categoryId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSString *)getCategoryMessagesRssWithGroupId:(long long)groupId categoryId:(long long)categoryId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(LRJSONObjectWrapper *)themeDisplay error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
 		@"status": @(status),
@@ -183,16 +188,17 @@
 		@"displayStyle": displayStyle,
 		@"feedURL": feedURL,
 		@"entryURL": entryURL,
-		@"themeDisplay": themeDisplay
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/mbmessage/get-category-messages-rss": _params};
 
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getCompanyMessagesRssWithCompanyId:(long long)companyId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSString *)getCompanyMessagesRssWithCompanyId:(long long)companyId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(LRJSONObjectWrapper *)themeDisplay error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"status": @(status),
 		@"max": @(max),
@@ -201,8 +207,9 @@
 		@"displayStyle": displayStyle,
 		@"feedURL": feedURL,
 		@"entryURL": entryURL,
-		@"themeDisplay": themeDisplay
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/mbmessage/get-company-messages-rss": _params};
 
@@ -210,18 +217,18 @@
 }
 
 - (NSNumber *)getGroupMessagesCountWithGroupId:(long long)groupId status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbmessage/get-group-messages-count": _params};
 
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getGroupMessagesRssWithGroupId:(long long)groupId userId:(long long)userId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSString *)getGroupMessagesRssWithGroupId:(long long)groupId userId:(long long)userId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(LRJSONObjectWrapper *)themeDisplay error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"status": @(status),
@@ -231,16 +238,17 @@
 		@"displayStyle": displayStyle,
 		@"feedURL": feedURL,
 		@"entryURL": entryURL,
-		@"themeDisplay": themeDisplay
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/mbmessage/get-group-messages-rss": _params};
 
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getGroupMessagesRssWithGroupId:(long long)groupId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSString *)getGroupMessagesRssWithGroupId:(long long)groupId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(LRJSONObjectWrapper *)themeDisplay error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"status": @(status),
 		@"max": @(max),
@@ -249,8 +257,9 @@
 		@"displayStyle": displayStyle,
 		@"feedURL": feedURL,
 		@"entryURL": entryURL,
-		@"themeDisplay": themeDisplay
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/mbmessage/get-group-messages-rss": _params};
 
@@ -258,9 +267,9 @@
 }
 
 - (NSDictionary *)getMessageWithMessageId:(long long)messageId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"messageId": @(messageId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbmessage/get-message": _params};
 
@@ -268,12 +277,12 @@
 }
 
 - (NSDictionary *)getMessageDisplayWithMessageId:(long long)messageId status:(int)status threadView:(NSString *)threadView includePrevAndNext:(BOOL)includePrevAndNext error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"messageId": @(messageId),
 		@"status": @(status),
 		@"threadView": threadView,
 		@"includePrevAndNext": @(includePrevAndNext)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbmessage/get-message-display": _params};
 
@@ -281,11 +290,11 @@
 }
 
 - (NSNumber *)getThreadAnswersCountWithGroupId:(long long)groupId categoryId:(long long)categoryId threadId:(long long)threadId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
 		@"threadId": @(threadId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbmessage/get-thread-answers-count": _params};
 
@@ -293,14 +302,14 @@
 }
 
 - (NSArray *)getThreadMessagesWithGroupId:(long long)groupId categoryId:(long long)categoryId threadId:(long long)threadId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
 		@"threadId": @(threadId),
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbmessage/get-thread-messages": _params};
 
@@ -308,20 +317,20 @@
 }
 
 - (NSNumber *)getThreadMessagesCountWithGroupId:(long long)groupId categoryId:(long long)categoryId threadId:(long long)threadId status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
 		@"threadId": @(threadId),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbmessage/get-thread-messages-count": _params};
 
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getThreadMessagesRssWithThreadId:(long long)threadId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSString *)getThreadMessagesRssWithThreadId:(long long)threadId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(LRJSONObjectWrapper *)themeDisplay error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"threadId": @(threadId),
 		@"status": @(status),
 		@"max": @(max),
@@ -330,8 +339,9 @@
 		@"displayStyle": displayStyle,
 		@"feedURL": feedURL,
 		@"entryURL": entryURL,
-		@"themeDisplay": themeDisplay
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/mbmessage/get-thread-messages-rss": _params};
 
@@ -339,10 +349,10 @@
 }
 
 - (void)restoreMessageAttachmentFromTrashWithMessageId:(long long)messageId fileName:(NSString *)fileName error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"messageId": @(messageId),
 		@"fileName": fileName
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbmessage/restore-message-attachment-from-trash": _params};
 
@@ -350,9 +360,9 @@
 }
 
 - (void)subscribeMessageWithMessageId:(long long)messageId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"messageId": @(messageId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbmessage/subscribe-message": _params};
 
@@ -360,9 +370,9 @@
 }
 
 - (void)unsubscribeMessageWithMessageId:(long long)messageId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"messageId": @(messageId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbmessage/unsubscribe-message": _params};
 
@@ -370,19 +380,19 @@
 }
 
 - (void)updateAnswerWithMessageId:(long long)messageId answer:(BOOL)answer cascade:(BOOL)cascade error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"messageId": @(messageId),
 		@"answer": @(answer),
 		@"cascade": @(cascade)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbmessage/update-answer": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateDiscussionMessageWithClassName:(NSString *)className classPK:(long long)classPK permissionClassName:(NSString *)permissionClassName permissionClassPK:(long long)permissionClassPK permissionOwnerId:(long long)permissionOwnerId messageId:(long long)messageId subject:(NSString *)subject body:(NSString *)body serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateDiscussionMessageWithClassName:(NSString *)className classPK:(long long)classPK permissionClassName:(NSString *)permissionClassName permissionClassPK:(long long)permissionClassPK permissionOwnerId:(long long)permissionOwnerId messageId:(long long)messageId subject:(NSString *)subject body:(NSString *)body serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": className,
 		@"classPK": @(classPK),
 		@"permissionClassName": permissionClassName,
@@ -391,16 +401,17 @@
 		@"messageId": @(messageId),
 		@"subject": subject,
 		@"body": body,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mbmessage/update-discussion-message": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateMessageWithMessageId:(long long)messageId subject:(NSString *)subject body:(NSString *)body inputStreamOVPs:(NSArray *)inputStreamOVPs existingFiles:(NSArray *)existingFiles priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateMessageWithMessageId:(long long)messageId subject:(NSString *)subject body:(NSString *)body inputStreamOVPs:(NSArray *)inputStreamOVPs existingFiles:(NSArray *)existingFiles priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"messageId": @(messageId),
 		@"subject": subject,
 		@"body": body,
@@ -408,8 +419,9 @@
 		@"existingFiles": existingFiles,
 		@"priority": @(priority),
 		@"allowPingbacks": @(allowPingbacks),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mbmessage/update-message": _params};
 

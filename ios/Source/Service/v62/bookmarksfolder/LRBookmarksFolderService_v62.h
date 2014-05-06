@@ -19,7 +19,7 @@
  */
 @interface LRBookmarksFolderService_v62 : LRBaseService
 
-- (NSDictionary *)addFolderWithParentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addFolderWithParentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (void)deleteFolderWithFolderId:(long long)folderId error:(NSError **)error;
 - (void)deleteFolderWithFolderId:(long long)folderId includeTrashedEntries:(BOOL)includeTrashedEntries error:(NSError **)error;
 - (NSDictionary *)getFolderWithFolderId:(long long)folderId error:(NSError **)error;
@@ -43,6 +43,6 @@
 - (void)restoreFolderFromTrashWithFolderId:(long long)folderId error:(NSError **)error;
 - (void)subscribeFolderWithGroupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error;
 - (void)unsubscribeFolderWithGroupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error;
-- (NSDictionary *)updateFolderWithFolderId:(long long)folderId parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description mergeWithParentFolder:(BOOL)mergeWithParentFolder serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)updateFolderWithFolderId:(long long)folderId parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description mergeWithParentFolder:(BOOL)mergeWithParentFolder serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 
 @end

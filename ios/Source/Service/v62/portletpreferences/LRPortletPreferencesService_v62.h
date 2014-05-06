@@ -20,9 +20,9 @@
 @interface LRPortletPreferencesService_v62 : LRBaseService
 
 - (void)deleteArchivedPreferencesWithPortletItemId:(long long)portletItemId error:(NSError **)error;
-- (void)restoreArchivedPreferencesWithGroupId:(long long)groupId layout:(NSDictionary *)layout portletId:(NSString *)portletId portletItem:(NSDictionary *)portletItem preferences:(NSDictionary *)preferences error:(NSError **)error;
-- (void)restoreArchivedPreferencesWithGroupId:(long long)groupId layout:(NSDictionary *)layout portletId:(NSString *)portletId portletItemId:(long long)portletItemId preferences:(NSDictionary *)preferences error:(NSError **)error;
-- (void)restoreArchivedPreferencesWithGroupId:(long long)groupId name:(NSString *)name layout:(NSDictionary *)layout portletId:(NSString *)portletId preferences:(NSDictionary *)preferences error:(NSError **)error;
-- (void)updateArchivePreferencesWithUserId:(long long)userId groupId:(long long)groupId name:(NSString *)name portletId:(NSString *)portletId preferences:(NSDictionary *)preferences error:(NSError **)error;
+- (void)restoreArchivedPreferencesWithGroupId:(long long)groupId layout:(LRJSONObjectWrapper *)layout portletId:(NSString *)portletId portletItem:(LRJSONObjectWrapper *)portletItem preferences:(LRJSONObjectWrapper *)preferences error:(NSError **)error;
+- (void)restoreArchivedPreferencesWithGroupId:(long long)groupId layout:(LRJSONObjectWrapper *)layout portletId:(NSString *)portletId portletItemId:(long long)portletItemId preferences:(LRJSONObjectWrapper *)preferences error:(NSError **)error;
+- (void)restoreArchivedPreferencesWithGroupId:(long long)groupId name:(NSString *)name layout:(LRJSONObjectWrapper *)layout portletId:(NSString *)portletId preferences:(LRJSONObjectWrapper *)preferences error:(NSError **)error;
+- (void)updateArchivePreferencesWithUserId:(long long)userId groupId:(long long)groupId name:(NSString *)name portletId:(NSString *)portletId preferences:(LRJSONObjectWrapper *)preferences error:(NSError **)error;
 
 @end

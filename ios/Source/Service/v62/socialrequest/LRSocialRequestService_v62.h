@@ -19,6 +19,6 @@
  */
 @interface LRSocialRequestService_v62 : LRBaseService
 
-- (NSDictionary *)updateRequestWithRequestId:(long long)requestId status:(int)status themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error;
+- (NSDictionary *)updateRequestWithRequestId:(long long)requestId status:(int)status themeDisplay:(LRJSONObjectWrapper *)themeDisplay error:(NSError **)error;
 
 @end

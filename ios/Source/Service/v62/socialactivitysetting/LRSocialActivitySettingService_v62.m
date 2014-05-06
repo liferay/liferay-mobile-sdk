@@ -20,11 +20,11 @@
 @implementation LRSocialActivitySettingService_v62
 
 - (NSDictionary *)getActivityDefinitionWithGroupId:(long long)groupId className:(NSString *)className activityType:(int)activityType error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"className": className,
 		@"activityType": @(activityType)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivitysetting/get-activity-definition": _params};
 
@@ -32,10 +32,10 @@
 }
 
 - (NSArray *)getActivityDefinitionsWithGroupId:(long long)groupId className:(NSString *)className error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"className": className
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivitysetting/get-activity-definitions": _params};
 
@@ -43,9 +43,9 @@
 }
 
 - (NSArray *)getActivitySettingsWithGroupId:(long long)groupId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivitysetting/get-activity-settings": _params};
 
@@ -53,10 +53,10 @@
 }
 
 - (NSArray *)getJsonActivityDefinitionsWithGroupId:(long long)groupId className:(NSString *)className error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"className": className
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivitysetting/get-json-activity-definitions": _params};
 
@@ -64,24 +64,25 @@
 }
 
 - (void)updateActivitySettingWithGroupId:(long long)groupId className:(NSString *)className enabled:(BOOL)enabled error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"className": className,
 		@"enabled": @(enabled)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivitysetting/update-activity-setting": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (void)updateActivitySettingWithGroupId:(long long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinition:(NSDictionary *)activityCounterDefinition error:(NSError **)error {
-	NSDictionary *_params = @{
+- (void)updateActivitySettingWithGroupId:(long long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinition:(LRJSONObjectWrapper *)activityCounterDefinition error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"className": className,
 		@"activityType": @(activityType),
-		@"activityCounterDefinition": activityCounterDefinition
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"activityCounterDefinition" className:@"com.liferay.portlet.social.model.SocialActivityCounterDefinition" wrapper:activityCounterDefinition];
 
 	NSDictionary *_command = @{@"/socialactivitysetting/update-activity-setting": _params};
 
@@ -89,12 +90,12 @@
 }
 
 - (void)updateActivitySettingsWithGroupId:(long long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinitions:(NSArray *)activityCounterDefinitions error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"className": className,
 		@"activityType": @(activityType),
 		@"activityCounterDefinitions": activityCounterDefinitions
-	};
+	}];
 
 	NSDictionary *_command = @{@"/socialactivitysetting/update-activity-settings": _params};
 

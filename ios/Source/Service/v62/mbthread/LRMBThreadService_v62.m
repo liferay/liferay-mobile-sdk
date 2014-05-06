@@ -20,9 +20,9 @@
 @implementation LRMBThreadService_v62
 
 - (void)deleteThreadWithThreadId:(long long)threadId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"threadId": @(threadId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/delete-thread": _params};
 
@@ -30,13 +30,13 @@
 }
 
 - (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/get-group-threads": _params};
 
@@ -44,14 +44,14 @@
 }
 
 - (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId modifiedDate:(long long)modifiedDate status:(int)status start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"modifiedDate": @(modifiedDate),
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/get-group-threads": _params};
 
@@ -59,14 +59,14 @@
 }
 
 - (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"status": @(status),
 		@"subscribed": @(subscribed),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/get-group-threads": _params};
 
@@ -74,7 +74,7 @@
 }
 
 - (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"status": @(status),
@@ -82,7 +82,7 @@
 		@"includeAnonymous": @(includeAnonymous),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/get-group-threads": _params};
 
@@ -90,11 +90,11 @@
 }
 
 - (NSNumber *)getGroupThreadsCountWithGroupId:(long long)groupId userId:(long long)userId status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/get-group-threads-count": _params};
 
@@ -102,12 +102,12 @@
 }
 
 - (NSNumber *)getGroupThreadsCountWithGroupId:(long long)groupId userId:(long long)userId modifiedDate:(long long)modifiedDate status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"modifiedDate": @(modifiedDate),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/get-group-threads-count": _params};
 
@@ -115,12 +115,12 @@
 }
 
 - (NSNumber *)getGroupThreadsCountWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"status": @(status),
 		@"subscribed": @(subscribed)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/get-group-threads-count": _params};
 
@@ -128,13 +128,13 @@
 }
 
 - (NSNumber *)getGroupThreadsCountWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"status": @(status),
 		@"subscribed": @(subscribed),
 		@"includeAnonymous": @(includeAnonymous)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/get-group-threads-count": _params};
 
@@ -142,13 +142,13 @@
 }
 
 - (NSArray *)getThreadsWithGroupId:(long long)groupId categoryId:(long long)categoryId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/get-threads": _params};
 
@@ -156,11 +156,11 @@
 }
 
 - (NSNumber *)getThreadsCountWithGroupId:(long long)groupId categoryId:(long long)categoryId status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/get-threads-count": _params};
 
@@ -168,9 +168,9 @@
 }
 
 - (NSDictionary *)lockThreadWithThreadId:(long long)threadId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"threadId": @(threadId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/lock-thread": _params};
 
@@ -178,10 +178,10 @@
 }
 
 - (NSDictionary *)moveThreadWithCategoryId:(long long)categoryId threadId:(long long)threadId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"categoryId": @(categoryId),
 		@"threadId": @(threadId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/move-thread": _params};
 
@@ -189,10 +189,10 @@
 }
 
 - (NSDictionary *)moveThreadFromTrashWithCategoryId:(long long)categoryId threadId:(long long)threadId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"categoryId": @(categoryId),
 		@"threadId": @(threadId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/move-thread-from-trash": _params};
 
@@ -200,9 +200,9 @@
 }
 
 - (NSDictionary *)moveThreadToTrashWithThreadId:(long long)threadId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"threadId": @(threadId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/move-thread-to-trash": _params};
 
@@ -210,9 +210,9 @@
 }
 
 - (void)restoreThreadFromTrashWithThreadId:(long long)threadId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"threadId": @(threadId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/restore-thread-from-trash": _params};
 
@@ -220,13 +220,13 @@
 }
 
 - (NSDictionary *)searchWithGroupId:(long long)groupId creatorUserId:(long long)creatorUserId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"creatorUserId": @(creatorUserId),
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/search": _params};
 
@@ -234,7 +234,7 @@
 }
 
 - (NSDictionary *)searchWithGroupId:(long long)groupId creatorUserId:(long long)creatorUserId startDate:(long long)startDate endDate:(long long)endDate status:(int)status start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"creatorUserId": @(creatorUserId),
 		@"startDate": @(startDate),
@@ -242,19 +242,20 @@
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/search": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)splitThreadWithMessageId:(long long)messageId subject:(NSString *)subject serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)splitThreadWithMessageId:(long long)messageId subject:(NSString *)subject serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"messageId": @(messageId),
 		@"subject": subject,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mbthread/split-thread": _params};
 
@@ -262,9 +263,9 @@
 }
 
 - (void)unlockThreadWithThreadId:(long long)threadId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"threadId": @(threadId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/mbthread/unlock-thread": _params};
 

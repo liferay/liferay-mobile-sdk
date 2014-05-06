@@ -19,12 +19,13 @@
  */
 @implementation LRMembershipRequestService_v62
 
-- (NSDictionary *)addMembershipRequestWithGroupId:(long long)groupId comments:(NSString *)comments serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addMembershipRequestWithGroupId:(long long)groupId comments:(NSString *)comments serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"comments": comments,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/membershiprequest/add-membership-request": _params};
 
@@ -32,10 +33,10 @@
 }
 
 - (void)deleteMembershipRequestsWithGroupId:(long long)groupId statusId:(int)statusId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"statusId": @(statusId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/membershiprequest/delete-membership-requests": _params};
 
@@ -43,22 +44,23 @@
 }
 
 - (NSDictionary *)getMembershipRequestWithMembershipRequestId:(long long)membershipRequestId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"membershipRequestId": @(membershipRequestId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/membershiprequest/get-membership-request": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)updateStatusWithMembershipRequestId:(long long)membershipRequestId reviewComments:(NSString *)reviewComments statusId:(int)statusId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (void)updateStatusWithMembershipRequestId:(long long)membershipRequestId reviewComments:(NSString *)reviewComments statusId:(int)statusId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"membershipRequestId": @(membershipRequestId),
 		@"reviewComments": reviewComments,
 		@"statusId": @(statusId),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/membershiprequest/update-status": _params};
 

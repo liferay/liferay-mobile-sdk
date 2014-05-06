@@ -20,12 +20,12 @@
 @implementation LRRegionService_v62
 
 - (NSDictionary *)addRegionWithCountryId:(long long)countryId regionCode:(NSString *)regionCode name:(NSString *)name active:(BOOL)active error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"countryId": @(countryId),
 		@"regionCode": regionCode,
 		@"name": name,
 		@"active": @(active)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/region/add-region": _params};
 
@@ -33,10 +33,10 @@
 }
 
 - (NSDictionary *)fetchRegionWithCountryId:(long long)countryId regionCode:(NSString *)regionCode error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"countryId": @(countryId),
 		@"regionCode": regionCode
-	};
+	}];
 
 	NSDictionary *_command = @{@"/region/fetch-region": _params};
 
@@ -44,9 +44,9 @@
 }
 
 - (NSDictionary *)getRegionWithRegionId:(long long)regionId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"regionId": @(regionId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/region/get-region": _params};
 
@@ -54,10 +54,10 @@
 }
 
 - (NSDictionary *)getRegionWithCountryId:(long long)countryId regionCode:(NSString *)regionCode error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"countryId": @(countryId),
 		@"regionCode": regionCode
-	};
+	}];
 
 	NSDictionary *_command = @{@"/region/get-region": _params};
 
@@ -65,8 +65,8 @@
 }
 
 - (NSArray *)getRegions:(NSError **)error {
-	NSDictionary *_params = @{
-	};
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
 
 	NSDictionary *_command = @{@"/region/get-regions": _params};
 
@@ -74,9 +74,9 @@
 }
 
 - (NSArray *)getRegionsWithActive:(BOOL)active error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"active": @(active)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/region/get-regions": _params};
 
@@ -84,9 +84,9 @@
 }
 
 - (NSArray *)getRegionsWithCountryId:(long long)countryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"countryId": @(countryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/region/get-regions": _params};
 
@@ -94,10 +94,10 @@
 }
 
 - (NSArray *)getRegionsWithCountryId:(long long)countryId active:(BOOL)active error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"countryId": @(countryId),
 		@"active": @(active)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/region/get-regions": _params};
 

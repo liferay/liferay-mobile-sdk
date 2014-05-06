@@ -20,7 +20,7 @@
 @implementation LROrgLaborService_v62
 
 - (NSDictionary *)addOrgLaborWithOrganizationId:(long long)organizationId typeId:(int)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId),
 		@"typeId": @(typeId),
 		@"sunOpen": @(sunOpen),
@@ -37,7 +37,7 @@
 		@"friClose": @(friClose),
 		@"satOpen": @(satOpen),
 		@"satClose": @(satClose)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/orglabor/add-org-labor": _params};
 
@@ -45,9 +45,9 @@
 }
 
 - (void)deleteOrgLaborWithOrgLaborId:(long long)orgLaborId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"orgLaborId": @(orgLaborId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/orglabor/delete-org-labor": _params};
 
@@ -55,9 +55,9 @@
 }
 
 - (NSDictionary *)getOrgLaborWithOrgLaborId:(long long)orgLaborId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"orgLaborId": @(orgLaborId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/orglabor/get-org-labor": _params};
 
@@ -65,9 +65,9 @@
 }
 
 - (NSArray *)getOrgLaborsWithOrganizationId:(long long)organizationId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/orglabor/get-org-labors": _params};
 
@@ -75,7 +75,7 @@
 }
 
 - (NSDictionary *)updateOrgLaborWithOrgLaborId:(long long)orgLaborId typeId:(int)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"orgLaborId": @(orgLaborId),
 		@"typeId": @(typeId),
 		@"sunOpen": @(sunOpen),
@@ -92,7 +92,7 @@
 		@"friClose": @(friClose),
 		@"satOpen": @(satOpen),
 		@"satClose": @(satClose)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/orglabor/update-org-labor": _params};
 

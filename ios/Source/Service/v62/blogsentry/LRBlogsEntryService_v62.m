@@ -20,9 +20,9 @@
 @implementation LRBlogsEntryService_v62
 
 - (void)deleteEntryWithEntryId:(long long)entryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/blogsentry/delete-entry": _params};
 
@@ -30,20 +30,20 @@
 }
 
 - (NSArray *)getCompanyEntriesWithCompanyId:(long long)companyId displayDate:(long long)displayDate status:(int)status max:(int)max error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"displayDate": @(displayDate),
 		@"status": @(status),
 		@"max": @(max)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/blogsentry/get-company-entries": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getCompanyEntriesRssWithCompanyId:(long long)companyId displayDate:(long long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSString *)getCompanyEntriesRssWithCompanyId:(long long)companyId displayDate:(long long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(LRJSONObjectWrapper *)themeDisplay error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"displayDate": @(displayDate),
 		@"status": @(status),
@@ -53,8 +53,9 @@
 		@"displayStyle": displayStyle,
 		@"feedURL": feedURL,
 		@"entryURL": entryURL,
-		@"themeDisplay": themeDisplay
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/blogsentry/get-company-entries-rss": _params};
 
@@ -62,9 +63,9 @@
 }
 
 - (NSDictionary *)getEntryWithEntryId:(long long)entryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/blogsentry/get-entry": _params};
 
@@ -72,10 +73,10 @@
 }
 
 - (NSDictionary *)getEntryWithGroupId:(long long)groupId urlTitle:(NSString *)urlTitle error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"urlTitle": urlTitle
-	};
+	}];
 
 	NSDictionary *_command = @{@"/blogsentry/get-entry": _params};
 
@@ -83,11 +84,11 @@
 }
 
 - (NSArray *)getGroupEntriesWithGroupId:(long long)groupId status:(int)status max:(int)max error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"status": @(status),
 		@"max": @(max)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/blogsentry/get-group-entries": _params};
 
@@ -95,12 +96,12 @@
 }
 
 - (NSArray *)getGroupEntriesWithGroupId:(long long)groupId displayDate:(long long)displayDate status:(int)status max:(int)max error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"displayDate": @(displayDate),
 		@"status": @(status),
 		@"max": @(max)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/blogsentry/get-group-entries": _params};
 
@@ -108,12 +109,12 @@
 }
 
 - (NSArray *)getGroupEntriesWithGroupId:(long long)groupId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/blogsentry/get-group-entries": _params};
 
@@ -121,13 +122,13 @@
 }
 
 - (NSArray *)getGroupEntriesWithGroupId:(long long)groupId displayDate:(long long)displayDate status:(int)status start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"displayDate": @(displayDate),
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/blogsentry/get-group-entries": _params};
 
@@ -135,10 +136,10 @@
 }
 
 - (NSNumber *)getGroupEntriesCountWithGroupId:(long long)groupId status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/blogsentry/get-group-entries-count": _params};
 
@@ -146,19 +147,19 @@
 }
 
 - (NSNumber *)getGroupEntriesCountWithGroupId:(long long)groupId displayDate:(long long)displayDate status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"displayDate": @(displayDate),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/blogsentry/get-group-entries-count": _params};
 
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getGroupEntriesRssWithGroupId:(long long)groupId displayDate:(long long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSString *)getGroupEntriesRssWithGroupId:(long long)groupId displayDate:(long long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(LRJSONObjectWrapper *)themeDisplay error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"displayDate": @(displayDate),
 		@"status": @(status),
@@ -168,8 +169,9 @@
 		@"displayStyle": displayStyle,
 		@"feedURL": feedURL,
 		@"entryURL": entryURL,
-		@"themeDisplay": themeDisplay
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/blogsentry/get-group-entries-rss": _params};
 
@@ -177,13 +179,13 @@
 }
 
 - (NSArray *)getGroupsEntriesWithCompanyId:(long long)companyId groupId:(long long)groupId displayDate:(long long)displayDate status:(int)status max:(int)max error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"displayDate": @(displayDate),
 		@"status": @(status),
 		@"max": @(max)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/blogsentry/get-groups-entries": _params};
 
@@ -191,20 +193,20 @@
 }
 
 - (NSArray *)getOrganizationEntriesWithOrganizationId:(long long)organizationId displayDate:(long long)displayDate status:(int)status max:(int)max error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId),
 		@"displayDate": @(displayDate),
 		@"status": @(status),
 		@"max": @(max)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/blogsentry/get-organization-entries": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getOrganizationEntriesRssWithOrganizationId:(long long)organizationId displayDate:(long long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSString *)getOrganizationEntriesRssWithOrganizationId:(long long)organizationId displayDate:(long long)displayDate status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(LRJSONObjectWrapper *)themeDisplay error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId),
 		@"displayDate": @(displayDate),
 		@"status": @(status),
@@ -214,8 +216,9 @@
 		@"displayStyle": displayStyle,
 		@"feedURL": feedURL,
 		@"entryURL": entryURL,
-		@"themeDisplay": themeDisplay
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/blogsentry/get-organization-entries-rss": _params};
 
@@ -223,9 +226,9 @@
 }
 
 - (NSDictionary *)moveEntryToTrashWithEntryId:(long long)entryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/blogsentry/move-entry-to-trash": _params};
 
@@ -233,9 +236,9 @@
 }
 
 - (void)restoreEntryFromTrashWithEntryId:(long long)entryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/blogsentry/restore-entry-from-trash": _params};
 
@@ -243,9 +246,9 @@
 }
 
 - (void)subscribeWithGroupId:(long long)groupId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/blogsentry/subscribe": _params};
 
@@ -253,9 +256,9 @@
 }
 
 - (void)unsubscribeWithGroupId:(long long)groupId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/blogsentry/unsubscribe": _params};
 

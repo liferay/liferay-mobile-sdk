@@ -19,17 +19,17 @@
  */
 @interface LRJournalStructureService_v62 : LRBaseService
 
-- (NSDictionary *)addStructureWithGroupId:(long long)groupId structureId:(NSString *)structureId autoStructureId:(BOOL)autoStructureId parentStructureId:(NSString *)parentStructureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addStructureWithGroupId:(long long)groupId structureId:(NSString *)structureId autoStructureId:(BOOL)autoStructureId parentStructureId:(NSString *)parentStructureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)copyStructureWithGroupId:(long long)groupId oldStructureId:(NSString *)oldStructureId newStructureId:(NSString *)newStructureId autoStructureId:(BOOL)autoStructureId error:(NSError **)error;
 - (void)deleteStructureWithGroupId:(long long)groupId structureId:(NSString *)structureId error:(NSError **)error;
 - (NSDictionary *)getStructureWithGroupId:(long long)groupId structureId:(NSString *)structureId error:(NSError **)error;
 - (NSDictionary *)getStructureWithGroupId:(long long)groupId structureId:(NSString *)structureId includeGlobalStructures:(BOOL)includeGlobalStructures error:(NSError **)error;
 - (NSArray *)getStructuresWithGroupId:(long long)groupId error:(NSError **)error;
 - (NSArray *)getStructuresWithGroupIds:(NSArray *)groupIds error:(NSError **)error;
-- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds structureId:(NSString *)structureId name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error;
+- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds structureId:(NSString *)structureId name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error;
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords error:(NSError **)error;
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds structureId:(NSString *)structureId name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator error:(NSError **)error;
-- (NSDictionary *)updateStructureWithGroupId:(long long)groupId structureId:(NSString *)structureId parentStructureId:(NSString *)parentStructureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)updateStructureWithGroupId:(long long)groupId structureId:(NSString *)structureId parentStructureId:(NSString *)parentStructureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 
 @end

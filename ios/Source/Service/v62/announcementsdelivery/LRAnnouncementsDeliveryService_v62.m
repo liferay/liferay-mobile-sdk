@@ -20,13 +20,13 @@
 @implementation LRAnnouncementsDeliveryService_v62
 
 - (NSDictionary *)updateDeliveryWithUserId:(long long)userId type:(NSString *)type email:(BOOL)email sms:(BOOL)sms website:(BOOL)website error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"type": type,
 		@"email": @(email),
 		@"sms": @(sms),
 		@"website": @(website)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/announcementsdelivery/update-delivery": _params};
 

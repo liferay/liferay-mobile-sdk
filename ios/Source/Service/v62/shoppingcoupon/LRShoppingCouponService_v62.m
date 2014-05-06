@@ -19,8 +19,8 @@
  */
 @implementation LRShoppingCouponService_v62
 
-- (NSDictionary *)addCouponWithCode:(NSString *)code autoCode:(BOOL)autoCode name:(NSString *)name description:(NSString *)description startDateMonth:(int)startDateMonth startDateDay:(int)startDateDay startDateYear:(int)startDateYear startDateHour:(int)startDateHour startDateMinute:(int)startDateMinute endDateMonth:(int)endDateMonth endDateDay:(int)endDateDay endDateYear:(int)endDateYear endDateHour:(int)endDateHour endDateMinute:(int)endDateMinute neverExpire:(BOOL)neverExpire active:(BOOL)active limitCategories:(NSString *)limitCategories limitSkus:(NSString *)limitSkus minOrder:(double)minOrder discount:(double)discount discountType:(NSString *)discountType serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addCouponWithCode:(NSString *)code autoCode:(BOOL)autoCode name:(NSString *)name description:(NSString *)description startDateMonth:(int)startDateMonth startDateDay:(int)startDateDay startDateYear:(int)startDateYear startDateHour:(int)startDateHour startDateMinute:(int)startDateMinute endDateMonth:(int)endDateMonth endDateDay:(int)endDateDay endDateYear:(int)endDateYear endDateHour:(int)endDateHour endDateMinute:(int)endDateMinute neverExpire:(BOOL)neverExpire active:(BOOL)active limitCategories:(NSString *)limitCategories limitSkus:(NSString *)limitSkus minOrder:(double)minOrder discount:(double)discount discountType:(NSString *)discountType serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"code": code,
 		@"autoCode": @(autoCode),
 		@"name": name,
@@ -42,8 +42,9 @@
 		@"minOrder": @(minOrder),
 		@"discount": @(discount),
 		@"discountType": discountType,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/shoppingcoupon/add-coupon": _params};
 
@@ -51,10 +52,10 @@
 }
 
 - (void)deleteCouponWithGroupId:(long long)groupId couponId:(long long)couponId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"couponId": @(couponId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/shoppingcoupon/delete-coupon": _params};
 
@@ -62,10 +63,10 @@
 }
 
 - (NSDictionary *)getCouponWithGroupId:(long long)groupId couponId:(long long)couponId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"couponId": @(couponId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/shoppingcoupon/get-coupon": _params};
 
@@ -73,7 +74,7 @@
 }
 
 - (NSArray *)searchWithGroupId:(long long)groupId companyId:(long long)companyId code:(NSString *)code active:(BOOL)active discountType:(NSString *)discountType andOperator:(BOOL)andOperator start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"companyId": @(companyId),
 		@"code": code,
@@ -82,15 +83,15 @@
 		@"andOperator": @(andOperator),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/shoppingcoupon/search": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateCouponWithCouponId:(long long)couponId name:(NSString *)name description:(NSString *)description startDateMonth:(int)startDateMonth startDateDay:(int)startDateDay startDateYear:(int)startDateYear startDateHour:(int)startDateHour startDateMinute:(int)startDateMinute endDateMonth:(int)endDateMonth endDateDay:(int)endDateDay endDateYear:(int)endDateYear endDateHour:(int)endDateHour endDateMinute:(int)endDateMinute neverExpire:(BOOL)neverExpire active:(BOOL)active limitCategories:(NSString *)limitCategories limitSkus:(NSString *)limitSkus minOrder:(double)minOrder discount:(double)discount discountType:(NSString *)discountType serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateCouponWithCouponId:(long long)couponId name:(NSString *)name description:(NSString *)description startDateMonth:(int)startDateMonth startDateDay:(int)startDateDay startDateYear:(int)startDateYear startDateHour:(int)startDateHour startDateMinute:(int)startDateMinute endDateMonth:(int)endDateMonth endDateDay:(int)endDateDay endDateYear:(int)endDateYear endDateHour:(int)endDateHour endDateMinute:(int)endDateMinute neverExpire:(BOOL)neverExpire active:(BOOL)active limitCategories:(NSString *)limitCategories limitSkus:(NSString *)limitSkus minOrder:(double)minOrder discount:(double)discount discountType:(NSString *)discountType serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"couponId": @(couponId),
 		@"name": name,
 		@"description": description,
@@ -111,8 +112,9 @@
 		@"minOrder": @(minOrder),
 		@"discount": @(discount),
 		@"discountType": discountType,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/shoppingcoupon/update-coupon": _params};
 

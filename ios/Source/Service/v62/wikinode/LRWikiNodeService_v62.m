@@ -19,12 +19,13 @@
  */
 @implementation LRWikiNodeService_v62
 
-- (NSDictionary *)addNodeWithName:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addNodeWithName:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"name": name,
 		@"description": description,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/wikinode/add-node": _params};
 
@@ -32,9 +33,9 @@
 }
 
 - (void)deleteNodeWithNodeId:(long long)nodeId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikinode/delete-node": _params};
 
@@ -42,9 +43,9 @@
 }
 
 - (NSDictionary *)getNodeWithNodeId:(long long)nodeId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikinode/get-node": _params};
 
@@ -52,10 +53,10 @@
 }
 
 - (NSDictionary *)getNodeWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"name": name
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikinode/get-node": _params};
 
@@ -63,9 +64,9 @@
 }
 
 - (NSArray *)getNodesWithGroupId:(long long)groupId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikinode/get-nodes": _params};
 
@@ -73,10 +74,10 @@
 }
 
 - (NSArray *)getNodesWithGroupId:(long long)groupId status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikinode/get-nodes": _params};
 
@@ -84,11 +85,11 @@
 }
 
 - (NSArray *)getNodesWithGroupId:(long long)groupId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikinode/get-nodes": _params};
 
@@ -96,12 +97,12 @@
 }
 
 - (NSArray *)getNodesWithGroupId:(long long)groupId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikinode/get-nodes": _params};
 
@@ -109,9 +110,9 @@
 }
 
 - (NSNumber *)getNodesCountWithGroupId:(long long)groupId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikinode/get-nodes-count": _params};
 
@@ -119,10 +120,10 @@
 }
 
 - (NSNumber *)getNodesCountWithGroupId:(long long)groupId status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikinode/get-nodes-count": _params};
 
@@ -130,9 +131,9 @@
 }
 
 - (NSDictionary *)moveNodeToTrashWithNodeId:(long long)nodeId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikinode/move-node-to-trash": _params};
 
@@ -140,9 +141,9 @@
 }
 
 - (void)restoreNodeFromTrashWithNodeId:(long long)nodeId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikinode/restore-node-from-trash": _params};
 
@@ -150,9 +151,9 @@
 }
 
 - (void)subscribeNodeWithNodeId:(long long)nodeId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikinode/subscribe-node": _params};
 
@@ -160,22 +161,23 @@
 }
 
 - (void)unsubscribeNodeWithNodeId:(long long)nodeId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikinode/unsubscribe-node": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateNodeWithNodeId:(long long)nodeId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateNodeWithNodeId:(long long)nodeId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"name": name,
 		@"description": description,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/wikinode/update-node": _params};
 

@@ -20,11 +20,11 @@
 @implementation LRAssetEntryService_v62
 
 - (NSArray *)getCompanyEntriesWithCompanyId:(long long)companyId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/assetentry/get-company-entries": _params};
 
@@ -32,29 +32,31 @@
 }
 
 - (NSNumber *)getCompanyEntriesCountWithCompanyId:(long long)companyId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/assetentry/get-company-entries-count": _params};
 
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getEntriesWithEntryQuery:(NSDictionary *)entryQuery error:(NSError **)error {
-	NSDictionary *_params = @{
-		@"entryQuery": entryQuery
-	};
+- (NSArray *)getEntriesWithEntryQuery:(LRJSONObjectWrapper *)entryQuery error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"entryQuery" className:@"com.liferay.portlet.asset.service.persistence.AssetEntryQuery" wrapper:entryQuery];
 
 	NSDictionary *_command = @{@"/assetentry/get-entries": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getEntriesCountWithEntryQuery:(NSDictionary *)entryQuery error:(NSError **)error {
-	NSDictionary *_params = @{
-		@"entryQuery": entryQuery
-	};
+- (NSNumber *)getEntriesCountWithEntryQuery:(LRJSONObjectWrapper *)entryQuery error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"entryQuery" className:@"com.liferay.portlet.asset.service.persistence.AssetEntryQuery" wrapper:entryQuery];
 
 	NSDictionary *_command = @{@"/assetentry/get-entries-count": _params};
 
@@ -62,9 +64,9 @@
 }
 
 - (NSDictionary *)getEntryWithEntryId:(long long)entryId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/assetentry/get-entry": _params};
 
@@ -72,18 +74,18 @@
 }
 
 - (NSDictionary *)incrementViewCounterWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": className,
 		@"classPK": @(classPK)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/assetentry/increment-view-counter": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateEntryWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK classUuid:(NSString *)classUuid classTypeId:(long long)classTypeId categoryIds:(NSArray *)categoryIds tagNames:(NSArray *)tagNames visible:(BOOL)visible startDate:(long long)startDate endDate:(long long)endDate expirationDate:(long long)expirationDate mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description summary:(NSString *)summary url:(NSString *)url layoutUuid:(NSString *)layoutUuid height:(int)height width:(int)width priority:(NSDictionary *)priority sync:(BOOL)sync error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateEntryWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK classUuid:(NSString *)classUuid classTypeId:(long long)classTypeId categoryIds:(NSArray *)categoryIds tagNames:(NSArray *)tagNames visible:(BOOL)visible startDate:(long long)startDate endDate:(long long)endDate expirationDate:(long long)expirationDate mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description summary:(NSString *)summary url:(NSString *)url layoutUuid:(NSString *)layoutUuid height:(int)height width:(int)width priority:(LRJSONObjectWrapper *)priority sync:(BOOL)sync error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"className": className,
 		@"classPK": @(classPK),
@@ -103,17 +105,17 @@
 		@"layoutUuid": layoutUuid,
 		@"height": @(height),
 		@"width": @(width),
-		@"priority": priority,
 		@"sync": @(sync)
-	};
+	}];
 
+	[self mangleWrapperWithParams:_params name:@"priority" className:@"java.lang.Integer" wrapper:priority];
 	NSDictionary *_command = @{@"/assetentry/update-entry": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateEntryWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK classUuid:(NSString *)classUuid classTypeId:(long long)classTypeId categoryIds:(NSArray *)categoryIds tagNames:(NSArray *)tagNames visible:(BOOL)visible startDate:(long long)startDate endDate:(long long)endDate publishDate:(long long)publishDate expirationDate:(long long)expirationDate mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description summary:(NSString *)summary url:(NSString *)url layoutUuid:(NSString *)layoutUuid height:(int)height width:(int)width priority:(NSDictionary *)priority sync:(BOOL)sync error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateEntryWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK classUuid:(NSString *)classUuid classTypeId:(long long)classTypeId categoryIds:(NSArray *)categoryIds tagNames:(NSArray *)tagNames visible:(BOOL)visible startDate:(long long)startDate endDate:(long long)endDate publishDate:(long long)publishDate expirationDate:(long long)expirationDate mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description summary:(NSString *)summary url:(NSString *)url layoutUuid:(NSString *)layoutUuid height:(int)height width:(int)width priority:(LRJSONObjectWrapper *)priority sync:(BOOL)sync error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"className": className,
 		@"classPK": @(classPK),
@@ -134,17 +136,17 @@
 		@"layoutUuid": layoutUuid,
 		@"height": @(height),
 		@"width": @(width),
-		@"priority": priority,
 		@"sync": @(sync)
-	};
+	}];
 
+	[self mangleWrapperWithParams:_params name:@"priority" className:@"java.lang.Integer" wrapper:priority];
 	NSDictionary *_command = @{@"/assetentry/update-entry": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateEntryWithGroupId:(long long)groupId createDate:(long long)createDate modifiedDate:(long long)modifiedDate className:(NSString *)className classPK:(long long)classPK classUuid:(NSString *)classUuid classTypeId:(long long)classTypeId categoryIds:(NSArray *)categoryIds tagNames:(NSArray *)tagNames visible:(BOOL)visible startDate:(long long)startDate endDate:(long long)endDate expirationDate:(long long)expirationDate mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description summary:(NSString *)summary url:(NSString *)url layoutUuid:(NSString *)layoutUuid height:(int)height width:(int)width priority:(NSDictionary *)priority sync:(BOOL)sync error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updateEntryWithGroupId:(long long)groupId createDate:(long long)createDate modifiedDate:(long long)modifiedDate className:(NSString *)className classPK:(long long)classPK classUuid:(NSString *)classUuid classTypeId:(long long)classTypeId categoryIds:(NSArray *)categoryIds tagNames:(NSArray *)tagNames visible:(BOOL)visible startDate:(long long)startDate endDate:(long long)endDate expirationDate:(long long)expirationDate mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description summary:(NSString *)summary url:(NSString *)url layoutUuid:(NSString *)layoutUuid height:(int)height width:(int)width priority:(LRJSONObjectWrapper *)priority sync:(BOOL)sync error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"createDate": @(createDate),
 		@"modifiedDate": @(modifiedDate),
@@ -166,10 +168,10 @@
 		@"layoutUuid": layoutUuid,
 		@"height": @(height),
 		@"width": @(width),
-		@"priority": priority,
 		@"sync": @(sync)
-	};
+	}];
 
+	[self mangleWrapperWithParams:_params name:@"priority" className:@"java.lang.Integer" wrapper:priority];
 	NSDictionary *_command = @{@"/assetentry/update-entry": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];

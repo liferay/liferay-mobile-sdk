@@ -20,14 +20,14 @@
 @implementation LRExpandoValueService_v62
 
 - (NSDictionary *)addValueWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long long)classPK data:(NSString *)data error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"className": className,
 		@"tableName": tableName,
 		@"columnName": columnName,
 		@"classPK": @(classPK),
 		@"data": data
-	};
+	}];
 
 	NSDictionary *_command = @{@"/expandovalue/add-value": _params};
 
@@ -35,13 +35,13 @@
 }
 
 - (void)addValuesWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName classPK:(long long)classPK attributeValues:(NSDictionary *)attributeValues error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"className": className,
 		@"tableName": tableName,
 		@"classPK": @(classPK),
 		@"attributeValues": attributeValues
-	};
+	}];
 
 	NSDictionary *_command = @{@"/expandovalue/add-values": _params};
 
@@ -49,13 +49,13 @@
 }
 
 - (NSDictionary *)getDataWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long long)classPK error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"className": className,
 		@"tableName": tableName,
 		@"columnName": columnName,
 		@"classPK": @(classPK)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/expandovalue/get-data": _params};
 
@@ -63,13 +63,13 @@
 }
 
 - (NSDictionary *)getDataWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnNames:(NSDictionary *)columnNames classPK:(long long)classPK error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"className": className,
 		@"tableName": tableName,
 		@"columnNames": columnNames,
 		@"classPK": @(classPK)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/expandovalue/get-data": _params};
 
@@ -77,13 +77,13 @@
 }
 
 - (NSDictionary *)getJsonDataWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long long)classPK error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"className": className,
 		@"tableName": tableName,
 		@"columnName": columnName,
 		@"classPK": @(classPK)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/expandovalue/get-json-data": _params};
 

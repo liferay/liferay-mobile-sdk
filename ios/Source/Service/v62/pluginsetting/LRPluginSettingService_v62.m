@@ -20,13 +20,13 @@
 @implementation LRPluginSettingService_v62
 
 - (NSDictionary *)updatePluginSettingWithCompanyId:(long long)companyId pluginId:(NSString *)pluginId pluginType:(NSString *)pluginType roles:(NSString *)roles active:(BOOL)active error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"pluginId": pluginId,
 		@"pluginType": pluginType,
 		@"roles": roles,
 		@"active": @(active)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/pluginsetting/update-plugin-setting": _params};
 

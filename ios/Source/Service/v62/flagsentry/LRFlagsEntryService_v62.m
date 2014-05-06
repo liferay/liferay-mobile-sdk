@@ -19,8 +19,8 @@
  */
 @implementation LRFlagsEntryService_v62
 
-- (void)addEntryWithClassName:(NSString *)className classPK:(long long)classPK reporterEmailAddress:(NSString *)reporterEmailAddress reportedUserId:(long long)reportedUserId contentTitle:(NSString *)contentTitle contentURL:(NSString *)contentURL reason:(NSString *)reason serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (void)addEntryWithClassName:(NSString *)className classPK:(long long)classPK reporterEmailAddress:(NSString *)reporterEmailAddress reportedUserId:(long long)reportedUserId contentTitle:(NSString *)contentTitle contentURL:(NSString *)contentURL reason:(NSString *)reason serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": className,
 		@"classPK": @(classPK),
 		@"reporterEmailAddress": reporterEmailAddress,
@@ -28,8 +28,9 @@
 		@"contentTitle": contentTitle,
 		@"contentURL": contentURL,
 		@"reason": reason,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/flagsentry/add-entry": _params};
 

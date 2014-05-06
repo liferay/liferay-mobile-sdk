@@ -20,23 +20,24 @@
 @implementation LRContactService_v62
 
 - (NSDictionary *)getContactWithContactId:(long long)contactId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"contactId": @(contactId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/contact/get-contact": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getContactsWithClassNameId:(long long)classNameId classPK:(long long)classPK start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)getContactsWithClassNameId:(long long)classNameId classPK:(long long)classPK start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
 		@"start": @(start),
 		@"end": @(end),
-		@"orderByComparator": orderByComparator
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:orderByComparator];
 
 	NSDictionary *_command = @{@"/contact/get-contacts": _params};
 
@@ -44,10 +45,10 @@
 }
 
 - (NSNumber *)getContactsCountWithClassNameId:(long long)classNameId classPK:(long long)classPK error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/contact/get-contacts-count": _params};
 

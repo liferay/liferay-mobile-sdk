@@ -19,23 +19,24 @@
  */
 @implementation LRWikiPageService_v62
 
-- (NSDictionary *)addPageWithNodeId:(long long)nodeId title:(NSString *)title content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addPageWithNodeId:(long long)nodeId title:(NSString *)title content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
 		@"content": content,
 		@"summary": summary,
 		@"minorEdit": @(minorEdit),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/wikipage/add-page": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addPageWithNodeId:(long long)nodeId title:(NSString *)title content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit format:(NSString *)format parentTitle:(NSString *)parentTitle redirectTitle:(NSString *)redirectTitle serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addPageWithNodeId:(long long)nodeId title:(NSString *)title content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit format:(NSString *)format parentTitle:(NSString *)parentTitle redirectTitle:(NSString *)redirectTitle serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
 		@"content": content,
@@ -44,47 +45,49 @@
 		@"format": format,
 		@"parentTitle": parentTitle,
 		@"redirectTitle": redirectTitle,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/wikipage/add-page": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)addPageAttachmentWithNodeId:(long long)nodeId title:(NSString *)title fileName:(NSString *)fileName file:(NSDictionary *)file mimeType:(NSString *)mimeType error:(NSError **)error {
-	NSDictionary *_params = @{
+- (void)addPageAttachmentWithNodeId:(long long)nodeId title:(NSString *)title fileName:(NSString *)fileName file:(LRJSONObjectWrapper *)file mimeType:(NSString *)mimeType error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
 		@"fileName": fileName,
-		@"file": file,
 		@"mimeType": mimeType
-	};
+	}];
 
+	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 	NSDictionary *_command = @{@"/wikipage/add-page-attachment": _params};
 
 	[self.session invoke:_command error:error];
 }
 
 - (void)addPageAttachmentsWithNodeId:(long long)nodeId title:(NSString *)title inputStreamOVPs:(NSArray *)inputStreamOVPs error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
 		@"inputStreamOVPs": inputStreamOVPs
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/add-page-attachments": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (void)changeParentWithNodeId:(long long)nodeId title:(NSString *)title newParentTitle:(NSString *)newParentTitle serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (void)changeParentWithNodeId:(long long)nodeId title:(NSString *)title newParentTitle:(NSString *)newParentTitle serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
 		@"newParentTitle": newParentTitle,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/wikipage/change-parent": _params};
 
@@ -92,12 +95,12 @@
 }
 
 - (void)copyPageAttachmentsWithTemplateNodeId:(long long)templateNodeId templateTitle:(NSString *)templateTitle nodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"templateNodeId": @(templateNodeId),
 		@"templateTitle": templateTitle,
 		@"nodeId": @(nodeId),
 		@"title": title
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/copy-page-attachments": _params};
 
@@ -105,10 +108,10 @@
 }
 
 - (void)deletePageWithNodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/delete-page": _params};
 
@@ -116,11 +119,11 @@
 }
 
 - (void)deletePageWithNodeId:(long long)nodeId title:(NSString *)title version:(double)version error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
 		@"version": @(version)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/delete-page": _params};
 
@@ -128,11 +131,11 @@
 }
 
 - (void)deletePageAttachmentWithNodeId:(long long)nodeId title:(NSString *)title fileName:(NSString *)fileName error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
 		@"fileName": fileName
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/delete-page-attachment": _params};
 
@@ -140,10 +143,10 @@
 }
 
 - (void)deletePageAttachmentsWithNodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/delete-page-attachments": _params};
 
@@ -151,11 +154,11 @@
 }
 
 - (void)deleteTempPageAttachmentWithNodeId:(long long)nodeId fileName:(NSString *)fileName tempFolderName:(NSString *)tempFolderName error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"fileName": fileName,
 		@"tempFolderName": tempFolderName
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/delete-temp-page-attachment": _params};
 
@@ -163,10 +166,10 @@
 }
 
 - (void)deleteTrashPageAttachmentsWithNodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/delete-trash-page-attachments": _params};
 
@@ -174,11 +177,11 @@
 }
 
 - (void)discardDraftWithNodeId:(long long)nodeId title:(NSString *)title version:(double)version error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
 		@"version": @(version)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/discard-draft": _params};
 
@@ -186,12 +189,12 @@
 }
 
 - (NSArray *)getChildrenWithGroupId:(long long)groupId nodeId:(long long)nodeId head:(BOOL)head parentTitle:(NSString *)parentTitle error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"nodeId": @(nodeId),
 		@"head": @(head),
 		@"parentTitle": parentTitle
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/get-children": _params};
 
@@ -199,10 +202,10 @@
 }
 
 - (NSDictionary *)getDraftPageWithNodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/get-draft-page": _params};
 
@@ -210,10 +213,10 @@
 }
 
 - (NSArray *)getNodePagesWithNodeId:(long long)nodeId max:(int)max error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"max": @(max)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/get-node-pages": _params};
 
@@ -221,7 +224,7 @@
 }
 
 - (NSString *)getNodePagesRssWithNodeId:(long long)nodeId max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"max": @(max),
 		@"type": type,
@@ -229,7 +232,7 @@
 		@"displayStyle": displayStyle,
 		@"feedURL": feedURL,
 		@"entryURL": entryURL
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/get-node-pages-rss": _params};
 
@@ -237,7 +240,7 @@
 }
 
 - (NSString *)getNodePagesRssWithNodeId:(long long)nodeId max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL attachmentURLPrefix:(NSString *)attachmentURLPrefix error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"max": @(max),
 		@"type": type,
@@ -246,7 +249,7 @@
 		@"feedURL": feedURL,
 		@"entryURL": entryURL,
 		@"attachmentURLPrefix": attachmentURLPrefix
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/get-node-pages-rss": _params};
 
@@ -254,10 +257,10 @@
 }
 
 - (NSArray *)getOrphansWithGroupId:(long long)groupId nodeId:(long long)nodeId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"nodeId": @(nodeId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/get-orphans": _params};
 
@@ -265,10 +268,10 @@
 }
 
 - (NSDictionary *)getPageWithNodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/get-page": _params};
 
@@ -276,23 +279,24 @@
 }
 
 - (NSDictionary *)getPageWithGroupId:(long long)groupId nodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"nodeId": @(nodeId),
 		@"title": title
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/get-page": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getPageWithNodeId:(long long)nodeId title:(NSString *)title head:(NSDictionary *)head error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)getPageWithNodeId:(long long)nodeId title:(NSString *)title head:(LRJSONObjectWrapper *)head error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
-		@"head": head
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"head" className:@"java.lang.Boolean" wrapper:head];
 
 	NSDictionary *_command = @{@"/wikipage/get-page": _params};
 
@@ -300,11 +304,11 @@
 }
 
 - (NSDictionary *)getPageWithNodeId:(long long)nodeId title:(NSString *)title version:(double)version error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
 		@"version": @(version)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/get-page": _params};
 
@@ -312,30 +316,31 @@
 }
 
 - (NSArray *)getPagesWithGroupId:(long long)groupId userId:(long long)userId nodeId:(long long)nodeId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"nodeId": @(nodeId),
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/get-pages": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getPagesWithGroupId:(long long)groupId nodeId:(long long)nodeId head:(BOOL)head status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSArray *)getPagesWithGroupId:(long long)groupId nodeId:(long long)nodeId head:(BOOL)head status:(int)status start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"nodeId": @(nodeId),
 		@"head": @(head),
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end),
-		@"obc": obc
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/wikipage/get-pages": _params};
 
@@ -343,11 +348,11 @@
 }
 
 - (NSNumber *)getPagesCountWithGroupId:(long long)groupId nodeId:(long long)nodeId head:(BOOL)head error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"nodeId": @(nodeId),
 		@"head": @(head)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/get-pages-count": _params};
 
@@ -355,12 +360,12 @@
 }
 
 - (NSNumber *)getPagesCountWithGroupId:(long long)groupId userId:(long long)userId nodeId:(long long)nodeId status:(int)status error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"nodeId": @(nodeId),
 		@"status": @(status)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/get-pages-count": _params};
 
@@ -368,7 +373,7 @@
 }
 
 - (NSString *)getPagesRssWithCompanyId:(long long)companyId nodeId:(long long)nodeId title:(NSString *)title max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL locale:(NSString *)locale error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -379,7 +384,7 @@
 		@"feedURL": feedURL,
 		@"entryURL": entryURL,
 		@"locale": locale
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/get-pages-rss": _params};
 
@@ -387,7 +392,7 @@
 }
 
 - (NSString *)getPagesRssWithCompanyId:(long long)companyId nodeId:(long long)nodeId title:(NSString *)title max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL attachmentURLPrefix:(NSString *)attachmentURLPrefix locale:(NSString *)locale error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -399,7 +404,7 @@
 		@"entryURL": entryURL,
 		@"attachmentURLPrefix": attachmentURLPrefix,
 		@"locale": locale
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/get-pages-rss": _params};
 
@@ -407,12 +412,12 @@
 }
 
 - (NSArray *)getRecentChangesWithGroupId:(long long)groupId nodeId:(long long)nodeId start:(int)start end:(int)end error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"nodeId": @(nodeId),
 		@"start": @(start),
 		@"end": @(end)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/get-recent-changes": _params};
 
@@ -420,10 +425,10 @@
 }
 
 - (NSNumber *)getRecentChangesCountWithGroupId:(long long)groupId nodeId:(long long)nodeId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"nodeId": @(nodeId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/get-recent-changes-count": _params};
 
@@ -431,23 +436,24 @@
 }
 
 - (NSArray *)getTempPageAttachmentNamesWithNodeId:(long long)nodeId tempFolderName:(NSString *)tempFolderName error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"tempFolderName": tempFolderName
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/get-temp-page-attachment-names": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (void)movePageWithNodeId:(long long)nodeId title:(NSString *)title newTitle:(NSString *)newTitle serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (void)movePageWithNodeId:(long long)nodeId title:(NSString *)title newTitle:(NSString *)newTitle serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
 		@"newTitle": newTitle,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/wikipage/move-page": _params};
 
@@ -455,11 +461,11 @@
 }
 
 - (NSDictionary *)movePageAttachmentToTrashWithNodeId:(long long)nodeId title:(NSString *)title fileName:(NSString *)fileName error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
 		@"fileName": fileName
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/move-page-attachment-to-trash": _params};
 
@@ -467,10 +473,10 @@
 }
 
 - (NSDictionary *)movePageToTrashWithNodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/move-page-to-trash": _params};
 
@@ -478,11 +484,11 @@
 }
 
 - (NSDictionary *)movePageToTrashWithNodeId:(long long)nodeId title:(NSString *)title version:(double)version error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
 		@"version": @(version)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/move-page-to-trash": _params};
 
@@ -490,11 +496,11 @@
 }
 
 - (void)restorePageAttachmentFromTrashWithNodeId:(long long)nodeId title:(NSString *)title fileName:(NSString *)fileName error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
 		@"fileName": fileName
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/restore-page-attachment-from-trash": _params};
 
@@ -502,22 +508,23 @@
 }
 
 - (void)restorePageFromTrashWithResourcePrimKey:(long long)resourcePrimKey error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"resourcePrimKey": @(resourcePrimKey)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/restore-page-from-trash": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)revertPageWithNodeId:(long long)nodeId title:(NSString *)title version:(double)version serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)revertPageWithNodeId:(long long)nodeId title:(NSString *)title version:(double)version serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
 		@"version": @(version),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/wikipage/revert-page": _params};
 
@@ -525,10 +532,10 @@
 }
 
 - (void)subscribePageWithNodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/subscribe-page": _params};
 
@@ -536,18 +543,18 @@
 }
 
 - (void)unsubscribePageWithNodeId:(long long)nodeId title:(NSString *)title error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title
-	};
+	}];
 
 	NSDictionary *_command = @{@"/wikipage/unsubscribe-page": _params};
 
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updatePageWithNodeId:(long long)nodeId title:(NSString *)title version:(double)version content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit format:(NSString *)format parentTitle:(NSString *)parentTitle redirectTitle:(NSString *)redirectTitle serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)updatePageWithNodeId:(long long)nodeId title:(NSString *)title version:(double)version content:(NSString *)content summary:(NSString *)summary minorEdit:(BOOL)minorEdit format:(NSString *)format parentTitle:(NSString *)parentTitle redirectTitle:(NSString *)redirectTitle serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
 		@"version": @(version),
@@ -557,8 +564,9 @@
 		@"format": format,
 		@"parentTitle": parentTitle,
 		@"redirectTitle": redirectTitle,
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/wikipage/update-page": _params};
 

@@ -19,12 +19,13 @@
  */
 @implementation LRPollsVoteService_v62
 
-- (NSDictionary *)addVoteWithQuestionId:(long long)questionId choiceId:(long long)choiceId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSDictionary *_params = @{
+- (NSDictionary *)addVoteWithQuestionId:(long long)questionId choiceId:(long long)choiceId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"questionId": @(questionId),
 		@"choiceId": @(choiceId),
-		@"serviceContext": serviceContext
-	};
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/pollsvote/add-vote": _params};
 

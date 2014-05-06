@@ -20,11 +20,11 @@
 @implementation LRAssetTagPropertyService_v62
 
 - (NSDictionary *)addTagPropertyWithTagId:(long long)tagId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"tagId": @(tagId),
 		@"key": key,
 		@"value": value
-	};
+	}];
 
 	NSDictionary *_command = @{@"/assettagproperty/add-tag-property": _params};
 
@@ -32,9 +32,9 @@
 }
 
 - (void)deleteTagPropertyWithTagPropertyId:(long long)tagPropertyId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"tagPropertyId": @(tagPropertyId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/assettagproperty/delete-tag-property": _params};
 
@@ -42,9 +42,9 @@
 }
 
 - (NSArray *)getTagPropertiesWithTagId:(long long)tagId error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"tagId": @(tagId)
-	};
+	}];
 
 	NSDictionary *_command = @{@"/assettagproperty/get-tag-properties": _params};
 
@@ -52,10 +52,10 @@
 }
 
 - (NSArray *)getTagPropertyValuesWithCompanyId:(long long)companyId key:(NSString *)key error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"key": key
-	};
+	}];
 
 	NSDictionary *_command = @{@"/assettagproperty/get-tag-property-values": _params};
 
@@ -63,11 +63,11 @@
 }
 
 - (NSDictionary *)updateTagPropertyWithTagPropertyId:(long long)tagPropertyId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
-	NSDictionary *_params = @{
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"tagPropertyId": @(tagPropertyId),
 		@"key": key,
 		@"value": value
-	};
+	}];
 
 	NSDictionary *_command = @{@"/assettagproperty/update-tag-property": _params};
 
