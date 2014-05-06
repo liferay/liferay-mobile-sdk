@@ -62,6 +62,23 @@ public class OrderByComparatorTest extends BaseTest {
 		assertEquals("A", second.getString("name"));
 	}
 
+	@Test
+	public void nullOrderByComparator() throws Exception {
+		BookmarksEntryService service = new BookmarksEntryService(session);
+		long groupId = props.getGroupId();
+
+		JSONArray entries = service.getEntries(
+			groupId, ServiceContextTest.PARENT_FOLDER_ID, -1, -1, null);
+
+		assertEquals(2, entries.length());
+
+		JSONObject first = entries.getJSONObject(0);
+		JSONObject second = entries.getJSONObject(1);
+
+		assertEquals("A", first.getString("name"));
+		assertEquals("Z", second.getString("name"));
+	}
+
 	@Before
 	public void setUp() throws Exception {
 		_serviceContextTest = new ServiceContextTest();

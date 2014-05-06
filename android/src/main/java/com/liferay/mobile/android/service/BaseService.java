@@ -36,6 +36,10 @@ public class BaseService {
 		throws JSONException {
 
 		if (wrapper == null) {
+			if (!className.equals(_SERVICE_CONTEXT)) {
+				params.put(name, JSONObject.NULL);
+			}
+
 			return;
 		}
 
@@ -47,5 +51,8 @@ public class BaseService {
 	}
 
 	protected Session session;
+
+	private static final String _SERVICE_CONTEXT =
+		"com.liferay.portal.service.ServiceContext";
 
 }
