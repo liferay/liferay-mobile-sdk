@@ -28,6 +28,14 @@ public class LanguageUtil {
 		return WordUtils.capitalize(word);
 	}
 
+	public String getJSONWrapperClassName(String type) {
+		if (type.startsWith("object<")) {
+			return type.substring(7, type.length() - 1);
+		}
+
+		return type;
+	}
+
 	public String getMethodName(String path) {
 		String last = getMethodURL(path);
 

@@ -34,24 +34,42 @@ ${esc.h}import "${className}.h"
 
 	#objectiveCMethodSignature($action " {")
 
-	##t	NSDictionary *_params = @{
+	##t	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 
-	#foreach ($param in $parameters)
-		#set ($paramName = $param.name)
-		#set ($paramValue = $languageUtil.getParamValue($paramName, $param.type))
+	#foreach ($parameter in $parameters)
+		#set ($parameterType = $languageUtil.getType($parameter.type))
 
-		#set ($line = "@${esc.q}$paramName${esc.q}: $paramValue")
+		#if ($parameterType != "LRJSONObjectWrapper *")
+			#set ($parameterName = $parameter.name)
+			#set ($paramValue = $languageUtil.getParamValue($parameterName, $parameter.type))
 
-		#if ($foreach.hasNext)
-			#set ($line = "$line,")
+			#set ($line = "@${esc.q}$parameterName${esc.q}: $paramValue")
+
+			#if ($foreach.hasNext)
+				#set ($line = "$line,")
+			#end
+
+			##t		$line
 		#end
-
-		##t		$line
 	#end
 
-	##t	};
+	##t	}];
 
 	##n
+
+	#foreach ($parameter in $parameters)
+		#set ($parameterType = $languageUtil.getType($parameter.type))
+
+		#if ($parameterType == "LRJSONObjectWrapper *")
+			#set ($parameterName = $parameter.name)
+
+			##t	[self mangleWrapperWithParams:_params name:@${esc.q}$parameterName${esc.q} className:@${esc.q}$languageUtil.getJSONWrapperClassName($parameter.type)${esc.q} wrapper:$parameterName];
+
+			#if (!$foreach.hasNext)
+				##n
+			#end
+		#end
+	#end
 
 	##t	NSDictionary *_command = @{@${esc.q}$context$action.path${esc.q}: _params};
 

@@ -12,36 +12,11 @@
  * details.
  */
 
-#import "LRBaseService.h"
+#import "BaseTest.h"
 
 /**
  * @author Bruno Farache
  */
-@implementation LRBaseService
-
-- (id)initWithSession:(LRSession *)session {
-	self = [super init];
-
-	if (self) {
-		self.session = session;
-	}
-
-	return self;
-}
-
-- (BOOL)boolValue:(NSNumber *)number {
-	return [number boolValue];
-}
-
-- (void)mangleWrapperWithParams:(NSMutableDictionary *)params
-	name:(NSString *)name className:(NSString *)className
-	wrapper:(LRJSONObjectWrapper *)wrapper {
-
-	if (!wrapper) {
-		return;
-	}
-
-	[wrapper mangleWithParams:params name:name className:className];
-}
+@interface ServiceContextTest : BaseTest
 
 @end

@@ -12,6 +12,7 @@
  * details.
  */
 
+#import "LRJSONObjectWrapper.h"
 #import "LRSession.h"
 
 /**
@@ -23,5 +24,8 @@
 
 - (id)initWithSession:(LRSession *)session;
 - (BOOL)boolValue:(NSNumber *)number;
+- (void)mangleWrapperWithParams:(NSMutableDictionary *)params
+	name:(NSString *)name className:(NSString *)className
+	wrapper:(LRJSONObjectWrapper *)wrapper;
 
 @end

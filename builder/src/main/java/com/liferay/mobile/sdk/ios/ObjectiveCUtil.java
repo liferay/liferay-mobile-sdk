@@ -42,6 +42,10 @@ public class ObjectiveCUtil extends LanguageUtil {
 			type = "NSNumber *";
 		}
 
+		if (type.equals("LRJSONObjectWrapper *")) {
+			return "NSDictionary *";
+		}
+
 		return type;
 	}
 
@@ -66,6 +70,10 @@ public class ObjectiveCUtil extends LanguageUtil {
 
 		if (type.equals("string")) {
 			return "NSString *";
+		}
+
+		if (type.startsWith("object<")) {
+			return "LRJSONObjectWrapper *";
 		}
 
 		return "NSDictionary *";

@@ -12,36 +12,19 @@
  * details.
  */
 
-#import "LRBaseService.h"
-
 /**
  * @author Bruno Farache
  */
-@implementation LRBaseService
+@interface LRJSONObjectWrapper : NSObject
 
-- (id)initWithSession:(LRSession *)session {
-	self = [super init];
+@property (nonatomic, strong) NSString *className;
+@property (nonatomic, strong) NSDictionary *jsonObject;
 
-	if (self) {
-		self.session = session;
-	}
+- (id)initWithJSONObject:(NSDictionary *)jsonObject;
+- (id)initWithClassName:(NSString *)className
+	jsonObject:(NSDictionary *)jsonObject;
 
-	return self;
-}
-
-- (BOOL)boolValue:(NSNumber *)number {
-	return [number boolValue];
-}
-
-- (void)mangleWrapperWithParams:(NSMutableDictionary *)params
-	name:(NSString *)name className:(NSString *)className
-	wrapper:(LRJSONObjectWrapper *)wrapper {
-
-	if (!wrapper) {
-		return;
-	}
-
-	[wrapper mangleWithParams:params name:name className:className];
-}
+- (void)mangleWithParams:(NSMutableDictionary *)params name:(NSString *)name
+	className:(NSString *)className;
 
 @end

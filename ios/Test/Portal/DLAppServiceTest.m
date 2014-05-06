@@ -35,7 +35,7 @@
 
 	NSError *error;
 	NSDictionary *result = [service addFolderWithRepositoryId:repositoryId
-		parentFolderId:0 name:name description:description serviceContext:@{}
+		parentFolderId:0 name:name description:description serviceContext:nil
 		error:&error];
 
 	XCTAssertNil(error);
@@ -73,12 +73,12 @@
 
 	NSError *error;
 	[service addFolderWithRepositoryId:repositoryId parentFolderId:0 name:name1
-		description:description1 serviceContext:@{} error:&error];
+		description:description1 serviceContext:nil error:&error];
 
 	XCTAssertNil(error);
 
 	[service addFolderWithRepositoryId:repositoryId parentFolderId:0 name:name2
-		description:description2 serviceContext:@{} error:&error];
+		description:description2 serviceContext:nil error:&error];
 
 	XCTAssertNil(error);
 	NSArray *result = [batch invoke:&error];
