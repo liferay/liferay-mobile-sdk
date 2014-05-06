@@ -25,7 +25,7 @@
 	LRDLAppService_v62 *service =
 		[[LRDLAppService_v62 alloc] initWithSession:self.session];
 
-	long long repositoryId = [self.settings[@"repositoryId"] longLongValue];
+	long long repositoryId = [self.settings[@"groupId"] longLongValue];
 
 	NSString *name =
 		[NSString stringWithFormat:@"test-name-%@", [[NSUUID UUID] UUIDString]];
@@ -55,7 +55,7 @@
 	LRDLAppService_v62 *service =
 		[[LRDLAppService_v62 alloc] initWithSession:batch];
 
-	long long repositoryId = [self.settings[@"repositoryId"] longLongValue];
+	long long repositoryId = [self.settings[@"groupId"] longLongValue];
 
 	NSString *uuid = [[NSUUID UUID] UUIDString];
 	NSString *name1 = [NSString stringWithFormat:@"1-test-name-%@", uuid];

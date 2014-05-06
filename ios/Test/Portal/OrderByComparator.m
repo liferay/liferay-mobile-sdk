@@ -24,7 +24,7 @@
 	LRBookmarksEntryService_v62 *service = [[LRBookmarksEntryService_v62 alloc]
 		initWithSession:self.session];
 
-	long long groupId = [self.settings[@"repositoryId"] longLongValue];
+	long long groupId = [self.settings[@"groupId"] longLongValue];
 
 	NSString *className =
 		@"com.liferay.portlet.bookmarks.util.comparator.EntryNameComparator";
@@ -52,7 +52,7 @@
 	LRBookmarksEntryService_v62 *service = [[LRBookmarksEntryService_v62 alloc]
 		initWithSession:self.session];
 
-	long long groupId = [self.settings[@"repositoryId"] longLongValue];
+	long long groupId = [self.settings[@"groupId"] longLongValue];
 
 	NSError *error;
 

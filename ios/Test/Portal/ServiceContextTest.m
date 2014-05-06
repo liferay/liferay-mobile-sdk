@@ -51,7 +51,7 @@
 	LRBookmarksEntryService_v62 *service = [[LRBookmarksEntryService_v62 alloc]
 		initWithSession:self.session];
 
-	long long groupId = [self.settings[@"repositoryId"] longLongValue];
+	long long groupId = [self.settings[@"groupId"] longLongValue];
 
 	NSDictionary *entry = [service addEntryWithGroupId:groupId folderId:0
 		name:name url:@"http://www.liferay.com" description:@""

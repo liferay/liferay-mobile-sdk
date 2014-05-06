@@ -8,7 +8,7 @@
 	<string>test@liferay.com</string>
 	<key>password</key>
 	<string>test</string>
-	<key>repositoryId</key>
+	<key>groupId</key>
 	<integer>10184</integer>
 </dict>
 </plist>
