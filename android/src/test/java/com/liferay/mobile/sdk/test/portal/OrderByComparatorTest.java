@@ -65,14 +65,14 @@ public class OrderByComparatorTest extends BaseTest {
 	@Before
 	public void setUp() throws Exception {
 		_serviceContextTest = new ServiceContextTest();
-		_entryA = _serviceContextTest.addEntry("A", null);
-		_entryZ = _serviceContextTest.addEntry("Z", null);
+		_entryA = _serviceContextTest.addBookmarkEntry("A", null);
+		_entryZ = _serviceContextTest.addBookmarkEntry("Z", null);
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		_serviceContextTest.deleteEntry(_entryA);
-		_serviceContextTest.deleteEntry(_entryZ);
+		_serviceContextTest.deleteBookmarkEntry(_entryA);
+		_serviceContextTest.deleteBookmarkEntry(_entryZ);
 	}
 
 	private JSONObject _entryA;

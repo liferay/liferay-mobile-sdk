@@ -40,7 +40,7 @@ public class ServiceContextTest extends BaseTest {
 	}
 
 	@Test
-	public void addEntry() throws Exception {
+	public void addBookmarkEntry() throws Exception {
 		Random random = new Random();
 		String uuid = String.valueOf(Math.abs(random.nextInt()));
 
@@ -48,14 +48,15 @@ public class ServiceContextTest extends BaseTest {
 		jsonObject.put("uuid", uuid);
 		JSONObjectWrapper serviceContext = new JSONObjectWrapper(jsonObject);
 
-		JSONObject entry = addEntry("test", serviceContext);
+		JSONObject entry = addBookmarkEntry("test", serviceContext);
 
 		assertEquals(uuid, entry.getString("uuid"));
 
-		deleteEntry(entry);
+		deleteBookmarkEntry(entry);
 	}
 
-	public JSONObject addEntry(String name, JSONObjectWrapper serviceContext)
+	public JSONObject addBookmarkEntry(
+			String name, JSONObjectWrapper serviceContext)
 		throws Exception {
 
 		BookmarksEntryService service = new BookmarksEntryService(session);
@@ -66,7 +67,7 @@ public class ServiceContextTest extends BaseTest {
 			serviceContext);
 	}
 
-	public void deleteEntry(JSONObject entry) throws Exception {
+	public void deleteBookmarkEntry(JSONObject entry) throws Exception {
 		BookmarksEntryService service = new BookmarksEntryService(session);
 		service.deleteEntry(entry.getLong("entryId"));
 	}
