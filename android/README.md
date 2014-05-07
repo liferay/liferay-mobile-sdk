@@ -12,6 +12,9 @@
 * [Use](#use)
 	* [Asynchronous](#asynchronous)
 	* [Batch](#batch)
+	* [Passing complex objects as argument](#passing-complex-objects-as-argument)
+		* [OrderByComparator](#orderbycomparator)
+		* [ServiceContext](#servicecontext)
 
 ## Sample
 
@@ -276,3 +279,81 @@ batch.setCallback(new BatchAsyncTaskCallback() {
 ```
 
 As you can see, the return type is always a `JSONArray`.
+
+#### Passing complex objects as argument
+
+There are some special cases in which service methods arguments are not
+primitives. In these cases, you should use `JSONObjectWrapper`, for example:
+
+```java
+JSONObjectWrapper wrapper = new JSONObjectWrapper(new JSONObject());
+```
+
+You must pass a JSON containing the object properties and their values. On
+the server side, your object will be instantiated and setters for each property
+will called with the values from the JSON you passed.
+
+There are some other cases in which server service methods require interfaces or
+abstract classes arguments. Since it's impossible for the SDK to guess which
+implementation you want to use, you must initialize `JSONObjectWrapper` with
+the className, like that:
+
+```java
+JSONObjectWrapper wrapper = new JSONObjectWrapper(className, new JSONObject());
+```
+
+The server will look for the class name in its classpath and instantiate the
+object for you, then call setters just like the previous example.
+`OrderByComparator` is a good example, more about that bellow.
+
+##### OrderByComparator
+
+On the server side, `OrderByComparator` is an abstract class, because of that,
+you must pass the name of a class that implements it, for example:
+
+```java
+String className = "com.liferay.portlet.bookmarks.util.comparator.EntryNameComparator";
+
+JSONObjectWrapper orderByComparator = new JSONObjectWrapper(className, new JSONObject());
+```
+
+If the service you are calling accepts `null` for a comparator argument, just
+pass `null` to the service call.
+
+You probably want to set the ascending property for a comparator. Unfortunately,
+as of Liferay 6.2, most Liferay `OrderByComparator` implementations don't have a
+setter for this property and it's not possible to set from the SDK. This will be
+fixed in future portal versions.
+
+However, if you have a custom `OrderByComparator` that has a setter for
+ascending you can do:
+
+```java
+String className = "com.example.MyOrderByComparator";
+
+JSONObject jsonObject = new JSONObject();
+jsonObject.put("ascending", true);
+
+JSONObjectWrapper orderByComparator = new JSONObjectWrapper(className, jsonObject);
+```
+
+For more examples, take a look at this test case: [OrderByComparatorTest.java](src/test/java/com/liferay/mobile/sdk/test/portal/OrderByComparatorTest.java).
+
+##### ServiceContext
+
+`ServiceContext` is a special case because most Liferay services methods require
+it, however, you are not required to pass it to the SDK, you can just pass
+`null`. The server will create a `ServiceContext` instance with default values
+for you.
+
+If there is some property you want to set for `ServiceContext` you can do:
+
+```java
+JSONObject jsonObject = new JSONObject();
+jsonObject.put("addGroupPermissions", true);
+jsonObject.put("addGuestPermissions", true);
+
+JSONObjectWrapper serviceContext = new JSONObjectWrapper(jsonObject);
+```
+
+For more examples, take a look at this test case: [ServiceContextTest.java](src/test/java/com/liferay/mobile/sdk/test/portal/ServiceContextTest.java).

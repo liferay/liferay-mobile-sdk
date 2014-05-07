@@ -297,8 +297,8 @@ as of Liferay 6.2, most Liferay `OrderByComparator` implementations don't have a
 setter for this property and it's not possible to set from the SDK. This will be
 fixed in future portal versions.
 
-If you have a custom `OrderByComparator` which have a setter for ascending you
-can do:
+However, if you have a custom `OrderByComparator` that has a setter for
+ascending you can do:
 
 ```objective-c
 NSString *className = @"com.example.MyOrderByComparator";
