@@ -12,7 +12,7 @@
 * [Use](#use)
 	* [Asynchronous](#asynchronous)
 	* [Batch](#batch)
-	* [Passing complex objects as argument](#passing-complex-objects-as-argument)
+	* [Non-primitive arguments](#non-primitive-arguments)
 		* [OrderByComparator](#orderbycomparator)
 		* [ServiceContext](#servicecontext)
 
@@ -252,7 +252,7 @@ as usual:
 
 The return type for batch calls is always an `NSArray`.
 
-#### Passing complex objects as argument
+#### Non-primitive arguments
 
 There are some special cases in which service methods arguments are not
 primitives. In these cases, you should use `LRJSONObjectWrapper`, for example:
