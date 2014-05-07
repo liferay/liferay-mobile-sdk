@@ -323,7 +323,8 @@ If there is some property you want to set for `ServiceContext` you can do:
 
 ```objective-c
 NSDictionary *jsonObject = @{
-	@"uuid": uuid
+	@"addGroupPermissions": @(YES),
+	@"addGuestPermissions": @(YES)
 };
 
 LRJSONObjectWrapper *serviceContext = [[LRJSONObjectWrapper alloc] initWithJSONObject:jsonObject];
