@@ -16,15 +16,14 @@
 
 NSString *const LR_ERROR_DOMAIN = @"com.liferay.mobile";
 NSString *const LR_GET = @"GET";
+NSString *const LR_HEAD = @"HEAD";
 NSString *const LR_IF_MODIFIED_SINCE = @"If-Modified-Since";
 NSString *const LR_LAST_MODIFIED = @"Last-Modified";
+NSString *const LR_POST = @"POST";
 const int LR_STATUS_OK = 200;
 const int LR_STATUS_UNAUTHORIZED = 401;
 const int LR_UNKNOWN_VERSION = -1;
 const int LR_VERSION_6_2 = 6200;
-
-static NSString *const _HEAD = @"HEAD";
-static NSString *const _POST = @"POST";
 
 /**
  * @author Bruno Farache
@@ -53,7 +52,7 @@ static NSMutableDictionary *_versions;
 	NSMutableURLRequest *request =
 		[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL]];
 
-	[request setHTTPMethod:_HEAD];
+	[request setHTTPMethod:LR_HEAD];
 
 	NSHTTPURLResponse *response;
 
@@ -152,7 +151,7 @@ static NSMutableDictionary *_versions;
 	NSData *body = [NSJSONSerialization dataWithJSONObject:commands options:0
 		error:error];
 
-	[request setHTTPMethod:_POST];
+	[request setHTTPMethod:LR_POST];
 	[request setTimeoutInterval:session.connectionTimeout];
 	[request setValue:authHeader forHTTPHeaderField:@"Authorization"];
 	[request setValue:@"application/json; charset=utf-8"
