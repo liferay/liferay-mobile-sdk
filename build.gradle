@@ -103,6 +103,15 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 	task signPom(type: Sign, dependsOn: install) {
 		sign file('build/poms/pom-default.xml')
 	}
+
+	task generatePom(type: Copy, dependsOn: signPom) {
+		from 'build/poms'
+		into 'build/libs'
+
+		rename { String name ->
+			name.replace('pom-default.xml', "${archivesBaseName}-${version}.pom")
+		}
+	}
 }
 
 configure(subprojects.findAll { it.name != 'builder' }) {
