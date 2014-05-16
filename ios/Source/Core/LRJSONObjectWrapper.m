@@ -59,10 +59,10 @@
 		name:(NSString *)name {
 
 	for (NSString *key in self.jsonObject) {
-		name = [NSString stringWithFormat:@"%@.%@", name, key];
+		NSString *paramKey = [NSString stringWithFormat:@"%@.%@", name, key];
 		id value = [self.jsonObject objectForKey:key];
 
-		[params setObject:value forKey:name];
+		[params setObject:value forKey:paramKey];
 	}
 }
 

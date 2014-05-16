@@ -26,7 +26,9 @@ const int PARENT_FOLDER_ID = 0;
 	NSString *uuid = [[NSUUID UUID] UUIDString];
 
 	NSDictionary *jsonObject = @{
-		@"uuid": uuid
+		@"uuid": uuid,
+		@"addGroupPermissions": @(YES),
+		@"addGuestPermissions":@(YES)
 	};
 
 	LRJSONObjectWrapper *serviceContext = [[LRJSONObjectWrapper alloc]

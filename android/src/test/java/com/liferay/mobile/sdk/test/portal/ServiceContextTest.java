@@ -46,6 +46,8 @@ public class ServiceContextTest extends BaseTest {
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("uuid", uuid);
+		jsonObject.put("addGroupPermissions", true);
+		jsonObject.put("addGuestPermissions", true);
 		JSONObjectWrapper serviceContext = new JSONObjectWrapper(jsonObject);
 
 		JSONObject entry = addBookmarkEntry("test", serviceContext);
