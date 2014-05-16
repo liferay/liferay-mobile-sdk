@@ -53,7 +53,7 @@ repositories {
 }
 
 dependencies {
-	compile group: 'com.liferay.mobile', name: 'liferay-android-sdk', version: '6.2.0.3'
+	compile group: 'com.liferay.mobile', name: 'liferay-android-sdk', version: '6.2.0.+'
 }
 ```
 
@@ -63,7 +63,7 @@ You can do the same and add to your pom.xml if you are using Maven:
 <dependency>
     <groupId>com.liferay.mobile</groupId>
     <artifactId>liferay-android-sdk</artifactId>
-    <version>6.2.0.3</version>
+    <version>LATEST</version>
 </dependency>
 ```
 
