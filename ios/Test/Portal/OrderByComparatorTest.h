@@ -18,7 +18,7 @@
 /**
  * @author Bruno Farache
  */
-@interface OrderByComparator : BaseTest
+@interface OrderByComparatorTest : BaseTest
 
 @property (nonatomic, strong) NSDictionary *entryA;
 @property (nonatomic, strong) NSDictionary *entryB;

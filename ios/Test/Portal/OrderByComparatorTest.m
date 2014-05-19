@@ -12,13 +12,13 @@
  * details.
  */
 
-#import "OrderByComparator.h"
+#import "OrderByComparatorTest.h"
 #import "LRBookmarksEntryService_v62.h"
 
 /**
  * @author Bruno Farache
  */
-@implementation OrderByComparator
+@implementation OrderByComparatorTest
 
 - (void)testGetEntriesDescending {
 	LRBookmarksEntryService_v62 *service = [[LRBookmarksEntryService_v62 alloc]

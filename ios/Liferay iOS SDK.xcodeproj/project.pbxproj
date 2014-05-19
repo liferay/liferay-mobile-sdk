@@ -123,7 +123,7 @@
 		CC83D48F18ED6BE300CFA142 /* BaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC83D48E18ED6BE300CFA142 /* BaseTest.m */; };
 		CC88DE63192A2B1B0008D3D1 /* SpecialCharsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC88DE61192A2B1B0008D3D1 /* SpecialCharsTest.m */; };
 		CCA6594518EC4BE800957D20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
-		CCA7166E1919511F00712D1C /* OrderByComparator.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA7166C1919511F00712D1C /* OrderByComparator.m */; };
+		CCA7166E1919511F00712D1C /* OrderByComparatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */; };
 		CCCF04E019182584005D1B22 /* LRJSONObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */; };
 		CCCF04E319192798005D1B22 /* ServiceContextTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCF04E219192798005D1B22 /* ServiceContextTest.m */; };
 /* End PBXBuildFile section */
@@ -382,8 +382,8 @@
 		CCA6594418EC4BE800957D20 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CCA6595218EC4BE800957D20 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CCA6595518EC4BE800957D20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		CCA7166C1919511F00712D1C /* OrderByComparator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderByComparator.m; sourceTree = "<group>"; };
-		CCA7166D1919511F00712D1C /* OrderByComparator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderByComparator.h; sourceTree = "<group>"; };
+		CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderByComparatorTest.m; sourceTree = "<group>"; };
+		CCA7166D1919511F00712D1C /* OrderByComparatorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderByComparatorTest.h; sourceTree = "<group>"; };
 		CCCF04E119192798005D1B22 /* ServiceContextTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceContextTest.h; sourceTree = "<group>"; };
 		CCCF04E219192798005D1B22 /* ServiceContextTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceContextTest.m; sourceTree = "<group>"; };
 		CCD60E10191820BE00935937 /* LRJSONObjectWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRJSONObjectWrapper.h; sourceTree = "<group>"; };
@@ -1462,8 +1462,8 @@
 				CC1C89701907FA19004D3C4C /* GroupServiceAsyncTest.m */,
 				CC03FD1F18EDA05B00F3F16C /* GroupServiceTest.h */,
 				CC03FD2018EDA05B00F3F16C /* GroupServiceTest.m */,
-				CCA7166D1919511F00712D1C /* OrderByComparator.h */,
-				CCA7166C1919511F00712D1C /* OrderByComparator.m */,
+				CCA7166D1919511F00712D1C /* OrderByComparatorTest.h */,
+				CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */,
 				CC03FD2118EDA05B00F3F16C /* PortalVersionTest.h */,
 				CC03FD2218EDA05B00F3F16C /* PortalVersionTest.m */,
 				CC03FD2318EDA05B00F3F16C /* PortletServiceTest.h */,
@@ -1684,7 +1684,7 @@
 				CC03FCB718ED7DCD00F3F16C /* LRClassNameService_v62.m in Sources */,
 				CC03FD0118ED7DCD00F3F16C /* LRTrashEntryService_v62.m in Sources */,
 				CC03FCC118ED7DCD00F3F16C /* LRDLFileEntryTypeService_v62.m in Sources */,
-				CCA7166E1919511F00712D1C /* OrderByComparator.m in Sources */,
+				CCA7166E1919511F00712D1C /* OrderByComparatorTest.m in Sources */,
 				CC03FCA518ED7DCD00F3F16C /* LRBatchSession.m in Sources */,
 				CC03FCBC18ED7DCD00F3F16C /* LRDDLRecordSetService_v62.m in Sources */,
 				CC03FCCA18ED7DCD00F3F16C /* LRImageService_v62.m in Sources */,
