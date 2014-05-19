@@ -36,6 +36,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import org.json.JSONArray;
@@ -161,7 +162,7 @@ public class HttpUtil {
 		HttpClient client = getClient(session);
 		HttpPost post = getPost(session);
 
-		post.setEntity(new StringEntity(commands.toString()));
+		post.setEntity(new StringEntity(commands.toString(), HTTP.UTF_8));
 
 		HttpResponse response = client.execute(post);
 
