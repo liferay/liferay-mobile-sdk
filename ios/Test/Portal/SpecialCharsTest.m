@@ -12,14 +12,21 @@
  * details.
  */
 
-#import "SpecialCharsTest.h"
+#import "BaseTest.h"
+#import "ServiceContextTest.h"
 
 /**
  * @author Bruno Farache
  */
+@interface SpecialCharsTest : BaseTest
+
+@property (nonatomic, strong) ServiceContextTest *serviceContextTest;
+
+@end
+
 @implementation SpecialCharsTest
 
-- (void)testGetEntriesDescending {
+- (void)testAddBookmarkEntry {
 	NSString *name = @"entry áéíòúñ";
 
 	NSError *error;

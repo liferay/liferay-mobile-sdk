@@ -12,13 +12,22 @@
  * details.
  */
 
-#import "GroupServiceAsyncTest.h"
-
+#import "GroupServiceTest.h"
+#import "LRCallback.h"
 #import "LRGroupService_v62.h"
+#import "TRVSMonitor.h"
 
 /**
  * @author Bruno Farache
  */
+@interface GroupServiceAsyncTest : GroupServiceTest <LRCallback>
+
+@property (nonatomic, strong) NSError *error;
+@property (nonatomic, strong) NSArray *groups;
+@property (nonatomic, strong) TRVSMonitor *monitor;
+
+@end
+
 @implementation GroupServiceAsyncTest
 
 - (void)onFailure:(NSError *)error {

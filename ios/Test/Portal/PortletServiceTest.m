@@ -12,12 +12,15 @@
  * details.
  */
 
+#import "BaseTest.h"
 #import "LRPortletService_v62.h"
-#import "PortletServiceTest.h"
 
 /**
  * @author Bruno Farache
  */
+@interface PortletServiceTest : BaseTest
+@end
+
 @implementation PortletServiceTest
 
 - (void)testGetUserSitesGroups {

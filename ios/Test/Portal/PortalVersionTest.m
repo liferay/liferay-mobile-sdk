@@ -12,13 +12,16 @@
  * details.
  */
 
+#import "BaseTest.h"
 #import "LRHttpUtil.h"
-#import "PortalVersionTest.h"
 
 /**
  * @author Jose Navarro
  */
-@implementation PortalVersion
+@interface PortalVersionTest : BaseTest
+@end
+
+@implementation PortalVersionTest : BaseTest
 
 - (void)testGetPortalVersion {
 	NSError *error;

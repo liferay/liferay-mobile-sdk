@@ -363,13 +363,9 @@
 		CC03FD1B18EDA05B00F3F16C /* SyncWebServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncWebServiceTest.m; sourceTree = "<group>"; };
 		CC03FD1F18EDA05B00F3F16C /* GroupServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupServiceTest.h; sourceTree = "<group>"; };
 		CC03FD2018EDA05B00F3F16C /* GroupServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupServiceTest.m; sourceTree = "<group>"; };
-		CC03FD2118EDA05B00F3F16C /* PortalVersionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalVersionTest.h; sourceTree = "<group>"; };
 		CC03FD2218EDA05B00F3F16C /* PortalVersionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalVersionTest.m; sourceTree = "<group>"; };
-		CC03FD2318EDA05B00F3F16C /* PortletServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortletServiceTest.h; sourceTree = "<group>"; };
 		CC03FD2418EDA05B00F3F16C /* PortletServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortletServiceTest.m; sourceTree = "<group>"; };
-		CC03FD2A18EDA10B00F3F16C /* DLAppServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAppServiceTest.h; sourceTree = "<group>"; };
 		CC03FD2B18EDA10B00F3F16C /* DLAppServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAppServiceTest.m; sourceTree = "<group>"; };
-		CC1C896F1907FA19004D3C4C /* GroupServiceAsyncTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupServiceAsyncTest.h; sourceTree = "<group>"; };
 		CC1C89701907FA19004D3C4C /* GroupServiceAsyncTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupServiceAsyncTest.m; sourceTree = "<group>"; };
 		CC1C897719080708004D3C4C /* TRVSMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSMonitor.h; sourceTree = "<group>"; };
 		CC1C897819080708004D3C4C /* TRVSMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSMonitor.m; sourceTree = "<group>"; };
@@ -377,13 +373,11 @@
 		CC83D48D18ED693600CFA142 /* BaseTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTest.h; sourceTree = "<group>"; };
 		CC83D48E18ED6BE300CFA142 /* BaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTest.m; sourceTree = "<group>"; };
 		CC88DE61192A2B1B0008D3D1 /* SpecialCharsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialCharsTest.m; sourceTree = "<group>"; };
-		CC88DE62192A2B1B0008D3D1 /* SpecialCharsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialCharsTest.h; sourceTree = "<group>"; };
 		CCA6594118EC4BE800957D20 /* libLiferay iOS SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libLiferay iOS SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA6594418EC4BE800957D20 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CCA6595218EC4BE800957D20 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CCA6595518EC4BE800957D20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderByComparatorTest.m; sourceTree = "<group>"; };
-		CCA7166D1919511F00712D1C /* OrderByComparatorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderByComparatorTest.h; sourceTree = "<group>"; };
 		CCCF04E119192798005D1B22 /* ServiceContextTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceContextTest.h; sourceTree = "<group>"; };
 		CCCF04E219192798005D1B22 /* ServiceContextTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceContextTest.m; sourceTree = "<group>"; };
 		CCD60E10191820BE00935937 /* LRJSONObjectWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRJSONObjectWrapper.h; sourceTree = "<group>"; };
@@ -1456,21 +1450,15 @@
 		CC03FD1C18EDA05B00F3F16C /* Portal */ = {
 			isa = PBXGroup;
 			children = (
-				CC03FD2A18EDA10B00F3F16C /* DLAppServiceTest.h */,
 				CC03FD2B18EDA10B00F3F16C /* DLAppServiceTest.m */,
-				CC1C896F1907FA19004D3C4C /* GroupServiceAsyncTest.h */,
 				CC1C89701907FA19004D3C4C /* GroupServiceAsyncTest.m */,
 				CC03FD1F18EDA05B00F3F16C /* GroupServiceTest.h */,
 				CC03FD2018EDA05B00F3F16C /* GroupServiceTest.m */,
-				CCA7166D1919511F00712D1C /* OrderByComparatorTest.h */,
 				CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */,
-				CC03FD2118EDA05B00F3F16C /* PortalVersionTest.h */,
 				CC03FD2218EDA05B00F3F16C /* PortalVersionTest.m */,
-				CC03FD2318EDA05B00F3F16C /* PortletServiceTest.h */,
 				CC03FD2418EDA05B00F3F16C /* PortletServiceTest.m */,
 				CCCF04E119192798005D1B22 /* ServiceContextTest.h */,
 				CCCF04E219192798005D1B22 /* ServiceContextTest.m */,
-				CC88DE62192A2B1B0008D3D1 /* SpecialCharsTest.h */,
 				CC88DE61192A2B1B0008D3D1 /* SpecialCharsTest.m */,
 			);
 			path = Portal;

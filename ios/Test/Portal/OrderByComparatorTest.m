@@ -12,12 +12,21 @@
  * details.
  */
 
-#import "OrderByComparatorTest.h"
+#import "BaseTest.h"
 #import "LRBookmarksEntryService_v62.h"
+#import "ServiceContextTest.h"
 
 /**
  * @author Bruno Farache
  */
+@interface OrderByComparatorTest : BaseTest
+
+@property (nonatomic, strong) NSDictionary *entryA;
+@property (nonatomic, strong) NSDictionary *entryB;
+@property (nonatomic, strong) ServiceContextTest *serviceContextTest;
+
+@end
+
 @implementation OrderByComparatorTest
 
 - (void)testGetEntriesDescending {
