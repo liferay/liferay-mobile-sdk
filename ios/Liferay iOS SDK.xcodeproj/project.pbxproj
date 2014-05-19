@@ -121,6 +121,7 @@
 		CC677D2818EC511900F3DFAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
 		CC677D2918EC511900F3DFAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595518EC4BE800957D20 /* UIKit.framework */; };
 		CC83D48F18ED6BE300CFA142 /* BaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC83D48E18ED6BE300CFA142 /* BaseTest.m */; };
+		CC88DE63192A2B1B0008D3D1 /* SpecialCharsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC88DE61192A2B1B0008D3D1 /* SpecialCharsTest.m */; };
 		CCA6594518EC4BE800957D20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
 		CCA7166E1919511F00712D1C /* OrderByComparator.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA7166C1919511F00712D1C /* OrderByComparator.m */; };
 		CCCF04E019182584005D1B22 /* LRJSONObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */; };
@@ -375,6 +376,8 @@
 		CC677D2618EC511900F3DFAB /* Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC83D48D18ED693600CFA142 /* BaseTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTest.h; sourceTree = "<group>"; };
 		CC83D48E18ED6BE300CFA142 /* BaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTest.m; sourceTree = "<group>"; };
+		CC88DE61192A2B1B0008D3D1 /* SpecialCharsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialCharsTest.m; sourceTree = "<group>"; };
+		CC88DE62192A2B1B0008D3D1 /* SpecialCharsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialCharsTest.h; sourceTree = "<group>"; };
 		CCA6594118EC4BE800957D20 /* libLiferay iOS SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libLiferay iOS SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA6594418EC4BE800957D20 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CCA6595218EC4BE800957D20 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -1467,6 +1470,8 @@
 				CC03FD2418EDA05B00F3F16C /* PortletServiceTest.m */,
 				CCCF04E119192798005D1B22 /* ServiceContextTest.h */,
 				CCCF04E219192798005D1B22 /* ServiceContextTest.m */,
+				CC88DE62192A2B1B0008D3D1 /* SpecialCharsTest.h */,
+				CC88DE61192A2B1B0008D3D1 /* SpecialCharsTest.m */,
 			);
 			path = Portal;
 			sourceTree = "<group>";
@@ -1711,6 +1716,7 @@
 				CC03FCC918ED7DCD00F3F16C /* LRGroupService_v62.m in Sources */,
 				CC03FCF918ED7DCD00F3F16C /* LRShoppingOrderService_v62.m in Sources */,
 				CC03FCFF18ED7DCD00F3F16C /* LRTeamService_v62.m in Sources */,
+				CC88DE63192A2B1B0008D3D1 /* SpecialCharsTest.m in Sources */,
 				CC03FCED18ED7DCD00F3F16C /* LRRegionService_v62.m in Sources */,
 				CC03FCD618ED7DCD00F3F16C /* LRLayoutSetPrototypeService_v62.m in Sources */,
 				CC03FCB218ED7DCD00F3F16C /* LRAssetVocabularyService_v62.m in Sources */,
