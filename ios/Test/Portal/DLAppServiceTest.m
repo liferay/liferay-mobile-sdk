@@ -16,6 +16,8 @@
 #import "LRBatchSession.h"
 #import "LRDLAppService_v62.h"
 
+const long long ROOT_FOLDER_ID = 0;
+
 /**
  * @author Jose Navarro
  */
@@ -23,6 +25,27 @@
 @end
 
 @implementation DLAppServiceTest
+
+- (void)testAddFile {
+	LRDLAppService_v62 *service =
+		[[LRDLAppService_v62 alloc] initWithSession:self.session];
+
+	long long repositoryId = [self.settings[@"groupId"] longLongValue];
+
+	NSString *sourceFileName = @"test.txt";
+	NSString *mimeType = @"text/plain";
+	NSString *title = @"test";
+	NSData *bytes = [NSData data];
+
+	NSError *error;
+	NSDictionary *entry = [service addFileEntryWithRepositoryId:repositoryId
+		folderId:ROOT_FOLDER_ID sourceFileName:sourceFileName mimeType:mimeType
+		title:title description:@"" changeLog:@"" bytes:bytes serviceContext:nil
+		error:&error];
+
+	XCTAssertNil(error);
+	XCTAssertEqualObjects(title, entry[@"title"]);
+}
 
 - (void)testAddFolder {
 	LRDLAppService_v62 *service =
@@ -38,8 +61,8 @@
 
 	NSError *error;
 	NSDictionary *result = [service addFolderWithRepositoryId:repositoryId
-		parentFolderId:0 name:name description:description serviceContext:nil
-		error:&error];
+		parentFolderId:ROOT_FOLDER_ID name:name description:description
+		serviceContext:nil error:&error];
 
 	XCTAssertNil(error);
 	XCTAssertNotNil(result);
@@ -75,13 +98,15 @@
 		[NSString stringWithFormat:@"2-test-desc-%@", uuid];
 
 	NSError *error;
-	[service addFolderWithRepositoryId:repositoryId parentFolderId:0 name:name1
-		description:description1 serviceContext:nil error:&error];
+	[service addFolderWithRepositoryId:repositoryId
+		parentFolderId:ROOT_FOLDER_ID name:name1 description:description1
+		serviceContext:nil error:&error];
 
 	XCTAssertNil(error);
 
-	[service addFolderWithRepositoryId:repositoryId parentFolderId:0 name:name2
-		description:description2 serviceContext:nil error:&error];
+	[service addFolderWithRepositoryId:repositoryId
+		parentFolderId:ROOT_FOLDER_ID name:name2 description:description2
+		serviceContext:nil error:&error];
 
 	XCTAssertNil(error);
 	NSArray *result = [batch invoke:&error];
