@@ -16,7 +16,7 @@
 #import "LRSession.h"
 
 static const int _DEFAULT_CONNECTION_TIMEOUT = 15;
-static NSOperationQueue *_QUEUE;
+static NSOperationQueue *_DEFAULT_QUEUE;
 
 /**
  * @author Bruno Farache
@@ -25,10 +25,10 @@ static NSOperationQueue *_QUEUE;
 
 + (void)initialize {
 	if (self == [LRSession self]) {
-		_QUEUE = [[NSOperationQueue alloc] init];
+		_DEFAULT_QUEUE = [[NSOperationQueue alloc] init];
 
-		[_QUEUE setName:@"com.liferay.mobile.LRSessionQueue"];
-		[_QUEUE setMaxConcurrentOperationCount:1];
+		[_DEFAULT_QUEUE setName:@"com.liferay.mobile.LRSessionQueue"];
+		[_DEFAULT_QUEUE setMaxConcurrentOperationCount:1];
 	}
 }
 
@@ -88,7 +88,7 @@ static NSOperationQueue *_QUEUE;
 		return _queue;
 	}
 
-	return _QUEUE;
+	return _DEFAULT_QUEUE;
 }
 
 @end
