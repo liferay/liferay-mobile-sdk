@@ -12,6 +12,8 @@
  * details.
  */
 
+#import "LRHttpUtil.h"
+#import "LRPortalVersionUtil.h"
 #import "LRPortraitUtil.h"
 
 /**
@@ -81,7 +83,7 @@
 			session.server, gender, portraitId];
 
 	NSError *error;
-	int version = [LRHttpUtil getPortalVersion:session error:&error];
+	int version = [LRPortalVersionUtil getPortalVersion:session error:&error];
 
 	if (!error && version > LR_VERSION_6_2) {
 		portraitURL = [self _appendToken:portraitURL uuid:uuid];

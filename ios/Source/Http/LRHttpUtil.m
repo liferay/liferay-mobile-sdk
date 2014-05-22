@@ -22,80 +22,11 @@ NSString *const LR_LAST_MODIFIED = @"Last-Modified";
 NSString *const LR_POST = @"POST";
 const int LR_STATUS_OK = 200;
 const int LR_STATUS_UNAUTHORIZED = 401;
-const int LR_UNKNOWN_VERSION = -1;
-const int LR_VERSION_6_2 = 6200;
 
 /**
  * @author Bruno Farache
  */
 @implementation LRHttpUtil
-
-static NSMutableDictionary *_versions;
-
-+ (void)initialize {
-	if (!_versions) {
-		_versions = [[NSMutableDictionary alloc] init];
-	}
-}
-
-+ (int)getPortalVersion:(LRSession *)session error:(NSError **)error {
-	return [self getPortalVersionWithURL:session.server error:error];
-}
-
-+ (int)getPortalVersionWithURL:(NSString *)URL error:(NSError **)error {
-	NSNumber *version = [_versions objectForKey:URL];
-
-	if (version) {
-		return [version intValue];
-	}
-
-	NSMutableURLRequest *request =
-		[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL]];
-
-	[request setHTTPMethod:LR_HEAD];
-
-	NSHTTPURLResponse *response;
-
-	[NSURLConnection sendSynchronousRequest:request returningResponse:&response
-		error:error];
-
-	if (*error) {
-		return LR_UNKNOWN_VERSION;
-	}
-
-	NSDictionary *headers = [response allHeaderFields];
-	NSString *portalHeader = [headers objectForKey:@"Liferay-Portal"];
-
-	if (!portalHeader) {
-		version = @(LR_UNKNOWN_VERSION);
-
-		[_versions setObject:version forKey:URL];
-
-		return [version intValue];
-	}
-
-	NSRange buildRange;
-	NSRange searchRange = NSMakeRange(0, [portalHeader length]);
-
-	buildRange =
-		[portalHeader rangeOfString:@"Build" options:NSCaseInsensitiveSearch
-			range:searchRange];
-
-	if (buildRange.location == NSNotFound) {
-		version = @(LR_UNKNOWN_VERSION);
-	}
-	else {
-		int indexOfBuild = buildRange.location + buildRange.length;
-		NSRange versionRange = NSMakeRange(indexOfBuild, 5);
-		NSString *buildNumber = [portalHeader substringWithRange:versionRange];
-
-		version = [NSNumber numberWithInt:[buildNumber intValue]];
-	}
-
-	[_versions setObject:version forKey:URL];
-
-	return [version intValue];
-}
 
 + (NSArray *)post:(LRSession *)session command:(NSDictionary *)command
 		error:(NSError **)error {

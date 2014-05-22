@@ -12,24 +12,18 @@
  * details.
  */
 
-#import "BaseTest.h"
-#import "LRPortalVersionUtil.h"
+#import "LRSession.h"
+
+extern const int LR_UNKNOWN_VERSION;
+extern const int LR_VERSION_6_2;
 
 /**
- * @author Jose Navarro
+ * @author Bruno Farache
+ * @author Josiane Bezerra
  */
-@interface PortalVersionTest : BaseTest
-@end
+@interface LRPortalVersionUtil : NSObject
 
-@implementation PortalVersionTest : BaseTest
-
-- (void)testGetPortalVersion {
-	NSError *error;
-	int version = [LRPortalVersionUtil getPortalVersion:self.session
-		error:&error];
-
-	XCTAssertNil(error);
-	XCTAssertEqual(6200, version);
-}
++ (int)getPortalVersion:(LRSession *)session error:(NSError **)error;
++ (int)getPortalVersionWithURL:(NSString *)URL error:(NSError **)error;
 
 @end

@@ -88,7 +88,7 @@ There won't be conflicts because service classes packages are separated by
 their version number as well: *.v62, *.v7, etc.
 
 To find out which Liferay versions you are connecting to, use the
-`HttpUtil.getPortalVersion(…)` method.
+`PortalVersionUtil.getPortalVersion(…)` method.
 
 #### Android
 

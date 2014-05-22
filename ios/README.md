@@ -78,7 +78,7 @@ There won't be conflicts because service classes names are suffixed with
 their version number as well: *_v62.m, *_v7.m, etc.
 
 To find out which Liferay versions you are connecting to, use the
-`[LRHttpUtil getPortalVersion:…]` method.
+`[LRPortalVersionUtil getPortalVersion:…]` method.
 
 #### iOS
 

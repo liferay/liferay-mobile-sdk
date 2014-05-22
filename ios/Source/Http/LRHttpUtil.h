@@ -22,8 +22,6 @@ extern NSString *const LR_LAST_MODIFIED;
 extern NSString *const LR_POST;
 extern const int LR_STATUS_OK;
 extern const int LR_STATUS_UNAUTHORIZED;
-extern const int LR_UNKNOWN_VERSION;
-extern const int LR_VERSION_6_2;
 
 /**
  * @author Bruno Farache
@@ -31,9 +29,6 @@ extern const int LR_VERSION_6_2;
 @interface LRHttpUtil : NSObject
 
 typedef void (^LRHandler)(NSURLResponse *r, NSData *d, NSError *e);
-
-+ (int)getPortalVersion:(LRSession *)session error:(NSError **)error;
-+ (int)getPortalVersionWithURL:(NSString *)URL error:(NSError **)error;
 
 + (NSArray *)post:(LRSession *)session command:(NSDictionary *)command
 	error:(NSError **)error;

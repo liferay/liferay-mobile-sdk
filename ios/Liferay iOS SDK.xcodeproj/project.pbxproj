@@ -122,6 +122,7 @@
 		CC677D2918EC511900F3DFAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595518EC4BE800957D20 /* UIKit.framework */; };
 		CC83D48F18ED6BE300CFA142 /* BaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC83D48E18ED6BE300CFA142 /* BaseTest.m */; };
 		CC88DE63192A2B1B0008D3D1 /* SpecialCharsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC88DE61192A2B1B0008D3D1 /* SpecialCharsTest.m */; };
+		CCA4E4E7193657B900374A79 /* LRPortalVersionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA4E4E51936578900374A79 /* LRPortalVersionUtil.m */; };
 		CCA6594518EC4BE800957D20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
 		CCA7166E1919511F00712D1C /* OrderByComparatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */; };
 		CCCF04E019182584005D1B22 /* LRJSONObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */; };
@@ -373,6 +374,8 @@
 		CC83D48D18ED693600CFA142 /* BaseTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTest.h; sourceTree = "<group>"; };
 		CC83D48E18ED6BE300CFA142 /* BaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTest.m; sourceTree = "<group>"; };
 		CC88DE61192A2B1B0008D3D1 /* SpecialCharsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialCharsTest.m; sourceTree = "<group>"; };
+		CCA4E4E41936578900374A79 /* LRPortalVersionUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPortalVersionUtil.h; sourceTree = "<group>"; };
+		CCA4E4E51936578900374A79 /* LRPortalVersionUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPortalVersionUtil.m; sourceTree = "<group>"; };
 		CCA6594118EC4BE800957D20 /* libLiferay iOS SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libLiferay iOS SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA6594418EC4BE800957D20 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CCA6595218EC4BE800957D20 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -1432,6 +1435,8 @@
 		CC03FCA118ED7DCD00F3F16C /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				CCA4E4E41936578900374A79 /* LRPortalVersionUtil.h */,
+				CCA4E4E51936578900374A79 /* LRPortalVersionUtil.m */,
 				CC03FCA218ED7DCD00F3F16C /* LRPortraitUtil.h */,
 				CC03FCA318ED7DCD00F3F16C /* LRPortraitUtil.m */,
 			);
@@ -1609,6 +1614,7 @@
 				CC03FCEE18ED7DCD00F3F16C /* LRRepositoryService_v62.m in Sources */,
 				CC03FD0018ED7DCD00F3F16C /* LRThemeService_v62.m in Sources */,
 				CC03FCFE18ED7DCD00F3F16C /* LRSyncDLObjectService_v62.m in Sources */,
+				CCA4E4E7193657B900374A79 /* LRPortalVersionUtil.m in Sources */,
 				CC03FCC518ED7DCD00F3F16C /* LREmailAddressService_v62.m in Sources */,
 				CC03FCAC18ED7DCD00F3F16C /* LRAnnouncementsFlagService_v62.m in Sources */,
 				CC03FCB418ED7DCD00F3F16C /* LRBlogsEntryService_v62.m in Sources */,
