@@ -56,6 +56,10 @@ public class JavaUtil extends LanguageUtil {
 			return "String";
 		}
 
+		if (type.equals("object<java.io.File>")) {
+			return "org.apache.http.entity.mime.content.InputStreamBody";
+		}
+
 		if (type.startsWith("object<")) {
 			return "JSONObjectWrapper";
 		}
