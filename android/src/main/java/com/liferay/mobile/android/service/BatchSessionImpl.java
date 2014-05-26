@@ -76,6 +76,10 @@ public class BatchSessionImpl extends SessionImpl {
 		this.callback = callback;
 	}
 
+	public Object upload(JSONObject command) throws Exception {
+		throw new IllegalStateException("Can't batch upload requests");
+	}
+
 	protected JSONArray commands = new JSONArray();
 
 }

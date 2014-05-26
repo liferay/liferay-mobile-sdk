@@ -111,6 +111,10 @@ public class SessionImpl implements Session {
 		this.username = username;
 	}
 
+	public Object upload(JSONObject command) throws Exception {
+		return HttpUtil.upload(this, command);
+	}
+
 	protected AsyncTaskCallback callback;
 	protected int connectionTimeout;
 	protected String password;

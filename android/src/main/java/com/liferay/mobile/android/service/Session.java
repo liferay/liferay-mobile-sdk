@@ -45,4 +45,6 @@ public interface Session {
 
 	public void setUsername(String username);
 
+	public Object upload(JSONObject command) throws Exception;
+
 }

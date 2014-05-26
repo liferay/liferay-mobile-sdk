@@ -18,10 +18,9 @@ import android.util.Log;
 
 import com.liferay.mobile.android.exception.ServerException;
 import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.util.Validator;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 
 import java.nio.charset.Charset;
 
@@ -40,9 +39,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.ByteArrayBody;
 import org.apache.http.entity.mime.content.ContentBody;
-import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.InputStreamBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.auth.BasicScheme;
@@ -180,20 +177,21 @@ public class HttpUtil {
 		HttpResponse response = client.execute(post);
 		String json = HttpUtil.getResponseString(response);
 
-		return handleResponse(response, json);
+		handleServerException(response, json);
+
+		return new JSONArray(json);
 	}
 
 	public static JSONArray post(Session session, JSONObject command)
 		throws Exception {
 
 		JSONArray commands = new JSONArray();
-
 		commands.put(command);
 
 		return post(session, commands);
 	}
 
-	public static JSONObject upload(Session session, JSONObject command)
+	public static Object upload(Session session, JSONObject command)
 		throws Exception {
 
 		String path = (String)command.keys().next();
@@ -207,10 +205,16 @@ public class HttpUtil {
 		post.setEntity(entity);
 
 		HttpResponse response = client.execute(post);
-
 		String json = HttpUtil.getResponseString(response);
 
-		return null;
+		handleServerException(response, json);
+
+		if (isJSONObject(json)) {
+			return new JSONObject(json);
+		}
+		else {
+			return new JSONArray(json);
+		}
 	}
 
 	protected static MultipartEntity getMultipartEntity(JSONObject parameters)
@@ -227,17 +231,10 @@ public class HttpUtil {
 			String key = it.next();
 			Object value = parameters.get(key);
 
-			String fileName = "test.txt";
 			ContentBody contentBody;
 
-			if (value instanceof InputStream) {
-				contentBody = new InputStreamBody((InputStream)value, fileName);
-			}
-			else if (value instanceof byte[]) {
-				contentBody = new ByteArrayBody((byte[])value, fileName);
-			}
-			else if (value instanceof File) {
-				contentBody = new FileBody((File)value);
+			if (value instanceof InputStreamBody) {
+				contentBody = (InputStreamBody)value;
 			}
 			else {
 				contentBody = new StringBody(value.toString(), charset);
@@ -249,7 +246,7 @@ public class HttpUtil {
 		return entity;
 	}
 
-	protected static JSONArray handleResponse(
+	protected static void handleServerException(
 			HttpResponse response, String json)
 		throws ServerException {
 
@@ -265,30 +262,27 @@ public class HttpUtil {
 		}
 
 		try {
-			if (json != null) {
-				if (json.startsWith("{")) {
-					JSONObject jsonObj = new JSONObject(json);
+			if (isJSONObject(json)) {
+				JSONObject jsonObj = new JSONObject(json);
 
-					if (jsonObj.has("exception")) {
-						String message = jsonObj.getString("exception");
+				if (jsonObj.has("exception")) {
+					String message = jsonObj.getString("exception");
 
-						throw new ServerException(message);
-					}
-					else {
-						throw new ServerException(
-							"Unexpected return type: " + json.toString());
-					}
-				}
-				else if (json.startsWith("[")) {
-					return new JSONArray(json);
+					throw new ServerException(message);
 				}
 			}
 		}
 		catch (JSONException je) {
 			throw new ServerException(je);
 		}
+	}
 
-		return null;
+	protected static boolean isJSONObject(String json) {
+		if (Validator.isNotNull(json) && json.startsWith("{")) {
+			return true;
+		}
+
+		return false;
 	}
 
 	private static final String _CLASS_NAME = HttpUtil.class.getSimpleName();

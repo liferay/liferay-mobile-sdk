@@ -22,6 +22,8 @@ import com.liferay.mobile.sdk.test.BaseTest;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.apache.http.entity.mime.content.InputStreamBody;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -43,16 +45,20 @@ public class DLAppServiceTest extends BaseTest {
 		DLAppService service = new DLAppService(session);
 		long repositoryId = props.getGroupId();
 
-		String sourceFileName = "test.txt";
+		String sourceFileName = "test.properties";
 		String mimeType = "text/plain";
-		String title = "test.txt";
-		InputStream is = null;
+		String title = sourceFileName;
+		InputStream is = getClass().getResourceAsStream("/test.properties");
+		InputStreamBody body = new InputStreamBody(
+			is, mimeType, sourceFileName);
 
 		JSONObject jsonObj = service.addFileEntry(
 			repositoryId, _PARENT_FOLDER_ID, sourceFileName, mimeType, title,
-			"", "", is, null);
+			"", "", body, null);
 
 		assertEquals(title, jsonObj.get("title"));
+
+		service.deleteFileEntry(jsonObj.getLong("fileEntryId"));
 	}
 
 	@Test
