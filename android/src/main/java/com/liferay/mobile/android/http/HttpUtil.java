@@ -19,9 +19,14 @@ import android.util.Log;
 import com.liferay.mobile.android.exception.ServerException;
 import com.liferay.mobile.android.service.Session;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+
+import java.nio.charset.Charset;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.http.Header;
@@ -33,6 +38,13 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpHead;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.ByteArrayBody;
+import org.apache.http.entity.mime.content.ContentBody;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.InputStreamBody;
+import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpConnectionParams;
@@ -113,8 +125,8 @@ public class HttpUtil {
 		return version;
 	}
 
-	public static HttpPost getPost(Session session) {
-		HttpPost post = new HttpPost(getURL(session));
+	public static HttpPost getPost(Session session, String URL) {
+		HttpPost post = new HttpPost(URL);
 
 		UsernamePasswordCredentials credentials =
 			new UsernamePasswordCredentials(
@@ -140,7 +152,7 @@ public class HttpUtil {
 		return EntityUtils.toString(entity);
 	}
 
-	public static String getURL(Session session) {
+	public static String getURL(Session session, String path) {
 		StringBuilder sb = new StringBuilder();
 
 		String server = session.getServer();
@@ -151,7 +163,8 @@ public class HttpUtil {
 			sb.append("/");
 		}
 
-		sb.append("api/jsonws/invoke");
+		sb.append("api/jsonws");
+		sb.append(path);
 
 		return sb.toString();
 	}
@@ -160,12 +173,11 @@ public class HttpUtil {
 		throws Exception {
 
 		HttpClient client = getClient(session);
-		HttpPost post = getPost(session);
+		HttpPost post = getPost(session, getURL(session, "/invoke"));
 
 		post.setEntity(new StringEntity(commands.toString(), HTTP.UTF_8));
 
 		HttpResponse response = client.execute(post);
-
 		String json = HttpUtil.getResponseString(response);
 
 		return handleResponse(response, json);
@@ -179,6 +191,62 @@ public class HttpUtil {
 		commands.put(command);
 
 		return post(session, commands);
+	}
+
+	public static JSONObject upload(Session session, JSONObject command)
+		throws Exception {
+
+		String path = (String)command.keys().next();
+		JSONObject parameters = command.getJSONObject(path);
+
+		HttpClient client = getClient(session);
+		HttpPost post = getPost(session, getURL(session, path));
+
+		MultipartEntity entity = getMultipartEntity(parameters);
+
+		post.setEntity(entity);
+
+		HttpResponse response = client.execute(post);
+
+		String json = HttpUtil.getResponseString(response);
+
+		return null;
+	}
+
+	protected static MultipartEntity getMultipartEntity(JSONObject parameters)
+		throws Exception {
+
+		MultipartEntity entity = new MultipartEntity(
+			HttpMultipartMode.BROWSER_COMPATIBLE);
+
+		Charset charset = Charset.forName(HTTP.UTF_8);
+
+		Iterator<String> it = parameters.keys();
+
+		while (it.hasNext()) {
+			String key = it.next();
+			Object value = parameters.get(key);
+
+			String fileName = "test.txt";
+			ContentBody contentBody;
+
+			if (value instanceof InputStream) {
+				contentBody = new InputStreamBody((InputStream)value, fileName);
+			}
+			else if (value instanceof byte[]) {
+				contentBody = new ByteArrayBody((byte[])value, fileName);
+			}
+			else if (value instanceof File) {
+				contentBody = new FileBody((File)value);
+			}
+			else {
+				contentBody = new StringBody(value.toString(), charset);
+			}
+
+			entity.addPart(key, contentBody);
+		}
+
+		return entity;
 	}
 
 	protected static JSONArray handleResponse(
