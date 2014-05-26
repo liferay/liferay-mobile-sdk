@@ -20,6 +20,7 @@ import com.liferay.mobile.android.v62.dlapp.DLAppService;
 import com.liferay.mobile.sdk.test.BaseTest;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -35,6 +36,23 @@ public class DLAppServiceTest extends BaseTest {
 
 	public DLAppServiceTest() throws IOException {
 		super();
+	}
+
+	@Test
+	public void addFileEntry() throws Exception {
+		DLAppService service = new DLAppService(session);
+		long repositoryId = props.getGroupId();
+
+		String sourceFileName = "test.txt";
+		String mimeType = "text/plain";
+		String title = "test.txt";
+		InputStream is = null;
+
+		JSONObject jsonObj = service.addFileEntry(
+			repositoryId, _PARENT_FOLDER_ID, sourceFileName, mimeType, title,
+			"", "", is, null);
+
+		assertEquals(title, jsonObj.get("title"));
 	}
 
 	@Test
