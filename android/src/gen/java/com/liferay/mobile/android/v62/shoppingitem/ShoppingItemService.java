@@ -86,7 +86,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONObject)session.upload(_command);
 	}
 
 	public void deleteItem(long itemId) throws Exception {
@@ -253,7 +253,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONObject)session.upload(_command);
 	}
 
 }

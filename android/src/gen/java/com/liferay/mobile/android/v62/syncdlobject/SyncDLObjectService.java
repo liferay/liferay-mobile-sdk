@@ -54,7 +54,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONObject)session.upload(_command);
 	}
 
 	public JSONObject addFolder(long repositoryId, long parentFolderId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
@@ -422,7 +422,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONObject)session.upload(_command);
 	}
 
 	public JSONObject restoreFileEntryFromTrash(long fileEntryId) throws Exception {
@@ -482,7 +482,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONObject)session.upload(_command);
 	}
 
 	public JSONObject updateFolder(long folderId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {

@@ -78,7 +78,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONObject)session.upload(_command);
 	}
 
 	public JSONObject addFileShortcut(long repositoryId, long folderId, long toFileEntryId, JSONObjectWrapper serviceContext) throws Exception {
@@ -141,7 +141,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONObject)session.upload(_command);
 	}
 
 	public void cancelCheckOut(long fileEntryId) throws Exception {
@@ -2000,7 +2000,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONObject)session.upload(_command);
 	}
 
 	public JSONObject updateFileEntryAndCheckIn(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody file, JSONObjectWrapper serviceContext) throws Exception {
@@ -2025,7 +2025,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONObject)session.upload(_command);
 	}
 
 	public JSONObject updateFileShortcut(long fileShortcutId, long folderId, long toFileEntryId, JSONObjectWrapper serviceContext) throws Exception {

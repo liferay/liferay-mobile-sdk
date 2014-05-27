@@ -85,7 +85,7 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONObject)session.upload(_command);
 	}
 
 	public JSONObject copyTemplate(long templateId, JSONObjectWrapper serviceContext) throws Exception {
@@ -608,7 +608,7 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONObject)session.upload(_command);
 	}
 
 }

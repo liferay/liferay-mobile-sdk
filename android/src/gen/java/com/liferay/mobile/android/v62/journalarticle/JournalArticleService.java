@@ -130,7 +130,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONObject)session.upload(_command);
 	}
 
 	public JSONObject copyArticle(long groupId, String oldArticleId, String newArticleId, boolean autoArticleId, double version) throws Exception {
@@ -1236,7 +1236,7 @@ public class JournalArticleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONObject)session.upload(_command);
 	}
 
 	public JSONObject updateArticle(long groupId, long folderId, String articleId, double version, String content, JSONObjectWrapper serviceContext) throws Exception {

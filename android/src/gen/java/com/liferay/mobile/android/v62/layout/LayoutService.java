@@ -641,7 +641,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Long)session.invoke(_command);
+		return (Long)session.upload(_command);
 	}
 
 	public void importPortletInfo(String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
@@ -723,7 +723,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Long)session.invoke(_command);
+		return (Long)session.upload(_command);
 	}
 
 	public void schedulePublishToLive(long sourceGroupId, long targetGroupId, boolean privateLayout, JSONObject layoutIdMap, JSONObject parameterMap, String scope, long startDate, long endDate, String groupName, String cronText, long schedulerStartDate, long schedulerEndDate, String description) throws Exception {
@@ -1106,7 +1106,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONObject)session.upload(_command);
 	}
 
 	public JSONObject validateImportPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
@@ -1127,7 +1127,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONObject)session.upload(_command);
 	}
 
 }

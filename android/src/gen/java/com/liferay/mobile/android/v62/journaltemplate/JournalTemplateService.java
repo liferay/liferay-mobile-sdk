@@ -85,7 +85,7 @@ public class JournalTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONObject)session.upload(_command);
 	}
 
 	public JSONObject copyTemplate(long groupId, String oldTemplateId, String newTemplateId, boolean autoTemplateId) throws Exception {
@@ -329,7 +329,7 @@ public class JournalTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return (JSONObject)session.upload(_command);
 	}
 
 }
