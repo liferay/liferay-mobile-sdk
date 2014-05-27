@@ -969,14 +969,14 @@ public class UserService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updatePortrait(long userId, JSONArray bytes) throws Exception {
+	public JSONObject updatePortrait(long userId, byte[] bytes) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userId", userId);
-			_params.put("bytes", bytes);
+			_params.put("bytes", toString(bytes));
 
 			_command.put("/user/update-portrait", _params);
 		}

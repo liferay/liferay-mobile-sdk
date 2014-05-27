@@ -31,7 +31,7 @@ public class DLAppService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, JSONArray bytes, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, byte[] bytes, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -44,7 +44,7 @@ public class DLAppService extends BaseService {
 			_params.put("title", title);
 			_params.put("description", description);
 			_params.put("changeLog", changeLog);
-			_params.put("bytes", bytes);
+			_params.put("bytes", toString(bytes));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlapp/add-file-entry", _params);
@@ -1953,7 +1953,7 @@ public class DLAppService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, JSONArray bytes, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, byte[] bytes, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1966,7 +1966,7 @@ public class DLAppService extends BaseService {
 			_params.put("description", description);
 			_params.put("changeLog", changeLog);
 			_params.put("majorVersion", majorVersion);
-			_params.put("bytes", bytes);
+			_params.put("bytes", toString(bytes));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlapp/update-file-entry", _params);

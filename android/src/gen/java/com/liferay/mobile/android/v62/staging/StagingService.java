@@ -85,7 +85,7 @@ public class StagingService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateStagingRequest(long stagingRequestId, String fileName, JSONArray bytes) throws Exception {
+	public void updateStagingRequest(long stagingRequestId, String fileName, byte[] bytes) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -93,7 +93,7 @@ public class StagingService extends BaseService {
 
 			_params.put("stagingRequestId", stagingRequestId);
 			_params.put("fileName", fileName);
-			_params.put("bytes", bytes);
+			_params.put("bytes", toString(bytes));
 
 			_command.put("/staging/update-staging-request", _params);
 		}

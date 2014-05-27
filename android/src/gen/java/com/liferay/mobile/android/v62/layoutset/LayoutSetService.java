@@ -51,7 +51,7 @@ public class LayoutSetService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateLogo(long groupId, boolean privateLayout, boolean logo, JSONArray bytes) throws Exception {
+	public void updateLogo(long groupId, boolean privateLayout, boolean logo, byte[] bytes) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -60,7 +60,7 @@ public class LayoutSetService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("logo", logo);
-			_params.put("bytes", bytes);
+			_params.put("bytes", toString(bytes));
 
 			_command.put("/layoutset/update-logo", _params);
 		}

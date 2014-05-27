@@ -202,14 +202,14 @@ public class CompanyService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateLogo(long companyId, JSONArray bytes) throws Exception {
+	public JSONObject updateLogo(long companyId, byte[] bytes) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("bytes", bytes);
+			_params.put("bytes", toString(bytes));
 
 			_command.put("/company/update-logo", _params);
 		}
