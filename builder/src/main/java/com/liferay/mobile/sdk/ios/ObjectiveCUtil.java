@@ -21,11 +21,25 @@ import com.liferay.mobile.sdk.util.LanguageUtil;
  */
 public class ObjectiveCUtil extends LanguageUtil {
 
+	public static final String BOOL = "BOOL";
+
+	public static final String LONG_LONG = "long long";
+
+	public static final String LR_JSON_OBJECT_WRAPPER = "LRJSONObjectWrapper *";
+
+	public static final String NS_ARRAY = "NSArray *";
+
+	public static final String NS_DICTIONARY = "NSDictionary *";
+
+	public static final String NS_NUMBER = "NSNumber *";
+
+	public static final String NS_STRING = "NSString *";
+
 	public String getParamValue(String name, String type) {
 		type = getType(type);
 
-		if (type.equals("BOOL") || type.equals("double") ||
-			type.equals("int") || type.equals("long long")) {
+		if (type.equals(BOOL) || type.equals(DOUBLE) || type.equals(INT) ||
+			type.equals(LONG_LONG)) {
 
 			name = "@("  + name + ")";
 		}
@@ -36,14 +50,12 @@ public class ObjectiveCUtil extends LanguageUtil {
 	public String getReturnType(String type) {
 		type = getType(type);
 
-		if (type.equals("double") || type.equals("int") ||
-			type.equals("long long")) {
-
-			type = "NSNumber *";
+		if (type.equals(DOUBLE) || type.equals(INT) || type.equals(LONG_LONG)) {
+			type = NS_NUMBER;
 		}
 
-		if (type.equals("LRJSONObjectWrapper *")) {
-			return "NSDictionary *";
+		if (type.equals(LR_JSON_OBJECT_WRAPPER)) {
+			return NS_DICTIONARY;
 		}
 
 		return type;
@@ -51,32 +63,30 @@ public class ObjectiveCUtil extends LanguageUtil {
 
 	public String getType(String type) {
 		if (isArray(type)) {
-			return "NSArray *";
+			return NS_ARRAY;
 		}
 
-		if (type.equals("boolean")) {
-			return "BOOL";
+		if (type.equals(BOOLEAN)) {
+			return BOOL;
 		}
 
-		if (type.equals("long")) {
-			return "long long";
+		if (type.equals(LONG)) {
+			return LONG_LONG;
 		}
 
-		if (type.equals("double") || type.equals("int") ||
-			type.equals("void")) {
-
+		if (type.equals(DOUBLE) || type.equals(INT) || type.equals(VOID)) {
 			return type;
 		}
 
-		if (type.equals("string")) {
-			return "NSString *";
+		if (type.equals(STRING)) {
+			return NS_STRING;
 		}
 
-		if (type.startsWith("object<")) {
-			return "LRJSONObjectWrapper *";
+		if (type.startsWith(OBJECT_PREFIX)) {
+			return LR_JSON_OBJECT_WRAPPER;
 		}
 
-		return "NSDictionary *";
+		return NS_DICTIONARY;
 	}
 
 }

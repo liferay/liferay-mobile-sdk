@@ -24,12 +24,28 @@ import org.apache.commons.lang.WordUtils;
  */
 public class LanguageUtil {
 
+	public static final String BOOLEAN = "boolean";
+
+	public static final String DOUBLE = "double";
+
+	public static final String FILE = "object<java.io.File>";
+
+	public static final String INT = "int";
+
+	public static final String LONG = "long";
+
+	public static final String OBJECT_PREFIX = "object<";
+
+	public static final String STRING = "string";
+
+	public static final String VOID = "void";
+
 	public String capitalize(String word) {
 		return WordUtils.capitalize(word);
 	}
 
 	public String getJSONWrapperClassName(String type) {
-		if (type.startsWith("object<")) {
+		if (type.startsWith(OBJECT_PREFIX)) {
 			return type.substring(7, type.length() - 1);
 		}
 

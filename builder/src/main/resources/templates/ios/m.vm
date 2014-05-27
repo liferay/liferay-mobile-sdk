@@ -39,7 +39,7 @@ ${esc.h}import "${className}.h"
 	#foreach ($parameter in $parameters)
 		#set ($parameterType = $languageUtil.getType($parameter.type))
 
-		#if ($parameterType != "LRJSONObjectWrapper *")
+		#if ($parameterType != $JSON_OBJECT_WRAPPER)
 			#set ($parameterName = $parameter.name)
 			#set ($paramValue = $languageUtil.getParamValue($parameterName, $parameter.type))
 
@@ -60,7 +60,7 @@ ${esc.h}import "${className}.h"
 	#foreach ($parameter in $parameters)
 		#set ($parameterType = $languageUtil.getType($parameter.type))
 
-		#if ($parameterType == "LRJSONObjectWrapper *")
+		#if ($parameterType == $JSON_OBJECT_WRAPPER)
 			#set ($parameterName = $parameter.name)
 
 			##t	[self mangleWrapperWithParams:_params name:@${esc.q}$parameterName${esc.q} className:@${esc.q}$languageUtil.getJSONWrapperClassName($parameter.type)${esc.q} wrapper:$parameterName];
@@ -75,9 +75,9 @@ ${esc.h}import "${className}.h"
 
 	##n
 
-	#if ($returnType == "void")
+	#if ($returnType == $VOID)
 		##t	[self.session invoke:_command error:error];
-	#elseif ($returnType == "BOOL")
+	#elseif ($returnType == $BOOL)
 		##t	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 	#else
 		##t	return ($returnType)[self.session invoke:_command error:error];

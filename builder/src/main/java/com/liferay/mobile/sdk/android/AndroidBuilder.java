@@ -18,6 +18,7 @@ import com.liferay.mobile.sdk.BaseBuilder;
 import com.liferay.mobile.sdk.http.Action;
 import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.http.HttpUtil;
+import com.liferay.mobile.sdk.util.LanguageUtil;
 import com.liferay.mobile.sdk.velocity.VelocityUtil;
 
 import java.io.File;
@@ -114,13 +115,18 @@ public class AndroidBuilder extends BaseBuilder {
 		context.put(CLASS_NAME, javaUtil.getServiceClassName(filter));
 		context.put(DISCOVERY, discovery);
 		context.put(ESCAPE_TOOL, new EscapeTool());
+		context.put(INPUT_STREAM_BODY, JavaUtil.INPUT_STREAM_BODY);
+		context.put(JSON_OBJECT_WRAPPER, JavaUtil.JSON_OBJECT_WRAPPER);
 		context.put(LANGUAGE_UTIL, javaUtil);
 		context.put(PACKAGE, packageName);
+		context.put(VOID, LanguageUtil.VOID);
 
 		excludeMethods(context);
 
 		return context;
 	}
+
+	protected static final String INPUT_STREAM_BODY = "INPUT_STREAM_BODY";
 
 	protected static final String PACKAGE = "package";
 

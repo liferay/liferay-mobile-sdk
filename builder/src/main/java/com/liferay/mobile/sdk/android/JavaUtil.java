@@ -23,22 +23,32 @@ import org.apache.commons.lang.WordUtils;
  */
 public class JavaUtil extends LanguageUtil {
 
+	public static final String INPUT_STREAM_BODY =
+		"org.apache.http.entity.mime.content.InputStreamBody";
+
+	public static final String INTEGER = "Integer";
+
+	public static final String JSON_ARRAY = "JSONArray";
+
+	public static final String JSON_OBJECT = "JSONObject";
+
+	public static final String JSON_OBJECT_WRAPPER = "JSONObjectWrapper";
+
 	public String getReturnType(String type) {
 		type = getType(type);
 
-		if (type.equals("void")) {
+		if (type.equals(VOID)) {
 			return type;
 		}
 
-		if (type.equals("int")) {
-			return "Integer";
+		if (type.equals(INT)) {
+			return INTEGER;
 		}
 
-		if (type.equals("JSONObjectWrapper") ||
-			type.equals(
-				"org.apache.http.entity.mime.content.InputStreamBody")) {
+		if (type.equals(JSON_OBJECT_WRAPPER) ||
+			type.equals(INPUT_STREAM_BODY)) {
 
-			return "JSONObject";
+			return JSON_OBJECT;
 		}
 
 		return WordUtils.capitalize(type);
@@ -46,28 +56,28 @@ public class JavaUtil extends LanguageUtil {
 
 	public String getType(String type) {
 		if (isArray(type)) {
-			return "JSONArray";
+			return JSON_ARRAY;
 		}
 
-		if (type.equals("boolean") || type.equals("double") ||
-			type.equals("int") || type.equals("long") || type.equals("void")) {
+		if (type.equals(BOOLEAN) || type.equals(DOUBLE) || type.equals(INT) ||
+			type.equals(LONG) || type.equals(VOID)) {
 
 			return type;
 		}
 
-		if (type.equals("string")) {
+		if (type.equals(STRING)) {
 			return "String";
 		}
 
-		if (type.equals("object<java.io.File>")) {
-			return "org.apache.http.entity.mime.content.InputStreamBody";
+		if (type.equals(FILE)) {
+			return INPUT_STREAM_BODY;
 		}
 
-		if (type.startsWith("object<")) {
-			return "JSONObjectWrapper";
+		if (type.startsWith(OBJECT_PREFIX)) {
+			return JSON_OBJECT_WRAPPER;
 		}
 
-		return "JSONObject";
+		return JSON_OBJECT;
 	}
 
 }

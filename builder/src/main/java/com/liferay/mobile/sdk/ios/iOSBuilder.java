@@ -17,6 +17,7 @@ package com.liferay.mobile.sdk.ios;
 import com.liferay.mobile.sdk.BaseBuilder;
 import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.http.HttpUtil;
+import com.liferay.mobile.sdk.util.LanguageUtil;
 import com.liferay.mobile.sdk.velocity.VelocityUtil;
 
 import java.io.File;
@@ -99,12 +100,17 @@ public class iOSBuilder extends BaseBuilder {
 		className.append("_v");
 		className.append(version);
 
+		context.put(BOOL, ObjectiveCUtil.BOOL);
 		context.put(CLASS_NAME, className.toString());
 		context.put(DISCOVERY, discovery);
 		context.put(ESCAPE_TOOL, new EscapeTool());
+		context.put(JSON_OBJECT_WRAPPER, ObjectiveCUtil.LR_JSON_OBJECT_WRAPPER);
 		context.put(LANGUAGE_UTIL, objectiveCUtil);
+		context.put(VOID, LanguageUtil.VOID);
 
 		return context;
 	}
+
+	protected static final String BOOL = "BOOL";
 
 }

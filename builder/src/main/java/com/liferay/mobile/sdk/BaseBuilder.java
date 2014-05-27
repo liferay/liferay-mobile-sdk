@@ -65,6 +65,10 @@ public abstract class BaseBuilder implements Builder {
 
 	protected static final String ESCAPE_TOOL = "esc";
 
+	protected static final String JSON_OBJECT_WRAPPER = "JSON_OBJECT_WRAPPER";
+
 	protected static final String LANGUAGE_UTIL = "languageUtil";
+
+	protected static final String VOID = "VOID";
 
 }
