@@ -201,7 +201,6 @@ public class HttpUtil {
 		HttpPost post = getPost(session, getURL(session, path));
 
 		MultipartEntity entity = getMultipartEntity(parameters);
-
 		post.setEntity(entity);
 
 		HttpResponse response = client.execute(post);
