@@ -112,6 +112,7 @@ public class AndroidBuilder extends BaseBuilder {
 
 		packageName = sb.toString();
 
+		context.put(BYTE_ARRAY, LanguageUtil.BYTE_ARRAY);
 		context.put(CLASS_NAME, javaUtil.getServiceClassName(filter));
 		context.put(DISCOVERY, discovery);
 		context.put(ESCAPE_TOOL, new EscapeTool());

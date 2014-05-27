@@ -59,6 +59,8 @@ public abstract class BaseBuilder implements Builder {
 		}
 	}
 
+	protected static final String BYTE_ARRAY = "BYTE_ARRAY";
+
 	protected static final String CLASS_NAME = "className";
 
 	protected static final String DISCOVERY = "discovery";

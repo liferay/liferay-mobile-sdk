@@ -50,6 +50,22 @@ public class BaseService {
 		this.session = session;
 	}
 
+	public String toString(byte[] bytes) {
+		StringBuilder sb = new StringBuilder("[");
+
+		for (int i = 0; i < bytes.length; i++) {
+			if (i > 0) {
+				sb.append(",");
+			}
+
+			sb.append((int)bytes[i]);
+		}
+
+		sb.append("]");
+
+		return sb.toString();
+	}
+
 	protected Session session;
 
 	private static final String _SERVICE_CONTEXT =

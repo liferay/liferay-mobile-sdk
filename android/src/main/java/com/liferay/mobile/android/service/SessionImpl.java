@@ -79,7 +79,6 @@ public class SessionImpl implements Session {
 	public Object invoke(JSONObject command) throws Exception {
 		if (callback != null) {
 			ServiceAsyncTask task = new ServiceAsyncTask(this, callback);
-
 			task.execute(command);
 
 			return null;

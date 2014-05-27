@@ -51,18 +51,22 @@ public class JavaUtil extends LanguageUtil {
 			return JSON_OBJECT;
 		}
 
+		if (type.equals(BYTE_ARRAY)) {
+			return JSON_ARRAY;
+		}
+
 		return WordUtils.capitalize(type);
 	}
 
 	public String getType(String type) {
-		if (isArray(type)) {
-			return JSON_ARRAY;
-		}
-
 		if (type.equals(BOOLEAN) || type.equals(DOUBLE) || type.equals(INT) ||
-			type.equals(LONG) || type.equals(VOID)) {
+			type.equals(LONG) || type.equals(VOID) || type.equals(BYTE_ARRAY)) {
 
 			return type;
+		}
+
+		if (isArray(type)) {
+			return JSON_ARRAY;
 		}
 
 		if (type.equals(STRING)) {

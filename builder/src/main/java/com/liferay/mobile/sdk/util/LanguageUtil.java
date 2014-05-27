@@ -26,6 +26,8 @@ public class LanguageUtil {
 
 	public static final String BOOLEAN = "boolean";
 
+	public static final String BYTE_ARRAY = "byte[]";
+
 	public static final String DOUBLE = "double";
 
 	public static final String FILE = "object<java.io.File>";
