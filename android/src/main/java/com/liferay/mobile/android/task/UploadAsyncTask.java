@@ -19,6 +19,7 @@ import android.os.AsyncTask;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
+import com.liferay.mobile.android.task.callback.UploadProgressAsyncTaskCallback;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -26,18 +27,27 @@ import org.json.JSONObject;
 /**
  * @author Bruno Farache
  */
-public class ServiceAsyncTask extends AsyncTask<JSONArray, Void, JSONArray> {
+public class UploadAsyncTask extends AsyncTask<JSONObject, Integer, Object> {
 
-	public ServiceAsyncTask(Session session, AsyncTaskCallback callback) {
+	public UploadAsyncTask(Session session, AsyncTaskCallback callback) {
 		_callback = callback;
 		_session = session;
 	}
 
-	public JSONArray doInBackground(JSONArray... commands) {
-		JSONArray array;
+	public JSONArray doInBackground(JSONObject... commands) {
+		Object result;
 
 		try {
-			array = HttpUtil.post(_session, commands[0]);
+			UploadAsyncTask task = null;
+
+			if (_callback instanceof UploadProgressAsyncTaskCallback) {
+				task = this;
+			}
+
+			result = HttpUtil.upload(_session, commands[0], task);
+
+			JSONArray array = new JSONArray();
+			array.put(result);
 
 			return _callback.inBackground(array);
 		}
@@ -47,13 +57,6 @@ public class ServiceAsyncTask extends AsyncTask<JSONArray, Void, JSONArray> {
 		}
 
 		return null;
-	}
-
-	public void execute(JSONObject command) {
-		JSONArray commands = new JSONArray();
-		commands.put(command);
-
-		this.execute(commands);
 	}
 
 	public void onCancelled() {
@@ -72,6 +75,15 @@ public class ServiceAsyncTask extends AsyncTask<JSONArray, Void, JSONArray> {
 			_exception = e;
 			onCancelled();
 		}
+	}
+
+	public void setProgress(int progress) {
+		publishProgress(progress);
+	}
+
+	protected void onProgressUpdate(Integer... progress) {
+		((UploadProgressAsyncTaskCallback)_callback).updateProgress(
+			progress[0]);
 	}
 
 	private AsyncTaskCallback _callback;

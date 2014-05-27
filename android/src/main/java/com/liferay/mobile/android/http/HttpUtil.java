@@ -15,7 +15,9 @@
 package com.liferay.mobile.android.http;
 
 import com.liferay.mobile.android.exception.ServerException;
+import com.liferay.mobile.android.http.entity.CountingHttpEntity;
 import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.task.UploadAsyncTask;
 import com.liferay.mobile.android.util.Validator;
 
 import java.io.IOException;
@@ -134,7 +136,8 @@ public class HttpUtil {
 		return post(session, commands);
 	}
 
-	public static Object upload(Session session, JSONObject command)
+	public static Object upload(
+			Session session, JSONObject command, UploadAsyncTask task)
 		throws Exception {
 
 		String path = (String)command.keys().next();
@@ -143,7 +146,12 @@ public class HttpUtil {
 		HttpClient client = getClient(session);
 		HttpPost post = getPost(session, getURL(session, path));
 
-		MultipartEntity entity = getMultipartEntity(parameters);
+		HttpEntity entity = getMultipartEntity(parameters);
+
+		if (task != null) {
+			entity = new CountingHttpEntity(entity, task);
+		}
+
 		post.setEntity(entity);
 
 		HttpResponse response = client.execute(post);
