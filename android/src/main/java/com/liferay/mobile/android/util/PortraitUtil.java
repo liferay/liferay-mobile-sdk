@@ -18,7 +18,6 @@ import android.util.Base64;
 import android.util.Log;
 
 import com.liferay.mobile.android.http.HttpUtil;
-import com.liferay.mobile.android.http.PortalVersion;
 import com.liferay.mobile.android.service.Session;
 
 import java.io.Closeable;
@@ -135,7 +134,7 @@ public class PortraitUtil {
 		sb.append("_portrait?img_id=");
 		sb.append(portraitId);
 
-		int version = HttpUtil.getPortalVersion(session);
+		int version = PortalVersionUtil.getPortalVersion(session);
 
 		if (version > PortalVersion.V_6_2) {
 			appendToken(sb, uuid);
@@ -174,7 +173,6 @@ public class PortraitUtil {
 		}
 	}
 
-	private static final String _CLASS_NAME =
-		PortraitUtil.class.getSimpleName();
+	private static final String _CLASS_NAME = PortraitUtil.class.getName();
 
 }

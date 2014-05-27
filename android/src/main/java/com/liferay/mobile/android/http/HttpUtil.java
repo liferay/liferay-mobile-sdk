@@ -14,8 +14,6 @@
 
 package com.liferay.mobile.android.http;
 
-import android.util.Log;
-
 import com.liferay.mobile.android.exception.ServerException;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.util.Validator;
@@ -24,9 +22,7 @@ import java.io.IOException;
 
 import java.nio.charset.Charset;
 
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -34,7 +30,6 @@ import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpHead;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.HttpMultipartMode;
@@ -68,58 +63,6 @@ public class HttpUtil {
 			client.getParams(), session.getConnectionTimeout());
 
 		return client;
-	}
-
-	public static int getPortalVersion(Session session) {
-		return getPortalVersion(session.getServer());
-	}
-
-	public static int getPortalVersion(String url) {
-		Integer version = null;
-
-		try {
-			version = _versions.get(url);
-
-			if (version != null) {
-				return version;
-			}
-
-			HttpClient client = new DefaultHttpClient();
-			HttpHead head = new HttpHead(url);
-			HttpResponse response = client.execute(head);
-
-			Header portalHeader = response.getFirstHeader("Liferay-Portal");
-
-			if (portalHeader == null) {
-				version = PortalVersion.UNKNOWN;
-
-				return version;
-			}
-
-			String portalField = portalHeader.getValue();
-
-			int indexOfBuild = portalField.indexOf("Build");
-
-			if (indexOfBuild == -1) {
-				version = PortalVersion.UNKNOWN;
-			}
-			else {
-				String buildNumber = portalField.substring(
-					indexOfBuild + 6, indexOfBuild + 10);
-
-				version = Integer.valueOf(buildNumber);
-			}
-		}
-		catch (Exception e) {
-			Log.e(_CLASS_NAME, "Couldn't get portal version", e);
-
-			version = PortalVersion.UNKNOWN;
-		}
-		finally {
-			_versions.put(url, version);
-		}
-
-		return version;
 	}
 
 	public static HttpPost getPost(Session session, String URL) {
@@ -283,10 +226,5 @@ public class HttpUtil {
 
 		return false;
 	}
-
-	private static final String _CLASS_NAME = HttpUtil.class.getSimpleName();
-
-	private static final Map<String, Integer> _versions =
-		new HashMap<String, Integer>();
 
 }

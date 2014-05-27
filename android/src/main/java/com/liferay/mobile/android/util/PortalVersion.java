@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.android.http;
+package com.liferay.mobile.android.util;
 
 /**
  * @author Bruno Farache

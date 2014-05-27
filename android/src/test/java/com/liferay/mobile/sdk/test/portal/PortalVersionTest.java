@@ -14,8 +14,8 @@
 
 package com.liferay.mobile.sdk.test.portal;
 
-import com.liferay.mobile.android.http.HttpUtil;
-import com.liferay.mobile.android.http.PortalVersion;
+import com.liferay.mobile.android.util.PortalVersion;
+import com.liferay.mobile.android.util.PortalVersionUtil;
 import com.liferay.mobile.sdk.test.BaseTest;
 
 import java.io.IOException;
@@ -35,7 +35,7 @@ public class PortalVersionTest extends BaseTest {
 
 	@Test
 	public void getPortalVersion() throws Exception {
-		int version = HttpUtil.getPortalVersion(session);
+		int version = PortalVersionUtil.getPortalVersion(session);
 
 		assertEquals(PortalVersion.V_6_2, version);
 	}
