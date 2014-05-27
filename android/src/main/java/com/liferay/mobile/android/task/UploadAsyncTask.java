@@ -82,7 +82,7 @@ public class UploadAsyncTask extends AsyncTask<JSONObject, Integer, JSONArray> {
 	@Override
 	public void onProgressUpdate(Integer... bytes) {
 		_bytes = _bytes + bytes[0];
-		((UploadProgressAsyncTaskCallback)_callback).updateProgress(_bytes);
+		((UploadProgressAsyncTaskCallback)_callback).onProgress(_bytes);
 	}
 
 	public void setProgress(int bytes) {

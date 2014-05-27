@@ -22,6 +22,6 @@ import com.liferay.mobile.android.task.callback.typed.GenericAsyncTaskCallback;
 public abstract class UploadProgressAsyncTaskCallback<T>
 		extends GenericAsyncTaskCallback<T> {
 
-	public abstract void updateProgress(int bytes);
+	public abstract void onProgress(int bytes);
 
 }
