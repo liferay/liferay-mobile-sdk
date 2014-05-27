@@ -31,7 +31,7 @@ public class SyncDLObjectService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, JSONObjectWrapper file, String checksum, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, org.apache.http.entity.mime.content.InputStreamBody file, String checksum, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -44,7 +44,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("title", title);
 			_params.put("description", description);
 			_params.put("changeLog", changeLog);
-			mangleWrapper(_params, "file", "java.io.File", file);
+			_params.put("file", file);
 			_params.put("checksum", checksum);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -398,7 +398,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject patchFileEntry(long fileEntryId, String sourceVersion, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, JSONObjectWrapper deltaFile, String checksum, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject patchFileEntry(long fileEntryId, String sourceVersion, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody deltaFile, String checksum, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -412,7 +412,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("description", description);
 			_params.put("changeLog", changeLog);
 			_params.put("majorVersion", majorVersion);
-			mangleWrapper(_params, "deltaFile", "java.io.File", deltaFile);
+			_params.put("deltaFile", deltaFile);
 			_params.put("checksum", checksum);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -459,7 +459,7 @@ public class SyncDLObjectService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, JSONObjectWrapper file, String checksum, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody file, String checksum, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -472,7 +472,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("description", description);
 			_params.put("changeLog", changeLog);
 			_params.put("majorVersion", majorVersion);
-			mangleWrapper(_params, "file", "java.io.File", file);
+			_params.put("file", file);
 			_params.put("checksum", checksum);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 

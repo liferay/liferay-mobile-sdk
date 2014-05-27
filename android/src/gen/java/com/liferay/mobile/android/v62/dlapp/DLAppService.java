@@ -56,7 +56,7 @@ public class DLAppService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, JSONObjectWrapper file, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, org.apache.http.entity.mime.content.InputStreamBody file, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -69,7 +69,7 @@ public class DLAppService extends BaseService {
 			_params.put("title", title);
 			_params.put("description", description);
 			_params.put("changeLog", changeLog);
-			mangleWrapper(_params, "file", "java.io.File", file);
+			_params.put("file", file);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlapp/add-file-entry", _params);
@@ -122,7 +122,7 @@ public class DLAppService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addTempFileEntry(long groupId, long folderId, String fileName, String tempFolderName, JSONObjectWrapper file, String mimeType) throws Exception {
+	public JSONObject addTempFileEntry(long groupId, long folderId, String fileName, String tempFolderName, org.apache.http.entity.mime.content.InputStreamBody file, String mimeType) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -132,7 +132,7 @@ public class DLAppService extends BaseService {
 			_params.put("folderId", folderId);
 			_params.put("fileName", fileName);
 			_params.put("tempFolderName", tempFolderName);
-			mangleWrapper(_params, "file", "java.io.File", file);
+			_params.put("file", file);
 			_params.put("mimeType", mimeType);
 
 			_command.put("/dlapp/add-temp-file-entry", _params);
@@ -1978,7 +1978,7 @@ public class DLAppService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, JSONObjectWrapper file, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody file, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1991,7 +1991,7 @@ public class DLAppService extends BaseService {
 			_params.put("description", description);
 			_params.put("changeLog", changeLog);
 			_params.put("majorVersion", majorVersion);
-			mangleWrapper(_params, "file", "java.io.File", file);
+			_params.put("file", file);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlapp/update-file-entry", _params);
@@ -2003,7 +2003,7 @@ public class DLAppService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateFileEntryAndCheckIn(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, JSONObjectWrapper file, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateFileEntryAndCheckIn(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody file, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -2016,7 +2016,7 @@ public class DLAppService extends BaseService {
 			_params.put("description", description);
 			_params.put("changeLog", changeLog);
 			_params.put("majorVersion", majorVersion);
-			mangleWrapper(_params, "file", "java.io.File", file);
+			_params.put("file", file);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlapp/update-file-entry-and-check-in", _params);

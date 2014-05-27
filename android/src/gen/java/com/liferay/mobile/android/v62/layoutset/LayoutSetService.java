@@ -71,7 +71,7 @@ public class LayoutSetService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateLogo(long groupId, boolean privateLayout, boolean logo, JSONObjectWrapper file) throws Exception {
+	public void updateLogo(long groupId, boolean privateLayout, boolean logo, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -80,7 +80,7 @@ public class LayoutSetService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("logo", logo);
-			mangleWrapper(_params, "file", "java.io.File", file);
+			_params.put("file", file);
 
 			_command.put("/layoutset/update-logo", _params);
 		}

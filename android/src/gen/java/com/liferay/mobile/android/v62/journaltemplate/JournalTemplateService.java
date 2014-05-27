@@ -58,7 +58,7 @@ public class JournalTemplateService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addTemplate(long groupId, String templateId, boolean autoTemplateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, JSONObjectWrapper smallFile, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addTemplate(long groupId, String templateId, boolean autoTemplateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallFile, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -76,7 +76,7 @@ public class JournalTemplateService extends BaseService {
 			_params.put("cacheable", cacheable);
 			_params.put("smallImage", smallImage);
 			_params.put("smallImageURL", smallImageURL);
-			mangleWrapper(_params, "smallFile", "java.io.File", smallFile);
+			_params.put("smallFile", smallFile);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journaltemplate/add-template", _params);
@@ -303,7 +303,7 @@ public class JournalTemplateService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject updateTemplate(long groupId, String templateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, JSONObjectWrapper smallFile, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateTemplate(long groupId, String templateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallFile, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -320,7 +320,7 @@ public class JournalTemplateService extends BaseService {
 			_params.put("cacheable", cacheable);
 			_params.put("smallImage", smallImage);
 			_params.put("smallImageURL", smallImageURL);
-			mangleWrapper(_params, "smallFile", "java.io.File", smallFile);
+			_params.put("smallFile", smallFile);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journaltemplate/update-template", _params);

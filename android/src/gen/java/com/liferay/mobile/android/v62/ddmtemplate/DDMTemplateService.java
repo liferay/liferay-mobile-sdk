@@ -57,7 +57,7 @@ public class DDMTemplateService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addTemplate(long groupId, long classNameId, long classPK, String templateKey, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, boolean smallImage, String smallImageURL, JSONObjectWrapper smallImageFile, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addTemplate(long groupId, long classNameId, long classPK, String templateKey, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallImageFile, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -76,7 +76,7 @@ public class DDMTemplateService extends BaseService {
 			_params.put("cacheable", cacheable);
 			_params.put("smallImage", smallImage);
 			_params.put("smallImageURL", smallImageURL);
-			mangleWrapper(_params, "smallImageFile", "java.io.File", smallImageFile);
+			_params.put("smallImageFile", smallImageFile);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmtemplate/add-template", _params);
@@ -582,7 +582,7 @@ public class DDMTemplateService extends BaseService {
 		return (Integer)session.invoke(_command);
 	}
 
-	public JSONObject updateTemplate(long templateId, long classPK, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, boolean smallImage, String smallImageURL, JSONObjectWrapper smallImageFile, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateTemplate(long templateId, long classPK, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallImageFile, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -599,7 +599,7 @@ public class DDMTemplateService extends BaseService {
 			_params.put("cacheable", cacheable);
 			_params.put("smallImage", smallImage);
 			_params.put("smallImageURL", smallImageURL);
-			mangleWrapper(_params, "smallImageFile", "java.io.File", smallImageFile);
+			_params.put("smallImageFile", smallImageFile);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmtemplate/update-template", _params);

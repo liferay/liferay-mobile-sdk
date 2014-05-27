@@ -78,7 +78,7 @@ public class WikiPageService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public void addPageAttachment(long nodeId, String title, String fileName, JSONObjectWrapper file, String mimeType) throws Exception {
+	public void addPageAttachment(long nodeId, String title, String fileName, org.apache.http.entity.mime.content.InputStreamBody file, String mimeType) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -87,7 +87,7 @@ public class WikiPageService extends BaseService {
 			_params.put("nodeId", nodeId);
 			_params.put("title", title);
 			_params.put("fileName", fileName);
-			mangleWrapper(_params, "file", "java.io.File", file);
+			_params.put("file", file);
 			_params.put("mimeType", mimeType);
 
 			_command.put("/wikipage/add-page-attachment", _params);

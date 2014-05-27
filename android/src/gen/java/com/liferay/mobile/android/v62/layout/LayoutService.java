@@ -603,7 +603,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void importLayouts(long groupId, boolean privateLayout, JSONObject parameterMap, JSONObjectWrapper file) throws Exception {
+	public void importLayouts(long groupId, boolean privateLayout, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -612,7 +612,7 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("parameterMap", parameterMap);
-			mangleWrapper(_params, "file", "java.io.File", file);
+			_params.put("file", file);
 
 			_command.put("/layout/import-layouts", _params);
 		}
@@ -623,7 +623,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public Long importLayoutsInBackground(String taskName, long groupId, boolean privateLayout, JSONObject parameterMap, JSONObjectWrapper file) throws Exception {
+	public Long importLayoutsInBackground(String taskName, long groupId, boolean privateLayout, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -633,7 +633,7 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("parameterMap", parameterMap);
-			mangleWrapper(_params, "file", "java.io.File", file);
+			_params.put("file", file);
 
 			_command.put("/layout/import-layouts-in-background", _params);
 		}
@@ -644,7 +644,7 @@ public class LayoutService extends BaseService {
 		return (Long)session.invoke(_command);
 	}
 
-	public void importPortletInfo(String portletId, JSONObject parameterMap, JSONObjectWrapper file) throws Exception {
+	public void importPortletInfo(String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -652,7 +652,7 @@ public class LayoutService extends BaseService {
 
 			_params.put("portletId", portletId);
 			_params.put("parameterMap", parameterMap);
-			mangleWrapper(_params, "file", "java.io.File", file);
+			_params.put("file", file);
 
 			_command.put("/layout/import-portlet-info", _params);
 		}
@@ -663,7 +663,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void importPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, JSONObjectWrapper file) throws Exception {
+	public void importPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -673,7 +673,7 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("portletId", portletId);
 			_params.put("parameterMap", parameterMap);
-			mangleWrapper(_params, "file", "java.io.File", file);
+			_params.put("file", file);
 
 			_command.put("/layout/import-portlet-info", _params);
 		}
@@ -684,7 +684,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void importPortletInfoInBackground(String taskName, String portletId, JSONObject parameterMap, JSONObjectWrapper file) throws Exception {
+	public void importPortletInfoInBackground(String taskName, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -693,7 +693,7 @@ public class LayoutService extends BaseService {
 			_params.put("taskName", taskName);
 			_params.put("portletId", portletId);
 			_params.put("parameterMap", parameterMap);
-			mangleWrapper(_params, "file", "java.io.File", file);
+			_params.put("file", file);
 
 			_command.put("/layout/import-portlet-info-in-background", _params);
 		}
@@ -704,7 +704,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public Long importPortletInfoInBackground(String taskName, long plid, long groupId, String portletId, JSONObject parameterMap, JSONObjectWrapper file) throws Exception {
+	public Long importPortletInfoInBackground(String taskName, long plid, long groupId, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -715,7 +715,7 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("portletId", portletId);
 			_params.put("parameterMap", parameterMap);
-			mangleWrapper(_params, "file", "java.io.File", file);
+			_params.put("file", file);
 
 			_command.put("/layout/import-portlet-info-in-background", _params);
 		}
@@ -1089,7 +1089,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject validateImportLayoutsFile(long groupId, boolean privateLayout, JSONObject parameterMap, JSONObjectWrapper file) throws Exception {
+	public JSONObject validateImportLayoutsFile(long groupId, boolean privateLayout, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1098,7 +1098,7 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("parameterMap", parameterMap);
-			mangleWrapper(_params, "file", "java.io.File", file);
+			_params.put("file", file);
 
 			_command.put("/layout/validate-import-layouts-file", _params);
 		}
@@ -1109,7 +1109,7 @@ public class LayoutService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject validateImportPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, JSONObjectWrapper file) throws Exception {
+	public JSONObject validateImportPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1119,7 +1119,7 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("portletId", portletId);
 			_params.put("parameterMap", parameterMap);
-			mangleWrapper(_params, "file", "java.io.File", file);
+			_params.put("file", file);
 
 			_command.put("/layout/validate-import-portlet-info", _params);
 		}
