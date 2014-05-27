@@ -77,15 +77,16 @@ public class UploadAsyncTask extends AsyncTask<JSONObject, Integer, Object> {
 		}
 	}
 
-	public void setProgress(int progress) {
-		publishProgress(progress);
+	public void setProgress(int bytes) {
+		publishProgress(bytes);
 	}
 
-	protected void onProgressUpdate(Integer... progress) {
-		((UploadProgressAsyncTaskCallback)_callback).updateProgress(
-			progress[0]);
+	protected void onProgressUpdate(Integer... bytes) {
+		_bytes = _bytes + bytes[0];
+		((UploadProgressAsyncTaskCallback)_callback).updateProgress(_bytes);
 	}
 
+	private int _bytes;
 	private AsyncTaskCallback _callback;
 	private Exception _exception;
 	private Session _session;
