@@ -33,11 +33,10 @@ public class ServiceAsyncTask extends AsyncTask<JSONArray, Void, JSONArray> {
 		_session = session;
 	}
 
+	@Override
 	public JSONArray doInBackground(JSONArray... commands) {
-		JSONArray array;
-
 		try {
-			array = HttpUtil.post(_session, commands[0]);
+			JSONArray array = HttpUtil.post(_session, commands[0]);
 
 			return _callback.inBackground(array);
 		}
@@ -56,14 +55,17 @@ public class ServiceAsyncTask extends AsyncTask<JSONArray, Void, JSONArray> {
 		this.execute(commands);
 	}
 
+	@Override
 	public void onCancelled() {
 		_callback.onFailure(_exception);
 	}
 
+	@Override
 	public void onCancelled(JSONArray array) {
 		_callback.onFailure(_exception);
 	}
 
+	@Override
 	public void onPostExecute(JSONArray array) {
 		try {
 			_callback.onPostExecute(array);

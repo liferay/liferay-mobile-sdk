@@ -27,16 +27,15 @@ import org.json.JSONObject;
 /**
  * @author Bruno Farache
  */
-public class UploadAsyncTask extends AsyncTask<JSONObject, Integer, Object> {
+public class UploadAsyncTask extends AsyncTask<JSONObject, Integer, JSONArray> {
 
 	public UploadAsyncTask(Session session, AsyncTaskCallback callback) {
 		_callback = callback;
 		_session = session;
 	}
 
+	@Override
 	public JSONArray doInBackground(JSONObject... commands) {
-		Object result;
-
 		try {
 			UploadAsyncTask task = null;
 
@@ -44,7 +43,7 @@ public class UploadAsyncTask extends AsyncTask<JSONObject, Integer, Object> {
 				task = this;
 			}
 
-			result = HttpUtil.upload(_session, commands[0], task);
+			Object result = HttpUtil.upload(_session, commands[0], task);
 
 			JSONArray array = new JSONArray();
 			array.put(result);
@@ -59,14 +58,17 @@ public class UploadAsyncTask extends AsyncTask<JSONObject, Integer, Object> {
 		return null;
 	}
 
+	@Override
 	public void onCancelled() {
 		_callback.onFailure(_exception);
 	}
 
+	@Override
 	public void onCancelled(JSONArray array) {
 		_callback.onFailure(_exception);
 	}
 
+	@Override
 	public void onPostExecute(JSONArray array) {
 		try {
 			_callback.onPostExecute(array);
@@ -77,13 +79,14 @@ public class UploadAsyncTask extends AsyncTask<JSONObject, Integer, Object> {
 		}
 	}
 
-	public void setProgress(int bytes) {
-		publishProgress(bytes);
-	}
-
-	protected void onProgressUpdate(Integer... bytes) {
+	@Override
+	public void onProgressUpdate(Integer... bytes) {
 		_bytes = _bytes + bytes[0];
 		((UploadProgressAsyncTaskCallback)_callback).updateProgress(_bytes);
+	}
+
+	public void setProgress(int bytes) {
+		publishProgress(bytes);
 	}
 
 	private int _bytes;
