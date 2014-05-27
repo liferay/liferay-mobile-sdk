@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.apache.http.entity.mime.content.InputStreamBody;
+import org.apache.http.protocol.HTTP;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -41,24 +42,39 @@ public class DLAppServiceTest extends BaseTest {
 	}
 
 	@Test
-	public void addFileEntry() throws Exception {
+	public void addFileEntryBytes() throws Exception {
 		DLAppService service = new DLAppService(session);
 		long repositoryId = props.getGroupId();
 
-		String sourceFileName = "test.properties";
-		String mimeType = "text/plain";
-		String title = sourceFileName;
-		InputStream is = getClass().getResourceAsStream("/test.properties");
-		InputStreamBody body = new InputStreamBody(
-			is, mimeType, sourceFileName);
+		byte[] bytes = "Hello".getBytes(HTTP.UTF_8);
 
 		JSONObject jsonObj = service.addFileEntry(
-			repositoryId, _PARENT_FOLDER_ID, sourceFileName, mimeType, title,
-			"", "", body, null);
+			repositoryId, _PARENT_FOLDER_ID, _SOURCE_FILE_NAME, _MIME_TYPE,
+			_SOURCE_FILE_NAME, "", "", bytes, null);
 
-		assertEquals(title, jsonObj.get("title"));
+		assertEquals(_SOURCE_FILE_NAME, jsonObj.get(_TITLE));
 
-		service.deleteFileEntry(jsonObj.getLong("fileEntryId"));
+		service.deleteFileEntry(jsonObj.getLong(_FILE_ENTRY_ID));
+	}
+
+	@Test
+	public void addFileEntryInputStream() throws Exception {
+		DLAppService service = new DLAppService(session);
+		long repositoryId = props.getGroupId();
+
+		InputStream is = getClass().getResourceAsStream(
+			"/" + _SOURCE_FILE_NAME);
+
+		InputStreamBody body = new InputStreamBody(
+			is, _MIME_TYPE, _SOURCE_FILE_NAME);
+
+		JSONObject jsonObj = service.addFileEntry(
+			repositoryId, _PARENT_FOLDER_ID, _SOURCE_FILE_NAME, _MIME_TYPE,
+			_SOURCE_FILE_NAME, "", "", body, null);
+
+		assertEquals(_SOURCE_FILE_NAME, jsonObj.get(_TITLE));
+
+		service.deleteFileEntry(jsonObj.getLong(_FILE_ENTRY_ID));
 	}
 
 	@Test
@@ -130,12 +146,19 @@ public class DLAppServiceTest extends BaseTest {
 		assertEquals(2, jsonArray.length());
 	}
 
+	private static final String _FILE_ENTRY_ID = "fileEntryId";
+
 	private static final String _FOLDER_NAME = "test";
 
 	private static final String _FOLDER_NAME_2 = "test2";
+
+	private static final String _MIME_TYPE = "text/plain";
 
 	private static final String _NAME = "name";
 
 	private static final int _PARENT_FOLDER_ID = 0;
 
+	private static final String _SOURCE_FILE_NAME = "test.properties";
+
+	private static final String _TITLE = "title";
 }
