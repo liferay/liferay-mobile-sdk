@@ -651,10 +651,10 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updatePortraitWithUserId:(long long)userId bytes:(NSArray *)bytes error:(NSError **)error {
+- (NSDictionary *)updatePortraitWithUserId:(long long)userId bytes:(NSData *)bytes error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
-		@"bytes": bytes
+		@"bytes": [self toString:bytes]
 	}];
 
 	NSDictionary *_command = @{@"/user/update-portrait": _params};

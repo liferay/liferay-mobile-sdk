@@ -127,10 +127,10 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateLogoWithCompanyId:(long long)companyId bytes:(NSArray *)bytes error:(NSError **)error {
+- (NSDictionary *)updateLogoWithCompanyId:(long long)companyId bytes:(NSData *)bytes error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"bytes": bytes
+		@"bytes": [self toString:bytes]
 	}];
 
 	NSDictionary *_command = @{@"/company/update-logo": _params};

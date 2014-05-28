@@ -64,7 +64,7 @@
 - (NSDictionary *)updateOpenIdWithUserId:(long long)userId openId:(NSString *)openId error:(NSError **)error;
 - (void)updateOrganizationsWithUserId:(long long)userId organizationIds:(NSArray *)organizationIds serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)updatePasswordWithUserId:(long long)userId password1:(NSString *)password1 password2:(NSString *)password2 passwordReset:(BOOL)passwordReset error:(NSError **)error;
-- (NSDictionary *)updatePortraitWithUserId:(long long)userId bytes:(NSArray *)bytes error:(NSError **)error;
+- (NSDictionary *)updatePortraitWithUserId:(long long)userId bytes:(NSData *)bytes error:(NSError **)error;
 - (NSDictionary *)updateReminderQueryWithUserId:(long long)userId question:(NSString *)question answer:(NSString *)answer error:(NSError **)error;
 - (NSDictionary *)updateScreenNameWithUserId:(long long)userId screenName:(NSString *)screenName error:(NSError **)error;
 - (NSDictionary *)updateStatusWithUserId:(long long)userId status:(int)status error:(NSError **)error;

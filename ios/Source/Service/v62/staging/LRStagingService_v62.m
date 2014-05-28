@@ -52,11 +52,11 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)updateStagingRequestWithStagingRequestId:(long long)stagingRequestId fileName:(NSString *)fileName bytes:(NSArray *)bytes error:(NSError **)error {
+- (void)updateStagingRequestWithStagingRequestId:(long long)stagingRequestId fileName:(NSString *)fileName bytes:(NSData *)bytes error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"stagingRequestId": @(stagingRequestId),
 		@"fileName": fileName,
-		@"bytes": bytes
+		@"bytes": [self toString:bytes]
 	}];
 
 	NSDictionary *_command = @{@"/staging/update-staging-request": _params};
