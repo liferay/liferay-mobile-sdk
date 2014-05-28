@@ -32,10 +32,10 @@ const long long ROOT_FOLDER_ID = 0;
 
 	long long repositoryId = [self.settings[@"groupId"] longLongValue];
 
-	NSString *sourceFileName = @"test.txt";
+	NSString *sourceFileName = @"test.properties";
 	NSString *mimeType = @"text/plain";
-	NSString *title = @"test";
-	NSData *bytes = [NSData data];
+	NSString *title = @"test.properties";
+	NSData *bytes = [@"Hello" dataUsingEncoding:NSUTF8StringEncoding];
 
 	NSError *error;
 	NSDictionary *entry = [service addFileEntryWithRepositoryId:repositoryId
@@ -45,6 +45,11 @@ const long long ROOT_FOLDER_ID = 0;
 
 	XCTAssertNil(error);
 	XCTAssertEqualObjects(title, entry[@"title"]);
+
+	[service deleteFileEntryWithFileEntryId:[entry[@"fileEntryId"]
+		longLongValue] error:&error];
+
+	XCTAssertNil(error);
 }
 
 - (void)testAddFolder {

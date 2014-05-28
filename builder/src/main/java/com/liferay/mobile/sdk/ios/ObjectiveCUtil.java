@@ -29,6 +29,8 @@ public class ObjectiveCUtil extends LanguageUtil {
 
 	public static final String NS_ARRAY = "NSArray *";
 
+	public static final String NS_DATA = "NSData *";
+
 	public static final String NS_DICTIONARY = "NSDictionary *";
 
 	public static final String NS_NUMBER = "NSNumber *";
@@ -42,6 +44,9 @@ public class ObjectiveCUtil extends LanguageUtil {
 			type.equals(LONG_LONG)) {
 
 			name = "@("  + name + ")";
+		}
+		else if (type.equals(NS_DATA)) {
+			name = "[self toString:" + name + "]";
 		}
 
 		return name;
@@ -58,10 +63,22 @@ public class ObjectiveCUtil extends LanguageUtil {
 			return NS_DICTIONARY;
 		}
 
+		if (type.equals(NS_DATA)) {
+			return NS_ARRAY;
+		}
+
 		return type;
 	}
 
 	public String getType(String type) {
+		if (type.equals(DOUBLE) || type.equals(INT) || type.equals(VOID)) {
+			return type;
+		}
+
+		if (type.equals(BYTE_ARRAY)) {
+			return NS_DATA;
+		}
+
 		if (isArray(type)) {
 			return NS_ARRAY;
 		}
@@ -72,10 +89,6 @@ public class ObjectiveCUtil extends LanguageUtil {
 
 		if (type.equals(LONG)) {
 			return LONG_LONG;
-		}
-
-		if (type.equals(DOUBLE) || type.equals(INT) || type.equals(VOID)) {
-			return type;
 		}
 
 		if (type.equals(STRING)) {

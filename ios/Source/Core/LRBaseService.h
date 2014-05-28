@@ -28,4 +28,6 @@
 	name:(NSString *)name className:(NSString *)className
 	wrapper:(LRJSONObjectWrapper *)wrapper;
 
+- (NSString *)toString:(NSData *)data;
+
 @end

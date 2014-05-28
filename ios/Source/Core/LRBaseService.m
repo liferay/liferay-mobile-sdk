@@ -50,4 +50,21 @@ NSString *const _SERVICE_CONTEXT = @"com.liferay.portal.service.ServiceContext";
 	[wrapper mangleWithParams:params name:name className:className];
 }
 
+- (NSString *)toString:(NSData *)data {
+	const uint8_t *values = [data bytes];
+	NSMutableString *value = [NSMutableString stringWithString:@"["];
+
+	for (int i = 0; i < [data length]; i++) {
+		if (i > 0) {
+			[value appendString:@","];
+		}
+
+		[value appendFormat:@"%d", values[i]];
+	}
+
+	[value appendString:@"]"];
+
+	return value;
+}
+
 @end
