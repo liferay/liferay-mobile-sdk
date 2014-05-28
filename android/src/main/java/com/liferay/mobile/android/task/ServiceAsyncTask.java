@@ -60,7 +60,6 @@ public class ServiceAsyncTask extends AsyncTask<JSONArray, Void, JSONArray> {
 		_callback.onFailure(_exception);
 	}
 
-	@Override
 	public void onCancelled(JSONArray array) {
 		_callback.onFailure(_exception);
 	}

@@ -63,7 +63,6 @@ public class UploadAsyncTask extends AsyncTask<JSONObject, Integer, JSONArray> {
 		_callback.onFailure(_exception);
 	}
 
-	@Override
 	public void onCancelled(JSONArray array) {
 		_callback.onFailure(_exception);
 	}
