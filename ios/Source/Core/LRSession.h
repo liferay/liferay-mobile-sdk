@@ -43,5 +43,6 @@
 	callback:(id<LRCallback>)callback queue:(NSOperationQueue *)queue;
 
 - (id)invoke:(NSDictionary *)command error:(NSError **)error;
+- (id)upload:(NSDictionary *)command error:(NSError **)error;
 
 @end

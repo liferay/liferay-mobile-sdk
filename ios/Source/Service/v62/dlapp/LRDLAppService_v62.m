@@ -38,7 +38,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addFileEntryWithRepositoryId:(long long)repositoryId folderId:(long long)folderId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog file:(LRJSONObjectWrapper *)file serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addFileEntryWithRepositoryId:(long long)repositoryId folderId:(long long)folderId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog file:(NSData *)file serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
@@ -47,14 +47,14 @@
 		@"title": title,
 		@"description": description,
 		@"changeLog": changeLog,
+		@"file": file
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlapp/add-file-entry": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSDictionary *)[self.session upload:_command error:error];
 }
 
 - (NSDictionary *)addFileShortcutWithRepositoryId:(long long)repositoryId folderId:(long long)folderId toFileEntryId:(long long)toFileEntryId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {

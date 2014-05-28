@@ -40,7 +40,7 @@ const long long ROOT_FOLDER_ID = 0;
 	NSError *error;
 	NSDictionary *entry = [service addFileEntryWithRepositoryId:repositoryId
 		folderId:ROOT_FOLDER_ID sourceFileName:sourceFileName mimeType:mimeType
-		title:title description:@"" changeLog:@"" bytes:bytes serviceContext:nil
+		title:title description:@"" changeLog:@"" file:bytes serviceContext:nil
 		error:&error];
 
 	XCTAssertNil(error);

@@ -14,6 +14,8 @@
 
 #import "LRHttpUtil.h"
 
+#import "AFNetworking.h"
+
 NSString *const LR_ERROR_DOMAIN = @"com.liferay.mobile";
 NSString *const LR_GET = @"GET";
 NSString *const LR_HEAD = @"HEAD";
@@ -39,8 +41,56 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 + (NSArray *)post:(LRSession *)session commands:(NSArray *)commands
 		error:(NSError **)error {
 
-	NSURLRequest *request = [self _getRequest:session commands:commands
+	NSURL *URL = [self _getURL:session path:@"/invoke"];
+
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
+		initWithURL:URL];
+
+	NSData *body = [NSJSONSerialization dataWithJSONObject:commands options:0
 		error:error];
+
+	[request setValue:@"application/json; charset=utf-8"
+		forHTTPHeaderField:@"Content-Type"];
+
+	[request setHTTPBody:body];
+
+	return [self _sendRequest:request session:session error:error];
+}
+
++ (id)upload:(LRSession *)session	command:(NSDictionary *)command
+		error:(NSError **)error {
+
+	NSArray *keys = [command allKeys];
+
+	if ([keys count] > 1) {
+		return nil;
+	}
+
+	NSString *path = keys[0];
+	NSString *URL = [[self _getURL:session path:path] absoluteString];
+
+	NSMutableDictionary *parameters = [NSMutableDictionary
+		dictionaryWithDictionary:[command valueForKey:path]];
+
+//	NSData *data = [self _removeData:parameters];
+
+	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+
+	[manager POST:URL parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+//		[formData  appendPartWithFileData:data name:@"file" fileName:@"test.txt" mimeType:@"text/plain"];
+	} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		NSLog(@"Success: %@", responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+	}];
+
+	return nil;
+}
+
++ (id)_sendRequest:(NSMutableURLRequest *)request session:(LRSession *)session
+		error:(NSError **)error {
+
+	[self _setAuthHeader:session request:request error:error];
 
 	if (*error) {
 		return nil;
@@ -65,13 +115,8 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	}
 }
 
-+ (NSMutableURLRequest *)_getRequest:(LRSession *)session
-		commands:(NSArray *)commands error:(NSError **)error {
-
-	NSURL *URL = [self _getURL:session];
-
-	NSMutableURLRequest *request =
-		[[NSMutableURLRequest alloc] initWithURL:URL];
++ (void)_setAuthHeader:(LRSession *)session
+		request:(NSMutableURLRequest *)request error:(NSError **)error {
 
 	NSString *credentials = [NSString stringWithFormat:@"%@:%@",
 		session.username, session.password];
@@ -79,28 +124,20 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	NSData *auth = [credentials dataUsingEncoding:NSUTF8StringEncoding];
 	NSString *encoded = [auth base64Encoding];
 	NSString *authHeader = [NSString stringWithFormat:@"Basic %@", encoded];
-	NSData *body = [NSJSONSerialization dataWithJSONObject:commands options:0
-		error:error];
 
 	[request setHTTPMethod:LR_POST];
-	[request setTimeoutInterval:session.connectionTimeout];
 	[request setValue:authHeader forHTTPHeaderField:@"Authorization"];
-	[request setValue:@"application/json; charset=utf-8"
-		forHTTPHeaderField:@"Content-Type"];
-
-	[request setHTTPBody:body];
-
-	return request;
+	[request setTimeoutInterval:session.connectionTimeout];
 }
 
-+ (NSURL *)_getURL:(LRSession *)session {
++ (NSURL *)_getURL:(LRSession *)session path:(NSString *)path {
 	NSString *server = session.server;
 
 	if (![server hasSuffix:@"/"]) {
 		server = [NSString stringWithFormat:@"%@/", server];
 	}
 
-	NSString *URL = [NSString stringWithFormat:@"%@api/jsonws/invoke", server];
+	NSString *URL = [NSString stringWithFormat:@"%@api/jsonws%@", server, path];
 
 	return [NSURL URLWithString:URL];
 }
@@ -191,6 +228,20 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 
 	[NSURLConnection sendAsynchronousRequest:request queue:session.queue
 		completionHandler:handler];
+}
+
++ (NSData *)_removeData:(NSMutableDictionary *)parameters {
+	for (NSString *key in parameters) {
+		id parameter = [parameters objectForKey:key];
+
+		if ([parameter isKindOfClass:[NSData class]]) {
+			[parameters removeObjectForKey:key];
+
+			return parameter;
+		}
+	}
+
+	return nil;
 }
 
 @end

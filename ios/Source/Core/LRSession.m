@@ -91,4 +91,8 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 	return _DEFAULT_QUEUE;
 }
 
+- (id)upload:(NSDictionary *)command error:(NSError **)error {
+	return [LRHttpUtil upload:self command:command error:error];
+}
+
 @end
