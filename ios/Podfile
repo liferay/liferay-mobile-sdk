@@ -1,0 +1,3 @@
+pod 'AFNetworking', '~> 2.2.4'
+
+link_with 'Test'
