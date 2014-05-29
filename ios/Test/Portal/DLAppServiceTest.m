@@ -46,9 +46,8 @@ const long long ROOT_FOLDER_ID = 0;
 	XCTAssertNil(error);
 	XCTAssertEqualObjects(title, entry[@"title"]);
 
-	[service deleteFileEntryWithFileEntryId:[entry[@"fileEntryId"]
-		longLongValue] error:&error];
-
+	long long fileEntryId = [entry[@"fileEntryId"] longLongValue];
+	[service deleteFileEntryWithFileEntryId:fileEntryId error:&error];
 	XCTAssertNil(error);
 }
 

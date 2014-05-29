@@ -83,10 +83,21 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 
 	[manager POST:URL parameters:parameters constructingBodyWithBlock:
 		^(id<AFMultipartFormData> formData) {
-			[formData  appendPartWithFileData:data name:@"file" fileName:@"test.properties" mimeType:@"text/plain"];
+			[formData appendPartWithFileData:data name:@"file" fileName:@"test.properties" mimeType:@"text/plain"];
 		}
-		success:^(AFHTTPRequestOperation *operation, id entry) {
-			[session.callback onSuccess:entry];
+		success:^(AFHTTPRequestOperation *operation, id json) {
+			NSError *serverError;
+
+			[self _handleServerException:json response:operation.response
+				error:&serverError];
+
+			if (serverError) {
+				[session.callback onFailure:serverError];
+
+				return;
+			}
+
+			[session.callback onSuccess:json];
 		}
 		failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 			[session.callback onFailure:error];
@@ -151,8 +162,8 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	return [NSURL URLWithString:URL];
 }
 
-+ (id)_handleServerException:(NSData *)data
-		response:(NSHTTPURLResponse *)response error:(NSError **)error {
++ (id)_handleServerException:(id)data response:(NSHTTPURLResponse *)response
+		error:(NSError **)error {
 
 	int statusCode = [response statusCode];
 
@@ -178,8 +189,12 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 		return nil;
 	}
 
-	id json = [NSJSONSerialization JSONObjectWithData:data options:0
-		error:error];
+	id json = data;
+
+	if ([data isKindOfClass:[NSData class]]) {
+		json = [NSJSONSerialization JSONObjectWithData:data options:0
+			error:error];
+	}
 
 	if (*error) {
 		return nil;

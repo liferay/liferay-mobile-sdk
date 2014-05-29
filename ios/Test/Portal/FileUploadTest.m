@@ -17,7 +17,7 @@
 #import "TRVSMonitor.h"
 
 /**
- * @author Bruno Faracje
+ * @author Bruno Farache
  */
 @interface FileUploadTest : BaseTest <LRCallback>
 
@@ -68,6 +68,41 @@
 
 	XCTAssertNil(self.error);
 	XCTAssertEqualObjects(title, self.entry[@"title"]);
+
+	long long fileEntryId = [self.entry[@"fileEntryId"] longLongValue];
+	[service deleteFileEntryWithFileEntryId:fileEntryId error:&error];
+	XCTAssertNil(error);
+}
+
+- (void)testServerException {
+	self.monitor = [TRVSMonitor monitor];
+
+	LRSession *session = [[LRSession alloc] init:self.session];
+	[session setCallback:self];
+
+	LRDLAppService_v62 *service =
+		[[LRDLAppService_v62 alloc] initWithSession:session];
+
+	NSString *sourceFileName = @"test.properties";
+	NSString *mimeType = @"text/plain";
+	NSString *title = @"test.properties";
+
+	NSData *bytes = [@"Hello" dataUsingEncoding:NSUTF8StringEncoding];
+
+	NSError *error;
+	[service addFileEntryWithRepositoryId:-1 folderId:0
+		sourceFileName:sourceFileName mimeType:mimeType title:title
+		description:@"" changeLog:@"" file:bytes serviceContext:nil
+		error:&error];
+
+	XCTAssertNil(error);
+
+	[self.monitor wait];
+
+	XCTAssert(self.error);
+	XCTAssertEqualObjects(
+		@"No Repository exists with the primary key -1",
+		[self.error localizedDescription]);
 }
 
 @end
