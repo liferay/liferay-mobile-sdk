@@ -12,23 +12,25 @@
  * details.
  */
 
-#import "LRJSONObjectWrapper.h"
 #import "LRUploadData.h"
-#import "LRSession.h"
 
 /**
  * @author Bruno Farache
  */
-@interface LRBaseService : NSObject
+@implementation LRUploadData
 
-@property (nonatomic, strong) LRSession *session;
+- (id)initWithData:(NSData *)data fileName:(NSString *)fileName
+	mimeType:(NSString *)mimeType {
 
-- (id)initWithSession:(LRSession *)session;
-- (BOOL)boolValue:(NSNumber *)number;
-- (void)mangleWrapperWithParams:(NSMutableDictionary *)params
-	name:(NSString *)name className:(NSString *)className
-	wrapper:(LRJSONObjectWrapper *)wrapper;
+	self = [super init];
 
-- (NSString *)toString:(NSData *)data;
+	if (self) {
+		self.data = data;
+		self.fileName = fileName;
+		self.mimeType = mimeType;
+	}
+
+	return self;
+}
 
 @end

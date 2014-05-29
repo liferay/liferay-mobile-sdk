@@ -51,12 +51,12 @@
 
 	long long repositoryId = [self.settings[@"groupId"] longLongValue];
 
-	NSData *bytes = [@"Hello" dataUsingEncoding:NSUTF8StringEncoding];
+	LRUploadData *file = [self _uploadData];
 
 	NSError *error;
 	[service addFileEntryWithRepositoryId:repositoryId
 	 folderId:ROOT_FOLDER_ID sourceFileName:SOURCE_FILE_NAME mimeType:MIME_TYPE
-		title:SOURCE_FILE_NAME description:@"" changeLog:@"" file:bytes
+		title:SOURCE_FILE_NAME description:@"" changeLog:@"" file:file
 		serviceContext:nil error:&error];
 
 	XCTAssertNil(error);
@@ -82,12 +82,12 @@
 
 	long long repositoryId = -1;
 
-	NSData *bytes = [@"Hello" dataUsingEncoding:NSUTF8StringEncoding];
+	LRUploadData *file = [self _uploadData];
 
 	NSError *error;
 	[service addFileEntryWithRepositoryId:repositoryId folderId:ROOT_FOLDER_ID
 		sourceFileName:SOURCE_FILE_NAME mimeType:MIME_TYPE
-		title:SOURCE_FILE_NAME description:@"" changeLog:@"" file:bytes
+		title:SOURCE_FILE_NAME description:@"" changeLog:@"" file:file
 		serviceContext:nil error:&error];
 
 	XCTAssertNil(error);
@@ -98,6 +98,13 @@
 	XCTAssertEqualObjects(
 		@"No Repository exists with the primary key -1",
 		[self.error localizedDescription]);
+}
+
+- (LRUploadData *)_uploadData {
+	NSData *data = [@"Hello" dataUsingEncoding:NSUTF8StringEncoding];
+
+	return [[LRUploadData alloc] initWithData:data fileName:SOURCE_FILE_NAME
+		mimeType:MIME_TYPE];
 }
 
 @end

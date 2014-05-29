@@ -15,6 +15,7 @@
 #import "LRHttpUtil.h"
 
 #import "AFNetworking.h"
+#import "LRUploadData.h"
 
 NSString *const LR_ERROR_DOMAIN = @"com.liferay.mobile";
 NSString *const LR_GET = @"GET";
@@ -72,7 +73,7 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	NSMutableDictionary *parameters = [NSMutableDictionary
 		dictionaryWithDictionary:[command valueForKey:path]];
 
-	NSData *data = [self _removeData:parameters];
+	LRUploadData *data = [self _extractUploadData:parameters];
 
 	AFHTTPRequestOperationManager *manager =
 		[AFHTTPRequestOperationManager manager];
@@ -83,7 +84,8 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 
 	[manager POST:URL parameters:parameters constructingBodyWithBlock:
 		^(id<AFMultipartFormData> formData) {
-			[formData appendPartWithFileData:data name:@"file" fileName:@"test.properties" mimeType:@"text/plain"];
+			[formData appendPartWithFileData:data.data name:data.parameterName
+				fileName:data.fileName mimeType:data.mimeType];
 		}
 		success:^(AFHTTPRequestOperation *operation, id json) {
 			NSError *serverError;
@@ -254,12 +256,13 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 		completionHandler:handler];
 }
 
-+ (NSData *)_removeData:(NSMutableDictionary *)parameters {
++ (LRUploadData *)_extractUploadData:(NSMutableDictionary *)parameters {
 	for (NSString *key in parameters) {
 		id parameter = [parameters objectForKey:key];
 
-		if ([parameter isKindOfClass:[NSData class]]) {
+		if ([parameter isKindOfClass:[LRUploadData class]]) {
 			[parameters removeObjectForKey:key];
+			[parameter setParameterName:key];
 
 			return parameter;
 		}
