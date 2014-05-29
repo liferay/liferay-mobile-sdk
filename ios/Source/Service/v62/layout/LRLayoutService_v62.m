@@ -407,91 +407,85 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)importLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+- (void)importLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"parameterMap": parameterMap,
+		@"file": file
 	}];
-
-	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layout/import-layouts": _params};
 
-	[self.session invoke:_command error:error];
+	[self.session upload:_command error:error];
 }
 
-- (NSNumber *)importLayoutsInBackgroundWithTaskName:(NSString *)taskName groupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+- (NSNumber *)importLayoutsInBackgroundWithTaskName:(NSString *)taskName groupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"taskName": taskName,
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"parameterMap": parameterMap,
+		@"file": file
 	}];
-
-	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layout/import-layouts-in-background": _params};
 
-	return (NSNumber *)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session upload:_command error:error];
 }
 
-- (void)importPortletInfoWithPortletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+- (void)importPortletInfoWithPortletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"portletId": portletId,
 		@"parameterMap": parameterMap,
+		@"file": file
 	}];
-
-	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layout/import-portlet-info": _params};
 
-	[self.session invoke:_command error:error];
+	[self.session upload:_command error:error];
 }
 
-- (void)importPortletInfoWithPlid:(long long)plid groupId:(long long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+- (void)importPortletInfoWithPlid:(long long)plid groupId:(long long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"plid": @(plid),
 		@"groupId": @(groupId),
 		@"portletId": portletId,
 		@"parameterMap": parameterMap,
+		@"file": file
 	}];
-
-	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layout/import-portlet-info": _params};
 
-	[self.session invoke:_command error:error];
+	[self.session upload:_command error:error];
 }
 
-- (void)importPortletInfoInBackgroundWithTaskName:(NSString *)taskName portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+- (void)importPortletInfoInBackgroundWithTaskName:(NSString *)taskName portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"taskName": taskName,
 		@"portletId": portletId,
 		@"parameterMap": parameterMap,
+		@"file": file
 	}];
-
-	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layout/import-portlet-info-in-background": _params};
 
-	[self.session invoke:_command error:error];
+	[self.session upload:_command error:error];
 }
 
-- (NSNumber *)importPortletInfoInBackgroundWithTaskName:(NSString *)taskName plid:(long long)plid groupId:(long long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+- (NSNumber *)importPortletInfoInBackgroundWithTaskName:(NSString *)taskName plid:(long long)plid groupId:(long long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"taskName": taskName,
 		@"plid": @(plid),
 		@"groupId": @(groupId),
 		@"portletId": portletId,
 		@"parameterMap": parameterMap,
+		@"file": file
 	}];
-
-	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layout/import-portlet-info-in-background": _params};
 
-	return (NSNumber *)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session upload:_command error:error];
 }
 
 - (void)schedulePublishToLiveWithSourceGroupId:(long long)sourceGroupId targetGroupId:(long long)targetGroupId privateLayout:(BOOL)privateLayout layoutIdMap:(NSDictionary *)layoutIdMap parameterMap:(NSDictionary *)parameterMap scope:(NSString *)scope startDate:(long long)startDate endDate:(long long)endDate groupName:(NSString *)groupName cronText:(NSString *)cronText schedulerStartDate:(long long)schedulerStartDate schedulerEndDate:(long long)schedulerEndDate description:(NSString *)description error:(NSError **)error {
@@ -748,33 +742,31 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)validateImportLayoutsFileWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+- (NSDictionary *)validateImportLayoutsFileWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"parameterMap": parameterMap,
+		@"file": file
 	}];
-
-	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layout/validate-import-layouts-file": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSDictionary *)[self.session upload:_command error:error];
 }
 
-- (NSDictionary *)validateImportPortletInfoWithPlid:(long long)plid groupId:(long long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+- (NSDictionary *)validateImportPortletInfoWithPlid:(long long)plid groupId:(long long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"plid": @(plid),
 		@"groupId": @(groupId),
 		@"portletId": portletId,
 		@"parameterMap": parameterMap,
+		@"file": file
 	}];
-
-	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layout/validate-import-portlet-info": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSDictionary *)[self.session upload:_command error:error];
 }
 
 @end

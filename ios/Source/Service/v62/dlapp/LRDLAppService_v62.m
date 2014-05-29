@@ -47,7 +47,7 @@
 		@"title": title,
 		@"description": description,
 		@"changeLog": changeLog,
-		@"file": file
+		@"file": file,
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -86,19 +86,19 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addTempFileEntryWithGroupId:(long long)groupId folderId:(long long)folderId fileName:(NSString *)fileName tempFolderName:(NSString *)tempFolderName file:(LRJSONObjectWrapper *)file mimeType:(NSString *)mimeType error:(NSError **)error {
+- (NSDictionary *)addTempFileEntryWithGroupId:(long long)groupId folderId:(long long)folderId fileName:(NSString *)fileName tempFolderName:(NSString *)tempFolderName file:(LRUploadData *)file mimeType:(NSString *)mimeType error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
 		@"fileName": fileName,
 		@"tempFolderName": tempFolderName,
+		@"file": file,
 		@"mimeType": mimeType
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 	NSDictionary *_command = @{@"/dlapp/add-temp-file-entry": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSDictionary *)[self.session upload:_command error:error];
 }
 
 - (void)cancelCheckOutWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
@@ -1295,7 +1295,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateFileEntryWithFileEntryId:(long long)fileEntryId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog majorVersion:(BOOL)majorVersion file:(LRJSONObjectWrapper *)file serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateFileEntryWithFileEntryId:(long long)fileEntryId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog majorVersion:(BOOL)majorVersion file:(LRUploadData *)file serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
 		@"sourceFileName": sourceFileName,
@@ -1304,17 +1304,17 @@
 		@"description": description,
 		@"changeLog": changeLog,
 		@"majorVersion": @(majorVersion),
+		@"file": file,
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlapp/update-file-entry": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSDictionary *)[self.session upload:_command error:error];
 }
 
-- (NSDictionary *)updateFileEntryAndCheckInWithFileEntryId:(long long)fileEntryId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog majorVersion:(BOOL)majorVersion file:(LRJSONObjectWrapper *)file serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateFileEntryAndCheckInWithFileEntryId:(long long)fileEntryId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog majorVersion:(BOOL)majorVersion file:(LRUploadData *)file serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
 		@"sourceFileName": sourceFileName,
@@ -1323,14 +1323,14 @@
 		@"description": description,
 		@"changeLog": changeLog,
 		@"majorVersion": @(majorVersion),
+		@"file": file,
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlapp/update-file-entry-and-check-in": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSDictionary *)[self.session upload:_command error:error];
 }
 
 - (NSDictionary *)updateFileShortcutWithFileShortcutId:(long long)fileShortcutId folderId:(long long)folderId toFileEntryId:(long long)toFileEntryId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {

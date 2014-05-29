@@ -31,7 +31,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addItemWithGroupId:(long long)groupId categoryId:(long long)categoryId sku:(NSString *)sku name:(NSString *)name description:(NSString *)description properties:(NSString *)properties fieldsQuantities:(NSString *)fieldsQuantities requiresShipping:(BOOL)requiresShipping stockQuantity:(int)stockQuantity featured:(BOOL)featured sale:(LRJSONObjectWrapper *)sale smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(LRJSONObjectWrapper *)smallFile mediumImage:(BOOL)mediumImage mediumImageURL:(NSString *)mediumImageURL mediumFile:(LRJSONObjectWrapper *)mediumFile largeImage:(BOOL)largeImage largeImageURL:(NSString *)largeImageURL largeFile:(LRJSONObjectWrapper *)largeFile itemFields:(NSArray *)itemFields itemPrices:(NSArray *)itemPrices serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addItemWithGroupId:(long long)groupId categoryId:(long long)categoryId sku:(NSString *)sku name:(NSString *)name description:(NSString *)description properties:(NSString *)properties fieldsQuantities:(NSString *)fieldsQuantities requiresShipping:(BOOL)requiresShipping stockQuantity:(int)stockQuantity featured:(BOOL)featured sale:(LRJSONObjectWrapper *)sale smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(LRUploadData *)smallFile mediumImage:(BOOL)mediumImage mediumImageURL:(NSString *)mediumImageURL mediumFile:(LRUploadData *)mediumFile largeImage:(BOOL)largeImage largeImageURL:(NSString *)largeImageURL largeFile:(LRUploadData *)largeFile itemFields:(NSArray *)itemFields itemPrices:(NSArray *)itemPrices serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
@@ -45,23 +45,23 @@
 		@"featured": @(featured),
 		@"smallImage": @(smallImage),
 		@"smallImageURL": smallImageURL,
+		@"smallFile": smallFile,
 		@"mediumImage": @(mediumImage),
 		@"mediumImageURL": mediumImageURL,
+		@"mediumFile": mediumFile,
 		@"largeImage": @(largeImage),
 		@"largeImageURL": largeImageURL,
+		@"largeFile": largeFile,
 		@"itemFields": itemFields,
 		@"itemPrices": itemPrices,
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"sale" className:@"java.lang.Boolean" wrapper:sale];
-	[self mangleWrapperWithParams:_params name:@"smallFile" className:@"java.io.File" wrapper:smallFile];
-	[self mangleWrapperWithParams:_params name:@"mediumFile" className:@"java.io.File" wrapper:mediumFile];
-	[self mangleWrapperWithParams:_params name:@"largeFile" className:@"java.io.File" wrapper:largeFile];
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/shoppingitem/add-item": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSDictionary *)[self.session upload:_command error:error];
 }
 
 - (void)deleteItemWithItemId:(long long)itemId error:(NSError **)error {
@@ -144,7 +144,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateItemWithItemId:(long long)itemId groupId:(long long)groupId categoryId:(long long)categoryId sku:(NSString *)sku name:(NSString *)name description:(NSString *)description properties:(NSString *)properties fieldsQuantities:(NSString *)fieldsQuantities requiresShipping:(BOOL)requiresShipping stockQuantity:(int)stockQuantity featured:(BOOL)featured sale:(LRJSONObjectWrapper *)sale smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(LRJSONObjectWrapper *)smallFile mediumImage:(BOOL)mediumImage mediumImageURL:(NSString *)mediumImageURL mediumFile:(LRJSONObjectWrapper *)mediumFile largeImage:(BOOL)largeImage largeImageURL:(NSString *)largeImageURL largeFile:(LRJSONObjectWrapper *)largeFile itemFields:(NSArray *)itemFields itemPrices:(NSArray *)itemPrices serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateItemWithItemId:(long long)itemId groupId:(long long)groupId categoryId:(long long)categoryId sku:(NSString *)sku name:(NSString *)name description:(NSString *)description properties:(NSString *)properties fieldsQuantities:(NSString *)fieldsQuantities requiresShipping:(BOOL)requiresShipping stockQuantity:(int)stockQuantity featured:(BOOL)featured sale:(LRJSONObjectWrapper *)sale smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(LRUploadData *)smallFile mediumImage:(BOOL)mediumImage mediumImageURL:(NSString *)mediumImageURL mediumFile:(LRUploadData *)mediumFile largeImage:(BOOL)largeImage largeImageURL:(NSString *)largeImageURL largeFile:(LRUploadData *)largeFile itemFields:(NSArray *)itemFields itemPrices:(NSArray *)itemPrices serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"itemId": @(itemId),
 		@"groupId": @(groupId),
@@ -159,23 +159,23 @@
 		@"featured": @(featured),
 		@"smallImage": @(smallImage),
 		@"smallImageURL": smallImageURL,
+		@"smallFile": smallFile,
 		@"mediumImage": @(mediumImage),
 		@"mediumImageURL": mediumImageURL,
+		@"mediumFile": mediumFile,
 		@"largeImage": @(largeImage),
 		@"largeImageURL": largeImageURL,
+		@"largeFile": largeFile,
 		@"itemFields": itemFields,
 		@"itemPrices": itemPrices,
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"sale" className:@"java.lang.Boolean" wrapper:sale];
-	[self mangleWrapperWithParams:_params name:@"smallFile" className:@"java.io.File" wrapper:smallFile];
-	[self mangleWrapperWithParams:_params name:@"mediumFile" className:@"java.io.File" wrapper:mediumFile];
-	[self mangleWrapperWithParams:_params name:@"largeFile" className:@"java.io.File" wrapper:largeFile];
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/shoppingitem/update-item": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSDictionary *)[self.session upload:_command error:error];
 }
 
 @end

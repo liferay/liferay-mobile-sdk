@@ -45,18 +45,17 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)updateLogoWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo file:(LRJSONObjectWrapper *)file error:(NSError **)error {
+- (void)updateLogoWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo file:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"logo": @(logo),
+		@"file": file
 	}];
-
-	[self mangleWrapperWithParams:_params name:@"file" className:@"java.io.File" wrapper:file];
 
 	NSDictionary *_command = @{@"/layoutset/update-logo": _params};
 
-	[self.session invoke:_command error:error];
+	[self.session upload:_command error:error];
 }
 
 - (NSDictionary *)updateLookAndFeelWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId css:(NSString *)css wapTheme:(BOOL)wapTheme error:(NSError **)error {
