@@ -12,18 +12,19 @@
  * details.
  */
 
-#import "BaseTest.h"
+#import "DLAppServiceTest.h"
+
 #import "LRBatchSession.h"
 #import "LRDLAppService_v62.h"
 
+NSString *const MIME_TYPE = @"text/plain";
 const long long ROOT_FOLDER_ID = 0;
+NSString *const SOURCE_FILE_NAME = @"test.properties";
 
 /**
  * @author Jose Navarro
+ * @author Bruno Farache
  */
-@interface DLAppServiceTest : BaseTest
-@end
-
 @implementation DLAppServiceTest
 
 - (void)testAddFileBytes {
@@ -32,19 +33,17 @@ const long long ROOT_FOLDER_ID = 0;
 
 	long long repositoryId = [self.settings[@"groupId"] longLongValue];
 
-	NSString *sourceFileName = @"test.properties";
-	NSString *mimeType = @"text/plain";
-	NSString *title = @"test.properties";
 	NSData *bytes = [@"Hello" dataUsingEncoding:NSUTF8StringEncoding];
 
 	NSError *error;
 	NSDictionary *entry = [service addFileEntryWithRepositoryId:repositoryId
-		folderId:ROOT_FOLDER_ID sourceFileName:sourceFileName mimeType:mimeType
-		title:title description:@"" changeLog:@"" bytes:bytes serviceContext:nil
+		folderId:ROOT_FOLDER_ID sourceFileName:SOURCE_FILE_NAME
+		mimeType:MIME_TYPE title:SOURCE_FILE_NAME description:@"" changeLog:@""
+		bytes:bytes serviceContext:nil
 		error:&error];
 
 	XCTAssertNil(error);
-	XCTAssertEqualObjects(title, entry[@"title"]);
+	XCTAssertEqualObjects(SOURCE_FILE_NAME, entry[@"title"]);
 
 	long long fileEntryId = [entry[@"fileEntryId"] longLongValue];
 	[service deleteFileEntryWithFileEntryId:fileEntryId error:&error];

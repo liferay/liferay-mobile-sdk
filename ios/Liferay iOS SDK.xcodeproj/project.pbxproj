@@ -375,6 +375,7 @@
 		CC1C89701907FA19004D3C4C /* GroupServiceAsyncTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupServiceAsyncTest.m; sourceTree = "<group>"; };
 		CC1C897719080708004D3C4C /* TRVSMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSMonitor.h; sourceTree = "<group>"; };
 		CC1C897819080708004D3C4C /* TRVSMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSMonitor.m; sourceTree = "<group>"; };
+		CC4B7A231937B1A4003611C4 /* DLAppServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAppServiceTest.h; sourceTree = "<group>"; };
 		CC677D2618EC511900F3DFAB /* Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC83D48D18ED693600CFA142 /* BaseTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTest.h; sourceTree = "<group>"; };
 		CC83D48E18ED6BE300CFA142 /* BaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTest.m; sourceTree = "<group>"; };
@@ -1461,6 +1462,7 @@
 		CC03FD1C18EDA05B00F3F16C /* Portal */ = {
 			isa = PBXGroup;
 			children = (
+				CC4B7A231937B1A4003611C4 /* DLAppServiceTest.h */,
 				CC03FD2B18EDA10B00F3F16C /* DLAppServiceTest.m */,
 				CC0FD4F81937853800270AB0 /* FileUploadTest.m */,
 				CC1C89701907FA19004D3C4C /* GroupServiceAsyncTest.m */,

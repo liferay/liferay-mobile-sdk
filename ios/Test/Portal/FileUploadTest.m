@@ -13,6 +13,7 @@
  */
 
 #import "BaseTest.h"
+#import "DLAppServiceTest.h"
 #import "LRDLAppService_v62.h"
 #import "TRVSMonitor.h"
 
@@ -50,24 +51,20 @@
 
 	long long repositoryId = [self.settings[@"groupId"] longLongValue];
 
-	NSString *sourceFileName = @"test.properties";
-	NSString *mimeType = @"text/plain";
-	NSString *title = @"test.properties";
-
 	NSData *bytes = [@"Hello" dataUsingEncoding:NSUTF8StringEncoding];
 
 	NSError *error;
 	[service addFileEntryWithRepositoryId:repositoryId
-		folderId:0 sourceFileName:sourceFileName mimeType:mimeType
-		title:title description:@"" changeLog:@"" file:bytes serviceContext:nil
-		error:&error];
+	 folderId:ROOT_FOLDER_ID sourceFileName:SOURCE_FILE_NAME mimeType:MIME_TYPE
+		title:SOURCE_FILE_NAME description:@"" changeLog:@"" file:bytes
+		serviceContext:nil error:&error];
 
 	XCTAssertNil(error);
 
 	[self.monitor wait];
 
 	XCTAssertNil(self.error);
-	XCTAssertEqualObjects(title, self.entry[@"title"]);
+	XCTAssertEqualObjects(SOURCE_FILE_NAME, self.entry[@"title"]);
 
 	long long fileEntryId = [self.entry[@"fileEntryId"] longLongValue];
 	[service deleteFileEntryWithFileEntryId:fileEntryId error:&error];
@@ -83,17 +80,13 @@
 	LRDLAppService_v62 *service =
 		[[LRDLAppService_v62 alloc] initWithSession:session];
 
-	NSString *sourceFileName = @"test.properties";
-	NSString *mimeType = @"text/plain";
-	NSString *title = @"test.properties";
-
 	NSData *bytes = [@"Hello" dataUsingEncoding:NSUTF8StringEncoding];
 
 	NSError *error;
-	[service addFileEntryWithRepositoryId:-1 folderId:0
-		sourceFileName:sourceFileName mimeType:mimeType title:title
-		description:@"" changeLog:@"" file:bytes serviceContext:nil
-		error:&error];
+	[service addFileEntryWithRepositoryId:-1 folderId:ROOT_FOLDER_ID
+		sourceFileName:SOURCE_FILE_NAME mimeType:MIME_TYPE
+		title:SOURCE_FILE_NAME description:@"" changeLog:@"" file:bytes
+		serviceContext:nil error:&error];
 
 	XCTAssertNil(error);
 
