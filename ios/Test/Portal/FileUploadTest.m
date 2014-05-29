@@ -71,7 +71,7 @@
 	XCTAssertNil(error);
 }
 
-- (void)testServerException {
+- (void)testRepositoryIdServerException {
 	self.monitor = [TRVSMonitor monitor];
 
 	LRSession *session = [[LRSession alloc] init:self.session];
@@ -80,10 +80,12 @@
 	LRDLAppService_v62 *service =
 		[[LRDLAppService_v62 alloc] initWithSession:session];
 
+	long long repositoryId = -1;
+
 	NSData *bytes = [@"Hello" dataUsingEncoding:NSUTF8StringEncoding];
 
 	NSError *error;
-	[service addFileEntryWithRepositoryId:-1 folderId:ROOT_FOLDER_ID
+	[service addFileEntryWithRepositoryId:repositoryId folderId:ROOT_FOLDER_ID
 		sourceFileName:SOURCE_FILE_NAME mimeType:MIME_TYPE
 		title:SOURCE_FILE_NAME description:@"" changeLog:@"" file:bytes
 		serviceContext:nil error:&error];

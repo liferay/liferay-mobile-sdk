@@ -130,6 +130,26 @@ NSString *const SOURCE_FILE_NAME = @"test.properties";
 	[self _deleteFoldersBatch:ids];
 }
 
+- (void)testRepositoryIdServerException {
+	LRDLAppService_v62 *service =
+		[[LRDLAppService_v62 alloc] initWithSession:self.session];
+
+	long long repositoryId = -1;
+
+	NSData *bytes = [@"Hello" dataUsingEncoding:NSUTF8StringEncoding];
+
+	NSError *error;
+	[service addFileEntryWithRepositoryId:repositoryId folderId:ROOT_FOLDER_ID
+		sourceFileName:SOURCE_FILE_NAME mimeType:MIME_TYPE
+		title:SOURCE_FILE_NAME description:@"" changeLog:@"" bytes:bytes
+		serviceContext:nil error:&error];
+
+	XCTAssert(error);
+	XCTAssertEqualObjects(
+		@"No Repository exists with the primary key -1",
+		[error localizedDescription]);
+}
+
 - (void)_deleteFolder:(long long)folderId {
 	LRDLAppService_v62 *service =
 		[[LRDLAppService_v62 alloc] initWithSession:self.session];
