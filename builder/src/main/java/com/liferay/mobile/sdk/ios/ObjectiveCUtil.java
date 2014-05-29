@@ -27,6 +27,8 @@ public class ObjectiveCUtil extends LanguageUtil {
 
 	public static final String LR_JSON_OBJECT_WRAPPER = "LRJSONObjectWrapper *";
 
+	public static final String LR_UPLOAD_DATA = "LRUploadData *";
+
 	public static final String NS_ARRAY = "NSArray *";
 
 	public static final String NS_DATA = "NSData *";
@@ -59,7 +61,9 @@ public class ObjectiveCUtil extends LanguageUtil {
 			type = NS_NUMBER;
 		}
 
-		if (type.equals(LR_JSON_OBJECT_WRAPPER)) {
+		if (type.equals(LR_JSON_OBJECT_WRAPPER) ||
+			type.equals(LR_UPLOAD_DATA)) {
+
 			return NS_DICTIONARY;
 		}
 
@@ -93,6 +97,10 @@ public class ObjectiveCUtil extends LanguageUtil {
 
 		if (type.equals(STRING)) {
 			return NS_STRING;
+		}
+
+		if (type.equals(FILE)) {
+			return LR_UPLOAD_DATA;
 		}
 
 		if (type.startsWith(OBJECT_PREFIX)) {

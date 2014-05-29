@@ -96,7 +96,7 @@ public class $className extends BaseService {
 	##n
 
 	#if ($returnType == $VOID)
-		##t		session.invoke(_command);
+		##t		session.${invokeMethod}(_command);
 	#else
 		##t		return ($returnType)session.${invokeMethod}(_command);
 	#end

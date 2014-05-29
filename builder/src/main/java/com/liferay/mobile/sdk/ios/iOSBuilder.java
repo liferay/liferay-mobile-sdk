@@ -106,11 +106,14 @@ public class iOSBuilder extends BaseBuilder {
 		context.put(ESCAPE_TOOL, new EscapeTool());
 		context.put(JSON_OBJECT_WRAPPER, ObjectiveCUtil.LR_JSON_OBJECT_WRAPPER);
 		context.put(LANGUAGE_UTIL, objectiveCUtil);
+		context.put(LR_UPLOAD_DATA, objectiveCUtil.LR_UPLOAD_DATA);
 		context.put(VOID, LanguageUtil.VOID);
 
 		return context;
 	}
 
 	protected static final String BOOL = "BOOL";
+
+	protected static final String LR_UPLOAD_DATA = "LR_UPLOAD_DATA";
 
 }
