@@ -19,10 +19,15 @@
 
 @property (nonatomic, strong) NSData *data;
 @property (nonatomic, strong) NSString *fileName;
+@property (nonatomic, strong) NSInputStream *inputStream;
+@property (nonatomic) int64_t length;
 @property (nonatomic, strong) NSString *mimeType;
 @property (nonatomic, strong) NSString *parameterName;
 
 - (id)initWithData:(NSData *)data fileName:(NSString *)fileName
 	mimeType:(NSString *)mimeType;
+
+- (id)initWithInputStream:(NSInputStream *)inputStream length:(int64_t)length
+	fileName:(NSString *)fileName mimeType:(NSString *)mimeType;
 
 @end

@@ -31,12 +31,12 @@
 @implementation FileUploadTest
 
 - (void)onFailure:(NSError *)error {
-	self.error = error;
+	[self setError:error];
 	[self.monitor signal];
 }
 
 - (void)onSuccess:(NSDictionary *)entry {
-	self.entry = entry;
+	[self setEntry:entry];
 	[self.monitor signal];
 }
 
@@ -70,6 +70,49 @@
 	long long fileEntryId = [self.entry[@"fileEntryId"] longLongValue];
 	[service deleteFileEntryWithFileEntryId:fileEntryId error:&error];
 	XCTAssertNil(error);
+
+	[self setEntry:nil];
+	[self setError:nil];
+}
+
+- (void)testAddFileEntryInputStream {
+	self.monitor = [TRVSMonitor monitor];
+
+	LRSession *session = [[LRSession alloc] init:self.session];
+	[session setCallback:self];
+
+	LRDLAppService_v62 *service =
+		[[LRDLAppService_v62 alloc] initWithSession:session];
+
+	long long repositoryId = [self.settings[@"groupId"] longLongValue];
+
+	NSData *data = [@"File content." dataUsingEncoding:NSUTF8StringEncoding];
+	NSInputStream *is = [[NSInputStream alloc] initWithData:data];
+	int64_t length = [data length];
+
+	LRUploadData *file = [[LRUploadData alloc] initWithInputStream:is
+		length:length fileName:SOURCE_FILE_NAME mimeType:MIME_TYPE];
+
+	NSError *error;
+	[service addFileEntryWithRepositoryId:repositoryId
+		folderId:ROOT_FOLDER_ID sourceFileName:SOURCE_FILE_NAME
+		mimeType:MIME_TYPE title:SOURCE_FILE_NAME description:@"" changeLog:@""
+		file:file serviceContext:nil error:&error];
+
+	XCTAssertNil(error);
+
+	[self.monitor wait];
+
+	XCTAssertNil(self.error);
+	XCTAssertEqualObjects(SOURCE_FILE_NAME, self.entry[@"title"]);
+
+	[session setCallback:nil];
+	long long fileEntryId = [self.entry[@"fileEntryId"] longLongValue];
+	[service deleteFileEntryWithFileEntryId:fileEntryId error:&error];
+	XCTAssertNil(error);
+
+	[self setEntry:nil];
+	[self setError:nil];
 }
 
 - (void)testRepositoryIdServerException {
@@ -99,10 +142,13 @@
 	XCTAssertEqualObjects(
 		@"No Repository exists with the primary key -1",
 		[self.error localizedDescription]);
+
+	[self setEntry:nil];
+	[self setError:nil];
 }
 
 - (LRUploadData *)_uploadData {
-	NSData *data = [@"Hello" dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *data = [@"File content." dataUsingEncoding:NSUTF8StringEncoding];
 
 	return [[LRUploadData alloc] initWithData:data fileName:SOURCE_FILE_NAME
 		mimeType:MIME_TYPE];

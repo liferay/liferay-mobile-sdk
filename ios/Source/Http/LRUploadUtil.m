@@ -49,8 +49,16 @@
 
 	[manager POST:URL parameters:parameters constructingBodyWithBlock:
 		^(id<AFMultipartFormData> formData) {
-			[formData appendPartWithFileData:data.data name:data.parameterName
-				fileName:data.fileName mimeType:data.mimeType];
+			if (data.data) {
+				[formData appendPartWithFileData:data.data
+					name:data.parameterName fileName:data.fileName
+					mimeType:data.mimeType];
+			}
+			else if (data.inputStream) {
+				[formData appendPartWithInputStream:data.inputStream
+					name:data.parameterName fileName:data.fileName
+					length:data.length mimeType:data.mimeType];
+			}
 		}
 		success:^(AFHTTPRequestOperation *operation, id json) {
 			NSError *serverError;

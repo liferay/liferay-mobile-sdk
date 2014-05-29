@@ -31,12 +31,12 @@
 @implementation GroupServiceAsyncTest
 
 - (void)onFailure:(NSError *)error {
-	self.error = error;
+	[self setError:error];
 	[self.monitor signal];
 }
 
 - (void)onSuccess:(NSArray *)groups {
-	self.groups = groups;
+	[self setGroups:groups];
 	[self.monitor signal];
 }
 
