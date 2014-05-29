@@ -12,8 +12,10 @@
  * details.
  */
 
-#import "LRHttpUtil.h"
 #import "LRSession.h"
+
+#import "LRHttpUtil.h"
+#import "LRUploadUtil.h"
 
 static const int _DEFAULT_CONNECTION_TIMEOUT = 15;
 static NSOperationQueue *_DEFAULT_QUEUE;
@@ -97,7 +99,7 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 			format:@"You need to set a callback to the session before uploading files"];
 	}
 
-	return [LRHttpUtil upload:self command:command error:error];
+	return [LRUploadUtil upload:self command:command error:error];
 }
 
 @end

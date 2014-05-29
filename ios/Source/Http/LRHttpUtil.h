@@ -12,7 +12,7 @@
  * details.
  */
 
-#import "LRBatchSession.h"
+#import "LRSession.h"
 
 extern NSString *const LR_ERROR_DOMAIN;
 extern NSString *const LR_GET;
@@ -30,13 +30,15 @@ extern const int LR_STATUS_UNAUTHORIZED;
 
 typedef void (^LRHandler)(NSURLResponse *r, NSData *d, NSError *e);
 
++ (NSURL *)getURL:(LRSession *)session path:(NSString *)path;
+
++ (id)handleServerException:(id)data response:(NSHTTPURLResponse *)response
+	error:(NSError **)error;
+
 + (NSArray *)post:(LRSession *)session command:(NSDictionary *)command
 	error:(NSError **)error;
 
 + (NSArray *)post:(LRSession *)session commands:(NSArray *)commands
 	error:(NSError **)error;
-
-+ (id)upload:(LRSession *)session	command:(NSDictionary *)command
-	   error:(NSError **)error;
 
 @end

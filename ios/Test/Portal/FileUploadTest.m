@@ -55,9 +55,9 @@
 
 	NSError *error;
 	[service addFileEntryWithRepositoryId:repositoryId
-	 folderId:ROOT_FOLDER_ID sourceFileName:SOURCE_FILE_NAME mimeType:MIME_TYPE
-		title:SOURCE_FILE_NAME description:@"" changeLog:@"" file:file
-		serviceContext:nil error:&error];
+		folderId:ROOT_FOLDER_ID sourceFileName:SOURCE_FILE_NAME
+		mimeType:MIME_TYPE title:SOURCE_FILE_NAME description:@"" changeLog:@""
+		file:file serviceContext:nil error:&error];
 
 	XCTAssertNil(error);
 
@@ -66,6 +66,7 @@
 	XCTAssertNil(self.error);
 	XCTAssertEqualObjects(SOURCE_FILE_NAME, self.entry[@"title"]);
 
+	[session setCallback:nil];
 	long long fileEntryId = [self.entry[@"fileEntryId"] longLongValue];
 	[service deleteFileEntryWithFileEntryId:fileEntryId error:&error];
 	XCTAssertNil(error);
