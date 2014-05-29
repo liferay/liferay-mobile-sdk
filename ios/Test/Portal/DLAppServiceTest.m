@@ -26,7 +26,7 @@ const long long ROOT_FOLDER_ID = 0;
 
 @implementation DLAppServiceTest
 
-- (void)testAddFile {
+- (void)testAddFileBytes {
 	LRDLAppService_v62 *service =
 		[[LRDLAppService_v62 alloc] initWithSession:self.session];
 
@@ -40,7 +40,7 @@ const long long ROOT_FOLDER_ID = 0;
 	NSError *error;
 	NSDictionary *entry = [service addFileEntryWithRepositoryId:repositoryId
 		folderId:ROOT_FOLDER_ID sourceFileName:sourceFileName mimeType:mimeType
-		title:title description:@"" changeLog:@"" file:bytes serviceContext:nil
+		title:title description:@"" changeLog:@"" bytes:bytes serviceContext:nil
 		error:&error];
 
 	XCTAssertNil(error);
@@ -48,6 +48,40 @@ const long long ROOT_FOLDER_ID = 0;
 
 	[service deleteFileEntryWithFileEntryId:[entry[@"fileEntryId"]
 		longLongValue] error:&error];
+
+	XCTAssertNil(error);
+}
+
+- (void)testAddFileEntryData {
+	LRDLAppService_v62 *service =
+		[[LRDLAppService_v62 alloc] initWithSession:self.session];
+
+	long long repositoryId = [self.settings[@"groupId"] longLongValue];
+
+	NSHTTPCookieStorage *cookieStorage =
+		[NSHTTPCookieStorage sharedHTTPCookieStorage];
+
+	[cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyNever];
+
+	NSString *sourceFileName = @"test.properties";
+	NSString *mimeType = @"text/plain";
+	NSString *title = @"test.properties";
+
+	NSBundle *bundle =
+		[NSBundle bundleWithIdentifier:@"com.liferay.mobile.sdk.Test"];
+
+	NSString *path = [bundle pathForResource:@"settings" ofType:@"plist"];
+	NSData *bytes = [NSData dataWithContentsOfFile:path];
+
+	NSError *error;
+	NSDictionary *entry = [service addFileEntryWithRepositoryId:repositoryId
+		folderId:ROOT_FOLDER_ID sourceFileName:sourceFileName mimeType:mimeType
+		title:title description:@"" changeLog:@"" file:bytes serviceContext:nil
+		error:&error];
+
+	XCTAssertNil(error);
+	XCTAssertEqualObjects(title, entry[@"title"]);
+
 
 	XCTAssertNil(error);
 }

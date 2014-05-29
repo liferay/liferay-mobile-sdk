@@ -72,17 +72,24 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	NSMutableDictionary *parameters = [NSMutableDictionary
 		dictionaryWithDictionary:[command valueForKey:path]];
 
-//	NSData *data = [self _removeData:parameters];
+	NSData *data = [self _removeData:parameters];
 
 	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+	[manager.requestSerializer
+		setAuthorizationHeaderFieldWithUsername:session.username
+		password:session.password];
 
-	[manager POST:URL parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-//		[formData  appendPartWithFileData:data name:@"file" fileName:@"test.txt" mimeType:@"text/plain"];
-	} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		NSLog(@"Success: %@", responseObject);
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		NSLog(@"Error: %@", error);
-	}];
+	[manager POST:URL parameters:parameters constructingBodyWithBlock:
+	 	^(id<AFMultipartFormData> formData) {
+			[formData  appendPartWithFileData:data name:@"file" fileName:@"test.txt" mimeType:@"text/plain"];
+		}
+		success:^(AFHTTPRequestOperation *operation, id responseObject) {
+			NSLog(@"Success: %@", responseObject);
+		}
+		failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+			NSLog(@"Error: %@", error);
+		}
+	];
 
 	return nil;
 }
