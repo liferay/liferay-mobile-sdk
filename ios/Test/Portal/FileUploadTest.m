@@ -50,11 +50,6 @@
 
 	long long repositoryId = [self.settings[@"groupId"] longLongValue];
 
-	NSHTTPCookieStorage *cookieStorage =
-		[NSHTTPCookieStorage sharedHTTPCookieStorage];
-
-	[cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyNever];
-
 	NSString *sourceFileName = @"test.properties";
 	NSString *mimeType = @"text/plain";
 	NSString *title = @"test.properties";
