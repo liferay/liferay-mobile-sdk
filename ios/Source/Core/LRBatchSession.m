@@ -39,4 +39,10 @@
 	return nil;
 }
 
+- (id)upload:(NSDictionary *)command error:(NSError **)error {
+	[NSException raise:@"" format:@"Can't batch upload requests"];
+
+	return nil;
+}
+
 @end

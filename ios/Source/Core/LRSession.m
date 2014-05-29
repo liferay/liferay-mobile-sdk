@@ -92,6 +92,11 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 }
 
 - (id)upload:(NSDictionary *)command error:(NSError **)error {
+	if (!self.callback) {
+		[NSException raise:@"Upload Exception"
+			format:@"You need to set a callback to the session before uploading files"];
+	}
+
 	return [LRHttpUtil upload:self command:command error:error];
 }
 

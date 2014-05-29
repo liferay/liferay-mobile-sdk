@@ -57,7 +57,7 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	return [self _sendRequest:request session:session error:error];
 }
 
-+ (id)upload:(LRSession *)session	command:(NSDictionary *)command
++ (id)upload:(LRSession *)session command:(NSDictionary *)command
 		error:(NSError **)error {
 
 	NSArray *keys = [command allKeys];
@@ -77,16 +77,23 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	AFHTTPRequestOperationManager *manager =
 		[AFHTTPRequestOperationManager manager];
 
-	 NSMutableURLRequest *request = [manager.requestSerializer
-		multipartFormRequestWithMethod:@"POST" URLString:URL
-		parameters:parameters constructingBodyWithBlock:
-			^(id<AFMultipartFormData> formData) {
-				[formData  appendPartWithFileData:data name:@"file"
-					fileName:@"test.properties" mimeType:@"text/plain"];
-			}
-			error:error];
+	[manager.requestSerializer
+		setAuthorizationHeaderFieldWithUsername:session.username
+		password:session.password];
 
-	return [self _sendRequest:request session:session error:error];
+	[manager POST:URL parameters:parameters constructingBodyWithBlock:
+		^(id<AFMultipartFormData> formData) {
+			[formData  appendPartWithFileData:data name:@"file" fileName:@"test.properties" mimeType:@"text/plain"];
+		}
+		success:^(AFHTTPRequestOperation *operation, id entry) {
+			[session.callback onSuccess:entry];
+		}
+		failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+			[session.callback onFailure:error];
+		}
+	];
+
+	return nil;
 }
 
 + (id)_sendRequest:(NSMutableURLRequest *)request session:(LRSession *)session
@@ -223,9 +230,6 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 				}
 				else if ([json isKindOfClass:[NSArray class]]){
 					[callback onSuccess:[json objectAtIndex:0]];
-				}
-				else {
-					[callback onSuccess:json];
 				}
 			}
 		});
