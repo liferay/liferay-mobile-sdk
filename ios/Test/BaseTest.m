@@ -16,6 +16,7 @@
 
 /**
  * @author Jose Navarro
+ * @author Bruno Farache
  */
 @implementation BaseTest
 

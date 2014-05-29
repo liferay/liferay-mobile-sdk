@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSDictionary *entry;
 @property (nonatomic, strong) NSError *error;
 @property (nonatomic, strong) TRVSMonitor *monitor;
+@property (nonatomic, strong) LRDLAppService_v62 *service;
 
 @end
 
@@ -41,20 +42,12 @@
 }
 
 - (void)testAddFileEntryData {
-	self.monitor = [TRVSMonitor monitor];
-
-	LRSession *session = [[LRSession alloc] init:self.session];
-	[session setCallback:self];
-
-	LRDLAppService_v62 *service =
-		[[LRDLAppService_v62 alloc] initWithSession:session];
-
 	long long repositoryId = [self.settings[@"groupId"] longLongValue];
 
 	LRUploadData *file = [self _uploadData];
 
 	NSError *error;
-	[service addFileEntryWithRepositoryId:repositoryId
+	[self.service addFileEntryWithRepositoryId:repositoryId
 		folderId:ROOT_FOLDER_ID sourceFileName:SOURCE_FILE_NAME
 		mimeType:MIME_TYPE title:SOURCE_FILE_NAME description:@"" changeLog:@""
 		file:file serviceContext:nil error:&error];
@@ -65,25 +58,9 @@
 
 	XCTAssertNil(self.error);
 	XCTAssertEqualObjects(SOURCE_FILE_NAME, self.entry[@"title"]);
-
-	[session setCallback:nil];
-	long long fileEntryId = [self.entry[@"fileEntryId"] longLongValue];
-	[service deleteFileEntryWithFileEntryId:fileEntryId error:&error];
-	XCTAssertNil(error);
-
-	[self setEntry:nil];
-	[self setError:nil];
 }
 
 - (void)testAddFileEntryInputStream {
-	self.monitor = [TRVSMonitor monitor];
-
-	LRSession *session = [[LRSession alloc] init:self.session];
-	[session setCallback:self];
-
-	LRDLAppService_v62 *service =
-		[[LRDLAppService_v62 alloc] initWithSession:session];
-
 	long long repositoryId = [self.settings[@"groupId"] longLongValue];
 
 	NSData *data = [@"File content." dataUsingEncoding:NSUTF8StringEncoding];
@@ -94,7 +71,7 @@
 		length:length fileName:SOURCE_FILE_NAME mimeType:MIME_TYPE];
 
 	NSError *error;
-	[service addFileEntryWithRepositoryId:repositoryId
+	[self.service addFileEntryWithRepositoryId:repositoryId
 		folderId:ROOT_FOLDER_ID sourceFileName:SOURCE_FILE_NAME
 		mimeType:MIME_TYPE title:SOURCE_FILE_NAME description:@"" changeLog:@""
 		file:file serviceContext:nil error:&error];
@@ -105,43 +82,48 @@
 
 	XCTAssertNil(self.error);
 	XCTAssertEqualObjects(SOURCE_FILE_NAME, self.entry[@"title"]);
-
-	[session setCallback:nil];
-	long long fileEntryId = [self.entry[@"fileEntryId"] longLongValue];
-	[service deleteFileEntryWithFileEntryId:fileEntryId error:&error];
-	XCTAssertNil(error);
-
-	[self setEntry:nil];
-	[self setError:nil];
 }
 
 - (void)testRepositoryIdServerException {
-	self.monitor = [TRVSMonitor monitor];
-
-	LRSession *session = [[LRSession alloc] init:self.session];
-	[session setCallback:self];
-
-	LRDLAppService_v62 *service =
-		[[LRDLAppService_v62 alloc] initWithSession:session];
-
 	long long repositoryId = -1;
 
 	LRUploadData *file = [self _uploadData];
 
 	NSError *error;
-	[service addFileEntryWithRepositoryId:repositoryId folderId:ROOT_FOLDER_ID
-		sourceFileName:SOURCE_FILE_NAME mimeType:MIME_TYPE
-		title:SOURCE_FILE_NAME description:@"" changeLog:@"" file:file
-		serviceContext:nil error:&error];
+	[self.service addFileEntryWithRepositoryId:repositoryId
+		folderId:ROOT_FOLDER_ID sourceFileName:SOURCE_FILE_NAME
+		mimeType:MIME_TYPE title:SOURCE_FILE_NAME description:@"" changeLog:@""
+		file:file serviceContext:nil error:&error];
 
 	XCTAssertNil(error);
 
 	[self.monitor wait];
 
 	XCTAssert(self.error);
+
 	XCTAssertEqualObjects(
 		@"No Repository exists with the primary key -1",
 		[self.error localizedDescription]);
+}
+
+- (void)setUp {
+	[super setUp];
+
+	self.monitor = [TRVSMonitor monitor];
+
+	LRSession *session = [[LRSession alloc] init:self.session];
+	[session setCallback:self];
+
+	self.service = [[LRDLAppService_v62 alloc] initWithSession:session];
+}
+
+- (void)tearDown {
+	if (self.entry) {
+		NSError *error;
+		[self.service.session setCallback:nil];
+		long long fileEntryId = [self.entry[@"fileEntryId"] longLongValue];
+		[self.service deleteFileEntryWithFileEntryId:fileEntryId error:&error];
+	}
 
 	[self setEntry:nil];
 	[self setError:nil];
