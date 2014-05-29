@@ -17,38 +17,11 @@
 #import "LRBatchSession.h"
 #import "LRDLAppService_v62.h"
 
-NSString *const MIME_TYPE = @"text/plain";
-const long long ROOT_FOLDER_ID = 0;
-NSString *const SOURCE_FILE_NAME = @"test.properties";
-
 /**
  * @author Jose Navarro
  * @author Bruno Farache
  */
 @implementation DLAppServiceTest
-
-- (void)testAddFileBytes {
-	LRDLAppService_v62 *service =
-		[[LRDLAppService_v62 alloc] initWithSession:self.session];
-
-	long long repositoryId = [self.settings[@"groupId"] longLongValue];
-
-	NSData *bytes = [@"Hello" dataUsingEncoding:NSUTF8StringEncoding];
-
-	NSError *error;
-	NSDictionary *entry = [service addFileEntryWithRepositoryId:repositoryId
-		folderId:ROOT_FOLDER_ID sourceFileName:SOURCE_FILE_NAME
-		mimeType:MIME_TYPE title:SOURCE_FILE_NAME description:@"" changeLog:@""
-		bytes:bytes serviceContext:nil
-		error:&error];
-
-	XCTAssertNil(error);
-	XCTAssertEqualObjects(SOURCE_FILE_NAME, entry[@"title"]);
-
-	long long fileEntryId = [entry[@"fileEntryId"] longLongValue];
-	[service deleteFileEntryWithFileEntryId:fileEntryId error:&error];
-	XCTAssertNil(error);
-}
 
 - (void)testAddFolder {
 	LRDLAppService_v62 *service =
@@ -64,8 +37,8 @@ NSString *const SOURCE_FILE_NAME = @"test.properties";
 
 	NSError *error;
 	NSDictionary *result = [service addFolderWithRepositoryId:repositoryId
-		parentFolderId:ROOT_FOLDER_ID name:name description:description
-		serviceContext:nil error:&error];
+		parentFolderId:0 name:name description:description serviceContext:nil
+		error:&error];
 
 	XCTAssertNil(error);
 	XCTAssertNotNil(result);
@@ -102,14 +75,14 @@ NSString *const SOURCE_FILE_NAME = @"test.properties";
 
 	NSError *error;
 	[service addFolderWithRepositoryId:repositoryId
-		parentFolderId:ROOT_FOLDER_ID name:name1 description:description1
-		serviceContext:nil error:&error];
+		parentFolderId:0 name:name1 description:description1 serviceContext:nil
+		error:&error];
 
 	XCTAssertNil(error);
 
 	[service addFolderWithRepositoryId:repositoryId
-		parentFolderId:ROOT_FOLDER_ID name:name2 description:description2
-		serviceContext:nil error:&error];
+		parentFolderId:0 name:name2 description:description2 serviceContext:nil
+		error:&error];
 
 	XCTAssertNil(error);
 	NSArray *result = [batch invoke:&error];
@@ -128,26 +101,6 @@ NSString *const SOURCE_FILE_NAME = @"test.properties";
 
 	[self _getFolders:ids exists:YES];
 	[self _deleteFoldersBatch:ids];
-}
-
-- (void)testRepositoryIdServerException {
-	LRDLAppService_v62 *service =
-		[[LRDLAppService_v62 alloc] initWithSession:self.session];
-
-	long long repositoryId = -1;
-
-	NSData *bytes = [@"Hello" dataUsingEncoding:NSUTF8StringEncoding];
-
-	NSError *error;
-	[service addFileEntryWithRepositoryId:repositoryId folderId:ROOT_FOLDER_ID
-		sourceFileName:SOURCE_FILE_NAME mimeType:MIME_TYPE
-		title:SOURCE_FILE_NAME description:@"" changeLog:@"" bytes:bytes
-		serviceContext:nil error:&error];
-
-	XCTAssert(error);
-	XCTAssertEqualObjects(
-		@"No Repository exists with the primary key -1",
-		[error localizedDescription]);
 }
 
 - (void)_deleteFolder:(long long)folderId {

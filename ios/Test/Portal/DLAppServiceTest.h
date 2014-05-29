@@ -14,10 +14,6 @@
 
 #import "BaseTest.h"
 
-extern NSString *const MIME_TYPE;
-extern long long const ROOT_FOLDER_ID;
-extern NSString *const SOURCE_FILE_NAME;
-
 /**
  * @author Bruno Farache
  */

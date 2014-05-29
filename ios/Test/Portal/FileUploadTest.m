@@ -13,9 +13,16 @@
  */
 
 #import "BaseTest.h"
-#import "DLAppServiceTest.h"
 #import "LRDLAppService_v62.h"
 #import "TRVSMonitor.h"
+
+NSString *const FILE_CONTENT = @"File content.";
+NSString *const GROUP_ID = @"groupId";
+NSString *const MIME_TYPE = @"text/plain";
+NSString *const NO_REPOSITORY_ID = @"No Repository exists with the primary key -1";
+const long long ROOT_FOLDER_ID = 0;
+NSString *const SOURCE_FILE_NAME = @"test.properties";
+NSString *const TITLE = @"title";
 
 /**
  * @author Bruno Farache
@@ -41,8 +48,27 @@
 	[self.monitor signal];
 }
 
+- (void)testAddFileEntryBytes {
+	LRDLAppService_v62 *service =
+		[[LRDLAppService_v62 alloc] initWithSession:self.session];
+
+	long long repositoryId = [self.settings[GROUP_ID] longLongValue];
+
+	NSData *bytes = [FILE_CONTENT dataUsingEncoding:NSUTF8StringEncoding];
+
+	NSError *error;
+	self.entry = [service addFileEntryWithRepositoryId:repositoryId
+		folderId:ROOT_FOLDER_ID sourceFileName:SOURCE_FILE_NAME
+		mimeType:MIME_TYPE title:SOURCE_FILE_NAME description:@"" changeLog:@""
+		bytes:bytes serviceContext:nil
+		error:&error];
+
+	XCTAssertNil(error);
+	XCTAssertEqualObjects(SOURCE_FILE_NAME, self.entry[TITLE]);
+}
+
 - (void)testAddFileEntryData {
-	long long repositoryId = [self.settings[@"groupId"] longLongValue];
+	long long repositoryId = [self.settings[GROUP_ID] longLongValue];
 
 	LRUploadData *file = [self _uploadData];
 
@@ -57,13 +83,13 @@
 	[self.monitor wait];
 
 	XCTAssertNil(self.error);
-	XCTAssertEqualObjects(SOURCE_FILE_NAME, self.entry[@"title"]);
+	XCTAssertEqualObjects(SOURCE_FILE_NAME, self.entry[TITLE]);
 }
 
 - (void)testAddFileEntryInputStream {
-	long long repositoryId = [self.settings[@"groupId"] longLongValue];
+	long long repositoryId = [self.settings[GROUP_ID] longLongValue];
 
-	NSData *data = [@"File content." dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *data = [FILE_CONTENT dataUsingEncoding:NSUTF8StringEncoding];
 	NSInputStream *is = [[NSInputStream alloc] initWithData:data];
 	int64_t length = [data length];
 
@@ -81,10 +107,10 @@
 	[self.monitor wait];
 
 	XCTAssertNil(self.error);
-	XCTAssertEqualObjects(SOURCE_FILE_NAME, self.entry[@"title"]);
+	XCTAssertEqualObjects(SOURCE_FILE_NAME, self.entry[TITLE]);
 }
 
-- (void)testRepositoryIdServerException {
+- (void)testRepositoryIdServerExceptionAsynchronous {
 	long long repositoryId = -1;
 
 	LRUploadData *file = [self _uploadData];
@@ -100,10 +126,25 @@
 	[self.monitor wait];
 
 	XCTAssert(self.error);
+	XCTAssertEqualObjects(NO_REPOSITORY_ID, [self.error localizedDescription]);
+}
 
-	XCTAssertEqualObjects(
-		@"No Repository exists with the primary key -1",
-		[self.error localizedDescription]);
+- (void)testRepositoryIdServerExceptionSynchronous {
+	LRDLAppService_v62 *service =
+		[[LRDLAppService_v62 alloc] initWithSession:self.session];
+
+	long long repositoryId = -1;
+
+	NSData *bytes = [FILE_CONTENT dataUsingEncoding:NSUTF8StringEncoding];
+
+	NSError *error;
+	[service addFileEntryWithRepositoryId:repositoryId folderId:0
+		sourceFileName:SOURCE_FILE_NAME mimeType:MIME_TYPE
+		title:SOURCE_FILE_NAME description:@"" changeLog:@"" bytes:bytes
+		serviceContext:nil error:&error];
+
+	XCTAssert(error);
+	XCTAssertEqualObjects(NO_REPOSITORY_ID, [error localizedDescription]);
 }
 
 - (void)setUp {
@@ -130,7 +171,7 @@
 }
 
 - (LRUploadData *)_uploadData {
-	NSData *data = [@"File content." dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *data = [FILE_CONTENT dataUsingEncoding:NSUTF8StringEncoding];
 
 	return [[LRUploadData alloc] initWithData:data fileName:SOURCE_FILE_NAME
 		mimeType:MIME_TYPE];
