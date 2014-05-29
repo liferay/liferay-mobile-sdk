@@ -620,7 +620,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		session.upload(_command);
 	}
 
 	public Long importLayoutsInBackground(String taskName, long groupId, boolean privateLayout, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
@@ -660,7 +660,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		session.upload(_command);
 	}
 
 	public void importPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
@@ -681,7 +681,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		session.upload(_command);
 	}
 
 	public void importPortletInfoInBackground(String taskName, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
@@ -701,7 +701,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		session.upload(_command);
 	}
 
 	public Long importPortletInfoInBackground(String taskName, long plid, long groupId, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {

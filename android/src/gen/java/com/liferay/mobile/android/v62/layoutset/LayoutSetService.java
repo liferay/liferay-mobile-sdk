@@ -88,7 +88,7 @@ public class LayoutSetService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		session.upload(_command);
 	}
 
 	public JSONObject updateLookAndFeel(long groupId, boolean privateLayout, String themeId, String colorSchemeId, String css, boolean wapTheme) throws Exception {

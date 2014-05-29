@@ -96,7 +96,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		session.upload(_command);
 	}
 
 	public void addPageAttachments(long nodeId, String title, JSONArray inputStreamOVPs) throws Exception {
