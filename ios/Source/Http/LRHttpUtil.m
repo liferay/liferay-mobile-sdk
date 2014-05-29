@@ -77,23 +77,16 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	AFHTTPRequestOperationManager *manager =
 		[AFHTTPRequestOperationManager manager];
 
-	[manager.requestSerializer
-		setAuthorizationHeaderFieldWithUsername:session.username
-		password:session.password];
+	 NSMutableURLRequest *request = [manager.requestSerializer
+		multipartFormRequestWithMethod:@"POST" URLString:URL
+		parameters:parameters constructingBodyWithBlock:
+			^(id<AFMultipartFormData> formData) {
+				[formData  appendPartWithFileData:data name:@"file"
+					fileName:@"test.properties" mimeType:@"text/plain"];
+			}
+			error:error];
 
-	[manager POST:URL parameters:parameters constructingBodyWithBlock:
-	 	^(id<AFMultipartFormData> formData) {
-			[formData  appendPartWithFileData:data name:@"file" fileName:@"test.properties" mimeType:@"text/plain"];
-		}
-		success:^(AFHTTPRequestOperation *operation, id entry) {
-			[session.callback onSuccess:entry];
-		}
-		failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-			[session.callback onFailure:error];
-		}
-	];
-
-	return nil;
+	return [self _sendRequest:request session:session error:error];
 }
 
 + (id)_sendRequest:(NSMutableURLRequest *)request session:(LRSession *)session
@@ -151,7 +144,7 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	return [NSURL URLWithString:URL];
 }
 
-+ (NSArray *)_handleServerException:(NSData *)data
++ (id)_handleServerException:(NSData *)data
 		response:(NSHTTPURLResponse *)response error:(NSError **)error {
 
 	int statusCode = [response statusCode];
@@ -178,15 +171,15 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 		return nil;
 	}
 
-	id jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0
+	id json = [NSJSONSerialization JSONObjectWithData:data options:0
 		error:error];
 
 	if (*error) {
 		return nil;
 	}
 
-	if ([jsonArray isKindOfClass:[NSDictionary class]]) {
-		NSString *message = [jsonArray objectForKey:@"exception"];
+	if ([json isKindOfClass:[NSDictionary class]]) {
+		NSString *message = [json objectForKey:@"exception"];
 
 		if (message) {
 			NSDictionary *userInfo = @{
@@ -200,7 +193,7 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 		}
 	}
 
-	return jsonArray;
+	return json;
 }
 
 + (void)_sendAsynchronousRequest:(NSURLRequest *)request
@@ -216,7 +209,7 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 			else {
 				NSError *serverError;
 
-				NSArray *jsonArray = [self _handleServerException:d
+				id json = [self _handleServerException:d
 					response:(NSHTTPURLResponse *)r error:&serverError];
 
 				if (serverError) {
@@ -226,10 +219,13 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 				}
 
 				if ([session isKindOfClass:[LRBatchSession class]]) {
-					[callback onSuccess:jsonArray];
+					[callback onSuccess:json];
+				}
+				else if ([json isKindOfClass:[NSArray class]]){
+					[callback onSuccess:[json objectAtIndex:0]];
 				}
 				else {
-					[callback onSuccess:[jsonArray objectAtIndex:0]];
+					[callback onSuccess:json];
 				}
 			}
 		});
