@@ -361,19 +361,19 @@ For more examples, take a look at this test case: [ServiceContextTest.java](src/
 
 ##### Binaries
 
-Some Liferay services require argument types like byte arrays (`byte[]`) and
+Some Liferay services require argument types such as byte arrays (`byte[]`) and
 Files (`java.io.File`).
 
 The SDK converts byte arrays to Strings before sending the POST request, for
 example, `"hello".getBytes("UTF-8")` becomes a JSON array like
 `"[104,101,108,108,111]"`. The SDK does that for you so you don't have worry
-about it, you just need to send the byte array to the method.
+about it, you just need to pass the byte array to the method.
 
 You need to be careful while using such methods though, because you are
 allocating memory for the whole byte array and may have memory issues if content
 is large.
 
-Some other portal service methods requires `java.io.File`, in these cases the
+Some other portal service methods require `java.io.File`, in these cases the
 SDK requires `InputStreamBody` instead.
 
 Here's an example on how to create `InputStreamBody` instances:
