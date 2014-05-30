@@ -15,6 +15,7 @@
 	* [Non-primitive arguments](#non-primitive-arguments)
 		* [OrderByComparator](#orderbycomparator)
 		* [ServiceContext](#servicecontext)
+		* [Binaries](#binaries)
 
 ## Sample
 
@@ -357,3 +358,62 @@ JSONObjectWrapper serviceContext = new JSONObjectWrapper(jsonObject);
 ```
 
 For more examples, take a look at this test case: [ServiceContextTest.java](src/test/java/com/liferay/mobile/sdk/test/portal/ServiceContextTest.java).
+
+##### Binaries
+
+Some Liferay services require argument types like byte arrays (`byte[]`) and
+Files (`java.io.File`).
+
+The SDK converts byte arrays to Strings before sending the POST request, for
+example, `"hello".getBytes("UTF-8")` becomes a JSON array like
+`"[104,101,108,108,111]"`. The SDK does that for you so you don't have worry
+about it, you just need to send the byte array to the method.
+
+You need to be careful while using such methods though, because you are
+allocating memory for the whole byte array and may have memory issues if content
+is large.
+
+Some other portal service methods requires `java.io.File`, in these cases the
+SDK requires `InputStreamBody` instead.
+
+Here's an example on how to create `InputStreamBody` instances:
+
+```java
+InputStream is = context.getAssets().open("file.png");
+InputStreamBody file = new InputStreamBody(is, "image/png", "file.png");
+```
+
+That is, you need to create an `InputStream` and pass it to the
+`InputStreamBody` constructor along with the file's mime type and name.
+
+The SDK will send a multipart form request to the portal. On the server side, a
+`File` instance will be created and sent to the service method you are calling.
+
+In case you want to listen for upload progress to create a progress bar, you can
+create a `UploadProgressAsyncTaskCallback` callback and set to the current
+`Session` object, its `onProgress` method for each byte chunk sent, it will pass
+the total number of uploaded bytes so far. For example:
+
+```java
+session.setCallback(
+
+	new UploadProgressAsyncTaskCallback<JSONObject>() {
+
+		(...)
+
+		public void onProgress(int totalBytes) {
+			// This method will be called for each byte chunk sent.
+			// The totalBytes argument will contain the total number
+			// of uploaded bytes, from 0 to the total size of the
+			// request.
+		}
+		
+		(...)
+
+	}
+
+);
+```
+
+For more examples on this subject, check these test cases: [DLAppServiceTest.java](src/test/java/com/liferay/mobile/sdk/test/portal/DLAppServiceTest.java)
+and [UploadFileUtil.java](https://github.com/brunofarache/liferay-android-sdk-sample/blob/e3b75d135164015aeecdac53b47f6ccbee256e74/src/com/liferay/mobile/sample/util/UploadFileUtil.java).
