@@ -43,9 +43,8 @@
 	[self _post:session data:data URL:URL parameters:parameters
 		constructingBodyWithBlock:^(id<AFMultipartFormData> form) {
 			if (data.data) {
-				[form appendPartWithFileData:data.data
-					name:data.parameterName fileName:data.fileName
-					mimeType:data.mimeType];
+				[form appendPartWithFileData:data.data name:data.parameterName
+					fileName:data.fileName mimeType:data.mimeType];
 			}
 			else if (data.inputStream) {
 				[form appendPartWithInputStream:data.inputStream
