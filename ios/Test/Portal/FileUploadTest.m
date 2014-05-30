@@ -180,7 +180,7 @@ NSString *const TITLE = @"title";
 	NSData *bytes = [FILE_CONTENT dataUsingEncoding:NSUTF8StringEncoding];
 
 	NSError *error;
-	[service addFileEntryWithRepositoryId:repositoryId folderId:0
+	[service addFileEntryWithRepositoryId:repositoryId folderId:ROOT_FOLDER_ID
 		sourceFileName:SOURCE_FILE_NAME mimeType:MIME_TYPE
 		title:SOURCE_FILE_NAME description:@"" changeLog:@"" bytes:bytes
 		serviceContext:nil error:&error];
