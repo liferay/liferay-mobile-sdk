@@ -415,5 +415,5 @@ session.setCallback(
 );
 ```
 
-For more examples on this subject, check these test cases: [DLAppServiceTest.java](src/test/java/com/liferay/mobile/sdk/test/portal/DLAppServiceTest.java)
+For more examples on this subject, check these test cases: [DLAppServiceTest.java](src/test/java/com/liferay/mobile/sdk/test/portal/DLAppServiceTest.java) (aadFileEntry* methods)
 and [UploadFileUtil.java](https://github.com/brunofarache/liferay-android-sdk-sample/blob/master/src/com/liferay/mobile/sample/util/UploadFileUtil.java).
