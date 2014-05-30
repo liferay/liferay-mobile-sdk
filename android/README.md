@@ -391,8 +391,8 @@ The SDK will send a multipart form request to the portal. On the server side, a
 
 In case you want to listen for upload progress to create a progress bar, you can
 create a `UploadProgressAsyncTaskCallback` callback and set to the current
-`Session` object, its `onProgress` method for each byte chunk sent, it will pass
-the total number of uploaded bytes so far. For example:
+`Session` object, its `onProgress` method will be called for each byte chunk
+sent, it will pass the total number of uploaded bytes so far. For example:
 
 ```java
 session.setCallback(
@@ -416,4 +416,4 @@ session.setCallback(
 ```
 
 For more examples on this subject, check these test cases: [DLAppServiceTest.java](src/test/java/com/liferay/mobile/sdk/test/portal/DLAppServiceTest.java)
-and [UploadFileUtil.java](https://github.com/brunofarache/liferay-android-sdk-sample/blob/e3b75d135164015aeecdac53b47f6ccbee256e74/src/com/liferay/mobile/sample/util/UploadFileUtil.java).
+and [UploadFileUtil.java](https://github.com/brunofarache/liferay-android-sdk-sample/blob/master/src/com/liferay/mobile/sample/util/UploadFileUtil.java).
