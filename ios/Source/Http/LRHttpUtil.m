@@ -106,6 +106,21 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	return [self post:session commands:commands error:error];
 }
 
++ (void)setAuthHeader:(LRSession *)session
+		request:(NSMutableURLRequest *)request error:(NSError **)error {
+
+	NSString *credentials = [NSString stringWithFormat:@"%@:%@",
+		session.username, session.password];
+
+	NSData *auth = [credentials dataUsingEncoding:NSUTF8StringEncoding];
+	NSString *encoded = [auth base64Encoding];
+	NSString *authHeader = [NSString stringWithFormat:@"Basic %@", encoded];
+
+	[request setHTTPMethod:LR_POST];
+	[request setValue:authHeader forHTTPHeaderField:@"Authorization"];
+	[request setTimeoutInterval:session.connectionTimeout];
+}
+
 + (NSArray *)post:(LRSession *)session commands:(NSArray *)commands
 		error:(NSError **)error {
 
@@ -128,7 +143,7 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 + (id)_sendRequest:(NSMutableURLRequest *)request session:(LRSession *)session
 		error:(NSError **)error {
 
-	[self _setAuthHeader:session request:request error:error];
+	[self setAuthHeader:session request:request error:error];
 
 	if (*error) {
 		return nil;
@@ -151,21 +166,6 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 
 		return [self handleServerException:data response:response error:error];
 	}
-}
-
-+ (void)_setAuthHeader:(LRSession *)session
-		request:(NSMutableURLRequest *)request error:(NSError **)error {
-
-	NSString *credentials = [NSString stringWithFormat:@"%@:%@",
-		session.username, session.password];
-
-	NSData *auth = [credentials dataUsingEncoding:NSUTF8StringEncoding];
-	NSString *encoded = [auth base64Encoding];
-	NSString *authHeader = [NSString stringWithFormat:@"Basic %@", encoded];
-
-	[request setHTTPMethod:LR_POST];
-	[request setValue:authHeader forHTTPHeaderField:@"Authorization"];
-	[request setTimeoutInterval:session.connectionTimeout];
 }
 
 + (void)_sendAsynchronousRequest:(NSURLRequest *)request

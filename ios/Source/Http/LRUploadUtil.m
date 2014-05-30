@@ -40,22 +40,15 @@
 
 	LRUploadData *data = [self _extractUploadData:parameters];
 
-	AFHTTPRequestOperationManager *manager =
-		[AFHTTPRequestOperationManager manager];
-
-	[manager.requestSerializer
-		setAuthorizationHeaderFieldWithUsername:session.username
-		password:session.password];
-
-	[manager POST:URL parameters:parameters constructingBodyWithBlock:
-		^(id<AFMultipartFormData> formData) {
+	[self _post:session URL:URL parameters:parameters
+		constructingBodyWithBlock:^(id<AFMultipartFormData> form) {
 			if (data.data) {
-				[formData appendPartWithFileData:data.data
+				[form appendPartWithFileData:data.data
 					name:data.parameterName fileName:data.fileName
 					mimeType:data.mimeType];
 			}
 			else if (data.inputStream) {
-				[formData appendPartWithInputStream:data.inputStream
+				[form appendPartWithInputStream:data.inputStream
 					name:data.parameterName fileName:data.fileName
 					length:data.length mimeType:data.mimeType];
 			}
@@ -77,6 +70,7 @@
 		failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 			[session.callback onFailure:error];
 		}
+		error:error
 	];
 
 	return nil;
@@ -95,6 +89,35 @@
 	}
 
 	return nil;
+}
+
++ (void)_post:(LRSession *)session URL:(NSString *)URL parameters:(id)parameters
+		constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> form))block
+		success:(void (^)(AFHTTPRequestOperation *operation, id json))success
+		failure:
+			(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+		error:(NSError **)error {
+
+	AFHTTPRequestOperationManager *manager =
+		[AFHTTPRequestOperationManager manager];
+
+    NSMutableURLRequest *request = [manager.requestSerializer
+		multipartFormRequestWithMethod:LR_POST URLString:URL
+		parameters:parameters constructingBodyWithBlock:block error:nil];
+
+	[LRHttpUtil setAuthHeader:session request:request error:error];
+
+    AFHTTPRequestOperation *operation = [manager
+		HTTPRequestOperationWithRequest:request success:success
+		failure:failure];
+
+	void (^ progressBlock)(NSUInteger, long long, long long) =
+		^(NSUInteger bytes, long long sent, long long total) {
+			NSLog(@"sent %lld", sent);
+		};
+
+	[operation setUploadProgressBlock:progressBlock];
+    [manager.operationQueue addOperation:operation];
 }
 
 @end
