@@ -12,6 +12,8 @@
  * details.
  */
 
+#import "LRProgressDelegate.h"
+
 /**
  * @author Bruno Farache
  */
@@ -23,6 +25,7 @@
 @property (nonatomic) int64_t length;
 @property (nonatomic, strong) NSString *mimeType;
 @property (nonatomic, strong) NSString *parameterName;
+@property (nonatomic, strong) id<LRProgressDelegate> progressDelegate;
 
 - (id)initWithData:(NSData *)data fileName:(NSString *)fileName
 	mimeType:(NSString *)mimeType;

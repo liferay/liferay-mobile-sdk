@@ -121,6 +121,7 @@
 		CC1C897919080708004D3C4C /* TRVSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1C897819080708004D3C4C /* TRVSMonitor.m */; };
 		CC4B7A261937B971003611C4 /* LRUploadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B7A241937B971003611C4 /* LRUploadData.m */; };
 		CC4B7A291937C64E003611C4 /* LRUploadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B7A271937C64E003611C4 /* LRUploadUtil.m */; };
+		CC4B7A2F1938C47F003611C4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4B7A2E1938C47F003611C4 /* logo.png */; };
 		CC677D2718EC511900F3DFAB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595218EC4BE800957D20 /* XCTest.framework */; };
 		CC677D2818EC511900F3DFAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
 		CC677D2918EC511900F3DFAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595518EC4BE800957D20 /* UIKit.framework */; };
@@ -382,6 +383,8 @@
 		CC4B7A251937B971003611C4 /* LRUploadData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUploadData.h; sourceTree = "<group>"; };
 		CC4B7A271937C64E003611C4 /* LRUploadUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRUploadUtil.m; sourceTree = "<group>"; };
 		CC4B7A281937C64E003611C4 /* LRUploadUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUploadUtil.h; sourceTree = "<group>"; };
+		CC4B7A2D1938C002003611C4 /* LRProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LRProgressDelegate.h; path = Source/Http/LRProgressDelegate.h; sourceTree = SOURCE_ROOT; };
+		CC4B7A2E1938C47F003611C4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		CC677D2618EC511900F3DFAB /* Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC83D48D18ED693600CFA142 /* BaseTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTest.h; sourceTree = "<group>"; };
 		CC83D48E18ED6BE300CFA142 /* BaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTest.m; sourceTree = "<group>"; };
@@ -425,6 +428,7 @@
 		CC03FB6B18ED7BA000F3F16C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CC4B7A2E1938C47F003611C4 /* logo.png */,
 				CC03FB6C18ED7BA000F3F16C /* settings.plist */,
 				CC03FB6D18ED7BA000F3F16C /* Test-Info.plist */,
 				CC03FB6E18ED7BA000F3F16C /* Test-Prefix.pch */,
@@ -466,6 +470,7 @@
 			children = (
 				CC03FB7D18ED7DCC00F3F16C /* LRHttpUtil.h */,
 				CC03FB7E18ED7DCC00F3F16C /* LRHttpUtil.m */,
+				CC4B7A2D1938C002003611C4 /* LRProgressDelegate.h */,
 				CC4B7A251937B971003611C4 /* LRUploadData.h */,
 				CC4B7A241937B971003611C4 /* LRUploadData.m */,
 				CC4B7A281937C64E003611C4 /* LRUploadUtil.h */,
@@ -1618,6 +1623,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC4B7A2F1938C47F003611C4 /* logo.png in Resources */,
 				CC03FB6F18ED7BA000F3F16C /* settings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

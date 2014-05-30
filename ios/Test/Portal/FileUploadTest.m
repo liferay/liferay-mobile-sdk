@@ -27,11 +27,12 @@ NSString *const TITLE = @"title";
 /**
  * @author Bruno Farache
  */
-@interface FileUploadTest : BaseTest <LRCallback>
+@interface FileUploadTest : BaseTest <LRCallback, LRProgressDelegate>
 
 @property (nonatomic, strong) NSDictionary *entry;
 @property (nonatomic, strong) NSError *error;
 @property (nonatomic, strong) TRVSMonitor *monitor;
+@property (nonatomic) long long progress;
 @property (nonatomic, strong) LRDLAppService_v62 *service;
 
 @end
@@ -41,6 +42,12 @@ NSString *const TITLE = @"title";
 - (void)onFailure:(NSError *)error {
 	[self setError:error];
 	[self.monitor signal];
+}
+
+- (void)onProgressBytes:(NSUInteger)bytes sent:(long long)sent
+		total:(long long)total {
+
+	[self setProgress:sent];
 }
 
 - (void)onSuccess:(NSDictionary *)entry {
@@ -110,6 +117,41 @@ NSString *const TITLE = @"title";
 	XCTAssertEqualObjects(SOURCE_FILE_NAME, self.entry[TITLE]);
 }
 
+- (void)testAddFileEntryProgress {
+	long long repositoryId = [self.settings[GROUP_ID] longLongValue];
+	NSString *sourceFileName = @"logo.png";
+	NSString *mimeType = @"image/png";
+
+	NSBundle *bundle =
+		[NSBundle bundleWithIdentifier:@"com.liferay.mobile.sdk.Test"];
+	NSString *path = [bundle pathForResource:@"logo" ofType:@"png"];
+	NSInputStream *is = [[NSInputStream alloc] initWithFileAtPath:path];
+
+	NSDictionary *attributes = [[NSFileManager defaultManager]
+		attributesOfItemAtPath:path error:nil];
+	NSNumber *fileSize = [attributes objectForKey:NSFileSize];
+	int64_t length = [fileSize longLongValue];
+
+	LRUploadData *file = [[LRUploadData alloc] initWithInputStream:is
+		length:length fileName:sourceFileName mimeType:mimeType];
+
+	[file setProgressDelegate:self];
+
+	NSError *error;
+	[self.service addFileEntryWithRepositoryId:repositoryId
+		folderId:ROOT_FOLDER_ID sourceFileName:sourceFileName mimeType:mimeType
+		title:sourceFileName description:@"" changeLog:@"" file:file
+		serviceContext:nil error:&error];
+
+	XCTAssertNil(error);
+
+	[self.monitor wait];
+
+	XCTAssertNil(self.error);
+	XCTAssertEqualObjects(sourceFileName, self.entry[TITLE]);
+	XCTAssertEqual(44214, self.progress);
+}
+
 - (void)testRepositoryIdServerExceptionAsynchronous {
 	long long repositoryId = -1;
 
@@ -168,6 +210,7 @@ NSString *const TITLE = @"title";
 
 	[self setEntry:nil];
 	[self setError:nil];
+	[self setProgress:0];
 }
 
 - (LRUploadData *)_uploadData {

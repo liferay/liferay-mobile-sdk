@@ -40,7 +40,7 @@
 
 	LRUploadData *data = [self _extractUploadData:parameters];
 
-	[self _post:session URL:URL parameters:parameters
+	[self _post:session data:data URL:URL parameters:parameters
 		constructingBodyWithBlock:^(id<AFMultipartFormData> form) {
 			if (data.data) {
 				[form appendPartWithFileData:data.data
@@ -91,11 +91,11 @@
 	return nil;
 }
 
-+ (void)_post:(LRSession *)session URL:(NSString *)URL parameters:(id)parameters
++ (void)_post:(LRSession *)session data:(LRUploadData *)data URL:(NSString *)URL
+		parameters:(id)parameters
 		constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> form))block
-		success:(void (^)(AFHTTPRequestOperation *operation, id json))success
-		failure:
-			(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+		success:(void (^)(AFHTTPRequestOperation *o, id json))success
+		failure:(void (^)(AFHTTPRequestOperation *o, NSError *error))failure
 		error:(NSError **)error {
 
 	AFHTTPRequestOperationManager *manager =
@@ -111,12 +111,15 @@
 		HTTPRequestOperationWithRequest:request success:success
 		failure:failure];
 
-	void (^ progressBlock)(NSUInteger, long long, long long) =
-		^(NSUInteger bytes, long long sent, long long total) {
-			NSLog(@"sent %lld", sent);
-		};
+	if (data.progressDelegate) {
+		[operation setUploadProgressBlock:
+			^(NSUInteger bytes, long long sent, long long total) {
+				[data.progressDelegate onProgressBytes:bytes sent:sent
+					total:total];
+			}
+		];
+	}
 
-	[operation setUploadProgressBlock:progressBlock];
     [manager.operationQueue addOperation:operation];
 }
 
