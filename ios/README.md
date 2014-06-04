@@ -33,9 +33,9 @@ applications.
 1. [Download](https://github.com/liferay/liferay-mobile-sdk/releases/) the
 latest version of `liferay-ios-sdk.zip`.
 
-2. Unzip the file into your XCode project. 
+2. Unzip the file into your Xcode project. 
 
-3. Within XCode, right click on your project and click on *Add Files to
+3. Within Xcode, right click on your project and click on *Add Files to
 'Project Name'*.
 
 4. Add both `core` and `v62` folders. The `v62` folder name can change for each
@@ -56,7 +56,7 @@ Make sure its source code is added to your project.
 3. Run `$ pod install`.
 
 4. This will download the latest version of the SDK and create a .xcworkspace
-file, use that file to open your project in XCode.
+file, use that file to open your project in Xcode.
 
 For more information on how CocoaPods works, read their
 [documentation](http://guides.cocoapods.org/using/index.html).
