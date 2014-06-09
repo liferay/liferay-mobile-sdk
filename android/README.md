@@ -35,13 +35,14 @@ latest version of `liferay-android-sdk.jar`. If you want to debug the SDK source
 code, you can also download `liferay-android-sdk-sources.jar` and attach the
 source code to your IDE project.
 
-2. Within your Android project, drop the JAR into the `/libs` folder. Android
-Developer Tools should automatically add this JAR to your classpath. If you are
-using a different IDE, make sure this JAR is added to the project classpath.
+2. Within your Android project, copy the JAR into your project's `/libs` folder.
+Android Developer Tools should automatically add this JAR to your classpath.
 
-3. You will also need to download and add to your classpath these jars: [httpclient-android-4.3.3.jar](http://search.maven.org/remotecontent?filepath=org/apache/httpcomponents/httpclient-android/4.3.3/httpclient-android-4.3.3.jar) and [httpmime-4.3.3.jar](http://search.maven.org/remotecontent?filepath=org/apache/httpcomponents/httpmime/4.3.3/httpmime-4.3.3.jar).
+3. You will also need to download and copy these dependencies to the `/libs`
+folder: [httpclient-android-4.3.3.jar](http://search.maven.org/remotecontent?filepath=org/apache/httpcomponents/httpclient-android/4.3.3/httpclient-android-4.3.3.jar)
+and [httpmime-4.3.3.jar](http://search.maven.org/remotecontent?filepath=org/apache/httpcomponents/httpmime/4.3.3/httpmime-4.3.3.jar).
 
-4. Import the necessary classes and start using it!
+4. Start using it!
 
 #### Gradle
 
