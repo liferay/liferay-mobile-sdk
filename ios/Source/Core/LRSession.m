@@ -79,6 +79,21 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 	return self;
 }
 
+- (NSString *)authHeader {
+	if ([self.username length] == 0) {
+		return nil;
+	}
+
+	NSString *credentials = [NSString stringWithFormat:@"%@:%@",
+		self.username, self.password];
+
+	NSData *auth = [credentials dataUsingEncoding:NSUTF8StringEncoding];
+	NSString *encoded = [auth base64Encoding];
+	NSString *authHeader = [NSString stringWithFormat:@"Basic %@", encoded];
+
+	return authHeader;
+}
+
 - (id)invoke:(NSDictionary *)command error:(NSError **)error {
 	NSArray *json = [LRHttpUtil post:self command:command error:error];
 

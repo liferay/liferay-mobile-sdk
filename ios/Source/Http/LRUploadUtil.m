@@ -104,7 +104,10 @@
 		multipartFormRequestWithMethod:LR_POST URLString:URL
 		parameters:parameters constructingBodyWithBlock:block error:nil];
 
-	[LRHttpUtil setAuthHeader:session request:request error:error];
+	NSString *authHeader = [session authHeader];
+	if (authHeader) {
+		[request setValue:authHeader forHTTPHeaderField:@"Authorization"];
+	}
 
     AFHTTPRequestOperation *operation = [manager
 		HTTPRequestOperationWithRequest:request success:success

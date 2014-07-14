@@ -41,7 +41,4 @@ typedef void (^LRHandler)(NSURLResponse *r, NSData *d, NSError *e);
 + (NSArray *)post:(LRSession *)session commands:(NSArray *)commands
 	error:(NSError **)error;
 
-+ (void)setAuthHeader:(LRSession *)session
-	request:(NSMutableURLRequest *)request error:(NSError **)error;
-
 @end

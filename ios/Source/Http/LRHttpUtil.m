@@ -106,21 +106,6 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	return [self post:session commands:commands error:error];
 }
 
-+ (void)setAuthHeader:(LRSession *)session
-		request:(NSMutableURLRequest *)request error:(NSError **)error {
-
-	NSString *credentials = [NSString stringWithFormat:@"%@:%@",
-		session.username, session.password];
-
-	NSData *auth = [credentials dataUsingEncoding:NSUTF8StringEncoding];
-	NSString *encoded = [auth base64Encoding];
-	NSString *authHeader = [NSString stringWithFormat:@"Basic %@", encoded];
-
-	[request setHTTPMethod:LR_POST];
-	[request setValue:authHeader forHTTPHeaderField:@"Authorization"];
-	[request setTimeoutInterval:session.connectionTimeout];
-}
-
 + (NSArray *)post:(LRSession *)session commands:(NSArray *)commands
 		error:(NSError **)error {
 
@@ -131,19 +116,25 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 
 	NSData *body = [NSJSONSerialization dataWithJSONObject:commands options:0
 		error:error];
+	[request setHTTPBody:body];
+
+	[request setHTTPMethod:LR_POST];
+
+	[request setTimeoutInterval:session.connectionTimeout];
 
 	[request setValue:@"application/json; charset=utf-8"
 		forHTTPHeaderField:@"Content-Type"];
 
-	[request setHTTPBody:body];
+	NSString *authHeader = [session authHeader];
+	if (authHeader) {
+		[request setValue:authHeader forHTTPHeaderField:@"Authorization"];
+	}
 
 	return [self _sendRequest:request session:session error:error];
 }
 
 + (id)_sendRequest:(NSMutableURLRequest *)request session:(LRSession *)session
 		error:(NSError **)error {
-
-	[self setAuthHeader:session request:request error:error];
 
 	if (*error) {
 		return nil;
