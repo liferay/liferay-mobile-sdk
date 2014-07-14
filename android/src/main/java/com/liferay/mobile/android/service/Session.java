@@ -16,12 +16,16 @@ package com.liferay.mobile.android.service;
 
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
+import org.apache.http.Header;
+
 import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
  */
 public interface Session {
+
+	public Header getAuthHeader();
 
 	public AsyncTaskCallback getCallback();
 

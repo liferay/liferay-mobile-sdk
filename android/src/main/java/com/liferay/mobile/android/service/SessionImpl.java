@@ -19,6 +19,10 @@ import com.liferay.mobile.android.task.ServiceAsyncTask;
 import com.liferay.mobile.android.task.UploadAsyncTask;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
+import org.apache.http.Header;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.impl.auth.BasicScheme;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -55,6 +59,21 @@ public class SessionImpl implements Session {
 		this.password = password;
 		this.connectionTimeout = connectionTimeout;
 		this.callback = callback;
+	}
+
+	public Header getAuthHeader() {
+		String username = getUsername();
+		if (username == null || username.length() == 0) {
+			return null;
+		}
+
+		UsernamePasswordCredentials credentials =
+			new UsernamePasswordCredentials(username, getPassword());
+
+		Header authorization = BasicScheme.authenticate(
+			credentials, "UTF-8", false);
+
+		return authorization;
 	}
 
 	public AsyncTaskCallback getCallback() {

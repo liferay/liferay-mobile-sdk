@@ -30,7 +30,6 @@ import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
-import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -39,7 +38,6 @@ import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.http.entity.mime.content.InputStreamBody;
 import org.apache.http.entity.mime.content.StringBody;
-import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.protocol.HTTP;
@@ -70,14 +68,11 @@ public class HttpUtil {
 	public static HttpPost getPost(Session session, String URL) {
 		HttpPost post = new HttpPost(URL);
 
-		UsernamePasswordCredentials credentials =
-			new UsernamePasswordCredentials(
-				session.getUsername(), session.getPassword());
+		Header authorization = session.getAuthHeader();
 
-		Header authorization = BasicScheme.authenticate(
-			credentials, "UTF-8", false);
-
-		post.addHeader(authorization);
+		if (authorization != null) {
+			post.addHeader(authorization);
+		}
 
 		return post;
 	}
