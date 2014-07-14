@@ -12,15 +12,17 @@
  * details.
  */
 
-#import "DLAppServiceTest.h"
-
+#import "BaseTest.h"
 #import "LRBatchSession.h"
 #import "LRDLAppService_v62.h"
 
 /**
- * @author Jose Navarro
+ * @author Jose M. Navarro
  * @author Bruno Farache
  */
+@interface DLAppServiceTest : BaseTest
+@end
+
 @implementation DLAppServiceTest
 
 - (void)testAddFolder {

@@ -160,8 +160,8 @@
 /* Begin PBXFileReference section */
 		1AA10F3DFF644C7DB4B5BE40 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		792F68BAE4DF41869F1F1580 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8837B95E19741CFC00410076 /* DLAppServiceTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLAppServiceTest.h; sourceTree = "<group>"; };
 		8837B95F19741D9800410076 /* UnauthenticatedServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnauthenticatedServiceTest.m; sourceTree = "<group>"; };
+		88FD86C519742C4700E4EEF9 /* GroupServiceTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupServiceTest.h; sourceTree = "<group>"; };
 		CC03FB6C18ED7BA000F3F16C /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		CC03FB6D18ED7BA000F3F16C /* Test-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Test-Info.plist"; sourceTree = "<group>"; };
 		CC03FB6E18ED7BA000F3F16C /* Test-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Test-Prefix.pch"; sourceTree = "<group>"; };
@@ -370,9 +370,7 @@
 		CC03FCA018ED7DCD00F3F16C /* LRWikiPageService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRWikiPageService_v62.m; sourceTree = "<group>"; };
 		CC03FCA218ED7DCD00F3F16C /* LRPortraitUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPortraitUtil.h; sourceTree = "<group>"; };
 		CC03FCA318ED7DCD00F3F16C /* LRPortraitUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPortraitUtil.m; sourceTree = "<group>"; };
-		CC03FD1A18EDA05B00F3F16C /* SyncWebServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncWebServiceTest.h; sourceTree = "<group>"; };
 		CC03FD1B18EDA05B00F3F16C /* SyncWebServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncWebServiceTest.m; sourceTree = "<group>"; };
-		CC03FD1F18EDA05B00F3F16C /* GroupServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupServiceTest.h; sourceTree = "<group>"; };
 		CC03FD2018EDA05B00F3F16C /* GroupServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupServiceTest.m; sourceTree = "<group>"; };
 		CC03FD2218EDA05B00F3F16C /* PortalVersionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalVersionTest.m; sourceTree = "<group>"; };
 		CC03FD2418EDA05B00F3F16C /* PortletServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortletServiceTest.m; sourceTree = "<group>"; };
@@ -1470,7 +1468,6 @@
 		CC03FD1918EDA05B00F3F16C /* Plugin */ = {
 			isa = PBXGroup;
 			children = (
-				CC03FD1A18EDA05B00F3F16C /* SyncWebServiceTest.h */,
 				CC03FD1B18EDA05B00F3F16C /* SyncWebServiceTest.m */,
 			);
 			path = Plugin;
@@ -1479,11 +1476,10 @@
 		CC03FD1C18EDA05B00F3F16C /* Portal */ = {
 			isa = PBXGroup;
 			children = (
-				8837B95E19741CFC00410076 /* DLAppServiceTest.h */,
 				CC03FD2B18EDA10B00F3F16C /* DLAppServiceTest.m */,
 				CC0FD4F81937853800270AB0 /* FileUploadTest.m */,
 				CC1C89701907FA19004D3C4C /* GroupServiceAsyncTest.m */,
-				CC03FD1F18EDA05B00F3F16C /* GroupServiceTest.h */,
+				88FD86C519742C4700E4EEF9 /* GroupServiceTest.h */,
 				CC03FD2018EDA05B00F3F16C /* GroupServiceTest.m */,
 				CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */,
 				CC03FD2218EDA05B00F3F16C /* PortalVersionTest.m */,

@@ -12,12 +12,15 @@
  * details.
  */
 
-#import "SyncWebServiceTest.h"
+#import "BaseTest.h"
 #import "LRSyncDLObjectService_v62.h"
 
 /**
  * @author Bruno Farache
  */
+@interface SyncWebServiceTest : BaseTest
+@end
+
 @implementation SyncWebServiceTest
 
 - (void)testGetUserSitesGroups {
