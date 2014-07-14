@@ -12,6 +12,8 @@
  * details.
  */
 
+#import <Foundation/Foundation.h>
+
 #import "LRJSONObjectWrapper.h"
 #import "LRUploadData.h"
 #import "LRSession.h"
