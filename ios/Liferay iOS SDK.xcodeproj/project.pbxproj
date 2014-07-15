@@ -121,6 +121,8 @@
 		CC1C89711907FA19004D3C4C /* GroupServiceAsyncTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1C89701907FA19004D3C4C /* GroupServiceAsyncTest.m */; };
 		CC1C897919080708004D3C4C /* TRVSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1C897819080708004D3C4C /* TRVSMonitor.m */; };
 		CC40D76D1974B9D0000254E6 /* LRValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = CC40D76B1974B9BA000254E6 /* LRValidator.m */; };
+		CC40D7701974C76D000254E6 /* LRBlockCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = CC40D76F1974C76D000254E6 /* LRBlockCallback.m */; };
+		CC40D7721974CB3B000254E6 /* BlockCallbackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC40D7711974CB3B000254E6 /* BlockCallbackTest.m */; };
 		CC4B7A261937B971003611C4 /* LRUploadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B7A241937B971003611C4 /* LRUploadData.m */; };
 		CC4B7A291937C64E003611C4 /* LRUploadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B7A271937C64E003611C4 /* LRUploadUtil.m */; };
 		CC4B7A2F1938C47F003611C4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4B7A2E1938C47F003611C4 /* logo.png */; };
@@ -382,6 +384,9 @@
 		CC1C897819080708004D3C4C /* TRVSMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSMonitor.m; sourceTree = "<group>"; };
 		CC40D76A1974B9BA000254E6 /* LRValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRValidator.h; sourceTree = "<group>"; };
 		CC40D76B1974B9BA000254E6 /* LRValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRValidator.m; sourceTree = "<group>"; };
+		CC40D76E1974C76D000254E6 /* LRBlockCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRBlockCallback.h; sourceTree = "<group>"; };
+		CC40D76F1974C76D000254E6 /* LRBlockCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRBlockCallback.m; sourceTree = "<group>"; };
+		CC40D7711974CB3B000254E6 /* BlockCallbackTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockCallbackTest.m; sourceTree = "<group>"; };
 		CC4B7A241937B971003611C4 /* LRUploadData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRUploadData.m; sourceTree = "<group>"; };
 		CC4B7A251937B971003611C4 /* LRUploadData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUploadData.h; sourceTree = "<group>"; };
 		CC4B7A271937C64E003611C4 /* LRUploadUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRUploadUtil.m; sourceTree = "<group>"; };
@@ -457,6 +462,8 @@
 				CC03FB7418ED7DCC00F3F16C /* LRBaseService.m */,
 				CC03FB7518ED7DCC00F3F16C /* LRBatchSession.h */,
 				CC03FB7618ED7DCC00F3F16C /* LRBatchSession.m */,
+				CC40D76E1974C76D000254E6 /* LRBlockCallback.h */,
+				CC40D76F1974C76D000254E6 /* LRBlockCallback.m */,
 				CC03FB7718ED7DCC00F3F16C /* LRCallback.h */,
 				CCD60E10191820BE00935937 /* LRJSONObjectWrapper.h */,
 				CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */,
@@ -1481,6 +1488,7 @@
 		CC03FD1C18EDA05B00F3F16C /* Portal */ = {
 			isa = PBXGroup;
 			children = (
+				CC40D7711974CB3B000254E6 /* BlockCallbackTest.m */,
 				CC03FD2B18EDA10B00F3F16C /* DLAppServiceTest.m */,
 				CC0FD4F81937853800270AB0 /* FileUploadTest.m */,
 				CC1C89701907FA19004D3C4C /* GroupServiceAsyncTest.m */,
@@ -1704,6 +1712,7 @@
 				CC03FCD418ED7DCD00F3F16C /* LRLayoutSetService_v62.m in Sources */,
 				CC03FD0518ED7DCD00F3F16C /* LRUserGroupRoleService_v62.m in Sources */,
 				CC03FCF518ED7DCD00F3F16C /* LRSCProductVersionService_v62.m in Sources */,
+				CC40D7721974CB3B000254E6 /* BlockCallbackTest.m in Sources */,
 				CC03FCDB18ED7DCD00F3F16C /* LRMBThreadService_v62.m in Sources */,
 				CC03FCD818ED7DCD00F3F16C /* LRMBBanService_v62.m in Sources */,
 				CC03FCAD18ED7DCD00F3F16C /* LRAssetCategoryService_v62.m in Sources */,
@@ -1760,6 +1769,7 @@
 				CC03FCD318ED7DCD00F3F16C /* LRLayoutRevisionService_v62.m in Sources */,
 				CC03FCEB18ED7DCD00F3F16C /* LRPortletPreferencesService_v62.m in Sources */,
 				CC4B7A291937C64E003611C4 /* LRUploadUtil.m in Sources */,
+				CC40D7701974C76D000254E6 /* LRBlockCallback.m in Sources */,
 				CC03FCE718ED7DCD00F3F16C /* LRPollsQuestionService_v62.m in Sources */,
 				CC03FCCC18ED7DCD00F3F16C /* LRJournalFeedService_v62.m in Sources */,
 				CC03FCBF18ED7DCD00F3F16C /* LRDLAppService_v62.m in Sources */,
