@@ -20,41 +20,35 @@
  * @author Bruno Farache
  */
 @interface BlockCallbackTest : GroupServiceTest
-
-@property (nonatomic, strong) NSError *error;
-@property (nonatomic, strong) NSArray *groups;
-@property (nonatomic, strong) TRVSMonitor *monitor;
-
 @end
 
 @implementation BlockCallbackTest
 
 - (void)testGetUserSites {
-	self.monitor = [TRVSMonitor monitor];
+	TRVSMonitor *monitor = [TRVSMonitor monitor];
+	__block NSArray *groups;
+	__block NSError *error;
 
 	LRSession *session = [[LRSession alloc] initWithSession:self.session];
 
 	[session
-		onSuccess:^(id groups) {
-			[self setGroups:groups];
-			[self.monitor signal];
+		onSuccess:^(id result) {
+			groups = result;
+			[monitor signal];
 		}
-		onFailure:^(NSError *error) {
-			[self setError:error];
-			[self.monitor signal];
+		onFailure:^(NSError *e) {
+			error = e;
+			[monitor signal];
 		}
 	];
 
 	LRGroupService_v62 *service = [[LRGroupService_v62 alloc]
 		initWithSession:session];
 
-	NSError *error;
 	[service getUserSites:&error];
-	[self.monitor wait];
+	[monitor wait];
 
-	XCTAssertNil(error);
-
-	[self assert:self.groups error:self.error];
+	[self assert:groups error:error];
 }
 
 @end

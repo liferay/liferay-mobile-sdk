@@ -53,8 +53,6 @@
 	[service getUserSites:&error];
 	[self.monitor wait];
 
-	XCTAssertNil(error);
-
 	[self assert:self.groups error:self.error];
 }
 
