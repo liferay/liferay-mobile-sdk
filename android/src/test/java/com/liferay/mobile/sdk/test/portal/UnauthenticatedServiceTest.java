@@ -22,7 +22,6 @@ import com.liferay.mobile.sdk.test.BaseTest;
 
 import java.io.IOException;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -37,32 +36,16 @@ public class UnauthenticatedServiceTest extends BaseTest {
 	}
 
 	@Test
-	public void serviceWithNullUsername() throws Exception {
-		Session anonymousSession = new SessionImpl(session);
-		
-		anonymousSession.setUsername(null);
-		
-		_callSecureService(anonymousSession);
-	}
-	
-	@Test
-	public void serviceWithEmptyUsername() throws Exception {
-		Session anonymousSession = new SessionImpl(session);
-		
-		anonymousSession.setUsername("");
-		
-		_callSecureService(anonymousSession);
-	}
-	
-	private void _callSecureService(Session session) throws Exception {
+	public void getUserSites() throws Exception {
+		Session session = new SessionImpl(this.session.getServer());
 		GroupService service = new GroupService(session);
 
 		try {
 			service.getUserSites();
 			fail();
-		} catch (ServerException serverException) {
-			assertEquals("Authenticated access required", 
-				serverException.getMessage());
+		}
+		catch (ServerException se) {
+			assertEquals("Authenticated access required", se.getMessage());
 		}
 	}
 	

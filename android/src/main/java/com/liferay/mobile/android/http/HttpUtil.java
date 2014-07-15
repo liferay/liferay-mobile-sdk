@@ -68,10 +68,10 @@ public class HttpUtil {
 	public static HttpPost getPost(Session session, String URL) {
 		HttpPost post = new HttpPost(URL);
 
-		Header authorization = session.getAuthHeader();
+		Header authHeader = session.getAuthHeader();
 
-		if (authorization != null) {
-			post.addHeader(authorization);
+		if (authHeader != null) {
+			post.addHeader(authHeader);
 		}
 
 		return post;

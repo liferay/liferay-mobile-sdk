@@ -18,6 +18,7 @@ import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.task.ServiceAsyncTask;
 import com.liferay.mobile.android.task.UploadAsyncTask;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
+import com.liferay.mobile.android.util.Validator;
 
 import org.apache.http.Header;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -37,6 +38,14 @@ public class SessionImpl implements Session {
 		this(
 			session.getServer(), session.getUsername(), session.getPassword(),
 			session.getConnectionTimeout(), session.getCallback());
+	}
+
+	public SessionImpl(String server) {
+		this(server, null);
+	}
+
+	public SessionImpl(String server, AsyncTaskCallback callback) {
+		this(server, null, null, callback);
 	}
 
 	public SessionImpl(String server, String username, String password) {
@@ -63,17 +72,17 @@ public class SessionImpl implements Session {
 
 	public Header getAuthHeader() {
 		String username = getUsername();
-		if (username == null || username.length() == 0) {
+
+		if (Validator.isNull(getUsername()) ||
+			Validator.isNull(getPassword())) {
+
 			return null;
 		}
 
 		UsernamePasswordCredentials credentials =
 			new UsernamePasswordCredentials(username, getPassword());
 
-		Header authorization = BasicScheme.authenticate(
-			credentials, "UTF-8", false);
-
-		return authorization;
+		return BasicScheme.authenticate(credentials, "UTF-8", false);
 	}
 
 	public AsyncTaskCallback getCallback() {
