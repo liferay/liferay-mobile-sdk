@@ -102,9 +102,8 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 
 	NSData *auth = [credentials dataUsingEncoding:NSUTF8StringEncoding];
 	NSString *encoded = [auth base64Encoding];
-	NSString *authHeader = [NSString stringWithFormat:@"Basic %@", encoded];
 
-	return authHeader;
+	return [NSString stringWithFormat:@"Basic %@", encoded];
 }
 
 - (id)invoke:(NSDictionary *)command error:(NSError **)error {

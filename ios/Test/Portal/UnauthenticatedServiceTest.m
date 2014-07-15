@@ -19,34 +19,16 @@
  * @author Jose M. Navarro
  */
 @interface UnauthenticatedServiceTest : BaseTest
-
 @end
-
 
 @implementation UnauthenticatedServiceTest
 
-- (void)testServiceWithNilUsername {
-	LRSession *anonymousSession = [[LRSession alloc]
-		initWithSession:self.session];
+- (void)testUnauthenticatedGetUserSites {
+	LRSession *session = [[LRSession alloc]
+		initWithServer:self.session.server];
 
-	anonymousSession.username = nil;
-
-	[self _callSecureServiceWithSession:anonymousSession];
-}
-
-- (void)testServiceWithEmptyUsername {
-	LRSession *anonymousSession = [[LRSession alloc]
-		initWithSession:self.session];
-
-	anonymousSession.username = @"";
-
-	[self _callSecureServiceWithSession:anonymousSession];
-
-}
-
-- (void)_callSecureServiceWithSession:(LRSession *)session {
-	LRGroupService_v62 *service =
-		[[LRGroupService_v62 alloc] initWithSession:session];
+	LRGroupService_v62 *service = [[LRGroupService_v62 alloc]
+		initWithSession:session];
 
 	NSError *error;
 	[service getUserSites:&error];
@@ -54,6 +36,5 @@
 	XCTAssertEqualObjects(@"Authenticated access required",
 		[error localizedDescription]);
 }
-
 
 @end
