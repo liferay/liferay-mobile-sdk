@@ -47,6 +47,7 @@
 
 - (NSString *)getAuthHeader;
 - (id)invoke:(NSDictionary *)command error:(NSError **)error;
+- (void)onSuccess:(void (^)(id))success onFailure:(void (^)(NSError *))failure;
 - (id)upload:(NSDictionary *)command error:(NSError **)error;
 
 

@@ -13,7 +13,6 @@
  */
 
 #import "GroupServiceTest.h"
-#import "LRBlockCallback.h"
 #import "LRGroupService_v62.h"
 #import "TRVSMonitor.h"
 
@@ -35,18 +34,16 @@
 
 	LRSession *session = [[LRSession alloc] initWithSession:self.session];
 
-	id<LRCallback> callback = [[LRBlockCallback alloc]
-		initWithSuccess:^(id groups) {
+	[session
+		onSuccess:^(id groups) {
 			[self setGroups:groups];
 			[self.monitor signal];
 		}
-		failure:^(NSError *error) {
+		onFailure:^(NSError *error) {
 			[self setError:error];
 			[self.monitor signal];
 		}
 	];
-
-	[session setCallback:callback];
 
 	LRGroupService_v62 *service = [[LRGroupService_v62 alloc]
 		initWithSession:session];

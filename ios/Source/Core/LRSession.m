@@ -14,6 +14,7 @@
 
 #import "LRSession.h"
 
+#import "LRBlockCallback.h"
 #import "LRHttpUtil.h"
 #import "LRUploadUtil.h"
 #import "LRValidator.h"
@@ -110,6 +111,13 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 	NSArray *json = [LRHttpUtil post:self command:command error:error];
 
 	return [json objectAtIndex:0];
+}
+
+- (void)onSuccess:(void (^)(id))success onFailure:(void (^)(NSError *))failure {
+	id<LRCallback> callback = [[LRBlockCallback alloc] initWithSuccess:success
+		failure:failure];
+
+	[self setCallback:callback];
 }
 
 - (NSOperationQueue *)queue {
