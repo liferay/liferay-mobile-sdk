@@ -34,34 +34,35 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 	}
 }
 
-- (id)init:(LRSession *)session {
-	return [self init:session.server username:session.username
+- (id)initWithSession:(LRSession *)session {
+	return [self initWithServer:session.server username:session.username
 		password:session.password connectionTimeout:session.connectionTimeout
 		callback:session.callback];
 }
 
-- (id)init:(NSString *)server username:(NSString *)username
+- (id)initWithServer:(NSString *)server username:(NSString *)username
   		password:(NSString *)password {
 
-	return [self init:server username:username password:password callback:nil];
+	return [self initWithServer:server username:username password:password
+		callback:nil];
 }
 
-- (id)init:(NSString *)server username:(NSString *)username
+- (id)initWithServer:(NSString *)server username:(NSString *)username
 		password:(NSString *)password callback:(id<LRCallback>)callback {
 
-	return [self init:server username:username password:password
+	return [self initWithServer:server username:username password:password
 		connectionTimeout:_DEFAULT_CONNECTION_TIMEOUT callback:callback];
 }
 
-- (id)init:(NSString *)server username:(NSString *)username
+- (id)initWithServer:(NSString *)server username:(NSString *)username
 		password:(NSString *)password connectionTimeout:(int)connectionTimeout
 		callback:(id<LRCallback>)callback {
 
-	return [self init:server username:username password:password
+	return [self initWithServer:server username:username password:password
 		connectionTimeout:connectionTimeout callback:callback queue:nil];
 }
 
-- (id)init:(NSString *)server username:(NSString *)username
+- (id)initWithServer:(NSString *)server username:(NSString *)username
 		password:(NSString *)password connectionTimeout:(int)connectionTimeout
 		callback:(id<LRCallback>)callback queue:(NSOperationQueue *)queue {
 

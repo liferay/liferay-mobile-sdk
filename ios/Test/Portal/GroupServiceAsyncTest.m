@@ -43,7 +43,7 @@
 - (void)testGetUserSites {
 	self.monitor = [TRVSMonitor monitor];
 
-	LRSession *session = [[LRSession alloc] init:self.session];
+	LRSession *session = [[LRSession alloc] initWithSession:self.session];
 	[session setCallback:self];
 
 	LRGroupService_v62 *service =

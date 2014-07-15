@@ -194,7 +194,7 @@ NSString *const TITLE = @"title";
 
 	self.monitor = [TRVSMonitor monitor];
 
-	LRSession *session = [[LRSession alloc] init:self.session];
+	LRSession *session = [[LRSession alloc] initWithSession:self.session];
 	[session setCallback:self];
 
 	self.service = [[LRDLAppService_v62 alloc] initWithSession:session];

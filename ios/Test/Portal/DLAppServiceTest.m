@@ -55,7 +55,8 @@
 }
 
 - (void)testAddFoldersBatch {
-	LRBatchSession *batch = [[LRBatchSession alloc] init:self.session];
+	LRBatchSession *batch = [[LRBatchSession alloc]
+		initWithSession:self.session];
 	LRDLAppService_v62 *service =
 		[[LRDLAppService_v62 alloc] initWithSession:batch];
 
@@ -119,7 +120,8 @@
 }
 
 - (void)_deleteFoldersBatch:(NSArray *)folderIds {
-	LRBatchSession *batch = [[LRBatchSession alloc] init:self.session];
+	LRBatchSession *batch = [[LRBatchSession alloc]
+		initWithSession:self.session];
 
 	LRDLAppService_v62 *service =
 		[[LRDLAppService_v62 alloc] initWithSession:batch];
@@ -166,7 +168,8 @@
 }
 
 - (void)_getFolders:(NSArray *)folderIds exists:(BOOL)exists {
-	LRBatchSession *batch = [[LRBatchSession alloc] init:self.session];
+	LRBatchSession *batch = [[LRBatchSession alloc]
+		initWithSession:self.session];
 
 	LRDLAppService_v62 *service =
 		[[LRDLAppService_v62 alloc] initWithSession:batch];

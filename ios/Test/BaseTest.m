@@ -21,8 +21,8 @@
 @implementation BaseTest
 
 - (void)setUp {
-	NSBundle *bundle =
-		[NSBundle bundleWithIdentifier:@"com.liferay.mobile.sdk.Test"];
+	NSBundle *bundle = [NSBundle
+		bundleWithIdentifier:@"com.liferay.mobile.sdk.Test"];
 
 	NSString *path = [bundle pathForResource:@"settings" ofType:@"plist"];
 
@@ -32,8 +32,8 @@
 	NSString *username = self.settings[@"username"];
 	NSString *password = self.settings[@"password"];
 
-	self.session =
-		[[LRSession alloc] init:url username:username password:password];
+	self.session = [[LRSession alloc] initWithServer:url username:username
+		password:password];
 }
 
 @end

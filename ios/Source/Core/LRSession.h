@@ -26,19 +26,19 @@
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSOperationQueue *queue;
 
-- (id)init:(LRSession *)session;
+- (id)initWithSession:(LRSession *)session;
 
-- (id)init:(NSString *)server username:(NSString *)username
+- (id)initWithServer:(NSString *)server username:(NSString *)username
 	password:(NSString *)password;
 
-- (id)init:(NSString *)server username:(NSString *)username
+- (id)initWithServer:(NSString *)server username:(NSString *)username
 	password:(NSString *)password callback:(id<LRCallback>)callback;
 
-- (id)init:(NSString *)server username:(NSString *)username
+- (id)initWithServer:(NSString *)server username:(NSString *)username
 	password:(NSString *)password connectionTimeout:(int)connectionTimeout
 	callback:(id<LRCallback>)callback;
 
-- (id)init:(NSString *)server username:(NSString *)username
+- (id)initWithServer:(NSString *)server username:(NSString *)username
 	password:(NSString *)password connectionTimeout:(int)connectionTimeout
 	callback:(id<LRCallback>)callback queue:(NSOperationQueue *)queue;
 

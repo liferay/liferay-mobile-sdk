@@ -26,7 +26,8 @@
 @implementation UnauthenticatedServiceTest
 
 - (void)testServiceWithNilUsername {
-	LRSession *anonymousSession = [[LRSession alloc] init:self.session];
+	LRSession *anonymousSession = [[LRSession alloc]
+		initWithSession:self.session];
 
 	anonymousSession.username = nil;
 
@@ -34,7 +35,8 @@
 }
 
 - (void)testServiceWithEmptyUsername {
-	LRSession *anonymousSession = [[LRSession alloc] init:self.session];
+	LRSession *anonymousSession = [[LRSession alloc]
+		initWithSession:self.session];
 
 	anonymousSession.username = @"";
 
