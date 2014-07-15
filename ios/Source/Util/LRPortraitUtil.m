@@ -26,18 +26,16 @@
 		portraitURL:(NSString *)portraitURL data:(NSData **)data
 		error:(NSError **)error {
 
-	return
-		[self downloadPortrait:session portraitURL:portraitURL data:data
-			modifiedDate:nil error:error];
+	return [self downloadPortrait:session portraitURL:portraitURL data:data
+		modifiedDate:nil error:error];
 }
 
 + (NSString *)downloadPortrait:(LRSession *)session
 		portraitURL:(NSString *)portraitURL data:(NSData **)data
 		modifiedDate:(NSString *)modifiedDate error:(NSError **)error {
 
-	NSMutableURLRequest *request =
-		[[NSMutableURLRequest alloc]
-			initWithURL:[NSURL URLWithString:portraitURL]];
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
+		initWithURL:[NSURL URLWithString:portraitURL]];
 
 	[request setHTTPMethod:LR_GET];
 	[request setTimeoutInterval:session.connectionTimeout];
@@ -48,9 +46,8 @@
 
 	NSHTTPURLResponse *response;
 
-	*data =
-		[NSURLConnection sendSynchronousRequest:request
-			returningResponse:&response error:error];
+	*data = [NSURLConnection sendSynchronousRequest:request
+		returningResponse:&response error:error];
 
 	int status = response.statusCode;
 
@@ -78,9 +75,9 @@
 
 	NSString *gender = male ? @"male" : @"female";
 
-	NSString *portraitURL =
-		[NSString stringWithFormat:@"%@/image/user_%@_portrait?img_id=%lld",
-			session.server, gender, portraitId];
+	NSString *portraitURL = [NSString
+		stringWithFormat:@"%@/image/user_%@_portrait?img_id=%lld",
+		session.server, gender, portraitId];
 
 	NSError *error;
 	int version = [LRPortalVersionUtil getPortalVersion:session error:&error];
@@ -99,8 +96,8 @@
 
 	NSString *token = [self _sha1:uuid];
 
-	return [NSString stringWithFormat:@"%@&img_id_token=%@",
-		portraitURL, token];
+	return [NSString stringWithFormat:@"%@&img_id_token=%@", portraitURL,
+		token];
 }
 
 + (NSString *)_sha1:(NSString *)input {

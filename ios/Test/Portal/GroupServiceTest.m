@@ -16,7 +16,7 @@
 #import "LRGroupService_v62.h"
 
 /**
- * @author Jose Navarro
+ * @author Jose M. Navarro
  */
 @implementation GroupServiceTest
 

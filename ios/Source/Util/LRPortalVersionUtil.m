@@ -42,8 +42,8 @@ static NSMutableDictionary *_versions;
 		return [version intValue];
 	}
 
-	NSMutableURLRequest *request =
-		[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL]];
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
+		initWithURL:[NSURL URLWithString:URL]];
 
 	[request setHTTPMethod:LR_HEAD];
 
@@ -66,9 +66,8 @@ static NSMutableDictionary *_versions;
 	NSRange buildRange;
 	NSRange searchRange = NSMakeRange(0, [portalHeader length]);
 
-	buildRange =
-		[portalHeader rangeOfString:@"Build" options:NSCaseInsensitiveSearch
-			range:searchRange];
+	buildRange = [portalHeader rangeOfString:@"Build"
+		options:NSCaseInsensitiveSearch range:searchRange];
 
 	if (buildRange.location == NSNotFound) {
 		return LR_UNKNOWN_VERSION;

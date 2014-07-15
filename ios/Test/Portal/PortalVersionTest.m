@@ -16,7 +16,7 @@
 #import "LRPortalVersionUtil.h"
 
 /**
- * @author Jose Navarro
+ * @author Jose M. Navarro
  */
 @interface PortalVersionTest : BaseTest
 @end

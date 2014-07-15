@@ -31,11 +31,11 @@
 
 	long long repositoryId = [self.settings[@"groupId"] longLongValue];
 
-	NSString *name =
-		[NSString stringWithFormat:@"test-name-%@", [[NSUUID UUID] UUIDString]];
+	NSString *name = [NSString stringWithFormat:@"test-name-%@",
+		[[NSUUID UUID] UUIDString]];
 
-	NSString *description =
-		[NSString stringWithFormat:@"test-desc-%@", [[NSUUID UUID] UUIDString]];
+	NSString *description = [NSString stringWithFormat:@"test-desc-%@",
+		[[NSUUID UUID] UUIDString]];
 
 	NSError *error;
 	NSDictionary *result = [service addFolderWithRepositoryId:repositoryId
@@ -57,8 +57,9 @@
 - (void)testAddFoldersBatch {
 	LRBatchSession *batch = [[LRBatchSession alloc]
 		initWithSession:self.session];
-	LRDLAppService_v62 *service =
-		[[LRDLAppService_v62 alloc] initWithSession:batch];
+
+	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+		initWithSession:batch];
 
 	long long repositoryId = [self.settings[@"groupId"] longLongValue];
 
@@ -69,12 +70,12 @@
 	NSString *name2 = [NSString stringWithFormat:@"2-test-name-%@", uuid];
 
 	uuid = [[NSUUID UUID] UUIDString];
-	NSString *description1 =
-		[NSString stringWithFormat:@"1-test-desc-%@", uuid];
+	NSString *description1 = [NSString stringWithFormat:@"1-test-desc-%@",
+		uuid];
 
 	uuid = [[NSUUID UUID] UUIDString];
-	NSString *description2 =
-		[NSString stringWithFormat:@"2-test-desc-%@", uuid];
+	NSString *description2 = [NSString stringWithFormat:@"2-test-desc-%@",
+		uuid];
 
 	NSError *error;
 	[service addFolderWithRepositoryId:repositoryId
@@ -107,8 +108,8 @@
 }
 
 - (void)_deleteFolder:(long long)folderId {
-	LRDLAppService_v62 *service =
-		[[LRDLAppService_v62 alloc] initWithSession:self.session];
+	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+		initWithSession:self.session];
 
 	NSError *error;
 
@@ -123,8 +124,8 @@
 	LRBatchSession *batch = [[LRBatchSession alloc]
 		initWithSession:self.session];
 
-	LRDLAppService_v62 *service =
-		[[LRDLAppService_v62 alloc] initWithSession:batch];
+	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+		initWithSession:batch];
 
 	NSError *error;
 
@@ -145,12 +146,12 @@
 }
 
 - (void)_getFolder:(long long)folderId exists:(BOOL)exists {
-	LRDLAppService_v62 *service =
-		[[LRDLAppService_v62 alloc] initWithSession:self.session];
+	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+		initWithSession:self.session];
 
 	NSError *error;
-	NSDictionary *result =
-		[service getFolderWithFolderId:folderId error:&error];
+	NSDictionary *result = [service getFolderWithFolderId:folderId
+		error:&error];
 
 	if (exists) {
 		XCTAssertNil(error);
@@ -171,8 +172,8 @@
 	LRBatchSession *batch = [[LRBatchSession alloc]
 		initWithSession:self.session];
 
-	LRDLAppService_v62 *service =
-		[[LRDLAppService_v62 alloc] initWithSession:batch];
+	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+		initWithSession:batch];
 
 	NSError *error;
 

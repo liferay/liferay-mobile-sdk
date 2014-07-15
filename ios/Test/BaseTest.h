@@ -15,7 +15,7 @@
 #import "LRSession.h"
 
 /**
- * @author Jose Navarro
+ * @author Jose M. Navarro
  */
 @interface BaseTest : XCTestCase
 

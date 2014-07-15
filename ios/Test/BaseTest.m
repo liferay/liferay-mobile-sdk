@@ -15,7 +15,7 @@
 #import "BaseTest.h"
 
 /**
- * @author Jose Navarro
+ * @author Jose M. Navarro
  * @author Bruno Farache
  */
 @implementation BaseTest
