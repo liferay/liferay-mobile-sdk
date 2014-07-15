@@ -125,7 +125,8 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	[request setValue:@"application/json; charset=utf-8"
 		forHTTPHeaderField:@"Content-Type"];
 
-	NSString *authHeader = [session authHeader];
+	NSString *authHeader = [session getAuthHeader];
+
 	if (authHeader) {
 		[request setValue:authHeader forHTTPHeaderField:@"Authorization"];
 	}

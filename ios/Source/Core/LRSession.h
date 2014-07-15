@@ -45,9 +45,9 @@
 
 - (id)initWithSession:(LRSession *)session;
 
+- (NSString *)getAuthHeader;
 - (id)invoke:(NSDictionary *)command error:(NSError **)error;
 - (id)upload:(NSDictionary *)command error:(NSError **)error;
 
-- (NSString *)authHeader;
 
 @end

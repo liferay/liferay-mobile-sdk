@@ -16,6 +16,7 @@
 
 #import "LRHttpUtil.h"
 #import "LRUploadUtil.h"
+#import "LRValidator.h"
 
 static const int _DEFAULT_CONNECTION_TIMEOUT = 15;
 static NSOperationQueue *_DEFAULT_QUEUE;
@@ -89,8 +90,10 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 		callback:session.callback];
 }
 
-- (NSString *)authHeader {
-	if ([self.username length] == 0) {
+- (NSString *)getAuthHeader {
+	if ([LRValidator isEmpty:self.username] ||
+		[LRValidator isEmpty:self.password]) {
+
 		return nil;
 	}
 

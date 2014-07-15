@@ -120,6 +120,7 @@
 		CC0FD4F91937853800270AB0 /* FileUploadTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0FD4F81937853800270AB0 /* FileUploadTest.m */; };
 		CC1C89711907FA19004D3C4C /* GroupServiceAsyncTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1C89701907FA19004D3C4C /* GroupServiceAsyncTest.m */; };
 		CC1C897919080708004D3C4C /* TRVSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1C897819080708004D3C4C /* TRVSMonitor.m */; };
+		CC40D76D1974B9D0000254E6 /* LRValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = CC40D76B1974B9BA000254E6 /* LRValidator.m */; };
 		CC4B7A261937B971003611C4 /* LRUploadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B7A241937B971003611C4 /* LRUploadData.m */; };
 		CC4B7A291937C64E003611C4 /* LRUploadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B7A271937C64E003611C4 /* LRUploadUtil.m */; };
 		CC4B7A2F1938C47F003611C4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4B7A2E1938C47F003611C4 /* logo.png */; };
@@ -379,6 +380,8 @@
 		CC1C89701907FA19004D3C4C /* GroupServiceAsyncTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupServiceAsyncTest.m; sourceTree = "<group>"; };
 		CC1C897719080708004D3C4C /* TRVSMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSMonitor.h; sourceTree = "<group>"; };
 		CC1C897819080708004D3C4C /* TRVSMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSMonitor.m; sourceTree = "<group>"; };
+		CC40D76A1974B9BA000254E6 /* LRValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRValidator.h; sourceTree = "<group>"; };
+		CC40D76B1974B9BA000254E6 /* LRValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRValidator.m; sourceTree = "<group>"; };
 		CC4B7A241937B971003611C4 /* LRUploadData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRUploadData.m; sourceTree = "<group>"; };
 		CC4B7A251937B971003611C4 /* LRUploadData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUploadData.h; sourceTree = "<group>"; };
 		CC4B7A271937C64E003611C4 /* LRUploadUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRUploadUtil.m; sourceTree = "<group>"; };
@@ -1461,6 +1464,8 @@
 				CCA4E4E51936578900374A79 /* LRPortalVersionUtil.m */,
 				CC03FCA218ED7DCD00F3F16C /* LRPortraitUtil.h */,
 				CC03FCA318ED7DCD00F3F16C /* LRPortraitUtil.m */,
+				CC40D76A1974B9BA000254E6 /* LRValidator.h */,
+				CC40D76B1974B9BA000254E6 /* LRValidator.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1719,6 +1724,7 @@
 				CC03FCC218ED7DCD00F3F16C /* LRDLFileShortcutService_v62.m in Sources */,
 				CC03FCB318ED7DCD00F3F16C /* LRBackgroundTaskService_v62.m in Sources */,
 				CC03FCF418ED7DCD00F3F16C /* LRSCProductEntryService_v62.m in Sources */,
+				CC40D76D1974B9D0000254E6 /* LRValidator.m in Sources */,
 				CC03FCC718ED7DCD00F3F16C /* LRExpandoValueService_v62.m in Sources */,
 				CC03FCDD18ED7DCD00F3F16C /* LRMDRRuleService_v62.m in Sources */,
 				CC03FCE618ED7DCD00F3F16C /* LRPluginSettingService_v62.m in Sources */,
