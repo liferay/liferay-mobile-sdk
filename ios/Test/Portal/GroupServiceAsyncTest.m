@@ -46,8 +46,8 @@
 	LRSession *session = [[LRSession alloc] initWithSession:self.session];
 	[session setCallback:self];
 
-	LRGroupService_v62 *service =
-		[[LRGroupService_v62 alloc] initWithSession:session];
+	LRGroupService_v62 *service = [[LRGroupService_v62 alloc]
+		initWithSession:session];
 
 	NSError *error;
 	[service getUserSites:&error];

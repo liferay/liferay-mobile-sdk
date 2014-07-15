@@ -21,8 +21,8 @@
 @implementation GroupServiceTest
 
 - (void)testGetUserSites {
-	LRGroupService_v62 *service =
-		[[LRGroupService_v62 alloc] initWithSession:self.session];
+	LRGroupService_v62 *service = [[LRGroupService_v62 alloc]
+		initWithSession:self.session];
 
 	NSError *error;
 	NSArray *groups = [service getUserSites:&error];
