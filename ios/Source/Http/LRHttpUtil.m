@@ -116,14 +116,19 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 
 	NSData *body = [NSJSONSerialization dataWithJSONObject:commands options:0
 		error:error];
+
 	[request setHTTPBody:body];
-
 	[request setHTTPMethod:LR_POST];
-
-	[request setTimeoutInterval:session.connectionTimeout];
-
 	[request setValue:@"application/json; charset=utf-8"
 		forHTTPHeaderField:@"Content-Type"];
+
+	[self setAuthHeader:session request:request];
+
+	return [self _sendRequest:request session:session error:error];
+}
+
++ (void)setAuthHeader:(LRSession *)session
+		request:(NSMutableURLRequest *)request {
 
 	NSString *authHeader = [session getAuthHeader];
 
@@ -131,7 +136,7 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 		[request setValue:authHeader forHTTPHeaderField:@"Authorization"];
 	}
 
-	return [self _sendRequest:request session:session error:error];
+	[request setTimeoutInterval:session.connectionTimeout];
 }
 
 + (id)_sendRequest:(NSMutableURLRequest *)request session:(LRSession *)session
