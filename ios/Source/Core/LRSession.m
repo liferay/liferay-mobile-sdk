@@ -34,10 +34,13 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 	}
 }
 
-- (id)initWithSession:(LRSession *)session {
-	return [self initWithServer:session.server username:session.username
-		password:session.password connectionTimeout:session.connectionTimeout
-		callback:session.callback];
+- (id)initWithServer:(NSString *)server {
+	return [self initWithServer:server callback:nil];
+}
+
+- (id)initWithServer:(NSString *)server callback:(id<LRCallback>)callback {
+	return [self initWithServer:server username:nil password:nil
+		callback:callback];
 }
 
 - (id)initWithServer:(NSString *)server username:(NSString *)username
@@ -78,6 +81,12 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 	}
 
 	return self;
+}
+
+- (id)initWithSession:(LRSession *)session {
+	return [self initWithServer:session.server username:session.username
+		password:session.password connectionTimeout:session.connectionTimeout
+		callback:session.callback];
 }
 
 - (NSString *)authHeader {
