@@ -113,7 +113,7 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 	return [json objectAtIndex:0];
 }
 
-- (void)onSuccess:(void (^)(id))success onFailure:(void (^)(NSError *))failure {
+- (void)onSuccess:(LRSuccessBlock)success onFailure:(LRFailureBlock)failure {
 	id<LRCallback> callback = [[LRBlockCallback alloc] initWithSuccess:success
 		failure:failure];
 

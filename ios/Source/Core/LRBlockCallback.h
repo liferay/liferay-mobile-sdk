@@ -19,10 +19,10 @@
  */
 @interface LRBlockCallback : NSObject <LRCallback>
 
-@property (nonatomic, copy) void (^failure)(NSError *);
-@property (nonatomic, copy) void (^success)(id);
+@property (nonatomic, copy) LRFailureBlock failure;
+@property (nonatomic, copy) LRSuccessBlock success;
 
-- (id)initWithSuccess:(void (^)(id))success
-	failure:(void (^)(NSError *))failure;
+- (id)initWithSuccess:(LRSuccessBlock)success
+	failure:(LRFailureBlock)failure;
 
 @end
