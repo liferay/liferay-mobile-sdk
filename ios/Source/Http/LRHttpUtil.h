@@ -39,7 +39,7 @@ typedef void (^LRHandler)(NSURLResponse *r, NSData *d, NSError *e);
 
 + (NSURL *)getURL:(LRSession *)session path:(NSString *)path;
 
-+ (id)handleServerException:(id)data response:(NSHTTPURLResponse *)response
++ (id)handleServerResponse:(NSHTTPURLResponse *)response data:(id)data
 	error:(NSError **)error;
 
 + (NSArray *)post:(LRSession *)session command:(NSDictionary *)command

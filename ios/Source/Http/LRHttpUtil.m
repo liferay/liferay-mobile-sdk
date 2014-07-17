@@ -49,8 +49,8 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	return [NSURL URLWithString:URL];
 }
 
-+ (id)handleServerException:(id)data response:(NSHTTPURLResponse *)response
-		error:(NSError **)error {
++ (id)handleServerResponse:(NSHTTPURLResponse *)response data:(id)data
+	error:(NSError **)error {
 
 	int statusCode = [response statusCode];
 
@@ -205,7 +205,7 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 			return nil;
 		}
 
-		return [self handleServerException:data response:response error:error];
+		return [self handleServerResponse:response data:data error:error];
 	}
 }
 
@@ -222,8 +222,8 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 			else {
 				NSError *serverError;
 
-				id json = [self handleServerException:d
-					response:(NSHTTPURLResponse *)r error:&serverError];
+				id json = [self handleServerResponse:(NSHTTPURLResponse *)r
+					data:d error:&serverError];
 
 				if (serverError) {
 					[callback onFailure:serverError];

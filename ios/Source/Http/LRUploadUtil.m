@@ -55,7 +55,7 @@
 		success:^(AFHTTPRequestOperation *operation, id json) {
 			NSError *serverError;
 
-			[LRHttpUtil handleServerException:json response:operation.response
+			[LRHttpUtil handleServerResponse:operation.response data:json
 				error:&serverError];
 
 			if (serverError) {

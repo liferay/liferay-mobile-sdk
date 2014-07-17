@@ -23,7 +23,7 @@
 
 @implementation LRHttpUtilTest
 
-- (void)testHandleServerExceptionWithException {
+- (void)testHandleServerResponseWithException {
 	NSString *json = @"{\"exception\":\"This is the message\"}";
 	NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
 	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:200];
@@ -44,7 +44,7 @@
 		error.userInfo[NSLocalizedFailureReasonErrorKey]);
 }
 
-- (void)testHandleServerExceptionWithExceptionAndMessage {
+- (void)testHandleServerResponseWithExceptionAndMessage {
 	NSString *json = @"{\"exception\":\"com.liferay.MyException\", \
 		\"message\":\"This is the message\"}";
 	NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
@@ -66,7 +66,7 @@
 		error.userInfo[NSLocalizedFailureReasonErrorKey]);
 }
 
-- (void)testHandleServerExceptionWithParseError {
+- (void)testHandleServerResponseWithParseError {
 	NSString *json = @"{this_is_an_invalid_json}";
 	NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
 	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:200];
@@ -86,7 +86,7 @@
 		error.userInfo[NSLocalizedFailureReasonErrorKey]);
 }
 
-- (void)testHandleServerExceptionWithStatusError {
+- (void)testHandleServerResponseWithStatusError {
 	NSString *json = @"{}";
 	NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
 	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:404];
@@ -106,7 +106,7 @@
 		error.userInfo[NSLocalizedFailureReasonErrorKey]);
 }
 
-- (void)testHandleServerExceptionWithUnauthorizedResponse {
+- (void)testHandleServerResponseWithUnauthorizedResponse {
 	NSString *json = @"{}";
 	NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
 	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:401];
@@ -126,7 +126,7 @@
 		error.userInfo[NSLocalizedFailureReasonErrorKey]);
 }
 
-- (void)testHandleServerExceptionWithoutError {
+- (void)testHandleServerResponseWithoutError {
 	NSString *json = @"{\"key\":\"value\"}";
 	NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
 	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:200];
