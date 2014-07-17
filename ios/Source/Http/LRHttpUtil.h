@@ -20,6 +20,7 @@ extern NSInteger const LR_ERROR_CODE_PARSE;
 extern NSInteger const LR_ERROR_CODE_UNAUTHORIZED;
 extern NSString *const LR_ERROR_EXCEPTION_SECURITY;
 extern NSString *const LR_ERROR_EXCEPTION_PARSE;
+extern NSString *const LR_ERROR_EXCEPTION_STATUS;
 extern NSString *const LR_GET;
 extern NSString *const LR_HEAD;
 extern NSString *const LR_IF_MODIFIED_SINCE;

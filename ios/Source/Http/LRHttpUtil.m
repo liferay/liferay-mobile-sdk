@@ -22,6 +22,7 @@ NSInteger const LR_ERROR_CODE_PARSE = -2;
 NSInteger const LR_ERROR_CODE_UNAUTHORIZED = -3;
 NSString *const LR_ERROR_EXCEPTION_SECURITY = @"java.lang.SecurityException";
 NSString *const LR_ERROR_EXCEPTION_PARSE = @"com.liferay.ParseException";
+NSString *const LR_ERROR_EXCEPTION_STATUS = @"com.liferay.StatusException";
 NSString *const LR_GET = @"GET";
 NSString *const LR_HEAD = @"HEAD";
 NSString *const LR_IF_MODIFIED_SINCE = @"If-Modified-Since";
@@ -66,7 +67,8 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 
 	if (statusCode != LR_STATUS_OK) {
 		NSDictionary *userInfo = @{
-			NSLocalizedDescriptionKey: @"server-error"
+			NSLocalizedDescriptionKey: @"Unknown server error",
+			NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_STATUS
 		};
 
 		*error = [NSError errorWithDomain:LR_ERROR_DOMAIN code:statusCode
