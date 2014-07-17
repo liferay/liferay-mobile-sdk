@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8837B96019741D9800410076 /* UnauthenticatedServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8837B95F19741D9800410076 /* UnauthenticatedServiceTest.m */; };
+		883F77731977DE990041E1CB /* LRHttpUtilTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 883F77721977DE990041E1CB /* LRHttpUtilTest.m */; };
 		8F7B829DA4104FEDB903590F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 792F68BAE4DF41869F1F1580 /* libPods.a */; };
 		CC03FB6F18ED7BA000F3F16C /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC03FB6C18ED7BA000F3F16C /* settings.plist */; };
 		CC03FCA418ED7DCD00F3F16C /* LRBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FB7418ED7DCC00F3F16C /* LRBaseService.m */; };
@@ -164,6 +165,7 @@
 		1AA10F3DFF644C7DB4B5BE40 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		792F68BAE4DF41869F1F1580 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8837B95F19741D9800410076 /* UnauthenticatedServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnauthenticatedServiceTest.m; sourceTree = "<group>"; };
+		883F77721977DE990041E1CB /* LRHttpUtilTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRHttpUtilTest.m; sourceTree = "<group>"; };
 		88FD86C519742C4700E4EEF9 /* GroupServiceTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupServiceTest.h; sourceTree = "<group>"; };
 		CC03FB6C18ED7BA000F3F16C /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		CC03FB6D18ED7BA000F3F16C /* Test-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Test-Info.plist"; sourceTree = "<group>"; };
@@ -1497,6 +1499,7 @@
 				CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */,
 				CC03FD2218EDA05B00F3F16C /* PortalVersionTest.m */,
 				CC03FD2418EDA05B00F3F16C /* PortletServiceTest.m */,
+				883F77721977DE990041E1CB /* LRHttpUtilTest.m */,
 				CCCF04E119192798005D1B22 /* ServiceContextTest.h */,
 				CCCF04E219192798005D1B22 /* ServiceContextTest.m */,
 				CC88DE61192A2B1B0008D3D1 /* SpecialCharsTest.m */,
@@ -1737,6 +1740,7 @@
 				CC03FCC718ED7DCD00F3F16C /* LRExpandoValueService_v62.m in Sources */,
 				CC03FCDD18ED7DCD00F3F16C /* LRMDRRuleService_v62.m in Sources */,
 				CC03FCE618ED7DCD00F3F16C /* LRPluginSettingService_v62.m in Sources */,
+				883F77731977DE990041E1CB /* LRHttpUtilTest.m in Sources */,
 				CC03FD0918ED7DCD00F3F16C /* LRPortraitUtil.m in Sources */,
 				CC03FCD718ED7DCD00F3F16C /* LRListTypeService_v62.m in Sources */,
 				CC03FCEA18ED7DCD00F3F16C /* LRPortletService_v62.m in Sources */,
