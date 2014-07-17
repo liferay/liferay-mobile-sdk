@@ -15,6 +15,7 @@
 #import "LRSession.h"
 
 extern NSString *const LR_ERROR_DOMAIN;
+extern NSInteger const LR_ERROR_CODE_SERVER_EXCEPTION;
 extern NSString *const LR_GET;
 extern NSString *const LR_HEAD;
 extern NSString *const LR_IF_MODIFIED_SINCE;

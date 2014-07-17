@@ -17,6 +17,7 @@
 #import "LRBatchSession.h"
 
 NSString *const LR_ERROR_DOMAIN = @"com.liferay.mobile";
+NSInteger const LR_ERROR_CODE_SERVER_EXCEPTION = -1;
 NSString *const LR_GET = @"GET";
 NSString *const LR_HEAD = @"HEAD";
 NSString *const LR_IF_MODIFIED_SINCE = @"If-Modified-Since";
@@ -88,8 +89,8 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 				NSLocalizedDescriptionKey: message
 			};
 
-			*error = [NSError errorWithDomain:LR_ERROR_DOMAIN code:-1
-				userInfo:userInfo];
+			*error = [NSError errorWithDomain:LR_ERROR_DOMAIN
+				code:LR_ERROR_CODE_SERVER_EXCEPTION userInfo:userInfo];
 
 			return nil;
 		}
