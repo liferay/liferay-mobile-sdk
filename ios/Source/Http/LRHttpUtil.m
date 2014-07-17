@@ -23,6 +23,7 @@ NSInteger const LR_ERROR_CODE_UNAUTHORIZED = -3;
 NSString *const LR_ERROR_EXCEPTION_SECURITY = @"java.lang.SecurityException";
 NSString *const LR_ERROR_EXCEPTION_PARSE = @"com.liferay.ParseException";
 NSString *const LR_ERROR_EXCEPTION_STATUS = @"com.liferay.StatusException";
+NSString *const LR_ERROR_EXCEPTION_GENERIC = @"java.lang.Exception";
 NSString *const LR_GET = @"GET";
 NSString *const LR_HEAD = @"HEAD";
 NSString *const LR_IF_MODIFIED_SINCE = @"If-Modified-Since";
@@ -100,11 +101,45 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 		}
 	}
 
+	if ([json isKindOfClass:[NSDictionary class]]) {
+		NSError *serverError = [self _errorWithServerResponse:(NSDictionary *)json];
+
+		if (serverError) {
+			*error = serverError;
+
 			return nil;
 		}
 	}
 
 	return json;
+}
+
++ (NSError *)_errorWithServerResponse:(NSDictionary *)response {
+	NSString *exception = [response objectForKey:@"exception"];
+
+	if (!exception) {
+		return nil;
+	}
+
+	// Two possible responses. See MOBILESDK-31 and LPS-45301
+
+	NSString *message = [response objectForKey:@"message"];
+
+	if (!message) {
+
+		// if there's no message, then the exception contains the actual message
+
+		message = exception;
+		exception = LR_ERROR_EXCEPTION_GENERIC;
+	}
+
+	NSDictionary *userInfo = @{
+		NSLocalizedDescriptionKey: message,
+		NSLocalizedFailureReasonErrorKey: exception
+	};
+
+	return [NSError errorWithDomain:LR_ERROR_DOMAIN
+		code:LR_ERROR_CODE_SERVER_EXCEPTION userInfo:userInfo];
 }
 
 + (NSArray *)post:(LRSession *)session command:(NSDictionary *)command
