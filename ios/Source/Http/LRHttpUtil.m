@@ -18,6 +18,7 @@
 
 NSString *const LR_ERROR_DOMAIN = @"com.liferay.mobile";
 NSInteger const LR_ERROR_CODE_SERVER_EXCEPTION = -1;
+NSInteger const LR_ERROR_CODE_PARSE = -2;
 NSString *const LR_GET = @"GET";
 NSString *const LR_HEAD = @"HEAD";
 NSString *const LR_IF_MODIFIED_SINCE = @"If-Modified-Since";
@@ -73,24 +74,25 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	id json = data;
 
 	if ([data isKindOfClass:[NSData class]]) {
+		NSError *parseError;
+
 		json = [NSJSONSerialization JSONObjectWithData:data options:0
-			error:error];
-	}
+			error:&parseError];
 
-	if (*error) {
-		return nil;
-	}
-
-	if ([json isKindOfClass:[NSDictionary class]]) {
-		NSString *message = [json objectForKey:@"exception"];
-
-		if (message) {
+		if (parseError) {
 			NSDictionary *userInfo = @{
-				NSLocalizedDescriptionKey: message
+				NSLocalizedDescriptionKey:@"Fatal error happened processing \
+					server data",
+				NSLocalizedFailureReasonErrorKey:@"",
+				NSUnderlyingErrorKey:parseError
 			};
 
 			*error = [NSError errorWithDomain:LR_ERROR_DOMAIN
-				code:LR_ERROR_CODE_SERVER_EXCEPTION userInfo:userInfo];
+				code:LR_ERROR_CODE_PARSE userInfo:userInfo];
+
+			return nil;
+		}
+	}
 
 			return nil;
 		}
