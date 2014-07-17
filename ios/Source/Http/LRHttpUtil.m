@@ -19,6 +19,8 @@
 NSString *const LR_ERROR_DOMAIN = @"com.liferay.mobile";
 NSInteger const LR_ERROR_CODE_SERVER_EXCEPTION = -1;
 NSInteger const LR_ERROR_CODE_PARSE = -2;
+NSInteger const LR_ERROR_CODE_UNAUTHORIZED = -3;
+NSString *const LR_ERROR_EXCEPTION_SECURITY = @"java.lang.SecurityException";
 NSString *const LR_ERROR_EXCEPTION_PARSE = @"com.liferay.ParseException";
 NSString *const LR_GET = @"GET";
 NSString *const LR_HEAD = @"HEAD";
@@ -52,11 +54,12 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 
 	if (statusCode == LR_STATUS_UNAUTHORIZED) {
 		NSDictionary *userInfo = @{
-			NSLocalizedDescriptionKey: @"wrong-credentials"
+			NSLocalizedDescriptionKey: @"Authenticated access required",
+			NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_SECURITY
 		};
 
 		*error = [NSError errorWithDomain:LR_ERROR_DOMAIN
-			code:LR_STATUS_UNAUTHORIZED userInfo:userInfo];
+			code:LR_ERROR_CODE_UNAUTHORIZED userInfo:userInfo];
 
 		return nil;
 	}
