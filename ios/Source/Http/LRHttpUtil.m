@@ -19,6 +19,7 @@
 NSString *const LR_ERROR_DOMAIN = @"com.liferay.mobile";
 NSInteger const LR_ERROR_CODE_SERVER_EXCEPTION = -1;
 NSInteger const LR_ERROR_CODE_PARSE = -2;
+NSString *const LR_ERROR_EXCEPTION_PARSE = @"com.liferay.ParseException";
 NSString *const LR_GET = @"GET";
 NSString *const LR_HEAD = @"HEAD";
 NSString *const LR_IF_MODIFIED_SINCE = @"If-Modified-Since";
@@ -83,7 +84,7 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 			NSDictionary *userInfo = @{
 				NSLocalizedDescriptionKey:@"Fatal error happened processing \
 					server data",
-				NSLocalizedFailureReasonErrorKey:@"",
+				NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_PARSE,
 				NSUnderlyingErrorKey:parseError
 			};
 
