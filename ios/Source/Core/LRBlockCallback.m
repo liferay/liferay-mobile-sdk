@@ -19,9 +19,7 @@
  */
 @implementation LRBlockCallback
 
-- (id)initWithSuccess:(LRSuccessBlock)success
-			  failure:(LRFailureBlock)failure {
-
+- (id)initWithSuccess:(LRSuccessBlock)success failure:(LRFailureBlock)failure {
 	self = [super init];
 
 	if (self) {

@@ -15,10 +15,6 @@
 /**
  * @author Bruno Farache
  */
-
-typedef void (^LRFailureBlock)(NSError *);
-typedef void (^LRSuccessBlock)(id);
-
 @protocol LRCallback <NSObject>
 
 - (void)onFailure:(NSError *)error;

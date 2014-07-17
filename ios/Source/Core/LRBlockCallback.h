@@ -14,6 +14,9 @@
 
 #import "LRCallback.h"
 
+typedef void (^LRFailureBlock)(NSError *);
+typedef void (^LRSuccessBlock)(id);
+
 /**
  * @author Bruno Farache
  */
@@ -22,7 +25,6 @@
 @property (nonatomic, copy) LRFailureBlock failure;
 @property (nonatomic, copy) LRSuccessBlock success;
 
-- (id)initWithSuccess:(LRSuccessBlock)success
-	failure:(LRFailureBlock)failure;
+- (id)initWithSuccess:(LRSuccessBlock)success failure:(LRFailureBlock)failure;
 
 @end
