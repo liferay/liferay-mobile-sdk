@@ -24,71 +24,14 @@
 
 @implementation ResponseParserTest
 
-- (void)testHandleServerResponseWithException {
-	NSString *json = @"{\"exception\":\"This is the message\"}";
-	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
-
-	NSError *error;
-	id parsedResponse = [LRResponseParser parse:data statusCode:LR_STATUS_OK
-		error:&error];
-
-	XCTAssertNil(parsedResponse);
-
-	XCTAssertNotNil(error);
-	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
-	XCTAssertEqual(LRErrorCodePortalException, error.code);
-	XCTAssertNotNil(error.userInfo);
-	XCTAssertEqualObjects(@"This is the message",
-		error.userInfo[NSLocalizedDescriptionKey]);
-}
-
-- (void)testHandleServerResponseWithExceptionAndMessage {
-	NSString *json = @"{\"exception\":\"com.liferay.MyException\", \
-		\"message\":\"This is the message\"}";
-	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
-
-	NSError *error;
-	id parsedResponse = [LRResponseParser parse:data statusCode:LR_STATUS_OK
-		error:&error];
-
-	XCTAssertNil(parsedResponse);
-
-	XCTAssertNotNil(error);
-	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
-	XCTAssertEqual(LRErrorCodePortalException, error.code);
-	XCTAssertNotNil(error.userInfo);
-	XCTAssertEqualObjects(@"This is the message",
-		error.userInfo[NSLocalizedDescriptionKey]);
-	XCTAssertEqualObjects(@"com.liferay.MyException",
-		error.userInfo[NSLocalizedFailureReasonErrorKey]);
-}
-
-- (void)testHandleServerResponseWithParseError {
-	NSString *json = @"{this_is_an_invalid_json}";
-	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
-
-	NSError *error;
-	id parsedResponse = [LRResponseParser parse:data statusCode:LR_STATUS_OK
-		error:&error];
-
-	XCTAssertNil(parsedResponse);
-
-	XCTAssertNotNil(error);
-	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
-	XCTAssertEqual(LRErrorCodeParse, error.code);
-	XCTAssertNotNil(error.userInfo);
-	XCTAssertNotNil(error.userInfo[NSLocalizedDescriptionKey]);
-}
-
-- (void)testHandleServerResponseWithStatusError {
+- (void)testHttpError {
 	NSString *json = @"{}";
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 
 	NSError *error;
-	id parsedResponse = [LRResponseParser parse:data statusCode:404
-		error:&error];
+	id response = [LRResponseParser parse:data statusCode:404 error:&error];
 
-	XCTAssertNil(parsedResponse);
+	XCTAssertNil(response);
 
 	XCTAssertNotNil(error);
 	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
@@ -97,36 +40,86 @@
 	XCTAssertNotNil(error.userInfo[NSLocalizedDescriptionKey]);
 }
 
-- (void)testHandleServerResponseWithUnauthorizedResponse {
+- (void)testParseError {
+	NSString *json = @"{this_is_an_invalid_json}";
+	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
+
+	NSError *error;
+	id response = [LRResponseParser parse:data statusCode:LR_STATUS_OK
+		error:&error];
+
+	XCTAssertNil(response);
+
+	XCTAssertNotNil(error);
+	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
+	XCTAssertEqual(LRErrorCodeParse, error.code);
+	XCTAssertNotNil(error.userInfo);
+	XCTAssertNotNil(error.userInfo[NSLocalizedDescriptionKey]);
+}
+
+
+- (void)testPortalException {
+	NSString *json = @"{\"exception\":\"This is the message\"}";
+	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
+
+	NSError *error;
+	id response = [LRResponseParser parse:data statusCode:LR_STATUS_OK
+		error:&error];
+
+	XCTAssertNil(response);
+
+	XCTAssertNotNil(error);
+	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
+	XCTAssertEqual(LRErrorCodePortalException, error.code);
+	XCTAssertNotNil(error.userInfo);
+
+	XCTAssertEqualObjects(
+		@"This is the message",
+		error.userInfo[NSLocalizedDescriptionKey]
+	);
+}
+
+- (void)testPortalExceptionWithMessage {
+	NSString *json = @"{\"exception\":\"com.liferay.MyException\", \
+		\"message\":\"This is the message\"}";
+	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
+
+	NSError *error;
+	id response = [LRResponseParser parse:data statusCode:LR_STATUS_OK
+		error:&error];
+
+	XCTAssertNil(response);
+
+	XCTAssertNotNil(error);
+	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
+	XCTAssertEqual(LRErrorCodePortalException, error.code);
+	XCTAssertNotNil(error.userInfo);
+	XCTAssertEqualObjects(
+		@"This is the message",
+		error.userInfo[NSLocalizedDescriptionKey]
+	);
+
+	XCTAssertEqualObjects(
+		@"com.liferay.MyException",
+		error.userInfo[NSLocalizedFailureReasonErrorKey]
+	);
+}
+
+- (void)testUnauthorizedError {
 	NSString *json = @"{}";
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 
 	NSError *error;
-	id parsedResponse = [LRResponseParser parse:data
-		statusCode:LR_STATUS_UNAUTHORIZED error:&error];
+	id response = [LRResponseParser parse:data statusCode:LR_STATUS_UNAUTHORIZED
+		error:&error];
 
-	XCTAssertNil(parsedResponse);
+	XCTAssertNil(response);
 
 	XCTAssertNotNil(error);
 	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
 	XCTAssertEqual(LRErrorCodeUnauthorized, error.code);
 	XCTAssertNotNil(error.userInfo);
 	XCTAssertNotNil(error.userInfo[NSLocalizedDescriptionKey]);
-}
-
-- (void)testHandleServerResponseWithoutError {
-	NSString *json = @"{\"key\":\"value\"}";
-	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
-
-	NSError *error;
-	id parsedResponse = [LRResponseParser parse:data statusCode:LR_STATUS_OK
-		error:&error];
-
-	XCTAssertNotNil(parsedResponse);
-	XCTAssertTrue([parsedResponse isKindOfClass:[NSDictionary class]]);
-	XCTAssertEqualObjects(@"value", [parsedResponse valueForKey:@"key"]);
-
-	XCTAssertNil(error);
 }
 
 @end
