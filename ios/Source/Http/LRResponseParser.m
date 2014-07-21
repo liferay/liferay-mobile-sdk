@@ -35,7 +35,7 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 + (id)parse:(id)data statusCode:(long)statusCode error:(NSError **)error {
 	if (statusCode == LR_STATUS_UNAUTHORIZED) {
 		NSDictionary *userInfo = @{
-			NSLocalizedDescriptionKey: @"Authenticated access required",
+			NSLocalizedDescriptionKey: @"wrong-credentials",
 			NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_SECURITY
 		};
 
@@ -47,7 +47,7 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 
 	if (statusCode != LR_STATUS_OK) {
 		NSDictionary *userInfo = @{
-			NSLocalizedDescriptionKey: @"Unknown server error",
+			NSLocalizedDescriptionKey: @"http-error",
 			NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_STATUS
 		};
 
@@ -67,8 +67,7 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 
 		if (parseError) {
 			NSDictionary *userInfo = @{
-				NSLocalizedDescriptionKey:@"Fatal error happened processing \
-					server data",
+				NSLocalizedDescriptionKey:@"json-parsing-error",
 				NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_PARSE,
 				NSUnderlyingErrorKey:parseError
 			};
