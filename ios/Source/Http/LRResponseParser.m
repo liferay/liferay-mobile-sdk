@@ -15,8 +15,8 @@
 #import "LRResponseParser.h"
 
 #import "LRBatchSession.h"
+#import "NSError+LRError.h"
 
-NSString *const LR_ERROR_DOMAIN = @"com.liferay.mobile";
 NSInteger const LR_ERROR_CODE_SERVER_EXCEPTION = -1;
 NSInteger const LR_ERROR_CODE_PARSE = -2;
 NSInteger const LR_ERROR_CODE_UNAUTHORIZED = -3;
@@ -53,20 +53,11 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	NSError *error;
 
 	if (statusCode == LR_STATUS_UNAUTHORIZED) {
-		NSDictionary *userInfo = @{
-		   NSLocalizedDescriptionKey: @"wrong-credentials",
-	   };
-
-		error = [NSError errorWithDomain:LR_ERROR_DOMAIN
-			code:LR_ERROR_CODE_UNAUTHORIZED userInfo:userInfo];
+		error = [NSError errorWithCode:LR_ERROR_CODE_UNAUTHORIZED
+			description:@"wrong-credentials"];
 	}
 	else if (statusCode != LR_STATUS_OK) {
-		NSDictionary *userInfo = @{
-			NSLocalizedDescriptionKey: @"http-error",
-		};
-
-		error = [NSError errorWithDomain:LR_ERROR_DOMAIN code:statusCode
-			userInfo:userInfo];
+		error = [NSError errorWithCode:statusCode description:@"http-error"];
 	}
 
 	return error;
@@ -83,23 +74,23 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 		return nil;
 	}
 
-	NSDictionary *userInfo;
 	NSString *message = [json objectForKey:@"message"];
+	NSError *error;
 
 	if (message) {
-		userInfo = @{
-			NSLocalizedDescriptionKey: message,
+		NSDictionary *userInfo = @{
 			NSLocalizedFailureReasonErrorKey: exception
 		};
+
+		error = [NSError errorWithCode:LR_ERROR_CODE_SERVER_EXCEPTION
+			description:message userInfo:userInfo];
 	}
 	else {
-		userInfo = @{
-			NSLocalizedDescriptionKey: exception
-		};
+		error = [NSError errorWithCode:LR_ERROR_CODE_SERVER_EXCEPTION
+			description:exception];
 	}
 
-	return [NSError errorWithDomain:LR_ERROR_DOMAIN
-		code:LR_ERROR_CODE_SERVER_EXCEPTION userInfo:userInfo];
+	return error;
 }
 
 + (id)_parse:(NSData *)data error:(NSError **)error {
@@ -110,12 +101,11 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 
 	if (parseError) {
 		NSDictionary *userInfo = @{
-			NSLocalizedDescriptionKey:@"json-parsing-error",
 			NSUnderlyingErrorKey:parseError
 		};
 
-		*error = [NSError errorWithDomain:LR_ERROR_DOMAIN
-			code:LR_ERROR_CODE_PARSE userInfo:userInfo];
+		*error = [NSError errorWithCode:LR_ERROR_CODE_PARSE
+			description:@"json-parsing-error" userInfo:userInfo];
 	}
 	else {
 		*error = [self _checkPortalException:json];

@@ -12,19 +12,16 @@
  * details.
  */
 
-#import "LRSession.h"
-
-extern NSInteger const LR_ERROR_CODE_SERVER_EXCEPTION;
-extern NSInteger const LR_ERROR_CODE_PARSE;
-extern NSInteger const LR_ERROR_CODE_UNAUTHORIZED;
-extern const int LR_STATUS_OK;
-extern const int LR_STATUS_UNAUTHORIZED;
+extern NSString *const LR_ERROR_DOMAIN;
 
 /**
  * @author Bruno Farache
  */
-@interface LRResponseParser : NSObject
+@interface NSError (LRError)
 
-+ (id)parse:(id)data statusCode:(long)statusCode error:(NSError **)error;
++ (NSError *)errorWithCode:(NSInteger)code description:(NSString *)description;
+
++ (NSError *)errorWithCode:(NSInteger)code description:(NSString *)description
+   userInfo:(NSDictionary *)userInfo;
 
 @end
