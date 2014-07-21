@@ -18,18 +18,17 @@
 /**
  * @author Jose M. Navarro
  */
-@interface LRHttpUtilTest : BaseTest
+@interface ResponseParserTest : BaseTest
 @end
 
-@implementation LRHttpUtilTest
+@implementation ResponseParserTest
 
 - (void)testHandleServerResponseWithException {
 	NSString *json = @"{\"exception\":\"This is the message\"}";
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
-	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:200];
 
 	NSError *error;
-	id parsedResponse = [LRResponseParser parse:response data:data
+	id parsedResponse = [LRResponseParser parse:data statusCode:LR_STATUS_OK
 		error:&error];
 
 	XCTAssertNil(parsedResponse);
@@ -48,10 +47,9 @@
 	NSString *json = @"{\"exception\":\"com.liferay.MyException\", \
 		\"message\":\"This is the message\"}";
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
-	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:200];
 
 	NSError *error;
-	id parsedResponse = [LRResponseParser parse:response data:data
+	id parsedResponse = [LRResponseParser parse:data statusCode:LR_STATUS_OK
 		error:&error];
 
 	XCTAssertNil(parsedResponse);
@@ -69,10 +67,9 @@
 - (void)testHandleServerResponseWithParseError {
 	NSString *json = @"{this_is_an_invalid_json}";
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
-	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:200];
 
 	NSError *error;
-	id parsedResponse = [LRResponseParser parse:response data:data
+	id parsedResponse = [LRResponseParser parse:data statusCode:LR_STATUS_OK
 		error:&error];
 
 	XCTAssertNil(parsedResponse);
@@ -89,10 +86,9 @@
 - (void)testHandleServerResponseWithStatusError {
 	NSString *json = @"{}";
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
-	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:404];
 
 	NSError *error;
-	id parsedResponse = [LRResponseParser parse:response data:data
+	id parsedResponse = [LRResponseParser parse:data statusCode:404
 		error:&error];
 
 	XCTAssertNil(parsedResponse);
@@ -109,11 +105,10 @@
 - (void)testHandleServerResponseWithUnauthorizedResponse {
 	NSString *json = @"{}";
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
-	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:401];
 
 	NSError *error;
-	id parsedResponse = [LRResponseParser parse:response data:data
-		error:&error];
+	id parsedResponse = [LRResponseParser parse:data
+		statusCode:LR_STATUS_UNAUTHORIZED error:&error];
 
 	XCTAssertNil(parsedResponse);
 
@@ -129,10 +124,9 @@
 - (void)testHandleServerResponseWithoutError {
 	NSString *json = @"{\"key\":\"value\"}";
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
-	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:200];
 
 	NSError *error;
-	id parsedResponse = [LRResponseParser parse:response data:data
+	id parsedResponse = [LRResponseParser parse:data statusCode:LR_STATUS_OK
 		error:&error];
 
 	XCTAssertNotNil(parsedResponse);
@@ -140,13 +134,6 @@
 	XCTAssertEqualObjects(@"value", [parsedResponse valueForKey:@"key"]);
 
 	XCTAssertNil(error);
-}
-
-
-- (NSHTTPURLResponse *)_createHTTPResponseWithCode:(NSInteger)statusCode {
-	return [[NSHTTPURLResponse alloc] initWithURL:
-		[NSURL URLWithString:@"http://localhost"] statusCode:statusCode
-		HTTPVersion:@"1.0" headerFields:[NSDictionary dictionary]];
 }
 
 @end

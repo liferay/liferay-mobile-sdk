@@ -32,11 +32,7 @@ const int LR_STATUS_UNAUTHORIZED = 401;
  */
 @implementation LRResponseParser
 
-+ (id)parse:(NSHTTPURLResponse *)response data:(id)data
-		error:(NSError **)error {
-
-	long statusCode = [response statusCode];
-
++ (id)parse:(id)data statusCode:(long)statusCode error:(NSError **)error {
 	if (statusCode == LR_STATUS_UNAUTHORIZED) {
 		NSDictionary *userInfo = @{
 			NSLocalizedDescriptionKey: @"Authenticated access required",

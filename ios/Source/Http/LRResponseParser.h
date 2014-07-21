@@ -30,7 +30,6 @@ extern const int LR_STATUS_UNAUTHORIZED;
  */
 @interface LRResponseParser : NSObject
 
-+ (id)parse:(NSHTTPURLResponse *)response data:(id)data
-	error:(NSError **)error;
++ (id)parse:(id)data statusCode:(long)statusCode error:(NSError **)error;
 
 @end

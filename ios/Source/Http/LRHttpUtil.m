@@ -103,7 +103,9 @@ typedef void (^LRHandler)(NSURLResponse *response, NSData *data, NSError *error)
 			return nil;
 		}
 
-		return [LRResponseParser parse:response data:data error:error];
+		long statusCode = [response statusCode];
+
+		return [LRResponseParser parse:data statusCode:statusCode error:error];
 	}
 }
 
@@ -112,7 +114,7 @@ typedef void (^LRHandler)(NSURLResponse *response, NSData *data, NSError *error)
 
 	id<LRCallback> callback = session.callback;
 
-	LRHandler handler = ^(NSURLResponse *r, NSData *d, NSError *e) {
+	LRHandler handler = ^(NSURLResponse *response, NSData *data, NSError *e) {
 		dispatch_async(dispatch_get_main_queue(), ^{
 			if (e) {
 				[callback onFailure:e];
@@ -120,8 +122,10 @@ typedef void (^LRHandler)(NSURLResponse *response, NSData *data, NSError *error)
 			else {
 				NSError *serverError;
 
-				id json = [LRResponseParser parse:(NSHTTPURLResponse *)r
-					data:d error:&serverError];
+				long statusCode = [(NSHTTPURLResponse *)response statusCode];
+
+				id json = [LRResponseParser parse:data statusCode:statusCode
+					error:&serverError];
 
 				if (serverError) {
 					[callback onFailure:serverError];
