@@ -14,8 +14,8 @@
 
 #import "LRSession.h"
 
-extern const int LR_STATUS_OK;
-extern const int LR_STATUS_UNAUTHORIZED;
+extern const int LR_HTTP_STATUS_OK;
+extern const int LR_HTTP_STATUS_UNAUTHORIZED;
 
 /**
  * @author Bruno Farache

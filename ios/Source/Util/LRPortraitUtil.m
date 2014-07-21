@@ -56,7 +56,7 @@ NSString *const LR_LAST_MODIFIED = @"Last-Modified";
 
 	long status = response.statusCode;
 
-	if (status == LR_STATUS_OK) {
+	if (status == LR_HTTP_STATUS_OK) {
 		NSDictionary *headers = [response allHeaderFields];
 		NSString *lastModified = [headers valueForKey:LR_LAST_MODIFIED];
 

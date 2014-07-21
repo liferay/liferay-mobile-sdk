@@ -45,7 +45,7 @@
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 
 	NSError *error;
-	id response = [LRResponseParser parse:data statusCode:LR_STATUS_OK
+	id response = [LRResponseParser parse:data statusCode:LR_HTTP_STATUS_OK
 		error:&error];
 
 	XCTAssertNil(response);
@@ -63,7 +63,7 @@
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 
 	NSError *error;
-	id response = [LRResponseParser parse:data statusCode:LR_STATUS_OK
+	id response = [LRResponseParser parse:data statusCode:LR_HTTP_STATUS_OK
 		error:&error];
 
 	XCTAssertNil(response);
@@ -85,7 +85,7 @@
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 
 	NSError *error;
-	id response = [LRResponseParser parse:data statusCode:LR_STATUS_OK
+	id response = [LRResponseParser parse:data statusCode:LR_HTTP_STATUS_OK
 		error:&error];
 
 	XCTAssertNil(response);
@@ -110,8 +110,8 @@
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 
 	NSError *error;
-	id response = [LRResponseParser parse:data statusCode:LR_STATUS_UNAUTHORIZED
-		error:&error];
+	id response = [LRResponseParser parse:data
+		statusCode:LR_HTTP_STATUS_UNAUTHORIZED error:&error];
 
 	XCTAssertNil(response);
 

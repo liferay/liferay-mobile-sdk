@@ -17,8 +17,8 @@
 #import "LRBatchSession.h"
 #import "NSError+LRError.h"
 
-const int LR_STATUS_OK = 200;
-const int LR_STATUS_UNAUTHORIZED = 401;
+const int LR_HTTP_STATUS_OK = 200;
+const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 
 /**
  * @author Bruno Farache
@@ -49,11 +49,11 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 + (NSError *)_checkHttpError:(long)statusCode {
 	NSError *error;
 
-	if (statusCode == LR_STATUS_UNAUTHORIZED) {
+	if (statusCode == LR_HTTP_STATUS_UNAUTHORIZED) {
 		error = [NSError errorWithCode:LRErrorCodeUnauthorized
 			description:@"wrong-credentials"];
 	}
-	else if (statusCode != LR_STATUS_OK) {
+	else if (statusCode != LR_HTTP_STATUS_OK) {
 		error = [NSError errorWithCode:statusCode description:@"http-error"];
 	}
 
