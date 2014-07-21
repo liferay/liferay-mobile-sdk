@@ -37,6 +37,8 @@ const int LR_STATUS_UNAUTHORIZED = 401;
  */
 @implementation LRHttpUtil
 
+typedef void (^LRHandler)(NSURLResponse *response, NSData *data, NSError *error);
+
 + (NSURL *)getURL:(LRSession *)session path:(NSString *)path {
 	NSString *server = session.server;
 

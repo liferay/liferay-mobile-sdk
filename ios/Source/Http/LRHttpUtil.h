@@ -35,8 +35,6 @@ extern const int LR_STATUS_UNAUTHORIZED;
  */
 @interface LRHttpUtil : NSObject
 
-typedef void (^LRHandler)(NSURLResponse *r, NSData *d, NSError *e);
-
 + (NSURL *)getURL:(LRSession *)session path:(NSString *)path;
 
 + (id)handleServerResponse:(NSHTTPURLResponse *)response data:(id)data
