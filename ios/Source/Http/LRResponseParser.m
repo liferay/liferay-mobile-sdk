@@ -33,50 +33,19 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 @implementation LRResponseParser
 
 + (id)parse:(id)data statusCode:(long)statusCode error:(NSError **)error {
-	NSError *httpError = [self _checkHttpError:statusCode];
+	*error = [self _checkHttpError:statusCode];
 
-	if (httpError) {
-		*error = httpError;
-
+	if (*error) {
 		return nil;
 	}
 
 	if ([data isKindOfClass:[NSData class]]) {
-		NSError *parseError;
-
-		data = [NSJSONSerialization JSONObjectWithData:data options:0
-			error:&parseError];
-
-		if (parseError) {
-			NSDictionary *userInfo = @{
-				NSLocalizedDescriptionKey:@"json-parsing-error",
-				NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_PARSE,
-				NSUnderlyingErrorKey:parseError
-			};
-
-			*error = [NSError errorWithDomain:LR_ERROR_DOMAIN
-				code:LR_ERROR_CODE_PARSE userInfo:userInfo];
-
-			return nil;
-		}
-		else {
-			NSError *portalException = [self _checkPortalException:data];
-
-			if (portalException) {
-				*error = portalException;
-
-				return nil;
-			}
-		}
-
-		return data;
+		return [self _parse:data error:error];
 	}
 	else {
-		NSError *portalException = [self _checkPortalException:data];
+		*error = [self _checkPortalException:data];
 
-		if (portalException) {
-			*error = portalException;
-
+		if (*error) {
 			return nil;
 		}
 
@@ -134,6 +103,33 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 
 	return [NSError errorWithDomain:LR_ERROR_DOMAIN
 		code:LR_ERROR_CODE_SERVER_EXCEPTION userInfo:userInfo];
+}
+
++ (id)_parse:(NSData *)data error:(NSError **)error {
+	NSError *parseError;
+	
+	id json = [NSJSONSerialization JSONObjectWithData:data options:0
+		error:&parseError];
+
+	if (parseError) {
+		NSDictionary *userInfo = @{
+			NSLocalizedDescriptionKey:@"json-parsing-error",
+			NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_PARSE,
+			NSUnderlyingErrorKey:parseError
+		};
+
+		*error = [NSError errorWithDomain:LR_ERROR_DOMAIN
+			code:LR_ERROR_CODE_PARSE userInfo:userInfo];
+	}
+	else {
+		*error = [self _checkPortalException:json];
+	}
+
+	if (*error) {
+		return nil;
+	}
+
+	return json;
 }
 
 @end
