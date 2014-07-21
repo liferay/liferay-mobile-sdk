@@ -41,12 +41,10 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 		return nil;
 	}
 
-	id json = data;
-
 	if ([data isKindOfClass:[NSData class]]) {
 		NSError *parseError;
 
-		json = [NSJSONSerialization JSONObjectWithData:data options:0
+		data = [NSJSONSerialization JSONObjectWithData:data options:0
 			error:&parseError];
 
 		if (parseError) {
@@ -61,20 +59,29 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 
 			return nil;
 		}
-	}
+		else {
+			NSError *portalException = [self _checkPortalException:data];
 
-	if ([json isKindOfClass:[NSDictionary class]]) {
-		NSError *portalException =
-			[self _checkPortalException:(NSDictionary *)json];
+			if (portalException) {
+				*error = portalException;
+
+				return nil;
+			}
+		}
+
+		return data;
+	}
+	else {
+		NSError *portalException = [self _checkPortalException:data];
 
 		if (portalException) {
 			*error = portalException;
 
 			return nil;
 		}
-	}
 
-	return json;
+		return data;
+	}
 }
 
 + (NSError *)_checkHttpError:(long)statusCode {
@@ -102,14 +109,18 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	return error;
 }
 
-+ (NSError *)_checkPortalException:(NSDictionary *)response {
-	NSString *exception = [response objectForKey:@"exception"];
++ (NSError *)_checkPortalException:(id)json {
+	if (![json isKindOfClass:[NSDictionary class]]) {
+		return nil;
+	}
+
+	NSString *exception = [json objectForKey:@"exception"];
 
 	if (!exception) {
 		return nil;
 	}
 
-	NSString *message = [response objectForKey:@"message"];
+	NSString *message = [json objectForKey:@"message"];
 
 	if (!message) {
 		message = exception;
