@@ -39,8 +39,6 @@
 	XCTAssertNotNil(error.userInfo);
 	XCTAssertEqualObjects(@"This is the message",
 		error.userInfo[NSLocalizedDescriptionKey]);
-	XCTAssertEqualObjects(LR_ERROR_EXCEPTION_GENERIC,
-		error.userInfo[NSLocalizedFailureReasonErrorKey]);
 }
 
 - (void)testHandleServerResponseWithExceptionAndMessage {
@@ -79,8 +77,6 @@
 	XCTAssertEqual(LR_ERROR_CODE_PARSE, error.code);
 	XCTAssertNotNil(error.userInfo);
 	XCTAssertNotNil(error.userInfo[NSLocalizedDescriptionKey]);
-	XCTAssertEqualObjects(LR_ERROR_EXCEPTION_PARSE,
-		error.userInfo[NSLocalizedFailureReasonErrorKey]);
 }
 
 - (void)testHandleServerResponseWithStatusError {
@@ -98,8 +94,6 @@
 	XCTAssertEqual(404, error.code);
 	XCTAssertNotNil(error.userInfo);
 	XCTAssertNotNil(error.userInfo[NSLocalizedDescriptionKey]);
-	XCTAssertEqualObjects(LR_ERROR_EXCEPTION_STATUS,
-		error.userInfo[NSLocalizedFailureReasonErrorKey]);
 }
 
 - (void)testHandleServerResponseWithUnauthorizedResponse {
@@ -117,8 +111,6 @@
 	XCTAssertEqual(LR_ERROR_CODE_UNAUTHORIZED, error.code);
 	XCTAssertNotNil(error.userInfo);
 	XCTAssertNotNil(error.userInfo[NSLocalizedDescriptionKey]);
-	XCTAssertEqualObjects(LR_ERROR_EXCEPTION_SECURITY,
-		error.userInfo[NSLocalizedFailureReasonErrorKey]);
 }
 
 - (void)testHandleServerResponseWithoutError {

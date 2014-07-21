@@ -20,10 +20,6 @@ NSString *const LR_ERROR_DOMAIN = @"com.liferay.mobile";
 NSInteger const LR_ERROR_CODE_SERVER_EXCEPTION = -1;
 NSInteger const LR_ERROR_CODE_PARSE = -2;
 NSInteger const LR_ERROR_CODE_UNAUTHORIZED = -3;
-NSString *const LR_ERROR_EXCEPTION_SECURITY = @"java.lang.SecurityException";
-NSString *const LR_ERROR_EXCEPTION_PARSE = @"com.liferay.ParseException";
-NSString *const LR_ERROR_EXCEPTION_STATUS = @"com.liferay.StatusException";
-NSString *const LR_ERROR_EXCEPTION_GENERIC = @"java.lang.Exception";
 const int LR_STATUS_OK = 200;
 const int LR_STATUS_UNAUTHORIZED = 401;
 
@@ -59,7 +55,6 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	if (statusCode == LR_STATUS_UNAUTHORIZED) {
 		NSDictionary *userInfo = @{
 		   NSLocalizedDescriptionKey: @"wrong-credentials",
-		   NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_SECURITY
 	   };
 
 		error = [NSError errorWithDomain:LR_ERROR_DOMAIN
@@ -68,7 +63,6 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	else if (statusCode != LR_STATUS_OK) {
 		NSDictionary *userInfo = @{
 			NSLocalizedDescriptionKey: @"http-error",
-			NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_STATUS
 		};
 
 		error = [NSError errorWithDomain:LR_ERROR_DOMAIN code:statusCode
@@ -89,17 +83,20 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 		return nil;
 	}
 
+	NSDictionary *userInfo;
 	NSString *message = [json objectForKey:@"message"];
 
-	if (!message) {
-		message = exception;
-		exception = LR_ERROR_EXCEPTION_GENERIC;
+	if (message) {
+		userInfo = @{
+			NSLocalizedDescriptionKey: message,
+			NSLocalizedFailureReasonErrorKey: exception
+		};
 	}
-
-	NSDictionary *userInfo = @{
-		NSLocalizedDescriptionKey: message,
-		NSLocalizedFailureReasonErrorKey: exception
-	};
+	else {
+		userInfo = @{
+			NSLocalizedDescriptionKey: exception
+		};
+	}
 
 	return [NSError errorWithDomain:LR_ERROR_DOMAIN
 		code:LR_ERROR_CODE_SERVER_EXCEPTION userInfo:userInfo];
@@ -114,7 +111,6 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	if (parseError) {
 		NSDictionary *userInfo = @{
 			NSLocalizedDescriptionKey:@"json-parsing-error",
-			NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_PARSE,
 			NSUnderlyingErrorKey:parseError
 		};
 
