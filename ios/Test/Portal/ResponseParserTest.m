@@ -28,20 +28,22 @@
 	NSString *json = @"{}";
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 
+	int notFoundStatusCode = 404;
 	NSError *error;
-	id response = [LRResponseParser parse:data statusCode:404 error:&error];
+	id response = [LRResponseParser parse:data statusCode:notFoundStatusCode
+		error:&error];
 
 	XCTAssertNil(response);
 
 	XCTAssertNotNil(error);
 	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
-	XCTAssertEqual(404, error.code);
+	XCTAssertEqual(notFoundStatusCode, error.code);
 	XCTAssertNotNil(error.userInfo);
 	XCTAssertNotNil(error.userInfo[NSLocalizedDescriptionKey]);
 }
 
 - (void)testParseError {
-	NSString *json = @"{this_is_an_invalid_json}";
+	NSString *json = @"{this is an invalid json}";
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 
 	NSError *error;
@@ -59,10 +61,16 @@
 
 
 - (void)testPortalException {
-	NSString *json = @"{\"exception\":\"This is the message\"}";
-	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
+	NSString *exception = @"Exception";
+
+	NSDictionary *json = @{
+		@"exception": exception
+	};
 
 	NSError *error;
+	NSData *data = [NSJSONSerialization dataWithJSONObject:json options:0
+		error:&error];
+
 	id response = [LRResponseParser parse:data statusCode:LR_HTTP_STATUS_OK
 		error:&error];
 
@@ -72,19 +80,22 @@
 	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
 	XCTAssertEqual(LRErrorCodePortalException, error.code);
 	XCTAssertNotNil(error.userInfo);
-
-	XCTAssertEqualObjects(
-		@"This is the message",
-		error.userInfo[NSLocalizedDescriptionKey]
-	);
+	XCTAssertEqualObjects(exception, error.userInfo[NSLocalizedDescriptionKey]);
 }
 
 - (void)testPortalExceptionWithMessage {
-	NSString *json = @"{\"exception\":\"com.liferay.MyException\", \
-		\"message\":\"This is the message\"}";
-	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
+	NSString *message = @"Message";
+	NSString *exception = @"com.liferay.Exception";
+
+	NSDictionary *json = @{
+		@"message": message,
+		@"exception": exception
+	};
 
 	NSError *error;
+	NSData *data = [NSJSONSerialization dataWithJSONObject:json options:0
+		error:&error];
+
 	id response = [LRResponseParser parse:data statusCode:LR_HTTP_STATUS_OK
 		error:&error];
 
@@ -94,14 +105,10 @@
 	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
 	XCTAssertEqual(LRErrorCodePortalException, error.code);
 	XCTAssertNotNil(error.userInfo);
-	XCTAssertEqualObjects(
-		@"This is the message",
-		error.userInfo[NSLocalizedDescriptionKey]
-	);
+	XCTAssertEqualObjects(message, error.userInfo[NSLocalizedDescriptionKey]);
 
 	XCTAssertEqualObjects(
-		@"com.liferay.MyException",
-		error.userInfo[NSLocalizedFailureReasonErrorKey]
+		exception, error.userInfo[NSLocalizedFailureReasonErrorKey]
 	);
 }
 
