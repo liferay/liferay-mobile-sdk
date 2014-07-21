@@ -25,12 +25,12 @@
 
 - (void)testHandleServerResponseWithException {
 	NSString *json = @"{\"exception\":\"This is the message\"}";
-	NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:200];
 
 	NSError *error;
-	id parsedResponse = [LRHttpUtil handleServerException:jsonData
-		response:response error:&error];
+	id parsedResponse = [LRHttpUtil handleServerResponse:response data:data
+		error:&error];
 
 	XCTAssertNil(parsedResponse);
 
@@ -47,12 +47,12 @@
 - (void)testHandleServerResponseWithExceptionAndMessage {
 	NSString *json = @"{\"exception\":\"com.liferay.MyException\", \
 		\"message\":\"This is the message\"}";
-	NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:200];
 
 	NSError *error;
-	id parsedResponse = [LRHttpUtil handleServerException:jsonData
-		response:response error:&error];
+	id parsedResponse = [LRHttpUtil handleServerResponse:response data:data
+		error:&error];
 
 	XCTAssertNil(parsedResponse);
 
@@ -68,12 +68,12 @@
 
 - (void)testHandleServerResponseWithParseError {
 	NSString *json = @"{this_is_an_invalid_json}";
-	NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:200];
 
 	NSError *error;
-	id parsedResponse = [LRHttpUtil handleServerException:jsonData
-		response:response error:&error];
+	id parsedResponse = [LRHttpUtil handleServerResponse:response data:data
+		error:&error];
 
 	XCTAssertNil(parsedResponse);
 
@@ -88,12 +88,12 @@
 
 - (void)testHandleServerResponseWithStatusError {
 	NSString *json = @"{}";
-	NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:404];
 
 	NSError *error;
-	id parsedResponse = [LRHttpUtil handleServerException:jsonData
-		response:response error:&error];
+	id parsedResponse = [LRHttpUtil handleServerResponse:response data:data
+		error:&error];
 
 	XCTAssertNil(parsedResponse);
 
@@ -108,12 +108,12 @@
 
 - (void)testHandleServerResponseWithUnauthorizedResponse {
 	NSString *json = @"{}";
-	NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:401];
 
 	NSError *error;
-	id parsedResponse = [LRHttpUtil handleServerException:jsonData
-		response:response error:&error];
+	id parsedResponse = [LRHttpUtil handleServerResponse:response data:data
+		error:&error];
 
 	XCTAssertNil(parsedResponse);
 
@@ -128,12 +128,12 @@
 
 - (void)testHandleServerResponseWithoutError {
 	NSString *json = @"{\"key\":\"value\"}";
-	NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:200];
 
 	NSError *error;
-	id parsedResponse = [LRHttpUtil handleServerException:jsonData
-		response:response error:&error];
+	id parsedResponse = [LRHttpUtil handleServerResponse:response data:data
+		error:&error];
 
 	XCTAssertNotNil(parsedResponse);
 	XCTAssertTrue([parsedResponse isKindOfClass:[NSDictionary class]]);
