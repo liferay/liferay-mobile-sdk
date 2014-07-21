@@ -12,9 +12,14 @@
  * details.
  */
 
+#import "LRPortraitUtil.h"
+
 #import "LRHttpUtil.h"
 #import "LRPortalVersionUtil.h"
-#import "LRPortraitUtil.h"
+#import "LRResponseParser.h"
+
+NSString *const LR_IF_MODIFIED_SINCE = @"If-Modified-Since";
+NSString *const LR_LAST_MODIFIED = @"Last-Modified";
 
 /**
  * @author Bruno Farache

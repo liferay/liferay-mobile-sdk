@@ -13,7 +13,7 @@
  */
 
 #import "BaseTest.h"
-#import "LRHttpUtil.h"
+#import "LRResponseParser.h"
 
 /**
  * @author Jose M. Navarro
@@ -29,7 +29,7 @@
 	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:200];
 
 	NSError *error;
-	id parsedResponse = [LRHttpUtil handleServerResponse:response data:data
+	id parsedResponse = [LRResponseParser parse:response data:data
 		error:&error];
 
 	XCTAssertNil(parsedResponse);
@@ -51,7 +51,7 @@
 	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:200];
 
 	NSError *error;
-	id parsedResponse = [LRHttpUtil handleServerResponse:response data:data
+	id parsedResponse = [LRResponseParser parse:response data:data
 		error:&error];
 
 	XCTAssertNil(parsedResponse);
@@ -72,7 +72,7 @@
 	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:200];
 
 	NSError *error;
-	id parsedResponse = [LRHttpUtil handleServerResponse:response data:data
+	id parsedResponse = [LRResponseParser parse:response data:data
 		error:&error];
 
 	XCTAssertNil(parsedResponse);
@@ -92,7 +92,7 @@
 	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:404];
 
 	NSError *error;
-	id parsedResponse = [LRHttpUtil handleServerResponse:response data:data
+	id parsedResponse = [LRResponseParser parse:response data:data
 		error:&error];
 
 	XCTAssertNil(parsedResponse);
@@ -112,7 +112,7 @@
 	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:401];
 
 	NSError *error;
-	id parsedResponse = [LRHttpUtil handleServerResponse:response data:data
+	id parsedResponse = [LRResponseParser parse:response data:data
 		error:&error];
 
 	XCTAssertNil(parsedResponse);
@@ -132,7 +132,7 @@
 	NSHTTPURLResponse *response = [self _createHTTPResponseWithCode:200];
 
 	NSError *error;
-	id parsedResponse = [LRHttpUtil handleServerResponse:response data:data
+	id parsedResponse = [LRResponseParser parse:response data:data
 		error:&error];
 
 	XCTAssertNotNil(parsedResponse);

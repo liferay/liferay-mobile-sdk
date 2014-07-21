@@ -15,8 +15,9 @@
 #import "LRUploadUtil.h"
 
 #import "AFNetworking.h"
-#import "LRUploadData.h"
 #import "LRHttpUtil.h"
+#import "LRUploadData.h"
+#import "LRResponseParser.h"
 
 /**
  * @author Bruno Farache
@@ -55,7 +56,7 @@
 		success:^(AFHTTPRequestOperation *operation, id json) {
 			NSError *serverError;
 
-			[LRHttpUtil handleServerResponse:operation.response data:json
+			[LRResponseParser parse:operation.response data:json
 				error:&serverError];
 
 			if (serverError) {

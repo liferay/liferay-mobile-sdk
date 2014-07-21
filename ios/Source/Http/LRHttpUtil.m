@@ -15,22 +15,11 @@
 #import "LRHttpUtil.h"
 
 #import "LRBatchSession.h"
+#import "LRResponseParser.h"
 
-NSString *const LR_ERROR_DOMAIN = @"com.liferay.mobile";
-NSInteger const LR_ERROR_CODE_SERVER_EXCEPTION = -1;
-NSInteger const LR_ERROR_CODE_PARSE = -2;
-NSInteger const LR_ERROR_CODE_UNAUTHORIZED = -3;
-NSString *const LR_ERROR_EXCEPTION_SECURITY = @"java.lang.SecurityException";
-NSString *const LR_ERROR_EXCEPTION_PARSE = @"com.liferay.ParseException";
-NSString *const LR_ERROR_EXCEPTION_STATUS = @"com.liferay.StatusException";
-NSString *const LR_ERROR_EXCEPTION_GENERIC = @"java.lang.Exception";
 NSString *const LR_GET = @"GET";
 NSString *const LR_HEAD = @"HEAD";
-NSString *const LR_IF_MODIFIED_SINCE = @"If-Modified-Since";
-NSString *const LR_LAST_MODIFIED = @"Last-Modified";
 NSString *const LR_POST = @"POST";
-const int LR_STATUS_OK = 200;
-const int LR_STATUS_UNAUTHORIZED = 401;
 
 /**
  * @author Bruno Farache
@@ -49,99 +38,6 @@ typedef void (^LRHandler)(NSURLResponse *response, NSData *data, NSError *error)
 	NSString *URL = [NSString stringWithFormat:@"%@api/jsonws%@", server, path];
 
 	return [NSURL URLWithString:URL];
-}
-
-+ (id)handleServerResponse:(NSHTTPURLResponse *)response data:(id)data
-	error:(NSError **)error {
-
-	int statusCode = [response statusCode];
-
-	if (statusCode == LR_STATUS_UNAUTHORIZED) {
-		NSDictionary *userInfo = @{
-			NSLocalizedDescriptionKey: @"Authenticated access required",
-			NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_SECURITY
-		};
-
-		*error = [NSError errorWithDomain:LR_ERROR_DOMAIN
-			code:LR_ERROR_CODE_UNAUTHORIZED userInfo:userInfo];
-
-		return nil;
-	}
-
-	if (statusCode != LR_STATUS_OK) {
-		NSDictionary *userInfo = @{
-			NSLocalizedDescriptionKey: @"Unknown server error",
-			NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_STATUS
-		};
-
-		*error = [NSError errorWithDomain:LR_ERROR_DOMAIN code:statusCode
-			userInfo:userInfo];
-
-		return nil;
-	}
-
-	id json = data;
-
-	if ([data isKindOfClass:[NSData class]]) {
-		NSError *parseError;
-
-		json = [NSJSONSerialization JSONObjectWithData:data options:0
-			error:&parseError];
-
-		if (parseError) {
-			NSDictionary *userInfo = @{
-				NSLocalizedDescriptionKey:@"Fatal error happened processing \
-					server data",
-				NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_PARSE,
-				NSUnderlyingErrorKey:parseError
-			};
-
-			*error = [NSError errorWithDomain:LR_ERROR_DOMAIN
-				code:LR_ERROR_CODE_PARSE userInfo:userInfo];
-
-			return nil;
-		}
-	}
-
-	if ([json isKindOfClass:[NSDictionary class]]) {
-		NSError *serverError = [self _errorWithServerResponse:(NSDictionary *)json];
-
-		if (serverError) {
-			*error = serverError;
-
-			return nil;
-		}
-	}
-
-	return json;
-}
-
-+ (NSError *)_errorWithServerResponse:(NSDictionary *)response {
-	NSString *exception = [response objectForKey:@"exception"];
-
-	if (!exception) {
-		return nil;
-	}
-
-	// Two possible responses. See MOBILESDK-31 and LPS-45301
-
-	NSString *message = [response objectForKey:@"message"];
-
-	if (!message) {
-
-		// if there's no message, then the exception contains the actual message
-
-		message = exception;
-		exception = LR_ERROR_EXCEPTION_GENERIC;
-	}
-
-	NSDictionary *userInfo = @{
-		NSLocalizedDescriptionKey: message,
-		NSLocalizedFailureReasonErrorKey: exception
-	};
-
-	return [NSError errorWithDomain:LR_ERROR_DOMAIN
-		code:LR_ERROR_CODE_SERVER_EXCEPTION userInfo:userInfo];
 }
 
 + (NSArray *)post:(LRSession *)session command:(NSDictionary *)command
@@ -207,7 +103,7 @@ typedef void (^LRHandler)(NSURLResponse *response, NSData *data, NSError *error)
 			return nil;
 		}
 
-		return [self handleServerResponse:response data:data error:error];
+		return [LRResponseParser parse:response data:data error:error];
 	}
 }
 
@@ -224,7 +120,7 @@ typedef void (^LRHandler)(NSURLResponse *response, NSData *data, NSError *error)
 			else {
 				NSError *serverError;
 
-				id json = [self handleServerResponse:(NSHTTPURLResponse *)r
+				id json = [LRResponseParser parse:(NSHTTPURLResponse *)r
 					data:d error:&serverError];
 
 				if (serverError) {

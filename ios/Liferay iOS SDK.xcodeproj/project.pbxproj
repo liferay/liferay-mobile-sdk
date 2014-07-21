@@ -135,6 +135,7 @@
 		CCA4E4E7193657B900374A79 /* LRPortalVersionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA4E4E51936578900374A79 /* LRPortalVersionUtil.m */; };
 		CCA6594518EC4BE800957D20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
 		CCA7166E1919511F00712D1C /* OrderByComparatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */; };
+		CCABA081197C995500A9F8B0 /* LRResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CCABA07F197C995500A9F8B0 /* LRResponseParser.m */; };
 		CCCF04E019182584005D1B22 /* LRJSONObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */; };
 		CCCF04E319192798005D1B22 /* ServiceContextTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCF04E219192798005D1B22 /* ServiceContextTest.m */; };
 /* End PBXBuildFile section */
@@ -406,6 +407,8 @@
 		CCA6595218EC4BE800957D20 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CCA6595518EC4BE800957D20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderByComparatorTest.m; sourceTree = "<group>"; };
+		CCABA07F197C995500A9F8B0 /* LRResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRResponseParser.m; sourceTree = "<group>"; };
+		CCABA080197C995500A9F8B0 /* LRResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRResponseParser.h; sourceTree = "<group>"; };
 		CCCF04E119192798005D1B22 /* ServiceContextTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceContextTest.h; sourceTree = "<group>"; };
 		CCCF04E219192798005D1B22 /* ServiceContextTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceContextTest.m; sourceTree = "<group>"; };
 		CCD60E10191820BE00935937 /* LRJSONObjectWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRJSONObjectWrapper.h; sourceTree = "<group>"; };
@@ -483,6 +486,8 @@
 				CC03FB7D18ED7DCC00F3F16C /* LRHttpUtil.h */,
 				CC03FB7E18ED7DCC00F3F16C /* LRHttpUtil.m */,
 				CC4B7A2D1938C002003611C4 /* LRProgressDelegate.h */,
+				CCABA080197C995500A9F8B0 /* LRResponseParser.h */,
+				CCABA07F197C995500A9F8B0 /* LRResponseParser.m */,
 				CC4B7A251937B971003611C4 /* LRUploadData.h */,
 				CC4B7A241937B971003611C4 /* LRUploadData.m */,
 				CC4B7A281937C64E003611C4 /* LRUploadUtil.h */,
@@ -1806,6 +1811,7 @@
 				CCCF04E019182584005D1B22 /* LRJSONObjectWrapper.m in Sources */,
 				CC03FCE318ED7DCD00F3F16C /* LRPasswordPolicyService_v62.m in Sources */,
 				CC83D48F18ED6BE300CFA142 /* BaseTest.m in Sources */,
+				CCABA081197C995500A9F8B0 /* LRResponseParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
