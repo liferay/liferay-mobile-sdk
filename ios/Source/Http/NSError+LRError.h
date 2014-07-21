@@ -14,14 +14,21 @@
 
 extern NSString *const LR_ERROR_DOMAIN;
 
+typedef NS_ENUM(NSInteger, LRErrorCode) {
+    LRErrorCodeParse = 1,
+	LRErrorCodePortalException,
+    LRErrorCodeUnauthorized
+};
+
 /**
  * @author Bruno Farache
  */
 @interface NSError (LRError)
 
-+ (NSError *)errorWithCode:(NSInteger)code description:(NSString *)description;
++ (NSError *)errorWithCode:(LRErrorCode)code
+	description:(NSString *)description;
 
-+ (NSError *)errorWithCode:(NSInteger)code description:(NSString *)description
++ (NSError *)errorWithCode:(LRErrorCode)code description:(NSString *)description
    userInfo:(NSDictionary *)userInfo;
 
 @end

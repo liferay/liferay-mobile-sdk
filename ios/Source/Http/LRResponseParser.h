@@ -14,9 +14,6 @@
 
 #import "LRSession.h"
 
-extern NSInteger const LR_ERROR_CODE_SERVER_EXCEPTION;
-extern NSInteger const LR_ERROR_CODE_PARSE;
-extern NSInteger const LR_ERROR_CODE_UNAUTHORIZED;
 extern const int LR_STATUS_OK;
 extern const int LR_STATUS_UNAUTHORIZED;
 

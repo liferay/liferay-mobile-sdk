@@ -36,7 +36,7 @@
 
 	XCTAssertNotNil(error);
 	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
-	XCTAssertEqual(LR_ERROR_CODE_SERVER_EXCEPTION, error.code);
+	XCTAssertEqual(LRErrorCodePortalException, error.code);
 	XCTAssertNotNil(error.userInfo);
 	XCTAssertEqualObjects(@"This is the message",
 		error.userInfo[NSLocalizedDescriptionKey]);
@@ -55,7 +55,7 @@
 
 	XCTAssertNotNil(error);
 	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
-	XCTAssertEqual(LR_ERROR_CODE_SERVER_EXCEPTION, error.code);
+	XCTAssertEqual(LRErrorCodePortalException, error.code);
 	XCTAssertNotNil(error.userInfo);
 	XCTAssertEqualObjects(@"This is the message",
 		error.userInfo[NSLocalizedDescriptionKey]);
@@ -75,7 +75,7 @@
 
 	XCTAssertNotNil(error);
 	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
-	XCTAssertEqual(LR_ERROR_CODE_PARSE, error.code);
+	XCTAssertEqual(LRErrorCodeParse, error.code);
 	XCTAssertNotNil(error.userInfo);
 	XCTAssertNotNil(error.userInfo[NSLocalizedDescriptionKey]);
 }
@@ -109,7 +109,7 @@
 
 	XCTAssertNotNil(error);
 	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
-	XCTAssertEqual(LR_ERROR_CODE_UNAUTHORIZED, error.code);
+	XCTAssertEqual(LRErrorCodeUnauthorized, error.code);
 	XCTAssertNotNil(error.userInfo);
 	XCTAssertNotNil(error.userInfo[NSLocalizedDescriptionKey]);
 }

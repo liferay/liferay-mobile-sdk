@@ -14,18 +14,20 @@
 
 #import "NSError+LRError.h"
 
-NSString *const LR_ERROR_DOMAIN = @"com.liferay.mobile";
+NSString *const LR_ERROR_DOMAIN = @"com.liferay.mobile.sdk";
 
 /**
  * @author Bruno Farache
  */
 @implementation NSError (LRError)
 
-+ (NSError *)errorWithCode:(NSInteger)code description:(NSString *)description {
++ (NSError *)errorWithCode:(LRErrorCode)code
+		description:(NSString *)description {
+
 	return [self errorWithCode:code description:description userInfo:nil];
 }
 
-+ (NSError *)errorWithCode:(NSInteger)code description:(NSString *)description
++ (NSError *)errorWithCode:(LRErrorCode)code description:(NSString *)description
 		userInfo:(NSDictionary *)userInfo {
 
 	NSMutableDictionary *values = [[NSMutableDictionary alloc]
