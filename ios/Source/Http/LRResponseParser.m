@@ -33,26 +33,10 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 @implementation LRResponseParser
 
 + (id)parse:(id)data statusCode:(long)statusCode error:(NSError **)error {
-	if (statusCode == LR_STATUS_UNAUTHORIZED) {
-		NSDictionary *userInfo = @{
-			NSLocalizedDescriptionKey: @"wrong-credentials",
-			NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_SECURITY
-		};
+	NSError *httpError = [self _checkHttpError:statusCode];
 
-		*error = [NSError errorWithDomain:LR_ERROR_DOMAIN
-			code:LR_ERROR_CODE_UNAUTHORIZED userInfo:userInfo];
-
-		return nil;
-	}
-
-	if (statusCode != LR_STATUS_OK) {
-		NSDictionary *userInfo = @{
-			NSLocalizedDescriptionKey: @"http-error",
-			NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_STATUS
-		};
-
-		*error = [NSError errorWithDomain:LR_ERROR_DOMAIN code:statusCode
-			userInfo:userInfo];
+	if (httpError) {
+		*error = httpError;
 
 		return nil;
 	}
@@ -80,16 +64,42 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 	}
 
 	if ([json isKindOfClass:[NSDictionary class]]) {
-		NSError *serverError = [self _checkPortalException:(NSDictionary *)json];
+		NSError *portalException =
+			[self _checkPortalException:(NSDictionary *)json];
 
-		if (serverError) {
-			*error = serverError;
+		if (portalException) {
+			*error = portalException;
 
 			return nil;
 		}
 	}
 
 	return json;
+}
+
++ (NSError *)_checkHttpError:(long)statusCode {
+	NSError *error;
+
+	if (statusCode == LR_STATUS_UNAUTHORIZED) {
+		NSDictionary *userInfo = @{
+		   NSLocalizedDescriptionKey: @"wrong-credentials",
+		   NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_SECURITY
+	   };
+
+		error = [NSError errorWithDomain:LR_ERROR_DOMAIN
+			code:LR_ERROR_CODE_UNAUTHORIZED userInfo:userInfo];
+	}
+	else if (statusCode != LR_STATUS_OK) {
+		NSDictionary *userInfo = @{
+			NSLocalizedDescriptionKey: @"http-error",
+			NSLocalizedFailureReasonErrorKey:LR_ERROR_EXCEPTION_STATUS
+		};
+
+		error = [NSError errorWithDomain:LR_ERROR_DOMAIN code:statusCode
+			userInfo:userInfo];
+	}
+
+	return error;
 }
 
 + (NSError *)_checkPortalException:(NSDictionary *)response {
