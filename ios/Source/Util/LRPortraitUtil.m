@@ -54,7 +54,7 @@ NSString *const LR_LAST_MODIFIED = @"Last-Modified";
 	*data = [NSURLConnection sendSynchronousRequest:request
 		returningResponse:&response error:error];
 
-	int status = response.statusCode;
+	long status = response.statusCode;
 
 	if (status == LR_STATUS_OK) {
 		NSDictionary *headers = [response allHeaderFields];
@@ -109,7 +109,7 @@ NSString *const LR_LAST_MODIFIED = @"Last-Modified";
 	unsigned char result[CC_SHA1_DIGEST_LENGTH];
 	const char *string = [input UTF8String];
 
-	CC_SHA1(string, strlen(string), result);
+	CC_SHA1(string, (CC_LONG)strlen(string), result);
 
 	NSData *data = [[NSData alloc] initWithBytes:result length:(sizeof result)];
 	return [data base64Encoding];

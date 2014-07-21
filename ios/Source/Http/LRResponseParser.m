@@ -35,7 +35,7 @@ const int LR_STATUS_UNAUTHORIZED = 401;
 + (id)parse:(NSHTTPURLResponse *)response data:(id)data
 		error:(NSError **)error {
 
-	int statusCode = [response statusCode];
+	long statusCode = [response statusCode];
 
 	if (statusCode == LR_STATUS_UNAUTHORIZED) {
 		NSDictionary *userInfo = @{

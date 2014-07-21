@@ -73,7 +73,7 @@ static NSMutableDictionary *_versions;
 		return LR_UNKNOWN_VERSION;
 	}
 	else {
-		int index = buildRange.location + buildRange.length;
+		long index = buildRange.location + buildRange.length;
 		NSRange versionRange = NSMakeRange(index, 5);
 		NSString *buildNumber = [portalHeader substringWithRange:versionRange];
 
