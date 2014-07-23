@@ -72,7 +72,7 @@ is available of both JCenter and Maven Central repositories:
 <dependency>
     <groupId>com.liferay.mobile</groupId>
     <artifactId>liferay-sdk-builder</artifactId>
-    <version>6.2.0.1</version>
+    <version>LATEST</version>
 </dependency>
 ```
 
