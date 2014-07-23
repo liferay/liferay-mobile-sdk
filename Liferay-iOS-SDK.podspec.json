@@ -18,6 +18,11 @@
 		"tag": "6.2.0.5"
 	},
 	"source_files": "ios/Source/**/*.{h,m}",
+	"resource_bundle": { 
+		"Liferay-iOS-SDK": [
+			"ios/Source/Util/Localization/*.lproj"
+		]
+	},
 	"requires_arc": true,
 	"dependencies": {
 		"AFNetworking": "~> 2.2.4"
