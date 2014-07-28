@@ -33,13 +33,9 @@
 	id response = [LRResponseParser parse:data statusCode:notFoundStatusCode
 		error:&error];
 
-	XCTAssertNil(response);
+	[self _assertWithResponse:response error:error];
 
-	XCTAssertNotNil(error);
-	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
 	XCTAssertEqual(notFoundStatusCode, error.code);
-	XCTAssertNotNil(error.userInfo);
-	XCTAssertNotNil(error.userInfo[NSLocalizedDescriptionKey]);
 }
 
 - (void)testParseError {
@@ -50,13 +46,9 @@
 	id response = [LRResponseParser parse:data statusCode:LR_HTTP_STATUS_OK
 		error:&error];
 
-	XCTAssertNil(response);
+	[self _assertWithResponse:response error:error];
 
-	XCTAssertNotNil(error);
-	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
 	XCTAssertEqual(LRErrorCodeParse, error.code);
-	XCTAssertNotNil(error.userInfo);
-	XCTAssertNotNil(error.userInfo[NSLocalizedDescriptionKey]);
 }
 
 
@@ -74,12 +66,9 @@
 	id response = [LRResponseParser parse:data statusCode:LR_HTTP_STATUS_OK
 		error:&error];
 
-	XCTAssertNil(response);
+	[self _assertWithResponse:response error:error];
 
-	XCTAssertNotNil(error);
-	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
 	XCTAssertEqual(LRErrorCodePortalException, error.code);
-	XCTAssertNotNil(error.userInfo);
 	XCTAssertEqualObjects(exception, error.userInfo[NSLocalizedDescriptionKey]);
 }
 
@@ -99,12 +88,9 @@
 	id response = [LRResponseParser parse:data statusCode:LR_HTTP_STATUS_OK
 		error:&error];
 
-	XCTAssertNil(response);
+	[self _assertWithResponse:response error:error];
 
-	XCTAssertNotNil(error);
-	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
 	XCTAssertEqual(LRErrorCodePortalException, error.code);
-	XCTAssertNotNil(error.userInfo);
 	XCTAssertEqualObjects(message, error.userInfo[NSLocalizedDescriptionKey]);
 
 	XCTAssertEqualObjects(
@@ -120,11 +106,16 @@
 	id response = [LRResponseParser parse:data
 		statusCode:LR_HTTP_STATUS_UNAUTHORIZED error:&error];
 
+	[self _assertWithResponse:response error:error];
+
+	XCTAssertEqual(LRErrorCodeUnauthorized, error.code);
+}
+
+- (void)_assertWithResponse:(id)response error:(NSError *)error {
 	XCTAssertNil(response);
 
 	XCTAssertNotNil(error);
 	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
-	XCTAssertEqual(LRErrorCodeUnauthorized, error.code);
 	XCTAssertNotNil(error.userInfo);
 	XCTAssertNotNil(error.userInfo[NSLocalizedDescriptionKey]);
 }
