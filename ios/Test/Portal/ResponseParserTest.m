@@ -14,6 +14,7 @@
 
 #import "BaseTest.h"
 #import "LRError.h"
+#import "LRLocalizationUtil.h"
 #import "LRResponseParser.h"
 
 /**
@@ -92,11 +93,9 @@
 
 	XCTAssertEqual(LRErrorCodePortalException, error.code);
 
-	XCTAssertEqualObjects(
-		@"The user couldn't be found in the server.",
-		[error localizedDescription]
-	);
+	NSString *localizedDescription = [LRLocalizationUtil localize:type];
 
+	XCTAssertEqualObjects(localizedDescription, [error localizedDescription]);
 	XCTAssertEqualObjects(exception, [error localizedFailureReason]);
 }
 

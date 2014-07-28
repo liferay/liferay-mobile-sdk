@@ -13,6 +13,7 @@
  */
 
 #import "LRError.h"
+#import "LRLocalizationUtil.h"
 
 NSString *const LR_ERROR_DOMAIN = @"com.liferay.mobile.sdk";
 
@@ -36,6 +37,12 @@ NSString *const LR_ERROR_DOMAIN = @"com.liferay.mobile.sdk";
 	[values setObject:description forKey:NSLocalizedDescriptionKey];
 
 	return [super errorWithDomain:LR_ERROR_DOMAIN code:code userInfo:values];
+}
+
+- (NSString *)localizedDescription {
+	NSString *description = [super localizedDescription];
+
+	return [LRLocalizationUtil localize:description];
 }
 
 @end
