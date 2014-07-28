@@ -50,6 +50,10 @@
 	[self _assertWithResponse:response error:error];
 
 	XCTAssertEqual(LRErrorCodeParse, error.code);
+
+	NSString *localizedDescription = [LRLocalizationUtil
+		localize:@"json-parsing-error"];
+	XCTAssertEqualObjects(localizedDescription, [error localizedDescription]);
 }
 
 
@@ -94,7 +98,6 @@
 	XCTAssertEqual(LRErrorCodePortalException, error.code);
 
 	NSString *localizedDescription = [LRLocalizationUtil localize:type];
-
 	XCTAssertEqualObjects(localizedDescription, [error localizedDescription]);
 	XCTAssertEqualObjects(exception, [error localizedFailureReason]);
 }
@@ -110,6 +113,10 @@
 	[self _assertWithResponse:response error:error];
 
 	XCTAssertEqual(LRErrorCodeUnauthorized, error.code);
+
+	NSString *localizedDescription = [LRLocalizationUtil
+		localize:@"wrong-credentials"];
+	XCTAssertEqualObjects(localizedDescription, [error localizedDescription]);
 }
 
 - (void)_assertWithResponse:(id)response error:(NSError *)error {
