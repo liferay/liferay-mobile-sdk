@@ -15,7 +15,7 @@
 #import "LRResponseParser.h"
 
 #import "LRBatchSession.h"
-#import "NSError+LRError.h"
+#import "LRError.h"
 
 const int LR_HTTP_STATUS_OK = 200;
 const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
@@ -50,11 +50,11 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 	NSError *error;
 
 	if (statusCode == LR_HTTP_STATUS_UNAUTHORIZED) {
-		error = [NSError errorWithCode:LRErrorCodeUnauthorized
+		error = [LRError errorWithCode:LRErrorCodeUnauthorized
 			description:@"wrong-credentials"];
 	}
 	else if (statusCode != LR_HTTP_STATUS_OK) {
-		error = [NSError errorWithCode:statusCode description:@"http-error"];
+		error = [LRError errorWithCode:statusCode description:@"http-error"];
 	}
 
 	return error;
@@ -79,11 +79,11 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 			NSLocalizedFailureReasonErrorKey: exception
 		};
 
-		error = [NSError errorWithCode:LRErrorCodePortalException
+		error = [LRError errorWithCode:LRErrorCodePortalException
 			description:message userInfo:userInfo];
 	}
 	else {
-		error = [NSError errorWithCode:LRErrorCodePortalException
+		error = [LRError errorWithCode:LRErrorCodePortalException
 			description:exception];
 	}
 
@@ -101,7 +101,7 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 			NSUnderlyingErrorKey:parseError
 		};
 
-		*error = [NSError errorWithCode:LRErrorCodeParse
+		*error = [LRError errorWithCode:LRErrorCodeParse
 			description:@"json-parsing-error" userInfo:userInfo];
 	}
 	else {

@@ -12,23 +12,30 @@
  * details.
  */
 
-extern NSString *const LR_ERROR_DOMAIN;
+#import "LRError.h"
 
-typedef NS_ENUM(NSInteger, LRErrorCode) {
-    LRErrorCodeParse = 1,
-	LRErrorCodePortalException,
-    LRErrorCodeUnauthorized
-};
+NSString *const LR_ERROR_DOMAIN = @"com.liferay.mobile.sdk";
 
 /**
  * @author Bruno Farache
  */
-@interface NSError (LRError)
+@implementation LRError
 
 + (NSError *)errorWithCode:(LRErrorCode)code
-	description:(NSString *)description;
+		description:(NSString *)description {
+
+	return [self errorWithCode:code description:description userInfo:nil];
+}
 
 + (NSError *)errorWithCode:(LRErrorCode)code description:(NSString *)description
-   userInfo:(NSDictionary *)userInfo;
+		userInfo:(NSDictionary *)userInfo {
+
+	NSMutableDictionary *values = [[NSMutableDictionary alloc]
+		initWithDictionary:userInfo];
+
+	[values setObject:description forKey:NSLocalizedDescriptionKey];
+
+	return [super errorWithDomain:LR_ERROR_DOMAIN code:code userInfo:values];
+}
 
 @end

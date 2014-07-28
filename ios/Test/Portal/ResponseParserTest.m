@@ -13,8 +13,8 @@
  */
 
 #import "BaseTest.h"
+#import "LRError.h"
 #import "LRResponseParser.h"
-#import "NSError+LRError.h"
 
 /**
  * @author Jose M. Navarro
