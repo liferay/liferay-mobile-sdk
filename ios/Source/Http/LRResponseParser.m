@@ -71,16 +71,16 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 		return nil;
 	}
 
-	NSString *message = [json objectForKey:@"message"];
+	NSString *type = [json objectForKey:@"type"];
 	NSError *error;
 
-	if (message) {
+	if (type) {
 		NSDictionary *userInfo = @{
 			NSLocalizedFailureReasonErrorKey: exception
 		};
 
 		error = [LRError errorWithCode:LRErrorCodePortalException
-			description:message userInfo:userInfo];
+			description:type userInfo:userInfo];
 	}
 	else {
 		error = [LRError errorWithCode:LRErrorCodePortalException

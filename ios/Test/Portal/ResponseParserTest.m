@@ -73,13 +73,12 @@
 }
 
 - (void)testPortalExceptionWithMessage {
-	NSString *message = @"No such user with primary key 1";
-	NSString *exception = @"com.liferay.portal.NoSuchUserException";
-	NSString *localizedException = @"The user couldn't be found in the server.";
+	NSString *exception = @"No such user with primary key 1";
+	NSString *type = @"com.liferay.portal.NoSuchUserException";
 
 	NSDictionary *json = @{
-		@"message": message,
-		@"exception": exception
+		@"exception": exception,
+		@"type": type
 	};
 
 	NSError *error;
@@ -92,8 +91,13 @@
 	[self _assertWithResponse:response error:error];
 
 	XCTAssertEqual(LRErrorCodePortalException, error.code);
-	XCTAssertEqualObjects(message, [error localizedDescription]);
-	XCTAssertEqualObjects(localizedException, [error localizedDescription]);
+
+	XCTAssertEqualObjects(
+		@"The user couldn't be found in the server.",
+		[error localizedDescription]
+	);
+
+	XCTAssertEqualObjects(exception, [error localizedFailureReason]);
 }
 
 - (void)testUnauthorizedError {
