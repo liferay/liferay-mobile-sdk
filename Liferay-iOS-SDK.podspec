@@ -17,6 +17,11 @@ Pod::Spec.new do |s|
 								:tag => "6.2.0.5"
 							}
 	s.source_files			= "ios/Source/**/*.{h,m}"
+	s.resource_bundles		= {
+								"Liferay-iOS-SDK" => [
+									"ios/Source/Util/Localization/*.lproj"
+								]
+							}
 	s.requires_arc			= true
 	s.dependency			"AFNetworking", "~> 2.2.4"
 end
