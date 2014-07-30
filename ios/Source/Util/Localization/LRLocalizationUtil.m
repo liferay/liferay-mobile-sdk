@@ -25,6 +25,15 @@ static NSBundle *_bundle;
 + (void)initialize {
 	if (!_bundle) {
 		_bundle = [NSBundle bundleForClass:[LRSession class]];
+
+		NSString *path = [_bundle pathForResource:@"Liferay-iOS-SDK"
+			ofType:@"bundle"];
+
+		NSBundle *bundle = [NSBundle bundleWithPath:path];
+
+		if (bundle) {
+			_bundle = bundle;
+		}
 	}
 }
 
