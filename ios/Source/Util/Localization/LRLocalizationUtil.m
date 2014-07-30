@@ -15,7 +15,8 @@
 #import "LRLocalizationUtil.h"
 #import "LRSession.h"
 
-static NSBundle *_bundle;
+static NSBundle *_appBundle;
+static NSBundle *_sdkBundle;
 
 /**
  * @author Bruno Farache
@@ -23,22 +24,29 @@ static NSBundle *_bundle;
 @implementation LRLocalizationUtil
 
 + (void)initialize {
-	if (!_bundle) {
-		_bundle = [NSBundle bundleForClass:[LRSession class]];
+	if (!_appBundle) {
+		_appBundle = [NSBundle bundleForClass:[LRSession class]];
 
-		NSString *path = [_bundle pathForResource:@"Liferay-iOS-SDK"
+		NSString *path = [_appBundle pathForResource:@"Liferay-iOS-SDK"
 			ofType:@"bundle"];
 
-		NSBundle *bundle = [NSBundle bundleWithPath:path];
-
-		if (bundle) {
-			_bundle = bundle;
-		}
+		_sdkBundle = [NSBundle bundleWithPath:path];
 	}
 }
 
 + (NSString *)localize:(NSString *)key {
-	return [_bundle localizedStringForKey:key value:key table:nil];
+	NSString *localizedString = [_appBundle localizedStringForKey:key value:key
+		table:nil];
+
+	if (![localizedString isEqualToString:key]) {
+		return localizedString;
+	}
+
+	if (_sdkBundle) {
+		return [_sdkBundle localizedStringForKey:key value:key table:nil];
+	}
+
+	return key;
 }
 
 @end
