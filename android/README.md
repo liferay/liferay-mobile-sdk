@@ -192,7 +192,7 @@ Session session = new SessionImpl("http://10.0.2.2:8080");
 However, most portal remote methods don't accept unauthenticated remote calls,
 you will get a `Authentication required` exception message in most cases.
 
-This will work only if the remote method on the portal or your plugin has the
+This will only work if the remote method on the portal or your plugin has the
 `@AccessControlled` annotation just before the method:
 
 ```java

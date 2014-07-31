@@ -12,6 +12,7 @@
 * [Use](#use)
 	* [Unauthenticated session](#unauthenticated-session)
 	* [Asynchronous](#asynchronous)
+		* [Blocks](#blocks)
 	* [Batch](#batch)
 	* [Non-primitive arguments](#non-primitive-arguments)
 		* [OrderByComparator](#orderbycomparator)
@@ -241,6 +242,32 @@ safely. In this example, the `getGroupEntriesWithGroupId` method returns a
 ```
 
 `onSuccess` is called on the main UI thread after the request has finished.
+
+##### Blocks
+
+It is also possible to use Objective-C blocks as callbacks:
+
+```objective-c
+LRSession *session = [[LRSession alloc] initWithServer:@"http://localhost:8080" username:@"test@liferay.com" password:@"test"];
+
+[session
+	onSuccess:^(id result) {
+		// Called after request has finished successfully
+	}
+	onFailure:^(NSError *e) {
+		// Implement error handling code
+	}
+];
+
+LRGroupService_v62 *service = [[LRGroupService_v62 alloc] initWithSession:session];
+
+NSError *error;
+[service getUserSites:&error];
+```
+
+Do not set a `LRCallback` to the session in this case, otherwise it will get
+overriden. Blocks support works the same way as described in the previous
+section.
 
 #### Batch
 
