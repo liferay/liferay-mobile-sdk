@@ -10,6 +10,7 @@
 	* [Liferay](#liferay)
 	* [Android](#android)
 * [Use](#use)
+	* [Unauthenticated session](#unauthenticated-session)
 	* [Asynchronous](#asynchronous)
 	* [Batch](#batch)
 	* [Non-primitive arguments](#non-primitive-arguments)
@@ -178,6 +179,30 @@ lists all available portal services and plugin services.
 
 	> Many service methods require `groupId` as a parameter. You can get the
 	user's groups by calling the `getUserSites()` method from `GroupService`.
+
+#### Unauthenticated session
+
+It's also possible to create a `Session` instance that has no credential
+information. You need to use the constructor that accepts the server URL only:
+
+```java
+Session session = new SessionImpl("http://10.0.2.2:8080");
+```
+
+However, most portal remote methods don't accept unauthenticated remote calls,
+you will get a `Authentication required` exception message in most cases.
+
+This will work only if the remote method on the portal or your plugin has the
+`@AccessControlled` annotation just before the method:
+
+```java
+import com.liferay.portal.security.ac.AccessControlled;
+
+public class FooServiceImpl extends FooServiceBaseImpl {
+
+@AccessControlled(guestAccessEnabled = true)
+public void bar() { ... }
+```
 
 #### Asynchronous
 
