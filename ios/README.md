@@ -10,6 +10,7 @@
 	* [Liferay](#liferay)
 	* [iOS](#ios)
 * [Use](#use)
+	* [Unauthenticated session](#unauthenticated-session)
 	* [Asynchronous](#asynchronous)
 	* [Batch](#batch)
 	* [Non-primitive arguments](#non-primitive-arguments)
@@ -99,7 +100,7 @@ older versions, but these are the versions we use to run our unit tests.
 	```objective-c
 	#import "LRSession.h"
 	
-	LRSession *session = [[LRSession alloc] init:@"http://localhost:8080" username:@"test@liferay.com" password:@"test"];
+	LRSession *session = [[LRSession alloc] initWithServer:@"http://localhost:8080" username:@"test@liferay.com" password:@"test"];
 	```
 
 	The first parameter is the URL of the Liferay instance you are connecting
@@ -153,6 +154,30 @@ lists all available portal services and plugin services.
 
 	> Many service methods require `groupId` as a parameter. You can get the
 	user's groups by calling `[LRGroupService_v62 getUserSites:&error]`.
+
+#### Unauthenticated session
+
+It's also possible to create a `LRSession` instance that has no credential
+information. You need to use the constructor that accepts the server URL only:
+
+```objective-c
+LRSession *session = [[LRSession alloc] initWithServer:@"http://localhost:8080"];
+```
+
+However, most portal remote methods don't accept unauthenticated remote calls,
+you will get a `Authentication required` exception message in most cases.
+
+This will only work if the remote method on the portal or your plugin has the
+`@AccessControlled` annotation just before the method:
+
+```java
+import com.liferay.portal.security.ac.AccessControlled;
+
+public class FooServiceImpl extends FooServiceBaseImpl {
+
+@AccessControlled(guestAccessEnabled = true)
+public void bar() { ... }
+```
 
 #### Asynchronous
 	
@@ -227,7 +252,7 @@ batch of calls and send them all together.
 ```objective-c
 #import "LRBatchSession.h"
 
-LRBatchSession *batch = [[LRBatchSession alloc] init:@"http://localhost:8080" username:@"test@liferay.com" password:@"test"];
+LRBatchSession *batch = [[LRBatchSession alloc] initWithServer:@"http://localhost:8080" username:@"test@liferay.com" password:@"test"];
 LRBlogsEntryService_v62 *service = [[LRBlogsEntryService_v62 alloc] initWithSession:batch];
 NSError *error;
 
