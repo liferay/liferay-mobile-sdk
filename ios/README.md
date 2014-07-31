@@ -166,7 +166,7 @@ LRSession *session = [[LRSession alloc] initWithServer:@"http://localhost:8080"]
 ```
 
 However, most portal remote methods don't accept unauthenticated remote calls,
-you will get a `Authentication required` exception message in most cases.
+you will get a `Authentication access required` exception message in most cases.
 
 This will only work if the remote method on the portal or your plugin has the
 `@AccessControlled` annotation just before the method:
