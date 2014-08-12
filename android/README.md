@@ -17,6 +17,7 @@
 		* [OrderByComparator](#orderbycomparator)
 		* [ServiceContext](#servicecontext)
 		* [Binaries](#binaries)
+* [Troubleshooting](#troubleshooting)
 
 ## Sample
 
@@ -459,3 +460,67 @@ session.setCallback(
 
 For more examples on this subject, check these test cases: [DLAppServiceTest.java](src/test/java/com/liferay/mobile/sdk/test/portal/DLAppServiceTest.java) (aadFileEntry* methods)
 and [UploadFileUtil.java](https://github.com/brunofarache/liferay-android-sdk-sample/blob/master/src/com/liferay/mobile/sample/util/UploadFileUtil.java).
+
+
+## Troubleshooting
+
+If you are having trouble the use the Liferay Android SDK, check out the
+[sample app](https://github.com/brunofarache/liferay-mobile-sdk-sample-android),
+it contains good examples on how to use it and serves as a good starting point.
+
+The SDK has [unit tests](https://github.com/liferay/liferay-mobile-sdk/tree/master/android/src/test/java/com/liferay/mobile/sdk/test/portal)
+that cover the most important parts and we use it daily in production-ready
+apps, do some research before posting questions to [our forum](https://www.liferay.com/community/forums/-/message_boards/category/33008690)
+, there are good chances there's something wrong with your code and not the SDK.
+
+It helps a lot if you know the Android basics.
+
+If you really got stuck, post the question to [our forum](https://www.liferay.com/community/forums/-/message_boards/category/33008690),
+we will try to answer as soon as possible. If there's something missing in the
+documentation, let us know!
+
+Found a bug or want to suggest an improvement? File a ticket to our [Jira project](https://issues.liferay.com/browse/MOBILESDK)
+or create a GitHub [issue](https://github.com/liferay/liferay-mobile-sdk/issues).
+
+We will list in this section the most common mistakes and questions:
+
+> Exception: "org.apache.http.conn.HttpHostConnectException: Connection
+> to http://10.0.2.2:8080 refused"
+
+The SDK needs access to the internet in order to make requests to your portal
+instance, even if you are running the portal locally. This is common to the
+majority of the Android apps out there. You need to add this permission to
+AndroidManifest.xml in order to fix it:
+
+```xml
+<manifest...>
+	<uses-permission android:name="android.permission.INTERNET" />
+...
+</manifest>
+```
+
+> Build error: "Duplicate files copied in APK META-INF/NOTICE"
+
+See the [Gradle](#gradle) section.
+
+> How can I use the SDK with custom portlet services that I've developed?
+
+See the SDK Builder [documentation](https://github.com/liferay/liferay-mobile-sdk/blob/master/builder/README.md)
+
+> Do I need to use the Liferay IDE integration in order to use the SDK?
+
+No, you can use it with Android Studio or any other IDE you want, there's no
+requirement to use the Liferay IDE.
+
+> Exception: android.os.NetworkOnMainThreadException
+
+You are trying to make a requests from your app main thread, this will freeze
+the user's interaction with the app. Check the [Asynchronous](#asynchronous)
+section.
+
+> I don't know which portal APIs exist and how to use them.
+
+Check the [http://localhost:8080/api/jsonws](http://localhost:8080/api/jsonws)
+page. From there you can see which services are available, which parameters are
+needed and even simulate requests. If you are having trouble to invoke services
+from this page, you will also have trouble to invoke from the SDK.
