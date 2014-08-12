@@ -485,7 +485,7 @@ or create a GitHub [issue](https://github.com/liferay/liferay-mobile-sdk/issues)
 We will list in this section the most common mistakes and questions:
 
 > Exception: "org.apache.http.conn.HttpHostConnectException: Connection
-> to ht<span>tp://</span>10.0.2.2:8080 refused"
+> to `http://10.0.2.2:8080` refused"
 
 The SDK needs access to the internet in order to make requests to your portal
 instance, even if you are running the portal locally. This is common to the
