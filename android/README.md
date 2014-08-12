@@ -484,6 +484,7 @@ or create a GitHub [issue](https://github.com/liferay/liferay-mobile-sdk/issues)
 
 We will list in this section the most common mistakes and questions:
 
+
 > Exception: "org.apache.http.conn.HttpHostConnectException: Connection
 > to `http://10.0.2.2:8080` refused"
 
@@ -499,24 +500,29 @@ AndroidManifest.xml in order to fix it:
 </manifest>
 ```
 
+
 > Build error: "Duplicate files copied in APK META-INF/NOTICE"
 
 See the [Gradle](#gradle) section.
 
+
 > How can I use the SDK with custom portlet services that I've developed?
 
 See the SDK Builder [documentation](https://github.com/liferay/liferay-mobile-sdk/blob/master/builder/README.md)
+
 
 > Do I need to use the Liferay IDE integration in order to use the SDK?
 
 No, you can use it with Android Studio or any other IDE you want, there's no
 requirement to use the Liferay IDE.
 
+
 > Exception: android.os.NetworkOnMainThreadException
 
-You are trying to make a requests from your app main thread, this will freeze
+You are trying to make a request from your app main thread, this will freeze
 the user's interaction with the app. Check the [Asynchronous](#asynchronous)
 section.
+
 
 > I don't know which portal APIs exist and how to use them.
 
