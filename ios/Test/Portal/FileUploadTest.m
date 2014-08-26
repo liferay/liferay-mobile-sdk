@@ -63,15 +63,17 @@ NSString *const TITLE = @"title";
 
 	NSData *bytes = [FILE_CONTENT dataUsingEncoding:NSUTF8StringEncoding];
 
+	NSString *name = [NSString stringWithFormat:@"%@-%@", SOURCE_FILE_NAME,
+		[[NSUUID UUID] UUIDString]];
+
 	NSError *error;
 	self.entry = [service addFileEntryWithRepositoryId:repositoryId
-		folderId:ROOT_FOLDER_ID sourceFileName:SOURCE_FILE_NAME
-		mimeType:MIME_TYPE title:SOURCE_FILE_NAME description:@"" changeLog:@""
-		bytes:bytes serviceContext:nil
+		folderId:ROOT_FOLDER_ID sourceFileName:name mimeType:MIME_TYPE
+		title:name description:@"" changeLog:@"" bytes:bytes serviceContext:nil
 		error:&error];
 
 	XCTAssertNil(error);
-	XCTAssertEqualObjects(SOURCE_FILE_NAME, self.entry[TITLE]);
+	XCTAssertEqualObjects(name, self.entry[TITLE]);
 }
 
 - (void)testAddFileEntryData {
@@ -79,18 +81,21 @@ NSString *const TITLE = @"title";
 
 	LRUploadData *file = [self _uploadData];
 
+	NSString *name = [NSString stringWithFormat:@"%@-%@", SOURCE_FILE_NAME,
+		[[NSUUID UUID] UUIDString]];
+
 	NSError *error;
 	[self.service addFileEntryWithRepositoryId:repositoryId
-		folderId:ROOT_FOLDER_ID sourceFileName:SOURCE_FILE_NAME
-		mimeType:MIME_TYPE title:SOURCE_FILE_NAME description:@"" changeLog:@""
-		file:file serviceContext:nil error:&error];
+		folderId:ROOT_FOLDER_ID sourceFileName:name	mimeType:MIME_TYPE
+		title:name description:@"" changeLog:@"" file:file serviceContext:nil
+		error:&error];
 
 	XCTAssertNil(error);
 
 	[self.monitor wait];
 
 	XCTAssertNil(self.error);
-	XCTAssertEqualObjects(SOURCE_FILE_NAME, self.entry[TITLE]);
+	XCTAssertEqualObjects(name, self.entry[TITLE]);
 }
 
 - (void)testAddFileEntryInputStream {
@@ -103,18 +108,21 @@ NSString *const TITLE = @"title";
 	LRUploadData *file = [[LRUploadData alloc] initWithInputStream:is
 		length:length fileName:SOURCE_FILE_NAME mimeType:MIME_TYPE];
 
+	NSString *name = [NSString stringWithFormat:@"%@-%@", SOURCE_FILE_NAME,
+		[[NSUUID UUID] UUIDString]];
+
 	NSError *error;
 	[self.service addFileEntryWithRepositoryId:repositoryId
-		folderId:ROOT_FOLDER_ID sourceFileName:SOURCE_FILE_NAME
-		mimeType:MIME_TYPE title:SOURCE_FILE_NAME description:@"" changeLog:@""
-		file:file serviceContext:nil error:&error];
+		folderId:ROOT_FOLDER_ID sourceFileName:name mimeType:MIME_TYPE
+		title:name description:@"" changeLog:@"" file:file serviceContext:nil
+		error:&error];
 
 	XCTAssertNil(error);
 
 	[self.monitor wait];
 
 	XCTAssertNil(self.error);
-	XCTAssertEqualObjects(SOURCE_FILE_NAME, self.entry[TITLE]);
+	XCTAssertEqualObjects(name, self.entry[TITLE]);
 }
 
 - (void)testAddFileEntryProgress {
@@ -137,19 +145,22 @@ NSString *const TITLE = @"title";
 
 	[file setProgressDelegate:self];
 
+	NSString *name = [NSString stringWithFormat:@"%@-%@", sourceFileName,
+		[[NSUUID UUID] UUIDString]];
+
 	NSError *error;
 	[self.service addFileEntryWithRepositoryId:repositoryId
-		folderId:ROOT_FOLDER_ID sourceFileName:sourceFileName mimeType:mimeType
-		title:sourceFileName description:@"" changeLog:@"" file:file
-		serviceContext:nil error:&error];
+		folderId:ROOT_FOLDER_ID sourceFileName:name mimeType:mimeType title:name
+		description:@"" changeLog:@"" file:file serviceContext:nil
+		error:&error];
 
 	XCTAssertNil(error);
 
 	[self.monitor wait];
 
 	XCTAssertNil(self.error);
-	XCTAssertEqualObjects(sourceFileName, self.entry[TITLE]);
-	XCTAssertEqual(44214, self.progress);
+	XCTAssertEqualObjects(name, self.entry[TITLE]);
+	XCTAssertEqual(44288, self.progress);
 }
 
 - (void)testRepositoryIdServerExceptionAsynchronous {
@@ -157,11 +168,14 @@ NSString *const TITLE = @"title";
 
 	LRUploadData *file = [self _uploadData];
 
+	NSString *name = [NSString stringWithFormat:@"%@-%@", SOURCE_FILE_NAME,
+		[[NSUUID UUID] UUIDString]];
+
 	NSError *error;
 	[self.service addFileEntryWithRepositoryId:repositoryId
-		folderId:ROOT_FOLDER_ID sourceFileName:SOURCE_FILE_NAME
-		mimeType:MIME_TYPE title:SOURCE_FILE_NAME description:@"" changeLog:@""
-		file:file serviceContext:nil error:&error];
+		folderId:ROOT_FOLDER_ID sourceFileName:name mimeType:MIME_TYPE
+		title:name description:@"" changeLog:@"" file:file serviceContext:nil
+		error:&error];
 
 	XCTAssertNil(error);
 
@@ -179,11 +193,13 @@ NSString *const TITLE = @"title";
 
 	NSData *bytes = [FILE_CONTENT dataUsingEncoding:NSUTF8StringEncoding];
 
+	NSString *name = [NSString stringWithFormat:@"%@-%@", SOURCE_FILE_NAME,
+		[[NSUUID UUID] UUIDString]];
+
 	NSError *error;
 	[service addFileEntryWithRepositoryId:repositoryId folderId:ROOT_FOLDER_ID
-		sourceFileName:SOURCE_FILE_NAME mimeType:MIME_TYPE
-		title:SOURCE_FILE_NAME description:@"" changeLog:@"" bytes:bytes
-		serviceContext:nil error:&error];
+		sourceFileName:name mimeType:MIME_TYPE title:name description:@""
+		changeLog:@"" bytes:bytes serviceContext:nil error:&error];
 
 	XCTAssert(error);
 	XCTAssertEqualObjects(NO_REPOSITORY_ID, [error localizedDescription]);
