@@ -56,17 +56,14 @@ NSString *const TITLE = @"title";
 }
 
 - (void)testAddFileEntryBytes {
-	LRDLAppService_v62 *service =
-		[[LRDLAppService_v62 alloc] initWithSession:self.session];
+	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+		initWithSession:self.session];
 
 	long long repositoryId = [self.settings[GROUP_ID] longLongValue];
-
 	NSData *bytes = [FILE_CONTENT dataUsingEncoding:NSUTF8StringEncoding];
-
-	NSString *name = [NSString stringWithFormat:@"%@-%@", SOURCE_FILE_NAME,
-		[[NSUUID UUID] UUIDString]];
-
+	NSString *name = [self _getSourceFileName];
 	NSError *error;
+
 	self.entry = [service addFileEntryWithRepositoryId:repositoryId
 		folderId:ROOT_FOLDER_ID sourceFileName:name mimeType:MIME_TYPE
 		title:name description:@"" changeLog:@"" bytes:bytes serviceContext:nil
@@ -78,13 +75,10 @@ NSString *const TITLE = @"title";
 
 - (void)testAddFileEntryData {
 	long long repositoryId = [self.settings[GROUP_ID] longLongValue];
-
 	LRUploadData *file = [self _uploadData];
-
-	NSString *name = [NSString stringWithFormat:@"%@-%@", SOURCE_FILE_NAME,
-		[[NSUUID UUID] UUIDString]];
-
+	NSString *name = [self _getSourceFileName];
 	NSError *error;
+
 	[self.service addFileEntryWithRepositoryId:repositoryId
 		folderId:ROOT_FOLDER_ID sourceFileName:name	mimeType:MIME_TYPE
 		title:name description:@"" changeLog:@"" file:file serviceContext:nil
@@ -100,18 +94,15 @@ NSString *const TITLE = @"title";
 
 - (void)testAddFileEntryInputStream {
 	long long repositoryId = [self.settings[GROUP_ID] longLongValue];
-
 	NSData *data = [FILE_CONTENT dataUsingEncoding:NSUTF8StringEncoding];
 	NSInputStream *is = [[NSInputStream alloc] initWithData:data];
 	int64_t length = [data length];
-
+	NSString *name = [self _getSourceFileName];
 	LRUploadData *file = [[LRUploadData alloc] initWithInputStream:is
-		length:length fileName:SOURCE_FILE_NAME mimeType:MIME_TYPE];
-
-	NSString *name = [NSString stringWithFormat:@"%@-%@", SOURCE_FILE_NAME,
-		[[NSUUID UUID] UUIDString]];
+		length:length fileName:name mimeType:MIME_TYPE];
 
 	NSError *error;
+
 	[self.service addFileEntryWithRepositoryId:repositoryId
 		folderId:ROOT_FOLDER_ID sourceFileName:name mimeType:MIME_TYPE
 		title:name description:@"" changeLog:@"" file:file serviceContext:nil
@@ -129,26 +120,23 @@ NSString *const TITLE = @"title";
 	long long repositoryId = [self.settings[GROUP_ID] longLongValue];
 	NSString *sourceFileName = @"logo.png";
 	NSString *mimeType = @"image/png";
+	NSBundle *bundle = [NSBundle
+		bundleWithIdentifier:@"com.liferay.mobile.sdk.Test"];
 
-	NSBundle *bundle =
-		[NSBundle bundleWithIdentifier:@"com.liferay.mobile.sdk.Test"];
 	NSString *path = [bundle pathForResource:@"logo" ofType:@"png"];
 	NSInputStream *is = [[NSInputStream alloc] initWithFileAtPath:path];
-
 	NSDictionary *attributes = [[NSFileManager defaultManager]
 		attributesOfItemAtPath:path error:nil];
+
 	NSNumber *fileSize = [attributes objectForKey:NSFileSize];
 	int64_t length = [fileSize longLongValue];
-
 	LRUploadData *file = [[LRUploadData alloc] initWithInputStream:is
 		length:length fileName:sourceFileName mimeType:mimeType];
 
 	[file setProgressDelegate:self];
-
-	NSString *name = [NSString stringWithFormat:@"%@-%@", sourceFileName,
-		[[NSUUID UUID] UUIDString]];
-
+	NSString *name = [self _getSourceFileName];
 	NSError *error;
+
 	[self.service addFileEntryWithRepositoryId:repositoryId
 		folderId:ROOT_FOLDER_ID sourceFileName:name mimeType:mimeType title:name
 		description:@"" changeLog:@"" file:file serviceContext:nil
@@ -160,18 +148,15 @@ NSString *const TITLE = @"title";
 
 	XCTAssertNil(self.error);
 	XCTAssertEqualObjects(name, self.entry[TITLE]);
-	XCTAssertEqual(44288, self.progress);
+	XCTAssertEqual(44302, self.progress);
 }
 
 - (void)testRepositoryIdServerExceptionAsynchronous {
 	long long repositoryId = -1;
-
 	LRUploadData *file = [self _uploadData];
-
-	NSString *name = [NSString stringWithFormat:@"%@-%@", SOURCE_FILE_NAME,
-		[[NSUUID UUID] UUIDString]];
-
+	NSString *name = [self _getSourceFileName];
 	NSError *error;
+
 	[self.service addFileEntryWithRepositoryId:repositoryId
 		folderId:ROOT_FOLDER_ID sourceFileName:name mimeType:MIME_TYPE
 		title:name description:@"" changeLog:@"" file:file serviceContext:nil
@@ -186,17 +171,14 @@ NSString *const TITLE = @"title";
 }
 
 - (void)testRepositoryIdServerExceptionSynchronous {
-	LRDLAppService_v62 *service =
-		[[LRDLAppService_v62 alloc] initWithSession:self.session];
+	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+		initWithSession:self.session];
 
 	long long repositoryId = -1;
-
 	NSData *bytes = [FILE_CONTENT dataUsingEncoding:NSUTF8StringEncoding];
-
-	NSString *name = [NSString stringWithFormat:@"%@-%@", SOURCE_FILE_NAME,
-		[[NSUUID UUID] UUIDString]];
-
+	NSString *name = [self _getSourceFileName];
 	NSError *error;
+
 	[service addFileEntryWithRepositoryId:repositoryId folderId:ROOT_FOLDER_ID
 		sourceFileName:name mimeType:MIME_TYPE title:name description:@""
 		changeLog:@"" bytes:bytes serviceContext:nil error:&error];
@@ -227,6 +209,11 @@ NSString *const TITLE = @"title";
 	[self setEntry:nil];
 	[self setError:nil];
 	[self setProgress:0];
+}
+
+- (NSString *)_getSourceFileName {
+	return [NSString stringWithFormat:@"%@-%@", SOURCE_FILE_NAME,
+		[[NSUUID UUID] UUIDString]];
 }
 
 - (LRUploadData *)_uploadData {
