@@ -28,8 +28,10 @@
 	int version = [LRPortalVersionUtil getPortalVersion:self.session
 		error:&error];
 
+	long long portalVersion = [self.settings[@"portalVersion"] longLongValue];
+
 	XCTAssertNil(error);
-	XCTAssertEqual(6200, version);
+	XCTAssertEqual(portalVersion, version);
 }
 
 @end

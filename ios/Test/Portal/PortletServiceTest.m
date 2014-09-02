@@ -24,8 +24,8 @@
 @implementation PortletServiceTest
 
 - (void)testGetUserSitesGroups {
-	LRPortletService_v62 *service =
-		[[LRPortletService_v62 alloc] initWithSession:self.session];
+	LRPortletService_v62 *service = [[LRPortletService_v62 alloc]
+		initWithSession:self.session];
 
 	NSError *error;
 	NSArray *array = [service getWarPortlets:&error];
