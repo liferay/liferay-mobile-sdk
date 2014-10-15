@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android.http;
 
+import com.liferay.mobile.android.exception.RedirectException;
 import com.liferay.mobile.android.exception.ServerException;
 import com.liferay.mobile.android.http.entity.CountingHttpEntity;
 import com.liferay.mobile.android.service.Session;
@@ -22,12 +23,16 @@ import com.liferay.mobile.android.util.Validator;
 
 import java.io.IOException;
 
+import java.net.URI;
+
 import java.util.Iterator;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
+import org.apache.http.ProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
@@ -38,7 +43,10 @@ import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.http.entity.mime.content.InputStreamBody;
 import org.apache.http.entity.mime.content.StringBody;
+import org.apache.http.impl.client.DefaultRedirectStrategy;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
 
 import org.json.JSONArray;
@@ -64,6 +72,13 @@ public class HttpUtil {
 		requestBuilder = requestBuilder.setConnectionRequestTimeout(timeout);
 
 		clientBuilder.setDefaultRequestConfig(requestBuilder.build());
+		clientBuilder.setRedirectStrategy(new DefaultRedirectStrategy() {
+
+			@Override
+			protected boolean isRedirectable(String method) {
+				return false;
+			}
+		});
 
 		return clientBuilder.build();
 	}
@@ -120,7 +135,7 @@ public class HttpUtil {
 		HttpResponse response = client.execute(post);
 		String json = HttpUtil.getResponseString(response);
 
-		handleServerException(response, json);
+		handleServerException(post, response, json);
 
 		return new JSONArray(json);
 	}
@@ -159,7 +174,7 @@ public class HttpUtil {
 		HttpResponse response = client.execute(post);
 		String json = HttpUtil.getResponseString(response);
 
-		handleServerException(response, json);
+		handleServerException(post, response, json);
 
 		if (isJSONObject(json)) {
 			return new JSONObject(json);
@@ -197,11 +212,43 @@ public class HttpUtil {
 		return builder.build();
 	}
 
+	protected static String getRedirectUrl(
+			HttpRequest request, HttpResponse response)
+		throws ServerException {
+
+		try {
+			DefaultRedirectStrategy redirect = new DefaultRedirectStrategy();
+			HttpContext context = new BasicHttpContext();
+
+			URI uri = redirect.getLocationURI(request, response, context);
+			String url = uri.toString();
+
+			if (url.endsWith("/")) {
+				url = url.substring(0, url.length() - 1);
+			}
+
+			return url;
+		}
+		catch (ProtocolException pe) {
+			throw new ServerException(pe);
+		}
+	}
+
 	protected static void handleServerException(
-			HttpResponse response, String json)
+			HttpRequest request, HttpResponse response, String json)
 		throws ServerException {
 
 		int status = response.getStatusLine().getStatusCode();
+
+		if ((status == HttpStatus.SC_MOVED_TEMPORARILY) ||
+			(status == HttpStatus.SC_MOVED_PERMANENTLY) ||
+			(status == HttpStatus.SC_TEMPORARY_REDIRECT) ||
+			(status == HttpStatus.SC_SEE_OTHER)) {
+
+			String url = getRedirectUrl(request, response);
+
+			throw new RedirectException(url);
+		}
 
 		if (status == HttpStatus.SC_UNAUTHORIZED) {
 			throw new ServerException("Authentication failed.");
