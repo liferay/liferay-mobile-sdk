@@ -22,8 +22,6 @@ import com.liferay.mobile.android.util.Validator;
 
 import java.io.IOException;
 
-import java.nio.charset.Charset;
-
 import java.util.Iterator;
 
 import org.apache.http.Header;
@@ -31,16 +29,16 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.HttpMultipartMode;
-import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.http.entity.mime.content.InputStreamBody;
 import org.apache.http.entity.mime.content.StringBody;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.protocol.HTTP;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
 import org.json.JSONArray;
@@ -49,6 +47,7 @@ import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
+ * @author Silvio Santos
  */
 public class HttpUtil {
 
@@ -57,12 +56,16 @@ public class HttpUtil {
 	public static final String LAST_MODIFIED = "Last-Modified";
 
 	public static HttpClient getClient(Session session) {
-		DefaultHttpClient client = new DefaultHttpClient();
+		HttpClientBuilder clientBuilder = HttpClientBuilder.create();
 
-		HttpConnectionParams.setConnectionTimeout(
-			client.getParams(), session.getConnectionTimeout());
+		int timeout = session.getConnectionTimeout();
+		RequestConfig.Builder requestBuilder = RequestConfig.custom();
+		requestBuilder = requestBuilder.setConnectTimeout(timeout);
+		requestBuilder = requestBuilder.setConnectionRequestTimeout(timeout);
 
-		return client;
+		clientBuilder.setDefaultRequestConfig(requestBuilder.build());
+
+		return clientBuilder.build();
 	}
 
 	public static HttpPost getPost(Session session, String URL) {
@@ -112,7 +115,7 @@ public class HttpUtil {
 		HttpClient client = getClient(session);
 		HttpPost post = getPost(session, getURL(session, "/invoke"));
 
-		post.setEntity(new StringEntity(commands.toString(), HTTP.UTF_8));
+		post.setEntity(new StringEntity(commands.toString(), "UTF-8"));
 
 		HttpResponse response = client.execute(post);
 		String json = HttpUtil.getResponseString(response);
@@ -166,13 +169,11 @@ public class HttpUtil {
 		}
 	}
 
-	protected static MultipartEntity getMultipartEntity(JSONObject parameters)
+	protected static HttpEntity getMultipartEntity(JSONObject parameters)
 		throws Exception {
 
-		MultipartEntity entity = new MultipartEntity(
-			HttpMultipartMode.BROWSER_COMPATIBLE);
-
-		Charset charset = Charset.forName(HTTP.UTF_8);
+		MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+		builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
 
 		Iterator<String> it = parameters.keys();
 
@@ -186,13 +187,14 @@ public class HttpUtil {
 				contentBody = (InputStreamBody)value;
 			}
 			else {
-				contentBody = new StringBody(value.toString(), charset);
+				contentBody = new StringBody(
+					value.toString(), ContentType.TEXT_PLAIN);
 			}
 
-			entity.addPart(key, contentBody);
+			builder.addPart(key, contentBody);
 		}
 
-		return entity;
+		return builder.build();
 	}
 
 	protected static void handleServerException(
