@@ -135,6 +135,7 @@ configure(subprojects.findAll { it.name != 'builder' }) {
 			"context=$context",
 			"filter=$filter",
 			"packageName=$packageName",
+			"portalVersion=$portalVersion",
 			"destination=$destination"
 		]
 	}

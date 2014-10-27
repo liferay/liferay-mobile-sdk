@@ -16,69 +16,14 @@ package com.liferay.mobile.sdk.http;
 
 import java.io.IOException;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpHead;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
 /**
  * @author Bruno Farache
  */
 public class HttpUtil {
-
-	public static final int UNKNOWN_VERSION = -1;
-
-	public static int getPortalVersion(String url) {
-		Integer version = null;
-
-		try {
-			version = _versions.get(url);
-
-			if (version != null) {
-				return version;
-			}
-
-			HttpClient client = new DefaultHttpClient();
-			HttpHead head = new HttpHead(url);
-			HttpResponse response = client.execute(head);
-
-			Header portalHeader = response.getFirstHeader("Liferay-Portal");
-
-			if (portalHeader == null) {
-				return UNKNOWN_VERSION;
-			}
-
-			String portalField = portalHeader.getValue();
-
-			int indexOfBuild = portalField.indexOf("Build");
-
-			if (indexOfBuild == -1) {
-				version = UNKNOWN_VERSION;
-			}
-			else {
-				String buildNumber = portalField.substring(
-					indexOfBuild + 6, indexOfBuild + 10);
-
-				buildNumber = buildNumber.replaceAll("0*$", "");
-
-				version = Integer.valueOf(buildNumber);
-			}
-		}
-		catch (Exception e) {
-			version = UNKNOWN_VERSION;
-		}
-		finally {
-			_versions.put(url, version);
-		}
-
-		return version;
-	}
 
 	public static String getResponseString(HttpResponse response)
 		throws IOException {
@@ -91,8 +36,5 @@ public class HttpUtil {
 
 		return EntityUtils.toString(entity);
 	}
-
-	private static final Map<String, Integer> _versions =
-		new HashMap<String, Integer>();
 
 }

@@ -16,7 +16,6 @@ package com.liferay.mobile.sdk.ios;
 
 import com.liferay.mobile.sdk.BaseBuilder;
 import com.liferay.mobile.sdk.http.Discovery;
-import com.liferay.mobile.sdk.http.HttpUtil;
 import com.liferay.mobile.sdk.util.LanguageUtil;
 import com.liferay.mobile.sdk.util.Validator;
 import com.liferay.mobile.sdk.velocity.VelocityUtil;
@@ -67,12 +66,9 @@ public class iOSBuilder extends BaseBuilder {
 
 		sb.append(destination);
 		sb.append("/");
-
-		if (version != HttpUtil.UNKNOWN_VERSION) {
-			sb.append("v");
-			sb.append(version);
-			sb.append("/");
-		}
+		sb.append("v");
+		sb.append(version);
+		sb.append("/");
 
 		sb.append(filter);
 		sb.append("/");

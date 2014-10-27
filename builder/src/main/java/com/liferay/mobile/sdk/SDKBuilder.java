@@ -17,7 +17,6 @@ package com.liferay.mobile.sdk;
 import com.liferay.mobile.sdk.android.AndroidBuilder;
 import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.http.DiscoveryResponseHandler;
-import com.liferay.mobile.sdk.http.HttpUtil;
 import com.liferay.mobile.sdk.ios.iOSBuilder;
 import com.liferay.mobile.sdk.util.Validator;
 
@@ -39,7 +38,7 @@ public class SDKBuilder {
 
 	public static void build(
 			String[] platforms, String url, String context, String packageName,
-			String filter, String destination)
+			String filter, int portalVersion, String destination)
 		throws Exception {
 
 		Discovery discovery = discover(url, context, filter);
@@ -54,14 +53,13 @@ public class SDKBuilder {
 				builder = new iOSBuilder();
 			}
 
-			int version = HttpUtil.getPortalVersion(url);
-
 			if (Validator.isNull(filter)) {
-				builder.buildAll(discovery, packageName, version, destination);
+				builder.buildAll(
+					discovery, packageName, portalVersion, destination);
 			}
 			else {
 				builder.build(
-					discovery, packageName, version, filter, destination);
+					discovery, packageName, portalVersion, filter, destination);
 			}
 		}
 	}
@@ -104,10 +102,13 @@ public class SDKBuilder {
 		String context = arguments.get("context");
 		String packageName = arguments.get("packageName");
 		String filter = arguments.get("filter");
+		int portalVersion = Integer.valueOf(arguments.get("portalVersion"));
 		String destination = arguments.get("destination");
 
 		try {
-			build(platforms, url, context, packageName, filter, destination);
+			build(
+				platforms, url, context, packageName, filter, portalVersion,
+				destination);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

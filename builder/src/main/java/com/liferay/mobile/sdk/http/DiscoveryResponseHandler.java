@@ -17,7 +17,6 @@ package com.liferay.mobile.sdk.http;
 import java.io.IOException;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
 
 import org.json.JSONException;
@@ -28,10 +27,8 @@ import org.json.JSONException;
 public class DiscoveryResponseHandler
 		implements ResponseHandler<Discovery> {
 
-	public Discovery handleResponse(HttpResponse response)
-		throws ClientProtocolException, IOException {
-
-		Discovery discovery = null;
+	public Discovery handleResponse(HttpResponse response) throws IOException {
+		Discovery discovery;
 
 		String responseString = HttpUtil.getResponseString(response);
 
