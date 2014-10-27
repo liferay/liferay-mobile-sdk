@@ -12,10 +12,11 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.test.plugin;
+package com.liferay.mobile.android.sync.test;
 
-import com.liferay.mobile.android.v62.syncdlobject.SyncDLObjectService;
-import com.liferay.mobile.sdk.test.BaseTest;
+import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.service.SessionImpl;
+import com.liferay.mobile.android.sync.v62.syncdlobject.SyncDLObjectService;
 
 import java.io.IOException;
 
@@ -29,7 +30,7 @@ import static org.junit.Assert.*;
 /**
  * @author Bruno Farache
  */
-public class SyncWebServiceTest extends BaseTest {
+public class SyncWebServiceTest {
 
 	public SyncWebServiceTest() throws IOException {
 		super();
@@ -37,6 +38,9 @@ public class SyncWebServiceTest extends BaseTest {
 
 	@Test
 	public void getUserSitesGroups() throws Exception {
+		Session session = new SessionImpl(
+			"http://localhost:8080", "test@liferay.com", "test");
+
 		SyncDLObjectService service = new SyncDLObjectService(session);
 
 		JSONArray jsonArray = service.getUserSitesGroups();

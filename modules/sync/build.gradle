@@ -1,0 +1,19 @@
+apply plugin: 'idea'
+
+sourceSets {
+	main {
+		java {
+			srcDir 'android/src/gen/java'
+		}
+	}
+	test {
+		java {
+			srcDir 'android/src/test/java'
+		}
+	}
+}
+
+dependencies {
+	compile project(':android')
+	testCompile group: 'junit', name: 'junit', version: '4.+'
+}
