@@ -19,6 +19,7 @@ import com.liferay.mobile.sdk.http.Action;
 import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.http.HttpUtil;
 import com.liferay.mobile.sdk.util.LanguageUtil;
+import com.liferay.mobile.sdk.util.Validator;
 import com.liferay.mobile.sdk.velocity.VelocityUtil;
 
 import java.io.File;
@@ -38,6 +39,10 @@ public class AndroidBuilder extends BaseBuilder {
 			Discovery discovery, String packageName, int version, String filter,
 			String destination)
 		throws Exception {
+
+		if (Validator.isNull(destination)) {
+			destination = "android/src/gen/java";
+		}
 
 		VelocityContext context = getVelocityContext(
 			discovery, packageName, version, filter);

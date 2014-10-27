@@ -18,6 +18,7 @@ import com.liferay.mobile.sdk.BaseBuilder;
 import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.http.HttpUtil;
 import com.liferay.mobile.sdk.util.LanguageUtil;
+import com.liferay.mobile.sdk.util.Validator;
 import com.liferay.mobile.sdk.velocity.VelocityUtil;
 
 import java.io.File;
@@ -35,6 +36,10 @@ public class iOSBuilder extends BaseBuilder {
 			Discovery discovery, String packageName, int version, String filter,
 			String destination)
 		throws Exception {
+
+		if (Validator.isNull(destination)) {
+			destination = "ios/Source/Service";
+		}
 
 		VelocityContext context = getVelocityContext(
 			discovery, version, filter);

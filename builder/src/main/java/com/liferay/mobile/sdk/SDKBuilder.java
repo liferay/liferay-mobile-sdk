@@ -38,36 +38,31 @@ public class SDKBuilder {
 	public static final String IOS = "ios";
 
 	public static void build(
-			String platform, String url, String context, String packageName,
-			String destination)
-		throws Exception {
-
-		build(platform, url, context, packageName, null, destination);
-	}
-
-	public static void build(
-			String platform, String url, String context, String packageName,
+			String[] platforms, String url, String context, String packageName,
 			String filter, String destination)
 		throws Exception {
 
 		Discovery discovery = discover(url, context, filter);
 
-		Builder builder = null;
+		for (String platform : platforms) {
+			Builder builder = null;
 
-		if (platform.equals(ANDROID)) {
-			builder = new AndroidBuilder();
-		}
-		else if (platform.equals(IOS)) {
-			builder = new iOSBuilder();
-		}
+			if (platform.equals(ANDROID)) {
+				builder = new AndroidBuilder();
+			}
+			else if (platform.equals(IOS)) {
+				builder = new iOSBuilder();
+			}
 
-		int version = HttpUtil.getPortalVersion(url);
+			int version = HttpUtil.getPortalVersion(url);
 
-		if (Validator.isNull(filter)) {
-			builder.buildAll(discovery, packageName, version, destination);
-		}
-		else {
-			builder.build(discovery, packageName, version, filter, destination);
+			if (Validator.isNull(filter)) {
+				builder.buildAll(discovery, packageName, version, destination);
+			}
+			else {
+				builder.build(
+					discovery, packageName, version, filter, destination);
+			}
 		}
 	}
 
@@ -104,7 +99,7 @@ public class SDKBuilder {
 	public static void main(String[] args) {
 		Map<String, String> arguments = parseArguments(args);
 
-		String platform = arguments.get("platform");
+		String[] platforms = arguments.get("platforms").split(",");
 		String url = arguments.get("url");
 		String context = arguments.get("context");
 		String packageName = arguments.get("packageName");
@@ -112,7 +107,7 @@ public class SDKBuilder {
 		String destination = arguments.get("destination");
 
 		try {
-			build(platform, url, context, packageName, filter, destination);
+			build(platforms, url, context, packageName, filter, destination);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
