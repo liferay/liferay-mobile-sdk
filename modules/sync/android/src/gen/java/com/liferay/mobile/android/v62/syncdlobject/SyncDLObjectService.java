@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.android.sync.v62.syncdlobject;
+package com.liferay.mobile.android.v62.syncdlobject;
 
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;

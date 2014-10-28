@@ -12,11 +12,11 @@
  * details.
  */
 
-package com.liferay.mobile.android.sync.test;
+package com.liferay.mobile.android.test;
 
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.android.sync.v62.syncdlobject.SyncDLObjectService;
+import com.liferay.mobile.android.v62.syncdlobject.SyncDLObjectService;
 
 import java.io.IOException;
 
