@@ -156,6 +156,18 @@ configure(subprojects.findAll { it.name.startsWith('modules/') }) {
 		compile project(':android')
 		testCompile group: 'junit', name: 'junit', version: '4.+'
 	}
+
+	task zip(type: Zip) {
+		group = tasksGroup
+		description = 'Zips generated iOS SDK for this module.'
+		baseName = "liferay-ios-${context}"
+		destinationDir = project.buildDir
+		version = project.version
+		from 'ios/Source'
+		doLast {
+			println "Zipped to ${archivePath}"
+		}
+	}
 }
 
 task createModule << {
