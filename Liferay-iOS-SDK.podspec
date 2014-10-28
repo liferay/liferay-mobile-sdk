@@ -11,12 +11,15 @@ Pod::Spec.new do |s|
 								"Bruno Farache" => "bruno.farache@liferay.com"
 							}
 	s.platform				= :ios
-	s.ios.deployment_target = '6.1'
+	s.ios.deployment_target	= '6.1'
 	s.source				= {
 								:git => "https://github.com/liferay/liferay-mobile-sdk.git",
 								:tag => "6.2.0.6"
 							}
 	s.source_files			= "ios/Source/**/*.{h,m}"
+	s.subspec				'Liferay-iOS-Sync' do |sync|
+								sync.source_files	= "modules/sync/ios/Source/**/*.{h,m}","ios/Source/{Core,Http,Util}/**/*.h"
+							end
 	s.resource_bundles		= {
 								"Liferay-iOS-SDK" => [
 									"ios/Source/Util/Localization/*.lproj"
