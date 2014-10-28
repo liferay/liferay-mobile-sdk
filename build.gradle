@@ -136,6 +136,35 @@ configure(subprojects.findAll { it.name != 'builder' }) {
 	}
 }
 
+task createModule << {
+	def console = System.console()
+
+	if (console) {
+		def n = System.getProperty("line.separator")
+
+		def context = console.readLine('> Enter the plugin web context: ')
+		def packageName = console.readLine('> Enter the package name: ')
+		def description = console.readLine('> Enter the description: ')
+
+		def moduleDir = "${project.rootDir}/modules/$context"
+		file(moduleDir).mkdirs()
+
+		def gradleProperties = file("$moduleDir/gradle.properties")
+		gradleProperties.createNewFile()
+
+		gradleProperties.append("context=${context}")
+		gradleProperties.append("${n}packageName=${packageName}")
+		gradleProperties.append("${n}description=${description}")
+
+		def settingsGradle = file("${project.rootDir}/settings.gradle")
+		settingsGradle.append("${n}${n}// Module created by createModule task")
+		settingsGradle.append("${n}include 'modules/${context}'")
+	}
+	else {
+		logger.error "Error while getting console."
+	}
+}
+
 task wrapper(type: Wrapper) {
 	gradleVersion = '1.11'
 }
