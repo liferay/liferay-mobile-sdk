@@ -1,3 +1,5 @@
+def tasksGroup = 'Liferay'
+
 subprojects {
 	repositories {
 		mavenLocal()
@@ -72,6 +74,8 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 	}
 
 	task format(type: JavaExec) {
+		group = tasksGroup
+		description = 'Runs Liferay Source Formatter to format files within src/main/java.'
 		main = 'com.liferay.portal.tools.sourceformatter.SourceFormatter'
 		classpath = configurations.formatter
 		workingDir = 'src/main/java'
@@ -100,7 +104,9 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 		sign file('build/poms/pom-default.xml')
 	}
 
-	task generatePom(type: Copy, dependsOn: signPom) {
+	task publish(type: Copy, dependsOn: signPom) {
+		group = tasksGroup
+		description = 'Prepares artifacts for publishing to Maven Central.'
 		from 'build/poms'
 		into 'build/libs'
 
@@ -122,6 +128,8 @@ configure(subprojects.findAll { it.name != 'builder' }) {
 	}
 
 	task generate(type: JavaExec) {
+		group = tasksGroup
+		description = 'Runs Liferay SDK Builder with arguments set in gradle.properties.'
 		main = 'com.liferay.mobile.sdk.SDKBuilder'
 		classpath = configurations.builder
 
