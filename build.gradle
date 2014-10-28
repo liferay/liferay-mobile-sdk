@@ -17,6 +17,7 @@ subprojects {
 configure(subprojects.findAll { it.name != 'ios' }) {
 	apply plugin: 'java'
 	apply plugin: 'eclipse'
+	apply plugin: 'idea'
 	apply plugin: 'maven'
 	apply plugin: 'signing'
 
@@ -43,15 +44,10 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 	install {
 		repositories.mavenInstaller {
 			pom.groupId = 'com.liferay.mobile'
-			def pomName = 'Liferay Android SDK'
-
-			if (project.name == 'builder') {
-				pomName = 'Liferay SDK Builder'
-			}
 
 			pom.project {
-				name pomName
-				description pomName
+				name project.description
+				description project.description
 				url 'https://www.liferay.com/community/liferay-projects/liferay-mobile-sdk/overview'
 				licenses {
 					license {
