@@ -136,15 +136,40 @@ configure(subprojects.findAll { it.name != 'builder' }) {
 	}
 }
 
+configure(subprojects.findAll { it.name.startsWith('modules/') }) {
+	archivesBaseName = "liferay-android-${context}"
+
+	sourceSets {
+		main {
+			java {
+				srcDir 'android/src/gen/java'
+			}
+		}
+		test {
+			java {
+				srcDir 'android/src/test/java'
+			}
+		}
+	}
+
+	dependencies {
+		compile project(':android')
+		testCompile group: 'junit', name: 'junit', version: '4.+'
+	}
+}
+
 task createModule << {
 	def console = System.console()
 
 	if (console) {
 		def n = System.getProperty("line.separator")
 
-		def context = console.readLine('> Enter the plugin web context: ')
-		def packageName = console.readLine('> Enter the package name: ')
-		def description = console.readLine('> Enter the description: ')
+		def context = console.readLine('> Plugin web context: ')
+
+		// Android related properties
+
+		def packageName = console.readLine('> Package name: ')
+		def description = console.readLine('> Description: ')
 
 		def moduleDir = "${project.rootDir}/modules/$context"
 		file(moduleDir).mkdirs()
