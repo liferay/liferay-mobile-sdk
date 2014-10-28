@@ -170,18 +170,35 @@ configure(subprojects.findAll { it.name.startsWith('modules/') }) {
 	}
 }
 
+def readProperty(phrase, property, required=true) {
+	def console = System.console()
+	def line = console.readLine("> ${phrase} [${property}]: ")
+
+	if (!line.isEmpty()) {
+		property = line
+	}
+
+	if (required && property.isEmpty()) {
+		println "This property can't be empty, type again."
+		property = readProperty(phrase, property, true)
+	}
+
+	return property
+}
+
 task createModule << {
 	def console = System.console()
 
 	if (console) {
 		def n = System.getProperty("line.separator")
 
-		def context = console.readLine('> Plugin web context: ')
+		def platforms = readProperty('Platforms', project.ext['platforms'])
+		def context = readProperty('Context', project.ext['context'])
 
 		// Android related properties
 
-		def packageName = console.readLine('> Package name: ')
-		def description = console.readLine('> Description: ')
+		def packageName = readProperty('Package name', project.ext['packageName'])
+		def description = readProperty('Description', project.description)
 
 		def moduleDir = "${project.rootDir}/modules/$context"
 		file(moduleDir).mkdirs()
