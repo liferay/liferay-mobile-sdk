@@ -9,6 +9,8 @@ allprojects {
 	}
 }
 
+apply from: 'modules.gradle'
+
 configure(subprojects.findAll { it.name != 'ios' }) {
 	apply plugin: 'java'
 	apply plugin: 'eclipse'
@@ -108,37 +110,6 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 		}
 	}
 }
-
-configure(allprojects.findAll { it.name != 'builder' }) {
-	defaultTasks 'generate'
-
-	configurations {
-		builder
-	}
-
-	dependencies {
-		builder project(':builder')
-	}
-
-	task generate(type: JavaExec) {
-		group = tasksGroup
-		description = 'Runs Liferay SDK Builder with arguments set in gradle.properties.'
-		main = 'com.liferay.mobile.sdk.SDKBuilder'
-		classpath = configurations.builder
-
-		args = [
-			"platforms=$platforms",
-			"url=$url",
-			"context=$context",
-			"filter=$filter",
-			"packageName=$packageName",
-			"portalVersion=$portalVersion",
-			"destination=$destination"
-		]
-	}
-}
-
-apply from: 'modules.gradle'
 
 task wrapper(type: Wrapper) {
 	gradleVersion = '1.11'
