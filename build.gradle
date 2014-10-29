@@ -174,8 +174,17 @@ task createModule << {
 	def console = System.console()
 
 	if (console) {
-		def platforms = readProperty('Platforms', project.ext['platforms'])
+		def all = project.hasProperty('all')
 		def context = readProperty('Context', project.ext['context'])
+		def String platforms = 'android,ios'
+
+		if (all) {
+			platforms = readProperty('Platforms', project.ext['platforms'])
+			def url = readProperty('Server URL', project.ext['url'])
+			def filter = readProperty('Filter', project.ext['filter'], false)
+			def portalVersion = readProperty('Portal Version', project.ext['portalVersion'])
+			def version = readProperty('Module Version', project.version)
+		}
 
 		def moduleDir = "${project.rootDir}/modules/$context"
 		file(moduleDir).mkdirs()
@@ -183,12 +192,19 @@ task createModule << {
 		def gradleProperties = file("$moduleDir/gradle.properties")
 		gradleProperties.createNewFile()
 
-		writeProperty(gradleProperties, 'platforms', platforms)
 		writeProperty(gradleProperties, 'context', context)
+
+		if (all) {
+			writeProperty(gradleProperties, 'platforms', platforms)
+			writeProperty(gradleProperties, 'url', url)
+			writeProperty(gradleProperties, 'filter', filter)
+			writeProperty(gradleProperties, 'portalVersion', portalVersion)
+			writeProperty(gradleProperties, 'version', version, project.version)
+		}
 
 		if (platforms.contains('android')) {
 			def packageName = readProperty('Package Name', project.ext['packageName'])
-			def description = readProperty('Description', project.description)
+			def description = readProperty('POM Description', project.description)
 
 			writeProperty(gradleProperties, 'packageName', packageName)
 			writeProperty(gradleProperties, 'description', description, project.description)
