@@ -170,30 +170,6 @@ configure(subprojects.findAll { it.name.startsWith('modules/') }) {
 	}
 }
 
-def readProperty(phrase, property, required=true) {
-	def console = System.console()
-	def line = console.readLine("> ${phrase} [${property}]: ")
-
-	if (!line.isEmpty()) {
-		property = line
-	}
-
-	if (required && property.isEmpty()) {
-		println "This property can't be empty, type again."
-		property = readProperty(phrase, property, true)
-	}
-
-	return property
-}
-
-def writeProperty(file, key, value, defaultValue=project.ext[key]) {
-	def n = System.getProperty("line.separator")
-
-	if (defaultValue != value) {
-		file.append("${key}=${value}${n}")
-	}
-}
-
 task createModule << {
 	def console = System.console()
 
@@ -229,4 +205,28 @@ task createModule << {
 
 task wrapper(type: Wrapper) {
 	gradleVersion = '1.11'
+}
+
+def readProperty(phrase, property, required=true) {
+	def console = System.console()
+	def line = console.readLine("> ${phrase} [${property}]: ")
+
+	if (!line.isEmpty()) {
+		property = line
+	}
+
+	if (required && property.isEmpty()) {
+		println "This property can't be empty, type again."
+		property = readProperty(phrase, property, true)
+	}
+
+	return property
+}
+
+def writeProperty(file, key, value, defaultValue=project.ext[key]) {
+	def n = System.getProperty("line.separator")
+
+	if (defaultValue != value) {
+		file.append("${key}=${value}${n}")
+	}
 }
