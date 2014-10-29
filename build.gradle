@@ -186,18 +186,24 @@ def readProperty(phrase, property, required=true) {
 	return property
 }
 
+def writeProperty(file, key, value, defaultValue=project.ext[key]) {
+	def n = System.getProperty("line.separator")
+
+	if (defaultValue != value) {
+		file.append("${key}=${value}${n}")
+	}
+}
+
 task createModule << {
 	def console = System.console()
 
 	if (console) {
-		def n = System.getProperty("line.separator")
-
 		def platforms = readProperty('Platforms', project.ext['platforms'])
 		def context = readProperty('Context', project.ext['context'])
 
 		// Android related properties
 
-		def packageName = readProperty('Package name', project.ext['packageName'])
+		def packageName = readProperty('Package Name', project.ext['packageName'])
 		def description = readProperty('Description', project.description)
 
 		def moduleDir = "${project.rootDir}/modules/$context"
@@ -206,10 +212,12 @@ task createModule << {
 		def gradleProperties = file("$moduleDir/gradle.properties")
 		gradleProperties.createNewFile()
 
-		gradleProperties.append("context=${context}")
-		gradleProperties.append("${n}packageName=${packageName}")
-		gradleProperties.append("${n}description=${description}")
+		writeProperty(gradleProperties, 'platforms', platforms)
+		writeProperty(gradleProperties, 'context', context)
+		writeProperty(gradleProperties, 'packageName', packageName)
+		writeProperty(gradleProperties, 'description', description, project.description)
 
+		def n = System.getProperty("line.separator")
 		def settingsGradle = file("${project.rootDir}/settings.gradle")
 		settingsGradle.append("${n}${n}// Module created by createModule task")
 		settingsGradle.append("${n}include 'modules/${context}'")
