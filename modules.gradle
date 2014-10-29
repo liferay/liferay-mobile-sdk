@@ -47,39 +47,44 @@ task createModule << {
 
 	if (console) {
 		def all = project.hasProperty('all')
-		def context = readProperty("${N}Context", project.ext['context'])
-		def String platforms = 'android,ios'
+
+		def context = read("${N}Context", project.ext['context'])
+		def String platforms = project.ext['platforms']
+		def url = project.ext['url']
+		def filter = project.ext['filter']
+		def portalVersion = project.ext['portalVersion']
+		def version = project.version
 
 		if (all) {
-			platforms = readProperty('Platforms', project.ext['platforms'])
-			def url = readProperty('Server URL', project.ext['url'])
-			def filter = readProperty('Filter', project.ext['filter'], false)
-			def portalVersion = readProperty('Portal Version', project.ext['portalVersion'])
-			def version = readProperty('Module Version', project.version)
+			platforms = read('Platforms', platforms)
+			url = read('Server URL', url)
+			filter = read('Filter', filter, false)
+			portalVersion = read('Portal Version', portalVersion)
+			version = read('Module Version', version)
 		}
 
 		def moduleDir = "${project.rootDir}/modules/$context"
 		file(moduleDir).mkdirs()
 
-		def gradleProperties = file("$moduleDir/gradle.properties")
-		gradleProperties.createNewFile()
+		def props = file("$moduleDir/gradle.properties")
+		props.createNewFile()
 
-		writeProperty(gradleProperties, 'context', context)
+		write(props, 'context', context)
 
 		if (all) {
-			writeProperty(gradleProperties, 'platforms', platforms)
-			writeProperty(gradleProperties, 'url', url)
-			writeProperty(gradleProperties, 'filter', filter)
-			writeProperty(gradleProperties, 'portalVersion', portalVersion)
-			writeProperty(gradleProperties, 'version', version, project.version)
+			write(props, 'platforms', platforms)
+			write(props, 'url', url)
+			write(props, 'filter', filter)
+			write(props, 'portalVersion', portalVersion)
+			write(props, 'version', version, project.version)
 		}
 
 		if (platforms.contains('android')) {
-			def packageName = readProperty('Package Name', project.ext['packageName'])
-			def description = readProperty('POM Description', project.description)
+			def packageName = read('Package Name', project.ext['packageName'])
+			def description = read('POM Description', project.description)
 
-			writeProperty(gradleProperties, 'packageName', packageName)
-			writeProperty(gradleProperties, 'description', description, project.description)
+			write(props, 'packageName', packageName)
+			write(props, 'description', description, project.description)
 		}
 	}
 	else {
@@ -96,7 +101,7 @@ def addTextColor(text, startColor, endColor=COLORS.WHITE) {
 	return "${Character.toChars(27)}[${startColor}m${text}${Character.toChars(27)}[${endColor}m"
 }
 
-def readProperty(phrase, property, required=true) {
+def read(phrase, property, required=true) {
 	def console = System.console()
 	def coloredProperty = addTextColor(" [${property}]", COLORS.CYAN, COLORS.YELLOW)
 	def defaultValue = (property.isAllWhitespace()) ? '' : coloredProperty
@@ -108,13 +113,13 @@ def readProperty(phrase, property, required=true) {
 
 	if (required && property.isAllWhitespace()) {
 		println addTextColor("This property is required and can't be empty.", COLORS.RED)
-		property = readProperty(phrase, property, true)
+		property = read(phrase, property, true)
 	}
 
 	return property
 }
 
-def writeProperty(file, key, value, defaultValue=project.ext[key]) {
+def write(file, key, value, defaultValue=project.ext[key]) {
 	if (defaultValue != value) {
 		file.append("${key}=${value}${N}")
 	}
