@@ -1,4 +1,12 @@
-def tasksGroup = 'Liferay'
+ext {
+	COLORS = [
+		CYAN: 36,
+		RED: 31,
+		YELLOW: 33,
+		WHITE: 37
+	]
+	N = System.getProperty("line.separator")
+}
 
 configure(subprojects.findAll { it.name.startsWith('modules/') }) {
 	archivesBaseName = "liferay-android-${context}"
@@ -39,7 +47,7 @@ task createModule << {
 
 	if (console) {
 		def all = project.hasProperty('all')
-		def context = readProperty('Context', project.ext['context'])
+		def context = readProperty("${N}Context", project.ext['context'])
 		def String platforms = 'android,ios'
 
 		if (all) {
@@ -75,7 +83,7 @@ task createModule << {
 		}
 	}
 	else {
-		logger.error "Error while getting console."
+		println addTextColor("Error while getting console.", COLORS.RED)
 	}
 }
 
@@ -84,18 +92,22 @@ createModule {
 	description = "Creates SDK Builder modules."
 }
 
+def addTextColor(text, startColor, endColor=COLORS.WHITE) {
+	return "${Character.toChars(27)}[${startColor}m${text}${Character.toChars(27)}[${endColor}m"
+}
+
 def readProperty(phrase, property, required=true) {
 	def console = System.console()
-	def defaultValue = (property.isAllWhitespace()) ? '' : " [${property}]"
-
-	def line = console.readLine("> ${phrase}${defaultValue}: ")
+	def coloredProperty = addTextColor(" [${property}]", COLORS.CYAN, COLORS.YELLOW)
+	def defaultValue = (property.isAllWhitespace()) ? '' : coloredProperty
+	def line = console.readLine(addTextColor("${phrase}${defaultValue}: ", COLORS.YELLOW))
 
 	if (!line.isAllWhitespace()) {
 		property = line
 	}
 
 	if (required && property.isAllWhitespace()) {
-		println "This property can't be empty, type again."
+		println addTextColor("This property is required and can't be empty.", COLORS.RED)
 		property = readProperty(phrase, property, true)
 	}
 
@@ -103,9 +115,7 @@ def readProperty(phrase, property, required=true) {
 }
 
 def writeProperty(file, key, value, defaultValue=project.ext[key]) {
-	def n = System.getProperty("line.separator")
-
 	if (defaultValue != value) {
-		file.append("${key}=${value}${n}")
+		file.append("${key}=${value}${N}")
 	}
 }

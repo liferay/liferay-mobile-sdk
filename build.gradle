@@ -1,4 +1,6 @@
-def tasksGroup = 'Liferay'
+ext {
+	tasksGroup = 'Liferay'
+}
 
 subprojects {
 	repositories {
