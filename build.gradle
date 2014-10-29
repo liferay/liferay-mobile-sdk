@@ -210,13 +210,15 @@ task wrapper(type: Wrapper) {
 
 def readProperty(phrase, property, required=true) {
 	def console = System.console()
-	def line = console.readLine("> ${phrase} [${property}]: ")
+	def defaultValue = (property.isAllWhitespace()) ? '' : " [${property}]"
 
-	if (!line.isEmpty()) {
+	def line = console.readLine("> ${phrase}${defaultValue}: ")
+
+	if (!line.isAllWhitespace()) {
 		property = line
 	}
 
-	if (required && property.isEmpty()) {
+	if (required && property.isAllWhitespace()) {
 		println "This property can't be empty, type again."
 		property = readProperty(phrase, property, true)
 	}
