@@ -1,1 +1,12 @@
-include 'android', 'builder', 'ios', 'modules/sync'
+include 'android', 'builder', 'ios'
+
+def modules = files { file('modules').listFiles() }
+
+modules.each { File module ->
+	if (module.isDirectory() && !module.isHidden()) {
+		include "modules/${module.name}"
+	}
+}
+
+// Module created by createModule task
+include 'modules/sync-web'
