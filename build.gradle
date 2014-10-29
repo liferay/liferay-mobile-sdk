@@ -177,11 +177,6 @@ task createModule << {
 		def platforms = readProperty('Platforms', project.ext['platforms'])
 		def context = readProperty('Context', project.ext['context'])
 
-		// Android related properties
-
-		def packageName = readProperty('Package Name', project.ext['packageName'])
-		def description = readProperty('Description', project.description)
-
 		def moduleDir = "${project.rootDir}/modules/$context"
 		file(moduleDir).mkdirs()
 
@@ -190,8 +185,14 @@ task createModule << {
 
 		writeProperty(gradleProperties, 'platforms', platforms)
 		writeProperty(gradleProperties, 'context', context)
-		writeProperty(gradleProperties, 'packageName', packageName)
-		writeProperty(gradleProperties, 'description', description, project.description)
+
+		if (platforms.contains('android')) {
+			def packageName = readProperty('Package Name', project.ext['packageName'])
+			def description = readProperty('Description', project.description)
+
+			writeProperty(gradleProperties, 'packageName', packageName)
+			writeProperty(gradleProperties, 'description', description, project.description)
+		}
 
 		def n = System.getProperty("line.separator")
 		def settingsGradle = file("${project.rootDir}/settings.gradle")
