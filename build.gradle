@@ -2,7 +2,7 @@ ext {
 	tasksGroup = 'Liferay'
 }
 
-subprojects {
+allprojects {
 	repositories {
 		mavenLocal()
 		mavenCentral()
@@ -109,7 +109,7 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 	}
 }
 
-configure(subprojects.findAll { it.name != 'builder' }) {
+configure(allprojects.findAll { it.name != 'builder' }) {
 	defaultTasks 'generate'
 
 	configurations {
