@@ -7,6 +7,3 @@ modules.each { File module ->
 		include "modules/${module.name}"
 	}
 }
-
-// Module created by createModule task
-include 'modules/sync-web'

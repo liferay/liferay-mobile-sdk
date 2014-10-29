@@ -209,11 +209,6 @@ task createModule << {
 			writeProperty(gradleProperties, 'packageName', packageName)
 			writeProperty(gradleProperties, 'description', description, project.description)
 		}
-
-		def n = System.getProperty("line.separator")
-		def settingsGradle = file("${project.rootDir}/settings.gradle")
-		settingsGradle.append("${n}${n}// Module created by createModule task")
-		settingsGradle.append("${n}include 'modules/${context}'")
 	}
 	else {
 		logger.error "Error while getting console."
