@@ -1,6 +1,7 @@
 ext {
 	COLORS = [
 		CYAN: 36,
+		GREEN: 32,
 		RED: 31,
 		YELLOW: 33,
 		WHITE: 37
@@ -86,6 +87,9 @@ task createModule << {
 			write(props, 'packageName', packageName)
 			write(props, 'description', description, project.description)
 		}
+
+		println addTextColor("Module was successfully created!", COLORS.GREEN)
+		println addTextColor("Now run \"./gradlew :modules/${context}:generate\" to generate the SDK for your module.", COLORS.GREEN)
 	}
 	else {
 		println addTextColor("Error while getting console.", COLORS.RED)
