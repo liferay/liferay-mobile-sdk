@@ -86,6 +86,8 @@ task createModule << {
 		def filter = project.ext['filter']
 		def portalVersion = project.ext['portalVersion']
 		def version = project.version
+		def packageName = project.ext['packageName']
+		def description = project.description
 
 		if (all) {
 			platforms = read('Platforms', platforms)
@@ -112,15 +114,25 @@ task createModule << {
 		}
 
 		if (platforms.contains('android')) {
-			def packageName = read('Package Name', project.ext['packageName'])
-			def description = read('POM Description', project.description)
+			packageName = read('Package Name', packageName)
+			description = read('POM Description', description)
 
 			write(props, 'packageName', packageName)
 			write(props, 'description', description, project.description)
 		}
 
-		println addTextColor("Module was successfully created!", COLORS.GREEN)
-		println addTextColor("Now run \"./gradlew :modules/${context}:generate\" to generate the SDK for your module.", COLORS.GREEN)
+		generate.args = [
+			"platforms=$platforms",
+			"url=$url",
+			"context=$context",
+			"filter=$filter",
+			"packageName=$packageName",
+			"portalVersion=$portalVersion",
+			"destination=$moduleDir"
+		]
+
+		println addTextColor("Module was successfully created at ${moduleDir}.", COLORS.GREEN)
+		println addTextColor("SDK Builder will generate now all services with the details you provided.", COLORS.GREEN)
 	}
 	else {
 		println addTextColor("Error while getting console.", COLORS.RED)

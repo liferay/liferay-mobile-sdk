@@ -39,6 +39,16 @@ public class AndroidBuilder extends BaseBuilder {
 			String destination)
 		throws Exception {
 
+		StringBuilder sb = new StringBuilder();
+
+		if (Validator.isNotNull(destination)) {
+			sb.append(destination);
+			sb.append("/android/");
+		}
+
+		sb.append("src/gen/java");
+		destination = sb.toString();
+
 		if (Validator.isNull(destination)) {
 			destination = "android/src/gen/java";
 		}
