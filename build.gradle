@@ -81,7 +81,7 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 		from sourceSets.main.allSource
 	}
 
-	task jarJavadoc(type: Jar, dependsOn:javadoc) {
+	task jarJavadoc(type: Jar, dependsOn: javadoc) {
 		classifier = 'javadoc'
 		from javadoc.destinationDir
 	}
