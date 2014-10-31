@@ -14,14 +14,16 @@
 
 package com.liferay.mobile.sdk;
 
-import com.liferay.mobile.sdk.android.AndroidBuilder;
 import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.http.DiscoveryResponseHandler;
-import com.liferay.mobile.sdk.ios.iOSBuilder;
 import com.liferay.mobile.sdk.util.Validator;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -32,11 +34,36 @@ import org.apache.http.impl.client.DefaultHttpClient;
  */
 public class SDKBuilder {
 
-	public static final String ANDROID = "android";
+	public static void main(String[] args) throws IOException {
+		SDKBuilder builder = new SDKBuilder();
 
-	public static final String IOS = "ios";
+		Map<String, String> arguments = builder.parseArguments(args);
 
-	public static void build(
+		String[] platforms = arguments.get("platforms").split(",");
+		String url = arguments.get("url");
+		String context = arguments.get("context");
+		String packageName = arguments.get("packageName");
+		String filter = arguments.get("filter");
+		int portalVersion = Integer.valueOf(arguments.get("portalVersion"));
+		String destination = arguments.get("destination");
+
+		try {
+			builder.build(
+				platforms, url, context, packageName, filter, portalVersion,
+				destination);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public SDKBuilder() throws IOException {
+		_properties = new Properties();
+		InputStream is = getClass().getResourceAsStream("/builder.properties");
+		_properties.load(is);
+	}
+
+	public void build(
 			String[] platforms, String url, String context, String packageName,
 			String filter, int portalVersion, String destination)
 		throws Exception {
@@ -44,14 +71,8 @@ public class SDKBuilder {
 		Discovery discovery = discover(url, context, filter);
 
 		for (String platform : platforms) {
-			Builder builder = null;
-
-			if (platform.equals(ANDROID)) {
-				builder = new AndroidBuilder();
-			}
-			else if (platform.equals(IOS)) {
-				builder = new iOSBuilder();
-			}
+			String className = _properties.getProperty(platform);
+			Builder builder = (Builder)Class.forName(className).newInstance();
 
 			if (Validator.isNull(filter)) {
 				builder.buildAll(
@@ -64,7 +85,7 @@ public class SDKBuilder {
 		}
 	}
 
-	public static Discovery discover(String url, String context, String filter)
+	public Discovery discover(String url, String context, String filter)
 		throws Exception {
 
 		StringBuilder sb = new StringBuilder();
@@ -94,28 +115,7 @@ public class SDKBuilder {
 		return client.execute(get, handler);
 	}
 
-	public static void main(String[] args) {
-		Map<String, String> arguments = parseArguments(args);
-
-		String[] platforms = arguments.get("platforms").split(",");
-		String url = arguments.get("url");
-		String context = arguments.get("context");
-		String packageName = arguments.get("packageName");
-		String filter = arguments.get("filter");
-		int portalVersion = Integer.valueOf(arguments.get("portalVersion"));
-		String destination = arguments.get("destination");
-
-		try {
-			build(
-				platforms, url, context, packageName, filter, portalVersion,
-				destination);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	protected static Map<String, String> parseArguments(String[] args) {
+	protected Map<String, String> parseArguments(String[] args) {
 		Map<String, String> arguments = new HashMap<String, String>();
 
 		for (String arg : args) {
@@ -133,5 +133,7 @@ public class SDKBuilder {
 
 		return arguments;
 	}
+
+	private Properties _properties;
 
 }
