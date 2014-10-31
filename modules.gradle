@@ -41,7 +41,7 @@ configure(allprojects.findAll { it.name != 'builder' }) {
 configure(subprojects.findAll { it.name.startsWith('modules/') }) {
 	apply plugin: 'java'
 
-	archivesBaseName = "liferay-android-${context}"
+	archivesBaseName = "liferay-${context}-android-sdk"
 
 	sourceSets {
 		main {
