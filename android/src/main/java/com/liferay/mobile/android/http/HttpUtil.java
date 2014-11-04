@@ -100,7 +100,7 @@ public class HttpUtil {
 			sb.append("/");
 		}
 
-		sb.append("api/jsonws");
+		sb.append(_JSONWS_PATH);
 		sb.append(path);
 
 		return sb.toString();
@@ -129,6 +129,10 @@ public class HttpUtil {
 		commands.put(command);
 
 		return post(session, commands);
+	}
+
+	public static void setJSONWSPath(String jsonwsPath) {
+		_JSONWS_PATH = jsonwsPath;
 	}
 
 	public static Object upload(
@@ -229,5 +233,7 @@ public class HttpUtil {
 
 		return false;
 	}
+
+	private static String _JSONWS_PATH = "api/jsonws";
 
 }

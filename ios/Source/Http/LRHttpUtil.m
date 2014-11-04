@@ -21,6 +21,8 @@ NSString *const LR_GET = @"GET";
 NSString *const LR_HEAD = @"HEAD";
 NSString *const LR_POST = @"POST";
 
+static NSString *_JSONWS_PATH = @"api/jsonws";
+
 /**
  * @author Bruno Farache
  */
@@ -35,7 +37,8 @@ typedef void (^LRHandler)(NSURLResponse *response, NSData *data, NSError *error)
 		server = [NSString stringWithFormat:@"%@/", server];
 	}
 
-	NSString *URL = [NSString stringWithFormat:@"%@api/jsonws%@", server, path];
+	NSString *URL = [NSString stringWithFormat:@"%@%@%@", server, _JSONWS_PATH,
+		path];
 
 	return [NSURL URLWithString:URL];
 }
@@ -79,6 +82,10 @@ typedef void (^LRHandler)(NSURLResponse *response, NSData *data, NSError *error)
 	}
 
 	[request setTimeoutInterval:session.connectionTimeout];
+}
+
++ (void)setJSONWSPath:(NSString *)path {
+	_JSONWS_PATH = path;
 }
 
 + (id)_sendRequest:(NSMutableURLRequest *)request session:(LRSession *)session
