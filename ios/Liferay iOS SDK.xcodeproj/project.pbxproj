@@ -101,7 +101,6 @@
 		CC03FCFB18ED7DCD00F3F16C /* LRSocialActivitySettingService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FC7918ED7DCC00F3F16C /* LRSocialActivitySettingService_v62.m */; };
 		CC03FCFC18ED7DCD00F3F16C /* LRSocialRequestService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FC7C18ED7DCC00F3F16C /* LRSocialRequestService_v62.m */; };
 		CC03FCFD18ED7DCD00F3F16C /* LRStagingService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FC7F18ED7DCC00F3F16C /* LRStagingService_v62.m */; };
-		CC03FCFE18ED7DCD00F3F16C /* LRSyncDLObjectService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FC8218ED7DCC00F3F16C /* LRSyncDLObjectService_v62.m */; };
 		CC03FCFF18ED7DCD00F3F16C /* LRTeamService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FC8518ED7DCC00F3F16C /* LRTeamService_v62.m */; };
 		CC03FD0018ED7DCD00F3F16C /* LRThemeService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FC8818ED7DCC00F3F16C /* LRThemeService_v62.m */; };
 		CC03FD0118ED7DCD00F3F16C /* LRTrashEntryService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FC8B18ED7DCC00F3F16C /* LRTrashEntryService_v62.m */; };
@@ -113,7 +112,6 @@
 		CC03FD0718ED7DCD00F3F16C /* LRWikiNodeService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FC9D18ED7DCD00F3F16C /* LRWikiNodeService_v62.m */; };
 		CC03FD0818ED7DCD00F3F16C /* LRWikiPageService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FCA018ED7DCD00F3F16C /* LRWikiPageService_v62.m */; };
 		CC03FD0918ED7DCD00F3F16C /* LRPortraitUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FCA318ED7DCD00F3F16C /* LRPortraitUtil.m */; };
-		CC03FD2518EDA05B00F3F16C /* SyncWebServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FD1B18EDA05B00F3F16C /* SyncWebServiceTest.m */; };
 		CC03FD2718EDA05B00F3F16C /* GroupServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FD2018EDA05B00F3F16C /* GroupServiceTest.m */; };
 		CC03FD2818EDA05B00F3F16C /* PortalVersionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FD2218EDA05B00F3F16C /* PortalVersionTest.m */; };
 		CC03FD2918EDA05B00F3F16C /* PortletServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FD2418EDA05B00F3F16C /* PortletServiceTest.m */; };
@@ -355,8 +353,6 @@
 		CC03FC7C18ED7DCC00F3F16C /* LRSocialRequestService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSocialRequestService_v62.m; sourceTree = "<group>"; };
 		CC03FC7E18ED7DCC00F3F16C /* LRStagingService_v62.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRStagingService_v62.h; sourceTree = "<group>"; };
 		CC03FC7F18ED7DCC00F3F16C /* LRStagingService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRStagingService_v62.m; sourceTree = "<group>"; };
-		CC03FC8118ED7DCC00F3F16C /* LRSyncDLObjectService_v62.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSyncDLObjectService_v62.h; sourceTree = "<group>"; };
-		CC03FC8218ED7DCC00F3F16C /* LRSyncDLObjectService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSyncDLObjectService_v62.m; sourceTree = "<group>"; };
 		CC03FC8418ED7DCC00F3F16C /* LRTeamService_v62.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRTeamService_v62.h; sourceTree = "<group>"; };
 		CC03FC8518ED7DCC00F3F16C /* LRTeamService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRTeamService_v62.m; sourceTree = "<group>"; };
 		CC03FC8718ED7DCC00F3F16C /* LRThemeService_v62.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRThemeService_v62.h; sourceTree = "<group>"; };
@@ -379,7 +375,6 @@
 		CC03FCA018ED7DCD00F3F16C /* LRWikiPageService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRWikiPageService_v62.m; sourceTree = "<group>"; };
 		CC03FCA218ED7DCD00F3F16C /* LRPortraitUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPortraitUtil.h; sourceTree = "<group>"; };
 		CC03FCA318ED7DCD00F3F16C /* LRPortraitUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPortraitUtil.m; sourceTree = "<group>"; };
-		CC03FD1B18EDA05B00F3F16C /* SyncWebServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncWebServiceTest.m; sourceTree = "<group>"; };
 		CC03FD2018EDA05B00F3F16C /* GroupServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupServiceTest.m; sourceTree = "<group>"; };
 		CC03FD2218EDA05B00F3F16C /* PortalVersionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalVersionTest.m; sourceTree = "<group>"; };
 		CC03FD2418EDA05B00F3F16C /* PortletServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortletServiceTest.m; sourceTree = "<group>"; };
@@ -603,7 +598,6 @@
 				CC03FC7718ED7DCC00F3F16C /* socialactivitysetting */,
 				CC03FC7A18ED7DCC00F3F16C /* socialrequest */,
 				CC03FC7D18ED7DCC00F3F16C /* staging */,
-				CC03FC8018ED7DCC00F3F16C /* syncdlobject */,
 				CC03FC8318ED7DCC00F3F16C /* team */,
 				CC03FC8618ED7DCC00F3F16C /* theme */,
 				CC03FC8918ED7DCC00F3F16C /* trashentry */,
@@ -1383,15 +1377,6 @@
 			path = staging;
 			sourceTree = "<group>";
 		};
-		CC03FC8018ED7DCC00F3F16C /* syncdlobject */ = {
-			isa = PBXGroup;
-			children = (
-				CC03FC8118ED7DCC00F3F16C /* LRSyncDLObjectService_v62.h */,
-				CC03FC8218ED7DCC00F3F16C /* LRSyncDLObjectService_v62.m */,
-			);
-			path = syncdlobject;
-			sourceTree = "<group>";
-		};
 		CC03FC8318ED7DCC00F3F16C /* team */ = {
 			isa = PBXGroup;
 			children = (
@@ -1496,14 +1481,6 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
-		CC03FD1918EDA05B00F3F16C /* Plugin */ = {
-			isa = PBXGroup;
-			children = (
-				CC03FD1B18EDA05B00F3F16C /* SyncWebServiceTest.m */,
-			);
-			path = Plugin;
-			sourceTree = "<group>";
-		};
 		CC03FD1C18EDA05B00F3F16C /* Portal */ = {
 			isa = PBXGroup;
 			children = (
@@ -1538,7 +1515,6 @@
 			isa = PBXGroup;
 			children = (
 				CC1C897619080708004D3C4C /* Libraries */,
-				CC03FD1918EDA05B00F3F16C /* Plugin */,
 				CC03FD1C18EDA05B00F3F16C /* Portal */,
 				CC03FB6B18ED7BA000F3F16C /* Supporting Files */,
 				CC83D48D18ED693600CFA142 /* BaseTest.h */,
@@ -1720,7 +1696,6 @@
 				CC03FCFA18ED7DCD00F3F16C /* LRSocialActivityService_v62.m in Sources */,
 				CC03FCEE18ED7DCD00F3F16C /* LRRepositoryService_v62.m in Sources */,
 				CC03FD0018ED7DCD00F3F16C /* LRThemeService_v62.m in Sources */,
-				CC03FCFE18ED7DCD00F3F16C /* LRSyncDLObjectService_v62.m in Sources */,
 				CCA4E4E7193657B900374A79 /* LRPortalVersionUtil.m in Sources */,
 				CC03FCC518ED7DCD00F3F16C /* LREmailAddressService_v62.m in Sources */,
 				CC03FCAC18ED7DCD00F3F16C /* LRAnnouncementsFlagService_v62.m in Sources */,
@@ -1828,7 +1803,6 @@
 				CC03FCED18ED7DCD00F3F16C /* LRRegionService_v62.m in Sources */,
 				CC03FCD618ED7DCD00F3F16C /* LRLayoutSetPrototypeService_v62.m in Sources */,
 				CC03FCB218ED7DCD00F3F16C /* LRAssetVocabularyService_v62.m in Sources */,
-				CC03FD2518EDA05B00F3F16C /* SyncWebServiceTest.m in Sources */,
 				CC03FCB018ED7DCD00F3F16C /* LRAssetTagService_v62.m in Sources */,
 				CCABA086197D544B00A9F8B0 /* LRError.m in Sources */,
 				CC03FD0818ED7DCD00F3F16C /* LRWikiPageService_v62.m in Sources */,
