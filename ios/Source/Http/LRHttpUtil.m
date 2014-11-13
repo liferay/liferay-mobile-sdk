@@ -110,9 +110,10 @@ typedef void (^LRHandler)(NSURLResponse *response, NSData *data, NSError *error)
 			return nil;
 		}
 
-		long statusCode = [response statusCode];
+		NSURL *url = [request URL];
 
-		return [LRResponseParser parse:data statusCode:statusCode error:error];
+		return [LRResponseParser parse:data response:response url:url
+			error:error];
 	}
 }
 
@@ -129,10 +130,10 @@ typedef void (^LRHandler)(NSURLResponse *response, NSData *data, NSError *error)
 			else {
 				NSError *serverError;
 
-				long statusCode = [(NSHTTPURLResponse *)response statusCode];
+				NSURL *url = [request URL];
 
-				id json = [LRResponseParser parse:data statusCode:statusCode
-					error:&serverError];
+				id json = [LRResponseParser parse:data response:response
+					url:url error:&serverError];
 
 				if (serverError) {
 					[callback onFailure:serverError];

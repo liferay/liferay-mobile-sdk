@@ -17,6 +17,7 @@ extern NSString *const LR_ERROR_DOMAIN;
 typedef NS_ENUM(NSInteger, LRErrorCode) {
     LRErrorCodeParse = 1,
 	LRErrorCodePortalException,
+	LRErrorCodeRedirect,
     LRErrorCodeUnauthorized
 };
 

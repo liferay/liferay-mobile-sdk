@@ -25,7 +25,12 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
  */
 @implementation LRResponseParser
 
-+ (id)parse:(id)data statusCode:(long)statusCode error:(NSError **)error {
++ (id)parse:(id)data response:(NSURLResponse *)response url:(NSURL *)url
+		error:(NSError **)error {
+
+	long statusCode = [(NSHTTPURLResponse *)response statusCode];
+	NSURL *responseURL = [response URL];
+
 	*error = [self _checkHttpError:statusCode];
 
 	if (*error) {
@@ -33,10 +38,12 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 	}
 
 	if ([data isKindOfClass:[NSData class]]) {
-		return [self _parse:data error:error];
+		return [self _parse:data requestUrl:url responseUrl:responseURL
+			error:error];
 	}
 	else {
-		*error = [self _checkPortalException:data];
+		*error = [self _checkPortalException:data requestUrl:url
+			responseUrl:responseURL];
 
 		if (*error) {
 			return nil;
@@ -60,7 +67,9 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 	return error;
 }
 
-+ (NSError *)_checkPortalException:(id)json {
++ (NSError *)_checkPortalException:(id)json requestUrl:(NSURL *)requestUrl
+		responseUrl:(NSURL *)responseUrl {
+
 	if (![json isKindOfClass:[NSDictionary class]]) {
 		return nil;
 	}
@@ -82,6 +91,14 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 		error = [LRError errorWithCode:LRErrorCodePortalException
 			description:type userInfo:userInfo];
 	}
+	else if(![requestUrl isEqual:responseUrl]) {
+		NSDictionary *userInfo = @{
+			NSURLErrorKey: responseUrl
+		};
+
+		error = [LRError errorWithCode:LRErrorCodeRedirect
+			description:@"url-has-moved" userInfo:userInfo];
+	}
 	else {
 		error = [LRError errorWithCode:LRErrorCodePortalException
 			description:exception];
@@ -90,7 +107,9 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 	return error;
 }
 
-+ (id)_parse:(NSData *)data error:(NSError **)error {
++ (id)_parse:(NSData *)data requestUrl:(NSURL *)requestUrl
+		responseUrl:(NSURL *)responseUrl error:(NSError **)error {
+
 	NSError *parseError;
 	
 	id json = [NSJSONSerialization JSONObjectWithData:data options:0
@@ -105,7 +124,8 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 			description:@"json-parsing-error" userInfo:userInfo];
 	}
 	else {
-		*error = [self _checkPortalException:json];
+		*error = [self _checkPortalException:json requestUrl:requestUrl
+			responseUrl:responseUrl];
 	}
 
 	if (*error) {
