@@ -27,6 +27,7 @@ import java.net.URI;
 
 import java.util.Iterator;
 
+import org.apache.http.Consts;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpRequest;
@@ -66,8 +67,8 @@ public class HttpUtil {
 	public static HttpClient getClient(Session session) {
 		HttpClientBuilder clientBuilder = HttpClientBuilder.create();
 
-		int timeout = session.getConnectionTimeout();
 		RequestConfig.Builder requestBuilder = RequestConfig.custom();
+		int timeout = session.getConnectionTimeout();
 		requestBuilder = requestBuilder.setConnectTimeout(timeout);
 		requestBuilder = requestBuilder.setConnectionRequestTimeout(timeout);
 
@@ -78,6 +79,7 @@ public class HttpUtil {
 			protected boolean isRedirectable(String method) {
 				return false;
 			}
+
 		});
 
 		return clientBuilder.build();
@@ -130,7 +132,7 @@ public class HttpUtil {
 		HttpClient client = getClient(session);
 		HttpPost post = getPost(session, getURL(session, "/invoke"));
 
-		post.setEntity(new StringEntity(commands.toString(), "UTF-8"));
+		post.setEntity(new StringEntity(commands.toString(), Consts.UTF_8));
 
 		HttpResponse response = client.execute(post);
 		String json = HttpUtil.getResponseString(response);
@@ -190,6 +192,9 @@ public class HttpUtil {
 		MultipartEntityBuilder builder = MultipartEntityBuilder.create();
 		builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
 
+		ContentType contentType = ContentType.create(
+			"text/plain", Consts.UTF_8);
+
 		Iterator<String> it = parameters.keys();
 
 		while (it.hasNext()) {
@@ -202,8 +207,7 @@ public class HttpUtil {
 				contentBody = (InputStreamBody)value;
 			}
 			else {
-				contentBody = new StringBody(
-					value.toString(), ContentType.TEXT_PLAIN);
+				contentBody = new StringBody(value.toString(), contentType);
 			}
 
 			builder.addPart(key, contentBody);
@@ -240,14 +244,12 @@ public class HttpUtil {
 
 		int status = response.getStatusLine().getStatusCode();
 
-		if ((status == HttpStatus.SC_MOVED_TEMPORARILY) ||
-			(status == HttpStatus.SC_MOVED_PERMANENTLY) ||
-			(status == HttpStatus.SC_TEMPORARY_REDIRECT) ||
-			(status == HttpStatus.SC_SEE_OTHER)) {
+		if ((status == HttpStatus.SC_MOVED_PERMANENTLY) ||
+			(status == HttpStatus.SC_MOVED_TEMPORARILY) ||
+			(status == HttpStatus.SC_SEE_OTHER) ||
+			(status == HttpStatus.SC_TEMPORARY_REDIRECT)) {
 
-			String url = getRedirectUrl(request, response);
-
-			throw new RedirectException(url);
+			throw new RedirectException(getRedirectUrl(request, response));
 		}
 
 		if (status == HttpStatus.SC_UNAUTHORIZED) {
