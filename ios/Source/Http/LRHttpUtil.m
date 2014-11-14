@@ -15,6 +15,7 @@
 #import "LRHttpUtil.h"
 
 #import "LRBatchSession.h"
+#import "LRConnectionDelegate.h"
 #import "LRResponseParser.h"
 
 NSString *const LR_GET = @"GET";
@@ -28,7 +29,7 @@ static NSString *_JSONWS_PATH = @"api/jsonws";
  */
 @implementation LRHttpUtil
 
-typedef void (^LRHandler)(NSURLResponse *response, NSData *data, NSError *error);
+typedef void (^LRHandler)(NSData *data, NSURLResponse *response, NSError *error);
 
 + (NSURL *)getURL:(LRSession *)session path:(NSString *)path {
 	NSString *server = session.server;
@@ -122,7 +123,7 @@ typedef void (^LRHandler)(NSURLResponse *response, NSData *data, NSError *error)
 
 	id<LRCallback> callback = session.callback;
 
-	LRHandler handler = ^(NSURLResponse *response, NSData *data, NSError *e) {
+	LRHandler handler = ^(NSData *data, NSURLResponse *response, NSError *e) {
 		dispatch_async(dispatch_get_main_queue(), ^{
 			if (e) {
 				[callback onFailure:e];
@@ -131,8 +132,9 @@ typedef void (^LRHandler)(NSURLResponse *response, NSData *data, NSError *error)
 				NSError *serverError;
 
 				NSURL *url = [request URL];
+				NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
 
-				id json = [LRResponseParser parse:data response:response
+				id json = [LRResponseParser parse:data response:httpResponse
 					url:url error:&serverError];
 
 				if (serverError) {
@@ -151,8 +153,16 @@ typedef void (^LRHandler)(NSURLResponse *response, NSData *data, NSError *error)
 		});
 	};
 
-	[NSURLConnection sendAsynchronousRequest:request queue:session.queue
+	NSURLSessionConfiguration *config = [NSURLSessionConfiguration
+		defaultSessionConfiguration];
+
+	NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:config
+		delegate:[[LRConnectionDelegate alloc] init] delegateQueue:nil];
+
+	NSURLSessionDataTask *task = [urlSession dataTaskWithRequest:request
 		completionHandler:handler];
+
+	[task resume];
 }
 
 @end

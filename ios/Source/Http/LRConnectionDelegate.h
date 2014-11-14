@@ -12,17 +12,8 @@
  * details.
  */
 
-#import "LRSession.h"
-
-extern const int LR_HTTP_STATUS_OK;
-extern const int LR_HTTP_STATUS_UNAUTHORIZED;
-
 /**
- * @author Bruno Farache
+ * @author Josiane Bezerra
  */
-@interface LRResponseParser : NSObject
-
-+ (id)parse:(id)data response:(NSHTTPURLResponse *)response url:(NSURL *)url
-	error:(NSError **)error;
-
+@interface LRConnectionDelegate : NSObject <NSURLSessionDelegate>
 @end

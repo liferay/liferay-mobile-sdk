@@ -17,7 +17,11 @@
 #import "LRBatchSession.h"
 #import "LRError.h"
 
+const int LR_HTTP_STATUS_MOVED_PERMANENTLY = 301;
+const int LR_HTTP_STATUS_MOVED_TEMPORARILY = 302;
 const int LR_HTTP_STATUS_OK = 200;
+const int LR_HTTP_STATUS_SEE_OTHER = 303;
+const int LR_HTTP_STATUS_TEMPORARY_REDIRECT = 307;
 const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 
 /**
@@ -25,13 +29,13 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
  */
 @implementation LRResponseParser
 
-+ (id)parse:(id)data response:(NSURLResponse *)response url:(NSURL *)url
++ (id)parse:(id)data response:(NSHTTPURLResponse *)response url:(NSURL *)url
 		error:(NSError **)error {
 
-	long statusCode = [(NSHTTPURLResponse *)response statusCode];
+	long statusCode = [response statusCode];
 	NSURL *responseURL = [response URL];
 
-	*error = [self _checkHttpError:statusCode];
+	*error = [self _checkHttpError:statusCode response:response];
 
 	if (*error) {
 		return nil;
@@ -53,12 +57,24 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 	}
 }
 
-+ (NSError *)_checkHttpError:(long)statusCode {
++ (NSError *)_checkHttpError:(long)statusCode
+		response:(NSHTTPURLResponse *)response {
+
 	NSError *error;
 
 	if (statusCode == LR_HTTP_STATUS_UNAUTHORIZED) {
 		error = [LRError errorWithCode:LRErrorCodeUnauthorized
 			description:@"wrong-credentials"];
+	}
+	else if ([self _isRedirect:statusCode]) {
+		NSURL *URL = [response.allHeaderFields objectForKey:@"Location"];
+
+		NSDictionary *userInfo = @{
+			NSURLErrorKey: URL
+		};
+
+		error = [LRError errorWithCode:LRErrorCodeRedirect
+			description:@"url-has-moved" userInfo:userInfo];
 	}
 	else if (statusCode != LR_HTTP_STATUS_OK) {
 		error = [LRError errorWithCode:statusCode description:@"http-error"];
@@ -105,6 +121,13 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 	}
 
 	return error;
+}
+
++ (BOOL)_isRedirect:(long)statusCode {
+	return (statusCode == LR_HTTP_STATUS_MOVED_PERMANENTLY ||
+		statusCode == LR_HTTP_STATUS_MOVED_TEMPORARILY ||
+		statusCode == LR_HTTP_STATUS_TEMPORARY_REDIRECT ||
+		statusCode == LR_HTTP_STATUS_SEE_OTHER);
 }
 
 + (id)_parse:(NSData *)data requestUrl:(NSURL *)requestUrl

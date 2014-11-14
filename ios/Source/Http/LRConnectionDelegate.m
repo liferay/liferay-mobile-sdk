@@ -12,17 +12,19 @@
  * details.
  */
 
-#import "LRSession.h"
-
-extern const int LR_HTTP_STATUS_OK;
-extern const int LR_HTTP_STATUS_UNAUTHORIZED;
+#import "LRConnectionDelegate.h"
 
 /**
- * @author Bruno Farache
+ * @author Josiane Bezerra
  */
-@interface LRResponseParser : NSObject
+@implementation LRConnectionDelegate
 
-+ (id)parse:(id)data response:(NSHTTPURLResponse *)response url:(NSURL *)url
-	error:(NSError **)error;
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
+		willPerformHTTPRedirection:(NSHTTPURLResponse *)response
+		newRequest:(NSURLRequest *)request
+		completionHandler:(void (^)(NSURLRequest *))completionHandler {
+
+	completionHandler(nil);
+}
 
 @end
