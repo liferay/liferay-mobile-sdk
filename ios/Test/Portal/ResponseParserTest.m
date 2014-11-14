@@ -25,18 +25,30 @@
 
 @implementation ResponseParserTest
 
-- (void)testHttpError {
+- (void)testHTTPError {
 	NSString *json = @"{}";
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 
-	int notFoundStatusCode = 404;
+	int statusCode = 404;
 	NSError *error;
-	id response = [LRResponseParser parse:data statusCode:notFoundStatusCode
-		error:&error];
+
+	id response = [LRResponseParser parse:data request:[self _createRequest]
+		response:[self _createResponse:statusCode] error:&error];
 
 	[self _assertWithResponse:response error:error];
 
-	XCTAssertEqual(notFoundStatusCode, error.code);
+	XCTAssertEqual(statusCode, error.code);
+}
+
+- (NSURLRequest *)_createRequest {
+	return [NSURLRequest
+		requestWithURL:[NSURL URLWithString:self.session.server]];
+}
+
+- (NSHTTPURLResponse *)_createResponse:(long)statusCode {
+	return [[NSHTTPURLResponse alloc]
+		initWithURL:[NSURL URLWithString:self.session.server]
+		statusCode:statusCode HTTPVersion:@"HTTP/1.1" headerFields:@{}];
 }
 
 - (void)testParseError {
@@ -44,8 +56,8 @@
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 
 	NSError *error;
-	id response = [LRResponseParser parse:data statusCode:LR_HTTP_STATUS_OK
-		error:&error];
+	id response = [LRResponseParser parse:data request:[self _createRequest]
+		response:[self _createResponse:LR_HTTP_STATUS_OK] error:&error];
 
 	[self _assertWithResponse:response error:error];
 
@@ -53,6 +65,7 @@
 
 	NSString *localizedDescription = [LRLocalizationUtil
 		localize:@"json-parsing-error"];
+
 	XCTAssertEqualObjects(localizedDescription, [error localizedDescription]);
 }
 
@@ -68,8 +81,8 @@
 	NSData *data = [NSJSONSerialization dataWithJSONObject:json options:0
 		error:&error];
 
-	id response = [LRResponseParser parse:data statusCode:LR_HTTP_STATUS_OK
-		error:&error];
+	id response = [LRResponseParser parse:data request:[self _createRequest]
+		response:[self _createResponse:LR_HTTP_STATUS_OK] error:&error];
 
 	[self _assertWithResponse:response error:error];
 
@@ -90,8 +103,8 @@
 	NSData *data = [NSJSONSerialization dataWithJSONObject:json options:0
 		error:&error];
 
-	id response = [LRResponseParser parse:data statusCode:LR_HTTP_STATUS_OK
-		error:&error];
+	id response = [LRResponseParser parse:data request:[self _createRequest]
+		response:[self _createResponse:LR_HTTP_STATUS_OK] error:&error];
 
 	[self _assertWithResponse:response error:error];
 
@@ -107,8 +120,9 @@
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 
 	NSError *error;
-	id response = [LRResponseParser parse:data
-		statusCode:LR_HTTP_STATUS_UNAUTHORIZED error:&error];
+	id response = [LRResponseParser parse:data request:[self _createRequest]
+		response:[self _createResponse:LR_HTTP_STATUS_UNAUTHORIZED]
+		error:&error];
 
 	[self _assertWithResponse:response error:error];
 
@@ -116,6 +130,7 @@
 
 	NSString *localizedDescription = [LRLocalizationUtil
 		localize:@"wrong-credentials"];
+
 	XCTAssertEqualObjects(localizedDescription, [error localizedDescription]);
 }
 

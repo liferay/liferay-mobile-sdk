@@ -29,25 +29,20 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
  */
 @implementation LRResponseParser
 
-+ (id)parse:(id)data response:(NSHTTPURLResponse *)response url:(NSURL *)url
-		error:(NSError **)error {
++ (id)parse:(id)data request:(NSURLRequest *)request
+		response:(NSHTTPURLResponse *)response error:(NSError **)error {
 
-	long statusCode = [response statusCode];
-	NSURL *responseURL = [response URL];
-
-	*error = [self _checkHttpError:statusCode response:response];
+	*error = [self _checkHTTPError:request response:response];
 
 	if (*error) {
 		return nil;
 	}
 
 	if ([data isKindOfClass:[NSData class]]) {
-		return [self _parse:data requestUrl:url responseUrl:responseURL
-			error:error];
+		return [self _parse:data error:error];
 	}
 	else {
-		*error = [self _checkPortalException:data requestUrl:url
-			responseUrl:responseURL];
+		*error = [self _checkPortalException:data];
 
 		if (*error) {
 			return nil;
@@ -57,20 +52,30 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 	}
 }
 
-+ (NSError *)_checkHttpError:(long)statusCode
++ (NSError *)_checkHTTPError:(NSURLRequest *)request
 		response:(NSHTTPURLResponse *)response {
 
 	NSError *error;
+
+	NSURL *requestURL = [request URL];
+	NSURL *responseURL = [response URL];
+	long statusCode = [response statusCode];
 
 	if (statusCode == LR_HTTP_STATUS_UNAUTHORIZED) {
 		error = [LRError errorWithCode:LRErrorCodeUnauthorized
 			description:@"wrong-credentials"];
 	}
-	else if ([self _isRedirect:statusCode]) {
-		NSURL *URL = [response.allHeaderFields objectForKey:@"Location"];
+	else if (![requestURL isEqual:responseURL] ||
+			[self _isRedirect:statusCode]) {
+
+		NSURL *location = [response.allHeaderFields objectForKey:@"Location"];
+
+		if (!location) {
+			location = responseURL;
+		}
 
 		NSDictionary *userInfo = @{
-			NSURLErrorKey: URL
+			NSURLErrorKey: location
 		};
 
 		error = [LRError errorWithCode:LRErrorCodeRedirect
@@ -83,8 +88,7 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 	return error;
 }
 
-+ (NSError *)_checkPortalException:(id)json requestUrl:(NSURL *)requestUrl
-		responseUrl:(NSURL *)responseUrl {
++ (NSError *)_checkPortalException:(id)json {
 
 	if (![json isKindOfClass:[NSDictionary class]]) {
 		return nil;
@@ -107,14 +111,6 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 		error = [LRError errorWithCode:LRErrorCodePortalException
 			description:type userInfo:userInfo];
 	}
-	else if(![requestUrl isEqual:responseUrl]) {
-		NSDictionary *userInfo = @{
-			NSURLErrorKey: responseUrl
-		};
-
-		error = [LRError errorWithCode:LRErrorCodeRedirect
-			description:@"url-has-moved" userInfo:userInfo];
-	}
 	else {
 		error = [LRError errorWithCode:LRErrorCodePortalException
 			description:exception];
@@ -124,14 +120,13 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 }
 
 + (BOOL)_isRedirect:(long)statusCode {
-	return (statusCode == LR_HTTP_STATUS_MOVED_PERMANENTLY ||
-		statusCode == LR_HTTP_STATUS_MOVED_TEMPORARILY ||
-		statusCode == LR_HTTP_STATUS_TEMPORARY_REDIRECT ||
-		statusCode == LR_HTTP_STATUS_SEE_OTHER);
+	return ((statusCode == LR_HTTP_STATUS_MOVED_PERMANENTLY) ||
+		(statusCode == LR_HTTP_STATUS_MOVED_TEMPORARILY) ||
+		(statusCode == LR_HTTP_STATUS_SEE_OTHER) ||
+		(statusCode == LR_HTTP_STATUS_TEMPORARY_REDIRECT));
 }
 
-+ (id)_parse:(NSData *)data requestUrl:(NSURL *)requestUrl
-		responseUrl:(NSURL *)responseUrl error:(NSError **)error {
++ (id)_parse:(NSData *)data error:(NSError **)error {
 
 	NSError *parseError;
 	
@@ -147,8 +142,7 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 			description:@"json-parsing-error" userInfo:userInfo];
 	}
 	else {
-		*error = [self _checkPortalException:json requestUrl:requestUrl
-			responseUrl:responseUrl];
+		*error = [self _checkPortalException:json];
 	}
 
 	if (*error) {

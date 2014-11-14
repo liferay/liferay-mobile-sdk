@@ -137,6 +137,7 @@
 		CCA7166E1919511F00712D1C /* OrderByComparatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */; };
 		CCABA081197C995500A9F8B0 /* LRResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CCABA07F197C995500A9F8B0 /* LRResponseParser.m */; };
 		CCABA086197D544B00A9F8B0 /* LRError.m in Sources */ = {isa = PBXBuildFile; fileRef = CCABA085197D544A00A9F8B0 /* LRError.m */; };
+		CCC6A7B61A164BEB00ABB791 /* LRConnectionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC6A7B51A164BEB00ABB791 /* LRConnectionDelegate.m */; };
 		CCCF04E019182584005D1B22 /* LRJSONObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */; };
 		CCCF04E319192798005D1B22 /* ServiceContextTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCF04E219192798005D1B22 /* ServiceContextTest.m */; };
 /* End PBXBuildFile section */
@@ -413,6 +414,8 @@
 		CCABA080197C995500A9F8B0 /* LRResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRResponseParser.h; sourceTree = "<group>"; };
 		CCABA084197D544A00A9F8B0 /* LRError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRError.h; sourceTree = "<group>"; };
 		CCABA085197D544A00A9F8B0 /* LRError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRError.m; sourceTree = "<group>"; };
+		CCC6A7B41A164BEB00ABB791 /* LRConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRConnectionDelegate.h; sourceTree = "<group>"; };
+		CCC6A7B51A164BEB00ABB791 /* LRConnectionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRConnectionDelegate.m; sourceTree = "<group>"; };
 		CCCF04E119192798005D1B22 /* ServiceContextTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceContextTest.h; sourceTree = "<group>"; };
 		CCCF04E219192798005D1B22 /* ServiceContextTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceContextTest.m; sourceTree = "<group>"; };
 		CCD60E10191820BE00935937 /* LRJSONObjectWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRJSONObjectWrapper.h; sourceTree = "<group>"; };
@@ -487,6 +490,8 @@
 		CC03FB7C18ED7DCC00F3F16C /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				CCC6A7B41A164BEB00ABB791 /* LRConnectionDelegate.h */,
+				CCC6A7B51A164BEB00ABB791 /* LRConnectionDelegate.m */,
 				CCABA084197D544A00A9F8B0 /* LRError.h */,
 				CCABA085197D544A00A9F8B0 /* LRError.m */,
 				CC03FB7D18ED7DCC00F3F16C /* LRHttpUtil.h */,
@@ -1786,6 +1791,7 @@
 				CC03FCA918ED7DCD00F3F16C /* LRAddressService_v62.m in Sources */,
 				CC03FD0618ED7DCD00F3F16C /* LRWebsiteService_v62.m in Sources */,
 				CC03FCE218ED7DCD00F3F16C /* LROrgLaborService_v62.m in Sources */,
+				CCC6A7B61A164BEB00ABB791 /* LRConnectionDelegate.m in Sources */,
 				CC03FCDF18ED7DCD00F3F16C /* LRMDRRuleGroupInstanceService_v62.m in Sources */,
 				CC03FD0318ED7DCD00F3F16C /* LRUserGroupService_v62.m in Sources */,
 				CC03FCF818ED7DCD00F3F16C /* LRShoppingItemService_v62.m in Sources */,

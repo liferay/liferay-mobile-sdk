@@ -56,9 +56,10 @@
 		success:^(AFHTTPRequestOperation *operation, id json) {
 			NSError *serverError;
 
-			long statusCode = [operation.response statusCode];
+			NSURLRequest *request = operation.request;
+			NSHTTPURLResponse *response = operation.response;
 
-			[LRResponseParser parse:json statusCode:statusCode
+			[LRResponseParser parse:json request:request response:response
 				error:&serverError];
 
 			if (serverError) {
