@@ -15,5 +15,5 @@
 /**
  * @author Josiane Bezerra
  */
-@interface LRConnectionDelegate : NSObject <NSURLSessionDelegate>
+@interface LRRedirectDelegate : NSObject <NSURLSessionDelegate>
 @end

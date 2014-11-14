@@ -12,12 +12,12 @@
  * details.
  */
 
-#import "LRConnectionDelegate.h"
+#import "LRRedirectDelegate.h"
 
 /**
  * @author Josiane Bezerra
  */
-@implementation LRConnectionDelegate
+@implementation LRRedirectDelegate
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
 		willPerformHTTPRedirection:(NSHTTPURLResponse *)response

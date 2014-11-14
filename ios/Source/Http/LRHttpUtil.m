@@ -15,7 +15,7 @@
 #import "LRHttpUtil.h"
 
 #import "LRBatchSession.h"
-#import "LRConnectionDelegate.h"
+#import "LRRedirectDelegate.h"
 #import "LRResponseParser.h"
 
 NSString *const LR_GET = @"GET";
@@ -29,7 +29,8 @@ static NSString *_JSONWS_PATH = @"api/jsonws";
  */
 @implementation LRHttpUtil
 
-typedef void (^LRHandler)(NSData *data, NSURLResponse *response, NSError *error);
+typedef void (^LRHandler)(
+	NSData *data, NSURLResponse *response, NSError *error);
 
 + (NSURL *)getURL:(LRSession *)session path:(NSString *)path {
 	NSString *server = session.server;
@@ -150,11 +151,14 @@ typedef void (^LRHandler)(NSData *data, NSURLResponse *response, NSError *error)
 		});
 	};
 
-	NSURLSessionConfiguration *config = [NSURLSessionConfiguration
+	NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration
 		defaultSessionConfiguration];
 
-	NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:config
-		delegate:[[LRConnectionDelegate alloc] init] delegateQueue:nil];
+	LRRedirectDelegate *delegate = [[LRRedirectDelegate alloc] init];
+
+	NSURLSession *urlSession = [NSURLSession
+		sessionWithConfiguration:configuration delegate:delegate
+		delegateQueue:nil];
 
 	NSURLSessionDataTask *task = [urlSession dataTaskWithRequest:request
 		completionHandler:handler];
