@@ -67,7 +67,6 @@
 	XCTAssertEqualObjects(localizedDescription, [error localizedDescription]);
 }
 
-
 - (void)testPortalException {
 	NSString *exception = @"No such user with primary key 1";
 
@@ -123,6 +122,33 @@
 	XCTAssertEqualObjects(exception, [error localizedFailureReason]);
 }
 
+- (void)testRedirect {
+	NSString *json = @"{}";
+	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
+
+	int statusCode = 301;
+	NSURLRequest *request = [self _createRequest];
+	NSString *redirectedURL = @"http://redirected";
+
+	NSHTTPURLResponse *response = [self
+		_createResponseWithStatusCode:statusCode redirectURL:redirectedURL];
+
+	NSError *error;
+
+	id result = [LRResponseParser parse:data request:request response:response
+		error:&error];
+
+	[self _assertWithResult:result error:error];
+
+	XCTAssertEqual(LRErrorCodeRedirect, error.code);
+	XCTAssertEqualObjects(redirectedURL, [error userInfo][NSURLErrorKey]);
+
+	NSString *localizedDescription = [LRLocalizationUtil
+		localize:@"url-has-moved"];
+
+	XCTAssertEqualObjects(localizedDescription, [error localizedDescription]);
+}
+
 - (void)testUnauthorizedError {
 	NSString *json = @"{}";
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
@@ -161,9 +187,26 @@
 }
 
 - (NSHTTPURLResponse *)_createResponseWithStatusCode:(long)statusCode {
-	return [[NSHTTPURLResponse alloc]
-		initWithURL:[NSURL URLWithString:self.session.server]
-		statusCode:statusCode HTTPVersion:@"HTTP/1.1" headerFields:@{}];
+	return [self _createResponseWithStatusCode:statusCode redirectURL:nil];
+}
+
+- (NSHTTPURLResponse *)_createResponseWithStatusCode:(long)statusCode
+		redirectURL:(NSString *)redirectURL {
+
+	NSURL *url = [NSURL URLWithString:redirectURL];
+	NSDictionary *headers = @{};
+
+	if (!url) {
+		url = [NSURL URLWithString:self.session.server];
+	}
+	else {
+		headers = @{
+			@"Location": redirectURL
+		};
+	}
+
+	return [[NSHTTPURLResponse alloc] initWithURL:url statusCode:statusCode
+		HTTPVersion:@"HTTP/1.1" headerFields:headers];
 }
 
 @end
