@@ -127,7 +127,6 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 }
 
 + (id)_parse:(NSData *)data error:(NSError **)error {
-
 	NSError *parseError;
 	
 	id json = [NSJSONSerialization JSONObjectWithData:data options:0

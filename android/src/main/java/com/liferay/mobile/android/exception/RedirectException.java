@@ -20,7 +20,7 @@ package com.liferay.mobile.android.exception;
 public class RedirectException extends ServerException {
 
 	public RedirectException(String url) {
-		super("The requested url has moved to " + url);
+		super("The requested URL has moved to " + url);
 
 		_url = url;
 	}

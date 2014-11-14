@@ -30,36 +30,34 @@
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 
 	int statusCode = 404;
+	NSURLRequest *request = [self _createRequest];
+	NSHTTPURLResponse *response = [self
+		_createResponseWithStatusCode:statusCode];
+
 	NSError *error;
 
-	id response = [LRResponseParser parse:data request:[self _createRequest]
-		response:[self _createResponse:statusCode] error:&error];
+	id result = [LRResponseParser parse:data request:request response:response
+		error:&error];
 
-	[self _assertWithResponse:response error:error];
+	[self _assertWithResult:result error:error];
 
 	XCTAssertEqual(statusCode, error.code);
-}
-
-- (NSURLRequest *)_createRequest {
-	return [NSURLRequest
-		requestWithURL:[NSURL URLWithString:self.session.server]];
-}
-
-- (NSHTTPURLResponse *)_createResponse:(long)statusCode {
-	return [[NSHTTPURLResponse alloc]
-		initWithURL:[NSURL URLWithString:self.session.server]
-		statusCode:statusCode HTTPVersion:@"HTTP/1.1" headerFields:@{}];
 }
 
 - (void)testParseError {
 	NSString *json = @"{this is an invalid json}";
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 
-	NSError *error;
-	id response = [LRResponseParser parse:data request:[self _createRequest]
-		response:[self _createResponse:LR_HTTP_STATUS_OK] error:&error];
+	NSURLRequest *request = [self _createRequest];
+	NSHTTPURLResponse *response = [self
+		_createResponseWithStatusCode:LR_HTTP_STATUS_OK];
 
-	[self _assertWithResponse:response error:error];
+	NSError *error;
+
+	id result = [LRResponseParser parse:data request:request response:response
+		error:&error];
+
+	[self _assertWithResult:result error:error];
 
 	XCTAssertEqual(LRErrorCodeParse, error.code);
 
@@ -78,13 +76,18 @@
 	};
 
 	NSError *error;
+
 	NSData *data = [NSJSONSerialization dataWithJSONObject:json options:0
 		error:&error];
 
-	id response = [LRResponseParser parse:data request:[self _createRequest]
-		response:[self _createResponse:LR_HTTP_STATUS_OK] error:&error];
+	NSURLRequest *request = [self _createRequest];
+	NSHTTPURLResponse *response = [self
+		_createResponseWithStatusCode:LR_HTTP_STATUS_OK];
 
-	[self _assertWithResponse:response error:error];
+	id result = [LRResponseParser parse:data request:request response:response
+		error:&error];
+
+	[self _assertWithResult:result error:error];
 
 	XCTAssertEqual(LRErrorCodePortalException, error.code);
 	XCTAssertEqualObjects(exception, [error localizedDescription]);
@@ -100,13 +103,18 @@
 	};
 
 	NSError *error;
+
 	NSData *data = [NSJSONSerialization dataWithJSONObject:json options:0
 		error:&error];
 
-	id response = [LRResponseParser parse:data request:[self _createRequest]
-		response:[self _createResponse:LR_HTTP_STATUS_OK] error:&error];
+	NSURLRequest *request = [self _createRequest];
+	NSHTTPURLResponse *response = [self
+		_createResponseWithStatusCode:LR_HTTP_STATUS_OK];
 
-	[self _assertWithResponse:response error:error];
+	id result = [LRResponseParser parse:data request:request
+		response:response error:&error];
+
+	[self _assertWithResult:result error:error];
 
 	XCTAssertEqual(LRErrorCodePortalException, error.code);
 
@@ -119,12 +127,16 @@
 	NSString *json = @"{}";
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 
+	NSURLRequest *request = [self _createRequest];
+	NSHTTPURLResponse *response = [self
+	   _createResponseWithStatusCode:LR_HTTP_STATUS_UNAUTHORIZED];
+
 	NSError *error;
-	id response = [LRResponseParser parse:data request:[self _createRequest]
-		response:[self _createResponse:LR_HTTP_STATUS_UNAUTHORIZED]
+
+	id result = [LRResponseParser parse:data request:request response:response
 		error:&error];
 
-	[self _assertWithResponse:response error:error];
+	[self _assertWithResult:result error:error];
 
 	XCTAssertEqual(LRErrorCodeUnauthorized, error.code);
 
@@ -134,13 +146,24 @@
 	XCTAssertEqualObjects(localizedDescription, [error localizedDescription]);
 }
 
-- (void)_assertWithResponse:(id)response error:(NSError *)error {
-	XCTAssertNil(response);
+- (void)_assertWithResult:(id)result error:(NSError *)error {
+	XCTAssertNil(result);
 
 	XCTAssertNotNil(error);
 	XCTAssertEqualObjects(LR_ERROR_DOMAIN, error.domain);
 	XCTAssertNotNil(error.userInfo);
 	XCTAssertNotNil([error localizedDescription]);
+}
+
+- (NSURLRequest *)_createRequest {
+	return [NSURLRequest
+		requestWithURL:[NSURL URLWithString:self.session.server]];
+}
+
+- (NSHTTPURLResponse *)_createResponseWithStatusCode:(long)statusCode {
+	return [[NSHTTPURLResponse alloc]
+		initWithURL:[NSURL URLWithString:self.session.server]
+		statusCode:statusCode HTTPVersion:@"HTTP/1.1" headerFields:@{}];
 }
 
 @end
