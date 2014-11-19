@@ -14,39 +14,33 @@
 
 package com.liferay.mobile.sdk.test.portal;
 
-import com.liferay.mobile.android.exception.ServerException;
-import com.liferay.mobile.android.service.Session;
-import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.android.v62.group.GroupService;
+import com.liferay.mobile.android.util.PortraitUtil;
 import com.liferay.mobile.sdk.test.BaseTest;
 
 import java.io.IOException;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
- * @author Jose M. Navarro
+ * @author Bruno Farache
  */
-public class UnauthenticatedServiceTest extends BaseTest {
+public class PortraitTest extends BaseTest {
 
-	public UnauthenticatedServiceTest() throws IOException {
+	public PortraitTest() throws IOException {
 		super();
 	}
 
 	@Test
-	public void getUserSites() throws Exception {
-		Session session = new SessionImpl(this.session.getServer());
-		GroupService service = new GroupService(session);
+	public void getPortraitURL() throws Exception {
+		String portraitURL = PortraitUtil.getPortraitURL(
+			session, true, 1708235, "c0c65ba5-c2ba-4bf5-9e42-7330adb1b5b8");
 
-		try {
-			service.getUserSites();
-			fail();
-		}
-		catch (ServerException se) {
-			assertEquals("Authenticated access required", se.getMessage());
-		}
+		assertEquals(
+			"http://localhost:8080/image/user_male_portrait?img_id=1708235&im" +
+				"g_id_token=U6W2%2BvmVgE%2FyBnzvklnWO%2BqHPck%3D",
+			portraitURL);
 	}
 
 }

@@ -27,6 +27,8 @@ public class CharPool {
 
 	public static final char BACK_SLASH = '\\';
 
+	public static final String BLANK = "";
+
 	public static final char CLOSE_BRACKET = ']';
 
 	public static final char CLOSE_CURLY_BRACE = '}';
