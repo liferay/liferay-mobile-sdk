@@ -33,12 +33,12 @@ static NSString *_JSONWS_PATH = @"api/jsonws";
 typedef void (^LRHandler)(
 	NSData *data, NSURLResponse *response, NSError *error);
 
-+ (NSString *)encodeURL:(NSString *)string {
++ (NSString *)encodeURL:(NSString *)URL {
 	CFStringRef charactersToEscape = CFSTR(":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`");
 
 	NSString *newString = CFBridgingRelease(
 		CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-			(CFStringRef)string, NULL, charactersToEscape,
+			(CFStringRef)URL, NULL, charactersToEscape,
 			CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));
 
 	return newString ? newString : LR_BLANK;
