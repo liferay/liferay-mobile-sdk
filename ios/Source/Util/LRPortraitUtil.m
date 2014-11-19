@@ -112,7 +112,8 @@ NSString *const LR_LAST_MODIFIED = @"Last-Modified";
 	CC_SHA1(string, (CC_LONG)strlen(string), result);
 
 	NSData *data = [[NSData alloc] initWithBytes:result length:(sizeof result)];
-	return [data base64Encoding];
+
+	return [LRHttpUtil encodeURL:[data base64EncodedStringWithOptions:0]];
 }
 
 @end

@@ -18,6 +18,7 @@
 #import "LRRedirectDelegate.h"
 #import "LRResponseParser.h"
 
+NSString *const LR_BLANK = @"";
 NSString *const LR_GET = @"GET";
 NSString *const LR_HEAD = @"HEAD";
 NSString *const LR_POST = @"POST";
@@ -31,6 +32,17 @@ static NSString *_JSONWS_PATH = @"api/jsonws";
 
 typedef void (^LRHandler)(
 	NSData *data, NSURLResponse *response, NSError *error);
+
++ (NSString *)encodeURL:(NSString *)string {
+	CFStringRef charactersToEscape = CFSTR(":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`");
+
+	NSString *newString = CFBridgingRelease(
+		CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+			(CFStringRef)string, NULL, charactersToEscape,
+			CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));
+
+	return newString ? newString : LR_BLANK;
+}
 
 + (NSURL *)getURL:(LRSession *)session path:(NSString *)path {
 	NSString *server = session.server;

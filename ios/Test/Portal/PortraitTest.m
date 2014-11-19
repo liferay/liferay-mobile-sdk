@@ -12,27 +12,26 @@
  * details.
  */
 
-#import "LRSession.h"
-
-extern NSString *const LR_GET;
-extern NSString *const LR_HEAD;
-extern NSString *const LR_POST;
+#import "BaseTest.h"
+#import "LRPortraitUtil.h"
 
 /**
- * @author Bruno Farache
+ * @author Josiane Bezerra
  */
-@interface LRHttpUtil : NSObject
+@interface PortraitTest : BaseTest
+@end
 
-+ (NSString *)encodeURL:(NSString *)string;
-+ (NSURL *)getURL:(LRSession *)session path:(NSString *)path;
+@implementation PortraitTest : BaseTest
 
-+ (NSArray *)post:(LRSession *)session command:(NSDictionary *)command
-	error:(NSError **)error;
+- (void)testGetPortraitURL {
+	NSString *URL = [LRPortraitUtil getPortraitURL:self.session male:YES
+		portraitId:1708235 uuid:@"c0c65ba5-c2ba-4bf5-9e42-7330adb1b5b8"];
 
-+ (NSArray *)post:(LRSession *)session commands:(NSArray *)commands
-	error:(NSError **)error;
+	NSString *expectedURL = [NSString stringWithFormat:@"%@%@",
+		@"http://localhost:8080/image/user_male_portrait?",
+		@"img_id=1708235&img_id_token=U6W2%2BvmVgE%2FyBnzvklnWO%2BqHPck%3D"];
 
-+ (void)setAuthHeader:(LRSession *)session
-	request:(NSMutableURLRequest *)request;
+	XCTAssertEqualObjects(URL, expectedURL);
+}
 
 @end
