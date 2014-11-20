@@ -127,6 +127,7 @@ task createModule << {
 		props.createNewFile()
 
 		write(props, 'context', context)
+		write(props, 'destination', '.')
 
 		if (all) {
 			write(props, 'platforms', platforms)
