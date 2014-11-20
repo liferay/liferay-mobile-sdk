@@ -154,7 +154,7 @@ public class HttpUtil {
 		HttpClient client = getClient(session);
 		HttpPost post = getPost(session, getURL(session, "/invoke"));
 
-		post.setEntity(new StringEntity(commands.toString(), Consts.UTF_8));
+		post.setEntity(new StringEntity(commands.toString(), "UTF-8"));
 
 		HttpResponse response = client.execute(post);
 		String json = HttpUtil.getResponseString(response);
