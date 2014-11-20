@@ -14,7 +14,10 @@
 
 package com.liferay.mobile.sdk;
 
+import com.liferay.mobile.sdk.http.Action;
 import com.liferay.mobile.sdk.http.Discovery;
+
+import java.util.List;
 
 /**
  * @author Bruno Farache
@@ -22,8 +25,8 @@ import com.liferay.mobile.sdk.http.Discovery;
 public interface Builder {
 
 	public void build(
-			Discovery discovery, String packageName, int version, String filter,
-			String destination)
+			Discovery discovery, List<Action> actions, String packageName,
+			int version, String filter, String destination)
 		throws Exception;
 
 	public void buildAll(

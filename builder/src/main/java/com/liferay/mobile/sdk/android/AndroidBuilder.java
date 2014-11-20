@@ -24,6 +24,7 @@ import com.liferay.mobile.sdk.velocity.VelocityUtil;
 import java.io.File;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.tools.generic.EscapeTool;
@@ -35,8 +36,8 @@ public class AndroidBuilder extends BaseBuilder {
 
 	@Override
 	public void build(
-			Discovery discovery, String packageName, int version, String filter,
-			String destination)
+			Discovery discovery, List<Action> actions, String packageName,
+			int version, String filter, String destination)
 		throws Exception {
 
 		StringBuilder sb = new StringBuilder();
@@ -54,7 +55,7 @@ public class AndroidBuilder extends BaseBuilder {
 		}
 
 		VelocityContext context = getVelocityContext(
-			discovery, packageName, version, filter);
+			discovery, actions, packageName, version, filter);
 
 		String templatePath = "templates/android/service.vm";
 		String filePath = getServiceFilePath(context, destination);
@@ -62,15 +63,14 @@ public class AndroidBuilder extends BaseBuilder {
 		VelocityUtil.generate(context, templatePath, filePath, true);
 	}
 
-	protected void excludeMethods(VelocityContext context) {
-		String className = (String)context.get(CLASS_NAME);
-		Discovery discovery = (Discovery)context.get(DISCOVERY);
+	protected List<Action> excludeMethods(
+		String className, List<Action> actions) {
 
 		if (!className.equals("DDLRecordService")) {
-			return;
+			return actions;
 		}
 
-		ArrayList<Action> actions = discovery.getActions();
+		actions = new ArrayList<Action>(actions);
 
 		for (Action action : actions) {
 			String path = action.getPath();
@@ -81,6 +81,8 @@ public class AndroidBuilder extends BaseBuilder {
 				break;
 			}
 		}
+
+		return actions;
 	}
 
 	protected String getServiceFilePath(
@@ -108,7 +110,8 @@ public class AndroidBuilder extends BaseBuilder {
 	}
 
 	protected VelocityContext getVelocityContext(
-		Discovery discovery, String packageName, int version, String filter) {
+		Discovery discovery, List<Action> actions, String packageName,
+		int version, String filter) {
 
 		VelocityContext context = new VelocityContext();
 
@@ -123,17 +126,18 @@ public class AndroidBuilder extends BaseBuilder {
 
 		packageName = sb.toString();
 
+		String className = javaUtil.getServiceClassName(filter);
+
 		context.put(BYTE_ARRAY, LanguageUtil.BYTE_ARRAY);
-		context.put(CLASS_NAME, javaUtil.getServiceClassName(filter));
+		context.put(CLASS_NAME, className);
 		context.put(DISCOVERY, discovery);
+		context.put(ACTIONS, excludeMethods(className, actions));
 		context.put(ESCAPE_TOOL, new EscapeTool());
 		context.put(INPUT_STREAM_BODY, JavaUtil.INPUT_STREAM_BODY);
 		context.put(JSON_OBJECT_WRAPPER, JavaUtil.JSON_OBJECT_WRAPPER);
 		context.put(LANGUAGE_UTIL, javaUtil);
 		context.put(PACKAGE, packageName);
 		context.put(VOID, LanguageUtil.VOID);
-
-		excludeMethods(context);
 
 		return context;
 	}

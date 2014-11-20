@@ -80,7 +80,8 @@ public class SDKBuilder {
 			}
 			else {
 				builder.build(
-					discovery, packageName, portalVersion, filter, destination);
+					discovery, discovery.getActions(), packageName,
+					portalVersion, filter, destination);
 			}
 		}
 	}

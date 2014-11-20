@@ -15,6 +15,8 @@
 package com.liferay.mobile.sdk.http;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,8 +50,8 @@ public class Discovery {
 		}
 	}
 
-	public ArrayList<Action> getActions() {
-		return _actions;
+	public List<Action> getActions() {
+		return Collections.unmodifiableList(_actions);
 	}
 
 	public String getBasePath() {
@@ -62,22 +64,6 @@ public class Discovery {
 
 	public ArrayList<String> getDiscover() {
 		return _discover;
-	}
-
-	public void setActions(ArrayList<Action> actions) {
-		_actions = actions;
-	}
-
-	public void setBasePath(String basePath) {
-		_basePath = basePath;
-	}
-
-	public void setContext(String context) {
-		_context = context;
-	}
-
-	public void setDiscover(ArrayList<String> discover) {
-		_discover = discover;
 	}
 
 	private ArrayList<Action> _actions = new ArrayList<Action>();

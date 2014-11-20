@@ -30,7 +30,6 @@ import org.json.JSONObject;
 
 ##n
 
-#set ($actions = $discovery.actions)
 #set ($context = $discovery.context)
 
 /**

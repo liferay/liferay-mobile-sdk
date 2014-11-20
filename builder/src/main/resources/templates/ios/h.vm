@@ -22,8 +22,6 @@ ${esc.h}import "LRBaseService.h"
  * @author Bruno Farache
  */
 
-#set ($actions = $discovery.actions)
-
 @interface $className : LRBaseService
 
 ##n

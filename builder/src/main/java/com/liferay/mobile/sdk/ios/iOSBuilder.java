@@ -15,12 +15,15 @@
 package com.liferay.mobile.sdk.ios;
 
 import com.liferay.mobile.sdk.BaseBuilder;
+import com.liferay.mobile.sdk.http.Action;
 import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.util.LanguageUtil;
 import com.liferay.mobile.sdk.util.Validator;
 import com.liferay.mobile.sdk.velocity.VelocityUtil;
 
 import java.io.File;
+
+import java.util.List;
 
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.tools.generic.EscapeTool;
@@ -32,8 +35,8 @@ public class iOSBuilder extends BaseBuilder {
 
 	@Override
 	public void build(
-			Discovery discovery, String packageName, int version, String filter,
-			String destination)
+			Discovery discovery, List<Action> actions, String packageName,
+			int version, String filter, String destination)
 		throws Exception {
 
 		StringBuilder sb = new StringBuilder();
@@ -47,7 +50,7 @@ public class iOSBuilder extends BaseBuilder {
 		destination = sb.toString();
 
 		VelocityContext context = getVelocityContext(
-			discovery, version, filter);
+			discovery, actions, version, filter);
 
 		String headerTemplate = "templates/ios/h.vm";
 		String headerPath = getFilePath(
@@ -95,7 +98,7 @@ public class iOSBuilder extends BaseBuilder {
 	}
 
 	protected VelocityContext getVelocityContext(
-		Discovery discovery, int version, String filter) {
+		Discovery discovery, List<Action> actions, int version, String filter) {
 
 		VelocityContext context = new VelocityContext();
 
@@ -110,6 +113,7 @@ public class iOSBuilder extends BaseBuilder {
 		context.put(BOOL, ObjectiveCUtil.BOOL);
 		context.put(CLASS_NAME, className.toString());
 		context.put(DISCOVERY, discovery);
+		context.put(ACTIONS, actions);
 		context.put(ESCAPE_TOOL, new EscapeTool());
 		context.put(JSON_OBJECT_WRAPPER, ObjectiveCUtil.LR_JSON_OBJECT_WRAPPER);
 		context.put(LANGUAGE_UTIL, objectiveCUtil);

@@ -19,6 +19,7 @@ import com.liferay.mobile.sdk.http.Discovery;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map.Entry;
 
 /**
@@ -32,16 +33,16 @@ public abstract class BaseBuilder implements Builder {
 			String destination)
 		throws Exception {
 
-		HashMap<String, ArrayList<Action>> actionsMap =
-			new HashMap<String, ArrayList<Action>>();
+		HashMap<String, List<Action>> actionsMap =
+			new HashMap<String, List<Action>>();
 
-		ArrayList<Action> actions = discovery.getActions();
+		List<Action> actions = discovery.getActions();
 
 		for (Action action : actions) {
 			String path = action.getPath();
 
 			String className = path.substring(1, path.indexOf("/", 1));
-			ArrayList<Action> classActions = actionsMap.get(className);
+			List<Action> classActions = actionsMap.get(className);
 
 			if (classActions == null) {
 				classActions = new ArrayList<Action>();
@@ -52,12 +53,14 @@ public abstract class BaseBuilder implements Builder {
 			classActions.add(action);
 		}
 
-		for (Entry<String, ArrayList<Action>> entry : actionsMap.entrySet()) {
-			discovery.setActions(entry.getValue());
-
-			build(discovery, packageName, version, entry.getKey(), destination);
+		for (Entry<String, List<Action>> entry : actionsMap.entrySet()) {
+			build(
+				discovery, entry.getValue(), packageName, version,
+				entry.getKey(), destination);
 		}
 	}
+
+	protected static final String ACTIONS = "actions";
 
 	protected static final String BYTE_ARRAY = "BYTE_ARRAY";
 

@@ -22,7 +22,6 @@ ${esc.h}import "${className}.h"
  * @author Bruno Farache
  */
 
-#set ($actions = $discovery.actions)
 #set ($context = $discovery.context)
 
 @implementation $className
