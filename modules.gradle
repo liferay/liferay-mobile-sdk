@@ -9,7 +9,15 @@ ext {
 	N = System.getProperty("line.separator")
 }
 
-configure(allprojects.findAll { it.name != 'builder' }) {
+configurations {
+	builder
+}
+
+dependencies {
+	builder project(':builder')
+}
+
+configure(subprojects.findAll { it.name != 'builder' }) {
 	defaultTasks 'generate'
 
 	configurations {
@@ -74,6 +82,21 @@ configure(subprojects.findAll { it.name.startsWith('modules/') }) {
 	}
 }
 
+task generateAfterCreateModule(type: JavaExec) {
+	main = 'com.liferay.mobile.sdk.SDKBuilder'
+	classpath = configurations.builder
+
+	args = [
+		"platforms=$platforms",
+		"url=$url",
+		"context=$context",
+		"filter=$filter",
+		"packageName=$packageName",
+		"portalVersion=$portalVersion",
+		"destination=$destination"
+	]
+}
+
 task createModule << {
 	def console = System.console()
 
@@ -121,7 +144,7 @@ task createModule << {
 			write(props, 'description', description, project.description)
 		}
 
-		generate.args = [
+		generateAfterCreateModule.args = [
 			"platforms=$platforms",
 			"url=$url",
 			"context=$context",
@@ -144,7 +167,7 @@ createModule {
 	description = "Creates SDK Builder modules."
 }
 
-createModule.finalizedBy(generate)
+createModule.finalizedBy(generateAfterCreateModule)
 
 def addTextColor(text, startColor, endColor=COLORS.WHITE) {
 	return "${Character.toChars(27)}[${startColor}m${text}${Character.toChars(27)}[${endColor}m"
