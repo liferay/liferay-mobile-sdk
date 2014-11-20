@@ -11,12 +11,15 @@ Pod::Spec.new do |s|
 								"Bruno Farache" => "bruno.farache@liferay.com"
 							}
 	s.platform				= :ios
-	s.ios.deployment_target	= '6.1'
+	s.ios.deployment_target	= '7.0'
 	s.source				= {
 								:git => "https://github.com/liferay/liferay-mobile-sdk.git",
 								:tag => "6.2.0.8"
 							}
 	s.source_files			= "ios/Source/**/*.{h,m}"
+	s.subspec				'Liferay-Push-Notifications-iOS-SDK' do |push|
+								push.source_files = "modules/push-notifications-portlet/ios/Source/**/*.{h,m}","ios/Source/{Core,Http,Util}/**/*.h"
+							end
 	s.subspec				'Liferay-Sync-iOS-SDK' do |sync|
 								sync.source_files = "modules/sync-web/ios/Source/**/*.{h,m}","ios/Source/{Core,Http,Util}/**/*.h"
 							end

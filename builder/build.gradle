@@ -2,9 +2,9 @@ archivesBaseName = 'liferay-sdk-builder'
 
 dependencies {
 	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.2.5'
-	compile group: 'org.json', name: 'json', version: '20140107'
 	compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
 	compile group: 'org.apache.velocity', name: 'velocity-tools', version: '2.0'
+	compile group: 'org.json', name: 'json', version: '20140107'
 
 	runtime group: 'com.liferay.mobile', name: 'liferay-sdk-builder-sample', version: '6.2.0.+'
 	runtime group: 'com.github.ithildir', name: 'liferay-sdk-builder-windows', version: '6.2.0.+'
