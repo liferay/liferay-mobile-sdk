@@ -17,10 +17,11 @@
 /**
  * @author Bruno Farache
  */
-@interface LRPushnotificationsdeviceService_v62 : LRBaseService
+@interface LRPushnotificationsentryService_v62 : LRBaseService
 
-- (NSDictionary *)addPushNotificationsDeviceWithToken:(NSString *)token platform:(NSString *)platform error:(NSError **)error;
-- (NSDictionary *)deletePushNotificationsDeviceWithToken:(NSString *)token error:(NSError **)error;
-- (BOOL)hasPermissionWithActionId:(NSString *)actionId error:(NSError **)error;
+- (NSDictionary *)addPushNotificationsEntryWithPayload:(NSString *)payload error:(NSError **)error;
+- (NSDictionary *)dislikePushNotificationsEntryWithPushNotificationsEntryId:(long long)pushNotificationsEntryId error:(NSError **)error;
+- (NSArray *)getPushNotificationsEntriesWithParentPushNotificationsEntryId:(long long)parentPushNotificationsEntryId lastAccessTime:(long long)lastAccessTime start:(int)start end:(int)end error:(NSError **)error;
+- (NSDictionary *)likePushNotificationsEntryWithPushNotificationsEntryId:(long long)pushNotificationsEntryId error:(NSError **)error;
 
 @end

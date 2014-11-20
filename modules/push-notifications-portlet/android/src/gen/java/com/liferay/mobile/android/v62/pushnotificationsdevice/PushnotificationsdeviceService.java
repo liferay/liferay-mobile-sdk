@@ -49,25 +49,6 @@ public class PushnotificationsdeviceService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject addVote(long questionId, long choiceId, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("questionId", questionId);
-			_params.put("choiceId", choiceId);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/push-notifications-portlet/pushnotificationsdevice/add-vote", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		return (JSONObject)session.invoke(_command);
-	}
-
 	public JSONObject deletePushNotificationsDevice(String token) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -100,41 +81,6 @@ public class PushnotificationsdeviceService extends BaseService {
 		}
 
 		return (Boolean)session.invoke(_command);
-	}
-
-	public void sendPushNotification(String payload) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("payload", payload);
-
-			_command.put("/push-notifications-portlet/pushnotificationsdevice/send-push-notification", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void sendPushNotification(long toUserId, String payload) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("toUserId", toUserId);
-			_params.put("payload", payload);
-
-			_command.put("/push-notifications-portlet/pushnotificationsdevice/send-push-notification", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
 	}
 
 }

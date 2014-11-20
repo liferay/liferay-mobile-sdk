@@ -30,19 +30,6 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addVoteWithQuestionId:(long long)questionId choiceId:(long long)choiceId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"questionId": @(questionId),
-		@"choiceId": @(choiceId),
-	}];
-
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
-
-	NSDictionary *_command = @{@"/push-notifications-portlet/pushnotificationsdevice/add-vote": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)deletePushNotificationsDeviceWithToken:(NSString *)token error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"token": token
@@ -61,27 +48,6 @@
 	NSDictionary *_command = @{@"/push-notifications-portlet/pushnotificationsdevice/has-permission": _params};
 
 	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
-}
-
-- (void)sendPushNotificationWithPayload:(NSString *)payload error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"payload": payload
-	}];
-
-	NSDictionary *_command = @{@"/push-notifications-portlet/pushnotificationsdevice/send-push-notification": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (void)sendPushNotificationWithToUserId:(long long)toUserId payload:(NSString *)payload error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"toUserId": @(toUserId),
-		@"payload": payload
-	}];
-
-	NSDictionary *_command = @{@"/push-notifications-portlet/pushnotificationsdevice/send-push-notification": _params};
-
-	[self.session invoke:_command error:error];
 }
 
 @end
