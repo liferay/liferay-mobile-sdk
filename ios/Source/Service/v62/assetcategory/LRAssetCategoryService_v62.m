@@ -153,10 +153,10 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getJsonVocabularyCategoriesWithGroupId:(long long)groupId name:(NSString *)name vocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
+- (NSDictionary *)getJsonVocabularyCategoriesWithGroupId:(long long)groupId title:(NSString *)title vocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
+		@"title": title,
 		@"vocabularyId": @(vocabularyId),
 		@"start": @(start),
 		@"end": @(end),
@@ -335,10 +335,10 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithGroupIds:(NSArray *)groupIds name:(NSString *)name vocabularyIds:(NSArray *)vocabularyIds start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)searchWithGroupIds:(NSArray *)groupIds title:(NSString *)title vocabularyIds:(NSArray *)vocabularyIds start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupIds": groupIds,
-		@"name": name,
+		@"title": title,
 		@"vocabularyIds": vocabularyIds,
 		@"start": @(start),
 		@"end": @(end)

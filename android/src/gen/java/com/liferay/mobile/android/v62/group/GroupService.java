@@ -583,6 +583,54 @@ public class GroupService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
+	public JSONArray search(long companyId, JSONArray classNameIds, String keywords, JSONObject params, int start, int end, JSONObjectWrapper obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("classNameIds", classNameIds);
+			_params.put("keywords", keywords);
+			_params.put("params", params);
+			_params.put("start", start);
+			_params.put("end", end);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+
+			_command.put("/group/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
+	public JSONArray search(long companyId, JSONArray classNameIds, String name, String description, JSONObject params, boolean andOperator, int start, int end, JSONObjectWrapper obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("classNameIds", classNameIds);
+			_params.put("name", name);
+			_params.put("description", description);
+			_params.put("params", params);
+			_params.put("andOperator", andOperator);
+			_params.put("start", start);
+			_params.put("end", end);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+
+			_command.put("/group/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONArray)session.invoke(_command);
+	}
+
 	public Integer searchCount(long companyId, String name, String description, JSONArray params) throws Exception {
 		JSONObject _command = new JSONObject();
 

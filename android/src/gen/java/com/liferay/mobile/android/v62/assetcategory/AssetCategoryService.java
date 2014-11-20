@@ -237,14 +237,14 @@ public class AssetCategoryService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getJsonVocabularyCategories(long groupId, String name, long vocabularyId, int start, int end, JSONObjectWrapper obc) throws Exception {
+	public JSONObject getJsonVocabularyCategories(long groupId, String title, long vocabularyId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("title", title);
 			_params.put("vocabularyId", vocabularyId);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -501,14 +501,14 @@ public class AssetCategoryService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
-	public JSONArray search(JSONArray groupIds, String name, JSONArray vocabularyIds, int start, int end) throws Exception {
+	public JSONArray search(JSONArray groupIds, String title, JSONArray vocabularyIds, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupIds", groupIds);
-			_params.put("name", name);
+			_params.put("title", title);
 			_params.put("vocabularyIds", vocabularyIds);
 			_params.put("start", start);
 			_params.put("end", end);

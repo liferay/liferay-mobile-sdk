@@ -383,6 +383,18 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
+- (NSNumber *)getLayoutsCountWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"parentLayoutId": @(parentLayoutId)
+	}];
+
+	NSDictionary *_command = @{@"/layout/get-layouts-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
 - (NSArray *)getTempFileEntryNamesWithGroupId:(long long)groupId tempFolderName:(NSString *)tempFolderName error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -700,6 +712,18 @@
 	}];
 
 	NSDictionary *_command = @{@"/layout/update-parent-layout-id": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateParentLayoutIdAndPriorityWithPlid:(long long)plid parentPlid:(long long)parentPlid priority:(int)priority error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"plid": @(plid),
+		@"parentPlid": @(parentPlid),
+		@"priority": @(priority)
+	}];
+
+	NSDictionary *_command = @{@"/layout/update-parent-layout-id-and-priority": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }

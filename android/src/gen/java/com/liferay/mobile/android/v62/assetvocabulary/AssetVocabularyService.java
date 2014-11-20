@@ -291,14 +291,14 @@ public class AssetVocabularyService extends BaseService {
 		return (JSONObject)session.invoke(_command);
 	}
 
-	public JSONObject getGroupVocabulariesDisplay(long groupId, String name, int start, int end, boolean addDefaultVocabulary, JSONObjectWrapper obc) throws Exception {
+	public JSONObject getGroupVocabulariesDisplay(long groupId, String title, int start, int end, boolean addDefaultVocabulary, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("title", title);
 			_params.put("start", start);
 			_params.put("end", end);
 			_params.put("addDefaultVocabulary", addDefaultVocabulary);

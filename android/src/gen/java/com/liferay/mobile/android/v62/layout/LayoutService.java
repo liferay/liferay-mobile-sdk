@@ -565,6 +565,25 @@ public class LayoutService extends BaseService {
 		return (JSONArray)session.invoke(_command);
 	}
 
+	public Integer getLayoutsCount(long groupId, boolean privateLayout, long parentLayoutId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("privateLayout", privateLayout);
+			_params.put("parentLayoutId", parentLayoutId);
+
+			_command.put("/layout/get-layouts-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (Integer)session.invoke(_command);
+	}
+
 	public JSONArray getTempFileEntryNames(long groupId, String tempFolderName) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -1022,6 +1041,25 @@ public class LayoutService extends BaseService {
 			_params.put("parentLayoutId", parentLayoutId);
 
 			_command.put("/layout/update-parent-layout-id", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return (JSONObject)session.invoke(_command);
+	}
+
+	public JSONObject updateParentLayoutIdAndPriority(long plid, long parentPlid, int priority) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("plid", plid);
+			_params.put("parentPlid", parentPlid);
+			_params.put("priority", priority);
+
+			_command.put("/layout/update-parent-layout-id-and-priority", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
