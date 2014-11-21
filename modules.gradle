@@ -97,14 +97,13 @@ task createModule << {
 			version = read('Module Version', version)
 		}
 
-		def moduleDir = "${project.rootDir}/modules/$context"
+		def moduleDir = "${project.rootDir}/modules/$context/"
 		file(moduleDir).mkdirs()
 
 		def props = file("$moduleDir/gradle.properties")
 		props.createNewFile()
 
 		write(props, 'context', context)
-		write(props, 'destination', '.')
 
 		if (all) {
 			write(props, 'platforms', platforms)
