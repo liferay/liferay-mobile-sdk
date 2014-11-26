@@ -4,23 +4,29 @@
 
 * [What's the SDK Builder](#whats-the-sdk-builder)
 * [Configuring your Portlet's Remote Services](#configuring-your-portlets-remote-services)
-* [Setup](#setup)
+* [Running](#setup)
 	* [Download](#download)
-	* [Configuring](#configuring)
+	* [Create your own module](#create-your-own-module)
+	* [Properties](#properties)
+	* [Updating remote services](#updating-remote-services)
 * [Building a Liferay Android SDK](#building-a-liferay-android-sdk)
-* [Building a Liferay iOS SDK](#building-a-liferay-android-sdk)
+* [Building a Liferay iOS SDK](#building-a-liferay-ios-sdk)
+* [Other platforms](#other-platforms)
 
 ## What's the SDK Builder?
 
 The Liferay Mobile SDK project comes with an SDK Builder that generates the
 Liferay Mobile SDK for the Android and iOS platforms. Think of it as a Service
 Builder on the client side; it generates code that allows your mobile app to
-access your portlet's custom services. It is template-based, making it easy to
-extend to various mobile platforms. In the near future we plan to make SDKs
-for more platforms, like PhoneGap or Titanium. The SDK Builder generates client
+access your portlet's custom services. The SDK Builder generates client
 libraries that allow your native mobile apps to invoke remote web services of a
 portal instance and any of its custom portlets built with Liferay's [Service
 Builder](http://www.liferay.com/documentation/liferay-portal/6.2/development/-/ai/generating-your-service-layer-liferay-portal-6-2-dev-guide-04-en).
+
+Since the SDK Builder is template-based, it's easy to extend to various mobile
+platforms. For example, the Liferay community has built an extension for
+[Windows mobile apps](https://github.com/ithildir/liferay-sdk-builder-windows),
+and we can extend it to other platforms in the future.
 
 ## Configuring your Portlet's Remote Services
 
@@ -51,7 +57,8 @@ developing your mobile app. You'll be able to invoke your service's methods,
 like `[Entity]Service.bar();`, from your mobile app. The Liferay Mobile SDK
 takes care of making JSON Web Services requests to your portlet.
 
-Next, let's configure the SDK builder for building your custom portlet SDK.
+Next, let's configure the SDK Builder for generating your custom portlet client
+side services.
 
 ## Setup
 
@@ -77,121 +84,123 @@ is available of both JCenter and Maven Central repositories:
 ```
 
 Check the [SDKBuilder.java](src/main/java/com/liferay/mobile/sdk/SDKBuilder.java)
-main method to see how this class can be called from the command line.
+main method to see how you can use this class in your project.
 
-#### Configuring
+#### Create your own module
 
-After you have downloaded the source code from Git, follow these steps to
-run it with Gradle.
+After you have downloaded the source code from Git, follow these steps to create
+a mobile SDK for you portlet.
 
-This project already ships the Gradle Wrapper (gradlew) with it, you don't need
-to install Gradle's command line tool (gradle).
+From the root folder, run the following command to start up the wizard:
 
-The SDK Builder can be invoked using Gradle or command line, but before running
-the builder, you must set some properties so it can communicate with your
-portlet and create an SDK specific to your mobile platform. Follow these steps
-to set these properties:
+    ./gradlew createModule
 
-1. Edit `gradle.properties`, if you don't want to change that file directly,
-you can also copy it to `~/.gradle` and modify it there. Alternatively, you can
-also edit the `gradle.properties` inside each platform folder (ios/ or android/).
+This will start a wizard with the most common required [properties](#properties)
+it needs in to generate code for your portlet. If for some reason you need more
+control over these properties, run the same command with the `all` argument:
 
-2. Here are the important properties to set:
+    ./gradlew createModule -P=all
 
-	* `url` - The URL to your Liferay instance.
+It should print out something like this:
 
-	* `context` - Your portlet's web context. Say for example you are generating
-	an SDK for Liferay's Calendar portlet, which is generally deployed to the
-	`calendar-portlet` context, then you should set your context value to
-	`context=calendar-portlet`. Under the hood, the SDK Builder will try to
-	access `http://localhost:8080/calendar-portlet/api/jsonws?discover` to find
-	out which services are available for this portlet. Check in a browser if
-	this URL is working before running the SDK. If it's not running, you may
-	have forgotten to run `ant build-wsdd` on the portlet.
+![Create module screenshot](create_module.png)
 
-	* `filter` - Specifies your portlet's entities whose services to access; a
-	blank value indicates the services of all of the portlet's entities. For
-	example, the Calendar portlet has entities such as `CalendarBooking` and
-	`CalendarResource`. To generate an SDK for only the `CalendarBooking`
-	entity, set the filter's value to `calendarbooking`, all in lowercase. The
-	SDK Builder will then make requests to the
-	`http://localhost:8080/calendar-portlet/api/jsonws?discover=/calendarbooking/*`.
-	If you set `filter=`, specifying no filter value, the remote services of
-	*all* of the portlet's entities will be made available to your mobile SDK.
+After you have filled up all [properties](#properties), it will generate your
+portlet client code in the following folder:
+`modules/${your_portlet_context}`.
 
-	* `package` - On Android, this is the package to which your SDK's classes
-	are written. The iOS platform does not use packages. Note, that the Liferay
-	Portal version is appended to the end of the package name. So, if you
-	specified `com.liferay.mobile.android` as your package, the SDK
-	Builder appends the Liferay Portal version (e.g., `v62`) to it, 
-	like `com.liferay.mobile.android.v62`. Appending the Liferay Portal version
-	prevents collisions between classes with the same names written for
-	different versions of Liferay Portal.
+#### Properties
 
-	* `destination` - Specifies the root folder in which to save your generated
-	files. On Android, by default, the files are saved to `android/src/gen/java`.
-	On iOS, the files are saved by default to `ios/src/gen`.
-	
-	* `version` - The version number is appended to the jar and zip file names,
-	see more about that in the following sections.
+* `Context` - Your portlet's web context. Say for example you are generating
+an SDK for Liferay's Calendar portlet, which is generally deployed to the
+`calendar-portlet` context, then you should set your context value to
+`context=calendar-portlet`. Under the hood, the SDK Builder will try to
+access `http://localhost:8080/calendar-portlet/api/jsonws?discover` to find
+out which services are available for this portlet. Check in a browser if
+this URL is working before running the SDK. If it's not running, you may
+have forgotten to run `ant build-wsdd` on the portlet.
 
-Here's an example of configuring the SDK Builder to generate a mobile SDK for
-a portlet with a web context value `my-portlet`:
+* `Platforms` - By default, you can generate code for Android and iOS 
+(`android,ios`). You can also generate code for
+[Windows](https://github.com/ithildir/liferay-sdk-builder-windows),
+a community supported extension, just type `windows` and will download the
+extension for you.
 
-    url=http://localhost:8080
-    context=my-portlet
-    filter=
-    package=com.mycompany.mobile.android
-    destination=gen
+* `Server URL` - The URL to your Liferay instance, the SDK Builder will connect
+to this instance and find out metadata for your services.
 
-Now that you've configured the SDK Builder, you're ready to build a platform
-specific SDK for your portlet's remote services. 
+* `Filter` - Specifies your portlet's entities whose services to access; a
+blank value indicates the services of all of the portlet's entities. For
+example, the Calendar portlet has entities such as `CalendarBooking` and
+`CalendarResource`. To generate an SDK for only the `CalendarBooking`
+entity, set the filter's value to `calendarbooking`, all in lowercase. The
+SDK Builder will then make requests to the
+`http://localhost:8080/calendar-portlet/api/jsonws?discover=/calendarbooking/*`.
+If you set `filter=`, specifying no filter value, the remote services of
+*all* of the portlet's entities will be made available to your mobile SDK.
 
+* `Module Version` - The version number is appended to the JAR and ZIP file names,
+see more about that in the following sections.
+
+* `Package Name` - On Android, this is the package to which your SDK's classes
+are written. The iOS platform does not use packages. Note, that the Liferay
+Portal version is appended to the end of the package name. So, if you
+specified `com.liferay.mobile.android` as your package, the SDK
+Builder appends the Liferay Portal version (e.g., `v62`) to it, 
+like `com.liferay.mobile.android.v62`. Appending the Liferay Portal version
+prevents collisions between classes with the same names written for
+different versions of Liferay Portal. The portal version can also be changed
+with the `Portal Version` property.
+
+* `POM Description` - This is only needed if you are building for Android and
+want to publish your artifact to Maven.
+
+#### Updating remote services
+
+After you have created your module, check the `modules/${your_portlet_context}` folder,
+it should contain the generated code for your portlet client API.
+
+The source files will be written by default to `android/src/gen/java` and `ios/Source`.
+
+If you have updated your remote portlet services on the server side and need to update
+the generated code, run the following command from your module folder:
+
+    ../../gradlew generate
+    
 ### Building a Liferay Android SDK
 
-To build the service related source files for your Liferay Android SDK, run the
-following command from the `android/` folder:
-
-    ../gradlew buildService
-
-The source files are written to the `android/src/gen/java` folder by default.
-
 To build a `.jar` file containing the generated service and utility classes, run
-the following command:
+the following command from your module folder:
 
-    ../gradlew jar
+    ../../gradlew jar
 
 The `liferay-android-sdk-[version].jar` file is written to your `android/build/libs`
 folder. You're ready to use the `liferay-android-sdk-[version].jar` in your
-Android project, there are no external dependencies.
+Android project.
 
-As you can see, the `version` property defined in `gradle.properties` is
-appended to the jar file name.
+You can update the version in the `gradle.properties` file, for example `version=1.1`.
 
 To learn how to use the Liferay Android SDK in your mobile app, see the
 [Liferay Android SDK documentation](../android/README.md).
 
 ### Building a Liferay iOS SDK
 
-To build the service related source files for your Liferay iOS SDK, run the
-following command from the `ios/` folder:
-
-	../gradlew buildService
-
-The source files are written to your `ios/src/gen` folder by default.
-
 To build a `.zip` file containing the generated service and utility classes, run
-the following command:
+the following command from your module folder:
 
     ../gradlew zip
 
 The `liferay-ios-sdk-[version].zip` file is written to your `ios/build` folder.
 You're ready to use the contents of your `liferay-ios-sdk-[version].zip` file in
 your iOS project. Simply unzip its contents and add all of the files to your
-XCode project. The SDK is free of any external dependencies.
-
-As you can see, the `version` property defined in `gradle.properties` is
-appended to the zip file name.
+XCode project.
 
 To learn how to use the Liferay iOS SDK in your mobile app, see the
 [Liferay iOS SDK documentation](../ios/README.md).
+
+### Other platforms
+
+Besides Android and iOS, there's an
+[Windows](https://github.com/ithildir/liferay-sdk-builder-windows) extension of
+the SDK Builder implemented by a community member, in order to use it, type windows
+in the `Platforms` property.

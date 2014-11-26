@@ -1,11 +1,11 @@
 ![Liferay Mobile SDK logo](logo.png)
 
-Stable releases and documentation for each of the SDKs are available at the
-following links:
+Stable releases and documentation for each platform is available at the following
+links:
 
+- [Android](android/README.md)
+- [iOS](ios/README.md)
 - [Download](../../releases) 
-- [Liferay Android SDK docs](android/README.md)
-- [Liferay iOS SDK docs](ios/README.md)
 
 The Liferay Mobile SDK is a framework for building native mobile apps that
 integrate with your different Liferay Portal instances and their portlets. The
@@ -17,8 +17,17 @@ exceptions.
 
 The Liferay Mobile SDK is compatible with Liferay Portal 6.2 and
 later, and it comes with the Liferay Android SDK and Liferay iOS SDK ready for
-you to download and use.
+you to download and use. If you are interested in Titanium or Windows mobile
+apps, see the next section.
 
 If all you want is to access Liferay's core services from a mobile app, follow
 the links above. However, if you want to generate services for your custom
 portlet, read the [SDK Builder documentation](builder/README.md).
+
+#### Other platforms
+
+The Liferay open-source community has built SDKs for different platforms as
+well:
+
+- [Titanium](https://www.npmjs.org/package/liferay-connector) (by Pier Paolo Ramon)
+- [Windows](https://github.com/Ithildir/liferay-sdk-builder-windows) (by Andrea Di Giorgi)

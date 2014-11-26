@@ -43,7 +43,7 @@ latest version of `liferay-ios-sdk.zip`.
 4. Add both `core` and `v62` folders. The `v62` folder name can change for each
 Liferay version. In this example, the SDK is built for Liferay 6.2.
 
-5. The iOS SDK requires [AFNetworking 2.2.4](https://github.com/AFNetworking/AFNetworking/releases/tag/2.2.4).
+5. The iOS SDK requires [AFNetworking 2.3.1](https://github.com/AFNetworking/AFNetworking/releases/tag/2.3.1).
 Make sure its source code is added to your project.
 
 #### CocoaPods
@@ -75,7 +75,7 @@ version. Because of that, its version scheme reflects the compatible Liferay
 version.
 
 For example, Liferay Mobile SDK 6.2.0.1 is built to work with Liferay Portal
-6.2.0, while Liferay Mobile SDK 7.0.0.1 works with Liferay Portal 7.0.0.
+6.2.0, while Liferay Mobile SDK 7.0.0.1 will work with Liferay Portal 7.0.0.
 
 The fourth integer in the version (6.2.0.x) is related to internal Liferay
 Mobile SDK versions. For example, if a bug is found on 6.2.0.1, we will
@@ -91,7 +91,7 @@ To find out which Liferay versions you are connecting to, use the
 
 #### iOS
 
-The Liferay iOS SDK is compatible with iOS versions 6.1 and up. It may work with
+The Liferay iOS SDK is compatible with iOS versions 7.0 and up. It may work with
 older versions, but these are the versions we use to run our unit tests.
 
 ## Use
