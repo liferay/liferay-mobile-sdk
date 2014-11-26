@@ -110,26 +110,32 @@ code in the following folder: `modules/${your_portlet_context}`.
 
 #### Properties
 
-* `Context` - Your portlet's web context. Say for example you are generating
-an SDK for Liferay's Calendar portlet, which is generally deployed to the
-`calendar-portlet` context, then you should set your context value to
+The properties bellow can be set while running the `createModule` or after
+your module is created, in the `gradle.properties` file inside your module
+folder.
+
+Values in parenthesis are the keys used in `gradle.properties`.
+
+* `Context (context)` - Your portlet's web context. Say for example you are
+generating an SDK for Liferay's Calendar portlet, which is generally deployed
+to the `calendar-portlet` context, then you should set your context value to
 `context=calendar-portlet`. Under the hood, the SDK Builder will try to
 access `http://localhost:8080/calendar-portlet/api/jsonws?discover` to find
 out which services are available for this portlet. Check in a browser if
 this URL is working before running the SDK. If it's not running, you may
 have forgotten to run `ant build-wsdd` on the portlet.
 
-* `Platforms` - By default, you can generate code for Android and iOS 
-(`android,ios`). You can also generate code for
+* `Platforms (platforms)` - By default, you can generate code for Android and
+iOS  (`android,ios`). You can also generate code for
 [Windows](https://github.com/ithildir/liferay-sdk-builder-windows),
 a community supported extension, just type `windows` and will download the
 extension for you.
 
-* `Server URL` - The URL to your Liferay instance, the SDK Builder will connect
-to this instance and find out metadata about your services.
+* `Server URL (url)` - The URL to your Liferay instance, the SDK Builder will
+connect to this instance and find out metadata about your services.
 
-* `Filter` - Specifies your portlet's entities whose services to access; a
-blank value indicates the services of all of the portlet's entities. For
+* `Filter (filter)` - Specifies your portlet's entities whose services to access;
+a blank value indicates the services of all of the portlet's entities. For
 example, the Calendar portlet has entities such as `CalendarBooking` and
 `CalendarResource`. To generate an SDK for only the `CalendarBooking`
 entity, set the filter's value to `calendarbooking`, all in lowercase. The
@@ -138,11 +144,11 @@ SDK Builder will then make requests to the
 If you set `filter=`, specifying no filter value, the remote services of
 *all* of the portlet's entities will be made available to your mobile SDK.
 
-* `Module Version` - The version number is appended to the JAR and ZIP file names,
-see more about that in the following sections.
+* `Module Version (version)` - The version number is appended to the JAR and ZIP file
+names, see more about that in the following sections.
 
-* `Package Name` - On Android, this is the package to which your SDK's classes
-are written. The iOS platform does not use packages. Note, that the Liferay
+* `Package Name (packageName)` - On Android, this is the package to which your SDK's
+classes are written. The iOS platform does not use packages. Note, that the Liferay
 Portal version is appended to the end of the package name. So, if you
 specified `com.liferay.mobile.android` as your package, the SDK
 Builder appends the Liferay Portal version (e.g., `v62`) to it, 
@@ -151,8 +157,12 @@ prevents collisions between classes with the same names written for
 different versions of Liferay Portal. The portal version can also be changed
 with the `Portal Version` property.
 
-* `POM Description` - This is only needed if you are building for Android and
-want to publish your JAR file to Maven.
+* `POM Description (description)` - This is only needed if you are building for Android
+and want to publish your JAR file to Maven.
+
+There is also a `destination` property that can be only set in `gradle.properties`. This
+property refers to the destination folder where the generate source files will be stored,
+you generally won't need to changes this.
 
 #### Updating remote services
 
@@ -165,7 +175,10 @@ If you have updated your remote portlet services on the server side and need to 
 the generated code, run the following command from your module folder:
 
     ../../gradlew generate
-    
+
+This will run builders for each platform and regenerate the client side code in the same
+default folders.
+
 ### Building a Liferay Android SDK
 
 To build a `.jar` file containing the generated service and utility classes, run
