@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android.util;
 
+import android.util.Base64;
 import android.util.Log;
 
 import com.liferay.mobile.android.http.HttpUtil;
@@ -27,7 +28,6 @@ import java.io.OutputStream;
 
 import java.security.MessageDigest;
 
-import org.apache.commons.codec.binary.Base64;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -153,10 +153,23 @@ public class PortraitUtil {
 			digest.update(uuid.getBytes());
 
 			byte[] bytes = digest.digest();
-			String token = Base64.encodeBase64String(bytes);
+			String token = null;
 
-			sb.append("&img_id_token=");
-			sb.append(HttpUtil.encodeURL(token));
+			try {
+				token = Base64.encodeToString(bytes, Base64.NO_WRAP);
+			}
+			catch (RuntimeException re) {
+				if ("Stub!".equals(re.getMessage())) {
+					token =
+						org.apache.commons.codec.binary.Base64.
+							encodeBase64String(bytes);
+				}
+			}
+
+			if (token != null) {
+				sb.append("&img_id_token=");
+				sb.append(HttpUtil.encodeURL(token));
+			}
 		}
 		catch (Exception e) {
 			Log.e(_CLASS_NAME, "Couldn't generate portrait image token", e);
