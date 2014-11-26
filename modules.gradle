@@ -64,7 +64,7 @@ configure(subprojects.findAll { it.name.startsWith('modules/') }) {
 	task zip(type: Zip) {
 		group = tasksGroup
 		description = 'Zips generated iOS SDK for this module.'
-		baseName = "liferay-ios-${context}"
+		baseName = "liferay-${context}-ios-sdk"
 		destinationDir = project.buildDir
 		version = project.version
 		from 'ios/Source'

@@ -18,7 +18,7 @@ exceptions.
 The Liferay Mobile SDK is compatible with Liferay Portal 6.2 and
 later, and it comes with the Liferay Android SDK and Liferay iOS SDK ready for
 you to download and use. If you are interested in Titanium or Windows mobile
-apps, see the next section.
+apps, see [other platforms](#other-platforms).
 
 If all you want is to access Liferay's core services from a mobile app, follow
 the links above. However, if you want to generate services for your custom

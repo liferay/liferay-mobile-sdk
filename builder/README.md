@@ -4,7 +4,7 @@
 
 * [What's the SDK Builder](#whats-the-sdk-builder)
 * [Configuring your Portlet's Remote Services](#configuring-your-portlets-remote-services)
-* [Running](#setup)
+* [Running](#running)
 	* [Download](#download)
 	* [Create your own module](#create-your-own-module)
 	* [Properties](#properties)
@@ -60,7 +60,7 @@ takes care of making JSON Web Services requests to your portlet.
 Next, let's configure the SDK Builder for generating your custom portlet client
 side services.
 
-## Setup
+## Running
 
 #### Download
 
@@ -89,14 +89,14 @@ main method to see how you can use this class in your project.
 #### Create your own module
 
 After you have downloaded the source code from Git, follow these steps to create
-a mobile SDK for you portlet.
+a Mobile SDK for you portlet.
 
 From the root folder, run the following command to start up the wizard:
 
     ./gradlew createModule
 
 This will start a wizard with the most common required [properties](#properties)
-it needs in to generate code for your portlet. If for some reason you need more
+it needs to generate code for your portlet. If for some reason you need more
 control over these properties, run the same command with the `all` argument:
 
     ./gradlew createModule -P=all
@@ -105,9 +105,8 @@ It should print out something like this:
 
 ![Create module screenshot](create_module.png)
 
-After you have filled up all [properties](#properties), it will generate your
-portlet client code in the following folder:
-`modules/${your_portlet_context}`.
+After you have filled up all properties, it will generate your portlet client
+code in the following folder: `modules/${your_portlet_context}`.
 
 #### Properties
 
@@ -127,7 +126,7 @@ a community supported extension, just type `windows` and will download the
 extension for you.
 
 * `Server URL` - The URL to your Liferay instance, the SDK Builder will connect
-to this instance and find out metadata for your services.
+to this instance and find out metadata about your services.
 
 * `Filter` - Specifies your portlet's entities whose services to access; a
 blank value indicates the services of all of the portlet's entities. For
@@ -153,7 +152,7 @@ different versions of Liferay Portal. The portal version can also be changed
 with the `Portal Version` property.
 
 * `POM Description` - This is only needed if you are building for Android and
-want to publish your artifact to Maven.
+want to publish your JAR file to Maven.
 
 #### Updating remote services
 
@@ -174,11 +173,12 @@ the following command from your module folder:
 
     ../../gradlew jar
 
-The `liferay-android-sdk-[version].jar` file is written to your `android/build/libs`
-folder. You're ready to use the `liferay-android-sdk-[version].jar` in your
-Android project.
+The `liferay-${your_portlet_context}-android-sdk-${version}.jar` file is written to
+your `android/build/libs` folder. You're ready to use this JAR file in your Android
+project.
 
-You can update the version in the `gradle.properties` file, for example `version=1.1`.
+You can update the version of your module in the `gradle.properties` file, for example
+`version=1.1`.
 
 To learn how to use the Liferay Android SDK in your mobile app, see the
 [Liferay Android SDK documentation](../android/README.md).
@@ -188,11 +188,11 @@ To learn how to use the Liferay Android SDK in your mobile app, see the
 To build a `.zip` file containing the generated service and utility classes, run
 the following command from your module folder:
 
-    ../gradlew zip
+    ../../gradlew zip
 
-The `liferay-ios-sdk-[version].zip` file is written to your `ios/build` folder.
-You're ready to use the contents of your `liferay-ios-sdk-[version].zip` file in
-your iOS project. Simply unzip its contents and add all of the files to your
+The `liferay-${your_portlet_context}-ios-sdk-${version}.zip` file is written to
+your `ios/build` folder. You're ready to use the contents this file in your iOS
+project. Simply unzip its contents and add all of the files to your
 XCode project.
 
 To learn how to use the Liferay iOS SDK in your mobile app, see the
