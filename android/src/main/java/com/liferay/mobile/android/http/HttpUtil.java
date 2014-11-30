@@ -14,21 +14,17 @@
 
 package com.liferay.mobile.android.http;
 
-import android.util.Log;
-
 import com.liferay.mobile.android.exception.RedirectException;
 import com.liferay.mobile.android.exception.ServerException;
 import com.liferay.mobile.android.http.entity.CountingHttpEntity;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.UploadAsyncTask;
-import com.liferay.mobile.android.util.CharPool;
 import com.liferay.mobile.android.util.Validator;
 
 import java.io.IOException;
 
 import java.net.URI;
 import java.net.URL;
-import java.net.URLEncoder;
 
 import java.util.Iterator;
 
@@ -68,23 +64,6 @@ public class HttpUtil {
 	public static final String IF_MODIFIED_SINCE = "If-Modified-Since";
 
 	public static final String LAST_MODIFIED = "Last-Modified";
-
-	public static String encodeURL(String path) {
-		StringBuffer buffer = new StringBuffer();
-
-		try {
-			for (Character c : path.toCharArray()) {
-				buffer.append(URLEncoder.encode(c.toString(), "UTF8"));
-			}
-
-			return buffer.toString();
-		}
-		catch (Exception e) {
-			Log.e("HttpUtil", "Error enconding URL.", e);
-		}
-
-		return CharPool.BLANK;
-	}
 
 	public static HttpClient getClient(Session session) {
 		HttpClientBuilder clientBuilder = HttpClientBuilder.create();

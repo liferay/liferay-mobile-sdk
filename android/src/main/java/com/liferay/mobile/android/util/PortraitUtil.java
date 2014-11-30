@@ -26,6 +26,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import java.net.URLEncoder;
+
 import java.security.MessageDigest;
 
 import org.apache.http.Header;
@@ -168,7 +170,7 @@ public class PortraitUtil {
 
 			if (token != null) {
 				sb.append("&img_id_token=");
-				sb.append(HttpUtil.encodeURL(token));
+				sb.append(URLEncoder.encode(token, "UTF8"));
 			}
 		}
 		catch (Exception e) {
