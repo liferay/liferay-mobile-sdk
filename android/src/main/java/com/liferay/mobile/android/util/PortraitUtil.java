@@ -135,12 +135,7 @@ public class PortraitUtil {
 
 		sb.append("_portrait?img_id=");
 		sb.append(portraitId);
-
-		int version = PortalVersionUtil.getPortalVersion(session);
-
-		if (version > PortalVersion.V_6_2) {
-			appendToken(sb, uuid);
-		}
+		appendToken(sb, uuid);
 
 		return sb.toString();
 	}
