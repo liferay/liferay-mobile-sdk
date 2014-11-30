@@ -369,7 +369,7 @@ NSDictionary *jsonObject = @{
 LRJSONObjectWrapper *orderByComparator = [[LRJSONObjectWrapper alloc] initWithClassName:className jsonObject:jsonObject];
 ```
 
-For more examples, take a look at this test case: [OrderByComparator.m](Test/Portal/OrderByComparator.m).
+For more examples, take a look at this test case: [OrderByComparatorTest.m](Test/Portal/OrderByComparatorTest.m).
 
 ##### ServiceContext
 
