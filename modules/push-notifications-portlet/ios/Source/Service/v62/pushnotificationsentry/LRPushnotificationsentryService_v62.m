@@ -29,12 +29,13 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)dislikePushNotificationsEntryWithPushNotificationsEntryId:(long long)pushNotificationsEntryId error:(NSError **)error {
+- (NSDictionary *)addPushNotificationsEntryWithParentPushNotificationsEntryId:(long long)parentPushNotificationsEntryId payload:(NSString *)payload error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"pushNotificationsEntryId": @(pushNotificationsEntryId)
+		@"parentPushNotificationsEntryId": @(parentPushNotificationsEntryId),
+		@"payload": payload
 	}];
 
-	NSDictionary *_command = @{@"/push-notifications-portlet/pushnotificationsentry/dislike-push-notifications-entry": _params};
+	NSDictionary *_command = @{@"/push-notifications-portlet/pushnotificationsentry/add-push-notifications-entry": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -58,6 +59,16 @@
 	}];
 
 	NSDictionary *_command = @{@"/push-notifications-portlet/pushnotificationsentry/like-push-notifications-entry": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)unlikePushNotificationsEntryWithPushNotificationsEntryId:(long long)pushNotificationsEntryId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"pushNotificationsEntryId": @(pushNotificationsEntryId)
+	}];
+
+	NSDictionary *_command = @{@"/push-notifications-portlet/pushnotificationsentry/unlike-push-notifications-entry": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }

@@ -20,8 +20,9 @@
 @interface LRPushnotificationsentryService_v62 : LRBaseService
 
 - (NSDictionary *)addPushNotificationsEntryWithPayload:(NSString *)payload error:(NSError **)error;
-- (NSDictionary *)dislikePushNotificationsEntryWithPushNotificationsEntryId:(long long)pushNotificationsEntryId error:(NSError **)error;
+- (NSDictionary *)addPushNotificationsEntryWithParentPushNotificationsEntryId:(long long)parentPushNotificationsEntryId payload:(NSString *)payload error:(NSError **)error;
 - (NSArray *)getPushNotificationsEntriesWithParentPushNotificationsEntryId:(long long)parentPushNotificationsEntryId lastAccessTime:(long long)lastAccessTime start:(int)start end:(int)end error:(NSError **)error;
 - (NSDictionary *)likePushNotificationsEntryWithPushNotificationsEntryId:(long long)pushNotificationsEntryId error:(NSError **)error;
+- (NSDictionary *)unlikePushNotificationsEntryWithPushNotificationsEntryId:(long long)pushNotificationsEntryId error:(NSError **)error;
 
 @end
