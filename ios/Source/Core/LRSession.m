@@ -136,4 +136,113 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 	return [LRUploadUtil upload:self command:command error:error];
 }
 
+- (BOOL)storeCredential {
+	if (!self.server || !self.username || !self.password) {
+		return NO;
+	}
+
+	NSURLCredential *credential =
+		[NSURLCredential credentialWithUser:self.username
+			password:self.password
+			persistence:NSURLCredentialPersistencePermanent];
+
+	NSURLProtectionSpace *protectionSpace = [self protectionSpace];
+
+	[[NSURLCredentialStorage sharedCredentialStorage]
+		setCredential:credential forProtectionSpace:protectionSpace];
+
+	return YES;
+}
+
+- (BOOL)loadCredential {
+	NSURLCredential *storedCredential = [self storedCredential];
+
+	if (storedCredential) {
+		self.username = storedCredential.user;
+		self.password = storedCredential.password;
+	}
+
+	return (storedCredential != nil);
+}
+
+- (BOOL)removeStoredCredential {
+	if (!self.server) {
+		return NO;
+	}
+
+	NSURLCredential *storedCredential = [self storedCredential];
+	if (!storedCredential) {
+		return NO;
+	}
+
+	NSURLProtectionSpace *protectionSpace = [self protectionSpace];
+
+	[[NSURLCredentialStorage sharedCredentialStorage]
+		removeCredential:storedCredential forProtectionSpace:protectionSpace];
+
+	return YES;
+}
+
+- (NSURLCredential *)storedCredential {
+	if (!self.server) {
+		return nil;
+	}
+
+	NSURLProtectionSpace *protectionSpace = [self protectionSpace];
+
+	NSDictionary *credentialData =
+		[[NSURLCredentialStorage sharedCredentialStorage]
+			credentialsForProtectionSpace:protectionSpace];
+
+	NSString *username = credentialData.keyEnumerator.nextObject;
+
+	return credentialData[username];
+}
+
+- (NSURLProtectionSpace *)protectionSpace {
+	if (!self.server) {
+		return nil;
+	}
+
+	NSURL *url = [NSURL URLWithString:self.server];
+
+	return [[NSURLProtectionSpace alloc] initWithHost:url.host
+		port:[url.port integerValue] protocol:url.scheme realm:nil
+		authenticationMethod:NSURLAuthenticationMethodHTTPDigest];
+}
+
+/*
++ (LRSession *)sessionFromStoredCredential {
+}
+
+- (void)removeStoredCredential {
+}
+
+- (BOOL)storeCredential {
+	if (!self.username || !self.password) {
+		return NO;
+	}
+
+	NSURLProtectionSpace *protectionSpace =
+		[self protectionSpaceForServer:self.server];
+
+	NSURLCredential *credential =
+		[[NSURLCredential alloc] initWithUser:self.username
+		password:self.password persistence:NSURLCredentialPersistencePermanent];
+
+		[[NSURLCredentialStorage sharedCredentialStorage]
+			setCredential:credential forProtectionSpace:protectionSpace];
+
+	return YES;
+}
+
+- (NSURLProtectionSpace *)protectionSpaceForServer:(NSString *)server {
+	NSURL *url = [[NSURL alloc] initWithString:server];
+
+	return [[NSURLProtectionSpace alloc] initWithHost:url.host
+		port:[url.port integerValue] protocol:url.scheme realm:nil
+		authenticationMethod:NSURLAuthenticationMethodHTTPDigest];
+}
+*/
+
 @end
