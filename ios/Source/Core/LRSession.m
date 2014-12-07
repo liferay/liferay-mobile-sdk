@@ -211,38 +211,4 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 		authenticationMethod:NSURLAuthenticationMethodHTTPDigest];
 }
 
-/*
-+ (LRSession *)sessionFromStoredCredential {
-}
-
-- (void)removeStoredCredential {
-}
-
-- (BOOL)storeCredential {
-	if (!self.username || !self.password) {
-		return NO;
-	}
-
-	NSURLProtectionSpace *protectionSpace =
-		[self protectionSpaceForServer:self.server];
-
-	NSURLCredential *credential =
-		[[NSURLCredential alloc] initWithUser:self.username
-		password:self.password persistence:NSURLCredentialPersistencePermanent];
-
-		[[NSURLCredentialStorage sharedCredentialStorage]
-			setCredential:credential forProtectionSpace:protectionSpace];
-
-	return YES;
-}
-
-- (NSURLProtectionSpace *)protectionSpaceForServer:(NSString *)server {
-	NSURL *url = [[NSURL alloc] initWithString:server];
-
-	return [[NSURLProtectionSpace alloc] initWithHost:url.host
-		port:[url.port integerValue] protocol:url.scheme realm:nil
-		authenticationMethod:NSURLAuthenticationMethodHTTPDigest];
-}
-*/
-
 @end
