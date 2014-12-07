@@ -20,8 +20,8 @@ static NSString *const KEY_SERVER = @"server";
 static NSUserDefaults *_userDefaults;
 
 /**
- * @author Bruno Farache
  * @author Jose M. Navarro
+ * @author Bruno Farache
  */
 @implementation LRCredentialStorage
 
@@ -33,7 +33,7 @@ static NSUserDefaults *_userDefaults;
 
 + (NSURLCredential *)getCredential {
 	NSURLProtectionSpace *protectionSpace = [self
-		_getProtectionSpaceForServer:[self _getServer]];
+		_getProtectionSpaceForServer:[self getServer]];
 
 	NSDictionary *credential = [[NSURLCredentialStorage sharedCredentialStorage]
 		credentialsForProtectionSpace:protectionSpace];
@@ -41,8 +41,12 @@ static NSUserDefaults *_userDefaults;
 	return credential[credential.keyEnumerator.nextObject];
 }
 
++ (NSString *)getServer {
+	return [_userDefaults stringForKey:KEY_SERVER];
+}
+
 + (LRSession *)getSession {
-	NSString *server = [self _getServer];
+	NSString *server = [self getServer];
 
 	NSURLCredential *credential = [self getCredential];
 	NSString *username = credential.user;
@@ -56,7 +60,7 @@ static NSUserDefaults *_userDefaults;
 	NSURLCredential *credential = [self getCredential];
 
 	NSURLProtectionSpace *protectionSpace = [self
-		_getProtectionSpaceForServer:[self _getServer]];
+		_getProtectionSpaceForServer:[self getServer]];
 
 	[[NSURLCredentialStorage sharedCredentialStorage]
 		removeCredential:credential forProtectionSpace:protectionSpace];
@@ -65,7 +69,7 @@ static NSUserDefaults *_userDefaults;
 	[_userDefaults synchronize];
 }
 
-+ (void)storeCredentialForServer:(NSString *)server
++ (NSURLCredential *)storeCredentialForServer:(NSString *)server
 		username:(NSString *)username password:(NSString *)password {
 
 	NSURLCredential *credential = [NSURLCredential credentialWithUser:username
@@ -78,10 +82,12 @@ static NSUserDefaults *_userDefaults;
 		setCredential:credential forProtectionSpace:protectionSpace];
 
 	[self _storeServer:server];
+
+	return credential;
 }
 
 + (NSURLProtectionSpace *)_getProtectionSpaceForServer:(NSString *)server {
-	if (![LRValidator isEmpty:server]) {
+	if ([LRValidator isEmpty:server]) {
 		return nil;
 	}
 
@@ -93,10 +99,6 @@ static NSUserDefaults *_userDefaults;
 
 	return [[NSURLProtectionSpace alloc] initWithHost:host port:port
 		protocol:protocol realm:nil authenticationMethod:method];
-}
-
-+ (NSString *)_getServer {
-	return [_userDefaults stringForKey:KEY_SERVER];
 }
 
 + (void)_storeServer:(NSString *)server {

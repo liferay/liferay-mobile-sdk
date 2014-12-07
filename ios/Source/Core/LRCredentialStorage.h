@@ -20,9 +20,10 @@
 @interface LRCredentialStorage : NSObject
 
 + (NSURLCredential *)getCredential;
++ (NSString *)getServer;
 + (LRSession *)getSession;
 + (void)removeCredential;
-+ (void)storeCredentialForServer:(NSString *)server
++ (NSURLCredential *)storeCredentialForServer:(NSString *)server
 	username:(NSString *)username password:(NSString *)password;
 
 @end

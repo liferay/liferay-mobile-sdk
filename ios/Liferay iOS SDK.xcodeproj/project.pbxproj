@@ -137,6 +137,7 @@
 		CCA6594518EC4BE800957D20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
 		CCA7166E1919511F00712D1C /* OrderByComparatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */; };
 		CCAB31651A34EDF80085313A /* LRCredentialStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAB31641A34EDF80085313A /* LRCredentialStorage.m */; };
+		CCAB31691A3503A20085313A /* CredentialStorageTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAB31681A3503A20085313A /* CredentialStorageTest.m */; };
 		CCABA081197C995500A9F8B0 /* LRResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CCABA07F197C995500A9F8B0 /* LRResponseParser.m */; };
 		CCABA086197D544B00A9F8B0 /* LRError.m in Sources */ = {isa = PBXBuildFile; fileRef = CCABA085197D544A00A9F8B0 /* LRError.m */; };
 		CCC6A7B61A164BEB00ABB791 /* LRRedirectDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC6A7B51A164BEB00ABB791 /* LRRedirectDelegate.m */; };
@@ -415,6 +416,7 @@
 		CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderByComparatorTest.m; sourceTree = "<group>"; };
 		CCAB31631A34EDF80085313A /* LRCredentialStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCredentialStorage.h; sourceTree = "<group>"; };
 		CCAB31641A34EDF80085313A /* LRCredentialStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRCredentialStorage.m; sourceTree = "<group>"; };
+		CCAB31681A3503A20085313A /* CredentialStorageTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialStorageTest.m; sourceTree = "<group>"; };
 		CCABA07F197C995500A9F8B0 /* LRResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRResponseParser.m; sourceTree = "<group>"; };
 		CCABA080197C995500A9F8B0 /* LRResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRResponseParser.h; sourceTree = "<group>"; };
 		CCABA084197D544A00A9F8B0 /* LRError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRError.h; sourceTree = "<group>"; };
@@ -1497,6 +1499,7 @@
 			isa = PBXGroup;
 			children = (
 				CC40D7711974CB3B000254E6 /* BlockCallbackTest.m */,
+				CCAB31681A3503A20085313A /* CredentialStorageTest.m */,
 				CC03FD2B18EDA10B00F3F16C /* DLAppServiceTest.m */,
 				CC0FD4F81937853800270AB0 /* FileUploadTest.m */,
 				CC1C89701907FA19004D3C4C /* GroupServiceAsyncTest.m */,
@@ -1770,6 +1773,7 @@
 				CCAB31651A34EDF80085313A /* LRCredentialStorage.m in Sources */,
 				CC03FCA718ED7DCD00F3F16C /* LRSession.m in Sources */,
 				CC03FCAF18ED7DCD00F3F16C /* LRAssetEntryService_v62.m in Sources */,
+				CCAB31691A3503A20085313A /* CredentialStorageTest.m in Sources */,
 				CC03FCE918ED7DCD00F3F16C /* LRPortalService_v62.m in Sources */,
 				CC03FCFC18ED7DCD00F3F16C /* LRSocialRequestService_v62.m in Sources */,
 				CC03FCDC18ED7DCD00F3F16C /* LRMDRActionService_v62.m in Sources */,
