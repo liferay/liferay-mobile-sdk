@@ -24,8 +24,35 @@
 
 @implementation CredentialStorageTest
 
+- (void)testGetCredential {
+	[self testStoreCredential];
+
+	NSURLCredential *credential = [LRCredentialStorage getCredential];
+	NSString *server = [LRCredentialStorage getServer];
+
+	XCTAssertNotNil(credential);
+	XCTAssertNotNil(server);
+
+	XCTAssertEqualObjects(self.session.username, credential.user);
+	XCTAssertEqualObjects(self.session.password, credential.password);
+	XCTAssertEqualObjects(self.session.server, server);
+}
+
+- (void)testGetSession {
+	[self testStoreCredential];
+
+	LRSession *session = [LRCredentialStorage getSession];
+
+	XCTAssertNotNil(session);
+
+	XCTAssertEqualObjects(self.session.username, session.username);
+	XCTAssertEqualObjects(self.session.password, session.password);
+	XCTAssertEqualObjects(self.session.server, session.server);
+}
+
 - (void)testRemoveCredential {
 	[self testStoreCredential];
+
 	[LRCredentialStorage removeCredential];
 
 	NSURLCredential *credential = [LRCredentialStorage getCredential];
