@@ -55,8 +55,12 @@ static NSUserDefaults *_userDefaults;
 
 + (LRSession *)getSession {
 	NSString *server = [self getServer];
-
 	NSURLCredential *credential = [self getCredential];
+
+	if ([LRValidator isEmpty:server] || !credential) {
+		return nil;
+	}
+
 	NSString *username = credential.user;
 	NSString *password = credential.password;
 
@@ -83,6 +87,12 @@ static NSUserDefaults *_userDefaults;
 
 + (NSURLCredential *)storeCredentialForServer:(NSString *)server
 		username:(NSString *)username password:(NSString *)password {
+
+	if ([LRValidator isEmpty:server] || [LRValidator isEmpty:username] ||
+		[LRValidator isEmpty:password]) {
+
+		return nil;
+	}
 
 	NSURLCredential *credential = [NSURLCredential credentialWithUser:username
 		password:password persistence:NSURLCredentialPersistencePermanent];

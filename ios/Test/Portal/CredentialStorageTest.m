@@ -74,6 +74,19 @@
 	XCTAssertEqualObjects(self.session.server, server);
 }
 
+- (void)testStoreCredentialEmpty {
+	[LRCredentialStorage storeCredentialForServer:@" " username:nil
+		password:@""];
+
+	NSURLCredential *credential = [LRCredentialStorage getCredential];
+	NSString *server = [LRCredentialStorage getServer];
+	LRSession *session = [LRCredentialStorage getSession];
+
+	XCTAssertNil(credential);
+	XCTAssertNil(server);
+	XCTAssertNil(session);
+}
+
 - (void)setUp {
 	[super setUp];
 
