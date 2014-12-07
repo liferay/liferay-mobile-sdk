@@ -136,6 +136,7 @@
 		CCA4E4E7193657B900374A79 /* LRPortalVersionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA4E4E51936578900374A79 /* LRPortalVersionUtil.m */; };
 		CCA6594518EC4BE800957D20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
 		CCA7166E1919511F00712D1C /* OrderByComparatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */; };
+		CCAB31651A34EDF80085313A /* LRCredentialStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAB31641A34EDF80085313A /* LRCredentialStorage.m */; };
 		CCABA081197C995500A9F8B0 /* LRResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CCABA07F197C995500A9F8B0 /* LRResponseParser.m */; };
 		CCABA086197D544B00A9F8B0 /* LRError.m in Sources */ = {isa = PBXBuildFile; fileRef = CCABA085197D544A00A9F8B0 /* LRError.m */; };
 		CCC6A7B61A164BEB00ABB791 /* LRRedirectDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC6A7B51A164BEB00ABB791 /* LRRedirectDelegate.m */; };
@@ -412,6 +413,8 @@
 		CCA6595218EC4BE800957D20 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CCA6595518EC4BE800957D20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderByComparatorTest.m; sourceTree = "<group>"; };
+		CCAB31631A34EDF80085313A /* LRCredentialStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCredentialStorage.h; sourceTree = "<group>"; };
+		CCAB31641A34EDF80085313A /* LRCredentialStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRCredentialStorage.m; sourceTree = "<group>"; };
 		CCABA07F197C995500A9F8B0 /* LRResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRResponseParser.m; sourceTree = "<group>"; };
 		CCABA080197C995500A9F8B0 /* LRResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRResponseParser.h; sourceTree = "<group>"; };
 		CCABA084197D544A00A9F8B0 /* LRError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRError.h; sourceTree = "<group>"; };
@@ -479,6 +482,8 @@
 				CC40D76E1974C76D000254E6 /* LRBlockCallback.h */,
 				CC40D76F1974C76D000254E6 /* LRBlockCallback.m */,
 				CC03FB7718ED7DCC00F3F16C /* LRCallback.h */,
+				CCAB31631A34EDF80085313A /* LRCredentialStorage.h */,
+				CCAB31641A34EDF80085313A /* LRCredentialStorage.m */,
 				CCD60E10191820BE00935937 /* LRJSONObjectWrapper.h */,
 				CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */,
 				CC03FB7818ED7DCC00F3F16C /* LRServiceFactory.h */,
@@ -1762,6 +1767,7 @@
 				CC03FCDE18ED7DCD00F3F16C /* LRMDRRuleGroupService_v62.m in Sources */,
 				CC03FCEC18ED7DCD00F3F16C /* LRRatingsEntryService_v62.m in Sources */,
 				CC03FCCD18ED7DCD00F3F16C /* LRJournalFolderService_v62.m in Sources */,
+				CCAB31651A34EDF80085313A /* LRCredentialStorage.m in Sources */,
 				CC03FCA718ED7DCD00F3F16C /* LRSession.m in Sources */,
 				CC03FCAF18ED7DCD00F3F16C /* LRAssetEntryService_v62.m in Sources */,
 				CC03FCE918ED7DCD00F3F16C /* LRPortalService_v62.m in Sources */,

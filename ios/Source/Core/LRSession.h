@@ -50,8 +50,4 @@
 - (void)onSuccess:(LRSuccessBlock)success onFailure:(LRFailureBlock)failure;
 - (id)upload:(NSDictionary *)command error:(NSError **)error;
 
-- (BOOL)storeCredential;
-- (BOOL)loadCredential;
-- (BOOL)removeStoredCredential;
-
 @end
