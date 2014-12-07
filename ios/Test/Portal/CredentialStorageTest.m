@@ -24,6 +24,17 @@
 
 @implementation CredentialStorageTest
 
+- (void)testRemoveCredential {
+	[self testStoreCredential];
+	[LRCredentialStorage removeCredential];
+
+	NSURLCredential *credential = [LRCredentialStorage getCredential];
+	NSString *server = [LRCredentialStorage getServer];
+
+	XCTAssertNil(credential);
+	XCTAssertNil(server);
+}
+
 - (void)testStoreCredential {
 	NSURLCredential *credential = [LRCredentialStorage
 		storeCredentialForServer:self.session.server

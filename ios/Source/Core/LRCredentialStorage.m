@@ -35,8 +35,16 @@ static NSUserDefaults *_userDefaults;
 	NSURLProtectionSpace *protectionSpace = [self
 		_getProtectionSpaceForServer:[self getServer]];
 
+	if (!protectionSpace) {
+		return nil;
+	}
+
 	NSDictionary *credential = [[NSURLCredentialStorage sharedCredentialStorage]
 		credentialsForProtectionSpace:protectionSpace];
+
+	if (!credential) {
+		return nil;
+	}
 
 	return credential[credential.keyEnumerator.nextObject];
 }
@@ -61,6 +69,10 @@ static NSUserDefaults *_userDefaults;
 
 	NSURLProtectionSpace *protectionSpace = [self
 		_getProtectionSpaceForServer:[self getServer]];
+
+	if (!credential || !protectionSpace) {
+		return;
+	}
 
 	[[NSURLCredentialStorage sharedCredentialStorage]
 		removeCredential:credential forProtectionSpace:protectionSpace];
