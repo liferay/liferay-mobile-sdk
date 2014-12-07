@@ -13,6 +13,7 @@
  */
 
 #import "LRServiceFactory.h"
+#import "LRCredentialStorage.h"
 
 static NSMutableDictionary *_services;
 
@@ -27,7 +28,17 @@ static NSMutableDictionary *_services;
 	}
 }
 
++ (LRBaseService *)getService:(Class)clazz {
+	LRSession *session = [LRCredentialStorage getSession];
+
+	return [self getService:clazz session:session];
+}
+
 + (LRBaseService *)getService:(Class)clazz session:(LRSession *)session {
+	if (!session) {
+		return nil;
+	}
+
 	LRBaseService *service = [_services objectForKey:NSStringFromClass(clazz)];
 
 	if (!service) {

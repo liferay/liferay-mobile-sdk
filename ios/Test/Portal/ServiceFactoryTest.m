@@ -12,14 +12,28 @@
  * details.
  */
 
-#import "LRBaseService.h"
+#import "GroupServiceTest.h"
+#import "LRGroupService_v62.h"
+#import "LRServiceFactory.h"
 
 /**
  * @author Bruno Farache
  */
-@interface LRServiceFactory : NSObject
+@interface ServiceFactoryTest : GroupServiceTest
+@end
 
-+ (LRBaseService *)getService:(Class)clazz;
-+ (LRBaseService *)getService:(Class)clazz session:(LRSession *)session;
+@implementation ServiceFactoryTest
+
+- (void)testGetUserSites {
+	Class clazz = [LRGroupService_v62 class];
+
+	LRGroupService_v62 *service = (LRGroupService_v62 *)[LRServiceFactory
+		getService:clazz session:self.session];
+
+	NSError *error;
+	NSArray *groups = [service getUserSites:&error];
+
+	[self assert:groups error:error];
+}
 
 @end
