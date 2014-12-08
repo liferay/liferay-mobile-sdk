@@ -10,7 +10,10 @@
 	* [Liferay](#liferay)
 	* [iOS](#ios)
 * [Use](#use)
-	* [Unauthenticated session](#unauthenticated-session)
+	* [Basics](#basics)
+		* [Unauthenticated session](#unauthenticated-session)
+		* [Storing credentials](#storing-credentials)
+		* [Service factory](#service-factory)
 	* [Asynchronous](#asynchronous)
 		* [Blocks](#blocks)
 	* [Batch](#batch)
@@ -96,6 +99,8 @@ older versions, but these are the versions we use to run our unit tests.
 
 ## Use
 
+#### Basics
+
 1.  Create a `Session` with the user credentials:
 
 	```objective-c
@@ -156,7 +161,7 @@ lists all available portal services and plugin services.
 	> Many service methods require `groupId` as a parameter. You can get the
 	user's groups by calling `[LRGroupService_v62 getUserSites:&error]`.
 
-#### Unauthenticated session
+##### Unauthenticated session
 
 It's also possible to create a `LRSession` instance that has no credential
 information. You need to use the constructor that accepts the server URL only:
@@ -179,6 +184,47 @@ public class FooServiceImpl extends FooServiceBaseImpl {
 @AccessControlled(guestAccessEnabled = true)
 public void bar() { ... }
 ```
+
+##### Storing credentials
+
+You can persist credentials with `LRCredentialStorage`, it will safely save
+username and password in the key chain:
+
+```objective-c
+[LRCredentialStorage storeCredentialForServer:@"http://localhost:8080" username:@"test@liferay.com" password:@"test"];
+```
+
+After credentials are stored, you can retrieve them with:
+
+```objective-c
+NSURLCredential *credential = [LRCredentialStorage getCredential];
+```
+
+Or directly create a `LRSession` instance with:
+
+```objective-c
+LRSession *session = [LRCredentialStorage getSession];
+```
+
+Check [CredentialStorageTest.m](Test/Portal/CredentialStorageTest.m) for more
+examples.
+
+##### Service factory
+
+There's an easier way to instantiate services with a factory, pass the service
+class name:
+
+```objective-c
+LRGroupService_v62 *service = (LRGroupService_v62 *)[LRServiceFactory getService:[LRGroupService_v62 class] session:self.session];
+```
+
+Or if you are using `LRCredentialStorage` to store credentials:
+
+```objective-c
+LRGroupService_v62 *service = (LRGroupService_v62 *)[LRServiceFactory getService:[LRGroupService_v62 class]];
+```
+
+The factory will keep a cache of instances and reuse them when necessary.
 
 #### Asynchronous
 	
