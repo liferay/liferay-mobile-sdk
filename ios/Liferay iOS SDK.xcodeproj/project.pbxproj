@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		755E0CF21A1D2D7600D9E829 /* PortraitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 755E0CF11A1D2D7600D9E829 /* PortraitTest.m */; };
-		8837B96019741D9800410076 /* UnauthenticatedServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8837B95F19741D9800410076 /* UnauthenticatedServiceTest.m */; };
-		883F77731977DE990041E1CB /* ResponseParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 883F77721977DE990041E1CB /* ResponseParserTest.m */; };
 		8F7B829DA4104FEDB903590F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 792F68BAE4DF41869F1F1580 /* libPods.a */; };
 		CC03FB6F18ED7BA000F3F16C /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC03FB6C18ED7BA000F3F16C /* settings.plist */; };
 		CC03FCA418ED7DCD00F3F16C /* LRBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FB7418ED7DCC00F3F16C /* LRBaseService.m */; };
@@ -113,16 +110,24 @@
 		CC03FD0718ED7DCD00F3F16C /* LRWikiNodeService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FC9D18ED7DCD00F3F16C /* LRWikiNodeService_v62.m */; };
 		CC03FD0818ED7DCD00F3F16C /* LRWikiPageService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FCA018ED7DCD00F3F16C /* LRWikiPageService_v62.m */; };
 		CC03FD0918ED7DCD00F3F16C /* LRPortraitUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FCA318ED7DCD00F3F16C /* LRPortraitUtil.m */; };
-		CC03FD2718EDA05B00F3F16C /* GroupServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FD2018EDA05B00F3F16C /* GroupServiceTest.m */; };
-		CC03FD2818EDA05B00F3F16C /* PortalVersionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FD2218EDA05B00F3F16C /* PortalVersionTest.m */; };
-		CC03FD2918EDA05B00F3F16C /* PortletServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FD2418EDA05B00F3F16C /* PortletServiceTest.m */; };
-		CC03FD2C18EDA10B00F3F16C /* DLAppServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FD2B18EDA10B00F3F16C /* DLAppServiceTest.m */; };
-		CC0FD4F91937853800270AB0 /* FileUploadTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0FD4F81937853800270AB0 /* FileUploadTest.m */; };
-		CC1C89711907FA19004D3C4C /* GroupServiceAsyncTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1C89701907FA19004D3C4C /* GroupServiceAsyncTest.m */; };
 		CC1C897919080708004D3C4C /* TRVSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1C897819080708004D3C4C /* TRVSMonitor.m */; };
+		CC2E77E01A3769A9001890A9 /* BlockCallbackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77CF1A3769A9001890A9 /* BlockCallbackTest.m */; };
+		CC2E77E11A3769A9001890A9 /* CredentialStorageTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77D01A3769A9001890A9 /* CredentialStorageTest.m */; };
+		CC2E77E21A3769A9001890A9 /* DLAppServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77D11A3769A9001890A9 /* DLAppServiceTest.m */; };
+		CC2E77E31A3769A9001890A9 /* FileUploadTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77D21A3769A9001890A9 /* FileUploadTest.m */; };
+		CC2E77E41A3769A9001890A9 /* GroupServiceAsyncTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77D31A3769A9001890A9 /* GroupServiceAsyncTest.m */; };
+		CC2E77E51A3769A9001890A9 /* GroupServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77D51A3769A9001890A9 /* GroupServiceTest.m */; };
+		CC2E77E61A3769A9001890A9 /* OrderByComparatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77D61A3769A9001890A9 /* OrderByComparatorTest.m */; };
+		CC2E77E71A3769A9001890A9 /* PortalVersionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77D71A3769A9001890A9 /* PortalVersionTest.m */; };
+		CC2E77E81A3769A9001890A9 /* PortletServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77D81A3769A9001890A9 /* PortletServiceTest.m */; };
+		CC2E77E91A3769A9001890A9 /* PortraitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77D91A3769A9001890A9 /* PortraitTest.m */; };
+		CC2E77EA1A3769A9001890A9 /* ResponseParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77DA1A3769A9001890A9 /* ResponseParserTest.m */; };
+		CC2E77EB1A3769A9001890A9 /* ServiceContextTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77DC1A3769A9001890A9 /* ServiceContextTest.m */; };
+		CC2E77EC1A3769A9001890A9 /* ServiceFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77DD1A3769A9001890A9 /* ServiceFactoryTest.m */; };
+		CC2E77ED1A3769A9001890A9 /* SpecialCharsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77DE1A3769A9001890A9 /* SpecialCharsTest.m */; };
+		CC2E77EE1A3769A9001890A9 /* UnauthenticatedServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77DF1A3769A9001890A9 /* UnauthenticatedServiceTest.m */; };
 		CC40D76D1974B9D0000254E6 /* LRValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = CC40D76B1974B9BA000254E6 /* LRValidator.m */; };
 		CC40D7701974C76D000254E6 /* LRBlockCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = CC40D76F1974C76D000254E6 /* LRBlockCallback.m */; };
-		CC40D7721974CB3B000254E6 /* BlockCallbackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC40D7711974CB3B000254E6 /* BlockCallbackTest.m */; };
 		CC4B7A261937B971003611C4 /* LRUploadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B7A241937B971003611C4 /* LRUploadData.m */; };
 		CC4B7A291937C64E003611C4 /* LRUploadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B7A271937C64E003611C4 /* LRUploadUtil.m */; };
 		CC4B7A2F1938C47F003611C4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4B7A2E1938C47F003611C4 /* logo.png */; };
@@ -132,18 +137,13 @@
 		CC6ECF281986D83C007F4EBB /* LRLocalizationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6ECF271986D83C007F4EBB /* LRLocalizationUtil.m */; };
 		CC6ECF301986DB2F007F4EBB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC6ECF321986DB2F007F4EBB /* Localizable.strings */; };
 		CC83D48F18ED6BE300CFA142 /* BaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC83D48E18ED6BE300CFA142 /* BaseTest.m */; };
-		CC88DE63192A2B1B0008D3D1 /* SpecialCharsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC88DE61192A2B1B0008D3D1 /* SpecialCharsTest.m */; };
 		CCA4E4E7193657B900374A79 /* LRPortalVersionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA4E4E51936578900374A79 /* LRPortalVersionUtil.m */; };
 		CCA6594518EC4BE800957D20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
-		CCA7166E1919511F00712D1C /* OrderByComparatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */; };
 		CCAB31651A34EDF80085313A /* LRCredentialStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAB31641A34EDF80085313A /* LRCredentialStorage.m */; };
-		CCAB31691A3503A20085313A /* CredentialStorageTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAB31681A3503A20085313A /* CredentialStorageTest.m */; };
-		CCAB316B1A35149E0085313A /* ServiceFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAB316A1A35149E0085313A /* ServiceFactoryTest.m */; };
 		CCABA081197C995500A9F8B0 /* LRResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CCABA07F197C995500A9F8B0 /* LRResponseParser.m */; };
 		CCABA086197D544B00A9F8B0 /* LRError.m in Sources */ = {isa = PBXBuildFile; fileRef = CCABA085197D544A00A9F8B0 /* LRError.m */; };
 		CCC6A7B61A164BEB00ABB791 /* LRRedirectDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC6A7B51A164BEB00ABB791 /* LRRedirectDelegate.m */; };
 		CCCF04E019182584005D1B22 /* LRJSONObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */; };
-		CCCF04E319192798005D1B22 /* ServiceContextTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCF04E219192798005D1B22 /* ServiceContextTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,11 +170,7 @@
 
 /* Begin PBXFileReference section */
 		1AA10F3DFF644C7DB4B5BE40 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		755E0CF11A1D2D7600D9E829 /* PortraitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortraitTest.m; sourceTree = "<group>"; };
 		792F68BAE4DF41869F1F1580 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8837B95F19741D9800410076 /* UnauthenticatedServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnauthenticatedServiceTest.m; sourceTree = "<group>"; };
-		883F77721977DE990041E1CB /* ResponseParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseParserTest.m; sourceTree = "<group>"; };
-		88FD86C519742C4700E4EEF9 /* GroupServiceTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupServiceTest.h; sourceTree = "<group>"; };
 		CC03FB6C18ED7BA000F3F16C /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		CC03FB6D18ED7BA000F3F16C /* Test-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Test-Info.plist"; sourceTree = "<group>"; };
 		CC03FB6E18ED7BA000F3F16C /* Test-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Test-Prefix.pch"; sourceTree = "<group>"; };
@@ -381,19 +377,29 @@
 		CC03FCA018ED7DCD00F3F16C /* LRWikiPageService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRWikiPageService_v62.m; sourceTree = "<group>"; };
 		CC03FCA218ED7DCD00F3F16C /* LRPortraitUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPortraitUtil.h; sourceTree = "<group>"; };
 		CC03FCA318ED7DCD00F3F16C /* LRPortraitUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPortraitUtil.m; sourceTree = "<group>"; };
-		CC03FD2018EDA05B00F3F16C /* GroupServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupServiceTest.m; sourceTree = "<group>"; };
-		CC03FD2218EDA05B00F3F16C /* PortalVersionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalVersionTest.m; sourceTree = "<group>"; };
-		CC03FD2418EDA05B00F3F16C /* PortletServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortletServiceTest.m; sourceTree = "<group>"; };
-		CC03FD2B18EDA10B00F3F16C /* DLAppServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAppServiceTest.m; sourceTree = "<group>"; };
-		CC0FD4F81937853800270AB0 /* FileUploadTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUploadTest.m; sourceTree = "<group>"; };
-		CC1C89701907FA19004D3C4C /* GroupServiceAsyncTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupServiceAsyncTest.m; sourceTree = "<group>"; };
 		CC1C897719080708004D3C4C /* TRVSMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSMonitor.h; sourceTree = "<group>"; };
 		CC1C897819080708004D3C4C /* TRVSMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSMonitor.m; sourceTree = "<group>"; };
+		CC2E77CF1A3769A9001890A9 /* BlockCallbackTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockCallbackTest.m; sourceTree = "<group>"; };
+		CC2E77D01A3769A9001890A9 /* CredentialStorageTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialStorageTest.m; sourceTree = "<group>"; };
+		CC2E77D11A3769A9001890A9 /* DLAppServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAppServiceTest.m; sourceTree = "<group>"; };
+		CC2E77D21A3769A9001890A9 /* FileUploadTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUploadTest.m; sourceTree = "<group>"; };
+		CC2E77D31A3769A9001890A9 /* GroupServiceAsyncTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupServiceAsyncTest.m; sourceTree = "<group>"; };
+		CC2E77D41A3769A9001890A9 /* GroupServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupServiceTest.h; sourceTree = "<group>"; };
+		CC2E77D51A3769A9001890A9 /* GroupServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupServiceTest.m; sourceTree = "<group>"; };
+		CC2E77D61A3769A9001890A9 /* OrderByComparatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderByComparatorTest.m; sourceTree = "<group>"; };
+		CC2E77D71A3769A9001890A9 /* PortalVersionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalVersionTest.m; sourceTree = "<group>"; };
+		CC2E77D81A3769A9001890A9 /* PortletServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortletServiceTest.m; sourceTree = "<group>"; };
+		CC2E77D91A3769A9001890A9 /* PortraitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortraitTest.m; sourceTree = "<group>"; };
+		CC2E77DA1A3769A9001890A9 /* ResponseParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseParserTest.m; sourceTree = "<group>"; };
+		CC2E77DB1A3769A9001890A9 /* ServiceContextTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceContextTest.h; sourceTree = "<group>"; };
+		CC2E77DC1A3769A9001890A9 /* ServiceContextTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceContextTest.m; sourceTree = "<group>"; };
+		CC2E77DD1A3769A9001890A9 /* ServiceFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceFactoryTest.m; sourceTree = "<group>"; };
+		CC2E77DE1A3769A9001890A9 /* SpecialCharsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialCharsTest.m; sourceTree = "<group>"; };
+		CC2E77DF1A3769A9001890A9 /* UnauthenticatedServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnauthenticatedServiceTest.m; sourceTree = "<group>"; };
 		CC40D76A1974B9BA000254E6 /* LRValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRValidator.h; sourceTree = "<group>"; };
 		CC40D76B1974B9BA000254E6 /* LRValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRValidator.m; sourceTree = "<group>"; };
 		CC40D76E1974C76D000254E6 /* LRBlockCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRBlockCallback.h; sourceTree = "<group>"; };
 		CC40D76F1974C76D000254E6 /* LRBlockCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRBlockCallback.m; sourceTree = "<group>"; };
-		CC40D7711974CB3B000254E6 /* BlockCallbackTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockCallbackTest.m; sourceTree = "<group>"; };
 		CC4B7A241937B971003611C4 /* LRUploadData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRUploadData.m; sourceTree = "<group>"; };
 		CC4B7A251937B971003611C4 /* LRUploadData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUploadData.h; sourceTree = "<group>"; };
 		CC4B7A271937C64E003611C4 /* LRUploadUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRUploadUtil.m; sourceTree = "<group>"; };
@@ -407,26 +413,20 @@
 		CC6ECF351986E565007F4EBB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CC83D48D18ED693600CFA142 /* BaseTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTest.h; sourceTree = "<group>"; };
 		CC83D48E18ED6BE300CFA142 /* BaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTest.m; sourceTree = "<group>"; };
-		CC88DE61192A2B1B0008D3D1 /* SpecialCharsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialCharsTest.m; sourceTree = "<group>"; };
 		CCA4E4E41936578900374A79 /* LRPortalVersionUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPortalVersionUtil.h; sourceTree = "<group>"; };
 		CCA4E4E51936578900374A79 /* LRPortalVersionUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPortalVersionUtil.m; sourceTree = "<group>"; };
 		CCA6594118EC4BE800957D20 /* libLiferay iOS SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libLiferay iOS SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA6594418EC4BE800957D20 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CCA6595218EC4BE800957D20 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CCA6595518EC4BE800957D20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderByComparatorTest.m; sourceTree = "<group>"; };
 		CCAB31631A34EDF80085313A /* LRCredentialStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCredentialStorage.h; sourceTree = "<group>"; };
 		CCAB31641A34EDF80085313A /* LRCredentialStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRCredentialStorage.m; sourceTree = "<group>"; };
-		CCAB31681A3503A20085313A /* CredentialStorageTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialStorageTest.m; sourceTree = "<group>"; };
-		CCAB316A1A35149E0085313A /* ServiceFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceFactoryTest.m; sourceTree = "<group>"; };
 		CCABA07F197C995500A9F8B0 /* LRResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRResponseParser.m; sourceTree = "<group>"; };
 		CCABA080197C995500A9F8B0 /* LRResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRResponseParser.h; sourceTree = "<group>"; };
 		CCABA084197D544A00A9F8B0 /* LRError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRError.h; sourceTree = "<group>"; };
 		CCABA085197D544A00A9F8B0 /* LRError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRError.m; sourceTree = "<group>"; };
 		CCC6A7B41A164BEB00ABB791 /* LRRedirectDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRedirectDelegate.h; sourceTree = "<group>"; };
 		CCC6A7B51A164BEB00ABB791 /* LRRedirectDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRedirectDelegate.m; sourceTree = "<group>"; };
-		CCCF04E119192798005D1B22 /* ServiceContextTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceContextTest.h; sourceTree = "<group>"; };
-		CCCF04E219192798005D1B22 /* ServiceContextTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceContextTest.m; sourceTree = "<group>"; };
 		CCD60E10191820BE00935937 /* LRJSONObjectWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRJSONObjectWrapper.h; sourceTree = "<group>"; };
 		CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRJSONObjectWrapper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1497,30 +1497,6 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
-		CC03FD1C18EDA05B00F3F16C /* Portal */ = {
-			isa = PBXGroup;
-			children = (
-				CC40D7711974CB3B000254E6 /* BlockCallbackTest.m */,
-				CCAB31681A3503A20085313A /* CredentialStorageTest.m */,
-				CC03FD2B18EDA10B00F3F16C /* DLAppServiceTest.m */,
-				CC0FD4F81937853800270AB0 /* FileUploadTest.m */,
-				CC1C89701907FA19004D3C4C /* GroupServiceAsyncTest.m */,
-				88FD86C519742C4700E4EEF9 /* GroupServiceTest.h */,
-				CC03FD2018EDA05B00F3F16C /* GroupServiceTest.m */,
-				CCA7166C1919511F00712D1C /* OrderByComparatorTest.m */,
-				CC03FD2218EDA05B00F3F16C /* PortalVersionTest.m */,
-				CC03FD2418EDA05B00F3F16C /* PortletServiceTest.m */,
-				755E0CF11A1D2D7600D9E829 /* PortraitTest.m */,
-				883F77721977DE990041E1CB /* ResponseParserTest.m */,
-				CCCF04E119192798005D1B22 /* ServiceContextTest.h */,
-				CCCF04E219192798005D1B22 /* ServiceContextTest.m */,
-				CCAB316A1A35149E0085313A /* ServiceFactoryTest.m */,
-				CC88DE61192A2B1B0008D3D1 /* SpecialCharsTest.m */,
-				8837B95F19741D9800410076 /* UnauthenticatedServiceTest.m */,
-			);
-			path = Portal;
-			sourceTree = "<group>";
-		};
 		CC1C897619080708004D3C4C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -1534,10 +1510,26 @@
 			isa = PBXGroup;
 			children = (
 				CC1C897619080708004D3C4C /* Libraries */,
-				CC03FD1C18EDA05B00F3F16C /* Portal */,
 				CC03FB6B18ED7BA000F3F16C /* Supporting Files */,
 				CC83D48D18ED693600CFA142 /* BaseTest.h */,
 				CC83D48E18ED6BE300CFA142 /* BaseTest.m */,
+				CC2E77CF1A3769A9001890A9 /* BlockCallbackTest.m */,
+				CC2E77D01A3769A9001890A9 /* CredentialStorageTest.m */,
+				CC2E77D11A3769A9001890A9 /* DLAppServiceTest.m */,
+				CC2E77D21A3769A9001890A9 /* FileUploadTest.m */,
+				CC2E77D31A3769A9001890A9 /* GroupServiceAsyncTest.m */,
+				CC2E77D41A3769A9001890A9 /* GroupServiceTest.h */,
+				CC2E77D51A3769A9001890A9 /* GroupServiceTest.m */,
+				CC2E77D61A3769A9001890A9 /* OrderByComparatorTest.m */,
+				CC2E77D71A3769A9001890A9 /* PortalVersionTest.m */,
+				CC2E77D81A3769A9001890A9 /* PortletServiceTest.m */,
+				CC2E77D91A3769A9001890A9 /* PortraitTest.m */,
+				CC2E77DA1A3769A9001890A9 /* ResponseParserTest.m */,
+				CC2E77DB1A3769A9001890A9 /* ServiceContextTest.h */,
+				CC2E77DC1A3769A9001890A9 /* ServiceContextTest.m */,
+				CC2E77DD1A3769A9001890A9 /* ServiceFactoryTest.m */,
+				CC2E77DE1A3769A9001890A9 /* SpecialCharsTest.m */,
+				CC2E77DF1A3769A9001890A9 /* UnauthenticatedServiceTest.m */,
 			);
 			path = Test;
 			sourceTree = SOURCE_ROOT;
@@ -1709,23 +1701,26 @@
 			files = (
 				CC6ECF281986D83C007F4EBB /* LRLocalizationUtil.m in Sources */,
 				CC03FCD918ED7DCD00F3F16C /* LRMBCategoryService_v62.m in Sources */,
+				CC2E77E41A3769A9001890A9 /* GroupServiceAsyncTest.m in Sources */,
 				CC03FCB518ED7DCD00F3F16C /* LRBookmarksEntryService_v62.m in Sources */,
 				CC03FCC018ED7DCD00F3F16C /* LRDLFileEntryService_v62.m in Sources */,
 				CC03FCD518ED7DCD00F3F16C /* LRLayoutSetBranchService_v62.m in Sources */,
 				CC03FCFA18ED7DCD00F3F16C /* LRSocialActivityService_v62.m in Sources */,
 				CC03FCEE18ED7DCD00F3F16C /* LRRepositoryService_v62.m in Sources */,
 				CC03FD0018ED7DCD00F3F16C /* LRThemeService_v62.m in Sources */,
+				CC2E77EB1A3769A9001890A9 /* ServiceContextTest.m in Sources */,
 				CCA4E4E7193657B900374A79 /* LRPortalVersionUtil.m in Sources */,
 				CC03FCC518ED7DCD00F3F16C /* LREmailAddressService_v62.m in Sources */,
 				CC03FCAC18ED7DCD00F3F16C /* LRAnnouncementsFlagService_v62.m in Sources */,
 				CC03FCB418ED7DCD00F3F16C /* LRBlogsEntryService_v62.m in Sources */,
-				CC03FD2718EDA05B00F3F16C /* GroupServiceTest.m in Sources */,
 				CC03FCE818ED7DCD00F3F16C /* LRPollsVoteService_v62.m in Sources */,
 				CC03FCC418ED7DCD00F3F16C /* LRDLFolderService_v62.m in Sources */,
 				CC03FCB918ED7DCD00F3F16C /* LRContactService_v62.m in Sources */,
 				CC03FCE118ED7DCD00F3F16C /* LROrganizationService_v62.m in Sources */,
 				CC03FCD118ED7DCD00F3F16C /* LRLayoutBranchService_v62.m in Sources */,
+				CC2E77E91A3769A9001890A9 /* PortraitTest.m in Sources */,
 				CC03FCB118ED7DCD00F3F16C /* LRAssetTagPropertyService_v62.m in Sources */,
+				CC2E77E11A3769A9001890A9 /* CredentialStorageTest.m in Sources */,
 				CC03FCF718ED7DCD00F3F16C /* LRShoppingCouponService_v62.m in Sources */,
 				CC03FCC618ED7DCD00F3F16C /* LRExpandoColumnService_v62.m in Sources */,
 				CC03FD0418ED7DCD00F3F16C /* LRUserGroupGroupRoleService_v62.m in Sources */,
@@ -1737,23 +1732,21 @@
 				CC03FCB618ED7DCD00F3F16C /* LRBookmarksFolderService_v62.m in Sources */,
 				CC03FD0218ED7DCD00F3F16C /* LRUserService_v62.m in Sources */,
 				CC03FCD418ED7DCD00F3F16C /* LRLayoutSetService_v62.m in Sources */,
+				CC2E77E21A3769A9001890A9 /* DLAppServiceTest.m in Sources */,
 				CC03FD0518ED7DCD00F3F16C /* LRUserGroupRoleService_v62.m in Sources */,
 				CC03FCF518ED7DCD00F3F16C /* LRSCProductVersionService_v62.m in Sources */,
-				CC40D7721974CB3B000254E6 /* BlockCallbackTest.m in Sources */,
 				CC03FCDB18ED7DCD00F3F16C /* LRMBThreadService_v62.m in Sources */,
 				CC03FCD818ED7DCD00F3F16C /* LRMBBanService_v62.m in Sources */,
 				CC03FCAD18ED7DCD00F3F16C /* LRAssetCategoryService_v62.m in Sources */,
 				CC03FCBA18ED7DCD00F3F16C /* LRCountryService_v62.m in Sources */,
 				CC03FCBB18ED7DCD00F3F16C /* LRDDLRecordService_v62.m in Sources */,
 				CC03FD0718ED7DCD00F3F16C /* LRWikiNodeService_v62.m in Sources */,
-				CCCF04E319192798005D1B22 /* ServiceContextTest.m in Sources */,
 				CC03FCF618ED7DCD00F3F16C /* LRShoppingCategoryService_v62.m in Sources */,
 				CC03FCB818ED7DCD00F3F16C /* LRCompanyService_v62.m in Sources */,
 				CC03FCA818ED7DCD00F3F16C /* LRHttpUtil.m in Sources */,
 				CC03FCE518ED7DCD00F3F16C /* LRPhoneService_v62.m in Sources */,
+				CC2E77E71A3769A9001890A9 /* PortalVersionTest.m in Sources */,
 				CC03FCCF18ED7DCD00F3F16C /* LRJournalTemplateService_v62.m in Sources */,
-				CC0FD4F91937853800270AB0 /* FileUploadTest.m in Sources */,
-				CCAB316B1A35149E0085313A /* ServiceFactoryTest.m in Sources */,
 				CC03FCF018ED7DCD00F3F16C /* LRResourcePermissionService_v62.m in Sources */,
 				CC03FCA418ED7DCD00F3F16C /* LRBaseService.m in Sources */,
 				CC03FCC818ED7DCD00F3F16C /* LRFlagsEntryService_v62.m in Sources */,
@@ -1761,11 +1754,11 @@
 				CC03FCC218ED7DCD00F3F16C /* LRDLFileShortcutService_v62.m in Sources */,
 				CC03FCB318ED7DCD00F3F16C /* LRBackgroundTaskService_v62.m in Sources */,
 				CC03FCF418ED7DCD00F3F16C /* LRSCProductEntryService_v62.m in Sources */,
+				CC2E77EC1A3769A9001890A9 /* ServiceFactoryTest.m in Sources */,
 				CC40D76D1974B9D0000254E6 /* LRValidator.m in Sources */,
 				CC03FCC718ED7DCD00F3F16C /* LRExpandoValueService_v62.m in Sources */,
 				CC03FCDD18ED7DCD00F3F16C /* LRMDRRuleService_v62.m in Sources */,
 				CC03FCE618ED7DCD00F3F16C /* LRPluginSettingService_v62.m in Sources */,
-				883F77731977DE990041E1CB /* ResponseParserTest.m in Sources */,
 				CC03FD0918ED7DCD00F3F16C /* LRPortraitUtil.m in Sources */,
 				CC03FCD718ED7DCD00F3F16C /* LRListTypeService_v62.m in Sources */,
 				CC03FCEA18ED7DCD00F3F16C /* LRPortletService_v62.m in Sources */,
@@ -1777,8 +1770,9 @@
 				CCAB31651A34EDF80085313A /* LRCredentialStorage.m in Sources */,
 				CC03FCA718ED7DCD00F3F16C /* LRSession.m in Sources */,
 				CC03FCAF18ED7DCD00F3F16C /* LRAssetEntryService_v62.m in Sources */,
-				CCAB31691A3503A20085313A /* CredentialStorageTest.m in Sources */,
+				CC2E77EE1A3769A9001890A9 /* UnauthenticatedServiceTest.m in Sources */,
 				CC03FCE918ED7DCD00F3F16C /* LRPortalService_v62.m in Sources */,
+				CC2E77E61A3769A9001890A9 /* OrderByComparatorTest.m in Sources */,
 				CC03FCFC18ED7DCD00F3F16C /* LRSocialRequestService_v62.m in Sources */,
 				CC03FCDC18ED7DCD00F3F16C /* LRMDRActionService_v62.m in Sources */,
 				CC03FCDA18ED7DCD00F3F16C /* LRMBMessageService_v62.m in Sources */,
@@ -1786,30 +1780,28 @@
 				CC03FCB718ED7DCD00F3F16C /* LRClassNameService_v62.m in Sources */,
 				CC03FD0118ED7DCD00F3F16C /* LRTrashEntryService_v62.m in Sources */,
 				CC03FCC118ED7DCD00F3F16C /* LRDLFileEntryTypeService_v62.m in Sources */,
-				CCA7166E1919511F00712D1C /* OrderByComparatorTest.m in Sources */,
 				CC03FCA518ED7DCD00F3F16C /* LRBatchSession.m in Sources */,
 				CC03FCBC18ED7DCD00F3F16C /* LRDDLRecordSetService_v62.m in Sources */,
 				CC03FCCA18ED7DCD00F3F16C /* LRImageService_v62.m in Sources */,
-				CC03FD2918EDA05B00F3F16C /* PortletServiceTest.m in Sources */,
-				CC1C89711907FA19004D3C4C /* GroupServiceAsyncTest.m in Sources */,
+				CC2E77E81A3769A9001890A9 /* PortletServiceTest.m in Sources */,
 				CC03FCBD18ED7DCD00F3F16C /* LRDDMStructureService_v62.m in Sources */,
-				CC03FD2C18EDA10B00F3F16C /* DLAppServiceTest.m in Sources */,
 				CC03FCF318ED7DCD00F3F16C /* LRSCLicenseService_v62.m in Sources */,
 				CC03FCAA18ED7DCD00F3F16C /* LRAnnouncementsDeliveryService_v62.m in Sources */,
 				CC03FCFB18ED7DCD00F3F16C /* LRSocialActivitySettingService_v62.m in Sources */,
 				CC03FCD318ED7DCD00F3F16C /* LRLayoutRevisionService_v62.m in Sources */,
-				755E0CF21A1D2D7600D9E829 /* PortraitTest.m in Sources */,
 				CC03FCEB18ED7DCD00F3F16C /* LRPortletPreferencesService_v62.m in Sources */,
 				CC4B7A291937C64E003611C4 /* LRUploadUtil.m in Sources */,
 				CC40D7701974C76D000254E6 /* LRBlockCallback.m in Sources */,
 				CC03FCE718ED7DCD00F3F16C /* LRPollsQuestionService_v62.m in Sources */,
+				CC2E77EA1A3769A9001890A9 /* ResponseParserTest.m in Sources */,
 				CC03FCCC18ED7DCD00F3F16C /* LRJournalFeedService_v62.m in Sources */,
 				CC03FCBF18ED7DCD00F3F16C /* LRDLAppService_v62.m in Sources */,
-				CC03FD2818EDA05B00F3F16C /* PortalVersionTest.m in Sources */,
 				CC03FCA918ED7DCD00F3F16C /* LRAddressService_v62.m in Sources */,
 				CC03FD0618ED7DCD00F3F16C /* LRWebsiteService_v62.m in Sources */,
+				CC2E77E51A3769A9001890A9 /* GroupServiceTest.m in Sources */,
 				CC03FCE218ED7DCD00F3F16C /* LROrgLaborService_v62.m in Sources */,
 				CCC6A7B61A164BEB00ABB791 /* LRRedirectDelegate.m in Sources */,
+				CC2E77E01A3769A9001890A9 /* BlockCallbackTest.m in Sources */,
 				CC03FCDF18ED7DCD00F3F16C /* LRMDRRuleGroupInstanceService_v62.m in Sources */,
 				CC03FD0318ED7DCD00F3F16C /* LRUserGroupService_v62.m in Sources */,
 				CC03FCF818ED7DCD00F3F16C /* LRShoppingItemService_v62.m in Sources */,
@@ -1823,19 +1815,19 @@
 				CC4B7A261937B971003611C4 /* LRUploadData.m in Sources */,
 				CC03FCF918ED7DCD00F3F16C /* LRShoppingOrderService_v62.m in Sources */,
 				CC03FCFF18ED7DCD00F3F16C /* LRTeamService_v62.m in Sources */,
-				CC88DE63192A2B1B0008D3D1 /* SpecialCharsTest.m in Sources */,
 				CC03FCED18ED7DCD00F3F16C /* LRRegionService_v62.m in Sources */,
 				CC03FCD618ED7DCD00F3F16C /* LRLayoutSetPrototypeService_v62.m in Sources */,
 				CC03FCB218ED7DCD00F3F16C /* LRAssetVocabularyService_v62.m in Sources */,
 				CC03FCB018ED7DCD00F3F16C /* LRAssetTagService_v62.m in Sources */,
+				CC2E77E31A3769A9001890A9 /* FileUploadTest.m in Sources */,
 				CCABA086197D544B00A9F8B0 /* LRError.m in Sources */,
 				CC03FD0818ED7DCD00F3F16C /* LRWikiPageService_v62.m in Sources */,
 				CC1C897919080708004D3C4C /* TRVSMonitor.m in Sources */,
-				8837B96019741D9800410076 /* UnauthenticatedServiceTest.m in Sources */,
 				CCCF04E019182584005D1B22 /* LRJSONObjectWrapper.m in Sources */,
 				CC03FCE318ED7DCD00F3F16C /* LRPasswordPolicyService_v62.m in Sources */,
 				CC83D48F18ED6BE300CFA142 /* BaseTest.m in Sources */,
 				CCABA081197C995500A9F8B0 /* LRResponseParser.m in Sources */,
+				CC2E77ED1A3769A9001890A9 /* SpecialCharsTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
