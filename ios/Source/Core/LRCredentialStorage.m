@@ -17,19 +17,11 @@
 
 static NSString *const KEY_SERVER = @"server";
 
-static NSUserDefaults *_userDefaults;
-
 /**
  * @author Jose M. Navarro
  * @author Bruno Farache
  */
 @implementation LRCredentialStorage
-
-+ (void)initialize {
-	if (!_userDefaults) {
-		_userDefaults = [NSUserDefaults standardUserDefaults];
-	}
-}
 
 + (NSURLCredential *)getCredential {
 	NSURLProtectionSpace *protectionSpace = [self
@@ -50,7 +42,7 @@ static NSUserDefaults *_userDefaults;
 }
 
 + (NSString *)getServer {
-	return [_userDefaults stringForKey:KEY_SERVER];
+	return [[NSUserDefaults standardUserDefaults] stringForKey:KEY_SERVER];
 }
 
 + (LRSession *)getSession {
@@ -81,8 +73,9 @@ static NSUserDefaults *_userDefaults;
 	[[NSURLCredentialStorage sharedCredentialStorage]
 		removeCredential:credential forProtectionSpace:protectionSpace];
 
-	[_userDefaults removeObjectForKey:KEY_SERVER];
-	[_userDefaults synchronize];
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	[userDefaults removeObjectForKey:KEY_SERVER];
+	[userDefaults synchronize];
 }
 
 + (NSURLCredential *)storeCredentialForServer:(NSString *)server
@@ -124,8 +117,9 @@ static NSUserDefaults *_userDefaults;
 }
 
 + (void)_storeServer:(NSString *)server {
-	[_userDefaults setObject:server forKey:KEY_SERVER];
-	[_userDefaults synchronize];
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	[userDefaults setObject:server forKey:KEY_SERVER];
+	[userDefaults synchronize];
 }
 
 @end
