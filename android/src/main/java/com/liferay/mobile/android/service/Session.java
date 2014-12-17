@@ -14,7 +14,7 @@
 
 package com.liferay.mobile.android.service;
 
-import com.liferay.mobile.android.auth.Auth;
+import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import org.json.JSONObject;
@@ -24,7 +24,7 @@ import org.json.JSONObject;
  */
 public interface Session {
 
-	public Auth getAuth();
+	public Authentication getAuthentication();
 
 	public AsyncTaskCallback getCallback();
 
@@ -38,7 +38,7 @@ public interface Session {
 
 	public Object invoke(JSONObject command) throws Exception;
 
-	public void setAuth(Auth auth);
+	public void setAuthentication(Authentication authentication);
 
 	public void setCallback(AsyncTaskCallback callback);
 

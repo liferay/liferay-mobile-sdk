@@ -14,8 +14,8 @@
 
 package com.liferay.mobile.sdk.test;
 
-import com.liferay.mobile.android.auth.Auth;
-import com.liferay.mobile.android.auth.BasicAuth;
+import com.liferay.mobile.android.auth.Authentication;
+import com.liferay.mobile.android.auth.BasicAuthentication;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
 import com.liferay.mobile.sdk.test.util.PropertiesUtil;
@@ -30,8 +30,10 @@ public abstract class BaseTest {
 	public BaseTest() throws IOException {
 		props = new PropertiesUtil();
 
-		Auth auth = new BasicAuth(props.getLogin(), props.getPassword());
-		session = new SessionImpl(props.getUrl(), auth);
+		Authentication authentication = new BasicAuthentication(
+			props.getLogin(), props.getPassword());
+
+		session = new SessionImpl(props.getUrl(), authentication);
 	}
 
 	protected PropertiesUtil props;

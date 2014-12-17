@@ -22,9 +22,9 @@ import org.apache.http.impl.auth.BasicScheme;
 /**
  * @author Bruno Farache
  */
-public class BasicAuth implements Auth {
+public class BasicAuthentication implements Authentication {
 
-	public BasicAuth(String username, String password) {
+	public BasicAuthentication(String username, String password) {
 		_username = username;
 		_password = password;
 	}

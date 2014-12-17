@@ -14,7 +14,7 @@
 
 package com.liferay.mobile.android.service;
 
-import com.liferay.mobile.android.auth.Auth;
+import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.task.ServiceAsyncTask;
 import com.liferay.mobile.android.task.UploadAsyncTask;
@@ -32,7 +32,7 @@ public class SessionImpl implements Session {
 
 	public SessionImpl(Session session) {
 		this(
-			session.getServer(), session.getAuth(),
+			session.getServer(), session.getAuthentication(),
 			session.getConnectionTimeout(), session.getCallback());
 	}
 
@@ -44,27 +44,30 @@ public class SessionImpl implements Session {
 		this(server, null, callback);
 	}
 
-	public SessionImpl(String server, Auth auth) {
-		this(server, auth, null);
-	}
-
-	public SessionImpl(String server, Auth auth, AsyncTaskCallback callback) {
-		this(server, auth, DEFAULT_CONNECTION_TIMEOUT, callback);
+	public SessionImpl(String server, Authentication authentication) {
+		this(server, authentication, null);
 	}
 
 	public SessionImpl(
-		String server, Auth auth, int connectionTimeout,
+		String server, Authentication authentication,
+		AsyncTaskCallback callback) {
+
+		this(server, authentication, DEFAULT_CONNECTION_TIMEOUT, callback);
+	}
+
+	public SessionImpl(
+		String server, Authentication authentication, int connectionTimeout,
 		AsyncTaskCallback callback) {
 
 		this.server = server;
-		this.auth = auth;
+		this.authentication = authentication;
 		this.connectionTimeout = connectionTimeout;
 		this.callback = callback;
 	}
 
 	@Override
-	public Auth getAuth() {
-		return auth;
+	public Authentication getAuthentication() {
+		return authentication;
 	}
 
 	@Override
@@ -108,8 +111,8 @@ public class SessionImpl implements Session {
 	}
 
 	@Override
-	public void setAuth(Auth auth) {
-		this.auth = auth;
+	public void setAuthentication(Authentication authentication) {
+		this.authentication = authentication;
 	}
 
 	@Override
@@ -150,7 +153,7 @@ public class SessionImpl implements Session {
 		}
 	}
 
-	protected Auth auth;
+	protected Authentication authentication;
 	protected AsyncTaskCallback callback;
 	protected int connectionTimeout;
 	protected String password;

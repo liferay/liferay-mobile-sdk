@@ -19,7 +19,7 @@ import org.apache.http.HttpRequest;
 /**
  * @author Bruno Farache
  */
-public interface Auth {
+public interface Authentication {
 
 	public void authenticate(HttpRequest request);
 
