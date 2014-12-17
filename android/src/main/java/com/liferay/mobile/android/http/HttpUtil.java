@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android.http;
 
+import com.liferay.mobile.android.auth.Auth;
 import com.liferay.mobile.android.exception.RedirectException;
 import com.liferay.mobile.android.exception.ServerException;
 import com.liferay.mobile.android.http.entity.CountingHttpEntity;
@@ -24,12 +25,10 @@ import com.liferay.mobile.android.util.Validator;
 import java.io.IOException;
 
 import java.net.URI;
-import java.net.URL;
 
 import java.util.Iterator;
 
 import org.apache.http.Consts;
-import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
@@ -89,10 +88,10 @@ public class HttpUtil {
 	public static HttpPost getPost(Session session, String URL) {
 		HttpPost post = new HttpPost(URL);
 
-		Header authHeader = session.getAuthHeader();
+		Auth auth = session.getAuth();
 
-		if (authHeader != null) {
-			post.addHeader(authHeader);
+		if (auth != null) {
+			auth.authenticate(post);
 		}
 
 		return post;

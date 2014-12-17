@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android.service;
 
+import com.liferay.mobile.android.auth.Auth;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.task.ServiceAsyncTask;
 import com.liferay.mobile.android.task.callback.BatchAsyncTaskCallback;
@@ -30,22 +31,29 @@ public class BatchSessionImpl extends SessionImpl {
 		super(session);
 	}
 
-	public BatchSessionImpl(String server, String username, String password) {
-		super(server, username, password);
+	public BatchSessionImpl(String server) {
+		super(server);
+	}
+
+	public BatchSessionImpl(String server, Auth auth) {
+		super(server, auth);
 	}
 
 	public BatchSessionImpl(
-		String server, String username, String password,
-		BatchAsyncTaskCallback callback) {
+		String server, Auth auth, BatchAsyncTaskCallback callback) {
 
-		super(server, username, password, callback);
+		super(server, auth, callback);
 	}
 
 	public BatchSessionImpl(
-		String server, String username, String password, int connectionTimeout,
+		String server, Auth auth, int connectionTimeout,
 		BatchAsyncTaskCallback callback) {
 
-		super(server, username, password, connectionTimeout, callback);
+		super(server, auth, connectionTimeout, callback);
+	}
+
+	public BatchSessionImpl(String server, BatchAsyncTaskCallback callback) {
+		super(server, callback);
 	}
 
 	public JSONArray invoke() throws Exception {
@@ -66,6 +74,7 @@ public class BatchSessionImpl extends SessionImpl {
 		}
 	}
 
+	@Override
 	public Object invoke(JSONObject command) throws Exception {
 		commands.put(command);
 
@@ -76,6 +85,7 @@ public class BatchSessionImpl extends SessionImpl {
 		this.callback = callback;
 	}
 
+	@Override
 	public Object upload(JSONObject command) throws Exception {
 		throw new IllegalStateException("Can't batch upload requests");
 	}

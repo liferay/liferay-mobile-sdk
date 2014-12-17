@@ -14,15 +14,11 @@
 
 package com.liferay.mobile.android.service;
 
+import com.liferay.mobile.android.auth.Auth;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.task.ServiceAsyncTask;
 import com.liferay.mobile.android.task.UploadAsyncTask;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
-import com.liferay.mobile.android.util.Validator;
-
-import org.apache.http.Header;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.impl.auth.BasicScheme;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -36,75 +32,67 @@ public class SessionImpl implements Session {
 
 	public SessionImpl(Session session) {
 		this(
-			session.getServer(), session.getUsername(), session.getPassword(),
+			session.getServer(), session.getAuth(),
 			session.getConnectionTimeout(), session.getCallback());
 	}
 
 	public SessionImpl(String server) {
-		this(server, null);
+		this(server, null, null);
 	}
 
 	public SessionImpl(String server, AsyncTaskCallback callback) {
-		this(server, null, null, callback);
+		this(server, null, callback);
 	}
 
-	public SessionImpl(String server, String username, String password) {
-		this(server, username, password, DEFAULT_CONNECTION_TIMEOUT, null);
+	public SessionImpl(String server, Auth auth) {
+		this(server, auth, null);
 	}
 
-	public SessionImpl(
-		String server, String username, String password,
-		AsyncTaskCallback callback) {
-
-		this(server, username, password, DEFAULT_CONNECTION_TIMEOUT, callback);
+	public SessionImpl(String server, Auth auth, AsyncTaskCallback callback) {
+		this(server, auth, DEFAULT_CONNECTION_TIMEOUT, callback);
 	}
 
 	public SessionImpl(
-		String server, String username, String password, int connectionTimeout,
+		String server, Auth auth, int connectionTimeout,
 		AsyncTaskCallback callback) {
 
 		this.server = server;
-		this.username = username;
-		this.password = password;
+		this.auth = auth;
 		this.connectionTimeout = connectionTimeout;
 		this.callback = callback;
 	}
 
-	public Header getAuthHeader() {
-		String username = getUsername();
-
-		if (Validator.isNull(getUsername()) ||
-			Validator.isNull(getPassword())) {
-
-			return null;
-		}
-
-		UsernamePasswordCredentials credentials =
-			new UsernamePasswordCredentials(username, getPassword());
-
-		return BasicScheme.authenticate(credentials, "UTF-8", false);
+	@Override
+	public Auth getAuth() {
+		return auth;
 	}
 
+	@Override
 	public AsyncTaskCallback getCallback() {
 		return callback;
 	}
 
+	@Override
 	public int getConnectionTimeout() {
 		return connectionTimeout;
 	}
 
+	@Override
 	public String getPassword() {
 		return password;
 	}
 
+	@Override
 	public String getServer() {
 		return server;
 	}
 
+	@Override
 	public String getUsername() {
 		return username;
 	}
 
+	@Override
 	public Object invoke(JSONObject command) throws Exception {
 		if (callback != null) {
 			ServiceAsyncTask task = new ServiceAsyncTask(this, callback);
@@ -119,26 +107,37 @@ public class SessionImpl implements Session {
 		}
 	}
 
+	@Override
+	public void setAuth(Auth auth) {
+		this.auth = auth;
+	}
+
+	@Override
 	public void setCallback(AsyncTaskCallback callback) {
 		this.callback = callback;
 	}
 
+	@Override
 	public void setConnectionTimeout(int connectionTimeout) {
 		this.connectionTimeout = connectionTimeout;
 	}
 
+	@Override
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	@Override
 	public void setServer(String server) {
 		this.server = server;
 	}
 
+	@Override
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
+	@Override
 	public Object upload(JSONObject command) throws Exception {
 		if (callback != null) {
 			UploadAsyncTask task = new UploadAsyncTask(this, callback);
@@ -151,6 +150,7 @@ public class SessionImpl implements Session {
 		}
 	}
 
+	protected Auth auth;
 	protected AsyncTaskCallback callback;
 	protected int connectionTimeout;
 	protected String password;

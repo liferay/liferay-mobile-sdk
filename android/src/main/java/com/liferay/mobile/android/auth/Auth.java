@@ -12,29 +12,15 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.test;
+package com.liferay.mobile.android.auth;
 
-import com.liferay.mobile.android.auth.Auth;
-import com.liferay.mobile.android.auth.BasicAuth;
-import com.liferay.mobile.android.service.Session;
-import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.sdk.test.util.PropertiesUtil;
-
-import java.io.IOException;
+import org.apache.http.HttpRequest;
 
 /**
  * @author Bruno Farache
  */
-public abstract class BaseTest {
+public interface Auth {
 
-	public BaseTest() throws IOException {
-		props = new PropertiesUtil();
-
-		Auth auth = new BasicAuth(props.getLogin(), props.getPassword());
-		session = new SessionImpl(props.getUrl(), auth);
-	}
-
-	protected PropertiesUtil props;
-	protected Session session;
+	public void authenticate(HttpRequest request);
 
 }

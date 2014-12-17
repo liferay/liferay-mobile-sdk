@@ -14,6 +14,8 @@
 
 package com.liferay.mobile.android.test;
 
+import com.liferay.mobile.android.auth.Auth;
+import com.liferay.mobile.android.auth.BasicAuth;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
 import com.liferay.mobile.android.v62.syncdlobject.SyncDLObjectService;
@@ -38,8 +40,8 @@ public class SyncWebServiceTest {
 
 	@Test
 	public void getUserSitesGroups() throws Exception {
-		Session session = new SessionImpl(
-			"http://localhost:8080", "test@liferay.com", "test");
+		Auth auth = new BasicAuth("test@liferay.com", "test");
+		Session session = new SessionImpl("http://localhost:8080", auth);
 
 		SyncDLObjectService service = new SyncDLObjectService(session);
 
