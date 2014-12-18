@@ -161,4 +161,5 @@ public class DLAppServiceTest extends BaseTest {
 	private static final String _SOURCE_FILE_NAME = "test.properties";
 
 	private static final String _TITLE = "title";
+
 }

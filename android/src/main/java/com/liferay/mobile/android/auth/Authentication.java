@@ -21,6 +21,6 @@ import org.apache.http.HttpRequest;
  */
 public interface Authentication {
 
-	public void authenticate(HttpRequest request);
+	public void authenticate(HttpRequest request) throws Exception;
 
 }

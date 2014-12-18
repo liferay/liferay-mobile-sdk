@@ -8,6 +8,7 @@
 *.log
 
 local.properties
+test.local.properties
 
 bin/
 build/

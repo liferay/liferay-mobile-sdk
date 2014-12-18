@@ -85,7 +85,9 @@ public class HttpUtil {
 		return clientBuilder.build();
 	}
 
-	public static HttpPost getPost(Session session, String URL) {
+	public static HttpPost getPost(Session session, String URL)
+		throws Exception {
+
 		HttpPost post = new HttpPost(URL);
 
 		Authentication authentication = session.getAuthentication();

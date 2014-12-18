@@ -14,44 +14,51 @@
 
 package com.liferay.mobile.sdk.test.portal;
 
+import com.liferay.mobile.android.auth.Authentication;
+import com.liferay.mobile.android.auth.OAuth;
+import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.service.SessionImpl;
 import com.liferay.mobile.android.v62.group.GroupService;
 import com.liferay.mobile.sdk.test.BaseTest;
+import com.liferay.mobile.sdk.test.util.PropertiesUtil;
 
 import java.io.IOException;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * @author Bruno Farache
  */
-public class GroupServiceTest extends BaseTest {
+public class OAuthTest extends BaseTest {
 
-	public static void assertUserSites(JSONArray sites) throws Exception {
-		assertNotNull(sites);
-		assertTrue(sites.length() > 0);
-
-		JSONObject jsonObj = sites.getJSONObject(0);
-		assertEquals("/test", jsonObj.getString("friendlyURL"));
-
-		jsonObj = sites.getJSONObject(1);
-		assertEquals("/guest", jsonObj.getString("friendlyURL"));
-	}
-
-	public GroupServiceTest() throws IOException {
+	public OAuthTest() throws IOException {
 		super();
 	}
 
 	@Test
 	public void getUserSites() throws Exception {
+		String consumerKey = props.getProperty(
+			PropertiesUtil.OAUTH_CONSUMER_KEY);
+
+		String consumerSecret = props.getProperty(
+			PropertiesUtil.OAUTH_CONSUMER_SECRET);
+
+		String accessToken = props.getProperty(
+			PropertiesUtil.OAUTH_ACCESS_TOKEN);
+
+		String tokenSecret = props.getProperty(
+			PropertiesUtil.OAUTH_TOKEN_SECRET);
+
+		Authentication auth = new OAuth(
+			consumerKey, consumerSecret, accessToken, tokenSecret);
+
+		Session session = new SessionImpl(this.session.getServer(), auth);
 		GroupService service = new GroupService(session);
 
 		JSONArray sites = service.getUserSites();
-		assertUserSites(sites);
+		GroupServiceTest.assertUserSites(sites);
 	}
 
 }
