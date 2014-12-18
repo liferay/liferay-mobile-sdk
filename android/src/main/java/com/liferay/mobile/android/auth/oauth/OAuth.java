@@ -12,7 +12,9 @@
  * details.
  */
 
-package com.liferay.mobile.android.auth;
+package com.liferay.mobile.android.auth.oauth;
+
+import com.liferay.mobile.android.auth.Authentication;
 
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;

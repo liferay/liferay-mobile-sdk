@@ -12,7 +12,9 @@
  * details.
  */
 
-package com.liferay.mobile.android.auth;
+package com.liferay.mobile.android.auth.basic;
+
+import com.liferay.mobile.android.auth.Authentication;
 
 import org.apache.http.Header;
 import org.apache.http.HttpRequest;

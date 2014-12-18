@@ -15,7 +15,7 @@
 package com.liferay.mobile.sdk.test;
 
 import com.liferay.mobile.android.auth.Authentication;
-import com.liferay.mobile.android.auth.BasicAuthentication;
+import com.liferay.mobile.android.auth.basic.BasicAuthentication;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
 import com.liferay.mobile.sdk.test.util.PropertiesUtil;

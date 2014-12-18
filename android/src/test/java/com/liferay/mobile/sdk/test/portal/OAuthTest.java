@@ -15,7 +15,7 @@
 package com.liferay.mobile.sdk.test.portal;
 
 import com.liferay.mobile.android.auth.Authentication;
-import com.liferay.mobile.android.auth.OAuth;
+import com.liferay.mobile.android.auth.oauth.OAuth;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
 import com.liferay.mobile.android.v62.group.GroupService;
