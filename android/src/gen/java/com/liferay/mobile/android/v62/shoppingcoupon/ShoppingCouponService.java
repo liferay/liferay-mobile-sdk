@@ -66,7 +66,13 @@ public class ShoppingCouponService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void deleteCoupon(long groupId, long couponId) throws Exception {
@@ -102,7 +108,13 @@ public class ShoppingCouponService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONArray search(long groupId, long companyId, String code, boolean active, String discountType, boolean andOperator, int start, int end) throws Exception {
@@ -126,7 +138,13 @@ public class ShoppingCouponService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONObject updateCoupon(long couponId, String name, String description, int startDateMonth, int startDateDay, int startDateYear, int startDateHour, int startDateMinute, int endDateMonth, int endDateDay, int endDateYear, int endDateHour, int endDateMinute, boolean neverExpire, boolean active, String limitCategories, String limitSkus, double minOrder, double discount, String discountType, JSONObjectWrapper serviceContext) throws Exception {
@@ -163,7 +181,13 @@ public class ShoppingCouponService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 }

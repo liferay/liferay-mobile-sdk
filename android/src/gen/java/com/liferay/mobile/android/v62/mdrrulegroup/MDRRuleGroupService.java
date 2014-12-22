@@ -48,7 +48,13 @@ public class MDRRuleGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject copyRuleGroup(long ruleGroupId, long groupId, JSONObjectWrapper serviceContext) throws Exception {
@@ -67,7 +73,13 @@ public class MDRRuleGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void deleteRuleGroup(long ruleGroupId) throws Exception {
@@ -101,7 +113,13 @@ public class MDRRuleGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getRuleGroup(long ruleGroupId) throws Exception {
@@ -118,7 +136,13 @@ public class MDRRuleGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject updateRuleGroup(long ruleGroupId, JSONObject nameMap, JSONObject descriptionMap, JSONObjectWrapper serviceContext) throws Exception {
@@ -138,7 +162,13 @@ public class MDRRuleGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 }

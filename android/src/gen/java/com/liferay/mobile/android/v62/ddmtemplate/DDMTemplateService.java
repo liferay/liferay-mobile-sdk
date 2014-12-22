@@ -54,7 +54,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject addTemplate(long groupId, long classNameId, long classPK, String templateKey, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallImageFile, JSONObjectWrapper serviceContext) throws Exception {
@@ -85,7 +91,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.upload(_command).getJSONObject(0);
+		JSONArray _result = session.upload(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject copyTemplate(long templateId, JSONObjectWrapper serviceContext) throws Exception {
@@ -103,7 +115,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject copyTemplate(long templateId, JSONObject nameMap, JSONObject descriptionMap, JSONObjectWrapper serviceContext) throws Exception {
@@ -123,7 +141,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONArray copyTemplates(long classNameId, long classPK, long newClassPK, String type, JSONObjectWrapper serviceContext) throws Exception {
@@ -144,7 +168,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public void deleteTemplate(long templateId) throws Exception {
@@ -180,7 +210,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getTemplate(long templateId) throws Exception {
@@ -197,7 +233,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getTemplate(long groupId, long classNameId, String templateKey) throws Exception {
@@ -216,7 +258,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getTemplate(long groupId, long classNameId, String templateKey, boolean includeGlobalTemplates) throws Exception {
@@ -236,7 +284,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONArray getTemplates(long groupId, long classNameId) throws Exception {
@@ -254,7 +308,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getTemplates(long groupId, long classNameId, long classPK) throws Exception {
@@ -273,7 +333,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getTemplates(long groupId, long classNameId, long classPK, String type) throws Exception {
@@ -293,7 +359,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getTemplates(long groupId, long classNameId, long classPK, String type, String mode) throws Exception {
@@ -314,7 +386,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getTemplatesByClassPk(long groupId, long classPK) throws Exception {
@@ -332,7 +410,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getTemplatesByStructureClassNameId(long groupId, long structureClassNameId, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
@@ -353,7 +437,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public Integer getTemplatesByStructureClassNameIdCount(long groupId, long structureClassNameId) throws Exception {
@@ -371,7 +461,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getInt(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public JSONArray search(long companyId, long groupId, long classNameId, long classPK, String keywords, String type, String mode, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
@@ -397,7 +493,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, String keywords, String type, String mode, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
@@ -423,7 +525,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray search(long companyId, long groupId, long classNameId, long classPK, String name, String description, String type, String mode, String language, boolean andOperator, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
@@ -452,7 +560,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, String name, String description, String type, String mode, String language, boolean andOperator, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
@@ -481,7 +595,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public Integer searchCount(long companyId, long groupId, long classNameId, long classPK, String name, String description, String type, String mode, String language, boolean andOperator) throws Exception {
@@ -507,7 +627,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getInt(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public Integer searchCount(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, String name, String description, String type, String mode, String language, boolean andOperator) throws Exception {
@@ -533,7 +659,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getInt(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public Integer searchCount(long companyId, long groupId, long classNameId, long classPK, String keywords, String type, String mode) throws Exception {
@@ -556,7 +688,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getInt(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public Integer searchCount(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, String keywords, String type, String mode) throws Exception {
@@ -579,7 +717,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getInt(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public JSONObject updateTemplate(long templateId, long classPK, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallImageFile, JSONObjectWrapper serviceContext) throws Exception {
@@ -608,7 +752,13 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.upload(_command).getJSONObject(0);
+		JSONArray _result = session.upload(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 }

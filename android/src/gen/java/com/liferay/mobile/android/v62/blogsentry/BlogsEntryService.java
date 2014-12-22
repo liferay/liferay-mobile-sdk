@@ -65,7 +65,13 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public String getCompanyEntriesRss(long companyId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
@@ -91,7 +97,13 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getString(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
 	}
 
 	public JSONObject getEntry(long entryId) throws Exception {
@@ -108,7 +120,13 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getEntry(long groupId, String urlTitle) throws Exception {
@@ -126,7 +144,13 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONArray getGroupEntries(long groupId, int status, int max) throws Exception {
@@ -145,7 +169,13 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getGroupEntries(long groupId, long displayDate, int status, int max) throws Exception {
@@ -165,7 +195,13 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getGroupEntries(long groupId, int status, int start, int end) throws Exception {
@@ -185,7 +221,13 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getGroupEntries(long groupId, long displayDate, int status, int start, int end) throws Exception {
@@ -206,7 +248,13 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public Integer getGroupEntriesCount(long groupId, int status) throws Exception {
@@ -224,7 +272,13 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getInt(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public Integer getGroupEntriesCount(long groupId, long displayDate, int status) throws Exception {
@@ -243,7 +297,13 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getInt(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public String getGroupEntriesRss(long groupId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
@@ -269,7 +329,13 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getString(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
 	}
 
 	public JSONArray getGroupsEntries(long companyId, long groupId, long displayDate, int status, int max) throws Exception {
@@ -290,7 +356,13 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getOrganizationEntries(long organizationId, long displayDate, int status, int max) throws Exception {
@@ -310,7 +382,13 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public String getOrganizationEntriesRss(long organizationId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
@@ -336,7 +414,13 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getString(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
 	}
 
 	public JSONObject moveEntryToTrash(long entryId) throws Exception {
@@ -353,7 +437,13 @@ public class BlogsEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void restoreEntryFromTrash(long entryId) throws Exception {

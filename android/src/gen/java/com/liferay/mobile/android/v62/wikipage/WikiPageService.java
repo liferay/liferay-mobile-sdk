@@ -50,7 +50,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject addPage(long nodeId, String title, String content, String summary, boolean minorEdit, String format, String parentTitle, String redirectTitle, JSONObjectWrapper serviceContext) throws Exception {
@@ -75,7 +81,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void addPageAttachment(long nodeId, String title, String fileName, org.apache.http.entity.mime.content.InputStreamBody file, String mimeType) throws Exception {
@@ -305,7 +317,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONObject getDraftPage(long nodeId, String title) throws Exception {
@@ -323,7 +341,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONArray getNodePages(long nodeId, int max) throws Exception {
@@ -341,7 +365,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public String getNodePagesRss(long nodeId, int max, String type, double version, String displayStyle, String feedURL, String entryURL) throws Exception {
@@ -364,7 +394,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getString(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
 	}
 
 	public String getNodePagesRss(long nodeId, int max, String type, double version, String displayStyle, String feedURL, String entryURL, String attachmentURLPrefix) throws Exception {
@@ -388,7 +424,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getString(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
 	}
 
 	public JSONArray getOrphans(long groupId, long nodeId) throws Exception {
@@ -406,7 +448,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONObject getPage(long nodeId, String title) throws Exception {
@@ -424,7 +472,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getPage(long groupId, long nodeId, String title) throws Exception {
@@ -443,7 +497,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getPage(long nodeId, String title, JSONObjectWrapper head) throws Exception {
@@ -462,7 +522,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getPage(long nodeId, String title, double version) throws Exception {
@@ -481,7 +547,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONArray getPages(long groupId, long userId, long nodeId, int status, int start, int end) throws Exception {
@@ -503,7 +575,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getPages(long groupId, long nodeId, boolean head, int status, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -526,7 +604,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public Integer getPagesCount(long groupId, long nodeId, boolean head) throws Exception {
@@ -545,7 +629,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getInt(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public Integer getPagesCount(long groupId, long userId, long nodeId, int status) throws Exception {
@@ -565,7 +655,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getInt(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public String getPagesRss(long companyId, long nodeId, String title, int max, String type, double version, String displayStyle, String feedURL, String entryURL, String locale) throws Exception {
@@ -591,7 +687,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getString(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
 	}
 
 	public String getPagesRss(long companyId, long nodeId, String title, int max, String type, double version, String displayStyle, String feedURL, String entryURL, String attachmentURLPrefix, String locale) throws Exception {
@@ -618,7 +720,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getString(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
 	}
 
 	public JSONArray getRecentChanges(long groupId, long nodeId, int start, int end) throws Exception {
@@ -638,7 +746,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public Integer getRecentChangesCount(long groupId, long nodeId) throws Exception {
@@ -656,7 +770,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getInt(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public JSONArray getTempPageAttachmentNames(long nodeId, String tempFolderName) throws Exception {
@@ -674,7 +794,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public void movePage(long nodeId, String title, String newTitle, JSONObjectWrapper serviceContext) throws Exception {
@@ -713,7 +839,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject movePageToTrash(long nodeId, String title) throws Exception {
@@ -731,7 +863,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject movePageToTrash(long nodeId, String title, double version) throws Exception {
@@ -750,7 +888,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void restorePageAttachmentFromTrash(long nodeId, String title, String fileName) throws Exception {
@@ -806,7 +950,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void subscribePage(long nodeId, String title) throws Exception {
@@ -868,7 +1018,13 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 }

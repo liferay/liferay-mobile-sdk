@@ -43,7 +43,13 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getString(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
 	}
 
 	public Integer getBuildNumber() throws Exception {
@@ -58,7 +64,13 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getInt(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public void testAddClassNameAndTestTransactionPortletBar_PortalRollback(String transactionPortletBarText) throws Exception {
@@ -188,7 +200,13 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getInt(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public void testGetUserId() throws Exception {
@@ -218,7 +236,13 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getBoolean(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getBoolean(0);
 	}
 
 }

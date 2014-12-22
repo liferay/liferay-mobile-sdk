@@ -55,7 +55,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject addGroup(String name, String description, int type, String friendlyURL, boolean site, boolean active, JSONObjectWrapper serviceContext) throws Exception {
@@ -78,7 +84,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject addGroup(long parentGroupId, String name, String description, int type, String friendlyURL, boolean site, boolean active, JSONObjectWrapper serviceContext) throws Exception {
@@ -102,7 +114,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void addRoleGroups(long roleId, JSONArray groupIds) throws Exception {
@@ -205,7 +223,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getGroup(long groupId) throws Exception {
@@ -222,7 +246,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getGroup(long companyId, String name) throws Exception {
@@ -240,7 +270,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONArray getGroups(long companyId, long parentGroupId, boolean site) throws Exception {
@@ -259,7 +295,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getManageableSiteGroups(JSONObject portlets, int max) throws Exception {
@@ -277,7 +319,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getManageableSites(JSONObject portlets, int max) throws Exception {
@@ -295,7 +343,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getOrganizationsGroups(JSONArray organizations) throws Exception {
@@ -312,7 +366,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONObject getUserGroup(long companyId, long userId) throws Exception {
@@ -330,7 +390,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONArray getUserGroupsGroups(JSONArray userGroups) throws Exception {
@@ -347,7 +413,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getUserOrganizationsGroups(long userId, int start, int end) throws Exception {
@@ -366,7 +438,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getUserPlaces(JSONArray classNames, int max) throws Exception {
@@ -384,7 +462,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getUserPlaces(long userId, JSONArray classNames, int max) throws Exception {
@@ -403,7 +487,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getUserPlaces(long userId, JSONArray classNames, boolean includeControlPanel, int max) throws Exception {
@@ -423,7 +513,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public Integer getUserPlacesCount() throws Exception {
@@ -438,7 +534,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getInt(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public JSONArray getUserSites() throws Exception {
@@ -453,7 +555,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getUserSitesGroups() throws Exception {
@@ -468,7 +576,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getUserSitesGroups(JSONArray classNames, int max) throws Exception {
@@ -486,7 +600,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getUserSitesGroups(long userId, JSONArray classNames, int max) throws Exception {
@@ -505,7 +625,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getUserSitesGroups(long userId, JSONArray classNames, boolean includeControlPanel, int max) throws Exception {
@@ -525,7 +651,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public Integer getUserSitesGroupsCount() throws Exception {
@@ -540,7 +672,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getInt(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public Boolean hasUserGroup(long userId, long groupId) throws Exception {
@@ -558,7 +696,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getBoolean(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getBoolean(0);
 	}
 
 	public JSONArray search(long companyId, String name, String description, JSONArray params, int start, int end) throws Exception {
@@ -702,7 +846,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject updateGroup(long groupId, long parentGroupId, String name, String description, int type, boolean manualMembership, int membershipRestriction, String friendlyURL, boolean active, JSONObjectWrapper serviceContext) throws Exception {
@@ -728,7 +878,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject updateGroup(long groupId, String typeSettings) throws Exception {
@@ -746,7 +902,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void updateStagedPortlets(long groupId, JSONObject stagedPortletIds) throws Exception {

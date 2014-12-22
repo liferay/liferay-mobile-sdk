@@ -48,7 +48,13 @@ public class RoleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject addRole(String className, long classPK, String name, JSONObject titleMap, JSONObject descriptionMap, int type, String subtype, JSONObjectWrapper serviceContext) throws Exception {
@@ -72,7 +78,13 @@ public class RoleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void addUserRoles(long userId, JSONArray roleIds) throws Exception {
@@ -124,7 +136,13 @@ public class RoleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONObject getRole(long roleId) throws Exception {
@@ -141,7 +159,13 @@ public class RoleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getRole(long companyId, String name) throws Exception {
@@ -159,7 +183,13 @@ public class RoleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONArray getUserGroupGroupRoles(long userId, long groupId) throws Exception {
@@ -177,7 +207,13 @@ public class RoleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getUserGroupRoles(long userId, long groupId) throws Exception {
@@ -195,7 +231,13 @@ public class RoleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getUserRelatedRoles(long userId, JSONArray groups) throws Exception {
@@ -213,7 +255,13 @@ public class RoleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getUserRoles(long userId) throws Exception {
@@ -230,7 +278,13 @@ public class RoleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public Boolean hasUserRole(long userId, long companyId, String name, boolean inherited) throws Exception {
@@ -250,7 +304,13 @@ public class RoleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getBoolean(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getBoolean(0);
 	}
 
 	public Boolean hasUserRoles(long userId, long companyId, JSONArray names, boolean inherited) throws Exception {
@@ -270,7 +330,13 @@ public class RoleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getBoolean(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getBoolean(0);
 	}
 
 	public void unsetUserRoles(long userId, JSONArray roleIds) throws Exception {
@@ -310,7 +376,13 @@ public class RoleService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 }

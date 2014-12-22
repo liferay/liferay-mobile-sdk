@@ -56,7 +56,13 @@ public class AddressService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject addAddress(String className, long classPK, String street1, String street2, String street3, String city, String zip, long regionId, long countryId, int typeId, boolean mailing, boolean primary, JSONObjectWrapper serviceContext) throws Exception {
@@ -85,7 +91,13 @@ public class AddressService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void deleteAddress(long addressId) throws Exception {
@@ -119,7 +131,13 @@ public class AddressService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONArray getAddresses(String className, long classPK) throws Exception {
@@ -137,7 +155,13 @@ public class AddressService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONObject updateAddress(long addressId, String street1, String street2, String street3, String city, String zip, long regionId, long countryId, int typeId, boolean mailing, boolean primary) throws Exception {
@@ -164,7 +188,13 @@ public class AddressService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 }

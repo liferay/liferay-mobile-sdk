@@ -47,7 +47,13 @@ public class LayoutPrototypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject addLayoutPrototype(JSONObject nameMap, String description, boolean active, JSONObjectWrapper serviceContext) throws Exception {
@@ -67,7 +73,13 @@ public class LayoutPrototypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void deleteLayoutPrototype(long layoutPrototypeId) throws Exception {
@@ -101,7 +113,13 @@ public class LayoutPrototypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONArray search(long companyId, JSONObjectWrapper active, JSONObjectWrapper obc) throws Exception {
@@ -120,7 +138,13 @@ public class LayoutPrototypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONObject updateLayoutPrototype(long layoutPrototypeId, JSONObject nameMap, String description, boolean active) throws Exception {
@@ -140,7 +164,13 @@ public class LayoutPrototypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject updateLayoutPrototype(long layoutPrototypeId, JSONObject nameMap, String description, boolean active, JSONObjectWrapper serviceContext) throws Exception {
@@ -161,7 +191,13 @@ public class LayoutPrototypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 }

@@ -47,7 +47,13 @@ public class MembershipRequestService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void deleteMembershipRequests(long groupId, int statusId) throws Exception {
@@ -82,7 +88,13 @@ public class MembershipRequestService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void updateStatus(long membershipRequestId, String reviewComments, int statusId, JSONObjectWrapper serviceContext) throws Exception {

@@ -50,7 +50,13 @@ public class ExpandoValueService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void addValues(long companyId, String className, String tableName, long classPK, JSONObject attributeValues) throws Exception {
@@ -92,7 +98,13 @@ public class ExpandoValueService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getData(long companyId, String className, String tableName, JSONObject columnNames, long classPK) throws Exception {
@@ -113,7 +125,13 @@ public class ExpandoValueService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getJsonData(long companyId, String className, String tableName, String columnName, long classPK) throws Exception {
@@ -134,7 +152,13 @@ public class ExpandoValueService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 }

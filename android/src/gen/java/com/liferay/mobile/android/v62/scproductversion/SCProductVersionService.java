@@ -53,7 +53,13 @@ public class SCProductVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void deleteProductVersion(long productVersionId) throws Exception {
@@ -87,7 +93,13 @@ public class SCProductVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONArray getProductVersions(long productEntryId, int start, int end) throws Exception {
@@ -106,7 +118,13 @@ public class SCProductVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public Integer getProductVersionsCount(long productEntryId) throws Exception {
@@ -123,7 +141,13 @@ public class SCProductVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getInt(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public JSONObject updateProductVersion(long productVersionId, String version, String changeLog, String downloadPageURL, String directDownloadURL, boolean testDirectDownloadURL, boolean repoStoreArtifact, JSONArray frameworkVersionIds) throws Exception {
@@ -147,7 +171,13 @@ public class SCProductVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 }

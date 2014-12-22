@@ -57,7 +57,13 @@ public class SCProductEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void deleteProductEntry(long productEntryId) throws Exception {
@@ -91,7 +97,13 @@ public class SCProductEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject updateProductEntry(long productEntryId, String name, String type, String tags, String shortDescription, String longDescription, String pageURL, String author, String repoGroupId, String repoArtifactId, JSONArray licenseIds, JSONArray thumbnails, JSONArray fullImages) throws Exception {
@@ -120,7 +132,13 @@ public class SCProductEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 }
