@@ -101,7 +101,17 @@ public class $className extends BaseService {
 			#set ($returnType = "Int")
 		#end
 
-		##t		return session.${invokeMethod}(_command).get${returnType}(0);
+		##t		JSONArray _result = session.${invokeMethod}(_command);
+
+		##n
+
+		##t		if (_result == null) {
+		##t			return null;
+		##t		}
+
+		##n
+
+		##t		return _result.get${returnType}(0);
 	#end
 
 	##t	}

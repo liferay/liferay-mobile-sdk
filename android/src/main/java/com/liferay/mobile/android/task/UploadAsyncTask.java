@@ -43,10 +43,7 @@ public class UploadAsyncTask extends AsyncTask<JSONObject, Integer, JSONArray> {
 				task = this;
 			}
 
-			Object result = HttpUtil.upload(_session, commands[0], task);
-
-			JSONArray array = new JSONArray();
-			array.put(result);
+			JSONArray array = HttpUtil.upload(_session, commands[0], task);
 
 			return _callback.inBackground(array);
 		}

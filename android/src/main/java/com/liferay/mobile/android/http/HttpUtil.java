@@ -181,7 +181,16 @@ public class HttpUtil {
 
 		handleServerException(post, response, json);
 
-		return new JSONArray(json);
+		JSONArray array = new JSONArray();
+
+		if (isJSONObject(json)) {
+			array.put(new JSONObject(json));
+		}
+		else {
+			array.put(new JSONArray(json));
+		}
+
+		return array;
 	}
 
 	protected static HttpEntity getMultipartEntity(JSONObject parameters)
