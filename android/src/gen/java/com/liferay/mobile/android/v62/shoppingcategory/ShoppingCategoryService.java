@@ -48,7 +48,7 @@ public class ShoppingCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteCategory(long categoryId) throws Exception {
@@ -82,7 +82,7 @@ public class ShoppingCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getCategories(long groupId, long parentCategoryId, int start, int end) throws Exception {
@@ -102,7 +102,7 @@ public class ShoppingCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Integer getCategoriesCount(long groupId, long parentCategoryId) throws Exception {
@@ -120,7 +120,7 @@ public class ShoppingCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public JSONObject getCategory(long categoryId) throws Exception {
@@ -137,7 +137,7 @@ public class ShoppingCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void getSubcategoryIds(JSONArray categoryIds, long groupId, long categoryId) throws Exception {
@@ -178,7 +178,7 @@ public class ShoppingCategoryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

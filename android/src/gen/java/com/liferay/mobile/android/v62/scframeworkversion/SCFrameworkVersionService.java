@@ -49,7 +49,7 @@ public class SCFrameworkVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteFrameworkVersion(long frameworkVersionId) throws Exception {
@@ -83,7 +83,7 @@ public class SCFrameworkVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONArray getFrameworkVersions(long groupId, boolean active) throws Exception {
@@ -101,7 +101,7 @@ public class SCFrameworkVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getFrameworkVersions(long groupId, boolean active, int start, int end) throws Exception {
@@ -121,7 +121,7 @@ public class SCFrameworkVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONObject updateFrameworkVersion(long frameworkVersionId, String name, String url, boolean active, int priority) throws Exception {
@@ -142,7 +142,7 @@ public class SCFrameworkVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

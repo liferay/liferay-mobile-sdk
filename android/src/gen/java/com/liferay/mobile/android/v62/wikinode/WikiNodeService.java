@@ -47,7 +47,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteNode(long nodeId) throws Exception {
@@ -81,7 +81,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject getNode(long groupId, String name) throws Exception {
@@ -99,7 +99,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONArray getNodes(long groupId) throws Exception {
@@ -116,7 +116,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getNodes(long groupId, int status) throws Exception {
@@ -134,7 +134,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getNodes(long groupId, int start, int end) throws Exception {
@@ -153,7 +153,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getNodes(long groupId, int status, int start, int end) throws Exception {
@@ -173,7 +173,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Integer getNodesCount(long groupId) throws Exception {
@@ -190,7 +190,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public Integer getNodesCount(long groupId, int status) throws Exception {
@@ -208,7 +208,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public JSONObject moveNodeToTrash(long nodeId) throws Exception {
@@ -225,7 +225,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void restoreNodeFromTrash(long nodeId) throws Exception {
@@ -296,7 +296,7 @@ public class WikiNodeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

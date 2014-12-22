@@ -45,7 +45,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void checkInFileEntry(long fileEntryId, String lockUuid) throws Exception {
@@ -119,7 +119,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject checkOutFileEntry(long fileEntryId, JSONObjectWrapper serviceContext) throws Exception {
@@ -137,7 +137,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject checkOutFileEntry(long fileEntryId, String owner, long expirationTime) throws Exception {
@@ -156,7 +156,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject checkOutFileEntry(long fileEntryId, String owner, long expirationTime, JSONObjectWrapper serviceContext) throws Exception {
@@ -176,7 +176,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject copyFileEntry(long groupId, long repositoryId, long fileEntryId, long destFolderId, JSONObjectWrapper serviceContext) throws Exception {
@@ -197,7 +197,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteFileEntry(long fileEntryId) throws Exception {
@@ -268,7 +268,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONArray getFileEntries(long groupId, long folderId, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -289,7 +289,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getFileEntries(long groupId, long folderId, long fileEntryTypeId, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -311,7 +311,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getFileEntries(long groupId, long folderId, JSONArray mimeTypes, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -333,7 +333,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getFileEntries(long groupId, long folderId, int status, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -355,7 +355,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Integer getFileEntriesCount(long groupId, long folderId) throws Exception {
@@ -373,7 +373,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public Integer getFileEntriesCount(long groupId, long folderId, long fileEntryTypeId) throws Exception {
@@ -392,7 +392,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public Integer getFileEntriesCount(long groupId, long folderId, JSONArray mimeTypes) throws Exception {
@@ -411,7 +411,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public Integer getFileEntriesCount(long groupId, long folderId, int status) throws Exception {
@@ -430,7 +430,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public JSONObject getFileEntry(long fileEntryId) throws Exception {
@@ -447,7 +447,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject getFileEntry(long groupId, long folderId, String title) throws Exception {
@@ -466,7 +466,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject getFileEntryByUuidAndGroupId(String uuid, long groupId) throws Exception {
@@ -484,7 +484,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject getFileEntryLock(long fileEntryId) throws Exception {
@@ -501,7 +501,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public Integer getFoldersFileEntriesCount(long groupId, JSONArray folderIds, int status) throws Exception {
@@ -520,7 +520,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public JSONArray getGroupFileEntries(long groupId, long userId, long rootFolderId, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -542,7 +542,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getGroupFileEntries(long groupId, long userId, long rootFolderId, JSONArray mimeTypes, int status, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -566,7 +566,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Integer getGroupFileEntriesCount(long groupId, long userId, long rootFolderId) throws Exception {
@@ -585,7 +585,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public Integer getGroupFileEntriesCount(long groupId, long userId, long rootFolderId, JSONArray mimeTypes, int status) throws Exception {
@@ -606,7 +606,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public Boolean hasFileEntryLock(long fileEntryId) throws Exception {
@@ -623,7 +623,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)session.invoke(_command);
+		return session.invoke(_command).getBoolean(0);
 	}
 
 	public Boolean isFileEntryCheckedOut(long fileEntryId) throws Exception {
@@ -640,7 +640,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)session.invoke(_command);
+		return session.invoke(_command).getBoolean(0);
 	}
 
 	public JSONObject moveFileEntry(long fileEntryId, long newFolderId, JSONObjectWrapper serviceContext) throws Exception {
@@ -659,7 +659,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject refreshFileEntryLock(String lockUuid, long companyId, long expirationTime) throws Exception {
@@ -678,7 +678,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void revertFileEntry(long fileEntryId, String version, JSONObjectWrapper serviceContext) throws Exception {
@@ -718,7 +718,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject search(long groupId, long creatorUserId, long folderId, JSONArray mimeTypes, int status, int start, int end) throws Exception {
@@ -741,7 +741,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public Boolean verifyFileEntryCheckOut(long fileEntryId, String lockUuid) throws Exception {
@@ -759,7 +759,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)session.invoke(_command);
+		return session.invoke(_command).getBoolean(0);
 	}
 
 	public Boolean verifyFileEntryLock(long fileEntryId, String lockUuid) throws Exception {
@@ -777,7 +777,7 @@ public class DLFileEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)session.invoke(_command);
+		return session.invoke(_command).getBoolean(0);
 	}
 
 }

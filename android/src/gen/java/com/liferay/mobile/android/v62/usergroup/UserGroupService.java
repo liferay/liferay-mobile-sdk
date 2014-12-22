@@ -82,7 +82,7 @@ public class UserGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject addUserGroup(String name, String description, JSONObjectWrapper serviceContext) throws Exception {
@@ -101,7 +101,7 @@ public class UserGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteUserGroup(long userGroupId) throws Exception {
@@ -135,7 +135,7 @@ public class UserGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject getUserGroup(long userGroupId) throws Exception {
@@ -152,7 +152,7 @@ public class UserGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONArray getUserUserGroups(long userId) throws Exception {
@@ -169,7 +169,7 @@ public class UserGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public void unsetGroupUserGroups(long groupId, JSONArray userGroupIds) throws Exception {
@@ -224,7 +224,7 @@ public class UserGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject updateUserGroup(long userGroupId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
@@ -244,7 +244,7 @@ public class UserGroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

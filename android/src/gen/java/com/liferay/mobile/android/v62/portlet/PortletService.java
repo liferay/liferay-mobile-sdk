@@ -43,7 +43,7 @@ public class PortletService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONObject updatePortlet(long companyId, String portletId, String roles, boolean active) throws Exception {
@@ -63,7 +63,7 @@ public class PortletService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

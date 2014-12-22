@@ -47,7 +47,7 @@ public class LayoutPrototypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject addLayoutPrototype(JSONObject nameMap, String description, boolean active, JSONObjectWrapper serviceContext) throws Exception {
@@ -67,7 +67,7 @@ public class LayoutPrototypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteLayoutPrototype(long layoutPrototypeId) throws Exception {
@@ -101,7 +101,7 @@ public class LayoutPrototypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONArray search(long companyId, JSONObjectWrapper active, JSONObjectWrapper obc) throws Exception {
@@ -120,7 +120,7 @@ public class LayoutPrototypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONObject updateLayoutPrototype(long layoutPrototypeId, JSONObject nameMap, String description, boolean active) throws Exception {
@@ -140,7 +140,7 @@ public class LayoutPrototypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject updateLayoutPrototype(long layoutPrototypeId, JSONObject nameMap, String description, boolean active, JSONObjectWrapper serviceContext) throws Exception {
@@ -161,7 +161,7 @@ public class LayoutPrototypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

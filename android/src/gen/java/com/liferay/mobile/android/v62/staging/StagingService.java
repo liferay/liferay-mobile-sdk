@@ -63,7 +63,7 @@ public class StagingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Long)session.invoke(_command);
+		return session.invoke(_command).getLong(0);
 	}
 
 	public void publishStagingRequest(long stagingRequestId, boolean privateLayout, JSONObject parameterMap) throws Exception {
@@ -120,7 +120,7 @@ public class StagingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

@@ -54,7 +54,7 @@ public class PollsQuestionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteQuestion(long questionId) throws Exception {
@@ -88,7 +88,7 @@ public class PollsQuestionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject updateQuestion(long questionId, JSONObject titleMap, JSONObject descriptionMap, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, boolean neverExpire, JSONArray choices, JSONObjectWrapper serviceContext) throws Exception {
@@ -115,7 +115,7 @@ public class PollsQuestionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

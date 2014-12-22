@@ -48,7 +48,7 @@ public class DLFileShortcutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteFileShortcut(long fileShortcutId) throws Exception {
@@ -82,7 +82,7 @@ public class DLFileShortcutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject updateFileShortcut(long fileShortcutId, long folderId, long toFileEntryId, JSONObjectWrapper serviceContext) throws Exception {
@@ -102,7 +102,7 @@ public class DLFileShortcutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

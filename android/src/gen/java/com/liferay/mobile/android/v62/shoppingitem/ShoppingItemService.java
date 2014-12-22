@@ -86,7 +86,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.upload(_command);
+		return session.upload(_command).getJSONObject(0);
 	}
 
 	public void deleteItem(long itemId) throws Exception {
@@ -121,7 +121,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public JSONObject getItem(long itemId) throws Exception {
@@ -138,7 +138,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONArray getItems(long groupId, long categoryId) throws Exception {
@@ -156,7 +156,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getItems(long groupId, long categoryId, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -177,7 +177,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Integer getItemsCount(long groupId, long categoryId) throws Exception {
@@ -195,7 +195,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public JSONArray getItemsPrevAndNext(long itemId, JSONObjectWrapper obc) throws Exception {
@@ -213,7 +213,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONObject updateItem(long itemId, long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, JSONObjectWrapper sale, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallFile, boolean mediumImage, String mediumImageURL, org.apache.http.entity.mime.content.InputStreamBody mediumFile, boolean largeImage, String largeImageURL, org.apache.http.entity.mime.content.InputStreamBody largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObjectWrapper serviceContext) throws Exception {
@@ -253,7 +253,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.upload(_command);
+		return session.upload(_command).getJSONObject(0);
 	}
 
 }

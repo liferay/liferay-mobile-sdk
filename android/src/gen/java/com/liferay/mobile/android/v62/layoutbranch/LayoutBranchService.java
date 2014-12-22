@@ -49,7 +49,7 @@ public class LayoutBranchService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteLayoutBranch(long layoutBranchId) throws Exception {
@@ -86,7 +86,7 @@ public class LayoutBranchService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

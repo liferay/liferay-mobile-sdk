@@ -47,7 +47,7 @@ public class MembershipRequestService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteMembershipRequests(long groupId, int statusId) throws Exception {
@@ -82,7 +82,7 @@ public class MembershipRequestService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void updateStatus(long membershipRequestId, String reviewComments, int statusId, JSONObjectWrapper serviceContext) throws Exception {

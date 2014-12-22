@@ -114,7 +114,7 @@ public class TrashEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject getEntries(long groupId, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -134,7 +134,7 @@ public class TrashEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void moveEntry(String className, long classPK, long destinationContainerModelId, JSONObjectWrapper serviceContext) throws Exception {
@@ -171,7 +171,7 @@ public class TrashEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject restoreEntry(long entryId, long overrideClassPK, String name) throws Exception {
@@ -190,7 +190,7 @@ public class TrashEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

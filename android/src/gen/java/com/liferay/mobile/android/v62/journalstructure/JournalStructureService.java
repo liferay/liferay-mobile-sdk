@@ -52,7 +52,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject copyStructure(long groupId, String oldStructureId, String newStructureId, boolean autoStructureId) throws Exception {
@@ -72,7 +72,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteStructure(long groupId, String structureId) throws Exception {
@@ -108,7 +108,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject getStructure(long groupId, String structureId, boolean includeGlobalStructures) throws Exception {
@@ -127,7 +127,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONArray getStructures(long groupId) throws Exception {
@@ -144,7 +144,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getStructures(JSONArray groupIds) throws Exception {
@@ -161,7 +161,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray search(long companyId, JSONArray groupIds, String keywords, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -183,7 +183,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray search(long companyId, JSONArray groupIds, String structureId, String name, String description, boolean andOperator, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -208,7 +208,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Integer searchCount(long companyId, JSONArray groupIds, String keywords) throws Exception {
@@ -227,7 +227,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public Integer searchCount(long companyId, JSONArray groupIds, String structureId, String name, String description, boolean andOperator) throws Exception {
@@ -249,7 +249,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public JSONObject updateStructure(long groupId, String structureId, String parentStructureId, JSONObject nameMap, JSONObject descriptionMap, String xsd, JSONObjectWrapper serviceContext) throws Exception {
@@ -272,7 +272,7 @@ public class JournalStructureService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

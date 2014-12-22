@@ -45,7 +45,7 @@ public class ListTypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONArray getListTypes(String type) throws Exception {
@@ -62,7 +62,7 @@ public class ListTypeService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public void validate(int listTypeId, String type) throws Exception {

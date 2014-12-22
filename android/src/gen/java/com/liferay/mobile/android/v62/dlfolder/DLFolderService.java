@@ -51,7 +51,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteFolder(long folderId) throws Exception {
@@ -126,7 +126,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Integer getFileEntriesAndFileShortcutsCount(long groupId, long folderId, int status) throws Exception {
@@ -145,7 +145,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public Integer getFileEntriesAndFileShortcutsCount(long groupId, long folderId, int status, JSONArray mimeTypes) throws Exception {
@@ -165,7 +165,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public JSONObject getFolder(long folderId) throws Exception {
@@ -182,7 +182,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject getFolder(long groupId, long parentFolderId, String name) throws Exception {
@@ -201,7 +201,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONArray getFolderIds(long groupId, long folderId) throws Exception {
@@ -219,7 +219,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getFolders(long groupId, long parentFolderId, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -240,7 +240,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getFolders(long groupId, long parentFolderId, int status, boolean includeMountfolders, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -263,7 +263,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getFoldersAndFileEntriesAndFileShortcuts(long groupId, long folderId, int status, boolean includeMountFolders, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -286,7 +286,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getFoldersAndFileEntriesAndFileShortcuts(long groupId, long folderId, int status, JSONArray mimeTypes, boolean includeMountFolders, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -310,7 +310,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Integer getFoldersAndFileEntriesAndFileShortcutsCount(long groupId, long folderId, int status, boolean includeMountFolders) throws Exception {
@@ -330,7 +330,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public Integer getFoldersAndFileEntriesAndFileShortcutsCount(long groupId, long folderId, int status, JSONArray mimeTypes, boolean includeMountFolders) throws Exception {
@@ -351,7 +351,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public Integer getFoldersCount(long groupId, long parentFolderId) throws Exception {
@@ -369,7 +369,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public Integer getFoldersCount(long groupId, long parentFolderId, int status, boolean includeMountfolders) throws Exception {
@@ -389,7 +389,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public JSONArray getMountFolders(long groupId, long parentFolderId, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -410,7 +410,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Integer getMountFoldersCount(long groupId, long parentFolderId) throws Exception {
@@ -428,7 +428,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public void getSubfolderIds(JSONArray folderIds, long groupId, long folderId) throws Exception {
@@ -466,7 +466,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Boolean hasFolderLock(long folderId) throws Exception {
@@ -483,7 +483,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)session.invoke(_command);
+		return session.invoke(_command).getBoolean(0);
 	}
 
 	public Boolean hasInheritableLock(long folderId) throws Exception {
@@ -500,7 +500,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)session.invoke(_command);
+		return session.invoke(_command).getBoolean(0);
 	}
 
 	public Boolean isFolderLocked(long folderId) throws Exception {
@@ -517,7 +517,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)session.invoke(_command);
+		return session.invoke(_command).getBoolean(0);
 	}
 
 	public JSONObject lockFolder(long folderId) throws Exception {
@@ -534,7 +534,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject lockFolder(long folderId, String owner, boolean inheritable, long expirationTime) throws Exception {
@@ -554,7 +554,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject moveFolder(long folderId, long parentFolderId, JSONObjectWrapper serviceContext) throws Exception {
@@ -573,7 +573,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject refreshFolderLock(String lockUuid, long companyId, long expirationTime) throws Exception {
@@ -592,7 +592,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void unlockFolder(long folderId, String lockUuid) throws Exception {
@@ -653,7 +653,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public Boolean verifyInheritableLock(long folderId, String lockUuid) throws Exception {
@@ -671,7 +671,7 @@ public class DLFolderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)session.invoke(_command);
+		return session.invoke(_command).getBoolean(0);
 	}
 
 }

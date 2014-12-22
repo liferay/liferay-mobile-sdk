@@ -110,7 +110,7 @@ public class LayoutSetService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject updateSettings(long groupId, boolean privateLayout, String settings) throws Exception {
@@ -129,7 +129,7 @@ public class LayoutSetService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject updateVirtualHost(long groupId, boolean privateLayout, String virtualHost) throws Exception {
@@ -148,7 +148,7 @@ public class LayoutSetService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

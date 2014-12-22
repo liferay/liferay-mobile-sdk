@@ -43,7 +43,7 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (String)session.invoke(_command);
+		return session.invoke(_command).getString(0);
 	}
 
 	public Integer getBuildNumber() throws Exception {
@@ -58,7 +58,7 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public void testAddClassNameAndTestTransactionPortletBar_PortalRollback(String transactionPortletBarText) throws Exception {
@@ -188,7 +188,7 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public void testGetUserId() throws Exception {
@@ -218,7 +218,7 @@ public class PortalService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)session.invoke(_command);
+		return session.invoke(_command).getBoolean(0);
 	}
 
 }

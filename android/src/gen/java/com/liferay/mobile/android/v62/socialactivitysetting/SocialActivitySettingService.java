@@ -47,7 +47,7 @@ public class SocialActivitySettingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONArray getActivityDefinitions(long groupId, String className) throws Exception {
@@ -65,7 +65,7 @@ public class SocialActivitySettingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getActivitySettings(long groupId) throws Exception {
@@ -82,7 +82,7 @@ public class SocialActivitySettingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getJsonActivityDefinitions(long groupId, String className) throws Exception {
@@ -100,7 +100,7 @@ public class SocialActivitySettingService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public void updateActivitySetting(long groupId, String className, boolean enabled) throws Exception {

@@ -45,7 +45,7 @@ public class DLFileVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONArray getFileVersions(long fileEntryId, int status) throws Exception {
@@ -63,7 +63,7 @@ public class DLFileVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Integer getFileVersionsCount(long fileEntryId, int status) throws Exception {
@@ -81,7 +81,7 @@ public class DLFileVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public JSONObject getLatestFileVersion(long fileEntryId) throws Exception {
@@ -98,7 +98,7 @@ public class DLFileVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

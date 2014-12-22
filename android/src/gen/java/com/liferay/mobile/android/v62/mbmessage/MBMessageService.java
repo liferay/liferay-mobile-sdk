@@ -55,7 +55,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject addMessage(long groupId, long categoryId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObjectWrapper serviceContext) throws Exception {
@@ -81,7 +81,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject addMessage(long groupId, long categoryId, long threadId, long parentMessageId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObjectWrapper serviceContext) throws Exception {
@@ -109,7 +109,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject addMessage(long categoryId, String subject, String body, JSONObjectWrapper serviceContext) throws Exception {
@@ -129,7 +129,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject addMessage(long parentMessageId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObjectWrapper serviceContext) throws Exception {
@@ -154,7 +154,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteDiscussionMessage(long groupId, String className, long classPK, String permissionClassName, long permissionClassPK, long permissionOwnerId, long messageId) throws Exception {
@@ -232,7 +232,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Integer getCategoryMessagesCount(long groupId, long categoryId, int status) throws Exception {
@@ -251,7 +251,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public String getCategoryMessagesRss(long groupId, long categoryId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
@@ -277,7 +277,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (String)session.invoke(_command);
+		return session.invoke(_command).getString(0);
 	}
 
 	public String getCompanyMessagesRss(long companyId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
@@ -302,7 +302,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (String)session.invoke(_command);
+		return session.invoke(_command).getString(0);
 	}
 
 	public Integer getGroupMessagesCount(long groupId, int status) throws Exception {
@@ -320,7 +320,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public String getGroupMessagesRss(long groupId, long userId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
@@ -346,7 +346,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (String)session.invoke(_command);
+		return session.invoke(_command).getString(0);
 	}
 
 	public String getGroupMessagesRss(long groupId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
@@ -371,7 +371,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (String)session.invoke(_command);
+		return session.invoke(_command).getString(0);
 	}
 
 	public JSONObject getMessage(long messageId) throws Exception {
@@ -388,7 +388,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject getMessageDisplay(long messageId, int status, String threadView, boolean includePrevAndNext) throws Exception {
@@ -408,7 +408,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public Integer getThreadAnswersCount(long groupId, long categoryId, long threadId) throws Exception {
@@ -427,7 +427,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public JSONArray getThreadMessages(long groupId, long categoryId, long threadId, int status, int start, int end) throws Exception {
@@ -449,7 +449,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Integer getThreadMessagesCount(long groupId, long categoryId, long threadId, int status) throws Exception {
@@ -469,7 +469,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public String getThreadMessagesRss(long threadId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
@@ -494,7 +494,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (String)session.invoke(_command);
+		return session.invoke(_command).getString(0);
 	}
 
 	public void restoreMessageAttachmentFromTrash(long messageId, String fileName) throws Exception {
@@ -590,7 +590,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject updateMessage(long messageId, String subject, String body, JSONArray inputStreamOVPs, JSONArray existingFiles, double priority, boolean allowPingbacks, JSONObjectWrapper serviceContext) throws Exception {
@@ -614,7 +614,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

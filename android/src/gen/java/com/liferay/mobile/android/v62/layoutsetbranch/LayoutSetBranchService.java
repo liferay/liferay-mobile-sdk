@@ -51,7 +51,7 @@ public class LayoutSetBranchService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteLayoutSetBranch(long layoutSetBranchId) throws Exception {
@@ -86,7 +86,7 @@ public class LayoutSetBranchService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONObject mergeLayoutSetBranch(long layoutSetBranchId, long mergeLayoutSetBranchId, JSONObjectWrapper serviceContext) throws Exception {
@@ -105,7 +105,7 @@ public class LayoutSetBranchService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject updateLayoutSetBranch(long groupId, long layoutSetBranchId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
@@ -126,7 +126,7 @@ public class LayoutSetBranchService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

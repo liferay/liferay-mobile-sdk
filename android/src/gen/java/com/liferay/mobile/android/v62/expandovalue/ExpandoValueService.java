@@ -50,7 +50,7 @@ public class ExpandoValueService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void addValues(long companyId, String className, String tableName, long classPK, JSONObject attributeValues) throws Exception {
@@ -92,7 +92,7 @@ public class ExpandoValueService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject getData(long companyId, String className, String tableName, JSONObject columnNames, long classPK) throws Exception {
@@ -113,7 +113,7 @@ public class ExpandoValueService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject getJsonData(long companyId, String className, String tableName, String columnName, long classPK) throws Exception {
@@ -134,7 +134,7 @@ public class ExpandoValueService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

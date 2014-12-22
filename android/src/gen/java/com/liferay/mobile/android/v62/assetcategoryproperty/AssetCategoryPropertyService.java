@@ -47,7 +47,7 @@ public class AssetCategoryPropertyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteCategoryProperty(long categoryPropertyId) throws Exception {
@@ -81,7 +81,7 @@ public class AssetCategoryPropertyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getCategoryPropertyValues(long companyId, String key) throws Exception {
@@ -99,7 +99,7 @@ public class AssetCategoryPropertyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONObject updateCategoryProperty(long categoryPropertyId, String key, String value) throws Exception {
@@ -118,7 +118,7 @@ public class AssetCategoryPropertyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

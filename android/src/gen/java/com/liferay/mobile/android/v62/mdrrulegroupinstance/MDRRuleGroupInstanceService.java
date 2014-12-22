@@ -49,7 +49,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject addRuleGroupInstance(long groupId, String className, long classPK, long ruleGroupId, int priority, JSONObjectWrapper serviceContext) throws Exception {
@@ -71,7 +71,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteRuleGroupInstance(long ruleGroupInstanceId) throws Exception {
@@ -109,7 +109,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Integer getRuleGroupInstancesCount(String className, long classPK) throws Exception {
@@ -127,7 +127,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public JSONObject updateRuleGroupInstance(long ruleGroupInstanceId, int priority) throws Exception {
@@ -145,7 +145,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

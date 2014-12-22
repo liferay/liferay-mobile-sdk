@@ -72,7 +72,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject addOrganization(long parentOrganizationId, String name, String type, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObjectWrapper serviceContext) throws Exception {
@@ -102,7 +102,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject addOrganization(long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObjectWrapper serviceContext) throws Exception {
@@ -133,7 +133,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject addOrganization(long parentOrganizationId, String name, String type, long regionId, long countryId, int statusId, String comments, boolean site, JSONObjectWrapper serviceContext) throws Exception {
@@ -158,7 +158,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void addPasswordPolicyOrganizations(long passwordPolicyId, JSONArray organizationIds) throws Exception {
@@ -228,7 +228,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONObject getOrganization(long organizationId) throws Exception {
@@ -245,7 +245,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public Long getOrganizationId(long companyId, String name) throws Exception {
@@ -263,7 +263,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Long)session.invoke(_command);
+		return session.invoke(_command).getLong(0);
 	}
 
 	public JSONArray getOrganizations(long companyId, long parentOrganizationId) throws Exception {
@@ -281,7 +281,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getOrganizations(long companyId, long parentOrganizationId, int start, int end) throws Exception {
@@ -301,7 +301,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Integer getOrganizationsCount(long companyId, long parentOrganizationId) throws Exception {
@@ -319,7 +319,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public JSONArray getUserOrganizations(long userId) throws Exception {
@@ -336,7 +336,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public void setGroupOrganizations(long groupId, JSONArray organizationIds) throws Exception {
@@ -416,7 +416,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONObjectWrapper serviceContext) throws Exception {
@@ -443,7 +443,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObjectWrapper serviceContext) throws Exception {
@@ -474,7 +474,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObjectWrapper serviceContext) throws Exception {
@@ -506,7 +506,7 @@ public class OrganizationService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

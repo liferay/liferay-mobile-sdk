@@ -49,7 +49,7 @@ public class DDLRecordService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteRecord(long recordId) throws Exception {
@@ -85,7 +85,7 @@ public class DDLRecordService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject getRecord(long recordId) throws Exception {
@@ -102,7 +102,7 @@ public class DDLRecordService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void revertRecordVersion(long recordId, String version, JSONObjectWrapper serviceContext) throws Exception {
@@ -142,7 +142,7 @@ public class DDLRecordService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject updateRecord(long recordId, boolean majorVersion, int displayIndex, JSONObjectWrapper fields, boolean mergeFields, JSONObjectWrapper serviceContext) throws Exception {
@@ -164,7 +164,7 @@ public class DDLRecordService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

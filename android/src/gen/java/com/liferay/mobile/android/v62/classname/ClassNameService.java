@@ -45,7 +45,7 @@ public class ClassNameService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public Long fetchClassNameId(JSONObject clazz) throws Exception {
@@ -62,7 +62,7 @@ public class ClassNameService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Long)session.invoke(_command);
+		return session.invoke(_command).getLong(0);
 	}
 
 	public Long fetchClassNameId(String value) throws Exception {
@@ -79,7 +79,7 @@ public class ClassNameService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Long)session.invoke(_command);
+		return session.invoke(_command).getLong(0);
 	}
 
 }

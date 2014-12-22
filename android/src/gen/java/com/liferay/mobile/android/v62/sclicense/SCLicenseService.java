@@ -49,7 +49,7 @@ public class SCLicenseService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteLicense(long licenseId) throws Exception {
@@ -83,7 +83,7 @@ public class SCLicenseService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject updateLicense(long licenseId, String name, String url, boolean openSource, boolean active, boolean recommended) throws Exception {
@@ -105,7 +105,7 @@ public class SCLicenseService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

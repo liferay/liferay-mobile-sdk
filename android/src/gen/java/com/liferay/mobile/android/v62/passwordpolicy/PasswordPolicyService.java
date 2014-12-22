@@ -68,7 +68,7 @@ public class PasswordPolicyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject addPasswordPolicy(String name, String description, boolean changeable, boolean changeRequired, long minAge, boolean checkSyntax, boolean allowDictionaryWords, int minAlphanumeric, int minLength, int minLowerCase, int minNumbers, int minSymbols, int minUpperCase, String regex, boolean history, int historyCount, boolean expireable, long maxAge, long warningTime, int graceLimit, boolean lockout, int maxFailure, long lockoutDuration, long resetFailureCount, long resetTicketMaxAge, JSONObjectWrapper serviceContext) throws Exception {
@@ -110,7 +110,7 @@ public class PasswordPolicyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deletePasswordPolicy(long passwordPolicyId) throws Exception {
@@ -168,7 +168,7 @@ public class PasswordPolicyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject updatePasswordPolicy(long passwordPolicyId, String name, String description, boolean changeable, boolean changeRequired, long minAge, boolean checkSyntax, boolean allowDictionaryWords, int minAlphanumeric, int minLength, int minLowerCase, int minNumbers, int minSymbols, int minUpperCase, String regex, boolean history, int historyCount, boolean expireable, long maxAge, long warningTime, int graceLimit, boolean lockout, int maxFailure, long lockoutDuration, long resetFailureCount, long resetTicketMaxAge, JSONObjectWrapper serviceContext) throws Exception {
@@ -211,7 +211,7 @@ public class PasswordPolicyService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

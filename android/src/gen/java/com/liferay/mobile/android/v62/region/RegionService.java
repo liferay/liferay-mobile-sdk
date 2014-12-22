@@ -48,7 +48,7 @@ public class RegionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject fetchRegion(long countryId, String regionCode) throws Exception {
@@ -66,7 +66,7 @@ public class RegionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject getRegion(long regionId) throws Exception {
@@ -83,7 +83,7 @@ public class RegionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject getRegion(long countryId, String regionCode) throws Exception {
@@ -101,7 +101,7 @@ public class RegionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONArray getRegions() throws Exception {
@@ -116,7 +116,7 @@ public class RegionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getRegions(boolean active) throws Exception {
@@ -133,7 +133,7 @@ public class RegionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getRegions(long countryId) throws Exception {
@@ -150,7 +150,7 @@ public class RegionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getRegions(long countryId, boolean active) throws Exception {
@@ -168,7 +168,7 @@ public class RegionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 }

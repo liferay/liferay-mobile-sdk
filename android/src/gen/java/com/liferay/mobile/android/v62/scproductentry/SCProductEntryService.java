@@ -57,7 +57,7 @@ public class SCProductEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteProductEntry(long productEntryId) throws Exception {
@@ -91,7 +91,7 @@ public class SCProductEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject updateProductEntry(long productEntryId, String name, String type, String tags, String shortDescription, String longDescription, String pageURL, String author, String repoGroupId, String repoArtifactId, JSONArray licenseIds, JSONArray thumbnails, JSONArray fullImages) throws Exception {
@@ -120,7 +120,7 @@ public class SCProductEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

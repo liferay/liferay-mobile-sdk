@@ -45,7 +45,7 @@ public class BackgroundTaskService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (String)session.invoke(_command);
+		return session.invoke(_command).getString(0);
 	}
 
 	public Integer getBackgroundTasksCount(long groupId, String taskExecutorClassName, String completed) throws Exception {
@@ -64,7 +64,7 @@ public class BackgroundTaskService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 }

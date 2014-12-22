@@ -53,7 +53,7 @@ public class SCProductVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteProductVersion(long productVersionId) throws Exception {
@@ -87,7 +87,7 @@ public class SCProductVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONArray getProductVersions(long productEntryId, int start, int end) throws Exception {
@@ -106,7 +106,7 @@ public class SCProductVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Integer getProductVersionsCount(long productEntryId) throws Exception {
@@ -123,7 +123,7 @@ public class SCProductVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public JSONObject updateProductVersion(long productVersionId, String version, String changeLog, String downloadPageURL, String directDownloadURL, boolean testDirectDownloadURL, boolean repoStoreArtifact, JSONArray frameworkVersionIds) throws Exception {
@@ -147,7 +147,7 @@ public class SCProductVersionService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

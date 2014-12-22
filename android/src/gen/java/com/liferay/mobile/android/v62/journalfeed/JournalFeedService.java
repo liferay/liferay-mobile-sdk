@@ -62,7 +62,7 @@ public class JournalFeedService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteFeed(long feedId) throws Exception {
@@ -114,7 +114,7 @@ public class JournalFeedService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject getFeed(long groupId, String feedId) throws Exception {
@@ -132,7 +132,7 @@ public class JournalFeedService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject updateFeed(long groupId, String feedId, String name, String description, String type, String structureId, String templateId, String rendererTemplateId, int delta, String orderByCol, String orderByType, String targetLayoutFriendlyUrl, String targetPortletId, String contentField, String feedType, double feedVersion, JSONObjectWrapper serviceContext) throws Exception {
@@ -165,7 +165,7 @@ public class JournalFeedService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

@@ -88,7 +88,7 @@ public class ShoppingOrderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void sendEmail(long groupId, long orderId, String emailType, JSONObjectWrapper serviceContext) throws Exception {
@@ -154,7 +154,7 @@ public class ShoppingOrderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject updateOrder(long groupId, long orderId, String ppTxnId, String ppPaymentStatus, double ppPaymentGross, String ppReceiverEmail, String ppPayerEmail) throws Exception {
@@ -177,7 +177,7 @@ public class ShoppingOrderService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }

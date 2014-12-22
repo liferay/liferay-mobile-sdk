@@ -50,7 +50,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void deleteEntry(long entryId) throws Exception {
@@ -87,7 +87,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getEntries(long groupId, long folderId, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
@@ -108,7 +108,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Integer getEntriesCount(long groupId, long folderId) throws Exception {
@@ -126,7 +126,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public Integer getEntriesCount(long groupId, long folderId, int status) throws Exception {
@@ -145,7 +145,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public JSONObject getEntry(long entryId) throws Exception {
@@ -162,7 +162,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public Integer getFoldersEntriesCount(long groupId, JSONArray folderIds) throws Exception {
@@ -180,7 +180,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public JSONArray getGroupEntries(long groupId, int start, int end) throws Exception {
@@ -199,7 +199,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getGroupEntries(long groupId, long userId, int start, int end) throws Exception {
@@ -219,7 +219,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public JSONArray getGroupEntries(long groupId, long userId, long rootFolderId, int start, int end) throws Exception {
@@ -240,7 +240,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		return session.invoke(_command).getJSONArray(0);
 	}
 
 	public Integer getGroupEntriesCount(long groupId) throws Exception {
@@ -257,7 +257,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public Integer getGroupEntriesCount(long groupId, long userId) throws Exception {
@@ -275,7 +275,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public Integer getGroupEntriesCount(long groupId, long userId, long rootFolderId) throws Exception {
@@ -294,7 +294,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Integer)session.invoke(_command);
+		return session.invoke(_command).getInt(0);
 	}
 
 	public JSONObject moveEntry(long entryId, long parentFolderId) throws Exception {
@@ -312,7 +312,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject moveEntryFromTrash(long entryId, long parentFolderId) throws Exception {
@@ -330,7 +330,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject moveEntryToTrash(long entryId) throws Exception {
@@ -347,7 +347,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject openEntry(JSONObjectWrapper entry) throws Exception {
@@ -364,7 +364,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public JSONObject openEntry(long entryId) throws Exception {
@@ -381,7 +381,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void restoreEntryFromTrash(long entryId) throws Exception {
@@ -419,7 +419,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 	public void subscribeEntry(long entryId) throws Exception {
@@ -476,7 +476,7 @@ public class BookmarksEntryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		return session.invoke(_command).getJSONObject(0);
 	}
 
 }
