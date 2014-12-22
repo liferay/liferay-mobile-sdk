@@ -18,6 +18,7 @@ import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.auth.oauth.OAuth;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
+import com.liferay.mobile.android.util.Validator;
 import com.liferay.mobile.android.v62.group.GroupService;
 import com.liferay.mobile.sdk.test.BaseTest;
 import com.liferay.mobile.sdk.test.util.PropertiesUtil;
@@ -45,14 +46,19 @@ public class OAuthTest extends BaseTest {
 		String consumerSecret = props.getProperty(
 			PropertiesUtil.OAUTH_CONSUMER_SECRET);
 
-		String accessToken = props.getProperty(
-			PropertiesUtil.OAUTH_ACCESS_TOKEN);
+		String token = props.getProperty(PropertiesUtil.OAUTH_TOKEN);
 
 		String tokenSecret = props.getProperty(
 			PropertiesUtil.OAUTH_TOKEN_SECRET);
 
+		if (Validator.isNull(consumerKey) || Validator.isNull(consumerSecret) ||
+			Validator.isNull(token) || Validator.isNull(tokenSecret)) {
+
+			return;
+		}
+
 		Authentication auth = new OAuth(
-			consumerKey, consumerSecret, accessToken, tokenSecret);
+			consumerKey, consumerSecret, token, tokenSecret);
 
 		Session session = new SessionImpl(this.session.getServer(), auth);
 		GroupService service = new GroupService(session);

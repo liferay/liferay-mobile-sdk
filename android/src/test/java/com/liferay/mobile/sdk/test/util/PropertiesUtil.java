@@ -30,11 +30,11 @@ public class PropertiesUtil {
 
 	public static final String LOGIN = "login";
 
-	public static final String OAUTH_ACCESS_TOKEN = "oauth.accessToken";
-
 	public static final String OAUTH_CONSUMER_KEY = "oauth.consumerKey";
 
 	public static final String OAUTH_CONSUMER_SECRET = "oauth.consumerSecret";
+
+	public static final String OAUTH_TOKEN = "oauth.token";
 
 	public static final String OAUTH_TOKEN_SECRET = "oauth.tokenSecret";
 
