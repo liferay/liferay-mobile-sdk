@@ -61,7 +61,6 @@ public class BatchSessionImpl extends SessionImpl {
 		try {
 			if (callback != null) {
 				ServiceAsyncTask task = new ServiceAsyncTask(this, callback);
-
 				task.execute(commands);
 
 				return null;
@@ -76,7 +75,7 @@ public class BatchSessionImpl extends SessionImpl {
 	}
 
 	@Override
-	public Object invoke(JSONObject command) throws Exception {
+	public JSONArray invoke(JSONObject command) throws Exception {
 		commands.put(command);
 
 		return null;
@@ -87,7 +86,7 @@ public class BatchSessionImpl extends SessionImpl {
 	}
 
 	@Override
-	public Object upload(JSONObject command) throws Exception {
+	public JSONArray upload(JSONObject command) throws Exception {
 		throw new IllegalStateException("Can't batch upload requests");
 	}
 

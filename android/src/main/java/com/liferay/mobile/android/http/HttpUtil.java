@@ -158,7 +158,7 @@ public class HttpUtil {
 		_JSONWS_PATH = jsonwsPath;
 	}
 
-	public static Object upload(
+	public static JSONArray upload(
 			Session session, JSONObject command, UploadAsyncTask task)
 		throws Exception {
 
@@ -181,12 +181,7 @@ public class HttpUtil {
 
 		handleServerException(post, response, json);
 
-		if (isJSONObject(json)) {
-			return new JSONObject(json);
-		}
-		else {
-			return new JSONArray(json);
-		}
+		return new JSONArray(json);
 	}
 
 	protected static HttpEntity getMultipartEntity(JSONObject parameters)

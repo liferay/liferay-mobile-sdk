@@ -17,6 +17,7 @@ package com.liferay.mobile.android.service;
 import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -36,7 +37,7 @@ public interface Session {
 
 	public String getUsername();
 
-	public Object invoke(JSONObject command) throws Exception;
+	public JSONArray invoke(JSONObject command) throws Exception;
 
 	public void setAuthentication(Authentication authentication);
 
@@ -50,6 +51,6 @@ public interface Session {
 
 	public void setUsername(String username);
 
-	public Object upload(JSONObject command) throws Exception;
+	public JSONArray upload(JSONObject command) throws Exception;
 
 }

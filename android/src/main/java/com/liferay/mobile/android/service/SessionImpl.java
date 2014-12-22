@@ -96,7 +96,7 @@ public class SessionImpl implements Session {
 	}
 
 	@Override
-	public Object invoke(JSONObject command) throws Exception {
+	public JSONArray invoke(JSONObject command) throws Exception {
 		if (callback != null) {
 			ServiceAsyncTask task = new ServiceAsyncTask(this, callback);
 			task.execute(command);
@@ -104,9 +104,7 @@ public class SessionImpl implements Session {
 			return null;
 		}
 		else {
-			JSONArray json = HttpUtil.post(this, command);
-
-			return json.get(0);
+			return HttpUtil.post(this, command);
 		}
 	}
 
@@ -141,7 +139,7 @@ public class SessionImpl implements Session {
 	}
 
 	@Override
-	public Object upload(JSONObject command) throws Exception {
+	public JSONArray upload(JSONObject command) throws Exception {
 		if (callback != null) {
 			UploadAsyncTask task = new UploadAsyncTask(this, callback);
 			task.execute(command);
