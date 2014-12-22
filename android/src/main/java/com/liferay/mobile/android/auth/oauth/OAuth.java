@@ -27,12 +27,12 @@ import org.apache.http.HttpRequest;
 public class OAuth implements Authentication {
 
 	public OAuth(
-		String consumerKey, String consumerSecret, String accessToken,
+		String consumerKey, String consumerSecret, String token,
 		String tokenSecret) {
 
 		_consumerKey = consumerKey;
 		_consumerSecret = consumerSecret;
-		_accessToken = accessToken;
+		_token = token;
 		_tokenSecret = tokenSecret;
 	}
 
@@ -41,13 +41,13 @@ public class OAuth implements Authentication {
 		OAuthConsumer consumer = new CommonsHttpOAuthConsumer(
 			_consumerKey, _consumerSecret);
 
-		consumer.setTokenWithSecret(_accessToken, _tokenSecret);
+		consumer.setTokenWithSecret(_token, _tokenSecret);
 		consumer.sign(request);
 	}
 
-	private String _accessToken;
 	private String _consumerKey;
 	private String _consumerSecret;
+	private String _token;
 	private String _tokenSecret;
 
 }
