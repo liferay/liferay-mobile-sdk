@@ -24,6 +24,8 @@ import java.util.Properties;
  */
 public class PropertiesUtil {
 
+	public static final String COMPANY_ID = "companyId";
+
 	public static final String GROUP_ID = "groupId";
 
 	public static final String LOGIN = "login";
@@ -58,24 +60,20 @@ public class PropertiesUtil {
 		}
 	}
 
+	public long getCompanyId() {
+		return Long.valueOf(getProperty(COMPANY_ID));
+	}
+
 	public long getGroupId() {
-		return Long.valueOf(_properties.getProperty(GROUP_ID));
+		return Long.valueOf(getProperty(GROUP_ID));
 	}
 
 	public String getLogin() {
-		if (_login == null) {
-			_login = getProperty(LOGIN);
-		}
-
-		return _login;
+		return getProperty(LOGIN);
 	}
 
 	public String getPassword() {
-		if (_password == null) {
-			_password = getProperty(PASSWORD);
-		}
-
-		return _password;
+		return getProperty(PASSWORD);
 	}
 
 	public String getProperty(String key) {
@@ -83,16 +81,9 @@ public class PropertiesUtil {
 	}
 
 	public String getUrl() {
-		if (_url == null) {
-			_url = getProperty(URL);
-		}
-
-		return _url;
+		return getProperty(URL);
 	}
 
-	private String _login;
-	private String _password;
 	private Properties _properties;
-	private String _url;
 
 }
