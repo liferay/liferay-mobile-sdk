@@ -724,7 +724,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray search(long companyId, JSONArray classNameIds, String keywords, JSONObject params, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -747,7 +753,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray search(long companyId, JSONArray classNameIds, String name, String description, JSONObject params, boolean andOperator, int start, int end, JSONObjectWrapper obc) throws Exception {
@@ -772,7 +784,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public Integer searchCount(long companyId, String name, String description, JSONArray params) throws Exception {
@@ -792,7 +810,13 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getInt(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public void setRoleGroups(long roleId, JSONArray groupIds) throws Exception {

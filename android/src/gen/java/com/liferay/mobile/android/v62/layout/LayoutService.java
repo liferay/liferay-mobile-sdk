@@ -688,7 +688,13 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONArray(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public Integer getLayoutsCount(long groupId, boolean privateLayout, long parentLayoutId) throws Exception {
@@ -707,7 +713,13 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getInt(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public JSONArray getTempFileEntryNames(long groupId, String tempFolderName) throws Exception {
@@ -1232,7 +1244,13 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject updateParentLayoutIdAndPriority(long plid, long parentPlid, int priority) throws Exception {
@@ -1251,7 +1269,13 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject updatePriority(long plid, int priority) throws Exception {

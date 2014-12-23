@@ -49,24 +49,13 @@ public class DDLRecordService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
-	}
+		JSONArray _result = session.invoke(_command);
 
-	public void deleteRecord(long recordId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("recordId", recordId);
-
-			_command.put("/ddlrecord/delete-record", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
+		if (_result == null) {
+			return null;
 		}
 
-		session.invoke(_command);
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject deleteRecordLocale(long recordId, String locale, JSONObjectWrapper serviceContext) throws Exception {
@@ -108,26 +97,13 @@ public class DDLRecordService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.invoke(_command).getJSONObject(0);
-	}
+		JSONArray _result = session.invoke(_command);
 
-	public void revertRecordVersion(long recordId, String version, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("recordId", recordId);
-			_params.put("version", version);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/ddlrecord/revert-record-version", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
+		if (_result == null) {
+			return null;
 		}
 
-		session.invoke(_command);
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject updateRecord(long recordId, int displayIndex, JSONObject fieldsMap, boolean mergeFields, JSONObjectWrapper serviceContext) throws Exception {
