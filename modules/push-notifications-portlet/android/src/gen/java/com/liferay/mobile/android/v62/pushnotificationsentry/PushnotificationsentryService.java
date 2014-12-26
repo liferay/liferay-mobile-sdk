@@ -45,7 +45,13 @@ public class PushnotificationsentryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject addPushNotificationsEntry(long parentPushNotificationsEntryId, String payload) throws Exception {
@@ -63,7 +69,13 @@ public class PushnotificationsentryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONArray getPushNotificationsEntries(long parentPushNotificationsEntryId, long lastAccessTime, int start, int end) throws Exception {
@@ -83,7 +95,13 @@ public class PushnotificationsentryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONArray)session.invoke(_command);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONObject likePushNotificationsEntry(long pushNotificationsEntryId) throws Exception {
@@ -100,7 +118,13 @@ public class PushnotificationsentryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject unlikePushNotificationsEntry(long pushNotificationsEntryId) throws Exception {
@@ -117,7 +141,13 @@ public class PushnotificationsentryService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 }

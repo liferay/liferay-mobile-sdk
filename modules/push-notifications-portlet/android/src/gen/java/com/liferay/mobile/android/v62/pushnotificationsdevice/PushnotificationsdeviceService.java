@@ -46,7 +46,13 @@ public class PushnotificationsdeviceService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject deletePushNotificationsDevice(String token) throws Exception {
@@ -63,7 +69,13 @@ public class PushnotificationsdeviceService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (JSONObject)session.invoke(_command);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public Boolean hasPermission(String actionId) throws Exception {
@@ -80,7 +92,13 @@ public class PushnotificationsdeviceService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return (Boolean)session.invoke(_command);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getBoolean(0);
 	}
 
 }
