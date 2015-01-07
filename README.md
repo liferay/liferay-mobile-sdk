@@ -29,5 +29,6 @@ portlet, read the [SDK Builder documentation](builder/README.md).
 The Liferay open-source community has built SDKs for different platforms as
 well:
 
+- [Go](https://github.com/Ithildir/liferay-sdk-go) (by Andrea Di Giorgi)
 - [Titanium](https://www.npmjs.org/package/liferay-connector) (by Pier Paolo Ramon)
 - [Windows](https://github.com/Ithildir/liferay-sdk-builder-windows) (by Andrea Di Giorgi)
