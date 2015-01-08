@@ -29,5 +29,6 @@ portlet, read the [SDK Builder documentation](builder/README.md).
 The Liferay open-source community has built SDKs for different platforms as
 well:
 
+- [PhoneGap](https://github.com/salvatejero/cordova-liferay-plugin) (by Salva Tejero)
 - [Titanium](https://www.npmjs.org/package/liferay-connector) (by Pier Paolo Ramon)
 - [Windows](https://github.com/Ithildir/liferay-sdk-builder-windows) (by Andrea Di Giorgi)
