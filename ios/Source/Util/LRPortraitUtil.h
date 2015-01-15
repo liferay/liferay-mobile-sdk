@@ -30,9 +30,6 @@
 	modifiedDate:(NSString *)modifiedDate error:(NSError **)error;
 
 + (NSString *)getPortraitURL:(LRSession *)session male:(BOOL)male
-	portraitId:(long long)portraitId;
-
-+ (NSString *)getPortraitURL:(LRSession *)session male:(BOOL)male
 	portraitId:(long long)portraitId uuid:(NSString *)uuid;
 
 @end

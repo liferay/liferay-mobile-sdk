@@ -69,13 +69,6 @@ NSString *const LR_LAST_MODIFIED = @"Last-Modified";
 }
 
 + (NSString *)getPortraitURL:(LRSession *)session male:(BOOL)male
-		portraitId:(long long)portraitId {
-
-	return [self getPortraitURL:session male:male portraitId:portraitId
-		uuid:nil];
-}
-
-+ (NSString *)getPortraitURL:(LRSession *)session male:(BOOL)male
 		portraitId:(long long)portraitId uuid:(NSString *)uuid {
 
 	NSString *gender = male ? @"male" : @"female";
@@ -92,17 +85,6 @@ NSString *const LR_LAST_MODIFIED = @"Last-Modified";
 	}
 
 	return portraitURL;
-}
-
-+ (NSString *)_appendToken:(NSString *)portraitURL uuid:(NSString *)uuid {
-	if (!uuid) {
-		return portraitURL;
-	}
-
-	NSString *token = [self _sha1:uuid];
-
-	return [NSString stringWithFormat:@"%@&img_id_token=%@", portraitURL,
-		token];
 }
 
 + (NSString *)_sha1:(NSString *)input {
