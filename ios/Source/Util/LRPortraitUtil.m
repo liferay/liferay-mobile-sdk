@@ -72,17 +72,11 @@ NSString *const LR_LAST_MODIFIED = @"Last-Modified";
 		portraitId:(long long)portraitId uuid:(NSString *)uuid {
 
 	NSString *gender = male ? @"male" : @"female";
+	NSString *token = [self _sha1:uuid];
+	NSString *format = @"%@/image/user_%@_portrait?img_id=%lld&img_id_token=%@";
 
-	NSString *portraitURL = [NSString
-		stringWithFormat:@"%@/image/user_%@_portrait?img_id=%lld",
-		session.server, gender, portraitId];
-
-	NSError *error;
-	int version = [LRPortalVersionUtil getPortalVersion:session error:&error];
-
-	if (!error && version > LR_VERSION_6_2) {
-		portraitURL = [self _appendToken:portraitURL uuid:uuid];
-	}
+	NSString *portraitURL = [NSString stringWithFormat: format, session.server,
+		gender, portraitId, token];
 
 	return portraitURL;
 }
