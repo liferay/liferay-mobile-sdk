@@ -35,4 +35,6 @@ extern NSString *const LR_POST;
 + (void)setAuthHeader:(LRSession *)session
 	request:(NSMutableURLRequest *)request;
 
++ (void)setJSONWSPath:(NSString *)path;
+
 @end
