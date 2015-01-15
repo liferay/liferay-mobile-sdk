@@ -113,12 +113,6 @@ public class PortraitUtil {
 	}
 
 	public static String getPortraitURL(
-		Session session, boolean male, long portraitId) {
-
-		return getPortraitURL(session, male, portraitId, null);
-	}
-
-	public static String getPortraitURL(
 		Session session, boolean male, long portraitId, String uuid) {
 
 		StringBuilder sb = new StringBuilder();

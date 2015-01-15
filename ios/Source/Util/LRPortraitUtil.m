@@ -17,6 +17,7 @@
 #import "LRHttpUtil.h"
 #import "LRPortalVersionUtil.h"
 #import "LRResponseParser.h"
+#import "LRValidator.h"
 
 NSString *const LR_IF_MODIFIED_SINCE = @"If-Modified-Since";
 NSString *const LR_LAST_MODIFIED = @"Last-Modified";
@@ -71,12 +72,18 @@ NSString *const LR_LAST_MODIFIED = @"Last-Modified";
 + (NSString *)getPortraitURL:(LRSession *)session male:(BOOL)male
 		portraitId:(long long)portraitId uuid:(NSString *)uuid {
 
+	NSString *format = @"%@/image/user_%@_portrait?img_id=%lld";
 	NSString *gender = male ? @"male" : @"female";
-	NSString *token = [self _sha1:uuid];
-	NSString *format = @"%@/image/user_%@_portrait?img_id=%lld&img_id_token=%@";
 
 	NSString *portraitURL = [NSString stringWithFormat: format, session.server,
-		gender, portraitId, token];
+		gender, portraitId];
+
+	if ([LRValidator isNotEmpty:uuid]) {
+		NSString *token = [self _sha1:uuid];
+
+		portraitURL = [NSString stringWithFormat:@"%@&img_id_token=%@",
+			portraitURL, token];
+	}
 
 	return portraitURL;
 }

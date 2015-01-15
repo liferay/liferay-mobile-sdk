@@ -40,6 +40,10 @@
 	return NO;
 }
 
++ (BOOL)isNotEmpty:(NSString *)string {
+	return ![self isEmpty:string];
+}
+
 + (BOOL)isNull:(NSData *)data {
 	return ((data == nil) || ([data length] == 0));
 }
