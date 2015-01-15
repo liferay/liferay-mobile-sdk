@@ -13,6 +13,7 @@
  */
 
 #import "LRBaseService.h"
+#import "LRValidator.h"
 
 NSString *const _SERVICE_CONTEXT = @"com.liferay.portal.service.ServiceContext";
 
@@ -51,7 +52,7 @@ NSString *const _SERVICE_CONTEXT = @"com.liferay.portal.service.ServiceContext";
 }
 
 - (NSString *)toString:(NSData *)data {
-	if (!data || [data length] == 0) {
+	if ([LRValidator isNull:data]) {
 		return @"";
 	}
 

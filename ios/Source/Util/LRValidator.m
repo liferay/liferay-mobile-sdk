@@ -40,4 +40,8 @@
 	return NO;
 }
 
++ (BOOL)isNull:(NSData *)data {
+	return ((data == nil) || ([data length] == 0));
+}
+
 @end

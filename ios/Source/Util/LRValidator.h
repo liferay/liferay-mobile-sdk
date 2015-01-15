@@ -19,5 +19,6 @@
 
 + (BOOL)isEmpty:(NSString *)string;
 + (BOOL)isEmpty:(NSString *)string trim:(BOOL)trim;
++ (BOOL)isNull:(NSData *)data;
 
 @end

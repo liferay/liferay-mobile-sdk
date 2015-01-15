@@ -14,6 +14,8 @@
 
 package com.liferay.mobile.android.service;
 
+import com.liferay.mobile.android.util.Validator;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -51,6 +53,10 @@ public class BaseService {
 	}
 
 	public String toString(byte[] bytes) {
+		if (Validator.isNull(bytes)) {
+			return "";
+		}
+
 		StringBuilder sb = new StringBuilder("[");
 
 		for (int i = 0; i < bytes.length; i++) {

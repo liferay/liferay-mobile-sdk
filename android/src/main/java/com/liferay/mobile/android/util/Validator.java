@@ -23,6 +23,10 @@ public class Validator {
 		return !isNull(s);
 	}
 
+	public static boolean isNull(byte[] bytes) {
+		return (bytes == null || (bytes.length == 0));
+	}
+
 	public static boolean isNull(String s) {
 		if (s == null) {
 			return true;
