@@ -19,6 +19,8 @@ import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.task.ServiceAsyncTask;
 import com.liferay.mobile.android.task.callback.BatchAsyncTaskCallback;
 
+import java.util.ArrayList;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -58,6 +60,12 @@ public class BatchSessionImpl extends SessionImpl {
 	}
 
 	public JSONArray invoke() throws Exception {
+		if (_commands.size() == 0) {
+			return null;
+		}
+
+		JSONArray commands = new JSONArray(_commands);
+
 		try {
 			if (callback != null) {
 				ServiceAsyncTask task = new ServiceAsyncTask(this, callback);
@@ -70,13 +78,13 @@ public class BatchSessionImpl extends SessionImpl {
 			}
 		}
 		finally {
-			commands = new JSONArray();
+			_commands = new ArrayList<JSONObject>();
 		}
 	}
 
 	@Override
 	public JSONArray invoke(JSONObject command) throws Exception {
-		commands.put(command);
+		_commands.add(command);
 
 		return null;
 	}
@@ -90,6 +98,6 @@ public class BatchSessionImpl extends SessionImpl {
 		throw new IllegalStateException("Can't batch upload requests");
 	}
 
-	protected JSONArray commands = new JSONArray();
+	private ArrayList<JSONObject> _commands = new ArrayList<JSONObject>();
 
 }

@@ -37,8 +37,8 @@ NSString *const _SERVICE_CONTEXT = @"com.liferay.portal.service.ServiceContext";
 }
 
 - (void)mangleWrapperWithParams:(NSMutableDictionary *)params
-	name:(NSString *)name className:(NSString *)className
-	wrapper:(LRJSONObjectWrapper *)wrapper {
+		name:(NSString *)name className:(NSString *)className
+		wrapper:(LRJSONObjectWrapper *)wrapper {
 
 	if (!wrapper) {
 		if (![className isEqualToString:_SERVICE_CONTEXT]) {

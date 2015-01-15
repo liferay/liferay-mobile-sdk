@@ -18,18 +18,36 @@
 /**
  * @author Bruno Farache
  */
+
+@interface LRBatchSession ()
+
+@property (atomic, strong) NSMutableArray *commands;
+
+@end
+
 @implementation LRBatchSession
 
-- (NSArray *)invoke:(NSError **)error {
-	if (!self.commands) {
-		[NSException raise:@"" format:@"You need to set commands to the batch \
-			session before invoke"];
+- (id)initWithServer:(NSString *)server username:(NSString *)username
+		password:(NSString *)password connectionTimeout:(int)connectionTimeout
+		callback:(id<LRCallback>)callback queue:(NSOperationQueue *)queue {
 
+	self = [super initWithServer:server username:username password:password
+		connectionTimeout:connectionTimeout callback:callback queue:queue];
+
+	if (self) {
+		self.commands = [[NSMutableArray alloc] init];
+	}
+
+	return self;
+}
+
+- (NSArray *)invoke:(NSError **)error {
+	if ([self.commands count] == 0) {
 		return nil;
 	}
-	
-	NSArray *results = [LRHttpUtil post:self commands:self.commands
-		error:error];
+
+	NSArray *results = [LRHttpUtil post:self
+		commands:[NSArray arrayWithArray:self.commands] error:error];
 
 	self.commands = [[NSMutableArray alloc] init];
 
@@ -37,10 +55,6 @@
 }
 
 - (NSArray *)invoke:(NSDictionary *)command error:(NSError **)error {
-	if (!self.commands) {
-		self.commands = [[NSMutableArray alloc] init];
-	}
-
 	[self.commands addObject:command];
 
 	return nil;
