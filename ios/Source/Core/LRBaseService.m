@@ -51,6 +51,10 @@ NSString *const _SERVICE_CONTEXT = @"com.liferay.portal.service.ServiceContext";
 }
 
 - (NSString *)toString:(NSData *)data {
+	if (!data || [data length] == 0) {
+		return @"";
+	}
+
 	const uint8_t *values = [data bytes];
 	NSMutableString *value = [NSMutableString stringWithString:@"["];
 
