@@ -40,6 +40,22 @@ public class BasicAuthentication implements Authentication {
 		request.addHeader(header);
 	}
 
+	public String getPassword() {
+		return _password;
+	}
+
+	public String getUsername() {
+		return _username;
+	}
+
+	public void setPassword(String password) {
+		_password = password;
+	}
+
+	public void setUsername(String username) {
+		_username = username;
+	}
+
 	private String _password;
 	private String _username;
 

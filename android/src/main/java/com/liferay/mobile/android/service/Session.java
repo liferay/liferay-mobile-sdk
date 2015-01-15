@@ -31,11 +31,7 @@ public interface Session {
 
 	public int getConnectionTimeout();
 
-	public String getPassword();
-
 	public String getServer();
-
-	public String getUsername();
 
 	public JSONArray invoke(JSONObject command) throws Exception;
 
@@ -45,11 +41,7 @@ public interface Session {
 
 	public void setConnectionTimeout(int connectionTimeout);
 
-	public void setPassword(String password);
-
 	public void setServer(String server);
-
-	public void setUsername(String username);
 
 	public JSONArray upload(JSONObject command) throws Exception;
 

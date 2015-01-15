@@ -81,18 +81,8 @@ public class SessionImpl implements Session {
 	}
 
 	@Override
-	public String getPassword() {
-		return password;
-	}
-
-	@Override
 	public String getServer() {
 		return server;
-	}
-
-	@Override
-	public String getUsername() {
-		return username;
 	}
 
 	@Override
@@ -124,18 +114,8 @@ public class SessionImpl implements Session {
 	}
 
 	@Override
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	@Override
 	public void setServer(String server) {
 		this.server = server;
-	}
-
-	@Override
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	@Override
@@ -154,8 +134,6 @@ public class SessionImpl implements Session {
 	protected Authentication authentication;
 	protected AsyncTaskCallback callback;
 	protected int connectionTimeout;
-	protected String password;
 	protected String server;
-	protected String username;
 
 }
