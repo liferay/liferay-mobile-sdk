@@ -21,6 +21,13 @@
 @implementation LRBatchSession
 
 - (NSArray *)invoke:(NSError **)error {
+	if (!self.commands) {
+		[NSException raise:@"" format:@"You need to set commands to the batch \
+			session before invoke"];
+
+		return nil;
+	}
+	
 	NSArray *results = [LRHttpUtil post:self commands:self.commands
 		error:error];
 
