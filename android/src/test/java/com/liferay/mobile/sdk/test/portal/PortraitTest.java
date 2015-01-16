@@ -34,13 +34,27 @@ public class PortraitTest extends BaseTest {
 
 	@Test
 	public void getPortraitURL() throws Exception {
-		String portraitURL = PortraitUtil.getPortraitURL(
-			session, true, 1708235, "c0c65ba5-c2ba-4bf5-9e42-7330adb1b5b8");
+		long portraitId = 1708235;
 
-		assertEquals(
-			"http://localhost:8080/image/user_male_portrait?img_id=1708235&im" +
-				"g_id_token=U6W2%2BvmVgE%2FyBnzvklnWO%2BqHPck%3D",
-			portraitURL);
+		String expectedURL = "http://localhost:8080/image/user_male_portrait?" +
+			"img_id=" + portraitId;
+
+		String uuid = null;
+
+		String portraitURL = PortraitUtil.getPortraitURL(
+			session, true, portraitId, uuid);
+
+		assertEquals(expectedURL, portraitURL);
+
+		expectedURL = expectedURL +
+			"&img_id_token=U6W2%2BvmVgE%2FyBnzvklnWO%2BqHPck%3D";
+
+		uuid = "c0c65ba5-c2ba-4bf5-9e42-7330adb1b5b8";
+
+		portraitURL = PortraitUtil.getPortraitURL(
+			session, true, portraitId, uuid);
+
+		assertEquals(expectedURL, portraitURL);
 	}
 
 }

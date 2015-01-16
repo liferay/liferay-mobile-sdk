@@ -15,7 +15,6 @@
 #import "LRPortraitUtil.h"
 
 #import "LRHttpUtil.h"
-#import "LRPortalVersionUtil.h"
 #import "LRResponseParser.h"
 #import "LRValidator.h"
 
