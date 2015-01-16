@@ -17,7 +17,7 @@
 /**
  * @author Bruno Farache
  */
-@interface LRPushnotificationsdeviceService_v62 : LRBaseService
+@interface LRPushNotificationsDeviceService_v62 : LRBaseService
 
 - (NSDictionary *)addPushNotificationsDeviceWithToken:(NSString *)token platform:(NSString *)platform error:(NSError **)error;
 - (NSDictionary *)deletePushNotificationsDeviceWithToken:(NSString *)token error:(NSError **)error;

@@ -12,12 +12,12 @@
  * details.
  */
 
-#import "LRPushnotificationsdeviceService_v62.h"
+#import "LRPushNotificationsDeviceService_v62.h"
 
 /**
  * @author Bruno Farache
  */
-@implementation LRPushnotificationsdeviceService_v62
+@implementation LRPushNotificationsDeviceService_v62
 
 - (NSDictionary *)addPushNotificationsDeviceWithToken:(NSString *)token platform:(NSString *)platform error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{

@@ -25,9 +25,9 @@ import org.json.JSONObject;
 /**
  * @author Bruno Farache
  */
-public class PushnotificationsdeviceService extends BaseService {
+public class PushNotificationsDeviceService extends BaseService {
 
-	public PushnotificationsdeviceService(Session session) {
+	public PushNotificationsDeviceService(Session session) {
 		super(session);
 	}
 
