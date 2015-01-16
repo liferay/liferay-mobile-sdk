@@ -21,6 +21,6 @@
 
 - (NSDictionary *)addPushNotificationsDeviceWithToken:(NSString *)token platform:(NSString *)platform error:(NSError **)error;
 - (NSDictionary *)deletePushNotificationsDeviceWithToken:(NSString *)token error:(NSError **)error;
-- (BOOL)hasPermissionWithActionId:(NSString *)actionId error:(NSError **)error;
+- (void)sendPushNotificationWithToUserId:(long long)toUserId payload:(NSString *)payload error:(NSError **)error;
 
 @end

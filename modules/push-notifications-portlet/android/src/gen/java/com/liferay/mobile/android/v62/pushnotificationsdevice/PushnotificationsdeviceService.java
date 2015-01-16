@@ -78,27 +78,22 @@ public class PushnotificationsdeviceService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public Boolean hasPermission(String actionId) throws Exception {
+	public void sendPushNotification(long toUserId, String payload) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("actionId", actionId);
+			_params.put("toUserId", toUserId);
+			_params.put("payload", payload);
 
-			_command.put("/push-notifications-portlet/pushnotificationsdevice/has-permission", _params);
+			_command.put("/push-notifications-portlet/pushnotificationsdevice/send-push-notification", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getBoolean(0);
+		session.invoke(_command);
 	}
 
 }

@@ -40,14 +40,15 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (BOOL)hasPermissionWithActionId:(NSString *)actionId error:(NSError **)error {
+- (void)sendPushNotificationWithToUserId:(long long)toUserId payload:(NSString *)payload error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"actionId": actionId
+		@"toUserId": @(toUserId),
+		@"payload": payload
 	}];
 
-	NSDictionary *_command = @{@"/push-notifications-portlet/pushnotificationsdevice/has-permission": _params};
+	NSDictionary *_command = @{@"/push-notifications-portlet/pushnotificationsdevice/send-push-notification": _params};
 
-	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
+	[self.session invoke:_command error:error];
 }
 
 @end
