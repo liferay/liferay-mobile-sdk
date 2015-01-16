@@ -24,8 +24,8 @@
  */
 @implementation LRUploadUtil
 
-+ (id)upload:(LRSession *)session command:(NSDictionary *)command
-		error:(NSError **)error {
++ (AFHTTPRequestOperation *)upload:(LRSession *)session
+		command:(NSDictionary *)command error:(NSError **)error {
 
 	NSArray *keys = [command allKeys];
 
@@ -41,42 +41,44 @@
 
 	LRUploadData *data = [self _extractUploadData:parameters];
 
-	[self _post:session data:data URL:URL parameters:parameters
-		constructingBodyWithBlock:^(id<AFMultipartFormData> form) {
-			if (data.data) {
-				[form appendPartWithFileData:data.data name:data.parameterName
-					fileName:data.fileName mimeType:data.mimeType];
+	AFHTTPRequestOperation	*operation =
+		[self _post:session data:data URL:URL parameters:parameters
+			constructingBodyWithBlock:^(id<AFMultipartFormData> form) {
+				if (data.data) {
+					[form appendPartWithFileData:data.data
+						name:data.parameterName fileName:data.fileName
+						mimeType:data.mimeType];
+				}
+				else if (data.inputStream) {
+					[form appendPartWithInputStream:data.inputStream
+						name:data.parameterName fileName:data.fileName
+						length:data.length mimeType:data.mimeType];
+				}
 			}
-			else if (data.inputStream) {
-				[form appendPartWithInputStream:data.inputStream
-					name:data.parameterName fileName:data.fileName
-					length:data.length mimeType:data.mimeType];
+			success:^(AFHTTPRequestOperation *operation, id json) {
+				NSError *serverError;
+
+				NSURLRequest *request = operation.request;
+				NSHTTPURLResponse *response = operation.response;
+
+				[LRResponseParser parse:json request:request response:response
+					error:&serverError];
+
+				if (serverError) {
+					[session.callback onFailure:serverError];
+
+					return;
+				}
+
+				[session.callback onSuccess:json];
 			}
-		}
-		success:^(AFHTTPRequestOperation *operation, id json) {
-			NSError *serverError;
-
-			NSURLRequest *request = operation.request;
-			NSHTTPURLResponse *response = operation.response;
-
-			[LRResponseParser parse:json request:request response:response
-				error:&serverError];
-
-			if (serverError) {
-				[session.callback onFailure:serverError];
-
-				return;
+			failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+				[session.callback onFailure:error];
 			}
+			error:error
+		];
 
-			[session.callback onSuccess:json];
-		}
-		failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-			[session.callback onFailure:error];
-		}
-		error:error
-	];
-
-	return nil;
+	return operation;
 }
 
 + (LRUploadData *)_extractUploadData:(NSMutableDictionary *)parameters {
@@ -94,7 +96,8 @@
 	return nil;
 }
 
-+ (void)_post:(LRSession *)session data:(LRUploadData *)data URL:(NSString *)URL
++ (AFHTTPRequestOperation *)_post:(LRSession *)session data:(LRUploadData *)data
+		URL:(NSString *)URL
 		parameters:(id)parameters
 		constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> form))block
 		success:(void (^)(AFHTTPRequestOperation *o, id json))success
@@ -124,6 +127,8 @@
 	}
 
     [manager.operationQueue addOperation:operation];
+
+	return operation;
 }
 
 @end
