@@ -24,8 +24,8 @@
  */
 @implementation LRUploadUtil
 
-+ (AFHTTPRequestOperation *)upload:(LRSession *)session
-		command:(NSDictionary *)command error:(NSError **)error {
++ (NSOperation *)upload:(LRSession *)session command:(NSDictionary *)command
+		error:(NSError **)error {
 
 	NSArray *keys = [command allKeys];
 
@@ -41,7 +41,7 @@
 
 	LRUploadData *data = [self _extractUploadData:parameters];
 
-	AFHTTPRequestOperation *operation = [self _post:session data:data URL:URL
+	NSOperation *operation = [self _post:session data:data URL:URL
 			parameters:parameters
 			constructingBodyWithBlock:^(id<AFMultipartFormData> form) {
 				if (data.data) {
@@ -96,7 +96,7 @@
 	return nil;
 }
 
-+ (AFHTTPRequestOperation *)_post:(LRSession *)session data:(LRUploadData *)data
++ (NSOperation *)_post:(LRSession *)session data:(LRUploadData *)data
 		URL:(NSString *)URL
 		parameters:(id)parameters
 		constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> form))block

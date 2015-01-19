@@ -14,7 +14,6 @@
 
 #import "LRSession.h"
 
-#import "AFHTTPRequestOperation.h"
 #import "LRHttpUtil.h"
 #import "LRUploadUtil.h"
 #import "LRValidator.h"
@@ -128,9 +127,7 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 	return _DEFAULT_QUEUE;
 }
 
-- (AFHTTPRequestOperation *)upload:(NSDictionary *)command
-		error:(NSError **)error {
-
+- (NSOperation *)upload:(NSDictionary *)command error:(NSError **)error {
 	if (!self.callback) {
 		[NSException raise:@"Upload Exception"
 			format:@"Set a callback to the session before uploading files"];
