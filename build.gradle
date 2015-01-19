@@ -73,7 +73,13 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 		description = 'Runs Liferay Source Formatter to format files within src/main/java.'
 		main = 'com.liferay.portal.tools.sourceformatter.SourceFormatter'
 		classpath = configurations.formatter
-		workingDir = 'src/main/java'
+
+		if (project.name.startsWith('modules/')) {
+			workingDir = 'android/src/main/java'
+		}
+		else {
+			workingDir = 'src/main/java'
+		}
 	}
 
 	task jarSources(type: Jar, dependsOn: classes) {
