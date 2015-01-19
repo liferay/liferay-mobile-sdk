@@ -1,4 +1,4 @@
-![Liferay Mobile SDK logo](logo.png)
+![Liferay Mobile SDK logo](../../../logo.png)
 
 # Liferay Push for Android
 
@@ -30,27 +30,27 @@ Read [Android's documentation](http://developer.android.com/google/gcm/client.ht
 Once you have got the `registrationId` token, you can register the device by calling:
 
 
-	```java
-	import com.liferay.mobile.push.Push;
+```java
+import com.liferay.mobile.push.Push;
 
-	Session session = new SessionImpl("http://localhost:8080", new BasicAuthentication("test@liferay.com", "test"));
+Session session = new SessionImpl("http://localhost:8080", new BasicAuthentication("test@liferay.com", "test"));
 
-	Push.with(session).register(registrationId);
-	```
+Push.with(session).register(registrationId);
+```
 
 From there, each time the portal wants to send a push notification to the `test@liferay.com` user, it will look up for all registered devices for this user (including the one above you just registered) and send the push notification for each `registrationId` found.
 
 Since all operations are asynchronous you can set callbacks to check if registration was successful or some error happened on the server side:
 
-	```java
-	Push.with(session).callback(new Callback() {
+```java
+Push.with(session).callback(new Callback() {
 
-			@Override
-			public void on(Push.Event event, Object result) {
-			}
+	@Override
+	public void on(Push.Event event, Object result) {
+	}
 
-	}).register(registrationId);
-	```
+}).register(registrationId);
+```
 
 Check for the `event` enum, it can be either Event.SUCCESS or Event.ERROR, result contains the object returned by the remote service call.
 
@@ -64,12 +64,12 @@ There are many ways to send push notifications from the portal, see the [Liferay
 
 Alternatively, you can also send push notifications from your Android app. Make sure the user has proper portal permissions to send push notifications.
 
-	```java
-	JSONObject payload = new JSONObject();
-	payload.put("message", "Hello!");
-	
-	Push.with(session).send(toUserId, payload);
-	```
+```java
+JSONObject payload = new JSONObject();
+payload.put("message", "Hello!");
+
+Push.with(session).send(toUserId, payload);
+```
 
 `toUserId` is the the userId to which you are sending the push notification. As said previously, the portal will look up for all devices registered for this user (both Android and iOS) and send the `payload` as the body of the push notification.
 
@@ -78,8 +78,8 @@ Alternatively, you can also send push notifications from your Android app. Make 
 
 In you case you want to remove the device from the portal to stop receiving push notifications, you can do:
 
-	```java
-	Push.with(session).unregister(registrationId);
-	```
+```java
+Push.with(session).unregister(registrationId);
+```
 
 Users can only unregister devices they own.
