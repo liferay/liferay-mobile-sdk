@@ -2,6 +2,12 @@
 
 # Liferay Push for Android
 
+* [Setup](#setup)
+* [Use](#use)
+	* [Registering device](#registering-device)
+	* [Sending push notifications](#sending-push-notifications)
+	* [Unregistering device](#unregistering-device)
+
 ## Setup
 
 Add the library as a dependency to your project:
@@ -19,7 +25,7 @@ dependencies {
 
 ## Use
 
-##### Registering device
+#### Registering device
 
 In order to receive push notifications, your app must register itself to the portal first.
 
@@ -58,7 +64,7 @@ The [Push](src/main/java/com/liferay/mobile/push/Push.java) class is just a wrap
 
 Once your device is registered, you have to implement a `BroadcastReceiver` instance in order to listen to push notifications, look at [Android's documentation](http://developer.android.com/google/gcm/client.html#sample-receive) to learn how to receive push notifications in your app.
 
-##### Sending push notifications
+#### Sending push notifications
 
 There are many ways to send push notifications from the portal, see the [Liferay Push documentation](../README.md) for more details.
 
@@ -73,7 +79,7 @@ Push.with(session).send(toUserId, payload);
 
 `toUserId` is the the userId to which you are sending the push notification. As said previously, the portal will look up for all devices registered for this user (both Android and iOS) and send the `payload` as the body of the push notification.
 
-##### Unregistering device
+#### Unregistering device
 
 
 In you case you want to remove the device from the portal to stop receiving push notifications, you can do:
