@@ -14,6 +14,8 @@
 
 package com.liferay.mobile.android.service;
 
+import android.os.AsyncTask;
+
 import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.task.ServiceAsyncTask;
@@ -119,16 +121,16 @@ public class SessionImpl implements Session {
 	}
 
 	@Override
-	public JSONArray upload(JSONObject command) throws Exception {
-		if (callback != null) {
-			UploadAsyncTask task = new UploadAsyncTask(this, callback);
-			task.execute(command);
+	public AsyncTask upload(JSONObject command) throws Exception {
+		if (callback == null) {
+			throw new IllegalStateException(
+				"Set a callback to the session before uploading files");
+		}
 
-			return null;
-		}
-		else {
-			return HttpUtil.upload(this, command, null);
-		}
+		UploadAsyncTask task = new UploadAsyncTask(this, callback);
+		task.execute(command);
+
+		return task;
 	}
 
 	protected Authentication authentication;
