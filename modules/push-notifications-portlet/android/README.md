@@ -49,7 +49,7 @@ From there, each time the portal wants to send a push notification to the `test@
 Since all operations are asynchronous you can set callbacks to check if registration was successful or some error happened on the server side:
 
 ```java
-Push.with(session).callback(new Callback() {
+Push.with(session).callback(new Push.Callback() {
 
 	@Override
 	public void on(Push.Event event, Object result) {

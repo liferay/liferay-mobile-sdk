@@ -16,7 +16,7 @@ package com.liferay.mobile.push;
 
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.android.task.callback.typed.JSONObjectAsyncTaskCallback;
+import com.liferay.mobile.android.task.callback.typed.GenericAsyncTaskCallback;
 import com.liferay.mobile.android.v62.pushnotificationsdevice.PushNotificationsDeviceService;
 
 import org.json.JSONObject;
@@ -88,7 +88,7 @@ public class Push {
 
 	protected Push(Session session) {
 		_session = new SessionImpl(session);
-		_session.setCallback(new JSONObjectAsyncTaskCallback() {
+		_session.setCallback(new GenericAsyncTaskCallback() {
 
 			@Override
 			public void onFailure(Exception e) {
@@ -96,12 +96,16 @@ public class Push {
 			}
 
 			@Override
-			public void onSuccess(JSONObject result) {
+			public void onSuccess(Object result) {
 				if (_callback != null) {
 					_callback.on(Event.SUCCESS, result);
 				}
 			}
 
+			@Override
+			public Object transform(Object obj) throws Exception {
+				return obj;
+			}
 		});
 	}
 
