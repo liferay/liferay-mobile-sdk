@@ -47,6 +47,7 @@ configure(subprojects.findAll { it.name.startsWith('modules/') }) {
 		main {
 			java {
 				srcDir 'android/src/gen/java'
+				srcDir 'android/src/main/java'
 			}
 		}
 		test {
