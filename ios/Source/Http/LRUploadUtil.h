@@ -19,7 +19,7 @@
  */
 @interface LRUploadUtil : NSObject
 
-+ (id)upload:(LRSession *)session command:(NSDictionary *)command
-	error:(NSError **)error;
++ (AFHTTPRequestOperation *)upload:(LRSession *)session
+	command:(NSDictionary *)command error:(NSError **)error;
 
 @end

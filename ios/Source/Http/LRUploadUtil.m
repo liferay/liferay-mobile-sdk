@@ -41,8 +41,8 @@
 
 	LRUploadData *data = [self _extractUploadData:parameters];
 
-	AFHTTPRequestOperation	*operation =
-		[self _post:session data:data URL:URL parameters:parameters
+	AFHTTPRequestOperation *operation = [self _post:session data:data URL:URL
+			parameters:parameters
 			constructingBodyWithBlock:^(id<AFMultipartFormData> form) {
 				if (data.data) {
 					[form appendPartWithFileData:data.data
@@ -104,8 +104,8 @@
 		failure:(void (^)(AFHTTPRequestOperation *o, NSError *error))failure
 		error:(NSError **)error {
 
-	AFHTTPRequestOperationManager *manager =
-		[AFHTTPRequestOperationManager manager];
+	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager
+		manager];
 
     NSMutableURLRequest *request = [manager.requestSerializer
 		multipartFormRequestWithMethod:LR_POST URLString:URL
