@@ -54,7 +54,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)addPageAttachmentWithNodeId:(long long)nodeId title:(NSString *)title fileName:(NSString *)fileName file:(LRUploadData *)file mimeType:(NSString *)mimeType error:(NSError **)error {
+- (NSOperation *)addPageAttachmentWithNodeId:(long long)nodeId title:(NSString *)title fileName:(NSString *)fileName file:(LRUploadData *)file mimeType:(NSString *)mimeType error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
@@ -65,7 +65,7 @@
 
 	NSDictionary *_command = @{@"/wikipage/add-page-attachment": _params};
 
-	[self.session upload:_command error:error];
+	return [self.session upload:_command error:error];
 }
 
 - (void)addPageAttachmentsWithNodeId:(long long)nodeId title:(NSString *)title inputStreamOVPs:(NSArray *)inputStreamOVPs error:(NSError **)error {
