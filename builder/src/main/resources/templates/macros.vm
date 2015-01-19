@@ -32,6 +32,11 @@
 	#foreach ($parameter in $parameters)
 		#set ($parameterName = $parameter.name)
 		#set ($parameterType = $languageUtil.getType($parameter.type))
+
+		#if ($parameterType == $LR_UPLOAD_DATA)
+			#set ($returnType = $NS_OPERATION)
+		#end
+
 		#set ($prefix = " $parameterName:")
 
 		#if ($velocityCount == 1)

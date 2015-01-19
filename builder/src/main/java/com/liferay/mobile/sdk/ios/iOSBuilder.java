@@ -109,14 +109,15 @@ public class iOSBuilder extends BaseBuilder {
 		className.append("_v");
 		className.append(version);
 
+		context.put(ACTIONS, actions);
 		context.put(BOOL, ObjectiveCUtil.BOOL);
 		context.put(CLASS_NAME, className.toString());
 		context.put(DISCOVERY, discovery);
-		context.put(ACTIONS, actions);
 		context.put(ESCAPE_TOOL, new EscapeTool());
 		context.put(JSON_OBJECT_WRAPPER, ObjectiveCUtil.LR_JSON_OBJECT_WRAPPER);
 		context.put(LANGUAGE_UTIL, objectiveCUtil);
 		context.put(LR_UPLOAD_DATA, objectiveCUtil.LR_UPLOAD_DATA);
+		context.put(NS_OPERATION, ObjectiveCUtil.NS_OPERATION);
 		context.put(VOID, LanguageUtil.VOID);
 
 		return context;
@@ -125,5 +126,7 @@ public class iOSBuilder extends BaseBuilder {
 	protected static final String BOOL = "BOOL";
 
 	protected static final String LR_UPLOAD_DATA = "LR_UPLOAD_DATA";
+
+	protected static final String NS_OPERATION = "NS_OPERATION";
 
 }
