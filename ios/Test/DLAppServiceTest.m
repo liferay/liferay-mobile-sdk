@@ -26,8 +26,8 @@
 @implementation DLAppServiceTest
 
 - (void)testAddFolder {
-	LRDLAppService_v62 *service =
-		[[LRDLAppService_v62 alloc] initWithSession:self.session];
+	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+		initWithSession:self.session];
 
 	long long repositoryId = [self.settings[@"groupId"] longLongValue];
 
@@ -78,9 +78,8 @@
 		uuid];
 
 	NSError *error;
-	[service addFolderWithRepositoryId:repositoryId
-		parentFolderId:0 name:name1 description:description1 serviceContext:nil
-		error:&error];
+	[service addFolderWithRepositoryId:repositoryId parentFolderId:0 name:name1
+		description:description1 serviceContext:nil error:&error];
 
 	XCTAssertNil(error);
 
