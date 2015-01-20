@@ -20,9 +20,7 @@ import com.liferay.mobile.android.v62.dlapp.DLAppService;
 import com.liferay.mobile.sdk.test.BaseTest;
 
 import java.io.IOException;
-import java.io.InputStream;
 
-import org.apache.http.entity.mime.content.InputStreamBody;
 import org.apache.http.protocol.HTTP;
 
 import org.json.JSONArray;
@@ -51,26 +49,6 @@ public class DLAppServiceTest extends BaseTest {
 		JSONObject jsonObj = service.addFileEntry(
 			repositoryId, _PARENT_FOLDER_ID, _SOURCE_FILE_NAME, _MIME_TYPE,
 			_SOURCE_FILE_NAME, "", "", bytes, null);
-
-		assertEquals(_SOURCE_FILE_NAME, jsonObj.get(_TITLE));
-
-		service.deleteFileEntry(jsonObj.getLong(_FILE_ENTRY_ID));
-	}
-
-	@Test
-	public void addFileEntryInputStream() throws Exception {
-		DLAppService service = new DLAppService(session);
-		long repositoryId = props.getGroupId();
-
-		InputStream is = getClass().getResourceAsStream(
-			"/" + _SOURCE_FILE_NAME);
-
-		InputStreamBody body = new InputStreamBody(
-			is, _MIME_TYPE, _SOURCE_FILE_NAME);
-
-		JSONObject jsonObj = service.addFileEntry(
-			repositoryId, _PARENT_FOLDER_ID, _SOURCE_FILE_NAME, _MIME_TYPE,
-			_SOURCE_FILE_NAME, "", "", body, null);
 
 		assertEquals(_SOURCE_FILE_NAME, jsonObj.get(_TITLE));
 
