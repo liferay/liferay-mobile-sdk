@@ -19,12 +19,6 @@
  * @author Bruno Farache
  */
 
-@interface LRBatchSession ()
-
-@property (atomic, strong) NSMutableArray *commands;
-
-@end
-
 @implementation LRBatchSession
 
 - (id)initWithServer:(NSString *)server username:(NSString *)username
@@ -35,27 +29,31 @@
 		connectionTimeout:connectionTimeout callback:callback queue:queue];
 
 	if (self) {
-		self.commands = [[NSMutableArray alloc] init];
+		_commands = [[NSMutableArray alloc] init];
 	}
 
 	return self;
 }
 
+- (NSArray *)commands {
+	return [NSArray arrayWithArray:_commands];
+}
+
 - (NSArray *)invoke:(NSError **)error {
-	if ([self.commands count] == 0) {
+	if ([_commands count] == 0) {
 		return nil;
 	}
 
-	NSArray *results = [LRHttpUtil post:self
-		commands:[NSArray arrayWithArray:self.commands] error:error];
+	NSArray *results = [LRHttpUtil post:self commands:self.commands
+		error:error];
 
-	self.commands = [[NSMutableArray alloc] init];
+	_commands = [[NSMutableArray alloc] init];
 
 	return results;
 }
 
 - (NSArray *)invoke:(NSDictionary *)command error:(NSError **)error {
-	[self.commands addObject:command];
+	[_commands addObject:command];
 
 	return nil;
 }
