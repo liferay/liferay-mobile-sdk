@@ -23,6 +23,8 @@ import org.apache.commons.lang.WordUtils;
  */
 public class JavaUtil extends LanguageUtil {
 
+	public static final String ASYNC_TASK = "android.os.AsyncTask";
+
 	public static final String INPUT_STREAM_BODY =
 		"org.apache.http.entity.mime.content.InputStreamBody";
 
