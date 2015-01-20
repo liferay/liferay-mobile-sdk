@@ -24,6 +24,5 @@ extern const int LR_VERSION_6_2;
 @interface LRPortalVersionUtil : NSObject
 
 + (int)getPortalVersion:(LRSession *)session error:(NSError **)error;
-+ (int)getPortalVersionWithURL:(NSString *)URL error:(NSError **)error;
 
 @end

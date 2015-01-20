@@ -12,8 +12,12 @@
  * details.
  */
 
-#import "LRHttpUtil.h"
 #import "LRPortalVersionUtil.h"
+
+#import "LRError.h"
+#import "LRHttpUtil.h"
+#import "LRPortalService_v62.h"
+#import "LRServiceFactory.h"
 
 const int LR_UNKNOWN_VERSION = -1;
 const int LR_VERSION_6_2 = 6200;
@@ -32,15 +36,80 @@ static NSMutableDictionary *_versions;
 }
 
 + (int)getPortalVersion:(LRSession *)session error:(NSError **)error {
-	return [self getPortalVersionWithURL:session.server error:error];
-}
-
-+ (int)getPortalVersionWithURL:(NSString *)URL error:(NSError **)error {
-	NSNumber *version = [_versions objectForKey:URL];
+	int version = [[_versions objectForKey:session.server] intValue];
 
 	if (version) {
-		return [version intValue];
+		if (version < LR_VERSION_6_2) {
+			[LRHttpUtil setJSONWSPath:@"api/secure/jsonws"];
+		}
+
+		return version;
 	}
+
+	version = [self _getPortalVersionWithURL:session.server error:error];
+
+	if (*error) {
+		return version;
+	}
+
+	if (version == LR_UNKNOWN_VERSION) {
+		NSError *_error;
+
+		version = [self _getBuildNumber_v62:session error:&_error];
+
+		if (_error.code == LRErrorCodeRedirect) {
+			*error = _error;
+			return version;
+		}
+
+		if (version == LR_UNKNOWN_VERSION) {
+			_error = nil;
+			version = [self _getBuildNumber_v61:session error:&_error];
+
+			if (_error) {
+				*error = _error;
+				return version;
+			}
+		}
+	}
+
+	return version;
+}
+
+#pragma mark - Private methods
+
++ (int)_getBuildNumber_v61:(LRSession *)session error:(NSError **)error {
+	[LRHttpUtil setJSONWSPath:@"api/secure/jsonws"];
+
+	LRPortalService_v62 *service = [self _getService:session];
+	NSNumber *version = [service getBuildNumber:error];
+
+	if (*error) {
+		return LR_UNKNOWN_VERSION;
+	}
+
+	[_versions setObject:version forKey:session.server];
+
+	return [version intValue];
+}
+
++ (int)_getBuildNumber_v62:(LRSession *) session error:(NSError **)error {
+	[LRHttpUtil setJSONWSPath:@"api/jsonws"];
+
+	LRPortalService_v62 *service = [self _getService:session];
+	NSNumber *version = [service getBuildNumber:error];
+
+	if (*error) {
+		return LR_UNKNOWN_VERSION;
+	}
+
+	[_versions setObject:version forKey:session.server];
+
+	return [version intValue];
+}
+
++ (int)_getPortalVersionWithURL:(NSString *)URL error:(NSError **)error {
+	NSNumber *version;
 
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
 		initWithURL:[NSURL URLWithString:URL]];
@@ -78,10 +147,15 @@ static NSMutableDictionary *_versions;
 		NSString *buildNumber = [portalHeader substringWithRange:versionRange];
 
 		version = @([buildNumber intValue]);
-		[_versions setObject:version forKey:URL];
 	}
 
 	return [version intValue];
+}
+
++ (LRPortalService_v62 *)_getService:(LRSession *)session {
+	return (LRPortalService_v62 *)
+		[LRServiceFactory getService:[LRPortalService_v62 class]
+			session:session];
 }
 
 @end
