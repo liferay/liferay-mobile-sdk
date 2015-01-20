@@ -31,7 +31,7 @@ public class SyncDLObjectService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, org.apache.http.entity.mime.content.InputStreamBody file, String checksum, JSONObjectWrapper serviceContext) throws Exception {
+	public android.os.AsyncTask addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, org.apache.http.entity.mime.content.InputStreamBody file, String checksum, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -54,13 +54,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
+		return session.upload(_command);
 	}
 
 	public JSONObject addFolder(long repositoryId, long parentFolderId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
@@ -518,7 +512,7 @@ public class SyncDLObjectService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject patchFileEntry(long fileEntryId, String sourceVersion, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody deltaFile, String checksum, JSONObjectWrapper serviceContext) throws Exception {
+	public android.os.AsyncTask patchFileEntry(long fileEntryId, String sourceVersion, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody deltaFile, String checksum, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -542,13 +536,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
+		return session.upload(_command);
 	}
 
 	public JSONObject restoreFileEntryFromTrash(long fileEntryId) throws Exception {
@@ -597,7 +585,7 @@ public class SyncDLObjectService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody file, String checksum, JSONObjectWrapper serviceContext) throws Exception {
+	public android.os.AsyncTask updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody file, String checksum, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -620,13 +608,7 @@ public class SyncDLObjectService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
+		return session.upload(_command);
 	}
 
 	public JSONObject updateFolder(long folderId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {

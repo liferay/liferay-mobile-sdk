@@ -71,7 +71,7 @@ public class LayoutSetService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateLogo(long groupId, boolean privateLayout, boolean logo, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public android.os.AsyncTask updateLogo(long groupId, boolean privateLayout, boolean logo, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -88,7 +88,7 @@ public class LayoutSetService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.upload(_command);
+		return session.upload(_command);
 	}
 
 	public JSONObject updateLookAndFeel(long groupId, boolean privateLayout, String themeId, String colorSchemeId, String css, boolean wapTheme) throws Exception {

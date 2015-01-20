@@ -62,7 +62,7 @@ public class DLAppService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, org.apache.http.entity.mime.content.InputStreamBody file, JSONObjectWrapper serviceContext) throws Exception {
+	public android.os.AsyncTask addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, org.apache.http.entity.mime.content.InputStreamBody file, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -84,13 +84,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
+		return session.upload(_command);
 	}
 
 	public JSONObject addFileShortcut(long repositoryId, long folderId, long toFileEntryId, JSONObjectWrapper serviceContext) throws Exception {
@@ -146,7 +140,7 @@ public class DLAppService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addTempFileEntry(long groupId, long folderId, String fileName, String tempFolderName, org.apache.http.entity.mime.content.InputStreamBody file, String mimeType) throws Exception {
+	public android.os.AsyncTask addTempFileEntry(long groupId, long folderId, String fileName, String tempFolderName, org.apache.http.entity.mime.content.InputStreamBody file, String mimeType) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -165,13 +159,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
+		return session.upload(_command);
 	}
 
 	public void cancelCheckOut(long fileEntryId) throws Exception {
@@ -2428,7 +2416,7 @@ public class DLAppService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody file, JSONObjectWrapper serviceContext) throws Exception {
+	public android.os.AsyncTask updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody file, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -2450,16 +2438,10 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
+		return session.upload(_command);
 	}
 
-	public JSONObject updateFileEntryAndCheckIn(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody file, JSONObjectWrapper serviceContext) throws Exception {
+	public android.os.AsyncTask updateFileEntryAndCheckIn(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody file, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -2481,13 +2463,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
+		return session.upload(_command);
 	}
 
 	public JSONObject updateFileShortcut(long fileShortcutId, long folderId, long toFileEntryId, JSONObjectWrapper serviceContext) throws Exception {

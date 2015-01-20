@@ -766,7 +766,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void importLayouts(long groupId, boolean privateLayout, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public android.os.AsyncTask importLayouts(long groupId, boolean privateLayout, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -783,10 +783,10 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.upload(_command);
+		return session.upload(_command);
 	}
 
-	public Long importLayoutsInBackground(String taskName, long groupId, boolean privateLayout, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public android.os.AsyncTask importLayoutsInBackground(String taskName, long groupId, boolean privateLayout, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -804,16 +804,10 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getLong(0);
+		return session.upload(_command);
 	}
 
-	public void importPortletInfo(String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public android.os.AsyncTask importPortletInfo(String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -829,10 +823,10 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.upload(_command);
+		return session.upload(_command);
 	}
 
-	public void importPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public android.os.AsyncTask importPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -850,10 +844,10 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.upload(_command);
+		return session.upload(_command);
 	}
 
-	public void importPortletInfoInBackground(String taskName, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public android.os.AsyncTask importPortletInfoInBackground(String taskName, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -870,10 +864,10 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.upload(_command);
+		return session.upload(_command);
 	}
 
-	public Long importPortletInfoInBackground(String taskName, long plid, long groupId, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public android.os.AsyncTask importPortletInfoInBackground(String taskName, long plid, long groupId, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -892,13 +886,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getLong(0);
+		return session.upload(_command);
 	}
 
 	public void schedulePublishToLive(long sourceGroupId, long targetGroupId, boolean privateLayout, JSONObject layoutIdMap, JSONObject parameterMap, String scope, long startDate, long endDate, String groupName, String cronText, long schedulerStartDate, long schedulerEndDate, String description) throws Exception {
@@ -1355,7 +1343,7 @@ public class LayoutService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject validateImportLayoutsFile(long groupId, boolean privateLayout, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public android.os.AsyncTask validateImportLayoutsFile(long groupId, boolean privateLayout, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1372,16 +1360,10 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
+		return session.upload(_command);
 	}
 
-	public JSONObject validateImportPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public android.os.AsyncTask validateImportPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1399,13 +1381,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
+		return session.upload(_command);
 	}
 
 }
