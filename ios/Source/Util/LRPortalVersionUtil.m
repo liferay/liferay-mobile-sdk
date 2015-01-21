@@ -27,26 +27,8 @@ const int LR_VERSION_6_2 = 6200;
  */
 @implementation LRPortalVersionUtil
 
-static NSMutableDictionary *_versions;
-
-+ (void)initialize {
-	if (!_versions) {
-		_versions = [[NSMutableDictionary alloc] init];
-	}
-}
-
 + (int)getPortalVersion:(LRSession *)session error:(NSError **)error {
-	int version = [[_versions objectForKey:session.server] intValue];
-
-	if (version) {
-		if (version < LR_VERSION_6_2) {
-			[LRHttpUtil setJSONWSPath:@"api/secure/jsonws"];
-		}
-
-		return version;
-	}
-
-	version = [self _getPortalVersionWithURL:session.server error:error];
+	int version = [self _getPortalVersionWithURL:session.server error:error];
 
 	if (*error) {
 		return version;
@@ -88,8 +70,6 @@ static NSMutableDictionary *_versions;
 		return LR_UNKNOWN_VERSION;
 	}
 
-	[_versions setObject:version forKey:session.server];
-
 	return [version intValue];
 }
 
@@ -102,8 +82,6 @@ static NSMutableDictionary *_versions;
 	if (*error) {
 		return LR_UNKNOWN_VERSION;
 	}
-
-	[_versions setObject:version forKey:session.server];
 
 	return [version intValue];
 }
