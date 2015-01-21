@@ -14,10 +14,19 @@
 
 package com.liferay.mobile.android.util;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author Brian Wing Shun Chan
  */
 public class Validator {
+
+	public static boolean isEmailAddress(String emailAddress) {
+		Matcher matcher = _emailAddressPattern.matcher(emailAddress);
+
+		return matcher.matches();
+	}
 
 	public static boolean isNotNull(String s) {
 		return !isNull(s);
@@ -69,5 +78,10 @@ public class Validator {
 
 		return false;
 	}
+
+	private static Pattern _emailAddressPattern = Pattern.compile(
+		"[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@" +
+			"(?:[a-zA-Z0-9](?:-*[a-zA-Z0-9])?\\.*)+"
+	);
 
 }

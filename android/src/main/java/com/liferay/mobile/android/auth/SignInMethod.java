@@ -14,12 +14,13 @@
 
 package com.liferay.mobile.android.auth;
 
+import com.liferay.mobile.android.util.Validator;
 public enum SignInMethod {
 
 	USER_ID, EMAIL, SCREEN_NAME;
 
 	public static SignInMethod fromUsername(String username) {
-		if (isEmail(username)) {
+		if (Validator.isEmailAddress(username)) {
 			return EMAIL;
 		}
 		else if (isUserId(username)) {
@@ -27,10 +28,6 @@ public enum SignInMethod {
 		}
 
 		return SCREEN_NAME;
-	}
-
-	protected static boolean isEmail(String username) {
-		return username.contains("@");
 	}
 
 	protected static boolean isUserId(String username) {
