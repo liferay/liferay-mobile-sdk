@@ -31,29 +31,31 @@ const int LR_VERSION_6_2 = 6200;
 	int version = [self _getBuilderNumberHeader:session.server error:error];
 
 	if (*error) {
-		return version;
+		return LR_UNKNOWN_VERSION;
 	}
 
 	if (version == LR_UNKNOWN_VERSION) {
-		NSError *_error;
+		NSError *buildNumberError;
 
 		version = [self _getBuildNumber:session jsonWSPath:LR_JSONWS_PATH_V62
-			error:&_error];
+			error:&buildNumberError];
 
-		if (_error.code == LRErrorCodeRedirect) {
-			*error = _error;
-			return version;
+		if (buildNumberError.code == LRErrorCodeRedirect) {
+			*error = buildNumberError;
+
+			return LR_UNKNOWN_VERSION;
 		}
 
 		if (version == LR_UNKNOWN_VERSION) {
-			_error = nil;
+			buildNumberError = nil;
 
 			version = [self _getBuildNumber:session
-				jsonWSPath:LR_JSONWS_PATH_V61 error:&_error];
+				jsonWSPath:LR_JSONWS_PATH_V61 error:&buildNumberError];
 
-			if (_error) {
-				*error = _error;
-				return version;
+			if (buildNumberError) {
+				*error = buildNumberError;
+
+				return LR_UNKNOWN_VERSION;
 			}
 		}
 	}
