@@ -28,7 +28,7 @@ const int LR_VERSION_6_2 = 6200;
 @implementation LRPortalVersionUtil
 
 + (int)getPortalVersion:(LRSession *)session error:(NSError **)error {
-	int version = [self _getPortalVersionWithURL:session.server error:error];
+	int version = [self _getBuilderNumberHeader:session.server error:error];
 
 	if (*error) {
 		return version;
@@ -37,7 +37,8 @@ const int LR_VERSION_6_2 = 6200;
 	if (version == LR_UNKNOWN_VERSION) {
 		NSError *_error;
 
-		version = [self _getBuildNumber_v62:session error:&_error];
+		version = [self _getBuildNumber:session jsonWSPath:@"api/jsonws"
+			error:&_error];
 
 		if (_error.code == LRErrorCodeRedirect) {
 			*error = _error;
@@ -46,7 +47,9 @@ const int LR_VERSION_6_2 = 6200;
 
 		if (version == LR_UNKNOWN_VERSION) {
 			_error = nil;
-			version = [self _getBuildNumber_v61:session error:&_error];
+
+			version = [self _getBuildNumber:session
+				jsonWSPath:@"api/secure/jsonws" error:&_error];
 
 			if (_error) {
 				*error = _error;
@@ -60,8 +63,10 @@ const int LR_VERSION_6_2 = 6200;
 
 #pragma mark - Private methods
 
-+ (int)_getBuildNumber_v61:(LRSession *)session error:(NSError **)error {
-	[LRHttpUtil setJSONWSPath:@"api/secure/jsonws"];
++ (int)_getBuildNumber:(LRSession *)session jsonWSPath:(NSString *)jsonWSPath
+		error:(NSError **)error {
+
+	[LRHttpUtil setJSONWSPath:jsonWSPath];
 
 	LRPortalService_v62 *service = [self _getService:session];
 	NSNumber *version = [service getBuildNumber:error];
@@ -73,20 +78,7 @@ const int LR_VERSION_6_2 = 6200;
 	return [version intValue];
 }
 
-+ (int)_getBuildNumber_v62:(LRSession *) session error:(NSError **)error {
-	[LRHttpUtil setJSONWSPath:@"api/jsonws"];
-
-	LRPortalService_v62 *service = [self _getService:session];
-	NSNumber *version = [service getBuildNumber:error];
-
-	if (*error) {
-		return LR_UNKNOWN_VERSION;
-	}
-
-	return [version intValue];
-}
-
-+ (int)_getPortalVersionWithURL:(NSString *)URL error:(NSError **)error {
++ (int)_getBuilderNumberHeader:(NSString *)URL error:(NSError **)error {
 	NSNumber *version;
 
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
