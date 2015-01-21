@@ -72,7 +72,7 @@ const int LR_VERSION_6_2 = 6200;
 	LRPortalService_v62 *service = [[LRPortalService_v62 alloc]
 		initWithSession:session];
 
-	NSNumber *version = [service getBuildNumber:error];
+	int version = [[service getBuildNumber:error] intValue];
 
 	[LRHttpUtil setJSONWSPath:LR_JSONWS_PATH_V62];
 
@@ -80,12 +80,10 @@ const int LR_VERSION_6_2 = 6200;
 		return LR_UNKNOWN_VERSION;
 	}
 
-	return [version intValue];
+	return version;
 }
 
 + (int)_getBuilderNumberHeader:(NSString *)URL error:(NSError **)error {
-	NSNumber *version;
-
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
 		initWithURL:[NSURL URLWithString:URL]];
 
@@ -121,10 +119,8 @@ const int LR_VERSION_6_2 = 6200;
 		NSRange versionRange = NSMakeRange(index, 5);
 		NSString *buildNumber = [portalHeader substringWithRange:versionRange];
 
-		version = @([buildNumber intValue]);
+		return [buildNumber intValue];
 	}
-
-	return [version intValue];
 }
 
 @end
