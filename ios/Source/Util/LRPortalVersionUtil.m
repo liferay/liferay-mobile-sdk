@@ -17,7 +17,6 @@
 #import "LRError.h"
 #import "LRHttpUtil.h"
 #import "LRPortalService_v62.h"
-#import "LRServiceFactory.h"
 
 const int LR_UNKNOWN_VERSION = -1;
 const int LR_VERSION_6_2 = 6200;
@@ -70,7 +69,9 @@ const int LR_VERSION_6_2 = 6200;
 
 	[LRHttpUtil setJSONWSPath:jsonWSPath];
 
-	LRPortalService_v62 *service = [self _getService:session];
+	LRPortalService_v62 *service = [[LRPortalService_v62 alloc]
+		initWithSession:session];
+
 	NSNumber *version = [service getBuildNumber:error];
 
 	if (*error) {
@@ -122,12 +123,6 @@ const int LR_VERSION_6_2 = 6200;
 	}
 
 	return [version intValue];
-}
-
-+ (LRPortalService_v62 *)_getService:(LRSession *)session {
-	return (LRPortalService_v62 *)
-		[LRServiceFactory getService:[LRPortalService_v62 class]
-			session:session];
 }
 
 @end
