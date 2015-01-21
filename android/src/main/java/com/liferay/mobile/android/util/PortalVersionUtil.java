@@ -14,12 +14,11 @@
 
 package com.liferay.mobile.android.util;
 
-import android.util.Log;
-
+import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.v62.portal.PortalService;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -32,57 +31,64 @@ import org.apache.http.impl.client.DefaultHttpClient;
  */
 public class PortalVersionUtil {
 
-	public static int getPortalVersion(Session session) {
-		return getPortalVersion(session.getServer());
-	}
+	public static int getPortalVersion(Session session) throws Exception {
+		int version = getBuilderNumberHeader(session.getServer());
 
-	public static int getPortalVersion(String url) {
-		Integer version;
-
-		try {
-			version = _versions.get(url);
-
-			if (version != null) {
-				return version;
+		if (version == PortalVersion.UNKNOWN) {
+			try {
+				version = getBuilderNumber(session, HttpUtil.JSONWS_PATH_62);
 			}
-
-			HttpClient client = new DefaultHttpClient();
-			HttpHead head = new HttpHead(url);
-			HttpResponse response = client.execute(head);
-
-			Header portalHeader = response.getFirstHeader("Liferay-Portal");
-
-			if (portalHeader == null) {
-				return PortalVersion.UNKNOWN;
+			catch (Exception e) {
+				version = getBuilderNumber(session, HttpUtil.JSONWS_PATH_61);
 			}
-
-			String portalField = portalHeader.getValue();
-
-			int indexOfBuild = portalField.indexOf("Build");
-
-			if (indexOfBuild == -1) {
-				return PortalVersion.UNKNOWN;
-			}
-			else {
-				String buildNumber = portalField.substring(
-					indexOfBuild + 6, indexOfBuild + 10);
-
-				version = Integer.valueOf(buildNumber);
-				_versions.put(url, version);
-			}
-		}
-		catch (Exception e) {
-			Log.e(_CLASS_NAME, "Couldn't get portal version", e);
-
-			return PortalVersion.UNKNOWN;
 		}
 
 		return version;
 	}
 
-	private static final String _CLASS_NAME = PortalVersionUtil.class.getName();
+	protected static int getBuilderNumber(Session session, String jsonWSPath)
+		throws Exception {
 
-	private static final Map<String, Integer> _versions =
-		new HashMap<String, Integer>();
+		HttpUtil.setJSONWSPath(jsonWSPath);
+
+		PortalService service = new PortalService(session);
+
+		int version = PortalVersion.UNKNOWN;
+
+		try {
+			version = service.getBuildNumber();
+		}
+		finally {
+			HttpUtil.setJSONWSPath(HttpUtil.JSONWS_PATH_62);
+		}
+
+		return version;
+	}
+
+	protected static int getBuilderNumberHeader(String url) throws IOException {
+		HttpClient client = new DefaultHttpClient();
+		HttpHead head = new HttpHead(url);
+		HttpResponse response = client.execute(head);
+
+		Header portalHeader = response.getFirstHeader("Liferay-Portal");
+
+		if (portalHeader == null) {
+			return PortalVersion.UNKNOWN;
+		}
+
+		String portalField = portalHeader.getValue();
+
+		int indexOfBuild = portalField.indexOf("Build");
+
+		if (indexOfBuild == -1) {
+			return PortalVersion.UNKNOWN;
+		}
+		else {
+			String buildNumber = portalField.substring(
+				indexOfBuild + 6, indexOfBuild + 10);
+
+			return Integer.valueOf(buildNumber);
+		}
+	}
 
 }

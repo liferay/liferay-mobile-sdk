@@ -62,6 +62,10 @@ public class HttpUtil {
 
 	public static final String IF_MODIFIED_SINCE = "If-Modified-Since";
 
+	public static final String JSONWS_PATH_61 = "api/secure/jsonws";
+
+	public static final String JSONWS_PATH_62 = "api/jsonws";
+
 	public static final String LAST_MODIFIED = "Last-Modified";
 
 	public static HttpClient getClient(Session session) {
@@ -283,6 +287,6 @@ public class HttpUtil {
 		return false;
 	}
 
-	private static String _JSONWS_PATH = "api/jsonws";
+	private static String _JSONWS_PATH = JSONWS_PATH_62;
 
 }
