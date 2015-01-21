@@ -74,6 +74,8 @@ const int LR_VERSION_6_2 = 6200;
 
 	NSNumber *version = [service getBuildNumber:error];
 
+	[LRHttpUtil setJSONWSPath:LR_JSONWS_PATH_V62];
+
 	if (*error) {
 		return LR_UNKNOWN_VERSION;
 	}
