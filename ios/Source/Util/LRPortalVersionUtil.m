@@ -37,7 +37,7 @@ const int LR_VERSION_6_2 = 6200;
 	if (version == LR_UNKNOWN_VERSION) {
 		NSError *_error;
 
-		version = [self _getBuildNumber:session jsonWSPath:@"api/jsonws"
+		version = [self _getBuildNumber:session jsonWSPath:LR_JSONWS_PATH_V62
 			error:&_error];
 
 		if (_error.code == LRErrorCodeRedirect) {
@@ -49,7 +49,7 @@ const int LR_VERSION_6_2 = 6200;
 			_error = nil;
 
 			version = [self _getBuildNumber:session
-				jsonWSPath:@"api/secure/jsonws" error:&_error];
+				jsonWSPath:LR_JSONWS_PATH_V61 error:&_error];
 
 			if (_error) {
 				*error = _error;

@@ -21,9 +21,11 @@
 NSString *const LR_BLANK = @"";
 NSString *const LR_GET = @"GET";
 NSString *const LR_HEAD = @"HEAD";
+NSString *const LR_JSONWS_PATH_V61 = @"api/secure/jsonws";
+NSString *const LR_JSONWS_PATH_V62 = @"api/jsonws";
 NSString *const LR_POST = @"POST";
 
-static NSString *_JSONWS_PATH = @"api/jsonws";
+static NSString *_JSONWS_PATH;
 
 /**
  * @author Bruno Farache
@@ -32,6 +34,12 @@ static NSString *_JSONWS_PATH = @"api/jsonws";
 
 typedef void (^LRHandler)(
 	NSData *data, NSURLResponse *response, NSError *error);
+
++ (void)initialize {
+	if (!_JSONWS_PATH) {
+		_JSONWS_PATH = LR_JSONWS_PATH_V62;
+	}
+}
 
 + (NSString *)encodeURL:(NSString *)URL {
 	CFStringRef charactersToEscape = CFSTR(":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`");

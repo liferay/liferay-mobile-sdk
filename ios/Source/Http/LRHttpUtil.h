@@ -16,6 +16,8 @@
 
 extern NSString *const LR_GET;
 extern NSString *const LR_HEAD;
+extern NSString *const LR_JSONWS_PATH_V61;
+extern NSString *const LR_JSONWS_PATH_V62;
 extern NSString *const LR_POST;
 
 /**
