@@ -45,11 +45,8 @@ public class Push {
 	}
 
 	public void register(String registrationId) {
-		PushNotificationsDeviceService service =
-			new PushNotificationsDeviceService(_session);
-
 		try {
-			service.addPushNotificationsDevice(registrationId, ANDROID);
+			getService().addPushNotificationsDevice(registrationId, ANDROID);
 		}
 		catch (Exception e) {
 			onFailure(e);
@@ -57,11 +54,8 @@ public class Push {
 	}
 
 	public void send(long userId, JSONObject payload) {
-		PushNotificationsDeviceService service =
-			new PushNotificationsDeviceService(_session);
-
 		try {
-			service.sendPushNotification(userId, payload.toString());
+			getService().sendPushNotification(userId, payload.toString());
 		}
 		catch (Exception e) {
 			onFailure(e);
@@ -69,11 +63,8 @@ public class Push {
 	}
 
 	public void unregister(String registrationId) {
-		PushNotificationsDeviceService service =
-			new PushNotificationsDeviceService(_session);
-
 		try {
-			service.deletePushNotificationsDevice(registrationId);
+			getService().deletePushNotificationsDevice(registrationId);
 		}
 		catch (Exception e) {
 			onFailure(e);
@@ -112,6 +103,7 @@ public class Push {
 			public Object transform(Object obj) throws Exception {
 				return obj;
 			}
+
 		});
 	}
 
@@ -119,6 +111,10 @@ public class Push {
 		if (_onFailure != null) {
 			_onFailure.onFailure(e);
 		}
+	}
+	
+	protected PushNotificationsDeviceService getService() {
+		return new PushNotificationsDeviceService(_session);
 	}
 
 	private OnFailure _onFailure;

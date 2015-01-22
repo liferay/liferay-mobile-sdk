@@ -145,6 +145,10 @@
 		CCC6A7B61A164BEB00ABB791 /* LRRedirectDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC6A7B51A164BEB00ABB791 /* LRRedirectDelegate.m */; };
 		CCCF04E019182584005D1B22 /* LRJSONObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */; };
 		CCDCE0591A694BB20045023A /* BatchSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDCE0581A694BB20045023A /* BatchSessionTest.m */; };
+		CCE26C661A717EDB0010176D /* PushTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE26C651A717EDB0010176D /* PushTest.m */; };
+		CCE26C691A717EFB0010176D /* LRPushNotificationsDeviceService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE26C681A717EFB0010176D /* LRPushNotificationsDeviceService_v62.m */; };
+		CCE26C6C1A717F1A0010176D /* Push.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE26C6B1A717F1A0010176D /* Push.m */; };
+		CCE26C6F1A717F350010176D /* LRSyncDLObjectService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE26C6E1A717F350010176D /* LRSyncDLObjectService_v62.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -431,6 +435,13 @@
 		CCD60E10191820BE00935937 /* LRJSONObjectWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRJSONObjectWrapper.h; sourceTree = "<group>"; };
 		CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRJSONObjectWrapper.m; sourceTree = "<group>"; };
 		CCDCE0581A694BB20045023A /* BatchSessionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchSessionTest.m; sourceTree = "<group>"; };
+		CCE26C651A717EDB0010176D /* PushTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PushTest.m; path = "../../../../modules/push-notifications-portlet/ios/Source/Test/PushTest.m"; sourceTree = "<group>"; };
+		CCE26C671A717EFB0010176D /* LRPushNotificationsDeviceService_v62.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LRPushNotificationsDeviceService_v62.h; path = "../../../../../../modules/push-notifications-portlet/ios/Source/Service/v62/pushnotificationsdevice/LRPushNotificationsDeviceService_v62.h"; sourceTree = "<group>"; };
+		CCE26C681A717EFB0010176D /* LRPushNotificationsDeviceService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LRPushNotificationsDeviceService_v62.m; path = "../../../../../../modules/push-notifications-portlet/ios/Source/Service/v62/pushnotificationsdevice/LRPushNotificationsDeviceService_v62.m"; sourceTree = "<group>"; };
+		CCE26C6A1A717F1A0010176D /* Push.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Push.h; path = "../../../../modules/push-notifications-portlet/ios/Source/Core/Push.h"; sourceTree = "<group>"; };
+		CCE26C6B1A717F1A0010176D /* Push.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Push.m; path = "../../../../modules/push-notifications-portlet/ios/Source/Core/Push.m"; sourceTree = "<group>"; };
+		CCE26C6D1A717F350010176D /* LRSyncDLObjectService_v62.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LRSyncDLObjectService_v62.h; path = "../../../../../../../modules/sync-web/ios/Source/Service/v62/syncdlobject/LRSyncDLObjectService_v62.h"; sourceTree = "<group>"; };
+		CCE26C6E1A717F350010176D /* LRSyncDLObjectService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LRSyncDLObjectService_v62.m; path = "../../../../../../../modules/sync-web/ios/Source/Service/v62/syncdlobject/LRSyncDLObjectService_v62.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1550,6 +1561,7 @@
 		CCA6593818EC4BE800957D20 = {
 			isa = PBXGroup;
 			children = (
+				CCE26C4B1A713ED90010176D /* Modules */,
 				CC03FB7118ED7DCC00F3F16C /* Source */,
 				CC677D2A18EC511900F3DFAB /* Test */,
 				CCA6594318EC4BE800957D20 /* Frameworks */,
@@ -1576,6 +1588,104 @@
 				792F68BAE4DF41869F1F1580 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CCE26C4B1A713ED90010176D /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				CCE26C4C1A713ED90010176D /* Push */,
+				CCE26C541A713F900010176D /* Sync */,
+			);
+			name = Modules;
+			path = ios;
+			sourceTree = "<group>";
+		};
+		CCE26C4C1A713ED90010176D /* Push */ = {
+			isa = PBXGroup;
+			children = (
+				CCE26C5D1A713FFA0010176D /* Core */,
+				CCE26C4D1A713ED90010176D /* Service */,
+				CCE26C621A717DA20010176D /* Test */,
+			);
+			name = Push;
+			path = Source;
+			sourceTree = "<group>";
+		};
+		CCE26C4D1A713ED90010176D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CCE26C4E1A713ED90010176D /* v62 */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		CCE26C4E1A713ED90010176D /* v62 */ = {
+			isa = PBXGroup;
+			children = (
+				CCE26C4F1A713ED90010176D /* pushnotificationsdevice */,
+			);
+			path = v62;
+			sourceTree = "<group>";
+		};
+		CCE26C4F1A713ED90010176D /* pushnotificationsdevice */ = {
+			isa = PBXGroup;
+			children = (
+				CCE26C671A717EFB0010176D /* LRPushNotificationsDeviceService_v62.h */,
+				CCE26C681A717EFB0010176D /* LRPushNotificationsDeviceService_v62.m */,
+			);
+			path = pushnotificationsdevice;
+			sourceTree = "<group>";
+		};
+		CCE26C541A713F900010176D /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				CCE26C561A713F900010176D /* Service */,
+			);
+			name = Sync;
+			path = ios;
+			sourceTree = "<group>";
+		};
+		CCE26C561A713F900010176D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CCE26C571A713F900010176D /* v62 */,
+			);
+			name = Service;
+			path = Source/Service;
+			sourceTree = "<group>";
+		};
+		CCE26C571A713F900010176D /* v62 */ = {
+			isa = PBXGroup;
+			children = (
+				CCE26C581A713F900010176D /* syncdlobject */,
+			);
+			path = v62;
+			sourceTree = "<group>";
+		};
+		CCE26C581A713F900010176D /* syncdlobject */ = {
+			isa = PBXGroup;
+			children = (
+				CCE26C6D1A717F350010176D /* LRSyncDLObjectService_v62.h */,
+				CCE26C6E1A717F350010176D /* LRSyncDLObjectService_v62.m */,
+			);
+			path = syncdlobject;
+			sourceTree = "<group>";
+		};
+		CCE26C5D1A713FFA0010176D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CCE26C6A1A717F1A0010176D /* Push.h */,
+				CCE26C6B1A717F1A0010176D /* Push.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		CCE26C621A717DA20010176D /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				CCE26C651A717EDB0010176D /* PushTest.m */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1711,6 +1821,7 @@
 				CC03FCFA18ED7DCD00F3F16C /* LRSocialActivityService_v62.m in Sources */,
 				CC03FCEE18ED7DCD00F3F16C /* LRRepositoryService_v62.m in Sources */,
 				CC03FD0018ED7DCD00F3F16C /* LRThemeService_v62.m in Sources */,
+				CCE26C6C1A717F1A0010176D /* Push.m in Sources */,
 				CC2E77EB1A3769A9001890A9 /* ServiceContextTest.m in Sources */,
 				CCA4E4E7193657B900374A79 /* LRPortalVersionUtil.m in Sources */,
 				CC03FCC518ED7DCD00F3F16C /* LREmailAddressService_v62.m in Sources */,
@@ -1757,6 +1868,7 @@
 				CC03FCE018ED7DCD00F3F16C /* LRMembershipRequestService_v62.m in Sources */,
 				CC03FCC218ED7DCD00F3F16C /* LRDLFileShortcutService_v62.m in Sources */,
 				CC03FCB318ED7DCD00F3F16C /* LRBackgroundTaskService_v62.m in Sources */,
+				CCE26C6F1A717F350010176D /* LRSyncDLObjectService_v62.m in Sources */,
 				CC03FCF418ED7DCD00F3F16C /* LRSCProductEntryService_v62.m in Sources */,
 				CC2E77EC1A3769A9001890A9 /* ServiceFactoryTest.m in Sources */,
 				CC40D76D1974B9D0000254E6 /* LRValidator.m in Sources */,
@@ -1770,6 +1882,7 @@
 				CC03FCF118ED7DCD00F3F16C /* LRRoleService_v62.m in Sources */,
 				CC03FCDE18ED7DCD00F3F16C /* LRMDRRuleGroupService_v62.m in Sources */,
 				CC03FCEC18ED7DCD00F3F16C /* LRRatingsEntryService_v62.m in Sources */,
+				CCE26C661A717EDB0010176D /* PushTest.m in Sources */,
 				CC03FCCD18ED7DCD00F3F16C /* LRJournalFolderService_v62.m in Sources */,
 				CCAB31651A34EDF80085313A /* LRCredentialStorage.m in Sources */,
 				CC03FCA718ED7DCD00F3F16C /* LRSession.m in Sources */,
@@ -1796,6 +1909,7 @@
 				CC03FCEB18ED7DCD00F3F16C /* LRPortletPreferencesService_v62.m in Sources */,
 				CC4B7A291937C64E003611C4 /* LRUploadUtil.m in Sources */,
 				CC40D7701974C76D000254E6 /* LRBlockCallback.m in Sources */,
+				CCE26C691A717EFB0010176D /* LRPushNotificationsDeviceService_v62.m in Sources */,
 				CC03FCE718ED7DCD00F3F16C /* LRPollsQuestionService_v62.m in Sources */,
 				CC2E77EA1A3769A9001890A9 /* ResponseParserTest.m in Sources */,
 				CC03FCCC18ED7DCD00F3F16C /* LRJournalFeedService_v62.m in Sources */,
