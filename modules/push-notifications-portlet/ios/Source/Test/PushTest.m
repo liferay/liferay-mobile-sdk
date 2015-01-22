@@ -12,20 +12,73 @@
  * details.
  */
 
-#import "GroupServiceTest.h"
-#import "LRGroupService_v62.h"
+#import "BaseTest.h"
+#import "Push.h"
 #import "TRVSMonitor.h"
 
 /**
  * @author Bruno Farache
  */
-@interface PushTest : GroupServiceTest
+@interface PushTest : BaseTest
 @end
 
 @implementation PushTest
 
 - (void)testRegister {
-	XCTAssertNil(nil);
+	TRVSMonitor *monitor = [TRVSMonitor monitor];
+	__block NSDictionary *device;
+	__block NSError *error;
+
+	NSString *token = @"token";
+
+	Push *push = [[[Push withSession:self.session]
+		onSuccess:^(NSDictionary *result) {
+			device = result;
+			[monitor signal];
+		}]
+	 	onFailure:^(NSError *e) {
+			error = e;
+			[monitor signal];
+		}];
+
+	[push registerToken:token];
+	[monitor wait];
+
+	[self _assert:device token:token error:error];
+
+	[push unregisterToken:token];
+	[monitor wait];
+
+	[self _assert:device token:token error:error];
+}
+
+- (void)testSendPushNotification {
+	TRVSMonitor *monitor = [TRVSMonitor monitor];
+	__block NSError *error;
+
+	Push *push = [[[Push withSession:self.session]
+		onSuccess:^(NSDictionary *result) {
+			[monitor signal];
+		}]
+	 	onFailure:^(NSError *e) {
+			error = e;
+			[monitor signal];
+		}];
+
+	[push sendToUserId:0 payload:@{@"message": @"hello!"}];
+	[monitor wait];
+
+	XCTAssertNil(error);
+}
+
+- (void)_assert:(NSDictionary *)device token:(NSString *)token
+		error:(NSError *)error {
+
+	XCTAssertNil(error);
+	XCTAssertNotNil(device);
+
+	XCTAssertEqualObjects(token, device[@"token"]);
+	XCTAssertEqualObjects(@"ios", device[@"platform"]);
 }
 
 @end
