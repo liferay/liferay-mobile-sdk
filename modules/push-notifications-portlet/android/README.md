@@ -67,9 +67,9 @@ Push.with(session)
 	.register(registrationId);
 ```
 
-Both `onSuccess` and `onFailure` callbacks are optional, but you should probably implement both of them in order to persist the registrationId or display an error toast to the user in case of failure.
+Both `onSuccess` and `onFailure` callbacks are optional, but you should probably implement both of them in order to persist the registrationId or tell an error ocurred to the user.
 
-The [Push](src/main/java/com/liferay/mobile/push/Push.java) class is just a wrapper to the Mobile SDK generated services, internally it calls the `PushNotificationsDeviceService` portal remote service, it's just an utility class to make things easier.
+The [Push](src/main/java/com/liferay/mobile/push/Push.java) class is just a wrapper to the Mobile SDK generated services, internally it calls the `PushNotificationsDeviceService` portal remote service, it's just an utility class to make things easier, you can still use `PushNotificationsDeviceService` directly.
 
 Once your device is registered, you have to implement a `BroadcastReceiver` instance in order to listen to push notifications, look at [Android's documentation](http://developer.android.com/google/gcm/client.html#sample-receive) to learn how to receive push notifications in your app.
 
@@ -80,13 +80,13 @@ There are many ways to send push notifications from the portal, see the [Liferay
 Alternatively, you can also send push notifications from your Android app. Make sure the user has proper portal permissions to send push notifications.
 
 ```java
-JSONObject payload = new JSONObject();
-payload.put("message", "Hello!");
+JSONObject notification = new JSONObject();
+notification("message", "Hello!");
 
-Push.with(session).send(toUserId, payload);
+Push.with(session).send(toUserId, notification);
 ```
 
-`toUserId` is the the userId to which you are sending the push notification. As said previously, the portal will look up for all devices registered for this user (both Android and iOS) and send the `payload` as the body of the push notification.
+`toUserId` is the the userId to which you are sending the push notification. As said previously, the portal will look up for all devices registered for this user (both Android and iOS) and send the `notification` as the body of the push notification.
 
 #### Unregistering device
 
