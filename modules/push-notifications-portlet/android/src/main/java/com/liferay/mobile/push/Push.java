@@ -53,9 +53,9 @@ public class Push {
 		}
 	}
 
-	public void send(long userId, JSONObject payload) {
+	public void send(long userId, JSONObject notification) {
 		try {
-			getService().sendPushNotification(userId, payload.toString());
+			getService().sendPushNotification(userId, notification.toString());
 		}
 		catch (Exception e) {
 			onFailure(e);

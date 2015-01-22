@@ -65,7 +65,7 @@
 			[monitor signal];
 		}];
 
-	[push sendToUserId:0 payload:@{@"message": @"hello!"}];
+	[push sendToUserId:0 notification:@{@"message": @"hello!"}];
 	[monitor wait];
 
 	XCTAssertNil(error);

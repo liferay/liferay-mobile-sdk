@@ -78,11 +78,13 @@ NSString *const IOS = @"ios";
 	}
 }
 
-- (void)sendToUserId:(long long)userId payload:(NSDictionary *)payload {
+- (void)sendToUserId:(long long)userId
+		notification:(NSDictionary *)notification {
+
 	NSError *error;
 
-	NSData *data = [NSJSONSerialization dataWithJSONObject:payload options:0
-		error:&error];
+	NSData *data = [NSJSONSerialization dataWithJSONObject:notification
+		options:0 error:&error];
 
 	NSString *payloadString = [[NSString alloc] initWithData:data
 		encoding:NSUTF8StringEncoding];

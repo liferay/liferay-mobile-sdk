@@ -26,7 +26,9 @@
 - (instancetype)onFailure:(LRFailureBlock)failure;
 - (instancetype)onSuccess:(LRSuccessBlock)success;
 - (void)registerToken:(NSString *)token;
-- (void)sendToUserId:(long long)userId payload:(NSDictionary *)payload;
+- (void)sendToUserId:(long long)userId
+	notification:(NSDictionary *)notification;
+
 - (void)unregisterToken:(NSString *)token;
 
 @end
