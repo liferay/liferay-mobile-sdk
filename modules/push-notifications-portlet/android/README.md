@@ -49,16 +49,25 @@ From there, each time the portal wants to send a push notification to the `test@
 Since all operations are asynchronous you can set callbacks to check if registration was successful or some error happened on the server side:
 
 ```java
-Push.with(session).callback(new Push.Callback() {
+Push.with(session)
+	.onSuccess(new Push.OnSuccess() {
+			
+		@Override
+		public void onSuccess(Object result) {
+		}
 
-	@Override
-	public void on(Push.Event event, Object result) {
-	}
+	})
+	.onFailure(new Push.OnFailure() {
 
-}).register(registrationId);
+		@Override
+		public void onFailure(Exception e) {
+		}
+
+	})
+	.register(registrationId);
 ```
 
-Check for the `event` enum, it can be either Event.SUCCESS or Event.ERROR, result contains the object returned by the remote service call.
+Both `onSuccess` and `onFailure` callbacks are optional, but you should probably implement both of them in order to persist the registrationId or display an error toast to the user in case of failure.
 
 The [Push](src/main/java/com/liferay/mobile/push/Push.java) class is just a wrapper to the Mobile SDK generated services, internally it calls the `PushNotificationsDeviceService` portal remote service, it's just an utility class to make things easier.
 

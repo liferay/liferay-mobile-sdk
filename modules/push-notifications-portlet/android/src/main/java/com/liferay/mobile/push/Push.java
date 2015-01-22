@@ -32,8 +32,14 @@ public class Push {
 		return new Push(session);
 	}
 
-	public Push callback(Callback callback) {
-		_callback = callback;
+	public Push onFailure(OnFailure onFailure) {
+		_onFailure = onFailure;
+
+		return this;
+	}
+
+	public Push onSuccess(OnSuccess onSuccess) {
+		_onSuccess = onSuccess;
 
 		return this;
 	}
@@ -46,7 +52,7 @@ public class Push {
 			service.addPushNotificationsDevice(registrationId, ANDROID);
 		}
 		catch (Exception e) {
-			onError(e);
+			onFailure(e);
 		}
 	}
 
@@ -58,7 +64,7 @@ public class Push {
 			service.sendPushNotification(userId, payload.toString());
 		}
 		catch (Exception e) {
-			onError(e);
+			onFailure(e);
 		}
 	}
 
@@ -70,19 +76,19 @@ public class Push {
 			service.deletePushNotificationsDevice(registrationId);
 		}
 		catch (Exception e) {
-			onError(e);
+			onFailure(e);
 		}
 	}
 
-	public interface Callback {
+	public interface OnFailure {
 
-		public void on(Event event, Object result);
+		public void onFailure(Exception e);
 
 	}
 
-	public enum Event {
+	public interface OnSuccess {
 
-		ERROR, SUCCESS;
+		public void onSuccess(Object result);
 
 	}
 
@@ -92,13 +98,13 @@ public class Push {
 
 			@Override
 			public void onFailure(Exception e) {
-				Push.this.onError(e);
+				Push.this.onFailure(e);
 			}
 
 			@Override
 			public void onSuccess(Object result) {
-				if (_callback != null) {
-					_callback.on(Event.SUCCESS, result);
+				if (_onSuccess != null) {
+					_onSuccess.onSuccess(result);
 				}
 			}
 
@@ -109,13 +115,14 @@ public class Push {
 		});
 	}
 
-	protected void onError(Exception e) {
-		if (_callback != null) {
-			_callback.on(Event.ERROR, e);
+	protected void onFailure(Exception e) {
+		if (_onFailure != null) {
+			_onFailure.onFailure(e);
 		}
 	}
 
-	private Callback _callback;
+	private OnFailure _onFailure;
+	private OnSuccess _onSuccess;
 	private Session _session;
 
 }

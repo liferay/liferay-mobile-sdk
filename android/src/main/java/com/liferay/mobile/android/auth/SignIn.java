@@ -40,9 +40,7 @@ public class SignIn {
 
 			@Override
 			public void onSuccess(JSONArray sites) {
-				int length = sites.length();
-
-				if (length == 0) {
+				if (sites.length() == 0) {
 					onFailure(new Exception("User doesn't belong to any site"));
 				}
 
