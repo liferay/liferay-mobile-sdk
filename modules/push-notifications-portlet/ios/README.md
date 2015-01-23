@@ -18,7 +18,7 @@ This library is a CocoaPods subspec of the Mobile SDK for iOS. This library beco
 
 To receive push notifications, your app must register itself to the portal first. On the portal side, each device is tied to a user. Each user can have multiple registered devices. A device is represented by a device token string.
 
-Read [Apple's documentation](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/IPhoneOSClientImp.html#//apple_ref/doc/uid/TP40008194-CH103-SW2) to learn how to get the device token. This [tutorial](http://www.raywenderlich.com/32960/apple-push-notification-services-in-ios-6-tutorial-part-1) is very useful to learn how Apple Push Notification works.
+Read [Apple's documentation](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/IPhoneOSClientImp.html#//apple_ref/doc/uid/TP40008194-CH103-SW2) to learn how to get the device token. This [tutorial](http://www.raywenderlich.com/32960/apple-push-notification-services-in-ios-6-tutorial-part-1) is also useful to learn how Apple Push Notification works.
 
 Once you have the device token, you can register the device to the portal by calling:
 
@@ -45,7 +45,7 @@ Since all operations are asynchronous, you can set callbacks to check if the reg
     registerToken:deviceToken];
 ```
 
-The `onSuccess` and `onFailure` blocks are optional, but it's good practice to implement both. Doing so persists the device token or tells the user that an error ocurred.
+The `onSuccess` and `onFailure` blocks are optional, but it's good practice to implement both. By doing your app can persist the device token or tell the user that an error ocurred.
 
 You should note that the [`Push`](Source/Core/Push.m) class is a wrapper for the Mobile SDK generated services. Internally, it calls the portal's remote service `LRPushNotificationsDeviceService_v62`. While you can still use `LRPushNotificationsDeviceService_v62` directly, using the wrapper class is easier.
 

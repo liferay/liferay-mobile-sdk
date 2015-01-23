@@ -64,7 +64,7 @@ Push.with(session)
 	.register(registrationId);
 ```
 
-The `onSuccess` and `onFailure` callbacks are optional, but it's good practice to implement both. Doing so persists the device token or tells the user that an error ocurred.
+The `onSuccess` and `onFailure` callbacks are optional, but it's good practice to implement both. By doing so, your app can persist the device token or tell the user that an error ocurred.
 
 You should note that the [Push](src/main/java/com/liferay/mobile/push/Push.java) class is a wrapper for the Mobile SDK generated services. Internally, it calls the portal's remote service `PushNotificationsDeviceService`. While you can still use `PushNotificationsDeviceService` directly, using the wrapper class is easier.
 
