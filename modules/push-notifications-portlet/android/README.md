@@ -4,13 +4,13 @@
 
 * [Setup](#setup)
 * [Use](#use)
-	* [Registering device](#registering-device)
+	* [Registering device](#registering-a-device)
 	* [Sending push notifications](#sending-push-notifications)
-	* [Unregistering device](#unregistering-device)
+	* [Unregistering device](#unregistering-a-device)
 
 ## Setup
 
-Add the library as a dependency to your project:
+Add the library as a dependency to your project, as shown in the following Groovy code:
 
 ```groovy
 repositories {
@@ -25,16 +25,13 @@ dependencies {
 
 ## Use
 
-#### Registering device
+#### Registering a Device
 
-In order to receive push notifications, your app must register itself to the portal first.
-
-On the portal side, each device is tied to an user and one user can have multiple registered devices. A device is represented by a token string, Google calls it `registrationId`.
+To receive push notifications, your app must register itself to the portal first. On the portal side, each device is tied to a user. Each user can have multiple registered devices. A device is represented by a device token string. Google calls this the `registrationId`.
 
 Read [Android's documentation](http://developer.android.com/google/gcm/client.html) to learn how to get the `registrationId`.
 
-Once you have got the `registrationId` token, you can register the device by calling:
-
+Once you have the `registrationId` token, you can register the device to the portal by calling:
 
 ```java
 import com.liferay.mobile.push.Push;
@@ -44,9 +41,9 @@ Session session = new SessionImpl("http://localhost:8080", new BasicAuthenticati
 Push.with(session).register(registrationId);
 ```
 
-From there, each time the portal wants to send a push notification to the `test@liferay.com` user, it will look up for all registered devices for this user (including the one above you just registered) and send the push notification for each `registrationId` found.
+Now each time the portal wants to send a push notification to the user `test@liferay.com`, it looks up all registered devices for the user (including the one just registered) and sends the push notification for each `registrationId` found.
 
-Since all operations are asynchronous you can set callbacks to check if registration was successful or some error happened on the server side:
+Since all operations are asynchronous, you can set callbacks to check if the registration succeeded or an error occurred on the server side:
 
 ```java
 Push.with(session)
@@ -67,17 +64,15 @@ Push.with(session)
 	.register(registrationId);
 ```
 
-Both `onSuccess` and `onFailure` callbacks are optional, but you should probably implement both of them in order to persist the registrationId or tell an error ocurred to the user.
+The `onSuccess` and `onFailure` callbacks are optional, but it's good practice to implement both. Doing so persists the device token or tells the user that an error ocurred.
 
-The [Push](src/main/java/com/liferay/mobile/push/Push.java) class is just a wrapper to the Mobile SDK generated services, internally it calls the `PushNotificationsDeviceService` portal remote service, it's just an utility class to make things easier, you can still use `PushNotificationsDeviceService` directly.
+You should note that the [Push](src/main/java/com/liferay/mobile/push/Push.java) class is a wrapper for the Mobile SDK generated services. Internally, it calls the portal's remote service `PushNotificationsDeviceService`. While you can still use `PushNotificationsDeviceService` directly, using the wrapper class is easier.
 
-Once your device is registered, you have to implement a `BroadcastReceiver` instance in order to listen to push notifications, look at [Android's documentation](http://developer.android.com/google/gcm/client.html#sample-receive) to learn how to receive push notifications in your app.
+Once your device is registered, your app must be able to listen for notifications. To do this, you must implement a `BroadcastReceiver` instance in your app. [Android's developer documentation](http://developer.android.com/google/gcm/client.html#sample-receive) shows you how to do this.
 
-#### Sending push notifications
+### Sending Push Notifications
 
-There are many ways to send push notifications from the portal, see the [Liferay Push documentation](../README.md) for more details.
-
-Alternatively, you can also send push notifications from your Android app. Make sure the user has proper portal permissions to send push notifications.
+There are many ways to send push notifications from Liferay Portal. See the [Liferay Push documentation](../README.md) for more details. Alternatively, you can send push notifications from your Android app. Just make sure the user has the proper permissions in the portal to send push notifications.
 
 ```java
 JSONObject notification = new JSONObject();
@@ -86,12 +81,11 @@ notification("message", "Hello!");
 Push.with(session).send(toUserId, notification);
 ```
 
-`toUserId` is the the userId to which you are sending the push notification. As said previously, the portal will look up for all devices registered for this user (both Android and iOS) and send the `notification` as the body of the push notification.
+In this code, the push notification is sent to the user specified by `toUserId`. Upon receiving the notification, the portal looks up all the user's registered devices (both Android and iOS devices) and sends `notification` as the body of the push notification.
 
-#### Unregistering device
+### Unregistering a Device
 
-
-In you case you want to remove the device from the portal to stop receiving push notifications, you can do:
+If you want to stop receiving push notifications on a device, you can unregister it from from the portal with the following code:
 
 ```java
 Push.with(session).unregister(registrationId);
