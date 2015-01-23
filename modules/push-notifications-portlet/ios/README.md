@@ -4,9 +4,9 @@
 
 * [Setup](#setup)
 * [Use](#use)
-	* [Registering device](#registering-device)
+	* [Registering device](#registering-a-device)
 	* [Sending push notifications](#sending-push-notifications)
-	* [Unregistering device](#unregistering-device)
+	* [Unregistering device](#unregistering-a-device)
 
 ## Setup
 
