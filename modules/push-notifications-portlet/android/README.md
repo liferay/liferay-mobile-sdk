@@ -10,7 +10,7 @@
 
 ## Setup
 
-Add the library as a dependency to your project, as shown in the following Groovy code:
+Add the library as a dependency to your project's build.gradle file:
 
 ```groovy
 repositories {
