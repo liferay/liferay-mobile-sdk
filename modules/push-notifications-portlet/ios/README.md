@@ -32,7 +32,6 @@ Now each time the portal wants to send a push notification to the user `test@lif
 
 Since all operations are asynchronous, you can set callbacks to check if the registration succeeded or an error occurred on the server side:
 
-
     [[[[Push withSession:self.session]
         onSuccess:^(NSDictionary *device) {
             NSLog(@"Device was registered!");
@@ -44,33 +43,28 @@ Since all operations are asynchronous, you can set callbacks to check if the reg
 
 The `onSuccess` and `onFailure` blocks are optional, but it's good practice to implement both. Doing so persists the device token or tells the user that an error ocurred.
 
-The [Push](Source/Core/Push.m) class is just a wrapper to the Mobile SDK generated services, internally it calls the `LRPushNotificationsDeviceService_v62` portal remote service, it's just an utility class to make things easier, you can still use `LRPushNotificationsDeviceService_v62` directly.
+You should note that the [`Push`](Source/Core/Push.m) class is a wrapper for the Mobile SDK generated services. Internally, it calls the portal's remote service `LRPushNotificationsDeviceService_v62`. While you can still use `LRPushNotificationsDeviceService_v62` directly, using the wrapper class is easier.
 
-Once your device is registered, your app must listen to notifications, look at the [Apple's documentation](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/IPhoneOSClientImp.html#//apple_ref/doc/uid/TP40008194-CH103-SW4) to learn how to do it.
+Once your device is registered, your app must be able to listen for notifications. [Apple's developer documentation](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/IPhoneOSClientImp.html#//apple_ref/doc/uid/TP40008194-CH103-SW4) shows how to implement this in your app.
 
-#### Sending push notifications
+### Sending Push Notifications
 
-There are many ways to send push notifications from the portal, see the [Liferay Push documentation](../README.md) for more details.
+There are many ways to send push notifications from Liferay Portal. See the [Liferay Push documentation](../README.md) for more details. Alternatively, you can send push notifications from your iOS app. Just make sure the user has the proper permissions in the portal to send push notifications.
 
-Alternatively, you can also send push notifications from your iOS app. Make sure the user has proper portal permissions to send push notifications.
+    NSDictionary notification = @{
+        @"message": @"hello!"
+    };
+    
+    [[Push withSession:session] sendToUserId:123 notification:notification];
 
-```objective-c
-NSDictionary notification = @{
-	@"message": @"hello!"
-};
+In this code, the push notification is sent to the user specified by `sendToUserId`. Upon receiving the notification, the portal looks up all the user's registered devices (both Android and iOS devices) and sends `notification` as the body of the push notification.
 
-[[Push withSession:session] sendToUserId:123 notification:notification];
-```
+### Unregistering a Device
 
-`toUserId` is the the userId to which you are sending the push notification. As said previously, the portal will look up for all devices registered for this user (both Android and iOS) and send the `notification` as the body of the push notification.
+If you want to stop receiving push notifications on a device, you can unregister it from from the portal with the following code:
 
-#### Unregistering device
-
-
-In you case you want to remove the device from the portal to stop receiving push notifications, you can do:
-
-```objective-c
-[[Push withSession:session] unregisterToken:deviceToken];
-```
-
+    ```objective-c
+    [[Push withSession:session] unregisterToken:deviceToken];
+    ```
+    
 Users can only unregister devices they own.
