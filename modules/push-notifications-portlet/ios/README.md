@@ -28,7 +28,7 @@ Once you have the device token, you can register the device to the portal by cal
 LRSession *session = [[LRSession alloc] initWithServer:@"http://localhost:8080" username:@"test@liferay.com" password:@"test"];
 
 [[Push withSession:session] registerToken:deviceToken];
-```objective-c
+```
 
 Now each time the portal wants to send a push notification to the user `test@liferay.com`, it looks up all registered devices for the user (including the one just registered) and sends the push notification for each `deviceToken` found.
 
