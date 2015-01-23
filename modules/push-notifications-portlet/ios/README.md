@@ -36,18 +36,18 @@ Since all operations are asynchronous, you can set callbacks to check if the reg
 
 ```objective-c
 [[[[Push withSession:self.session]
-    onSuccess:^(NSDictionary *device) {
-        NSLog(@"Device was registered!");
-        }]
-    onFailure:^(NSError *e) {
-        NSLog(@"Some error occurred!");
-        }]
-    registerToken:deviceToken];
+	onSuccess:^(NSDictionary *device) {
+		NSLog(@"Device was registered!");
+	}]
+	onFailure:^(NSError *e) {
+		NSLog(@"Some error occurred!");
+	}]
+	registerToken:deviceToken];
 ```
 
 The `onSuccess` and `onFailure` blocks are optional, but it's good practice to implement both. By doing your app can persist the device token or tell the user that an error ocurred.
 
-You should note that the [`Push`](Source/Core/Push.m) class is a wrapper for the Mobile SDK generated services. Internally, it calls the portal's remote service `LRPushNotificationsDeviceService_v62`. While you can still use `LRPushNotificationsDeviceService_v62` directly, using the wrapper class is easier.
+You should note that the [`Push`](Source/Core/Push.m) class is a wrapper for the Mobile SDK generated services. Internally, it calls the Mobile SDK's `LRPushNotificationsDeviceService_v62` class. While you can still use `LRPushNotificationsDeviceService_v62` directly, using the wrapper class is easier.
 
 Once your device is registered, your app must be able to listen for notifications. [Apple's developer documentation](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/IPhoneOSClientImp.html#//apple_ref/doc/uid/TP40008194-CH103-SW4) shows how to implement this in your app.
 

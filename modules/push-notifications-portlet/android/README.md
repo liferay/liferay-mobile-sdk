@@ -48,9 +48,10 @@ Since all operations are asynchronous, you can set callbacks to check if the reg
 ```java
 Push.with(session)
 	.onSuccess(new Push.OnSuccess() {
-			
+
 		@Override
 		public void onSuccess(Object result) {
+			System.out.println("Device was registered!");
 		}
 
 	})
@@ -58,6 +59,7 @@ Push.with(session)
 
 		@Override
 		public void onFailure(Exception e) {
+			System.out.println("Some error occurred!");
 		}
 
 	})
@@ -66,7 +68,7 @@ Push.with(session)
 
 The `onSuccess` and `onFailure` callbacks are optional, but it's good practice to implement both. By doing so, your app can persist the device token or tell the user that an error ocurred.
 
-You should note that the [Push](src/main/java/com/liferay/mobile/push/Push.java) class is a wrapper for the Mobile SDK generated services. Internally, it calls the portal's remote service `PushNotificationsDeviceService`. While you can still use `PushNotificationsDeviceService` directly, using the wrapper class is easier.
+You should note that the [Push](src/main/java/com/liferay/mobile/push/Push.java) class is a wrapper for the Mobile SDK generated services. Internally, it calls the Mobile SDK's `PushNotificationsDeviceService` class. While you can still use `PushNotificationsDeviceService` directly, using the wrapper class is easier.
 
 Once your device is registered, your app must be able to listen for notifications. To do this, you must implement a `BroadcastReceiver` instance in your app. [Android's developer documentation](http://developer.android.com/google/gcm/client.html#sample-receive) shows you how to do this.
 
