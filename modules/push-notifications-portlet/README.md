@@ -59,6 +59,8 @@ Push notfications to iOS devices use the Apple Push Notification service (APNs).
 
 **Certificate Password**: The password you used during the creation of the certificate.
 
+**Sandbox**: While your app is still in development, you should enable this option. It will use APNs sandbox servers to send notifications, instead of their production servers.
+
 Great! Now that you've configured the Liferay Push Notifications Portlet to send 
 push notifications, you're ready to test it out.
 
