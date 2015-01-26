@@ -19,7 +19,7 @@
  */
 @interface LRBatchSession : LRSession
 
-@property (nonatomic, strong) NSArray *commands;
+@property (nonatomic, strong, readonly) NSArray *commands;
 
 - (NSArray *)invoke:(NSError **)error;
 

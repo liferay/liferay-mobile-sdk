@@ -21,6 +21,8 @@
 
 @implementation LRBatchSession
 
+@synthesize commands = _commands;
+
 - (id)initWithServer:(NSString *)server username:(NSString *)username
 		password:(NSString *)password connectionTimeout:(int)connectionTimeout
 		callback:(id<LRCallback>)callback queue:(NSOperationQueue *)queue {
