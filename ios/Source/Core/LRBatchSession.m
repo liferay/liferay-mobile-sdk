@@ -53,7 +53,7 @@
 }
 
 - (NSArray *)invoke:(NSDictionary *)command error:(NSError **)error {
-	[_commands addObject:command];
+	[(NSMutableArray *)_commands addObject:command];
 
 	return nil;
 }
