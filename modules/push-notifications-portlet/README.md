@@ -53,9 +53,9 @@ Next, the portlet's configuration for sending push notifications to iOS devices 
 
 #### iOS
 
-Push notfications to iOS devices use the Apple Push Notification service (APN). For more information on how this service works, see [Apple's documentation](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html). The Liferay Push Notifications Portlet has two settings for configuring your portal to use APN: 
+Push notfications to iOS devices use the Apple Push Notification service (APNs). For more information on how this service works, see [Apple's documentation](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html). The Liferay Push Notifications Portlet has two settings for configuring your portal to use APNs: 
 
-**Certificate Path**: The path to the `.p12` certificate file that authorizes the portlet to send notifications to APN. To generate this certificate, carefully follow the steps described [here](https://parse.com/tutorials/ios-push-notifications) or [here](http://www.raywenderlich.com/32960/apple-push-notification-services-in-ios-6-tutorial-part-1). After generating the `.p12` file, store it on your server. The Certificate Path property points to this file on your server.
+**Certificate Path**: The path to the `.p12` certificate file that authorizes the portlet to send notifications to APNs. To generate this certificate, carefully follow the steps described [here](https://parse.com/tutorials/ios-push-notifications) or [here](http://www.raywenderlich.com/32960/apple-push-notification-services-in-ios-6-tutorial-part-1). After generating the `.p12` file, store it on your server. The Certificate Path property points to this file on your server.
 
 **Certificate Password**: The password you used during the creation of the certificate.
 
