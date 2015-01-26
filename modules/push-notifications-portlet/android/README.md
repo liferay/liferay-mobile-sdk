@@ -78,7 +78,7 @@ There are many ways to send push notifications from Liferay Portal. See the [Lif
 
 ```java
 JSONObject notification = new JSONObject();
-notification("message", "Hello!");
+notification.put("message", "Hello!");
 
 Push.with(session).send(toUserId, notification);
 ```
