@@ -6,7 +6,7 @@
 * [Setup](#setup)
 	* [Android](#android)
 	* [iOS](#ios)
-* [Test](#test)
+	* [Test](#test)
 * [Use](#use)
 
 ## About
