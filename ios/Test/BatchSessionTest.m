@@ -36,10 +36,12 @@
 	[service getUserSites:&error];
 
 	NSArray *commands = session.commands;
-
 	XCTAssertEqual([commands count], 2);
 
 	NSArray *result = [session invoke:&error];
+
+	commands = session.commands;
+	XCTAssertEqual([commands count], 0);
 
 	[self assert:result[0] error:error];
 	[self assert:result[1] error:error];
