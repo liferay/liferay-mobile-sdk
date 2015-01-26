@@ -45,7 +45,7 @@ Next, you'll learn how to configure the portlet for sending push notifications t
 
 Push notifications sent to Android devices use the Google Cloud Messaging service (GCM). The Liferay Push Notifications Portlet has two settings for configuring your portal to use GCM:
 
-**API Key**: The API key to use when communicating with the GCM servers. More specifically, the API key is used to authorize the portlet to send notifications to your mobile app. Note that your app must also be configured with a GCM sender ID that is linked to this API key. Without this linkage, your app can't be registered with your server and sending push notifications isn't possible. For more information on how to obtain the API key, see [Google's documentation](https://developer.android.com/google/gcm/gs.html#access-key). Be sure that your API key and sender ID remain secret. If others know them, then they can also send push notifications to your app!
+**API Key**: The API key to use when communicating with the GCM servers. More specifically, the API key is used to authorize the portlet to send notifications to your mobile app. Note that your app must also be configured with a GCM sender ID that is linked to this API key. Without this linkage, your app can't be registered with your server and sending push notifications isn't possible. For more information on how to obtain the API key, see [Google's documentation](https://developer.android.com/google/gcm/gs.html#access-key). Be sure that your API key remain secret. If others know them, then they can also send push notifications to your app!
 
 **Retries**: When sending a notification fails, this is the number of times to retry sending that notification. 
 
