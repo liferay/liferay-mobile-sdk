@@ -33,11 +33,11 @@ Before you can send push notifcations to your users' mobile devices, you need to
 
 ### Configuration
 
-The portlet's *Configuration* tab is where you specify the settings for sending push notifications from your portal. Note that there are separate settings for Android and iOS. This is because Android and iOS use different push notification services. Note that if you don't need to send notifications to both platforms, you only need to set the properties for the platform you're sending them to. 
-
-Also, you don't have to use this UI to configure the portlet. You can manually set the properties in the portlet's `portlet.properties` file, which is located in the `/push-notifications-portlet/WEB-INF/classes` folder. However, each time you make changes to this file you need to restart your portal for them to take effect. You should also note that any changes made through the UI take precedence over those set manually in `portlet.properties`.
+The portlet's *Configuration* tab is where you specify the settings for sending push notifications from your portal. Note that there are separate settings for Android and iOS. This is because Android and iOS use different push notification services. Note that if you don't need to send notifications to both platforms, you only need to set the properties for the platform you're sending them to.
 
 ![Configuration tab](./images/configuration.png)
+
+You don't have to use this UI to configure the portlet. You can also manually set the properties in the portlet's `portlet(-ext).properties` file, which is located in the `/push-notifications-portlet/WEB-INF/classes` folder. However, each time you make changes to this file you need to restart your portal for them to take effect. You should also note that any changes made through the UI take precedence over those set manually in `portlet.properties`.
 
 Next, you'll learn how to configure the portlet for sending push notifications to Android and iOS devices.
 
@@ -45,7 +45,7 @@ Next, you'll learn how to configure the portlet for sending push notifications t
 
 Push notifications sent to Android devices use the Google Cloud Messaging service (GCM). The Liferay Push Notifications Portlet has two settings for configuring your portal to use GCM:
 
-**API Key**: The API key to use when communicating with the GCM servers. More specifically, the API key is used to authorize the portlet to send notifications to your mobile app. Note that your app must also be configured with a GCM sender ID that is linked to this API key. Without this linkage, your app can't be registered with your server and sending push notifications isn't possible. For more information on how to obtain the API key, see [Google's documentation](https://developer.android.com/google/gcm/gs.html#access-key). Be sure that your API key remain secret. If others know them, then they can also send push notifications to your app!
+**API Key**: The API key to use when communicating with the GCM servers. More specifically, the API key is used to authorize the portlet to send notifications to your mobile app. Note that your app must also be configured with a GCM sender ID that is linked to this API key. Without this linkage, your app can't be registered with your server and sending push notifications isn't possible. For more information on how to obtain the API key, see [Google's documentation](https://developer.android.com/google/gcm/gs.html#access-key). Be sure that your API key remain secret. If others know it, then they can also send push notifications to your app!
 
 **Retries**: When sending a notification fails, this is the number of times to retry sending that notification. 
 
