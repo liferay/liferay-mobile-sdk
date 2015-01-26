@@ -6,8 +6,8 @@
 * [Setup](#setup)
 	* [Android](#android)
 	* [iOS](#ios)
-	* [Test](#test)
-* [Use](#use)
+	* [Test](#testing-your-configuration)
+* [Using Liferay Push in Your Plugins](#using-liferay-push-in-your-plugins)
 
 ## About
 
@@ -17,76 +17,70 @@ The Liferay Push framework is comprised of 3 main components:
 * [Liferay Push Android API](android/README.md)
 * [Liferay Push iOS API](ios/README.md)
 
-This document describes how to install and configure the Push Notifications Portlet. This portlet is necessary to enable Liferay Push: it's responsible for making the bridge between mobile apps, your Liferay Portal instance, and Google/Apple Push notifications services.
+This document describes how to install and configure the Liferay Push Notifications Portlet. This portlet is necessary to enable Liferay Push. It's responsible for making the bridge between mobile apps, your Liferay Portal instance, and the iOS and Android push notification services. Once you install this portlet, mobile users can register their devices with your portal instance. The Push Notifications Portlet also provides an API that developers can leverage to send push notifications from their plugins.
 
-Once you install it, mobile app users will be able to register their devices against your portal instance. It also provides an API to send push notifications to user devices, any other portlet or portal plugin can use this API to send notifications to mobile apps.
+For example, if you've developed your own blogs portlet and a corresponding mobile app, you can use Liferay Push to notify users on their mobile devices whenever a new blog post is made. Instead of having to poll the server every few seconds, your mobile app can just wait for announcements. In other words, you can use Liferay Push so that the server only communicates with your mobile app when there's something to communicate. This is one of the main benefits of using push notifications.
 
-Say for example, you have a blogs portlet and a blogs mobile app that users can use to read posts created by this portlet. You can use Liferay Push to send out new post announcements to all mobile app users. Instead of having to poll the server every few seconds, your app can just wait for announcements: the server will proactively communicate with your app. That's one of the main benefits of using push notifications.
-
-As said above, Liferay Push also has client libraries for [Android](android/README.md) and [iOS](ios/README.md), look at their documentation to see how your mobile app can use the framework.
+In addition to the Liferay Push Notifications Portlet, Liferay Push also has client libraries for Android and iOS. To see how your mobile app can leverage the Liferay Push framework, see the client library documentation for [Android](android/README.md) and [iOS](ios/README.md). 
 
 ## Setup
 
-1. Download and install the Push Notification Portlet from the [Liferay Marketplace](link-to-markeplace).
-2. Go to your Liferay Portal's Control Panel.
-3. Under the `Configuration`, click on the `Push Notifications` link:
+You first need to download and install the Liferay Push Notifications Portlet from the [Liferay Marketplace](https://www.liferay.com/marketplace). Once installed, you can find the portlet in the *Configuration* section of the Control Panel. Click *Push Notifications* to access it: 
 
-![Control Panel link](./images/controlpanel.png)
+![Click *Push Notifications* under the *Configuration* section of the Control Panel.](./images/controlpanel.png)
 
-4. You should see the `Configuration` tab:
+Before you can send push notifcations to your users' mobile devices, you need to configure the portlet. The next section walks you through the configuration steps for sending push notifications to Android and iOS devices.
+
+### Configuration
+
+The portlet's *Configuration* tab is where you specify the settings for sending push notifications from your portal. Note that there are separate settings for Android and iOS. This is because Android and iOS use different push notification services. Note that if you don't need to send notifications to both platforms, you only need to set the properties for the platform you're sending them to. 
+
+Also, you don't have to use this UI to configure the portlet. You can manually set the properties in the portlet's `portlet.properties` file, which is located in the `/push-notifications-portlet/WEB-INF/classes` folder. However, each time you make changes to this file you need to restart your portal for them to take effect. You should also note that any changes made through the UI take precedence over those set manually in `portlet.properties`.
 
 ![Configuration tab](./images/configuration.png)
 
-5. Google and Apple Push Notification Services require different properties to be set, check the following sections to understand what these fields mean: [Android](#android) and [iOS](#ios).
-
-You don't need to configure both services. If you are building Android apps only, you just need to configure the Android properties and leave the iOS properties blank or viceversa.
-
-If you don't want to use the UI configuration, you can set properties in the configuration file. In order to do that, you just need to modify the the `portlet.properties` located at the `/push-notifications-portlet/WEB-INF/classes` folder. You need to restart the portal for each change made to this file. Please note that changes made through the UI will always override properties set in `portlet.properties`.
+Next, you'll learn how to configure the portlet for sending push notifications to Android and iOS devices.
 
 #### Android
 
-This section descibes how to configure the portlet for the Google Cloud Messagging service.
- 
-**API Key**: The API key is used by this portlet to communicate with the Google Cloud Messaging servers, it's used to authorize the portlet to send notifications to your app. No other server can send notifications to your mobile app if it doesn't have access to these `API Keys`, so keep them secret. Your app must also be configured with a `Sender ID`, it can only get the `registrationId` if the `Sender ID` is linked to this `API Key`. For more information on how to obtain the `API Key`, access [Google's documentation](https://developer.android.com/google/gcm/gs.html) at the `Obtaining an API Key` section.
+Push notifications sent to Android devices use the Google Cloud Messaging service (GCM). The Liferay Push Notifications Portlet has two settings for configuring your portal to use GCM:
 
+**API Key**: The API key to use when communicating with the GCM servers. More specifically, the API key is used to authorize the portlet to send notifications to your mobile app. Note that your app must also be configured with a GCM sender ID that is linked to this API key. Without this linkage, your app can't be registered with your server and sending push notifications isn't possible. For more information on how to obtain the API key, see [Google's documentation](https://developer.android.com/google/gcm/gs.html#access-key). Be sure that your API key and sender ID remain secret. If others know them, then they can also send push notifications to your app!
 
-**Retries**: If the portlet fails to send a notification because the Google Cloud Messaging server is not responding, for example, you can specify how many times it should retry to resend the notification.
+**Retries**: When sending a notification fails, this is the number of times to retry sending that notification. 
 
-##### iOS
+Next, the portlet's configuration for sending push notifications to iOS devices is presented. If you don't need to send push notfications to iOS devices, you can skip this and proceed to the section on testing your configuration.
 
-This section descibes how to configure the portlet for Apple Push Notification service (APNs). For more information on how this service works, access [Apple's documentation](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html).
+#### iOS
 
-There are basically two properties:
+Push notfications to iOS devices use the Apple Push Notification service (APN). For more information on how this service works, see [Apple's documentation](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html). The Liferay Push Notifications Portlet has two settings for configuring your portal to use APN: 
 
-**Certificate Path**: You need to generate a p12 certificate that authorizes the portlet to send notifications to the APNs. We recommend you to carefully follow the steps described [here](https://parse.com/tutorials/ios-push-notifications) or [here](http://www.raywenderlich.com/32960/apple-push-notification-services-in-ios-6-tutorial-part-1) to achieve it. After you have generated the .p12 file, store it in your server. The `Certificate Path` property should point to this file in your server.
+**Certificate Path**: The path to the `.p12` certificate file that authorizes the portlet to send notifications to APN. To generate this certificate, carefully follow the steps described [here](https://parse.com/tutorials/ios-push-notifications) or [here](http://www.raywenderlich.com/32960/apple-push-notification-services-in-ios-6-tutorial-part-1). After generating the `.p12` file, store it on your server. The Certificate Path property points to this file on your server.
 
-**Certificate Password**: Use the same password you used during the creation of the certificate you created.
+**Certificate Password**: The password you used during the creation of the certificate.
 
-#### Test
+Great! Now that you've configured the Liferay Push Notifications Portlet to send 
+push notifications, you're ready to test it out.
 
-You can test if you have configured the portlet properly by clicking on the `Testing` tab:
+### Testing Your Configuration
 
-![Testing tab](./images/testing.png)
+Click the *Test* tab of the portlet to access the screen for sending a test notification via push. However, be careful not to send a test notification from a production Liferay instance. Doing so sends a message to all devices registered with your portal! Type your message into the *Message* text box and press *Send*.
 
-You can send notifications from there, success or failure messages will show up after you click on `Send`. Look for the server logs as well to see if some exception was thrown.
+![Send a test notification using push.](./images/testing.png)
 
-> Be careful while testing don't do this in production as it will send messages to all registered devices. All the users that are using your mobile app will receive it. This should be tested during development only.
+A success or failure message appears to let you know if your test was successful. You should also check your console log for any exceptions. Super! Now you know how to install, configure, and test the Liferay Push Notifications Portlet. Next, you'll learn how to leverage the API to send push notifications from your own plugins.
 
-## Use
+## Using Liferay Push in Your Plugins
 
-In order to use the Push Notifications API in your own portlet, you need add the push-notifications-portlet as a dependency to your portlet, inside `docroot/WEB-INF/liferay-plugin-package.properties`:
+Once you've successfully configured the Liferay Push Notifications Portlet to send push notifications, you can use the Push Notifications API in your own plugin. You first need add the `push-notifications-portlet` as a dependency to your plugin inside `docroot/WEB-INF/liferay-plugin-package.properties`. This is shown here:
 
-```
-required-deployment-contexts=\
-	push-notifications-portlet
-```
+    required-deployment-contexts=\
+        push-notifications-portlet
 
-In order to send a notification, you can call:
+Now you're ready to send the notification! You can do so with the following code:
 
 ```java
 PushNotificationsDeviceLocalServiceUtil.sendPushNotification(toUserId, notificationJSONObject);
 ```
 
-The portlet will look for all devices registered for `toUserId` and send the `notificationJSONObject` to each device. In case you want to send the same notification to all users, there's another version of this method that has no `toUserId`.
-
-
+When this code runs, the portlet first finds all devices registered to the user indicated by `toUserId`. The `notificationJSONObject` is then sent to each device. If you want to send the same notification to all users, use the version of this method that has no `toUserId`.
