@@ -121,10 +121,11 @@ tests.
 1. Create a `Session` with the user credentials:
 
 	```java
+	import com.liferay.mobile.android.auth.basic.BasicAuthentication;
 	import com.liferay.mobile.android.service.Session;
 	import com.liferay.mobile.android.service.SessionImpl;
 	
-	Session session = new SessionImpl("http://10.0.2.2:8080", "test@liferay.com", "test");
+	Session session = new SessionImpl("http://10.0.2.2:8080", new BasicAuthentication("test@liferay.com", "test"));
 	```
 
 	The first parameter is the URL of the Liferay instance you are connecting
@@ -133,15 +134,46 @@ tests.
 	to `http://localhost:8080`, which means the emulator and Liferay are running
 	in the same machine.
 
-	The second parameter can be the user's email address, screen name, or
-	user ID. It depends on which authentication method your Liferay instance is
-	using. The default authentication method requires the user's email address.
+	The second parameter is the user credentials for authentication. You need to
+	provide the user's email address, screen name or user ID. It depends on which
+	authentication method your Liferay instance is using. Along with that, you
+	need to provide the user's password.
 
-	The third parameter is the user's password.
+	As the name indicates, `BasicAuthentication` uses Basic Authentication to 
+	authenticate each service call. The Mobile SDK also supports OAuth
+	authentication as long as the OAuth Provider portlet is deployed to your Liferay
+	Portal. To learn how to do OAuth authentication with the Mobile SDK, check the
+	[OAuth sample app](https://github.com/brunofarache/liferay-android-sdk-oauth).
 
 	> Be careful to use these credentials on a production Liferay instance. If
 	you're using the administrator credentials, you have permission to call any
-	service and can change any data by accident. 
+	service and can change any data by accident.
+
+	If you are building a login view for your app, you can use the SignIn utility
+	class to check if the credentials given by the user are valid or not.
+
+	```java
+	import com.liferay.mobile.android.auth.SignIn;
+
+	SignIn.signIn(session, new JSONObjectAsyncTaskCallback() {
+
+		@Override
+		public void onSuccess(JSONObject userJSONObject) {
+			System.out.println("Successful sign-in, user details: " + userJSONObject)
+		}
+
+		@Override
+		public void onFailure(Exception e) {
+			e.printStackTrace();
+		}
+
+	});
+	```
+
+	The Mobile SDK doesn't keep any persistent connection or session with the
+	server. Each request is sent with the user credentials (except for OAuth).
+	The SignIn class is just a way to return the user information after a successful
+	sign-in.
 
 2. Check which Liferay services you need in order to build your app by
 navigating to
@@ -431,6 +463,9 @@ That is, you need to create an `InputStream` and pass it to the
 
 The SDK will send a multipart form request to the portal. On the server side, a
 `File` instance will be created and sent to the service method you are calling.
+
+Every service that makes upload return a `AsyncTask` instance, you can use that
+to cancel the upload if needed.
 
 In case you want to listen for upload progress to create a progress bar, you can
 create a `UploadProgressAsyncTaskCallback` callback and set to the current
