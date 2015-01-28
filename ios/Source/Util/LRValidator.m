@@ -19,6 +19,15 @@
  */
 @implementation LRValidator
 
++ (BOOL)isEmailAddress:(NSString *)emailAddress {
+	NSString *regex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+
+	NSPredicate *predicate = [NSPredicate
+		predicateWithFormat:@"SELF MATCHES %@", regex];
+	
+	return [predicate evaluateWithObject:emailAddress];
+}
+
 + (BOOL)isEmpty:(NSString *)string {
 	return [self isEmpty:string trim:YES];
 }

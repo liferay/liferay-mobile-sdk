@@ -12,15 +12,24 @@
  * details.
  */
 
+#import "LRCallback.h"
+#import "LRSession.h"
+
+typedef NS_ENUM(NSInteger, LRSignInMethod) {
+	LRSignInMethodScreenName,
+	LRSignInMethodUserID,
+	LRSignInMethodEmail
+};
+
 /**
  * @author Bruno Farache
  */
-@interface LRValidator : NSObject
+@interface LRSignIn : NSObject
 
-+ (BOOL)isEmailAddress:(NSString *)emailAddress;
-+ (BOOL)isEmpty:(NSString *)string;
-+ (BOOL)isEmpty:(NSString *)string trim:(BOOL)trim;
-+ (BOOL)isNotEmpty:(NSString *)string;
-+ (BOOL)isNull:(NSData *)data;
++ (void)signInWithSession:(LRSession *)session callback:(id<LRCallback>)callback
+	error:(NSError **)error;
+
++ (void)signInWithSession:(LRSession *)session callback:(id<LRCallback>)callback
+	method:(LRSignInMethod)method error:(NSError **)error;
 
 @end

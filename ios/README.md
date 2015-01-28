@@ -122,6 +122,29 @@ older versions, but these are the versions we use to run our unit tests.
 	you're using the administrator credentials, you have permission to call any
 	service and can change any data by accident. 
 
+	If you are building a login view for your app, you can use the SignIn utility
+	class to check if the credentials given by the user are valid or not.
+
+	```objective-c
+	#import "LRSignIn.h"
+
+	[session
+		onSuccess:^(id result) {
+			user = result;
+			[monitor signal];
+		}
+	 	onFailure:^(NSError *e) {
+			error = e;
+			[monitor signal];
+		}
+	];
+
+	[LRSignIn signInWithSession:session callback:session.callback error:&error];
+	```
+
+	The Mobile SDK doesn't keep any persistent connection or session with the
+	server. Each request is sent with the user credentials. The SignIn class
+	is just a way to return the user information after a successful sign-in.
 
 2. Check which Liferay services you need in order to build your app by
 navigating to

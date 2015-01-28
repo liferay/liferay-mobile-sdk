@@ -133,6 +133,8 @@
 		CC4B7A2F1938C47F003611C4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4B7A2E1938C47F003611C4 /* logo.png */; };
 		CC5196AC1A791C9A0005C238 /* LRPushNotificationsDeviceService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5196AB1A791C9A0005C238 /* LRPushNotificationsDeviceService_v62.m */; };
 		CC5196AF1A79218F0005C238 /* LRSyncDLObjectService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5196AE1A79218F0005C238 /* LRSyncDLObjectService_v62.m */; };
+		CC5196B21A7922590005C238 /* LRSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5196B11A7922590005C238 /* LRSignIn.m */; };
+		CC5196B41A7944AB0005C238 /* SignInTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5196B31A7944AB0005C238 /* SignInTest.m */; };
 		CC677D2718EC511900F3DFAB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595218EC4BE800957D20 /* XCTest.framework */; };
 		CC677D2818EC511900F3DFAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
 		CC677D2918EC511900F3DFAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595518EC4BE800957D20 /* UIKit.framework */; };
@@ -415,6 +417,9 @@
 		CC5196AB1A791C9A0005C238 /* LRPushNotificationsDeviceService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPushNotificationsDeviceService_v62.m; sourceTree = "<group>"; };
 		CC5196AD1A79218F0005C238 /* LRSyncDLObjectService_v62.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSyncDLObjectService_v62.h; sourceTree = "<group>"; };
 		CC5196AE1A79218F0005C238 /* LRSyncDLObjectService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSyncDLObjectService_v62.m; sourceTree = "<group>"; };
+		CC5196B01A7922590005C238 /* LRSignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSignIn.h; sourceTree = "<group>"; };
+		CC5196B11A7922590005C238 /* LRSignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSignIn.m; sourceTree = "<group>"; };
+		CC5196B31A7944AB0005C238 /* SignInTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInTest.m; sourceTree = "<group>"; };
 		CC677D2618EC511900F3DFAB /* Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC6ECF261986D83C007F4EBB /* LRLocalizationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRLocalizationUtil.h; sourceTree = "<group>"; };
 		CC6ECF271986D83C007F4EBB /* LRLocalizationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRLocalizationUtil.m; sourceTree = "<group>"; };
@@ -507,6 +512,8 @@
 				CC03FB7918ED7DCC00F3F16C /* LRServiceFactory.m */,
 				CC03FB7A18ED7DCC00F3F16C /* LRSession.h */,
 				CC03FB7B18ED7DCC00F3F16C /* LRSession.m */,
+				CC5196B01A7922590005C238 /* LRSignIn.h */,
+				CC5196B11A7922590005C238 /* LRSignIn.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1542,6 +1549,7 @@
 				CC2E77DB1A3769A9001890A9 /* ServiceContextTest.h */,
 				CC2E77DC1A3769A9001890A9 /* ServiceContextTest.m */,
 				CC2E77DD1A3769A9001890A9 /* ServiceFactoryTest.m */,
+				CC5196B31A7944AB0005C238 /* SignInTest.m */,
 				CC2E77DE1A3769A9001890A9 /* SpecialCharsTest.m */,
 				CC2E77DF1A3769A9001890A9 /* UnauthenticatedServiceTest.m */,
 			);
@@ -1848,6 +1856,7 @@
 				CC03FCD418ED7DCD00F3F16C /* LRLayoutSetService_v62.m in Sources */,
 				CC2E77E21A3769A9001890A9 /* DLAppServiceTest.m in Sources */,
 				CC03FD0518ED7DCD00F3F16C /* LRUserGroupRoleService_v62.m in Sources */,
+				CC5196B21A7922590005C238 /* LRSignIn.m in Sources */,
 				CC03FCF518ED7DCD00F3F16C /* LRSCProductVersionService_v62.m in Sources */,
 				CC03FCDB18ED7DCD00F3F16C /* LRMBThreadService_v62.m in Sources */,
 				CC03FCD818ED7DCD00F3F16C /* LRMBBanService_v62.m in Sources */,
@@ -1897,6 +1906,7 @@
 				CC03FD0118ED7DCD00F3F16C /* LRTrashEntryService_v62.m in Sources */,
 				CC03FCC118ED7DCD00F3F16C /* LRDLFileEntryTypeService_v62.m in Sources */,
 				CC03FCA518ED7DCD00F3F16C /* LRBatchSession.m in Sources */,
+				CC5196B41A7944AB0005C238 /* SignInTest.m in Sources */,
 				CC03FCBC18ED7DCD00F3F16C /* LRDDLRecordSetService_v62.m in Sources */,
 				CC03FCCA18ED7DCD00F3F16C /* LRImageService_v62.m in Sources */,
 				CC2E77E81A3769A9001890A9 /* PortletServiceTest.m in Sources */,
