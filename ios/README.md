@@ -13,7 +13,6 @@
 	* [Basics](#basics)
 		* [Unauthenticated session](#unauthenticated-session)
 		* [Storing credentials](#storing-credentials)
-		* [Service factory](#service-factory)
 	* [Asynchronous](#asynchronous)
 		* [Blocks](#blocks)
 	* [Batch](#batch)
@@ -231,23 +230,6 @@ LRSession *session = [LRCredentialStorage getSession];
 
 Check [CredentialStorageTest.m](Test/Portal/CredentialStorageTest.m) for more
 examples.
-
-##### Service factory
-
-There's an easier way to instantiate services with a factory, pass the service
-class name:
-
-```objective-c
-LRGroupService_v62 *service = (LRGroupService_v62 *)[LRServiceFactory getService:[LRGroupService_v62 class] session:self.session];
-```
-
-Or if you are using `LRCredentialStorage` to store credentials:
-
-```objective-c
-LRGroupService_v62 *service = (LRGroupService_v62 *)[LRServiceFactory getService:[LRGroupService_v62 class]];
-```
-
-The factory will keep a cache of instances and reuse them when necessary.
 
 #### Asynchronous
 	
