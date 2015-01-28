@@ -131,6 +131,8 @@
 		CC4B7A261937B971003611C4 /* LRUploadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B7A241937B971003611C4 /* LRUploadData.m */; };
 		CC4B7A291937C64E003611C4 /* LRUploadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B7A271937C64E003611C4 /* LRUploadUtil.m */; };
 		CC4B7A2F1938C47F003611C4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4B7A2E1938C47F003611C4 /* logo.png */; };
+		CC5196AC1A791C9A0005C238 /* LRPushNotificationsDeviceService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5196AB1A791C9A0005C238 /* LRPushNotificationsDeviceService_v62.m */; };
+		CC5196AF1A79218F0005C238 /* LRSyncDLObjectService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5196AE1A79218F0005C238 /* LRSyncDLObjectService_v62.m */; };
 		CC677D2718EC511900F3DFAB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595218EC4BE800957D20 /* XCTest.framework */; };
 		CC677D2818EC511900F3DFAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
 		CC677D2918EC511900F3DFAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595518EC4BE800957D20 /* UIKit.framework */; };
@@ -146,9 +148,7 @@
 		CCCF04E019182584005D1B22 /* LRJSONObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */; };
 		CCDCE0591A694BB20045023A /* BatchSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDCE0581A694BB20045023A /* BatchSessionTest.m */; };
 		CCE26C661A717EDB0010176D /* PushTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE26C651A717EDB0010176D /* PushTest.m */; };
-		CCE26C691A717EFB0010176D /* LRPushNotificationsDeviceService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE26C681A717EFB0010176D /* LRPushNotificationsDeviceService_v62.m */; };
 		CCE26C6C1A717F1A0010176D /* Push.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE26C6B1A717F1A0010176D /* Push.m */; };
-		CCE26C6F1A717F350010176D /* LRSyncDLObjectService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE26C6E1A717F350010176D /* LRSyncDLObjectService_v62.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -411,6 +411,10 @@
 		CC4B7A281937C64E003611C4 /* LRUploadUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUploadUtil.h; sourceTree = "<group>"; };
 		CC4B7A2D1938C002003611C4 /* LRProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LRProgressDelegate.h; path = Source/Http/LRProgressDelegate.h; sourceTree = SOURCE_ROOT; };
 		CC4B7A2E1938C47F003611C4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		CC5196AA1A791C9A0005C238 /* LRPushNotificationsDeviceService_v62.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPushNotificationsDeviceService_v62.h; sourceTree = "<group>"; };
+		CC5196AB1A791C9A0005C238 /* LRPushNotificationsDeviceService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPushNotificationsDeviceService_v62.m; sourceTree = "<group>"; };
+		CC5196AD1A79218F0005C238 /* LRSyncDLObjectService_v62.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSyncDLObjectService_v62.h; sourceTree = "<group>"; };
+		CC5196AE1A79218F0005C238 /* LRSyncDLObjectService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSyncDLObjectService_v62.m; sourceTree = "<group>"; };
 		CC677D2618EC511900F3DFAB /* Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC6ECF261986D83C007F4EBB /* LRLocalizationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRLocalizationUtil.h; sourceTree = "<group>"; };
 		CC6ECF271986D83C007F4EBB /* LRLocalizationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRLocalizationUtil.m; sourceTree = "<group>"; };
@@ -435,13 +439,9 @@
 		CCD60E10191820BE00935937 /* LRJSONObjectWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRJSONObjectWrapper.h; sourceTree = "<group>"; };
 		CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRJSONObjectWrapper.m; sourceTree = "<group>"; };
 		CCDCE0581A694BB20045023A /* BatchSessionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchSessionTest.m; sourceTree = "<group>"; };
-		CCE26C651A717EDB0010176D /* PushTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PushTest.m; path = "../../../../modules/push-notifications-portlet/ios/Source/Test/PushTest.m"; sourceTree = "<group>"; };
-		CCE26C671A717EFB0010176D /* LRPushNotificationsDeviceService_v62.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LRPushNotificationsDeviceService_v62.h; path = "../../../../../../modules/push-notifications-portlet/ios/Source/Service/v62/pushnotificationsdevice/LRPushNotificationsDeviceService_v62.h"; sourceTree = "<group>"; };
-		CCE26C681A717EFB0010176D /* LRPushNotificationsDeviceService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LRPushNotificationsDeviceService_v62.m; path = "../../../../../../modules/push-notifications-portlet/ios/Source/Service/v62/pushnotificationsdevice/LRPushNotificationsDeviceService_v62.m"; sourceTree = "<group>"; };
-		CCE26C6A1A717F1A0010176D /* Push.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Push.h; path = "../../../../modules/push-notifications-portlet/ios/Source/Core/Push.h"; sourceTree = "<group>"; };
-		CCE26C6B1A717F1A0010176D /* Push.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Push.m; path = "../../../../modules/push-notifications-portlet/ios/Source/Core/Push.m"; sourceTree = "<group>"; };
-		CCE26C6D1A717F350010176D /* LRSyncDLObjectService_v62.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LRSyncDLObjectService_v62.h; path = "../../../../../../../modules/sync-web/ios/Source/Service/v62/syncdlobject/LRSyncDLObjectService_v62.h"; sourceTree = "<group>"; };
-		CCE26C6E1A717F350010176D /* LRSyncDLObjectService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LRSyncDLObjectService_v62.m; path = "../../../../../../../modules/sync-web/ios/Source/Service/v62/syncdlobject/LRSyncDLObjectService_v62.m"; sourceTree = "<group>"; };
+		CCE26C651A717EDB0010176D /* PushTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushTest.m; sourceTree = "<group>"; };
+		CCE26C6A1A717F1A0010176D /* Push.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Push.h; sourceTree = "<group>"; };
+		CCE26C6B1A717F1A0010176D /* Push.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Push.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1597,7 +1597,7 @@
 				CCE26C541A713F900010176D /* Sync */,
 			);
 			name = Modules;
-			path = ios;
+			path = ../modules;
 			sourceTree = "<group>";
 		};
 		CCE26C4C1A713ED90010176D /* Push */ = {
@@ -1608,7 +1608,7 @@
 				CCE26C621A717DA20010176D /* Test */,
 			);
 			name = Push;
-			path = Source;
+			path = "push-notifications-portlet/ios/Source";
 			sourceTree = "<group>";
 		};
 		CCE26C4D1A713ED90010176D /* Service */ = {
@@ -1630,8 +1630,8 @@
 		CCE26C4F1A713ED90010176D /* pushnotificationsdevice */ = {
 			isa = PBXGroup;
 			children = (
-				CCE26C671A717EFB0010176D /* LRPushNotificationsDeviceService_v62.h */,
-				CCE26C681A717EFB0010176D /* LRPushNotificationsDeviceService_v62.m */,
+				CC5196AA1A791C9A0005C238 /* LRPushNotificationsDeviceService_v62.h */,
+				CC5196AB1A791C9A0005C238 /* LRPushNotificationsDeviceService_v62.m */,
 			);
 			path = pushnotificationsdevice;
 			sourceTree = "<group>";
@@ -1642,7 +1642,7 @@
 				CCE26C561A713F900010176D /* Service */,
 			);
 			name = Sync;
-			path = ios;
+			path = "sync-web/ios/Source";
 			sourceTree = "<group>";
 		};
 		CCE26C561A713F900010176D /* Service */ = {
@@ -1650,8 +1650,7 @@
 			children = (
 				CCE26C571A713F900010176D /* v62 */,
 			);
-			name = Service;
-			path = Source/Service;
+			path = Service;
 			sourceTree = "<group>";
 		};
 		CCE26C571A713F900010176D /* v62 */ = {
@@ -1665,8 +1664,8 @@
 		CCE26C581A713F900010176D /* syncdlobject */ = {
 			isa = PBXGroup;
 			children = (
-				CCE26C6D1A717F350010176D /* LRSyncDLObjectService_v62.h */,
-				CCE26C6E1A717F350010176D /* LRSyncDLObjectService_v62.m */,
+				CC5196AD1A79218F0005C238 /* LRSyncDLObjectService_v62.h */,
+				CC5196AE1A79218F0005C238 /* LRSyncDLObjectService_v62.m */,
 			);
 			path = syncdlobject;
 			sourceTree = "<group>";
@@ -1868,7 +1867,7 @@
 				CC03FCE018ED7DCD00F3F16C /* LRMembershipRequestService_v62.m in Sources */,
 				CC03FCC218ED7DCD00F3F16C /* LRDLFileShortcutService_v62.m in Sources */,
 				CC03FCB318ED7DCD00F3F16C /* LRBackgroundTaskService_v62.m in Sources */,
-				CCE26C6F1A717F350010176D /* LRSyncDLObjectService_v62.m in Sources */,
+				CC5196AF1A79218F0005C238 /* LRSyncDLObjectService_v62.m in Sources */,
 				CC03FCF418ED7DCD00F3F16C /* LRSCProductEntryService_v62.m in Sources */,
 				CC2E77EC1A3769A9001890A9 /* ServiceFactoryTest.m in Sources */,
 				CC40D76D1974B9D0000254E6 /* LRValidator.m in Sources */,
@@ -1909,7 +1908,7 @@
 				CC03FCEB18ED7DCD00F3F16C /* LRPortletPreferencesService_v62.m in Sources */,
 				CC4B7A291937C64E003611C4 /* LRUploadUtil.m in Sources */,
 				CC40D7701974C76D000254E6 /* LRBlockCallback.m in Sources */,
-				CCE26C691A717EFB0010176D /* LRPushNotificationsDeviceService_v62.m in Sources */,
+				CC5196AC1A791C9A0005C238 /* LRPushNotificationsDeviceService_v62.m in Sources */,
 				CC03FCE718ED7DCD00F3F16C /* LRPollsQuestionService_v62.m in Sources */,
 				CC2E77EA1A3769A9001890A9 /* ResponseParserTest.m in Sources */,
 				CC03FCCC18ED7DCD00F3F16C /* LRJournalFeedService_v62.m in Sources */,
