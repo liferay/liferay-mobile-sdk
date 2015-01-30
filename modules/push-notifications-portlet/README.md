@@ -25,7 +25,7 @@ In addition to the Liferay Push Notifications Portlet, Liferay Push also has cli
 
 ## Setup
 
-You first need to download and install the Liferay Push Notifications Portlet from the [Liferay Marketplace](https://www.liferay.com/marketplace). Once installed, you can find the portlet in the *Configuration* section of the Control Panel. Click *Push Notifications* to access it: 
+You first need to download and install the Liferay Push Notifications Portlet from the [Liferay Marketplace](https://www.liferay.com/marketplace/-/mp/application/48439053). Once installed, you can find the portlet in the *Configuration* section of the Control Panel. Click *Push Notifications* to access it: 
 
 ![Click *Push Notifications* under the *Configuration* section of the Control Panel.](./images/controlpanel.png)
 
