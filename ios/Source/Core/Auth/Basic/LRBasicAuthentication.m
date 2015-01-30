@@ -12,32 +12,34 @@
  * details.
  */
 
-#import "BaseTest.h"
-
 #import "LRBasicAuthentication.h"
 
 /**
- * @author Jose M. Navarro
  * @author Bruno Farache
  */
-@implementation BaseTest
+@implementation LRBasicAuthentication
 
-- (void)setUp {
-	NSBundle *bundle = [NSBundle
-		bundleWithIdentifier:@"com.liferay.mobile.sdk.Test"];
+- (id)initWithUsername:(NSString *)username password:(NSString *)password {
+	self = [super init];
 
-	NSString *path = [bundle pathForResource:@"settings" ofType:@"plist"];
+	if (self) {
+		self.username = username;
+		self.password = password;
+	}
 
-	self.settings = [[NSDictionary alloc] initWithContentsOfFile:path];
+	return self;
+}
 
-	NSString *url = self.settings[@"url"];
+- (void)authenticate:(NSMutableURLRequest *)request {
+	NSString *credentials = [NSString stringWithFormat:@"%@:%@",
+		self.username, self.password];
 
-	id<LRAuthentication> authentication = [[LRBasicAuthentication alloc]
-		initWithUsername:self.settings[@"username"]
-		password:self.settings[@"password"]];
+	NSData *auth = [credentials dataUsingEncoding:NSUTF8StringEncoding];
+	NSString *encoded = [auth base64Encoding];
 
-	self.session = [[LRSession alloc] initWithServer:url
-		authentication:authentication];
+	NSString *header = [NSString stringWithFormat:@"Basic %@", encoded];
+
+	[request setValue:header forHTTPHeaderField:@"Authorization"];
 }
 
 @end

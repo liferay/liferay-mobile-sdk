@@ -86,24 +86,15 @@ typedef void (^LRHandler)(
 
 	[request setHTTPBody:body];
 	[request setHTTPMethod:LR_POST];
+	[request setTimeoutInterval:session.connectionTimeout];
 	[request setValue:@"application/json; charset=utf-8"
 		forHTTPHeaderField:@"Content-Type"];
 
-	[self setAuthHeader:session request:request];
-
-	return [self _sendRequest:request session:session error:error];
-}
-
-+ (void)setAuthHeader:(LRSession *)session
-		request:(NSMutableURLRequest *)request {
-
-	NSString *authHeader = [session getAuthHeader];
-
-	if (authHeader) {
-		[request setValue:authHeader forHTTPHeaderField:@"Authorization"];
+	if (session.authentication) {
+		[session.authentication authenticate:request];
 	}
 
-	[request setTimeoutInterval:session.connectionTimeout];
+	return [self _sendRequest:request session:session error:error];
 }
 
 + (void)setJSONWSPath:(NSString *)path {

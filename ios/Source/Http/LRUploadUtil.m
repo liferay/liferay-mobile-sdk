@@ -111,7 +111,11 @@
 		multipartFormRequestWithMethod:LR_POST URLString:URL
 		parameters:parameters constructingBodyWithBlock:block error:nil];
 
-	[LRHttpUtil setAuthHeader:session request:request];
+	[request setTimeoutInterval:session.connectionTimeout];
+
+	if (session.authentication) {
+		[session.authentication authenticate:request];
+	}
 
     AFHTTPRequestOperation *operation = [manager
 		HTTPRequestOperationWithRequest:request success:success

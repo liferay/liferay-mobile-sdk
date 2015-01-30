@@ -12,6 +12,7 @@
  * details.
  */
 
+#import "LRAuthentication.h"
 #import "LRBlockCallback.h"
 
 /**
@@ -19,33 +20,34 @@
  */
 @interface LRSession : NSObject
 
+@property (nonatomic, strong) id<LRAuthentication> authentication;
 @property (nonatomic, strong) id<LRCallback> callback;
 @property (nonatomic) int connectionTimeout;
-@property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *server;
-@property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSOperationQueue *queue;
 
 - (id)initWithServer:(NSString *)server;
 - (id)initWithServer:(NSString *)server callback:(id<LRCallback>)callback;
 
-- (id)initWithServer:(NSString *)server username:(NSString *)username
-	password:(NSString *)password;
+- (id)initWithServer:(NSString *)server
+	authentication:(id<LRAuthentication>)authentication;
 
-- (id)initWithServer:(NSString *)server username:(NSString *)username
-	password:(NSString *)password callback:(id<LRCallback>)callback;
-
-- (id)initWithServer:(NSString *)server username:(NSString *)username
-	password:(NSString *)password connectionTimeout:(int)connectionTimeout
+- (id)initWithServer:(NSString *)server
+	authentication:(id<LRAuthentication>)authentication
 	callback:(id<LRCallback>)callback;
 
-- (id)initWithServer:(NSString *)server username:(NSString *)username
-	password:(NSString *)password connectionTimeout:(int)connectionTimeout
+- (id)initWithServer:(NSString *)server
+	authentication:(id<LRAuthentication>)authentication
+	connectionTimeout:(int)connectionTimeout
+	callback:(id<LRCallback>)callback;
+
+- (id)initWithServer:(NSString *)server
+	authentication:(id<LRAuthentication>)authentication
+	connectionTimeout:(int)connectionTimeout
 	callback:(id<LRCallback>)callback queue:(NSOperationQueue *)queue;
 
 - (id)initWithSession:(LRSession *)session;
 
-- (NSString *)getAuthHeader;
 - (id)invoke:(NSDictionary *)command error:(NSError **)error;
 - (void)onSuccess:(LRSuccessBlock)success onFailure:(LRFailureBlock)failure;
 - (id)upload:(NSDictionary *)command error:(NSError **)error;

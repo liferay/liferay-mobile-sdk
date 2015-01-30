@@ -40,42 +40,43 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 }
 
 - (id)initWithServer:(NSString *)server callback:(id<LRCallback>)callback {
-	return [self initWithServer:server username:nil password:nil
-		callback:callback];
+	return [self initWithServer:server authentication:nil callback:callback];
 }
 
-- (id)initWithServer:(NSString *)server username:(NSString *)username
-  		password:(NSString *)password {
+- (id)initWithServer:(NSString *)server
+		authentication:(id<LRAuthentication>)authentication {
 
-	return [self initWithServer:server username:username password:password
+	return [self initWithServer:server authentication:authentication
 		callback:nil];
 }
 
-- (id)initWithServer:(NSString *)server username:(NSString *)username
-		password:(NSString *)password callback:(id<LRCallback>)callback {
+- (id)initWithServer:(NSString *)server
+		authentication:(id<LRAuthentication>)authentication
+		callback:(id<LRCallback>)callback {
 
-	return [self initWithServer:server username:username password:password
+	return [self initWithServer:server authentication:authentication
 		connectionTimeout:_DEFAULT_CONNECTION_TIMEOUT callback:callback];
 }
 
-- (id)initWithServer:(NSString *)server username:(NSString *)username
-		password:(NSString *)password connectionTimeout:(int)connectionTimeout
+- (id)initWithServer:(NSString *)server
+		authentication:(id<LRAuthentication>)authentication
+		connectionTimeout:(int)connectionTimeout
 		callback:(id<LRCallback>)callback {
 
-	return [self initWithServer:server username:username password:password
+	return [self initWithServer:server authentication:authentication
 		connectionTimeout:connectionTimeout callback:callback queue:nil];
 }
 
-- (id)initWithServer:(NSString *)server username:(NSString *)username
-		password:(NSString *)password connectionTimeout:(int)connectionTimeout
+- (id)initWithServer:(NSString *)server
+		authentication:(id<LRAuthentication>)authentication
+		connectionTimeout:(int)connectionTimeout
 		callback:(id<LRCallback>)callback queue:(NSOperationQueue *)queue {
 
 	self = [super init];
 
 	if (self) {
 		self.server = server;
-		self.username = username;
-		self.password = password;
+		self.authentication = authentication;
 		self.connectionTimeout = connectionTimeout;
 		self.callback = callback;
 		self.queue = queue;
@@ -85,25 +86,10 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 }
 
 - (id)initWithSession:(LRSession *)session {
-	return [self initWithServer:session.server username:session.username
-		password:session.password connectionTimeout:session.connectionTimeout
+	return [self initWithServer:session.server
+		authentication:session.authentication
+		connectionTimeout:session.connectionTimeout
 		callback:session.callback];
-}
-
-- (NSString *)getAuthHeader {
-	if ([LRValidator isEmpty:self.username] ||
-		[LRValidator isEmpty:self.password]) {
-
-		return nil;
-	}
-
-	NSString *credentials = [NSString stringWithFormat:@"%@:%@",
-		self.username, self.password];
-
-	NSData *auth = [credentials dataUsingEncoding:NSUTF8StringEncoding];
-	NSString *encoded = [auth base64Encoding];
-
-	return [NSString stringWithFormat:@"Basic %@", encoded];
 }
 
 - (id)invoke:(NSDictionary *)command error:(NSError **)error {

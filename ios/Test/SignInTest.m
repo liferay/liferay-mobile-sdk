@@ -14,6 +14,7 @@
 
 #import "BaseTest.h"
 
+#import "LRBasicAuthentication.h"
 #import "LRSignIn.h"
 #import "TRVSMonitor.h"
 
@@ -31,7 +32,10 @@
 	__block NSError *error;
 
 	LRSession *session = [[LRSession alloc] initWithSession:self.session];
-	[session setPassword:@"wrong-password"];
+	LRBasicAuthentication *authentication =
+		(LRBasicAuthentication *)session.authentication;
+
+	[authentication setPassword:@"wrong-password"];
 
 	[session
 		onSuccess:^(id result) {
@@ -78,7 +82,10 @@
 	XCTAssertNil(error);
 	XCTAssertNotNil(user);
 
-	XCTAssertEqualObjects(user[@"emailAddress"], session.username);
+	LRBasicAuthentication *authentication =
+		(LRBasicAuthentication *)session.authentication;
+
+	XCTAssertEqualObjects(user[@"emailAddress"], authentication.username);
 }
 
 @end

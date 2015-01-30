@@ -13,6 +13,8 @@
  */
 
 #import "BaseTest.h"
+
+#import "LRBasicAuthentication.h"
 #import "LRCredentialStorage.h"
 
 /**
@@ -33,8 +35,11 @@
 	XCTAssertNotNil(credential);
 	XCTAssertNotNil(server);
 
-	XCTAssertEqualObjects(self.session.username, credential.user);
-	XCTAssertEqualObjects(self.session.password, credential.password);
+	LRBasicAuthentication *authentication =
+		(LRBasicAuthentication *)self.session.authentication;
+
+	XCTAssertEqualObjects(authentication.username, credential.user);
+	XCTAssertEqualObjects(authentication.password, credential.password);
 	XCTAssertEqualObjects(self.session.server, server);
 }
 
@@ -45,8 +50,18 @@
 
 	XCTAssertNotNil(session);
 
-	XCTAssertEqualObjects(self.session.username, session.username);
-	XCTAssertEqualObjects(self.session.password, session.password);
+	LRBasicAuthentication *authentication =
+		(LRBasicAuthentication *)self.session.authentication;
+
+	LRBasicAuthentication *sessionAuthentication =
+		(LRBasicAuthentication *)session.authentication;
+
+	XCTAssertEqualObjects(
+		authentication.username, sessionAuthentication.username);
+
+	XCTAssertEqualObjects(
+		authentication.password, sessionAuthentication.password);
+
 	XCTAssertEqualObjects(self.session.server, session.server);
 }
 
@@ -63,14 +78,17 @@
 }
 
 - (void)testStoreCredential {
+	LRBasicAuthentication *authentication =
+		(LRBasicAuthentication *)self.session.authentication;
+
 	NSURLCredential *credential = [LRCredentialStorage
 		storeCredentialForServer:self.session.server
-		username:self.session.username password:self.session.password];
+		username:authentication.username password:authentication.password];
 
 	NSString *server = [LRCredentialStorage getServer];
 
-	XCTAssertEqualObjects(self.session.username, credential.user);
-	XCTAssertEqualObjects(self.session.password, credential.password);
+	XCTAssertEqualObjects(authentication.username, credential.user);
+	XCTAssertEqualObjects(authentication.password, credential.password);
 	XCTAssertEqualObjects(self.session.server, server);
 }
 

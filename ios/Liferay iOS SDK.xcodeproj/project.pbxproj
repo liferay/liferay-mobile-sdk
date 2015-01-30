@@ -113,6 +113,7 @@
 		CC1C897919080708004D3C4C /* TRVSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1C897819080708004D3C4C /* TRVSMonitor.m */; };
 		CC20D9E81A7BB3E300DE7729 /* LRCredentialStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CC20D9E51A7BB3E300DE7729 /* LRCredentialStorage.m */; };
 		CC20D9E91A7BB3E300DE7729 /* LRSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = CC20D9E71A7BB3E300DE7729 /* LRSignIn.m */; };
+		CC20D9EE1A7BB84B00DE7729 /* LRBasicAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = CC20D9ED1A7BB84B00DE7729 /* LRBasicAuthentication.m */; };
 		CC2E77E01A3769A9001890A9 /* BlockCallbackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77CF1A3769A9001890A9 /* BlockCallbackTest.m */; };
 		CC2E77E11A3769A9001890A9 /* CredentialStorageTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77D01A3769A9001890A9 /* CredentialStorageTest.m */; };
 		CC2E77E21A3769A9001890A9 /* DLAppServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77D11A3769A9001890A9 /* DLAppServiceTest.m */; };
@@ -390,6 +391,9 @@
 		CC20D9E51A7BB3E300DE7729 /* LRCredentialStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRCredentialStorage.m; sourceTree = "<group>"; };
 		CC20D9E61A7BB3E300DE7729 /* LRSignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSignIn.h; sourceTree = "<group>"; };
 		CC20D9E71A7BB3E300DE7729 /* LRSignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSignIn.m; sourceTree = "<group>"; };
+		CC20D9EA1A7BB68A00DE7729 /* LRAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRAuthentication.h; sourceTree = "<group>"; };
+		CC20D9EC1A7BB84B00DE7729 /* LRBasicAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRBasicAuthentication.h; sourceTree = "<group>"; };
+		CC20D9ED1A7BB84B00DE7729 /* LRBasicAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRBasicAuthentication.m; sourceTree = "<group>"; };
 		CC2E77CF1A3769A9001890A9 /* BlockCallbackTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockCallbackTest.m; sourceTree = "<group>"; };
 		CC2E77D01A3769A9001890A9 /* CredentialStorageTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialStorageTest.m; sourceTree = "<group>"; };
 		CC2E77D11A3769A9001890A9 /* DLAppServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAppServiceTest.m; sourceTree = "<group>"; };
@@ -1536,12 +1540,23 @@
 		CC20D9E31A7BB3E300DE7729 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				CC20D9EB1A7BB77100DE7729 /* Basic */,
+				CC20D9EA1A7BB68A00DE7729 /* LRAuthentication.h */,
 				CC20D9E41A7BB3E300DE7729 /* LRCredentialStorage.h */,
 				CC20D9E51A7BB3E300DE7729 /* LRCredentialStorage.m */,
 				CC20D9E61A7BB3E300DE7729 /* LRSignIn.h */,
 				CC20D9E71A7BB3E300DE7729 /* LRSignIn.m */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		CC20D9EB1A7BB77100DE7729 /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				CC20D9EC1A7BB84B00DE7729 /* LRBasicAuthentication.h */,
+				CC20D9ED1A7BB84B00DE7729 /* LRBasicAuthentication.m */,
+			);
+			path = Basic;
 			sourceTree = "<group>";
 		};
 		CC677D2A18EC511900F3DFAB /* Test */ = {
@@ -1892,6 +1907,7 @@
 				CC03FCF018ED7DCD00F3F16C /* LRResourcePermissionService_v62.m in Sources */,
 				CC03FCA418ED7DCD00F3F16C /* LRBaseService.m in Sources */,
 				CC03FCC818ED7DCD00F3F16C /* LRFlagsEntryService_v62.m in Sources */,
+				CC20D9EE1A7BB84B00DE7729 /* LRBasicAuthentication.m in Sources */,
 				CC03FCE018ED7DCD00F3F16C /* LRMembershipRequestService_v62.m in Sources */,
 				CC03FCC218ED7DCD00F3F16C /* LRDLFileShortcutService_v62.m in Sources */,
 				CC03FCB318ED7DCD00F3F16C /* LRBackgroundTaskService_v62.m in Sources */,

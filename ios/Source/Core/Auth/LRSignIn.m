@@ -14,6 +14,7 @@
 
 #import "LRSignIn.h"
 
+#import "LRBasicAuthentication.h"
 #import "LRError.h"
 #import "LRGroupService_v62.h"
 #import "LRUserService_v62.h"
@@ -29,10 +30,12 @@
 
 	LRSignInMethod method = LRSignInMethodScreenName;
 
-	if ([LRValidator isEmailAddress:session.username]) {
+	NSString *username = [self _getUsername:session];
+
+	if ([LRValidator isEmailAddress:username]) {
 		method = LRSignInMethodEmail;
 	}
-	else if ([session.username intValue] != 0) {
+	else if ([username intValue] != 0) {
 		method = LRSignInMethodUserID;
 	}
 
@@ -66,18 +69,20 @@
 			LRUserService_v62 *userService = [[LRUserService_v62 alloc]
 				initWithSession:userSession];
 
+			NSString *username = [self _getUsername:session];
+
 			if (method == LRSignInMethodEmail) {
 				[userService getUserByEmailAddressWithCompanyId:companyId
-				   emailAddress:session.username error:error];
+				   emailAddress:username error:error];
 			}
 			else if (method == LRSignInMethodUserID) {
-				long long userId = [session.username longLongValue];
+				long long userId = [username longLongValue];
 
 				[userService getUserByIdWithUserId:userId error:error];
 			}
 			else if (method == LRSignInMethodScreenName) {
 				[userService getUserByScreenNameWithCompanyId:companyId
-					screenName:session.username error:error];
+					screenName:username error:error];
 			}
 		}
 		onFailure:^(NSError *e) {
@@ -86,6 +91,21 @@
 	 ];
 
 	[service getUserSites:error];
+}
+
++ (NSString *)_getUsername:(LRSession *)session {
+	id<LRAuthentication> authentication = session.authentication;
+
+	if (!authentication) {
+		[NSException raise:@"" format:@"Session authentication can't be null"];
+	}
+
+	if (![authentication isKindOfClass:[LRBasicAuthentication class]]) {
+		[NSException raise:@"" format:@"Can't sign in if authentication " \
+			"implementation is not BasicAuthentication"];
+	}
+
+	return ((LRBasicAuthentication *)authentication).username;
 }
 
 @end

@@ -13,6 +13,8 @@
  */
 
 #import "LRCredentialStorage.h"
+
+#import "LRBasicAuthentication.h"
 #import "LRValidator.h"
 
 static NSString *const KEY_SERVER = @"server";
@@ -53,11 +55,11 @@ static NSString *const KEY_SERVER = @"server";
 		return nil;
 	}
 
-	NSString *username = credential.user;
-	NSString *password = credential.password;
+	id<LRAuthentication> authentication = [[LRBasicAuthentication alloc]
+		initWithUsername:credential.user password:credential.password];
 
-	return [[LRSession alloc] initWithServer:server username:username
-		password:password];
+	return [[LRSession alloc] initWithServer:server
+		authentication:authentication];
 }
 
 + (void)removeCredential {

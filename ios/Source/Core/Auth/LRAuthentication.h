@@ -12,28 +12,11 @@
  * details.
  */
 
-#import "LRSession.h"
-
-extern NSString *const LR_GET;
-extern NSString *const LR_HEAD;
-extern NSString *const LR_JSONWS_PATH_V61;
-extern NSString *const LR_JSONWS_PATH_V62;
-extern NSString *const LR_POST;
-
 /**
  * @author Bruno Farache
  */
-@interface LRHttpUtil : NSObject
+@protocol LRAuthentication <NSObject>
 
-+ (NSString *)encodeURL:(NSString *)URL;
-+ (NSURL *)getURL:(LRSession *)session path:(NSString *)path;
-
-+ (NSArray *)post:(LRSession *)session command:(NSDictionary *)command
-	error:(NSError **)error;
-
-+ (NSArray *)post:(LRSession *)session commands:(NSArray *)commands
-	error:(NSError **)error;
-
-+ (void)setJSONWSPath:(NSString *)path;
+- (void)authenticate:(NSMutableURLRequest *)request;
 
 @end
