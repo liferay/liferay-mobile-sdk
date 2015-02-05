@@ -103,19 +103,25 @@ older versions, but these are the versions we use to run our unit tests.
 1.  Create a `Session` with the user credentials:
 
 	```objective-c
+	#import "LRBasicAuthentication.h"
 	#import "LRSession.h"
 	
-	LRSession *session = [[LRSession alloc] initWithServer:@"http://localhost:8080" username:@"test@liferay.com" password:@"test"];
+	LRSession *session = [[LRSession alloc] initWithServer:@"http://localhost:8080" authentication:[[LRBasicAuthentication alloc] initWithUsername:@"test@liferay.com" password:@"test"]];
 	```
 
 	The first parameter is the URL of the Liferay instance you are connecting
 	to. In this case, the emulator and Liferay are running in the same machine.
 
-	The second parameter can be the user's email address, screen name, or
-	user ID. It depends on which authentication method your Liferay instance is
-	using. The default authentication method requires the user's email address.
+	The second parameter is the user credentials for authentication. You need to
+	provide the user's email address, screen name or user ID. It depends on which
+	authentication method your Liferay instance is using. Along with that, you
+	need to provide the user's password.
 
-	The third parameter is the user's password.
+	As the name indicates, `LRBasicAuthentication` uses Basic Authentication to 
+	authenticate each service call. The Mobile SDK also supports OAuth
+	authentication as long as the OAuth Provider portlet is deployed to your Liferay
+	Portal. To learn how to do OAuth authentication with the Mobile SDK, check the
+	[OAuth sample app](https://github.com/brunofarache/liferay-ios-sdk-oauth).
 
 	> Be careful to use these credentials on a production Liferay instance. If
 	you're using the administrator credentials, you have permission to call any
