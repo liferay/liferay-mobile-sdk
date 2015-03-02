@@ -39,20 +39,24 @@ public class DLAppServiceTest extends BaseTest {
 		super();
 	}
 
-	@Test
-	public void addFileEntryBytes() throws Exception {
+	public JSONObject addFileEntry() throws Exception {
 		DLAppService service = new DLAppService(session);
 		long repositoryId = props.getGroupId();
 
 		byte[] bytes = "Hello".getBytes(HTTP.UTF_8);
 
-		JSONObject jsonObj = service.addFileEntry(
+		return service.addFileEntry(
 			repositoryId, _PARENT_FOLDER_ID, _SOURCE_FILE_NAME, _MIME_TYPE,
 			_SOURCE_FILE_NAME, "", "", bytes, null);
+	}
+
+	@Test
+	public void addFileEntryBytes() throws Exception {
+		JSONObject jsonObj = addFileEntry();
 
 		assertEquals(_SOURCE_FILE_NAME, jsonObj.get(_TITLE));
 
-		service.deleteFileEntry(jsonObj.getLong(_FILE_ENTRY_ID));
+		deleteFileEntry(jsonObj.getLong(_FILE_ENTRY_ID));
 	}
 
 	@Test
@@ -92,6 +96,11 @@ public class DLAppServiceTest extends BaseTest {
 		assertEquals(_FOLDER_NAME_2, jsonArray.getJSONObject(1).get(_NAME));
 
 		deleteFoldersBatch(batch);
+	}
+
+	public void deleteFileEntry(long fileEntryId) throws Exception {
+		DLAppService service = new DLAppService(session);
+		service.deleteFileEntry(fileEntryId);
 	}
 
 	public void deleteFolder() throws Exception {

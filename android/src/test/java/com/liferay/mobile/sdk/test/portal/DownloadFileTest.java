@@ -20,6 +20,10 @@ import com.liferay.mobile.sdk.test.BaseTest;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import org.json.JSONObject;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -35,15 +39,13 @@ public class DownloadFileTest extends BaseTest {
 
 	@Test
 	public void download() throws Exception {
-		String URL =
-			"http://localhost:8080/webdav/guest/document_library" +
-				"/folder%20with%20spaces" +
-				"/file%20%C3%A1%C3%A9%C3%AD%C3%B2%C3%BA%C3%B1.txt";
+		String URL = session.getServer() + "/webdav/guest/document_library/" +
+			_file.getString("title");
 
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
 		DownloadUtil.download(session, URL, baos, null);
-		assertEquals(1160096, baos.size());
+		assertEquals(5, baos.size());
 	}
 
 	@Test
@@ -56,5 +58,19 @@ public class DownloadFileTest extends BaseTest {
 				"/folder%20with%20spaces" +
 				"/file%20%C3%A1%C3%A9%C3%AD%C3%B2%C3%BA%C3%B1.txt", URL);
 	}
+
+	@Before
+	public void setUp() throws Exception {
+		DLAppServiceTest service = new DLAppServiceTest();
+		_file = service.addFileEntry();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		DLAppServiceTest service = new DLAppServiceTest();
+		service.deleteFileEntry(_file.getLong("fileEntryId"));
+	}
+
+	private JSONObject _file;
 
 }
