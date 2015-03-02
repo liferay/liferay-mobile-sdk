@@ -68,7 +68,35 @@ public class HttpUtil {
 
 	public static final String LAST_MODIFIED = "Last-Modified";
 
+	public static void checkStatusCode(
+			HttpRequest request, HttpResponse response)
+		throws ServerException {
+
+		int status = response.getStatusLine().getStatusCode();
+
+		if ((status == HttpStatus.SC_MOVED_PERMANENTLY) ||
+			(status == HttpStatus.SC_MOVED_TEMPORARILY) ||
+			(status == HttpStatus.SC_SEE_OTHER) ||
+			(status == HttpStatus.SC_TEMPORARY_REDIRECT)) {
+
+			throw new RedirectException(getRedirectUrl(request, response));
+		}
+
+		if (status == HttpStatus.SC_UNAUTHORIZED) {
+			throw new ServerException("Authentication failed.");
+		}
+
+		if (status != HttpStatus.SC_OK) {
+			throw new ServerException(
+				"Request failed. Response code: " + status);
+		}
+	}
+
 	public static HttpClient getClient(Session session) {
+		return getClientBuilder(session).build();
+	}
+
+	public static HttpClientBuilder getClientBuilder(Session session) {
 		HttpClientBuilder clientBuilder = HttpClientBuilder.create();
 
 		RequestConfig.Builder requestBuilder = RequestConfig.custom();
@@ -86,21 +114,17 @@ public class HttpUtil {
 
 		});
 
-		return clientBuilder.build();
+		return clientBuilder;
 	}
 
-	public static HttpPost getPost(Session session, String URL)
+	public static HttpPost getHttpPost(Session session, String URL)
 		throws Exception {
 
-		HttpPost post = new HttpPost(URL);
+		HttpPost httpPost = new HttpPost(URL);
 
-		Authentication authentication = session.getAuthentication();
+		authenticate(session, httpPost);
 
-		if (authentication != null) {
-			authentication.authenticate(post);
-		}
-
-		return post;
+		return httpPost;
 	}
 
 	public static String getResponseString(HttpResponse response)
@@ -136,14 +160,14 @@ public class HttpUtil {
 		throws Exception {
 
 		HttpClient client = getClient(session);
-		HttpPost post = getPost(session, getURL(session, "/invoke"));
+		HttpPost request = getHttpPost(session, getURL(session, "/invoke"));
 
-		post.setEntity(new StringEntity(commands.toString(), "UTF-8"));
+		request.setEntity(new StringEntity(commands.toString(), "UTF-8"));
 
-		HttpResponse response = client.execute(post);
+		HttpResponse response = client.execute(request);
 		String json = HttpUtil.getResponseString(response);
 
-		handleServerException(post, response, json);
+		handleServerException(request, response, json);
 
 		return new JSONArray(json);
 	}
@@ -170,7 +194,7 @@ public class HttpUtil {
 		JSONObject parameters = command.getJSONObject(path);
 
 		HttpClient client = getClient(session);
-		HttpPost post = getPost(session, getURL(session, path));
+		HttpPost request = getHttpPost(session, getURL(session, path));
 
 		HttpEntity entity = getMultipartEntity(parameters);
 
@@ -178,14 +202,24 @@ public class HttpUtil {
 			entity = new CountingHttpEntity(entity, task);
 		}
 
-		post.setEntity(entity);
+		request.setEntity(entity);
 
-		HttpResponse response = client.execute(post);
+		HttpResponse response = client.execute(request);
 		String json = HttpUtil.getResponseString(response);
 
-		handleServerException(post, response, json);
+		handleServerException(request, response, json);
 
 		return new JSONArray("[" + json + "]");
+	}
+
+	protected static void authenticate(Session session, HttpRequest request)
+		throws Exception {
+
+		Authentication authentication = session.getAuthentication();
+
+		if (authentication != null) {
+			authentication.authenticate(request);
+		}
 	}
 
 	protected static HttpEntity getMultipartEntity(JSONObject parameters)
@@ -244,24 +278,7 @@ public class HttpUtil {
 			HttpRequest request, HttpResponse response, String json)
 		throws ServerException {
 
-		int status = response.getStatusLine().getStatusCode();
-
-		if ((status == HttpStatus.SC_MOVED_PERMANENTLY) ||
-			(status == HttpStatus.SC_MOVED_TEMPORARILY) ||
-			(status == HttpStatus.SC_SEE_OTHER) ||
-			(status == HttpStatus.SC_TEMPORARY_REDIRECT)) {
-
-			throw new RedirectException(getRedirectUrl(request, response));
-		}
-
-		if (status == HttpStatus.SC_UNAUTHORIZED) {
-			throw new ServerException("Authentication failed.");
-		}
-
-		if (status != HttpStatus.SC_OK) {
-			throw new ServerException(
-				"Request failed. Response code: " + status);
-		}
+		checkStatusCode(request, response);
 
 		try {
 			if (isJSONObject(json)) {
