@@ -20,24 +20,6 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 
 	sourceCompatibility = JavaVersion.VERSION_1_6
 
-	repositories {
-		maven {
-			url 'https://repository.liferay.com/nexus/content/groups/liferay-ce'
-		}
-	}
-
-	configurations {
-		formatter
-	}
-
-	dependencies {
-		formatter group: 'com.liferay.portal', name: 'portal-impl', version: '6.2.0-ga1'
-		formatter group: 'com.liferay.portal', name: 'portal-service', version: '6.2.0-ga1'
-		formatter group: 'com.liferay.portal', name: 'util-java', version: '6.2.0-ga1'
-		formatter group: 'dom4j', name: 'dom4j', version: '1.6.1'
-		formatter group: 'org.apache.ant', name: 'ant', version: '1.8.2'
-	}
-
 	install {
 		repositories.mavenInstaller {
 			pom.groupId = 'com.liferay.mobile'
@@ -65,20 +47,6 @@ configure(subprojects.findAll { it.name != 'ios' }) {
 					}
 				}
 			}
-		}
-	}
-
-	task format(type: JavaExec) {
-		group = tasksGroup
-		description = 'Runs Liferay Source Formatter to format files within src/main/java.'
-		main = 'com.liferay.portal.tools.sourceformatter.SourceFormatter'
-		classpath = configurations.formatter
-
-		if (project.name.startsWith('modules/')) {
-			workingDir = 'android/src/main/java'
-		}
-		else {
-			workingDir = 'src/main/java'
 		}
 	}
 

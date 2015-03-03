@@ -1,5 +1,8 @@
 archivesBaseName = 'liferay-sdk-builder'
 
+apply from: '../formatter.gradle'
+format.workingDir = 'src/main/java'
+
 dependencies {
 	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.2.5'
 	compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
