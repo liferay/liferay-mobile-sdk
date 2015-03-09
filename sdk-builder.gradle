@@ -1,0 +1,29 @@
+configurations {
+	builder
+}
+
+dependencies {
+	if (project.parent && (project.parent.name == 'mobile-sdk')) {
+		builder project(':builder')
+	}
+	else {
+		builder group: 'com.liferay.mobile', name: 'liferay-sdk-builder', version: '6.2.0.+'
+	}
+}
+
+task generate(type: JavaExec) {
+	group = 'Liferay'
+	description = 'Runs Liferay SDK Builder with arguments set in gradle.properties.'
+	main = 'com.liferay.mobile.sdk.SDKBuilder'
+	classpath = configurations.builder
+
+	args = [
+		"platforms=$platforms",
+		"url=$url",
+		"context=$context",
+		"filter=$filter",
+		"packageName=$packageName",
+		"portalVersion=$portalVersion",
+		"destination=$destination"
+	]
+}

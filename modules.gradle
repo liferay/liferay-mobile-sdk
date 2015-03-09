@@ -9,34 +9,7 @@ ext {
 	N = System.getProperty("line.separator")
 }
 
-configure(allprojects.findAll { it.name != 'builder' }) {
-	defaultTasks 'generate'
-
-	configurations {
-		builder
-	}
-
-	dependencies {
-		builder project(':builder')
-	}
-
-	task generate(type: JavaExec) {
-		group = tasksGroup
-		description = 'Runs Liferay SDK Builder with arguments set in gradle.properties.'
-		main = 'com.liferay.mobile.sdk.SDKBuilder'
-		classpath = configurations.builder
-
-		args = [
-			"platforms=$platforms",
-			"url=$url",
-			"context=$context",
-			"filter=$filter",
-			"packageName=$packageName",
-			"portalVersion=$portalVersion",
-			"destination=$destination"
-		]
-	}
-}
+apply from: 'sdk-builder.gradle'
 
 configure(subprojects.findAll { it.name.startsWith('modules/') }) {
 	apply plugin: 'java'

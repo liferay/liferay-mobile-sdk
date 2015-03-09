@@ -3,6 +3,8 @@ archivesBaseName = 'liferay-android-sdk'
 apply from: '../formatter.gradle'
 format.workingDir = 'src/main/java'
 
+apply from: '../sdk-builder.gradle'
+
 sourceSets {
 	main {
 		java {

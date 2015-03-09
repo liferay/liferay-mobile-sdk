@@ -1,3 +1,5 @@
+apply from: '../sdk-builder.gradle'
+
 task zip(type: Zip) {
 	baseName = 'liferay-ios-sdk'
 	destinationDir = project.buildDir
