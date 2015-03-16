@@ -134,7 +134,6 @@
 		CC4B7A261937B971003611C4 /* LRUploadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B7A241937B971003611C4 /* LRUploadData.m */; };
 		CC4B7A291937C64E003611C4 /* LRUploadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B7A271937C64E003611C4 /* LRUploadUtil.m */; };
 		CC4B7A2F1938C47F003611C4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4B7A2E1938C47F003611C4 /* logo.png */; };
-		CC5196AC1A791C9A0005C238 /* LRPushNotificationsDeviceService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5196AB1A791C9A0005C238 /* LRPushNotificationsDeviceService_v62.m */; };
 		CC5196AF1A79218F0005C238 /* LRSyncDLObjectService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5196AE1A79218F0005C238 /* LRSyncDLObjectService_v62.m */; };
 		CC5196B41A7944AB0005C238 /* SignInTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5196B31A7944AB0005C238 /* SignInTest.m */; };
 		CC677D2718EC511900F3DFAB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595218EC4BE800957D20 /* XCTest.framework */; };
@@ -150,8 +149,9 @@
 		CCC6A7B61A164BEB00ABB791 /* LRRedirectDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC6A7B51A164BEB00ABB791 /* LRRedirectDelegate.m */; };
 		CCCF04E019182584005D1B22 /* LRJSONObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */; };
 		CCDCE0591A694BB20045023A /* BatchSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDCE0581A694BB20045023A /* BatchSessionTest.m */; };
-		CCE26C661A717EDB0010176D /* PushTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE26C651A717EDB0010176D /* PushTest.m */; };
-		CCE26C6C1A717F1A0010176D /* Push.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE26C6B1A717F1A0010176D /* Push.m */; };
+		CCF5F3571AB77FAB006132AA /* Push.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F34F1AB77FAB006132AA /* Push.m */; };
+		CCF5F3581AB77FAB006132AA /* LRPushNotificationsDeviceService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F3541AB77FAB006132AA /* LRPushNotificationsDeviceService_v62.m */; };
+		CCF5F3591AB77FAB006132AA /* PushTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F3561AB77FAB006132AA /* PushTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -421,8 +421,6 @@
 		CC4B7A281937C64E003611C4 /* LRUploadUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUploadUtil.h; sourceTree = "<group>"; };
 		CC4B7A2D1938C002003611C4 /* LRProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LRProgressDelegate.h; path = Source/Http/LRProgressDelegate.h; sourceTree = SOURCE_ROOT; };
 		CC4B7A2E1938C47F003611C4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		CC5196AA1A791C9A0005C238 /* LRPushNotificationsDeviceService_v62.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPushNotificationsDeviceService_v62.h; sourceTree = "<group>"; };
-		CC5196AB1A791C9A0005C238 /* LRPushNotificationsDeviceService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPushNotificationsDeviceService_v62.m; sourceTree = "<group>"; };
 		CC5196AD1A79218F0005C238 /* LRSyncDLObjectService_v62.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSyncDLObjectService_v62.h; sourceTree = "<group>"; };
 		CC5196AE1A79218F0005C238 /* LRSyncDLObjectService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSyncDLObjectService_v62.m; sourceTree = "<group>"; };
 		CC5196B31A7944AB0005C238 /* SignInTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInTest.m; sourceTree = "<group>"; };
@@ -448,9 +446,11 @@
 		CCD60E10191820BE00935937 /* LRJSONObjectWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRJSONObjectWrapper.h; sourceTree = "<group>"; };
 		CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRJSONObjectWrapper.m; sourceTree = "<group>"; };
 		CCDCE0581A694BB20045023A /* BatchSessionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchSessionTest.m; sourceTree = "<group>"; };
-		CCE26C651A717EDB0010176D /* PushTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushTest.m; sourceTree = "<group>"; };
-		CCE26C6A1A717F1A0010176D /* Push.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Push.h; sourceTree = "<group>"; };
-		CCE26C6B1A717F1A0010176D /* Push.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Push.m; sourceTree = "<group>"; };
+		CCF5F34E1AB77FAB006132AA /* Push.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Push.h; sourceTree = "<group>"; };
+		CCF5F34F1AB77FAB006132AA /* Push.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Push.m; sourceTree = "<group>"; };
+		CCF5F3531AB77FAB006132AA /* LRPushNotificationsDeviceService_v62.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPushNotificationsDeviceService_v62.h; sourceTree = "<group>"; };
+		CCF5F3541AB77FAB006132AA /* LRPushNotificationsDeviceService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPushNotificationsDeviceService_v62.m; sourceTree = "<group>"; };
+		CCF5F3561AB77FAB006132AA /* PushTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushTest.m; sourceTree = "<group>"; };
 		F36B1A16FCF600C1E7C0B954 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1634,47 +1634,11 @@
 		CCE26C4B1A713ED90010176D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				CCE26C4C1A713ED90010176D /* Push */,
+				CCF5F34C1AB77FAB006132AA /* Push */,
 				CCE26C541A713F900010176D /* Sync */,
 			);
 			name = Modules;
 			path = ../modules;
-			sourceTree = "<group>";
-		};
-		CCE26C4C1A713ED90010176D /* Push */ = {
-			isa = PBXGroup;
-			children = (
-				CCE26C5D1A713FFA0010176D /* Core */,
-				CCE26C4D1A713ED90010176D /* Service */,
-				CCE26C621A717DA20010176D /* Test */,
-			);
-			name = Push;
-			path = "push-notifications-portlet/ios/Source";
-			sourceTree = "<group>";
-		};
-		CCE26C4D1A713ED90010176D /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				CCE26C4E1A713ED90010176D /* v62 */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		CCE26C4E1A713ED90010176D /* v62 */ = {
-			isa = PBXGroup;
-			children = (
-				CCE26C4F1A713ED90010176D /* pushnotificationsdevice */,
-			);
-			path = v62;
-			sourceTree = "<group>";
-		};
-		CCE26C4F1A713ED90010176D /* pushnotificationsdevice */ = {
-			isa = PBXGroup;
-			children = (
-				CC5196AA1A791C9A0005C238 /* LRPushNotificationsDeviceService_v62.h */,
-				CC5196AB1A791C9A0005C238 /* LRPushNotificationsDeviceService_v62.m */,
-			);
-			path = pushnotificationsdevice;
 			sourceTree = "<group>";
 		};
 		CCE26C541A713F900010176D /* Sync */ = {
@@ -1711,19 +1675,55 @@
 			path = syncdlobject;
 			sourceTree = "<group>";
 		};
-		CCE26C5D1A713FFA0010176D /* Core */ = {
+		CCF5F34C1AB77FAB006132AA /* Push */ = {
 			isa = PBXGroup;
 			children = (
-				CCE26C6A1A717F1A0010176D /* Push.h */,
-				CCE26C6B1A717F1A0010176D /* Push.m */,
+				CCF5F34D1AB77FAB006132AA /* Core */,
+				CCF5F3501AB77FAB006132AA /* Service */,
+				CCF5F3551AB77FAB006132AA /* Test */,
+			);
+			name = Push;
+			path = ../push/ios/Source;
+			sourceTree = "<group>";
+		};
+		CCF5F34D1AB77FAB006132AA /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CCF5F34E1AB77FAB006132AA /* Push.h */,
+				CCF5F34F1AB77FAB006132AA /* Push.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
 		};
-		CCE26C621A717DA20010176D /* Test */ = {
+		CCF5F3501AB77FAB006132AA /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				CCE26C651A717EDB0010176D /* PushTest.m */,
+				CCF5F3511AB77FAB006132AA /* v62 */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		CCF5F3511AB77FAB006132AA /* v62 */ = {
+			isa = PBXGroup;
+			children = (
+				CCF5F3521AB77FAB006132AA /* pushnotificationsdevice */,
+			);
+			path = v62;
+			sourceTree = "<group>";
+		};
+		CCF5F3521AB77FAB006132AA /* pushnotificationsdevice */ = {
+			isa = PBXGroup;
+			children = (
+				CCF5F3531AB77FAB006132AA /* LRPushNotificationsDeviceService_v62.h */,
+				CCF5F3541AB77FAB006132AA /* LRPushNotificationsDeviceService_v62.m */,
+			);
+			path = pushnotificationsdevice;
+			sourceTree = "<group>";
+		};
+		CCF5F3551AB77FAB006132AA /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				CCF5F3561AB77FAB006132AA /* PushTest.m */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -1861,7 +1861,6 @@
 				CC03FCFA18ED7DCD00F3F16C /* LRSocialActivityService_v62.m in Sources */,
 				CC03FCEE18ED7DCD00F3F16C /* LRRepositoryService_v62.m in Sources */,
 				CC03FD0018ED7DCD00F3F16C /* LRThemeService_v62.m in Sources */,
-				CCE26C6C1A717F1A0010176D /* Push.m in Sources */,
 				CC2E77EB1A3769A9001890A9 /* ServiceContextTest.m in Sources */,
 				CCA4E4E7193657B900374A79 /* LRPortalVersionUtil.m in Sources */,
 				CC03FCC518ED7DCD00F3F16C /* LREmailAddressService_v62.m in Sources */,
@@ -1908,6 +1907,8 @@
 				CC03FCA418ED7DCD00F3F16C /* LRBaseService.m in Sources */,
 				CC03FCC818ED7DCD00F3F16C /* LRFlagsEntryService_v62.m in Sources */,
 				CC20D9EE1A7BB84B00DE7729 /* LRBasicAuthentication.m in Sources */,
+				CCF5F3571AB77FAB006132AA /* Push.m in Sources */,
+				CCF5F3591AB77FAB006132AA /* PushTest.m in Sources */,
 				CC03FCE018ED7DCD00F3F16C /* LRMembershipRequestService_v62.m in Sources */,
 				CC03FCC218ED7DCD00F3F16C /* LRDLFileShortcutService_v62.m in Sources */,
 				CC03FCB318ED7DCD00F3F16C /* LRBackgroundTaskService_v62.m in Sources */,
@@ -1915,6 +1916,7 @@
 				CC03FCF418ED7DCD00F3F16C /* LRSCProductEntryService_v62.m in Sources */,
 				CC2E77EC1A3769A9001890A9 /* ServiceFactoryTest.m in Sources */,
 				CC40D76D1974B9D0000254E6 /* LRValidator.m in Sources */,
+				CCF5F3581AB77FAB006132AA /* LRPushNotificationsDeviceService_v62.m in Sources */,
 				CC03FCC718ED7DCD00F3F16C /* LRExpandoValueService_v62.m in Sources */,
 				CC03FCDD18ED7DCD00F3F16C /* LRMDRRuleService_v62.m in Sources */,
 				CC03FCE618ED7DCD00F3F16C /* LRPluginSettingService_v62.m in Sources */,
@@ -1925,7 +1927,6 @@
 				CC03FCF118ED7DCD00F3F16C /* LRRoleService_v62.m in Sources */,
 				CC03FCDE18ED7DCD00F3F16C /* LRMDRRuleGroupService_v62.m in Sources */,
 				CC03FCEC18ED7DCD00F3F16C /* LRRatingsEntryService_v62.m in Sources */,
-				CCE26C661A717EDB0010176D /* PushTest.m in Sources */,
 				CC03FCCD18ED7DCD00F3F16C /* LRJournalFolderService_v62.m in Sources */,
 				CC03FCA718ED7DCD00F3F16C /* LRSession.m in Sources */,
 				CC03FCAF18ED7DCD00F3F16C /* LRAssetEntryService_v62.m in Sources */,
@@ -1952,7 +1953,6 @@
 				CC03FCEB18ED7DCD00F3F16C /* LRPortletPreferencesService_v62.m in Sources */,
 				CC4B7A291937C64E003611C4 /* LRUploadUtil.m in Sources */,
 				CC40D7701974C76D000254E6 /* LRBlockCallback.m in Sources */,
-				CC5196AC1A791C9A0005C238 /* LRPushNotificationsDeviceService_v62.m in Sources */,
 				CC03FCE718ED7DCD00F3F16C /* LRPollsQuestionService_v62.m in Sources */,
 				CC2E77EA1A3769A9001890A9 /* ResponseParserTest.m in Sources */,
 				CC03FCCC18ED7DCD00F3F16C /* LRJournalFeedService_v62.m in Sources */,
