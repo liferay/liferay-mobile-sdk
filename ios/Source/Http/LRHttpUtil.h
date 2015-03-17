@@ -26,6 +26,13 @@ extern NSString *const LR_POST;
 @interface LRHttpUtil : NSObject
 
 + (NSString *)encodeURL:(NSString *)URL;
+
++ (NSString *)escape:(NSString *)string include:(NSString *)include
+	ignore:(NSString *)ignore;
+
++ (NSMutableURLRequest *)getRequestWithSession:(LRSession *)session
+	URL:(NSURL *)URL;
+
 + (NSURL *)getURL:(LRSession *)session path:(NSString *)path;
 
 + (NSArray *)post:(LRSession *)session command:(NSDictionary *)command

@@ -42,14 +42,33 @@ typedef void (^LRHandler)(
 }
 
 + (NSString *)encodeURL:(NSString *)URL {
-	CFStringRef charactersToEscape = CFSTR(":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`");
+	NSString *include = @":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`";
 
-	NSString *newString = CFBridgingRelease(
-		CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-			(CFStringRef)URL, NULL, charactersToEscape,
+	return [LRHttpUtil escape:URL include:include ignore:nil];
+}
+
++ (NSString *)escape:(NSString *)string include:(NSString *)include
+		ignore:(NSString *)ignore {
+
+	CFStringRef stringRef = (__bridge CFStringRef)string;
+	CFStringRef includeRef = (__bridge CFStringRef)include;
+	CFStringRef ignoreRef = (__bridge CFStringRef)ignore;
+
+	return CFBridgingRelease(
+		CFURLCreateStringByAddingPercentEscapes(
+			kCFAllocatorDefault, stringRef, ignoreRef, includeRef,
 			CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));
+}
 
-	return newString ? newString : LR_BLANK;
++ (NSMutableURLRequest *)getRequestWithSession:(LRSession *)session
+		URL:(NSURL *)URL {
+
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
+		initWithURL:URL];
+
+	[request setTimeoutInterval:session.connectionTimeout];
+
+	return request;
 }
 
 + (NSURL *)getURL:(LRSession *)session path:(NSString *)path {
@@ -78,15 +97,13 @@ typedef void (^LRHandler)(
 
 	NSURL *URL = [self getURL:session path:@"/invoke"];
 
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
-		initWithURL:URL];
+	NSMutableURLRequest *request = [self getRequestWithSession:session URL:URL];
 
 	NSData *body = [NSJSONSerialization dataWithJSONObject:commands options:0
 		error:error];
 
 	[request setHTTPBody:body];
 	[request setHTTPMethod:LR_POST];
-	[request setTimeoutInterval:session.connectionTimeout];
 	[request setValue:@"application/json; charset=utf-8"
 		forHTTPHeaderField:@"Content-Type"];
 
