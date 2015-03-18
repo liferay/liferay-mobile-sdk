@@ -12,15 +12,25 @@
  * details.
  */
 
-typedef void (^LRDownloadProgress)(long long);
+#import "LRBasicAuthentication.h"
+
+typedef void (^LRDownloadProgress)(long long totalBytes, NSError *e);
+
+extern const int LR_DOWNLOAD_ERROR;
+extern const int LR_DOWNLOAD_FINISHED;
 
 /**
  * @author Bruno Farache
  */
-@interface LRDownloadDelegate : NSObject <NSURLSessionDownloadDelegate>
+@interface LRDownloadDelegate : NSObject <NSURLConnectionDelegate>
 
+@property (nonatomic, strong) LRBasicAuthentication *auth;
 @property (nonatomic, copy) LRDownloadProgress downloadProgress;
+@property (nonatomic, strong) NSOutputStream *outputStream;
+@property (nonatomic) long long totalBytes;
 
-- (id)initWithDownloadProgressBlock:(LRDownloadProgress)downloadProgress;
+- (id)initWithSession:(LRBasicAuthentication *)auth
+	outputStream:(NSOutputStream *)outputStream
+	downloadProgress:(LRDownloadProgress)downloadProgress;
 
 @end

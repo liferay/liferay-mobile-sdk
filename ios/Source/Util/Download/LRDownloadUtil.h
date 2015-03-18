@@ -19,7 +19,7 @@
 /**
  * @author Bruno Farache
  */
-@interface LRDownloadUtil : NSObject <NSURLSessionDownloadDelegate>
+@interface LRDownloadUtil : NSObject
 
 + (NSURLSessionDownloadTask *)downloadWithSession:(LRSession *)session
 	URL:(NSString *)URL outputStream:(NSOutputStream *)os

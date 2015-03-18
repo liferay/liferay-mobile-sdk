@@ -14,35 +14,91 @@
 
 #import "LRDownloadDelegate.h"
 
+#import "LRError.h"
+#import "LRResponseParser.h"
+
+const int LR_DOWNLOAD_ERROR = -1;
+const int LR_DOWNLOAD_FINISHED = 0;
+
 /**
  * @author Bruno Farache
  */
 @implementation LRDownloadDelegate
 
-- (id)initWithDownloadProgressBlock:(LRDownloadProgress)downloadProgress {
+- (id)initWithSession:(LRBasicAuthentication *)auth
+		outputStream:(NSOutputStream *)outputStream
+		downloadProgress:(LRDownloadProgress)downloadProgress {
+
 	self = [super init];
 
 	if (self) {
+		self.auth = auth;
+		self.outputStream = outputStream;
 		self.downloadProgress = downloadProgress;
 	}
 
 	return self;
 }
 
-#pragma mark - NSURLSessionDownloadDelegate
+#pragma mark - NSURLConnectionDelegate
 
-- (void)URLSession:(NSURLSession *)session
-		downloadTask:(NSURLSessionDownloadTask *)downloadTask
-		didFinishDownloadingToURL:(NSURL *)location {
+- (void)connection:(NSURLConnection *)connection
+		didFailWithError:(NSError *)error {
+
+	self.downloadProgress(LR_DOWNLOAD_ERROR, error);
 }
 
-- (void)URLSession:(NSURLSession *)session
-		downloadTask:(NSURLSessionDownloadTask *)downloadTask
-		didWriteData:(int64_t)bytesWritten
-		totalBytesWritten:(int64_t)totalBytesWritten
-		totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
+- (void)connection:(NSURLConnection *)connection
+		didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)c  {
 
-	self.downloadProgress(totalBytesWritten);
+	if ([c previousFailureCount] > 1) {
+		NSError *error = [LRError errorWithCode:LRErrorCodeUnauthorized
+			description:@"Authentication failed during download."];
+
+		self.downloadProgress(LR_DOWNLOAD_ERROR, error);
+	}
+	else {
+		NSString *user = self.auth.username;
+		NSString *password = self.auth.password;
+
+		NSURLCredential *credential = [NSURLCredential credentialWithUser:user
+			password:password persistence:NSURLCredentialPersistenceNone];
+
+		[c.sender useCredential:credential forAuthenticationChallenge:c];
+	}
+}
+
+#pragma mark - NSURLConnectionDataDelegate
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+	NSUInteger length = [data length];
+	self.totalBytes = self.totalBytes + length;
+
+	if ([self.outputStream hasSpaceAvailable]) {
+		const uint8_t *buffer = (uint8_t *)[data bytes];
+		[self.outputStream write:&buffer[0] maxLength:length];
+	}
+
+	self.downloadProgress(self.totalBytes, nil);
+}
+
+- (void)connection:(NSURLConnection *)connection
+		didReceiveResponse:(NSURLResponse *)response {
+
+	NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+	NSInteger code = [httpResponse statusCode];
+
+	if (code != LR_HTTP_STATUS_OK) {
+		NSString *description = [NSString stringWithFormat:@"HTTP Error: %li",
+			(long)code];
+
+		NSError *error = [LRError errorWithCode:code description:description];
+		self.downloadProgress(LR_DOWNLOAD_ERROR, error);
+	}
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+	self.downloadProgress(LR_DOWNLOAD_FINISHED, nil);
 }
 
 @end

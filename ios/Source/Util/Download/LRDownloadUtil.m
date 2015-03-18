@@ -21,33 +21,21 @@
  */
 @implementation LRDownloadUtil
 
-+ (NSURLSessionDownloadTask *)downloadWithSession:(LRSession *)session
++ (NSURLConnection *)downloadWithSession:(LRSession *)session
 		URL:(NSString *)URL outputStream:(NSOutputStream *)outputStream
 		downloadProgress:(LRDownloadProgress)downloadProgress {
 
-	NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration
-		defaultSessionConfiguration];
+	LRBasicAuthentication *auth = [LRDownloadUtil _getAuthentication:session];
 
 	LRDownloadDelegate *delegate = [[LRDownloadDelegate alloc]
-		initWithDownloadProgressBlock:downloadProgress];
-
-	NSURLSession *urlSession = [NSURLSession
-		sessionWithConfiguration:configuration delegate:delegate
-		delegateQueue:nil];
+		initWithSession:auth outputStream:outputStream
+		downloadProgress:downloadProgress];
 
 	NSMutableURLRequest *request = [LRHttpUtil getRequestWithSession:session
 		URL:[NSURL URLWithString:URL]];
 
-	NSURLSessionDownloadTask *task = [urlSession
-		downloadTaskWithRequest:request completionHandler:
-			^(NSURL *l, NSURLResponse *r, NSError *e) {
-				NSLog(@"Getting 401 %@", r.description);
-			}
-	];
-
-	[task resume];
-
-	return task;
+	return [[NSURLConnection alloc] initWithRequest:request delegate:delegate
+		startImmediately:YES];
 }
 
 + (NSURLSessionDownloadTask *)downloadFileWithSession:(LRSession *)session
@@ -80,18 +68,19 @@
 		session.server, groupFriendlyURL, webdavPathEscaped];
 }
 
-#pragma mark - NSURLSessionDownloadDelegate
++ (LRBasicAuthentication *)_getAuthentication:(LRSession *)session {
+	id<LRAuthentication> authentication = session.authentication;
 
-- (void)URLSession:(NSURLSession *)session
-	downloadTask:(NSURLSessionDownloadTask *)downloadTask
-	didFinishDownloadingToURL:(NSURL *)location {
-}
+	if (!authentication) {
+		[NSException raise:@"" format:@"Session authentication can't be null"];
+	}
 
-- (void)URLSession:(NSURLSession *)session
-	downloadTask:(NSURLSessionDownloadTask *)downloadTask
-	didWriteData:(int64_t)bytesWritten
-	totalBytesWritten:(int64_t)totalBytesWritten
-	totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
+	if (![authentication isKindOfClass:[LRBasicAuthentication class]]) {
+		[NSException raise:@"" format:@"Can't download if authentication " \
+			"implementation is not BasicAuthentication"];
+	}
+
+	return (LRBasicAuthentication *)authentication;
 }
 
 @end

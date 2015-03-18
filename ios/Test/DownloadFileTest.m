@@ -16,6 +16,7 @@
 
 #import "LRDLAppService_v62.h"
 #import "LRDownloadUtil.h"
+#import "TRVSMonitor.h"
 
 /**
  * @author Bruno Farache
@@ -29,13 +30,40 @@
 @implementation DownloadFileTest : BaseTest
 
 - (void)testDownload {
+	TRVSMonitor *monitor = [TRVSMonitor monitor];
+
+	NSOutputStream *outputStream = [NSOutputStream outputStreamToMemory];
+	[outputStream open];
+
 	[LRDownloadUtil downloadFileWithSession:self.session
-		groupFriendlyURL:@"/guest" folderPath:@"/"
-		fileTitle:self.entry[@"title"] outputStream:nil
-		downloadProgress:^(long long progress) {
-			NSLog(@"%lld", progress);
+		groupFriendlyURL:@"/guest" folderPath:@""
+		fileTitle:self.entry[@"title"] outputStream:outputStream
+		downloadProgress:^(long long totalBytes, NSError *e) {
+			if (e) {
+				XCTFail(@"Error during download %@.", [e localizedDescription]);
+				[monitor signal];
+
+				return;
+			}
+
+			if (totalBytes == LR_DOWNLOAD_FINISHED) {
+				[monitor signal];
+			}
+			else {
+				XCTAssertEqual([self.entry[@"size"] longLongValue], totalBytes);
+			}
+
 		}
 	];
+
+	[monitor wait];
+
+	NSData *data = [outputStream
+		propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
+
+	[outputStream close];
+
+	XCTAssertEqual([self.entry[@"size"] longLongValue], [data length]);
 }
 
 - (void)testGetDownloadURL {
