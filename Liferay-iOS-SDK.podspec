@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name					= "Liferay-iOS-SDK"
-	s.version				= "6.2.0.12"
+	s.version				= "6.2.0.13"
 	s.summary				= "Build iOS apps for Liferay."
 	s.homepage				= "https://www.liferay.com/community/liferay-projects/liferay-mobile-sdk"
 	s.license				= {
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
 	s.ios.deployment_target	= '7.0'
 	s.source				= {
 								:git => "https://github.com/liferay/liferay-mobile-sdk.git",
-								:tag => "ios-6.2.0.12"
+								:tag => "ios-6.2.0.13"
 							}
 	s.source_files			= "ios/Source/**/*.{h,m}"
 	s.subspec				'Liferay-Push' do |push|
