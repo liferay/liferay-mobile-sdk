@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8F7B829DA4104FEDB903590F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 792F68BAE4DF41869F1F1580 /* libPods.a */; };
 		CC03FB6F18ED7BA000F3F16C /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC03FB6C18ED7BA000F3F16C /* settings.plist */; };
 		CC03FCA418ED7DCD00F3F16C /* LRBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FB7418ED7DCC00F3F16C /* LRBaseService.m */; };
 		CC03FCA518ED7DCD00F3F16C /* LRBatchSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FB7618ED7DCC00F3F16C /* LRBatchSession.m */; };
@@ -136,9 +135,7 @@
 		CC4B7A2F1938C47F003611C4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4B7A2E1938C47F003611C4 /* logo.png */; };
 		CC5196AF1A79218F0005C238 /* LRSyncDLObjectService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5196AE1A79218F0005C238 /* LRSyncDLObjectService_v62.m */; };
 		CC5196B41A7944AB0005C238 /* SignInTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5196B31A7944AB0005C238 /* SignInTest.m */; };
-		CC677D2718EC511900F3DFAB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595218EC4BE800957D20 /* XCTest.framework */; };
 		CC677D2818EC511900F3DFAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
-		CC677D2918EC511900F3DFAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6595518EC4BE800957D20 /* UIKit.framework */; };
 		CC6ECF281986D83C007F4EBB /* LRLocalizationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6ECF271986D83C007F4EBB /* LRLocalizationUtil.m */; };
 		CC6ECF301986DB2F007F4EBB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC6ECF321986DB2F007F4EBB /* Localizable.strings */; };
 		CC83D48F18ED6BE300CFA142 /* BaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC83D48E18ED6BE300CFA142 /* BaseTest.m */; };
@@ -149,6 +146,7 @@
 		CCC6A7B61A164BEB00ABB791 /* LRRedirectDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC6A7B51A164BEB00ABB791 /* LRRedirectDelegate.m */; };
 		CCCF04E019182584005D1B22 /* LRJSONObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */; };
 		CCDCE0591A694BB20045023A /* BatchSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDCE0581A694BB20045023A /* BatchSessionTest.m */; };
+		CCF098011ABA355E0023951B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF098001ABA355E0023951B /* UIKit.framework */; };
 		CCF5F3571AB77FAB006132AA /* LRPush.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F34F1AB77FAB006132AA /* LRPush.m */; };
 		CCF5F3581AB77FAB006132AA /* LRPushNotificationsDeviceService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F3541AB77FAB006132AA /* LRPushNotificationsDeviceService_v62.m */; };
 		CCF5F3591AB77FAB006132AA /* PushTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F3561AB77FAB006132AA /* PushTest.m */; };
@@ -449,6 +447,7 @@
 		CCD60E10191820BE00935937 /* LRJSONObjectWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRJSONObjectWrapper.h; sourceTree = "<group>"; };
 		CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRJSONObjectWrapper.m; sourceTree = "<group>"; };
 		CCDCE0581A694BB20045023A /* BatchSessionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchSessionTest.m; sourceTree = "<group>"; };
+		CCF098001ABA355E0023951B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CCF5F34E1AB77FAB006132AA /* LRPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPush.h; sourceTree = "<group>"; };
 		CCF5F34F1AB77FAB006132AA /* LRPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPush.m; sourceTree = "<group>"; };
 		CCF5F3531AB77FAB006132AA /* LRPushNotificationsDeviceService_v62.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPushNotificationsDeviceService_v62.h; sourceTree = "<group>"; };
@@ -467,10 +466,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC677D2718EC511900F3DFAB /* XCTest.framework in Frameworks */,
-				CC677D2918EC511900F3DFAB /* UIKit.framework in Frameworks */,
+				CCF098011ABA355E0023951B /* UIKit.framework in Frameworks */,
 				CC677D2818EC511900F3DFAB /* Foundation.framework in Frameworks */,
-				8F7B829DA4104FEDB903590F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1633,6 +1630,7 @@
 		CCA6594318EC4BE800957D20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CCF098001ABA355E0023951B /* UIKit.framework */,
 				CCA6594418EC4BE800957D20 /* Foundation.framework */,
 				CCA6595218EC4BE800957D20 /* XCTest.framework */,
 				CCA6595518EC4BE800957D20 /* UIKit.framework */,
