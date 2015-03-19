@@ -134,7 +134,7 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 
 	if (parseError) {
 		NSDictionary *userInfo = @{
-			NSUnderlyingErrorKey:parseError
+			NSUnderlyingErrorKey: parseError
 		};
 
 		*error = [LRError errorWithCode:LRErrorCodeParse
