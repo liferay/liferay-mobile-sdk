@@ -179,7 +179,6 @@
 
 /* Begin PBXFileReference section */
 		1AAFC634307E33F7979AE99E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		792F68BAE4DF41869F1F1580 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC03FB6C18ED7BA000F3F16C /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		CC03FB6D18ED7BA000F3F16C /* Test-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Test-Info.plist"; sourceTree = "<group>"; };
 		CC03FB6E18ED7BA000F3F16C /* Test-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Test-Prefix.pch"; sourceTree = "<group>"; };
@@ -436,8 +435,6 @@
 		CCA4E4E51936578900374A79 /* LRPortalVersionUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPortalVersionUtil.m; sourceTree = "<group>"; };
 		CCA6594118EC4BE800957D20 /* libLiferay iOS SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libLiferay iOS SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA6594418EC4BE800957D20 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		CCA6595218EC4BE800957D20 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		CCA6595518EC4BE800957D20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		CCABA07F197C995500A9F8B0 /* LRResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRResponseParser.m; sourceTree = "<group>"; };
 		CCABA080197C995500A9F8B0 /* LRResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRResponseParser.h; sourceTree = "<group>"; };
 		CCABA084197D544A00A9F8B0 /* LRError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRError.h; sourceTree = "<group>"; };
@@ -1632,9 +1629,6 @@
 			children = (
 				CCF098001ABA355E0023951B /* UIKit.framework */,
 				CCA6594418EC4BE800957D20 /* Foundation.framework */,
-				CCA6595218EC4BE800957D20 /* XCTest.framework */,
-				CCA6595518EC4BE800957D20 /* UIKit.framework */,
-				792F68BAE4DF41869F1F1580 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
