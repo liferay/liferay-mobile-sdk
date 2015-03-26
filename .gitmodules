@@ -10,3 +10,9 @@
 [submodule "oauth/ios"]
 	path = oauth/ios
 	url = https://github.com/brunofarache/liferay-ios-sdk-oauth.git
+[submodule "push/android"]
+	path = push/android
+	url = git@github.com:brunofarache/liferay-push-android.git
+[submodule "push/ios"]
+	path = push/ios
+	url = git@github.com:brunofarache/liferay-push-ios.git
