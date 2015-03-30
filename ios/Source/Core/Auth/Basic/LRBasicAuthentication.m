@@ -35,7 +35,7 @@
 		self.username, self.password];
 
 	NSData *auth = [credentials dataUsingEncoding:NSUTF8StringEncoding];
-	NSString *encoded = [auth base64Encoding];
+	NSString *encoded = [auth base64EncodedStringWithOptions:0];
 
 	NSString *header = [NSString stringWithFormat:@"Basic %@", encoded];
 
