@@ -14,6 +14,8 @@
 
 #import "LRPortraitUtil.h"
 
+#import <CommonCrypto/CommonDigest.h>
+
 #import "LRHttpUtil.h"
 #import "LRResponseParser.h"
 #import "LRValidator.h"

@@ -12,7 +12,6 @@
  * details.
  */
 
-#import <CommonCrypto/CommonDigest.h>
 #import "LRSession.h"
 
 /**
