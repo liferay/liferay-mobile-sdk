@@ -17,9 +17,6 @@ Pod::Spec.new do |s|
 								:tag => "ios-6.2.0.13"
 							}
 	s.source_files			= "ios/Source/**/*.{h,m}"
-	s.subspec				'Liferay-Sync-iOS-SDK' do |sync|
-								sync.source_files = "modules/sync-web/ios/Source/**/*.{h,m}","ios/Source/{Core,Http,Util}/**/*.h"
-							end
 	s.resource_bundles		= {
 								"Liferay-iOS-SDK" => [
 									"ios/Source/Util/Localization/*.lproj"

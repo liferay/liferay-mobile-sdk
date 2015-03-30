@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C05D641EABE1D88421720C83 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7B771B91A3D54278EA8137B /* libPods.a */; };
 		CC03FB6F18ED7BA000F3F16C /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC03FB6C18ED7BA000F3F16C /* settings.plist */; };
 		CC03FCA418ED7DCD00F3F16C /* LRBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FB7418ED7DCC00F3F16C /* LRBaseService.m */; };
 		CC03FCA518ED7DCD00F3F16C /* LRBatchSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FB7618ED7DCC00F3F16C /* LRBatchSession.m */; };
@@ -133,7 +134,6 @@
 		CC4B7A261937B971003611C4 /* LRUploadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B7A241937B971003611C4 /* LRUploadData.m */; };
 		CC4B7A291937C64E003611C4 /* LRUploadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B7A271937C64E003611C4 /* LRUploadUtil.m */; };
 		CC4B7A2F1938C47F003611C4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4B7A2E1938C47F003611C4 /* logo.png */; };
-		CC5196AF1A79218F0005C238 /* LRSyncDLObjectService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5196AE1A79218F0005C238 /* LRSyncDLObjectService_v62.m */; };
 		CC5196B41A7944AB0005C238 /* SignInTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5196B31A7944AB0005C238 /* SignInTest.m */; };
 		CC677D2818EC511900F3DFAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
 		CC6ECF281986D83C007F4EBB /* LRLocalizationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6ECF271986D83C007F4EBB /* LRLocalizationUtil.m */; };
@@ -176,6 +176,7 @@
 
 /* Begin PBXFileReference section */
 		1AAFC634307E33F7979AE99E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C7B771B91A3D54278EA8137B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC03FB6C18ED7BA000F3F16C /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		CC03FB6D18ED7BA000F3F16C /* Test-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Test-Info.plist"; sourceTree = "<group>"; };
 		CC03FB6E18ED7BA000F3F16C /* Test-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Test-Prefix.pch"; sourceTree = "<group>"; };
@@ -418,8 +419,6 @@
 		CC4B7A281937C64E003611C4 /* LRUploadUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUploadUtil.h; sourceTree = "<group>"; };
 		CC4B7A2D1938C002003611C4 /* LRProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LRProgressDelegate.h; path = Source/Http/LRProgressDelegate.h; sourceTree = SOURCE_ROOT; };
 		CC4B7A2E1938C47F003611C4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		CC5196AD1A79218F0005C238 /* LRSyncDLObjectService_v62.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSyncDLObjectService_v62.h; sourceTree = "<group>"; };
-		CC5196AE1A79218F0005C238 /* LRSyncDLObjectService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSyncDLObjectService_v62.m; sourceTree = "<group>"; };
 		CC5196B31A7944AB0005C238 /* SignInTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInTest.m; sourceTree = "<group>"; };
 		CC677D2618EC511900F3DFAB /* Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC6ECF261986D83C007F4EBB /* LRLocalizationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRLocalizationUtil.h; sourceTree = "<group>"; };
@@ -457,6 +456,7 @@
 			files = (
 				CCF098011ABA355E0023951B /* UIKit.framework in Frameworks */,
 				CC677D2818EC511900F3DFAB /* Foundation.framework in Frameworks */,
+				C05D641EABE1D88421720C83 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1598,7 +1598,6 @@
 		CCA6593818EC4BE800957D20 = {
 			isa = PBXGroup;
 			children = (
-				CCE26C4B1A713ED90010176D /* Modules */,
 				CC03FB7118ED7DCC00F3F16C /* Source */,
 				CC677D2A18EC511900F3DFAB /* Test */,
 				CCA6594318EC4BE800957D20 /* Frameworks */,
@@ -1621,51 +1620,9 @@
 			children = (
 				CCF098001ABA355E0023951B /* UIKit.framework */,
 				CCA6594418EC4BE800957D20 /* Foundation.framework */,
+				C7B771B91A3D54278EA8137B /* libPods.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CCE26C4B1A713ED90010176D /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				CCE26C541A713F900010176D /* Sync */,
-			);
-			name = Modules;
-			path = ../modules;
-			sourceTree = "<group>";
-		};
-		CCE26C541A713F900010176D /* Sync */ = {
-			isa = PBXGroup;
-			children = (
-				CCE26C561A713F900010176D /* Service */,
-			);
-			name = Sync;
-			path = "sync-web/ios/Source";
-			sourceTree = "<group>";
-		};
-		CCE26C561A713F900010176D /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				CCE26C571A713F900010176D /* v62 */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		CCE26C571A713F900010176D /* v62 */ = {
-			isa = PBXGroup;
-			children = (
-				CCE26C581A713F900010176D /* syncdlobject */,
-			);
-			path = v62;
-			sourceTree = "<group>";
-		};
-		CCE26C581A713F900010176D /* syncdlobject */ = {
-			isa = PBXGroup;
-			children = (
-				CC5196AD1A79218F0005C238 /* LRSyncDLObjectService_v62.h */,
-				CC5196AE1A79218F0005C238 /* LRSyncDLObjectService_v62.m */,
-			);
-			path = syncdlobject;
 			sourceTree = "<group>";
 		};
 		CCF5F35F1AB89CC0006132AA /* Download */ = {
@@ -1863,7 +1820,6 @@
 				CC03FCE018ED7DCD00F3F16C /* LRMembershipRequestService_v62.m in Sources */,
 				CC03FCC218ED7DCD00F3F16C /* LRDLFileShortcutService_v62.m in Sources */,
 				CC03FCB318ED7DCD00F3F16C /* LRBackgroundTaskService_v62.m in Sources */,
-				CC5196AF1A79218F0005C238 /* LRSyncDLObjectService_v62.m in Sources */,
 				CC03FCF418ED7DCD00F3F16C /* LRSCProductEntryService_v62.m in Sources */,
 				CC2E77EC1A3769A9001890A9 /* ServiceFactoryTest.m in Sources */,
 				CC40D76D1974B9D0000254E6 /* LRValidator.m in Sources */,
