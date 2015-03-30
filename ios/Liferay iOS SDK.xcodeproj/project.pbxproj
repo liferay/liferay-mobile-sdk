@@ -147,9 +147,6 @@
 		CCCF04E019182584005D1B22 /* LRJSONObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */; };
 		CCDCE0591A694BB20045023A /* BatchSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDCE0581A694BB20045023A /* BatchSessionTest.m */; };
 		CCF098011ABA355E0023951B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF098001ABA355E0023951B /* UIKit.framework */; };
-		CCF5F3571AB77FAB006132AA /* LRPush.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F34F1AB77FAB006132AA /* LRPush.m */; };
-		CCF5F3581AB77FAB006132AA /* LRPushNotificationsDeviceService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F3541AB77FAB006132AA /* LRPushNotificationsDeviceService_v62.m */; };
-		CCF5F3591AB77FAB006132AA /* PushTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F3561AB77FAB006132AA /* PushTest.m */; };
 		CCF5F35E1AB869E0006132AA /* DownloadFileTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F35D1AB869E0006132AA /* DownloadFileTest.m */; };
 		CCF5F3621AB89CC0006132AA /* LRDownloadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F3611AB89CC0006132AA /* LRDownloadUtil.m */; };
 		CCF5F3641AB89D7F006132AA /* LRDownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F3631AB89D7F006132AA /* LRDownloadDelegate.m */; };
@@ -445,11 +442,6 @@
 		CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRJSONObjectWrapper.m; sourceTree = "<group>"; };
 		CCDCE0581A694BB20045023A /* BatchSessionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchSessionTest.m; sourceTree = "<group>"; };
 		CCF098001ABA355E0023951B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		CCF5F34E1AB77FAB006132AA /* LRPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPush.h; sourceTree = "<group>"; };
-		CCF5F34F1AB77FAB006132AA /* LRPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPush.m; sourceTree = "<group>"; };
-		CCF5F3531AB77FAB006132AA /* LRPushNotificationsDeviceService_v62.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPushNotificationsDeviceService_v62.h; sourceTree = "<group>"; };
-		CCF5F3541AB77FAB006132AA /* LRPushNotificationsDeviceService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPushNotificationsDeviceService_v62.m; sourceTree = "<group>"; };
-		CCF5F3561AB77FAB006132AA /* PushTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushTest.m; sourceTree = "<group>"; };
 		CCF5F35D1AB869E0006132AA /* DownloadFileTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadFileTest.m; sourceTree = "<group>"; };
 		CCF5F3601AB89CC0006132AA /* LRDownloadUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDownloadUtil.h; sourceTree = "<group>"; };
 		CCF5F3611AB89CC0006132AA /* LRDownloadUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDownloadUtil.m; sourceTree = "<group>"; };
@@ -1636,7 +1628,6 @@
 		CCE26C4B1A713ED90010176D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				CCF5F34C1AB77FAB006132AA /* Push */,
 				CCE26C541A713F900010176D /* Sync */,
 			);
 			name = Modules;
@@ -1675,59 +1666,6 @@
 				CC5196AE1A79218F0005C238 /* LRSyncDLObjectService_v62.m */,
 			);
 			path = syncdlobject;
-			sourceTree = "<group>";
-		};
-		CCF5F34C1AB77FAB006132AA /* Push */ = {
-			isa = PBXGroup;
-			children = (
-				CCF5F34D1AB77FAB006132AA /* Core */,
-				CCF5F3501AB77FAB006132AA /* Service */,
-				CCF5F3551AB77FAB006132AA /* Test */,
-			);
-			name = Push;
-			path = ../push/ios/Source;
-			sourceTree = "<group>";
-		};
-		CCF5F34D1AB77FAB006132AA /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				CCF5F34E1AB77FAB006132AA /* LRPush.h */,
-				CCF5F34F1AB77FAB006132AA /* LRPush.m */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		CCF5F3501AB77FAB006132AA /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				CCF5F3511AB77FAB006132AA /* v62 */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		CCF5F3511AB77FAB006132AA /* v62 */ = {
-			isa = PBXGroup;
-			children = (
-				CCF5F3521AB77FAB006132AA /* pushnotificationsdevice */,
-			);
-			path = v62;
-			sourceTree = "<group>";
-		};
-		CCF5F3521AB77FAB006132AA /* pushnotificationsdevice */ = {
-			isa = PBXGroup;
-			children = (
-				CCF5F3531AB77FAB006132AA /* LRPushNotificationsDeviceService_v62.h */,
-				CCF5F3541AB77FAB006132AA /* LRPushNotificationsDeviceService_v62.m */,
-			);
-			path = pushnotificationsdevice;
-			sourceTree = "<group>";
-		};
-		CCF5F3551AB77FAB006132AA /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				CCF5F3561AB77FAB006132AA /* PushTest.m */,
-			);
-			path = Test;
 			sourceTree = "<group>";
 		};
 		CCF5F35F1AB89CC0006132AA /* Download */ = {
@@ -1922,8 +1860,6 @@
 				CCF5F35E1AB869E0006132AA /* DownloadFileTest.m in Sources */,
 				CC03FCC818ED7DCD00F3F16C /* LRFlagsEntryService_v62.m in Sources */,
 				CC20D9EE1A7BB84B00DE7729 /* LRBasicAuthentication.m in Sources */,
-				CCF5F3571AB77FAB006132AA /* LRPush.m in Sources */,
-				CCF5F3591AB77FAB006132AA /* PushTest.m in Sources */,
 				CC03FCE018ED7DCD00F3F16C /* LRMembershipRequestService_v62.m in Sources */,
 				CC03FCC218ED7DCD00F3F16C /* LRDLFileShortcutService_v62.m in Sources */,
 				CC03FCB318ED7DCD00F3F16C /* LRBackgroundTaskService_v62.m in Sources */,
@@ -1931,7 +1867,6 @@
 				CC03FCF418ED7DCD00F3F16C /* LRSCProductEntryService_v62.m in Sources */,
 				CC2E77EC1A3769A9001890A9 /* ServiceFactoryTest.m in Sources */,
 				CC40D76D1974B9D0000254E6 /* LRValidator.m in Sources */,
-				CCF5F3581AB77FAB006132AA /* LRPushNotificationsDeviceService_v62.m in Sources */,
 				CC03FCC718ED7DCD00F3F16C /* LRExpandoValueService_v62.m in Sources */,
 				CC03FCDD18ED7DCD00F3F16C /* LRMDRRuleService_v62.m in Sources */,
 				CC03FCE618ED7DCD00F3F16C /* LRPluginSettingService_v62.m in Sources */,
