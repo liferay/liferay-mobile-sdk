@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 	s.name					= "Liferay-iOS-SDK"
 	s.module_name			= "LRMobileSDK"
-	s.version				= "6.2.0.16"
+	s.version				= "6.2.0.17"
 	s.summary				= "Build iOS apps for Liferay."
 	s.homepage				= "https://www.liferay.com/community/liferay-projects/liferay-mobile-sdk"
 	s.license				= {
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 	s.ios.deployment_target	= '7.0'
 	s.source				= {
 								:git => "https://github.com/liferay/liferay-mobile-sdk.git",
-								:tag => "ios-6.2.0.16"
+								:tag => "ios-6.2.0.17"
 							}
 	s.source_files			= "ios/Source/**/*.{h,m}"
 	s.resource_bundles		= {
@@ -24,5 +24,5 @@ Pod::Spec.new do |s|
 								]
 							}
 	s.requires_arc			= true
-	s.dependency			"AFNetworking", "~> 2.3.0"
+	s.dependency			"AFNetworking", "~> 2.5.0"
 end
