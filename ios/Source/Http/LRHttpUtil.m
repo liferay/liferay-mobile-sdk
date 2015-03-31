@@ -177,7 +177,7 @@ typedef void (^LRHandler)(
 	};
 
 	NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration
-		defaultSessionConfiguration];
+		ephemeralSessionConfiguration];
 
 	LRRedirectDelegate *delegate = [[LRRedirectDelegate alloc] init];
 
