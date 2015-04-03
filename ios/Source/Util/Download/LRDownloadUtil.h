@@ -21,11 +21,11 @@
  */
 @interface LRDownloadUtil : NSObject
 
-+ (NSURLSessionDownloadTask *)downloadWithSession:(LRSession *)session
++ (NSURLConnection *)downloadWithSession:(LRSession *)session
 	URL:(NSString *)URL outputStream:(NSOutputStream *)os
 	downloadProgress:(LRDownloadProgress)downloadProgress;
 
-+ (NSURLSessionDownloadTask *)downloadFileWithSession:(LRSession *)session
++ (NSURLConnection *)downloadFileWithSession:(LRSession *)session
 	groupFriendlyURL:(NSString *)groupFriendlyURL
 	folderPath:(NSString *)folderPath fileTitle:(NSString *)fileTitle
 	outputStream:(NSOutputStream *)outputStream

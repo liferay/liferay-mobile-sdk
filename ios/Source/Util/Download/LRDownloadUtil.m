@@ -38,7 +38,7 @@
 		startImmediately:YES];
 }
 
-+ (NSURLSessionDownloadTask *)downloadFileWithSession:(LRSession *)session
++ (NSURLConnection *)downloadFileWithSession:(LRSession *)session
 		groupFriendlyURL:(NSString *)groupFriendlyURL
 		folderPath:(NSString *)folderPath fileTitle:(NSString *)fileTitle
 		outputStream:(NSOutputStream *)outputStream
