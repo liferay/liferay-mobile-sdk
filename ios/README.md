@@ -63,7 +63,7 @@ Make sure its source code is added to your project.
 file, use that file to open your project in Xcode.
 
 5. If you are importing dependencies as frameworks (`use_frameworks!` in Podfile),
-you need to import the `LRMobileSDK` like this:
+you need to import the `LRMobileSDK` module like this:
 
 	```objective-c
 	@import LRMobileSDK; // (Objective-C)
