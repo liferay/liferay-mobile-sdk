@@ -62,6 +62,14 @@ Make sure its source code is added to your project.
 4. This will download the latest version of the SDK and create a .xcworkspace
 file, use that file to open your project in Xcode.
 
+5. If you are importing dependencies as frameworks (`use_frameworks!` in Podfile),
+you need to import the `LRMobileSDK` like this:
+
+	```objective-c
+	@import LRMobileSDK; // (Objective-C)
+	import LRMobileSDK // (Swift)
+	```
+
 For more information on how CocoaPods works, read their
 [documentation](http://guides.cocoapods.org/using/index.html).
 
