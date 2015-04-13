@@ -183,6 +183,30 @@ public class SyncDLObjectService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public JSONArray getAllFolderSyncDlObjects(long companyId, long repositoryId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("repositoryId", repositoryId);
+
+			_command.put("/sync-web/syncdlobject/get-all-folder-sync-dl-objects", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
 	public JSONObject getAllSyncDlObjects(long repositoryId, long folderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -279,6 +303,31 @@ public class SyncDLObjectService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public JSONObject getFolderSyncDlObject(long repositoryId, long parentFolderId, String name) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("parentFolderId", parentFolderId);
+			_params.put("name", name);
+
+			_command.put("/sync-web/syncdlobject/get-folder-sync-dl-object", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
 	public JSONArray getFolderSyncDlObjects(long repositoryId, long parentFolderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -347,6 +396,48 @@ public class SyncDLObjectService extends BaseService {
 		return _result.getLong(0);
 	}
 
+	public JSONObject getPortletPreferences() throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_command.put("/sync-web/syncdlobject/get-portlet-preferences", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject getSyncContext() throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_command.put("/sync-web/syncdlobject/get-sync-context", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
 	public JSONObject getSyncContext(String uuid) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -378,6 +469,32 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("repositoryId", repositoryId);
+			_params.put("lastAccessTime", lastAccessTime);
+
+			_command.put("/sync-web/syncdlobject/get-sync-dl-object-update", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject getSyncDlObjectUpdate(long companyId, long repositoryId, long parentFolderId, long lastAccessTime) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("repositoryId", repositoryId);
+			_params.put("parentFolderId", parentFolderId);
 			_params.put("lastAccessTime", lastAccessTime);
 
 			_command.put("/sync-web/syncdlobject/get-sync-dl-object-update", _params);
@@ -512,14 +629,14 @@ public class SyncDLObjectService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public android.os.AsyncTask patchFileEntry(long fileEntryId, String sourceVersion, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody deltaFile, String checksum, JSONObjectWrapper serviceContext) throws Exception {
+	public android.os.AsyncTask patchFileEntry(long fileEntryId, long sourceVersionId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody deltaFile, String checksum, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("sourceVersion", sourceVersion);
+			_params.put("sourceVersionId", sourceVersionId);
 			_params.put("sourceFileName", sourceFileName);
 			_params.put("mimeType", mimeType);
 			_params.put("title", title);
@@ -583,6 +700,23 @@ public class SyncDLObjectService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
+	}
+
+	public android.os.AsyncTask updateFileEntries(org.apache.http.entity.mime.content.InputStreamBody zipFile) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("zipFile", zipFile);
+
+			_command.put("/sync-web/syncdlobject/update-file-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return session.upload(_command);
 	}
 
 	public android.os.AsyncTask updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody file, String checksum, JSONObjectWrapper serviceContext) throws Exception {
