@@ -28,6 +28,14 @@ public class BaseService {
 		this.session = session;
 	}
 
+	public Object checkNull(Object object) {
+		if (object == null) {
+			return JSONObject.NULL;
+		}
+
+		return object;
+	}
+
 	public Session getSession() {
 		return session;
 	}
@@ -52,9 +60,9 @@ public class BaseService {
 		this.session = session;
 	}
 
-	public String toString(byte[] bytes) {
+	public Object toString(byte[] bytes) {
 		if (Validator.isNull(bytes)) {
-			return "";
+			return JSONObject.NULL;
 		}
 
 		StringBuilder sb = new StringBuilder("[");

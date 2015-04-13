@@ -35,6 +35,12 @@ import static org.junit.Assert.*;
  */
 public class DLAppServiceTest extends BaseTest {
 
+	public static final String FILE_ENTRY_ID = "fileEntryId";
+
+	public static final String SOURCE_FILE_NAME = "test.properties";
+
+	public static final String TITLE = "title";
+
 	public DLAppServiceTest() throws IOException {
 		super();
 	}
@@ -46,17 +52,17 @@ public class DLAppServiceTest extends BaseTest {
 		byte[] bytes = "Hello".getBytes(HTTP.UTF_8);
 
 		return service.addFileEntry(
-			repositoryId, _PARENT_FOLDER_ID, _SOURCE_FILE_NAME, _MIME_TYPE,
-			_SOURCE_FILE_NAME, "", "", bytes, null);
+			repositoryId, _PARENT_FOLDER_ID, SOURCE_FILE_NAME, _MIME_TYPE,
+			SOURCE_FILE_NAME, "", "", bytes, null);
 	}
 
 	@Test
 	public void addFileEntryBytes() throws Exception {
 		JSONObject jsonObj = addFileEntry();
 
-		assertEquals(_SOURCE_FILE_NAME, jsonObj.get(_TITLE));
+		assertEquals(SOURCE_FILE_NAME, jsonObj.get(TITLE));
 
-		deleteFileEntry(jsonObj.getLong(_FILE_ENTRY_ID));
+		deleteFileEntry(jsonObj.getLong(FILE_ENTRY_ID));
 	}
 
 	@Test
@@ -133,8 +139,6 @@ public class DLAppServiceTest extends BaseTest {
 		assertEquals(2, jsonArray.length());
 	}
 
-	private static final String _FILE_ENTRY_ID = "fileEntryId";
-
 	private static final String _FOLDER_NAME = "test";
 
 	private static final String _FOLDER_NAME_2 = "test2";
@@ -144,9 +148,5 @@ public class DLAppServiceTest extends BaseTest {
 	private static final String _NAME = "name";
 
 	private static final int _PARENT_FOLDER_ID = 0;
-
-	private static final String _SOURCE_FILE_NAME = "test.properties";
-
-	private static final String _TITLE = "title";
 
 }
