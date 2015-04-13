@@ -39,13 +39,13 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("repositoryId", repositoryId);
 			_params.put("folderId", folderId);
-			_params.put("sourceFileName", sourceFileName);
-			_params.put("mimeType", mimeType);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("changeLog", changeLog);
-			_params.put("file", file);
-			_params.put("checksum", checksum);
+			_params.put("sourceFileName", checkNull(sourceFileName));
+			_params.put("mimeType", checkNull(mimeType));
+			_params.put("title", checkNull(title));
+			_params.put("description", checkNull(description));
+			_params.put("changeLog", checkNull(changeLog));
+			_params.put("file", checkNull(file));
+			_params.put("checksum", checkNull(checksum));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/sync-web/syncdlobject/add-file-entry", _params);
@@ -65,8 +65,8 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("repositoryId", repositoryId);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/sync-web/syncdlobject/add-folder", _params);
@@ -115,7 +115,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("fileEntryId", fileEntryId);
 			_params.put("majorVersion", majorVersion);
-			_params.put("changeLog", changeLog);
+			_params.put("changeLog", checkNull(changeLog));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/sync-web/syncdlobject/check-in-file-entry", _params);
@@ -164,7 +164,7 @@ public class SyncDLObjectService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("owner", owner);
+			_params.put("owner", checkNull(owner));
 			_params.put("expirationTime", expirationTime);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -239,7 +239,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 
 			_command.put("/sync-web/syncdlobject/get-file-entry-sync-dl-object", _params);
 		}
@@ -311,7 +311,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("repositoryId", repositoryId);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 
 			_command.put("/sync-web/syncdlobject/get-folder-sync-dl-object", _params);
 		}
@@ -444,7 +444,7 @@ public class SyncDLObjectService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("uuid", uuid);
+			_params.put("uuid", checkNull(uuid));
 
 			_command.put("/sync-web/syncdlobject/get-sync-context", _params);
 		}
@@ -637,14 +637,14 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("fileEntryId", fileEntryId);
 			_params.put("sourceVersionId", sourceVersionId);
-			_params.put("sourceFileName", sourceFileName);
-			_params.put("mimeType", mimeType);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("changeLog", changeLog);
+			_params.put("sourceFileName", checkNull(sourceFileName));
+			_params.put("mimeType", checkNull(mimeType));
+			_params.put("title", checkNull(title));
+			_params.put("description", checkNull(description));
+			_params.put("changeLog", checkNull(changeLog));
 			_params.put("majorVersion", majorVersion);
-			_params.put("deltaFile", deltaFile);
-			_params.put("checksum", checksum);
+			_params.put("deltaFile", checkNull(deltaFile));
+			_params.put("checksum", checkNull(checksum));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/sync-web/syncdlobject/patch-file-entry", _params);
@@ -708,7 +708,7 @@ public class SyncDLObjectService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("zipFile", zipFile);
+			_params.put("zipFile", checkNull(zipFile));
 
 			_command.put("/sync-web/syncdlobject/update-file-entries", _params);
 		}
@@ -726,14 +726,14 @@ public class SyncDLObjectService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("sourceFileName", sourceFileName);
-			_params.put("mimeType", mimeType);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("changeLog", changeLog);
+			_params.put("sourceFileName", checkNull(sourceFileName));
+			_params.put("mimeType", checkNull(mimeType));
+			_params.put("title", checkNull(title));
+			_params.put("description", checkNull(description));
+			_params.put("changeLog", checkNull(changeLog));
 			_params.put("majorVersion", majorVersion);
-			_params.put("file", file);
-			_params.put("checksum", checksum);
+			_params.put("file", checkNull(file));
+			_params.put("checksum", checkNull(checksum));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/sync-web/syncdlobject/update-file-entry", _params);
@@ -752,8 +752,8 @@ public class SyncDLObjectService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("folderId", folderId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/sync-web/syncdlobject/update-folder", _params);
