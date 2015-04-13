@@ -86,4 +86,14 @@ public class JavaUtil extends LanguageUtil {
 		return JSON_OBJECT;
 	}
 
+	public boolean isPrimitive(String type) {
+		if (type.equals(BOOLEAN) || type.equals(DOUBLE) || type.equals(INT) ||
+			type.equals(LONG)) {
+
+			return true;
+		}
+
+		return false;
+	}
+
 }
