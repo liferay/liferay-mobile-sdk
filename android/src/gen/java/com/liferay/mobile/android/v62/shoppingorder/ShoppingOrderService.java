@@ -38,12 +38,12 @@ public class ShoppingOrderService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("number", number);
-			_params.put("ppTxnId", ppTxnId);
-			_params.put("ppPaymentStatus", ppPaymentStatus);
+			_params.put("number", checkNull(number));
+			_params.put("ppTxnId", checkNull(ppTxnId));
+			_params.put("ppPaymentStatus", checkNull(ppPaymentStatus));
 			_params.put("ppPaymentGross", ppPaymentGross);
-			_params.put("ppReceiverEmail", ppReceiverEmail);
-			_params.put("ppPayerEmail", ppPayerEmail);
+			_params.put("ppReceiverEmail", checkNull(ppReceiverEmail));
+			_params.put("ppPayerEmail", checkNull(ppPayerEmail));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/shoppingorder/complete-order", _params);
@@ -105,7 +105,7 @@ public class ShoppingOrderService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("orderId", orderId);
-			_params.put("emailType", emailType);
+			_params.put("emailType", checkNull(emailType));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/shoppingorder/send-email", _params);
@@ -125,34 +125,34 @@ public class ShoppingOrderService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("orderId", orderId);
-			_params.put("billingFirstName", billingFirstName);
-			_params.put("billingLastName", billingLastName);
-			_params.put("billingEmailAddress", billingEmailAddress);
-			_params.put("billingCompany", billingCompany);
-			_params.put("billingStreet", billingStreet);
-			_params.put("billingCity", billingCity);
-			_params.put("billingState", billingState);
-			_params.put("billingZip", billingZip);
-			_params.put("billingCountry", billingCountry);
-			_params.put("billingPhone", billingPhone);
+			_params.put("billingFirstName", checkNull(billingFirstName));
+			_params.put("billingLastName", checkNull(billingLastName));
+			_params.put("billingEmailAddress", checkNull(billingEmailAddress));
+			_params.put("billingCompany", checkNull(billingCompany));
+			_params.put("billingStreet", checkNull(billingStreet));
+			_params.put("billingCity", checkNull(billingCity));
+			_params.put("billingState", checkNull(billingState));
+			_params.put("billingZip", checkNull(billingZip));
+			_params.put("billingCountry", checkNull(billingCountry));
+			_params.put("billingPhone", checkNull(billingPhone));
 			_params.put("shipToBilling", shipToBilling);
-			_params.put("shippingFirstName", shippingFirstName);
-			_params.put("shippingLastName", shippingLastName);
-			_params.put("shippingEmailAddress", shippingEmailAddress);
-			_params.put("shippingCompany", shippingCompany);
-			_params.put("shippingStreet", shippingStreet);
-			_params.put("shippingCity", shippingCity);
-			_params.put("shippingState", shippingState);
-			_params.put("shippingZip", shippingZip);
-			_params.put("shippingCountry", shippingCountry);
-			_params.put("shippingPhone", shippingPhone);
-			_params.put("ccName", ccName);
-			_params.put("ccType", ccType);
-			_params.put("ccNumber", ccNumber);
+			_params.put("shippingFirstName", checkNull(shippingFirstName));
+			_params.put("shippingLastName", checkNull(shippingLastName));
+			_params.put("shippingEmailAddress", checkNull(shippingEmailAddress));
+			_params.put("shippingCompany", checkNull(shippingCompany));
+			_params.put("shippingStreet", checkNull(shippingStreet));
+			_params.put("shippingCity", checkNull(shippingCity));
+			_params.put("shippingState", checkNull(shippingState));
+			_params.put("shippingZip", checkNull(shippingZip));
+			_params.put("shippingCountry", checkNull(shippingCountry));
+			_params.put("shippingPhone", checkNull(shippingPhone));
+			_params.put("ccName", checkNull(ccName));
+			_params.put("ccType", checkNull(ccType));
+			_params.put("ccNumber", checkNull(ccNumber));
 			_params.put("ccExpMonth", ccExpMonth);
 			_params.put("ccExpYear", ccExpYear);
-			_params.put("ccVerNumber", ccVerNumber);
-			_params.put("comments", comments);
+			_params.put("ccVerNumber", checkNull(ccVerNumber));
+			_params.put("comments", checkNull(comments));
 
 			_command.put("/shoppingorder/update-order", _params);
 		}
@@ -177,11 +177,11 @@ public class ShoppingOrderService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("orderId", orderId);
-			_params.put("ppTxnId", ppTxnId);
-			_params.put("ppPaymentStatus", ppPaymentStatus);
+			_params.put("ppTxnId", checkNull(ppTxnId));
+			_params.put("ppPaymentStatus", checkNull(ppPaymentStatus));
 			_params.put("ppPaymentGross", ppPaymentGross);
-			_params.put("ppReceiverEmail", ppReceiverEmail);
-			_params.put("ppPayerEmail", ppPayerEmail);
+			_params.put("ppReceiverEmail", checkNull(ppReceiverEmail));
+			_params.put("ppPayerEmail", checkNull(ppPayerEmail));
 
 			_command.put("/shoppingorder/update-order", _params);
 		}

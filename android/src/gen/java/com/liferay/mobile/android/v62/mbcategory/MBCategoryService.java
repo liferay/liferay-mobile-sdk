@@ -38,24 +38,24 @@ public class MBCategoryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("parentCategoryId", parentCategoryId);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("displayStyle", displayStyle);
-			_params.put("emailAddress", emailAddress);
-			_params.put("inProtocol", inProtocol);
-			_params.put("inServerName", inServerName);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("emailAddress", checkNull(emailAddress));
+			_params.put("inProtocol", checkNull(inProtocol));
+			_params.put("inServerName", checkNull(inServerName));
 			_params.put("inServerPort", inServerPort);
 			_params.put("inUseSSL", inUseSSL);
-			_params.put("inUserName", inUserName);
-			_params.put("inPassword", inPassword);
+			_params.put("inUserName", checkNull(inUserName));
+			_params.put("inPassword", checkNull(inPassword));
 			_params.put("inReadInterval", inReadInterval);
-			_params.put("outEmailAddress", outEmailAddress);
+			_params.put("outEmailAddress", checkNull(outEmailAddress));
 			_params.put("outCustom", outCustom);
-			_params.put("outServerName", outServerName);
+			_params.put("outServerName", checkNull(outServerName));
 			_params.put("outServerPort", outServerPort);
 			_params.put("outUseSSL", outUseSSL);
-			_params.put("outUserName", outUserName);
-			_params.put("outPassword", outPassword);
+			_params.put("outUserName", checkNull(outUserName));
+			_params.put("outPassword", checkNull(outPassword));
 			_params.put("mailingListActive", mailingListActive);
 			_params.put("allowAnonymousEmail", allowAnonymousEmail);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
@@ -83,8 +83,8 @@ public class MBCategoryService extends BaseService {
 
 			_params.put("userId", userId);
 			_params.put("parentCategoryId", parentCategoryId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbcategory/add-category", _params);
@@ -218,7 +218,7 @@ public class MBCategoryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("parentCategoryIds", parentCategoryIds);
+			_params.put("parentCategoryIds", checkNull(parentCategoryIds));
 			_params.put("start", start);
 			_params.put("end", end);
 
@@ -271,7 +271,7 @@ public class MBCategoryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("parentCategoryIds", parentCategoryIds);
+			_params.put("parentCategoryIds", checkNull(parentCategoryIds));
 			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -322,7 +322,7 @@ public class MBCategoryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("parentCategoryIds", parentCategoryIds);
+			_params.put("parentCategoryIds", checkNull(parentCategoryIds));
 
 			_command.put("/mbcategory/get-categories-count", _params);
 		}
@@ -371,7 +371,7 @@ public class MBCategoryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("parentCategoryIds", parentCategoryIds);
+			_params.put("parentCategoryIds", checkNull(parentCategoryIds));
 			_params.put("status", status);
 
 			_command.put("/mbcategory/get-categories-count", _params);
@@ -442,7 +442,7 @@ public class MBCategoryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("categoryIds", categoryIds);
+			_params.put("categoryIds", checkNull(categoryIds));
 			_params.put("groupId", groupId);
 			_params.put("categoryId", categoryId);
 
@@ -644,24 +644,24 @@ public class MBCategoryService extends BaseService {
 
 			_params.put("categoryId", categoryId);
 			_params.put("parentCategoryId", parentCategoryId);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("displayStyle", displayStyle);
-			_params.put("emailAddress", emailAddress);
-			_params.put("inProtocol", inProtocol);
-			_params.put("inServerName", inServerName);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("emailAddress", checkNull(emailAddress));
+			_params.put("inProtocol", checkNull(inProtocol));
+			_params.put("inServerName", checkNull(inServerName));
 			_params.put("inServerPort", inServerPort);
 			_params.put("inUseSSL", inUseSSL);
-			_params.put("inUserName", inUserName);
-			_params.put("inPassword", inPassword);
+			_params.put("inUserName", checkNull(inUserName));
+			_params.put("inPassword", checkNull(inPassword));
 			_params.put("inReadInterval", inReadInterval);
-			_params.put("outEmailAddress", outEmailAddress);
+			_params.put("outEmailAddress", checkNull(outEmailAddress));
 			_params.put("outCustom", outCustom);
-			_params.put("outServerName", outServerName);
+			_params.put("outServerName", checkNull(outServerName));
 			_params.put("outServerPort", outServerPort);
 			_params.put("outUseSSL", outUseSSL);
-			_params.put("outUserName", outUserName);
-			_params.put("outPassword", outPassword);
+			_params.put("outUserName", checkNull(outUserName));
+			_params.put("outPassword", checkNull(outPassword));
 			_params.put("mailingListActive", mailingListActive);
 			_params.put("allowAnonymousEmail", allowAnonymousEmail);
 			_params.put("mergeWithParentCategory", mergeWithParentCategory);

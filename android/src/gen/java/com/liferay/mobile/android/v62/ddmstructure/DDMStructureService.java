@@ -40,11 +40,11 @@ public class DDMStructureService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("parentStructureId", parentStructureId);
 			_params.put("classNameId", classNameId);
-			_params.put("structureKey", structureKey);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("xsd", xsd);
-			_params.put("storageType", storageType);
+			_params.put("structureKey", checkNull(structureKey));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("xsd", checkNull(xsd));
+			_params.put("storageType", checkNull(storageType));
 			_params.put("type", type);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -71,13 +71,13 @@ public class DDMStructureService extends BaseService {
 
 			_params.put("userId", userId);
 			_params.put("groupId", groupId);
-			_params.put("parentStructureKey", parentStructureKey);
+			_params.put("parentStructureKey", checkNull(parentStructureKey));
 			_params.put("classNameId", classNameId);
-			_params.put("structureKey", structureKey);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("xsd", xsd);
-			_params.put("storageType", storageType);
+			_params.put("structureKey", checkNull(structureKey));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("xsd", checkNull(xsd));
+			_params.put("storageType", checkNull(storageType));
 			_params.put("type", type);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -105,9 +105,9 @@ public class DDMStructureService extends BaseService {
 			_params.put("userId", userId);
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("xsd", xsd);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("xsd", checkNull(xsd));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmstructure/add-structure", _params);
@@ -156,8 +156,8 @@ public class DDMStructureService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("structureId", structureId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmstructure/copy-structure", _params);
@@ -200,7 +200,7 @@ public class DDMStructureService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
-			_params.put("structureKey", structureKey);
+			_params.put("structureKey", checkNull(structureKey));
 
 			_command.put("/ddmstructure/fetch-structure", _params);
 		}
@@ -248,7 +248,7 @@ public class DDMStructureService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
-			_params.put("structureKey", structureKey);
+			_params.put("structureKey", checkNull(structureKey));
 
 			_command.put("/ddmstructure/get-structure", _params);
 		}
@@ -273,7 +273,7 @@ public class DDMStructureService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
-			_params.put("structureKey", structureKey);
+			_params.put("structureKey", checkNull(structureKey));
 			_params.put("includeGlobalStructures", includeGlobalStructures);
 
 			_command.put("/ddmstructure/get-structure", _params);
@@ -320,7 +320,7 @@ public class DDMStructureService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupIds", groupIds);
+			_params.put("groupIds", checkNull(groupIds));
 
 			_command.put("/ddmstructure/get-structures", _params);
 		}
@@ -344,11 +344,11 @@ public class DDMStructureService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("classNameIds", classNameIds);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("storageType", storageType);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("classNameIds", checkNull(classNameIds));
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("storageType", checkNull(storageType));
 			_params.put("type", type);
 			_params.put("andOperator", andOperator);
 			_params.put("start", start);
@@ -377,9 +377,9 @@ public class DDMStructureService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("classNameIds", classNameIds);
-			_params.put("keywords", keywords);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("classNameIds", checkNull(classNameIds));
+			_params.put("keywords", checkNull(keywords));
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
@@ -406,9 +406,9 @@ public class DDMStructureService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("classNameIds", classNameIds);
-			_params.put("keywords", keywords);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("classNameIds", checkNull(classNameIds));
+			_params.put("keywords", checkNull(keywords));
 
 			_command.put("/ddmstructure/search-count", _params);
 		}
@@ -432,11 +432,11 @@ public class DDMStructureService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("classNameIds", classNameIds);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("storageType", storageType);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("classNameIds", checkNull(classNameIds));
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("storageType", checkNull(storageType));
 			_params.put("type", type);
 			_params.put("andOperator", andOperator);
 
@@ -463,9 +463,9 @@ public class DDMStructureService extends BaseService {
 
 			_params.put("structureId", structureId);
 			_params.put("parentStructureId", parentStructureId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("xsd", xsd);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("xsd", checkNull(xsd));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmstructure/update-structure", _params);
@@ -492,10 +492,10 @@ public class DDMStructureService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("parentStructureId", parentStructureId);
 			_params.put("classNameId", classNameId);
-			_params.put("structureKey", structureKey);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("xsd", xsd);
+			_params.put("structureKey", checkNull(structureKey));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("xsd", checkNull(xsd));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmstructure/update-structure", _params);

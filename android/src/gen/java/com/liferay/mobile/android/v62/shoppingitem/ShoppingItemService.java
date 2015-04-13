@@ -39,7 +39,7 @@ public class ShoppingItemService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("categoryId", categoryId);
-			_params.put("isbns", isbns);
+			_params.put("isbns", checkNull(isbns));
 
 			_command.put("/shoppingitem/add-book-items", _params);
 		}
@@ -58,26 +58,26 @@ public class ShoppingItemService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("categoryId", categoryId);
-			_params.put("sku", sku);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("properties", properties);
-			_params.put("fieldsQuantities", fieldsQuantities);
+			_params.put("sku", checkNull(sku));
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("properties", checkNull(properties));
+			_params.put("fieldsQuantities", checkNull(fieldsQuantities));
 			_params.put("requiresShipping", requiresShipping);
 			_params.put("stockQuantity", stockQuantity);
 			_params.put("featured", featured);
 			mangleWrapper(_params, "sale", "java.lang.Boolean", sale);
 			_params.put("smallImage", smallImage);
-			_params.put("smallImageURL", smallImageURL);
-			_params.put("smallFile", smallFile);
+			_params.put("smallImageURL", checkNull(smallImageURL));
+			_params.put("smallFile", checkNull(smallFile));
 			_params.put("mediumImage", mediumImage);
-			_params.put("mediumImageURL", mediumImageURL);
-			_params.put("mediumFile", mediumFile);
+			_params.put("mediumImageURL", checkNull(mediumImageURL));
+			_params.put("mediumFile", checkNull(mediumFile));
 			_params.put("largeImage", largeImage);
-			_params.put("largeImageURL", largeImageURL);
-			_params.put("largeFile", largeFile);
-			_params.put("itemFields", itemFields);
-			_params.put("itemPrices", itemPrices);
+			_params.put("largeImageURL", checkNull(largeImageURL));
+			_params.put("largeFile", checkNull(largeFile));
+			_params.put("itemFields", checkNull(itemFields));
+			_params.put("itemPrices", checkNull(itemPrices));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/shoppingitem/add-item", _params);
@@ -113,7 +113,7 @@ public class ShoppingItemService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("categoryIds", categoryIds);
+			_params.put("categoryIds", checkNull(categoryIds));
 
 			_command.put("/shoppingitem/get-categories-items-count", _params);
 		}
@@ -261,26 +261,26 @@ public class ShoppingItemService extends BaseService {
 			_params.put("itemId", itemId);
 			_params.put("groupId", groupId);
 			_params.put("categoryId", categoryId);
-			_params.put("sku", sku);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("properties", properties);
-			_params.put("fieldsQuantities", fieldsQuantities);
+			_params.put("sku", checkNull(sku));
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("properties", checkNull(properties));
+			_params.put("fieldsQuantities", checkNull(fieldsQuantities));
 			_params.put("requiresShipping", requiresShipping);
 			_params.put("stockQuantity", stockQuantity);
 			_params.put("featured", featured);
 			mangleWrapper(_params, "sale", "java.lang.Boolean", sale);
 			_params.put("smallImage", smallImage);
-			_params.put("smallImageURL", smallImageURL);
-			_params.put("smallFile", smallFile);
+			_params.put("smallImageURL", checkNull(smallImageURL));
+			_params.put("smallFile", checkNull(smallFile));
 			_params.put("mediumImage", mediumImage);
-			_params.put("mediumImageURL", mediumImageURL);
-			_params.put("mediumFile", mediumFile);
+			_params.put("mediumImageURL", checkNull(mediumImageURL));
+			_params.put("mediumFile", checkNull(mediumFile));
 			_params.put("largeImage", largeImage);
-			_params.put("largeImageURL", largeImageURL);
-			_params.put("largeFile", largeFile);
-			_params.put("itemFields", itemFields);
-			_params.put("itemPrices", itemPrices);
+			_params.put("largeImageURL", checkNull(largeImageURL));
+			_params.put("largeFile", checkNull(largeFile));
+			_params.put("itemFields", checkNull(itemFields));
+			_params.put("itemPrices", checkNull(itemPrices));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/shoppingitem/update-item", _params);

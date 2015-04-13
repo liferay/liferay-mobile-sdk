@@ -40,10 +40,10 @@ public class AnnouncementsEntryService extends BaseService {
 			_params.put("plid", plid);
 			_params.put("classNameId", classNameId);
 			_params.put("classPK", classPK);
-			_params.put("title", title);
-			_params.put("content", content);
-			_params.put("url", url);
-			_params.put("type", type);
+			_params.put("title", checkNull(title));
+			_params.put("content", checkNull(content));
+			_params.put("url", checkNull(url));
+			_params.put("type", checkNull(type));
 			_params.put("displayDateMonth", displayDateMonth);
 			_params.put("displayDateDay", displayDateDay);
 			_params.put("displayDateYear", displayDateYear);
@@ -81,10 +81,10 @@ public class AnnouncementsEntryService extends BaseService {
 			_params.put("plid", plid);
 			_params.put("classNameId", classNameId);
 			_params.put("classPK", classPK);
-			_params.put("title", title);
-			_params.put("content", content);
-			_params.put("url", url);
-			_params.put("type", type);
+			_params.put("title", checkNull(title));
+			_params.put("content", checkNull(content));
+			_params.put("url", checkNull(url));
+			_params.put("type", checkNull(type));
 			_params.put("displayDateMonth", displayDateMonth);
 			_params.put("displayDateDay", displayDateDay);
 			_params.put("displayDateYear", displayDateYear);
@@ -161,10 +161,10 @@ public class AnnouncementsEntryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("entryId", entryId);
-			_params.put("title", title);
-			_params.put("content", content);
-			_params.put("url", url);
-			_params.put("type", type);
+			_params.put("title", checkNull(title));
+			_params.put("content", checkNull(content));
+			_params.put("url", checkNull(url));
+			_params.put("type", checkNull(type));
 			_params.put("displayDateMonth", displayDateMonth);
 			_params.put("displayDateDay", displayDateDay);
 			_params.put("displayDateYear", displayDateYear);

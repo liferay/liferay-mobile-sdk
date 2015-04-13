@@ -55,7 +55,7 @@ public class StagingService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("checksum", checksum);
+			_params.put("checksum", checkNull(checksum));
 
 			_command.put("/staging/create-staging-request", _params);
 		}
@@ -80,7 +80,7 @@ public class StagingService extends BaseService {
 
 			_params.put("stagingRequestId", stagingRequestId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("parameterMap", parameterMap);
+			_params.put("parameterMap", checkNull(parameterMap));
 
 			_command.put("/staging/publish-staging-request", _params);
 		}
@@ -98,7 +98,7 @@ public class StagingService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("stagingRequestId", stagingRequestId);
-			_params.put("fileName", fileName);
+			_params.put("fileName", checkNull(fileName));
 			_params.put("bytes", toString(bytes));
 
 			_command.put("/staging/update-staging-request", _params);
@@ -118,7 +118,7 @@ public class StagingService extends BaseService {
 
 			_params.put("stagingRequestId", stagingRequestId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("parameterMap", parameterMap);
+			_params.put("parameterMap", checkNull(parameterMap));
 
 			_command.put("/staging/validate-staging-request", _params);
 		}

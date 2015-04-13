@@ -37,8 +37,8 @@ public class SCLicenseService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("name", name);
-			_params.put("url", url);
+			_params.put("name", checkNull(name));
+			_params.put("url", checkNull(url));
 			_params.put("openSource", openSource);
 			_params.put("active", active);
 			_params.put("recommended", recommended);
@@ -105,8 +105,8 @@ public class SCLicenseService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("licenseId", licenseId);
-			_params.put("name", name);
-			_params.put("url", url);
+			_params.put("name", checkNull(name));
+			_params.put("url", checkNull(url));
 			_params.put("openSource", openSource);
 			_params.put("active", active);
 			_params.put("recommended", recommended);

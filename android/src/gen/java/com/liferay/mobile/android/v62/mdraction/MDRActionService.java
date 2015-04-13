@@ -38,10 +38,10 @@ public class MDRActionService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("ruleGroupInstanceId", ruleGroupInstanceId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("type", type);
-			_params.put("typeSettings", typeSettings);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("type", checkNull(type));
+			_params.put("typeSettings", checkNull(typeSettings));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdraction/add-action", _params);
@@ -66,9 +66,9 @@ public class MDRActionService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("ruleGroupInstanceId", ruleGroupInstanceId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("type", type);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("type", checkNull(type));
 			mangleWrapper(_params, "typeSettingsProperties", "com.liferay.portal.kernel.util.UnicodeProperties", typeSettingsProperties);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -157,10 +157,10 @@ public class MDRActionService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("actionId", actionId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("type", type);
-			_params.put("typeSettings", typeSettings);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("type", checkNull(type));
+			_params.put("typeSettings", checkNull(typeSettings));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdraction/update-action", _params);
@@ -185,9 +185,9 @@ public class MDRActionService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("actionId", actionId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("type", type);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("type", checkNull(type));
 			mangleWrapper(_params, "typeSettingsProperties", "com.liferay.portal.kernel.util.UnicodeProperties", typeSettingsProperties);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 

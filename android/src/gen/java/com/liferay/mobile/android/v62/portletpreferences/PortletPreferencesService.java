@@ -56,7 +56,7 @@ public class PortletPreferencesService extends BaseService {
 
 			_params.put("groupId", groupId);
 			mangleWrapper(_params, "layout", "com.liferay.portal.model.Layout", layout);
-			_params.put("portletId", portletId);
+			_params.put("portletId", checkNull(portletId));
 			mangleWrapper(_params, "portletItem", "com.liferay.portal.model.PortletItem", portletItem);
 			mangleWrapper(_params, "preferences", "javax.portlet.PortletPreferences", preferences);
 
@@ -77,7 +77,7 @@ public class PortletPreferencesService extends BaseService {
 
 			_params.put("groupId", groupId);
 			mangleWrapper(_params, "layout", "com.liferay.portal.model.Layout", layout);
-			_params.put("portletId", portletId);
+			_params.put("portletId", checkNull(portletId));
 			_params.put("portletItemId", portletItemId);
 			mangleWrapper(_params, "preferences", "javax.portlet.PortletPreferences", preferences);
 
@@ -97,9 +97,9 @@ public class PortletPreferencesService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			mangleWrapper(_params, "layout", "com.liferay.portal.model.Layout", layout);
-			_params.put("portletId", portletId);
+			_params.put("portletId", checkNull(portletId));
 			mangleWrapper(_params, "preferences", "javax.portlet.PortletPreferences", preferences);
 
 			_command.put("/portletpreferences/restore-archived-preferences", _params);
@@ -119,8 +119,8 @@ public class PortletPreferencesService extends BaseService {
 
 			_params.put("userId", userId);
 			_params.put("groupId", groupId);
-			_params.put("name", name);
-			_params.put("portletId", portletId);
+			_params.put("name", checkNull(name));
+			_params.put("portletId", checkNull(portletId));
 			mangleWrapper(_params, "preferences", "javax.portlet.PortletPreferences", preferences);
 
 			_command.put("/portletpreferences/update-archive-preferences", _params);

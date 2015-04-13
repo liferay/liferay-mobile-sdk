@@ -38,8 +38,8 @@ public class TeamService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 
 			_command.put("/team/add-team", _params);
 		}
@@ -126,7 +126,7 @@ public class TeamService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 
 			_command.put("/team/get-team", _params);
 		}
@@ -221,8 +221,8 @@ public class TeamService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("teamId", teamId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 
 			_command.put("/team/update-team", _params);
 		}

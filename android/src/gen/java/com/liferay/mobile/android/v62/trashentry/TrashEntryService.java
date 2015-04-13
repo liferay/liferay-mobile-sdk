@@ -37,7 +37,7 @@ public class TrashEntryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("entryIds", entryIds);
+			_params.put("entryIds", checkNull(entryIds));
 
 			_command.put("/trashentry/delete-entries", _params);
 		}
@@ -88,7 +88,7 @@ public class TrashEntryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 
 			_command.put("/trashentry/delete-entry", _params);
@@ -155,7 +155,7 @@ public class TrashEntryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 			_params.put("destinationContainerModelId", destinationContainerModelId);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
@@ -200,7 +200,7 @@ public class TrashEntryService extends BaseService {
 
 			_params.put("entryId", entryId);
 			_params.put("overrideClassPK", overrideClassPK);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 
 			_command.put("/trashentry/restore-entry", _params);
 		}

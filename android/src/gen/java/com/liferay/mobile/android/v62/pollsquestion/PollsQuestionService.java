@@ -37,15 +37,15 @@ public class PollsQuestionService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("titleMap", titleMap);
-			_params.put("descriptionMap", descriptionMap);
+			_params.put("titleMap", checkNull(titleMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("expirationDateMonth", expirationDateMonth);
 			_params.put("expirationDateDay", expirationDateDay);
 			_params.put("expirationDateYear", expirationDateYear);
 			_params.put("expirationDateHour", expirationDateHour);
 			_params.put("expirationDateMinute", expirationDateMinute);
 			_params.put("neverExpire", neverExpire);
-			_params.put("choices", choices);
+			_params.put("choices", checkNull(choices));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/pollsquestion/add-question", _params);
@@ -110,15 +110,15 @@ public class PollsQuestionService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("questionId", questionId);
-			_params.put("titleMap", titleMap);
-			_params.put("descriptionMap", descriptionMap);
+			_params.put("titleMap", checkNull(titleMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("expirationDateMonth", expirationDateMonth);
 			_params.put("expirationDateDay", expirationDateDay);
 			_params.put("expirationDateYear", expirationDateYear);
 			_params.put("expirationDateHour", expirationDateHour);
 			_params.put("expirationDateMinute", expirationDateMinute);
 			_params.put("neverExpire", neverExpire);
-			_params.put("choices", choices);
+			_params.put("choices", checkNull(choices));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/pollsquestion/update-question", _params);

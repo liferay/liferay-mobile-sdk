@@ -38,7 +38,7 @@ public class AnnouncementsDeliveryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userId", userId);
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 			_params.put("email", email);
 			_params.put("sms", sms);
 			_params.put("website", website);

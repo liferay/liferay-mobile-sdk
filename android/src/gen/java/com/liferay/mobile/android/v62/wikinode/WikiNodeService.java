@@ -37,8 +37,8 @@ public class WikiNodeService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/wikinode/add-node", _params);
@@ -103,7 +103,7 @@ public class WikiNodeService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 
 			_command.put("/wikinode/get-node", _params);
 		}
@@ -346,8 +346,8 @@ public class WikiNodeService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/wikinode/update-node", _params);

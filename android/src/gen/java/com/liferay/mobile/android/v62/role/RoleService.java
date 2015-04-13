@@ -37,9 +37,9 @@ public class RoleService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("name", name);
-			_params.put("titleMap", titleMap);
-			_params.put("descriptionMap", descriptionMap);
+			_params.put("name", checkNull(name));
+			_params.put("titleMap", checkNull(titleMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("type", type);
 
 			_command.put("/role/add-role", _params);
@@ -63,13 +63,13 @@ public class RoleService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
-			_params.put("name", name);
-			_params.put("titleMap", titleMap);
-			_params.put("descriptionMap", descriptionMap);
+			_params.put("name", checkNull(name));
+			_params.put("titleMap", checkNull(titleMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("type", type);
-			_params.put("subtype", subtype);
+			_params.put("subtype", checkNull(subtype));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/role/add-role", _params);
@@ -94,7 +94,7 @@ public class RoleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userId", userId);
-			_params.put("roleIds", roleIds);
+			_params.put("roleIds", checkNull(roleIds));
 
 			_command.put("/role/add-user-roles", _params);
 		}
@@ -175,7 +175,7 @@ public class RoleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 
 			_command.put("/role/get-role", _params);
 		}
@@ -247,7 +247,7 @@ public class RoleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userId", userId);
-			_params.put("groups", groups);
+			_params.put("groups", checkNull(groups));
 
 			_command.put("/role/get-user-related-roles", _params);
 		}
@@ -295,7 +295,7 @@ public class RoleService extends BaseService {
 
 			_params.put("userId", userId);
 			_params.put("companyId", companyId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("inherited", inherited);
 
 			_command.put("/role/has-user-role", _params);
@@ -321,7 +321,7 @@ public class RoleService extends BaseService {
 
 			_params.put("userId", userId);
 			_params.put("companyId", companyId);
-			_params.put("names", names);
+			_params.put("names", checkNull(names));
 			_params.put("inherited", inherited);
 
 			_command.put("/role/has-user-roles", _params);
@@ -346,7 +346,7 @@ public class RoleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userId", userId);
-			_params.put("roleIds", roleIds);
+			_params.put("roleIds", checkNull(roleIds));
 
 			_command.put("/role/unset-user-roles", _params);
 		}
@@ -364,10 +364,10 @@ public class RoleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("roleId", roleId);
-			_params.put("name", name);
-			_params.put("titleMap", titleMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("subtype", subtype);
+			_params.put("name", checkNull(name));
+			_params.put("titleMap", checkNull(titleMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("subtype", checkNull(subtype));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/role/update-role", _params);

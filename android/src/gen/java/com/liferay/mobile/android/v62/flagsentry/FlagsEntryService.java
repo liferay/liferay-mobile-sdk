@@ -37,13 +37,13 @@ public class FlagsEntryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
-			_params.put("reporterEmailAddress", reporterEmailAddress);
+			_params.put("reporterEmailAddress", checkNull(reporterEmailAddress));
 			_params.put("reportedUserId", reportedUserId);
-			_params.put("contentTitle", contentTitle);
-			_params.put("contentURL", contentURL);
-			_params.put("reason", reason);
+			_params.put("contentTitle", checkNull(contentTitle));
+			_params.put("contentURL", checkNull(contentURL));
+			_params.put("reason", checkNull(reason));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/flagsentry/add-entry", _params);

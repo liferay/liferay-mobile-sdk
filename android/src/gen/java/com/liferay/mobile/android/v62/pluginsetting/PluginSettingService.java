@@ -38,9 +38,9 @@ public class PluginSettingService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("pluginId", pluginId);
-			_params.put("pluginType", pluginType);
-			_params.put("roles", roles);
+			_params.put("pluginId", checkNull(pluginId));
+			_params.put("pluginType", checkNull(pluginType));
+			_params.put("roles", checkNull(roles));
 			_params.put("active", active);
 
 			_command.put("/pluginsetting/update-plugin-setting", _params);

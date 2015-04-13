@@ -37,8 +37,8 @@ public class SCFrameworkVersionService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("name", name);
-			_params.put("url", url);
+			_params.put("name", checkNull(name));
+			_params.put("url", checkNull(url));
 			_params.put("active", active);
 			_params.put("priority", priority);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
@@ -155,8 +155,8 @@ public class SCFrameworkVersionService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("frameworkVersionId", frameworkVersionId);
-			_params.put("name", name);
-			_params.put("url", url);
+			_params.put("name", checkNull(name));
+			_params.put("url", checkNull(url));
 			_params.put("active", active);
 			_params.put("priority", priority);
 

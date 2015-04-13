@@ -38,8 +38,8 @@ public class BookmarksFolderService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/bookmarksfolder/add-folder", _params);
@@ -419,7 +419,7 @@ public class BookmarksFolderService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("folderIds", folderIds);
+			_params.put("folderIds", checkNull(folderIds));
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
 
@@ -589,8 +589,8 @@ public class BookmarksFolderService extends BaseService {
 
 			_params.put("folderId", folderId);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("mergeWithParentFolder", mergeWithParentFolder);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 

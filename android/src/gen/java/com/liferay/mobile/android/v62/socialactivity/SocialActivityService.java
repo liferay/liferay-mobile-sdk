@@ -37,7 +37,7 @@ public class SocialActivityService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("start", start);
 			_params.put("end", end);
 
@@ -88,7 +88,7 @@ public class SocialActivityService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("mirrorActivityId", mirrorActivityId);
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -141,7 +141,7 @@ public class SocialActivityService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 
 			_command.put("/socialactivity/get-activities-count", _params);
 		}
@@ -188,7 +188,7 @@ public class SocialActivityService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("mirrorActivityId", mirrorActivityId);
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 
 			_command.put("/socialactivity/get-activities-count", _params);

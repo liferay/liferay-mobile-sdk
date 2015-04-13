@@ -38,8 +38,8 @@ public class AssetCategoryPropertyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("entryId", entryId);
-			_params.put("key", key);
-			_params.put("value", value);
+			_params.put("key", checkNull(key));
+			_params.put("value", checkNull(value));
 
 			_command.put("/assetcategoryproperty/add-category-property", _params);
 		}
@@ -103,7 +103,7 @@ public class AssetCategoryPropertyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("key", key);
+			_params.put("key", checkNull(key));
 
 			_command.put("/assetcategoryproperty/get-category-property-values", _params);
 		}
@@ -127,8 +127,8 @@ public class AssetCategoryPropertyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("categoryPropertyId", categoryPropertyId);
-			_params.put("key", key);
-			_params.put("value", value);
+			_params.put("key", checkNull(key));
+			_params.put("value", checkNull(value));
 
 			_command.put("/assetcategoryproperty/update-category-property", _params);
 		}

@@ -38,14 +38,14 @@ public class JournalTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("templateId", templateId);
+			_params.put("templateId", checkNull(templateId));
 			_params.put("autoTemplateId", autoTemplateId);
-			_params.put("structureId", structureId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("xsl", xsl);
+			_params.put("structureId", checkNull(structureId));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("xsl", checkNull(xsl));
 			_params.put("formatXsl", formatXsl);
-			_params.put("langType", langType);
+			_params.put("langType", checkNull(langType));
 			_params.put("cacheable", cacheable);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -71,18 +71,18 @@ public class JournalTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("templateId", templateId);
+			_params.put("templateId", checkNull(templateId));
 			_params.put("autoTemplateId", autoTemplateId);
-			_params.put("structureId", structureId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("xsl", xsl);
+			_params.put("structureId", checkNull(structureId));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("xsl", checkNull(xsl));
 			_params.put("formatXsl", formatXsl);
-			_params.put("langType", langType);
+			_params.put("langType", checkNull(langType));
 			_params.put("cacheable", cacheable);
 			_params.put("smallImage", smallImage);
-			_params.put("smallImageURL", smallImageURL);
-			_params.put("smallFile", smallFile);
+			_params.put("smallImageURL", checkNull(smallImageURL));
+			_params.put("smallFile", checkNull(smallFile));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journaltemplate/add-template", _params);
@@ -101,8 +101,8 @@ public class JournalTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("oldTemplateId", oldTemplateId);
-			_params.put("newTemplateId", newTemplateId);
+			_params.put("oldTemplateId", checkNull(oldTemplateId));
+			_params.put("newTemplateId", checkNull(newTemplateId));
 			_params.put("autoTemplateId", autoTemplateId);
 
 			_command.put("/journaltemplate/copy-template", _params);
@@ -127,7 +127,7 @@ public class JournalTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("templateId", templateId);
+			_params.put("templateId", checkNull(templateId));
 
 			_command.put("/journaltemplate/delete-template", _params);
 		}
@@ -145,7 +145,7 @@ public class JournalTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("structureId", structureId);
+			_params.put("structureId", checkNull(structureId));
 
 			_command.put("/journaltemplate/get-structure-templates", _params);
 		}
@@ -169,7 +169,7 @@ public class JournalTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("templateId", templateId);
+			_params.put("templateId", checkNull(templateId));
 
 			_command.put("/journaltemplate/get-template", _params);
 		}
@@ -193,7 +193,7 @@ public class JournalTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("templateId", templateId);
+			_params.put("templateId", checkNull(templateId));
 			_params.put("includeGlobalTemplates", includeGlobalTemplates);
 
 			_command.put("/journaltemplate/get-template", _params);
@@ -218,12 +218,12 @@ public class JournalTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("templateId", templateId);
-			_params.put("structureId", structureId);
-			_params.put("structureIdComparator", structureIdComparator);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("templateId", checkNull(templateId));
+			_params.put("structureId", checkNull(structureId));
+			_params.put("structureIdComparator", checkNull(structureIdComparator));
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("andOperator", andOperator);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -251,10 +251,10 @@ public class JournalTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("keywords", keywords);
-			_params.put("structureId", structureId);
-			_params.put("structureIdComparator", structureIdComparator);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("keywords", checkNull(keywords));
+			_params.put("structureId", checkNull(structureId));
+			_params.put("structureIdComparator", checkNull(structureIdComparator));
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -281,10 +281,10 @@ public class JournalTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("keywords", keywords);
-			_params.put("structureId", structureId);
-			_params.put("structureIdComparator", structureIdComparator);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("keywords", checkNull(keywords));
+			_params.put("structureId", checkNull(structureId));
+			_params.put("structureIdComparator", checkNull(structureIdComparator));
 
 			_command.put("/journaltemplate/search-count", _params);
 		}
@@ -308,12 +308,12 @@ public class JournalTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("templateId", templateId);
-			_params.put("structureId", structureId);
-			_params.put("structureIdComparator", structureIdComparator);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("templateId", checkNull(templateId));
+			_params.put("structureId", checkNull(structureId));
+			_params.put("structureIdComparator", checkNull(structureIdComparator));
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("andOperator", andOperator);
 
 			_command.put("/journaltemplate/search-count", _params);
@@ -338,13 +338,13 @@ public class JournalTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("templateId", templateId);
-			_params.put("structureId", structureId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("xsl", xsl);
+			_params.put("templateId", checkNull(templateId));
+			_params.put("structureId", checkNull(structureId));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("xsl", checkNull(xsl));
 			_params.put("formatXsl", formatXsl);
-			_params.put("langType", langType);
+			_params.put("langType", checkNull(langType));
 			_params.put("cacheable", cacheable);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -370,17 +370,17 @@ public class JournalTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("templateId", templateId);
-			_params.put("structureId", structureId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("xsl", xsl);
+			_params.put("templateId", checkNull(templateId));
+			_params.put("structureId", checkNull(structureId));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("xsl", checkNull(xsl));
 			_params.put("formatXsl", formatXsl);
-			_params.put("langType", langType);
+			_params.put("langType", checkNull(langType));
 			_params.put("cacheable", cacheable);
 			_params.put("smallImage", smallImage);
-			_params.put("smallImageURL", smallImageURL);
-			_params.put("smallFile", smallFile);
+			_params.put("smallImageURL", checkNull(smallImageURL));
+			_params.put("smallFile", checkNull(smallFile));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journaltemplate/update-template", _params);

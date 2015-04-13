@@ -37,8 +37,8 @@ public class PasswordPolicyService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("changeable", changeable);
 			_params.put("changeRequired", changeRequired);
 			_params.put("minAge", minAge);
@@ -83,8 +83,8 @@ public class PasswordPolicyService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("changeable", changeable);
 			_params.put("changeRequired", changeRequired);
 			_params.put("minAge", minAge);
@@ -96,7 +96,7 @@ public class PasswordPolicyService extends BaseService {
 			_params.put("minNumbers", minNumbers);
 			_params.put("minSymbols", minSymbols);
 			_params.put("minUpperCase", minUpperCase);
-			_params.put("regex", regex);
+			_params.put("regex", checkNull(regex));
 			_params.put("history", history);
 			_params.put("historyCount", historyCount);
 			_params.put("expireable", expireable);
@@ -149,8 +149,8 @@ public class PasswordPolicyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("passwordPolicyId", passwordPolicyId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("changeable", changeable);
 			_params.put("changeRequired", changeRequired);
 			_params.put("minAge", minAge);
@@ -196,8 +196,8 @@ public class PasswordPolicyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("passwordPolicyId", passwordPolicyId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("changeable", changeable);
 			_params.put("changeRequired", changeRequired);
 			_params.put("minAge", minAge);
@@ -209,7 +209,7 @@ public class PasswordPolicyService extends BaseService {
 			_params.put("minNumbers", minNumbers);
 			_params.put("minSymbols", minSymbols);
 			_params.put("minUpperCase", minUpperCase);
-			_params.put("regex", regex);
+			_params.put("regex", checkNull(regex));
 			_params.put("history", history);
 			_params.put("historyCount", historyCount);
 			_params.put("expireable", expireable);

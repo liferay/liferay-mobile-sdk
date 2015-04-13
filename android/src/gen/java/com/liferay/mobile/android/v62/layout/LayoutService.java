@@ -40,12 +40,12 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("parentLayoutId", parentLayoutId);
-			_params.put("name", name);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("type", type);
+			_params.put("name", checkNull(name));
+			_params.put("title", checkNull(title));
+			_params.put("description", checkNull(description));
+			_params.put("type", checkNull(type));
 			_params.put("hidden", hidden);
-			_params.put("friendlyURL", friendlyURL);
+			_params.put("friendlyURL", checkNull(friendlyURL));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/layout/add-layout", _params);
@@ -72,14 +72,14 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("parentLayoutId", parentLayoutId);
-			_params.put("localeNamesMap", localeNamesMap);
-			_params.put("localeTitlesMap", localeTitlesMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("keywordsMap", keywordsMap);
-			_params.put("robotsMap", robotsMap);
-			_params.put("type", type);
+			_params.put("localeNamesMap", checkNull(localeNamesMap));
+			_params.put("localeTitlesMap", checkNull(localeTitlesMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("keywordsMap", checkNull(keywordsMap));
+			_params.put("robotsMap", checkNull(robotsMap));
+			_params.put("type", checkNull(type));
 			_params.put("hidden", hidden);
-			_params.put("friendlyURL", friendlyURL);
+			_params.put("friendlyURL", checkNull(friendlyURL));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/layout/add-layout", _params);
@@ -106,15 +106,15 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("parentLayoutId", parentLayoutId);
-			_params.put("localeNamesMap", localeNamesMap);
-			_params.put("localeTitlesMap", localeTitlesMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("keywordsMap", keywordsMap);
-			_params.put("robotsMap", robotsMap);
-			_params.put("type", type);
-			_params.put("typeSettings", typeSettings);
+			_params.put("localeNamesMap", checkNull(localeNamesMap));
+			_params.put("localeTitlesMap", checkNull(localeTitlesMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("keywordsMap", checkNull(keywordsMap));
+			_params.put("robotsMap", checkNull(robotsMap));
+			_params.put("type", checkNull(type));
+			_params.put("typeSettings", checkNull(typeSettings));
 			_params.put("hidden", hidden);
-			_params.put("friendlyURLMap", friendlyURLMap);
+			_params.put("friendlyURLMap", checkNull(friendlyURLMap));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/layout/add-layout", _params);
@@ -177,8 +177,8 @@ public class LayoutService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("fileName", fileName);
-			_params.put("tempFolderName", tempFolderName);
+			_params.put("fileName", checkNull(fileName));
+			_params.put("tempFolderName", checkNull(tempFolderName));
 
 			_command.put("/layout/delete-temp-file-entry", _params);
 		}
@@ -197,7 +197,7 @@ public class LayoutService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("parameterMap", parameterMap);
+			_params.put("parameterMap", checkNull(parameterMap));
 			_params.put("startDate", startDate);
 			_params.put("endDate", endDate);
 
@@ -224,8 +224,8 @@ public class LayoutService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("layoutIds", layoutIds);
-			_params.put("parameterMap", parameterMap);
+			_params.put("layoutIds", checkNull(layoutIds));
+			_params.put("parameterMap", checkNull(parameterMap));
 			_params.put("startDate", startDate);
 			_params.put("endDate", endDate);
 
@@ -252,8 +252,8 @@ public class LayoutService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("layoutIds", layoutIds);
-			_params.put("parameterMap", parameterMap);
+			_params.put("layoutIds", checkNull(layoutIds));
+			_params.put("parameterMap", checkNull(parameterMap));
 			_params.put("startDate", startDate);
 			_params.put("endDate", endDate);
 
@@ -278,14 +278,14 @@ public class LayoutService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("taskName", taskName);
+			_params.put("taskName", checkNull(taskName));
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("layoutIds", layoutIds);
-			_params.put("parameterMap", parameterMap);
+			_params.put("layoutIds", checkNull(layoutIds));
+			_params.put("parameterMap", checkNull(parameterMap));
 			_params.put("startDate", startDate);
 			_params.put("endDate", endDate);
-			_params.put("fileName", fileName);
+			_params.put("fileName", checkNull(fileName));
 
 			_command.put("/layout/export-layouts-as-file-in-background", _params);
 		}
@@ -309,8 +309,8 @@ public class LayoutService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("portletId", portletId);
-			_params.put("parameterMap", parameterMap);
+			_params.put("portletId", checkNull(portletId));
+			_params.put("parameterMap", checkNull(parameterMap));
 			_params.put("startDate", startDate);
 			_params.put("endDate", endDate);
 
@@ -337,8 +337,8 @@ public class LayoutService extends BaseService {
 
 			_params.put("plid", plid);
 			_params.put("groupId", groupId);
-			_params.put("portletId", portletId);
-			_params.put("parameterMap", parameterMap);
+			_params.put("portletId", checkNull(portletId));
+			_params.put("parameterMap", checkNull(parameterMap));
 			_params.put("startDate", startDate);
 			_params.put("endDate", endDate);
 
@@ -363,8 +363,8 @@ public class LayoutService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("portletId", portletId);
-			_params.put("parameterMap", parameterMap);
+			_params.put("portletId", checkNull(portletId));
+			_params.put("parameterMap", checkNull(parameterMap));
 			_params.put("startDate", startDate);
 			_params.put("endDate", endDate);
 
@@ -391,8 +391,8 @@ public class LayoutService extends BaseService {
 
 			_params.put("plid", plid);
 			_params.put("groupId", groupId);
-			_params.put("portletId", portletId);
-			_params.put("parameterMap", parameterMap);
+			_params.put("portletId", checkNull(portletId));
+			_params.put("parameterMap", checkNull(parameterMap));
 			_params.put("startDate", startDate);
 			_params.put("endDate", endDate);
 
@@ -417,12 +417,12 @@ public class LayoutService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("taskName", taskName);
-			_params.put("portletId", portletId);
-			_params.put("parameterMap", parameterMap);
+			_params.put("taskName", checkNull(taskName));
+			_params.put("portletId", checkNull(portletId));
+			_params.put("parameterMap", checkNull(parameterMap));
 			_params.put("startDate", startDate);
 			_params.put("endDate", endDate);
-			_params.put("fileName", fileName);
+			_params.put("fileName", checkNull(fileName));
 
 			_command.put("/layout/export-portlet-info-as-file-in-background", _params);
 		}
@@ -445,14 +445,14 @@ public class LayoutService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("taskName", taskName);
+			_params.put("taskName", checkNull(taskName));
 			_params.put("plid", plid);
 			_params.put("groupId", groupId);
-			_params.put("portletId", portletId);
-			_params.put("parameterMap", parameterMap);
+			_params.put("portletId", checkNull(portletId));
+			_params.put("parameterMap", checkNull(parameterMap));
 			_params.put("startDate", startDate);
 			_params.put("endDate", endDate);
-			_params.put("fileName", fileName);
+			_params.put("fileName", checkNull(fileName));
 
 			_command.put("/layout/export-portlet-info-as-file-in-background", _params);
 		}
@@ -500,7 +500,7 @@ public class LayoutService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("scopeGroupId", scopeGroupId);
-			_params.put("portletId", portletId);
+			_params.put("portletId", checkNull(portletId));
 
 			_command.put("/layout/get-default-plid", _params);
 		}
@@ -526,7 +526,7 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("scopeGroupId", scopeGroupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("portletId", portletId);
+			_params.put("portletId", checkNull(portletId));
 
 			_command.put("/layout/get-default-plid", _params);
 		}
@@ -549,7 +549,7 @@ public class LayoutService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("uuid", uuid);
+			_params.put("uuid", checkNull(uuid));
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 
@@ -577,7 +577,7 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("layoutId", layoutId);
-			_params.put("languageId", languageId);
+			_params.put("languageId", checkNull(languageId));
 
 			_command.put("/layout/get-layout-name", _params);
 		}
@@ -601,9 +601,9 @@ public class LayoutService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("portletId", portletId);
-			_params.put("preferencesKey", preferencesKey);
-			_params.put("preferencesValue", preferencesValue);
+			_params.put("portletId", checkNull(portletId));
+			_params.put("preferencesKey", checkNull(preferencesKey));
+			_params.put("preferencesValue", checkNull(preferencesValue));
 
 			_command.put("/layout/get-layout-references", _params);
 		}
@@ -697,31 +697,6 @@ public class LayoutService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public Integer getLayoutsCount(long groupId, boolean privateLayout, long parentLayoutId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("parentLayoutId", parentLayoutId);
-
-			_command.put("/layout/get-layouts-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
 	public JSONArray getTempFileEntryNames(long groupId, String tempFolderName) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -729,7 +704,7 @@ public class LayoutService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("tempFolderName", tempFolderName);
+			_params.put("tempFolderName", checkNull(tempFolderName));
 
 			_command.put("/layout/get-temp-file-entry-names", _params);
 		}
@@ -754,7 +729,7 @@ public class LayoutService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("parameterMap", parameterMap);
+			_params.put("parameterMap", checkNull(parameterMap));
 			_params.put("bytes", toString(bytes));
 
 			_command.put("/layout/import-layouts", _params);
@@ -774,8 +749,8 @@ public class LayoutService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("parameterMap", parameterMap);
-			_params.put("file", file);
+			_params.put("parameterMap", checkNull(parameterMap));
+			_params.put("file", checkNull(file));
 
 			_command.put("/layout/import-layouts", _params);
 		}
@@ -792,11 +767,11 @@ public class LayoutService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("taskName", taskName);
+			_params.put("taskName", checkNull(taskName));
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("parameterMap", parameterMap);
-			_params.put("file", file);
+			_params.put("parameterMap", checkNull(parameterMap));
+			_params.put("file", checkNull(file));
 
 			_command.put("/layout/import-layouts-in-background", _params);
 		}
@@ -813,9 +788,9 @@ public class LayoutService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("portletId", portletId);
-			_params.put("parameterMap", parameterMap);
-			_params.put("file", file);
+			_params.put("portletId", checkNull(portletId));
+			_params.put("parameterMap", checkNull(parameterMap));
+			_params.put("file", checkNull(file));
 
 			_command.put("/layout/import-portlet-info", _params);
 		}
@@ -834,9 +809,9 @@ public class LayoutService extends BaseService {
 
 			_params.put("plid", plid);
 			_params.put("groupId", groupId);
-			_params.put("portletId", portletId);
-			_params.put("parameterMap", parameterMap);
-			_params.put("file", file);
+			_params.put("portletId", checkNull(portletId));
+			_params.put("parameterMap", checkNull(parameterMap));
+			_params.put("file", checkNull(file));
 
 			_command.put("/layout/import-portlet-info", _params);
 		}
@@ -853,10 +828,10 @@ public class LayoutService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("taskName", taskName);
-			_params.put("portletId", portletId);
-			_params.put("parameterMap", parameterMap);
-			_params.put("file", file);
+			_params.put("taskName", checkNull(taskName));
+			_params.put("portletId", checkNull(portletId));
+			_params.put("parameterMap", checkNull(parameterMap));
+			_params.put("file", checkNull(file));
 
 			_command.put("/layout/import-portlet-info-in-background", _params);
 		}
@@ -873,12 +848,12 @@ public class LayoutService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("taskName", taskName);
+			_params.put("taskName", checkNull(taskName));
 			_params.put("plid", plid);
 			_params.put("groupId", groupId);
-			_params.put("portletId", portletId);
-			_params.put("parameterMap", parameterMap);
-			_params.put("file", file);
+			_params.put("portletId", checkNull(portletId));
+			_params.put("parameterMap", checkNull(parameterMap));
+			_params.put("file", checkNull(file));
 
 			_command.put("/layout/import-portlet-info-in-background", _params);
 		}
@@ -898,16 +873,16 @@ public class LayoutService extends BaseService {
 			_params.put("sourceGroupId", sourceGroupId);
 			_params.put("targetGroupId", targetGroupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("layoutIdMap", layoutIdMap);
-			_params.put("parameterMap", parameterMap);
-			_params.put("scope", scope);
+			_params.put("layoutIdMap", checkNull(layoutIdMap));
+			_params.put("parameterMap", checkNull(parameterMap));
+			_params.put("scope", checkNull(scope));
 			_params.put("startDate", startDate);
 			_params.put("endDate", endDate);
-			_params.put("groupName", groupName);
-			_params.put("cronText", cronText);
+			_params.put("groupName", checkNull(groupName));
+			_params.put("cronText", checkNull(cronText));
 			_params.put("schedulerStartDate", schedulerStartDate);
 			_params.put("schedulerEndDate", schedulerEndDate);
-			_params.put("description", description);
+			_params.put("description", checkNull(description));
 
 			_command.put("/layout/schedule-publish-to-live", _params);
 		}
@@ -926,21 +901,21 @@ public class LayoutService extends BaseService {
 
 			_params.put("sourceGroupId", sourceGroupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("layoutIdMap", layoutIdMap);
-			_params.put("parameterMap", parameterMap);
-			_params.put("remoteAddress", remoteAddress);
+			_params.put("layoutIdMap", checkNull(layoutIdMap));
+			_params.put("parameterMap", checkNull(parameterMap));
+			_params.put("remoteAddress", checkNull(remoteAddress));
 			_params.put("remotePort", remotePort);
-			_params.put("remotePathContext", remotePathContext);
+			_params.put("remotePathContext", checkNull(remotePathContext));
 			_params.put("secureConnection", secureConnection);
 			_params.put("remoteGroupId", remoteGroupId);
 			_params.put("remotePrivateLayout", remotePrivateLayout);
 			_params.put("startDate", startDate);
 			_params.put("endDate", endDate);
-			_params.put("groupName", groupName);
-			_params.put("cronText", cronText);
+			_params.put("groupName", checkNull(groupName));
+			_params.put("cronText", checkNull(cronText));
 			_params.put("schedulerStartDate", schedulerStartDate);
 			_params.put("schedulerEndDate", schedulerEndDate);
-			_params.put("description", description);
+			_params.put("description", checkNull(description));
 
 			_command.put("/layout/schedule-publish-to-remote", _params);
 		}
@@ -960,7 +935,7 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("parentLayoutId", parentLayoutId);
-			_params.put("layoutIds", layoutIds);
+			_params.put("layoutIds", checkNull(layoutIds));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/layout/set-layouts", _params);
@@ -979,8 +954,8 @@ public class LayoutService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("jobName", jobName);
-			_params.put("groupName", groupName);
+			_params.put("jobName", checkNull(jobName));
+			_params.put("groupName", checkNull(groupName));
 
 			_command.put("/layout/unschedule-publish-to-live", _params);
 		}
@@ -998,8 +973,8 @@ public class LayoutService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("jobName", jobName);
-			_params.put("groupName", groupName);
+			_params.put("jobName", checkNull(jobName));
+			_params.put("groupName", checkNull(groupName));
 
 			_command.put("/layout/unschedule-publish-to-remote", _params);
 		}
@@ -1020,14 +995,14 @@ public class LayoutService extends BaseService {
 			_params.put("privateLayout", privateLayout);
 			_params.put("layoutId", layoutId);
 			_params.put("parentLayoutId", parentLayoutId);
-			_params.put("localeNamesMap", localeNamesMap);
-			_params.put("localeTitlesMap", localeTitlesMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("keywordsMap", keywordsMap);
-			_params.put("robotsMap", robotsMap);
-			_params.put("type", type);
+			_params.put("localeNamesMap", checkNull(localeNamesMap));
+			_params.put("localeTitlesMap", checkNull(localeTitlesMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("keywordsMap", checkNull(keywordsMap));
+			_params.put("robotsMap", checkNull(robotsMap));
+			_params.put("type", checkNull(type));
 			_params.put("hidden", hidden);
-			_params.put("friendlyURL", friendlyURL);
+			_params.put("friendlyURL", checkNull(friendlyURL));
 			mangleWrapper(_params, "iconImage", "java.lang.Boolean", iconImage);
 			_params.put("iconBytes", toString(iconBytes));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
@@ -1057,14 +1032,14 @@ public class LayoutService extends BaseService {
 			_params.put("privateLayout", privateLayout);
 			_params.put("layoutId", layoutId);
 			_params.put("parentLayoutId", parentLayoutId);
-			_params.put("localeNamesMap", localeNamesMap);
-			_params.put("localeTitlesMap", localeTitlesMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("keywordsMap", keywordsMap);
-			_params.put("robotsMap", robotsMap);
-			_params.put("type", type);
+			_params.put("localeNamesMap", checkNull(localeNamesMap));
+			_params.put("localeTitlesMap", checkNull(localeTitlesMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("keywordsMap", checkNull(keywordsMap));
+			_params.put("robotsMap", checkNull(robotsMap));
+			_params.put("type", checkNull(type));
 			_params.put("hidden", hidden);
-			_params.put("friendlyURLMap", friendlyURLMap);
+			_params.put("friendlyURLMap", checkNull(friendlyURLMap));
 			mangleWrapper(_params, "iconImage", "java.lang.Boolean", iconImage);
 			_params.put("iconBytes", toString(iconBytes));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
@@ -1093,7 +1068,7 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("layoutId", layoutId);
-			_params.put("typeSettings", typeSettings);
+			_params.put("typeSettings", checkNull(typeSettings));
 
 			_command.put("/layout/update-layout", _params);
 		}
@@ -1119,9 +1094,9 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("layoutId", layoutId);
-			_params.put("themeId", themeId);
-			_params.put("colorSchemeId", colorSchemeId);
-			_params.put("css", css);
+			_params.put("themeId", checkNull(themeId));
+			_params.put("colorSchemeId", checkNull(colorSchemeId));
+			_params.put("css", checkNull(css));
 			_params.put("wapTheme", wapTheme);
 
 			_command.put("/layout/update-look-and-feel", _params);
@@ -1146,8 +1121,8 @@ public class LayoutService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("plid", plid);
-			_params.put("name", name);
-			_params.put("languageId", languageId);
+			_params.put("name", checkNull(name));
+			_params.put("languageId", checkNull(languageId));
 
 			_command.put("/layout/update-name", _params);
 		}
@@ -1173,8 +1148,8 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("layoutId", layoutId);
-			_params.put("name", name);
-			_params.put("languageId", languageId);
+			_params.put("name", checkNull(name));
+			_params.put("languageId", checkNull(languageId));
 
 			_command.put("/layout/update-name", _params);
 		}
@@ -1227,31 +1202,6 @@ public class LayoutService extends BaseService {
 			_params.put("parentLayoutId", parentLayoutId);
 
 			_command.put("/layout/update-parent-layout-id", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateParentLayoutIdAndPriority(long plid, long parentPlid, int priority) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("plid", plid);
-			_params.put("parentPlid", parentPlid);
-			_params.put("priority", priority);
-
-			_command.put("/layout/update-parent-layout-id-and-priority", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -1351,8 +1301,8 @@ public class LayoutService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("parameterMap", parameterMap);
-			_params.put("file", file);
+			_params.put("parameterMap", checkNull(parameterMap));
+			_params.put("file", checkNull(file));
 
 			_command.put("/layout/validate-import-layouts-file", _params);
 		}
@@ -1371,9 +1321,9 @@ public class LayoutService extends BaseService {
 
 			_params.put("plid", plid);
 			_params.put("groupId", groupId);
-			_params.put("portletId", portletId);
-			_params.put("parameterMap", parameterMap);
-			_params.put("file", file);
+			_params.put("portletId", checkNull(portletId));
+			_params.put("parameterMap", checkNull(parameterMap));
+			_params.put("file", checkNull(file));
 
 			_command.put("/layout/validate-import-portlet-info", _params);
 		}

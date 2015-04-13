@@ -39,12 +39,12 @@ public class GroupService extends BaseService {
 
 			_params.put("parentGroupId", parentGroupId);
 			_params.put("liveGroupId", liveGroupId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("type", type);
 			_params.put("manualMembership", manualMembership);
 			_params.put("membershipRestriction", membershipRestriction);
-			_params.put("friendlyURL", friendlyURL);
+			_params.put("friendlyURL", checkNull(friendlyURL));
 			_params.put("site", site);
 			_params.put("active", active);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
@@ -70,10 +70,10 @@ public class GroupService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("type", type);
-			_params.put("friendlyURL", friendlyURL);
+			_params.put("friendlyURL", checkNull(friendlyURL));
 			_params.put("site", site);
 			_params.put("active", active);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
@@ -100,10 +100,10 @@ public class GroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("parentGroupId", parentGroupId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("type", type);
-			_params.put("friendlyURL", friendlyURL);
+			_params.put("friendlyURL", checkNull(friendlyURL));
 			_params.put("site", site);
 			_params.put("active", active);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
@@ -130,7 +130,7 @@ public class GroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("roleId", roleId);
-			_params.put("groupIds", groupIds);
+			_params.put("groupIds", checkNull(groupIds));
 
 			_command.put("/group/add-role-groups", _params);
 		}
@@ -262,7 +262,7 @@ public class GroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 
 			_command.put("/group/get-group", _params);
 		}
@@ -310,7 +310,7 @@ public class GroupService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("portlets", portlets);
+			_params.put("portlets", checkNull(portlets));
 			_params.put("max", max);
 
 			_command.put("/group/get-manageable-site-groups", _params);
@@ -334,7 +334,7 @@ public class GroupService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("portlets", portlets);
+			_params.put("portlets", checkNull(portlets));
 			_params.put("max", max);
 
 			_command.put("/group/get-manageable-sites", _params);
@@ -358,7 +358,7 @@ public class GroupService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("organizations", organizations);
+			_params.put("organizations", checkNull(organizations));
 
 			_command.put("/group/get-organizations-groups", _params);
 		}
@@ -405,7 +405,7 @@ public class GroupService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("userGroups", userGroups);
+			_params.put("userGroups", checkNull(userGroups));
 
 			_command.put("/group/get-user-groups-groups", _params);
 		}
@@ -453,7 +453,7 @@ public class GroupService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("classNames", classNames);
+			_params.put("classNames", checkNull(classNames));
 			_params.put("max", max);
 
 			_command.put("/group/get-user-places", _params);
@@ -478,7 +478,7 @@ public class GroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userId", userId);
-			_params.put("classNames", classNames);
+			_params.put("classNames", checkNull(classNames));
 			_params.put("max", max);
 
 			_command.put("/group/get-user-places", _params);
@@ -503,7 +503,7 @@ public class GroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userId", userId);
-			_params.put("classNames", classNames);
+			_params.put("classNames", checkNull(classNames));
 			_params.put("includeControlPanel", includeControlPanel);
 			_params.put("max", max);
 
@@ -591,7 +591,7 @@ public class GroupService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("classNames", classNames);
+			_params.put("classNames", checkNull(classNames));
 			_params.put("max", max);
 
 			_command.put("/group/get-user-sites-groups", _params);
@@ -616,7 +616,7 @@ public class GroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userId", userId);
-			_params.put("classNames", classNames);
+			_params.put("classNames", checkNull(classNames));
 			_params.put("max", max);
 
 			_command.put("/group/get-user-sites-groups", _params);
@@ -641,7 +641,7 @@ public class GroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userId", userId);
-			_params.put("classNames", classNames);
+			_params.put("classNames", checkNull(classNames));
 			_params.put("includeControlPanel", includeControlPanel);
 			_params.put("max", max);
 
@@ -712,71 +712,11 @@ public class GroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("params", params);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("params", checkNull(params));
 			_params.put("start", start);
 			_params.put("end", end);
-
-			_command.put("/group/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray search(long companyId, JSONArray classNameIds, String keywords, JSONObject params, int start, int end, JSONObjectWrapper obc) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("classNameIds", classNameIds);
-			_params.put("keywords", keywords);
-			_params.put("params", params);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
-
-			_command.put("/group/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray search(long companyId, JSONArray classNameIds, String name, String description, JSONObject params, boolean andOperator, int start, int end, JSONObjectWrapper obc) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("classNameIds", classNameIds);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("params", params);
-			_params.put("andOperator", andOperator);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/group/search", _params);
 		}
@@ -800,9 +740,9 @@ public class GroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("params", params);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("params", checkNull(params));
 
 			_command.put("/group/search-count", _params);
 		}
@@ -826,7 +766,7 @@ public class GroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("roleId", roleId);
-			_params.put("groupIds", groupIds);
+			_params.put("groupIds", checkNull(groupIds));
 
 			_command.put("/group/set-role-groups", _params);
 		}
@@ -844,7 +784,7 @@ public class GroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("roleId", roleId);
-			_params.put("groupIds", groupIds);
+			_params.put("groupIds", checkNull(groupIds));
 
 			_command.put("/group/unset-role-groups", _params);
 		}
@@ -862,7 +802,7 @@ public class GroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("friendlyURL", friendlyURL);
+			_params.put("friendlyURL", checkNull(friendlyURL));
 
 			_command.put("/group/update-friendly-url", _params);
 		}
@@ -887,12 +827,12 @@ public class GroupService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("parentGroupId", parentGroupId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("type", type);
 			_params.put("manualMembership", manualMembership);
 			_params.put("membershipRestriction", membershipRestriction);
-			_params.put("friendlyURL", friendlyURL);
+			_params.put("friendlyURL", checkNull(friendlyURL));
 			_params.put("active", active);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -918,7 +858,7 @@ public class GroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("typeSettings", typeSettings);
+			_params.put("typeSettings", checkNull(typeSettings));
 
 			_command.put("/group/update-group", _params);
 		}
@@ -942,7 +882,7 @@ public class GroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("stagedPortletIds", stagedPortletIds);
+			_params.put("stagedPortletIds", checkNull(stagedPortletIds));
 
 			_command.put("/group/update-staged-portlets", _params);
 		}

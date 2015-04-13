@@ -40,7 +40,7 @@ public class LayoutSetService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("layoutSetPrototypeLinkEnabled", layoutSetPrototypeLinkEnabled);
-			_params.put("layoutSetPrototypeUuid", layoutSetPrototypeUuid);
+			_params.put("layoutSetPrototypeUuid", checkNull(layoutSetPrototypeUuid));
 
 			_command.put("/layoutset/update-layout-set-prototype-link-enabled", _params);
 		}
@@ -80,7 +80,7 @@ public class LayoutSetService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("logo", logo);
-			_params.put("file", file);
+			_params.put("file", checkNull(file));
 
 			_command.put("/layoutset/update-logo", _params);
 		}
@@ -99,9 +99,9 @@ public class LayoutSetService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("themeId", themeId);
-			_params.put("colorSchemeId", colorSchemeId);
-			_params.put("css", css);
+			_params.put("themeId", checkNull(themeId));
+			_params.put("colorSchemeId", checkNull(colorSchemeId));
+			_params.put("css", checkNull(css));
 			_params.put("wapTheme", wapTheme);
 
 			_command.put("/layoutset/update-look-and-feel", _params);
@@ -127,7 +127,7 @@ public class LayoutSetService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("settings", settings);
+			_params.put("settings", checkNull(settings));
 
 			_command.put("/layoutset/update-settings", _params);
 		}
@@ -152,7 +152,7 @@ public class LayoutSetService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("virtualHost", virtualHost);
+			_params.put("virtualHost", checkNull(virtualHost));
 
 			_command.put("/layoutset/update-virtual-host", _params);
 		}

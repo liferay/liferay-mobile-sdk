@@ -38,12 +38,12 @@ public class JournalStructureService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("structureId", structureId);
+			_params.put("structureId", checkNull(structureId));
 			_params.put("autoStructureId", autoStructureId);
-			_params.put("parentStructureId", parentStructureId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("xsd", xsd);
+			_params.put("parentStructureId", checkNull(parentStructureId));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("xsd", checkNull(xsd));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalstructure/add-structure", _params);
@@ -68,8 +68,8 @@ public class JournalStructureService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("oldStructureId", oldStructureId);
-			_params.put("newStructureId", newStructureId);
+			_params.put("oldStructureId", checkNull(oldStructureId));
+			_params.put("newStructureId", checkNull(newStructureId));
 			_params.put("autoStructureId", autoStructureId);
 
 			_command.put("/journalstructure/copy-structure", _params);
@@ -94,7 +94,7 @@ public class JournalStructureService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("structureId", structureId);
+			_params.put("structureId", checkNull(structureId));
 
 			_command.put("/journalstructure/delete-structure", _params);
 		}
@@ -112,7 +112,7 @@ public class JournalStructureService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("structureId", structureId);
+			_params.put("structureId", checkNull(structureId));
 
 			_command.put("/journalstructure/get-structure", _params);
 		}
@@ -136,7 +136,7 @@ public class JournalStructureService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("structureId", structureId);
+			_params.put("structureId", checkNull(structureId));
 			_params.put("includeGlobalStructures", includeGlobalStructures);
 
 			_command.put("/journalstructure/get-structure", _params);
@@ -183,7 +183,7 @@ public class JournalStructureService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupIds", groupIds);
+			_params.put("groupIds", checkNull(groupIds));
 
 			_command.put("/journalstructure/get-structures", _params);
 		}
@@ -207,8 +207,8 @@ public class JournalStructureService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("keywords", keywords);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("keywords", checkNull(keywords));
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -235,10 +235,10 @@ public class JournalStructureService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("structureId", structureId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("structureId", checkNull(structureId));
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("andOperator", andOperator);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -266,8 +266,8 @@ public class JournalStructureService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("keywords", keywords);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("keywords", checkNull(keywords));
 
 			_command.put("/journalstructure/search-count", _params);
 		}
@@ -291,10 +291,10 @@ public class JournalStructureService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("structureId", structureId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("structureId", checkNull(structureId));
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("andOperator", andOperator);
 
 			_command.put("/journalstructure/search-count", _params);
@@ -319,11 +319,11 @@ public class JournalStructureService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("structureId", structureId);
-			_params.put("parentStructureId", parentStructureId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("xsd", xsd);
+			_params.put("structureId", checkNull(structureId));
+			_params.put("parentStructureId", checkNull(parentStructureId));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("xsd", checkNull(xsd));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalstructure/update-structure", _params);

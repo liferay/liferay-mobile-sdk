@@ -38,7 +38,7 @@ public class UserGroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("userGroupIds", userGroupIds);
+			_params.put("userGroupIds", checkNull(userGroupIds));
 
 			_command.put("/usergroup/add-group-user-groups", _params);
 		}
@@ -56,7 +56,7 @@ public class UserGroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("teamId", teamId);
-			_params.put("userGroupIds", userGroupIds);
+			_params.put("userGroupIds", checkNull(userGroupIds));
 
 			_command.put("/usergroup/add-team-user-groups", _params);
 		}
@@ -73,8 +73,8 @@ public class UserGroupService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 
 			_command.put("/usergroup/add-user-group", _params);
 		}
@@ -97,8 +97,8 @@ public class UserGroupService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/usergroup/add-user-group", _params);
@@ -139,7 +139,7 @@ public class UserGroupService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 
 			_command.put("/usergroup/get-user-group", _params);
 		}
@@ -209,7 +209,7 @@ public class UserGroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("userGroupIds", userGroupIds);
+			_params.put("userGroupIds", checkNull(userGroupIds));
 
 			_command.put("/usergroup/unset-group-user-groups", _params);
 		}
@@ -227,7 +227,7 @@ public class UserGroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("teamId", teamId);
-			_params.put("userGroupIds", userGroupIds);
+			_params.put("userGroupIds", checkNull(userGroupIds));
 
 			_command.put("/usergroup/unset-team-user-groups", _params);
 		}
@@ -245,8 +245,8 @@ public class UserGroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userGroupId", userGroupId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 
 			_command.put("/usergroup/update-user-group", _params);
 		}
@@ -270,8 +270,8 @@ public class UserGroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userGroupId", userGroupId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/usergroup/update-user-group", _params);

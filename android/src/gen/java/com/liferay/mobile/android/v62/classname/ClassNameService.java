@@ -37,7 +37,7 @@ public class ClassNameService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("value", value);
+			_params.put("value", checkNull(value));
 
 			_command.put("/classname/fetch-class-name", _params);
 		}
@@ -60,7 +60,7 @@ public class ClassNameService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("clazz", clazz);
+			_params.put("clazz", checkNull(clazz));
 
 			_command.put("/classname/fetch-class-name-id", _params);
 		}
@@ -83,7 +83,7 @@ public class ClassNameService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("value", value);
+			_params.put("value", checkNull(value));
 
 			_command.put("/classname/fetch-class-name-id", _params);
 		}

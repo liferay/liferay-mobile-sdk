@@ -84,11 +84,11 @@ public class BlogsEntryService extends BaseService {
 			_params.put("displayDate", displayDate);
 			_params.put("status", status);
 			_params.put("max", max);
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 			_params.put("version", version);
-			_params.put("displayStyle", displayStyle);
-			_params.put("feedURL", feedURL);
-			_params.put("entryURL", entryURL);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
 			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/blogsentry/get-company-entries-rss", _params);
@@ -136,7 +136,7 @@ public class BlogsEntryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("urlTitle", urlTitle);
+			_params.put("urlTitle", checkNull(urlTitle));
 
 			_command.put("/blogsentry/get-entry", _params);
 		}
@@ -316,11 +316,11 @@ public class BlogsEntryService extends BaseService {
 			_params.put("displayDate", displayDate);
 			_params.put("status", status);
 			_params.put("max", max);
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 			_params.put("version", version);
-			_params.put("displayStyle", displayStyle);
-			_params.put("feedURL", feedURL);
-			_params.put("entryURL", entryURL);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
 			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/blogsentry/get-group-entries-rss", _params);
@@ -401,11 +401,11 @@ public class BlogsEntryService extends BaseService {
 			_params.put("displayDate", displayDate);
 			_params.put("status", status);
 			_params.put("max", max);
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 			_params.put("version", version);
-			_params.put("displayStyle", displayStyle);
-			_params.put("feedURL", feedURL);
-			_params.put("entryURL", entryURL);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
 			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/blogsentry/get-organization-entries-rss", _params);

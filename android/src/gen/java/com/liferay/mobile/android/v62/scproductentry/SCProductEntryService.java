@@ -37,18 +37,18 @@ public class SCProductEntryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("name", name);
-			_params.put("type", type);
-			_params.put("tags", tags);
-			_params.put("shortDescription", shortDescription);
-			_params.put("longDescription", longDescription);
-			_params.put("pageURL", pageURL);
-			_params.put("author", author);
-			_params.put("repoGroupId", repoGroupId);
-			_params.put("repoArtifactId", repoArtifactId);
-			_params.put("licenseIds", licenseIds);
-			_params.put("thumbnails", thumbnails);
-			_params.put("fullImages", fullImages);
+			_params.put("name", checkNull(name));
+			_params.put("type", checkNull(type));
+			_params.put("tags", checkNull(tags));
+			_params.put("shortDescription", checkNull(shortDescription));
+			_params.put("longDescription", checkNull(longDescription));
+			_params.put("pageURL", checkNull(pageURL));
+			_params.put("author", checkNull(author));
+			_params.put("repoGroupId", checkNull(repoGroupId));
+			_params.put("repoArtifactId", checkNull(repoArtifactId));
+			_params.put("licenseIds", checkNull(licenseIds));
+			_params.put("thumbnails", checkNull(thumbnails));
+			_params.put("fullImages", checkNull(fullImages));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/scproductentry/add-product-entry", _params);
@@ -113,18 +113,18 @@ public class SCProductEntryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("productEntryId", productEntryId);
-			_params.put("name", name);
-			_params.put("type", type);
-			_params.put("tags", tags);
-			_params.put("shortDescription", shortDescription);
-			_params.put("longDescription", longDescription);
-			_params.put("pageURL", pageURL);
-			_params.put("author", author);
-			_params.put("repoGroupId", repoGroupId);
-			_params.put("repoArtifactId", repoArtifactId);
-			_params.put("licenseIds", licenseIds);
-			_params.put("thumbnails", thumbnails);
-			_params.put("fullImages", fullImages);
+			_params.put("name", checkNull(name));
+			_params.put("type", checkNull(type));
+			_params.put("tags", checkNull(tags));
+			_params.put("shortDescription", checkNull(shortDescription));
+			_params.put("longDescription", checkNull(longDescription));
+			_params.put("pageURL", checkNull(pageURL));
+			_params.put("author", checkNull(author));
+			_params.put("repoGroupId", checkNull(repoGroupId));
+			_params.put("repoArtifactId", checkNull(repoArtifactId));
+			_params.put("licenseIds", checkNull(licenseIds));
+			_params.put("thumbnails", checkNull(thumbnails));
+			_params.put("fullImages", checkNull(fullImages));
 
 			_command.put("/scproductentry/update-product-entry", _params);
 		}

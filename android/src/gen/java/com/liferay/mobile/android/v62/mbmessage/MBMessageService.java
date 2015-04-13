@@ -38,15 +38,15 @@ public class MBMessageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
-			_params.put("permissionClassName", permissionClassName);
+			_params.put("permissionClassName", checkNull(permissionClassName));
 			_params.put("permissionClassPK", permissionClassPK);
 			_params.put("permissionOwnerId", permissionOwnerId);
 			_params.put("threadId", threadId);
 			_params.put("parentMessageId", parentMessageId);
-			_params.put("subject", subject);
-			_params.put("body", body);
+			_params.put("subject", checkNull(subject));
+			_params.put("body", checkNull(body));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbmessage/add-discussion-message", _params);
@@ -72,10 +72,10 @@ public class MBMessageService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("categoryId", categoryId);
-			_params.put("subject", subject);
-			_params.put("body", body);
-			_params.put("format", format);
-			_params.put("inputStreamOVPs", inputStreamOVPs);
+			_params.put("subject", checkNull(subject));
+			_params.put("body", checkNull(body));
+			_params.put("format", checkNull(format));
+			_params.put("inputStreamOVPs", checkNull(inputStreamOVPs));
 			_params.put("anonymous", anonymous);
 			_params.put("priority", priority);
 			_params.put("allowPingbacks", allowPingbacks);
@@ -106,10 +106,10 @@ public class MBMessageService extends BaseService {
 			_params.put("categoryId", categoryId);
 			_params.put("threadId", threadId);
 			_params.put("parentMessageId", parentMessageId);
-			_params.put("subject", subject);
-			_params.put("body", body);
-			_params.put("format", format);
-			_params.put("inputStreamOVPs", inputStreamOVPs);
+			_params.put("subject", checkNull(subject));
+			_params.put("body", checkNull(body));
+			_params.put("format", checkNull(format));
+			_params.put("inputStreamOVPs", checkNull(inputStreamOVPs));
 			_params.put("anonymous", anonymous);
 			_params.put("priority", priority);
 			_params.put("allowPingbacks", allowPingbacks);
@@ -137,8 +137,8 @@ public class MBMessageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("categoryId", categoryId);
-			_params.put("subject", subject);
-			_params.put("body", body);
+			_params.put("subject", checkNull(subject));
+			_params.put("body", checkNull(body));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbmessage/add-message", _params);
@@ -163,10 +163,10 @@ public class MBMessageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("parentMessageId", parentMessageId);
-			_params.put("subject", subject);
-			_params.put("body", body);
-			_params.put("format", format);
-			_params.put("inputStreamOVPs", inputStreamOVPs);
+			_params.put("subject", checkNull(subject));
+			_params.put("body", checkNull(body));
+			_params.put("format", checkNull(format));
+			_params.put("inputStreamOVPs", checkNull(inputStreamOVPs));
 			_params.put("anonymous", anonymous);
 			_params.put("priority", priority);
 			_params.put("allowPingbacks", allowPingbacks);
@@ -194,9 +194,9 @@ public class MBMessageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
-			_params.put("permissionClassName", permissionClassName);
+			_params.put("permissionClassName", checkNull(permissionClassName));
 			_params.put("permissionClassPK", permissionClassPK);
 			_params.put("permissionOwnerId", permissionOwnerId);
 			_params.put("messageId", messageId);
@@ -306,11 +306,11 @@ public class MBMessageService extends BaseService {
 			_params.put("categoryId", categoryId);
 			_params.put("status", status);
 			_params.put("max", max);
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 			_params.put("version", version);
-			_params.put("displayStyle", displayStyle);
-			_params.put("feedURL", feedURL);
-			_params.put("entryURL", entryURL);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
 			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/mbmessage/get-category-messages-rss", _params);
@@ -337,11 +337,11 @@ public class MBMessageService extends BaseService {
 			_params.put("companyId", companyId);
 			_params.put("status", status);
 			_params.put("max", max);
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 			_params.put("version", version);
-			_params.put("displayStyle", displayStyle);
-			_params.put("feedURL", feedURL);
-			_params.put("entryURL", entryURL);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
 			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/mbmessage/get-company-messages-rss", _params);
@@ -393,11 +393,11 @@ public class MBMessageService extends BaseService {
 			_params.put("userId", userId);
 			_params.put("status", status);
 			_params.put("max", max);
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 			_params.put("version", version);
-			_params.put("displayStyle", displayStyle);
-			_params.put("feedURL", feedURL);
-			_params.put("entryURL", entryURL);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
 			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/mbmessage/get-group-messages-rss", _params);
@@ -424,11 +424,11 @@ public class MBMessageService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("status", status);
 			_params.put("max", max);
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 			_params.put("version", version);
-			_params.put("displayStyle", displayStyle);
-			_params.put("feedURL", feedURL);
-			_params.put("entryURL", entryURL);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
 			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/mbmessage/get-group-messages-rss", _params);
@@ -477,7 +477,7 @@ public class MBMessageService extends BaseService {
 
 			_params.put("messageId", messageId);
 			_params.put("status", status);
-			_params.put("threadView", threadView);
+			_params.put("threadView", checkNull(threadView));
 			_params.put("includePrevAndNext", includePrevAndNext);
 
 			_command.put("/mbmessage/get-message-display", _params);
@@ -583,11 +583,11 @@ public class MBMessageService extends BaseService {
 			_params.put("threadId", threadId);
 			_params.put("status", status);
 			_params.put("max", max);
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 			_params.put("version", version);
-			_params.put("displayStyle", displayStyle);
-			_params.put("feedURL", feedURL);
-			_params.put("entryURL", entryURL);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
 			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/mbmessage/get-thread-messages-rss", _params);
@@ -612,7 +612,7 @@ public class MBMessageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("messageId", messageId);
-			_params.put("fileName", fileName);
+			_params.put("fileName", checkNull(fileName));
 
 			_command.put("/mbmessage/restore-message-attachment-from-trash", _params);
 		}
@@ -682,14 +682,14 @@ public class MBMessageService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
-			_params.put("permissionClassName", permissionClassName);
+			_params.put("permissionClassName", checkNull(permissionClassName));
 			_params.put("permissionClassPK", permissionClassPK);
 			_params.put("permissionOwnerId", permissionOwnerId);
 			_params.put("messageId", messageId);
-			_params.put("subject", subject);
-			_params.put("body", body);
+			_params.put("subject", checkNull(subject));
+			_params.put("body", checkNull(body));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbmessage/update-discussion-message", _params);
@@ -714,10 +714,10 @@ public class MBMessageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("messageId", messageId);
-			_params.put("subject", subject);
-			_params.put("body", body);
-			_params.put("inputStreamOVPs", inputStreamOVPs);
-			_params.put("existingFiles", existingFiles);
+			_params.put("subject", checkNull(subject));
+			_params.put("body", checkNull(body));
+			_params.put("inputStreamOVPs", checkNull(inputStreamOVPs));
+			_params.put("existingFiles", checkNull(existingFiles));
 			_params.put("priority", priority);
 			_params.put("allowPingbacks", allowPingbacks);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);

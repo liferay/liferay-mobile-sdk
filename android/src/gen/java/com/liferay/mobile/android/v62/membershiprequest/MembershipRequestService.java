@@ -38,7 +38,7 @@ public class MembershipRequestService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("comments", comments);
+			_params.put("comments", checkNull(comments));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/membershiprequest/add-membership-request", _params);
@@ -104,7 +104,7 @@ public class MembershipRequestService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("membershipRequestId", membershipRequestId);
-			_params.put("reviewComments", reviewComments);
+			_params.put("reviewComments", checkNull(reviewComments));
 			_params.put("statusId", statusId);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 

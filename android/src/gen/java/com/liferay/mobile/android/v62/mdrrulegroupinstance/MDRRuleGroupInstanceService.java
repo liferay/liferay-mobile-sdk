@@ -38,7 +38,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 			_params.put("ruleGroupId", ruleGroupId);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
@@ -65,7 +65,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 			_params.put("ruleGroupId", ruleGroupId);
 			_params.put("priority", priority);
@@ -109,7 +109,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -136,7 +136,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 
 			_command.put("/mdrrulegroupinstance/get-rule-group-instances-count", _params);

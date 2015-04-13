@@ -38,7 +38,7 @@ public class OrganizationService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("organizationIds", organizationIds);
+			_params.put("organizationIds", checkNull(organizationIds));
 
 			_command.put("/organization/add-group-organizations", _params);
 		}
@@ -56,13 +56,13 @@ public class OrganizationService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("name", name);
-			_params.put("type", type);
+			_params.put("name", checkNull(name));
+			_params.put("type", checkNull(type));
 			_params.put("recursable", recursable);
 			_params.put("regionId", regionId);
 			_params.put("countryId", countryId);
 			_params.put("statusId", statusId);
-			_params.put("comments", comments);
+			_params.put("comments", checkNull(comments));
 			_params.put("site", site);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -88,18 +88,18 @@ public class OrganizationService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("name", name);
-			_params.put("type", type);
+			_params.put("name", checkNull(name));
+			_params.put("type", checkNull(type));
 			_params.put("regionId", regionId);
 			_params.put("countryId", countryId);
 			_params.put("statusId", statusId);
-			_params.put("comments", comments);
+			_params.put("comments", checkNull(comments));
 			_params.put("site", site);
-			_params.put("addresses", addresses);
-			_params.put("emailAddresses", emailAddresses);
-			_params.put("orgLabors", orgLabors);
-			_params.put("phones", phones);
-			_params.put("websites", websites);
+			_params.put("addresses", checkNull(addresses));
+			_params.put("emailAddresses", checkNull(emailAddresses));
+			_params.put("orgLabors", checkNull(orgLabors));
+			_params.put("phones", checkNull(phones));
+			_params.put("websites", checkNull(websites));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/organization/add-organization", _params);
@@ -124,19 +124,19 @@ public class OrganizationService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("name", name);
-			_params.put("type", type);
+			_params.put("name", checkNull(name));
+			_params.put("type", checkNull(type));
 			_params.put("recursable", recursable);
 			_params.put("regionId", regionId);
 			_params.put("countryId", countryId);
 			_params.put("statusId", statusId);
-			_params.put("comments", comments);
+			_params.put("comments", checkNull(comments));
 			_params.put("site", site);
-			_params.put("addresses", addresses);
-			_params.put("emailAddresses", emailAddresses);
-			_params.put("orgLabors", orgLabors);
-			_params.put("phones", phones);
-			_params.put("websites", websites);
+			_params.put("addresses", checkNull(addresses));
+			_params.put("emailAddresses", checkNull(emailAddresses));
+			_params.put("orgLabors", checkNull(orgLabors));
+			_params.put("phones", checkNull(phones));
+			_params.put("websites", checkNull(websites));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/organization/add-organization", _params);
@@ -161,12 +161,12 @@ public class OrganizationService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("name", name);
-			_params.put("type", type);
+			_params.put("name", checkNull(name));
+			_params.put("type", checkNull(type));
 			_params.put("regionId", regionId);
 			_params.put("countryId", countryId);
 			_params.put("statusId", statusId);
-			_params.put("comments", comments);
+			_params.put("comments", checkNull(comments));
 			_params.put("site", site);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -192,7 +192,7 @@ public class OrganizationService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("passwordPolicyId", passwordPolicyId);
-			_params.put("organizationIds", organizationIds);
+			_params.put("organizationIds", checkNull(organizationIds));
 
 			_command.put("/organization/add-password-policy-organizations", _params);
 		}
@@ -243,7 +243,7 @@ public class OrganizationService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("actionId", actionId);
+			_params.put("actionId", checkNull(actionId));
 			_params.put("max", max);
 
 			_command.put("/organization/get-manageable-organizations", _params);
@@ -291,7 +291,7 @@ public class OrganizationService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 
 			_command.put("/organization/get-organization-id", _params);
 		}
@@ -412,7 +412,7 @@ public class OrganizationService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("organizationIds", organizationIds);
+			_params.put("organizationIds", checkNull(organizationIds));
 
 			_command.put("/organization/set-group-organizations", _params);
 		}
@@ -430,7 +430,7 @@ public class OrganizationService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("organizationIds", organizationIds);
+			_params.put("organizationIds", checkNull(organizationIds));
 
 			_command.put("/organization/unset-group-organizations", _params);
 		}
@@ -448,7 +448,7 @@ public class OrganizationService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("passwordPolicyId", passwordPolicyId);
-			_params.put("organizationIds", organizationIds);
+			_params.put("organizationIds", checkNull(organizationIds));
 
 			_command.put("/organization/unset-password-policy-organizations", _params);
 		}
@@ -467,12 +467,12 @@ public class OrganizationService extends BaseService {
 
 			_params.put("organizationId", organizationId);
 			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("name", name);
-			_params.put("type", type);
+			_params.put("name", checkNull(name));
+			_params.put("type", checkNull(type));
 			_params.put("regionId", regionId);
 			_params.put("countryId", countryId);
 			_params.put("statusId", statusId);
-			_params.put("comments", comments);
+			_params.put("comments", checkNull(comments));
 			_params.put("site", site);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -499,13 +499,13 @@ public class OrganizationService extends BaseService {
 
 			_params.put("organizationId", organizationId);
 			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("name", name);
-			_params.put("type", type);
+			_params.put("name", checkNull(name));
+			_params.put("type", checkNull(type));
 			_params.put("recursable", recursable);
 			_params.put("regionId", regionId);
 			_params.put("countryId", countryId);
 			_params.put("statusId", statusId);
-			_params.put("comments", comments);
+			_params.put("comments", checkNull(comments));
 			_params.put("site", site);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -532,18 +532,18 @@ public class OrganizationService extends BaseService {
 
 			_params.put("organizationId", organizationId);
 			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("name", name);
-			_params.put("type", type);
+			_params.put("name", checkNull(name));
+			_params.put("type", checkNull(type));
 			_params.put("regionId", regionId);
 			_params.put("countryId", countryId);
 			_params.put("statusId", statusId);
-			_params.put("comments", comments);
+			_params.put("comments", checkNull(comments));
 			_params.put("site", site);
-			_params.put("addresses", addresses);
-			_params.put("emailAddresses", emailAddresses);
-			_params.put("orgLabors", orgLabors);
-			_params.put("phones", phones);
-			_params.put("websites", websites);
+			_params.put("addresses", checkNull(addresses));
+			_params.put("emailAddresses", checkNull(emailAddresses));
+			_params.put("orgLabors", checkNull(orgLabors));
+			_params.put("phones", checkNull(phones));
+			_params.put("websites", checkNull(websites));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/organization/update-organization", _params);
@@ -569,19 +569,19 @@ public class OrganizationService extends BaseService {
 
 			_params.put("organizationId", organizationId);
 			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("name", name);
-			_params.put("type", type);
+			_params.put("name", checkNull(name));
+			_params.put("type", checkNull(type));
 			_params.put("recursable", recursable);
 			_params.put("regionId", regionId);
 			_params.put("countryId", countryId);
 			_params.put("statusId", statusId);
-			_params.put("comments", comments);
+			_params.put("comments", checkNull(comments));
 			_params.put("site", site);
-			_params.put("addresses", addresses);
-			_params.put("emailAddresses", emailAddresses);
-			_params.put("orgLabors", orgLabors);
-			_params.put("phones", phones);
-			_params.put("websites", websites);
+			_params.put("addresses", checkNull(addresses));
+			_params.put("emailAddresses", checkNull(emailAddresses));
+			_params.put("orgLabors", checkNull(orgLabors));
+			_params.put("phones", checkNull(phones));
+			_params.put("websites", checkNull(websites));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/organization/update-organization", _params);

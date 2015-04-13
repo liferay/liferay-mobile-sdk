@@ -39,11 +39,11 @@ public class ResourcePermissionService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("companyId", companyId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("scope", scope);
-			_params.put("primKey", primKey);
+			_params.put("primKey", checkNull(primKey));
 			_params.put("roleId", roleId);
-			_params.put("actionId", actionId);
+			_params.put("actionId", checkNull(actionId));
 
 			_command.put("/resourcepermission/add-resource-permission", _params);
 		}
@@ -62,11 +62,11 @@ public class ResourcePermissionService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("companyId", companyId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("scope", scope);
-			_params.put("primKey", primKey);
+			_params.put("primKey", checkNull(primKey));
 			_params.put("roleId", roleId);
-			_params.put("actionId", actionId);
+			_params.put("actionId", checkNull(actionId));
 
 			_command.put("/resourcepermission/remove-resource-permission", _params);
 		}
@@ -85,10 +85,10 @@ public class ResourcePermissionService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("companyId", companyId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("scope", scope);
 			_params.put("roleId", roleId);
-			_params.put("actionId", actionId);
+			_params.put("actionId", checkNull(actionId));
 
 			_command.put("/resourcepermission/remove-resource-permissions", _params);
 		}
@@ -107,9 +107,9 @@ public class ResourcePermissionService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("companyId", companyId);
-			_params.put("name", name);
-			_params.put("primKey", primKey);
-			_params.put("roleIdsToActionIds", roleIdsToActionIds);
+			_params.put("name", checkNull(name));
+			_params.put("primKey", checkNull(primKey));
+			_params.put("roleIdsToActionIds", checkNull(roleIdsToActionIds));
 
 			_command.put("/resourcepermission/set-individual-resource-permissions", _params);
 		}
@@ -128,10 +128,10 @@ public class ResourcePermissionService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("companyId", companyId);
-			_params.put("name", name);
-			_params.put("primKey", primKey);
+			_params.put("name", checkNull(name));
+			_params.put("primKey", checkNull(primKey));
 			_params.put("roleId", roleId);
-			_params.put("actionIds", actionIds);
+			_params.put("actionIds", checkNull(actionIds));
 
 			_command.put("/resourcepermission/set-individual-resource-permissions", _params);
 		}

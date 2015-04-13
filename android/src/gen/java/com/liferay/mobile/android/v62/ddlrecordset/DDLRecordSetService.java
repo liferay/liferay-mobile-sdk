@@ -39,9 +39,9 @@ public class DDLRecordSetService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("ddmStructureId", ddmStructureId);
-			_params.put("recordSetKey", recordSetKey);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
+			_params.put("recordSetKey", checkNull(recordSetKey));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("minDisplayRows", minDisplayRows);
 			_params.put("scope", scope);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
@@ -109,7 +109,7 @@ public class DDLRecordSetService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("keywords", keywords);
+			_params.put("keywords", checkNull(keywords));
 			_params.put("scope", scope);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -138,8 +138,8 @@ public class DDLRecordSetService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("scope", scope);
 			_params.put("andOperator", andOperator);
 			_params.put("start", start);
@@ -169,7 +169,7 @@ public class DDLRecordSetService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("keywords", keywords);
+			_params.put("keywords", checkNull(keywords));
 			_params.put("scope", scope);
 
 			_command.put("/ddlrecordset/search-count", _params);
@@ -195,8 +195,8 @@ public class DDLRecordSetService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("scope", scope);
 			_params.put("andOperator", andOperator);
 
@@ -248,8 +248,8 @@ public class DDLRecordSetService extends BaseService {
 
 			_params.put("recordSetId", recordSetId);
 			_params.put("ddmStructureId", ddmStructureId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("minDisplayRows", minDisplayRows);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -276,9 +276,9 @@ public class DDLRecordSetService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("ddmStructureId", ddmStructureId);
-			_params.put("recordSetKey", recordSetKey);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
+			_params.put("recordSetKey", checkNull(recordSetKey));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("minDisplayRows", minDisplayRows);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 

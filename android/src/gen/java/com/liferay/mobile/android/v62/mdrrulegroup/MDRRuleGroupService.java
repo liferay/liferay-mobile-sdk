@@ -38,8 +38,8 @@ public class MDRRuleGroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdrrulegroup/add-rule-group", _params);
@@ -152,8 +152,8 @@ public class MDRRuleGroupService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("ruleGroupId", ruleGroupId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdrrulegroup/update-rule-group", _params);

@@ -38,8 +38,8 @@ public class RegionService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("countryId", countryId);
-			_params.put("regionCode", regionCode);
-			_params.put("name", name);
+			_params.put("regionCode", checkNull(regionCode));
+			_params.put("name", checkNull(name));
 			_params.put("active", active);
 
 			_command.put("/region/add-region", _params);
@@ -64,7 +64,7 @@ public class RegionService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("countryId", countryId);
-			_params.put("regionCode", regionCode);
+			_params.put("regionCode", checkNull(regionCode));
 
 			_command.put("/region/fetch-region", _params);
 		}
@@ -111,7 +111,7 @@ public class RegionService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("countryId", countryId);
-			_params.put("regionCode", regionCode);
+			_params.put("regionCode", checkNull(regionCode));
 
 			_command.put("/region/get-region", _params);
 		}

@@ -38,11 +38,11 @@ public class ExpandoValueService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("className", className);
-			_params.put("tableName", tableName);
-			_params.put("columnName", columnName);
+			_params.put("className", checkNull(className));
+			_params.put("tableName", checkNull(tableName));
+			_params.put("columnName", checkNull(columnName));
 			_params.put("classPK", classPK);
-			_params.put("data", data);
+			_params.put("data", checkNull(data));
 
 			_command.put("/expandovalue/add-value", _params);
 		}
@@ -66,10 +66,10 @@ public class ExpandoValueService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("className", className);
-			_params.put("tableName", tableName);
+			_params.put("className", checkNull(className));
+			_params.put("tableName", checkNull(tableName));
 			_params.put("classPK", classPK);
-			_params.put("attributeValues", attributeValues);
+			_params.put("attributeValues", checkNull(attributeValues));
 
 			_command.put("/expandovalue/add-values", _params);
 		}
@@ -87,9 +87,9 @@ public class ExpandoValueService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("className", className);
-			_params.put("tableName", tableName);
-			_params.put("columnName", columnName);
+			_params.put("className", checkNull(className));
+			_params.put("tableName", checkNull(tableName));
+			_params.put("columnName", checkNull(columnName));
 			_params.put("classPK", classPK);
 
 			_command.put("/expandovalue/get-data", _params);
@@ -114,9 +114,9 @@ public class ExpandoValueService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("className", className);
-			_params.put("tableName", tableName);
-			_params.put("columnNames", columnNames);
+			_params.put("className", checkNull(className));
+			_params.put("tableName", checkNull(tableName));
+			_params.put("columnNames", checkNull(columnNames));
 			_params.put("classPK", classPK);
 
 			_command.put("/expandovalue/get-data", _params);
@@ -141,9 +141,9 @@ public class ExpandoValueService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("className", className);
-			_params.put("tableName", tableName);
-			_params.put("columnName", columnName);
+			_params.put("className", checkNull(className));
+			_params.put("tableName", checkNull(tableName));
+			_params.put("columnName", checkNull(columnName));
 			_params.put("classPK", classPK);
 
 			_command.put("/expandovalue/get-json-data", _params);

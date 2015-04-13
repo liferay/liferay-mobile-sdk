@@ -61,8 +61,8 @@ public class BackgroundTaskService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("taskExecutorClassName", taskExecutorClassName);
-			_params.put("completed", completed);
+			_params.put("taskExecutorClassName", checkNull(taskExecutorClassName));
+			_params.put("completed", checkNull(completed));
 
 			_command.put("/backgroundtask/get-background-tasks-count", _params);
 		}

@@ -38,9 +38,9 @@ public class DLFileEntryTypeService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("ddmStructureIds", ddmStructureIds);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("ddmStructureIds", checkNull(ddmStructureIds));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfileentrytype/add-file-entry-type", _params);
@@ -65,10 +65,10 @@ public class DLFileEntryTypeService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("fileEntryTypeKey", fileEntryTypeKey);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("ddmStructureIds", ddmStructureIds);
+			_params.put("fileEntryTypeKey", checkNull(fileEntryTypeKey));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("ddmStructureIds", checkNull(ddmStructureIds));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfileentrytype/add-file-entry-type", _params);
@@ -132,7 +132,7 @@ public class DLFileEntryTypeService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupIds", groupIds);
+			_params.put("groupIds", checkNull(groupIds));
 
 			_command.put("/dlfileentrytype/get-file-entry-types", _params);
 		}
@@ -155,7 +155,7 @@ public class DLFileEntryTypeService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupIds", groupIds);
+			_params.put("groupIds", checkNull(groupIds));
 			_params.put("start", start);
 			_params.put("end", end);
 
@@ -180,7 +180,7 @@ public class DLFileEntryTypeService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupIds", groupIds);
+			_params.put("groupIds", checkNull(groupIds));
 
 			_command.put("/dlfileentrytype/get-file-entry-types-count", _params);
 		}
@@ -203,7 +203,7 @@ public class DLFileEntryTypeService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupIds", groupIds);
+			_params.put("groupIds", checkNull(groupIds));
 			_params.put("folderId", folderId);
 			_params.put("inherited", inherited);
 
@@ -229,8 +229,8 @@ public class DLFileEntryTypeService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("keywords", keywords);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("keywords", checkNull(keywords));
 			_params.put("includeBasicFileEntryType", includeBasicFileEntryType);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -258,8 +258,8 @@ public class DLFileEntryTypeService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("keywords", keywords);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("keywords", checkNull(keywords));
 			_params.put("includeBasicFileEntryType", includeBasicFileEntryType);
 
 			_command.put("/dlfileentrytype/search-count", _params);
@@ -284,9 +284,9 @@ public class DLFileEntryTypeService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryTypeId", fileEntryTypeId);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("ddmStructureIds", ddmStructureIds);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("ddmStructureIds", checkNull(ddmStructureIds));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfileentrytype/update-file-entry-type", _params);
@@ -305,9 +305,9 @@ public class DLFileEntryTypeService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryTypeId", fileEntryTypeId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("ddmStructureIds", ddmStructureIds);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("ddmStructureIds", checkNull(ddmStructureIds));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfileentrytype/update-file-entry-type", _params);

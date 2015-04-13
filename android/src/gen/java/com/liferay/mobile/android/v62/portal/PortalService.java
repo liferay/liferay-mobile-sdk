@@ -79,7 +79,7 @@ public class PortalService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("transactionPortletBarText", transactionPortletBarText);
+			_params.put("transactionPortletBarText", checkNull(transactionPortletBarText));
 
 			_command.put("/portal/test-add-class-name-and-test-transaction-portlet-bar_-portal-rollback", _params);
 		}
@@ -96,7 +96,7 @@ public class PortalService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("transactionPortletBarText", transactionPortletBarText);
+			_params.put("transactionPortletBarText", checkNull(transactionPortletBarText));
 
 			_command.put("/portal/test-add-class-name-and-test-transaction-portlet-bar_-portlet-rollback", _params);
 		}
@@ -113,7 +113,7 @@ public class PortalService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("transactionPortletBarText", transactionPortletBarText);
+			_params.put("transactionPortletBarText", checkNull(transactionPortletBarText));
 
 			_command.put("/portal/test-add-class-name-and-test-transaction-portlet-bar_-success", _params);
 		}
@@ -130,7 +130,7 @@ public class PortalService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("classNameValue", classNameValue);
+			_params.put("classNameValue", checkNull(classNameValue));
 
 			_command.put("/portal/test-add-class-name_-rollback", _params);
 		}
@@ -147,7 +147,7 @@ public class PortalService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("classNameValue", classNameValue);
+			_params.put("classNameValue", checkNull(classNameValue));
 
 			_command.put("/portal/test-add-class-name_-success", _params);
 		}

@@ -37,11 +37,11 @@ public class CountryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("name", name);
-			_params.put("a2", a2);
-			_params.put("a3", a3);
-			_params.put("number", number);
-			_params.put("idd", idd);
+			_params.put("name", checkNull(name));
+			_params.put("a2", checkNull(a2));
+			_params.put("a3", checkNull(a3));
+			_params.put("number", checkNull(number));
+			_params.put("idd", checkNull(idd));
 			_params.put("active", active);
 
 			_command.put("/country/add-country", _params);
@@ -88,7 +88,7 @@ public class CountryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("a2", a2);
+			_params.put("a2", checkNull(a2));
 
 			_command.put("/country/fetch-country-by-a2", _params);
 		}
@@ -111,7 +111,7 @@ public class CountryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("a3", a3);
+			_params.put("a3", checkNull(a3));
 
 			_command.put("/country/fetch-country-by-a3", _params);
 		}
@@ -201,7 +201,7 @@ public class CountryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("a2", a2);
+			_params.put("a2", checkNull(a2));
 
 			_command.put("/country/get-country-by-a2", _params);
 		}
@@ -224,7 +224,7 @@ public class CountryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("a3", a3);
+			_params.put("a3", checkNull(a3));
 
 			_command.put("/country/get-country-by-a3", _params);
 		}
@@ -247,7 +247,7 @@ public class CountryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 
 			_command.put("/country/get-country-by-name", _params);
 		}

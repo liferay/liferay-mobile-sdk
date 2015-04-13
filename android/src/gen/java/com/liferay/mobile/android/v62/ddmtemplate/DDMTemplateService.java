@@ -40,12 +40,12 @@ public class DDMTemplateService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
 			_params.put("classPK", classPK);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("type", type);
-			_params.put("mode", mode);
-			_params.put("language", language);
-			_params.put("script", script);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("type", checkNull(type));
+			_params.put("mode", checkNull(mode));
+			_params.put("language", checkNull(language));
+			_params.put("script", checkNull(script));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmtemplate/add-template", _params);
@@ -72,17 +72,17 @@ public class DDMTemplateService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
 			_params.put("classPK", classPK);
-			_params.put("templateKey", templateKey);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("type", type);
-			_params.put("mode", mode);
-			_params.put("language", language);
-			_params.put("script", script);
+			_params.put("templateKey", checkNull(templateKey));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("type", checkNull(type));
+			_params.put("mode", checkNull(mode));
+			_params.put("language", checkNull(language));
+			_params.put("script", checkNull(script));
 			_params.put("cacheable", cacheable);
 			_params.put("smallImage", smallImage);
-			_params.put("smallImageURL", smallImageURL);
-			_params.put("smallImageFile", smallImageFile);
+			_params.put("smallImageURL", checkNull(smallImageURL));
+			_params.put("smallImageFile", checkNull(smallImageFile));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmtemplate/add-template", _params);
@@ -125,8 +125,8 @@ public class DDMTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("templateId", templateId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmtemplate/copy-template", _params);
@@ -153,7 +153,7 @@ public class DDMTemplateService extends BaseService {
 			_params.put("classNameId", classNameId);
 			_params.put("classPK", classPK);
 			_params.put("newClassPK", newClassPK);
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmtemplate/copy-templates", _params);
@@ -196,7 +196,7 @@ public class DDMTemplateService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
-			_params.put("templateKey", templateKey);
+			_params.put("templateKey", checkNull(templateKey));
 
 			_command.put("/ddmtemplate/fetch-template", _params);
 		}
@@ -244,7 +244,7 @@ public class DDMTemplateService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
-			_params.put("templateKey", templateKey);
+			_params.put("templateKey", checkNull(templateKey));
 
 			_command.put("/ddmtemplate/get-template", _params);
 		}
@@ -269,7 +269,7 @@ public class DDMTemplateService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
-			_params.put("templateKey", templateKey);
+			_params.put("templateKey", checkNull(templateKey));
 			_params.put("includeGlobalTemplates", includeGlobalTemplates);
 
 			_command.put("/ddmtemplate/get-template", _params);
@@ -345,7 +345,7 @@ public class DDMTemplateService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
 			_params.put("classPK", classPK);
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 
 			_command.put("/ddmtemplate/get-templates", _params);
 		}
@@ -371,8 +371,8 @@ public class DDMTemplateService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
 			_params.put("classPK", classPK);
-			_params.put("type", type);
-			_params.put("mode", mode);
+			_params.put("type", checkNull(type));
+			_params.put("mode", checkNull(mode));
 
 			_command.put("/ddmtemplate/get-templates", _params);
 		}
@@ -474,9 +474,9 @@ public class DDMTemplateService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
 			_params.put("classPK", classPK);
-			_params.put("keywords", keywords);
-			_params.put("type", type);
-			_params.put("mode", mode);
+			_params.put("keywords", checkNull(keywords));
+			_params.put("type", checkNull(type));
+			_params.put("mode", checkNull(mode));
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
@@ -503,12 +503,12 @@ public class DDMTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("classNameIds", classNameIds);
-			_params.put("classPKs", classPKs);
-			_params.put("keywords", keywords);
-			_params.put("type", type);
-			_params.put("mode", mode);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("classNameIds", checkNull(classNameIds));
+			_params.put("classPKs", checkNull(classPKs));
+			_params.put("keywords", checkNull(keywords));
+			_params.put("type", checkNull(type));
+			_params.put("mode", checkNull(mode));
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
@@ -538,11 +538,11 @@ public class DDMTemplateService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
 			_params.put("classPK", classPK);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("type", type);
-			_params.put("mode", mode);
-			_params.put("language", language);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("type", checkNull(type));
+			_params.put("mode", checkNull(mode));
+			_params.put("language", checkNull(language));
 			_params.put("andOperator", andOperator);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -570,14 +570,14 @@ public class DDMTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("classNameIds", classNameIds);
-			_params.put("classPKs", classPKs);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("type", type);
-			_params.put("mode", mode);
-			_params.put("language", language);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("classNameIds", checkNull(classNameIds));
+			_params.put("classPKs", checkNull(classPKs));
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("type", checkNull(type));
+			_params.put("mode", checkNull(mode));
+			_params.put("language", checkNull(language));
 			_params.put("andOperator", andOperator);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -608,11 +608,11 @@ public class DDMTemplateService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
 			_params.put("classPK", classPK);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("type", type);
-			_params.put("mode", mode);
-			_params.put("language", language);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("type", checkNull(type));
+			_params.put("mode", checkNull(mode));
+			_params.put("language", checkNull(language));
 			_params.put("andOperator", andOperator);
 
 			_command.put("/ddmtemplate/search-count", _params);
@@ -637,14 +637,14 @@ public class DDMTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("classNameIds", classNameIds);
-			_params.put("classPKs", classPKs);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("type", type);
-			_params.put("mode", mode);
-			_params.put("language", language);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("classNameIds", checkNull(classNameIds));
+			_params.put("classPKs", checkNull(classPKs));
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("type", checkNull(type));
+			_params.put("mode", checkNull(mode));
+			_params.put("language", checkNull(language));
 			_params.put("andOperator", andOperator);
 
 			_command.put("/ddmtemplate/search-count", _params);
@@ -672,9 +672,9 @@ public class DDMTemplateService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
 			_params.put("classPK", classPK);
-			_params.put("keywords", keywords);
-			_params.put("type", type);
-			_params.put("mode", mode);
+			_params.put("keywords", checkNull(keywords));
+			_params.put("type", checkNull(type));
+			_params.put("mode", checkNull(mode));
 
 			_command.put("/ddmtemplate/search-count", _params);
 		}
@@ -698,12 +698,12 @@ public class DDMTemplateService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", groupIds);
-			_params.put("classNameIds", classNameIds);
-			_params.put("classPKs", classPKs);
-			_params.put("keywords", keywords);
-			_params.put("type", type);
-			_params.put("mode", mode);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("classNameIds", checkNull(classNameIds));
+			_params.put("classPKs", checkNull(classPKs));
+			_params.put("keywords", checkNull(keywords));
+			_params.put("type", checkNull(type));
+			_params.put("mode", checkNull(mode));
 
 			_command.put("/ddmtemplate/search-count", _params);
 		}
@@ -728,16 +728,16 @@ public class DDMTemplateService extends BaseService {
 
 			_params.put("templateId", templateId);
 			_params.put("classPK", classPK);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("type", type);
-			_params.put("mode", mode);
-			_params.put("language", language);
-			_params.put("script", script);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("type", checkNull(type));
+			_params.put("mode", checkNull(mode));
+			_params.put("language", checkNull(language));
+			_params.put("script", checkNull(script));
 			_params.put("cacheable", cacheable);
 			_params.put("smallImage", smallImage);
-			_params.put("smallImageURL", smallImageURL);
-			_params.put("smallImageFile", smallImageFile);
+			_params.put("smallImageURL", checkNull(smallImageURL));
+			_params.put("smallImageFile", checkNull(smallImageFile));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmtemplate/update-template", _params);

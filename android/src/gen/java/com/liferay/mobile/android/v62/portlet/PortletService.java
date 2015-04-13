@@ -59,8 +59,8 @@ public class PortletService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("portletId", portletId);
-			_params.put("roles", roles);
+			_params.put("portletId", checkNull(portletId));
+			_params.put("roles", checkNull(roles));
 			_params.put("active", active);
 
 			_command.put("/portlet/update-portlet", _params);

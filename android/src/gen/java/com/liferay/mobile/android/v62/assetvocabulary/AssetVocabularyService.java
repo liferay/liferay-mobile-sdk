@@ -37,7 +37,7 @@ public class AssetVocabularyService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assetvocabulary/add-vocabulary", _params);
@@ -61,9 +61,9 @@ public class AssetVocabularyService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("titleMap", titleMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("settings", settings);
+			_params.put("titleMap", checkNull(titleMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("settings", checkNull(settings));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assetvocabulary/add-vocabulary", _params);
@@ -87,10 +87,10 @@ public class AssetVocabularyService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("title", title);
-			_params.put("titleMap", titleMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("settings", settings);
+			_params.put("title", checkNull(title));
+			_params.put("titleMap", checkNull(titleMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("settings", checkNull(settings));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assetvocabulary/add-vocabulary", _params);
@@ -114,7 +114,7 @@ public class AssetVocabularyService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("vocabularyIds", vocabularyIds);
+			_params.put("vocabularyIds", checkNull(vocabularyIds));
 
 			_command.put("/assetvocabulary/delete-vocabularies", _params);
 		}
@@ -131,7 +131,7 @@ public class AssetVocabularyService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("vocabularyIds", vocabularyIds);
+			_params.put("vocabularyIds", checkNull(vocabularyIds));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assetvocabulary/delete-vocabularies", _params);
@@ -269,7 +269,7 @@ public class AssetVocabularyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -319,7 +319,7 @@ public class AssetVocabularyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 
 			_command.put("/assetvocabulary/get-group-vocabularies-count", _params);
 		}
@@ -343,7 +343,7 @@ public class AssetVocabularyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -370,7 +370,7 @@ public class AssetVocabularyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("start", start);
 			_params.put("end", end);
 			_params.put("addDefaultVocabulary", addDefaultVocabulary);
@@ -397,7 +397,7 @@ public class AssetVocabularyService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupIds", groupIds);
+			_params.put("groupIds", checkNull(groupIds));
 
 			_command.put("/assetvocabulary/get-groups-vocabularies", _params);
 		}
@@ -420,8 +420,8 @@ public class AssetVocabularyService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupIds", groupIds);
-			_params.put("className", className);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("className", checkNull(className));
 
 			_command.put("/assetvocabulary/get-groups-vocabularies", _params);
 		}
@@ -445,7 +445,7 @@ public class AssetVocabularyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -471,7 +471,7 @@ public class AssetVocabularyService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("vocabularyIds", vocabularyIds);
+			_params.put("vocabularyIds", checkNull(vocabularyIds));
 
 			_command.put("/assetvocabulary/get-vocabularies", _params);
 		}
@@ -518,9 +518,9 @@ public class AssetVocabularyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("vocabularyId", vocabularyId);
-			_params.put("titleMap", titleMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("settings", settings);
+			_params.put("titleMap", checkNull(titleMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("settings", checkNull(settings));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assetvocabulary/update-vocabulary", _params);
@@ -545,10 +545,10 @@ public class AssetVocabularyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("vocabularyId", vocabularyId);
-			_params.put("title", title);
-			_params.put("titleMap", titleMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("settings", settings);
+			_params.put("title", checkNull(title));
+			_params.put("titleMap", checkNull(titleMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("settings", checkNull(settings));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assetvocabulary/update-vocabulary", _params);

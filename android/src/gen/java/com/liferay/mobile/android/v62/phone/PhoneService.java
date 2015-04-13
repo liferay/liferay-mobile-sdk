@@ -37,10 +37,10 @@ public class PhoneService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
-			_params.put("number", number);
-			_params.put("extension", extension);
+			_params.put("number", checkNull(number));
+			_params.put("extension", checkNull(extension));
 			_params.put("typeId", typeId);
 			_params.put("primary", primary);
 
@@ -65,10 +65,10 @@ public class PhoneService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
-			_params.put("number", number);
-			_params.put("extension", extension);
+			_params.put("number", checkNull(number));
+			_params.put("extension", checkNull(extension));
 			_params.put("typeId", typeId);
 			_params.put("primary", primary);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
@@ -134,7 +134,7 @@ public class PhoneService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 
 			_command.put("/phone/get-phones", _params);
@@ -159,8 +159,8 @@ public class PhoneService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("phoneId", phoneId);
-			_params.put("number", number);
-			_params.put("extension", extension);
+			_params.put("number", checkNull(number));
+			_params.put("extension", checkNull(extension));
 			_params.put("typeId", typeId);
 			_params.put("primary", primary);
 

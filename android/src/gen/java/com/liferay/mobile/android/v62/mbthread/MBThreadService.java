@@ -490,7 +490,7 @@ public class MBThreadService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("messageId", messageId);
-			_params.put("subject", subject);
+			_params.put("subject", checkNull(subject));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mbthread/split-thread", _params);

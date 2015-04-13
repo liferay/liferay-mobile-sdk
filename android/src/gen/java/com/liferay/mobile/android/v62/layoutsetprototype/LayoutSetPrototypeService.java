@@ -37,8 +37,8 @@ public class LayoutSetPrototypeService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("nameMap", nameMap);
-			_params.put("description", description);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("description", checkNull(description));
 			_params.put("active", active);
 			_params.put("layoutsUpdateable", layoutsUpdateable);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
@@ -130,7 +130,7 @@ public class LayoutSetPrototypeService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("layoutSetPrototypeId", layoutSetPrototypeId);
-			_params.put("settings", settings);
+			_params.put("settings", checkNull(settings));
 
 			_command.put("/layoutsetprototype/update-layout-set-prototype", _params);
 		}
@@ -154,8 +154,8 @@ public class LayoutSetPrototypeService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("layoutSetPrototypeId", layoutSetPrototypeId);
-			_params.put("nameMap", nameMap);
-			_params.put("description", description);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("description", checkNull(description));
 			_params.put("active", active);
 			_params.put("layoutsUpdateable", layoutsUpdateable);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);

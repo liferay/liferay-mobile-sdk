@@ -38,8 +38,8 @@ public class PermissionService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
-			_params.put("primKey", primKey);
+			_params.put("name", checkNull(name));
+			_params.put("primKey", checkNull(primKey));
 
 			_command.put("/permission/check-permission", _params);
 		}

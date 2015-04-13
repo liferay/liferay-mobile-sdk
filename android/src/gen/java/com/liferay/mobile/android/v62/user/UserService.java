@@ -38,7 +38,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("userIds", userIds);
+			_params.put("userIds", checkNull(userIds));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/user/add-group-users", _params);
@@ -57,7 +57,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("organizationId", organizationId);
-			_params.put("userIds", userIds);
+			_params.put("userIds", checkNull(userIds));
 
 			_command.put("/user/add-organization-users", _params);
 		}
@@ -75,7 +75,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("passwordPolicyId", passwordPolicyId);
-			_params.put("userIds", userIds);
+			_params.put("userIds", checkNull(userIds));
 
 			_command.put("/user/add-password-policy-users", _params);
 		}
@@ -93,7 +93,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("roleId", roleId);
-			_params.put("userIds", userIds);
+			_params.put("userIds", checkNull(userIds));
 
 			_command.put("/user/add-role-users", _params);
 		}
@@ -111,7 +111,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("teamId", teamId);
-			_params.put("userIds", userIds);
+			_params.put("userIds", checkNull(userIds));
 
 			_command.put("/user/add-team-users", _params);
 		}
@@ -130,28 +130,28 @@ public class UserService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("autoPassword", autoPassword);
-			_params.put("password1", password1);
-			_params.put("password2", password2);
+			_params.put("password1", checkNull(password1));
+			_params.put("password2", checkNull(password2));
 			_params.put("autoScreenName", autoScreenName);
-			_params.put("screenName", screenName);
-			_params.put("emailAddress", emailAddress);
+			_params.put("screenName", checkNull(screenName));
+			_params.put("emailAddress", checkNull(emailAddress));
 			_params.put("facebookId", facebookId);
-			_params.put("openId", openId);
-			_params.put("locale", locale);
-			_params.put("firstName", firstName);
-			_params.put("middleName", middleName);
-			_params.put("lastName", lastName);
+			_params.put("openId", checkNull(openId));
+			_params.put("locale", checkNull(locale));
+			_params.put("firstName", checkNull(firstName));
+			_params.put("middleName", checkNull(middleName));
+			_params.put("lastName", checkNull(lastName));
 			_params.put("prefixId", prefixId);
 			_params.put("suffixId", suffixId);
 			_params.put("male", male);
 			_params.put("birthdayMonth", birthdayMonth);
 			_params.put("birthdayDay", birthdayDay);
 			_params.put("birthdayYear", birthdayYear);
-			_params.put("jobTitle", jobTitle);
-			_params.put("groupIds", groupIds);
-			_params.put("organizationIds", organizationIds);
-			_params.put("roleIds", roleIds);
-			_params.put("userGroupIds", userGroupIds);
+			_params.put("jobTitle", checkNull(jobTitle));
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("organizationIds", checkNull(organizationIds));
+			_params.put("roleIds", checkNull(roleIds));
+			_params.put("userGroupIds", checkNull(userGroupIds));
 			_params.put("sendEmail", sendEmail);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -178,33 +178,33 @@ public class UserService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("autoPassword", autoPassword);
-			_params.put("password1", password1);
-			_params.put("password2", password2);
+			_params.put("password1", checkNull(password1));
+			_params.put("password2", checkNull(password2));
 			_params.put("autoScreenName", autoScreenName);
-			_params.put("screenName", screenName);
-			_params.put("emailAddress", emailAddress);
+			_params.put("screenName", checkNull(screenName));
+			_params.put("emailAddress", checkNull(emailAddress));
 			_params.put("facebookId", facebookId);
-			_params.put("openId", openId);
-			_params.put("locale", locale);
-			_params.put("firstName", firstName);
-			_params.put("middleName", middleName);
-			_params.put("lastName", lastName);
+			_params.put("openId", checkNull(openId));
+			_params.put("locale", checkNull(locale));
+			_params.put("firstName", checkNull(firstName));
+			_params.put("middleName", checkNull(middleName));
+			_params.put("lastName", checkNull(lastName));
 			_params.put("prefixId", prefixId);
 			_params.put("suffixId", suffixId);
 			_params.put("male", male);
 			_params.put("birthdayMonth", birthdayMonth);
 			_params.put("birthdayDay", birthdayDay);
 			_params.put("birthdayYear", birthdayYear);
-			_params.put("jobTitle", jobTitle);
-			_params.put("groupIds", groupIds);
-			_params.put("organizationIds", organizationIds);
-			_params.put("roleIds", roleIds);
-			_params.put("userGroupIds", userGroupIds);
-			_params.put("addresses", addresses);
-			_params.put("emailAddresses", emailAddresses);
-			_params.put("phones", phones);
-			_params.put("websites", websites);
-			_params.put("announcementsDelivers", announcementsDelivers);
+			_params.put("jobTitle", checkNull(jobTitle));
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("organizationIds", checkNull(organizationIds));
+			_params.put("roleIds", checkNull(roleIds));
+			_params.put("userGroupIds", checkNull(userGroupIds));
+			_params.put("addresses", checkNull(addresses));
+			_params.put("emailAddresses", checkNull(emailAddresses));
+			_params.put("phones", checkNull(phones));
+			_params.put("websites", checkNull(websites));
+			_params.put("announcementsDelivers", checkNull(announcementsDelivers));
 			_params.put("sendEmail", sendEmail);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -230,7 +230,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userGroupId", userGroupId);
-			_params.put("userIds", userIds);
+			_params.put("userIds", checkNull(userIds));
 
 			_command.put("/user/add-user-group-users", _params);
 		}
@@ -249,28 +249,28 @@ public class UserService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("autoPassword", autoPassword);
-			_params.put("password1", password1);
-			_params.put("password2", password2);
+			_params.put("password1", checkNull(password1));
+			_params.put("password2", checkNull(password2));
 			_params.put("autoScreenName", autoScreenName);
-			_params.put("screenName", screenName);
-			_params.put("emailAddress", emailAddress);
+			_params.put("screenName", checkNull(screenName));
+			_params.put("emailAddress", checkNull(emailAddress));
 			_params.put("facebookId", facebookId);
-			_params.put("openId", openId);
-			_params.put("locale", locale);
-			_params.put("firstName", firstName);
-			_params.put("middleName", middleName);
-			_params.put("lastName", lastName);
+			_params.put("openId", checkNull(openId));
+			_params.put("locale", checkNull(locale));
+			_params.put("firstName", checkNull(firstName));
+			_params.put("middleName", checkNull(middleName));
+			_params.put("lastName", checkNull(lastName));
 			_params.put("prefixId", prefixId);
 			_params.put("suffixId", suffixId);
 			_params.put("male", male);
 			_params.put("birthdayMonth", birthdayMonth);
 			_params.put("birthdayDay", birthdayDay);
 			_params.put("birthdayYear", birthdayYear);
-			_params.put("jobTitle", jobTitle);
-			_params.put("groupIds", groupIds);
-			_params.put("organizationIds", organizationIds);
-			_params.put("roleIds", roleIds);
-			_params.put("userGroupIds", userGroupIds);
+			_params.put("jobTitle", checkNull(jobTitle));
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("organizationIds", checkNull(organizationIds));
+			_params.put("roleIds", checkNull(roleIds));
+			_params.put("userGroupIds", checkNull(userGroupIds));
 			_params.put("sendEmail", sendEmail);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -297,33 +297,33 @@ public class UserService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("autoPassword", autoPassword);
-			_params.put("password1", password1);
-			_params.put("password2", password2);
+			_params.put("password1", checkNull(password1));
+			_params.put("password2", checkNull(password2));
 			_params.put("autoScreenName", autoScreenName);
-			_params.put("screenName", screenName);
-			_params.put("emailAddress", emailAddress);
+			_params.put("screenName", checkNull(screenName));
+			_params.put("emailAddress", checkNull(emailAddress));
 			_params.put("facebookId", facebookId);
-			_params.put("openId", openId);
-			_params.put("locale", locale);
-			_params.put("firstName", firstName);
-			_params.put("middleName", middleName);
-			_params.put("lastName", lastName);
+			_params.put("openId", checkNull(openId));
+			_params.put("locale", checkNull(locale));
+			_params.put("firstName", checkNull(firstName));
+			_params.put("middleName", checkNull(middleName));
+			_params.put("lastName", checkNull(lastName));
 			_params.put("prefixId", prefixId);
 			_params.put("suffixId", suffixId);
 			_params.put("male", male);
 			_params.put("birthdayMonth", birthdayMonth);
 			_params.put("birthdayDay", birthdayDay);
 			_params.put("birthdayYear", birthdayYear);
-			_params.put("jobTitle", jobTitle);
-			_params.put("groupIds", groupIds);
-			_params.put("organizationIds", organizationIds);
-			_params.put("roleIds", roleIds);
-			_params.put("userGroupIds", userGroupIds);
-			_params.put("addresses", addresses);
-			_params.put("emailAddresses", emailAddresses);
-			_params.put("phones", phones);
-			_params.put("websites", websites);
-			_params.put("announcementsDelivers", announcementsDelivers);
+			_params.put("jobTitle", checkNull(jobTitle));
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("organizationIds", checkNull(organizationIds));
+			_params.put("roleIds", checkNull(roleIds));
+			_params.put("userGroupIds", checkNull(userGroupIds));
+			_params.put("addresses", checkNull(addresses));
+			_params.put("emailAddresses", checkNull(emailAddresses));
+			_params.put("phones", checkNull(phones));
+			_params.put("websites", checkNull(websites));
+			_params.put("announcementsDelivers", checkNull(announcementsDelivers));
 			_params.put("sendEmail", sendEmail);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -564,7 +564,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("emailAddress", emailAddress);
+			_params.put("emailAddress", checkNull(emailAddress));
 
 			_command.put("/user/get-user-by-email-address", _params);
 		}
@@ -611,7 +611,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("screenName", screenName);
+			_params.put("screenName", checkNull(screenName));
 
 			_command.put("/user/get-user-by-screen-name", _params);
 		}
@@ -658,7 +658,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("emailAddress", emailAddress);
+			_params.put("emailAddress", checkNull(emailAddress));
 
 			_command.put("/user/get-user-id-by-email-address", _params);
 		}
@@ -682,7 +682,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("screenName", screenName);
+			_params.put("screenName", checkNull(screenName));
 
 			_command.put("/user/get-user-id-by-screen-name", _params);
 		}
@@ -754,7 +754,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("userId", userId);
 			_params.put("inherited", inherited);
 
@@ -780,7 +780,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("roleId", roleId);
-			_params.put("userIds", userIds);
+			_params.put("userIds", checkNull(userIds));
 
 			_command.put("/user/set-role-users", _params);
 		}
@@ -798,7 +798,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userGroupId", userGroupId);
-			_params.put("userIds", userIds);
+			_params.put("userIds", checkNull(userIds));
 
 			_command.put("/user/set-user-group-users", _params);
 		}
@@ -816,7 +816,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("userIds", userIds);
+			_params.put("userIds", checkNull(userIds));
 
 			_command.put("/user/unset-group-teams-users", _params);
 		}
@@ -834,7 +834,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("userIds", userIds);
+			_params.put("userIds", checkNull(userIds));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/user/unset-group-users", _params);
@@ -853,7 +853,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("organizationId", organizationId);
-			_params.put("userIds", userIds);
+			_params.put("userIds", checkNull(userIds));
 
 			_command.put("/user/unset-organization-users", _params);
 		}
@@ -871,7 +871,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("passwordPolicyId", passwordPolicyId);
-			_params.put("userIds", userIds);
+			_params.put("userIds", checkNull(userIds));
 
 			_command.put("/user/unset-password-policy-users", _params);
 		}
@@ -889,7 +889,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("roleId", roleId);
-			_params.put("userIds", userIds);
+			_params.put("userIds", checkNull(userIds));
 
 			_command.put("/user/unset-role-users", _params);
 		}
@@ -907,7 +907,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("teamId", teamId);
-			_params.put("userIds", userIds);
+			_params.put("userIds", checkNull(userIds));
 
 			_command.put("/user/unset-team-users", _params);
 		}
@@ -925,7 +925,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userGroupId", userGroupId);
-			_params.put("userIds", userIds);
+			_params.put("userIds", checkNull(userIds));
 
 			_command.put("/user/unset-user-group-users", _params);
 		}
@@ -967,9 +967,9 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userId", userId);
-			_params.put("password", password);
-			_params.put("emailAddress1", emailAddress1);
-			_params.put("emailAddress2", emailAddress2);
+			_params.put("password", checkNull(password));
+			_params.put("emailAddress1", checkNull(emailAddress1));
+			_params.put("emailAddress2", checkNull(emailAddress2));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/user/update-email-address", _params);
@@ -995,24 +995,24 @@ public class UserService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("autoPassword", autoPassword);
-			_params.put("password1", password1);
-			_params.put("password2", password2);
+			_params.put("password1", checkNull(password1));
+			_params.put("password2", checkNull(password2));
 			_params.put("autoScreenName", autoScreenName);
-			_params.put("screenName", screenName);
-			_params.put("emailAddress", emailAddress);
+			_params.put("screenName", checkNull(screenName));
+			_params.put("emailAddress", checkNull(emailAddress));
 			_params.put("facebookId", facebookId);
-			_params.put("openId", openId);
-			_params.put("locale", locale);
-			_params.put("firstName", firstName);
-			_params.put("middleName", middleName);
-			_params.put("lastName", lastName);
+			_params.put("openId", checkNull(openId));
+			_params.put("locale", checkNull(locale));
+			_params.put("firstName", checkNull(firstName));
+			_params.put("middleName", checkNull(middleName));
+			_params.put("lastName", checkNull(lastName));
 			_params.put("prefixId", prefixId);
 			_params.put("suffixId", suffixId);
 			_params.put("male", male);
 			_params.put("birthdayMonth", birthdayMonth);
 			_params.put("birthdayDay", birthdayDay);
 			_params.put("birthdayYear", birthdayYear);
-			_params.put("jobTitle", jobTitle);
+			_params.put("jobTitle", checkNull(jobTitle));
 			_params.put("updateUserInformation", updateUserInformation);
 			_params.put("sendEmail", sendEmail);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
@@ -1063,7 +1063,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userId", userId);
-			_params.put("openId", openId);
+			_params.put("openId", checkNull(openId));
 
 			_command.put("/user/update-open-id", _params);
 		}
@@ -1087,7 +1087,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userId", userId);
-			_params.put("organizationIds", organizationIds);
+			_params.put("organizationIds", checkNull(organizationIds));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/user/update-organizations", _params);
@@ -1106,8 +1106,8 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userId", userId);
-			_params.put("password1", password1);
-			_params.put("password2", password2);
+			_params.put("password1", checkNull(password1));
+			_params.put("password2", checkNull(password2));
 			_params.put("passwordReset", passwordReset);
 
 			_command.put("/user/update-password", _params);
@@ -1156,8 +1156,8 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userId", userId);
-			_params.put("question", question);
-			_params.put("answer", answer);
+			_params.put("question", checkNull(question));
+			_params.put("answer", checkNull(answer));
 
 			_command.put("/user/update-reminder-query", _params);
 		}
@@ -1181,7 +1181,7 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userId", userId);
-			_params.put("screenName", screenName);
+			_params.put("screenName", checkNull(screenName));
 
 			_command.put("/user/update-screen-name", _params);
 		}
@@ -1222,31 +1222,6 @@ public class UserService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateStatus(long userId, int status, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("status", status);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/user/update-status", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
 	public JSONObject updateUser(long userId, String oldPassword, String newPassword1, String newPassword2, boolean passwordReset, String reminderQueryQuestion, String reminderQueryAnswer, String screenName, String emailAddress, long facebookId, String openId, String languageId, String timeZoneId, String greeting, String comments, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String smsSn, String aimSn, String facebookSn, String icqSn, String jabberSn, String msnSn, String mySpaceSn, String skypeSn, String twitterSn, String ymSn, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupRoles, JSONArray userGroupIds, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -1254,45 +1229,45 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userId", userId);
-			_params.put("oldPassword", oldPassword);
-			_params.put("newPassword1", newPassword1);
-			_params.put("newPassword2", newPassword2);
+			_params.put("oldPassword", checkNull(oldPassword));
+			_params.put("newPassword1", checkNull(newPassword1));
+			_params.put("newPassword2", checkNull(newPassword2));
 			_params.put("passwordReset", passwordReset);
-			_params.put("reminderQueryQuestion", reminderQueryQuestion);
-			_params.put("reminderQueryAnswer", reminderQueryAnswer);
-			_params.put("screenName", screenName);
-			_params.put("emailAddress", emailAddress);
+			_params.put("reminderQueryQuestion", checkNull(reminderQueryQuestion));
+			_params.put("reminderQueryAnswer", checkNull(reminderQueryAnswer));
+			_params.put("screenName", checkNull(screenName));
+			_params.put("emailAddress", checkNull(emailAddress));
 			_params.put("facebookId", facebookId);
-			_params.put("openId", openId);
-			_params.put("languageId", languageId);
-			_params.put("timeZoneId", timeZoneId);
-			_params.put("greeting", greeting);
-			_params.put("comments", comments);
-			_params.put("firstName", firstName);
-			_params.put("middleName", middleName);
-			_params.put("lastName", lastName);
+			_params.put("openId", checkNull(openId));
+			_params.put("languageId", checkNull(languageId));
+			_params.put("timeZoneId", checkNull(timeZoneId));
+			_params.put("greeting", checkNull(greeting));
+			_params.put("comments", checkNull(comments));
+			_params.put("firstName", checkNull(firstName));
+			_params.put("middleName", checkNull(middleName));
+			_params.put("lastName", checkNull(lastName));
 			_params.put("prefixId", prefixId);
 			_params.put("suffixId", suffixId);
 			_params.put("male", male);
 			_params.put("birthdayMonth", birthdayMonth);
 			_params.put("birthdayDay", birthdayDay);
 			_params.put("birthdayYear", birthdayYear);
-			_params.put("smsSn", smsSn);
-			_params.put("aimSn", aimSn);
-			_params.put("facebookSn", facebookSn);
-			_params.put("icqSn", icqSn);
-			_params.put("jabberSn", jabberSn);
-			_params.put("msnSn", msnSn);
-			_params.put("mySpaceSn", mySpaceSn);
-			_params.put("skypeSn", skypeSn);
-			_params.put("twitterSn", twitterSn);
-			_params.put("ymSn", ymSn);
-			_params.put("jobTitle", jobTitle);
-			_params.put("groupIds", groupIds);
-			_params.put("organizationIds", organizationIds);
-			_params.put("roleIds", roleIds);
-			_params.put("userGroupRoles", userGroupRoles);
-			_params.put("userGroupIds", userGroupIds);
+			_params.put("smsSn", checkNull(smsSn));
+			_params.put("aimSn", checkNull(aimSn));
+			_params.put("facebookSn", checkNull(facebookSn));
+			_params.put("icqSn", checkNull(icqSn));
+			_params.put("jabberSn", checkNull(jabberSn));
+			_params.put("msnSn", checkNull(msnSn));
+			_params.put("mySpaceSn", checkNull(mySpaceSn));
+			_params.put("skypeSn", checkNull(skypeSn));
+			_params.put("twitterSn", checkNull(twitterSn));
+			_params.put("ymSn", checkNull(ymSn));
+			_params.put("jobTitle", checkNull(jobTitle));
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("organizationIds", checkNull(organizationIds));
+			_params.put("roleIds", checkNull(roleIds));
+			_params.put("userGroupRoles", checkNull(userGroupRoles));
+			_params.put("userGroupIds", checkNull(userGroupIds));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/user/update-user", _params);
@@ -1317,50 +1292,50 @@ public class UserService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("userId", userId);
-			_params.put("oldPassword", oldPassword);
-			_params.put("newPassword1", newPassword1);
-			_params.put("newPassword2", newPassword2);
+			_params.put("oldPassword", checkNull(oldPassword));
+			_params.put("newPassword1", checkNull(newPassword1));
+			_params.put("newPassword2", checkNull(newPassword2));
 			_params.put("passwordReset", passwordReset);
-			_params.put("reminderQueryQuestion", reminderQueryQuestion);
-			_params.put("reminderQueryAnswer", reminderQueryAnswer);
-			_params.put("screenName", screenName);
-			_params.put("emailAddress", emailAddress);
+			_params.put("reminderQueryQuestion", checkNull(reminderQueryQuestion));
+			_params.put("reminderQueryAnswer", checkNull(reminderQueryAnswer));
+			_params.put("screenName", checkNull(screenName));
+			_params.put("emailAddress", checkNull(emailAddress));
 			_params.put("facebookId", facebookId);
-			_params.put("openId", openId);
-			_params.put("languageId", languageId);
-			_params.put("timeZoneId", timeZoneId);
-			_params.put("greeting", greeting);
-			_params.put("comments", comments);
-			_params.put("firstName", firstName);
-			_params.put("middleName", middleName);
-			_params.put("lastName", lastName);
+			_params.put("openId", checkNull(openId));
+			_params.put("languageId", checkNull(languageId));
+			_params.put("timeZoneId", checkNull(timeZoneId));
+			_params.put("greeting", checkNull(greeting));
+			_params.put("comments", checkNull(comments));
+			_params.put("firstName", checkNull(firstName));
+			_params.put("middleName", checkNull(middleName));
+			_params.put("lastName", checkNull(lastName));
 			_params.put("prefixId", prefixId);
 			_params.put("suffixId", suffixId);
 			_params.put("male", male);
 			_params.put("birthdayMonth", birthdayMonth);
 			_params.put("birthdayDay", birthdayDay);
 			_params.put("birthdayYear", birthdayYear);
-			_params.put("smsSn", smsSn);
-			_params.put("aimSn", aimSn);
-			_params.put("facebookSn", facebookSn);
-			_params.put("icqSn", icqSn);
-			_params.put("jabberSn", jabberSn);
-			_params.put("msnSn", msnSn);
-			_params.put("mySpaceSn", mySpaceSn);
-			_params.put("skypeSn", skypeSn);
-			_params.put("twitterSn", twitterSn);
-			_params.put("ymSn", ymSn);
-			_params.put("jobTitle", jobTitle);
-			_params.put("groupIds", groupIds);
-			_params.put("organizationIds", organizationIds);
-			_params.put("roleIds", roleIds);
-			_params.put("userGroupRoles", userGroupRoles);
-			_params.put("userGroupIds", userGroupIds);
-			_params.put("addresses", addresses);
-			_params.put("emailAddresses", emailAddresses);
-			_params.put("phones", phones);
-			_params.put("websites", websites);
-			_params.put("announcementsDelivers", announcementsDelivers);
+			_params.put("smsSn", checkNull(smsSn));
+			_params.put("aimSn", checkNull(aimSn));
+			_params.put("facebookSn", checkNull(facebookSn));
+			_params.put("icqSn", checkNull(icqSn));
+			_params.put("jabberSn", checkNull(jabberSn));
+			_params.put("msnSn", checkNull(msnSn));
+			_params.put("mySpaceSn", checkNull(mySpaceSn));
+			_params.put("skypeSn", checkNull(skypeSn));
+			_params.put("twitterSn", checkNull(twitterSn));
+			_params.put("ymSn", checkNull(ymSn));
+			_params.put("jobTitle", checkNull(jobTitle));
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("organizationIds", checkNull(organizationIds));
+			_params.put("roleIds", checkNull(roleIds));
+			_params.put("userGroupRoles", checkNull(userGroupRoles));
+			_params.put("userGroupIds", checkNull(userGroupIds));
+			_params.put("addresses", checkNull(addresses));
+			_params.put("emailAddresses", checkNull(emailAddresses));
+			_params.put("phones", checkNull(phones));
+			_params.put("websites", checkNull(websites));
+			_params.put("announcementsDelivers", checkNull(announcementsDelivers));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/user/update-user", _params);

@@ -38,21 +38,21 @@ public class JournalFeedService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("feedId", feedId);
+			_params.put("feedId", checkNull(feedId));
 			_params.put("autoFeedId", autoFeedId);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("type", type);
-			_params.put("structureId", structureId);
-			_params.put("templateId", templateId);
-			_params.put("rendererTemplateId", rendererTemplateId);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("type", checkNull(type));
+			_params.put("structureId", checkNull(structureId));
+			_params.put("templateId", checkNull(templateId));
+			_params.put("rendererTemplateId", checkNull(rendererTemplateId));
 			_params.put("delta", delta);
-			_params.put("orderByCol", orderByCol);
-			_params.put("orderByType", orderByType);
-			_params.put("targetLayoutFriendlyUrl", targetLayoutFriendlyUrl);
-			_params.put("targetPortletId", targetPortletId);
-			_params.put("contentField", contentField);
-			_params.put("feedType", feedType);
+			_params.put("orderByCol", checkNull(orderByCol));
+			_params.put("orderByType", checkNull(orderByType));
+			_params.put("targetLayoutFriendlyUrl", checkNull(targetLayoutFriendlyUrl));
+			_params.put("targetPortletId", checkNull(targetPortletId));
+			_params.put("contentField", checkNull(contentField));
+			_params.put("feedType", checkNull(feedType));
 			_params.put("feedVersion", feedVersion);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -95,7 +95,7 @@ public class JournalFeedService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("feedId", feedId);
+			_params.put("feedId", checkNull(feedId));
 
 			_command.put("/journalfeed/delete-feed", _params);
 		}
@@ -136,7 +136,7 @@ public class JournalFeedService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("feedId", feedId);
+			_params.put("feedId", checkNull(feedId));
 
 			_command.put("/journalfeed/get-feed", _params);
 		}
@@ -160,20 +160,20 @@ public class JournalFeedService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("feedId", feedId);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("type", type);
-			_params.put("structureId", structureId);
-			_params.put("templateId", templateId);
-			_params.put("rendererTemplateId", rendererTemplateId);
+			_params.put("feedId", checkNull(feedId));
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("type", checkNull(type));
+			_params.put("structureId", checkNull(structureId));
+			_params.put("templateId", checkNull(templateId));
+			_params.put("rendererTemplateId", checkNull(rendererTemplateId));
 			_params.put("delta", delta);
-			_params.put("orderByCol", orderByCol);
-			_params.put("orderByType", orderByType);
-			_params.put("targetLayoutFriendlyUrl", targetLayoutFriendlyUrl);
-			_params.put("targetPortletId", targetPortletId);
-			_params.put("contentField", contentField);
-			_params.put("feedType", feedType);
+			_params.put("orderByCol", checkNull(orderByCol));
+			_params.put("orderByType", checkNull(orderByType));
+			_params.put("targetLayoutFriendlyUrl", checkNull(targetLayoutFriendlyUrl));
+			_params.put("targetPortletId", checkNull(targetPortletId));
+			_params.put("contentField", checkNull(contentField));
+			_params.put("feedType", checkNull(feedType));
 			_params.put("feedVersion", feedVersion);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 

@@ -37,13 +37,13 @@ public class AddressService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
-			_params.put("street1", street1);
-			_params.put("street2", street2);
-			_params.put("street3", street3);
-			_params.put("city", city);
-			_params.put("zip", zip);
+			_params.put("street1", checkNull(street1));
+			_params.put("street2", checkNull(street2));
+			_params.put("street3", checkNull(street3));
+			_params.put("city", checkNull(city));
+			_params.put("zip", checkNull(zip));
 			_params.put("regionId", regionId);
 			_params.put("countryId", countryId);
 			_params.put("typeId", typeId);
@@ -71,13 +71,13 @@ public class AddressService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
-			_params.put("street1", street1);
-			_params.put("street2", street2);
-			_params.put("street3", street3);
-			_params.put("city", city);
-			_params.put("zip", zip);
+			_params.put("street1", checkNull(street1));
+			_params.put("street2", checkNull(street2));
+			_params.put("street3", checkNull(street3));
+			_params.put("city", checkNull(city));
+			_params.put("zip", checkNull(zip));
 			_params.put("regionId", regionId);
 			_params.put("countryId", countryId);
 			_params.put("typeId", typeId);
@@ -146,7 +146,7 @@ public class AddressService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 
 			_command.put("/address/get-addresses", _params);
@@ -171,11 +171,11 @@ public class AddressService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("addressId", addressId);
-			_params.put("street1", street1);
-			_params.put("street2", street2);
-			_params.put("street3", street3);
-			_params.put("city", city);
-			_params.put("zip", zip);
+			_params.put("street1", checkNull(street1));
+			_params.put("street2", checkNull(street2));
+			_params.put("street3", checkNull(street3));
+			_params.put("city", checkNull(city));
+			_params.put("zip", checkNull(zip));
 			_params.put("regionId", regionId);
 			_params.put("countryId", countryId);
 			_params.put("typeId", typeId);

@@ -38,9 +38,9 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
-			_params.put("content", content);
-			_params.put("summary", summary);
+			_params.put("title", checkNull(title));
+			_params.put("content", checkNull(content));
+			_params.put("summary", checkNull(summary));
 			_params.put("minorEdit", minorEdit);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -66,13 +66,13 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
-			_params.put("content", content);
-			_params.put("summary", summary);
+			_params.put("title", checkNull(title));
+			_params.put("content", checkNull(content));
+			_params.put("summary", checkNull(summary));
 			_params.put("minorEdit", minorEdit);
-			_params.put("format", format);
-			_params.put("parentTitle", parentTitle);
-			_params.put("redirectTitle", redirectTitle);
+			_params.put("format", checkNull(format));
+			_params.put("parentTitle", checkNull(parentTitle));
+			_params.put("redirectTitle", checkNull(redirectTitle));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/wikipage/add-page", _params);
@@ -97,10 +97,10 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
-			_params.put("fileName", fileName);
-			_params.put("file", file);
-			_params.put("mimeType", mimeType);
+			_params.put("title", checkNull(title));
+			_params.put("fileName", checkNull(fileName));
+			_params.put("file", checkNull(file));
+			_params.put("mimeType", checkNull(mimeType));
 
 			_command.put("/wikipage/add-page-attachment", _params);
 		}
@@ -118,8 +118,8 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
-			_params.put("inputStreamOVPs", inputStreamOVPs);
+			_params.put("title", checkNull(title));
+			_params.put("inputStreamOVPs", checkNull(inputStreamOVPs));
 
 			_command.put("/wikipage/add-page-attachments", _params);
 		}
@@ -137,8 +137,8 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
-			_params.put("newParentTitle", newParentTitle);
+			_params.put("title", checkNull(title));
+			_params.put("newParentTitle", checkNull(newParentTitle));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/wikipage/change-parent", _params);
@@ -157,9 +157,9 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("templateNodeId", templateNodeId);
-			_params.put("templateTitle", templateTitle);
+			_params.put("templateTitle", checkNull(templateTitle));
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 
 			_command.put("/wikipage/copy-page-attachments", _params);
 		}
@@ -177,7 +177,7 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 
 			_command.put("/wikipage/delete-page", _params);
 		}
@@ -195,7 +195,7 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 			_params.put("version", version);
 
 			_command.put("/wikipage/delete-page", _params);
@@ -214,8 +214,8 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
-			_params.put("fileName", fileName);
+			_params.put("title", checkNull(title));
+			_params.put("fileName", checkNull(fileName));
 
 			_command.put("/wikipage/delete-page-attachment", _params);
 		}
@@ -233,7 +233,7 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 
 			_command.put("/wikipage/delete-page-attachments", _params);
 		}
@@ -251,8 +251,8 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("fileName", fileName);
-			_params.put("tempFolderName", tempFolderName);
+			_params.put("fileName", checkNull(fileName));
+			_params.put("tempFolderName", checkNull(tempFolderName));
 
 			_command.put("/wikipage/delete-temp-page-attachment", _params);
 		}
@@ -270,7 +270,7 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 
 			_command.put("/wikipage/delete-trash-page-attachments", _params);
 		}
@@ -288,7 +288,7 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 			_params.put("version", version);
 
 			_command.put("/wikipage/discard-draft", _params);
@@ -309,7 +309,7 @@ public class WikiPageService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("nodeId", nodeId);
 			_params.put("head", head);
-			_params.put("parentTitle", parentTitle);
+			_params.put("parentTitle", checkNull(parentTitle));
 
 			_command.put("/wikipage/get-children", _params);
 		}
@@ -333,7 +333,7 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 
 			_command.put("/wikipage/get-draft-page", _params);
 		}
@@ -382,11 +382,11 @@ public class WikiPageService extends BaseService {
 
 			_params.put("nodeId", nodeId);
 			_params.put("max", max);
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 			_params.put("version", version);
-			_params.put("displayStyle", displayStyle);
-			_params.put("feedURL", feedURL);
-			_params.put("entryURL", entryURL);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
 
 			_command.put("/wikipage/get-node-pages-rss", _params);
 		}
@@ -411,12 +411,12 @@ public class WikiPageService extends BaseService {
 
 			_params.put("nodeId", nodeId);
 			_params.put("max", max);
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 			_params.put("version", version);
-			_params.put("displayStyle", displayStyle);
-			_params.put("feedURL", feedURL);
-			_params.put("entryURL", entryURL);
-			_params.put("attachmentURLPrefix", attachmentURLPrefix);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
+			_params.put("attachmentURLPrefix", checkNull(attachmentURLPrefix));
 
 			_command.put("/wikipage/get-node-pages-rss", _params);
 		}
@@ -464,7 +464,7 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 
 			_command.put("/wikipage/get-page", _params);
 		}
@@ -489,7 +489,7 @@ public class WikiPageService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 
 			_command.put("/wikipage/get-page", _params);
 		}
@@ -513,7 +513,7 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 			mangleWrapper(_params, "head", "java.lang.Boolean", head);
 
 			_command.put("/wikipage/get-page", _params);
@@ -538,7 +538,7 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 			_params.put("version", version);
 
 			_command.put("/wikipage/get-page", _params);
@@ -672,14 +672,14 @@ public class WikiPageService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 			_params.put("max", max);
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 			_params.put("version", version);
-			_params.put("displayStyle", displayStyle);
-			_params.put("feedURL", feedURL);
-			_params.put("entryURL", entryURL);
-			_params.put("locale", locale);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
+			_params.put("locale", checkNull(locale));
 
 			_command.put("/wikipage/get-pages-rss", _params);
 		}
@@ -704,15 +704,15 @@ public class WikiPageService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 			_params.put("max", max);
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 			_params.put("version", version);
-			_params.put("displayStyle", displayStyle);
-			_params.put("feedURL", feedURL);
-			_params.put("entryURL", entryURL);
-			_params.put("attachmentURLPrefix", attachmentURLPrefix);
-			_params.put("locale", locale);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
+			_params.put("attachmentURLPrefix", checkNull(attachmentURLPrefix));
+			_params.put("locale", checkNull(locale));
 
 			_command.put("/wikipage/get-pages-rss", _params);
 		}
@@ -786,7 +786,7 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("tempFolderName", tempFolderName);
+			_params.put("tempFolderName", checkNull(tempFolderName));
 
 			_command.put("/wikipage/get-temp-page-attachment-names", _params);
 		}
@@ -810,8 +810,8 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
-			_params.put("newTitle", newTitle);
+			_params.put("title", checkNull(title));
+			_params.put("newTitle", checkNull(newTitle));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/wikipage/move-page", _params);
@@ -830,8 +830,8 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
-			_params.put("fileName", fileName);
+			_params.put("title", checkNull(title));
+			_params.put("fileName", checkNull(fileName));
 
 			_command.put("/wikipage/move-page-attachment-to-trash", _params);
 		}
@@ -855,7 +855,7 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 
 			_command.put("/wikipage/move-page-to-trash", _params);
 		}
@@ -879,7 +879,7 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 			_params.put("version", version);
 
 			_command.put("/wikipage/move-page-to-trash", _params);
@@ -904,8 +904,8 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
-			_params.put("fileName", fileName);
+			_params.put("title", checkNull(title));
+			_params.put("fileName", checkNull(fileName));
 
 			_command.put("/wikipage/restore-page-attachment-from-trash", _params);
 		}
@@ -940,7 +940,7 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 			_params.put("version", version);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -966,7 +966,7 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 
 			_command.put("/wikipage/subscribe-page", _params);
 		}
@@ -984,7 +984,7 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 
 			_command.put("/wikipage/unsubscribe-page", _params);
 		}
@@ -1002,14 +1002,14 @@ public class WikiPageService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("nodeId", nodeId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 			_params.put("version", version);
-			_params.put("content", content);
-			_params.put("summary", summary);
+			_params.put("content", checkNull(content));
+			_params.put("summary", checkNull(summary));
 			_params.put("minorEdit", minorEdit);
-			_params.put("format", format);
-			_params.put("parentTitle", parentTitle);
-			_params.put("redirectTitle", redirectTitle);
+			_params.put("format", checkNull(format));
+			_params.put("parentTitle", checkNull(parentTitle));
+			_params.put("redirectTitle", checkNull(redirectTitle));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/wikipage/update-page", _params);

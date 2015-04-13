@@ -41,15 +41,15 @@ public class JournalArticleService extends BaseService {
 			_params.put("folderId", folderId);
 			_params.put("classNameId", classNameId);
 			_params.put("classPK", classPK);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("autoArticleId", autoArticleId);
-			_params.put("titleMap", titleMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("content", content);
-			_params.put("type", type);
-			_params.put("ddmStructureKey", ddmStructureKey);
-			_params.put("ddmTemplateKey", ddmTemplateKey);
-			_params.put("layoutUuid", layoutUuid);
+			_params.put("titleMap", checkNull(titleMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("content", checkNull(content));
+			_params.put("type", checkNull(type));
+			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
+			_params.put("ddmTemplateKey", checkNull(ddmTemplateKey));
+			_params.put("layoutUuid", checkNull(layoutUuid));
 			_params.put("displayDateMonth", displayDateMonth);
 			_params.put("displayDateDay", displayDateDay);
 			_params.put("displayDateYear", displayDateYear);
@@ -68,7 +68,7 @@ public class JournalArticleService extends BaseService {
 			_params.put("reviewDateMinute", reviewDateMinute);
 			_params.put("neverReview", neverReview);
 			_params.put("indexable", indexable);
-			_params.put("articleURL", articleURL);
+			_params.put("articleURL", checkNull(articleURL));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalarticle/add-article", _params);
@@ -96,15 +96,15 @@ public class JournalArticleService extends BaseService {
 			_params.put("folderId", folderId);
 			_params.put("classNameId", classNameId);
 			_params.put("classPK", classPK);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("autoArticleId", autoArticleId);
-			_params.put("titleMap", titleMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("content", content);
-			_params.put("type", type);
-			_params.put("ddmStructureKey", ddmStructureKey);
-			_params.put("ddmTemplateKey", ddmTemplateKey);
-			_params.put("layoutUuid", layoutUuid);
+			_params.put("titleMap", checkNull(titleMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("content", checkNull(content));
+			_params.put("type", checkNull(type));
+			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
+			_params.put("ddmTemplateKey", checkNull(ddmTemplateKey));
+			_params.put("layoutUuid", checkNull(layoutUuid));
 			_params.put("displayDateMonth", displayDateMonth);
 			_params.put("displayDateDay", displayDateDay);
 			_params.put("displayDateYear", displayDateYear);
@@ -124,10 +124,10 @@ public class JournalArticleService extends BaseService {
 			_params.put("neverReview", neverReview);
 			_params.put("indexable", indexable);
 			_params.put("smallImage", smallImage);
-			_params.put("smallImageURL", smallImageURL);
-			_params.put("smallFile", smallFile);
-			_params.put("images", images);
-			_params.put("articleURL", articleURL);
+			_params.put("smallImageURL", checkNull(smallImageURL));
+			_params.put("smallFile", checkNull(smallFile));
+			_params.put("images", checkNull(images));
+			_params.put("articleURL", checkNull(articleURL));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalarticle/add-article", _params);
@@ -146,8 +146,8 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("oldArticleId", oldArticleId);
-			_params.put("newArticleId", newArticleId);
+			_params.put("oldArticleId", checkNull(oldArticleId));
+			_params.put("newArticleId", checkNull(newArticleId));
 			_params.put("autoArticleId", autoArticleId);
 			_params.put("version", version);
 
@@ -173,8 +173,8 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
-			_params.put("articleURL", articleURL);
+			_params.put("articleId", checkNull(articleId));
+			_params.put("articleURL", checkNull(articleURL));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalarticle/delete-article", _params);
@@ -193,9 +193,9 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("version", version);
-			_params.put("articleURL", articleURL);
+			_params.put("articleURL", checkNull(articleURL));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalarticle/delete-article", _params);
@@ -214,8 +214,8 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
-			_params.put("articleURL", articleURL);
+			_params.put("articleId", checkNull(articleId));
+			_params.put("articleURL", checkNull(articleURL));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalarticle/expire-article", _params);
@@ -234,9 +234,9 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("version", version);
-			_params.put("articleURL", articleURL);
+			_params.put("articleURL", checkNull(articleURL));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalarticle/expire-article", _params);
@@ -284,7 +284,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 
 			_command.put("/journalarticle/get-article", _params);
 		}
@@ -308,7 +308,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("version", version);
 
 			_command.put("/journalarticle/get-article", _params);
@@ -333,7 +333,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 
 			_command.put("/journalarticle/get-article", _params);
@@ -358,7 +358,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("urlTitle", urlTitle);
+			_params.put("urlTitle", checkNull(urlTitle));
 
 			_command.put("/journalarticle/get-article-by-url-title", _params);
 		}
@@ -382,8 +382,8 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
-			_params.put("languageId", languageId);
+			_params.put("articleId", checkNull(articleId));
+			_params.put("languageId", checkNull(languageId));
 			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/journalarticle/get-article-content", _params);
@@ -408,9 +408,9 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("version", version);
-			_params.put("languageId", languageId);
+			_params.put("languageId", checkNull(languageId));
 			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
 			_command.put("/journalarticle/get-article-content", _params);
@@ -486,7 +486,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -513,7 +513,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("layoutUuid", layoutUuid);
+			_params.put("layoutUuid", checkNull(layoutUuid));
 
 			_command.put("/journalarticle/get-articles-by-layout-uuid", _params);
 		}
@@ -537,7 +537,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("ddmStructureKey", ddmStructureKey);
+			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -565,7 +565,7 @@ public class JournalArticleService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
-			_params.put("ddmStructureKey", ddmStructureKey);
+			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
 			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -642,7 +642,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 
 			_command.put("/journalarticle/get-articles-count-by-article-id", _params);
 		}
@@ -666,7 +666,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("ddmStructureKey", ddmStructureKey);
+			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
 
 			_command.put("/journalarticle/get-articles-count-by-structure-id", _params);
 		}
@@ -691,7 +691,7 @@ public class JournalArticleService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
-			_params.put("ddmStructureKey", ddmStructureKey);
+			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
 			_params.put("status", status);
 
 			_command.put("/journalarticle/get-articles-count-by-structure-id", _params);
@@ -716,7 +716,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("urlTitle", urlTitle);
+			_params.put("urlTitle", checkNull(urlTitle));
 
 			_command.put("/journalarticle/get-display-article-by-url-title", _params);
 		}
@@ -740,7 +740,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("folderIds", folderIds);
+			_params.put("folderIds", checkNull(folderIds));
 
 			_command.put("/journalarticle/get-folders-and-articles-count", _params);
 		}
@@ -895,7 +895,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("status", status);
 
 			_command.put("/journalarticle/get-latest-article", _params);
@@ -920,7 +920,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 
 			_command.put("/journalarticle/get-latest-article", _params);
@@ -945,7 +945,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("newFolderId", newFolderId);
 
 			_command.put("/journalarticle/move-article", _params);
@@ -964,7 +964,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("newFolderId", newFolderId);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -1016,7 +1016,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 
 			_command.put("/journalarticle/move-article-to-trash", _params);
 		}
@@ -1040,7 +1040,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("languageId", languageId);
+			_params.put("languageId", checkNull(languageId));
 
 			_command.put("/journalarticle/remove-article-locale", _params);
 		}
@@ -1058,9 +1058,9 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("version", version);
-			_params.put("languageId", languageId);
+			_params.put("languageId", checkNull(languageId));
 
 			_command.put("/journalarticle/remove-article-locale", _params);
 		}
@@ -1101,7 +1101,7 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 
 			_command.put("/journalarticle/restore-article-from-trash", _params);
 		}
@@ -1120,13 +1120,13 @@ public class JournalArticleService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("folderIds", folderIds);
+			_params.put("folderIds", checkNull(folderIds));
 			_params.put("classNameId", classNameId);
-			_params.put("keywords", keywords);
+			_params.put("keywords", checkNull(keywords));
 			mangleWrapper(_params, "version", "java.lang.Double", version);
-			_params.put("type", type);
-			_params.put("ddmStructureKey", ddmStructureKey);
-			_params.put("ddmTemplateKey", ddmTemplateKey);
+			_params.put("type", checkNull(type));
+			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
+			_params.put("ddmTemplateKey", checkNull(ddmTemplateKey));
 			_params.put("displayDateGT", displayDateGT);
 			_params.put("displayDateLT", displayDateLT);
 			_params.put("status", status);
@@ -1158,16 +1158,16 @@ public class JournalArticleService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("folderIds", folderIds);
+			_params.put("folderIds", checkNull(folderIds));
 			_params.put("classNameId", classNameId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			mangleWrapper(_params, "version", "java.lang.Double", version);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("content", content);
-			_params.put("type", type);
-			_params.put("ddmStructureKey", ddmStructureKey);
-			_params.put("ddmTemplateKey", ddmTemplateKey);
+			_params.put("title", checkNull(title));
+			_params.put("description", checkNull(description));
+			_params.put("content", checkNull(content));
+			_params.put("type", checkNull(type));
+			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
+			_params.put("ddmTemplateKey", checkNull(ddmTemplateKey));
 			_params.put("displayDateGT", displayDateGT);
 			_params.put("displayDateLT", displayDateLT);
 			_params.put("status", status);
@@ -1200,16 +1200,16 @@ public class JournalArticleService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("folderIds", folderIds);
+			_params.put("folderIds", checkNull(folderIds));
 			_params.put("classNameId", classNameId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			mangleWrapper(_params, "version", "java.lang.Double", version);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("content", content);
-			_params.put("type", type);
-			_params.put("ddmStructureKeys", ddmStructureKeys);
-			_params.put("ddmTemplateKeys", ddmTemplateKeys);
+			_params.put("title", checkNull(title));
+			_params.put("description", checkNull(description));
+			_params.put("content", checkNull(content));
+			_params.put("type", checkNull(type));
+			_params.put("ddmStructureKeys", checkNull(ddmStructureKeys));
+			_params.put("ddmTemplateKeys", checkNull(ddmTemplateKeys));
 			_params.put("displayDateGT", displayDateGT);
 			_params.put("displayDateLT", displayDateLT);
 			_params.put("status", status);
@@ -1269,13 +1269,13 @@ public class JournalArticleService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("folderIds", folderIds);
+			_params.put("folderIds", checkNull(folderIds));
 			_params.put("classNameId", classNameId);
-			_params.put("keywords", keywords);
+			_params.put("keywords", checkNull(keywords));
 			mangleWrapper(_params, "version", "java.lang.Double", version);
-			_params.put("type", type);
-			_params.put("ddmStructureKey", ddmStructureKey);
-			_params.put("ddmTemplateKey", ddmTemplateKey);
+			_params.put("type", checkNull(type));
+			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
+			_params.put("ddmTemplateKey", checkNull(ddmTemplateKey));
 			_params.put("displayDateGT", displayDateGT);
 			_params.put("displayDateLT", displayDateLT);
 			_params.put("status", status);
@@ -1304,16 +1304,16 @@ public class JournalArticleService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("folderIds", folderIds);
+			_params.put("folderIds", checkNull(folderIds));
 			_params.put("classNameId", classNameId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			mangleWrapper(_params, "version", "java.lang.Double", version);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("content", content);
-			_params.put("type", type);
-			_params.put("ddmStructureKey", ddmStructureKey);
-			_params.put("ddmTemplateKey", ddmTemplateKey);
+			_params.put("title", checkNull(title));
+			_params.put("description", checkNull(description));
+			_params.put("content", checkNull(content));
+			_params.put("type", checkNull(type));
+			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
+			_params.put("ddmTemplateKey", checkNull(ddmTemplateKey));
 			_params.put("displayDateGT", displayDateGT);
 			_params.put("displayDateLT", displayDateLT);
 			_params.put("status", status);
@@ -1343,16 +1343,16 @@ public class JournalArticleService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("folderIds", folderIds);
+			_params.put("folderIds", checkNull(folderIds));
 			_params.put("classNameId", classNameId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			mangleWrapper(_params, "version", "java.lang.Double", version);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("content", content);
-			_params.put("type", type);
-			_params.put("ddmStructureKeys", ddmStructureKeys);
-			_params.put("ddmTemplateKeys", ddmTemplateKeys);
+			_params.put("title", checkNull(title));
+			_params.put("description", checkNull(description));
+			_params.put("content", checkNull(content));
+			_params.put("type", checkNull(type));
+			_params.put("ddmStructureKeys", checkNull(ddmStructureKeys));
+			_params.put("ddmTemplateKeys", checkNull(ddmTemplateKeys));
 			_params.put("displayDateGT", displayDateGT);
 			_params.put("displayDateLT", displayDateLT);
 			_params.put("status", status);
@@ -1417,12 +1417,12 @@ public class JournalArticleService extends BaseService {
 			_params.put("userId", userId);
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("version", version);
-			_params.put("titleMap", titleMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("content", content);
-			_params.put("layoutUuid", layoutUuid);
+			_params.put("titleMap", checkNull(titleMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("content", checkNull(content));
+			_params.put("layoutUuid", checkNull(layoutUuid));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalarticle/update-article", _params);
@@ -1448,15 +1448,15 @@ public class JournalArticleService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("version", version);
-			_params.put("titleMap", titleMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("content", content);
-			_params.put("type", type);
-			_params.put("ddmStructureKey", ddmStructureKey);
-			_params.put("ddmTemplateKey", ddmTemplateKey);
-			_params.put("layoutUuid", layoutUuid);
+			_params.put("titleMap", checkNull(titleMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("content", checkNull(content));
+			_params.put("type", checkNull(type));
+			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
+			_params.put("ddmTemplateKey", checkNull(ddmTemplateKey));
+			_params.put("layoutUuid", checkNull(layoutUuid));
 			_params.put("displayDateMonth", displayDateMonth);
 			_params.put("displayDateDay", displayDateDay);
 			_params.put("displayDateYear", displayDateYear);
@@ -1476,10 +1476,10 @@ public class JournalArticleService extends BaseService {
 			_params.put("neverReview", neverReview);
 			_params.put("indexable", indexable);
 			_params.put("smallImage", smallImage);
-			_params.put("smallImageURL", smallImageURL);
-			_params.put("smallFile", smallFile);
-			_params.put("images", images);
-			_params.put("articleURL", articleURL);
+			_params.put("smallImageURL", checkNull(smallImageURL));
+			_params.put("smallFile", checkNull(smallFile));
+			_params.put("images", checkNull(images));
+			_params.put("articleURL", checkNull(articleURL));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalarticle/update-article", _params);
@@ -1499,9 +1499,9 @@ public class JournalArticleService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("version", version);
-			_params.put("content", content);
+			_params.put("content", checkNull(content));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalarticle/update-article", _params);
@@ -1526,13 +1526,13 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("version", version);
-			_params.put("locale", locale);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("content", content);
-			_params.put("images", images);
+			_params.put("locale", checkNull(locale));
+			_params.put("title", checkNull(title));
+			_params.put("description", checkNull(description));
+			_params.put("content", checkNull(content));
+			_params.put("images", checkNull(images));
 
 			_command.put("/journalarticle/update-article-translation", _params);
 		}
@@ -1556,13 +1556,13 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("version", version);
-			_params.put("locale", locale);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("content", content);
-			_params.put("images", images);
+			_params.put("locale", checkNull(locale));
+			_params.put("title", checkNull(title));
+			_params.put("description", checkNull(description));
+			_params.put("content", checkNull(content));
+			_params.put("images", checkNull(images));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalarticle/update-article-translation", _params);
@@ -1587,9 +1587,9 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("version", version);
-			_params.put("content", content);
+			_params.put("content", checkNull(content));
 
 			_command.put("/journalarticle/update-content", _params);
 		}
@@ -1613,10 +1613,10 @@ public class JournalArticleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", articleId);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("version", version);
 			_params.put("status", status);
-			_params.put("articleURL", articleURL);
+			_params.put("articleURL", checkNull(articleURL));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/journalarticle/update-status", _params);

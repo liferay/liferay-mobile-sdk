@@ -38,8 +38,8 @@ public class LayoutBranchService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("layoutRevisionId", layoutRevisionId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("master", master);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -82,8 +82,8 @@ public class LayoutBranchService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("layoutBranchId", layoutBranchId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/layoutbranch/update-layout-branch", _params);

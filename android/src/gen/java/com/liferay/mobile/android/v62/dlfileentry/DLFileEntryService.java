@@ -61,7 +61,7 @@ public class DLFileEntryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("lockUuid", lockUuid);
+			_params.put("lockUuid", checkNull(lockUuid));
 
 			_command.put("/dlfileentry/check-in-file-entry", _params);
 		}
@@ -79,7 +79,7 @@ public class DLFileEntryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("lockUuid", lockUuid);
+			_params.put("lockUuid", checkNull(lockUuid));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfileentry/check-in-file-entry", _params);
@@ -99,7 +99,7 @@ public class DLFileEntryService extends BaseService {
 
 			_params.put("fileEntryId", fileEntryId);
 			_params.put("major", major);
-			_params.put("changeLog", changeLog);
+			_params.put("changeLog", checkNull(changeLog));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfileentry/check-in-file-entry", _params);
@@ -165,7 +165,7 @@ public class DLFileEntryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("owner", owner);
+			_params.put("owner", checkNull(owner));
 			_params.put("expirationTime", expirationTime);
 
 			_command.put("/dlfileentry/check-out-file-entry", _params);
@@ -190,7 +190,7 @@ public class DLFileEntryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("owner", owner);
+			_params.put("owner", checkNull(owner));
 			_params.put("expirationTime", expirationTime);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -261,7 +261,7 @@ public class DLFileEntryService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 
 			_command.put("/dlfileentry/delete-file-entry", _params);
 		}
@@ -279,7 +279,7 @@ public class DLFileEntryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("version", version);
+			_params.put("version", checkNull(version));
 
 			_command.put("/dlfileentry/delete-file-version", _params);
 		}
@@ -376,7 +376,7 @@ public class DLFileEntryService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("mimeTypes", mimeTypes);
+			_params.put("mimeTypes", checkNull(mimeTypes));
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -481,7 +481,7 @@ public class DLFileEntryService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("mimeTypes", mimeTypes);
+			_params.put("mimeTypes", checkNull(mimeTypes));
 
 			_command.put("/dlfileentry/get-file-entries-count", _params);
 		}
@@ -554,7 +554,7 @@ public class DLFileEntryService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 
 			_command.put("/dlfileentry/get-file-entry", _params);
 		}
@@ -577,7 +577,7 @@ public class DLFileEntryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("uuid", uuid);
+			_params.put("uuid", checkNull(uuid));
 			_params.put("groupId", groupId);
 
 			_command.put("/dlfileentry/get-file-entry-by-uuid-and-group-id", _params);
@@ -625,7 +625,7 @@ public class DLFileEntryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("folderIds", folderIds);
+			_params.put("folderIds", checkNull(folderIds));
 			_params.put("status", status);
 
 			_command.put("/dlfileentry/get-folders-file-entries-count", _params);
@@ -680,7 +680,7 @@ public class DLFileEntryService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("userId", userId);
 			_params.put("rootFolderId", rootFolderId);
-			_params.put("mimeTypes", mimeTypes);
+			_params.put("mimeTypes", checkNull(mimeTypes));
 			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -735,7 +735,7 @@ public class DLFileEntryService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("userId", userId);
 			_params.put("rootFolderId", rootFolderId);
-			_params.put("mimeTypes", mimeTypes);
+			_params.put("mimeTypes", checkNull(mimeTypes));
 			_params.put("status", status);
 
 			_command.put("/dlfileentry/get-group-file-entries-count", _params);
@@ -830,7 +830,7 @@ public class DLFileEntryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("lockUuid", lockUuid);
+			_params.put("lockUuid", checkNull(lockUuid));
 			_params.put("companyId", companyId);
 			_params.put("expirationTime", expirationTime);
 
@@ -856,7 +856,7 @@ public class DLFileEntryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("version", version);
+			_params.put("version", checkNull(version));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfileentry/revert-file-entry", _params);
@@ -904,7 +904,7 @@ public class DLFileEntryService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("creatorUserId", creatorUserId);
 			_params.put("folderId", folderId);
-			_params.put("mimeTypes", mimeTypes);
+			_params.put("mimeTypes", checkNull(mimeTypes));
 			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -931,7 +931,7 @@ public class DLFileEntryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("lockUuid", lockUuid);
+			_params.put("lockUuid", checkNull(lockUuid));
 
 			_command.put("/dlfileentry/verify-file-entry-check-out", _params);
 		}
@@ -955,7 +955,7 @@ public class DLFileEntryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("lockUuid", lockUuid);
+			_params.put("lockUuid", checkNull(lockUuid));
 
 			_command.put("/dlfileentry/verify-file-entry-lock", _params);
 		}

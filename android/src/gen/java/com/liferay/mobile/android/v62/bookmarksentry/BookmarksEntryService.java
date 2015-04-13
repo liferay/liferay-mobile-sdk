@@ -39,9 +39,9 @@ public class BookmarksEntryService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("name", name);
-			_params.put("url", url);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("url", checkNull(url));
+			_params.put("description", checkNull(description));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/bookmarksentry/add-entry", _params);
@@ -208,7 +208,7 @@ public class BookmarksEntryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("folderIds", folderIds);
+			_params.put("folderIds", checkNull(folderIds));
 
 			_command.put("/bookmarksentry/get-folders-entries-count", _params);
 		}
@@ -579,9 +579,9 @@ public class BookmarksEntryService extends BaseService {
 			_params.put("entryId", entryId);
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("name", name);
-			_params.put("url", url);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("url", checkNull(url));
+			_params.put("description", checkNull(description));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/bookmarksentry/update-entry", _params);

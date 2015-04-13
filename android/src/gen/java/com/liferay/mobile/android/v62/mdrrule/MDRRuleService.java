@@ -38,10 +38,10 @@ public class MDRRuleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("ruleGroupId", ruleGroupId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("type", type);
-			_params.put("typeSettings", typeSettings);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("type", checkNull(type));
+			_params.put("typeSettings", checkNull(typeSettings));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdrrule/add-rule", _params);
@@ -129,10 +129,10 @@ public class MDRRuleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("ruleId", ruleId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("type", type);
-			_params.put("typeSettings", typeSettings);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("type", checkNull(type));
+			_params.put("typeSettings", checkNull(typeSettings));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdrrule/update-rule", _params);
@@ -157,9 +157,9 @@ public class MDRRuleService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("ruleId", ruleId);
-			_params.put("nameMap", nameMap);
-			_params.put("descriptionMap", descriptionMap);
-			_params.put("type", type);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("type", checkNull(type));
 			mangleWrapper(_params, "typeSettingsProperties", "com.liferay.portal.kernel.util.UnicodeProperties", typeSettingsProperties);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 

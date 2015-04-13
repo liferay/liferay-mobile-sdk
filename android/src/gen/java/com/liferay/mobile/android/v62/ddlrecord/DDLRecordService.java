@@ -40,7 +40,7 @@ public class DDLRecordService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("recordSetId", recordSetId);
 			_params.put("displayIndex", displayIndex);
-			_params.put("fieldsMap", fieldsMap);
+			_params.put("fieldsMap", checkNull(fieldsMap));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddlrecord/add-record", _params);
@@ -65,7 +65,7 @@ public class DDLRecordService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("recordId", recordId);
-			_params.put("locale", locale);
+			_params.put("locale", checkNull(locale));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddlrecord/delete-record-locale", _params);
@@ -114,7 +114,7 @@ public class DDLRecordService extends BaseService {
 
 			_params.put("recordId", recordId);
 			_params.put("displayIndex", displayIndex);
-			_params.put("fieldsMap", fieldsMap);
+			_params.put("fieldsMap", checkNull(fieldsMap));
 			_params.put("mergeFields", mergeFields);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 

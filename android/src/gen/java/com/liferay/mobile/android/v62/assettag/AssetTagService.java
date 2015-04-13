@@ -37,8 +37,8 @@ public class AssetTagService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("name", name);
-			_params.put("tagProperties", tagProperties);
+			_params.put("name", checkNull(name));
+			_params.put("tagProperties", checkNull(tagProperties));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assettag/add-tag", _params);
@@ -79,7 +79,7 @@ public class AssetTagService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("tagIds", tagIds);
+			_params.put("tagIds", checkNull(tagIds));
 
 			_command.put("/assettag/delete-tags", _params);
 		}
@@ -169,7 +169,7 @@ public class AssetTagService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("start", start);
 			_params.put("end", end);
 
@@ -194,7 +194,7 @@ public class AssetTagService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupIds", groupIds);
+			_params.put("groupIds", checkNull(groupIds));
 
 			_command.put("/assettag/get-groups-tags", _params);
 		}
@@ -218,7 +218,7 @@ public class AssetTagService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("start", start);
 			_params.put("end", end);
 
@@ -266,7 +266,7 @@ public class AssetTagService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 
 			_command.put("/assettag/get-tags", _params);
@@ -292,7 +292,7 @@ public class AssetTagService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 
 			_command.put("/assettag/get-tags", _params);
 		}
@@ -316,8 +316,8 @@ public class AssetTagService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
-			_params.put("tagProperties", tagProperties);
+			_params.put("name", checkNull(name));
+			_params.put("tagProperties", checkNull(tagProperties));
 			_params.put("start", start);
 			_params.put("end", end);
 
@@ -342,9 +342,9 @@ public class AssetTagService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupIds", groupIds);
-			_params.put("name", name);
-			_params.put("tagProperties", tagProperties);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("name", checkNull(name));
+			_params.put("tagProperties", checkNull(tagProperties));
 			_params.put("start", start);
 			_params.put("end", end);
 
@@ -371,7 +371,7 @@ public class AssetTagService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -398,7 +398,7 @@ public class AssetTagService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 
 			_command.put("/assettag/get-tags-count", _params);
 		}
@@ -423,7 +423,7 @@ public class AssetTagService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 
 			_command.put("/assettag/get-tags-count", _params);
 		}
@@ -447,8 +447,8 @@ public class AssetTagService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
-			_params.put("tagProperties", tagProperties);
+			_params.put("name", checkNull(name));
+			_params.put("tagProperties", checkNull(tagProperties));
 
 			_command.put("/assettag/get-tags-count", _params);
 		}
@@ -490,7 +490,7 @@ public class AssetTagService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("fromTagIds", fromTagIds);
+			_params.put("fromTagIds", checkNull(fromTagIds));
 			_params.put("toTagId", toTagId);
 			_params.put("overrideProperties", overrideProperties);
 
@@ -510,8 +510,8 @@ public class AssetTagService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
-			_params.put("tagProperties", tagProperties);
+			_params.put("name", checkNull(name));
+			_params.put("tagProperties", checkNull(tagProperties));
 			_params.put("start", start);
 			_params.put("end", end);
 
@@ -536,9 +536,9 @@ public class AssetTagService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupIds", groupIds);
-			_params.put("name", name);
-			_params.put("tagProperties", tagProperties);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("name", checkNull(name));
+			_params.put("tagProperties", checkNull(tagProperties));
 			_params.put("start", start);
 			_params.put("end", end);
 
@@ -564,8 +564,8 @@ public class AssetTagService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("tagId", tagId);
-			_params.put("name", name);
-			_params.put("tagProperties", tagProperties);
+			_params.put("name", checkNull(name));
+			_params.put("tagProperties", checkNull(tagProperties));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assettag/update-tag", _params);

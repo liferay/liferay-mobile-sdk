@@ -40,9 +40,9 @@ public class RepositoryService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("name", name);
-			_params.put("description", description);
-			_params.put("portletId", portletId);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("portletId", checkNull(portletId));
 			mangleWrapper(_params, "typeSettingsProperties", "com.liferay.portal.kernel.util.UnicodeProperties", typeSettingsProperties);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -244,7 +244,7 @@ public class RepositoryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("classNameId", classNameId);
-			_params.put("configuration", configuration);
+			_params.put("configuration", checkNull(configuration));
 
 			_command.put("/repository/get-supported-parameters", _params);
 		}
@@ -291,8 +291,8 @@ public class RepositoryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("repositoryId", repositoryId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 
 			_command.put("/repository/update-repository", _params);
 		}

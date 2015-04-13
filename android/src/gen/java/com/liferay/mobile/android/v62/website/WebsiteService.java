@@ -37,9 +37,9 @@ public class WebsiteService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
-			_params.put("url", url);
+			_params.put("url", checkNull(url));
 			_params.put("typeId", typeId);
 			_params.put("primary", primary);
 
@@ -64,9 +64,9 @@ public class WebsiteService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
-			_params.put("url", url);
+			_params.put("url", checkNull(url));
 			_params.put("typeId", typeId);
 			_params.put("primary", primary);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
@@ -132,7 +132,7 @@ public class WebsiteService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 
 			_command.put("/website/get-websites", _params);
@@ -157,7 +157,7 @@ public class WebsiteService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("websiteId", websiteId);
-			_params.put("url", url);
+			_params.put("url", checkNull(url));
 			_params.put("typeId", typeId);
 			_params.put("primary", primary);
 

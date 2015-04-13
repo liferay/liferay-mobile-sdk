@@ -37,10 +37,10 @@ public class ShoppingCouponService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("code", code);
+			_params.put("code", checkNull(code));
 			_params.put("autoCode", autoCode);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("startDateMonth", startDateMonth);
 			_params.put("startDateDay", startDateDay);
 			_params.put("startDateYear", startDateYear);
@@ -53,11 +53,11 @@ public class ShoppingCouponService extends BaseService {
 			_params.put("endDateMinute", endDateMinute);
 			_params.put("neverExpire", neverExpire);
 			_params.put("active", active);
-			_params.put("limitCategories", limitCategories);
-			_params.put("limitSkus", limitSkus);
+			_params.put("limitCategories", checkNull(limitCategories));
+			_params.put("limitSkus", checkNull(limitSkus));
 			_params.put("minOrder", minOrder);
 			_params.put("discount", discount);
-			_params.put("discountType", discountType);
+			_params.put("discountType", checkNull(discountType));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/shoppingcoupon/add-coupon", _params);
@@ -125,9 +125,9 @@ public class ShoppingCouponService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("companyId", companyId);
-			_params.put("code", code);
+			_params.put("code", checkNull(code));
 			_params.put("active", active);
-			_params.put("discountType", discountType);
+			_params.put("discountType", checkNull(discountType));
 			_params.put("andOperator", andOperator);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -154,8 +154,8 @@ public class ShoppingCouponService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("couponId", couponId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("startDateMonth", startDateMonth);
 			_params.put("startDateDay", startDateDay);
 			_params.put("startDateYear", startDateYear);
@@ -168,11 +168,11 @@ public class ShoppingCouponService extends BaseService {
 			_params.put("endDateMinute", endDateMinute);
 			_params.put("neverExpire", neverExpire);
 			_params.put("active", active);
-			_params.put("limitCategories", limitCategories);
-			_params.put("limitSkus", limitSkus);
+			_params.put("limitCategories", checkNull(limitCategories));
+			_params.put("limitSkus", checkNull(limitSkus));
 			_params.put("minOrder", minOrder);
 			_params.put("discount", discount);
-			_params.put("discountType", discountType);
+			_params.put("discountType", checkNull(discountType));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/shoppingcoupon/update-coupon", _params);

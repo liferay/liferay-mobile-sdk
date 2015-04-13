@@ -38,7 +38,7 @@ public class SocialActivitySettingService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("activityType", activityType);
 
 			_command.put("/socialactivitysetting/get-activity-definition", _params);
@@ -63,7 +63,7 @@ public class SocialActivitySettingService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 
 			_command.put("/socialactivitysetting/get-activity-definitions", _params);
 		}
@@ -110,7 +110,7 @@ public class SocialActivitySettingService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 
 			_command.put("/socialactivitysetting/get-json-activity-definitions", _params);
 		}
@@ -134,7 +134,7 @@ public class SocialActivitySettingService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("enabled", enabled);
 
 			_command.put("/socialactivitysetting/update-activity-setting", _params);
@@ -153,7 +153,7 @@ public class SocialActivitySettingService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("activityType", activityType);
 			mangleWrapper(_params, "activityCounterDefinition", "com.liferay.portlet.social.model.SocialActivityCounterDefinition", activityCounterDefinition);
 
@@ -173,9 +173,9 @@ public class SocialActivitySettingService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("activityType", activityType);
-			_params.put("activityCounterDefinitions", activityCounterDefinitions);
+			_params.put("activityCounterDefinitions", checkNull(activityCounterDefinitions));
 
 			_command.put("/socialactivitysetting/update-activity-settings", _params);
 		}

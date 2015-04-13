@@ -37,7 +37,7 @@ public class AssetCategoryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 			_params.put("vocabularyId", vocabularyId);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -63,10 +63,10 @@ public class AssetCategoryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("parentCategoryId", parentCategoryId);
-			_params.put("titleMap", titleMap);
-			_params.put("descriptionMap", descriptionMap);
+			_params.put("titleMap", checkNull(titleMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("vocabularyId", vocabularyId);
-			_params.put("categoryProperties", categoryProperties);
+			_params.put("categoryProperties", checkNull(categoryProperties));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assetcategory/add-category", _params);
@@ -90,7 +90,7 @@ public class AssetCategoryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("categoryIds", categoryIds);
+			_params.put("categoryIds", checkNull(categoryIds));
 
 			_command.put("/assetcategory/delete-categories", _params);
 		}
@@ -107,7 +107,7 @@ public class AssetCategoryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("categoryIds", categoryIds);
+			_params.put("categoryIds", checkNull(categoryIds));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assetcategory/delete-categories", _params);
@@ -148,7 +148,7 @@ public class AssetCategoryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("className", className);
+			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 
 			_command.put("/assetcategory/get-categories", _params);
@@ -245,8 +245,8 @@ public class AssetCategoryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
-			_params.put("vocabularyIds", vocabularyIds);
+			_params.put("name", checkNull(name));
+			_params.put("vocabularyIds", checkNull(vocabularyIds));
 			_params.put("start", start);
 			_params.put("end", end);
 
@@ -298,7 +298,7 @@ public class AssetCategoryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("vocabularyId", vocabularyId);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -379,7 +379,7 @@ public class AssetCategoryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("vocabularyId", vocabularyId);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -431,7 +431,7 @@ public class AssetCategoryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("vocabularyId", vocabularyId);
 
 			_command.put("/assetcategory/get-vocabulary-categories-count", _params);
@@ -482,7 +482,7 @@ public class AssetCategoryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("vocabularyId", vocabularyId);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -613,8 +613,8 @@ public class AssetCategoryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", name);
-			_params.put("categoryProperties", categoryProperties);
+			_params.put("name", checkNull(name));
+			_params.put("categoryProperties", checkNull(categoryProperties));
 			_params.put("start", start);
 			_params.put("end", end);
 
@@ -639,9 +639,9 @@ public class AssetCategoryService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupIds", groupIds);
-			_params.put("name", name);
-			_params.put("vocabularyIds", vocabularyIds);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("name", checkNull(name));
+			_params.put("vocabularyIds", checkNull(vocabularyIds));
 			_params.put("start", start);
 			_params.put("end", end);
 
@@ -667,7 +667,7 @@ public class AssetCategoryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("keywords", keywords);
+			_params.put("keywords", checkNull(keywords));
 			_params.put("vocabularyId", vocabularyId);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -696,10 +696,10 @@ public class AssetCategoryService extends BaseService {
 
 			_params.put("categoryId", categoryId);
 			_params.put("parentCategoryId", parentCategoryId);
-			_params.put("titleMap", titleMap);
-			_params.put("descriptionMap", descriptionMap);
+			_params.put("titleMap", checkNull(titleMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("vocabularyId", vocabularyId);
-			_params.put("categoryProperties", categoryProperties);
+			_params.put("categoryProperties", checkNull(categoryProperties));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assetcategory/update-category", _params);

@@ -39,11 +39,11 @@ public class DLAppService extends BaseService {
 
 			_params.put("repositoryId", repositoryId);
 			_params.put("folderId", folderId);
-			_params.put("sourceFileName", sourceFileName);
-			_params.put("mimeType", mimeType);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("changeLog", changeLog);
+			_params.put("sourceFileName", checkNull(sourceFileName));
+			_params.put("mimeType", checkNull(mimeType));
+			_params.put("title", checkNull(title));
+			_params.put("description", checkNull(description));
+			_params.put("changeLog", checkNull(changeLog));
 			_params.put("bytes", toString(bytes));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -70,12 +70,12 @@ public class DLAppService extends BaseService {
 
 			_params.put("repositoryId", repositoryId);
 			_params.put("folderId", folderId);
-			_params.put("sourceFileName", sourceFileName);
-			_params.put("mimeType", mimeType);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("changeLog", changeLog);
-			_params.put("file", file);
+			_params.put("sourceFileName", checkNull(sourceFileName));
+			_params.put("mimeType", checkNull(mimeType));
+			_params.put("title", checkNull(title));
+			_params.put("description", checkNull(description));
+			_params.put("changeLog", checkNull(changeLog));
+			_params.put("file", checkNull(file));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlapp/add-file-entry", _params);
@@ -121,8 +121,8 @@ public class DLAppService extends BaseService {
 
 			_params.put("repositoryId", repositoryId);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlapp/add-folder", _params);
@@ -148,10 +148,10 @@ public class DLAppService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("fileName", fileName);
-			_params.put("tempFolderName", tempFolderName);
-			_params.put("file", file);
-			_params.put("mimeType", mimeType);
+			_params.put("fileName", checkNull(fileName));
+			_params.put("tempFolderName", checkNull(tempFolderName));
+			_params.put("file", checkNull(file));
+			_params.put("mimeType", checkNull(mimeType));
 
 			_command.put("/dlapp/add-temp-file-entry", _params);
 		}
@@ -186,7 +186,7 @@ public class DLAppService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("lockUuid", lockUuid);
+			_params.put("lockUuid", checkNull(lockUuid));
 
 			_command.put("/dlapp/check-in-file-entry", _params);
 		}
@@ -204,7 +204,7 @@ public class DLAppService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("lockUuid", lockUuid);
+			_params.put("lockUuid", checkNull(lockUuid));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlapp/check-in-file-entry", _params);
@@ -224,7 +224,7 @@ public class DLAppService extends BaseService {
 
 			_params.put("fileEntryId", fileEntryId);
 			_params.put("majorVersion", majorVersion);
-			_params.put("changeLog", changeLog);
+			_params.put("changeLog", checkNull(changeLog));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlapp/check-in-file-entry", _params);
@@ -261,7 +261,7 @@ public class DLAppService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("owner", owner);
+			_params.put("owner", checkNull(owner));
 			_params.put("expirationTime", expirationTime);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -289,8 +289,8 @@ public class DLAppService extends BaseService {
 			_params.put("repositoryId", repositoryId);
 			_params.put("sourceFolderId", sourceFolderId);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlapp/copy-folder", _params);
@@ -333,7 +333,7 @@ public class DLAppService extends BaseService {
 
 			_params.put("repositoryId", repositoryId);
 			_params.put("folderId", folderId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 
 			_command.put("/dlapp/delete-file-entry-by-title", _params);
 		}
@@ -368,7 +368,7 @@ public class DLAppService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("version", version);
+			_params.put("version", checkNull(version));
 
 			_command.put("/dlapp/delete-file-version", _params);
 		}
@@ -404,7 +404,7 @@ public class DLAppService extends BaseService {
 
 			_params.put("repositoryId", repositoryId);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 
 			_command.put("/dlapp/delete-folder", _params);
 		}
@@ -423,8 +423,8 @@ public class DLAppService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("fileName", fileName);
-			_params.put("tempFolderName", tempFolderName);
+			_params.put("fileName", checkNull(fileName));
+			_params.put("tempFolderName", checkNull(tempFolderName));
 
 			_command.put("/dlapp/delete-temp-file-entry", _params);
 		}
@@ -492,7 +492,7 @@ public class DLAppService extends BaseService {
 
 			_params.put("repositoryId", repositoryId);
 			_params.put("folderId", folderId);
-			_params.put("mimeTypes", mimeTypes);
+			_params.put("mimeTypes", checkNull(mimeTypes));
 
 			_command.put("/dlapp/get-file-entries", _params);
 		}
@@ -678,7 +678,7 @@ public class DLAppService extends BaseService {
 			_params.put("repositoryId", repositoryId);
 			_params.put("folderId", folderId);
 			_params.put("status", status);
-			_params.put("mimeTypes", mimeTypes);
+			_params.put("mimeTypes", checkNull(mimeTypes));
 
 			_command.put("/dlapp/get-file-entries-and-file-shortcuts-count", _params);
 		}
@@ -775,7 +775,7 @@ public class DLAppService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("title", title);
+			_params.put("title", checkNull(title));
 
 			_command.put("/dlapp/get-file-entry", _params);
 		}
@@ -798,7 +798,7 @@ public class DLAppService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("uuid", uuid);
+			_params.put("uuid", checkNull(uuid));
 			_params.put("groupId", groupId);
 
 			_command.put("/dlapp/get-file-entry-by-uuid-and-group-id", _params);
@@ -870,7 +870,7 @@ public class DLAppService extends BaseService {
 
 			_params.put("repositoryId", repositoryId);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 
 			_command.put("/dlapp/get-folder", _params);
 		}
@@ -1139,7 +1139,7 @@ public class DLAppService extends BaseService {
 			_params.put("repositoryId", repositoryId);
 			_params.put("folderId", folderId);
 			_params.put("status", status);
-			_params.put("mimeTypes", mimeTypes);
+			_params.put("mimeTypes", checkNull(mimeTypes));
 			_params.put("includeMountFolders", includeMountFolders);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -1195,7 +1195,7 @@ public class DLAppService extends BaseService {
 			_params.put("repositoryId", repositoryId);
 			_params.put("folderId", folderId);
 			_params.put("status", status);
-			_params.put("mimeTypes", mimeTypes);
+			_params.put("mimeTypes", checkNull(mimeTypes));
 			_params.put("includeMountFolders", includeMountFolders);
 
 			_command.put("/dlapp/get-folders-and-file-entries-and-file-shortcuts-count", _params);
@@ -1295,7 +1295,7 @@ public class DLAppService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("repositoryId", repositoryId);
-			_params.put("folderIds", folderIds);
+			_params.put("folderIds", checkNull(folderIds));
 			_params.put("status", status);
 
 			_command.put("/dlapp/get-folders-file-entries-count", _params);
@@ -1430,7 +1430,7 @@ public class DLAppService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("userId", userId);
 			_params.put("rootFolderId", rootFolderId);
-			_params.put("mimeTypes", mimeTypes);
+			_params.put("mimeTypes", checkNull(mimeTypes));
 			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -1509,7 +1509,7 @@ public class DLAppService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("userId", userId);
 			_params.put("rootFolderId", rootFolderId);
-			_params.put("mimeTypes", mimeTypes);
+			_params.put("mimeTypes", checkNull(mimeTypes));
 			_params.put("status", status);
 
 			_command.put("/dlapp/get-group-file-entries-count", _params);
@@ -1684,7 +1684,7 @@ public class DLAppService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("repositoryId", repositoryId);
-			_params.put("folderIds", folderIds);
+			_params.put("folderIds", checkNull(folderIds));
 			_params.put("folderId", folderId);
 
 			_command.put("/dlapp/get-subfolder-ids", _params);
@@ -1704,7 +1704,7 @@ public class DLAppService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("tempFolderName", tempFolderName);
+			_params.put("tempFolderName", checkNull(tempFolderName));
 
 			_command.put("/dlapp/get-temp-file-entry-names", _params);
 		}
@@ -1751,7 +1751,7 @@ public class DLAppService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("owner", owner);
+			_params.put("owner", checkNull(owner));
 			_params.put("expirationTime", expirationTime);
 
 			_command.put("/dlapp/lock-file-entry", _params);
@@ -1801,7 +1801,7 @@ public class DLAppService extends BaseService {
 
 			_params.put("repositoryId", repositoryId);
 			_params.put("folderId", folderId);
-			_params.put("owner", owner);
+			_params.put("owner", checkNull(owner));
 			_params.put("inheritable", inheritable);
 			_params.put("expirationTime", expirationTime);
 
@@ -2020,7 +2020,7 @@ public class DLAppService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("lockUuid", lockUuid);
+			_params.put("lockUuid", checkNull(lockUuid));
 			_params.put("companyId", companyId);
 			_params.put("expirationTime", expirationTime);
 
@@ -2045,7 +2045,7 @@ public class DLAppService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("lockUuid", lockUuid);
+			_params.put("lockUuid", checkNull(lockUuid));
 			_params.put("companyId", companyId);
 			_params.put("expirationTime", expirationTime);
 
@@ -2122,7 +2122,7 @@ public class DLAppService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("version", version);
+			_params.put("version", checkNull(version));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlapp/revert-file-entry", _params);
@@ -2219,7 +2219,7 @@ public class DLAppService extends BaseService {
 			_params.put("repositoryId", repositoryId);
 			_params.put("creatorUserId", creatorUserId);
 			_params.put("folderId", folderId);
-			_params.put("mimeTypes", mimeTypes);
+			_params.put("mimeTypes", checkNull(mimeTypes));
 			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -2299,7 +2299,7 @@ public class DLAppService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("lockUuid", lockUuid);
+			_params.put("lockUuid", checkNull(lockUuid));
 
 			_command.put("/dlapp/unlock-file-entry", _params);
 		}
@@ -2318,7 +2318,7 @@ public class DLAppService extends BaseService {
 
 			_params.put("repositoryId", repositoryId);
 			_params.put("folderId", folderId);
-			_params.put("lockUuid", lockUuid);
+			_params.put("lockUuid", checkNull(lockUuid));
 
 			_command.put("/dlapp/unlock-folder", _params);
 		}
@@ -2337,8 +2337,8 @@ public class DLAppService extends BaseService {
 
 			_params.put("repositoryId", repositoryId);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("name", name);
-			_params.put("lockUuid", lockUuid);
+			_params.put("name", checkNull(name));
+			_params.put("lockUuid", checkNull(lockUuid));
 
 			_command.put("/dlapp/unlock-folder", _params);
 		}
@@ -2392,11 +2392,11 @@ public class DLAppService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("sourceFileName", sourceFileName);
-			_params.put("mimeType", mimeType);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("changeLog", changeLog);
+			_params.put("sourceFileName", checkNull(sourceFileName));
+			_params.put("mimeType", checkNull(mimeType));
+			_params.put("title", checkNull(title));
+			_params.put("description", checkNull(description));
+			_params.put("changeLog", checkNull(changeLog));
 			_params.put("majorVersion", majorVersion);
 			_params.put("bytes", toString(bytes));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
@@ -2423,13 +2423,13 @@ public class DLAppService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("sourceFileName", sourceFileName);
-			_params.put("mimeType", mimeType);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("changeLog", changeLog);
+			_params.put("sourceFileName", checkNull(sourceFileName));
+			_params.put("mimeType", checkNull(mimeType));
+			_params.put("title", checkNull(title));
+			_params.put("description", checkNull(description));
+			_params.put("changeLog", checkNull(changeLog));
 			_params.put("majorVersion", majorVersion);
-			_params.put("file", file);
+			_params.put("file", checkNull(file));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlapp/update-file-entry", _params);
@@ -2448,13 +2448,13 @@ public class DLAppService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("sourceFileName", sourceFileName);
-			_params.put("mimeType", mimeType);
-			_params.put("title", title);
-			_params.put("description", description);
-			_params.put("changeLog", changeLog);
+			_params.put("sourceFileName", checkNull(sourceFileName));
+			_params.put("mimeType", checkNull(mimeType));
+			_params.put("title", checkNull(title));
+			_params.put("description", checkNull(description));
+			_params.put("changeLog", checkNull(changeLog));
 			_params.put("majorVersion", majorVersion);
-			_params.put("file", file);
+			_params.put("file", checkNull(file));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlapp/update-file-entry-and-check-in", _params);
@@ -2499,8 +2499,8 @@ public class DLAppService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("folderId", folderId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlapp/update-folder", _params);
@@ -2526,7 +2526,7 @@ public class DLAppService extends BaseService {
 
 			_params.put("repositoryId", repositoryId);
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("lockUuid", lockUuid);
+			_params.put("lockUuid", checkNull(lockUuid));
 
 			_command.put("/dlapp/verify-file-entry-check-out", _params);
 		}
@@ -2551,7 +2551,7 @@ public class DLAppService extends BaseService {
 
 			_params.put("repositoryId", repositoryId);
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("lockUuid", lockUuid);
+			_params.put("lockUuid", checkNull(lockUuid));
 
 			_command.put("/dlapp/verify-file-entry-lock", _params);
 		}
@@ -2576,7 +2576,7 @@ public class DLAppService extends BaseService {
 
 			_params.put("repositoryId", repositoryId);
 			_params.put("folderId", folderId);
-			_params.put("lockUuid", lockUuid);
+			_params.put("lockUuid", checkNull(lockUuid));
 
 			_command.put("/dlapp/verify-inheritable-lock", _params);
 		}

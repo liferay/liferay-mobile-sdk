@@ -38,13 +38,13 @@ public class SCProductVersionService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("productEntryId", productEntryId);
-			_params.put("version", version);
-			_params.put("changeLog", changeLog);
-			_params.put("downloadPageURL", downloadPageURL);
-			_params.put("directDownloadURL", directDownloadURL);
+			_params.put("version", checkNull(version));
+			_params.put("changeLog", checkNull(changeLog));
+			_params.put("downloadPageURL", checkNull(downloadPageURL));
+			_params.put("directDownloadURL", checkNull(directDownloadURL));
 			_params.put("testDirectDownloadURL", testDirectDownloadURL);
 			_params.put("repoStoreArtifact", repoStoreArtifact);
-			_params.put("frameworkVersionIds", frameworkVersionIds);
+			_params.put("frameworkVersionIds", checkNull(frameworkVersionIds));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/scproductversion/add-product-version", _params);
@@ -157,13 +157,13 @@ public class SCProductVersionService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("productVersionId", productVersionId);
-			_params.put("version", version);
-			_params.put("changeLog", changeLog);
-			_params.put("downloadPageURL", downloadPageURL);
-			_params.put("directDownloadURL", directDownloadURL);
+			_params.put("version", checkNull(version));
+			_params.put("changeLog", checkNull(changeLog));
+			_params.put("downloadPageURL", checkNull(downloadPageURL));
+			_params.put("directDownloadURL", checkNull(directDownloadURL));
 			_params.put("testDirectDownloadURL", testDirectDownloadURL);
 			_params.put("repoStoreArtifact", repoStoreArtifact);
-			_params.put("frameworkVersionIds", frameworkVersionIds);
+			_params.put("frameworkVersionIds", checkNull(frameworkVersionIds));
 
 			_command.put("/scproductversion/update-product-version", _params);
 		}

@@ -39,9 +39,9 @@ public class ResourceBlockService extends BaseService {
 
 			_params.put("scopeGroupId", scopeGroupId);
 			_params.put("companyId", companyId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("roleId", roleId);
-			_params.put("actionId", actionId);
+			_params.put("actionId", checkNull(actionId));
 
 			_command.put("/resourceblock/add-company-scope-permission", _params);
 		}
@@ -61,9 +61,9 @@ public class ResourceBlockService extends BaseService {
 			_params.put("scopeGroupId", scopeGroupId);
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("roleId", roleId);
-			_params.put("actionId", actionId);
+			_params.put("actionId", checkNull(actionId));
 
 			_command.put("/resourceblock/add-group-scope-permission", _params);
 		}
@@ -82,10 +82,10 @@ public class ResourceBlockService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("primKey", primKey);
 			_params.put("roleId", roleId);
-			_params.put("actionId", actionId);
+			_params.put("actionId", checkNull(actionId));
 
 			_command.put("/resourceblock/add-individual-scope-permission", _params);
 		}
@@ -104,9 +104,9 @@ public class ResourceBlockService extends BaseService {
 
 			_params.put("scopeGroupId", scopeGroupId);
 			_params.put("companyId", companyId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("roleId", roleId);
-			_params.put("actionId", actionId);
+			_params.put("actionId", checkNull(actionId));
 
 			_command.put("/resourceblock/remove-all-group-scope-permissions", _params);
 		}
@@ -125,9 +125,9 @@ public class ResourceBlockService extends BaseService {
 
 			_params.put("scopeGroupId", scopeGroupId);
 			_params.put("companyId", companyId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("roleId", roleId);
-			_params.put("actionId", actionId);
+			_params.put("actionId", checkNull(actionId));
 
 			_command.put("/resourceblock/remove-company-scope-permission", _params);
 		}
@@ -147,9 +147,9 @@ public class ResourceBlockService extends BaseService {
 			_params.put("scopeGroupId", scopeGroupId);
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("roleId", roleId);
-			_params.put("actionId", actionId);
+			_params.put("actionId", checkNull(actionId));
 
 			_command.put("/resourceblock/remove-group-scope-permission", _params);
 		}
@@ -168,10 +168,10 @@ public class ResourceBlockService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("primKey", primKey);
 			_params.put("roleId", roleId);
-			_params.put("actionId", actionId);
+			_params.put("actionId", checkNull(actionId));
 
 			_command.put("/resourceblock/remove-individual-scope-permission", _params);
 		}
@@ -190,9 +190,9 @@ public class ResourceBlockService extends BaseService {
 
 			_params.put("scopeGroupId", scopeGroupId);
 			_params.put("companyId", companyId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("roleId", roleId);
-			_params.put("actionIds", actionIds);
+			_params.put("actionIds", checkNull(actionIds));
 
 			_command.put("/resourceblock/set-company-scope-permissions", _params);
 		}
@@ -212,9 +212,9 @@ public class ResourceBlockService extends BaseService {
 			_params.put("scopeGroupId", scopeGroupId);
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("roleId", roleId);
-			_params.put("actionIds", actionIds);
+			_params.put("actionIds", checkNull(actionIds));
 
 			_command.put("/resourceblock/set-group-scope-permissions", _params);
 		}
@@ -233,9 +233,9 @@ public class ResourceBlockService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("primKey", primKey);
-			_params.put("roleIdsToActionIds", roleIdsToActionIds);
+			_params.put("roleIdsToActionIds", checkNull(roleIdsToActionIds));
 
 			_command.put("/resourceblock/set-individual-scope-permissions", _params);
 		}
@@ -254,10 +254,10 @@ public class ResourceBlockService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("primKey", primKey);
 			_params.put("roleId", roleId);
-			_params.put("actionIds", actionIds);
+			_params.put("actionIds", checkNull(actionIds));
 
 			_command.put("/resourceblock/set-individual-scope-permissions", _params);
 		}

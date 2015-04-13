@@ -60,7 +60,7 @@ public class ListTypeService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 
 			_command.put("/listtype/get-list-types", _params);
 		}
@@ -84,7 +84,7 @@ public class ListTypeService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("listTypeId", listTypeId);
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 
 			_command.put("/listtype/validate", _params);
 		}
@@ -103,7 +103,7 @@ public class ListTypeService extends BaseService {
 
 			_params.put("listTypeId", listTypeId);
 			_params.put("classNameId", classNameId);
-			_params.put("type", type);
+			_params.put("type", checkNull(type));
 
 			_command.put("/listtype/validate", _params);
 		}

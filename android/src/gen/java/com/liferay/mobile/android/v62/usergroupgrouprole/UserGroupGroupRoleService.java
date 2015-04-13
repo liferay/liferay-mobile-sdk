@@ -39,7 +39,7 @@ public class UserGroupGroupRoleService extends BaseService {
 
 			_params.put("userGroupId", userGroupId);
 			_params.put("groupId", groupId);
-			_params.put("roleIds", roleIds);
+			_params.put("roleIds", checkNull(roleIds));
 
 			_command.put("/usergroupgrouprole/add-user-group-group-roles", _params);
 		}
@@ -56,7 +56,7 @@ public class UserGroupGroupRoleService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("userGroupIds", userGroupIds);
+			_params.put("userGroupIds", checkNull(userGroupIds));
 			_params.put("groupId", groupId);
 			_params.put("roleId", roleId);
 
@@ -77,7 +77,7 @@ public class UserGroupGroupRoleService extends BaseService {
 
 			_params.put("userGroupId", userGroupId);
 			_params.put("groupId", groupId);
-			_params.put("roleIds", roleIds);
+			_params.put("roleIds", checkNull(roleIds));
 
 			_command.put("/usergroupgrouprole/delete-user-group-group-roles", _params);
 		}
@@ -94,7 +94,7 @@ public class UserGroupGroupRoleService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("userGroupIds", userGroupIds);
+			_params.put("userGroupIds", checkNull(userGroupIds));
 			_params.put("groupId", groupId);
 			_params.put("roleId", roleId);
 

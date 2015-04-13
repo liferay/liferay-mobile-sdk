@@ -100,7 +100,7 @@ public class CompanyService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("mx", mx);
+			_params.put("mx", checkNull(mx));
 
 			_command.put("/company/get-company-by-mx", _params);
 		}
@@ -123,7 +123,7 @@ public class CompanyService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("virtualHost", virtualHost);
+			_params.put("virtualHost", checkNull(virtualHost));
 
 			_command.put("/company/get-company-by-virtual-host", _params);
 		}
@@ -146,7 +146,7 @@ public class CompanyService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("webId", webId);
+			_params.put("webId", checkNull(webId));
 
 			_command.put("/company/get-company-by-web-id", _params);
 		}
@@ -170,18 +170,18 @@ public class CompanyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("virtualHost", virtualHost);
-			_params.put("mx", mx);
-			_params.put("homeURL", homeURL);
-			_params.put("name", name);
-			_params.put("legalName", legalName);
-			_params.put("legalId", legalId);
-			_params.put("legalType", legalType);
-			_params.put("sicCode", sicCode);
-			_params.put("tickerSymbol", tickerSymbol);
-			_params.put("industry", industry);
-			_params.put("type", type);
-			_params.put("size", size);
+			_params.put("virtualHost", checkNull(virtualHost));
+			_params.put("mx", checkNull(mx));
+			_params.put("homeURL", checkNull(homeURL));
+			_params.put("name", checkNull(name));
+			_params.put("legalName", checkNull(legalName));
+			_params.put("legalId", checkNull(legalId));
+			_params.put("legalType", checkNull(legalType));
+			_params.put("sicCode", checkNull(sicCode));
+			_params.put("tickerSymbol", checkNull(tickerSymbol));
+			_params.put("industry", checkNull(industry));
+			_params.put("type", checkNull(type));
+			_params.put("size", checkNull(size));
 
 			_command.put("/company/update-company", _params);
 		}
@@ -205,8 +205,8 @@ public class CompanyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("virtualHost", virtualHost);
-			_params.put("mx", mx);
+			_params.put("virtualHost", checkNull(virtualHost));
+			_params.put("mx", checkNull(mx));
 			_params.put("maxUsers", maxUsers);
 			_params.put("active", active);
 
@@ -232,8 +232,8 @@ public class CompanyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("languageId", languageId);
-			_params.put("timeZoneId", timeZoneId);
+			_params.put("languageId", checkNull(languageId));
+			_params.put("timeZoneId", checkNull(timeZoneId));
 
 			_command.put("/company/update-display", _params);
 		}

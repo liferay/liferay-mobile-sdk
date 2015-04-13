@@ -38,7 +38,7 @@ public class ExpandoColumnService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("tableId", tableId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("type", type);
 
 			_command.put("/expandocolumn/add-column", _params);
@@ -63,9 +63,9 @@ public class ExpandoColumnService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("tableId", tableId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("type", type);
-			_params.put("defaultData", defaultData);
+			_params.put("defaultData", checkNull(defaultData));
 
 			_command.put("/expandocolumn/add-column", _params);
 		}
@@ -106,7 +106,7 @@ public class ExpandoColumnService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("columnId", columnId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("type", type);
 
 			_command.put("/expandocolumn/update-column", _params);
@@ -131,9 +131,9 @@ public class ExpandoColumnService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("columnId", columnId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 			_params.put("type", type);
-			_params.put("defaultData", defaultData);
+			_params.put("defaultData", checkNull(defaultData));
 
 			_command.put("/expandocolumn/update-column", _params);
 		}
@@ -157,7 +157,7 @@ public class ExpandoColumnService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("columnId", columnId);
-			_params.put("typeSettings", typeSettings);
+			_params.put("typeSettings", checkNull(typeSettings));
 
 			_command.put("/expandocolumn/update-type-settings", _params);
 		}

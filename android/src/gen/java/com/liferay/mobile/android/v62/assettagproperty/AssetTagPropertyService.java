@@ -38,8 +38,8 @@ public class AssetTagPropertyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("tagId", tagId);
-			_params.put("key", key);
-			_params.put("value", value);
+			_params.put("key", checkNull(key));
+			_params.put("value", checkNull(value));
 
 			_command.put("/assettagproperty/add-tag-property", _params);
 		}
@@ -103,7 +103,7 @@ public class AssetTagPropertyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("key", key);
+			_params.put("key", checkNull(key));
 
 			_command.put("/assettagproperty/get-tag-property-values", _params);
 		}
@@ -127,8 +127,8 @@ public class AssetTagPropertyService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("tagPropertyId", tagPropertyId);
-			_params.put("key", key);
-			_params.put("value", value);
+			_params.put("key", checkNull(key));
+			_params.put("value", checkNull(value));
 
 			_command.put("/assettagproperty/update-tag-property", _params);
 		}

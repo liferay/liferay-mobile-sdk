@@ -41,8 +41,8 @@ public class DLFolderService extends BaseService {
 			_params.put("repositoryId", repositoryId);
 			_params.put("mountPoint", mountPoint);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfolder/add-folder", _params);
@@ -103,7 +103,7 @@ public class DLFolderService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 
 			_command.put("/dlfolder/delete-folder", _params);
 		}
@@ -175,7 +175,7 @@ public class DLFolderService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
 			_params.put("status", status);
-			_params.put("mimeTypes", mimeTypes);
+			_params.put("mimeTypes", checkNull(mimeTypes));
 
 			_command.put("/dlfolder/get-file-entries-and-file-shortcuts-count", _params);
 		}
@@ -223,7 +223,7 @@ public class DLFolderService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("name", name);
+			_params.put("name", checkNull(name));
 
 			_command.put("/dlfolder/get-folder", _params);
 		}
@@ -358,7 +358,7 @@ public class DLFolderService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
 			_params.put("status", status);
-			_params.put("mimeTypes", mimeTypes);
+			_params.put("mimeTypes", checkNull(mimeTypes));
 			_params.put("includeMountFolders", includeMountFolders);
 			_params.put("start", start);
 			_params.put("end", end);
@@ -414,7 +414,7 @@ public class DLFolderService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
 			_params.put("status", status);
-			_params.put("mimeTypes", mimeTypes);
+			_params.put("mimeTypes", checkNull(mimeTypes));
 			_params.put("includeMountFolders", includeMountFolders);
 
 			_command.put("/dlfolder/get-folders-and-file-entries-and-file-shortcuts-count", _params);
@@ -539,7 +539,7 @@ public class DLFolderService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("folderIds", folderIds);
+			_params.put("folderIds", checkNull(folderIds));
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
 
@@ -676,7 +676,7 @@ public class DLFolderService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("folderId", folderId);
-			_params.put("owner", owner);
+			_params.put("owner", checkNull(owner));
 			_params.put("inheritable", inheritable);
 			_params.put("expirationTime", expirationTime);
 
@@ -726,7 +726,7 @@ public class DLFolderService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("lockUuid", lockUuid);
+			_params.put("lockUuid", checkNull(lockUuid));
 			_params.put("companyId", companyId);
 			_params.put("expirationTime", expirationTime);
 
@@ -752,7 +752,7 @@ public class DLFolderService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("folderId", folderId);
-			_params.put("lockUuid", lockUuid);
+			_params.put("lockUuid", checkNull(lockUuid));
 
 			_command.put("/dlfolder/unlock-folder", _params);
 		}
@@ -771,8 +771,8 @@ public class DLFolderService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("name", name);
-			_params.put("lockUuid", lockUuid);
+			_params.put("name", checkNull(name));
+			_params.put("lockUuid", checkNull(lockUuid));
 
 			_command.put("/dlfolder/unlock-folder", _params);
 		}
@@ -790,10 +790,10 @@ public class DLFolderService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("folderId", folderId);
-			_params.put("name", name);
-			_params.put("description", description);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("defaultFileEntryTypeId", defaultFileEntryTypeId);
-			_params.put("fileEntryTypeIds", fileEntryTypeIds);
+			_params.put("fileEntryTypeIds", checkNull(fileEntryTypeIds));
 			_params.put("overrideFileEntryTypes", overrideFileEntryTypes);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -819,7 +819,7 @@ public class DLFolderService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("folderId", folderId);
-			_params.put("lockUuid", lockUuid);
+			_params.put("lockUuid", checkNull(lockUuid));
 
 			_command.put("/dlfolder/verify-inheritable-lock", _params);
 		}
