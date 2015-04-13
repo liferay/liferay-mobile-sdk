@@ -22,7 +22,12 @@ import com.liferay.mobile.android.task.ServiceAsyncTask;
 import com.liferay.mobile.android.task.UploadAsyncTask;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
+import java.util.Iterator;
+
+import org.apache.http.entity.mime.content.InputStreamBody;
+
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -127,10 +132,32 @@ public class SessionImpl implements Session {
 				"Set a callback to the session before uploading files");
 		}
 
+		if (!hasInputStreamBody(command)) {
+			invoke(command);
+
+			return null;
+		}
+
 		UploadAsyncTask task = new UploadAsyncTask(this, callback);
 		task.execute(command);
 
 		return task;
+	}
+
+	protected boolean hasInputStreamBody(JSONObject command)
+		throws JSONException {
+
+		Iterator<String> keys = command.keys();
+
+		while (keys.hasNext()) {
+			String key = keys.next();
+
+			if (command.get(key) instanceof InputStreamBody) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	protected Authentication authentication;
