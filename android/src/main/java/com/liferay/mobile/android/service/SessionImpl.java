@@ -147,12 +147,19 @@ public class SessionImpl implements Session {
 	protected boolean hasInputStreamBody(JSONObject command)
 		throws JSONException {
 
-		Iterator<String> keys = command.keys();
+		if (command.length() == 0) {
+			return false;
+		}
+
+		String first = command.names().getString(0);
+		JSONObject params = command.getJSONObject(first);
+
+		Iterator<String> keys = params.keys();
 
 		while (keys.hasNext()) {
 			String key = keys.next();
 
-			if (command.get(key) instanceof InputStreamBody) {
+			if (params.get(key) instanceof InputStreamBody) {
 				return true;
 			}
 		}
