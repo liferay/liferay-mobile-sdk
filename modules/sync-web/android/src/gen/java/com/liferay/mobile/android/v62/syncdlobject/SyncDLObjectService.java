@@ -48,7 +48,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("checksum", checkNull(checksum));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
-			_command.put("/sync-web/syncdlobject/add-file-entry", _params);
+			_command.put("/sync-web.syncdlobject/add-file-entry", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -69,7 +69,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("description", checkNull(description));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
-			_command.put("/sync-web/syncdlobject/add-folder", _params);
+			_command.put("/sync-web.syncdlobject/add-folder", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -92,7 +92,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("fileEntryId", fileEntryId);
 
-			_command.put("/sync-web/syncdlobject/cancel-check-out", _params);
+			_command.put("/sync-web.syncdlobject/cancel-check-out", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -118,7 +118,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("changeLog", checkNull(changeLog));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
-			_command.put("/sync-web/syncdlobject/check-in-file-entry", _params);
+			_command.put("/sync-web.syncdlobject/check-in-file-entry", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -142,7 +142,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("fileEntryId", fileEntryId);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
-			_command.put("/sync-web/syncdlobject/check-out-file-entry", _params);
+			_command.put("/sync-web.syncdlobject/check-out-file-entry", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -168,7 +168,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("expirationTime", expirationTime);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
-			_command.put("/sync-web/syncdlobject/check-out-file-entry", _params);
+			_command.put("/sync-web.syncdlobject/check-out-file-entry", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -192,7 +192,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("companyId", companyId);
 			_params.put("repositoryId", repositoryId);
 
-			_command.put("/sync-web/syncdlobject/get-all-folder-sync-dl-objects", _params);
+			_command.put("/sync-web.syncdlobject/get-all-folder-sync-dl-objects", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -216,7 +216,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("repositoryId", repositoryId);
 			_params.put("folderId", folderId);
 
-			_command.put("/sync-web/syncdlobject/get-all-sync-dl-objects", _params);
+			_command.put("/sync-web.syncdlobject/get-all-sync-dl-objects", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -241,7 +241,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("folderId", folderId);
 			_params.put("title", checkNull(title));
 
-			_command.put("/sync-web/syncdlobject/get-file-entry-sync-dl-object", _params);
+			_command.put("/sync-web.syncdlobject/get-file-entry-sync-dl-object", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -265,7 +265,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("repositoryId", repositoryId);
 			_params.put("folderId", folderId);
 
-			_command.put("/sync-web/syncdlobject/get-file-entry-sync-dl-objects", _params);
+			_command.put("/sync-web.syncdlobject/get-file-entry-sync-dl-objects", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -288,7 +288,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("folderId", folderId);
 
-			_command.put("/sync-web/syncdlobject/get-folder-sync-dl-object", _params);
+			_command.put("/sync-web.syncdlobject/get-folder-sync-dl-object", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -313,7 +313,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("parentFolderId", parentFolderId);
 			_params.put("name", checkNull(name));
 
-			_command.put("/sync-web/syncdlobject/get-folder-sync-dl-object", _params);
+			_command.put("/sync-web.syncdlobject/get-folder-sync-dl-object", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -337,7 +337,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("repositoryId", repositoryId);
 			_params.put("parentFolderId", parentFolderId);
 
-			_command.put("/sync-web/syncdlobject/get-folder-sync-dl-objects", _params);
+			_command.put("/sync-web.syncdlobject/get-folder-sync-dl-objects", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -360,7 +360,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("groupId", groupId);
 
-			_command.put("/sync-web/syncdlobject/get-group", _params);
+			_command.put("/sync-web.syncdlobject/get-group", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -381,7 +381,7 @@ public class SyncDLObjectService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_command.put("/sync-web/syncdlobject/get-latest-modified-time", _params);
+			_command.put("/sync-web.syncdlobject/get-latest-modified-time", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -402,7 +402,7 @@ public class SyncDLObjectService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_command.put("/sync-web/syncdlobject/get-portlet-preferences", _params);
+			_command.put("/sync-web.syncdlobject/get-portlet-preferences", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -423,7 +423,7 @@ public class SyncDLObjectService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_command.put("/sync-web/syncdlobject/get-sync-context", _params);
+			_command.put("/sync-web.syncdlobject/get-sync-context", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -446,7 +446,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("uuid", checkNull(uuid));
 
-			_command.put("/sync-web/syncdlobject/get-sync-context", _params);
+			_command.put("/sync-web.syncdlobject/get-sync-context", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -471,7 +471,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("repositoryId", repositoryId);
 			_params.put("lastAccessTime", lastAccessTime);
 
-			_command.put("/sync-web/syncdlobject/get-sync-dl-object-update", _params);
+			_command.put("/sync-web.syncdlobject/get-sync-dl-object-update", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -497,7 +497,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("parentFolderId", parentFolderId);
 			_params.put("lastAccessTime", lastAccessTime);
 
-			_command.put("/sync-web/syncdlobject/get-sync-dl-object-update", _params);
+			_command.put("/sync-web.syncdlobject/get-sync-dl-object-update", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -518,7 +518,7 @@ public class SyncDLObjectService extends BaseService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_command.put("/sync-web/syncdlobject/get-user-sites-groups", _params);
+			_command.put("/sync-web.syncdlobject/get-user-sites-groups", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -543,7 +543,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("newFolderId", newFolderId);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
-			_command.put("/sync-web/syncdlobject/move-file-entry", _params);
+			_command.put("/sync-web.syncdlobject/move-file-entry", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -566,7 +566,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("fileEntryId", fileEntryId);
 
-			_command.put("/sync-web/syncdlobject/move-file-entry-to-trash", _params);
+			_command.put("/sync-web.syncdlobject/move-file-entry-to-trash", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -591,7 +591,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("parentFolderId", parentFolderId);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
-			_command.put("/sync-web/syncdlobject/move-folder", _params);
+			_command.put("/sync-web.syncdlobject/move-folder", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -614,7 +614,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("folderId", folderId);
 
-			_command.put("/sync-web/syncdlobject/move-folder-to-trash", _params);
+			_command.put("/sync-web.syncdlobject/move-folder-to-trash", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -647,7 +647,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("checksum", checkNull(checksum));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
-			_command.put("/sync-web/syncdlobject/patch-file-entry", _params);
+			_command.put("/sync-web.syncdlobject/patch-file-entry", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -664,7 +664,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("fileEntryId", fileEntryId);
 
-			_command.put("/sync-web/syncdlobject/restore-file-entry-from-trash", _params);
+			_command.put("/sync-web.syncdlobject/restore-file-entry-from-trash", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -687,7 +687,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("folderId", folderId);
 
-			_command.put("/sync-web/syncdlobject/restore-folder-from-trash", _params);
+			_command.put("/sync-web.syncdlobject/restore-folder-from-trash", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -710,7 +710,7 @@ public class SyncDLObjectService extends BaseService {
 
 			_params.put("zipFile", checkNull(zipFile));
 
-			_command.put("/sync-web/syncdlobject/update-file-entries", _params);
+			_command.put("/sync-web.syncdlobject/update-file-entries", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -736,7 +736,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("checksum", checkNull(checksum));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
-			_command.put("/sync-web/syncdlobject/update-file-entry", _params);
+			_command.put("/sync-web.syncdlobject/update-file-entry", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -756,7 +756,7 @@ public class SyncDLObjectService extends BaseService {
 			_params.put("description", checkNull(description));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
-			_command.put("/sync-web/syncdlobject/update-folder", _params);
+			_command.put("/sync-web.syncdlobject/update-folder", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

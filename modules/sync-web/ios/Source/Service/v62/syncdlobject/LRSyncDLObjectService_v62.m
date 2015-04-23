@@ -34,7 +34,7 @@
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/add-file-entry": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/add-file-entry": _params};
 
 	return [self.session upload:_command error:error];
 }
@@ -49,7 +49,7 @@
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/add-folder": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/add-folder": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -59,7 +59,7 @@
 		@"fileEntryId": @(fileEntryId)
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/cancel-check-out": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/cancel-check-out": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -73,7 +73,7 @@
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/check-in-file-entry": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/check-in-file-entry": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -85,7 +85,7 @@
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/check-out-file-entry": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/check-out-file-entry": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -99,7 +99,7 @@
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/check-out-file-entry": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/check-out-file-entry": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -110,7 +110,7 @@
 		@"repositoryId": @(repositoryId)
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-all-folder-sync-dl-objects": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-all-folder-sync-dl-objects": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
@@ -121,7 +121,7 @@
 		@"folderId": @(folderId)
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-all-sync-dl-objects": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-all-sync-dl-objects": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -133,7 +133,7 @@
 		@"title": title
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-file-entry-sync-dl-object": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-file-entry-sync-dl-object": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -144,7 +144,7 @@
 		@"folderId": @(folderId)
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-file-entry-sync-dl-objects": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-file-entry-sync-dl-objects": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
@@ -154,7 +154,7 @@
 		@"folderId": @(folderId)
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-folder-sync-dl-object": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-folder-sync-dl-object": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -166,7 +166,7 @@
 		@"name": name
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-folder-sync-dl-object": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-folder-sync-dl-object": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -177,7 +177,7 @@
 		@"parentFolderId": @(parentFolderId)
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-folder-sync-dl-objects": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-folder-sync-dl-objects": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
@@ -187,7 +187,7 @@
 		@"groupId": @(groupId)
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-group": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-group": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -196,7 +196,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-latest-modified-time": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-latest-modified-time": _params};
 
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
@@ -205,7 +205,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-portlet-preferences": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-portlet-preferences": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -214,7 +214,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-sync-context": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-sync-context": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -224,7 +224,7 @@
 		@"uuid": uuid
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-sync-context": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-sync-context": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -236,7 +236,7 @@
 		@"lastAccessTime": @(lastAccessTime)
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-sync-dl-object-update": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-sync-dl-object-update": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -249,7 +249,7 @@
 		@"lastAccessTime": @(lastAccessTime)
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-sync-dl-object-update": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-sync-dl-object-update": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -258,7 +258,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/get-user-sites-groups": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-user-sites-groups": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
@@ -271,7 +271,7 @@
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/move-file-entry": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/move-file-entry": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -281,7 +281,7 @@
 		@"fileEntryId": @(fileEntryId)
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/move-file-entry-to-trash": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/move-file-entry-to-trash": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -294,7 +294,7 @@
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/move-folder": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/move-folder": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -304,7 +304,7 @@
 		@"folderId": @(folderId)
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/move-folder-to-trash": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/move-folder-to-trash": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -325,7 +325,7 @@
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/patch-file-entry": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/patch-file-entry": _params};
 
 	return [self.session upload:_command error:error];
 }
@@ -335,7 +335,7 @@
 		@"fileEntryId": @(fileEntryId)
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/restore-file-entry-from-trash": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/restore-file-entry-from-trash": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -345,7 +345,7 @@
 		@"folderId": @(folderId)
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/restore-folder-from-trash": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/restore-folder-from-trash": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -355,7 +355,7 @@
 		@"zipFile": zipFile
 	}];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/update-file-entries": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/update-file-entries": _params};
 
 	return [self.session upload:_command error:error];
 }
@@ -375,7 +375,7 @@
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/update-file-entry": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/update-file-entry": _params};
 
 	return [self.session upload:_command error:error];
 }
@@ -389,7 +389,7 @@
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
-	NSDictionary *_command = @{@"/sync-web/syncdlobject/update-folder": _params};
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/update-folder": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }

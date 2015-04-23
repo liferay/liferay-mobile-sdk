@@ -44,7 +44,7 @@ public class Discovery {
 		JSONArray actions = jsonObj.getJSONArray("actions");
 
 		for (int i = 0; i < actions.length(); i++) {
-			Action action = new Action(actions.getJSONObject(i));
+			Action action = new Action(actions.getJSONObject(i), _context);
 
 			_actions.add(action);
 		}

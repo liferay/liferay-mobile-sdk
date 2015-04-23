@@ -14,6 +14,8 @@
 
 package com.liferay.mobile.sdk.http;
 
+import com.liferay.mobile.sdk.util.Validator;
+
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -25,9 +27,14 @@ import org.json.JSONObject;
  */
 public class Action {
 
-	public Action(JSONObject jsonObj) throws JSONException {
+	public Action(JSONObject jsonObj, String context) throws JSONException {
 		_method = jsonObj.getString("method");
 		_path = jsonObj.getString("path");
+
+		if (Validator.isNotNull(context)) {
+			_path = _path.replaceFirst("/", ".");
+		}
+
 		_response = jsonObj.getString("response");
 
 		JSONArray parameters = jsonObj.getJSONArray("parameters");
