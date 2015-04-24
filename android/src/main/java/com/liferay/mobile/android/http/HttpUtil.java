@@ -167,7 +167,7 @@ public class HttpUtil {
 		HttpResponse response = client.execute(request);
 		String json = HttpUtil.getResponseString(response);
 
-		handleServerException(request, response, json);
+		handleServerError(request, response, json);
 
 		return new JSONArray(json);
 	}
@@ -207,7 +207,7 @@ public class HttpUtil {
 		HttpResponse response = client.execute(request);
 		String json = HttpUtil.getResponseString(response);
 
-		handleServerException(request, response, json);
+		handleServerError(request, response, json);
 
 		return new JSONArray("[" + json + "]");
 	}
@@ -274,11 +274,8 @@ public class HttpUtil {
 		}
 	}
 
-	protected static void handleServerException(
-			HttpRequest request, HttpResponse response, String json)
+	protected static void handlePortalException(String json)
 		throws ServerException {
-
-		checkStatusCode(request, response);
 
 		try {
 			if (isJSONObject(json)) {
@@ -286,14 +283,30 @@ public class HttpUtil {
 
 				if (jsonObj.has("exception")) {
 					String message = jsonObj.getString("exception");
+					String detail = jsonObj.optString("message", null);
 
-					throw new ServerException(message);
+					JSONObject error = jsonObj.optJSONObject("error");
+
+					if (error != null) {
+						message = error.getString("type");
+						detail = error.getString("message");
+					}
+
+					throw new ServerException(message, detail);
 				}
 			}
 		}
 		catch (JSONException je) {
 			throw new ServerException(je);
 		}
+	}
+
+	protected static void handleServerError(
+			HttpRequest request, HttpResponse response, String json)
+		throws ServerException {
+
+		checkStatusCode(request, response);
+		handlePortalException(json);
 	}
 
 	protected static boolean isJSONObject(String json) {

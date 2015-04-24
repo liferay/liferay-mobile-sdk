@@ -23,16 +23,27 @@ public class ServerException extends Exception {
 		super();
 	}
 
-	public ServerException(String msg) {
-		super(msg);
+	public ServerException(String message) {
+		super(message);
 	}
 
-	public ServerException(String msg, Throwable cause) {
-		super(msg, cause);
+	public ServerException(String message, String detail) {
+		super(message);
+		_detail = detail;
+	}
+
+	public ServerException(String message, Throwable cause) {
+		super(message, cause);
 	}
 
 	public ServerException(Throwable cause) {
 		super(cause);
 	}
+
+	public String getDetail() {
+		return _detail;
+	}
+
+	private String _detail;
 
 }

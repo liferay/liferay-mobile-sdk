@@ -30,6 +30,7 @@ import static org.junit.Assert.*;
 public class ServiceReturnTypeTest extends BaseTest {
 
 	public ServiceReturnTypeTest() throws IOException {
+		super();
 	}
 
 	@Test
