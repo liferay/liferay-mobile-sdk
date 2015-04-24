@@ -12,38 +12,31 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.test.portal;
+package com.liferay.mobile.android;
 
+import com.liferay.mobile.android.auth.Authentication;
+import com.liferay.mobile.android.auth.basic.BasicAuthentication;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.android.v62.group.GroupService;
-import com.liferay.mobile.sdk.test.BaseTest;
+import com.liferay.mobile.android.util.PropertiesUtil;
 
 import java.io.IOException;
-
-import org.apache.http.conn.ConnectTimeoutException;
-
-import org.junit.Test;
 
 /**
  * @author Bruno Farache
  */
-public class ConnectionTimeoutTest extends BaseTest {
+public abstract class BaseTest {
 
-	public ConnectionTimeoutTest() throws IOException {
-		super();
+	public BaseTest() throws IOException {
+		props = new PropertiesUtil();
+
+		Authentication authentication = new BasicAuthentication(
+			props.getLogin(), props.getPassword());
+
+		session = new SessionImpl(props.getUrl(), authentication);
 	}
 
-	@Test(expected = ConnectTimeoutException.class)
-	public void connectionTimeoutException() throws Exception {
-		Session session = new SessionImpl(this.session);
-
-		session.setServer("http://www.liferay.com");
-		session.setConnectionTimeout(5);
-
-		GroupService service = new GroupService(session);
-
-		service.getUserSites();
-	}
+	protected PropertiesUtil props;
+	protected Session session;
 
 }

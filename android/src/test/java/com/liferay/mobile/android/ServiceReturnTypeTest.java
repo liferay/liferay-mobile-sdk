@@ -12,11 +12,10 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.test.portal;
+package com.liferay.mobile.android;
 
 import com.liferay.mobile.android.v62.portal.PortalService;
 import com.liferay.mobile.android.v62.user.UserService;
-import com.liferay.mobile.sdk.test.BaseTest;
 
 import java.io.IOException;
 

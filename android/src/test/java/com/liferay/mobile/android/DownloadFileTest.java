@@ -12,11 +12,11 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.test.portal;
+package com.liferay.mobile.android;
 
-import com.liferay.mobile.android.v62.dlapp.DLAppService;
-import com.liferay.mobile.sdk.test.BaseTest;
+import com.liferay.mobile.android.util.download.DownloadUtil;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import org.json.JSONObject;
@@ -30,27 +30,32 @@ import static org.junit.Assert.*;
 /**
  * @author Bruno Farache
  */
-public class OptionalParametersTest extends BaseTest {
+public class DownloadFileTest extends BaseTest {
 
-	public OptionalParametersTest() throws IOException {
+	public DownloadFileTest() throws IOException {
 		super();
 	}
 
 	@Test
-	public void nullFileEntryDescription() throws Exception {
-		DLAppService service = new DLAppService(session);
+	public void download() throws Exception {
+		String URL = session.getServer() + "/webdav/guest/document_library/" +
+			_file.getString(DLAppServiceTest.TITLE);
 
-		long fileEntryId = _file.getLong(DLAppServiceTest.FILE_ENTRY_ID);
-		String description = null;
-		byte[] bytes = null;
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-		JSONObject updatedFile = service.updateFileEntry(
-			fileEntryId, "", "", "", description, "", false, bytes, null);
+		DownloadUtil.download(session, URL, baos, null);
+		assertEquals(5, baos.size());
+	}
+
+	@Test
+	public void getDownloadURL() throws Exception {
+		String URL = DownloadUtil.getDownloadURL(
+			session, "/guest", "/folder with spaces", "file áéíòúñ.txt");
 
 		assertEquals(
-			fileEntryId, updatedFile.getLong(DLAppServiceTest.FILE_ENTRY_ID));
-
-		assertEquals(5, updatedFile.getInt("size"));
+			"http://localhost:8080/webdav/guest/document_library" +
+				"/folder%20with%20spaces" +
+				"/file%20%C3%A1%C3%A9%C3%AD%C3%B2%C3%BA%C3%B1.txt", URL);
 	}
 
 	@Before

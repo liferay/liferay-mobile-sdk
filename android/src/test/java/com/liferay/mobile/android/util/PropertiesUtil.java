@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.test.util;
+package com.liferay.mobile.android.util;
 
 import java.io.IOException;
 import java.io.InputStream;

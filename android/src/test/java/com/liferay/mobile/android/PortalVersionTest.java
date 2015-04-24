@@ -12,31 +12,31 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.test;
+package com.liferay.mobile.android;
 
-import com.liferay.mobile.android.auth.Authentication;
-import com.liferay.mobile.android.auth.basic.BasicAuthentication;
-import com.liferay.mobile.android.service.Session;
-import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.sdk.test.util.PropertiesUtil;
+import com.liferay.mobile.android.util.PortalVersion;
+import com.liferay.mobile.android.util.PortalVersionUtil;
 
 import java.io.IOException;
+
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  * @author Bruno Farache
  */
-public abstract class BaseTest {
+public class PortalVersionTest extends BaseTest {
 
-	public BaseTest() throws IOException {
-		props = new PropertiesUtil();
-
-		Authentication authentication = new BasicAuthentication(
-			props.getLogin(), props.getPassword());
-
-		session = new SessionImpl(props.getUrl(), authentication);
+	public PortalVersionTest() throws IOException {
+		super();
 	}
 
-	protected PropertiesUtil props;
-	protected Session session;
+	@Test
+	public void getPortalVersion() throws Exception {
+		int version = PortalVersionUtil.getPortalVersion(session);
+
+		assertTrue(version >= PortalVersion.V_6_2);
+	}
 
 }

@@ -14,8 +14,8 @@
 
 package com.liferay.mobile.android.http;
 
+import com.liferay.mobile.android.BaseTest;
 import com.liferay.mobile.android.exception.ServerException;
-import com.liferay.mobile.sdk.test.BaseTest;
 
 import java.io.IOException;
 

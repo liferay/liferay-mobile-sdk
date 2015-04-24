@@ -12,11 +12,10 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.test.portal;
+package com.liferay.mobile.android;
 
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.v62.bookmarksentry.BookmarksEntryService;
-import com.liferay.mobile.sdk.test.BaseTest;
 
 import java.io.IOException;
 
