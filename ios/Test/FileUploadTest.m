@@ -40,6 +40,7 @@ NSString *const TITLE = @"title";
 @implementation FileUploadTest
 
 - (void)onFailure:(NSError *)error {
+	XCTAssertTrue([NSThread isMainThread]);
 	[self setError:error];
 	[self.monitor signal];
 }
@@ -47,10 +48,12 @@ NSString *const TITLE = @"title";
 - (void)onProgressBytes:(NSUInteger)bytes sent:(long long)sent
 		total:(long long)total {
 
+	XCTAssertTrue([NSThread isMainThread]);
 	[self setProgress:sent];
 }
 
 - (void)onSuccess:(NSDictionary *)entry {
+	XCTAssertTrue([NSThread isMainThread]);
 	[self setEntry:entry];
 	[self.monitor signal];
 }

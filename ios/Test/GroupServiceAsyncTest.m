@@ -31,11 +31,13 @@
 @implementation GroupServiceAsyncTest
 
 - (void)onFailure:(NSError *)error {
+	XCTAssertTrue([NSThread isMainThread]);
 	[self setError:error];
 	[self.monitor signal];
 }
 
 - (void)onSuccess:(NSArray *)groups {
+	XCTAssertTrue([NSThread isMainThread]);
 	[self setGroups:groups];
 	[self.monitor signal];
 }

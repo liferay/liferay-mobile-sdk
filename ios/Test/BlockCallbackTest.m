@@ -33,6 +33,7 @@
 
 	[session
 		onSuccess:^(id result) {
+			XCTAssertTrue([NSThread isMainThread]);
 			groups = result;
 			[monitor signal];
 		}
