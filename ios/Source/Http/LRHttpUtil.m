@@ -115,6 +115,12 @@ typedef void (^LRHandler)(
 	_JSONWS_PATH = path;
 }
 
++ (void)_dispatchMainThread:(void (^)(void))block {
+	dispatch_async(dispatch_get_main_queue(), ^{
+		block();
+	});
+}
+
 + (id)_sendRequest:(NSMutableURLRequest *)request session:(LRSession *)session
 		error:(NSError **)error {
 
@@ -148,32 +154,37 @@ typedef void (^LRHandler)(
 	id<LRCallback> callback = session.callback;
 
 	LRHandler handler = ^(NSData *data, NSURLResponse *response, NSError *e) {
-		dispatch_async(dispatch_get_main_queue(), ^{
 			if (e) {
-				[callback onFailure:e];
+				[self _dispatchMainThread: ^{
+					[callback onFailure:e];
+				}];
 			}
 			else {
 				NSError *serverError;
-
 				NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
 
 				id json = [LRResponseParser parse:data request:request
 					response:httpResponse error:&serverError];
 
 				if (serverError) {
-					[callback onFailure:serverError];
+					[self _dispatchMainThread: ^{
+						[callback onFailure:serverError];
+					}];
 
 					return;
 				}
 
 				if ([session isKindOfClass:[LRBatchSession class]]) {
-					[callback onSuccess:json];
+					[self _dispatchMainThread: ^{
+						[callback onSuccess:json];
+					}];
 				}
-				else if ([json isKindOfClass:[NSArray class]]){
-					[callback onSuccess:[json objectAtIndex:0]];
+				else if ([json isKindOfClass:[NSArray class]]) {
+					[self _dispatchMainThread: ^{
+						[callback onSuccess:[json objectAtIndex:0]];
+					}];
 				}
 			}
-		});
 	};
 
 	NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration
