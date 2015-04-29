@@ -194,7 +194,7 @@ typedef void (^LRHandler)(
 
 	NSURLSession *urlSession = [NSURLSession
 		sessionWithConfiguration:configuration delegate:delegate
-		delegateQueue:nil];
+		delegateQueue:session.queue];
 
 	NSURLSessionDataTask *task = [urlSession dataTaskWithRequest:request
 		completionHandler:handler];
