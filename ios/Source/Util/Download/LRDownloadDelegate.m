@@ -34,7 +34,12 @@ const int LR_DOWNLOAD_FINISHED = 0;
 	if (self) {
 		self.auth = auth;
 		self.outputStream = outputStream;
-		self.downloadProgress = downloadProgress;
+
+		self.downloadProgress = ^(long long totalBytes, NSError *e) {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				downloadProgress(totalBytes, e);
+			});
+		};
 	}
 
 	return self;

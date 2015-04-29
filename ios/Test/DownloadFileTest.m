@@ -39,6 +39,8 @@
 		groupFriendlyURL:@"/guest" folderPath:@""
 		fileTitle:self.entry[@"title"] outputStream:outputStream
 		downloadProgress:^(long long totalBytes, NSError *e) {
+			XCTAssertTrue([NSThread isMainThread]);
+
 			if (e) {
 				XCTFail(@"Error during download %@.", [e localizedDescription]);
 				[monitor signal];
@@ -52,7 +54,6 @@
 			else {
 				XCTAssertEqual([self.entry[@"size"] longLongValue], totalBytes);
 			}
-
 		}
 	];
 
