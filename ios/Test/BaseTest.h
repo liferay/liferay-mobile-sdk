@@ -19,6 +19,7 @@
  */
 @interface BaseTest : XCTestCase
 
+@property (nonatomic, strong) NSBundle *bundle;
 @property (nonatomic, strong) LRSession *session;
 @property (nonatomic, strong) NSDictionary *settings;
 

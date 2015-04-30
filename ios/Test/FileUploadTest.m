@@ -154,6 +154,31 @@ NSString *const TITLE = @"title";
 	XCTAssertEqual(44302, self.progress);
 }
 
+- (void)testAddFileEntryURL {
+	long long repositoryId = [self.settings[GROUP_ID] longLongValue];
+
+	NSURL *fileURL = [self.bundle URLForResource:@"settings"
+		withExtension:@"plist"];
+
+	LRUploadData *file = [[LRUploadData alloc] initWithFileURL:fileURL
+		fileName:SOURCE_FILE_NAME mimeType:MIME_TYPE];
+
+	NSString *name = [self _getSourceFileName];
+	NSError *error;
+
+	[self.service addFileEntryWithRepositoryId:repositoryId
+		folderId:ROOT_FOLDER_ID sourceFileName:name	mimeType:MIME_TYPE
+		title:name description:@"" changeLog:@"" file:file serviceContext:nil
+		error:&error];
+
+	XCTAssertNil(error);
+
+	[self.monitor wait];
+
+	XCTAssertNil(self.error);
+	XCTAssertEqualObjects(name, self.entry[TITLE]);
+}
+
 - (void)testRepositoryIdServerExceptionAsynchronous {
 	long long repositoryId = -1;
 	LRUploadData *file = [self _uploadData];

@@ -22,25 +22,33 @@
 - (id)initWithData:(NSData *)data fileName:(NSString *)fileName
 		mimeType:(NSString *)mimeType {
 
-	return [self _init:data inputStream:nil length:0 fileName:fileName
-		mimeType:mimeType];
+	return [self _init:data fileURL:nil inputStream:nil length:0
+		fileName:fileName mimeType:mimeType];
+}
+
+- (id)initWithFileURL:(NSURL *)fileURL fileName:(NSString *)fileName
+		mimeType:(NSString *)mimeType {
+
+	return [self _init:nil fileURL:fileURL inputStream:nil length:0
+		fileName:fileName mimeType:mimeType];
 }
 
 - (id)initWithInputStream:(NSInputStream *)inputStream length:(int64_t)length
 		fileName:(NSString *)fileName mimeType:(NSString *)mimeType {
 
-	return [self _init:nil inputStream:inputStream length:length
+	return [self _init:nil  fileURL:nil inputStream:inputStream length:length
 		fileName:fileName mimeType:mimeType];
 }
 
-- (id)_init:(NSData *)data inputStream:(NSInputStream *)inputStream
-		length:(int64_t)length fileName:(NSString *)fileName
-		mimeType:(NSString *)mimeType {
+- (id)_init:(NSData *)data fileURL:(NSURL *)fileURL
+		inputStream:(NSInputStream *)inputStream length:(int64_t)length
+		fileName:(NSString *)fileName mimeType:(NSString *)mimeType {
 
 	self = [super init];
 
 	if (self) {
 		self.data = data;
+		self.fileURL = fileURL;
 		self.inputStream = inputStream;
 		self.length = length;
 		self.fileName = fileName;

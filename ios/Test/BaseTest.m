@@ -23,13 +23,11 @@
 @implementation BaseTest
 
 - (void)setUp {
-	NSBundle *bundle = [NSBundle
+	self.bundle = [NSBundle
 		bundleWithIdentifier:@"com.liferay.mobile.sdk.Test"];
 
-	NSString *path = [bundle pathForResource:@"settings" ofType:@"plist"];
-
+	NSString *path = [self.bundle pathForResource:@"settings" ofType:@"plist"];
 	self.settings = [[NSDictionary alloc] initWithContentsOfFile:path];
-
 	NSString *url = self.settings[@"url"];
 
 	id<LRAuthentication> authentication = [[LRBasicAuthentication alloc]

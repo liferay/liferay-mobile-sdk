@@ -99,6 +99,10 @@ typedef void (^LRHandler)(
 	NSData *body = [NSJSONSerialization dataWithJSONObject:commands options:0
 		error:error];
 
+	if (*error) {
+		return nil;
+	}
+
 	[request setHTTPBody:body];
 	[request setHTTPMethod:LR_POST];
 	[request setValue:@"application/json; charset=utf-8"
@@ -123,10 +127,6 @@ typedef void (^LRHandler)(
 
 + (id)_sendRequest:(NSMutableURLRequest *)request session:(LRSession *)session
 		error:(NSError **)error {
-
-	if (*error) {
-		return nil;
-	}
 
 	if (session.callback) {
 		[self _sendAsynchronousRequest:request session:session];

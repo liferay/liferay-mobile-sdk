@@ -21,6 +21,7 @@
 
 @property (nonatomic, strong) NSData *data;
 @property (nonatomic, strong) NSString *fileName;
+@property (nonatomic, strong) NSURL *fileURL;
 @property (nonatomic, strong) NSInputStream *inputStream;
 @property (nonatomic) int64_t length;
 @property (nonatomic, strong) NSString *mimeType;
@@ -28,6 +29,9 @@
 @property (nonatomic, strong) id<LRProgressDelegate> progressDelegate;
 
 - (id)initWithData:(NSData *)data fileName:(NSString *)fileName
+	mimeType:(NSString *)mimeType;
+
+- (id)initWithFileURL:(NSURL *)fileURL fileName:(NSString *)fileName
 	mimeType:(NSString *)mimeType;
 
 - (id)initWithInputStream:(NSInputStream *)inputStream length:(int64_t)length

@@ -49,6 +49,11 @@
 						name:data.parameterName fileName:data.fileName
 						mimeType:data.mimeType];
 				}
+				else if (data.fileURL) {
+					[form appendPartWithFileURL:data.fileURL
+						name:data.parameterName fileName:data.fileName
+						mimeType:data.mimeType error:error];
+				}
 				else if (data.inputStream) {
 					[form appendPartWithInputStream:data.inputStream
 						name:data.parameterName fileName:data.fileName
