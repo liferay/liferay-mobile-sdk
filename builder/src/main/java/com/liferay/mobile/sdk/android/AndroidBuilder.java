@@ -44,9 +44,10 @@ public class AndroidBuilder extends BaseBuilder {
 
 		if (Validator.isNotNull(destination)) {
 			sb.append(destination);
+			sb.append("/android/");
 		}
 
-		sb.append("android/src/gen/java");
+		sb.append("src/gen/java");
 		destination = sb.toString();
 
 		VelocityContext context = getVelocityContext(

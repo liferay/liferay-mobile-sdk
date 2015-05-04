@@ -43,9 +43,10 @@ public class iOSBuilder extends BaseBuilder {
 
 		if (Validator.isNotNull(destination)) {
 			sb.append(destination);
+			sb.append("/ios/");
 		}
 
-		sb.append("ios/Source/Service");
+		sb.append("Source/Service");
 		destination = sb.toString();
 
 		VelocityContext context = getVelocityContext(
