@@ -24,12 +24,19 @@ import org.json.JSONArray;
 public abstract class GenericAsyncTaskCallback<T>
 		extends BaseAsyncTaskCallback<T> {
 
-	public void onPostExecute(JSONArray jsonArray) throws Exception {
-		Object result = jsonArray.get(0);
+	@Override
+	public JSONArray inBackground(JSONArray jsonArray) throws Exception {
+		result = transform(jsonArray.get(0));
 
-		onSuccess(transform(result));
+		return jsonArray;
+	}
+
+	public void onPostExecute(JSONArray jsonArray) throws Exception {
+		onSuccess(result);
 	}
 
 	public abstract T transform(Object obj) throws Exception;
+
+	protected T result;
 
 }
