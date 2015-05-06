@@ -985,7 +985,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateLayout(long groupId, boolean privateLayout, long layoutId, long parentLayoutId, JSONObject localeNamesMap, JSONObject localeTitlesMap, JSONObject descriptionMap, JSONObject keywordsMap, JSONObject robotsMap, String type, boolean hidden, String friendlyURL, JSONObjectWrapper iconImage, byte[] iconBytes, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateLayout(long groupId, boolean privateLayout, long layoutId, long parentLayoutId, JSONObject localeNamesMap, JSONObject localeTitlesMap, JSONObject descriptionMap, JSONObject keywordsMap, JSONObject robotsMap, String type, boolean hidden, String friendlyURL, boolean iconImage, byte[] iconBytes, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1003,7 +1003,7 @@ public class LayoutService extends BaseService {
 			_params.put("type", checkNull(type));
 			_params.put("hidden", hidden);
 			_params.put("friendlyURL", checkNull(friendlyURL));
-			mangleWrapper(_params, "iconImage", "java.lang.Boolean", iconImage);
+			_params.put("iconImage", iconImage);
 			_params.put("iconBytes", toString(iconBytes));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -1022,7 +1022,7 @@ public class LayoutService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateLayout(long groupId, boolean privateLayout, long layoutId, long parentLayoutId, JSONObject localeNamesMap, JSONObject localeTitlesMap, JSONObject descriptionMap, JSONObject keywordsMap, JSONObject robotsMap, String type, boolean hidden, JSONObject friendlyURLMap, JSONObjectWrapper iconImage, byte[] iconBytes, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateLayout(long groupId, boolean privateLayout, long layoutId, long parentLayoutId, JSONObject localeNamesMap, JSONObject localeTitlesMap, JSONObject descriptionMap, JSONObject keywordsMap, JSONObject robotsMap, String type, boolean hidden, JSONObject friendlyURLMap, boolean iconImage, byte[] iconBytes, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1040,7 +1040,7 @@ public class LayoutService extends BaseService {
 			_params.put("type", checkNull(type));
 			_params.put("hidden", hidden);
 			_params.put("friendlyURLMap", checkNull(friendlyURLMap));
-			mangleWrapper(_params, "iconImage", "java.lang.Boolean", iconImage);
+			_params.put("iconImage", iconImage);
 			_params.put("iconBytes", toString(iconBytes));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 

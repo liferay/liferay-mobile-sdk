@@ -54,12 +54,12 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long long)companyId active:(LRJSONObjectWrapper *)active obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
+- (NSArray *)searchWithCompanyId:(long long)companyId active:(BOOL)active obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
+		@"active": @(active),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"active" className:@"java.lang.Boolean" wrapper:active];
 	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/layoutsetprototype/search": _params};

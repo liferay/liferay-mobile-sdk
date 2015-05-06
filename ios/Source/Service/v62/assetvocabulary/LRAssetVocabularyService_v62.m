@@ -188,10 +188,10 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getGroupVocabulariesDisplayWithGroupId:(long long)groupId title:(NSString *)title start:(int)start end:(int)end addDefaultVocabulary:(BOOL)addDefaultVocabulary obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
+- (NSDictionary *)getGroupVocabulariesDisplayWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end addDefaultVocabulary:(BOOL)addDefaultVocabulary obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"title": title,
+		@"name": name,
 		@"start": @(start),
 		@"end": @(end),
 		@"addDefaultVocabulary": @(addDefaultVocabulary),

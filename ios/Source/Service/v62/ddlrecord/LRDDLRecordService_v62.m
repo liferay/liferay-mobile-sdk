@@ -49,16 +49,6 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteRecordWithRecordId:(long long)recordId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"recordId": @(recordId)
-	}];
-
-	NSDictionary *_command = @{@"/ddlrecord/delete-record": _params};
-
-	[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)deleteRecordLocaleWithRecordId:(long long)recordId locale:(NSString *)locale serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"recordId": @(recordId),
@@ -80,19 +70,6 @@
 	NSDictionary *_command = @{@"/ddlrecord/get-record": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (void)revertRecordVersionWithRecordId:(long long)recordId version:(NSString *)version serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"recordId": @(recordId),
-		@"version": version,
-	}];
-
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
-
-	NSDictionary *_command = @{@"/ddlrecord/revert-record-version": _params};
-
-	[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)updateRecordWithRecordId:(long long)recordId displayIndex:(int)displayIndex fieldsMap:(NSDictionary *)fieldsMap mergeFields:(BOOL)mergeFields serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {

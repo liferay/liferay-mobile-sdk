@@ -368,42 +368,6 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long long)companyId classNameIds:(NSArray *)classNameIds keywords:(NSString *)keywords params:(NSDictionary *)params start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"classNameIds": classNameIds,
-		@"keywords": keywords,
-		@"params": params,
-		@"start": @(start),
-		@"end": @(end),
-	}];
-
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
-
-	NSDictionary *_command = @{@"/group/search": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSArray *)searchWithCompanyId:(long long)companyId classNameIds:(NSArray *)classNameIds name:(NSString *)name description:(NSString *)description params:(NSDictionary *)params andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"classNameIds": classNameIds,
-		@"name": name,
-		@"description": description,
-		@"params": params,
-		@"andOperator": @(andOperator),
-		@"start": @(start),
-		@"end": @(end),
-	}];
-
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
-
-	NSDictionary *_command = @{@"/group/search": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId name:(NSString *)name description:(NSString *)description params:(NSArray *)params error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),

@@ -290,13 +290,12 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getPageWithNodeId:(long long)nodeId title:(NSString *)title head:(LRJSONObjectWrapper *)head error:(NSError **)error {
+- (NSDictionary *)getPageWithNodeId:(long long)nodeId title:(NSString *)title head:(BOOL)head error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
 		@"title": title,
+		@"head": @(head)
 	}];
-
-	[self mangleWrapperWithParams:_params name:@"head" className:@"java.lang.Boolean" wrapper:head];
 
 	NSDictionary *_command = @{@"/wikipage/get-page": _params};
 

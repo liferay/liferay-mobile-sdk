@@ -172,7 +172,7 @@ public class AssetEntryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateEntry(long groupId, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, JSONObjectWrapper priority, boolean sync) throws Exception {
+	public JSONObject updateEntry(long groupId, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, int priority, boolean sync) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -197,7 +197,7 @@ public class AssetEntryService extends BaseService {
 			_params.put("layoutUuid", checkNull(layoutUuid));
 			_params.put("height", height);
 			_params.put("width", width);
-			mangleWrapper(_params, "priority", "java.lang.Integer", priority);
+			_params.put("priority", priority);
 			_params.put("sync", sync);
 
 			_command.put("/assetentry/update-entry", _params);
@@ -215,7 +215,7 @@ public class AssetEntryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateEntry(long groupId, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long publishDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, JSONObjectWrapper priority, boolean sync) throws Exception {
+	public JSONObject updateEntry(long groupId, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long publishDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, int priority, boolean sync) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -241,7 +241,7 @@ public class AssetEntryService extends BaseService {
 			_params.put("layoutUuid", checkNull(layoutUuid));
 			_params.put("height", height);
 			_params.put("width", width);
-			mangleWrapper(_params, "priority", "java.lang.Integer", priority);
+			_params.put("priority", priority);
 			_params.put("sync", sync);
 
 			_command.put("/assetentry/update-entry", _params);
@@ -259,7 +259,7 @@ public class AssetEntryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateEntry(long groupId, long createDate, long modifiedDate, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, JSONObjectWrapper priority, boolean sync) throws Exception {
+	public JSONObject updateEntry(long groupId, long createDate, long modifiedDate, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, int priority, boolean sync) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -286,7 +286,7 @@ public class AssetEntryService extends BaseService {
 			_params.put("layoutUuid", checkNull(layoutUuid));
 			_params.put("height", height);
 			_params.put("width", width);
-			mangleWrapper(_params, "priority", "java.lang.Integer", priority);
+			_params.put("priority", priority);
 			_params.put("sync", sync);
 
 			_command.put("/assetentry/update-entry", _params);

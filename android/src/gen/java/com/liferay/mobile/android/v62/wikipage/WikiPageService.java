@@ -506,7 +506,7 @@ public class WikiPageService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject getPage(long nodeId, String title, JSONObjectWrapper head) throws Exception {
+	public JSONObject getPage(long nodeId, String title, boolean head) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -514,7 +514,7 @@ public class WikiPageService extends BaseService {
 
 			_params.put("nodeId", nodeId);
 			_params.put("title", checkNull(title));
-			mangleWrapper(_params, "head", "java.lang.Boolean", head);
+			_params.put("head", head);
 
 			_command.put("/wikipage/get-page", _params);
 		}

@@ -1112,7 +1112,7 @@ public class JournalArticleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONArray search(long companyId, long groupId, JSONArray folderIds, long classNameId, String keywords, JSONObjectWrapper version, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, int start, int end, JSONObjectWrapper obc) throws Exception {
+	public JSONArray search(long companyId, long groupId, JSONArray folderIds, long classNameId, String keywords, double version, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1123,7 +1123,7 @@ public class JournalArticleService extends BaseService {
 			_params.put("folderIds", checkNull(folderIds));
 			_params.put("classNameId", classNameId);
 			_params.put("keywords", checkNull(keywords));
-			mangleWrapper(_params, "version", "java.lang.Double", version);
+			_params.put("version", version);
 			_params.put("type", checkNull(type));
 			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
 			_params.put("ddmTemplateKey", checkNull(ddmTemplateKey));
@@ -1150,7 +1150,7 @@ public class JournalArticleService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray search(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, JSONObjectWrapper version, String title, String description, String content, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator, int start, int end, JSONObjectWrapper obc) throws Exception {
+	public JSONArray search(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, double version, String title, String description, String content, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1161,7 +1161,7 @@ public class JournalArticleService extends BaseService {
 			_params.put("folderIds", checkNull(folderIds));
 			_params.put("classNameId", classNameId);
 			_params.put("articleId", checkNull(articleId));
-			mangleWrapper(_params, "version", "java.lang.Double", version);
+			_params.put("version", version);
 			_params.put("title", checkNull(title));
 			_params.put("description", checkNull(description));
 			_params.put("content", checkNull(content));
@@ -1192,7 +1192,7 @@ public class JournalArticleService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray search(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, JSONObjectWrapper version, String title, String description, String content, String type, JSONArray ddmStructureKeys, JSONArray ddmTemplateKeys, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator, int start, int end, JSONObjectWrapper obc) throws Exception {
+	public JSONArray search(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, double version, String title, String description, String content, String type, JSONArray ddmStructureKeys, JSONArray ddmTemplateKeys, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1203,7 +1203,7 @@ public class JournalArticleService extends BaseService {
 			_params.put("folderIds", checkNull(folderIds));
 			_params.put("classNameId", classNameId);
 			_params.put("articleId", checkNull(articleId));
-			mangleWrapper(_params, "version", "java.lang.Double", version);
+			_params.put("version", version);
 			_params.put("title", checkNull(title));
 			_params.put("description", checkNull(description));
 			_params.put("content", checkNull(content));
@@ -1261,7 +1261,7 @@ public class JournalArticleService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public Integer searchCount(long companyId, long groupId, JSONArray folderIds, long classNameId, String keywords, JSONObjectWrapper version, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate) throws Exception {
+	public Integer searchCount(long companyId, long groupId, JSONArray folderIds, long classNameId, String keywords, double version, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1272,7 +1272,7 @@ public class JournalArticleService extends BaseService {
 			_params.put("folderIds", checkNull(folderIds));
 			_params.put("classNameId", classNameId);
 			_params.put("keywords", checkNull(keywords));
-			mangleWrapper(_params, "version", "java.lang.Double", version);
+			_params.put("version", version);
 			_params.put("type", checkNull(type));
 			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
 			_params.put("ddmTemplateKey", checkNull(ddmTemplateKey));
@@ -1296,7 +1296,7 @@ public class JournalArticleService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public Integer searchCount(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, JSONObjectWrapper version, String title, String description, String content, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator) throws Exception {
+	public Integer searchCount(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, double version, String title, String description, String content, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1307,7 +1307,7 @@ public class JournalArticleService extends BaseService {
 			_params.put("folderIds", checkNull(folderIds));
 			_params.put("classNameId", classNameId);
 			_params.put("articleId", checkNull(articleId));
-			mangleWrapper(_params, "version", "java.lang.Double", version);
+			_params.put("version", version);
 			_params.put("title", checkNull(title));
 			_params.put("description", checkNull(description));
 			_params.put("content", checkNull(content));
@@ -1335,7 +1335,7 @@ public class JournalArticleService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public Integer searchCount(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, JSONObjectWrapper version, String title, String description, String content, String type, JSONArray ddmStructureKeys, JSONArray ddmTemplateKeys, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator) throws Exception {
+	public Integer searchCount(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, double version, String title, String description, String content, String type, JSONArray ddmStructureKeys, JSONArray ddmTemplateKeys, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1346,7 +1346,7 @@ public class JournalArticleService extends BaseService {
 			_params.put("folderIds", checkNull(folderIds));
 			_params.put("classNameId", classNameId);
 			_params.put("articleId", checkNull(articleId));
-			mangleWrapper(_params, "version", "java.lang.Double", version);
+			_params.put("version", version);
 			_params.put("title", checkNull(title));
 			_params.put("description", checkNull(description));
 			_params.put("content", checkNull(content));

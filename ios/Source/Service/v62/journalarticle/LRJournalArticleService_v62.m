@@ -618,13 +618,14 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long long)companyId groupId:(long long)groupId folderIds:(NSArray *)folderIds classNameId:(long long)classNameId keywords:(NSString *)keywords version:(LRJSONObjectWrapper *)version type:(NSString *)type ddmStructureKey:(NSString *)ddmStructureKey ddmTemplateKey:(NSString *)ddmTemplateKey displayDateGT:(long long)displayDateGT displayDateLT:(long long)displayDateLT status:(int)status reviewDate:(long long)reviewDate start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
+- (NSArray *)searchWithCompanyId:(long long)companyId groupId:(long long)groupId folderIds:(NSArray *)folderIds classNameId:(long long)classNameId keywords:(NSString *)keywords version:(double)version type:(NSString *)type ddmStructureKey:(NSString *)ddmStructureKey ddmTemplateKey:(NSString *)ddmTemplateKey displayDateGT:(long long)displayDateGT displayDateLT:(long long)displayDateLT status:(int)status reviewDate:(long long)reviewDate start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"folderIds": folderIds,
 		@"classNameId": @(classNameId),
 		@"keywords": keywords,
+		@"version": @(version),
 		@"type": type,
 		@"ddmStructureKey": ddmStructureKey,
 		@"ddmTemplateKey": ddmTemplateKey,
@@ -636,7 +637,6 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"version" className:@"java.lang.Double" wrapper:version];
 	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/journalarticle/search": _params};
@@ -644,13 +644,14 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long long)companyId groupId:(long long)groupId folderIds:(NSArray *)folderIds classNameId:(long long)classNameId articleId:(NSString *)articleId version:(LRJSONObjectWrapper *)version title:(NSString *)title description:(NSString *)description content:(NSString *)content type:(NSString *)type ddmStructureKey:(NSString *)ddmStructureKey ddmTemplateKey:(NSString *)ddmTemplateKey displayDateGT:(long long)displayDateGT displayDateLT:(long long)displayDateLT status:(int)status reviewDate:(long long)reviewDate andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
+- (NSArray *)searchWithCompanyId:(long long)companyId groupId:(long long)groupId folderIds:(NSArray *)folderIds classNameId:(long long)classNameId articleId:(NSString *)articleId version:(double)version title:(NSString *)title description:(NSString *)description content:(NSString *)content type:(NSString *)type ddmStructureKey:(NSString *)ddmStructureKey ddmTemplateKey:(NSString *)ddmTemplateKey displayDateGT:(long long)displayDateGT displayDateLT:(long long)displayDateLT status:(int)status reviewDate:(long long)reviewDate andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"folderIds": folderIds,
 		@"classNameId": @(classNameId),
 		@"articleId": articleId,
+		@"version": @(version),
 		@"title": title,
 		@"description": description,
 		@"content": content,
@@ -666,7 +667,6 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"version" className:@"java.lang.Double" wrapper:version];
 	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/journalarticle/search": _params};
@@ -674,13 +674,14 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long long)companyId groupId:(long long)groupId folderIds:(NSArray *)folderIds classNameId:(long long)classNameId articleId:(NSString *)articleId version:(LRJSONObjectWrapper *)version title:(NSString *)title description:(NSString *)description content:(NSString *)content type:(NSString *)type ddmStructureKeys:(NSArray *)ddmStructureKeys ddmTemplateKeys:(NSArray *)ddmTemplateKeys displayDateGT:(long long)displayDateGT displayDateLT:(long long)displayDateLT status:(int)status reviewDate:(long long)reviewDate andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
+- (NSArray *)searchWithCompanyId:(long long)companyId groupId:(long long)groupId folderIds:(NSArray *)folderIds classNameId:(long long)classNameId articleId:(NSString *)articleId version:(double)version title:(NSString *)title description:(NSString *)description content:(NSString *)content type:(NSString *)type ddmStructureKeys:(NSArray *)ddmStructureKeys ddmTemplateKeys:(NSArray *)ddmTemplateKeys displayDateGT:(long long)displayDateGT displayDateLT:(long long)displayDateLT status:(int)status reviewDate:(long long)reviewDate andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"folderIds": folderIds,
 		@"classNameId": @(classNameId),
 		@"articleId": articleId,
+		@"version": @(version),
 		@"title": title,
 		@"description": description,
 		@"content": content,
@@ -696,7 +697,6 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"version" className:@"java.lang.Double" wrapper:version];
 	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/journalarticle/search": _params};
@@ -718,13 +718,14 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)searchCountWithCompanyId:(long long)companyId groupId:(long long)groupId folderIds:(NSArray *)folderIds classNameId:(long long)classNameId keywords:(NSString *)keywords version:(LRJSONObjectWrapper *)version type:(NSString *)type ddmStructureKey:(NSString *)ddmStructureKey ddmTemplateKey:(NSString *)ddmTemplateKey displayDateGT:(long long)displayDateGT displayDateLT:(long long)displayDateLT status:(int)status reviewDate:(long long)reviewDate error:(NSError **)error {
+- (NSNumber *)searchCountWithCompanyId:(long long)companyId groupId:(long long)groupId folderIds:(NSArray *)folderIds classNameId:(long long)classNameId keywords:(NSString *)keywords version:(double)version type:(NSString *)type ddmStructureKey:(NSString *)ddmStructureKey ddmTemplateKey:(NSString *)ddmTemplateKey displayDateGT:(long long)displayDateGT displayDateLT:(long long)displayDateLT status:(int)status reviewDate:(long long)reviewDate error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"folderIds": folderIds,
 		@"classNameId": @(classNameId),
 		@"keywords": keywords,
+		@"version": @(version),
 		@"type": type,
 		@"ddmStructureKey": ddmStructureKey,
 		@"ddmTemplateKey": ddmTemplateKey,
@@ -734,19 +735,19 @@
 		@"reviewDate": @(reviewDate)
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"version" className:@"java.lang.Double" wrapper:version];
 	NSDictionary *_command = @{@"/journalarticle/search-count": _params};
 
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)searchCountWithCompanyId:(long long)companyId groupId:(long long)groupId folderIds:(NSArray *)folderIds classNameId:(long long)classNameId articleId:(NSString *)articleId version:(LRJSONObjectWrapper *)version title:(NSString *)title description:(NSString *)description content:(NSString *)content type:(NSString *)type ddmStructureKey:(NSString *)ddmStructureKey ddmTemplateKey:(NSString *)ddmTemplateKey displayDateGT:(long long)displayDateGT displayDateLT:(long long)displayDateLT status:(int)status reviewDate:(long long)reviewDate andOperator:(BOOL)andOperator error:(NSError **)error {
+- (NSNumber *)searchCountWithCompanyId:(long long)companyId groupId:(long long)groupId folderIds:(NSArray *)folderIds classNameId:(long long)classNameId articleId:(NSString *)articleId version:(double)version title:(NSString *)title description:(NSString *)description content:(NSString *)content type:(NSString *)type ddmStructureKey:(NSString *)ddmStructureKey ddmTemplateKey:(NSString *)ddmTemplateKey displayDateGT:(long long)displayDateGT displayDateLT:(long long)displayDateLT status:(int)status reviewDate:(long long)reviewDate andOperator:(BOOL)andOperator error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"folderIds": folderIds,
 		@"classNameId": @(classNameId),
 		@"articleId": articleId,
+		@"version": @(version),
 		@"title": title,
 		@"description": description,
 		@"content": content,
@@ -760,19 +761,19 @@
 		@"andOperator": @(andOperator)
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"version" className:@"java.lang.Double" wrapper:version];
 	NSDictionary *_command = @{@"/journalarticle/search-count": _params};
 
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)searchCountWithCompanyId:(long long)companyId groupId:(long long)groupId folderIds:(NSArray *)folderIds classNameId:(long long)classNameId articleId:(NSString *)articleId version:(LRJSONObjectWrapper *)version title:(NSString *)title description:(NSString *)description content:(NSString *)content type:(NSString *)type ddmStructureKeys:(NSArray *)ddmStructureKeys ddmTemplateKeys:(NSArray *)ddmTemplateKeys displayDateGT:(long long)displayDateGT displayDateLT:(long long)displayDateLT status:(int)status reviewDate:(long long)reviewDate andOperator:(BOOL)andOperator error:(NSError **)error {
+- (NSNumber *)searchCountWithCompanyId:(long long)companyId groupId:(long long)groupId folderIds:(NSArray *)folderIds classNameId:(long long)classNameId articleId:(NSString *)articleId version:(double)version title:(NSString *)title description:(NSString *)description content:(NSString *)content type:(NSString *)type ddmStructureKeys:(NSArray *)ddmStructureKeys ddmTemplateKeys:(NSArray *)ddmTemplateKeys displayDateGT:(long long)displayDateGT displayDateLT:(long long)displayDateLT status:(int)status reviewDate:(long long)reviewDate andOperator:(BOOL)andOperator error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
 		@"folderIds": folderIds,
 		@"classNameId": @(classNameId),
 		@"articleId": articleId,
+		@"version": @(version),
 		@"title": title,
 		@"description": description,
 		@"content": content,
@@ -786,7 +787,6 @@
 		@"andOperator": @(andOperator)
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"version" className:@"java.lang.Double" wrapper:version];
 	NSDictionary *_command = @{@"/journalarticle/search-count": _params};
 
 	return (NSNumber *)[self.session invoke:_command error:error];

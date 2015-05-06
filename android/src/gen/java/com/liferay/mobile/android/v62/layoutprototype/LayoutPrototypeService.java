@@ -122,14 +122,14 @@ public class LayoutPrototypeService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONArray search(long companyId, JSONObjectWrapper active, JSONObjectWrapper obc) throws Exception {
+	public JSONArray search(long companyId, boolean active, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			mangleWrapper(_params, "active", "java.lang.Boolean", active);
+			_params.put("active", active);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/layoutprototype/search", _params);
