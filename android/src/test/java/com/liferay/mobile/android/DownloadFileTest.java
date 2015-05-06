@@ -14,10 +14,14 @@
 
 package com.liferay.mobile.android;
 
+import com.liferay.mobile.android.util.PortalVersion;
 import com.liferay.mobile.android.util.download.DownloadUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
 
 import org.json.JSONObject;
 
@@ -43,14 +47,19 @@ public class DownloadFileTest extends BaseTest {
 
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-		DownloadUtil.download(session, URL, baos, null);
+		HttpGet request = new HttpGet(URL);
+		HttpClientBuilder clientBuilder = DownloadUtil.getHttpClientBuilder(
+				session, true);
+
+		DownloadUtil.download(baos, clientBuilder, request, null);
 		assertEquals(5, baos.size());
 	}
 
 	@Test
 	public void getDownloadURL() throws Exception {
 		String URL = DownloadUtil.getDownloadURL(
-			session, "/guest", "/folder with spaces", "file áéíòúñ.txt");
+				session, PortalVersion.V_6_2, "/guest", "/folder with spaces",
+				"file áéíòúñ.txt");
 
 		assertEquals(
 			"http://localhost:8080/webdav/guest/document_library" +
