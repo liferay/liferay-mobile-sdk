@@ -77,6 +77,8 @@ public class ObjectiveCUtil extends LanguageUtil {
 	}
 
 	public String getType(String type) {
+		type = super.getType(type);
+
 		if (type.equals(DOUBLE) || type.equals(INT) || type.equals(VOID)) {
 			return type;
 		}

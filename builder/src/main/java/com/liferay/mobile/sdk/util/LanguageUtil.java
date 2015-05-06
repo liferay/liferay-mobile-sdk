@@ -111,6 +111,26 @@ public class LanguageUtil {
 		return sb.toString();
 	}
 
+	public String getType(String type) {
+		if (type.equals("object<java.lang.Boolean>")) {
+			return BOOLEAN;
+		}
+
+		if (type.equals("object<java.lang.Double>")) {
+			return DOUBLE;
+		}
+
+		if (type.equals("object<java.lang.Integer>")) {
+			return INT;
+		}
+
+		if (type.equals("object<java.lang.Long>")) {
+			return LONG;
+		}
+
+		return type;
+	}
+
 	public boolean isArray(String type) {
 		if (type.endsWith("[]") || type.equals("object<list>") ||
 			type.equals("object<com.liferay.portal.kernel.json.JSONArray>") ||

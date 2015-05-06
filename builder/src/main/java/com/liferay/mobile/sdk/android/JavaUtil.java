@@ -61,8 +61,11 @@ public class JavaUtil extends LanguageUtil {
 	}
 
 	public String getType(String type) {
-		if (type.equals(BOOLEAN) || type.equals(DOUBLE) || type.equals(INT) ||
-			type.equals(LONG) || type.equals(VOID) || type.equals(BYTE_ARRAY)) {
+		type = super.getType(type);
+
+		if (type.equals(BOOLEAN) || type.equals(BYTE_ARRAY) ||
+			type.equals(DOUBLE) || type.equals(INT) || type.equals(LONG) ||
+			type.equals(VOID)) {
 
 			return type;
 		}
