@@ -27,10 +27,16 @@ public abstract class GenericAsyncTaskCallback<T>
 	@Override
 	public JSONArray inBackground(JSONArray jsonArray) throws Exception {
 		result = transform(jsonArray.get(0));
+		result = inBackground(result);
 
-		return jsonArray;
+		return null;
 	}
 
+	public T inBackground(T result) throws Exception {
+		return result;
+	}
+
+	@Override
 	public void onPostExecute(JSONArray jsonArray) throws Exception {
 		onSuccess(result);
 	}
