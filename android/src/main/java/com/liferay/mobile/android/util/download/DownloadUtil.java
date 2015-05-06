@@ -39,7 +39,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 public class DownloadUtil {
 
 	public static void download(
-			OutputStream os, HttpClientBuilder clientBuilder, HttpGet request,
+			HttpClientBuilder clientBuilder, HttpGet request, OutputStream os,
 			DownloadProgressCallback callback)
 		throws Exception {
 
@@ -74,13 +74,12 @@ public class DownloadUtil {
 		throws Exception {
 
 		String URL = getDownloadURL(
-				session, portalVersion, groupFriendlyURL, folderPath,
-				fileTitle);
+			session, portalVersion, groupFriendlyURL, folderPath, fileTitle);
 
 		HttpGet request = new HttpGet(URL);
 		HttpClientBuilder clientBuilder = getHttpClientBuilder(session, true);
 
-		download(os, clientBuilder, request, callback);
+		download(clientBuilder, request, os, callback);
 	}
 
 	public static String getDownloadURL(
@@ -123,17 +122,17 @@ public class DownloadUtil {
 	}
 
 	public static HttpClientBuilder getHttpClientBuilder(
-			Session session, boolean addCredentialsProvider)
+			Session session, boolean digest)
 		throws Exception {
 
 		HttpClientBuilder clientBuilder = HttpUtil.getClientBuilder(session);
 
-		if (addCredentialsProvider) {
+		if (digest) {
 			CredentialsProvider provider = new BasicCredentialsProvider();
 
 			provider.setCredentials(
-					new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT),
-					getCredentials(session));
+				new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT),
+				getCredentials(session));
 
 			clientBuilder.setDefaultCredentialsProvider(provider);
 		}
@@ -163,7 +162,7 @@ public class DownloadUtil {
 	}
 
 	protected static boolean isCancelled(DownloadProgressCallback callback) {
-		return callback != null && callback.isCancelled();
+		return (callback != null) && callback.isCancelled();
 	}
 
 	private static final String ALLOWED_URI_CHARS = "@#&=*+-_.,:!?()/~'%";

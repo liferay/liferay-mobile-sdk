@@ -49,17 +49,17 @@ public class DownloadFileTest extends BaseTest {
 
 		HttpGet request = new HttpGet(URL);
 		HttpClientBuilder clientBuilder = DownloadUtil.getHttpClientBuilder(
-				session, true);
+			session, true);
 
-		DownloadUtil.download(baos, clientBuilder, request, null);
+		DownloadUtil.download(clientBuilder, request, baos, null);
 		assertEquals(5, baos.size());
 	}
 
 	@Test
 	public void getDownloadURL() throws Exception {
 		String URL = DownloadUtil.getDownloadURL(
-				session, PortalVersion.V_6_2, "/guest", "/folder with spaces",
-				"file áéíòúñ.txt");
+			session, PortalVersion.V_6_2, "/guest", "/folder with spaces",
+			"file áéíòúñ.txt");
 
 		assertEquals(
 			"http://localhost:8080/webdav/guest/document_library" +
