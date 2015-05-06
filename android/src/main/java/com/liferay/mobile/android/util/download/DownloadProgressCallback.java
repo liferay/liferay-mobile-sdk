@@ -19,6 +19,8 @@ package com.liferay.mobile.android.util.download;
  */
 public interface DownloadProgressCallback {
 
+	public abstract boolean isCancelled();
+
 	public abstract void onProgress(int totalBytes);
 
 }

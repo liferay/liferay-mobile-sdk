@@ -36,6 +36,7 @@ import org.apache.http.HttpStatus;
 import org.apache.http.ProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
@@ -115,6 +116,16 @@ public class HttpUtil {
 		});
 
 		return clientBuilder;
+	}
+
+	public static HttpGet getHttpGet(Session session, String URL)
+		throws Exception {
+
+		HttpGet httpGet = new HttpGet(URL);
+
+		authenticate(session, httpGet);
+
+		return httpGet;
 	}
 
 	public static HttpPost getHttpPost(Session session, String URL)

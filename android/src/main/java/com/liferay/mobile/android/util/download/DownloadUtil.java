@@ -20,6 +20,7 @@ import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.auth.basic.BasicAuthentication;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.util.PortalVersion;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -38,21 +39,10 @@ import org.apache.http.impl.client.HttpClientBuilder;
 public class DownloadUtil {
 
 	public static void download(
-			Session session, String URL, OutputStream os,
+			OutputStream os, HttpClientBuilder clientBuilder, HttpGet request,
 			DownloadProgressCallback callback)
 		throws Exception {
 
-		HttpClientBuilder clientBuilder = HttpUtil.getClientBuilder(session);
-
-		CredentialsProvider provider = new BasicCredentialsProvider();
-
-		provider.setCredentials(
-			new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT),
-			getCredentials(session));
-
-		clientBuilder.setDefaultCredentialsProvider(provider);
-
-		HttpGet request = new HttpGet(URL);
 		HttpResponse response = clientBuilder.build().execute(request);
 
 		HttpUtil.checkStatusCode(request, response);
@@ -63,7 +53,7 @@ public class DownloadUtil {
 		int totalBytes = 0;
 		byte data[] = new byte[8192];
 
-		while ((count = is.read(data)) != -1) {
+		while (((count = is.read(data)) != -1) && !isCancelled(callback)) {
 			os.write(data, 0, count);
 
 			if (callback != null) {
@@ -71,41 +61,84 @@ public class DownloadUtil {
 				callback.onProgress(totalBytes);
 			}
 		}
+
+		if (isCancelled(callback)) {
+			request.abort();
+		}
 	}
 
 	public static void downloadFile(
-			Session session, String groupFriendlyURL, String folderPath,
-			String fileTitle, OutputStream os,
+			Session session, int portalVersion, String groupFriendlyURL,
+			String folderPath, String fileTitle, OutputStream os,
 			DownloadProgressCallback callback)
 		throws Exception {
 
 		String URL = getDownloadURL(
-			session, groupFriendlyURL, folderPath, fileTitle);
+				session, portalVersion, groupFriendlyURL, folderPath,
+				fileTitle);
 
-		download(session, URL, os, callback);
+		HttpGet request = new HttpGet(URL);
+		HttpClientBuilder clientBuilder = getHttpClientBuilder(session, true);
+
+		download(os, clientBuilder, request, callback);
 	}
 
 	public static String getDownloadURL(
-			Session session, String groupFriendlyURL, String folderPath,
-			String fileTitle)
+			Session session, int portalVersion, String groupFriendlyURL,
+			String folderPath, String fileTitle)
 		throws Exception {
 
 		StringBuilder sb = new StringBuilder();
 		sb.append(session.getServer());
 
+		if (portalVersion < PortalVersion.V_6_2) {
+			sb.append("/api/secure");
+		}
+
 		sb.append("/webdav");
+
+		if (!groupFriendlyURL.startsWith("/")) {
+			sb.append("/");
+		}
+
 		sb.append(groupFriendlyURL);
 		sb.append("/document_library");
 
-		StringBuilder webdavPath = new StringBuilder();
+		if (!folderPath.isEmpty() && !folderPath.startsWith("/")) {
+			sb.append("/");
+		}
 
+		StringBuilder webdavPath = new StringBuilder();
 		webdavPath.append(folderPath);
-		webdavPath.append("/");
+
+		if (folderPath.isEmpty() || !folderPath.endsWith("/")) {
+			webdavPath.append("/");
+		}
+
 		webdavPath.append(fileTitle);
 
 		sb.append(Uri.encode(webdavPath.toString(), ALLOWED_URI_CHARS));
 
 		return sb.toString();
+	}
+
+	public static HttpClientBuilder getHttpClientBuilder(
+			Session session, boolean addCredentialsProvider)
+		throws Exception {
+
+		HttpClientBuilder clientBuilder = HttpUtil.getClientBuilder(session);
+
+		if (addCredentialsProvider) {
+			CredentialsProvider provider = new BasicCredentialsProvider();
+
+			provider.setCredentials(
+					new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT),
+					getCredentials(session));
+
+			clientBuilder.setDefaultCredentialsProvider(provider);
+		}
+
+		return clientBuilder;
 	}
 
 	protected static UsernamePasswordCredentials getCredentials(Session session)
@@ -127,6 +160,10 @@ public class DownloadUtil {
 		String password = ((BasicAuthentication)auth).getPassword();
 
 		return new UsernamePasswordCredentials(username, password);
+	}
+
+	protected static boolean isCancelled(DownloadProgressCallback callback) {
+		return callback != null && callback.isCancelled();
 	}
 
 	private static final String ALLOWED_URI_CHARS = "@#&=*+-_.,:!?()/~'%";
