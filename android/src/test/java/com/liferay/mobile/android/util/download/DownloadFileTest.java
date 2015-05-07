@@ -12,16 +12,19 @@
  * details.
  */
 
-package com.liferay.mobile.android;
+package com.liferay.mobile.android.util.download;
 
+import com.liferay.mobile.android.BaseTest;
+import com.liferay.mobile.android.DLAppServiceTest;
 import com.liferay.mobile.android.auth.basic.BasicAuthentication;
 import com.liferay.mobile.android.auth.basic.DigestAuthentication;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.util.PortalVersion;
-import com.liferay.mobile.android.util.download.DownloadUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+
+import java.net.URI;
 
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -67,6 +70,20 @@ public class DownloadFileTest extends BaseTest {
 
 	@Test
 	public void getDownloadURL() throws Exception {
+		DownloadUtil.encoder = new DownloadUtil.URLEncoder() {
+
+			@Override
+			public String encode(String path) throws Exception {
+				URI URI = new URI("http", "localhost", path, null);
+
+				path = URI.toASCIIString();
+				path = path.replaceAll("http://localhost", "");
+
+				return path;
+			}
+
+		};
+
 		String URL = DownloadUtil.getDownloadURL(
 			session, PortalVersion.V_6_2, "/guest", "/folder with spaces",
 			"file áéíòúñ.txt");

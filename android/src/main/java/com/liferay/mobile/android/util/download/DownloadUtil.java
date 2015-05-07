@@ -25,6 +25,8 @@ import com.liferay.mobile.android.util.PortalVersion;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import java.net.URLEncoder;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -119,7 +121,7 @@ public class DownloadUtil {
 
 		webdavPath.append(fileTitle);
 
-		sb.append(Uri.encode(webdavPath.toString(), ALLOWED_URI_CHARS));
+		sb.append(encoder.encode(webdavPath.toString()));
 
 		return sb.toString();
 	}
@@ -128,6 +130,16 @@ public class DownloadUtil {
 		return (callback != null) && callback.isCancelled();
 	}
 
-	private static final String ALLOWED_URI_CHARS = "@#&=*+-_.,:!?()/~'%";
+	protected static URLEncoder encoder = new URLEncoder();
+
+	protected static class URLEncoder {
+
+		public String encode(String path) throws Exception {
+			return Uri.encode(path, ALLOWED_URI_CHARS);
+		}
+
+		private final String ALLOWED_URI_CHARS = "@#&=*+-_.,:!?()/~'%";
+
+	}
 
 }
