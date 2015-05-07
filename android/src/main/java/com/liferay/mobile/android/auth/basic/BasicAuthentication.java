@@ -27,36 +27,36 @@ import org.apache.http.impl.auth.BasicScheme;
 public class BasicAuthentication implements Authentication {
 
 	public BasicAuthentication(String username, String password) {
-		_username = username;
-		_password = password;
+		this.username = username;
+		this.password = password;
 	}
 
 	@Override
 	public void authenticate(HttpRequest request) {
 		UsernamePasswordCredentials credentials =
-			new UsernamePasswordCredentials(_username, _password);
+			new UsernamePasswordCredentials(username, password);
 
 		Header header = BasicScheme.authenticate(credentials, "UTF-8", false);
 		request.addHeader(header);
 	}
 
 	public String getPassword() {
-		return _password;
+		return password;
 	}
 
 	public String getUsername() {
-		return _username;
+		return username;
 	}
 
 	public void setPassword(String password) {
-		_password = password;
+		this.password = password;
 	}
 
 	public void setUsername(String username) {
-		_username = username;
+		this.username = username;
 	}
 
-	private String _password;
-	private String _username;
+	protected String password;
+	protected String username;
 
 }

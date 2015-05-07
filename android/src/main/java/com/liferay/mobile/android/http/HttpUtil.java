@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.http;
 
 import com.liferay.mobile.android.auth.Authentication;
+import com.liferay.mobile.android.auth.basic.DigestAuthentication;
 import com.liferay.mobile.android.exception.RedirectException;
 import com.liferay.mobile.android.exception.ServerException;
 import com.liferay.mobile.android.http.entity.CountingHttpEntity;
@@ -114,6 +115,13 @@ public class HttpUtil {
 			}
 
 		});
+
+		Authentication auth = session.getAuthentication();
+
+		if ((auth != null) && (auth instanceof DigestAuthentication)) {
+			DigestAuthentication digest = (DigestAuthentication)auth;
+			digest.authenticate(clientBuilder);
+		}
 
 		return clientBuilder;
 	}
@@ -226,10 +234,10 @@ public class HttpUtil {
 	protected static void authenticate(Session session, HttpRequest request)
 		throws Exception {
 
-		Authentication authentication = session.getAuthentication();
+		Authentication auth = session.getAuthentication();
 
-		if (authentication != null) {
-			authentication.authenticate(request);
+		if (auth != null) {
+			auth.authenticate(request);
 		}
 	}
 

@@ -14,6 +14,9 @@
 
 package com.liferay.mobile.android;
 
+import com.liferay.mobile.android.auth.basic.BasicAuthentication;
+import com.liferay.mobile.android.auth.basic.DigestAuthentication;
+import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.util.PortalVersion;
 import com.liferay.mobile.android.util.download.DownloadUtil;
 
@@ -42,16 +45,23 @@ public class DownloadFileTest extends BaseTest {
 
 	@Test
 	public void download() throws Exception {
+		BasicAuthentication basic =
+			(BasicAuthentication)session.getAuthentication();
+
+		DigestAuthentication digest = new DigestAuthentication(
+			basic.getUsername(), basic.getPassword());
+
+		session.setAuthentication(digest);
+
 		String URL = session.getServer() + "/webdav/guest/document_library/" +
 			_file.getString(DLAppServiceTest.TITLE);
 
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
 		HttpGet request = new HttpGet(URL);
-		HttpClientBuilder clientBuilder = DownloadUtil.getHttpClientBuilder(
-			session, true);
+		HttpClientBuilder clientBuilder = HttpUtil.getClientBuilder(session);
 
-		DownloadUtil.download(clientBuilder, request, baos, null);
+		DownloadUtil.download(clientBuilder.build(), request, baos, null);
 		assertEquals(5, baos.size());
 	}
 
