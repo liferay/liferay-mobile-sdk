@@ -84,14 +84,31 @@ public class DownloadFileTest extends BaseTest {
 
 		};
 
-		String URL = DownloadUtil.getDownloadURL(
+		String expectedURL = "http://localhost:8080/webdav/guest" +
+			"/document_library" +
+			"/folder%20with%20spaces" +
+			"/file%20%C3%A1%C3%A9%C3%AD%C3%B2%C3%BA%C3%B1.txt";
+
+		String downloadURL = DownloadUtil.getDownloadURL(
 			session, PortalVersion.V_6_2, "/guest", "/folder with spaces",
 			"file áéíòúñ.txt");
 
-		assertEquals(
-			"http://localhost:8080/webdav/guest/document_library" +
-				"/folder%20with%20spaces" +
-				"/file%20%C3%A1%C3%A9%C3%AD%C3%B2%C3%BA%C3%B1.txt", URL);
+		assertEquals(expectedURL, downloadURL);
+
+		downloadURL = DownloadUtil.getDownloadURL(
+			session, PortalVersion.V_6_2, "guest", "folder with spaces",
+			"/file áéíòúñ.txt");
+
+		assertEquals(expectedURL, downloadURL);
+
+		expectedURL = "http://localhost:8080/webdav/guest" +
+			"/document_library" +
+			"/file%20%C3%A1%C3%A9%C3%AD%C3%B2%C3%BA%C3%B1.txt";
+
+		downloadURL = DownloadUtil.getDownloadURL(
+			session, PortalVersion.V_6_2, "guest", "", "file áéíòúñ.txt");
+
+		assertEquals(expectedURL, downloadURL);
 	}
 
 	@Before

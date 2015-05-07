@@ -21,6 +21,7 @@ import com.liferay.mobile.android.auth.basic.DigestAuthentication;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.util.PortalVersion;
+import com.liferay.mobile.android.util.Validator;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -100,26 +101,13 @@ public class DownloadUtil {
 		}
 
 		sb.append("/webdav");
-
-		if (!groupFriendlyURL.startsWith("/")) {
-			sb.append("/");
-		}
-
-		sb.append(groupFriendlyURL);
+		sb.append(prependSlash(groupFriendlyURL));
 		sb.append("/document_library");
 
-		if (!folderPath.isEmpty() && !folderPath.startsWith("/")) {
-			sb.append("/");
-		}
-
 		StringBuilder webdavPath = new StringBuilder();
-		webdavPath.append(folderPath);
 
-		if (folderPath.isEmpty() || !folderPath.endsWith("/")) {
-			webdavPath.append("/");
-		}
-
-		webdavPath.append(fileTitle);
+		webdavPath.append(prependSlash(folderPath));
+		webdavPath.append(prependSlash(fileTitle));
 
 		sb.append(encoder.encode(webdavPath.toString()));
 
@@ -128,6 +116,14 @@ public class DownloadUtil {
 
 	protected static boolean isCancelled(DownloadProgressCallback callback) {
 		return (callback != null) && callback.isCancelled();
+	}
+
+	protected static String prependSlash(String string) {
+		if (Validator.isNotNull(string) && !string.startsWith("/")) {
+			return "/" + string;
+		}
+
+		return string;
 	}
 
 	protected static URLEncoder encoder = new URLEncoder();
