@@ -45,7 +45,7 @@ latest version of `liferay-ios-sdk.zip`.
 4. Add both `core` and `v62` folders. The `v62` folder name can change for each
 Liferay version. In this example, the SDK is built for Liferay 6.2.
 
-5. The iOS SDK requires [AFNetworking 2.3.1](https://github.com/AFNetworking/AFNetworking/releases/tag/2.3.1).
+5. The iOS SDK requires [AFNetworking 2.5.3](https://github.com/AFNetworking/AFNetworking/releases/tag/2.5.3).
 Make sure its source code is added to your project.
 
 #### CocoaPods
