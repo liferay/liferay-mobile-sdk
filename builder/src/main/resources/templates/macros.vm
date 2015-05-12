@@ -9,10 +9,6 @@
 		#set ($parameterType = $languageUtil.getType($parameter.type))
 		#set ($parameterList = "$parameterList$parameterType $parameterName")
 
-		#if ($parameterType == $INPUT_STREAM_BODY)
-			#set ($returnType = $ASYNC_TASK)
-		#end
-
 		#if ($foreach.hasNext)
 			#set ($parameterList = "$parameterList, ")
 		#end

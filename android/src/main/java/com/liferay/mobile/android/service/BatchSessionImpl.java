@@ -14,8 +14,6 @@
 
 package com.liferay.mobile.android.service;
 
-import android.os.AsyncTask;
-
 import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.task.ServiceAsyncTask;
@@ -96,7 +94,7 @@ public class BatchSessionImpl extends SessionImpl {
 	}
 
 	@Override
-	public AsyncTask upload(JSONObject command) throws Exception {
+	public JSONArray upload(JSONObject command) throws Exception {
 		throw new IllegalStateException("Can't batch upload requests");
 	}
 

@@ -65,6 +65,10 @@ public class $className extends BaseService {
 		#set ($parameterName = $parameter.name)
     	#set ($parameterType = $languageUtil.getType($parameter.type))
 
+		#if ($parameterType == $INPUT_STREAM_BODY)
+			#set ($invokeMethod = "upload")
+		#end
+
 		#set ($parameterValue = $parameterName)
 
 		#if ($parameterType == $JSON_OBJECT_WRAPPER)
@@ -93,15 +97,13 @@ public class $className extends BaseService {
 	##n
 
 	#if ($returnType == $VOID)
-		##t		session.invoke(_command);
-	#elseif ($returnType == $ASYNC_TASK)
-		##t		return session.upload(_command);
+		##t		session.${invokeMethod}(_command);
 	#else
 		#if ($returnType == $INTEGER)
 			#set ($returnType = "Int")
 		#end
 
-		##t		JSONArray _result = session.invoke(_command);
+		##t		JSONArray _result = session.${invokeMethod}(_command);
 
 		##n
 

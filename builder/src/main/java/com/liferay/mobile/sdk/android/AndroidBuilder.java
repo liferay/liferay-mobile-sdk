@@ -124,11 +124,10 @@ public class AndroidBuilder extends BaseBuilder {
 
 		String className = javaUtil.getServiceClassName(filter);
 
-		context.put(ACTIONS, excludeMethods(className, actions));
-		context.put(ASYNC_TASK, JavaUtil.ASYNC_TASK);
 		context.put(BYTE_ARRAY, LanguageUtil.BYTE_ARRAY);
 		context.put(CLASS_NAME, className);
 		context.put(DISCOVERY, discovery);
+		context.put(ACTIONS, excludeMethods(className, actions));
 		context.put(ESCAPE_TOOL, new EscapeTool());
 		context.put(INPUT_STREAM_BODY, JavaUtil.INPUT_STREAM_BODY);
 		context.put(INTEGER, JavaUtil.INTEGER);
@@ -139,8 +138,6 @@ public class AndroidBuilder extends BaseBuilder {
 
 		return context;
 	}
-
-	protected static final String ASYNC_TASK = "ASYNC_TASK";
 
 	protected static final String INPUT_STREAM_BODY = "INPUT_STREAM_BODY";
 

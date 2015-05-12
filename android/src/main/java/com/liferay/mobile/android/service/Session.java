@@ -14,8 +14,6 @@
 
 package com.liferay.mobile.android.service;
 
-import android.os.AsyncTask;
-
 import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
@@ -45,6 +43,6 @@ public interface Session {
 
 	public void setServer(String server);
 
-	public AsyncTask upload(JSONObject command) throws Exception;
+	public JSONArray upload(JSONObject command) throws Exception;
 
 }
