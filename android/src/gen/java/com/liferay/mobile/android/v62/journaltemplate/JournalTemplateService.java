@@ -64,7 +64,7 @@ public class JournalTemplateService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public android.os.AsyncTask addTemplate(long groupId, String templateId, boolean autoTemplateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallFile, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addTemplate(long groupId, String templateId, boolean autoTemplateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallFile, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -91,7 +91,13 @@ public class JournalTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.upload(_command);
+		JSONArray _result = session.upload(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject copyTemplate(long groupId, String oldTemplateId, String newTemplateId, boolean autoTemplateId) throws Exception {
@@ -363,7 +369,7 @@ public class JournalTemplateService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public android.os.AsyncTask updateTemplate(long groupId, String templateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallFile, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateTemplate(long groupId, String templateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallFile, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -389,7 +395,13 @@ public class JournalTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.upload(_command);
+		JSONArray _result = session.upload(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 }

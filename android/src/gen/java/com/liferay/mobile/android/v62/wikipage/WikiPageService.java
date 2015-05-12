@@ -90,7 +90,7 @@ public class WikiPageService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public android.os.AsyncTask addPageAttachment(long nodeId, String title, String fileName, org.apache.http.entity.mime.content.InputStreamBody file, String mimeType) throws Exception {
+	public void addPageAttachment(long nodeId, String title, String fileName, org.apache.http.entity.mime.content.InputStreamBody file, String mimeType) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -108,7 +108,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.upload(_command);
+		session.upload(_command);
 	}
 
 	public void addPageAttachments(long nodeId, String title, JSONArray inputStreamOVPs) throws Exception {

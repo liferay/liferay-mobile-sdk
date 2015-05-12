@@ -50,7 +50,7 @@ public class ShoppingItemService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public android.os.AsyncTask addItem(long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, boolean sale, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallFile, boolean mediumImage, String mediumImageURL, org.apache.http.entity.mime.content.InputStreamBody mediumFile, boolean largeImage, String largeImageURL, org.apache.http.entity.mime.content.InputStreamBody largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addItem(long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, boolean sale, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallFile, boolean mediumImage, String mediumImageURL, org.apache.http.entity.mime.content.InputStreamBody mediumFile, boolean largeImage, String largeImageURL, org.apache.http.entity.mime.content.InputStreamBody largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -86,7 +86,13 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.upload(_command);
+		JSONArray _result = session.upload(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void deleteItem(long itemId) throws Exception {
@@ -252,7 +258,7 @@ public class ShoppingItemService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public android.os.AsyncTask updateItem(long itemId, long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, boolean sale, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallFile, boolean mediumImage, String mediumImageURL, org.apache.http.entity.mime.content.InputStreamBody mediumFile, boolean largeImage, String largeImageURL, org.apache.http.entity.mime.content.InputStreamBody largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateItem(long itemId, long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, boolean sale, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallFile, boolean mediumImage, String mediumImageURL, org.apache.http.entity.mime.content.InputStreamBody mediumFile, boolean largeImage, String largeImageURL, org.apache.http.entity.mime.content.InputStreamBody largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -289,7 +295,13 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return session.upload(_command);
+		JSONArray _result = session.upload(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 }
