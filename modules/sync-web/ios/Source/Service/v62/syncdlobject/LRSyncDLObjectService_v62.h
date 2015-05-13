@@ -34,7 +34,6 @@
 - (NSArray *)getFolderSyncDlObjectsWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId error:(NSError **)error;
 - (NSDictionary *)getGroupWithGroupId:(long long)groupId error:(NSError **)error;
 - (NSNumber *)getLatestModifiedTime:(NSError **)error;
-- (NSDictionary *)getPortletPreferences:(NSError **)error;
 - (NSDictionary *)getSyncContext:(NSError **)error;
 - (NSDictionary *)getSyncContextWithUuid:(NSString *)uuid error:(NSError **)error;
 - (NSDictionary *)getSyncDlObjectUpdateWithCompanyId:(long long)companyId repositoryId:(long long)repositoryId lastAccessTime:(long long)lastAccessTime error:(NSError **)error;

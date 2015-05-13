@@ -201,15 +201,6 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getPortletPreferences:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-	}];
-
-	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-portlet-preferences": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)getSyncContext:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 	}];
