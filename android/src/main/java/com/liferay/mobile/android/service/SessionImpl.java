@@ -136,7 +136,7 @@ public class SessionImpl implements Session {
 			return null;
 		}
 		else {
-			return HttpUtil.upload(this, command, null);
+			return HttpUtil.upload(this, command);
 		}
 	}
 

@@ -18,9 +18,8 @@ import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.auth.basic.DigestAuthentication;
 import com.liferay.mobile.android.exception.RedirectException;
 import com.liferay.mobile.android.exception.ServerException;
-import com.liferay.mobile.android.http.entity.CountingHttpEntity;
+import com.liferay.mobile.android.service.InputStreamBodyWrapper;
 import com.liferay.mobile.android.service.Session;
-import com.liferay.mobile.android.task.UploadAsyncTask;
 import com.liferay.mobile.android.util.Validator;
 
 import java.io.IOException;
@@ -44,7 +43,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.ContentBody;
-import org.apache.http.entity.mime.content.InputStreamBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultRedirectStrategy;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -205,8 +203,7 @@ public class HttpUtil {
 		_JSONWS_PATH = jsonwsPath;
 	}
 
-	public static JSONArray upload(
-			Session session, JSONObject command, UploadAsyncTask task)
+	public static JSONArray upload(Session session, JSONObject command)
 		throws Exception {
 
 		String path = (String)command.keys().next();
@@ -216,10 +213,6 @@ public class HttpUtil {
 		HttpPost request = getHttpPost(session, getURL(session, path));
 
 		HttpEntity entity = getMultipartEntity(parameters);
-
-		if (task != null) {
-			entity = new CountingHttpEntity(entity, task);
-		}
 
 		request.setEntity(entity);
 

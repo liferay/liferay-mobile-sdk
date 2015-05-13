@@ -19,7 +19,6 @@ import android.os.AsyncTask;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
-import com.liferay.mobile.android.task.callback.UploadProgressAsyncTaskCallback;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -37,13 +36,7 @@ public class UploadAsyncTask extends AsyncTask<JSONObject, Integer, JSONArray> {
 	@Override
 	public JSONArray doInBackground(JSONObject... commands) {
 		try {
-			UploadAsyncTask task = null;
-
-			if (_callback instanceof UploadProgressAsyncTaskCallback) {
-				task = this;
-			}
-
-			JSONArray array = HttpUtil.upload(_session, commands[0], task);
+			JSONArray array = HttpUtil.upload(_session, commands[0]);
 
 			return _callback.inBackground(array);
 		}
@@ -73,16 +66,6 @@ public class UploadAsyncTask extends AsyncTask<JSONObject, Integer, JSONArray> {
 			_exception = e;
 			onCancelled();
 		}
-	}
-
-	@Override
-	public void onProgressUpdate(Integer... bytes) {
-		_bytes = _bytes + bytes[0];
-		((UploadProgressAsyncTaskCallback)_callback).onProgress(_bytes);
-	}
-
-	public void setProgress(int bytes) {
-		publishProgress(bytes);
 	}
 
 	private int _bytes;
