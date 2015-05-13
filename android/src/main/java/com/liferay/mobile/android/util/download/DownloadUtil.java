@@ -20,6 +20,7 @@ import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.auth.basic.DigestAuthentication;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.task.callback.FileProgressCallback;
 import com.liferay.mobile.android.util.PortalVersion;
 import com.liferay.mobile.android.util.Validator;
 
@@ -40,7 +41,7 @@ public class DownloadUtil {
 
 	public static void download(
 			HttpClient httpClient, HttpGet request, OutputStream os,
-			DownloadProgressCallback callback)
+			FileProgressCallback callback)
 		throws Exception {
 
 		HttpResponse response = httpClient.execute(request);
@@ -68,7 +69,7 @@ public class DownloadUtil {
 	public static void downloadFile(
 			Session session, int portalVersion, String groupFriendlyURL,
 			String folderPath, String fileTitle, OutputStream os,
-			DownloadProgressCallback callback)
+			FileProgressCallback callback)
 		throws Exception {
 
 		Authentication auth = session.getAuthentication();
@@ -114,7 +115,7 @@ public class DownloadUtil {
 		return sb.toString();
 	}
 
-	protected static boolean isCancelled(DownloadProgressCallback callback) {
+	protected static boolean isCancelled(FileProgressCallback callback) {
 		return (callback != null) && callback.isCancelled();
 	}
 

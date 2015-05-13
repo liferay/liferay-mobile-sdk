@@ -12,12 +12,12 @@
  * details.
  */
 
-package com.liferay.mobile.android.util.download;
+package com.liferay.mobile.android.task.callback;
 
 /**
- * @author Bruno Farache
+ * @author Igor Oliveira
  */
-public interface DownloadProgressCallback {
+public interface FileProgressCallback {
 
 	public abstract boolean isCancelled();
 
