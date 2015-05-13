@@ -1,5 +1,7 @@
 include 'android', 'builder', 'ios'
 
+rootProject.name = 'liferay-mobile-sdk'
+
 def modules = files { file('modules').listFiles() }
 
 modules.each { File module ->

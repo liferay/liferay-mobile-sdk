@@ -3,7 +3,7 @@ configurations {
 }
 
 dependencies {
-	if (project.parent && (project.parent.name == 'mobile-sdk')) {
+	if (project.parent && (project.parent.name == 'liferay-mobile-sdk')) {
 		builder project(':builder')
 	}
 	else {
