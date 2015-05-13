@@ -212,7 +212,7 @@ public class HttpUtil {
 		HttpClient client = getClient(session);
 		HttpPost request = getHttpPost(session, getURL(session, path));
 
-		HttpEntity entity = getMultipartEntity(parameters);
+		HttpEntity entity = getMultipartEntity(request, parameters);
 
 		request.setEntity(entity);
 
@@ -234,7 +234,8 @@ public class HttpUtil {
 		}
 	}
 
-	protected static HttpEntity getMultipartEntity(JSONObject parameters)
+	protected static HttpEntity getMultipartEntity(
+			HttpPost request, JSONObject parameters)
 		throws Exception {
 
 		MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -251,8 +252,11 @@ public class HttpUtil {
 
 			ContentBody contentBody;
 
-			if (value instanceof InputStreamBody) {
-				contentBody = (InputStreamBody)value;
+			if (value instanceof InputStreamBodyWrapper) {
+				InputStreamBodyWrapper wrapper = (InputStreamBodyWrapper)value;
+				wrapper.setRequest(request);
+
+				contentBody = wrapper;
 			}
 			else {
 				contentBody = new StringBody(value.toString(), contentType);

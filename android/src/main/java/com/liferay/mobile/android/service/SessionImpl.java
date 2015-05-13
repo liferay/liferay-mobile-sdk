@@ -22,8 +22,6 @@ import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import java.util.Iterator;
 
-import org.apache.http.entity.mime.content.InputStreamBody;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -155,7 +153,7 @@ public class SessionImpl implements Session {
 		while (keys.hasNext()) {
 			String key = keys.next();
 
-			if (params.get(key) instanceof InputStreamBody) {
+			if (params.get(key) instanceof InputStreamBodyWrapper) {
 				return true;
 			}
 		}
