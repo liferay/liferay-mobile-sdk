@@ -24,7 +24,7 @@ import org.apache.commons.lang.WordUtils;
 public class JavaUtil extends LanguageUtil {
 
 	public static final String INPUT_STREAM_BODY =
-		"org.apache.http.entity.mime.content.InputStreamBody";
+		"com.liferay.mobile.android.service.InputStreamBodyWrapper";
 
 	public static final String INTEGER = "Integer";
 
