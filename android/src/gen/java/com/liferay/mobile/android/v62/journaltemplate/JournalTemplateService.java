@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android.v62.journaltemplate;
 
+import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -64,7 +65,7 @@ public class JournalTemplateService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addTemplate(long groupId, String templateId, boolean autoTemplateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallFile, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addTemplate(long groupId, String templateId, boolean autoTemplateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, UploadData smallFile, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -369,7 +370,7 @@ public class JournalTemplateService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateTemplate(long groupId, String templateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallFile, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateTemplate(long groupId, String templateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, UploadData smallFile, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {

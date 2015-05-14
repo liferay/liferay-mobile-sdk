@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android.v62.wikipage;
 
+import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -90,7 +91,7 @@ public class WikiPageService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public void addPageAttachment(long nodeId, String title, String fileName, org.apache.http.entity.mime.content.InputStreamBody file, String mimeType) throws Exception {
+	public void addPageAttachment(long nodeId, String title, String fileName, UploadData file, String mimeType) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {

@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android.v62.layout;
 
+import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -741,7 +742,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void importLayouts(long groupId, boolean privateLayout, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public void importLayouts(long groupId, boolean privateLayout, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -761,7 +762,7 @@ public class LayoutService extends BaseService {
 		session.upload(_command);
 	}
 
-	public Long importLayoutsInBackground(String taskName, long groupId, boolean privateLayout, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public Long importLayoutsInBackground(String taskName, long groupId, boolean privateLayout, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -788,7 +789,7 @@ public class LayoutService extends BaseService {
 		return _result.getLong(0);
 	}
 
-	public void importPortletInfo(String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public void importPortletInfo(String portletId, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -807,7 +808,7 @@ public class LayoutService extends BaseService {
 		session.upload(_command);
 	}
 
-	public void importPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public void importPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -828,7 +829,7 @@ public class LayoutService extends BaseService {
 		session.upload(_command);
 	}
 
-	public void importPortletInfoInBackground(String taskName, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public void importPortletInfoInBackground(String taskName, String portletId, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -848,7 +849,7 @@ public class LayoutService extends BaseService {
 		session.upload(_command);
 	}
 
-	public Long importPortletInfoInBackground(String taskName, long plid, long groupId, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public Long importPortletInfoInBackground(String taskName, long plid, long groupId, String portletId, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1305,7 +1306,7 @@ public class LayoutService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject validateImportLayoutsFile(long groupId, boolean privateLayout, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public JSONObject validateImportLayoutsFile(long groupId, boolean privateLayout, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1331,7 +1332,7 @@ public class LayoutService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject validateImportPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public JSONObject validateImportPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {

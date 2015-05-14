@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android.v62.shoppingitem;
 
+import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -50,7 +51,7 @@ public class ShoppingItemService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject addItem(long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, boolean sale, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallFile, boolean mediumImage, String mediumImageURL, org.apache.http.entity.mime.content.InputStreamBody mediumFile, boolean largeImage, String largeImageURL, org.apache.http.entity.mime.content.InputStreamBody largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addItem(long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, boolean sale, boolean smallImage, String smallImageURL, UploadData smallFile, boolean mediumImage, String mediumImageURL, UploadData mediumFile, boolean largeImage, String largeImageURL, UploadData largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -258,7 +259,7 @@ public class ShoppingItemService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONObject updateItem(long itemId, long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, boolean sale, boolean smallImage, String smallImageURL, org.apache.http.entity.mime.content.InputStreamBody smallFile, boolean mediumImage, String mediumImageURL, org.apache.http.entity.mime.content.InputStreamBody mediumFile, boolean largeImage, String largeImageURL, org.apache.http.entity.mime.content.InputStreamBody largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateItem(long itemId, long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, boolean sale, boolean smallImage, String smallImageURL, UploadData smallFile, boolean mediumImage, String mediumImageURL, UploadData mediumFile, boolean largeImage, String largeImageURL, UploadData largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {

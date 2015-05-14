@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android.v62.layoutset;
 
+import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -71,7 +72,7 @@ public class LayoutSetService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateLogo(long groupId, boolean privateLayout, boolean logo, org.apache.http.entity.mime.content.InputStreamBody file) throws Exception {
+	public void updateLogo(long groupId, boolean privateLayout, boolean logo, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {

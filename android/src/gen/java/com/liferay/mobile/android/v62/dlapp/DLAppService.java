@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android.v62.dlapp;
 
+import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -62,7 +63,7 @@ public class DLAppService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, org.apache.http.entity.mime.content.InputStreamBody file, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, UploadData file, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -146,7 +147,7 @@ public class DLAppService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addTempFileEntry(long groupId, long folderId, String fileName, String tempFolderName, org.apache.http.entity.mime.content.InputStreamBody file, String mimeType) throws Exception {
+	public JSONObject addTempFileEntry(long groupId, long folderId, String fileName, String tempFolderName, UploadData file, String mimeType) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -2428,7 +2429,7 @@ public class DLAppService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody file, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, UploadData file, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -2459,7 +2460,7 @@ public class DLAppService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateFileEntryAndCheckIn(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, org.apache.http.entity.mime.content.InputStreamBody file, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateFileEntryAndCheckIn(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, UploadData file, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
