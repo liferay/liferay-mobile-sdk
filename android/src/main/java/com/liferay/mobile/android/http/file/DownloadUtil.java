@@ -31,6 +31,8 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 
+import static com.liferay.mobile.android.http.file.FileTransferUtil.*;
+
 /**
  * @author Bruno Farache
  */
@@ -45,19 +47,11 @@ public class DownloadUtil {
 		HttpUtil.checkStatusCode(request, response);
 		InputStream is = response.getEntity().getContent();
 
-		int count;
-		byte data[] = new byte[8192];
-
-		while (((count = is.read(data)) != -1) && !isCancelled(callback)) {
-			os.write(data, 0, count);
-
-			if (callback != null) {
-				callback.increment(count);
-			}
+		try {
+			transfer(request, is, os, callback);
 		}
-
-		if (isCancelled(callback)) {
-			request.abort();
+		finally {
+			close(is);
 		}
 	}
 
@@ -108,10 +102,6 @@ public class DownloadUtil {
 		sb.append(encoder.encode(webdavPath.toString()));
 
 		return sb.toString();
-	}
-
-	protected static boolean isCancelled(FileProgressCallback callback) {
-		return (callback != null) && callback.isCancelled();
 	}
 
 	protected static String prependSlash(String string) {

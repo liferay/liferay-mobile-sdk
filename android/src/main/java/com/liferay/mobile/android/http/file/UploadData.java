@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.http.file;
 
-import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -22,6 +21,8 @@ import java.io.OutputStream;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.content.InputStreamBody;
+
+import static com.liferay.mobile.android.http.file.FileTransferUtil.*;
 
 /**
  * @author Igor Oliveira
@@ -48,53 +49,14 @@ public class UploadData extends InputStreamBody {
 
 	@Override
 	public void writeTo(OutputStream os) throws IOException {
-		if (os == null) {
-			throw new IllegalArgumentException("Output stream may not be null");
-		}
-
 		InputStream is = getInputStream();
 
 		try {
-			int count;
-			byte[] data = new byte[4096];
-
-			while (((count = is.read(data)) != -1) && !isCancelled()) {
-				writeToCopyStream(data, count);
-
-				os.write(data, 0, count);
-
-				if (callback != null) {
-					callback.increment(count);
-				}
-			}
-
-			os.flush();
-
-			if (isCancelled()) {
-				request.abort();
-				throw new IOException("Request cancelled.");
-			}
+			transfer(request, is, os, callback);
 		}
 		finally {
 			close(is);
 		}
-	}
-
-	protected void close(Closeable closeable) {
-		if (closeable != null) {
-			try {
-				closeable.close();
-			}
-			catch (IOException ioe) {
-			}
-		}
-	}
-
-	protected boolean isCancelled() {
-		return (callback != null) && (callback.isCancelled());
-	}
-
-	protected void writeToCopyStream(byte[] data, int count) {
 	}
 
 	protected FileProgressCallback callback;
