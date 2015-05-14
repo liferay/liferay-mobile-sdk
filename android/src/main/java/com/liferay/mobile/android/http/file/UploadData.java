@@ -38,11 +38,11 @@ public class UploadData extends InputStreamBody {
 	}
 
 	public UploadData(
-		InputStream is, OutputStream os, String fileName,
+		InputStream is, OutputStream extraOutputStream, String fileName,
 		FileProgressCallback callback) {
 
 		this(is, fileName, callback);
-		this.os = os;
+		this.os = extraOutputStream;
 	}
 
 	public UploadData(

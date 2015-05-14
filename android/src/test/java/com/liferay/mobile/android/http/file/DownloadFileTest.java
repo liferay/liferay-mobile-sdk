@@ -113,14 +113,14 @@ public class DownloadFileTest extends BaseTest {
 
 	@Before
 	public void setUp() throws Exception {
-		DLAppServiceTest service = new DLAppServiceTest();
-		_file = service.addFileEntry();
+		DLAppServiceTest test = new DLAppServiceTest();
+		_file = test.addFileEntry();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		DLAppServiceTest service = new DLAppServiceTest();
-		service.deleteFileEntry(_file.getLong(DLAppServiceTest.FILE_ENTRY_ID));
+		DLAppServiceTest test = new DLAppServiceTest();
+		test.deleteFileEntry(_file.getLong(DLAppServiceTest.FILE_ENTRY_ID));
 	}
 
 	private JSONObject _file;

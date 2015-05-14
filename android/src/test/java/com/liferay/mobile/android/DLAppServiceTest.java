@@ -36,6 +36,10 @@ public class DLAppServiceTest extends BaseTest {
 
 	public static final String FILE_ENTRY_ID = "fileEntryId";
 
+	public static final String MIME_TYPE = "text/plain";
+
+	public static final int PARENT_FOLDER_ID = 0;
+
 	public static final String SOURCE_FILE_NAME = "test.properties";
 
 	public static final String TITLE = "title";
@@ -51,7 +55,7 @@ public class DLAppServiceTest extends BaseTest {
 		byte[] bytes = "Hello".getBytes(HTTP.UTF_8);
 
 		return service.addFileEntry(
-			repositoryId, _PARENT_FOLDER_ID, SOURCE_FILE_NAME, _MIME_TYPE,
+			repositoryId, PARENT_FOLDER_ID, SOURCE_FILE_NAME, MIME_TYPE,
 			SOURCE_FILE_NAME, "", "", bytes, null);
 	}
 
@@ -70,12 +74,12 @@ public class DLAppServiceTest extends BaseTest {
 		long repositoryId = props.getGroupId();
 
 		JSONObject jsonObj = service.addFolder(
-			repositoryId, _PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
+			repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
 
 		assertEquals(_FOLDER_NAME, jsonObj.get(_NAME));
 
 		int count = service.getFoldersCount(
-			repositoryId, _PARENT_FOLDER_ID, 0, false);
+			repositoryId, PARENT_FOLDER_ID, 0, false);
 
 		assertEquals(1, count);
 
@@ -90,10 +94,10 @@ public class DLAppServiceTest extends BaseTest {
 		long repositoryId = props.getGroupId();
 
 		service.addFolder(
-			repositoryId, _PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
+			repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
 
 		service.addFolder(
-			repositoryId, _PARENT_FOLDER_ID, _FOLDER_NAME_2, "", null);
+			repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME_2, "", null);
 
 		JSONArray jsonArray = batch.invoke();
 
@@ -112,10 +116,10 @@ public class DLAppServiceTest extends BaseTest {
 		DLAppService service = new DLAppService(session);
 		long repositoryId = props.getGroupId();
 
-		service.deleteFolder(repositoryId, _PARENT_FOLDER_ID, _FOLDER_NAME);
+		service.deleteFolder(repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME);
 
 		try {
-			service.getFolder(repositoryId, _PARENT_FOLDER_ID, _FOLDER_NAME);
+			service.getFolder(repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME);
 
 			fail();
 		}
@@ -130,8 +134,8 @@ public class DLAppServiceTest extends BaseTest {
 		DLAppService service = new DLAppService(batch);
 		long repositoryId = props.getGroupId();
 
-		service.deleteFolder(repositoryId, _PARENT_FOLDER_ID, _FOLDER_NAME);
-		service.deleteFolder(repositoryId, _PARENT_FOLDER_ID, _FOLDER_NAME_2);
+		service.deleteFolder(repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME);
+		service.deleteFolder(repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME_2);
 
 		JSONArray jsonArray = batch.invoke();
 
@@ -142,10 +146,6 @@ public class DLAppServiceTest extends BaseTest {
 
 	private static final String _FOLDER_NAME_2 = "test2";
 
-	private static final String _MIME_TYPE = "text/plain";
-
 	private static final String _NAME = "name";
-
-	private static final int _PARENT_FOLDER_ID = 0;
 
 }
