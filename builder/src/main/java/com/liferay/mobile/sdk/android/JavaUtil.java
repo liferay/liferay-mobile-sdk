@@ -23,9 +23,6 @@ import org.apache.commons.lang.WordUtils;
  */
 public class JavaUtil extends LanguageUtil {
 
-	public static final String INPUT_STREAM_BODY =
-		"com.liferay.mobile.android.service.InputStreamBodyWrapper";
-
 	public static final String INTEGER = "Integer";
 
 	public static final String JSON_ARRAY = "JSONArray";
@@ -33,6 +30,8 @@ public class JavaUtil extends LanguageUtil {
 	public static final String JSON_OBJECT = "JSONObject";
 
 	public static final String JSON_OBJECT_WRAPPER = "JSONObjectWrapper";
+
+	public static final String UPLOAD_DATA = "UploadData";
 
 	public String getReturnType(String type) {
 		type = getType(type);
@@ -45,9 +44,7 @@ public class JavaUtil extends LanguageUtil {
 			return INTEGER;
 		}
 
-		if (type.equals(JSON_OBJECT_WRAPPER) ||
-			type.equals(INPUT_STREAM_BODY)) {
-
+		if (type.equals(JSON_OBJECT_WRAPPER) || type.equals(UPLOAD_DATA)) {
 			return JSON_OBJECT;
 		}
 
@@ -77,7 +74,7 @@ public class JavaUtil extends LanguageUtil {
 		}
 
 		if (type.equals(FILE)) {
-			return INPUT_STREAM_BODY;
+			return UPLOAD_DATA;
 		}
 
 		if (type.startsWith(OBJECT_PREFIX)) {

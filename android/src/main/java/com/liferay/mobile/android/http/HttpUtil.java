@@ -18,7 +18,7 @@ import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.auth.basic.DigestAuthentication;
 import com.liferay.mobile.android.exception.RedirectException;
 import com.liferay.mobile.android.exception.ServerException;
-import com.liferay.mobile.android.service.InputStreamBodyWrapper;
+import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.util.Validator;
 
@@ -252,8 +252,8 @@ public class HttpUtil {
 
 			ContentBody contentBody;
 
-			if (value instanceof InputStreamBodyWrapper) {
-				InputStreamBodyWrapper wrapper = (InputStreamBodyWrapper)value;
+			if (value instanceof UploadData) {
+				UploadData wrapper = (UploadData)value;
 				wrapper.setRequest(request);
 
 				contentBody = wrapper;

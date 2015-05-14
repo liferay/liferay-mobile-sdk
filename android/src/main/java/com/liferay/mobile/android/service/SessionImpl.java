@@ -16,6 +16,7 @@ package com.liferay.mobile.android.service;
 
 import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.http.HttpUtil;
+import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.task.ServiceAsyncTask;
 import com.liferay.mobile.android.task.UploadAsyncTask;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
@@ -123,7 +124,7 @@ public class SessionImpl implements Session {
 
 	@Override
 	public JSONArray upload(JSONObject command) throws Exception {
-		if (!hasInputStreamBody(command)) {
+		if (!hasUploadData(command)) {
 			return invoke(command);
 		}
 
@@ -138,9 +139,7 @@ public class SessionImpl implements Session {
 		}
 	}
 
-	protected boolean hasInputStreamBody(JSONObject command)
-		throws JSONException {
-
+	protected boolean hasUploadData(JSONObject command) throws JSONException {
 		if (command.length() == 0) {
 			return false;
 		}
@@ -153,7 +152,7 @@ public class SessionImpl implements Session {
 		while (keys.hasNext()) {
 			String key = keys.next();
 
-			if (params.get(key) instanceof InputStreamBodyWrapper) {
+			if (params.get(key) instanceof UploadData) {
 				return true;
 			}
 		}

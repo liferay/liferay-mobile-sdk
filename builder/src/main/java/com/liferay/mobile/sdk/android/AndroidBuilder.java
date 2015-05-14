@@ -129,7 +129,7 @@ public class AndroidBuilder extends BaseBuilder {
 		context.put(DISCOVERY, discovery);
 		context.put(ACTIONS, excludeMethods(className, actions));
 		context.put(ESCAPE_TOOL, new EscapeTool());
-		context.put(INPUT_STREAM_BODY, JavaUtil.INPUT_STREAM_BODY);
+		context.put(UPLOAD_DATA, JavaUtil.UPLOAD_DATA);
 		context.put(INTEGER, JavaUtil.INTEGER);
 		context.put(JSON_OBJECT_WRAPPER, JavaUtil.JSON_OBJECT_WRAPPER);
 		context.put(LANGUAGE_UTIL, javaUtil);
@@ -139,10 +139,10 @@ public class AndroidBuilder extends BaseBuilder {
 		return context;
 	}
 
-	protected static final String INPUT_STREAM_BODY = "INPUT_STREAM_BODY";
-
 	protected static final String INTEGER = "INTEGER";
 
 	protected static final String PACKAGE = "package";
+
+	protected static final String UPLOAD_DATA = "UPLOAD_DATA";
 
 }

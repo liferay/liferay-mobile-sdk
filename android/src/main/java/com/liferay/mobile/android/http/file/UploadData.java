@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.android.service;
+package com.liferay.mobile.android.http.file;
 
 import com.liferay.mobile.android.task.callback.FileProgressCallback;
 
@@ -27,9 +27,9 @@ import org.apache.http.entity.mime.content.InputStreamBody;
 /**
  * @author Igor Oliveira
  */
-public class InputStreamBodyWrapper extends InputStreamBody {
+public class UploadData extends InputStreamBody {
 
-	public InputStreamBodyWrapper(
+	public UploadData(
 		InputStream is, String filename, FileProgressCallback callback) {
 
 		super(is, filename);

@@ -19,8 +19,8 @@ package com.liferay.mobile.android.task.callback;
  */
 public interface FileProgressCallback {
 
-	public abstract boolean isCancelled();
+	public boolean isCancelled();
 
-	public abstract void onProgress(int totalBytes);
+	public void onProgress(int totalBytes);
 
 }

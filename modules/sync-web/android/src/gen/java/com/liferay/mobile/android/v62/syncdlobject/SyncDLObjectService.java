@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android.v62.syncdlobject;
 
+import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -31,7 +32,7 @@ public class SyncDLObjectService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, com.liferay.mobile.android.service.InputStreamBodyWrapper file, String checksum, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, UploadData file, String checksum, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -614,7 +615,7 @@ public class SyncDLObjectService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject patchFileEntry(long fileEntryId, long sourceVersionId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, com.liferay.mobile.android.service.InputStreamBodyWrapper deltaFile, String checksum, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject patchFileEntry(long fileEntryId, long sourceVersionId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, UploadData deltaFile, String checksum, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -693,7 +694,7 @@ public class SyncDLObjectService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateFileEntries(com.liferay.mobile.android.service.InputStreamBodyWrapper zipFile) throws Exception {
+	public JSONObject updateFileEntries(UploadData zipFile) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -716,7 +717,7 @@ public class SyncDLObjectService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, com.liferay.mobile.android.service.InputStreamBodyWrapper file, String checksum, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, UploadData file, String checksum, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {

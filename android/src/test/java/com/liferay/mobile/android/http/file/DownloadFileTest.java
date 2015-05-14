@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.android.util.download;
+package com.liferay.mobile.android.http.file;
 
 import com.liferay.mobile.android.BaseTest;
 import com.liferay.mobile.android.DLAppServiceTest;
