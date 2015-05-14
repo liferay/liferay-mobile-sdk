@@ -14,8 +14,6 @@
 
 package com.liferay.mobile.android.http.file;
 
-import com.liferay.mobile.android.task.callback.FileProgressCallback;
-
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;

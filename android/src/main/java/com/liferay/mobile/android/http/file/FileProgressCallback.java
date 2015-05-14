@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.android.task.callback;
+package com.liferay.mobile.android.http.file;
 
 /**
  * @author Igor Oliveira
