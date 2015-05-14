@@ -38,6 +38,14 @@ public class UploadData extends InputStreamBody {
 	}
 
 	public UploadData(
+		InputStream is, OutputStream os, String fileName,
+		FileProgressCallback callback) {
+
+		this(is, fileName, callback);
+		this.os = os;
+	}
+
+	public UploadData(
 		InputStream is, String fileName, FileProgressCallback callback) {
 
 		this(is, ContentType.DEFAULT_BINARY, fileName, callback);
@@ -48,8 +56,19 @@ public class UploadData extends InputStreamBody {
 	}
 
 	@Override
-	public void writeTo(OutputStream os) throws IOException {
+	public void writeTo(OutputStream outputStream) throws IOException {
+		if (outputStream == null) {
+			throw new IllegalArgumentException("OutputStream may not be null");
+		}
+
 		InputStream is = getInputStream();
+
+		if (os != null) {
+			os = new MultiOutputStream(outputStream, os);
+		}
+		else {
+			os = outputStream;
+		}
 
 		try {
 			transfer(request, is, os, callback);
@@ -60,6 +79,7 @@ public class UploadData extends InputStreamBody {
 	}
 
 	protected FileProgressCallback callback;
+	protected OutputStream os;
 	protected HttpPost request;
 
 }
