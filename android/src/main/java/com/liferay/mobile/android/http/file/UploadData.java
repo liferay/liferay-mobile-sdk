@@ -20,6 +20,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.content.InputStreamBody;
 
 /**
@@ -28,15 +29,21 @@ import org.apache.http.entity.mime.content.InputStreamBody;
 public class UploadData extends InputStreamBody {
 
 	public UploadData(
-		InputStream is, String filename, FileProgressCallback callback) {
+		InputStream is, ContentType mimeType, String fileName,
+		FileProgressCallback callback) {
 
-		super(is, filename);
+		super(is, mimeType, fileName);
+		this.callback = callback;
+	}
 
-		_callback = callback;
+	public UploadData(
+		InputStream is, String fileName, FileProgressCallback callback) {
+
+		this(is, ContentType.DEFAULT_BINARY, fileName, callback);
 	}
 
 	public void setRequest(HttpPost request) {
-		_request = request;
+		this.request = request;
 	}
 
 	@Override
@@ -56,17 +63,16 @@ public class UploadData extends InputStreamBody {
 
 				os.write(data, 0, count);
 
-				if (_callback != null) {
-					_callback.increment(count);
+				if (callback != null) {
+					callback.increment(count);
 				}
 			}
 
 			os.flush();
 
 			if (isCancelled()) {
-				_request.abort();
-
-				throw new IOException("Request aborted");
+				request.abort();
+				throw new IOException("Request cancelled.");
 			}
 		}
 		finally {
@@ -85,13 +91,13 @@ public class UploadData extends InputStreamBody {
 	}
 
 	protected boolean isCancelled() {
-		return _callback != null && _callback.isCancelled();
+		return (callback != null) && (callback.isCancelled());
 	}
 
 	protected void writeToCopyStream(byte[] data, int count) {
 	}
 
-	private FileProgressCallback _callback;
-	private HttpPost _request;
+	protected FileProgressCallback callback;
+	protected HttpPost request;
 
 }
