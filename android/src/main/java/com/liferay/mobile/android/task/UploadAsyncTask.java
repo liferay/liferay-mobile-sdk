@@ -16,7 +16,7 @@ package com.liferay.mobile.android.task;
 
 import android.os.AsyncTask;
 
-import com.liferay.mobile.android.http.HttpUtil;
+import com.liferay.mobile.android.http.file.UploadUtil;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
@@ -36,7 +36,7 @@ public class UploadAsyncTask extends AsyncTask<JSONObject, Integer, JSONArray> {
 	@Override
 	public JSONArray doInBackground(JSONObject... commands) {
 		try {
-			JSONArray array = HttpUtil.upload(_session, commands[0]);
+			JSONArray array = UploadUtil.upload(_session, commands[0]);
 
 			return _callback.inBackground(array);
 		}

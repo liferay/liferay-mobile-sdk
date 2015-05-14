@@ -18,7 +18,6 @@ import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.auth.basic.DigestAuthentication;
 import com.liferay.mobile.android.exception.RedirectException;
 import com.liferay.mobile.android.exception.ServerException;
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.util.Validator;
 
@@ -26,9 +25,6 @@ import java.io.IOException;
 
 import java.net.URI;
 
-import java.util.Iterator;
-
-import org.apache.http.Consts;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
@@ -38,12 +34,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.entity.mime.HttpMultipartMode;
-import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.apache.http.entity.mime.content.ContentBody;
-import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultRedirectStrategy;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.protocol.BasicHttpContext;
@@ -173,6 +164,14 @@ public class HttpUtil {
 		return sb.toString();
 	}
 
+	public static void handleServerError(
+			HttpRequest request, HttpResponse response, String json)
+		throws ServerException {
+
+		checkStatusCode(request, response);
+		handlePortalException(json);
+	}
+
 	public static JSONArray post(Session session, JSONArray commands)
 		throws Exception {
 
@@ -203,27 +202,6 @@ public class HttpUtil {
 		_JSONWS_PATH = jsonwsPath;
 	}
 
-	public static JSONArray upload(Session session, JSONObject command)
-		throws Exception {
-
-		String path = (String)command.keys().next();
-		JSONObject parameters = command.getJSONObject(path);
-
-		HttpClient client = getClient(session);
-		HttpPost request = getHttpPost(session, getURL(session, path));
-
-		HttpEntity entity = getMultipartEntity(request, parameters);
-
-		request.setEntity(entity);
-
-		HttpResponse response = client.execute(request);
-		String json = HttpUtil.getResponseString(response);
-
-		handleServerError(request, response, json);
-
-		return new JSONArray("[" + json + "]");
-	}
-
 	protected static void authenticate(Session session, HttpRequest request)
 		throws Exception {
 
@@ -232,40 +210,6 @@ public class HttpUtil {
 		if (auth != null) {
 			auth.authenticate(request);
 		}
-	}
-
-	protected static HttpEntity getMultipartEntity(
-			HttpPost request, JSONObject parameters)
-		throws Exception {
-
-		MultipartEntityBuilder builder = MultipartEntityBuilder.create();
-		builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-
-		ContentType contentType = ContentType.create(
-			"text/plain", Consts.UTF_8);
-
-		Iterator<String> it = parameters.keys();
-
-		while (it.hasNext()) {
-			String key = it.next();
-			Object value = parameters.get(key);
-
-			ContentBody contentBody;
-
-			if (value instanceof UploadData) {
-				UploadData wrapper = (UploadData)value;
-				wrapper.setRequest(request);
-
-				contentBody = wrapper;
-			}
-			else {
-				contentBody = new StringBody(value.toString(), contentType);
-			}
-
-			builder.addPart(key, contentBody);
-		}
-
-		return builder.build();
 	}
 
 	protected static String getRedirectUrl(
@@ -315,14 +259,6 @@ public class HttpUtil {
 		catch (JSONException je) {
 			throw new ServerException(je);
 		}
-	}
-
-	protected static void handleServerError(
-			HttpRequest request, HttpResponse response, String json)
-		throws ServerException {
-
-		checkStatusCode(request, response);
-		handlePortalException(json);
 	}
 
 	protected static boolean isJSONObject(String json) {
