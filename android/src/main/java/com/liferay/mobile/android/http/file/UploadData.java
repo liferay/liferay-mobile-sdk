@@ -33,7 +33,6 @@ public class UploadData extends InputStreamBody {
 		super(is, filename);
 
 		_callback = callback;
-		_total = 0;
 	}
 
 	public void setRequest(HttpPost request) {
@@ -57,10 +56,8 @@ public class UploadData extends InputStreamBody {
 
 				os.write(data, 0, count);
 
-				_total = _total + count;
-
 				if (_callback != null) {
-					_callback.onProgress(_total);
+					_callback.increment(count);
 				}
 			}
 
@@ -96,6 +93,5 @@ public class UploadData extends InputStreamBody {
 
 	private FileProgressCallback _callback;
 	private HttpPost _request;
-	private int _total;
 
 }

@@ -46,15 +46,13 @@ public class DownloadUtil {
 		InputStream is = response.getEntity().getContent();
 
 		int count;
-		int totalBytes = 0;
 		byte data[] = new byte[8192];
 
 		while (((count = is.read(data)) != -1) && !isCancelled(callback)) {
 			os.write(data, 0, count);
 
 			if (callback != null) {
-				totalBytes = totalBytes + count;
-				callback.onProgress(totalBytes);
+				callback.increment(count);
 			}
 		}
 
