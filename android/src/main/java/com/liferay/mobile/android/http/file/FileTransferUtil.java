@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.apache.http.client.methods.AbortableHttpRequest;
+import org.apache.http.client.methods.AbstractExecutionAwareRequest;
 
 /**
  * @author Bruno Farache
@@ -37,8 +37,8 @@ public class FileTransferUtil {
 	}
 
 	public static void transfer(
-			AbortableHttpRequest request, InputStream is, OutputStream os,
-			FileProgressCallback callback)
+			AbstractExecutionAwareRequest request, InputStream is,
+			OutputStream os, FileProgressCallback callback)
 		throws IOException {
 
 		int count;
@@ -56,7 +56,6 @@ public class FileTransferUtil {
 
 		if (isCancelled(callback)) {
 			request.abort();
-			throw new IOException("Request cancelled.");
 		}
 	}
 

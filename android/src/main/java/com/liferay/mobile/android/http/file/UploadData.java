@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPostHC4;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.content.InputStreamBody;
 
@@ -51,7 +51,7 @@ public class UploadData extends InputStreamBody {
 		this(is, ContentType.DEFAULT_BINARY, fileName, callback);
 	}
 
-	public void setRequest(HttpPost request) {
+	public void setRequest(HttpPostHC4 request) {
 		this.request = request;
 	}
 
@@ -80,6 +80,6 @@ public class UploadData extends InputStreamBody {
 
 	protected FileProgressCallback callback;
 	protected OutputStream os;
-	protected HttpPost request;
+	protected HttpPostHC4 request;
 
 }
