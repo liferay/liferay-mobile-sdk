@@ -56,6 +56,17 @@ public class DownloadUtil {
 	}
 
 	public static void downloadFile(
+			Session session, OutputStream os, String URL,
+			FileProgressCallback callback)
+		throws Exception {
+
+		HttpClientBuilder clientBuilder = HttpUtil.getClientBuilder(session);
+		HttpGetHC4 request = HttpUtil.getHttpGetHC4(session, URL);
+
+		download(clientBuilder.build(), request, os, callback);
+	}
+
+	public static void downloadFileWebDAV(
 			Session session, int portalVersion, String groupFriendlyURL,
 			String folderPath, String fileTitle, OutputStream os,
 			FileProgressCallback callback)
