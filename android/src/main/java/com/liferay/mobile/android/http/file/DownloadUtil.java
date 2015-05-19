@@ -61,12 +61,12 @@ public class DownloadUtil {
 		throws Exception {
 
 		HttpClientBuilder clientBuilder = HttpUtil.getClientBuilder(session);
-		HttpGetHC4 request = HttpUtil.getHttpGetHC4(session, URL);
+		HttpGetHC4 request = HttpUtil.getHttpGet(session, URL);
 
 		download(clientBuilder.build(), request, os, callback);
 	}
 
-	public static void downloadFileWebDAV(
+	public static void downloadWebDAVFile(
 			Session session, int portalVersion, String groupFriendlyURL,
 			String folderPath, String fileTitle, OutputStream os,
 			FileProgressCallback callback)
@@ -80,7 +80,7 @@ public class DownloadUtil {
 					"DigestAuthentication");
 		}
 
-		String URL = getDownloadURL(
+		String URL = getWebDAVFileURL(
 			session, portalVersion, groupFriendlyURL, folderPath, fileTitle);
 
 		HttpClientBuilder clientBuilder = HttpUtil.getClientBuilder(session);
@@ -89,7 +89,7 @@ public class DownloadUtil {
 		download(clientBuilder.build(), request, os, callback);
 	}
 
-	public static String getDownloadURL(
+	public static String getWebDAVFileURL(
 			Session session, int portalVersion, String groupFriendlyURL,
 			String folderPath, String fileTitle)
 		throws Exception {

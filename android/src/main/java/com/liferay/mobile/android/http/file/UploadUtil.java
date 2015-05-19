@@ -46,7 +46,7 @@ public class UploadUtil {
 		JSONObject parameters = command.getJSONObject(path);
 
 		HttpClient client = getClient(session);
-		HttpPostHC4 request = getHttpPostHC4(session, getURL(session, path));
+		HttpPostHC4 request = getHttpPost(session, getURL(session, path));
 
 		HttpEntity entity = getMultipartEntity(request, parameters);
 

@@ -115,7 +115,7 @@ public class HttpUtil {
 		return clientBuilder;
 	}
 
-	public static HttpGetHC4 getHttpGetHC4(Session session, String URL)
+	public static HttpGetHC4 getHttpGet(Session session, String URL)
 		throws Exception {
 
 		HttpGetHC4 httpGet = new HttpGetHC4(URL);
@@ -125,7 +125,7 @@ public class HttpUtil {
 		return httpGet;
 	}
 
-	public static HttpPostHC4 getHttpPostHC4(Session session, String URL)
+	public static HttpPostHC4 getHttpPost(Session session, String URL)
 		throws Exception {
 
 		HttpPostHC4 httpPost = new HttpPostHC4(URL);
@@ -176,8 +176,7 @@ public class HttpUtil {
 		throws Exception {
 
 		HttpClient client = getClient(session);
-		HttpPostHC4 request = getHttpPostHC4(
-			session, getURL(session, "/invoke"));
+		HttpPostHC4 request = getHttpPost(session, getURL(session, "/invoke"));
 
 		request.setEntity(new StringEntityHC4(commands.toString(), "UTF-8"));
 
