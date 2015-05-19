@@ -26,7 +26,7 @@ import java.io.IOException;
 
 import java.net.URI;
 
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpGetHC4;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import org.json.JSONObject;
@@ -61,7 +61,7 @@ public class DownloadFileTest extends BaseTest {
 
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-		HttpGet request = new HttpGet(URL);
+		HttpGetHC4 request = new HttpGetHC4(URL);
 		HttpClientBuilder clientBuilder = HttpUtil.getClientBuilder(session);
 
 		DownloadUtil.download(clientBuilder.build(), request, baos, null);
