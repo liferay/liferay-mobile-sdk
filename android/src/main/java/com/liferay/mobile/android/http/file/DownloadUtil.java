@@ -27,7 +27,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGetHC4;
 import org.apache.http.impl.client.HttpClientBuilder;
 
@@ -39,11 +38,14 @@ import static com.liferay.mobile.android.http.file.FileTransferUtil.*;
 public class DownloadUtil {
 
 	public static void download(
-			HttpClient httpClient, HttpGetHC4 request, OutputStream os,
+			Session session, OutputStream os, String URL,
 			FileProgressCallback callback)
 		throws Exception {
 
-		HttpResponse response = httpClient.execute(request);
+		HttpClientBuilder clientBuilder = HttpUtil.getClientBuilder(session);
+		HttpGetHC4 request = HttpUtil.getHttpGet(session, URL);
+
+		HttpResponse response = clientBuilder.build().execute(request);
 		HttpUtil.checkStatusCode(request, response);
 		InputStream is = response.getEntity().getContent();
 
@@ -53,17 +55,6 @@ public class DownloadUtil {
 		finally {
 			close(is);
 		}
-	}
-
-	public static void downloadFile(
-			Session session, OutputStream os, String URL,
-			FileProgressCallback callback)
-		throws Exception {
-
-		HttpClientBuilder clientBuilder = HttpUtil.getClientBuilder(session);
-		HttpGetHC4 request = HttpUtil.getHttpGet(session, URL);
-
-		download(clientBuilder.build(), request, os, callback);
 	}
 
 	public static void downloadWebDAVFile(
@@ -83,10 +74,7 @@ public class DownloadUtil {
 		String URL = getWebDAVFileURL(
 			session, portalVersion, groupFriendlyURL, folderPath, fileTitle);
 
-		HttpClientBuilder clientBuilder = HttpUtil.getClientBuilder(session);
-		HttpGetHC4 request = new HttpGetHC4(URL);
-
-		download(clientBuilder.build(), request, os, callback);
+		download(session, os, URL, callback);
 	}
 
 	public static String getWebDAVFileURL(
