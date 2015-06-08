@@ -18,16 +18,12 @@ import com.liferay.mobile.android.BaseTest;
 import com.liferay.mobile.android.DLAppServiceTest;
 import com.liferay.mobile.android.auth.basic.BasicAuthentication;
 import com.liferay.mobile.android.auth.basic.DigestAuthentication;
-import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.util.PortalVersion;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import java.net.URI;
-
-import org.apache.http.client.methods.HttpGetHC4;
-import org.apache.http.impl.client.HttpClientBuilder;
 
 import org.json.JSONObject;
 
@@ -61,10 +57,7 @@ public class DownloadFileTest extends BaseTest {
 
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-		HttpGetHC4 request = new HttpGetHC4(URL);
-		HttpClientBuilder clientBuilder = HttpUtil.getClientBuilder(session);
-
-		DownloadUtil.download(clientBuilder.build(), request, baos, null);
+		DownloadUtil.download(session, baos, URL, null);
 		assertEquals(5, baos.size());
 	}
 
