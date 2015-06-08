@@ -15,10 +15,17 @@
 package com.liferay.mobile.android.http;
 
 import com.liferay.mobile.android.BaseTest;
+import com.liferay.mobile.android.auth.Authentication;
+import com.liferay.mobile.android.auth.basic.BasicAuthentication;
+import com.liferay.mobile.android.exception.AuthenticationException;
 import com.liferay.mobile.android.exception.ServerException;
 
 import java.io.IOException;
 
+import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.service.SessionImpl;
+import com.liferay.mobile.android.util.PropertiesUtil;
+import com.liferay.mobile.android.v62.group.GroupService;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -61,6 +68,21 @@ public class ServerExceptionTest extends BaseTest {
 		catch (ServerException se) {
 			assertEquals(exception, se.getMessage());
 			assertTrue(se.getDetail().contains("DuplicateFolderNameException"));
+		}
+	}
+
+	@Test
+	public void authenticationException() {
+		String json = "{\"message\":\"Authenticated access required\"," +
+			"\"exception\":\"java.lang.SecurityException\"}";
+
+		try {
+			HttpUtil.handlePortalException(json);
+		}
+		catch (ServerException e) {
+			if (!(e instanceof AuthenticationException)) {
+				fail("Should have thrown AuthenticationException");
+			}
 		}
 	}
 

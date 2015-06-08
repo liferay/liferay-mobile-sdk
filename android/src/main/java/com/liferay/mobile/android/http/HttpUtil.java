@@ -16,6 +16,7 @@ package com.liferay.mobile.android.http;
 
 import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.auth.basic.DigestAuthentication;
+import com.liferay.mobile.android.exception.AuthenticationException;
 import com.liferay.mobile.android.exception.RedirectException;
 import com.liferay.mobile.android.exception.ServerException;
 import com.liferay.mobile.android.service.Session;
@@ -74,7 +75,7 @@ public class HttpUtil {
 		}
 
 		if (status == HttpStatus.SC_UNAUTHORIZED) {
-			throw new ServerException("Authentication failed.");
+			throw new AuthenticationException("Authentication failed.");
 		}
 
 		if (status != HttpStatus.SC_OK) {
@@ -250,6 +251,12 @@ public class HttpUtil {
 					if (error != null) {
 						message = error.getString("type");
 						detail = error.getString("message");
+					}
+
+					if ((detail != null) &&
+						detail.contains("Authenticated access required")) {
+
+						throw new AuthenticationException(detail);
 					}
 
 					throw new ServerException(message, detail);
