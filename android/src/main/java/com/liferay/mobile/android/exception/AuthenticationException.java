@@ -23,4 +23,8 @@ public class AuthenticationException extends ServerException {
 		super(message);
 	}
 
+	public AuthenticationException(String message, String detail) {
+		super(message, detail);
+	}
+
 }

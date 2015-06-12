@@ -75,7 +75,8 @@ public class HttpUtil {
 		}
 
 		if (status == HttpStatus.SC_UNAUTHORIZED) {
-			throw new AuthenticationException("Authentication failed.");
+			throw new AuthenticationException(
+				"Authentication failed.", "HTTP Status Code 401");
 		}
 
 		if (status != HttpStatus.SC_OK) {
@@ -253,10 +254,10 @@ public class HttpUtil {
 						detail = error.getString("message");
 					}
 
-					if ((detail != null) &&
-						detail.contains("Authenticated access required")) {
+					if ((message != null) &&
+						message.equals("java.lang.SecurityException")) {
 
-						throw new AuthenticationException(detail);
+						throw new AuthenticationException(message, detail);
 					}
 
 					throw new ServerException(message, detail);

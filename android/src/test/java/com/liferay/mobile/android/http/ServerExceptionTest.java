@@ -72,17 +72,20 @@ public class ServerExceptionTest extends BaseTest {
 	}
 
 	@Test
-	public void authenticationException() {
-		String json = "{\"message\":\"Authenticated access required\"," +
-			"\"exception\":\"java.lang.SecurityException\"}";
+	public void authenticationException() throws Exception {
+		JSONObject json = new JSONObject();
+
+		String exception = "java.lang.SecurityException";
+
+		json.put("exception", "java.lang.SecurityException");
+		json.put("message", "Authenticated access required");
 
 		try {
-			HttpUtil.handlePortalException(json);
+			HttpUtil.handlePortalException(json.toString());
+			fail("Should have thrown AuthenticationException");
 		}
-		catch (ServerException e) {
-			if (!(e instanceof AuthenticationException)) {
-				fail("Should have thrown AuthenticationException");
-			}
+		catch (AuthenticationException ae) {
+			assertEquals(exception, ae.getMessage());
 		}
 	}
 
