@@ -36,6 +36,14 @@ NSString *const _SERVICE_CONTEXT = @"com.liferay.portal.service.ServiceContext";
 	return [number boolValue];
 }
 
+- (id)checkNull:(id)object {
+	if (object == nil) {
+		return [NSNull null];
+	}
+
+	return object;
+}
+
 - (void)mangleWrapperWithParams:(NSMutableDictionary *)params
 		name:(NSString *)name className:(NSString *)className
 		wrapper:(LRJSONObjectWrapper *)wrapper {
