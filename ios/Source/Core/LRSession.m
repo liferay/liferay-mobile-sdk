@@ -134,8 +134,11 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 		return NO;
 	}
 
-	for (NSString *key in [command allKeys]) {
-		if ([command[key] isKindOfClass:[LRUploadData class]]) {
+	NSString *first = [[command allKeys] objectAtIndex:0];
+	NSDictionary *params = [command objectForKey:first];
+
+	for (NSString *key in [params allKeys]) {
+		if ([params[key] isKindOfClass:[LRUploadData class]]) {
 			return YES;
 		}
 	}
