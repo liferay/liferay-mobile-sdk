@@ -22,15 +22,15 @@
 - (NSDictionary *)addDiscussionMessageWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK permissionClassName:(NSString *)permissionClassName permissionClassPK:(long long)permissionClassPK permissionOwnerId:(long long)permissionOwnerId threadId:(long long)threadId parentMessageId:(long long)parentMessageId subject:(NSString *)subject body:(NSString *)body serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK),
-		@"permissionClassName": permissionClassName,
+		@"permissionClassName": [self checkNull: permissionClassName],
 		@"permissionClassPK": @(permissionClassPK),
 		@"permissionOwnerId": @(permissionOwnerId),
 		@"threadId": @(threadId),
 		@"parentMessageId": @(parentMessageId),
-		@"subject": subject,
-		@"body": body,
+		@"subject": [self checkNull: subject],
+		@"body": [self checkNull: body],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -44,10 +44,10 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId),
-		@"subject": subject,
-		@"body": body,
-		@"format": format,
-		@"inputStreamOVPs": inputStreamOVPs,
+		@"subject": [self checkNull: subject],
+		@"body": [self checkNull: body],
+		@"format": [self checkNull: format],
+		@"inputStreamOVPs": [self checkNull: inputStreamOVPs],
 		@"anonymous": @(anonymous),
 		@"priority": @(priority),
 		@"allowPingbacks": @(allowPingbacks),
@@ -66,10 +66,10 @@
 		@"categoryId": @(categoryId),
 		@"threadId": @(threadId),
 		@"parentMessageId": @(parentMessageId),
-		@"subject": subject,
-		@"body": body,
-		@"format": format,
-		@"inputStreamOVPs": inputStreamOVPs,
+		@"subject": [self checkNull: subject],
+		@"body": [self checkNull: body],
+		@"format": [self checkNull: format],
+		@"inputStreamOVPs": [self checkNull: inputStreamOVPs],
 		@"anonymous": @(anonymous),
 		@"priority": @(priority),
 		@"allowPingbacks": @(allowPingbacks),
@@ -85,8 +85,8 @@
 - (NSDictionary *)addMessageWithCategoryId:(long long)categoryId subject:(NSString *)subject body:(NSString *)body serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"categoryId": @(categoryId),
-		@"subject": subject,
-		@"body": body,
+		@"subject": [self checkNull: subject],
+		@"body": [self checkNull: body],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -99,10 +99,10 @@
 - (NSDictionary *)addMessageWithParentMessageId:(long long)parentMessageId subject:(NSString *)subject body:(NSString *)body format:(NSString *)format inputStreamOVPs:(NSArray *)inputStreamOVPs anonymous:(BOOL)anonymous priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentMessageId": @(parentMessageId),
-		@"subject": subject,
-		@"body": body,
-		@"format": format,
-		@"inputStreamOVPs": inputStreamOVPs,
+		@"subject": [self checkNull: subject],
+		@"body": [self checkNull: body],
+		@"format": [self checkNull: format],
+		@"inputStreamOVPs": [self checkNull: inputStreamOVPs],
 		@"anonymous": @(anonymous),
 		@"priority": @(priority),
 		@"allowPingbacks": @(allowPingbacks),
@@ -118,9 +118,9 @@
 - (void)deleteDiscussionMessageWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK permissionClassName:(NSString *)permissionClassName permissionClassPK:(long long)permissionClassPK permissionOwnerId:(long long)permissionOwnerId messageId:(long long)messageId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK),
-		@"permissionClassName": permissionClassName,
+		@"permissionClassName": [self checkNull: permissionClassName],
 		@"permissionClassPK": @(permissionClassPK),
 		@"permissionOwnerId": @(permissionOwnerId),
 		@"messageId": @(messageId)
@@ -183,11 +183,11 @@
 		@"categoryId": @(categoryId),
 		@"status": @(status),
 		@"max": @(max),
-		@"type": type,
+		@"type": [self checkNull: type],
 		@"version": @(version),
-		@"displayStyle": displayStyle,
-		@"feedURL": feedURL,
-		@"entryURL": entryURL,
+		@"displayStyle": [self checkNull: displayStyle],
+		@"feedURL": [self checkNull: feedURL],
+		@"entryURL": [self checkNull: entryURL],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
@@ -202,11 +202,11 @@
 		@"companyId": @(companyId),
 		@"status": @(status),
 		@"max": @(max),
-		@"type": type,
+		@"type": [self checkNull: type],
 		@"version": @(version),
-		@"displayStyle": displayStyle,
-		@"feedURL": feedURL,
-		@"entryURL": entryURL,
+		@"displayStyle": [self checkNull: displayStyle],
+		@"feedURL": [self checkNull: feedURL],
+		@"entryURL": [self checkNull: entryURL],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
@@ -233,11 +233,11 @@
 		@"userId": @(userId),
 		@"status": @(status),
 		@"max": @(max),
-		@"type": type,
+		@"type": [self checkNull: type],
 		@"version": @(version),
-		@"displayStyle": displayStyle,
-		@"feedURL": feedURL,
-		@"entryURL": entryURL,
+		@"displayStyle": [self checkNull: displayStyle],
+		@"feedURL": [self checkNull: feedURL],
+		@"entryURL": [self checkNull: entryURL],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
@@ -252,11 +252,11 @@
 		@"groupId": @(groupId),
 		@"status": @(status),
 		@"max": @(max),
-		@"type": type,
+		@"type": [self checkNull: type],
 		@"version": @(version),
-		@"displayStyle": displayStyle,
-		@"feedURL": feedURL,
-		@"entryURL": entryURL,
+		@"displayStyle": [self checkNull: displayStyle],
+		@"feedURL": [self checkNull: feedURL],
+		@"entryURL": [self checkNull: entryURL],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
@@ -280,7 +280,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"messageId": @(messageId),
 		@"status": @(status),
-		@"threadView": threadView,
+		@"threadView": [self checkNull: threadView],
 		@"includePrevAndNext": @(includePrevAndNext)
 	}];
 
@@ -334,11 +334,11 @@
 		@"threadId": @(threadId),
 		@"status": @(status),
 		@"max": @(max),
-		@"type": type,
+		@"type": [self checkNull: type],
 		@"version": @(version),
-		@"displayStyle": displayStyle,
-		@"feedURL": feedURL,
-		@"entryURL": entryURL,
+		@"displayStyle": [self checkNull: displayStyle],
+		@"feedURL": [self checkNull: feedURL],
+		@"entryURL": [self checkNull: entryURL],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
@@ -351,7 +351,7 @@
 - (void)restoreMessageAttachmentFromTrashWithMessageId:(long long)messageId fileName:(NSString *)fileName error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"messageId": @(messageId),
-		@"fileName": fileName
+		@"fileName": [self checkNull: fileName]
 	}];
 
 	NSDictionary *_command = @{@"/mbmessage/restore-message-attachment-from-trash": _params};
@@ -393,14 +393,14 @@
 
 - (NSDictionary *)updateDiscussionMessageWithClassName:(NSString *)className classPK:(long long)classPK permissionClassName:(NSString *)permissionClassName permissionClassPK:(long long)permissionClassPK permissionOwnerId:(long long)permissionOwnerId messageId:(long long)messageId subject:(NSString *)subject body:(NSString *)body serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK),
-		@"permissionClassName": permissionClassName,
+		@"permissionClassName": [self checkNull: permissionClassName],
 		@"permissionClassPK": @(permissionClassPK),
 		@"permissionOwnerId": @(permissionOwnerId),
 		@"messageId": @(messageId),
-		@"subject": subject,
-		@"body": body,
+		@"subject": [self checkNull: subject],
+		@"body": [self checkNull: body],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -413,10 +413,10 @@
 - (NSDictionary *)updateMessageWithMessageId:(long long)messageId subject:(NSString *)subject body:(NSString *)body inputStreamOVPs:(NSArray *)inputStreamOVPs existingFiles:(NSArray *)existingFiles priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"messageId": @(messageId),
-		@"subject": subject,
-		@"body": body,
-		@"inputStreamOVPs": inputStreamOVPs,
-		@"existingFiles": existingFiles,
+		@"subject": [self checkNull: subject],
+		@"body": [self checkNull: body],
+		@"inputStreamOVPs": [self checkNull: inputStreamOVPs],
+		@"existingFiles": [self checkNull: existingFiles],
 		@"priority": @(priority),
 		@"allowPingbacks": @(allowPingbacks),
 	}];

@@ -21,8 +21,8 @@
 
 - (NSDictionary *)addPasswordPolicyWithName:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long long)maxAge warningTime:(long long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long long)lockoutDuration resetFailureCount:(long long)resetFailureCount resetTicketMaxAge:(long long)resetTicketMaxAge error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"changeable": @(changeable),
 		@"changeRequired": @(changeRequired),
 		@"minAge": @(minAge),
@@ -54,8 +54,8 @@
 
 - (NSDictionary *)addPasswordPolicyWithName:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase regex:(NSString *)regex history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long long)maxAge warningTime:(long long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long long)lockoutDuration resetFailureCount:(long long)resetFailureCount resetTicketMaxAge:(long long)resetTicketMaxAge serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"changeable": @(changeable),
 		@"changeRequired": @(changeRequired),
 		@"minAge": @(minAge),
@@ -67,7 +67,7 @@
 		@"minNumbers": @(minNumbers),
 		@"minSymbols": @(minSymbols),
 		@"minUpperCase": @(minUpperCase),
-		@"regex": regex,
+		@"regex": [self checkNull: regex],
 		@"history": @(history),
 		@"historyCount": @(historyCount),
 		@"expireable": @(expireable),
@@ -101,8 +101,8 @@
 - (NSDictionary *)updatePasswordPolicyWithPasswordPolicyId:(long long)passwordPolicyId name:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long long)maxAge warningTime:(long long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long long)lockoutDuration resetFailureCount:(long long)resetFailureCount resetTicketMaxAge:(long long)resetTicketMaxAge error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"passwordPolicyId": @(passwordPolicyId),
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"changeable": @(changeable),
 		@"changeRequired": @(changeRequired),
 		@"minAge": @(minAge),
@@ -135,8 +135,8 @@
 - (NSDictionary *)updatePasswordPolicyWithPasswordPolicyId:(long long)passwordPolicyId name:(NSString *)name description:(NSString *)description changeable:(BOOL)changeable changeRequired:(BOOL)changeRequired minAge:(long long)minAge checkSyntax:(BOOL)checkSyntax allowDictionaryWords:(BOOL)allowDictionaryWords minAlphanumeric:(int)minAlphanumeric minLength:(int)minLength minLowerCase:(int)minLowerCase minNumbers:(int)minNumbers minSymbols:(int)minSymbols minUpperCase:(int)minUpperCase regex:(NSString *)regex history:(BOOL)history historyCount:(int)historyCount expireable:(BOOL)expireable maxAge:(long long)maxAge warningTime:(long long)warningTime graceLimit:(int)graceLimit lockout:(BOOL)lockout maxFailure:(int)maxFailure lockoutDuration:(long long)lockoutDuration resetFailureCount:(long long)resetFailureCount resetTicketMaxAge:(long long)resetTicketMaxAge serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"passwordPolicyId": @(passwordPolicyId),
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"changeable": @(changeable),
 		@"changeRequired": @(changeRequired),
 		@"minAge": @(minAge),
@@ -148,7 +148,7 @@
 		@"minNumbers": @(minNumbers),
 		@"minSymbols": @(minSymbols),
 		@"minUpperCase": @(minUpperCase),
-		@"regex": regex,
+		@"regex": [self checkNull: regex],
 		@"history": @(history),
 		@"historyCount": @(historyCount),
 		@"expireable": @(expireable),

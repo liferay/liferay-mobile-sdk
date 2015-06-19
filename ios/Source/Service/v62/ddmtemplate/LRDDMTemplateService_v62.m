@@ -24,12 +24,12 @@
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
-		@"type": type,
-		@"mode": mode,
-		@"language": language,
-		@"script": script,
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"type": [self checkNull: type],
+		@"mode": [self checkNull: mode],
+		@"language": [self checkNull: language],
+		@"script": [self checkNull: script],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -44,17 +44,17 @@
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
-		@"templateKey": templateKey,
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
-		@"type": type,
-		@"mode": mode,
-		@"language": language,
-		@"script": script,
+		@"templateKey": [self checkNull: templateKey],
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"type": [self checkNull: type],
+		@"mode": [self checkNull: mode],
+		@"language": [self checkNull: language],
+		@"script": [self checkNull: script],
 		@"cacheable": @(cacheable),
 		@"smallImage": @(smallImage),
-		@"smallImageURL": smallImageURL,
-		@"smallImageFile": smallImageFile,
+		@"smallImageURL": [self checkNull: smallImageURL],
+		@"smallImageFile": [self checkNull: smallImageFile],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -79,8 +79,8 @@
 - (NSDictionary *)copyTemplateWithTemplateId:(long long)templateId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"templateId": @(templateId),
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -95,7 +95,7 @@
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
 		@"newClassPK": @(newClassPK),
-		@"type": type,
+		@"type": [self checkNull: type],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -119,7 +119,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
-		@"templateKey": templateKey
+		@"templateKey": [self checkNull: templateKey]
 	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/fetch-template": _params};
@@ -141,7 +141,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
-		@"templateKey": templateKey
+		@"templateKey": [self checkNull: templateKey]
 	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/get-template": _params};
@@ -153,7 +153,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
-		@"templateKey": templateKey,
+		@"templateKey": [self checkNull: templateKey],
 		@"includeGlobalTemplates": @(includeGlobalTemplates)
 	}];
 
@@ -190,7 +190,7 @@
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
-		@"type": type
+		@"type": [self checkNull: type]
 	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/get-templates": _params};
@@ -203,8 +203,8 @@
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
-		@"type": type,
-		@"mode": mode
+		@"type": [self checkNull: type],
+		@"mode": [self checkNull: mode]
 	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/get-templates": _params};
@@ -255,9 +255,9 @@
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
-		@"keywords": keywords,
-		@"type": type,
-		@"mode": mode,
+		@"keywords": [self checkNull: keywords],
+		@"type": [self checkNull: type],
+		@"mode": [self checkNull: mode],
 		@"start": @(start),
 		@"end": @(end),
 	}];
@@ -272,12 +272,12 @@
 - (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs keywords:(NSString *)keywords type:(NSString *)type mode:(NSString *)mode start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"groupIds": groupIds,
-		@"classNameIds": classNameIds,
-		@"classPKs": classPKs,
-		@"keywords": keywords,
-		@"type": type,
-		@"mode": mode,
+		@"groupIds": [self checkNull: groupIds],
+		@"classNameIds": [self checkNull: classNameIds],
+		@"classPKs": [self checkNull: classPKs],
+		@"keywords": [self checkNull: keywords],
+		@"type": [self checkNull: type],
+		@"mode": [self checkNull: mode],
 		@"start": @(start),
 		@"end": @(end),
 	}];
@@ -295,11 +295,11 @@
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
-		@"name": name,
-		@"description": description,
-		@"type": type,
-		@"mode": mode,
-		@"language": language,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"type": [self checkNull: type],
+		@"mode": [self checkNull: mode],
+		@"language": [self checkNull: language],
 		@"andOperator": @(andOperator),
 		@"start": @(start),
 		@"end": @(end),
@@ -315,14 +315,14 @@
 - (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs name:(NSString *)name description:(NSString *)description type:(NSString *)type mode:(NSString *)mode language:(NSString *)language andOperator:(BOOL)andOperator start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"groupIds": groupIds,
-		@"classNameIds": classNameIds,
-		@"classPKs": classPKs,
-		@"name": name,
-		@"description": description,
-		@"type": type,
-		@"mode": mode,
-		@"language": language,
+		@"groupIds": [self checkNull: groupIds],
+		@"classNameIds": [self checkNull: classNameIds],
+		@"classPKs": [self checkNull: classPKs],
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"type": [self checkNull: type],
+		@"mode": [self checkNull: mode],
+		@"language": [self checkNull: language],
 		@"andOperator": @(andOperator),
 		@"start": @(start),
 		@"end": @(end),
@@ -341,11 +341,11 @@
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
-		@"name": name,
-		@"description": description,
-		@"type": type,
-		@"mode": mode,
-		@"language": language,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"type": [self checkNull: type],
+		@"mode": [self checkNull: mode],
+		@"language": [self checkNull: language],
 		@"andOperator": @(andOperator)
 	}];
 
@@ -357,14 +357,14 @@
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs name:(NSString *)name description:(NSString *)description type:(NSString *)type mode:(NSString *)mode language:(NSString *)language andOperator:(BOOL)andOperator error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"groupIds": groupIds,
-		@"classNameIds": classNameIds,
-		@"classPKs": classPKs,
-		@"name": name,
-		@"description": description,
-		@"type": type,
-		@"mode": mode,
-		@"language": language,
+		@"groupIds": [self checkNull: groupIds],
+		@"classNameIds": [self checkNull: classNameIds],
+		@"classPKs": [self checkNull: classPKs],
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"type": [self checkNull: type],
+		@"mode": [self checkNull: mode],
+		@"language": [self checkNull: language],
 		@"andOperator": @(andOperator)
 	}];
 
@@ -379,9 +379,9 @@
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
-		@"keywords": keywords,
-		@"type": type,
-		@"mode": mode
+		@"keywords": [self checkNull: keywords],
+		@"type": [self checkNull: type],
+		@"mode": [self checkNull: mode]
 	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/search-count": _params};
@@ -392,12 +392,12 @@
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs keywords:(NSString *)keywords type:(NSString *)type mode:(NSString *)mode error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"groupIds": groupIds,
-		@"classNameIds": classNameIds,
-		@"classPKs": classPKs,
-		@"keywords": keywords,
-		@"type": type,
-		@"mode": mode
+		@"groupIds": [self checkNull: groupIds],
+		@"classNameIds": [self checkNull: classNameIds],
+		@"classPKs": [self checkNull: classPKs],
+		@"keywords": [self checkNull: keywords],
+		@"type": [self checkNull: type],
+		@"mode": [self checkNull: mode]
 	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/search-count": _params};
@@ -409,16 +409,16 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"templateId": @(templateId),
 		@"classPK": @(classPK),
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
-		@"type": type,
-		@"mode": mode,
-		@"language": language,
-		@"script": script,
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"type": [self checkNull: type],
+		@"mode": [self checkNull: mode],
+		@"language": [self checkNull: language],
+		@"script": [self checkNull: script],
 		@"cacheable": @(cacheable),
 		@"smallImage": @(smallImage),
-		@"smallImageURL": smallImageURL,
-		@"smallImageFile": smallImageFile,
+		@"smallImageURL": [self checkNull: smallImageURL],
+		@"smallImageFile": [self checkNull: smallImageFile],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];

@@ -21,7 +21,7 @@
 
 - (void)deleteEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK)
 	}];
 
@@ -32,7 +32,7 @@
 
 - (NSDictionary *)updateEntryWithClassName:(NSString *)className classPK:(long long)classPK score:(double)score error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK),
 		@"score": @(score)
 	}];

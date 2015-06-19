@@ -21,8 +21,8 @@
 
 - (NSDictionary *)addNodeWithName:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -55,7 +55,7 @@
 - (NSDictionary *)getNodeWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/wikinode/get-node": _params};
@@ -173,8 +173,8 @@
 - (NSDictionary *)updateNodeWithNodeId:(long long)nodeId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"nodeId": @(nodeId),
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];

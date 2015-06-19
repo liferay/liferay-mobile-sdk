@@ -21,7 +21,7 @@
 
 - (NSArray *)getActivitiesWithClassName:(NSString *)className start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -46,7 +46,7 @@
 - (NSArray *)getActivitiesWithMirrorActivityId:(long long)mirrorActivityId className:(NSString *)className classPK:(long long)classPK start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"mirrorActivityId": @(mirrorActivityId),
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK),
 		@"start": @(start),
 		@"end": @(end)
@@ -73,7 +73,7 @@
 
 - (NSNumber *)getActivitiesCountWithClassName:(NSString *)className error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className
+		@"className": [self checkNull: className]
 	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-activities-count": _params};
@@ -94,7 +94,7 @@
 - (NSNumber *)getActivitiesCountWithMirrorActivityId:(long long)mirrorActivityId className:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"mirrorActivityId": @(mirrorActivityId),
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK)
 	}];
 

@@ -23,11 +23,11 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
-		@"sourceFileName": sourceFileName,
-		@"mimeType": mimeType,
-		@"title": title,
-		@"description": description,
-		@"changeLog": changeLog,
+		@"sourceFileName": [self checkNull: sourceFileName],
+		@"mimeType": [self checkNull: mimeType],
+		@"title": [self checkNull: title],
+		@"description": [self checkNull: description],
+		@"changeLog": [self checkNull: changeLog],
 		@"bytes": [self toString:bytes],
 	}];
 
@@ -42,12 +42,12 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
-		@"sourceFileName": sourceFileName,
-		@"mimeType": mimeType,
-		@"title": title,
-		@"description": description,
-		@"changeLog": changeLog,
-		@"file": file,
+		@"sourceFileName": [self checkNull: sourceFileName],
+		@"mimeType": [self checkNull: mimeType],
+		@"title": [self checkNull: title],
+		@"description": [self checkNull: description],
+		@"changeLog": [self checkNull: changeLog],
+		@"file": [self checkNull: file],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -75,8 +75,8 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"parentFolderId": @(parentFolderId),
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -90,10 +90,10 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
-		@"fileName": fileName,
-		@"tempFolderName": tempFolderName,
-		@"file": file,
-		@"mimeType": mimeType
+		@"fileName": [self checkNull: fileName],
+		@"tempFolderName": [self checkNull: tempFolderName],
+		@"file": [self checkNull: file],
+		@"mimeType": [self checkNull: mimeType]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/add-temp-file-entry": _params};
@@ -114,7 +114,7 @@
 - (void)checkInFileEntryWithFileEntryId:(long long)fileEntryId lockUuid:(NSString *)lockUuid error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"lockUuid": lockUuid
+		@"lockUuid": [self checkNull: lockUuid]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/check-in-file-entry": _params};
@@ -125,7 +125,7 @@
 - (void)checkInFileEntryWithFileEntryId:(long long)fileEntryId lockUuid:(NSString *)lockUuid serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"lockUuid": lockUuid,
+		@"lockUuid": [self checkNull: lockUuid],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -139,7 +139,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
 		@"majorVersion": @(majorVersion),
-		@"changeLog": changeLog,
+		@"changeLog": [self checkNull: changeLog],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -164,7 +164,7 @@
 - (NSDictionary *)checkOutFileEntryWithFileEntryId:(long long)fileEntryId owner:(NSString *)owner expirationTime:(long long)expirationTime serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"owner": owner,
+		@"owner": [self checkNull: owner],
 		@"expirationTime": @(expirationTime),
 	}];
 
@@ -180,8 +180,8 @@
 		@"repositoryId": @(repositoryId),
 		@"sourceFolderId": @(sourceFolderId),
 		@"parentFolderId": @(parentFolderId),
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -205,7 +205,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
-		@"title": title
+		@"title": [self checkNull: title]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/delete-file-entry-by-title": _params};
@@ -226,7 +226,7 @@
 - (void)deleteFileVersionWithFileEntryId:(long long)fileEntryId version:(NSString *)version error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"version": version
+		@"version": [self checkNull: version]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/delete-file-version": _params};
@@ -248,7 +248,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"parentFolderId": @(parentFolderId),
-		@"name": name
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/delete-folder": _params};
@@ -260,8 +260,8 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
-		@"fileName": fileName,
-		@"tempFolderName": tempFolderName
+		@"fileName": [self checkNull: fileName],
+		@"tempFolderName": [self checkNull: tempFolderName]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/delete-temp-file-entry": _params};
@@ -296,7 +296,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
-		@"mimeTypes": mimeTypes
+		@"mimeTypes": [self checkNull: mimeTypes]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/get-file-entries": _params};
@@ -393,7 +393,7 @@
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
 		@"status": @(status),
-		@"mimeTypes": mimeTypes
+		@"mimeTypes": [self checkNull: mimeTypes]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/get-file-entries-and-file-shortcuts-count": _params};
@@ -438,7 +438,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
-		@"title": title
+		@"title": [self checkNull: title]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/get-file-entry": _params};
@@ -448,7 +448,7 @@
 
 - (NSDictionary *)getFileEntryByUuidAndGroupIdWithUuid:(NSString *)uuid groupId:(long long)groupId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"uuid": uuid,
+		@"uuid": [self checkNull: uuid],
 		@"groupId": @(groupId)
 	}];
 
@@ -481,7 +481,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"parentFolderId": @(parentFolderId),
-		@"name": name
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/get-folder": _params};
@@ -624,7 +624,7 @@
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
 		@"status": @(status),
-		@"mimeTypes": mimeTypes,
+		@"mimeTypes": [self checkNull: mimeTypes],
 		@"includeMountFolders": @(includeMountFolders),
 		@"start": @(start),
 		@"end": @(end),
@@ -655,7 +655,7 @@
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
 		@"status": @(status),
-		@"mimeTypes": mimeTypes,
+		@"mimeTypes": [self checkNull: mimeTypes],
 		@"includeMountFolders": @(includeMountFolders)
 	}];
 
@@ -703,7 +703,7 @@
 - (NSNumber *)getFoldersFileEntriesCountWithRepositoryId:(long long)repositoryId folderIds:(NSArray *)folderIds status:(int)status error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
-		@"folderIds": folderIds,
+		@"folderIds": [self checkNull: folderIds],
 		@"status": @(status)
 	}];
 
@@ -775,7 +775,7 @@
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"rootFolderId": @(rootFolderId),
-		@"mimeTypes": mimeTypes,
+		@"mimeTypes": [self checkNull: mimeTypes],
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end),
@@ -816,7 +816,7 @@
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"rootFolderId": @(rootFolderId),
-		@"mimeTypes": mimeTypes,
+		@"mimeTypes": [self checkNull: mimeTypes],
 		@"status": @(status)
 	}];
 
@@ -901,7 +901,7 @@
 - (void)getSubfolderIdsWithRepositoryId:(long long)repositoryId folderIds:(NSArray *)folderIds folderId:(long long)folderId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
-		@"folderIds": folderIds,
+		@"folderIds": [self checkNull: folderIds],
 		@"folderId": @(folderId)
 	}];
 
@@ -914,7 +914,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
-		@"tempFolderName": tempFolderName
+		@"tempFolderName": [self checkNull: tempFolderName]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/get-temp-file-entry-names": _params};
@@ -935,7 +935,7 @@
 - (NSDictionary *)lockFileEntryWithFileEntryId:(long long)fileEntryId owner:(NSString *)owner expirationTime:(long long)expirationTime error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"owner": owner,
+		@"owner": [self checkNull: owner],
 		@"expirationTime": @(expirationTime)
 	}];
 
@@ -959,7 +959,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
-		@"owner": owner,
+		@"owner": [self checkNull: owner],
 		@"inheritable": @(inheritable),
 		@"expirationTime": @(expirationTime)
 	}];
@@ -1066,7 +1066,7 @@
 
 - (NSDictionary *)refreshFileEntryLockWithLockUuid:(NSString *)lockUuid companyId:(long long)companyId expirationTime:(long long)expirationTime error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"lockUuid": lockUuid,
+		@"lockUuid": [self checkNull: lockUuid],
 		@"companyId": @(companyId),
 		@"expirationTime": @(expirationTime)
 	}];
@@ -1078,7 +1078,7 @@
 
 - (NSDictionary *)refreshFolderLockWithLockUuid:(NSString *)lockUuid companyId:(long long)companyId expirationTime:(long long)expirationTime error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"lockUuid": lockUuid,
+		@"lockUuid": [self checkNull: lockUuid],
 		@"companyId": @(companyId),
 		@"expirationTime": @(expirationTime)
 	}];
@@ -1121,7 +1121,7 @@
 - (void)revertFileEntryWithFileEntryId:(long long)fileEntryId version:(NSString *)version serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"version": version,
+		@"version": [self checkNull: version],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -1175,7 +1175,7 @@
 		@"repositoryId": @(repositoryId),
 		@"creatorUserId": @(creatorUserId),
 		@"folderId": @(folderId),
-		@"mimeTypes": mimeTypes,
+		@"mimeTypes": [self checkNull: mimeTypes],
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
@@ -1221,7 +1221,7 @@
 - (void)unlockFileEntryWithFileEntryId:(long long)fileEntryId lockUuid:(NSString *)lockUuid error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"lockUuid": lockUuid
+		@"lockUuid": [self checkNull: lockUuid]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/unlock-file-entry": _params};
@@ -1233,7 +1233,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
-		@"lockUuid": lockUuid
+		@"lockUuid": [self checkNull: lockUuid]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/unlock-folder": _params};
@@ -1245,8 +1245,8 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"parentFolderId": @(parentFolderId),
-		@"name": name,
-		@"lockUuid": lockUuid
+		@"name": [self checkNull: name],
+		@"lockUuid": [self checkNull: lockUuid]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/unlock-folder": _params};
@@ -1279,11 +1279,11 @@
 - (NSDictionary *)updateFileEntryWithFileEntryId:(long long)fileEntryId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog majorVersion:(BOOL)majorVersion bytes:(NSData *)bytes serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"sourceFileName": sourceFileName,
-		@"mimeType": mimeType,
-		@"title": title,
-		@"description": description,
-		@"changeLog": changeLog,
+		@"sourceFileName": [self checkNull: sourceFileName],
+		@"mimeType": [self checkNull: mimeType],
+		@"title": [self checkNull: title],
+		@"description": [self checkNull: description],
+		@"changeLog": [self checkNull: changeLog],
 		@"majorVersion": @(majorVersion),
 		@"bytes": [self toString:bytes],
 	}];
@@ -1298,13 +1298,13 @@
 - (NSOperation *)updateFileEntryWithFileEntryId:(long long)fileEntryId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog majorVersion:(BOOL)majorVersion file:(LRUploadData *)file serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"sourceFileName": sourceFileName,
-		@"mimeType": mimeType,
-		@"title": title,
-		@"description": description,
-		@"changeLog": changeLog,
+		@"sourceFileName": [self checkNull: sourceFileName],
+		@"mimeType": [self checkNull: mimeType],
+		@"title": [self checkNull: title],
+		@"description": [self checkNull: description],
+		@"changeLog": [self checkNull: changeLog],
 		@"majorVersion": @(majorVersion),
-		@"file": file,
+		@"file": [self checkNull: file],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -1317,13 +1317,13 @@
 - (NSOperation *)updateFileEntryAndCheckInWithFileEntryId:(long long)fileEntryId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog majorVersion:(BOOL)majorVersion file:(LRUploadData *)file serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"sourceFileName": sourceFileName,
-		@"mimeType": mimeType,
-		@"title": title,
-		@"description": description,
-		@"changeLog": changeLog,
+		@"sourceFileName": [self checkNull: sourceFileName],
+		@"mimeType": [self checkNull: mimeType],
+		@"title": [self checkNull: title],
+		@"description": [self checkNull: description],
+		@"changeLog": [self checkNull: changeLog],
 		@"majorVersion": @(majorVersion),
-		@"file": file,
+		@"file": [self checkNull: file],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -1350,8 +1350,8 @@
 - (NSDictionary *)updateFolderWithFolderId:(long long)folderId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -1365,7 +1365,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"fileEntryId": @(fileEntryId),
-		@"lockUuid": lockUuid
+		@"lockUuid": [self checkNull: lockUuid]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/verify-file-entry-check-out": _params};
@@ -1377,7 +1377,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"fileEntryId": @(fileEntryId),
-		@"lockUuid": lockUuid
+		@"lockUuid": [self checkNull: lockUuid]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/verify-file-entry-lock": _params};
@@ -1389,7 +1389,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
-		@"lockUuid": lockUuid
+		@"lockUuid": [self checkNull: lockUuid]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/verify-inheritable-lock": _params};

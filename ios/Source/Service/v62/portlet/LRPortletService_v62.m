@@ -31,8 +31,8 @@
 - (NSDictionary *)updatePortletWithCompanyId:(long long)companyId portletId:(NSString *)portletId roles:(NSString *)roles active:(BOOL)active error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"portletId": portletId,
-		@"roles": roles,
+		@"portletId": [self checkNull: portletId],
+		@"roles": [self checkNull: roles],
 		@"active": @(active)
 	}];
 

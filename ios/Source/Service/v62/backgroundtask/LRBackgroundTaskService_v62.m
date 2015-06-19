@@ -32,8 +32,8 @@
 - (NSNumber *)getBackgroundTasksCountWithGroupId:(long long)groupId taskExecutorClassName:(NSString *)taskExecutorClassName completed:(NSString *)completed error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"taskExecutorClassName": taskExecutorClassName,
-		@"completed": completed
+		@"taskExecutorClassName": [self checkNull: taskExecutorClassName],
+		@"completed": [self checkNull: completed]
 	}];
 
 	NSDictionary *_command = @{@"/backgroundtask/get-background-tasks-count": _params};

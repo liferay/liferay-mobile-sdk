@@ -21,8 +21,8 @@
 
 - (NSDictionary *)addLayoutPrototypeWithNameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"nameMap": nameMap,
-		@"description": description,
+		@"nameMap": [self checkNull: nameMap],
+		@"description": [self checkNull: description],
 		@"active": @(active)
 	}];
 
@@ -33,8 +33,8 @@
 
 - (NSDictionary *)addLayoutPrototypeWithNameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"nameMap": nameMap,
-		@"description": description,
+		@"nameMap": [self checkNull: nameMap],
+		@"description": [self checkNull: description],
 		@"active": @(active),
 	}];
 
@@ -81,8 +81,8 @@
 - (NSDictionary *)updateLayoutPrototypeWithLayoutPrototypeId:(long long)layoutPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"layoutPrototypeId": @(layoutPrototypeId),
-		@"nameMap": nameMap,
-		@"description": description,
+		@"nameMap": [self checkNull: nameMap],
+		@"description": [self checkNull: description],
 		@"active": @(active)
 	}];
 
@@ -94,8 +94,8 @@
 - (NSDictionary *)updateLayoutPrototypeWithLayoutPrototypeId:(long long)layoutPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"layoutPrototypeId": @(layoutPrototypeId),
-		@"nameMap": nameMap,
-		@"description": description,
+		@"nameMap": [self checkNull: nameMap],
+		@"description": [self checkNull: description],
 		@"active": @(active),
 	}];
 

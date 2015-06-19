@@ -21,7 +21,7 @@
 
 - (NSDictionary *)addVocabularyWithTitle:(NSString *)title serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"title": title,
+		@"title": [self checkNull: title],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -33,9 +33,9 @@
 
 - (NSDictionary *)addVocabularyWithTitleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"titleMap": titleMap,
-		@"descriptionMap": descriptionMap,
-		@"settings": settings,
+		@"titleMap": [self checkNull: titleMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"settings": [self checkNull: settings],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -47,10 +47,10 @@
 
 - (NSDictionary *)addVocabularyWithTitle:(NSString *)title titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"title": title,
-		@"titleMap": titleMap,
-		@"descriptionMap": descriptionMap,
-		@"settings": settings,
+		@"title": [self checkNull: title],
+		@"titleMap": [self checkNull: titleMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"settings": [self checkNull: settings],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -62,7 +62,7 @@
 
 - (void)deleteVocabulariesWithVocabularyIds:(NSArray *)vocabularyIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"vocabularyIds": vocabularyIds
+		@"vocabularyIds": [self checkNull: vocabularyIds]
 	}];
 
 	NSDictionary *_command = @{@"/assetvocabulary/delete-vocabularies": _params};
@@ -72,7 +72,7 @@
 
 - (NSArray *)deleteVocabulariesWithVocabularyIds:(NSArray *)vocabularyIds serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"vocabularyIds": vocabularyIds,
+		@"vocabularyIds": [self checkNull: vocabularyIds],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -140,7 +140,7 @@
 - (NSArray *)getGroupVocabulariesWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"start": @(start),
 		@"end": @(end),
 	}];
@@ -165,7 +165,7 @@
 - (NSNumber *)getGroupVocabulariesCountWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-group-vocabularies-count": _params};
@@ -176,7 +176,7 @@
 - (NSDictionary *)getGroupVocabulariesDisplayWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"start": @(start),
 		@"end": @(end),
 	}];
@@ -191,7 +191,7 @@
 - (NSDictionary *)getGroupVocabulariesDisplayWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end addDefaultVocabulary:(BOOL)addDefaultVocabulary obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"start": @(start),
 		@"end": @(end),
 		@"addDefaultVocabulary": @(addDefaultVocabulary),
@@ -206,7 +206,7 @@
 
 - (NSArray *)getGroupsVocabulariesWithGroupIds:(NSArray *)groupIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": groupIds
+		@"groupIds": [self checkNull: groupIds]
 	}];
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-groups-vocabularies": _params};
@@ -216,8 +216,8 @@
 
 - (NSArray *)getGroupsVocabulariesWithGroupIds:(NSArray *)groupIds className:(NSString *)className error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": groupIds,
-		@"className": className
+		@"groupIds": [self checkNull: groupIds],
+		@"className": [self checkNull: className]
 	}];
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-groups-vocabularies": _params};
@@ -228,7 +228,7 @@
 - (NSDictionary *)getJsonGroupVocabulariesWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"start": @(start),
 		@"end": @(end),
 	}];
@@ -242,7 +242,7 @@
 
 - (NSArray *)getVocabulariesWithVocabularyIds:(NSArray *)vocabularyIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"vocabularyIds": vocabularyIds
+		@"vocabularyIds": [self checkNull: vocabularyIds]
 	}];
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-vocabularies": _params};
@@ -263,9 +263,9 @@
 - (NSDictionary *)updateVocabularyWithVocabularyId:(long long)vocabularyId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"vocabularyId": @(vocabularyId),
-		@"titleMap": titleMap,
-		@"descriptionMap": descriptionMap,
-		@"settings": settings,
+		@"titleMap": [self checkNull: titleMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"settings": [self checkNull: settings],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -278,10 +278,10 @@
 - (NSDictionary *)updateVocabularyWithVocabularyId:(long long)vocabularyId title:(NSString *)title titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"vocabularyId": @(vocabularyId),
-		@"title": title,
-		@"titleMap": titleMap,
-		@"descriptionMap": descriptionMap,
-		@"settings": settings,
+		@"title": [self checkNull: title],
+		@"titleMap": [self checkNull: titleMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"settings": [self checkNull: settings],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];

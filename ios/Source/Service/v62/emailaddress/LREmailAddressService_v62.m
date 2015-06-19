@@ -21,9 +21,9 @@
 
 - (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK),
-		@"address": address,
+		@"address": [self checkNull: address],
 		@"typeId": @(typeId),
 		@"primary": @(primary)
 	}];
@@ -35,9 +35,9 @@
 
 - (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long long)classPK address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK),
-		@"address": address,
+		@"address": [self checkNull: address],
 		@"typeId": @(typeId),
 		@"primary": @(primary),
 	}];
@@ -71,7 +71,7 @@
 
 - (NSArray *)getEmailAddressesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK)
 	}];
 
@@ -83,7 +83,7 @@
 - (NSDictionary *)updateEmailAddressWithEmailAddressId:(long long)emailAddressId address:(NSString *)address typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"emailAddressId": @(emailAddressId),
-		@"address": address,
+		@"address": [self checkNull: address],
 		@"typeId": @(typeId),
 		@"primary": @(primary)
 	}];

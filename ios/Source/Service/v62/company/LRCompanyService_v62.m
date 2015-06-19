@@ -51,7 +51,7 @@
 
 - (NSDictionary *)getCompanyByMxWithMx:(NSString *)mx error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"mx": mx
+		@"mx": [self checkNull: mx]
 	}];
 
 	NSDictionary *_command = @{@"/company/get-company-by-mx": _params};
@@ -61,7 +61,7 @@
 
 - (NSDictionary *)getCompanyByVirtualHostWithVirtualHost:(NSString *)virtualHost error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"virtualHost": virtualHost
+		@"virtualHost": [self checkNull: virtualHost]
 	}];
 
 	NSDictionary *_command = @{@"/company/get-company-by-virtual-host": _params};
@@ -71,7 +71,7 @@
 
 - (NSDictionary *)getCompanyByWebIdWithWebId:(NSString *)webId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"webId": webId
+		@"webId": [self checkNull: webId]
 	}];
 
 	NSDictionary *_command = @{@"/company/get-company-by-web-id": _params};
@@ -82,18 +82,18 @@
 - (NSDictionary *)updateCompanyWithCompanyId:(long long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx homeURL:(NSString *)homeURL name:(NSString *)name legalName:(NSString *)legalName legalId:(NSString *)legalId legalType:(NSString *)legalType sicCode:(NSString *)sicCode tickerSymbol:(NSString *)tickerSymbol industry:(NSString *)industry type:(NSString *)type size:(NSString *)size error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"virtualHost": virtualHost,
-		@"mx": mx,
-		@"homeURL": homeURL,
-		@"name": name,
-		@"legalName": legalName,
-		@"legalId": legalId,
-		@"legalType": legalType,
-		@"sicCode": sicCode,
-		@"tickerSymbol": tickerSymbol,
-		@"industry": industry,
-		@"type": type,
-		@"size": size
+		@"virtualHost": [self checkNull: virtualHost],
+		@"mx": [self checkNull: mx],
+		@"homeURL": [self checkNull: homeURL],
+		@"name": [self checkNull: name],
+		@"legalName": [self checkNull: legalName],
+		@"legalId": [self checkNull: legalId],
+		@"legalType": [self checkNull: legalType],
+		@"sicCode": [self checkNull: sicCode],
+		@"tickerSymbol": [self checkNull: tickerSymbol],
+		@"industry": [self checkNull: industry],
+		@"type": [self checkNull: type],
+		@"size": [self checkNull: size]
 	}];
 
 	NSDictionary *_command = @{@"/company/update-company": _params};
@@ -104,8 +104,8 @@
 - (NSDictionary *)updateCompanyWithCompanyId:(long long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx maxUsers:(int)maxUsers active:(BOOL)active error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"virtualHost": virtualHost,
-		@"mx": mx,
+		@"virtualHost": [self checkNull: virtualHost],
+		@"mx": [self checkNull: mx],
 		@"maxUsers": @(maxUsers),
 		@"active": @(active)
 	}];
@@ -118,8 +118,8 @@
 - (void)updateDisplayWithCompanyId:(long long)companyId languageId:(NSString *)languageId timeZoneId:(NSString *)timeZoneId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"languageId": languageId,
-		@"timeZoneId": timeZoneId
+		@"languageId": [self checkNull: languageId],
+		@"timeZoneId": [self checkNull: timeZoneId]
 	}];
 
 	NSDictionary *_command = @{@"/company/update-display": _params};

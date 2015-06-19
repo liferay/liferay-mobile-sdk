@@ -21,10 +21,10 @@
 
 - (NSDictionary *)addPhoneWithClassName:(NSString *)className classPK:(long long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK),
-		@"number": number,
-		@"extension": extension,
+		@"number": [self checkNull: number],
+		@"extension": [self checkNull: extension],
 		@"typeId": @(typeId),
 		@"primary": @(primary)
 	}];
@@ -36,10 +36,10 @@
 
 - (NSDictionary *)addPhoneWithClassName:(NSString *)className classPK:(long long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK),
-		@"number": number,
-		@"extension": extension,
+		@"number": [self checkNull: number],
+		@"extension": [self checkNull: extension],
 		@"typeId": @(typeId),
 		@"primary": @(primary),
 	}];
@@ -73,7 +73,7 @@
 
 - (NSArray *)getPhonesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK)
 	}];
 
@@ -85,8 +85,8 @@
 - (NSDictionary *)updatePhoneWithPhoneId:(long long)phoneId number:(NSString *)number extension:(NSString *)extension typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"phoneId": @(phoneId),
-		@"number": number,
-		@"extension": extension,
+		@"number": [self checkNull: number],
+		@"extension": [self checkNull: extension],
 		@"typeId": @(typeId),
 		@"primary": @(primary)
 	}];

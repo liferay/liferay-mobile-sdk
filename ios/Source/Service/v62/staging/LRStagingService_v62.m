@@ -32,7 +32,7 @@
 - (NSNumber *)createStagingRequestWithGroupId:(long long)groupId checksum:(NSString *)checksum error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"checksum": checksum
+		@"checksum": [self checkNull: checksum]
 	}];
 
 	NSDictionary *_command = @{@"/staging/create-staging-request": _params};
@@ -44,7 +44,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"stagingRequestId": @(stagingRequestId),
 		@"privateLayout": @(privateLayout),
-		@"parameterMap": parameterMap
+		@"parameterMap": [self checkNull: parameterMap]
 	}];
 
 	NSDictionary *_command = @{@"/staging/publish-staging-request": _params};
@@ -55,7 +55,7 @@
 - (void)updateStagingRequestWithStagingRequestId:(long long)stagingRequestId fileName:(NSString *)fileName bytes:(NSData *)bytes error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"stagingRequestId": @(stagingRequestId),
-		@"fileName": fileName,
+		@"fileName": [self checkNull: fileName],
 		@"bytes": [self toString:bytes]
 	}];
 
@@ -68,7 +68,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"stagingRequestId": @(stagingRequestId),
 		@"privateLayout": @(privateLayout),
-		@"parameterMap": parameterMap
+		@"parameterMap": [self checkNull: parameterMap]
 	}];
 
 	NSDictionary *_command = @{@"/staging/validate-staging-request": _params};

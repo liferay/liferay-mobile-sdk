@@ -22,8 +22,8 @@
 - (NSDictionary *)addFolderWithParentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentFolderId": @(parentFolderId),
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -208,7 +208,7 @@
 
 - (void)getSubfolderIdsWithFolderIds:(NSArray *)folderIds groupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"folderIds": folderIds,
+		@"folderIds": [self checkNull: folderIds],
 		@"groupId": @(groupId),
 		@"folderId": @(folderId)
 	}];
@@ -298,8 +298,8 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
 		@"parentFolderId": @(parentFolderId),
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"mergeWithParentFolder": @(mergeWithParentFolder),
 	}];
 

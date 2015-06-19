@@ -24,9 +24,9 @@
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
 		@"parentFolderId": @(parentFolderId),
-		@"name": name,
-		@"description": description,
-		@"portletId": portletId,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"portletId": [self checkNull: portletId],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"typeSettingsProperties" className:@"com.liferay.portal.kernel.util.UnicodeProperties" wrapper:typeSettingsProperties];
@@ -124,7 +124,7 @@
 - (NSArray *)getSupportedParametersWithClassNameId:(long long)classNameId configuration:(NSString *)configuration error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"classNameId": @(classNameId),
-		@"configuration": configuration
+		@"configuration": [self checkNull: configuration]
 	}];
 
 	NSDictionary *_command = @{@"/repository/get-supported-parameters": _params};
@@ -145,8 +145,8 @@
 - (void)updateRepositoryWithRepositoryId:(long long)repositoryId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
-		@"name": name,
-		@"description": description
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description]
 	}];
 
 	NSDictionary *_command = @{@"/repository/update-repository": _params};

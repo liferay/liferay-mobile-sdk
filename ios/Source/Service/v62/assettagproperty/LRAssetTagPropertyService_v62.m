@@ -22,8 +22,8 @@
 - (NSDictionary *)addTagPropertyWithTagId:(long long)tagId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"tagId": @(tagId),
-		@"key": key,
-		@"value": value
+		@"key": [self checkNull: key],
+		@"value": [self checkNull: value]
 	}];
 
 	NSDictionary *_command = @{@"/assettagproperty/add-tag-property": _params};
@@ -54,7 +54,7 @@
 - (NSArray *)getTagPropertyValuesWithCompanyId:(long long)companyId key:(NSString *)key error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"key": key
+		@"key": [self checkNull: key]
 	}];
 
 	NSDictionary *_command = @{@"/assettagproperty/get-tag-property-values": _params};
@@ -65,8 +65,8 @@
 - (NSDictionary *)updateTagPropertyWithTagPropertyId:(long long)tagPropertyId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"tagPropertyId": @(tagPropertyId),
-		@"key": key,
-		@"value": value
+		@"key": [self checkNull: key],
+		@"value": [self checkNull: value]
 	}];
 
 	NSDictionary *_command = @{@"/assettagproperty/update-tag-property": _params};

@@ -21,8 +21,8 @@
 
 - (NSDictionary *)addTagWithName:(NSString *)name tagProperties:(NSArray *)tagProperties serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"name": name,
-		@"tagProperties": tagProperties,
+		@"name": [self checkNull: name],
+		@"tagProperties": [self checkNull: tagProperties],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -44,7 +44,7 @@
 
 - (void)deleteTagsWithTagIds:(NSArray *)tagIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"tagIds": tagIds
+		@"tagIds": [self checkNull: tagIds]
 	}];
 
 	NSDictionary *_command = @{@"/assettag/delete-tags": _params};
@@ -89,7 +89,7 @@
 - (NSDictionary *)getGroupTagsDisplayWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -101,7 +101,7 @@
 
 - (NSArray *)getGroupsTagsWithGroupIds:(NSArray *)groupIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": groupIds
+		@"groupIds": [self checkNull: groupIds]
 	}];
 
 	NSDictionary *_command = @{@"/assettag/get-groups-tags": _params};
@@ -112,7 +112,7 @@
 - (NSDictionary *)getJsonGroupTagsWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -134,7 +134,7 @@
 
 - (NSArray *)getTagsWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK)
 	}];
 
@@ -147,7 +147,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
-		@"name": name
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/assettag/get-tags": _params};
@@ -158,8 +158,8 @@
 - (NSArray *)getTagsWithGroupId:(long long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
-		@"tagProperties": tagProperties,
+		@"name": [self checkNull: name],
+		@"tagProperties": [self checkNull: tagProperties],
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -171,9 +171,9 @@
 
 - (NSArray *)getTagsWithGroupIds:(NSArray *)groupIds name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": groupIds,
-		@"name": name,
-		@"tagProperties": tagProperties,
+		@"groupIds": [self checkNull: groupIds],
+		@"name": [self checkNull: name],
+		@"tagProperties": [self checkNull: tagProperties],
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -187,7 +187,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"start": @(start),
 		@"end": @(end),
 	}];
@@ -202,7 +202,7 @@
 - (NSNumber *)getTagsCountWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/assettag/get-tags-count": _params};
@@ -214,7 +214,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
-		@"name": name
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/assettag/get-tags-count": _params};
@@ -225,8 +225,8 @@
 - (NSNumber *)getTagsCountWithGroupId:(long long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
-		@"tagProperties": tagProperties
+		@"name": [self checkNull: name],
+		@"tagProperties": [self checkNull: tagProperties]
 	}];
 
 	NSDictionary *_command = @{@"/assettag/get-tags-count": _params};
@@ -248,7 +248,7 @@
 
 - (void)mergeTagsWithFromTagIds:(NSArray *)fromTagIds toTagId:(long long)toTagId overrideProperties:(BOOL)overrideProperties error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"fromTagIds": fromTagIds,
+		@"fromTagIds": [self checkNull: fromTagIds],
 		@"toTagId": @(toTagId),
 		@"overrideProperties": @(overrideProperties)
 	}];
@@ -261,8 +261,8 @@
 - (NSArray *)searchWithGroupId:(long long)groupId name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
-		@"tagProperties": tagProperties,
+		@"name": [self checkNull: name],
+		@"tagProperties": [self checkNull: tagProperties],
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -274,9 +274,9 @@
 
 - (NSArray *)searchWithGroupIds:(NSArray *)groupIds name:(NSString *)name tagProperties:(NSArray *)tagProperties start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": groupIds,
-		@"name": name,
-		@"tagProperties": tagProperties,
+		@"groupIds": [self checkNull: groupIds],
+		@"name": [self checkNull: name],
+		@"tagProperties": [self checkNull: tagProperties],
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -289,8 +289,8 @@
 - (NSDictionary *)updateTagWithTagId:(long long)tagId name:(NSString *)name tagProperties:(NSArray *)tagProperties serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"tagId": @(tagId),
-		@"name": name,
-		@"tagProperties": tagProperties,
+		@"name": [self checkNull: name],
+		@"tagProperties": [self checkNull: tagProperties],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];

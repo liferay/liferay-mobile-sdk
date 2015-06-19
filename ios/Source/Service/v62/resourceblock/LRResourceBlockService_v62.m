@@ -23,9 +23,9 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"roleId": @(roleId),
-		@"actionId": actionId
+		@"actionId": [self checkNull: actionId]
 	}];
 
 	NSDictionary *_command = @{@"/resourceblock/add-company-scope-permission": _params};
@@ -38,9 +38,9 @@
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"roleId": @(roleId),
-		@"actionId": actionId
+		@"actionId": [self checkNull: actionId]
 	}];
 
 	NSDictionary *_command = @{@"/resourceblock/add-group-scope-permission": _params};
@@ -52,10 +52,10 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"primKey": @(primKey),
 		@"roleId": @(roleId),
-		@"actionId": actionId
+		@"actionId": [self checkNull: actionId]
 	}];
 
 	NSDictionary *_command = @{@"/resourceblock/add-individual-scope-permission": _params};
@@ -67,9 +67,9 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"roleId": @(roleId),
-		@"actionId": actionId
+		@"actionId": [self checkNull: actionId]
 	}];
 
 	NSDictionary *_command = @{@"/resourceblock/remove-all-group-scope-permissions": _params};
@@ -81,9 +81,9 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"roleId": @(roleId),
-		@"actionId": actionId
+		@"actionId": [self checkNull: actionId]
 	}];
 
 	NSDictionary *_command = @{@"/resourceblock/remove-company-scope-permission": _params};
@@ -96,9 +96,9 @@
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"roleId": @(roleId),
-		@"actionId": actionId
+		@"actionId": [self checkNull: actionId]
 	}];
 
 	NSDictionary *_command = @{@"/resourceblock/remove-group-scope-permission": _params};
@@ -110,10 +110,10 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"primKey": @(primKey),
 		@"roleId": @(roleId),
-		@"actionId": actionId
+		@"actionId": [self checkNull: actionId]
 	}];
 
 	NSDictionary *_command = @{@"/resourceblock/remove-individual-scope-permission": _params};
@@ -125,9 +125,9 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"roleId": @(roleId),
-		@"actionIds": actionIds
+		@"actionIds": [self checkNull: actionIds]
 	}];
 
 	NSDictionary *_command = @{@"/resourceblock/set-company-scope-permissions": _params};
@@ -140,9 +140,9 @@
 		@"scopeGroupId": @(scopeGroupId),
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"roleId": @(roleId),
-		@"actionIds": actionIds
+		@"actionIds": [self checkNull: actionIds]
 	}];
 
 	NSDictionary *_command = @{@"/resourceblock/set-group-scope-permissions": _params};
@@ -154,9 +154,9 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"primKey": @(primKey),
-		@"roleIdsToActionIds": roleIdsToActionIds
+		@"roleIdsToActionIds": [self checkNull: roleIdsToActionIds]
 	}];
 
 	NSDictionary *_command = @{@"/resourceblock/set-individual-scope-permissions": _params};
@@ -168,10 +168,10 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"primKey": @(primKey),
 		@"roleId": @(roleId),
-		@"actionIds": actionIds
+		@"actionIds": [self checkNull: actionIds]
 	}];
 
 	NSDictionary *_command = @{@"/resourceblock/set-individual-scope-permissions": _params};

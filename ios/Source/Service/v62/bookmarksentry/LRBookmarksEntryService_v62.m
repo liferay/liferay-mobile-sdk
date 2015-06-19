@@ -23,9 +23,9 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
-		@"name": name,
-		@"url": url,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"url": [self checkNull: url],
+		@"description": [self checkNull: description],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -109,7 +109,7 @@
 - (NSNumber *)getFoldersEntriesCountWithGroupId:(long long)groupId folderIds:(NSArray *)folderIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"folderIds": folderIds
+		@"folderIds": [self checkNull: folderIds]
 	}];
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-folders-entries-count": _params};
@@ -291,9 +291,9 @@
 		@"entryId": @(entryId),
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
-		@"name": name,
-		@"url": url,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"url": [self checkNull: url],
+		@"description": [self checkNull: description],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];

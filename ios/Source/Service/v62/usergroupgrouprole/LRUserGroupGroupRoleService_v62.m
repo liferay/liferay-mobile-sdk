@@ -23,7 +23,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userGroupId": @(userGroupId),
 		@"groupId": @(groupId),
-		@"roleIds": roleIds
+		@"roleIds": [self checkNull: roleIds]
 	}];
 
 	NSDictionary *_command = @{@"/usergroupgrouprole/add-user-group-group-roles": _params};
@@ -33,7 +33,7 @@
 
 - (void)addUserGroupGroupRolesWithUserGroupIds:(NSArray *)userGroupIds groupId:(long long)groupId roleId:(long long)roleId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userGroupIds": userGroupIds,
+		@"userGroupIds": [self checkNull: userGroupIds],
 		@"groupId": @(groupId),
 		@"roleId": @(roleId)
 	}];
@@ -47,7 +47,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userGroupId": @(userGroupId),
 		@"groupId": @(groupId),
-		@"roleIds": roleIds
+		@"roleIds": [self checkNull: roleIds]
 	}];
 
 	NSDictionary *_command = @{@"/usergroupgrouprole/delete-user-group-group-roles": _params};
@@ -57,7 +57,7 @@
 
 - (void)deleteUserGroupGroupRolesWithUserGroupIds:(NSArray *)userGroupIds groupId:(long long)groupId roleId:(long long)roleId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userGroupIds": userGroupIds,
+		@"userGroupIds": [self checkNull: userGroupIds],
 		@"groupId": @(groupId),
 		@"roleId": @(roleId)
 	}];

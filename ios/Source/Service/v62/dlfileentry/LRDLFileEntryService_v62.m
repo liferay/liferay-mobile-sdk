@@ -32,7 +32,7 @@
 - (void)checkInFileEntryWithFileEntryId:(long long)fileEntryId lockUuid:(NSString *)lockUuid error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"lockUuid": lockUuid
+		@"lockUuid": [self checkNull: lockUuid]
 	}];
 
 	NSDictionary *_command = @{@"/dlfileentry/check-in-file-entry": _params};
@@ -43,7 +43,7 @@
 - (void)checkInFileEntryWithFileEntryId:(long long)fileEntryId lockUuid:(NSString *)lockUuid serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"lockUuid": lockUuid,
+		@"lockUuid": [self checkNull: lockUuid],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -57,7 +57,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
 		@"major": @(major),
-		@"changeLog": changeLog,
+		@"changeLog": [self checkNull: changeLog],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -92,7 +92,7 @@
 - (NSDictionary *)checkOutFileEntryWithFileEntryId:(long long)fileEntryId owner:(NSString *)owner expirationTime:(long long)expirationTime error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"owner": owner,
+		@"owner": [self checkNull: owner],
 		@"expirationTime": @(expirationTime)
 	}];
 
@@ -104,7 +104,7 @@
 - (NSDictionary *)checkOutFileEntryWithFileEntryId:(long long)fileEntryId owner:(NSString *)owner expirationTime:(long long)expirationTime serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"owner": owner,
+		@"owner": [self checkNull: owner],
 		@"expirationTime": @(expirationTime),
 	}];
 
@@ -144,7 +144,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
-		@"title": title
+		@"title": [self checkNull: title]
 	}];
 
 	NSDictionary *_command = @{@"/dlfileentry/delete-file-entry": _params};
@@ -155,7 +155,7 @@
 - (void)deleteFileVersionWithFileEntryId:(long long)fileEntryId version:(NSString *)version error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"version": version
+		@"version": [self checkNull: version]
 	}];
 
 	NSDictionary *_command = @{@"/dlfileentry/delete-file-version": _params};
@@ -208,7 +208,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
-		@"mimeTypes": mimeTypes,
+		@"mimeTypes": [self checkNull: mimeTypes],
 		@"start": @(start),
 		@"end": @(end),
 	}];
@@ -263,7 +263,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
-		@"mimeTypes": mimeTypes
+		@"mimeTypes": [self checkNull: mimeTypes]
 	}];
 
 	NSDictionary *_command = @{@"/dlfileentry/get-file-entries-count": _params};
@@ -297,7 +297,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
-		@"title": title
+		@"title": [self checkNull: title]
 	}];
 
 	NSDictionary *_command = @{@"/dlfileentry/get-file-entry": _params};
@@ -307,7 +307,7 @@
 
 - (NSDictionary *)getFileEntryByUuidAndGroupIdWithUuid:(NSString *)uuid groupId:(long long)groupId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"uuid": uuid,
+		@"uuid": [self checkNull: uuid],
 		@"groupId": @(groupId)
 	}];
 
@@ -329,7 +329,7 @@
 - (NSNumber *)getFoldersFileEntriesCountWithGroupId:(long long)groupId folderIds:(NSArray *)folderIds status:(int)status error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"folderIds": folderIds,
+		@"folderIds": [self checkNull: folderIds],
 		@"status": @(status)
 	}];
 
@@ -359,7 +359,7 @@
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"rootFolderId": @(rootFolderId),
-		@"mimeTypes": mimeTypes,
+		@"mimeTypes": [self checkNull: mimeTypes],
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end),
@@ -389,7 +389,7 @@
 		@"groupId": @(groupId),
 		@"userId": @(userId),
 		@"rootFolderId": @(rootFolderId),
-		@"mimeTypes": mimeTypes,
+		@"mimeTypes": [self checkNull: mimeTypes],
 		@"status": @(status)
 	}];
 
@@ -433,7 +433,7 @@
 
 - (NSDictionary *)refreshFileEntryLockWithLockUuid:(NSString *)lockUuid companyId:(long long)companyId expirationTime:(long long)expirationTime error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"lockUuid": lockUuid,
+		@"lockUuid": [self checkNull: lockUuid],
 		@"companyId": @(companyId),
 		@"expirationTime": @(expirationTime)
 	}];
@@ -446,7 +446,7 @@
 - (void)revertFileEntryWithFileEntryId:(long long)fileEntryId version:(NSString *)version serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"version": version,
+		@"version": [self checkNull: version],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -475,7 +475,7 @@
 		@"groupId": @(groupId),
 		@"creatorUserId": @(creatorUserId),
 		@"folderId": @(folderId),
-		@"mimeTypes": mimeTypes,
+		@"mimeTypes": [self checkNull: mimeTypes],
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
@@ -489,7 +489,7 @@
 - (BOOL)verifyFileEntryCheckOutWithFileEntryId:(long long)fileEntryId lockUuid:(NSString *)lockUuid error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"lockUuid": lockUuid
+		@"lockUuid": [self checkNull: lockUuid]
 	}];
 
 	NSDictionary *_command = @{@"/dlfileentry/verify-file-entry-check-out": _params};
@@ -500,7 +500,7 @@
 - (BOOL)verifyFileEntryLockWithFileEntryId:(long long)fileEntryId lockUuid:(NSString *)lockUuid error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"lockUuid": lockUuid
+		@"lockUuid": [self checkNull: lockUuid]
 	}];
 
 	NSDictionary *_command = @{@"/dlfileentry/verify-file-entry-lock": _params};

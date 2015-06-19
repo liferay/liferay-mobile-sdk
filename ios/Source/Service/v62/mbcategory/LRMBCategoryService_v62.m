@@ -22,24 +22,24 @@
 - (NSDictionary *)addCategoryWithParentCategoryId:(long long)parentCategoryId name:(NSString *)name description:(NSString *)description displayStyle:(NSString *)displayStyle emailAddress:(NSString *)emailAddress inProtocol:(NSString *)inProtocol inServerName:(NSString *)inServerName inServerPort:(int)inServerPort inUseSSL:(BOOL)inUseSSL inUserName:(NSString *)inUserName inPassword:(NSString *)inPassword inReadInterval:(int)inReadInterval outEmailAddress:(NSString *)outEmailAddress outCustom:(BOOL)outCustom outServerName:(NSString *)outServerName outServerPort:(int)outServerPort outUseSSL:(BOOL)outUseSSL outUserName:(NSString *)outUserName outPassword:(NSString *)outPassword mailingListActive:(BOOL)mailingListActive allowAnonymousEmail:(BOOL)allowAnonymousEmail serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentCategoryId": @(parentCategoryId),
-		@"name": name,
-		@"description": description,
-		@"displayStyle": displayStyle,
-		@"emailAddress": emailAddress,
-		@"inProtocol": inProtocol,
-		@"inServerName": inServerName,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"displayStyle": [self checkNull: displayStyle],
+		@"emailAddress": [self checkNull: emailAddress],
+		@"inProtocol": [self checkNull: inProtocol],
+		@"inServerName": [self checkNull: inServerName],
 		@"inServerPort": @(inServerPort),
 		@"inUseSSL": @(inUseSSL),
-		@"inUserName": inUserName,
-		@"inPassword": inPassword,
+		@"inUserName": [self checkNull: inUserName],
+		@"inPassword": [self checkNull: inPassword],
 		@"inReadInterval": @(inReadInterval),
-		@"outEmailAddress": outEmailAddress,
+		@"outEmailAddress": [self checkNull: outEmailAddress],
 		@"outCustom": @(outCustom),
-		@"outServerName": outServerName,
+		@"outServerName": [self checkNull: outServerName],
 		@"outServerPort": @(outServerPort),
 		@"outUseSSL": @(outUseSSL),
-		@"outUserName": outUserName,
-		@"outPassword": outPassword,
+		@"outUserName": [self checkNull: outUserName],
+		@"outPassword": [self checkNull: outPassword],
 		@"mailingListActive": @(mailingListActive),
 		@"allowAnonymousEmail": @(allowAnonymousEmail),
 	}];
@@ -55,8 +55,8 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"parentCategoryId": @(parentCategoryId),
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -125,7 +125,7 @@
 - (NSArray *)getCategoriesWithGroupId:(long long)groupId parentCategoryIds:(NSArray *)parentCategoryIds start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"parentCategoryIds": parentCategoryIds,
+		@"parentCategoryIds": [self checkNull: parentCategoryIds],
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -152,7 +152,7 @@
 - (NSArray *)getCategoriesWithGroupId:(long long)groupId parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"parentCategoryIds": parentCategoryIds,
+		@"parentCategoryIds": [self checkNull: parentCategoryIds],
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
@@ -177,7 +177,7 @@
 - (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId parentCategoryIds:(NSArray *)parentCategoryIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"parentCategoryIds": parentCategoryIds
+		@"parentCategoryIds": [self checkNull: parentCategoryIds]
 	}];
 
 	NSDictionary *_command = @{@"/mbcategory/get-categories-count": _params};
@@ -200,7 +200,7 @@
 - (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"parentCategoryIds": parentCategoryIds,
+		@"parentCategoryIds": [self checkNull: parentCategoryIds],
 		@"status": @(status)
 	}];
 
@@ -232,7 +232,7 @@
 
 - (NSArray *)getSubcategoryIdsWithCategoryIds:(NSArray *)categoryIds groupId:(long long)groupId categoryId:(long long)categoryId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"categoryIds": categoryIds,
+		@"categoryIds": [self checkNull: categoryIds],
 		@"groupId": @(groupId),
 		@"categoryId": @(categoryId)
 	}];
@@ -335,24 +335,24 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"categoryId": @(categoryId),
 		@"parentCategoryId": @(parentCategoryId),
-		@"name": name,
-		@"description": description,
-		@"displayStyle": displayStyle,
-		@"emailAddress": emailAddress,
-		@"inProtocol": inProtocol,
-		@"inServerName": inServerName,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"displayStyle": [self checkNull: displayStyle],
+		@"emailAddress": [self checkNull: emailAddress],
+		@"inProtocol": [self checkNull: inProtocol],
+		@"inServerName": [self checkNull: inServerName],
 		@"inServerPort": @(inServerPort),
 		@"inUseSSL": @(inUseSSL),
-		@"inUserName": inUserName,
-		@"inPassword": inPassword,
+		@"inUserName": [self checkNull: inUserName],
+		@"inPassword": [self checkNull: inPassword],
 		@"inReadInterval": @(inReadInterval),
-		@"outEmailAddress": outEmailAddress,
+		@"outEmailAddress": [self checkNull: outEmailAddress],
 		@"outCustom": @(outCustom),
-		@"outServerName": outServerName,
+		@"outServerName": [self checkNull: outServerName],
 		@"outServerPort": @(outServerPort),
 		@"outUseSSL": @(outUseSSL),
-		@"outUserName": outUserName,
-		@"outPassword": outPassword,
+		@"outUserName": [self checkNull: outUserName],
+		@"outPassword": [self checkNull: outPassword],
 		@"mailingListActive": @(mailingListActive),
 		@"allowAnonymousEmail": @(allowAnonymousEmail),
 		@"mergeWithParentCategory": @(mergeWithParentCategory),

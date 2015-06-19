@@ -22,8 +22,8 @@
 - (void)checkPermissionWithGroupId:(long long)groupId name:(NSString *)name primKey:(NSString *)primKey error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
-		@"primKey": primKey
+		@"name": [self checkNull: name],
+		@"primKey": [self checkNull: primKey]
 	}];
 
 	NSDictionary *_command = @{@"/permission/check-permission": _params};

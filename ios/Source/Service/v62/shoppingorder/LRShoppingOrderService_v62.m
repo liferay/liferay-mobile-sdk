@@ -22,12 +22,12 @@
 - (void)completeOrderWithGroupId:(long long)groupId number:(NSString *)number ppTxnId:(NSString *)ppTxnId ppPaymentStatus:(NSString *)ppPaymentStatus ppPaymentGross:(double)ppPaymentGross ppReceiverEmail:(NSString *)ppReceiverEmail ppPayerEmail:(NSString *)ppPayerEmail serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"number": number,
-		@"ppTxnId": ppTxnId,
-		@"ppPaymentStatus": ppPaymentStatus,
+		@"number": [self checkNull: number],
+		@"ppTxnId": [self checkNull: ppTxnId],
+		@"ppPaymentStatus": [self checkNull: ppPaymentStatus],
 		@"ppPaymentGross": @(ppPaymentGross),
-		@"ppReceiverEmail": ppReceiverEmail,
-		@"ppPayerEmail": ppPayerEmail,
+		@"ppReceiverEmail": [self checkNull: ppReceiverEmail],
+		@"ppPayerEmail": [self checkNull: ppPayerEmail],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -63,7 +63,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"orderId": @(orderId),
-		@"emailType": emailType,
+		@"emailType": [self checkNull: emailType],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -77,34 +77,34 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"orderId": @(orderId),
-		@"billingFirstName": billingFirstName,
-		@"billingLastName": billingLastName,
-		@"billingEmailAddress": billingEmailAddress,
-		@"billingCompany": billingCompany,
-		@"billingStreet": billingStreet,
-		@"billingCity": billingCity,
-		@"billingState": billingState,
-		@"billingZip": billingZip,
-		@"billingCountry": billingCountry,
-		@"billingPhone": billingPhone,
+		@"billingFirstName": [self checkNull: billingFirstName],
+		@"billingLastName": [self checkNull: billingLastName],
+		@"billingEmailAddress": [self checkNull: billingEmailAddress],
+		@"billingCompany": [self checkNull: billingCompany],
+		@"billingStreet": [self checkNull: billingStreet],
+		@"billingCity": [self checkNull: billingCity],
+		@"billingState": [self checkNull: billingState],
+		@"billingZip": [self checkNull: billingZip],
+		@"billingCountry": [self checkNull: billingCountry],
+		@"billingPhone": [self checkNull: billingPhone],
 		@"shipToBilling": @(shipToBilling),
-		@"shippingFirstName": shippingFirstName,
-		@"shippingLastName": shippingLastName,
-		@"shippingEmailAddress": shippingEmailAddress,
-		@"shippingCompany": shippingCompany,
-		@"shippingStreet": shippingStreet,
-		@"shippingCity": shippingCity,
-		@"shippingState": shippingState,
-		@"shippingZip": shippingZip,
-		@"shippingCountry": shippingCountry,
-		@"shippingPhone": shippingPhone,
-		@"ccName": ccName,
-		@"ccType": ccType,
-		@"ccNumber": ccNumber,
+		@"shippingFirstName": [self checkNull: shippingFirstName],
+		@"shippingLastName": [self checkNull: shippingLastName],
+		@"shippingEmailAddress": [self checkNull: shippingEmailAddress],
+		@"shippingCompany": [self checkNull: shippingCompany],
+		@"shippingStreet": [self checkNull: shippingStreet],
+		@"shippingCity": [self checkNull: shippingCity],
+		@"shippingState": [self checkNull: shippingState],
+		@"shippingZip": [self checkNull: shippingZip],
+		@"shippingCountry": [self checkNull: shippingCountry],
+		@"shippingPhone": [self checkNull: shippingPhone],
+		@"ccName": [self checkNull: ccName],
+		@"ccType": [self checkNull: ccType],
+		@"ccNumber": [self checkNull: ccNumber],
 		@"ccExpMonth": @(ccExpMonth),
 		@"ccExpYear": @(ccExpYear),
-		@"ccVerNumber": ccVerNumber,
-		@"comments": comments
+		@"ccVerNumber": [self checkNull: ccVerNumber],
+		@"comments": [self checkNull: comments]
 	}];
 
 	NSDictionary *_command = @{@"/shoppingorder/update-order": _params};
@@ -116,11 +116,11 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"orderId": @(orderId),
-		@"ppTxnId": ppTxnId,
-		@"ppPaymentStatus": ppPaymentStatus,
+		@"ppTxnId": [self checkNull: ppTxnId],
+		@"ppPaymentStatus": [self checkNull: ppPaymentStatus],
 		@"ppPaymentGross": @(ppPaymentGross),
-		@"ppReceiverEmail": ppReceiverEmail,
-		@"ppPayerEmail": ppPayerEmail
+		@"ppReceiverEmail": [self checkNull: ppReceiverEmail],
+		@"ppPayerEmail": [self checkNull: ppPayerEmail]
 	}];
 
 	NSDictionary *_command = @{@"/shoppingorder/update-order": _params};

@@ -23,12 +23,12 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentGroupId": @(parentGroupId),
 		@"liveGroupId": @(liveGroupId),
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"type": @(type),
 		@"manualMembership": @(manualMembership),
 		@"membershipRestriction": @(membershipRestriction),
-		@"friendlyURL": friendlyURL,
+		@"friendlyURL": [self checkNull: friendlyURL],
 		@"site": @(site),
 		@"active": @(active),
 	}];
@@ -42,10 +42,10 @@
 
 - (NSDictionary *)addGroupWithName:(NSString *)name description:(NSString *)description type:(int)type friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"type": @(type),
-		@"friendlyURL": friendlyURL,
+		@"friendlyURL": [self checkNull: friendlyURL],
 		@"site": @(site),
 		@"active": @(active),
 	}];
@@ -60,10 +60,10 @@
 - (NSDictionary *)addGroupWithParentGroupId:(long long)parentGroupId name:(NSString *)name description:(NSString *)description type:(int)type friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentGroupId": @(parentGroupId),
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"type": @(type),
-		@"friendlyURL": friendlyURL,
+		@"friendlyURL": [self checkNull: friendlyURL],
 		@"site": @(site),
 		@"active": @(active),
 	}];
@@ -78,7 +78,7 @@
 - (void)addRoleGroupsWithRoleId:(long long)roleId groupIds:(NSArray *)groupIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"roleId": @(roleId),
-		@"groupIds": groupIds
+		@"groupIds": [self checkNull: groupIds]
 	}];
 
 	NSDictionary *_command = @{@"/group/add-role-groups": _params};
@@ -149,7 +149,7 @@
 - (NSDictionary *)getGroupWithCompanyId:(long long)companyId name:(NSString *)name error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"name": name
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/group/get-group": _params};
@@ -171,7 +171,7 @@
 
 - (NSArray *)getManageableSiteGroupsWithPortlets:(NSDictionary *)portlets max:(int)max error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"portlets": portlets,
+		@"portlets": [self checkNull: portlets],
 		@"max": @(max)
 	}];
 
@@ -182,7 +182,7 @@
 
 - (NSArray *)getManageableSitesWithPortlets:(NSDictionary *)portlets max:(int)max error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"portlets": portlets,
+		@"portlets": [self checkNull: portlets],
 		@"max": @(max)
 	}];
 
@@ -193,7 +193,7 @@
 
 - (NSArray *)getOrganizationsGroupsWithOrganizations:(NSArray *)organizations error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"organizations": organizations
+		@"organizations": [self checkNull: organizations]
 	}];
 
 	NSDictionary *_command = @{@"/group/get-organizations-groups": _params};
@@ -214,7 +214,7 @@
 
 - (NSArray *)getUserGroupsGroupsWithUserGroups:(NSArray *)userGroups error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userGroups": userGroups
+		@"userGroups": [self checkNull: userGroups]
 	}];
 
 	NSDictionary *_command = @{@"/group/get-user-groups-groups": _params};
@@ -236,7 +236,7 @@
 
 - (NSArray *)getUserPlacesWithClassNames:(NSArray *)classNames max:(int)max error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"classNames": classNames,
+		@"classNames": [self checkNull: classNames],
 		@"max": @(max)
 	}];
 
@@ -248,7 +248,7 @@
 - (NSArray *)getUserPlacesWithUserId:(long long)userId classNames:(NSArray *)classNames max:(int)max error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
-		@"classNames": classNames,
+		@"classNames": [self checkNull: classNames],
 		@"max": @(max)
 	}];
 
@@ -260,7 +260,7 @@
 - (NSArray *)getUserPlacesWithUserId:(long long)userId classNames:(NSArray *)classNames includeControlPanel:(BOOL)includeControlPanel max:(int)max error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
-		@"classNames": classNames,
+		@"classNames": [self checkNull: classNames],
 		@"includeControlPanel": @(includeControlPanel),
 		@"max": @(max)
 	}];
@@ -299,7 +299,7 @@
 
 - (NSArray *)getUserSitesGroupsWithClassNames:(NSArray *)classNames max:(int)max error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"classNames": classNames,
+		@"classNames": [self checkNull: classNames],
 		@"max": @(max)
 	}];
 
@@ -311,7 +311,7 @@
 - (NSArray *)getUserSitesGroupsWithUserId:(long long)userId classNames:(NSArray *)classNames max:(int)max error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
-		@"classNames": classNames,
+		@"classNames": [self checkNull: classNames],
 		@"max": @(max)
 	}];
 
@@ -323,7 +323,7 @@
 - (NSArray *)getUserSitesGroupsWithUserId:(long long)userId classNames:(NSArray *)classNames includeControlPanel:(BOOL)includeControlPanel max:(int)max error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
-		@"classNames": classNames,
+		@"classNames": [self checkNull: classNames],
 		@"includeControlPanel": @(includeControlPanel),
 		@"max": @(max)
 	}];
@@ -356,9 +356,9 @@
 - (NSArray *)searchWithCompanyId:(long long)companyId name:(NSString *)name description:(NSString *)description params:(NSArray *)params start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"name": name,
-		@"description": description,
-		@"params": params,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"params": [self checkNull: params],
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -371,9 +371,9 @@
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId name:(NSString *)name description:(NSString *)description params:(NSArray *)params error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"name": name,
-		@"description": description,
-		@"params": params
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"params": [self checkNull: params]
 	}];
 
 	NSDictionary *_command = @{@"/group/search-count": _params};
@@ -384,7 +384,7 @@
 - (void)setRoleGroupsWithRoleId:(long long)roleId groupIds:(NSArray *)groupIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"roleId": @(roleId),
-		@"groupIds": groupIds
+		@"groupIds": [self checkNull: groupIds]
 	}];
 
 	NSDictionary *_command = @{@"/group/set-role-groups": _params};
@@ -395,7 +395,7 @@
 - (void)unsetRoleGroupsWithRoleId:(long long)roleId groupIds:(NSArray *)groupIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"roleId": @(roleId),
-		@"groupIds": groupIds
+		@"groupIds": [self checkNull: groupIds]
 	}];
 
 	NSDictionary *_command = @{@"/group/unset-role-groups": _params};
@@ -406,7 +406,7 @@
 - (NSDictionary *)updateFriendlyUrlWithGroupId:(long long)groupId friendlyURL:(NSString *)friendlyURL error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"friendlyURL": friendlyURL
+		@"friendlyURL": [self checkNull: friendlyURL]
 	}];
 
 	NSDictionary *_command = @{@"/group/update-friendly-url": _params};
@@ -418,12 +418,12 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentGroupId": @(parentGroupId),
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"type": @(type),
 		@"manualMembership": @(manualMembership),
 		@"membershipRestriction": @(membershipRestriction),
-		@"friendlyURL": friendlyURL,
+		@"friendlyURL": [self checkNull: friendlyURL],
 		@"active": @(active),
 	}];
 
@@ -437,7 +437,7 @@
 - (NSDictionary *)updateGroupWithGroupId:(long long)groupId typeSettings:(NSString *)typeSettings error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"typeSettings": typeSettings
+		@"typeSettings": [self checkNull: typeSettings]
 	}];
 
 	NSDictionary *_command = @{@"/group/update-group": _params};
@@ -448,7 +448,7 @@
 - (void)updateStagedPortletsWithGroupId:(long long)groupId stagedPortletIds:(NSDictionary *)stagedPortletIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"stagedPortletIds": stagedPortletIds
+		@"stagedPortletIds": [self checkNull: stagedPortletIds]
 	}];
 
 	NSDictionary *_command = @{@"/group/update-staged-portlets": _params};

@@ -21,7 +21,7 @@
 
 - (void)deleteEntriesWithEntryIds:(NSArray *)entryIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"entryIds": entryIds
+		@"entryIds": [self checkNull: entryIds]
 	}];
 
 	NSDictionary *_command = @{@"/trashentry/delete-entries": _params};
@@ -51,7 +51,7 @@
 
 - (void)deleteEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK)
 	}];
 
@@ -86,7 +86,7 @@
 
 - (void)moveEntryWithClassName:(NSString *)className classPK:(long long)classPK destinationContainerModelId:(long long)destinationContainerModelId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK),
 		@"destinationContainerModelId": @(destinationContainerModelId),
 	}];
@@ -112,7 +112,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId),
 		@"overrideClassPK": @(overrideClassPK),
-		@"name": name
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/trashentry/restore-entry": _params};

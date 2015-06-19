@@ -22,8 +22,8 @@
 - (NSDictionary *)addTeamWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
-		@"description": description
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description]
 	}];
 
 	NSDictionary *_command = @{@"/team/add-team": _params};
@@ -64,7 +64,7 @@
 - (NSDictionary *)getTeamWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/team/get-team": _params};
@@ -107,8 +107,8 @@
 - (NSDictionary *)updateTeamWithTeamId:(long long)teamId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"teamId": @(teamId),
-		@"name": name,
-		@"description": description
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description]
 	}];
 
 	NSDictionary *_command = @{@"/team/update-team": _params};

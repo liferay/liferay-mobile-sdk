@@ -22,13 +22,13 @@
 - (NSDictionary *)addProductVersionWithProductEntryId:(long long)productEntryId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"productEntryId": @(productEntryId),
-		@"version": version,
-		@"changeLog": changeLog,
-		@"downloadPageURL": downloadPageURL,
-		@"directDownloadURL": directDownloadURL,
+		@"version": [self checkNull: version],
+		@"changeLog": [self checkNull: changeLog],
+		@"downloadPageURL": [self checkNull: downloadPageURL],
+		@"directDownloadURL": [self checkNull: directDownloadURL],
 		@"testDirectDownloadURL": @(testDirectDownloadURL),
 		@"repoStoreArtifact": @(repoStoreArtifact),
-		@"frameworkVersionIds": frameworkVersionIds,
+		@"frameworkVersionIds": [self checkNull: frameworkVersionIds],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -83,13 +83,13 @@
 - (NSDictionary *)updateProductVersionWithProductVersionId:(long long)productVersionId version:(NSString *)version changeLog:(NSString *)changeLog downloadPageURL:(NSString *)downloadPageURL directDownloadURL:(NSString *)directDownloadURL testDirectDownloadURL:(BOOL)testDirectDownloadURL repoStoreArtifact:(BOOL)repoStoreArtifact frameworkVersionIds:(NSArray *)frameworkVersionIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"productVersionId": @(productVersionId),
-		@"version": version,
-		@"changeLog": changeLog,
-		@"downloadPageURL": downloadPageURL,
-		@"directDownloadURL": directDownloadURL,
+		@"version": [self checkNull: version],
+		@"changeLog": [self checkNull: changeLog],
+		@"downloadPageURL": [self checkNull: downloadPageURL],
+		@"directDownloadURL": [self checkNull: directDownloadURL],
 		@"testDirectDownloadURL": @(testDirectDownloadURL),
 		@"repoStoreArtifact": @(repoStoreArtifact),
-		@"frameworkVersionIds": frameworkVersionIds
+		@"frameworkVersionIds": [self checkNull: frameworkVersionIds]
 	}];
 
 	NSDictionary *_command = @{@"/scproductversion/update-product-version": _params};

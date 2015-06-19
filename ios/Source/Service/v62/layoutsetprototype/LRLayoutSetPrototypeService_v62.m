@@ -21,8 +21,8 @@
 
 - (NSDictionary *)addLayoutSetPrototypeWithNameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active layoutsUpdateable:(BOOL)layoutsUpdateable serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"nameMap": nameMap,
-		@"description": description,
+		@"nameMap": [self checkNull: nameMap],
+		@"description": [self checkNull: description],
 		@"active": @(active),
 		@"layoutsUpdateable": @(layoutsUpdateable),
 	}];
@@ -70,7 +70,7 @@
 - (NSDictionary *)updateLayoutSetPrototypeWithLayoutSetPrototypeId:(long long)layoutSetPrototypeId settings:(NSString *)settings error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"layoutSetPrototypeId": @(layoutSetPrototypeId),
-		@"settings": settings
+		@"settings": [self checkNull: settings]
 	}];
 
 	NSDictionary *_command = @{@"/layoutsetprototype/update-layout-set-prototype": _params};
@@ -81,8 +81,8 @@
 - (NSDictionary *)updateLayoutSetPrototypeWithLayoutSetPrototypeId:(long long)layoutSetPrototypeId nameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active layoutsUpdateable:(BOOL)layoutsUpdateable serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"layoutSetPrototypeId": @(layoutSetPrototypeId),
-		@"nameMap": nameMap,
-		@"description": description,
+		@"nameMap": [self checkNull: nameMap],
+		@"description": [self checkNull: description],
 		@"active": @(active),
 		@"layoutsUpdateable": @(layoutsUpdateable),
 	}];

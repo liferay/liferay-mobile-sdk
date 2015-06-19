@@ -48,11 +48,11 @@
 		@"displayDate": @(displayDate),
 		@"status": @(status),
 		@"max": @(max),
-		@"type": type,
+		@"type": [self checkNull: type],
 		@"version": @(version),
-		@"displayStyle": displayStyle,
-		@"feedURL": feedURL,
-		@"entryURL": entryURL,
+		@"displayStyle": [self checkNull: displayStyle],
+		@"feedURL": [self checkNull: feedURL],
+		@"entryURL": [self checkNull: entryURL],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
@@ -75,7 +75,7 @@
 - (NSDictionary *)getEntryWithGroupId:(long long)groupId urlTitle:(NSString *)urlTitle error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"urlTitle": urlTitle
+		@"urlTitle": [self checkNull: urlTitle]
 	}];
 
 	NSDictionary *_command = @{@"/blogsentry/get-entry": _params};
@@ -164,11 +164,11 @@
 		@"displayDate": @(displayDate),
 		@"status": @(status),
 		@"max": @(max),
-		@"type": type,
+		@"type": [self checkNull: type],
 		@"version": @(version),
-		@"displayStyle": displayStyle,
-		@"feedURL": feedURL,
-		@"entryURL": entryURL,
+		@"displayStyle": [self checkNull: displayStyle],
+		@"feedURL": [self checkNull: feedURL],
+		@"entryURL": [self checkNull: entryURL],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
@@ -211,11 +211,11 @@
 		@"displayDate": @(displayDate),
 		@"status": @(status),
 		@"max": @(max),
-		@"type": type,
+		@"type": [self checkNull: type],
 		@"version": @(version),
-		@"displayStyle": displayStyle,
-		@"feedURL": feedURL,
-		@"entryURL": entryURL,
+		@"displayStyle": [self checkNull: displayStyle],
+		@"feedURL": [self checkNull: feedURL],
+		@"entryURL": [self checkNull: entryURL],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];

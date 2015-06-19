@@ -31,7 +31,7 @@
 
 - (NSArray *)getListTypesWithType:(NSString *)type error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"type": type
+		@"type": [self checkNull: type]
 	}];
 
 	NSDictionary *_command = @{@"/listtype/get-list-types": _params};
@@ -42,7 +42,7 @@
 - (void)validateWithListTypeId:(int)listTypeId type:(NSString *)type error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"listTypeId": @(listTypeId),
-		@"type": type
+		@"type": [self checkNull: type]
 	}];
 
 	NSDictionary *_command = @{@"/listtype/validate": _params};
@@ -54,7 +54,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"listTypeId": @(listTypeId),
 		@"classNameId": @(classNameId),
-		@"type": type
+		@"type": [self checkNull: type]
 	}];
 
 	NSDictionary *_command = @{@"/listtype/validate": _params};

@@ -23,9 +23,9 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"ddmStructureId": @(ddmStructureId),
-		@"recordSetKey": recordSetKey,
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
+		@"recordSetKey": [self checkNull: recordSetKey],
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
 		@"minDisplayRows": @(minDisplayRows),
 		@"scope": @(scope),
 	}];
@@ -61,7 +61,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
-		@"keywords": keywords,
+		@"keywords": [self checkNull: keywords],
 		@"scope": @(scope),
 		@"start": @(start),
 		@"end": @(end),
@@ -78,8 +78,8 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"scope": @(scope),
 		@"andOperator": @(andOperator),
 		@"start": @(start),
@@ -97,7 +97,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
-		@"keywords": keywords,
+		@"keywords": [self checkNull: keywords],
 		@"scope": @(scope)
 	}];
 
@@ -110,8 +110,8 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"scope": @(scope),
 		@"andOperator": @(andOperator)
 	}];
@@ -138,8 +138,8 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"recordSetId": @(recordSetId),
 		@"ddmStructureId": @(ddmStructureId),
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
 		@"minDisplayRows": @(minDisplayRows),
 	}];
 
@@ -154,9 +154,9 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"ddmStructureId": @(ddmStructureId),
-		@"recordSetKey": recordSetKey,
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
+		@"recordSetKey": [self checkNull: recordSetKey],
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
 		@"minDisplayRows": @(minDisplayRows),
 	}];
 

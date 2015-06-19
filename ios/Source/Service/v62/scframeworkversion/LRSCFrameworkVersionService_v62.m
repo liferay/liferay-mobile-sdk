@@ -21,8 +21,8 @@
 
 - (NSDictionary *)addFrameworkVersionWithName:(NSString *)name url:(NSString *)url active:(BOOL)active priority:(int)priority serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"name": name,
-		@"url": url,
+		@"name": [self checkNull: name],
+		@"url": [self checkNull: url],
 		@"active": @(active),
 		@"priority": @(priority),
 	}];
@@ -81,8 +81,8 @@
 - (NSDictionary *)updateFrameworkVersionWithFrameworkVersionId:(long long)frameworkVersionId name:(NSString *)name url:(NSString *)url active:(BOOL)active priority:(int)priority error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"frameworkVersionId": @(frameworkVersionId),
-		@"name": name,
-		@"url": url,
+		@"name": [self checkNull: name],
+		@"url": [self checkNull: url],
 		@"active": @(active),
 		@"priority": @(priority)
 	}];

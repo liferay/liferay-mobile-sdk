@@ -21,15 +21,15 @@
 
 - (NSDictionary *)addQuestionWithTitleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap expirationDateMonth:(int)expirationDateMonth expirationDateDay:(int)expirationDateDay expirationDateYear:(int)expirationDateYear expirationDateHour:(int)expirationDateHour expirationDateMinute:(int)expirationDateMinute neverExpire:(BOOL)neverExpire choices:(NSArray *)choices serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"titleMap": titleMap,
-		@"descriptionMap": descriptionMap,
+		@"titleMap": [self checkNull: titleMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
 		@"expirationDateMonth": @(expirationDateMonth),
 		@"expirationDateDay": @(expirationDateDay),
 		@"expirationDateYear": @(expirationDateYear),
 		@"expirationDateHour": @(expirationDateHour),
 		@"expirationDateMinute": @(expirationDateMinute),
 		@"neverExpire": @(neverExpire),
-		@"choices": choices,
+		@"choices": [self checkNull: choices],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -62,15 +62,15 @@
 - (NSDictionary *)updateQuestionWithQuestionId:(long long)questionId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap expirationDateMonth:(int)expirationDateMonth expirationDateDay:(int)expirationDateDay expirationDateYear:(int)expirationDateYear expirationDateHour:(int)expirationDateHour expirationDateMinute:(int)expirationDateMinute neverExpire:(BOOL)neverExpire choices:(NSArray *)choices serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"questionId": @(questionId),
-		@"titleMap": titleMap,
-		@"descriptionMap": descriptionMap,
+		@"titleMap": [self checkNull: titleMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
 		@"expirationDateMonth": @(expirationDateMonth),
 		@"expirationDateDay": @(expirationDateDay),
 		@"expirationDateYear": @(expirationDateYear),
 		@"expirationDateHour": @(expirationDateHour),
 		@"expirationDateMinute": @(expirationDateMinute),
 		@"neverExpire": @(neverExpire),
-		@"choices": choices,
+		@"choices": [self checkNull: choices],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];

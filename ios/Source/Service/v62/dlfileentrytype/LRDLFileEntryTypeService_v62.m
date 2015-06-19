@@ -22,9 +22,9 @@
 - (NSDictionary *)addFileEntryTypeWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
-		@"description": description,
-		@"ddmStructureIds": ddmStructureIds,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"ddmStructureIds": [self checkNull: ddmStructureIds],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -37,10 +37,10 @@
 - (NSDictionary *)addFileEntryTypeWithGroupId:(long long)groupId fileEntryTypeKey:(NSString *)fileEntryTypeKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"fileEntryTypeKey": fileEntryTypeKey,
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
-		@"ddmStructureIds": ddmStructureIds,
+		@"fileEntryTypeKey": [self checkNull: fileEntryTypeKey],
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"ddmStructureIds": [self checkNull: ddmStructureIds],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -72,7 +72,7 @@
 
 - (NSArray *)getFileEntryTypesWithGroupIds:(NSArray *)groupIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": groupIds
+		@"groupIds": [self checkNull: groupIds]
 	}];
 
 	NSDictionary *_command = @{@"/dlfileentrytype/get-file-entry-types": _params};
@@ -82,7 +82,7 @@
 
 - (NSArray *)getFileEntryTypesWithGroupIds:(NSArray *)groupIds start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": groupIds,
+		@"groupIds": [self checkNull: groupIds],
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -94,7 +94,7 @@
 
 - (NSNumber *)getFileEntryTypesCountWithGroupIds:(NSArray *)groupIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": groupIds
+		@"groupIds": [self checkNull: groupIds]
 	}];
 
 	NSDictionary *_command = @{@"/dlfileentrytype/get-file-entry-types-count": _params};
@@ -104,7 +104,7 @@
 
 - (NSArray *)getFolderFileEntryTypesWithGroupIds:(NSArray *)groupIds folderId:(long long)folderId inherited:(BOOL)inherited error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": groupIds,
+		@"groupIds": [self checkNull: groupIds],
 		@"folderId": @(folderId),
 		@"inherited": @(inherited)
 	}];
@@ -117,8 +117,8 @@
 - (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"groupIds": groupIds,
-		@"keywords": keywords,
+		@"groupIds": [self checkNull: groupIds],
+		@"keywords": [self checkNull: keywords],
 		@"includeBasicFileEntryType": @(includeBasicFileEntryType),
 		@"start": @(start),
 		@"end": @(end),
@@ -134,8 +134,8 @@
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"groupIds": groupIds,
-		@"keywords": keywords,
+		@"groupIds": [self checkNull: groupIds],
+		@"keywords": [self checkNull: keywords],
 		@"includeBasicFileEntryType": @(includeBasicFileEntryType)
 	}];
 
@@ -147,9 +147,9 @@
 - (void)updateFileEntryTypeWithFileEntryTypeId:(long long)fileEntryTypeId name:(NSString *)name description:(NSString *)description ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryTypeId": @(fileEntryTypeId),
-		@"name": name,
-		@"description": description,
-		@"ddmStructureIds": ddmStructureIds,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"ddmStructureIds": [self checkNull: ddmStructureIds],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -162,9 +162,9 @@
 - (void)updateFileEntryTypeWithFileEntryTypeId:(long long)fileEntryTypeId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryTypeId": @(fileEntryTypeId),
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
-		@"ddmStructureIds": ddmStructureIds,
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"ddmStructureIds": [self checkNull: ddmStructureIds],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];

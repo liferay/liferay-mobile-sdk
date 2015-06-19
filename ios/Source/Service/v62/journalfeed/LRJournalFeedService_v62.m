@@ -22,21 +22,21 @@
 - (NSDictionary *)addFeedWithGroupId:(long long)groupId feedId:(NSString *)feedId autoFeedId:(BOOL)autoFeedId name:(NSString *)name description:(NSString *)description type:(NSString *)type structureId:(NSString *)structureId templateId:(NSString *)templateId rendererTemplateId:(NSString *)rendererTemplateId delta:(int)delta orderByCol:(NSString *)orderByCol orderByType:(NSString *)orderByType targetLayoutFriendlyUrl:(NSString *)targetLayoutFriendlyUrl targetPortletId:(NSString *)targetPortletId contentField:(NSString *)contentField feedType:(NSString *)feedType feedVersion:(double)feedVersion serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"feedId": feedId,
+		@"feedId": [self checkNull: feedId],
 		@"autoFeedId": @(autoFeedId),
-		@"name": name,
-		@"description": description,
-		@"type": type,
-		@"structureId": structureId,
-		@"templateId": templateId,
-		@"rendererTemplateId": rendererTemplateId,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"type": [self checkNull: type],
+		@"structureId": [self checkNull: structureId],
+		@"templateId": [self checkNull: templateId],
+		@"rendererTemplateId": [self checkNull: rendererTemplateId],
 		@"delta": @(delta),
-		@"orderByCol": orderByCol,
-		@"orderByType": orderByType,
-		@"targetLayoutFriendlyUrl": targetLayoutFriendlyUrl,
-		@"targetPortletId": targetPortletId,
-		@"contentField": contentField,
-		@"feedType": feedType,
+		@"orderByCol": [self checkNull: orderByCol],
+		@"orderByType": [self checkNull: orderByType],
+		@"targetLayoutFriendlyUrl": [self checkNull: targetLayoutFriendlyUrl],
+		@"targetPortletId": [self checkNull: targetPortletId],
+		@"contentField": [self checkNull: contentField],
+		@"feedType": [self checkNull: feedType],
 		@"feedVersion": @(feedVersion),
 	}];
 
@@ -60,7 +60,7 @@
 - (void)deleteFeedWithGroupId:(long long)groupId feedId:(NSString *)feedId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"feedId": feedId
+		@"feedId": [self checkNull: feedId]
 	}];
 
 	NSDictionary *_command = @{@"/journalfeed/delete-feed": _params};
@@ -81,7 +81,7 @@
 - (NSDictionary *)getFeedWithGroupId:(long long)groupId feedId:(NSString *)feedId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"feedId": feedId
+		@"feedId": [self checkNull: feedId]
 	}];
 
 	NSDictionary *_command = @{@"/journalfeed/get-feed": _params};
@@ -92,20 +92,20 @@
 - (NSDictionary *)updateFeedWithGroupId:(long long)groupId feedId:(NSString *)feedId name:(NSString *)name description:(NSString *)description type:(NSString *)type structureId:(NSString *)structureId templateId:(NSString *)templateId rendererTemplateId:(NSString *)rendererTemplateId delta:(int)delta orderByCol:(NSString *)orderByCol orderByType:(NSString *)orderByType targetLayoutFriendlyUrl:(NSString *)targetLayoutFriendlyUrl targetPortletId:(NSString *)targetPortletId contentField:(NSString *)contentField feedType:(NSString *)feedType feedVersion:(double)feedVersion serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"feedId": feedId,
-		@"name": name,
-		@"description": description,
-		@"type": type,
-		@"structureId": structureId,
-		@"templateId": templateId,
-		@"rendererTemplateId": rendererTemplateId,
+		@"feedId": [self checkNull: feedId],
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"type": [self checkNull: type],
+		@"structureId": [self checkNull: structureId],
+		@"templateId": [self checkNull: templateId],
+		@"rendererTemplateId": [self checkNull: rendererTemplateId],
 		@"delta": @(delta),
-		@"orderByCol": orderByCol,
-		@"orderByType": orderByType,
-		@"targetLayoutFriendlyUrl": targetLayoutFriendlyUrl,
-		@"targetPortletId": targetPortletId,
-		@"contentField": contentField,
-		@"feedType": feedType,
+		@"orderByCol": [self checkNull: orderByCol],
+		@"orderByType": [self checkNull: orderByType],
+		@"targetLayoutFriendlyUrl": [self checkNull: targetLayoutFriendlyUrl],
+		@"targetPortletId": [self checkNull: targetPortletId],
+		@"contentField": [self checkNull: contentField],
+		@"feedType": [self checkNull: feedType],
 		@"feedVersion": @(feedVersion),
 	}];
 

@@ -39,7 +39,7 @@
 		@"groupId": @(groupId),
 		@"recordSetId": @(recordSetId),
 		@"displayIndex": @(displayIndex),
-		@"fieldsMap": fieldsMap,
+		@"fieldsMap": [self checkNull: fieldsMap],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -52,7 +52,7 @@
 - (NSDictionary *)deleteRecordLocaleWithRecordId:(long long)recordId locale:(NSString *)locale serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"recordId": @(recordId),
-		@"locale": locale,
+		@"locale": [self checkNull: locale],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -76,7 +76,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"recordId": @(recordId),
 		@"displayIndex": @(displayIndex),
-		@"fieldsMap": fieldsMap,
+		@"fieldsMap": [self checkNull: fieldsMap],
 		@"mergeFields": @(mergeFields),
 	}];
 

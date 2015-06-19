@@ -21,9 +21,9 @@
 
 - (NSDictionary *)addWebsiteWithClassName:(NSString *)className classPK:(long long)classPK url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK),
-		@"url": url,
+		@"url": [self checkNull: url],
 		@"typeId": @(typeId),
 		@"primary": @(primary)
 	}];
@@ -35,9 +35,9 @@
 
 - (NSDictionary *)addWebsiteWithClassName:(NSString *)className classPK:(long long)classPK url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK),
-		@"url": url,
+		@"url": [self checkNull: url],
 		@"typeId": @(typeId),
 		@"primary": @(primary),
 	}];
@@ -71,7 +71,7 @@
 
 - (NSArray *)getWebsitesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK)
 	}];
 
@@ -83,7 +83,7 @@
 - (NSDictionary *)updateWebsiteWithWebsiteId:(long long)websiteId url:(NSString *)url typeId:(int)typeId primary:(BOOL)primary error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"websiteId": @(websiteId),
-		@"url": url,
+		@"url": [self checkNull: url],
 		@"typeId": @(typeId),
 		@"primary": @(primary)
 	}];

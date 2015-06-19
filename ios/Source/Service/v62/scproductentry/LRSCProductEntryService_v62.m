@@ -21,18 +21,18 @@
 
 - (NSDictionary *)addProductEntryWithName:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"name": name,
-		@"type": type,
-		@"tags": tags,
-		@"shortDescription": shortDescription,
-		@"longDescription": longDescription,
-		@"pageURL": pageURL,
-		@"author": author,
-		@"repoGroupId": repoGroupId,
-		@"repoArtifactId": repoArtifactId,
-		@"licenseIds": licenseIds,
-		@"thumbnails": thumbnails,
-		@"fullImages": fullImages,
+		@"name": [self checkNull: name],
+		@"type": [self checkNull: type],
+		@"tags": [self checkNull: tags],
+		@"shortDescription": [self checkNull: shortDescription],
+		@"longDescription": [self checkNull: longDescription],
+		@"pageURL": [self checkNull: pageURL],
+		@"author": [self checkNull: author],
+		@"repoGroupId": [self checkNull: repoGroupId],
+		@"repoArtifactId": [self checkNull: repoArtifactId],
+		@"licenseIds": [self checkNull: licenseIds],
+		@"thumbnails": [self checkNull: thumbnails],
+		@"fullImages": [self checkNull: fullImages],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -65,18 +65,18 @@
 - (NSDictionary *)updateProductEntryWithProductEntryId:(long long)productEntryId name:(NSString *)name type:(NSString *)type tags:(NSString *)tags shortDescription:(NSString *)shortDescription longDescription:(NSString *)longDescription pageURL:(NSString *)pageURL author:(NSString *)author repoGroupId:(NSString *)repoGroupId repoArtifactId:(NSString *)repoArtifactId licenseIds:(NSArray *)licenseIds thumbnails:(NSArray *)thumbnails fullImages:(NSArray *)fullImages error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"productEntryId": @(productEntryId),
-		@"name": name,
-		@"type": type,
-		@"tags": tags,
-		@"shortDescription": shortDescription,
-		@"longDescription": longDescription,
-		@"pageURL": pageURL,
-		@"author": author,
-		@"repoGroupId": repoGroupId,
-		@"repoArtifactId": repoArtifactId,
-		@"licenseIds": licenseIds,
-		@"thumbnails": thumbnails,
-		@"fullImages": fullImages
+		@"name": [self checkNull: name],
+		@"type": [self checkNull: type],
+		@"tags": [self checkNull: tags],
+		@"shortDescription": [self checkNull: shortDescription],
+		@"longDescription": [self checkNull: longDescription],
+		@"pageURL": [self checkNull: pageURL],
+		@"author": [self checkNull: author],
+		@"repoGroupId": [self checkNull: repoGroupId],
+		@"repoArtifactId": [self checkNull: repoArtifactId],
+		@"licenseIds": [self checkNull: licenseIds],
+		@"thumbnails": [self checkNull: thumbnails],
+		@"fullImages": [self checkNull: fullImages]
 	}];
 
 	NSDictionary *_command = @{@"/scproductentry/update-product-entry": _params};

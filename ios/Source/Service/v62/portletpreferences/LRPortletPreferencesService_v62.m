@@ -32,7 +32,7 @@
 - (void)restoreArchivedPreferencesWithGroupId:(long long)groupId layout:(LRJSONObjectWrapper *)layout portletId:(NSString *)portletId portletItem:(LRJSONObjectWrapper *)portletItem preferences:(LRJSONObjectWrapper *)preferences error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"portletId": portletId,
+		@"portletId": [self checkNull: portletId],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"layout" className:@"com.liferay.portal.model.Layout" wrapper:layout];
@@ -47,7 +47,7 @@
 - (void)restoreArchivedPreferencesWithGroupId:(long long)groupId layout:(LRJSONObjectWrapper *)layout portletId:(NSString *)portletId portletItemId:(long long)portletItemId preferences:(LRJSONObjectWrapper *)preferences error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"portletId": portletId,
+		@"portletId": [self checkNull: portletId],
 		@"portletItemId": @(portletItemId),
 	}];
 
@@ -62,8 +62,8 @@
 - (void)restoreArchivedPreferencesWithGroupId:(long long)groupId name:(NSString *)name layout:(LRJSONObjectWrapper *)layout portletId:(NSString *)portletId preferences:(LRJSONObjectWrapper *)preferences error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
-		@"portletId": portletId,
+		@"name": [self checkNull: name],
+		@"portletId": [self checkNull: portletId],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"layout" className:@"com.liferay.portal.model.Layout" wrapper:layout];
@@ -78,8 +78,8 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"groupId": @(groupId),
-		@"name": name,
-		@"portletId": portletId,
+		@"name": [self checkNull: name],
+		@"portletId": [self checkNull: portletId],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"preferences" className:@"javax.portlet.PortletPreferences" wrapper:preferences];

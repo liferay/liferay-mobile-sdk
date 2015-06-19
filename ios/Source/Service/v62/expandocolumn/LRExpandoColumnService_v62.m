@@ -22,7 +22,7 @@
 - (NSDictionary *)addColumnWithTableId:(long long)tableId name:(NSString *)name type:(int)type error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"tableId": @(tableId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"type": @(type)
 	}];
 
@@ -34,9 +34,9 @@
 - (NSDictionary *)addColumnWithTableId:(long long)tableId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"tableId": @(tableId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"type": @(type),
-		@"defaultData": defaultData
+		@"defaultData": [self checkNull: defaultData]
 	}];
 
 	NSDictionary *_command = @{@"/expandocolumn/add-column": _params};
@@ -57,7 +57,7 @@
 - (NSDictionary *)updateColumnWithColumnId:(long long)columnId name:(NSString *)name type:(int)type error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"columnId": @(columnId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"type": @(type)
 	}];
 
@@ -69,9 +69,9 @@
 - (NSDictionary *)updateColumnWithColumnId:(long long)columnId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"columnId": @(columnId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"type": @(type),
-		@"defaultData": defaultData
+		@"defaultData": [self checkNull: defaultData]
 	}];
 
 	NSDictionary *_command = @{@"/expandocolumn/update-column": _params};
@@ -82,7 +82,7 @@
 - (NSDictionary *)updateTypeSettingsWithColumnId:(long long)columnId typeSettings:(NSString *)typeSettings error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"columnId": @(columnId),
-		@"typeSettings": typeSettings
+		@"typeSettings": [self checkNull: typeSettings]
 	}];
 
 	NSDictionary *_command = @{@"/expandocolumn/update-type-settings": _params};

@@ -22,7 +22,7 @@
 - (void)addGroupUserGroupsWithGroupId:(long long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"userGroupIds": userGroupIds
+		@"userGroupIds": [self checkNull: userGroupIds]
 	}];
 
 	NSDictionary *_command = @{@"/usergroup/add-group-user-groups": _params};
@@ -33,7 +33,7 @@
 - (void)addTeamUserGroupsWithTeamId:(long long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"teamId": @(teamId),
-		@"userGroupIds": userGroupIds
+		@"userGroupIds": [self checkNull: userGroupIds]
 	}];
 
 	NSDictionary *_command = @{@"/usergroup/add-team-user-groups": _params};
@@ -43,8 +43,8 @@
 
 - (NSDictionary *)addUserGroupWithName:(NSString *)name description:(NSString *)description error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"name": name,
-		@"description": description
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description]
 	}];
 
 	NSDictionary *_command = @{@"/usergroup/add-user-group": _params};
@@ -54,8 +54,8 @@
 
 - (NSDictionary *)addUserGroupWithName:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -77,7 +77,7 @@
 
 - (NSDictionary *)getUserGroupWithName:(NSString *)name error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"name": name
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/usergroup/get-user-group": _params};
@@ -108,7 +108,7 @@
 - (void)unsetGroupUserGroupsWithGroupId:(long long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"userGroupIds": userGroupIds
+		@"userGroupIds": [self checkNull: userGroupIds]
 	}];
 
 	NSDictionary *_command = @{@"/usergroup/unset-group-user-groups": _params};
@@ -119,7 +119,7 @@
 - (void)unsetTeamUserGroupsWithTeamId:(long long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"teamId": @(teamId),
-		@"userGroupIds": userGroupIds
+		@"userGroupIds": [self checkNull: userGroupIds]
 	}];
 
 	NSDictionary *_command = @{@"/usergroup/unset-team-user-groups": _params};
@@ -130,8 +130,8 @@
 - (NSDictionary *)updateUserGroupWithUserGroupId:(long long)userGroupId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userGroupId": @(userGroupId),
-		@"name": name,
-		@"description": description
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description]
 	}];
 
 	NSDictionary *_command = @{@"/usergroup/update-user-group": _params};
@@ -142,8 +142,8 @@
 - (NSDictionary *)updateUserGroupWithUserGroupId:(long long)userGroupId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userGroupId": @(userGroupId),
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];

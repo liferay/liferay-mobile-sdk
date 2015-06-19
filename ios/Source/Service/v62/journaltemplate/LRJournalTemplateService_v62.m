@@ -22,14 +22,14 @@
 - (NSDictionary *)addTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId autoTemplateId:(BOOL)autoTemplateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"templateId": templateId,
+		@"templateId": [self checkNull: templateId],
 		@"autoTemplateId": @(autoTemplateId),
-		@"structureId": structureId,
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
-		@"xsl": xsl,
+		@"structureId": [self checkNull: structureId],
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"xsl": [self checkNull: xsl],
 		@"formatXsl": @(formatXsl),
-		@"langType": langType,
+		@"langType": [self checkNull: langType],
 		@"cacheable": @(cacheable),
 	}];
 
@@ -43,18 +43,18 @@
 - (NSOperation *)addTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId autoTemplateId:(BOOL)autoTemplateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(LRUploadData *)smallFile serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"templateId": templateId,
+		@"templateId": [self checkNull: templateId],
 		@"autoTemplateId": @(autoTemplateId),
-		@"structureId": structureId,
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
-		@"xsl": xsl,
+		@"structureId": [self checkNull: structureId],
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"xsl": [self checkNull: xsl],
 		@"formatXsl": @(formatXsl),
-		@"langType": langType,
+		@"langType": [self checkNull: langType],
 		@"cacheable": @(cacheable),
 		@"smallImage": @(smallImage),
-		@"smallImageURL": smallImageURL,
-		@"smallFile": smallFile,
+		@"smallImageURL": [self checkNull: smallImageURL],
+		@"smallFile": [self checkNull: smallFile],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -67,8 +67,8 @@
 - (NSDictionary *)copyTemplateWithGroupId:(long long)groupId oldTemplateId:(NSString *)oldTemplateId newTemplateId:(NSString *)newTemplateId autoTemplateId:(BOOL)autoTemplateId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"oldTemplateId": oldTemplateId,
-		@"newTemplateId": newTemplateId,
+		@"oldTemplateId": [self checkNull: oldTemplateId],
+		@"newTemplateId": [self checkNull: newTemplateId],
 		@"autoTemplateId": @(autoTemplateId)
 	}];
 
@@ -80,7 +80,7 @@
 - (void)deleteTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"templateId": templateId
+		@"templateId": [self checkNull: templateId]
 	}];
 
 	NSDictionary *_command = @{@"/journaltemplate/delete-template": _params};
@@ -91,7 +91,7 @@
 - (NSArray *)getStructureTemplatesWithGroupId:(long long)groupId structureId:(NSString *)structureId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"structureId": structureId
+		@"structureId": [self checkNull: structureId]
 	}];
 
 	NSDictionary *_command = @{@"/journaltemplate/get-structure-templates": _params};
@@ -102,7 +102,7 @@
 - (NSDictionary *)getTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"templateId": templateId
+		@"templateId": [self checkNull: templateId]
 	}];
 
 	NSDictionary *_command = @{@"/journaltemplate/get-template": _params};
@@ -113,7 +113,7 @@
 - (NSDictionary *)getTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId includeGlobalTemplates:(BOOL)includeGlobalTemplates error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"templateId": templateId,
+		@"templateId": [self checkNull: templateId],
 		@"includeGlobalTemplates": @(includeGlobalTemplates)
 	}];
 
@@ -125,12 +125,12 @@
 - (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds templateId:(NSString *)templateId structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"groupIds": groupIds,
-		@"templateId": templateId,
-		@"structureId": structureId,
-		@"structureIdComparator": structureIdComparator,
-		@"name": name,
-		@"description": description,
+		@"groupIds": [self checkNull: groupIds],
+		@"templateId": [self checkNull: templateId],
+		@"structureId": [self checkNull: structureId],
+		@"structureIdComparator": [self checkNull: structureIdComparator],
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"andOperator": @(andOperator),
 		@"start": @(start),
 		@"end": @(end),
@@ -146,10 +146,10 @@
 - (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"groupIds": groupIds,
-		@"keywords": keywords,
-		@"structureId": structureId,
-		@"structureIdComparator": structureIdComparator,
+		@"groupIds": [self checkNull: groupIds],
+		@"keywords": [self checkNull: keywords],
+		@"structureId": [self checkNull: structureId],
+		@"structureIdComparator": [self checkNull: structureIdComparator],
 		@"start": @(start),
 		@"end": @(end),
 	}];
@@ -164,10 +164,10 @@
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"groupIds": groupIds,
-		@"keywords": keywords,
-		@"structureId": structureId,
-		@"structureIdComparator": structureIdComparator
+		@"groupIds": [self checkNull: groupIds],
+		@"keywords": [self checkNull: keywords],
+		@"structureId": [self checkNull: structureId],
+		@"structureIdComparator": [self checkNull: structureIdComparator]
 	}];
 
 	NSDictionary *_command = @{@"/journaltemplate/search-count": _params};
@@ -178,12 +178,12 @@
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds templateId:(NSString *)templateId structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"groupIds": groupIds,
-		@"templateId": templateId,
-		@"structureId": structureId,
-		@"structureIdComparator": structureIdComparator,
-		@"name": name,
-		@"description": description,
+		@"groupIds": [self checkNull: groupIds],
+		@"templateId": [self checkNull: templateId],
+		@"structureId": [self checkNull: structureId],
+		@"structureIdComparator": [self checkNull: structureIdComparator],
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"andOperator": @(andOperator)
 	}];
 
@@ -195,13 +195,13 @@
 - (NSDictionary *)updateTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"templateId": templateId,
-		@"structureId": structureId,
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
-		@"xsl": xsl,
+		@"templateId": [self checkNull: templateId],
+		@"structureId": [self checkNull: structureId],
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"xsl": [self checkNull: xsl],
 		@"formatXsl": @(formatXsl),
-		@"langType": langType,
+		@"langType": [self checkNull: langType],
 		@"cacheable": @(cacheable),
 	}];
 
@@ -215,17 +215,17 @@
 - (NSOperation *)updateTemplateWithGroupId:(long long)groupId templateId:(NSString *)templateId structureId:(NSString *)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsl:(NSString *)xsl formatXsl:(BOOL)formatXsl langType:(NSString *)langType cacheable:(BOOL)cacheable smallImage:(BOOL)smallImage smallImageURL:(NSString *)smallImageURL smallFile:(LRUploadData *)smallFile serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"templateId": templateId,
-		@"structureId": structureId,
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
-		@"xsl": xsl,
+		@"templateId": [self checkNull: templateId],
+		@"structureId": [self checkNull: structureId],
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"xsl": [self checkNull: xsl],
 		@"formatXsl": @(formatXsl),
-		@"langType": langType,
+		@"langType": [self checkNull: langType],
 		@"cacheable": @(cacheable),
 		@"smallImage": @(smallImage),
-		@"smallImageURL": smallImageURL,
-		@"smallFile": smallFile,
+		@"smallImageURL": [self checkNull: smallImageURL],
+		@"smallFile": [self checkNull: smallFile],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];

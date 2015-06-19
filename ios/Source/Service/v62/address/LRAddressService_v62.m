@@ -21,13 +21,13 @@
 
 - (NSDictionary *)addAddressWithClassName:(NSString *)className classPK:(long long)classPK street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long long)regionId countryId:(long long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK),
-		@"street1": street1,
-		@"street2": street2,
-		@"street3": street3,
-		@"city": city,
-		@"zip": zip,
+		@"street1": [self checkNull: street1],
+		@"street2": [self checkNull: street2],
+		@"street3": [self checkNull: street3],
+		@"city": [self checkNull: city],
+		@"zip": [self checkNull: zip],
 		@"regionId": @(regionId),
 		@"countryId": @(countryId),
 		@"typeId": @(typeId),
@@ -42,13 +42,13 @@
 
 - (NSDictionary *)addAddressWithClassName:(NSString *)className classPK:(long long)classPK street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long long)regionId countryId:(long long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK),
-		@"street1": street1,
-		@"street2": street2,
-		@"street3": street3,
-		@"city": city,
-		@"zip": zip,
+		@"street1": [self checkNull: street1],
+		@"street2": [self checkNull: street2],
+		@"street3": [self checkNull: street3],
+		@"city": [self checkNull: city],
+		@"zip": [self checkNull: zip],
 		@"regionId": @(regionId),
 		@"countryId": @(countryId),
 		@"typeId": @(typeId),
@@ -85,7 +85,7 @@
 
 - (NSArray *)getAddressesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK)
 	}];
 
@@ -97,11 +97,11 @@
 - (NSDictionary *)updateAddressWithAddressId:(long long)addressId street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long long)regionId countryId:(long long)countryId typeId:(int)typeId mailing:(BOOL)mailing primary:(BOOL)primary error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"addressId": @(addressId),
-		@"street1": street1,
-		@"street2": street2,
-		@"street3": street3,
-		@"city": city,
-		@"zip": zip,
+		@"street1": [self checkNull: street1],
+		@"street2": [self checkNull: street2],
+		@"street3": [self checkNull: street3],
+		@"city": [self checkNull: city],
+		@"zip": [self checkNull: zip],
 		@"regionId": @(regionId),
 		@"countryId": @(countryId),
 		@"typeId": @(typeId),

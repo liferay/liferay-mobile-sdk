@@ -22,7 +22,7 @@
 - (NSDictionary *)updateDeliveryWithUserId:(long long)userId type:(NSString *)type email:(BOOL)email sms:(BOOL)sms website:(BOOL)website error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
-		@"type": type,
+		@"type": [self checkNull: type],
 		@"email": @(email),
 		@"sms": @(sms),
 		@"website": @(website)

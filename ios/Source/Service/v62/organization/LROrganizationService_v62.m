@@ -22,7 +22,7 @@
 - (void)addGroupOrganizationsWithGroupId:(long long)groupId organizationIds:(NSArray *)organizationIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"organizationIds": organizationIds
+		@"organizationIds": [self checkNull: organizationIds]
 	}];
 
 	NSDictionary *_command = @{@"/organization/add-group-organizations": _params};
@@ -33,13 +33,13 @@
 - (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentOrganizationId": @(parentOrganizationId),
-		@"name": name,
-		@"type": type,
+		@"name": [self checkNull: name],
+		@"type": [self checkNull: type],
 		@"recursable": @(recursable),
 		@"regionId": @(regionId),
 		@"countryId": @(countryId),
 		@"statusId": @(statusId),
-		@"comments": comments,
+		@"comments": [self checkNull: comments],
 		@"site": @(site),
 	}];
 
@@ -53,18 +53,18 @@
 - (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentOrganizationId": @(parentOrganizationId),
-		@"name": name,
-		@"type": type,
+		@"name": [self checkNull: name],
+		@"type": [self checkNull: type],
 		@"regionId": @(regionId),
 		@"countryId": @(countryId),
 		@"statusId": @(statusId),
-		@"comments": comments,
+		@"comments": [self checkNull: comments],
 		@"site": @(site),
-		@"addresses": addresses,
-		@"emailAddresses": emailAddresses,
-		@"orgLabors": orgLabors,
-		@"phones": phones,
-		@"websites": websites,
+		@"addresses": [self checkNull: addresses],
+		@"emailAddresses": [self checkNull: emailAddresses],
+		@"orgLabors": [self checkNull: orgLabors],
+		@"phones": [self checkNull: phones],
+		@"websites": [self checkNull: websites],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -77,19 +77,19 @@
 - (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentOrganizationId": @(parentOrganizationId),
-		@"name": name,
-		@"type": type,
+		@"name": [self checkNull: name],
+		@"type": [self checkNull: type],
 		@"recursable": @(recursable),
 		@"regionId": @(regionId),
 		@"countryId": @(countryId),
 		@"statusId": @(statusId),
-		@"comments": comments,
+		@"comments": [self checkNull: comments],
 		@"site": @(site),
-		@"addresses": addresses,
-		@"emailAddresses": emailAddresses,
-		@"orgLabors": orgLabors,
-		@"phones": phones,
-		@"websites": websites,
+		@"addresses": [self checkNull: addresses],
+		@"emailAddresses": [self checkNull: emailAddresses],
+		@"orgLabors": [self checkNull: orgLabors],
+		@"phones": [self checkNull: phones],
+		@"websites": [self checkNull: websites],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -102,12 +102,12 @@
 - (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentOrganizationId": @(parentOrganizationId),
-		@"name": name,
-		@"type": type,
+		@"name": [self checkNull: name],
+		@"type": [self checkNull: type],
 		@"regionId": @(regionId),
 		@"countryId": @(countryId),
 		@"statusId": @(statusId),
-		@"comments": comments,
+		@"comments": [self checkNull: comments],
 		@"site": @(site),
 	}];
 
@@ -121,7 +121,7 @@
 - (void)addPasswordPolicyOrganizationsWithPasswordPolicyId:(long long)passwordPolicyId organizationIds:(NSArray *)organizationIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"passwordPolicyId": @(passwordPolicyId),
-		@"organizationIds": organizationIds
+		@"organizationIds": [self checkNull: organizationIds]
 	}];
 
 	NSDictionary *_command = @{@"/organization/add-password-policy-organizations": _params};
@@ -151,7 +151,7 @@
 
 - (NSArray *)getManageableOrganizationsWithActionId:(NSString *)actionId max:(int)max error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"actionId": actionId,
+		@"actionId": [self checkNull: actionId],
 		@"max": @(max)
 	}];
 
@@ -173,7 +173,7 @@
 - (NSNumber *)getOrganizationIdWithCompanyId:(long long)companyId name:(NSString *)name error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"name": name
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/organization/get-organization-id": _params};
@@ -229,7 +229,7 @@
 - (void)setGroupOrganizationsWithGroupId:(long long)groupId organizationIds:(NSArray *)organizationIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"organizationIds": organizationIds
+		@"organizationIds": [self checkNull: organizationIds]
 	}];
 
 	NSDictionary *_command = @{@"/organization/set-group-organizations": _params};
@@ -240,7 +240,7 @@
 - (void)unsetGroupOrganizationsWithGroupId:(long long)groupId organizationIds:(NSArray *)organizationIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"organizationIds": organizationIds
+		@"organizationIds": [self checkNull: organizationIds]
 	}];
 
 	NSDictionary *_command = @{@"/organization/unset-group-organizations": _params};
@@ -251,7 +251,7 @@
 - (void)unsetPasswordPolicyOrganizationsWithPasswordPolicyId:(long long)passwordPolicyId organizationIds:(NSArray *)organizationIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"passwordPolicyId": @(passwordPolicyId),
-		@"organizationIds": organizationIds
+		@"organizationIds": [self checkNull: organizationIds]
 	}];
 
 	NSDictionary *_command = @{@"/organization/unset-password-policy-organizations": _params};
@@ -263,12 +263,12 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId),
 		@"parentOrganizationId": @(parentOrganizationId),
-		@"name": name,
-		@"type": type,
+		@"name": [self checkNull: name],
+		@"type": [self checkNull: type],
 		@"regionId": @(regionId),
 		@"countryId": @(countryId),
 		@"statusId": @(statusId),
-		@"comments": comments,
+		@"comments": [self checkNull: comments],
 		@"site": @(site),
 	}];
 
@@ -283,13 +283,13 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId),
 		@"parentOrganizationId": @(parentOrganizationId),
-		@"name": name,
-		@"type": type,
+		@"name": [self checkNull: name],
+		@"type": [self checkNull: type],
 		@"recursable": @(recursable),
 		@"regionId": @(regionId),
 		@"countryId": @(countryId),
 		@"statusId": @(statusId),
-		@"comments": comments,
+		@"comments": [self checkNull: comments],
 		@"site": @(site),
 	}];
 
@@ -304,18 +304,18 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId),
 		@"parentOrganizationId": @(parentOrganizationId),
-		@"name": name,
-		@"type": type,
+		@"name": [self checkNull: name],
+		@"type": [self checkNull: type],
 		@"regionId": @(regionId),
 		@"countryId": @(countryId),
 		@"statusId": @(statusId),
-		@"comments": comments,
+		@"comments": [self checkNull: comments],
 		@"site": @(site),
-		@"addresses": addresses,
-		@"emailAddresses": emailAddresses,
-		@"orgLabors": orgLabors,
-		@"phones": phones,
-		@"websites": websites,
+		@"addresses": [self checkNull: addresses],
+		@"emailAddresses": [self checkNull: emailAddresses],
+		@"orgLabors": [self checkNull: orgLabors],
+		@"phones": [self checkNull: phones],
+		@"websites": [self checkNull: websites],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -329,19 +329,19 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId),
 		@"parentOrganizationId": @(parentOrganizationId),
-		@"name": name,
-		@"type": type,
+		@"name": [self checkNull: name],
+		@"type": [self checkNull: type],
 		@"recursable": @(recursable),
 		@"regionId": @(regionId),
 		@"countryId": @(countryId),
 		@"statusId": @(statusId),
-		@"comments": comments,
+		@"comments": [self checkNull: comments],
 		@"site": @(site),
-		@"addresses": addresses,
-		@"emailAddresses": emailAddresses,
-		@"orgLabors": orgLabors,
-		@"phones": phones,
-		@"websites": websites,
+		@"addresses": [self checkNull: addresses],
+		@"emailAddresses": [self checkNull: emailAddresses],
+		@"orgLabors": [self checkNull: orgLabors],
+		@"phones": [self checkNull: phones],
+		@"websites": [self checkNull: websites],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];

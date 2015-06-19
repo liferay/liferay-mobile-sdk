@@ -23,11 +23,11 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"companyId": @(companyId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"scope": @(scope),
-		@"primKey": primKey,
+		@"primKey": [self checkNull: primKey],
 		@"roleId": @(roleId),
-		@"actionId": actionId
+		@"actionId": [self checkNull: actionId]
 	}];
 
 	NSDictionary *_command = @{@"/resourcepermission/add-resource-permission": _params};
@@ -39,11 +39,11 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"companyId": @(companyId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"scope": @(scope),
-		@"primKey": primKey,
+		@"primKey": [self checkNull: primKey],
 		@"roleId": @(roleId),
-		@"actionId": actionId
+		@"actionId": [self checkNull: actionId]
 	}];
 
 	NSDictionary *_command = @{@"/resourcepermission/remove-resource-permission": _params};
@@ -55,10 +55,10 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"companyId": @(companyId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"scope": @(scope),
 		@"roleId": @(roleId),
-		@"actionId": actionId
+		@"actionId": [self checkNull: actionId]
 	}];
 
 	NSDictionary *_command = @{@"/resourcepermission/remove-resource-permissions": _params};
@@ -70,9 +70,9 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"companyId": @(companyId),
-		@"name": name,
-		@"primKey": primKey,
-		@"roleIdsToActionIds": roleIdsToActionIds
+		@"name": [self checkNull: name],
+		@"primKey": [self checkNull: primKey],
+		@"roleIdsToActionIds": [self checkNull: roleIdsToActionIds]
 	}];
 
 	NSDictionary *_command = @{@"/resourcepermission/set-individual-resource-permissions": _params};
@@ -84,10 +84,10 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"companyId": @(companyId),
-		@"name": name,
-		@"primKey": primKey,
+		@"name": [self checkNull: name],
+		@"primKey": [self checkNull: primKey],
 		@"roleId": @(roleId),
-		@"actionIds": actionIds
+		@"actionIds": [self checkNull: actionIds]
 	}];
 
 	NSDictionary *_command = @{@"/resourcepermission/set-individual-resource-permissions": _params};

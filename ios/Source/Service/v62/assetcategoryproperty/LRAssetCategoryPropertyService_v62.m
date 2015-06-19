@@ -22,8 +22,8 @@
 - (NSDictionary *)addCategoryPropertyWithEntryId:(long long)entryId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId),
-		@"key": key,
-		@"value": value
+		@"key": [self checkNull: key],
+		@"value": [self checkNull: value]
 	}];
 
 	NSDictionary *_command = @{@"/assetcategoryproperty/add-category-property": _params};
@@ -54,7 +54,7 @@
 - (NSArray *)getCategoryPropertyValuesWithCompanyId:(long long)companyId key:(NSString *)key error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"key": key
+		@"key": [self checkNull: key]
 	}];
 
 	NSDictionary *_command = @{@"/assetcategoryproperty/get-category-property-values": _params};
@@ -65,8 +65,8 @@
 - (NSDictionary *)updateCategoryPropertyWithCategoryPropertyId:(long long)categoryPropertyId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"categoryPropertyId": @(categoryPropertyId),
-		@"key": key,
-		@"value": value
+		@"key": [self checkNull: key],
+		@"value": [self checkNull: value]
 	}];
 
 	NSDictionary *_command = @{@"/assetcategoryproperty/update-category-property": _params};

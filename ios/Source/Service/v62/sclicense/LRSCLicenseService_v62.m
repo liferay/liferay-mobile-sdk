@@ -21,8 +21,8 @@
 
 - (NSDictionary *)addLicenseWithName:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"name": name,
-		@"url": url,
+		@"name": [self checkNull: name],
+		@"url": [self checkNull: url],
 		@"openSource": @(openSource),
 		@"active": @(active),
 		@"recommended": @(recommended)
@@ -56,8 +56,8 @@
 - (NSDictionary *)updateLicenseWithLicenseId:(long long)licenseId name:(NSString *)name url:(NSString *)url openSource:(BOOL)openSource active:(BOOL)active recommended:(BOOL)recommended error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"licenseId": @(licenseId),
-		@"name": name,
-		@"url": url,
+		@"name": [self checkNull: name],
+		@"url": [self checkNull: url],
 		@"openSource": @(openSource),
 		@"active": @(active),
 		@"recommended": @(recommended)

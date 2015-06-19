@@ -21,7 +21,7 @@
 
 - (NSDictionary *)fetchClassNameWithValue:(NSString *)value error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"value": value
+		@"value": [self checkNull: value]
 	}];
 
 	NSDictionary *_command = @{@"/classname/fetch-class-name": _params};
@@ -31,7 +31,7 @@
 
 - (NSNumber *)fetchClassNameIdWithClazz:(NSDictionary *)clazz error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"clazz": clazz
+		@"clazz": [self checkNull: clazz]
 	}];
 
 	NSDictionary *_command = @{@"/classname/fetch-class-name-id": _params};
@@ -41,7 +41,7 @@
 
 - (NSNumber *)fetchClassNameIdWithValue:(NSString *)value error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"value": value
+		@"value": [self checkNull: value]
 	}];
 
 	NSDictionary *_command = @{@"/classname/fetch-class-name-id": _params};

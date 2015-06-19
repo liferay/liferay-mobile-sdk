@@ -39,7 +39,7 @@
 
 - (void)testAddClassNameAndTestTransactionPortletBar_PortalRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"transactionPortletBarText": transactionPortletBarText
+		@"transactionPortletBarText": [self checkNull: transactionPortletBarText]
 	}];
 
 	NSDictionary *_command = @{@"/portal/test-add-class-name-and-test-transaction-portlet-bar_-portal-rollback": _params};
@@ -49,7 +49,7 @@
 
 - (void)testAddClassNameAndTestTransactionPortletBar_PortletRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"transactionPortletBarText": transactionPortletBarText
+		@"transactionPortletBarText": [self checkNull: transactionPortletBarText]
 	}];
 
 	NSDictionary *_command = @{@"/portal/test-add-class-name-and-test-transaction-portlet-bar_-portlet-rollback": _params};
@@ -59,7 +59,7 @@
 
 - (void)testAddClassNameAndTestTransactionPortletBar_SuccessWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"transactionPortletBarText": transactionPortletBarText
+		@"transactionPortletBarText": [self checkNull: transactionPortletBarText]
 	}];
 
 	NSDictionary *_command = @{@"/portal/test-add-class-name-and-test-transaction-portlet-bar_-success": _params};
@@ -69,7 +69,7 @@
 
 - (void)testAddClassName_RollbackWithClassNameValue:(NSString *)classNameValue error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"classNameValue": classNameValue
+		@"classNameValue": [self checkNull: classNameValue]
 	}];
 
 	NSDictionary *_command = @{@"/portal/test-add-class-name_-rollback": _params};
@@ -79,7 +79,7 @@
 
 - (void)testAddClassName_SuccessWithClassNameValue:(NSString *)classNameValue error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"classNameValue": classNameValue
+		@"classNameValue": [self checkNull: classNameValue]
 	}];
 
 	NSDictionary *_command = @{@"/portal/test-add-class-name_-success": _params};

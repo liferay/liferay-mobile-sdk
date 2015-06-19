@@ -22,12 +22,12 @@
 - (NSDictionary *)addStructureWithGroupId:(long long)groupId structureId:(NSString *)structureId autoStructureId:(BOOL)autoStructureId parentStructureId:(NSString *)parentStructureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"structureId": structureId,
+		@"structureId": [self checkNull: structureId],
 		@"autoStructureId": @(autoStructureId),
-		@"parentStructureId": parentStructureId,
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
-		@"xsd": xsd,
+		@"parentStructureId": [self checkNull: parentStructureId],
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"xsd": [self checkNull: xsd],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -40,8 +40,8 @@
 - (NSDictionary *)copyStructureWithGroupId:(long long)groupId oldStructureId:(NSString *)oldStructureId newStructureId:(NSString *)newStructureId autoStructureId:(BOOL)autoStructureId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"oldStructureId": oldStructureId,
-		@"newStructureId": newStructureId,
+		@"oldStructureId": [self checkNull: oldStructureId],
+		@"newStructureId": [self checkNull: newStructureId],
 		@"autoStructureId": @(autoStructureId)
 	}];
 
@@ -53,7 +53,7 @@
 - (void)deleteStructureWithGroupId:(long long)groupId structureId:(NSString *)structureId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"structureId": structureId
+		@"structureId": [self checkNull: structureId]
 	}];
 
 	NSDictionary *_command = @{@"/journalstructure/delete-structure": _params};
@@ -64,7 +64,7 @@
 - (NSDictionary *)getStructureWithGroupId:(long long)groupId structureId:(NSString *)structureId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"structureId": structureId
+		@"structureId": [self checkNull: structureId]
 	}];
 
 	NSDictionary *_command = @{@"/journalstructure/get-structure": _params};
@@ -75,7 +75,7 @@
 - (NSDictionary *)getStructureWithGroupId:(long long)groupId structureId:(NSString *)structureId includeGlobalStructures:(BOOL)includeGlobalStructures error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"structureId": structureId,
+		@"structureId": [self checkNull: structureId],
 		@"includeGlobalStructures": @(includeGlobalStructures)
 	}];
 
@@ -96,7 +96,7 @@
 
 - (NSArray *)getStructuresWithGroupIds:(NSArray *)groupIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": groupIds
+		@"groupIds": [self checkNull: groupIds]
 	}];
 
 	NSDictionary *_command = @{@"/journalstructure/get-structures": _params};
@@ -107,8 +107,8 @@
 - (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"groupIds": groupIds,
-		@"keywords": keywords,
+		@"groupIds": [self checkNull: groupIds],
+		@"keywords": [self checkNull: keywords],
 		@"start": @(start),
 		@"end": @(end),
 	}];
@@ -123,10 +123,10 @@
 - (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds structureId:(NSString *)structureId name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"groupIds": groupIds,
-		@"structureId": structureId,
-		@"name": name,
-		@"description": description,
+		@"groupIds": [self checkNull: groupIds],
+		@"structureId": [self checkNull: structureId],
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"andOperator": @(andOperator),
 		@"start": @(start),
 		@"end": @(end),
@@ -142,8 +142,8 @@
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"groupIds": groupIds,
-		@"keywords": keywords
+		@"groupIds": [self checkNull: groupIds],
+		@"keywords": [self checkNull: keywords]
 	}];
 
 	NSDictionary *_command = @{@"/journalstructure/search-count": _params};
@@ -154,10 +154,10 @@
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds structureId:(NSString *)structureId name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"groupIds": groupIds,
-		@"structureId": structureId,
-		@"name": name,
-		@"description": description,
+		@"groupIds": [self checkNull: groupIds],
+		@"structureId": [self checkNull: structureId],
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"andOperator": @(andOperator)
 	}];
 
@@ -169,11 +169,11 @@
 - (NSDictionary *)updateStructureWithGroupId:(long long)groupId structureId:(NSString *)structureId parentStructureId:(NSString *)parentStructureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"structureId": structureId,
-		@"parentStructureId": parentStructureId,
-		@"nameMap": nameMap,
-		@"descriptionMap": descriptionMap,
-		@"xsd": xsd,
+		@"structureId": [self checkNull: structureId],
+		@"parentStructureId": [self checkNull: parentStructureId],
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"xsd": [self checkNull: xsd],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];

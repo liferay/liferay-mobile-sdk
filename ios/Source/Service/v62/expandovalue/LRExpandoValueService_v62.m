@@ -22,11 +22,11 @@
 - (NSDictionary *)addValueWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long long)classPK data:(NSString *)data error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"className": className,
-		@"tableName": tableName,
-		@"columnName": columnName,
+		@"className": [self checkNull: className],
+		@"tableName": [self checkNull: tableName],
+		@"columnName": [self checkNull: columnName],
 		@"classPK": @(classPK),
-		@"data": data
+		@"data": [self checkNull: data]
 	}];
 
 	NSDictionary *_command = @{@"/expandovalue/add-value": _params};
@@ -37,10 +37,10 @@
 - (void)addValuesWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName classPK:(long long)classPK attributeValues:(NSDictionary *)attributeValues error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"className": className,
-		@"tableName": tableName,
+		@"className": [self checkNull: className],
+		@"tableName": [self checkNull: tableName],
 		@"classPK": @(classPK),
-		@"attributeValues": attributeValues
+		@"attributeValues": [self checkNull: attributeValues]
 	}];
 
 	NSDictionary *_command = @{@"/expandovalue/add-values": _params};
@@ -51,9 +51,9 @@
 - (NSDictionary *)getDataWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"className": className,
-		@"tableName": tableName,
-		@"columnName": columnName,
+		@"className": [self checkNull: className],
+		@"tableName": [self checkNull: tableName],
+		@"columnName": [self checkNull: columnName],
 		@"classPK": @(classPK)
 	}];
 
@@ -65,9 +65,9 @@
 - (NSDictionary *)getDataWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnNames:(NSDictionary *)columnNames classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"className": className,
-		@"tableName": tableName,
-		@"columnNames": columnNames,
+		@"className": [self checkNull: className],
+		@"tableName": [self checkNull: tableName],
+		@"columnNames": [self checkNull: columnNames],
 		@"classPK": @(classPK)
 	}];
 
@@ -79,9 +79,9 @@
 - (NSDictionary *)getJsonDataWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"className": className,
-		@"tableName": tableName,
-		@"columnName": columnName,
+		@"className": [self checkNull: className],
+		@"tableName": [self checkNull: tableName],
+		@"columnName": [self checkNull: columnName],
 		@"classPK": @(classPK)
 	}];
 

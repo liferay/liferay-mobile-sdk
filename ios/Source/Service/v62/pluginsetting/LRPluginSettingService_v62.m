@@ -22,9 +22,9 @@
 - (NSDictionary *)updatePluginSettingWithCompanyId:(long long)companyId pluginId:(NSString *)pluginId pluginType:(NSString *)pluginType roles:(NSString *)roles active:(BOOL)active error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"pluginId": pluginId,
-		@"pluginType": pluginType,
-		@"roles": roles,
+		@"pluginId": [self checkNull: pluginId],
+		@"pluginType": [self checkNull: pluginType],
+		@"roles": [self checkNull: roles],
 		@"active": @(active)
 	}];
 

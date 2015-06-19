@@ -21,9 +21,9 @@
 
 - (NSDictionary *)addRoleWithName:(NSString *)name titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap type:(int)type error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"name": name,
-		@"titleMap": titleMap,
-		@"descriptionMap": descriptionMap,
+		@"name": [self checkNull: name],
+		@"titleMap": [self checkNull: titleMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
 		@"type": @(type)
 	}];
 
@@ -34,13 +34,13 @@
 
 - (NSDictionary *)addRoleWithClassName:(NSString *)className classPK:(long long)classPK name:(NSString *)name titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap type:(int)type subtype:(NSString *)subtype serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK),
-		@"name": name,
-		@"titleMap": titleMap,
-		@"descriptionMap": descriptionMap,
+		@"name": [self checkNull: name],
+		@"titleMap": [self checkNull: titleMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
 		@"type": @(type),
-		@"subtype": subtype,
+		@"subtype": [self checkNull: subtype],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -53,7 +53,7 @@
 - (void)addUserRolesWithUserId:(long long)userId roleIds:(NSArray *)roleIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
-		@"roleIds": roleIds
+		@"roleIds": [self checkNull: roleIds]
 	}];
 
 	NSDictionary *_command = @{@"/role/add-user-roles": _params};
@@ -94,7 +94,7 @@
 - (NSDictionary *)getRoleWithCompanyId:(long long)companyId name:(NSString *)name error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"name": name
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/role/get-role": _params};
@@ -127,7 +127,7 @@
 - (NSArray *)getUserRelatedRolesWithUserId:(long long)userId groups:(NSArray *)groups error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
-		@"groups": groups
+		@"groups": [self checkNull: groups]
 	}];
 
 	NSDictionary *_command = @{@"/role/get-user-related-roles": _params};
@@ -149,7 +149,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"companyId": @(companyId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"inherited": @(inherited)
 	}];
 
@@ -162,7 +162,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
 		@"companyId": @(companyId),
-		@"names": names,
+		@"names": [self checkNull: names],
 		@"inherited": @(inherited)
 	}];
 
@@ -174,7 +174,7 @@
 - (void)unsetUserRolesWithUserId:(long long)userId roleIds:(NSArray *)roleIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
-		@"roleIds": roleIds
+		@"roleIds": [self checkNull: roleIds]
 	}];
 
 	NSDictionary *_command = @{@"/role/unset-user-roles": _params};
@@ -185,10 +185,10 @@
 - (NSDictionary *)updateRoleWithRoleId:(long long)roleId name:(NSString *)name titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap subtype:(NSString *)subtype serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"roleId": @(roleId),
-		@"name": name,
-		@"titleMap": titleMap,
-		@"descriptionMap": descriptionMap,
-		@"subtype": subtype,
+		@"name": [self checkNull: name],
+		@"titleMap": [self checkNull: titleMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"subtype": [self checkNull: subtype],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];

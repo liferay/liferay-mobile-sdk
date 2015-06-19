@@ -21,7 +21,7 @@
 
 - (NSDictionary *)addCategoryWithTitle:(NSString *)title vocabularyId:(long long)vocabularyId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"title": title,
+		@"title": [self checkNull: title],
 		@"vocabularyId": @(vocabularyId),
 	}];
 
@@ -35,10 +35,10 @@
 - (NSDictionary *)addCategoryWithParentCategoryId:(long long)parentCategoryId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap vocabularyId:(long long)vocabularyId categoryProperties:(NSArray *)categoryProperties serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentCategoryId": @(parentCategoryId),
-		@"titleMap": titleMap,
-		@"descriptionMap": descriptionMap,
+		@"titleMap": [self checkNull: titleMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
 		@"vocabularyId": @(vocabularyId),
-		@"categoryProperties": categoryProperties,
+		@"categoryProperties": [self checkNull: categoryProperties],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -50,7 +50,7 @@
 
 - (void)deleteCategoriesWithCategoryIds:(NSArray *)categoryIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"categoryIds": categoryIds
+		@"categoryIds": [self checkNull: categoryIds]
 	}];
 
 	NSDictionary *_command = @{@"/assetcategory/delete-categories": _params};
@@ -60,7 +60,7 @@
 
 - (NSArray *)deleteCategoriesWithCategoryIds:(NSArray *)categoryIds serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"categoryIds": categoryIds,
+		@"categoryIds": [self checkNull: categoryIds],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -82,7 +82,7 @@
 
 - (NSArray *)getCategoriesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK)
 	}];
 
@@ -128,8 +128,8 @@
 - (NSArray *)getJsonSearchWithGroupId:(long long)groupId name:(NSString *)name vocabularyIds:(NSArray *)vocabularyIds start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
-		@"vocabularyIds": vocabularyIds,
+		@"name": [self checkNull: name],
+		@"vocabularyIds": [self checkNull: vocabularyIds],
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -156,7 +156,7 @@
 - (NSDictionary *)getJsonVocabularyCategoriesWithGroupId:(long long)groupId name:(NSString *)name vocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"vocabularyId": @(vocabularyId),
 		@"start": @(start),
 		@"end": @(end),
@@ -201,7 +201,7 @@
 - (NSArray *)getVocabularyCategoriesWithGroupId:(long long)groupId name:(NSString *)name vocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"vocabularyId": @(vocabularyId),
 		@"start": @(start),
 		@"end": @(end),
@@ -228,7 +228,7 @@
 - (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long long)groupId name:(NSString *)name vocabularyId:(long long)vocabularyId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"vocabularyId": @(vocabularyId)
 	}];
 
@@ -254,7 +254,7 @@
 - (NSDictionary *)getVocabularyCategoriesDisplayWithGroupId:(long long)groupId name:(NSString *)name vocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
+		@"name": [self checkNull: name],
 		@"vocabularyId": @(vocabularyId),
 		@"start": @(start),
 		@"end": @(end),
@@ -324,8 +324,8 @@
 - (NSArray *)searchWithGroupId:(long long)groupId name:(NSString *)name categoryProperties:(NSArray *)categoryProperties start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": name,
-		@"categoryProperties": categoryProperties,
+		@"name": [self checkNull: name],
+		@"categoryProperties": [self checkNull: categoryProperties],
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -337,9 +337,9 @@
 
 - (NSArray *)searchWithGroupIds:(NSArray *)groupIds name:(NSString *)name vocabularyIds:(NSArray *)vocabularyIds start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": groupIds,
-		@"name": name,
-		@"vocabularyIds": vocabularyIds,
+		@"groupIds": [self checkNull: groupIds],
+		@"name": [self checkNull: name],
+		@"vocabularyIds": [self checkNull: vocabularyIds],
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -352,7 +352,7 @@
 - (NSArray *)searchWithGroupId:(long long)groupId keywords:(NSString *)keywords vocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"keywords": keywords,
+		@"keywords": [self checkNull: keywords],
 		@"vocabularyId": @(vocabularyId),
 		@"start": @(start),
 		@"end": @(end),
@@ -369,10 +369,10 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"categoryId": @(categoryId),
 		@"parentCategoryId": @(parentCategoryId),
-		@"titleMap": titleMap,
-		@"descriptionMap": descriptionMap,
+		@"titleMap": [self checkNull: titleMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
 		@"vocabularyId": @(vocabularyId),
-		@"categoryProperties": categoryProperties,
+		@"categoryProperties": [self checkNull: categoryProperties],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];

@@ -25,15 +25,15 @@
 		@"folderId": @(folderId),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"autoArticleId": @(autoArticleId),
-		@"titleMap": titleMap,
-		@"descriptionMap": descriptionMap,
-		@"content": content,
-		@"type": type,
-		@"ddmStructureKey": ddmStructureKey,
-		@"ddmTemplateKey": ddmTemplateKey,
-		@"layoutUuid": layoutUuid,
+		@"titleMap": [self checkNull: titleMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"content": [self checkNull: content],
+		@"type": [self checkNull: type],
+		@"ddmStructureKey": [self checkNull: ddmStructureKey],
+		@"ddmTemplateKey": [self checkNull: ddmTemplateKey],
+		@"layoutUuid": [self checkNull: layoutUuid],
 		@"displayDateMonth": @(displayDateMonth),
 		@"displayDateDay": @(displayDateDay),
 		@"displayDateYear": @(displayDateYear),
@@ -52,7 +52,7 @@
 		@"reviewDateMinute": @(reviewDateMinute),
 		@"neverReview": @(neverReview),
 		@"indexable": @(indexable),
-		@"articleURL": articleURL,
+		@"articleURL": [self checkNull: articleURL],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -68,15 +68,15 @@
 		@"folderId": @(folderId),
 		@"classNameId": @(classNameId),
 		@"classPK": @(classPK),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"autoArticleId": @(autoArticleId),
-		@"titleMap": titleMap,
-		@"descriptionMap": descriptionMap,
-		@"content": content,
-		@"type": type,
-		@"ddmStructureKey": ddmStructureKey,
-		@"ddmTemplateKey": ddmTemplateKey,
-		@"layoutUuid": layoutUuid,
+		@"titleMap": [self checkNull: titleMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"content": [self checkNull: content],
+		@"type": [self checkNull: type],
+		@"ddmStructureKey": [self checkNull: ddmStructureKey],
+		@"ddmTemplateKey": [self checkNull: ddmTemplateKey],
+		@"layoutUuid": [self checkNull: layoutUuid],
 		@"displayDateMonth": @(displayDateMonth),
 		@"displayDateDay": @(displayDateDay),
 		@"displayDateYear": @(displayDateYear),
@@ -96,10 +96,10 @@
 		@"neverReview": @(neverReview),
 		@"indexable": @(indexable),
 		@"smallImage": @(smallImage),
-		@"smallImageURL": smallImageURL,
-		@"smallFile": smallFile,
-		@"images": images,
-		@"articleURL": articleURL,
+		@"smallImageURL": [self checkNull: smallImageURL],
+		@"smallFile": [self checkNull: smallFile],
+		@"images": [self checkNull: images],
+		@"articleURL": [self checkNull: articleURL],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -112,8 +112,8 @@
 - (NSDictionary *)copyArticleWithGroupId:(long long)groupId oldArticleId:(NSString *)oldArticleId newArticleId:(NSString *)newArticleId autoArticleId:(BOOL)autoArticleId version:(double)version error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"oldArticleId": oldArticleId,
-		@"newArticleId": newArticleId,
+		@"oldArticleId": [self checkNull: oldArticleId],
+		@"newArticleId": [self checkNull: newArticleId],
 		@"autoArticleId": @(autoArticleId),
 		@"version": @(version)
 	}];
@@ -126,8 +126,8 @@
 - (void)deleteArticleWithGroupId:(long long)groupId articleId:(NSString *)articleId articleURL:(NSString *)articleURL serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId,
-		@"articleURL": articleURL,
+		@"articleId": [self checkNull: articleId],
+		@"articleURL": [self checkNull: articleURL],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -140,9 +140,9 @@
 - (void)deleteArticleWithGroupId:(long long)groupId articleId:(NSString *)articleId version:(double)version articleURL:(NSString *)articleURL serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"version": @(version),
-		@"articleURL": articleURL,
+		@"articleURL": [self checkNull: articleURL],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -155,8 +155,8 @@
 - (void)expireArticleWithGroupId:(long long)groupId articleId:(NSString *)articleId articleURL:(NSString *)articleURL serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId,
-		@"articleURL": articleURL,
+		@"articleId": [self checkNull: articleId],
+		@"articleURL": [self checkNull: articleURL],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -169,9 +169,9 @@
 - (NSDictionary *)expireArticleWithGroupId:(long long)groupId articleId:(NSString *)articleId version:(double)version articleURL:(NSString *)articleURL serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"version": @(version),
-		@"articleURL": articleURL,
+		@"articleURL": [self checkNull: articleURL],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -194,7 +194,7 @@
 - (NSDictionary *)getArticleWithGroupId:(long long)groupId articleId:(NSString *)articleId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId
+		@"articleId": [self checkNull: articleId]
 	}];
 
 	NSDictionary *_command = @{@"/journalarticle/get-article": _params};
@@ -205,7 +205,7 @@
 - (NSDictionary *)getArticleWithGroupId:(long long)groupId articleId:(NSString *)articleId version:(double)version error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"version": @(version)
 	}];
 
@@ -217,7 +217,7 @@
 - (NSDictionary *)getArticleWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK)
 	}];
 
@@ -229,7 +229,7 @@
 - (NSDictionary *)getArticleByUrlTitleWithGroupId:(long long)groupId urlTitle:(NSString *)urlTitle error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"urlTitle": urlTitle
+		@"urlTitle": [self checkNull: urlTitle]
 	}];
 
 	NSDictionary *_command = @{@"/journalarticle/get-article-by-url-title": _params};
@@ -240,8 +240,8 @@
 - (NSString *)getArticleContentWithGroupId:(long long)groupId articleId:(NSString *)articleId languageId:(NSString *)languageId themeDisplay:(LRJSONObjectWrapper *)themeDisplay error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId,
-		@"languageId": languageId,
+		@"articleId": [self checkNull: articleId],
+		@"languageId": [self checkNull: languageId],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
@@ -254,9 +254,9 @@
 - (NSString *)getArticleContentWithGroupId:(long long)groupId articleId:(NSString *)articleId version:(double)version languageId:(NSString *)languageId themeDisplay:(LRJSONObjectWrapper *)themeDisplay error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"version": @(version),
-		@"languageId": languageId,
+		@"languageId": [self checkNull: languageId],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
@@ -295,7 +295,7 @@
 - (NSArray *)getArticlesByArticleIdWithGroupId:(long long)groupId articleId:(NSString *)articleId start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"start": @(start),
 		@"end": @(end),
 	}];
@@ -310,7 +310,7 @@
 - (NSArray *)getArticlesByLayoutUuidWithGroupId:(long long)groupId layoutUuid:(NSString *)layoutUuid error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"layoutUuid": layoutUuid
+		@"layoutUuid": [self checkNull: layoutUuid]
 	}];
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles-by-layout-uuid": _params};
@@ -321,7 +321,7 @@
 - (NSArray *)getArticlesByStructureIdWithGroupId:(long long)groupId ddmStructureKey:(NSString *)ddmStructureKey start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"ddmStructureKey": ddmStructureKey,
+		@"ddmStructureKey": [self checkNull: ddmStructureKey],
 		@"start": @(start),
 		@"end": @(end),
 	}];
@@ -337,7 +337,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
-		@"ddmStructureKey": ddmStructureKey,
+		@"ddmStructureKey": [self checkNull: ddmStructureKey],
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end),
@@ -376,7 +376,7 @@
 - (NSNumber *)getArticlesCountByArticleIdWithGroupId:(long long)groupId articleId:(NSString *)articleId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId
+		@"articleId": [self checkNull: articleId]
 	}];
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles-count-by-article-id": _params};
@@ -387,7 +387,7 @@
 - (NSNumber *)getArticlesCountByStructureIdWithGroupId:(long long)groupId ddmStructureKey:(NSString *)ddmStructureKey error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"ddmStructureKey": ddmStructureKey
+		@"ddmStructureKey": [self checkNull: ddmStructureKey]
 	}];
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles-count-by-structure-id": _params};
@@ -399,7 +399,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"classNameId": @(classNameId),
-		@"ddmStructureKey": ddmStructureKey,
+		@"ddmStructureKey": [self checkNull: ddmStructureKey],
 		@"status": @(status)
 	}];
 
@@ -411,7 +411,7 @@
 - (NSDictionary *)getDisplayArticleByUrlTitleWithGroupId:(long long)groupId urlTitle:(NSString *)urlTitle error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"urlTitle": urlTitle
+		@"urlTitle": [self checkNull: urlTitle]
 	}];
 
 	NSDictionary *_command = @{@"/journalarticle/get-display-article-by-url-title": _params};
@@ -422,7 +422,7 @@
 - (NSNumber *)getFoldersAndArticlesCountWithGroupId:(long long)groupId folderIds:(NSArray *)folderIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"folderIds": folderIds
+		@"folderIds": [self checkNull: folderIds]
 	}];
 
 	NSDictionary *_command = @{@"/journalarticle/get-folders-and-articles-count": _params};
@@ -501,7 +501,7 @@
 - (NSDictionary *)getLatestArticleWithGroupId:(long long)groupId articleId:(NSString *)articleId status:(int)status error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"status": @(status)
 	}];
 
@@ -513,7 +513,7 @@
 - (NSDictionary *)getLatestArticleWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"className": className,
+		@"className": [self checkNull: className],
 		@"classPK": @(classPK)
 	}];
 
@@ -525,7 +525,7 @@
 - (void)moveArticleWithGroupId:(long long)groupId articleId:(NSString *)articleId newFolderId:(long long)newFolderId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"newFolderId": @(newFolderId)
 	}];
 
@@ -537,7 +537,7 @@
 - (NSDictionary *)moveArticleFromTrashWithGroupId:(long long)groupId articleId:(NSString *)articleId newFolderId:(long long)newFolderId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"newFolderId": @(newFolderId),
 	}];
 
@@ -565,7 +565,7 @@
 - (NSDictionary *)moveArticleToTrashWithGroupId:(long long)groupId articleId:(NSString *)articleId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId
+		@"articleId": [self checkNull: articleId]
 	}];
 
 	NSDictionary *_command = @{@"/journalarticle/move-article-to-trash": _params};
@@ -576,7 +576,7 @@
 - (void)removeArticleLocaleWithCompanyId:(long long)companyId languageId:(NSString *)languageId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
-		@"languageId": languageId
+		@"languageId": [self checkNull: languageId]
 	}];
 
 	NSDictionary *_command = @{@"/journalarticle/remove-article-locale": _params};
@@ -587,9 +587,9 @@
 - (NSDictionary *)removeArticleLocaleWithGroupId:(long long)groupId articleId:(NSString *)articleId version:(double)version languageId:(NSString *)languageId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"version": @(version),
-		@"languageId": languageId
+		@"languageId": [self checkNull: languageId]
 	}];
 
 	NSDictionary *_command = @{@"/journalarticle/remove-article-locale": _params};
@@ -610,7 +610,7 @@
 - (void)restoreArticleFromTrashWithGroupId:(long long)groupId articleId:(NSString *)articleId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId
+		@"articleId": [self checkNull: articleId]
 	}];
 
 	NSDictionary *_command = @{@"/journalarticle/restore-article-from-trash": _params};
@@ -622,13 +622,13 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
-		@"folderIds": folderIds,
+		@"folderIds": [self checkNull: folderIds],
 		@"classNameId": @(classNameId),
-		@"keywords": keywords,
+		@"keywords": [self checkNull: keywords],
 		@"version": @(version),
-		@"type": type,
-		@"ddmStructureKey": ddmStructureKey,
-		@"ddmTemplateKey": ddmTemplateKey,
+		@"type": [self checkNull: type],
+		@"ddmStructureKey": [self checkNull: ddmStructureKey],
+		@"ddmTemplateKey": [self checkNull: ddmTemplateKey],
 		@"displayDateGT": @(displayDateGT),
 		@"displayDateLT": @(displayDateLT),
 		@"status": @(status),
@@ -648,16 +648,16 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
-		@"folderIds": folderIds,
+		@"folderIds": [self checkNull: folderIds],
 		@"classNameId": @(classNameId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"version": @(version),
-		@"title": title,
-		@"description": description,
-		@"content": content,
-		@"type": type,
-		@"ddmStructureKey": ddmStructureKey,
-		@"ddmTemplateKey": ddmTemplateKey,
+		@"title": [self checkNull: title],
+		@"description": [self checkNull: description],
+		@"content": [self checkNull: content],
+		@"type": [self checkNull: type],
+		@"ddmStructureKey": [self checkNull: ddmStructureKey],
+		@"ddmTemplateKey": [self checkNull: ddmTemplateKey],
 		@"displayDateGT": @(displayDateGT),
 		@"displayDateLT": @(displayDateLT),
 		@"status": @(status),
@@ -678,16 +678,16 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
-		@"folderIds": folderIds,
+		@"folderIds": [self checkNull: folderIds],
 		@"classNameId": @(classNameId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"version": @(version),
-		@"title": title,
-		@"description": description,
-		@"content": content,
-		@"type": type,
-		@"ddmStructureKeys": ddmStructureKeys,
-		@"ddmTemplateKeys": ddmTemplateKeys,
+		@"title": [self checkNull: title],
+		@"description": [self checkNull: description],
+		@"content": [self checkNull: content],
+		@"type": [self checkNull: type],
+		@"ddmStructureKeys": [self checkNull: ddmStructureKeys],
+		@"ddmTemplateKeys": [self checkNull: ddmTemplateKeys],
 		@"displayDateGT": @(displayDateGT),
 		@"displayDateLT": @(displayDateLT),
 		@"status": @(status),
@@ -722,13 +722,13 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
-		@"folderIds": folderIds,
+		@"folderIds": [self checkNull: folderIds],
 		@"classNameId": @(classNameId),
-		@"keywords": keywords,
+		@"keywords": [self checkNull: keywords],
 		@"version": @(version),
-		@"type": type,
-		@"ddmStructureKey": ddmStructureKey,
-		@"ddmTemplateKey": ddmTemplateKey,
+		@"type": [self checkNull: type],
+		@"ddmStructureKey": [self checkNull: ddmStructureKey],
+		@"ddmTemplateKey": [self checkNull: ddmTemplateKey],
 		@"displayDateGT": @(displayDateGT),
 		@"displayDateLT": @(displayDateLT),
 		@"status": @(status),
@@ -744,16 +744,16 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
-		@"folderIds": folderIds,
+		@"folderIds": [self checkNull: folderIds],
 		@"classNameId": @(classNameId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"version": @(version),
-		@"title": title,
-		@"description": description,
-		@"content": content,
-		@"type": type,
-		@"ddmStructureKey": ddmStructureKey,
-		@"ddmTemplateKey": ddmTemplateKey,
+		@"title": [self checkNull: title],
+		@"description": [self checkNull: description],
+		@"content": [self checkNull: content],
+		@"type": [self checkNull: type],
+		@"ddmStructureKey": [self checkNull: ddmStructureKey],
+		@"ddmTemplateKey": [self checkNull: ddmTemplateKey],
 		@"displayDateGT": @(displayDateGT),
 		@"displayDateLT": @(displayDateLT),
 		@"status": @(status),
@@ -770,16 +770,16 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupId": @(groupId),
-		@"folderIds": folderIds,
+		@"folderIds": [self checkNull: folderIds],
 		@"classNameId": @(classNameId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"version": @(version),
-		@"title": title,
-		@"description": description,
-		@"content": content,
-		@"type": type,
-		@"ddmStructureKeys": ddmStructureKeys,
-		@"ddmTemplateKeys": ddmTemplateKeys,
+		@"title": [self checkNull: title],
+		@"description": [self checkNull: description],
+		@"content": [self checkNull: content],
+		@"type": [self checkNull: type],
+		@"ddmStructureKeys": [self checkNull: ddmStructureKeys],
+		@"ddmTemplateKeys": [self checkNull: ddmTemplateKeys],
 		@"displayDateGT": @(displayDateGT),
 		@"displayDateLT": @(displayDateLT),
 		@"status": @(status),
@@ -817,12 +817,12 @@
 		@"userId": @(userId),
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"version": @(version),
-		@"titleMap": titleMap,
-		@"descriptionMap": descriptionMap,
-		@"content": content,
-		@"layoutUuid": layoutUuid,
+		@"titleMap": [self checkNull: titleMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"content": [self checkNull: content],
+		@"layoutUuid": [self checkNull: layoutUuid],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -836,15 +836,15 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"version": @(version),
-		@"titleMap": titleMap,
-		@"descriptionMap": descriptionMap,
-		@"content": content,
-		@"type": type,
-		@"ddmStructureKey": ddmStructureKey,
-		@"ddmTemplateKey": ddmTemplateKey,
-		@"layoutUuid": layoutUuid,
+		@"titleMap": [self checkNull: titleMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"content": [self checkNull: content],
+		@"type": [self checkNull: type],
+		@"ddmStructureKey": [self checkNull: ddmStructureKey],
+		@"ddmTemplateKey": [self checkNull: ddmTemplateKey],
+		@"layoutUuid": [self checkNull: layoutUuid],
 		@"displayDateMonth": @(displayDateMonth),
 		@"displayDateDay": @(displayDateDay),
 		@"displayDateYear": @(displayDateYear),
@@ -864,10 +864,10 @@
 		@"neverReview": @(neverReview),
 		@"indexable": @(indexable),
 		@"smallImage": @(smallImage),
-		@"smallImageURL": smallImageURL,
-		@"smallFile": smallFile,
-		@"images": images,
-		@"articleURL": articleURL,
+		@"smallImageURL": [self checkNull: smallImageURL],
+		@"smallFile": [self checkNull: smallFile],
+		@"images": [self checkNull: images],
+		@"articleURL": [self checkNull: articleURL],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -881,9 +881,9 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"version": @(version),
-		@"content": content,
+		@"content": [self checkNull: content],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -896,13 +896,13 @@
 - (NSDictionary *)updateArticleTranslationWithGroupId:(long long)groupId articleId:(NSString *)articleId version:(double)version locale:(NSString *)locale title:(NSString *)title description:(NSString *)description content:(NSString *)content images:(NSDictionary *)images error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"version": @(version),
-		@"locale": locale,
-		@"title": title,
-		@"description": description,
-		@"content": content,
-		@"images": images
+		@"locale": [self checkNull: locale],
+		@"title": [self checkNull: title],
+		@"description": [self checkNull: description],
+		@"content": [self checkNull: content],
+		@"images": [self checkNull: images]
 	}];
 
 	NSDictionary *_command = @{@"/journalarticle/update-article-translation": _params};
@@ -913,13 +913,13 @@
 - (NSDictionary *)updateArticleTranslationWithGroupId:(long long)groupId articleId:(NSString *)articleId version:(double)version locale:(NSString *)locale title:(NSString *)title description:(NSString *)description content:(NSString *)content images:(NSDictionary *)images serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"version": @(version),
-		@"locale": locale,
-		@"title": title,
-		@"description": description,
-		@"content": content,
-		@"images": images,
+		@"locale": [self checkNull: locale],
+		@"title": [self checkNull: title],
+		@"description": [self checkNull: description],
+		@"content": [self checkNull: content],
+		@"images": [self checkNull: images],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -932,9 +932,9 @@
 - (NSDictionary *)updateContentWithGroupId:(long long)groupId articleId:(NSString *)articleId version:(double)version content:(NSString *)content error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"version": @(version),
-		@"content": content
+		@"content": [self checkNull: content]
 	}];
 
 	NSDictionary *_command = @{@"/journalarticle/update-content": _params};
@@ -945,10 +945,10 @@
 - (NSDictionary *)updateStatusWithGroupId:(long long)groupId articleId:(NSString *)articleId version:(double)version status:(int)status articleURL:(NSString *)articleURL serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": articleId,
+		@"articleId": [self checkNull: articleId],
 		@"version": @(version),
 		@"status": @(status),
-		@"articleURL": articleURL,
+		@"articleURL": [self checkNull: articleURL],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
