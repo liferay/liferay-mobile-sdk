@@ -25,7 +25,7 @@ const int LR_DOWNLOAD_FINISHED = 0;
  */
 @implementation LRDownloadDelegate
 
-- (id)initWithSession:(LRBasicAuthentication *)auth
+- (id)initWithAuth:(LRBasicAuthentication *)auth
 		outputStream:(NSOutputStream *)outputStream
 		downloadProgress:(LRDownloadProgress)downloadProgress {
 

@@ -28,7 +28,7 @@
 	LRBasicAuthentication *auth = [LRDownloadUtil _getAuthentication:session];
 
 	LRDownloadDelegate *delegate = [[LRDownloadDelegate alloc]
-		initWithSession:auth outputStream:outputStream
+		initWithAuth:auth outputStream:outputStream
 		downloadProgress:downloadProgress];
 
 	NSMutableURLRequest *request = [LRHttpUtil getRequestWithSession:session

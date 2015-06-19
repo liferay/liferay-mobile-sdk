@@ -29,7 +29,7 @@ extern const int LR_DOWNLOAD_FINISHED;
 @property (nonatomic, strong) NSOutputStream *outputStream;
 @property (nonatomic) long long totalBytes;
 
-- (id)initWithSession:(LRBasicAuthentication *)auth
+- (id)initWithAuth:(LRBasicAuthentication *)auth
 	outputStream:(NSOutputStream *)outputStream
 	downloadProgress:(LRDownloadProgress)downloadProgress;
 
