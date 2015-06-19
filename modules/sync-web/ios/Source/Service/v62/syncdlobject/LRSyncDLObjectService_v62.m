@@ -23,13 +23,13 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
-		@"sourceFileName": sourceFileName,
-		@"mimeType": mimeType,
-		@"title": title,
-		@"description": description,
-		@"changeLog": changeLog,
-		@"file": file,
-		@"checksum": checksum,
+		@"sourceFileName": [self checkNull: sourceFileName],
+		@"mimeType": [self checkNull: mimeType],
+		@"title": [self checkNull: title],
+		@"description": [self checkNull: description],
+		@"changeLog": [self checkNull: changeLog],
+		@"file": [self checkNull: file],
+		@"checksum": [self checkNull: checksum],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -43,8 +43,8 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"parentFolderId": @(parentFolderId),
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -68,7 +68,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
 		@"majorVersion": @(majorVersion),
-		@"changeLog": changeLog,
+		@"changeLog": [self checkNull: changeLog],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -93,7 +93,7 @@
 - (NSDictionary *)checkOutFileEntryWithFileEntryId:(long long)fileEntryId owner:(NSString *)owner expirationTime:(long long)expirationTime serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"owner": owner,
+		@"owner": [self checkNull: owner],
 		@"expirationTime": @(expirationTime),
 	}];
 
@@ -130,7 +130,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"folderId": @(folderId),
-		@"title": title
+		@"title": [self checkNull: title]
 	}];
 
 	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-file-entry-sync-dl-object": _params};
@@ -163,7 +163,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"parentFolderId": @(parentFolderId),
-		@"name": name
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-folder-sync-dl-object": _params};
@@ -212,7 +212,7 @@
 
 - (NSDictionary *)getSyncContextWithUuid:(NSString *)uuid error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"uuid": uuid
+		@"uuid": [self checkNull: uuid]
 	}];
 
 	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-sync-context": _params};
@@ -304,14 +304,14 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
 		@"sourceVersionId": @(sourceVersionId),
-		@"sourceFileName": sourceFileName,
-		@"mimeType": mimeType,
-		@"title": title,
-		@"description": description,
-		@"changeLog": changeLog,
+		@"sourceFileName": [self checkNull: sourceFileName],
+		@"mimeType": [self checkNull: mimeType],
+		@"title": [self checkNull: title],
+		@"description": [self checkNull: description],
+		@"changeLog": [self checkNull: changeLog],
 		@"majorVersion": @(majorVersion),
-		@"deltaFile": deltaFile,
-		@"checksum": checksum,
+		@"deltaFile": [self checkNull: deltaFile],
+		@"checksum": [self checkNull: checksum],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -343,7 +343,7 @@
 
 - (NSOperation *)updateFileEntriesWithZipFile:(LRUploadData *)zipFile error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"zipFile": zipFile
+		@"zipFile": [self checkNull: zipFile]
 	}];
 
 	NSDictionary *_command = @{@"/sync-web.syncdlobject/update-file-entries": _params};
@@ -354,14 +354,14 @@
 - (NSOperation *)updateFileEntryWithFileEntryId:(long long)fileEntryId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog majorVersion:(BOOL)majorVersion file:(LRUploadData *)file checksum:(NSString *)checksum serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"sourceFileName": sourceFileName,
-		@"mimeType": mimeType,
-		@"title": title,
-		@"description": description,
-		@"changeLog": changeLog,
+		@"sourceFileName": [self checkNull: sourceFileName],
+		@"mimeType": [self checkNull: mimeType],
+		@"title": [self checkNull: title],
+		@"description": [self checkNull: description],
+		@"changeLog": [self checkNull: changeLog],
 		@"majorVersion": @(majorVersion),
-		@"file": file,
-		@"checksum": checksum,
+		@"file": [self checkNull: file],
+		@"checksum": [self checkNull: checksum],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
@@ -374,8 +374,8 @@
 - (NSDictionary *)updateFolderWithFolderId:(long long)folderId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
-		@"name": name,
-		@"description": description,
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
