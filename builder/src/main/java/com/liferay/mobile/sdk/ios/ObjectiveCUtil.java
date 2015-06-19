@@ -52,6 +52,9 @@ public class ObjectiveCUtil extends LanguageUtil {
 		else if (type.equals(NS_DATA)) {
 			name = "[self toString:" + name + "]";
 		}
+		else {
+			name = "[self checkNull: " + name + "]";
+		}
 
 		return name;
 	}
