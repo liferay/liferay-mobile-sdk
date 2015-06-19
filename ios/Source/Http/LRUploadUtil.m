@@ -86,15 +86,18 @@
 	return operation;
 }
 
-+ (LRUploadData *)_extractUploadData:(NSMutableDictionary *)parameters {
-	for (NSString *key in parameters) {
-		id parameter = [parameters objectForKey:key];
++ (LRUploadData *)_extractUploadData:(NSMutableDictionary *)params {
+	for (NSString *key in params) {
+		id param = [params objectForKey:key];
 
-		if ([parameter isKindOfClass:[LRUploadData class]]) {
-			[parameters removeObjectForKey:key];
-			[parameter setParameterName:key];
+		NSString *paramClazz = NSStringFromClass([params[key] class]);
+		NSString *uploadDataClazz = NSStringFromClass([LRUploadData class]);
 
-			return parameter;
+		if ([paramClazz isEqualToString:uploadDataClazz]) {
+			[params removeObjectForKey:key];
+			[param setParameterName:key];
+
+			return param;
 		}
 	}
 

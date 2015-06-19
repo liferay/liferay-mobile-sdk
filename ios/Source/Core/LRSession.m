@@ -130,7 +130,7 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 #pragma mark - Private methods
 
 - (BOOL)_hasUploadData:(NSDictionary *)command {
-	if (![command count]) {
+	if ([command count] == 0) {
 		return NO;
 	}
 
@@ -138,7 +138,10 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 	NSDictionary *params = [command objectForKey:first];
 
 	for (NSString *key in [params allKeys]) {
-		if ([params[key] isKindOfClass:[LRUploadData class]]) {
+		NSString *paramClazz = NSStringFromClass([params[key] class]);
+		NSString *uploadDataClazz = NSStringFromClass([LRUploadData class]);
+
+		if ([paramClazz isEqualToString:uploadDataClazz]) {
 			return YES;
 		}
 	}
