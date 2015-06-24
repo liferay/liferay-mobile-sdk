@@ -50,9 +50,6 @@ public class LanguageUtil {
 		InputStream is = getClass().getResourceAsStream(
 			"/class-names.properties");
 
-		InputStream extIs = getClass().getResourceAsStream(
-			"/class-names-ext.properties");
-
 		try {
 			_classNames.load(is);
 		}
@@ -60,9 +57,12 @@ public class LanguageUtil {
 			ioe.printStackTrace();
 		}
 
-		if (extIs != null) {
+		InputStream ext = getClass().getResourceAsStream(
+			"/class-names-ext.properties");
+
+		if (ext != null) {
 			try {
-				_classNames.load(extIs);
+				_classNames.load(ext);
 			}
 			catch (IOException ioe) {
 				ioe.printStackTrace();
