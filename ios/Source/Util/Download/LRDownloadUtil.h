@@ -25,13 +25,15 @@
 	URL:(NSString *)URL outputStream:(NSOutputStream *)os
 	downloadProgress:(LRDownloadProgress)downloadProgress;
 
-+ (NSURLConnection *)downloadFileWithSession:(LRSession *)session
++ (NSURLConnection *)downloadWebDAVFileWithSession:(LRSession *)session
+	portalVersion:(NSInteger)portalVersion
 	groupFriendlyURL:(NSString *)groupFriendlyURL
 	folderPath:(NSString *)folderPath fileTitle:(NSString *)fileTitle
 	outputStream:(NSOutputStream *)outputStream
 	downloadProgress:(LRDownloadProgress)downloadProgress;
 
-+ (NSString *)getDownloadURLWithSession:(LRSession *)session
++ (NSString *)getWebDAVFileURLWithSession:(LRSession *)session
+	portalVersion:(NSInteger)portalversion
 	groupFriendlyURL:(NSString *)groupFriendlyURL
 	folderPath:(NSString *)folderPath fileTitle:(NSString *)fileTitle;
 

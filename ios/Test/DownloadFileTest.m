@@ -24,6 +24,7 @@
 @interface DownloadFileTest : BaseTest
 
 @property (nonatomic, strong) NSDictionary *entry;
+@property (nonatomic) NSInteger portalVersion;
 
 @end
 
@@ -35,9 +36,9 @@
 	NSOutputStream *outputStream = [NSOutputStream outputStreamToMemory];
 	[outputStream open];
 
-	[LRDownloadUtil downloadFileWithSession:self.session
-		groupFriendlyURL:@"/guest" folderPath:@""
-		fileTitle:self.entry[@"title"] outputStream:outputStream
+	[LRDownloadUtil downloadWebDAVFileWithSession:self.session
+		portalVersion:self.portalVersion groupFriendlyURL:@"/guest"
+		folderPath:@"" fileTitle:self.entry[@"title"] outputStream:outputStream
 		downloadProgress:^(long long totalBytes, NSError *e) {
 			XCTAssertTrue([NSThread isMainThread]);
 
@@ -74,7 +75,8 @@
 		"/file%20%C3%A1%C3%A9%C3%AD%C3%B2%C3%BA%C3%B1.txt";
 
 	NSString *downloadURL = [LRDownloadUtil
-		getDownloadURLWithSession:self.session groupFriendlyURL:@"/guest"
+		getWebDAVFileURLWithSession:self.session
+		portalVersion:self.portalVersion groupFriendlyURL:@"/guest"
 		folderPath:@"/folder with spaces" fileTitle:@"file áéíòúñ.txt"];
 
 	XCTAssertEqualObjects(expectedURL, downloadURL);
@@ -95,6 +97,8 @@
 		folderId:0 sourceFileName:name mimeType:@"text/plain" title:name
 		description:@"" changeLog:@"" bytes:bytes serviceContext:nil
 		error:&error];
+
+	self.portalVersion = [self.settings[@"portalVersion"] integerValue];
 }
 
 - (void)tearDown {
