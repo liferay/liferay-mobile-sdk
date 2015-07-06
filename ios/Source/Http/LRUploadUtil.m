@@ -129,11 +129,24 @@
 		HTTPRequestOperationWithRequest:request success:success
 		failure:failure];
 
+	__weak __typeof(AFHTTPRequestOperation *)weakOperation = operation;
+
 	if (data.progressDelegate) {
 		[operation setUploadProgressBlock:
 			^(NSUInteger bytes, long long sent, long long total) {
-				[data.progressDelegate onProgressBytes:bytes sent:sent
-					total:total];
+				NSUInteger length = sizeof(bytes);
+
+				NSData *uploadedData = [NSData dataWithBytes:&bytes
+					length:length];
+
+				if ([data.progressDelegate isCancelled]) {
+					[weakOperation cancel];
+
+					return;
+				}
+
+				[data.progressDelegate onProgress:uploadedData sent:sent
+					total:total error:nil];
 			}
 		];
 	}
