@@ -17,7 +17,6 @@
  */
 @protocol LRProgressDelegate <NSObject>
 
-- (void)onProgressBytes:(NSUInteger)bytes sent:(long long)sent
-	total:(long long)total;
+- (void)onProgress:(NSData *)data sent:(long long)sent total:(long long)total;
 
 @end
