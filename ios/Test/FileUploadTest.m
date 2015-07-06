@@ -45,8 +45,12 @@ NSString *const TITLE = @"title";
 	[self.monitor signal];
 }
 
-- (void)onProgressBytes:(NSUInteger)bytes sent:(long long)sent
-		total:(long long)total {
+- (BOOL)isCancelled {
+	return NO;
+}
+
+- (void)onProgress:(NSData *)data sent:(long long)sent total:(long long)total
+		error:(NSError *)error {
 
 	XCTAssertTrue([NSThread isMainThread]);
 	[self setProgress:sent];
