@@ -35,6 +35,8 @@
 	NSMutableURLRequest *request = [LRHttpUtil getRequestWithSession:session
 		URL:[NSURL URLWithString:URL]];
 
+	[auth authenticate:request];
+
 	return [[NSURLConnection alloc] initWithRequest:request delegate:delegate
 		startImmediately:YES];
 }
