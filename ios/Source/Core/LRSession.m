@@ -114,7 +114,7 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 	return _DEFAULT_QUEUE;
 }
 
-- (NSOperation *)upload:(NSDictionary *)command error:(NSError **)error {
+- (NSDictionary *)upload:(NSDictionary *)command error:(NSError **)error {
 	if (![self _hasUploadData:command]) {
 		return [self invoke:command error:error];
 	}
@@ -124,7 +124,9 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 			format:@"Set a callback to the session before uploading files"];
 	}
 
-	return [LRUploadUtil upload:self command:command error:error];
+	[LRUploadUtil upload:self command:command error:error];
+	
+	return nil;
 }
 
 #pragma mark - Private methods
