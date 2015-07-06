@@ -17,6 +17,12 @@
  */
 @protocol LRProgressDelegate <NSObject>
 
-- (void)onProgress:(NSData *)data sent:(long long)sent total:(long long)total;
+@optional
+- (BOOL)isCancelled;
+- (void)setCancelled;
+
+@required
+- (void)onProgress:(NSData *)data sent:(long long)sent total:(long long)total
+	error:(NSError *)error;
 
 @end
