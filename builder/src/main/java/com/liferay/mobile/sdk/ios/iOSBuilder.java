@@ -118,7 +118,6 @@ public class iOSBuilder extends BaseBuilder {
 		context.put(JSON_OBJECT_WRAPPER, ObjectiveCUtil.LR_JSON_OBJECT_WRAPPER);
 		context.put(LANGUAGE_UTIL, objectiveCUtil);
 		context.put(LR_UPLOAD_DATA, objectiveCUtil.LR_UPLOAD_DATA);
-		context.put(NS_OPERATION, ObjectiveCUtil.NS_OPERATION);
 		context.put(VOID, LanguageUtil.VOID);
 
 		return context;
@@ -127,7 +126,5 @@ public class iOSBuilder extends BaseBuilder {
 	protected static final String BOOL = "BOOL";
 
 	protected static final String LR_UPLOAD_DATA = "LR_UPLOAD_DATA";
-
-	protected static final String NS_OPERATION = "NS_OPERATION";
 
 }

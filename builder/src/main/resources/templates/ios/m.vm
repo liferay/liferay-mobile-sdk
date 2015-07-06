@@ -35,8 +35,14 @@ ${esc.h}import "${className}.h"
 
 	##t	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 
+	#set ($invokeMethod = "invoke")
+
 	#foreach ($parameter in $parameters)
 		#set ($parameterType = $languageUtil.getType($parameter.type))
+
+		#if ($parameterType == $LR_UPLOAD_DATA)
+			#set ($invokeMethod = "upload")
+		#end
 
 		#if ($parameterType != $JSON_OBJECT_WRAPPER)
 			#set ($parameterName = $parameter.name)
@@ -78,10 +84,8 @@ ${esc.h}import "${className}.h"
 		##t	[self.session invoke:_command error:error];
 	#elseif ($returnType == $BOOL)
 		##t	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
-	#elseif ($returnType == $NS_OPERATION)
-		##t	return [self.session upload:_command error:error];
 	#else
-		##t	return ($returnType)[self.session invoke:_command error:error];
+		##t	return ($returnType)[self.session ${invokeMethod}:_command error:error];
 	#end
 
 	}
