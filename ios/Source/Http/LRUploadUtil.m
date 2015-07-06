@@ -24,13 +24,13 @@
  */
 @implementation LRUploadUtil
 
-+ (NSOperation *)upload:(LRSession *)session command:(NSDictionary *)command
++ (void)upload:(LRSession *)session command:(NSDictionary *)command
 		error:(NSError **)error {
 
 	NSArray *keys = [command allKeys];
 
 	if ([keys count] > 1) {
-		return nil;
+		return;
 	}
 
 	NSString *path = keys[0];
@@ -41,8 +41,7 @@
 
 	LRUploadData *data = [self _extractUploadData:parameters];
 
-	NSOperation *operation = [self _post:session data:data URL:URL
-			parameters:parameters
+	[self _post:session data:data URL:URL parameters:parameters
 			constructingBodyWithBlock:^(id<AFMultipartFormData> form) {
 				if (data.data) {
 					[form appendPartWithFileData:data.data
@@ -82,8 +81,6 @@
 			}
 			error:error
 		];
-
-	return operation;
 }
 
 + (LRUploadData *)_extractUploadData:(NSMutableDictionary *)params {
@@ -104,8 +101,7 @@
 	return nil;
 }
 
-+ (NSOperation *)_post:(LRSession *)session data:(LRUploadData *)data
-		URL:(NSString *)URL
++ (void)_post:(LRSession *)session data:(LRUploadData *)data URL:(NSString *)URL
 		parameters:(id)parameters
 		constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> form))block
 		success:(void (^)(AFHTTPRequestOperation *o, id json))success
@@ -152,8 +148,6 @@
 	}
 
     [manager.operationQueue addOperation:operation];
-
-	return operation;
 }
 
 @end
