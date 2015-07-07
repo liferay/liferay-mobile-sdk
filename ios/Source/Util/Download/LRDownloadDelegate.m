@@ -73,6 +73,12 @@ const int LR_DOWNLOAD_FINISHED = 0;
 #pragma mark - NSURLConnectionDataDelegate
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+	if ([self.progressDelegate isCancelled]){
+		[connection cancel];
+
+		return;
+	}
+
 	NSUInteger length = [data length];
 	self.totalBytes = self.totalBytes + length;
 
