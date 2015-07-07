@@ -23,14 +23,14 @@
 
 + (NSURLConnection *)downloadWithSession:(LRSession *)session
 	URL:(NSString *)URL outputStream:(NSOutputStream *)os
-	downloadProgress:(LRDownloadProgress)downloadProgress;
+	progressDelegate:(id)progressDelegate;
 
 + (NSURLConnection *)downloadWebDAVFileWithSession:(LRSession *)session
 	portalVersion:(NSInteger)portalVersion
 	groupFriendlyURL:(NSString *)groupFriendlyURL
 	folderPath:(NSString *)folderPath fileTitle:(NSString *)fileTitle
 	outputStream:(NSOutputStream *)outputStream
-	downloadProgress:(LRDownloadProgress)downloadProgress;
+	progressDelegate:(id)progressDelegate;
 
 + (NSString *)getWebDAVFileURLWithSession:(LRSession *)session
 	portalVersion:(NSInteger)portalversion

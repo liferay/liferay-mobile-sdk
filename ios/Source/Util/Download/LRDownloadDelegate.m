@@ -27,19 +27,14 @@ const int LR_DOWNLOAD_FINISHED = 0;
 
 - (id)initWithAuth:(LRBasicAuthentication *)auth
 		outputStream:(NSOutputStream *)outputStream
-		downloadProgress:(LRDownloadProgress)downloadProgress {
+		progressDelegate:(id)progressDelegate {
 
 	self = [super init];
 
 	if (self) {
 		self.auth = auth;
 		self.outputStream = outputStream;
-
-		self.downloadProgress = ^(long long totalBytes, NSError *e) {
-			dispatch_async(dispatch_get_main_queue(), ^{
-				downloadProgress(totalBytes, e);
-			});
-		};
+		self.progressDelegate = progressDelegate;
 	}
 
 	return self;
@@ -50,7 +45,8 @@ const int LR_DOWNLOAD_FINISHED = 0;
 - (void)connection:(NSURLConnection *)connection
 		didFailWithError:(NSError *)error {
 
-	self.downloadProgress(LR_DOWNLOAD_ERROR, error);
+	[self.progressDelegate onProgress:nil sent:LR_DOWNLOAD_ERROR
+		total:LR_DOWNLOAD_ERROR error:error];
 }
 
 - (void)connection:(NSURLConnection *)connection
@@ -60,7 +56,8 @@ const int LR_DOWNLOAD_FINISHED = 0;
 		NSError *error = [LRError errorWithCode:LRErrorCodeUnauthorized
 			description:@"Authentication failed during download."];
 
-		self.downloadProgress(LR_DOWNLOAD_ERROR, error);
+		[self.progressDelegate onProgress:nil sent:LR_DOWNLOAD_ERROR
+			total:LR_DOWNLOAD_ERROR error:error];
 	}
 	else {
 		NSString *user = self.auth.username;
@@ -84,7 +81,8 @@ const int LR_DOWNLOAD_FINISHED = 0;
 		[self.outputStream write:&buffer[0] maxLength:length];
 	}
 
-	self.downloadProgress(self.totalBytes, nil);
+	[self.progressDelegate onProgress:data sent:length total:self.totalBytes
+		error:nil];
 }
 
 - (void)connection:(NSURLConnection *)connection
@@ -98,12 +96,14 @@ const int LR_DOWNLOAD_FINISHED = 0;
 			(long)code];
 
 		NSError *error = [LRError errorWithCode:code description:description];
-		self.downloadProgress(LR_DOWNLOAD_ERROR, error);
+		[self.progressDelegate onProgress:nil sent:LR_DOWNLOAD_ERROR
+			total:LR_DOWNLOAD_ERROR error:error];
 	}
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	self.downloadProgress(LR_DOWNLOAD_FINISHED, nil);
+	[self.progressDelegate onProgress:nil sent:LR_DOWNLOAD_FINISHED
+		total:LR_DOWNLOAD_FINISHED error:nil];
 }
 
 @end

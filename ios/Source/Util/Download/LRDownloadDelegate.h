@@ -13,8 +13,7 @@
  */
 
 #import "LRBasicAuthentication.h"
-
-typedef void (^LRDownloadProgress)(long long totalBytes, NSError *e);
+#import "LRProgressDelegate.h"
 
 extern const int LR_DOWNLOAD_ERROR;
 extern const int LR_DOWNLOAD_FINISHED;
@@ -25,12 +24,12 @@ extern const int LR_DOWNLOAD_FINISHED;
 @interface LRDownloadDelegate : NSObject <NSURLConnectionDelegate>
 
 @property (nonatomic, strong) LRBasicAuthentication *auth;
-@property (nonatomic, copy) LRDownloadProgress downloadProgress;
 @property (nonatomic, strong) NSOutputStream *outputStream;
 @property (nonatomic) long long totalBytes;
+@property (nonatomic, strong) id<LRProgressDelegate> progressDelegate;
 
 - (id)initWithAuth:(LRBasicAuthentication *)auth
 	outputStream:(NSOutputStream *)outputStream
-	downloadProgress:(LRDownloadProgress)downloadProgress;
+	progressDelegate:(id)progressDelegate;
 
 @end
