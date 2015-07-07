@@ -21,9 +21,10 @@
 /**
  * @author Bruno Farache
  */
-@interface DownloadFileTest : BaseTest
+@interface DownloadFileTest : BaseTest <LRProgressDelegate>
 
 @property (nonatomic, strong) NSDictionary *entry;
+@property (nonatomic, strong) TRVSMonitor *monitor;
 @property (nonatomic) NSInteger portalVersion;
 
 @end
@@ -31,7 +32,7 @@
 @implementation DownloadFileTest : BaseTest
 
 - (void)testDownload {
-	TRVSMonitor *monitor = [TRVSMonitor monitor];
+	self.monitor = [TRVSMonitor monitor];
 
 	NSOutputStream *outputStream = [NSOutputStream outputStreamToMemory];
 	[outputStream open];
@@ -39,26 +40,9 @@
 	[LRDownloadUtil downloadWebDAVFileWithSession:self.session
 		portalVersion:self.portalVersion groupFriendlyURL:@"/guest"
 		folderPath:@"" fileTitle:self.entry[@"title"] outputStream:outputStream
-		downloadProgress:^(long long totalBytes, NSError *e) {
-			XCTAssertTrue([NSThread isMainThread]);
+		progressDelegate:self];
 
-			if (e) {
-				XCTFail(@"Error during download %@.", [e localizedDescription]);
-				[monitor signal];
-
-				return;
-			}
-
-			if (totalBytes == LR_DOWNLOAD_FINISHED) {
-				[monitor signal];
-			}
-			else {
-				XCTAssertEqual([self.entry[@"size"] longLongValue], totalBytes);
-			}
-		}
-	];
-
-	[monitor wait];
+	[self.monitor wait];
 
 	NSData *data = [outputStream
 		propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
@@ -66,6 +50,32 @@
 	[outputStream close];
 
 	XCTAssertEqual([self.entry[@"size"] longLongValue], [data length]);
+}
+
+- (BOOL)isCancelled {
+	return NO;
+}
+
+- (void)onProgress:(NSData *)data sent:(long long)sent total:(long long)total
+		error:(NSError *)error {
+
+	XCTAssertTrue([NSThread isMainThread]);
+
+	if (error) {
+		NSLog(@"%@", [error localizedDescription]);
+		XCTFail(@"Error during download %@.", [error localizedDescription]);
+		[self.monitor signal];
+
+		return;
+	}
+
+	if (total == LR_DOWNLOAD_FINISHED) {
+		[self.monitor signal];
+	}
+	else {
+		XCTAssertEqual([self.entry[@"size"] longLongValue], total);
+		[self.monitor signal];
+	}
 }
 
 - (void)testGetDownloadURL {
@@ -77,7 +87,7 @@
 	NSString *downloadURL = [LRDownloadUtil
 		getWebDAVFileURLWithSession:self.session
 		portalVersion:self.portalVersion groupFriendlyURL:@"/guest"
-		folderPath:@"/folder with spaces" fileTitle:@"file áéíòúñ.txt"];
+		folderPath:@"folder with spaces" fileTitle:@"file áéíòúñ.txt"];
 
 	XCTAssertEqualObjects(expectedURL, downloadURL);
 }
