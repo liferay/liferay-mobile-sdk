@@ -22,7 +22,7 @@
  */
 @implementation LRDownloadUtil
 
-+ (NSURLConnection *)downloadWithSession:(LRSession *)session
++ (void)downloadWithSession:(LRSession *)session
 		URL:(NSString *)URL outputStream:(NSOutputStream *)outputStream
 		progressDelegate:(id)progressDelegate {
 
@@ -37,11 +37,13 @@
 
 	[auth authenticate:request];
 
-	return [[NSURLConnection alloc] initWithRequest:request delegate:delegate
-		startImmediately:YES];
+	NSURLConnection *connection = [[NSURLConnection alloc]
+		initWithRequest:request delegate:delegate startImmediately:NO];
+
+	[connection start];
 }
 
-+ (NSURLConnection *)downloadWebDAVFileWithSession:(LRSession *)session
++ (void)downloadWebDAVFileWithSession:(LRSession *)session
 		portalVersion:(NSInteger)portalVersion
 		groupFriendlyURL:(NSString *)groupFriendlyURL
 		folderPath:(NSString *)folderPath fileTitle:(NSString *)fileTitle
@@ -52,7 +54,7 @@
 		portalVersion:portalVersion groupFriendlyURL:groupFriendlyURL
 		folderPath:folderPath fileTitle:fileTitle];
 
-	return [LRDownloadUtil downloadWithSession:session URL:URL
+	[LRDownloadUtil downloadWithSession:session URL:URL
 		outputStream:outputStream progressDelegate:progressDelegate];
 }
 

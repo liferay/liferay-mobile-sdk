@@ -21,11 +21,11 @@
  */
 @interface LRDownloadUtil : NSObject
 
-+ (NSURLConnection *)downloadWithSession:(LRSession *)session
++ (void)downloadWithSession:(LRSession *)session
 	URL:(NSString *)URL outputStream:(NSOutputStream *)os
 	progressDelegate:(id)progressDelegate;
 
-+ (NSURLConnection *)downloadWebDAVFileWithSession:(LRSession *)session
++ (void)downloadWebDAVFileWithSession:(LRSession *)session
 	portalVersion:(NSInteger)portalVersion
 	groupFriendlyURL:(NSString *)groupFriendlyURL
 	folderPath:(NSString *)folderPath fileTitle:(NSString *)fileTitle
