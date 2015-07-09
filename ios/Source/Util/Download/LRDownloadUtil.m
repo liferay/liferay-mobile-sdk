@@ -87,14 +87,14 @@
 + (LRBasicAuthentication *)_getAuthentication:(LRSession *)session {
 	id<LRAuthentication> authentication = session.authentication;
 
-	NSString *authClazz = NSStringFromClass([authentication class]);
-	NSString *basicAuthClazz = NSStringFromClass([LRBasicAuthentication class]);
-
 	if (!authentication) {
 		[NSException raise:@"" format:@"Session authentication can't be null"];
 	}
 
-	if (![authClazz isEqualToString:basicAuthClazz]) {
+	NSString *authClass = NSStringFromClass([authentication class]);
+	NSString *basicAuthClass = NSStringFromClass([LRBasicAuthentication class]);
+
+	if (![authClass isEqualToString:basicAuthClass]) {
 		[NSException raise:@"" format:@"Can't download if authentication " \
 			"implementation is not BasicAuthentication"];
 	}
