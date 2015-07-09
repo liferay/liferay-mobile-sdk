@@ -76,7 +76,11 @@
 		escape:webdavPath include:@":?#[]@!$ &'()*+,;=\"<>%{}|\\^~`"
 		ignore:@"/"];
 
-	NSString *path = (portalversion < LR_VERSION_6_2) ? @"/api/secure" : @"";
+	NSString *path = @"";
+
+	if (portalversion < LR_VERSION_6_2) {
+		path = @"/api/secure";
+	}
 
 	return [NSString
 		stringWithFormat:@"%@%@/webdav%@/document_library/%@",

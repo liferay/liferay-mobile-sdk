@@ -25,7 +25,6 @@
 
 @property (nonatomic, strong) NSDictionary *entry;
 @property (nonatomic, strong) TRVSMonitor *monitor;
-@property (nonatomic) NSInteger portalVersion;
 
 @end
 
@@ -52,9 +51,11 @@
 	NSOutputStream *outputStream = [NSOutputStream outputStreamToMemory];
 	[outputStream open];
 
+	NSInteger portalVersion = [self.settings[@"portalVersion"] integerValue];
+
 	[LRDownloadUtil downloadWebDAVFileWithSession:self.session
-		portalVersion:self.portalVersion groupFriendlyURL:@"/guest"
-		folderPath:@"" fileTitle:self.entry[@"title"] outputStream:outputStream
+		portalVersion:portalVersion groupFriendlyURL:@"/guest" folderPath:@""
+		fileTitle:self.entry[@"title"] outputStream:outputStream
 		progressDelegate:self];
 
 	[self.monitor wait];
@@ -73,10 +74,12 @@
 		"/folder%20with%20spaces" \
 		"/file%20%C3%A1%C3%A9%C3%AD%C3%B2%C3%BA%C3%B1.txt";
 
+	NSInteger portalVersion = [self.settings[@"portalVersion"] integerValue];
+
 	NSString *downloadURL = [LRDownloadUtil
-		getWebDAVFileURLWithSession:self.session
-		portalVersion:self.portalVersion groupFriendlyURL:@"/guest"
-		folderPath:@"folder with spaces" fileTitle:@"file áéíòúñ.txt"];
+		getWebDAVFileURLWithSession:self.session portalVersion:portalVersion
+		groupFriendlyURL:@"/guest" folderPath:@"folder with spaces"
+		fileTitle:@"file áéíòúñ.txt"];
 
 	XCTAssertEqualObjects(expectedURL, downloadURL);
 }
@@ -92,12 +95,9 @@
 	NSString *name = @"test.txt";
 	NSError *error;
 
-	self.entry = [service addFileEntryWithRepositoryId:repositoryId
-		folderId:0 sourceFileName:name mimeType:@"text/plain" title:name
-		description:@"" changeLog:@"" bytes:bytes serviceContext:nil
-		error:&error];
-
-	self.portalVersion = [self.settings[@"portalVersion"] integerValue];
+	self.entry = [service addFileEntryWithRepositoryId:repositoryId folderId:0
+		sourceFileName:name mimeType:@"text/plain" title:name description:@""
+		changeLog:@"" bytes:bytes serviceContext:nil error:&error];
 }
 
 - (void)tearDown {
