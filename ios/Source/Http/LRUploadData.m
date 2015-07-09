@@ -20,29 +20,33 @@
 @implementation LRUploadData
 
 - (id)initWithData:(NSData *)data fileName:(NSString *)fileName
-		mimeType:(NSString *)mimeType {
+		mimeType:(NSString *)mimeType
+  		progressDelegate:(id<LRProgressDelegate>)progressDelegate {
 
 	return [self _init:data fileURL:nil inputStream:nil length:0
-		fileName:fileName mimeType:mimeType];
+		fileName:fileName mimeType:mimeType progressDelegate:progressDelegate];
 }
 
 - (id)initWithFileURL:(NSURL *)fileURL fileName:(NSString *)fileName
-		mimeType:(NSString *)mimeType {
+		mimeType:(NSString *)mimeType
+	 	progressDelegate:(id<LRProgressDelegate>)progressDelegate {
 
 	return [self _init:nil fileURL:fileURL inputStream:nil length:0
-		fileName:fileName mimeType:mimeType];
+		fileName:fileName mimeType:mimeType progressDelegate:progressDelegate];
 }
 
 - (id)initWithInputStream:(NSInputStream *)inputStream length:(int64_t)length
-		fileName:(NSString *)fileName mimeType:(NSString *)mimeType {
+		fileName:(NSString *)fileName mimeType:(NSString *)mimeType
+		progressDelegate:(id<LRProgressDelegate>)progressDelegate {
 
 	return [self _init:nil  fileURL:nil inputStream:inputStream length:length
-		fileName:fileName mimeType:mimeType];
+		fileName:fileName mimeType:mimeType progressDelegate:progressDelegate];
 }
 
 - (id)_init:(NSData *)data fileURL:(NSURL *)fileURL
 		inputStream:(NSInputStream *)inputStream length:(int64_t)length
-		fileName:(NSString *)fileName mimeType:(NSString *)mimeType {
+		fileName:(NSString *)fileName mimeType:(NSString *)mimeType
+		progressDelegate:(id<LRProgressDelegate>)progressDelegate {
 
 	self = [super init];
 
@@ -53,6 +57,7 @@
 		self.length = length;
 		self.fileName = fileName;
 		self.mimeType = mimeType;
+		self.progressDelegate = progressDelegate;
 	}
 
 	return self;

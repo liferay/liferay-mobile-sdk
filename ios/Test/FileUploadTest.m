@@ -100,7 +100,7 @@ NSString *const TITLE = @"title";
 	int64_t length = [data length];
 	NSString *name = [self _getSourceFileName];
 	LRUploadData *file = [[LRUploadData alloc] initWithInputStream:is
-		length:length fileName:name mimeType:MIME_TYPE];
+		length:length fileName:name mimeType:MIME_TYPE progressDelegate:nil];
 
 	NSError *error;
 
@@ -132,9 +132,9 @@ NSString *const TITLE = @"title";
 	NSNumber *fileSize = [attributes objectForKey:NSFileSize];
 	int64_t length = [fileSize longLongValue];
 	LRUploadData *file = [[LRUploadData alloc] initWithInputStream:is
-		length:length fileName:sourceFileName mimeType:mimeType];
+		length:length fileName:sourceFileName mimeType:mimeType
+		progressDelegate:self];
 
-	[file setProgressDelegate:self];
 	NSString *name = [self _getSourceFileName];
 	NSError *error;
 
@@ -159,7 +159,7 @@ NSString *const TITLE = @"title";
 		withExtension:@"plist"];
 
 	LRUploadData *file = [[LRUploadData alloc] initWithFileURL:fileURL
-		fileName:SOURCE_FILE_NAME mimeType:MIME_TYPE];
+		fileName:SOURCE_FILE_NAME mimeType:MIME_TYPE progressDelegate:nil];
 
 	NSString *name = [self _getSourceFileName];
 	NSError *error;
@@ -246,7 +246,7 @@ NSString *const TITLE = @"title";
 	NSData *data = [FILE_CONTENT dataUsingEncoding:NSUTF8StringEncoding];
 
 	return [[LRUploadData alloc] initWithData:data fileName:SOURCE_FILE_NAME
-		mimeType:MIME_TYPE];
+		mimeType:MIME_TYPE progressDelegate:nil];
 }
 
 @end

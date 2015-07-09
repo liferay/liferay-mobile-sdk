@@ -29,12 +29,15 @@
 @property (nonatomic, strong) id<LRProgressDelegate> progressDelegate;
 
 - (id)initWithData:(NSData *)data fileName:(NSString *)fileName
-	mimeType:(NSString *)mimeType;
+	mimeType:(NSString *)mimeType
+	progressDelegate:(id<LRProgressDelegate>)progressDelegate;
 
 - (id)initWithFileURL:(NSURL *)fileURL fileName:(NSString *)fileName
-	mimeType:(NSString *)mimeType;
+	mimeType:(NSString *)mimeType
+	progressDelegate:(id<LRProgressDelegate>)progressDelegate;
 
 - (id)initWithInputStream:(NSInputStream *)inputStream length:(int64_t)length
-	fileName:(NSString *)fileName mimeType:(NSString *)mimeType;
+	fileName:(NSString *)fileName mimeType:(NSString *)mimeType
+	progressDelegate:(id<LRProgressDelegate>)progressDelegate;
 
 @end
