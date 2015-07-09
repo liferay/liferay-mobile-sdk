@@ -39,21 +39,19 @@ NSString *const TITLE = @"title";
 
 @implementation FileUploadTest
 
+- (BOOL)isCancelled {
+	return NO;
+}
+
 - (void)onFailure:(NSError *)error {
 	XCTAssertTrue([NSThread isMainThread]);
 	[self setError:error];
 	[self.monitor signal];
 }
 
-- (BOOL)isCancelled {
-	return NO;
-}
-
-- (void)onProgress:(NSData *)data sent:(long long)sent total:(long long)total
-		error:(NSError *)error {
-
+- (void)onProgress:(NSData *)data total:(long long)total {
 	XCTAssertTrue([NSThread isMainThread]);
-	[self setProgress:sent];
+	[self setProgress:total];
 }
 
 - (void)onSuccess:(NSDictionary *)entry {

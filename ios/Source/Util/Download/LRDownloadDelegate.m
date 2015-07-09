@@ -17,9 +17,6 @@
 #import "LRError.h"
 #import "LRResponseParser.h"
 
-const int LR_DOWNLOAD_ERROR = -1;
-const int LR_DOWNLOAD_FINISHED = 0;
-
 /**
  * @author Bruno Farache
  */
@@ -45,8 +42,7 @@ const int LR_DOWNLOAD_FINISHED = 0;
 - (void)connection:(NSURLConnection *)connection
 		didFailWithError:(NSError *)error {
 
-	[self.progressDelegate onProgress:nil sent:LR_DOWNLOAD_ERROR
-		total:LR_DOWNLOAD_ERROR error:error];
+	[self.progressDelegate onFailure:error];
 }
 
 - (void)connection:(NSURLConnection *)connection
@@ -56,8 +52,7 @@ const int LR_DOWNLOAD_FINISHED = 0;
 		NSError *error = [LRError errorWithCode:LRErrorCodeUnauthorized
 			description:@"Authentication failed during download."];
 
-		[self.progressDelegate onProgress:nil sent:LR_DOWNLOAD_ERROR
-			total:LR_DOWNLOAD_ERROR error:error];
+		[self.progressDelegate onFailure:error];
 	}
 	else {
 		NSString *user = self.auth.username;
@@ -87,8 +82,7 @@ const int LR_DOWNLOAD_FINISHED = 0;
 		[self.outputStream write:&buffer[0] maxLength:length];
 	}
 
-	[self.progressDelegate onProgress:data sent:length total:self.totalBytes
-		error:nil];
+	[self.progressDelegate onProgress:data total:self.totalBytes];
 }
 
 - (void)connection:(NSURLConnection *)connection
@@ -102,14 +96,12 @@ const int LR_DOWNLOAD_FINISHED = 0;
 			(long)code];
 
 		NSError *error = [LRError errorWithCode:code description:description];
-		[self.progressDelegate onProgress:nil sent:LR_DOWNLOAD_ERROR
-			total:LR_DOWNLOAD_ERROR error:error];
+		[self.progressDelegate onFailure:error];
 	}
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	[self.progressDelegate onProgress:nil sent:LR_DOWNLOAD_FINISHED
-		total:LR_DOWNLOAD_FINISHED error:nil];
+	[self.progressDelegate onFinished];
 }
 
 @end

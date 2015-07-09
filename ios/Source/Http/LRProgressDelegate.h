@@ -17,12 +17,12 @@
  */
 @protocol LRProgressDelegate <NSObject>
 
-@optional
-- (BOOL)isCancelled;
-- (void)setCancelled;
+- (void)onFailure:(NSError *)error;
+- (void)onProgress:(NSData *)data total:(long long)total;
 
-@required
-- (void)onProgress:(NSData *)data sent:(long long)sent total:(long long)total
-	error:(NSError *)error;
+@optional
+
+- (BOOL)isCancelled;
+- (void)onFinished;
 
 @end

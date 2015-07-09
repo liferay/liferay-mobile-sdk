@@ -56,26 +56,19 @@
 	return NO;
 }
 
-- (void)onProgress:(NSData *)data sent:(long long)sent total:(long long)total
-		error:(NSError *)error {
+- (void)onFailure:(NSError *)error {
+	XCTFail(@"Error during download %@.", [error localizedDescription]);
+	[self.monitor signal];
+}
 
+- (void)onFinished {
+	[self.monitor signal];
+}
+
+- (void)onProgress:(NSData *)data total:(long long)total {
 	XCTAssertTrue([NSThread isMainThread]);
-
-	if (error) {
-		NSLog(@"%@", [error localizedDescription]);
-		XCTFail(@"Error during download %@.", [error localizedDescription]);
-		[self.monitor signal];
-
-		return;
-	}
-
-	if (total == LR_DOWNLOAD_FINISHED) {
-		[self.monitor signal];
-	}
-	else {
-		XCTAssertEqual([self.entry[@"size"] longLongValue], total);
-		[self.monitor signal];
-	}
+	XCTAssertEqual([self.entry[@"size"] longLongValue], total);
+	[self.monitor signal];
 }
 
 - (void)testGetDownloadURL {

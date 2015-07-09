@@ -127,7 +127,7 @@
 
 	if (data.progressDelegate) {
 		[operation setUploadProgressBlock:
-			^(NSUInteger bytes, long long sent, long long total) {
+			^(NSUInteger bytes, long long length, long long total) {
 				if ([data.progressDelegate isCancelled]) {
 					[operation cancel];
 
@@ -135,10 +135,9 @@
 				}
 
 				NSData *uploadedData = [NSData dataWithBytes:&bytes
-					length:sent];
+					length:length];
 
-				[data.progressDelegate onProgress:uploadedData sent:sent
-					total:total error:nil];
+				[data.progressDelegate onProgress:uploadedData total:total];
 			}
 		];
 	}
