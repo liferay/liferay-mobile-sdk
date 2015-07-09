@@ -30,6 +30,6 @@ extern const int LR_DOWNLOAD_FINISHED;
 
 - (id)initWithAuth:(LRBasicAuthentication *)auth
 	outputStream:(NSOutputStream *)outputStream
-	progressDelegate:(id)progressDelegate;
+	progressDelegate:(id<LRProgressDelegate>)progressDelegate;
 
 @end

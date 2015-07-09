@@ -27,7 +27,7 @@ const int LR_DOWNLOAD_FINISHED = 0;
 
 - (id)initWithAuth:(LRBasicAuthentication *)auth
 		outputStream:(NSOutputStream *)outputStream
-		progressDelegate:(id)progressDelegate {
+		progressDelegate:(id<LRProgressDelegate>)progressDelegate {
 
 	self = [super init];
 
