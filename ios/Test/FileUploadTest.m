@@ -39,10 +39,6 @@ NSString *const TITLE = @"title";
 
 @implementation FileUploadTest
 
-- (BOOL)isCancelled {
-	return NO;
-}
-
 - (void)onFailure:(NSError *)error {
 	XCTAssertTrue([NSThread isMainThread]);
 	[self setError:error];

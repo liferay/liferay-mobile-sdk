@@ -31,10 +31,6 @@
 
 @implementation DownloadFileTest : BaseTest
 
-- (BOOL)isCancelled {
-	return NO;
-}
-
 - (void)onFailure:(NSError *)error {
 	XCTFail(@"Error during download %@.", [error localizedDescription]);
 	[self.monitor signal];

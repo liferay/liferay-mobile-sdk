@@ -68,7 +68,9 @@
 #pragma mark - NSURLConnectionDataDelegate
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	if ([self.progressDelegate isCancelled]){
+	if ([self.progressDelegate respondsToSelector:@selector(isCancelled)] &&
+		[self.progressDelegate isCancelled]) {
+
 		[connection cancel];
 
 		return;
@@ -101,7 +103,9 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	[self.progressDelegate onFinished];
+	if ([self.progressDelegate respondsToSelector:@selector(onFinished)]) {
+		[self.progressDelegate onFinished];
+	}
 }
 
 @end
