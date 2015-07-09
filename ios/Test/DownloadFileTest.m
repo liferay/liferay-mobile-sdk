@@ -31,6 +31,25 @@
 
 @implementation DownloadFileTest : BaseTest
 
+- (BOOL)isCancelled {
+	return NO;
+}
+
+- (void)onFailure:(NSError *)error {
+	XCTFail(@"Error during download %@.", [error localizedDescription]);
+	[self.monitor signal];
+}
+
+- (void)onFinished {
+	[self.monitor signal];
+}
+
+- (void)onProgress:(NSData *)data total:(long long)total {
+	XCTAssertTrue([NSThread isMainThread]);
+	XCTAssertEqual([self.entry[@"size"] longLongValue], total);
+	[self.monitor signal];
+}
+
 - (void)testDownload {
 	self.monitor = [TRVSMonitor monitor];
 
@@ -50,25 +69,6 @@
 	[outputStream close];
 
 	XCTAssertEqual([self.entry[@"size"] longLongValue], [data length]);
-}
-
-- (BOOL)isCancelled {
-	return NO;
-}
-
-- (void)onFailure:(NSError *)error {
-	XCTFail(@"Error during download %@.", [error localizedDescription]);
-	[self.monitor signal];
-}
-
-- (void)onFinished {
-	[self.monitor signal];
-}
-
-- (void)onProgress:(NSData *)data total:(long long)total {
-	XCTAssertTrue([NSThread isMainThread]);
-	XCTAssertEqual([self.entry[@"size"] longLongValue], total);
-	[self.monitor signal];
 }
 
 - (void)testGetDownloadURL {
