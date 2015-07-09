@@ -16,6 +16,7 @@
 
 #import "LRHttpUtil.h"
 #import "LRPortalVersionUtil.h"
+#import "LRValidator.h"
 
 /**
  * @author Bruno Farache
@@ -63,14 +64,9 @@
 		groupFriendlyURL:(NSString *)groupFriendlyURL
 		folderPath:(NSString *)folderPath fileTitle:(NSString *)fileTitle {
 
-	NSString *format = @"%@/%@";
-
-	if (!folderPath) {
-		format = @"%@%@";
-	}
-
-	NSString *webdavPath = [NSString stringWithFormat:format, folderPath,
-		fileTitle];
+	NSString *webdavPath = [NSString stringWithFormat:@"%@%@",
+		[LRDownloadUtil _prependSlash:folderPath],
+		[LRDownloadUtil _prependSlash:fileTitle]];
 
 	NSString *webdavPathEscaped = [LRHttpUtil
 		escape:webdavPath include:@":?#[]@!$ &'()*+,;=\"<>%{}|\\^~`"
@@ -83,8 +79,9 @@
 	}
 
 	return [NSString
-		stringWithFormat:@"%@%@/webdav%@/document_library/%@",
-		session.server, path, groupFriendlyURL, webdavPathEscaped];
+		stringWithFormat:@"%@%@/webdav%@/document_library%@",
+		session.server, path, [LRDownloadUtil _prependSlash:groupFriendlyURL],
+		webdavPathEscaped];
 }
 
 + (LRBasicAuthentication *)_getAuthentication:(LRSession *)session {
@@ -103,6 +100,18 @@
 	}
 
 	return (LRBasicAuthentication *)authentication;
+}
+
++ (NSString *)_prependSlash:(NSString *)string {
+	if ([LRValidator isEmpty:string]) {
+		return @"";
+	}
+
+	if (![string hasPrefix:@"/"]) {
+		return [NSString stringWithFormat:@"/%@", string];
+	}
+
+	return string;
 }
 
 @end
