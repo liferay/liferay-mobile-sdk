@@ -121,25 +121,21 @@
 		[session.authentication authenticate:request];
 	}
 
-    AFHTTPRequestOperation *operation = [manager
+    __weak __typeof(AFHTTPRequestOperation *)operation = [manager
 		HTTPRequestOperationWithRequest:request success:success
 		failure:failure];
-
-	__weak __typeof(AFHTTPRequestOperation *)weakOperation = operation;
 
 	if (data.progressDelegate) {
 		[operation setUploadProgressBlock:
 			^(NSUInteger bytes, long long sent, long long total) {
-				NSUInteger length = sizeof(bytes);
-
-				NSData *uploadedData = [NSData dataWithBytes:&bytes
-					length:length];
-
 				if ([data.progressDelegate isCancelled]) {
-					[weakOperation cancel];
+					[operation cancel];
 
 					return;
 				}
+
+				NSData *uploadedData = [NSData dataWithBytes:&bytes
+					length:sent];
 
 				[data.progressDelegate onProgress:uploadedData sent:sent
 					total:total error:nil];
