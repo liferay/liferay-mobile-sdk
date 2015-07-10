@@ -114,7 +114,7 @@ static NSOperationQueue *_DEFAULT_QUEUE;
 	return _DEFAULT_QUEUE;
 }
 
-- (NSDictionary *)upload:(NSDictionary *)command error:(NSError **)error {
+- (id)upload:(NSDictionary *)command error:(NSError **)error {
 	if (![self _hasUploadData:command]) {
 		return [self invoke:command error:error];
 	}
