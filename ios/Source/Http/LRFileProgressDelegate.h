@@ -15,7 +15,7 @@
 /**
  * @author Bruno Farache
  */
-@protocol LRProgressDelegate <NSObject>
+@protocol LRFileProgressDelegate <NSObject>
 
 - (void)onFailure:(NSError *)error;
 - (void)onProgress:(NSData *)data total:(long long)total;

@@ -13,10 +13,7 @@
  */
 
 #import "LRBasicAuthentication.h"
-#import "LRProgressDelegate.h"
-
-extern const int LR_DOWNLOAD_ERROR;
-extern const int LR_DOWNLOAD_FINISHED;
+#import "LRFileProgressDelegate.h"
 
 /**
  * @author Bruno Farache
@@ -26,10 +23,10 @@ extern const int LR_DOWNLOAD_FINISHED;
 @property (nonatomic, strong) LRBasicAuthentication *auth;
 @property (nonatomic, strong) NSOutputStream *outputStream;
 @property (nonatomic) long long totalBytes;
-@property (nonatomic, strong) id<LRProgressDelegate> progressDelegate;
+@property (nonatomic, strong) id<LRFileProgressDelegate> progressDelegate;
 
 - (id)initWithAuth:(LRBasicAuthentication *)auth
 	outputStream:(NSOutputStream *)outputStream
-	progressDelegate:(id<LRProgressDelegate>)progressDelegate;
+	progressDelegate:(id<LRFileProgressDelegate>)progressDelegate;
 
 @end

@@ -417,7 +417,7 @@
 		CC4B7A251937B971003611C4 /* LRUploadData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUploadData.h; sourceTree = "<group>"; };
 		CC4B7A271937C64E003611C4 /* LRUploadUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRUploadUtil.m; sourceTree = "<group>"; };
 		CC4B7A281937C64E003611C4 /* LRUploadUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUploadUtil.h; sourceTree = "<group>"; };
-		CC4B7A2D1938C002003611C4 /* LRProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LRProgressDelegate.h; path = Source/Http/LRProgressDelegate.h; sourceTree = SOURCE_ROOT; };
+		CC4B7A2D1938C002003611C4 /* LRFileProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LRFileProgressDelegate.h; path = Source/Http/LRFileProgressDelegate.h; sourceTree = SOURCE_ROOT; };
 		CC4B7A2E1938C47F003611C4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		CC5196B31A7944AB0005C238 /* SignInTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInTest.m; sourceTree = "<group>"; };
 		CC677D2618EC511900F3DFAB /* Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -528,9 +528,9 @@
 			children = (
 				CCABA084197D544A00A9F8B0 /* LRError.h */,
 				CCABA085197D544A00A9F8B0 /* LRError.m */,
+				CC4B7A2D1938C002003611C4 /* LRFileProgressDelegate.h */,
 				CC03FB7D18ED7DCC00F3F16C /* LRHttpUtil.h */,
 				CC03FB7E18ED7DCC00F3F16C /* LRHttpUtil.m */,
-				CC4B7A2D1938C002003611C4 /* LRProgressDelegate.h */,
 				CCC6A7B41A164BEB00ABB791 /* LRRedirectDelegate.h */,
 				CCC6A7B51A164BEB00ABB791 /* LRRedirectDelegate.m */,
 				CCABA080197C995500A9F8B0 /* LRResponseParser.h */,

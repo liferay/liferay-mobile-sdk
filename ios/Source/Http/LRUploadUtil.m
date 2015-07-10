@@ -128,7 +128,8 @@
 	if (data.progressDelegate) {
 		[operation setUploadProgressBlock:
 			^(NSUInteger bytes, long long length, long long total) {
-				id<LRProgressDelegate> progressDelegate = data.progressDelegate;
+				id<LRFileProgressDelegate> progressDelegate =
+					data.progressDelegate;
 
 				if ([progressDelegate respondsToSelector:@selector(isCancelled)]
 					&& [progressDelegate isCancelled]) {

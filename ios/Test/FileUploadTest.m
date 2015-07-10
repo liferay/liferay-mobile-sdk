@@ -27,7 +27,7 @@ NSString *const TITLE = @"title";
 /**
  * @author Bruno Farache
  */
-@interface FileUploadTest : BaseTest <LRCallback, LRProgressDelegate>
+@interface FileUploadTest : BaseTest <LRCallback, LRFileProgressDelegate>
 
 @property (nonatomic, strong) NSDictionary *entry;
 @property (nonatomic, strong) NSError *error;

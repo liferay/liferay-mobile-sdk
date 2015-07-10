@@ -25,7 +25,7 @@
 
 + (void)downloadWithSession:(LRSession *)session
 		URL:(NSString *)URL outputStream:(NSOutputStream *)outputStream
-		progressDelegate:(id<LRProgressDelegate>)progressDelegate {
+		progressDelegate:(id<LRFileProgressDelegate>)progressDelegate {
 
 	LRBasicAuthentication *auth = [LRDownloadUtil _getAuthentication:session];
 
@@ -49,7 +49,7 @@
 		groupFriendlyURL:(NSString *)groupFriendlyURL
 		folderPath:(NSString *)folderPath fileTitle:(NSString *)fileTitle
 		outputStream:(NSOutputStream *)outputStream
-		progressDelegate:(id<LRProgressDelegate>)progressDelegate {
+		progressDelegate:(id<LRFileProgressDelegate>)progressDelegate {
 
 	NSString *URL = [LRDownloadUtil getWebDAVFileURLWithSession:session
 		portalVersion:portalVersion groupFriendlyURL:groupFriendlyURL

@@ -24,7 +24,7 @@
 
 - (id)initWithAuth:(LRBasicAuthentication *)auth
 		outputStream:(NSOutputStream *)outputStream
-		progressDelegate:(id<LRProgressDelegate>)progressDelegate {
+		progressDelegate:(id<LRFileProgressDelegate>)progressDelegate {
 
 	self = [super init];
 

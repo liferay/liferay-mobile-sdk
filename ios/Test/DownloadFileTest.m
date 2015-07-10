@@ -21,7 +21,7 @@
 /**
  * @author Bruno Farache
  */
-@interface DownloadFileTest : BaseTest <LRProgressDelegate>
+@interface DownloadFileTest : BaseTest <LRFileProgressDelegate>
 
 @property (nonatomic, strong) NSDictionary *entry;
 @property (nonatomic, strong) TRVSMonitor *monitor;

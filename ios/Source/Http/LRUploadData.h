@@ -12,7 +12,7 @@
  * details.
  */
 
-#import "LRProgressDelegate.h"
+#import "LRFileProgressDelegate.h"
 
 /**
  * @author Bruno Farache
@@ -26,18 +26,18 @@
 @property (nonatomic) int64_t length;
 @property (nonatomic, strong) NSString *mimeType;
 @property (nonatomic, strong) NSString *parameterName;
-@property (nonatomic, strong) id<LRProgressDelegate> progressDelegate;
+@property (nonatomic, strong) id<LRFileProgressDelegate> progressDelegate;
 
 - (id)initWithData:(NSData *)data fileName:(NSString *)fileName
 	mimeType:(NSString *)mimeType
-	progressDelegate:(id<LRProgressDelegate>)progressDelegate;
+	progressDelegate:(id<LRFileProgressDelegate>)progressDelegate;
 
 - (id)initWithFileURL:(NSURL *)fileURL fileName:(NSString *)fileName
 	mimeType:(NSString *)mimeType
-	progressDelegate:(id<LRProgressDelegate>)progressDelegate;
+	progressDelegate:(id<LRFileProgressDelegate>)progressDelegate;
 
 - (id)initWithInputStream:(NSInputStream *)inputStream length:(int64_t)length
 	fileName:(NSString *)fileName mimeType:(NSString *)mimeType
-	progressDelegate:(id<LRProgressDelegate>)progressDelegate;
+	progressDelegate:(id<LRFileProgressDelegate>)progressDelegate;
 
 @end
