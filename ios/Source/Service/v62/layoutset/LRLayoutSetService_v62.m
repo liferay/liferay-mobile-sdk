@@ -45,7 +45,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSOperation *)updateLogoWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo file:(LRUploadData *)file error:(NSError **)error {
+- (void)updateLogoWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo file:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
@@ -55,7 +55,7 @@
 
 	NSDictionary *_command = @{@"/layoutset/update-logo": _params};
 
-	return [self.session upload:_command error:error];
+	[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)updateLookAndFeelWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId css:(NSString *)css wapTheme:(BOOL)wapTheme error:(NSError **)error {
