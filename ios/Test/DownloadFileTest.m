@@ -54,7 +54,7 @@
 	NSInteger portalVersion = [self.settings[@"portalVersion"] integerValue];
 
 	[LRDownloadUtil downloadWebDAVFileWithSession:self.session
-		portalVersion:portalVersion groupFriendlyURL:@"/guest" folderPath:@""
+		portalVersion:portalVersion groupFriendlyURL:@"guest" folderPath:@""
 		fileTitle:self.entry[@"title"] outputStream:outputStream
 		progressDelegate:self];
 
@@ -78,7 +78,7 @@
 
 	NSString *downloadURL = [LRDownloadUtil
 		getWebDAVFileURLWithSession:self.session portalVersion:portalVersion
-		groupFriendlyURL:@"/guest" folderPath:@"folder with spaces"
+		groupFriendlyURL:@"guest" folderPath:@"folder with spaces"
 		fileTitle:@"file áéíòúñ.txt"];
 
 	XCTAssertEqualObjects(expectedURL, downloadURL);

@@ -140,7 +140,7 @@
 				}
 
 				NSData *uploadedData = [NSData dataWithBytes:&bytes
-					length:length];
+					length:sizeof(bytes)];
 
 				[data.progressDelegate onProgress:uploadedData total:total];
 			}
