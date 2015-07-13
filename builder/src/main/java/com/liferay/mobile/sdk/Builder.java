@@ -24,14 +24,13 @@ import java.util.List;
  */
 public interface Builder {
 
-	public void build(
+	void build(
 			Discovery discovery, List<Action> actions, String packageName,
 			int version, String filter, String destination)
 		throws Exception;
 
-	public void buildAll(
-			Discovery discovery, String packageName, int version,
-			String destination)
-		throws Exception;
+	void buildAll(
+		Discovery discovery, String packageName, int version,
+		String destination);
 
 }
