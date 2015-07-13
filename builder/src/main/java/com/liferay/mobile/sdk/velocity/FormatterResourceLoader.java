@@ -20,6 +20,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
@@ -39,7 +42,7 @@ public class FormatterResourceLoader extends ClasspathResourceLoader {
 			return new ByteArrayInputStream(template.getBytes("UTF-8"));
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			_log.log(Level.SEVERE, "Could not load template file", e);
 		}
 
 		return is;
@@ -50,7 +53,7 @@ public class FormatterResourceLoader extends ClasspathResourceLoader {
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 
-		String line = null;
+		String line;
 
 		try {
 			while ((line = reader.readLine()) != null) {
@@ -82,5 +85,8 @@ public class FormatterResourceLoader extends ClasspathResourceLoader {
 
 		return sb.toString().trim();
 	}
+
+	private static final Logger _log = Logger.getLogger(
+		FormatterResourceLoader.class.getName());
 
 }

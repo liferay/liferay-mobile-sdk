@@ -24,6 +24,8 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -53,7 +55,7 @@ public class SDKBuilder {
 				destination);
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			_log.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 
@@ -134,6 +136,9 @@ public class SDKBuilder {
 
 		return arguments;
 	}
+
+	private static final Logger _log = Logger.getLogger(
+		SDKBuilder.class.getName());
 
 	private Properties _properties;
 

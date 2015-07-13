@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Bruno Farache
@@ -43,9 +45,9 @@ public abstract class BaseBuilder implements Builder {
 			int index = path.indexOf("/", 1);
 
 			if (index == -1) {
-				System.err.println(
-					"WARN: Action " + action.getPath() + " skipped, " +
-						"unexpected path format");
+				_log.log(
+					Level.WARNING, "Action {0} skipped, unexpected path format",
+					action.getPath());
 
 				continue;
 			}
@@ -85,5 +87,8 @@ public abstract class BaseBuilder implements Builder {
 	protected static final String LANGUAGE_UTIL = "languageUtil";
 
 	protected static final String VOID = "VOID";
+
+	private static final Logger _log = Logger.getLogger(
+		BaseBuilder.class.getName());
 
 }
