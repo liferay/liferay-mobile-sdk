@@ -40,22 +40,27 @@ public abstract class BaseBuilder implements Builder {
 
 		for (Action action : actions) {
 			String path = action.getPath();
+			int index = path.indexOf("/", 1);
 
-			try {
-				String className = path.substring(1, path.indexOf("/", 1));
-				List<Action> classActions = actionsMap.get(className);
+			if (index == -1) {
+				System.err.println(
+					"WARN: Action " + action.getPath() + " skipped, " +
+						"unexpected path format");
 
-				if (classActions == null) {
-					classActions = new ArrayList<Action>();
-	
-					actionsMap.put(className, classActions);
-				}
-
-				classActions.add(action);
-			} catch (IndexOutOfBoundsException ioobe) {
-			    System.err.println("WARN: Action " + action.getPath() + " skipped, unexpected URL format");
-			    continue;
+				continue;
 			}
+
+			String className = path.substring(1, index);
+
+			List<Action> classActions = actionsMap.get(className);
+
+			if (classActions == null) {
+				classActions = new ArrayList<Action>();
+
+				actionsMap.put(className, classActions);
+			}
+
+			classActions.add(action);
 		}
 
 		for (Entry<String, List<Action>> entry : actionsMap.entrySet()) {
