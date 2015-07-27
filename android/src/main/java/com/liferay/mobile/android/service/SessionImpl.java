@@ -22,7 +22,9 @@ import com.liferay.mobile.android.task.ServiceAsyncTask;
 import com.liferay.mobile.android.task.UploadAsyncTask;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -86,6 +88,11 @@ public class SessionImpl implements Session {
 	}
 
 	@Override
+	public Map<String, String> getHeaders() {
+		return headers;
+	}
+
+	@Override
 	public String getServer() {
 		return server;
 	}
@@ -116,6 +123,11 @@ public class SessionImpl implements Session {
 	@Override
 	public void setConnectionTimeout(int connectionTimeout) {
 		this.connectionTimeout = connectionTimeout;
+	}
+
+	@Override
+	public void setHeaders(Map<String, String> headers) {
+		this.headers = Collections.unmodifiableMap(headers);
 	}
 
 	@Override
@@ -164,6 +176,7 @@ public class SessionImpl implements Session {
 	protected Authentication authentication;
 	protected AsyncTaskCallback callback;
 	protected int connectionTimeout;
+	protected Map<String, String> headers;
 	protected String server;
 
 }

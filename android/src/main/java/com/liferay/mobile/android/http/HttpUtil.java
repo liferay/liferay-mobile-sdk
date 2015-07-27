@@ -26,6 +26,9 @@ import java.io.IOException;
 
 import java.net.URI;
 
+import java.util.Map;
+
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
@@ -38,6 +41,7 @@ import org.apache.http.client.methods.HttpPostHC4;
 import org.apache.http.entity.StringEntityHC4;
 import org.apache.http.impl.client.DefaultRedirectStrategy;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.message.BasicHeader;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
@@ -122,6 +126,7 @@ public class HttpUtil {
 
 		HttpGetHC4 httpGet = new HttpGetHC4(URL);
 
+		setHeaders(session, httpGet);
 		authenticate(session, httpGet);
 
 		return httpGet;
@@ -132,6 +137,7 @@ public class HttpUtil {
 
 		HttpPostHC4 httpPost = new HttpPostHC4(URL);
 
+		setHeaders(session, httpPost);
 		authenticate(session, httpPost);
 
 		return httpPost;
@@ -275,6 +281,24 @@ public class HttpUtil {
 		}
 
 		return false;
+	}
+
+	protected static void setHeaders(Session session, HttpRequest request) {
+		Map<String, String> headers = session.getHeaders();
+
+		if (headers != null) {
+			Header[] httpHeaders = new Header[headers.size()];
+			int i = 0;
+
+			for (Map.Entry<String, String> header : headers.entrySet()) {
+				httpHeaders[i] = new BasicHeader(
+					header.getKey(), header.getValue());
+
+				i = i + 1;
+			}
+
+			request.setHeaders(httpHeaders);
+		}
 	}
 
 	private static String _JSONWS_PATH = JSONWS_PATH_62;
