@@ -63,9 +63,13 @@ typedef void (^LRHandler)(
 + (NSMutableURLRequest *)getRequestWithSession:(LRSession *)session
 		URL:(NSURL *)URL {
 
-	return [NSMutableURLRequest requestWithURL:URL
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL
 		cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
 		timeoutInterval:session.connectionTimeout];
+
+	[request setAllHTTPHeaderFields:session.headers];
+
+	return request;
 }
 
 + (NSURL *)getURL:(LRSession *)session path:(NSString *)path {

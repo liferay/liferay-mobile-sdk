@@ -23,6 +23,7 @@
 @property (nonatomic, strong) id<LRAuthentication> authentication;
 @property (nonatomic, strong) id<LRCallback> callback;
 @property (nonatomic) int connectionTimeout;
+@property (nonatomic, strong) NSDictionary *headers;
 @property (nonatomic, strong) NSString *server;
 @property (nonatomic, strong) NSOperationQueue *queue;
 

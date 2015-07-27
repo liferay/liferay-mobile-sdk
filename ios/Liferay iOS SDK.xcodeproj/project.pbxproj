@@ -110,6 +110,7 @@
 		CC03FD0718ED7DCD00F3F16C /* LRWikiNodeService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FC9D18ED7DCD00F3F16C /* LRWikiNodeService_v62.m */; };
 		CC03FD0818ED7DCD00F3F16C /* LRWikiPageService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FCA018ED7DCD00F3F16C /* LRWikiPageService_v62.m */; };
 		CC03FD0918ED7DCD00F3F16C /* LRPortraitUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FCA318ED7DCD00F3F16C /* LRPortraitUtil.m */; };
+		CC1954A51B66B2BF0000EBEE /* HeadersTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1954A41B66B2BF0000EBEE /* HeadersTest.m */; };
 		CC1C897919080708004D3C4C /* TRVSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1C897819080708004D3C4C /* TRVSMonitor.m */; };
 		CC20D9E81A7BB3E300DE7729 /* LRCredentialStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CC20D9E51A7BB3E300DE7729 /* LRCredentialStorage.m */; };
 		CC20D9E91A7BB3E300DE7729 /* LRSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = CC20D9E71A7BB3E300DE7729 /* LRSignIn.m */; };
@@ -383,6 +384,7 @@
 		CC03FCA018ED7DCD00F3F16C /* LRWikiPageService_v62.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRWikiPageService_v62.m; sourceTree = "<group>"; };
 		CC03FCA218ED7DCD00F3F16C /* LRPortraitUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPortraitUtil.h; sourceTree = "<group>"; };
 		CC03FCA318ED7DCD00F3F16C /* LRPortraitUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPortraitUtil.m; sourceTree = "<group>"; };
+		CC1954A41B66B2BF0000EBEE /* HeadersTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadersTest.m; sourceTree = "<group>"; };
 		CC1C897719080708004D3C4C /* TRVSMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSMonitor.h; sourceTree = "<group>"; };
 		CC1C897819080708004D3C4C /* TRVSMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSMonitor.m; sourceTree = "<group>"; };
 		CC20D9E41A7BB3E300DE7729 /* LRCredentialStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCredentialStorage.h; sourceTree = "<group>"; };
@@ -1570,6 +1572,7 @@
 				CC2E77D31A3769A9001890A9 /* GroupServiceAsyncTest.m */,
 				CC2E77D41A3769A9001890A9 /* GroupServiceTest.h */,
 				CC2E77D51A3769A9001890A9 /* GroupServiceTest.m */,
+				CC1954A41B66B2BF0000EBEE /* HeadersTest.m */,
 				CC2E77D61A3769A9001890A9 /* OrderByComparatorTest.m */,
 				CC2E77D71A3769A9001890A9 /* PortalVersionTest.m */,
 				CC2E77D81A3769A9001890A9 /* PortletServiceTest.m */,
@@ -1883,6 +1886,7 @@
 				CC4B7A261937B971003611C4 /* LRUploadData.m in Sources */,
 				CC03FCF918ED7DCD00F3F16C /* LRShoppingOrderService_v62.m in Sources */,
 				CC03FCFF18ED7DCD00F3F16C /* LRTeamService_v62.m in Sources */,
+				CC1954A51B66B2BF0000EBEE /* HeadersTest.m in Sources */,
 				CC03FCED18ED7DCD00F3F16C /* LRRegionService_v62.m in Sources */,
 				CC03FCD618ED7DCD00F3F16C /* LRLayoutSetPrototypeService_v62.m in Sources */,
 				CC03FCB218ED7DCD00F3F16C /* LRAssetVocabularyService_v62.m in Sources */,

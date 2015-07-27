@@ -115,6 +115,7 @@
 		multipartFormRequestWithMethod:LR_POST URLString:URL
 		parameters:parameters constructingBodyWithBlock:block error:nil];
 
+	[request setAllHTTPHeaderFields:session.headers];
 	[request setTimeoutInterval:session.connectionTimeout];
 
 	if (session.authentication) {
