@@ -111,6 +111,10 @@
 		CC03FD0818ED7DCD00F3F16C /* LRWikiPageService_v62.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FCA018ED7DCD00F3F16C /* LRWikiPageService_v62.m */; };
 		CC03FD0918ED7DCD00F3F16C /* LRPortraitUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FCA318ED7DCD00F3F16C /* LRPortraitUtil.m */; };
 		CC1954A51B66B2BF0000EBEE /* HeadersTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1954A41B66B2BF0000EBEE /* HeadersTest.m */; };
+		CC1954B41B66B79E0000EBEE /* LRDownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1954A81B66B76E0000EBEE /* LRDownloadDelegate.m */; };
+		CC1954B51B66B7A20000EBEE /* LRDownloadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1954AA1B66B76E0000EBEE /* LRDownloadUtil.m */; };
+		CC1954B61B66B7A70000EBEE /* LRUploadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1954AD1B66B76E0000EBEE /* LRUploadData.m */; };
+		CC1954B71B66B7AA0000EBEE /* LRUploadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1954AF1B66B76E0000EBEE /* LRUploadUtil.m */; };
 		CC1C897919080708004D3C4C /* TRVSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1C897819080708004D3C4C /* TRVSMonitor.m */; };
 		CC20D9E81A7BB3E300DE7729 /* LRCredentialStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CC20D9E51A7BB3E300DE7729 /* LRCredentialStorage.m */; };
 		CC20D9E91A7BB3E300DE7729 /* LRSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = CC20D9E71A7BB3E300DE7729 /* LRSignIn.m */; };
@@ -132,8 +136,6 @@
 		CC2E77EE1A3769A9001890A9 /* UnauthenticatedServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E77DF1A3769A9001890A9 /* UnauthenticatedServiceTest.m */; };
 		CC40D76D1974B9D0000254E6 /* LRValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = CC40D76B1974B9BA000254E6 /* LRValidator.m */; };
 		CC40D7701974C76D000254E6 /* LRBlockCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = CC40D76F1974C76D000254E6 /* LRBlockCallback.m */; };
-		CC4B7A261937B971003611C4 /* LRUploadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B7A241937B971003611C4 /* LRUploadData.m */; };
-		CC4B7A291937C64E003611C4 /* LRUploadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B7A271937C64E003611C4 /* LRUploadUtil.m */; };
 		CC4B7A2F1938C47F003611C4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4B7A2E1938C47F003611C4 /* logo.png */; };
 		CC5196B41A7944AB0005C238 /* SignInTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5196B31A7944AB0005C238 /* SignInTest.m */; };
 		CC677D2818EC511900F3DFAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
@@ -149,8 +151,6 @@
 		CCDCE0591A694BB20045023A /* BatchSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDCE0581A694BB20045023A /* BatchSessionTest.m */; };
 		CCF098011ABA355E0023951B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF098001ABA355E0023951B /* UIKit.framework */; };
 		CCF5F35E1AB869E0006132AA /* DownloadFileTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F35D1AB869E0006132AA /* DownloadFileTest.m */; };
-		CCF5F3621AB89CC0006132AA /* LRDownloadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F3611AB89CC0006132AA /* LRDownloadUtil.m */; };
-		CCF5F3641AB89D7F006132AA /* LRDownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F3631AB89D7F006132AA /* LRDownloadDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -385,6 +385,15 @@
 		CC03FCA218ED7DCD00F3F16C /* LRPortraitUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPortraitUtil.h; sourceTree = "<group>"; };
 		CC03FCA318ED7DCD00F3F16C /* LRPortraitUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPortraitUtil.m; sourceTree = "<group>"; };
 		CC1954A41B66B2BF0000EBEE /* HeadersTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadersTest.m; sourceTree = "<group>"; };
+		CC1954A71B66B76E0000EBEE /* LRDownloadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDownloadDelegate.h; sourceTree = "<group>"; };
+		CC1954A81B66B76E0000EBEE /* LRDownloadDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDownloadDelegate.m; sourceTree = "<group>"; };
+		CC1954A91B66B76E0000EBEE /* LRDownloadUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDownloadUtil.h; sourceTree = "<group>"; };
+		CC1954AA1B66B76E0000EBEE /* LRDownloadUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDownloadUtil.m; sourceTree = "<group>"; };
+		CC1954AB1B66B76E0000EBEE /* LRFileProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRFileProgressDelegate.h; sourceTree = "<group>"; };
+		CC1954AC1B66B76E0000EBEE /* LRUploadData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUploadData.h; sourceTree = "<group>"; };
+		CC1954AD1B66B76E0000EBEE /* LRUploadData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRUploadData.m; sourceTree = "<group>"; };
+		CC1954AE1B66B76E0000EBEE /* LRUploadUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUploadUtil.h; sourceTree = "<group>"; };
+		CC1954AF1B66B76E0000EBEE /* LRUploadUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRUploadUtil.m; sourceTree = "<group>"; };
 		CC1C897719080708004D3C4C /* TRVSMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSMonitor.h; sourceTree = "<group>"; };
 		CC1C897819080708004D3C4C /* TRVSMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSMonitor.m; sourceTree = "<group>"; };
 		CC20D9E41A7BB3E300DE7729 /* LRCredentialStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCredentialStorage.h; sourceTree = "<group>"; };
@@ -415,11 +424,6 @@
 		CC40D76B1974B9BA000254E6 /* LRValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRValidator.m; sourceTree = "<group>"; };
 		CC40D76E1974C76D000254E6 /* LRBlockCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRBlockCallback.h; sourceTree = "<group>"; };
 		CC40D76F1974C76D000254E6 /* LRBlockCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRBlockCallback.m; sourceTree = "<group>"; };
-		CC4B7A241937B971003611C4 /* LRUploadData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRUploadData.m; sourceTree = "<group>"; };
-		CC4B7A251937B971003611C4 /* LRUploadData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUploadData.h; sourceTree = "<group>"; };
-		CC4B7A271937C64E003611C4 /* LRUploadUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRUploadUtil.m; sourceTree = "<group>"; };
-		CC4B7A281937C64E003611C4 /* LRUploadUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUploadUtil.h; sourceTree = "<group>"; };
-		CC4B7A2D1938C002003611C4 /* LRFileProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LRFileProgressDelegate.h; path = Source/Http/LRFileProgressDelegate.h; sourceTree = SOURCE_ROOT; };
 		CC4B7A2E1938C47F003611C4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		CC5196B31A7944AB0005C238 /* SignInTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInTest.m; sourceTree = "<group>"; };
 		CC677D2618EC511900F3DFAB /* Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -444,10 +448,6 @@
 		CCDCE0581A694BB20045023A /* BatchSessionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchSessionTest.m; sourceTree = "<group>"; };
 		CCF098001ABA355E0023951B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CCF5F35D1AB869E0006132AA /* DownloadFileTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadFileTest.m; sourceTree = "<group>"; };
-		CCF5F3601AB89CC0006132AA /* LRDownloadUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDownloadUtil.h; sourceTree = "<group>"; };
-		CCF5F3611AB89CC0006132AA /* LRDownloadUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDownloadUtil.m; sourceTree = "<group>"; };
-		CCF5F3631AB89D7F006132AA /* LRDownloadDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDownloadDelegate.m; sourceTree = "<group>"; };
-		CCF5F3651AB89DA2006132AA /* LRDownloadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDownloadDelegate.h; sourceTree = "<group>"; };
 		F36B1A16FCF600C1E7C0B954 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -528,19 +528,15 @@
 		CC03FB7C18ED7DCC00F3F16C /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				CC1954A61B66B76E0000EBEE /* File */,
 				CCABA084197D544A00A9F8B0 /* LRError.h */,
 				CCABA085197D544A00A9F8B0 /* LRError.m */,
-				CC4B7A2D1938C002003611C4 /* LRFileProgressDelegate.h */,
 				CC03FB7D18ED7DCC00F3F16C /* LRHttpUtil.h */,
 				CC03FB7E18ED7DCC00F3F16C /* LRHttpUtil.m */,
 				CCC6A7B41A164BEB00ABB791 /* LRRedirectDelegate.h */,
 				CCC6A7B51A164BEB00ABB791 /* LRRedirectDelegate.m */,
 				CCABA080197C995500A9F8B0 /* LRResponseParser.h */,
 				CCABA07F197C995500A9F8B0 /* LRResponseParser.m */,
-				CC4B7A251937B971003611C4 /* LRUploadData.h */,
-				CC4B7A241937B971003611C4 /* LRUploadData.m */,
-				CC4B7A281937C64E003611C4 /* LRUploadUtil.h */,
-				CC4B7A271937C64E003611C4 /* LRUploadUtil.m */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -1513,7 +1509,6 @@
 		CC03FCA118ED7DCD00F3F16C /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				CCF5F35F1AB89CC0006132AA /* Download */,
 				CC6ECF251986D83C007F4EBB /* Localization */,
 				CCA4E4E41936578900374A79 /* LRPortalVersionUtil.h */,
 				CCA4E4E51936578900374A79 /* LRPortalVersionUtil.m */,
@@ -1523,6 +1518,22 @@
 				CC40D76B1974B9BA000254E6 /* LRValidator.m */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		CC1954A61B66B76E0000EBEE /* File */ = {
+			isa = PBXGroup;
+			children = (
+				CC1954A71B66B76E0000EBEE /* LRDownloadDelegate.h */,
+				CC1954A81B66B76E0000EBEE /* LRDownloadDelegate.m */,
+				CC1954A91B66B76E0000EBEE /* LRDownloadUtil.h */,
+				CC1954AA1B66B76E0000EBEE /* LRDownloadUtil.m */,
+				CC1954AB1B66B76E0000EBEE /* LRFileProgressDelegate.h */,
+				CC1954AC1B66B76E0000EBEE /* LRUploadData.h */,
+				CC1954AD1B66B76E0000EBEE /* LRUploadData.m */,
+				CC1954AE1B66B76E0000EBEE /* LRUploadUtil.h */,
+				CC1954AF1B66B76E0000EBEE /* LRUploadUtil.m */,
+			);
+			path = File;
 			sourceTree = "<group>";
 		};
 		CC1C897619080708004D3C4C /* Libraries */ = {
@@ -1626,17 +1637,6 @@
 				C7B771B91A3D54278EA8137B /* libPods.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CCF5F35F1AB89CC0006132AA /* Download */ = {
-			isa = PBXGroup;
-			children = (
-				CCF5F3651AB89DA2006132AA /* LRDownloadDelegate.h */,
-				CCF5F3631AB89D7F006132AA /* LRDownloadDelegate.m */,
-				CCF5F3601AB89CC0006132AA /* LRDownloadUtil.h */,
-				CCF5F3611AB89CC0006132AA /* LRDownloadUtil.m */,
-			);
-			path = Download;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1765,6 +1765,7 @@
 			files = (
 				CC6ECF281986D83C007F4EBB /* LRLocalizationUtil.m in Sources */,
 				CC03FCD918ED7DCD00F3F16C /* LRMBCategoryService_v62.m in Sources */,
+				CC1954B71B66B7AA0000EBEE /* LRUploadUtil.m in Sources */,
 				CC2E77E41A3769A9001890A9 /* GroupServiceAsyncTest.m in Sources */,
 				CC03FCB518ED7DCD00F3F16C /* LRBookmarksEntryService_v62.m in Sources */,
 				CC03FCC018ED7DCD00F3F16C /* LRDLFileEntryService_v62.m in Sources */,
@@ -1781,13 +1782,13 @@
 				CC03FCE818ED7DCD00F3F16C /* LRPollsVoteService_v62.m in Sources */,
 				CC03FCC418ED7DCD00F3F16C /* LRDLFolderService_v62.m in Sources */,
 				CC03FCB918ED7DCD00F3F16C /* LRContactService_v62.m in Sources */,
+				CC1954B41B66B79E0000EBEE /* LRDownloadDelegate.m in Sources */,
 				CC03FCE118ED7DCD00F3F16C /* LROrganizationService_v62.m in Sources */,
 				CC03FCD118ED7DCD00F3F16C /* LRLayoutBranchService_v62.m in Sources */,
 				CC2E77E91A3769A9001890A9 /* PortraitTest.m in Sources */,
 				CC03FCB118ED7DCD00F3F16C /* LRAssetTagPropertyService_v62.m in Sources */,
 				CC2E77E11A3769A9001890A9 /* CredentialStorageTest.m in Sources */,
 				CC03FCF718ED7DCD00F3F16C /* LRShoppingCouponService_v62.m in Sources */,
-				CCF5F3641AB89D7F006132AA /* LRDownloadDelegate.m in Sources */,
 				CC03FCC618ED7DCD00F3F16C /* LRExpandoColumnService_v62.m in Sources */,
 				CC03FD0418ED7DCD00F3F16C /* LRUserGroupGroupRoleService_v62.m in Sources */,
 				CC03FCE418ED7DCD00F3F16C /* LRPermissionService_v62.m in Sources */,
@@ -1797,6 +1798,7 @@
 				CC03FCA618ED7DCD00F3F16C /* LRServiceFactory.m in Sources */,
 				CC03FCB618ED7DCD00F3F16C /* LRBookmarksFolderService_v62.m in Sources */,
 				CC03FD0218ED7DCD00F3F16C /* LRUserService_v62.m in Sources */,
+				CC1954B51B66B7A20000EBEE /* LRDownloadUtil.m in Sources */,
 				CC03FCD418ED7DCD00F3F16C /* LRLayoutSetService_v62.m in Sources */,
 				CC20D9E91A7BB3E300DE7729 /* LRSignIn.m in Sources */,
 				CC2E77E21A3769A9001890A9 /* DLAppServiceTest.m in Sources */,
@@ -1808,6 +1810,7 @@
 				CC03FCBA18ED7DCD00F3F16C /* LRCountryService_v62.m in Sources */,
 				CC03FCBB18ED7DCD00F3F16C /* LRDDLRecordService_v62.m in Sources */,
 				CC03FD0718ED7DCD00F3F16C /* LRWikiNodeService_v62.m in Sources */,
+				CC1954B61B66B7A70000EBEE /* LRUploadData.m in Sources */,
 				CC03FCF618ED7DCD00F3F16C /* LRShoppingCategoryService_v62.m in Sources */,
 				CC03FCB818ED7DCD00F3F16C /* LRCompanyService_v62.m in Sources */,
 				CC03FCA818ED7DCD00F3F16C /* LRHttpUtil.m in Sources */,
@@ -1848,7 +1851,6 @@
 				CC03FCCB18ED7DCD00F3F16C /* LRJournalArticleService_v62.m in Sources */,
 				CC03FCB718ED7DCD00F3F16C /* LRClassNameService_v62.m in Sources */,
 				CC03FD0118ED7DCD00F3F16C /* LRTrashEntryService_v62.m in Sources */,
-				CCF5F3621AB89CC0006132AA /* LRDownloadUtil.m in Sources */,
 				CC03FCC118ED7DCD00F3F16C /* LRDLFileEntryTypeService_v62.m in Sources */,
 				CC03FCA518ED7DCD00F3F16C /* LRBatchSession.m in Sources */,
 				CC5196B41A7944AB0005C238 /* SignInTest.m in Sources */,
@@ -1861,7 +1863,6 @@
 				CC03FCFB18ED7DCD00F3F16C /* LRSocialActivitySettingService_v62.m in Sources */,
 				CC03FCD318ED7DCD00F3F16C /* LRLayoutRevisionService_v62.m in Sources */,
 				CC03FCEB18ED7DCD00F3F16C /* LRPortletPreferencesService_v62.m in Sources */,
-				CC4B7A291937C64E003611C4 /* LRUploadUtil.m in Sources */,
 				CC40D7701974C76D000254E6 /* LRBlockCallback.m in Sources */,
 				CC03FCE718ED7DCD00F3F16C /* LRPollsQuestionService_v62.m in Sources */,
 				CC2E77EA1A3769A9001890A9 /* ResponseParserTest.m in Sources */,
@@ -1883,7 +1884,6 @@
 				CC03FCFD18ED7DCD00F3F16C /* LRStagingService_v62.m in Sources */,
 				CC03FCEF18ED7DCD00F3F16C /* LRResourceBlockService_v62.m in Sources */,
 				CC03FCC918ED7DCD00F3F16C /* LRGroupService_v62.m in Sources */,
-				CC4B7A261937B971003611C4 /* LRUploadData.m in Sources */,
 				CC03FCF918ED7DCD00F3F16C /* LRShoppingOrderService_v62.m in Sources */,
 				CC03FCFF18ED7DCD00F3F16C /* LRTeamService_v62.m in Sources */,
 				CC1954A51B66B2BF0000EBEE /* HeadersTest.m in Sources */,
