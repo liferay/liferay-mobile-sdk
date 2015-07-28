@@ -23,6 +23,7 @@ import com.liferay.mobile.android.task.UploadAsyncTask;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -176,7 +177,7 @@ public class SessionImpl implements Session {
 	protected Authentication authentication;
 	protected AsyncTaskCallback callback;
 	protected int connectionTimeout;
-	protected Map<String, String> headers;
+	protected Map<String, String> headers = new HashMap<String, String>();
 	protected String server;
 
 }

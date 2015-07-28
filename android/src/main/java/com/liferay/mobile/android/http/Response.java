@@ -12,15 +12,39 @@
  * details.
  */
 
-package com.liferay.mobile.android.auth;
+package com.liferay.mobile.android.http;
 
-import com.liferay.mobile.android.http.Request;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Bruno Farache
  */
-public interface Authentication {
+public class Response {
 
-	void authenticate(Request request) throws Exception;
+	public Response(
+		int status, Map<String, List<String>> headers, String body) {
+
+		_status = status;
+		_headers = headers;
+		_body = body;
+	}
+
+	public String getBody() {
+		return _body;
+	}
+
+	public Map<String, List<String>> getHeaders() {
+		return Collections.unmodifiableMap(_headers);
+	}
+
+	public int getStatus() {
+		return _status;
+	}
+
+	private String _body;
+	private Map<String, List<String>> _headers;
+	private int _status;
 
 }

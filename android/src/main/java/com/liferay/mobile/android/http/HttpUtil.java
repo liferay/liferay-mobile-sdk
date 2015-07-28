@@ -26,6 +26,7 @@ import java.io.IOException;
 
 import java.net.URI;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.http.Header;
@@ -38,7 +39,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultRedirectStrategy;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicHeader;
@@ -183,17 +183,20 @@ public class HttpUtil {
 	public static JSONArray post(Session session, JSONArray commands)
 		throws Exception {
 
-		HttpClient client = getClient(session);
-		HttpPost request = getHttpPost(session, getURL(session, "/invoke"));
+		String url = getURL(session, "/invoke");
 
-		request.setEntity(new StringEntity(commands.toString(), "UTF-8"));
+		Request request = new Request(
+			session.getHeaders(), url, commands.toString());
 
-		HttpResponse response = client.execute(request);
-		String json = HttpUtil.getResponseString(response);
+		Authentication auth = session.getAuthentication();
 
-		handleServerError(request, response, json);
+		if (auth != null) {
+			auth.authenticate(request);
+		}
 
-		return new JSONArray(json);
+		Response response = client.send(session, request);
+
+		return new JSONArray(response.getBody());
 	}
 
 	public static JSONArray post(Session session, JSONObject command)
@@ -216,7 +219,7 @@ public class HttpUtil {
 		Authentication auth = session.getAuthentication();
 
 		if (auth != null) {
-			auth.authenticate(request);
+			//auth.authenticate(request);
 		}
 	}
 
@@ -284,7 +287,7 @@ public class HttpUtil {
 	}
 
 	protected static void setHeaders(Session session, HttpRequest request) {
-		Map<String, String> headers = session.getHeaders();
+		Map<String, String> headers = new HashMap<String, String>();
 
 		if (headers != null) {
 			Header[] httpHeaders = new Header[headers.size()];
@@ -300,6 +303,9 @@ public class HttpUtil {
 			request.setHeaders(httpHeaders);
 		}
 	}
+
+	protected static com.liferay.mobile.android.http.HttpClient client =
+		new OkHttpClientImpl();
 
 	private static String _JSONWS_PATH = JSONWS_PATH_62;
 

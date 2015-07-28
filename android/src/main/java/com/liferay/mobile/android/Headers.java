@@ -12,15 +12,24 @@
  * details.
  */
 
-package com.liferay.mobile.android.auth;
-
-import com.liferay.mobile.android.http.Request;
+package com.liferay.mobile.android;
 
 /**
  * @author Bruno Farache
  */
-public interface Authentication {
+public enum Headers {
 
-	void authenticate(Request request) throws Exception;
+	AUTHORIZATION("Authorization");
+
+	Headers(String value) {
+		this.value = value;
+	}
+
+	@Override
+	public String toString() {
+		return value;
+	}
+
+	protected String value;
 
 }
