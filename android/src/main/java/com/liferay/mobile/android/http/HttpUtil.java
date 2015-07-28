@@ -36,9 +36,9 @@ import org.apache.http.HttpStatus;
 import org.apache.http.ProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpGetHC4;
-import org.apache.http.client.methods.HttpPostHC4;
-import org.apache.http.entity.StringEntityHC4;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultRedirectStrategy;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicHeader;
@@ -121,10 +121,10 @@ public class HttpUtil {
 		return clientBuilder;
 	}
 
-	public static HttpGetHC4 getHttpGet(Session session, String URL)
+	public static HttpGet getHttpGet(Session session, String URL)
 		throws Exception {
 
-		HttpGetHC4 httpGet = new HttpGetHC4(URL);
+		HttpGet httpGet = new HttpGet(URL);
 
 		setHeaders(session, httpGet);
 		authenticate(session, httpGet);
@@ -132,10 +132,10 @@ public class HttpUtil {
 		return httpGet;
 	}
 
-	public static HttpPostHC4 getHttpPost(Session session, String URL)
+	public static HttpPost getHttpPost(Session session, String URL)
 		throws Exception {
 
-		HttpPostHC4 httpPost = new HttpPostHC4(URL);
+		HttpPost httpPost = new HttpPost(URL);
 
 		setHeaders(session, httpPost);
 		authenticate(session, httpPost);
@@ -184,9 +184,9 @@ public class HttpUtil {
 		throws Exception {
 
 		HttpClient client = getClient(session);
-		HttpPostHC4 request = getHttpPost(session, getURL(session, "/invoke"));
+		HttpPost request = getHttpPost(session, getURL(session, "/invoke"));
 
-		request.setEntity(new StringEntityHC4(commands.toString(), "UTF-8"));
+		request.setEntity(new StringEntity(commands.toString(), "UTF-8"));
 
 		HttpResponse response = client.execute(request);
 		String json = HttpUtil.getResponseString(response);

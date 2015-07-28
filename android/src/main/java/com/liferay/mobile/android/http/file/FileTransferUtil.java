@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.apache.http.client.methods.AbstractExecutionAwareRequest;
+import org.apache.http.client.methods.AbortableHttpRequest;
 
 /**
  * @author Bruno Farache
@@ -37,8 +37,8 @@ public class FileTransferUtil {
 	}
 
 	public static void transfer(
-			AbstractExecutionAwareRequest request, InputStream is,
-			OutputStream os, FileProgressCallback callback)
+			AbortableHttpRequest request, InputStream is, OutputStream os,
+			FileProgressCallback callback)
 		throws IOException {
 
 		int count;
