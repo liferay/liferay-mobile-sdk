@@ -22,7 +22,7 @@ import org.apache.http.Consts;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPostHC4;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -46,7 +46,7 @@ public class UploadUtil {
 		JSONObject parameters = command.getJSONObject(path);
 
 		HttpClient client = getClient(session);
-		HttpPostHC4 request = getHttpPost(session, getURL(session, path));
+		HttpPost request = getHttpPost(session, getURL(session, path));
 
 		HttpEntity entity = getMultipartEntity(request, parameters);
 
@@ -61,7 +61,7 @@ public class UploadUtil {
 	}
 
 	protected static HttpEntity getMultipartEntity(
-			HttpPostHC4 request, JSONObject parameters)
+			HttpPost request, JSONObject parameters)
 		throws Exception {
 
 		MultipartEntityBuilder builder = MultipartEntityBuilder.create();

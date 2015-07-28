@@ -27,7 +27,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGetHC4;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import static com.liferay.mobile.android.http.file.FileTransferUtil.*;
@@ -43,7 +43,7 @@ public class DownloadUtil {
 		throws Exception {
 
 		HttpClientBuilder clientBuilder = HttpUtil.getClientBuilder(session);
-		HttpGetHC4 request = HttpUtil.getHttpGet(session, URL);
+		HttpGet request = HttpUtil.getHttpGet(session, URL);
 
 		HttpResponse response = clientBuilder.build().execute(request);
 		HttpUtil.checkStatusCode(request, response);
