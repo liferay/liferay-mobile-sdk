@@ -12,15 +12,15 @@
  * details.
  */
 
-package com.liferay.mobile.android.auth;
+package com.liferay.mobile.android.http;
 
-import com.liferay.mobile.android.http.Request;
+import com.liferay.mobile.android.service.Session;
 
 /**
  * @author Bruno Farache
  */
-public interface Authentication {
+public interface HttpClient {
 
-	void authenticate(Request request) throws Exception;
+	Response send(Session session, Request request) throws Exception;
 
 }

@@ -14,7 +14,8 @@
 
 package com.liferay.mobile.android.auth.basic;
 
-import org.apache.http.HttpRequest;
+import com.liferay.mobile.android.http.Request;
+
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.CredentialsProvider;
@@ -41,7 +42,7 @@ public class DigestAuthentication extends BasicAuthentication {
 	}
 
 	@Override
-	public void authenticate(HttpRequest request) {
+	public void authenticate(Request request) {
 	}
 
 }
