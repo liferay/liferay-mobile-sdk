@@ -55,7 +55,9 @@ public class UploadUtil {
 		HttpResponse response = client.execute(request);
 		String json = getResponseString(response);
 
-		handleServerError(request, response, json);
+		// TODO
+
+		//checkErrors(request, response, json);
 
 		return new JSONArray("[" + json + "]");
 	}

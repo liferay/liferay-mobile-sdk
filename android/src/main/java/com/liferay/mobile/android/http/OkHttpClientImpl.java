@@ -21,6 +21,8 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request.Builder;
 import com.squareup.okhttp.RequestBody;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -54,7 +56,7 @@ public class OkHttpClientImpl implements HttpClient {
 			.execute();
 
 		return new Response(
-			response.code(), response.headers().toMultimap(),
+			response.code(), _toMap(response.headers().toMultimap()),
 			response.body().string());
 	}
 
@@ -73,5 +75,15 @@ public class OkHttpClientImpl implements HttpClient {
 	}
 
 	protected OkHttpClient client;
+
+	private Map<String, String> _toMap(Map<String, List<String>> headers) {
+		Map<String, String> map = new HashMap<String, String>();
+
+		for (Map.Entry<String, List<String>> header : headers.entrySet()) {
+			map.put(header.getKey(), header.getValue().get(0));
+		}
+
+		return map;
+	}
 
 }

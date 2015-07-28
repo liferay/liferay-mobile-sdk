@@ -24,8 +24,6 @@ import com.liferay.mobile.android.util.Validator;
 
 import java.io.IOException;
 
-import java.net.URI;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,8 +31,6 @@ import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.ProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
@@ -42,8 +38,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultRedirectStrategy;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicHeader;
-import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
 
 import org.json.JSONArray;
@@ -64,26 +58,36 @@ public class HttpUtil {
 
 	public static final String LAST_MODIFIED = "Last-Modified";
 
-	public static void checkStatusCode(
-			HttpRequest request, HttpResponse response)
+	public static void checkErrors(Response response) throws ServerException {
+		checkStatusCode(response);
+		checkPortalException(response.getBody());
+	}
+
+	public static void checkStatusCode(Response response)
 		throws ServerException {
 
-		int status = response.getStatusLine().getStatusCode();
+		int status = response.getStatusCode();
 
-		if ((status == HttpStatus.SC_MOVED_PERMANENTLY) ||
-			(status == HttpStatus.SC_MOVED_TEMPORARILY) ||
-			(status == HttpStatus.SC_SEE_OTHER) ||
-			(status == HttpStatus.SC_TEMPORARY_REDIRECT)) {
+		if ((status == Status.MOVED_PERMANENTLY) ||
+			(status == Status.MOVED_TEMPORARILY) ||
+			(status == Status.SEE_OTHER) ||
+			(status == Status.TEMPORARY_REDIRECT)) {
 
-			throw new RedirectException(getRedirectUrl(request, response));
+			String URL = response.getHeaders().get(Headers.LOCATION);
+
+			if (URL.endsWith("/")) {
+				URL = URL.substring(0, URL.length() - 1);
+			}
+
+			throw new RedirectException(URL);
 		}
 
-		if (status == HttpStatus.SC_UNAUTHORIZED) {
+		if (status == Status.UNAUTHORIZED) {
 			throw new AuthenticationException(
 				"Authentication failed.", "HTTP Status Code 401");
 		}
 
-		if (status != HttpStatus.SC_OK) {
+		if (status != Status.OK) {
 			throw new ServerException(
 				"Request failed. Response code: " + status);
 		}
@@ -172,14 +176,6 @@ public class HttpUtil {
 		return sb.toString();
 	}
 
-	public static void handleServerError(
-			HttpRequest request, HttpResponse response, String json)
-		throws ServerException {
-
-		checkStatusCode(request, response);
-		handlePortalException(json);
-	}
-
 	public static JSONArray post(Session session, JSONArray commands)
 		throws Exception {
 
@@ -195,6 +191,7 @@ public class HttpUtil {
 		}
 
 		Response response = client.send(session, request);
+		checkErrors(response);
 
 		return new JSONArray(response.getBody());
 	}
@@ -219,33 +216,14 @@ public class HttpUtil {
 		Authentication auth = session.getAuthentication();
 
 		if (auth != null) {
+
+			// TODO
+
 			//auth.authenticate(request);
 		}
 	}
 
-	protected static String getRedirectUrl(
-			HttpRequest request, HttpResponse response)
-		throws ServerException {
-
-		try {
-			DefaultRedirectStrategy redirect = new DefaultRedirectStrategy();
-			HttpContext context = new BasicHttpContext();
-
-			URI uri = redirect.getLocationURI(request, response, context);
-			String url = uri.toString();
-
-			if (url.endsWith("/")) {
-				url = url.substring(0, url.length() - 1);
-			}
-
-			return url;
-		}
-		catch (ProtocolException pe) {
-			throw new ServerException(pe);
-		}
-	}
-
-	protected static void handlePortalException(String json)
+	protected static void checkPortalException(String json)
 		throws ServerException {
 
 		try {

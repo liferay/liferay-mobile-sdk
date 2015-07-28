@@ -46,7 +46,10 @@ public class DownloadUtil {
 		HttpGet request = HttpUtil.getHttpGet(session, URL);
 
 		HttpResponse response = clientBuilder.build().execute(request);
-		HttpUtil.checkStatusCode(request, response);
+
+		// TODO
+
+		//HttpUtil.checkStatusCode(request, response);
 		InputStream is = response.getEntity().getContent();
 
 		try {

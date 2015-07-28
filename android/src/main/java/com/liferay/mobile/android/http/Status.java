@@ -14,34 +14,21 @@
 
 package com.liferay.mobile.android.http;
 
-import java.util.Collections;
-import java.util.Map;
-
 /**
- * @author Bruno Farache
+ * @author Silvio Santos
  */
-public class Response {
+public class Status {
 
-	public Response(int statusCode, Map<String, String> headers, String body) {
-		_statusCode = statusCode;
-		_headers = headers;
-		_body = body;
-	}
+	public static final int MOVED_PERMANENTLY = 301;
 
-	public String getBody() {
-		return _body;
-	}
+	public static final int MOVED_TEMPORARILY = 302;
 
-	public Map<String, String> getHeaders() {
-		return Collections.unmodifiableMap(_headers);
-	}
+	public static final int OK = 200;
 
-	public int getStatusCode() {
-		return _statusCode;
-	}
+	public static final int SEE_OTHER = 303;
 
-	private String _body;
-	private Map<String, String> _headers;
-	private int _statusCode;
+	public static final int TEMPORARY_REDIRECT = 307;
+
+	public static final int UNAUTHORIZED = 401;
 
 }
