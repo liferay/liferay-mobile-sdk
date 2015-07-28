@@ -12,24 +12,15 @@
  * details.
  */
 
-package com.liferay.mobile.android;
+package com.liferay.mobile.android.http;
 
 /**
  * @author Bruno Farache
  */
-public enum Headers {
+public class Headers {
 
-	AUTHORIZATION("Authorization");
+	public static final String AUTHORIZATION = "Authorization";
 
-	Headers(String value) {
-		this.value = value;
-	}
-
-	@Override
-	public String toString() {
-		return value;
-	}
-
-	protected String value;
+	public static final String LOCATION = "Location";
 
 }

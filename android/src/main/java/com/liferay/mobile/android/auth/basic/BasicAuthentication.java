@@ -14,8 +14,8 @@
 
 package com.liferay.mobile.android.auth.basic;
 
-import com.liferay.mobile.android.Headers;
 import com.liferay.mobile.android.auth.Authentication;
+import com.liferay.mobile.android.http.Headers;
 import com.liferay.mobile.android.http.Request;
 
 import com.squareup.okhttp.Credentials;
@@ -33,8 +33,7 @@ public class BasicAuthentication implements Authentication {
 	@Override
 	public void authenticate(Request request) {
 		request.getHeaders().put(
-			Headers.AUTHORIZATION.toString(),
-			Credentials.basic(username, password));
+			Headers.AUTHORIZATION, Credentials.basic(username, password));
 	}
 
 	public String getPassword() {
