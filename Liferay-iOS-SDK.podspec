@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
 	s.module_name			= "LRMobileSDK"
 	s.version				= "6.2.0.20"
 	s.summary				= "Build iOS apps for Liferay."
-	s.homepage				= "https://www.liferay.com/community/liferay-projects/liferay-mobile-sdk"
+	s.homepage				= "https://github.com/liferay/liferay-mobile-sdk"
 	s.license				= {
 								:type => "LPGL 2.1",
 								:file => "ios/copyright.txt"
