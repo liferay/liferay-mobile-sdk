@@ -14,6 +14,11 @@
 
 package com.liferay.mobile.android.http;
 
+import com.squareup.okhttp.ResponseBody;
+
+import java.io.IOException;
+import java.io.InputStream;
+
 import java.util.Collections;
 import java.util.Map;
 
@@ -22,14 +27,20 @@ import java.util.Map;
  */
 public class Response {
 
-	public Response(int statusCode, Map<String, String> headers, String body) {
+	public Response(
+		int statusCode, Map<String, String> headers, ResponseBody body) {
+
 		_statusCode = statusCode;
 		_headers = headers;
 		_body = body;
 	}
 
-	public String getBody() {
-		return _body;
+	public String getBody() throws IOException {
+		return _body.string();
+	}
+
+	public InputStream getBodyAsStream() throws IOException {
+		return _body.byteStream();
 	}
 
 	public Map<String, String> getHeaders() {
@@ -40,7 +51,7 @@ public class Response {
 		return _statusCode;
 	}
 
-	private String _body;
+	private ResponseBody _body;
 	private Map<String, String> _headers;
 	private int _statusCode;
 

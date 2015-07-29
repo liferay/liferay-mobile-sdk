@@ -27,7 +27,11 @@ public class Request {
 		int connectionTimeout) {
 
 		_method = method;
-		_headers = new HashMap<String, String>(headers);
+
+		if (headers != null) {
+			_headers = new HashMap<String, String>(headers);
+		}
+
 		_url = url;
 		_body = body;
 		_connectionTimeout = connectionTimeout;
@@ -75,7 +79,7 @@ public class Request {
 
 	private String _body;
 	private int _connectionTimeout;
-	private Map<String, String> _headers;
+	private Map<String, String> _headers = new HashMap<String, String>();
 	private Method _method;
 	private String _url;
 

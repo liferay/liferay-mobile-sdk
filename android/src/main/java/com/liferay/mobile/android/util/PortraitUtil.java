@@ -17,7 +17,12 @@ package com.liferay.mobile.android.util;
 import android.util.Base64;
 import android.util.Log;
 
+import com.liferay.mobile.android.http.Headers;
 import com.liferay.mobile.android.http.HttpUtil;
+import com.liferay.mobile.android.http.Method;
+import com.liferay.mobile.android.http.Request;
+import com.liferay.mobile.android.http.Response;
+import com.liferay.mobile.android.http.Status;
 import com.liferay.mobile.android.service.Session;
 
 import java.io.Closeable;
@@ -30,11 +35,8 @@ import java.net.URLEncoder;
 
 import java.security.MessageDigest;
 
-import org.apache.http.Header;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Bruno Farache
@@ -58,19 +60,22 @@ public class PortraitUtil {
 		InputStream is = null;
 
 		try {
-			HttpGet get = new HttpGet(portraitURL);
+			Map<String, String> headers = new HashMap<String, String>();
 
 			if (Validator.isNotNull(modifiedDate)) {
-				get.addHeader(HttpUtil.IF_MODIFIED_SINCE, modifiedDate);
+				headers.put(Headers.IF_MODIFIED_SINCE, modifiedDate);
 			}
 
-			HttpClient client = HttpUtil.getClient(session);
-			HttpResponse response = client.execute(get);
+			Request request = new Request(
+				Method.GET, headers, portraitURL, null,
+				session.getConnectionTimeout());
 
-			int status = response.getStatusLine().getStatusCode();
+			Response response = HttpUtil.send(request);
 
-			if (status == HttpStatus.SC_OK) {
-				is = response.getEntity().getContent();
+			int statusCode = response.getStatusCode();
+
+			if (statusCode == Status.OK) {
+				is = response.getBodyAsStream();
 
 				int count;
 				byte data[] = new byte[8192];
@@ -79,8 +84,7 @@ public class PortraitUtil {
 					os.write(data, 0, count);
 				}
 
-				Header header = response.getLastHeader(HttpUtil.LAST_MODIFIED);
-				lastModified = header.getValue();
+				lastModified = response.getHeaders().get(Headers.LAST_MODIFIED);
 			}
 		}
 		catch (Exception e) {
