@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android.http;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -26,7 +27,7 @@ public class Request {
 		int connectionTimeout) {
 
 		_method = method;
-		_headers = headers;
+		_headers = new HashMap<String, String>(headers);
 		_url = url;
 		_body = body;
 		_connectionTimeout = connectionTimeout;
