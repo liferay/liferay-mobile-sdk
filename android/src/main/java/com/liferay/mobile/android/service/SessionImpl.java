@@ -90,7 +90,7 @@ public class SessionImpl implements Session {
 
 	@Override
 	public Map<String, String> getHeaders() {
-		return headers;
+		return Collections.unmodifiableMap(headers);
 	}
 
 	@Override
@@ -128,7 +128,7 @@ public class SessionImpl implements Session {
 
 	@Override
 	public void setHeaders(Map<String, String> headers) {
-		this.headers = Collections.unmodifiableMap(headers);
+		this.headers = headers;
 	}
 
 	@Override
