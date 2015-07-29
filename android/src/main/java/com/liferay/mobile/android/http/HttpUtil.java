@@ -50,18 +50,9 @@ import org.json.JSONObject;
  */
 public class HttpUtil {
 
-	public static final String IF_MODIFIED_SINCE = "If-Modified-Since";
-
 	public static final String JSONWS_PATH_61 = "api/secure/jsonws";
 
 	public static final String JSONWS_PATH_62 = "api/jsonws";
-
-	public static final String LAST_MODIFIED = "Last-Modified";
-
-	public static void checkErrors(Response response) throws ServerException {
-		checkStatusCode(response);
-		checkPortalException(response.getBody());
-	}
 
 	public static void checkStatusCode(Response response)
 		throws ServerException {
@@ -192,9 +183,12 @@ public class HttpUtil {
 		}
 
 		Response response = client.send(request);
-		checkErrors(response);
+		String body = response.getBody();
 
-		return new JSONArray(response.getBody());
+		checkStatusCode(response);
+		checkPortalException(body);
+
+		return new JSONArray(body);
 	}
 
 	public static JSONArray post(Session session, JSONObject command)

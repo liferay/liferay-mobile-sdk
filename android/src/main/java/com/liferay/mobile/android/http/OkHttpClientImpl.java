@@ -65,15 +65,9 @@ public class OkHttpClientImpl implements HttpClient {
 			.newCall(builder.build())
 			.execute();
 
-		String responseBody = null;
-
-		if (method != Method.HEAD) {
-			responseBody = response.body().string();
-		}
-
 		return new Response(
 			response.code(), _toMap(response.headers().toMultimap()),
-			responseBody);
+			response.body());
 	}
 
 	protected OkHttpClient getClient(int connectionTimeout) {
