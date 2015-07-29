@@ -16,6 +16,7 @@ package com.liferay.mobile.android;
 
 import com.liferay.mobile.android.util.PortraitUtil;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import org.junit.Test;
@@ -32,8 +33,17 @@ public class PortraitTest extends BaseTest {
 	}
 
 	@Test
-	public void getPortraitURL() throws Exception {
-		long portraitId = 1708235;
+	public void downloadPortrait() throws Exception {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		String portraitURL = getPortraitURL();
+
+		PortraitUtil.downloadPortrait(session, portraitURL, baos);
+
+		assertEquals(7742, baos.size());
+	}
+
+	protected String getPortraitURL() throws Exception {
+		long portraitId = 10974;
 
 		String expectedURL = "http://localhost:8080/image/user_male_portrait?" +
 			"img_id=" + portraitId;
@@ -54,6 +64,8 @@ public class PortraitTest extends BaseTest {
 			session, true, portraitId, uuid);
 
 		assertEquals(expectedURL, portraitURL);
+
+		return portraitURL;
 	}
 
 }
