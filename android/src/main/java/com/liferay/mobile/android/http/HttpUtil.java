@@ -182,7 +182,8 @@ public class HttpUtil {
 		String url = getURL(session, "/invoke");
 
 		Request request = new Request(
-			session.getHeaders(), url, commands.toString());
+			Method.POST, session.getHeaders(), url, commands.toString(),
+			session.getConnectionTimeout());
 
 		Authentication auth = session.getAuthentication();
 
@@ -190,7 +191,7 @@ public class HttpUtil {
 			auth.authenticate(request);
 		}
 
-		Response response = client.send(session, request);
+		Response response = client.send(request);
 		checkErrors(response);
 
 		return new JSONArray(response.getBody());
@@ -203,6 +204,10 @@ public class HttpUtil {
 		commands.put(command);
 
 		return post(session, commands);
+	}
+
+	public static Response send(Request request) throws Exception {
+		return client.send(request);
 	}
 
 	@SuppressWarnings("unused")

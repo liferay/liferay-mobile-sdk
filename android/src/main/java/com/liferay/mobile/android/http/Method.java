@@ -15,10 +15,10 @@
 package com.liferay.mobile.android.http;
 
 /**
- * @author Bruno Farache
+ * @author Silvio Santos
  */
-public interface HttpClient {
+public enum Method {
 
-	Response send(Request request) throws Exception;
+	GET, HEAD, POST
 
 }
