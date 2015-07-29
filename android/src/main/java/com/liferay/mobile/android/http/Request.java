@@ -21,18 +21,31 @@ import java.util.Map;
  */
 public class Request {
 
-	public Request(Map<String, String> headers, String url, String body) {
+	public Request(
+		Method method, Map<String, String> headers, String url, String body,
+		int connectionTimeout) {
+
+		_method = method;
 		_headers = headers;
 		_url = url;
 		_body = body;
+		_connectionTimeout = connectionTimeout;
 	}
 
 	public String getBody() {
 		return _body;
 	}
 
+	public int getConnectionTimeout() {
+		return _connectionTimeout;
+	}
+
 	public Map<String, String> getHeaders() {
 		return _headers;
+	}
+
+	public Method getMethod() {
+		return _method;
 	}
 
 	public String getURL() {
@@ -43,8 +56,16 @@ public class Request {
 		_body = body;
 	}
 
+	public void setConnectionTimeout(int connectionTimeout) {
+		_connectionTimeout = connectionTimeout;
+	}
+
 	public void setHeaders(Map<String, String> headers) {
 		_headers = headers;
+	}
+
+	public void setMethod(Method method) {
+		_method = method;
 	}
 
 	public void setURL(String url) {
@@ -52,7 +73,9 @@ public class Request {
 	}
 
 	private String _body;
+	private int _connectionTimeout;
 	private Map<String, String> _headers;
+	private Method _method;
 	private String _url;
 
 }

@@ -15,16 +15,11 @@
 package com.liferay.mobile.android.util;
 
 import com.liferay.mobile.android.http.HttpUtil;
+import com.liferay.mobile.android.http.Method;
+import com.liferay.mobile.android.http.Request;
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.v62.portal.PortalService;
-
-import java.io.IOException;
-
-import org.apache.http.Header;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpHead;
-import org.apache.http.impl.client.DefaultHttpClient;
 
 /**
  * @author Bruno Farache
@@ -32,7 +27,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 public class PortalVersionUtil {
 
 	public static int getPortalVersion(Session session) throws Exception {
-		int version = getBuilderNumberHeader(session.getServer());
+		int version = getBuilderNumberHeader(session);
 
 		if (version == PortalVersion.UNKNOWN) {
 			try {
@@ -65,26 +60,28 @@ public class PortalVersionUtil {
 		return version;
 	}
 
-	protected static int getBuilderNumberHeader(String url) throws IOException {
-		HttpClient client = new DefaultHttpClient();
-		HttpHead head = new HttpHead(url);
-		HttpResponse response = client.execute(head);
+	protected static int getBuilderNumberHeader(Session session)
+		throws Exception {
 
-		Header portalHeader = response.getFirstHeader("Liferay-Portal");
+		Request request = new Request(
+			Method.HEAD, session.getHeaders(), session.getServer(), null,
+			session.getConnectionTimeout());
+
+		Response response = HttpUtil.send(request);
+
+		String portalHeader = response.getHeaders().get("Liferay-Portal");
 
 		if (portalHeader == null) {
 			return PortalVersion.UNKNOWN;
 		}
 
-		String portalField = portalHeader.getValue();
-
-		int indexOfBuild = portalField.indexOf("Build");
+		int indexOfBuild = portalHeader.indexOf("Build");
 
 		if (indexOfBuild == -1) {
 			return PortalVersion.UNKNOWN;
 		}
 		else {
-			String buildNumber = portalField.substring(
+			String buildNumber = portalHeader.substring(
 				indexOfBuild + 6, indexOfBuild + 10);
 
 			return Integer.valueOf(buildNumber);
