@@ -19,6 +19,7 @@ import com.liferay.mobile.android.service.SessionImpl;
 import com.liferay.mobile.android.v62.group.GroupService;
 
 import java.io.IOException;
+
 import java.net.SocketTimeoutException;
 
 import org.junit.Test;
