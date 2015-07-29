@@ -25,6 +25,8 @@ public class Headers {
 
 	public static final String LAST_MODIFIED = "Last-Modified";
 
+	public static final String LIFERAY_PORTAL = "Liferay-Portal";
+
 	public static final String LOCATION = "Location";
 
 }
