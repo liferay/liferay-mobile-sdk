@@ -45,7 +45,7 @@ public class OkHttpClientImpl implements HttpClient {
 			.url(request.getURL())
 			.post(RequestBody.create(type, request.getBody()));
 
-		Map<String, String> headers = session.getHeaders();
+		Map<String, String> headers = request.getHeaders();
 
 		for (Map.Entry<String, String> header : headers.entrySet()) {
 			builder.addHeader(header.getKey(), header.getValue());
