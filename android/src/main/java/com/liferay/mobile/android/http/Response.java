@@ -27,6 +27,14 @@ import java.util.Map;
  */
 public class Response {
 
+	public Response(
+		int statusCode, Map<String, String> headers, ResponseBody body) {
+
+		_statusCode = statusCode;
+		_headers = headers;
+		_body = body;
+	}
+
 	public String getBody() throws IOException {
 		return _body.string();
 	}
@@ -41,14 +49,6 @@ public class Response {
 
 	public int getStatusCode() {
 		return _statusCode;
-	}
-
-	protected Response(
-		int statusCode, Map<String, String> headers, ResponseBody body) {
-
-		_statusCode = statusCode;
-		_headers = headers;
-		_body = body;
 	}
 
 	private ResponseBody _body;

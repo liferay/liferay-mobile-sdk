@@ -12,8 +12,11 @@
  * details.
  */
 
-package com.liferay.mobile.android.http;
+package com.liferay.mobile.android.http.client;
 
+import com.liferay.mobile.android.http.Method;
+import com.liferay.mobile.android.http.Request;
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.file.InputStreamBody;
 import com.liferay.mobile.android.http.file.UploadData;
 
