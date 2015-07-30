@@ -21,10 +21,10 @@ import org.json.JSONArray;
  */
 public interface AsyncTaskCallback {
 
-	public JSONArray inBackground(JSONArray jsonArray) throws Exception;
+	JSONArray inBackground(JSONArray jsonArray) throws Exception;
 
-	public void onFailure(Exception exception);
+	void onFailure(Exception exception);
 
-	public void onPostExecute(JSONArray jsonArray) throws Exception;
+	void onPostExecute(JSONArray jsonArray) throws Exception;
 
 }

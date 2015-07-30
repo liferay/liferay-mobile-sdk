@@ -23,7 +23,7 @@ import java.util.Map;
 public class Request {
 
 	public Request(
-		Method method, Map<String, String> headers, String url, String body,
+		Method method, Map<String, String> headers, String url, Object body,
 		int connectionTimeout) {
 
 		_method = method;
@@ -37,7 +37,7 @@ public class Request {
 		_connectionTimeout = connectionTimeout;
 	}
 
-	public String getBody() {
+	public Object getBody() {
 		return _body;
 	}
 
@@ -57,7 +57,7 @@ public class Request {
 		return _url;
 	}
 
-	public void setBody(String body) {
+	public void setBody(Object body) {
 		_body = body;
 	}
 
@@ -77,7 +77,7 @@ public class Request {
 		_url = url;
 	}
 
-	private String _body;
+	private Object _body;
 	private int _connectionTimeout;
 	private Map<String, String> _headers = new HashMap<String, String>();
 	private Method _method;

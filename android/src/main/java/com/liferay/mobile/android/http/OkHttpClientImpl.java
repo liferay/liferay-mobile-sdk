@@ -14,15 +14,25 @@
 
 package com.liferay.mobile.android.http;
 
+import com.liferay.mobile.android.http.file.InputStreamBody;
+import com.liferay.mobile.android.http.file.UploadData;
+
 import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.MultipartBuilder;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request.Builder;
 import com.squareup.okhttp.RequestBody;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
@@ -35,12 +45,11 @@ public class OkHttpClientImpl implements HttpClient {
 
 	@Override
 	public Response send(Request request) throws Exception {
-		OkHttpClient client = getClient(request.getConnectionTimeout());
-		Builder builder = new Builder().url(request.getURL());
+		Builder builder = new Builder();
 		Method method = request.getMethod();
 
 		if (method == Method.POST) {
-			String body = request.getBody();
+			String body = (String)request.getBody();
 
 			if (body != null) {
 				MediaType type = MediaType.parse(
@@ -53,6 +62,66 @@ public class OkHttpClientImpl implements HttpClient {
 			builder.head();
 		}
 
+		return send(builder, request);
+	}
+
+	@Override
+	public Response upload(Request request) throws Exception {
+		Builder builder = new Builder();
+
+		JSONObject body = (JSONObject)request.getBody();
+		builder.post(getUploadBody(body));
+
+		return send(builder, request);
+	}
+
+	protected OkHttpClient getClient(int connectionTimeout) {
+		OkHttpClient clone = client.clone();
+
+		clone.setConnectTimeout(connectionTimeout, TimeUnit.MILLISECONDS);
+		clone.setReadTimeout(connectionTimeout, TimeUnit.MILLISECONDS);
+		clone.setWriteTimeout(connectionTimeout, TimeUnit.MILLISECONDS);
+
+		clone.setFollowRedirects(false);
+
+		return clone;
+	}
+
+	protected RequestBody getUploadBody(JSONObject body) {
+		MultipartBuilder builder = new MultipartBuilder()
+			.type(MultipartBuilder.FORM);
+
+		Iterator<String> it = body.keys();
+
+		while (it.hasNext()) {
+			String key = it.next();
+			Object value = body.opt(key);
+
+			if (value instanceof UploadData) {
+				UploadData data = (UploadData)value;
+
+				String filename = data.getFilename();
+				String mimeType = data.getMimeType();
+				InputStream is = data.getInputStream();
+
+				RequestBody requestBody = new InputStreamBody(
+					MediaType.parse(mimeType), is);
+
+				builder.addFormDataPart(key, filename, requestBody);
+			}
+			else {
+				builder.addFormDataPart(key, value.toString());
+			}
+		}
+
+		return builder.build();
+	}
+
+	protected Response send(Builder builder, Request request)
+		throws IOException {
+
+		builder = builder.url(request.getURL());
+		OkHttpClient client = getClient(request.getConnectionTimeout());
 		Map<String, String> headers = request.getHeaders();
 
 		if (headers != null) {
@@ -68,18 +137,6 @@ public class OkHttpClientImpl implements HttpClient {
 		return new Response(
 			response.code(), _toMap(response.headers().toMultimap()),
 			response.body());
-	}
-
-	protected OkHttpClient getClient(int connectionTimeout) {
-		OkHttpClient clone = client.clone();
-
-		clone.setConnectTimeout(connectionTimeout, TimeUnit.MILLISECONDS);
-		clone.setReadTimeout(connectionTimeout, TimeUnit.MILLISECONDS);
-		clone.setWriteTimeout(connectionTimeout, TimeUnit.MILLISECONDS);
-
-		clone.setFollowRedirects(false);
-
-		return clone;
 	}
 
 	protected OkHttpClient client;
