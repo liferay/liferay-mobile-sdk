@@ -27,7 +27,6 @@ import com.squareup.okhttp.Request.Builder;
 import com.squareup.okhttp.RequestBody;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -102,15 +101,8 @@ public class OkHttpClientImpl implements HttpClient {
 
 			if (value instanceof UploadData) {
 				UploadData data = (UploadData)value;
-
-				String filename = data.getFilename();
-				String mimeType = data.getMimeType();
-				InputStream is = data.getInputStream();
-
-				RequestBody requestBody = new InputStreamBody(
-					MediaType.parse(mimeType), is);
-
-				builder.addFormDataPart(key, filename, requestBody);
+				RequestBody requestBody = new InputStreamBody(data);
+				builder.addFormDataPart(key, data.getFileName(), requestBody);
 			}
 			else {
 				builder.addFormDataPart(key, value.toString());

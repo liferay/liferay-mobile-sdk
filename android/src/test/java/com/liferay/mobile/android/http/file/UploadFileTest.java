@@ -22,7 +22,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.http.protocol.HTTP;
+import java.nio.charset.StandardCharsets;
 
 import org.json.JSONObject;
 
@@ -54,18 +54,19 @@ public class UploadFileTest extends BaseTest {
 
 		long repositoryId = props.getGroupId();
 		long folderId = DLAppServiceTest.PARENT_FOLDER_ID;
-		String sourceFileName = DLAppServiceTest.SOURCE_FILE_NAME;
+		String fileName = DLAppServiceTest.SOURCE_FILE_NAME;
 		String mimeType = DLAppServiceTest.MIME_TYPE;
 
-		InputStream is = new ByteArrayInputStream("Hello".getBytes(HTTP.UTF_8));
+		InputStream is = new ByteArrayInputStream(
+			"Hello".getBytes(StandardCharsets.UTF_8));
 
-		UploadData data = new UploadData(is, sourceFileName, null);
+		UploadData data = new UploadData(is, mimeType, fileName, null);
 
 		_file = service.addFileEntry(
-			repositoryId, folderId, sourceFileName, mimeType, sourceFileName,
-			"", "", data, null);
+			repositoryId, folderId, fileName, mimeType, fileName, "", "", data,
+			null);
 
-		assertEquals(sourceFileName, _file.get(DLAppServiceTest.TITLE));
+		assertEquals(fileName, _file.get(DLAppServiceTest.TITLE));
 	}
 
 	private JSONObject _file;

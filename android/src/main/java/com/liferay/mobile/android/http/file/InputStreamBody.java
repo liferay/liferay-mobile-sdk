@@ -19,7 +19,6 @@ import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.internal.Util;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 import okio.BufferedSink;
 import okio.Okio;
@@ -30,14 +29,13 @@ import okio.Source;
  */
 public class InputStreamBody extends RequestBody {
 
-	public InputStreamBody(MediaType contentType, InputStream is) {
-		_contentType = contentType;
-		_is = is;
+	public InputStreamBody(UploadData data) {
+		this.data = data;
 	}
 
 	@Override
 	public MediaType contentType() {
-		return _contentType;
+		return MediaType.parse(data.getMimeType());
 	}
 
 	@Override
@@ -45,7 +43,7 @@ public class InputStreamBody extends RequestBody {
 		Source source = null;
 
 		try {
-			source = Okio.source(_is);
+			source = Okio.source(data.getInputStream());
 			sink.writeAll(source);
 		}
 		finally {
@@ -53,7 +51,6 @@ public class InputStreamBody extends RequestBody {
 		}
 	}
 
-	private MediaType _contentType;
-	private InputStream _is;
+	protected UploadData data;
 
 }
