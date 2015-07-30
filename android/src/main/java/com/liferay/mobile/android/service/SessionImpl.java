@@ -17,7 +17,6 @@ package com.liferay.mobile.android.service;
 import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.http.file.UploadUtil;
 import com.liferay.mobile.android.task.ServiceAsyncTask;
 import com.liferay.mobile.android.task.UploadAsyncTask;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
@@ -149,7 +148,7 @@ public class SessionImpl implements Session {
 			return null;
 		}
 		else {
-			return UploadUtil.upload(this, command);
+			return HttpUtil.upload(this, command);
 		}
 	}
 

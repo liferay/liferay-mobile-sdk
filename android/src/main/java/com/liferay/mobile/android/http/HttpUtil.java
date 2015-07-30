@@ -209,6 +209,30 @@ public class HttpUtil {
 		_JSONWS_PATH = jsonwsPath;
 	}
 
+	public static JSONArray upload(Session session, JSONObject command)
+		throws Exception {
+
+		String path = (String)command.keys().next();
+
+		Request request = new Request(
+			Method.POST, session.getHeaders(), getURL(session, path),
+			command.getJSONObject(path), session.getConnectionTimeout());
+
+		Authentication auth = session.getAuthentication();
+
+		if (auth != null) {
+			auth.authenticate(request);
+		}
+
+		Response response = client.upload(request);
+		String body = response.getBody();
+
+		checkStatusCode(response);
+		checkPortalException(body);
+
+		return new JSONArray("[" + body + "]");
+	}
+
 	protected static void authenticate(Session session, HttpRequest request)
 		throws Exception {
 

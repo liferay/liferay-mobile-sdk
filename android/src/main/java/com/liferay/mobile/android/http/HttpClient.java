@@ -21,4 +21,6 @@ public interface HttpClient {
 
 	Response send(Request request) throws Exception;
 
+	Response upload(Request request) throws Exception;
+
 }
