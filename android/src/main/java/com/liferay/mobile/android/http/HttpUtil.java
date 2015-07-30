@@ -210,6 +210,10 @@ public class HttpUtil {
 		_JSONWS_PATH = jsonwsPath;
 	}
 
+	public static Response upload(Request request) throws Exception {
+		return client.upload(request);
+	}
+
 	public static JSONArray upload(Session session, JSONObject command)
 		throws Exception {
 
