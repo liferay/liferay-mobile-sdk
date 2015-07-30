@@ -18,22 +18,21 @@ import java.io.IOException;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ResponseHandler;
+import org.apache.http.util.EntityUtils;
 
 import org.json.JSONException;
 
 /**
  * @author Bruno Farache
  */
-public class DiscoveryResponseHandler
-		implements ResponseHandler<Discovery> {
+public class DiscoveryResponseHandler implements ResponseHandler<Discovery> {
 
 	public Discovery handleResponse(HttpResponse response) throws IOException {
 		Discovery discovery;
-
-		String responseString = HttpUtil.getResponseString(response);
+		String json = EntityUtils.toString(response.getEntity());
 
 		try {
-			discovery = new Discovery(responseString);
+			discovery = new Discovery(json);
 		}
 		catch (JSONException je) {
 			throw new IOException(je);
