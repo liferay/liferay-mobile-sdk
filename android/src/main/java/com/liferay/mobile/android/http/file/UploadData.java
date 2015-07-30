@@ -75,6 +75,10 @@ public class UploadData {
 		return mimeType;
 	}
 
+	public OutputStream getOutputStream() {
+		return os;
+	}
+
 	protected FileProgressCallback callback;
 	protected String fileName;
 	protected InputStream is;

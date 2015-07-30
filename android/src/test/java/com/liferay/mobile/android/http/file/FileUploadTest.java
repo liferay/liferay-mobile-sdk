@@ -19,6 +19,7 @@ import com.liferay.mobile.android.DLAppServiceTest;
 import com.liferay.mobile.android.v62.dlapp.DLAppService;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -60,7 +61,10 @@ public class FileUploadTest extends BaseTest {
 
 		};
 
-		UploadData data = new UploadData(is, mimeType, fileName, callback);
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+		UploadData data = new UploadData(
+			is, mimeType, fileName, callback, baos);
 
 		_file = service.addFileEntry(
 			repositoryId, folderId, fileName, mimeType, fileName, "", "", data,
@@ -68,6 +72,7 @@ public class FileUploadTest extends BaseTest {
 
 		assertEquals(fileName, _file.get(DLAppServiceTest.TITLE));
 		assertEquals(5, callback.total);
+		assertEquals(5, baos.size());
 	}
 
 	@After
