@@ -34,22 +34,14 @@ import static org.junit.Assert.*;
 /**
  * @author Bruno Farache
  */
-public class UploadFileTest extends BaseTest {
+public class FileUploadTest extends BaseTest {
 
-	public UploadFileTest() throws IOException {
+	public FileUploadTest() throws IOException {
 		super();
 	}
 
-	@After
-	public void tearDown() throws Exception {
-		if (_file != null) {
-			DLAppServiceTest test = new DLAppServiceTest();
-			test.deleteFileEntry(_file.getLong(DLAppServiceTest.FILE_ENTRY_ID));
-		}
-	}
-
 	@Test
-	public void upload() throws Exception {
+	public void addFileEntry() throws Exception {
 		DLAppService service = new DLAppService(session);
 
 		long repositoryId = props.getGroupId();
@@ -60,13 +52,31 @@ public class UploadFileTest extends BaseTest {
 		InputStream is = new ByteArrayInputStream(
 			"Hello".getBytes(StandardCharsets.UTF_8));
 
-		UploadData data = new UploadData(is, mimeType, fileName, null);
+		FileProgressCallback callback = new FileProgressCallback() {
+
+			@Override
+			public void onProgress(int totalBytes) {
+			}
+
+		};
+
+		UploadData data = new UploadData(is, mimeType, fileName, callback);
 
 		_file = service.addFileEntry(
 			repositoryId, folderId, fileName, mimeType, fileName, "", "", data,
 			null);
 
 		assertEquals(fileName, _file.get(DLAppServiceTest.TITLE));
+		assertEquals(5, callback.total);
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		if (_file != null) {
+			DLAppServiceTest test = new DLAppServiceTest();
+			test.deleteFileEntry(_file.getLong(DLAppServiceTest.FILE_ENTRY_ID));
+			_file = null;
+		}
 	}
 
 	private JSONObject _file;

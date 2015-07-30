@@ -44,7 +44,16 @@ public class InputStreamBody extends RequestBody {
 
 		try {
 			source = Okio.source(data.getInputStream());
-			sink.writeAll(source);
+			FileProgressCallback callback = data.getCallback();
+			int count;
+
+			while ((count = (int)source.read(sink.buffer(), 2048)) != -1) {
+				sink.flush();
+
+				if (callback != null) {
+					callback.increment(count);
+				}
+			}
 		}
 		finally {
 			Util.closeQuietly(source);

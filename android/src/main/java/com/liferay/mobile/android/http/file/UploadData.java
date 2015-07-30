@@ -59,6 +59,10 @@ public class UploadData {
 		this.os = os;
 	}
 
+	public FileProgressCallback getCallback() {
+		return callback;
+	}
+
 	public String getFileName() {
 		return fileName;
 	}
