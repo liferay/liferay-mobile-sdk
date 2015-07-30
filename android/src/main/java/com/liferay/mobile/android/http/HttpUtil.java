@@ -19,6 +19,8 @@ import com.liferay.mobile.android.auth.basic.DigestAuthentication;
 import com.liferay.mobile.android.exception.AuthenticationException;
 import com.liferay.mobile.android.exception.RedirectException;
 import com.liferay.mobile.android.exception.ServerException;
+import com.liferay.mobile.android.http.client.HttpClient;
+import com.liferay.mobile.android.http.client.OkHttpClientImpl;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.util.Validator;
 
@@ -31,7 +33,6 @@ import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -84,7 +85,7 @@ public class HttpUtil {
 		}
 	}
 
-	public static HttpClient getClient(Session session) {
+	public static org.apache.http.client.HttpClient getClient(Session session) {
 		return getClientBuilder(session).build();
 	}
 
@@ -305,8 +306,7 @@ public class HttpUtil {
 		}
 	}
 
-	protected static com.liferay.mobile.android.http.HttpClient client =
-		new OkHttpClientImpl();
+	protected static HttpClient client = new OkHttpClientImpl();
 
 	private static String _JSONWS_PATH = JSONWS_PATH_62;
 

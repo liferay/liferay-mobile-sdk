@@ -12,7 +12,10 @@
  * details.
  */
 
-package com.liferay.mobile.android.http;
+package com.liferay.mobile.android.http.client;
+
+import com.liferay.mobile.android.http.Request;
+import com.liferay.mobile.android.http.Response;
 
 /**
  * @author Bruno Farache
