@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.http;
 
-import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.exception.AuthenticationException;
 import com.liferay.mobile.android.exception.RedirectException;
 import com.liferay.mobile.android.exception.ServerException;
@@ -94,14 +93,8 @@ public class HttpUtil {
 		String url = getURL(session, "/invoke");
 
 		Request request = new Request(
-			Method.POST, session.getHeaders(), url, commands.toString(),
-			session.getConnectionTimeout());
-
-		Authentication auth = session.getAuthentication();
-
-		if (auth != null) {
-			auth.authenticate(request);
-		}
+			session.getAuthentication(), Method.POST, session.getHeaders(), url,
+			commands.toString(), session.getConnectionTimeout());
 
 		Response response = client.send(request);
 		String body = response.getBody();
@@ -140,14 +133,9 @@ public class HttpUtil {
 		String path = (String)command.keys().next();
 
 		Request request = new Request(
-			Method.POST, session.getHeaders(), getURL(session, path),
-			command.getJSONObject(path), session.getConnectionTimeout());
-
-		Authentication auth = session.getAuthentication();
-
-		if (auth != null) {
-			auth.authenticate(request);
-		}
+			session.getAuthentication(), Method.POST, session.getHeaders(),
+			getURL(session, path), command.getJSONObject(path),
+			session.getConnectionTimeout());
 
 		Response response = client.upload(request);
 		String body = response.getBody();

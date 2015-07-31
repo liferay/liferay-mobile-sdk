@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android.http.client;
 
+import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
@@ -25,8 +26,6 @@ import com.squareup.okhttp.MultipartBuilder;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request.Builder;
 import com.squareup.okhttp.RequestBody;
-
-import java.io.IOException;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -118,13 +117,18 @@ public class OkHttpClientImpl implements HttpClient {
 		return builder.build();
 	}
 
-	protected Response send(Builder builder, Request request)
-		throws IOException {
-
+	protected Response send(Builder builder, Request request) throws Exception {
 		builder = builder.url(request.getURL());
 		builder.tag(request.getTag());
 
 		OkHttpClient client = getClient(request.getConnectionTimeout());
+
+		Authentication authentication = request.getAuthentication();
+
+		if (authentication != null) {
+			authentication.authenticate(request);
+		}
+
 		Map<String, String> headers = request.getHeaders();
 
 		if (headers != null) {

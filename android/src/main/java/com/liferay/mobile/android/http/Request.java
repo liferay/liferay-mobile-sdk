@@ -14,6 +14,8 @@
 
 package com.liferay.mobile.android.http;
 
+import com.liferay.mobile.android.auth.Authentication;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,16 +25,21 @@ import java.util.Map;
 public class Request {
 
 	public Request(
-		Method method, Map<String, String> headers, String url, Object body,
+		Authentication authentication, Method method,
+		Map<String, String> headers, String url, Object body,
 		int connectionTimeout) {
 
-		this(method, headers, url, body, connectionTimeout, null);
+		this(
+			authentication, method, headers, url, body, connectionTimeout,
+			null);
 	}
 
 	public Request(
-		Method method, Map<String, String> headers, String url, Object body,
+		Authentication authentication, Method method,
+		Map<String, String> headers, String url, Object body,
 		int connectionTimeout, Object tag) {
 
+		_authentication = authentication;
 		_method = method;
 
 		if (headers != null) {
@@ -48,6 +55,17 @@ public class Request {
 		}
 
 		_tag = tag;
+	}
+
+	public Request(
+		Method method, Map<String, String> headers, String url, Object body,
+		int connectionTimeout) {
+
+		this(null, method, headers, url, body, connectionTimeout, null);
+	}
+
+	public Authentication getAuthentication() {
+		return _authentication;
 	}
 
 	public Object getBody() {
@@ -74,6 +92,10 @@ public class Request {
 		return _url;
 	}
 
+	public void setAuthentication(Authentication _authentication) {
+		this._authentication = _authentication;
+	}
+
 	public void setBody(Object body) {
 		_body = body;
 	}
@@ -94,6 +116,7 @@ public class Request {
 		_url = url;
 	}
 
+	private Authentication _authentication;
 	private Object _body;
 	private int _connectionTimeout;
 	private Map<String, String> _headers = new HashMap<String, String>();
