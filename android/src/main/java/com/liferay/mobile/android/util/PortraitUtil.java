@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.util;
 
-import android.util.Base64;
 import android.util.Log;
 
 import com.liferay.mobile.android.http.Headers;
@@ -37,6 +36,8 @@ import java.security.MessageDigest;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.xml.bind.DatatypeConverter;
 
 /**
  * @author Bruno Farache
@@ -148,18 +149,7 @@ public class PortraitUtil {
 			digest.update(uuid.getBytes());
 
 			byte[] bytes = digest.digest();
-			String token = null;
-
-			try {
-				token = Base64.encodeToString(bytes, Base64.NO_WRAP);
-			}
-			catch (RuntimeException re) {
-				if ("Stub!".equals(re.getMessage())) {
-					token =
-						org.apache.commons.codec.binary.Base64.
-							encodeBase64String(bytes);
-				}
-			}
+			String token = DatatypeConverter.printBase64Binary(bytes);
 
 			if (token != null) {
 				sb.append("&img_id_token=");

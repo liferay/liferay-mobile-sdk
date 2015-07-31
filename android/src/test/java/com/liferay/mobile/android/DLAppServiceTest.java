@@ -19,8 +19,7 @@ import com.liferay.mobile.android.service.BatchSessionImpl;
 import com.liferay.mobile.android.v62.dlapp.DLAppService;
 
 import java.io.IOException;
-
-import org.apache.http.protocol.HTTP;
+import java.nio.charset.StandardCharsets;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -52,7 +51,7 @@ public class DLAppServiceTest extends BaseTest {
 		DLAppService service = new DLAppService(session);
 		long repositoryId = props.getGroupId();
 
-		byte[] bytes = "Hello".getBytes(HTTP.UTF_8);
+		byte[] bytes = "Hello".getBytes(StandardCharsets.UTF_8);
 
 		return service.addFileEntry(
 			repositoryId, PARENT_FOLDER_ID, SOURCE_FILE_NAME, MIME_TYPE,
