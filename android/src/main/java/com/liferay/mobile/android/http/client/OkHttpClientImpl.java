@@ -15,9 +15,11 @@
 package com.liferay.mobile.android.http.client;
 
 import com.liferay.mobile.android.auth.Authentication;
+import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
+import com.liferay.mobile.android.http.file.FileProgressCallback;
 import com.liferay.mobile.android.http.file.InputStreamBody;
 import com.liferay.mobile.android.http.file.UploadData;
 
@@ -27,6 +29,10 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request.Builder;
 import com.squareup.okhttp.RequestBody;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -34,6 +40,8 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.json.JSONObject;
+
+import static com.liferay.mobile.android.http.file.InputStreamBody.isCancelled;
 
 /**
  * @author Bruno Farache
@@ -47,6 +55,47 @@ public class OkHttpClientImpl implements HttpClient {
 	@Override
 	public void cancel(Object tag) {
 		client.cancel(tag);
+	}
+
+	@Override
+	public Response download(Request request, FileProgressCallback callback)
+		throws Exception {
+
+		Response response = null;
+		InputStream is = null;
+
+		try {
+			response = send(request);
+
+			checkStatusCode(response);
+
+			is = response.getBodyAsStream();
+
+			int count;
+			byte bytes[] = new byte[2048];
+
+			while (((count = is.read(bytes)) != -1) && !isCancelled(callback)) {
+				byte written[] = Arrays.copyOfRange(bytes, 0, count);
+
+				callback.onBytes(written);
+				callback.increment(count);
+			}
+
+			if (isCancelled(callback)) {
+				HttpUtil.cancel(request.getTag());
+			}
+		}
+		finally {
+			if (is != null) {
+				try {
+					is.close();
+				}
+				catch (IOException ioe) {
+				}
+			}
+		}
+
+		return response;
 	}
 
 	@Override

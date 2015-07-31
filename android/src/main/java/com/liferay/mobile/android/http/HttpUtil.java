@@ -19,6 +19,7 @@ import com.liferay.mobile.android.exception.RedirectException;
 import com.liferay.mobile.android.exception.ServerException;
 import com.liferay.mobile.android.http.client.HttpClient;
 import com.liferay.mobile.android.http.client.OkHttpClientImpl;
+import com.liferay.mobile.android.http.file.FileProgressCallback;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.util.Validator;
 
@@ -68,6 +69,17 @@ public class HttpUtil {
 			throw new ServerException(
 				"Request failed. Response code: " + status);
 		}
+	}
+
+	public static Response download(
+			Session session, String url, FileProgressCallback callback)
+		throws Exception {
+
+		Request request = new Request(
+			Method.GET, session.getHeaders(), url, null,
+			session.getConnectionTimeout());
+
+		return client.download(request, callback);
 	}
 
 	public static String getURL(Session session, String path) {
@@ -121,10 +133,6 @@ public class HttpUtil {
 	@SuppressWarnings("unused")
 	public static void setJSONWSPath(String jsonwsPath) {
 		_JSONWS_PATH = jsonwsPath;
-	}
-
-	public static Response upload(Request request) throws Exception {
-		return client.upload(request);
 	}
 
 	public static JSONArray upload(Session session, JSONObject command)

@@ -32,6 +32,10 @@ import okio.Source;
  */
 public class InputStreamBody extends RequestBody {
 
+	public static boolean isCancelled(FileProgressCallback callback) {
+		return (callback != null) && callback.isCancelled();
+	}
+
 	public InputStreamBody(UploadData data, Object tag) {
 		this.data = data;
 		this.tag = tag;
@@ -68,10 +72,6 @@ public class InputStreamBody extends RequestBody {
 		finally {
 			Util.closeQuietly(is);
 		}
-	}
-
-	protected static boolean isCancelled(FileProgressCallback callback) {
-		return (callback != null) && callback.isCancelled();
 	}
 
 	protected UploadData data;
