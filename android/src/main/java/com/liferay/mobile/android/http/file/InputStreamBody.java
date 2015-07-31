@@ -47,15 +47,14 @@ public class InputStreamBody extends RequestBody {
 			source = Okio.source(data.getInputStream());
 			FileProgressCallback callback = data.getCallback();
 			Buffer buffer = new Buffer();
-			int count;
 
-			while ((count = (int)source.read(buffer, 2048)) != -1) {
+			while (source.read(buffer, 2048) != -1) {
 				byte[] bytes = buffer.readByteArray();
 				sink.write(bytes);
 
 				if (callback != null) {
 					callback.onBytes(bytes);
-					callback.increment(count);
+					callback.increment(bytes.length);
 				}
 			}
 		}

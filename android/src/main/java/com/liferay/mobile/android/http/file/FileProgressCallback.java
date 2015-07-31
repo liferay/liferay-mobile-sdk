@@ -19,25 +19,25 @@ package com.liferay.mobile.android.http.file;
  */
 public abstract class FileProgressCallback {
 
-	public void increment(int bytesCount) {
-		total = total + bytesCount;
+	public void increment(int bytesLength) {
+		total = total + bytesLength;
 		onProgress(total);
 	}
 
 	public boolean isCancelled() {
-		return _cancelled;
+		return this.cancelled;
 	}
 
-	public abstract void onBytes(byte[] bytes);
+	public void onBytes(byte[] bytes) {
+	}
 
 	public abstract void onProgress(int totalBytes);
 
 	public void setCancelled(boolean cancelled) {
-		_cancelled = cancelled;
+		this.cancelled = cancelled;
 	}
 
+	protected boolean cancelled;
 	protected int total;
-
-	private boolean _cancelled;
 
 }
