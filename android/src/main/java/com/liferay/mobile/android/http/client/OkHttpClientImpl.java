@@ -41,7 +41,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.json.JSONObject;
 
-import static com.liferay.mobile.android.http.file.InputStreamBody.isCancelled;
+import static com.liferay.mobile.android.http.file.InputStreamBody.*;
 
 /**
  * @author Bruno Farache
@@ -67,7 +67,7 @@ public class OkHttpClientImpl implements HttpClient {
 		try {
 			response = send(request);
 
-			checkStatusCode(response);
+			HttpUtil.checkStatusCode(response);
 
 			is = response.getBodyAsStream();
 
@@ -75,14 +75,12 @@ public class OkHttpClientImpl implements HttpClient {
 			byte bytes[] = new byte[2048];
 
 			while (((count = is.read(bytes)) != -1) && !isCancelled(callback)) {
-				byte written[] = Arrays.copyOfRange(bytes, 0, count);
-
-				callback.onBytes(written);
+				callback.onBytes(Arrays.copyOfRange(bytes, 0, count));
 				callback.increment(count);
 			}
 
 			if (isCancelled(callback)) {
-				HttpUtil.cancel(request.getTag());
+				cancel(request.getTag());
 			}
 		}
 		finally {
