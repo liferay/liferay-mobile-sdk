@@ -55,6 +55,10 @@ public class HttpUtil {
 
 	public static final String JSONWS_PATH_62 = "api/jsonws";
 
+	public static void cancel(Object tag) {
+		client.cancel(tag);
+	}
+
 	public static void checkStatusCode(Response response)
 		throws ServerException {
 

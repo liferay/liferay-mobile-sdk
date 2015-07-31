@@ -26,6 +26,13 @@ public class Request {
 		Method method, Map<String, String> headers, String url, Object body,
 		int connectionTimeout) {
 
+		this(method, headers, url, body, connectionTimeout, null);
+	}
+
+	public Request(
+		Method method, Map<String, String> headers, String url, Object body,
+		int connectionTimeout, Object tag) {
+
 		_method = method;
 
 		if (headers != null) {
@@ -35,6 +42,12 @@ public class Request {
 		_url = url;
 		_body = body;
 		_connectionTimeout = connectionTimeout;
+
+		if (tag == null) {
+			tag = this;
+		}
+
+		_tag = tag;
 	}
 
 	public Object getBody() {
@@ -51,6 +64,10 @@ public class Request {
 
 	public Method getMethod() {
 		return _method;
+	}
+
+	public Object getTag() {
+		return _tag;
 	}
 
 	public String getURL() {
@@ -81,6 +98,7 @@ public class Request {
 	private int _connectionTimeout;
 	private Map<String, String> _headers = new HashMap<String, String>();
 	private Method _method;
+	private Object _tag;
 	private String _url;
 
 }

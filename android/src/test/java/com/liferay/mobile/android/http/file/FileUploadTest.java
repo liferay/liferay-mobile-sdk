@@ -92,6 +92,44 @@ public class FileUploadTest extends BaseTest {
 		assertEquals(5, baos.size());
 	}
 
+	@Test
+	public void cancel() throws Exception {
+		DLAppService service = new DLAppService(session);
+
+		long repositoryId = props.getGroupId();
+		long folderId = DLAppServiceTest.PARENT_FOLDER_ID;
+		String fileName = "barto.jpg";
+		String mimeType = "image/jpg";
+
+		InputStream is = getClass().getResourceAsStream("/barto.jpg");
+
+		final FileProgressCallback callback = new FileProgressCallback() {
+
+			@Override
+			public void onProgress(int totalBytes) {
+				if (totalBytes > 2048) {
+					setCancelled(true);
+				}
+			}
+
+		};
+
+		UploadData data = new UploadData(is, mimeType, fileName, callback);
+
+		try {
+			_file = service.addFileEntry(
+				repositoryId, folderId, fileName, mimeType, fileName, "", "",
+				data, null);
+
+			fail("Should throw IOException");
+		}
+		catch (IOException ioe) {
+			assertTrue(ioe.getMessage().contains("Canceled"));
+		}
+
+		assertEquals(2048 * 2, callback.total);
+	}
+
 	@After
 	public void tearDown() throws Exception {
 		if (_file != null) {
