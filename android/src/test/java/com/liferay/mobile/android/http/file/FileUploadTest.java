@@ -37,6 +37,10 @@ import static org.junit.Assert.*;
  */
 public class FileUploadTest extends BaseTest {
 
+	public static final String FILE_NAME = "barto.jpg";
+
+	public static final String MIME_TYPE = "image/jpg";
+
 	public FileUploadTest() throws IOException {
 		super();
 	}
@@ -98,10 +102,8 @@ public class FileUploadTest extends BaseTest {
 
 		long repositoryId = props.getGroupId();
 		long folderId = DLAppServiceTest.PARENT_FOLDER_ID;
-		String fileName = "barto.jpg";
-		String mimeType = "image/jpg";
 
-		InputStream is = getClass().getResourceAsStream("/barto.jpg");
+		InputStream is = getClass().getResourceAsStream("/" + FILE_NAME);
 
 		final FileProgressCallback callback = new FileProgressCallback() {
 
@@ -114,14 +116,14 @@ public class FileUploadTest extends BaseTest {
 
 		};
 
-		UploadData data = new UploadData(is, mimeType, fileName, callback);
+		UploadData data = new UploadData(is, MIME_TYPE, FILE_NAME, callback);
 
 		try {
 			_file = service.addFileEntry(
-				repositoryId, folderId, fileName, mimeType, fileName, "", "",
+				repositoryId, folderId, FILE_NAME, MIME_TYPE, FILE_NAME, "", "",
 				data, null);
 
-			fail("Should throw IOException");
+			fail("Should have thrown IOException");
 		}
 		catch (IOException ioe) {
 			assertTrue(ioe.getMessage().contains("Canceled"));
@@ -137,6 +139,33 @@ public class FileUploadTest extends BaseTest {
 			test.deleteFileEntry(_file.getLong(DLAppServiceTest.FILE_ENTRY_ID));
 			_file = null;
 		}
+	}
+
+	@Test
+	public void uploadPhoto() throws Exception {
+		DLAppService service = new DLAppService(session);
+
+		long repositoryId = props.getGroupId();
+		long folderId = DLAppServiceTest.PARENT_FOLDER_ID;
+
+		InputStream is = getClass().getResourceAsStream("/" + FILE_NAME);
+
+		FileProgressCallback callback = new FileProgressCallback() {
+
+			@Override
+			public void onProgress(int totalBytes) {
+			}
+
+		};
+
+		UploadData data = new UploadData(is, MIME_TYPE, FILE_NAME, callback);
+
+		_file = service.addFileEntry(
+			repositoryId, folderId, FILE_NAME, MIME_TYPE, FILE_NAME, "", "",
+			data, null);
+
+		assertEquals(FILE_NAME, _file.get(DLAppServiceTest.TITLE));
+		assertEquals(372434, callback.total);
 	}
 
 	private JSONObject _file;
