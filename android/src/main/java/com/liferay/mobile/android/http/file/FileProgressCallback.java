@@ -28,6 +28,8 @@ public abstract class FileProgressCallback {
 		return _cancelled;
 	}
 
+	public abstract void onBytes(byte[] bytes);
+
 	public abstract void onProgress(int totalBytes);
 
 	public void setCancelled(boolean cancelled) {

@@ -19,7 +19,6 @@ import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.internal.Util;
 
 import java.io.IOException;
-import java.io.OutputStream;
 
 import okio.Buffer;
 import okio.BufferedSink;
@@ -47,25 +46,18 @@ public class InputStreamBody extends RequestBody {
 		try {
 			source = Okio.source(data.getInputStream());
 			FileProgressCallback callback = data.getCallback();
-			OutputStream os = data.getOutputStream();
 			Buffer buffer = new Buffer();
 			int count;
 
 			while ((count = (int)source.read(buffer, 2048)) != -1) {
 				byte[] bytes = buffer.readByteArray();
-
-				if (os != null) {
-					os.write(bytes);
-				}
-
 				sink.write(bytes);
 
 				if (callback != null) {
+					callback.onBytes(bytes);
 					callback.increment(count);
 				}
 			}
-
-			os.flush();
 		}
 		finally {
 			Util.closeQuietly(source);

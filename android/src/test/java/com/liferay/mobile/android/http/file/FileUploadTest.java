@@ -53,18 +53,35 @@ public class FileUploadTest extends BaseTest {
 		InputStream is = new ByteArrayInputStream(
 			"Hello".getBytes(StandardCharsets.UTF_8));
 
+		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
 		FileProgressCallback callback = new FileProgressCallback() {
 
 			@Override
+			public void onBytes(byte[] bytes) {
+				try {
+					baos.write(bytes);
+				}
+				catch (IOException ioe) {
+					fail(ioe.getMessage());
+				}
+			}
+
+			@Override
 			public void onProgress(int totalBytes) {
+				if (totalBytes == 5) {
+					try {
+						baos.flush();
+					}
+					catch (IOException ioe) {
+						fail(ioe.getMessage());
+					}
+				}
 			}
 
 		};
 
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-		UploadData data = new UploadData(
-			is, mimeType, fileName, callback, baos);
+		UploadData data = new UploadData(is, mimeType, fileName, callback);
 
 		_file = service.addFileEntry(
 			repositoryId, folderId, fileName, mimeType, fileName, "", "", data,

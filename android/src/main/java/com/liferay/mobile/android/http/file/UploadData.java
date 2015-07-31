@@ -15,7 +15,6 @@
 package com.liferay.mobile.android.http.file;
 
 import java.io.InputStream;
-import java.io.OutputStream;
 
 /**
  * @author Igor Oliveira
@@ -30,22 +29,8 @@ public class UploadData {
 	}
 
 	public UploadData(
-		InputStream is, String fileName, FileProgressCallback callback,
-		OutputStream os) {
-
-		this(is, null, fileName, callback, os);
-	}
-
-	public UploadData(
 		InputStream is, String mimeType, String fileName,
 		FileProgressCallback callback) {
-
-		this(is, mimeType, fileName, callback, null);
-	}
-
-	public UploadData(
-		InputStream is, String mimeType, String fileName,
-		FileProgressCallback callback, OutputStream os) {
 
 		this.is = is;
 
@@ -56,7 +41,6 @@ public class UploadData {
 		this.mimeType = mimeType;
 		this.fileName = fileName;
 		this.callback = callback;
-		this.os = os;
 	}
 
 	public FileProgressCallback getCallback() {
@@ -75,14 +59,9 @@ public class UploadData {
 		return mimeType;
 	}
 
-	public OutputStream getOutputStream() {
-		return os;
-	}
-
 	protected FileProgressCallback callback;
 	protected String fileName;
 	protected InputStream is;
 	protected String mimeType;
-	protected OutputStream os;
 
 }
