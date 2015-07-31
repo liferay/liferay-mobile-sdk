@@ -15,7 +15,6 @@
 package com.liferay.mobile.android.http;
 
 import com.liferay.mobile.android.auth.Authentication;
-import com.liferay.mobile.android.auth.basic.DigestAuthentication;
 import com.liferay.mobile.android.exception.AuthenticationException;
 import com.liferay.mobile.android.exception.RedirectException;
 import com.liferay.mobile.android.exception.ServerException;
@@ -23,23 +22,6 @@ import com.liferay.mobile.android.http.client.HttpClient;
 import com.liferay.mobile.android.http.client.OkHttpClientImpl;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.util.Validator;
-
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpRequest;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultRedirectStrategy;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.message.BasicHeader;
-import org.apache.http.util.EntityUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -87,72 +69,6 @@ public class HttpUtil {
 			throw new ServerException(
 				"Request failed. Response code: " + status);
 		}
-	}
-
-	public static org.apache.http.client.HttpClient getClient(Session session) {
-		return getClientBuilder(session).build();
-	}
-
-	public static HttpClientBuilder getClientBuilder(Session session) {
-		HttpClientBuilder clientBuilder = HttpClientBuilder.create();
-
-		RequestConfig.Builder requestBuilder = RequestConfig.custom();
-		int timeout = session.getConnectionTimeout();
-		requestBuilder = requestBuilder.setConnectTimeout(timeout);
-		requestBuilder = requestBuilder.setConnectionRequestTimeout(timeout);
-
-		clientBuilder.setDefaultRequestConfig(requestBuilder.build());
-		clientBuilder.setRedirectStrategy(new DefaultRedirectStrategy() {
-
-			@Override
-			protected boolean isRedirectable(String method) {
-				return false;
-			}
-
-		});
-
-		Authentication auth = session.getAuthentication();
-
-		if ((auth != null) && (auth instanceof DigestAuthentication)) {
-			DigestAuthentication digest = (DigestAuthentication)auth;
-			digest.authenticate(clientBuilder);
-		}
-
-		return clientBuilder;
-	}
-
-	public static HttpGet getHttpGet(Session session, String URL)
-		throws Exception {
-
-		HttpGet httpGet = new HttpGet(URL);
-
-		setHeaders(session, httpGet);
-		authenticate(session, httpGet);
-
-		return httpGet;
-	}
-
-	public static HttpPost getHttpPost(Session session, String URL)
-		throws Exception {
-
-		HttpPost httpPost = new HttpPost(URL);
-
-		setHeaders(session, httpPost);
-		authenticate(session, httpPost);
-
-		return httpPost;
-	}
-
-	public static String getResponseString(HttpResponse response)
-		throws IOException {
-
-		HttpEntity entity = response.getEntity();
-
-		if (entity == null) {
-			return null;
-		}
-
-		return EntityUtils.toString(entity);
 	}
 
 	public static String getURL(Session session, String path) {
@@ -242,19 +158,6 @@ public class HttpUtil {
 		return new JSONArray("[" + body + "]");
 	}
 
-	protected static void authenticate(Session session, HttpRequest request)
-		throws Exception {
-
-		Authentication auth = session.getAuthentication();
-
-		if (auth != null) {
-
-			// TODO
-
-			//auth.authenticate(request);
-		}
-	}
-
 	protected static void checkPortalException(String json)
 		throws ServerException {
 
@@ -294,24 +197,6 @@ public class HttpUtil {
 		}
 
 		return false;
-	}
-
-	protected static void setHeaders(Session session, HttpRequest request) {
-		Map<String, String> headers = new HashMap<String, String>();
-
-		if (headers != null) {
-			Header[] httpHeaders = new Header[headers.size()];
-			int i = 0;
-
-			for (Map.Entry<String, String> header : headers.entrySet()) {
-				httpHeaders[i] = new BasicHeader(
-					header.getKey(), header.getValue());
-
-				i = i + 1;
-			}
-
-			request.setHeaders(httpHeaders);
-		}
 	}
 
 	protected static HttpClient client = new OkHttpClientImpl();
