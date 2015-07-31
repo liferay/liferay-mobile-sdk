@@ -18,16 +18,13 @@ import android.util.Log;
 
 import com.liferay.mobile.android.http.Headers;
 import com.liferay.mobile.android.http.HttpUtil;
-import com.liferay.mobile.android.http.Method;
-import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.http.Status;
+import com.liferay.mobile.android.http.file.FileProgressCallback;
 import com.liferay.mobile.android.service.Session;
 
 import java.io.Closeable;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 
 import java.net.URLEncoder;
@@ -46,19 +43,11 @@ import javax.xml.bind.DatatypeConverter;
 public class PortraitUtil {
 
 	public static String downloadPortrait(
-			Session session, String portraitURL, OutputStream os)
-		throws Exception {
-
-		return downloadPortrait(session, portraitURL, os, null);
-	}
-
-	public static String downloadPortrait(
-			Session session, String portraitURL, OutputStream os,
+			Session session, String portraitURL, final OutputStream os,
 			String modifiedDate)
 		throws Exception {
 
 		String lastModified = null;
-		InputStream is = null;
 
 		try {
 			Map<String, String> headers = new HashMap<String, String>();
@@ -67,26 +56,28 @@ public class PortraitUtil {
 				headers.put(Headers.IF_MODIFIED_SINCE, modifiedDate);
 			}
 
-			Request request = new Request(
-				Method.GET, headers, portraitURL, null,
-				session.getConnectionTimeout());
+			session.setHeaders(headers);
 
-			Response response = HttpUtil.send(request);
+			Response response = HttpUtil.download(
+				session, portraitURL, new FileProgressCallback() {
 
-			int statusCode = response.getStatusCode();
-
-			if (statusCode == Status.OK) {
-				is = response.getBodyAsStream();
-
-				int count;
-				byte data[] = new byte[8192];
-
-				while ((count = is.read(data)) != -1) {
-					os.write(data, 0, count);
+				@Override
+				public void onBytes(byte[] bytes) {
+					try {
+						os.write(bytes);
+					}
+					catch (IOException ioe) {
+						setCancelled(true);
+					}
 				}
 
-				lastModified = response.getHeaders().get(Headers.LAST_MODIFIED);
-			}
+				@Override
+				public void onProgress(int totalBytes) {
+				}
+
+			});
+
+			lastModified = response.getHeaders().get(Headers.LAST_MODIFIED);
 		}
 		catch (Exception e) {
 			Log.e(_CLASS_NAME, "Couldn't download portrait", e);
@@ -94,11 +85,17 @@ public class PortraitUtil {
 			throw e;
 		}
 		finally {
-			close(is);
 			close(os);
 		}
 
 		return lastModified;
+	}
+
+	public static String downloadPortrait(
+			Session session, String portraitURL, OutputStream os)
+		throws Exception {
+
+		return downloadPortrait(session, portraitURL, os, null);
 	}
 
 	public static String downloadPortrait(
