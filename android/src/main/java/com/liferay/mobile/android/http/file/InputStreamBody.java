@@ -14,6 +14,8 @@
 
 package com.liferay.mobile.android.http.file;
 
+import com.liferay.mobile.android.http.HttpUtil;
+
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.internal.Util;
@@ -30,8 +32,9 @@ import okio.Source;
  */
 public class InputStreamBody extends RequestBody {
 
-	public InputStreamBody(UploadData data) {
+	public InputStreamBody(UploadData data, Object tag) {
 		this.data = data;
+		this.tag = tag;
 	}
 
 	@Override
@@ -41,15 +44,15 @@ public class InputStreamBody extends RequestBody {
 
 	@Override
 	public void writeTo(BufferedSink sink) throws IOException {
-		Source source = null;
+		Source is = null;
 
 		try {
-			source = Okio.source(data.getInputStream());
+			is = Okio.source(data.getInputStream());
 			FileProgressCallback callback = data.getCallback();
-			Buffer buffer = new Buffer();
+			Buffer os = new Buffer();
 
-			while (source.read(buffer, 2048) != -1) {
-				byte[] bytes = buffer.readByteArray();
+			while ((is.read(os, 2048) != -1) && !isCancelled(callback)) {
+				byte[] bytes = os.readByteArray();
 				sink.write(bytes);
 
 				if (callback != null) {
@@ -57,12 +60,21 @@ public class InputStreamBody extends RequestBody {
 					callback.increment(bytes.length);
 				}
 			}
+
+			if (isCancelled(callback)) {
+				HttpUtil.cancel(tag);
+			}
 		}
 		finally {
-			Util.closeQuietly(source);
+			Util.closeQuietly(is);
 		}
 	}
 
+	protected static boolean isCancelled(FileProgressCallback callback) {
+		return (callback != null) && callback.isCancelled();
+	}
+
 	protected UploadData data;
+	protected Object tag;
 
 }

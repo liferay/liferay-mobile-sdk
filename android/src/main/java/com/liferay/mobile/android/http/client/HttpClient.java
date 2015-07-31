@@ -22,6 +22,8 @@ import com.liferay.mobile.android.http.Response;
  */
 public interface HttpClient {
 
+	void cancel(Object tag);
+
 	Response send(Request request) throws Exception;
 
 	Response upload(Request request) throws Exception;

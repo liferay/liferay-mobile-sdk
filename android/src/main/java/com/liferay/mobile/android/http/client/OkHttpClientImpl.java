@@ -46,6 +46,11 @@ public class OkHttpClientImpl implements HttpClient {
 	}
 
 	@Override
+	public void cancel(Object tag) {
+		client.cancel(tag);
+	}
+
+	@Override
 	public Response send(Request request) throws Exception {
 		Builder builder = new Builder();
 		Method method = request.getMethod();
@@ -70,9 +75,7 @@ public class OkHttpClientImpl implements HttpClient {
 	@Override
 	public Response upload(Request request) throws Exception {
 		Builder builder = new Builder();
-
-		JSONObject body = (JSONObject)request.getBody();
-		builder.post(getUploadBody(body));
+		builder.post(getUploadBody(request));
 
 		return send(builder, request);
 	}
@@ -89,7 +92,10 @@ public class OkHttpClientImpl implements HttpClient {
 		return clone;
 	}
 
-	protected RequestBody getUploadBody(JSONObject body) {
+	protected RequestBody getUploadBody(Request request) {
+		JSONObject body = (JSONObject)request.getBody();
+		Object tag = request.getTag();
+
 		MultipartBuilder builder = new MultipartBuilder()
 			.type(MultipartBuilder.FORM);
 
@@ -101,7 +107,7 @@ public class OkHttpClientImpl implements HttpClient {
 
 			if (value instanceof UploadData) {
 				UploadData data = (UploadData)value;
-				RequestBody requestBody = new InputStreamBody(data);
+				RequestBody requestBody = new InputStreamBody(data, tag);
 				builder.addFormDataPart(key, data.getFileName(), requestBody);
 			}
 			else {
@@ -116,6 +122,8 @@ public class OkHttpClientImpl implements HttpClient {
 		throws IOException {
 
 		builder = builder.url(request.getURL());
+		builder.tag(request.getTag());
+
 		OkHttpClient client = getClient(request.getConnectionTimeout());
 		Map<String, String> headers = request.getHeaders();
 
