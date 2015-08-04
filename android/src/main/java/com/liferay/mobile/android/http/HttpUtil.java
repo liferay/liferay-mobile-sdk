@@ -14,17 +14,12 @@
 
 package com.liferay.mobile.android.http;
 
-import com.liferay.mobile.android.exception.AuthenticationException;
-import com.liferay.mobile.android.exception.RedirectException;
-import com.liferay.mobile.android.exception.ServerException;
 import com.liferay.mobile.android.http.client.HttpClient;
 import com.liferay.mobile.android.http.client.OkHttpClientImpl;
 import com.liferay.mobile.android.http.file.FileProgressCallback;
 import com.liferay.mobile.android.service.Session;
-import com.liferay.mobile.android.util.Validator;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -39,69 +34,6 @@ public class HttpUtil {
 
 	public static void cancel(Object tag) {
 		client.cancel(tag);
-	}
-
-	public static void checkPortalException(String json)
-		throws ServerException {
-
-		try {
-			if (isJSONObject(json)) {
-				JSONObject jsonObj = new JSONObject(json);
-
-				if (jsonObj.has("exception")) {
-					String message = jsonObj.getString("exception");
-					String detail = jsonObj.optString("message", null);
-
-					JSONObject error = jsonObj.optJSONObject("error");
-
-					if (error != null) {
-						message = error.getString("type");
-						detail = error.getString("message");
-					}
-
-					if ((message != null) &&
-						message.equals("java.lang.SecurityException")) {
-
-						throw new AuthenticationException(message, detail);
-					}
-
-					throw new ServerException(message, detail);
-				}
-			}
-		}
-		catch (JSONException je) {
-			throw new ServerException(je);
-		}
-	}
-
-	public static void checkStatusCode(Response response)
-		throws ServerException {
-
-		int status = response.getStatusCode();
-
-		if ((status == Status.MOVED_PERMANENTLY) ||
-			(status == Status.MOVED_TEMPORARILY) ||
-			(status == Status.SEE_OTHER) ||
-			(status == Status.TEMPORARY_REDIRECT)) {
-
-			String url = response.getHeaders().get(Headers.LOCATION);
-
-			if (url.endsWith("/")) {
-				url = url.substring(0, url.length() - 1);
-			}
-
-			throw new RedirectException(url);
-		}
-
-		if (status == Status.UNAUTHORIZED) {
-			throw new AuthenticationException(
-				"Authentication failed.", "HTTP Status Code 401");
-		}
-
-		if (status != Status.OK) {
-			throw new ServerException(
-				"Request failed. Response code: " + status);
-		}
 	}
 
 	public static Response download(
@@ -142,12 +74,8 @@ public class HttpUtil {
 			commands.toString(), session.getConnectionTimeout());
 
 		Response response = client.send(request);
-		String body = response.getBody();
 
-		checkStatusCode(response);
-		checkPortalException(body);
-
-		return new JSONArray(body);
+		return new JSONArray(response.getBody());
 	}
 
 	public static JSONArray post(Session session, JSONObject command)
@@ -179,20 +107,8 @@ public class HttpUtil {
 			session.getConnectionTimeout());
 
 		Response response = client.upload(request);
-		String body = response.getBody();
 
-		checkStatusCode(response);
-		checkPortalException(body);
-
-		return new JSONArray("[" + body + "]");
-	}
-
-	protected static boolean isJSONObject(String json) {
-		if (Validator.isNotNull(json) && json.startsWith("{")) {
-			return true;
-		}
-
-		return false;
+		return new JSONArray("[" + response.getBody() + "]");
 	}
 
 	protected static HttpClient client = new OkHttpClientImpl();

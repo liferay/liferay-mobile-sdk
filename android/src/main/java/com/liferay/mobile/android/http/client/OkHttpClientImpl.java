@@ -15,7 +15,6 @@
 package com.liferay.mobile.android.http.client;
 
 import com.liferay.mobile.android.auth.Authentication;
-import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
@@ -37,9 +36,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -71,7 +68,6 @@ public class OkHttpClientImpl implements HttpClient {
 
 		try {
 			response = send(request);
-			HttpUtil.checkStatusCode(response);
 			is = response.getBodyAsStream();
 
 			int count;
@@ -207,21 +203,14 @@ public class OkHttpClientImpl implements HttpClient {
 				}
 
 				@Override
-				public void onResponse(com.squareup.okhttp.Response r)
+				public void onResponse(com.squareup.okhttp.Response okResponse)
 					throws IOException {
 
-					Response response = new Response(
-						r.code(), _toMap(r.headers().toMultimap()), r.body());
-
-					String body = response.getBody();
+					Response response = new Response(okResponse);
 
 					try {
-						HttpUtil.checkStatusCode(response);
-						HttpUtil.checkPortalException(body);
-
-						JSONArray jsonArray = callback.inBackground(
-							new JSONArray(body));
-
+						JSONArray jsonArray = new JSONArray(response.getBody());
+						jsonArray = callback.inBackground(jsonArray);
 						callback.onPostExecute(jsonArray);
 					}
 					catch (Exception e) {
@@ -236,22 +225,10 @@ public class OkHttpClientImpl implements HttpClient {
 		else {
 			com.squareup.okhttp.Response response = call.execute();
 
-			return new Response(
-				response.code(), _toMap(response.headers().toMultimap()),
-				response.body());
+			return new Response(response);
 		}
 	}
 
 	protected OkHttpClient client;
-
-	private Map<String, String> _toMap(Map<String, List<String>> headers) {
-		Map<String, String> map = new HashMap<String, String>();
-
-		for (Map.Entry<String, List<String>> header : headers.entrySet()) {
-			map.put(header.getKey(), header.getValue().get(0));
-		}
-
-		return map;
-	}
 
 }

@@ -38,7 +38,7 @@ public class ServerExceptionTest extends BaseTest {
 
 	@Test
 	public void authenticationException() throws Exception {
-		JSONObject json = new JSONObject();
+		final JSONObject json = new JSONObject();
 
 		String exception = "java.lang.SecurityException";
 
@@ -46,7 +46,8 @@ public class ServerExceptionTest extends BaseTest {
 		json.put("message", "Authenticated access required");
 
 		try {
-			HttpUtil.checkPortalException(json.toString());
+			Response response = new Response();
+			response.checkPortalException(json.toString());
 			fail("Should have thrown AuthenticationException");
 		}
 		catch (AuthenticationException ae) {
@@ -74,7 +75,8 @@ public class ServerExceptionTest extends BaseTest {
 		json.put("message", message);
 
 		try {
-			HttpUtil.checkPortalException(json.toString());
+			Response response = new Response();
+			response.checkPortalException(json.toString());
 			fail("Should have detected portal exception.");
 		}
 		catch (ServerException se) {
@@ -93,7 +95,8 @@ public class ServerExceptionTest extends BaseTest {
 		json.put("exception", exception);
 
 		try {
-			HttpUtil.checkPortalException(json.toString());
+			Response response = new Response();
+			response.checkPortalException(json.toString());
 			fail("Should have detected portal exception.");
 		}
 		catch (ServerException se) {
@@ -115,7 +118,8 @@ public class ServerExceptionTest extends BaseTest {
 		json.put("message", folderName);
 
 		try {
-			HttpUtil.checkPortalException(json.toString());
+			Response response = new Response();
+			response.checkPortalException(json.toString());
 			fail("Should have detected portal exception.");
 		}
 		catch (ServerException se) {
@@ -147,7 +151,8 @@ public class ServerExceptionTest extends BaseTest {
 		json.put("error", error);
 
 		try {
-			HttpUtil.checkPortalException(json.toString());
+			Response response = new Response();
+			response.checkPortalException(json.toString());
 			fail("Should have detected portal exception.");
 		}
 		catch (ServerException se) {

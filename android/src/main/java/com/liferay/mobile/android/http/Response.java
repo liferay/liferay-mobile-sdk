@@ -14,45 +14,132 @@
 
 package com.liferay.mobile.android.http;
 
-import com.squareup.okhttp.ResponseBody;
+import com.liferay.mobile.android.exception.AuthenticationException;
+import com.liferay.mobile.android.exception.RedirectException;
+import com.liferay.mobile.android.exception.ServerException;
+import com.liferay.mobile.android.util.Validator;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
  */
 public class Response {
 
-	public Response(
-		int statusCode, Map<String, String> headers, ResponseBody body) {
-
-		_statusCode = statusCode;
-		_headers = headers;
-		_body = body;
+	public Response() {
+		this(null);
 	}
 
-	public String getBody() throws IOException {
-		return _body.string();
+	public Response(com.squareup.okhttp.Response response) {
+		_response = response;
 	}
 
-	public InputStream getBodyAsStream() throws IOException {
-		return _body.byteStream();
+	public String getBody() throws Exception {
+		String body = _response.body().string();
+
+		checkStatusCode();
+		checkPortalException(body);
+
+		return body;
+	}
+
+	public InputStream getBodyAsStream() throws Exception {
+		checkStatusCode();
+
+		return _response.body().byteStream();
 	}
 
 	public Map<String, String> getHeaders() {
-		return Collections.unmodifiableMap(_headers);
+		Map<String, List<String>> headers = _response.headers().toMultimap();
+
+		Map<String, String> map = new HashMap<String, String>();
+
+		for (Map.Entry<String, List<String>> header : headers.entrySet()) {
+			map.put(header.getKey(), header.getValue().get(0));
+		}
+
+		return Collections.unmodifiableMap(map);
 	}
 
 	public int getStatusCode() {
-		return _statusCode;
+		return _response.code();
 	}
 
-	private ResponseBody _body;
-	private Map<String, String> _headers;
-	private int _statusCode;
+	protected void checkPortalException(String json) throws ServerException {
+		try {
+			if (isJSONObject(json)) {
+				JSONObject jsonObj = new JSONObject(json);
+
+				if (jsonObj.has("exception")) {
+					String message = jsonObj.getString("exception");
+					String detail = jsonObj.optString("message", null);
+
+					JSONObject error = jsonObj.optJSONObject("error");
+
+					if (error != null) {
+						message = error.getString("type");
+						detail = error.getString("message");
+					}
+
+					if ((message != null) &&
+						message.equals("java.lang.SecurityException")) {
+
+						throw new AuthenticationException(message, detail);
+					}
+
+					throw new ServerException(message, detail);
+				}
+			}
+		}
+		catch (JSONException je) {
+			throw new ServerException(je);
+		}
+	}
+
+	protected void checkStatusCode() throws ServerException {
+		int status = getStatusCode();
+
+		if ((status == Status.MOVED_PERMANENTLY) ||
+			(status == Status.MOVED_TEMPORARILY) ||
+			(status == Status.SEE_OTHER) ||
+			(status == Status.TEMPORARY_REDIRECT)) {
+
+			String url = getHeaders().get(Headers.LOCATION);
+
+			if (url.endsWith("/")) {
+				url = url.substring(0, url.length() - 1);
+			}
+
+			throw new RedirectException(url);
+		}
+
+		if (status == Status.UNAUTHORIZED) {
+			throw new AuthenticationException(
+				"Authentication failed.", "HTTP Status Code 401");
+		}
+
+		if (status != Status.OK) {
+			throw new ServerException(
+				"Request failed. Response code: " + status);
+		}
+	}
+
+	protected boolean isJSONObject(String json) {
+		if (Validator.isNotNull(json) && json.startsWith("{")) {
+			return true;
+		}
+
+		return false;
+	}
+
+	private com.squareup.okhttp.Response _response;
 
 }
