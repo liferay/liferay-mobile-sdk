@@ -22,8 +22,11 @@ import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.file.FileProgressCallback;
 import com.liferay.mobile.android.http.file.InputStreamBody;
 import com.liferay.mobile.android.http.file.UploadData;
+import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import com.squareup.okhttp.Authenticator;
+import com.squareup.okhttp.Call;
+import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.MultipartBuilder;
 import com.squareup.okhttp.OkHttpClient;
@@ -40,6 +43,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import static com.liferay.mobile.android.http.file.InputStreamBody.*;
@@ -188,13 +192,54 @@ public class OkHttpClientImpl implements HttpClient {
 			}
 		}
 
-		com.squareup.okhttp.Response response = client
-			.newCall(builder.build())
-			.execute();
+		Call call = client.newCall(builder.build());
 
-		return new Response(
-			response.code(), _toMap(response.headers().toMultimap()),
-			response.body());
+		final AsyncTaskCallback callback = request.getCallback();
+
+		if (callback != null) {
+			call.enqueue(new Callback() {
+
+				@Override
+				public void onFailure(
+					com.squareup.okhttp.Request request, IOException ioe) {
+
+					callback.onFailure(ioe);
+				}
+
+				@Override
+				public void onResponse(com.squareup.okhttp.Response r)
+					throws IOException {
+
+					Response response = new Response(
+						r.code(), _toMap(r.headers().toMultimap()), r.body());
+
+					String body = response.getBody();
+
+					try {
+						HttpUtil.checkStatusCode(response);
+						HttpUtil.checkPortalException(body);
+
+						JSONArray jsonArray = callback.inBackground(
+							new JSONArray(body));
+
+						callback.onPostExecute(jsonArray);
+					}
+					catch (Exception e) {
+						callback.onFailure(e);
+					}
+				}
+
+			});
+
+			return null;
+		}
+		else {
+			com.squareup.okhttp.Response response = call.execute();
+
+			return new Response(
+				response.code(), _toMap(response.headers().toMultimap()),
+				response.body());
+		}
 	}
 
 	protected OkHttpClient client;

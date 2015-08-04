@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.http;
 
 import com.liferay.mobile.android.auth.Authentication;
+import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -72,6 +73,10 @@ public class Request {
 		return _body;
 	}
 
+	public AsyncTaskCallback getCallback() {
+		return _callback;
+	}
+
 	public int getConnectionTimeout() {
 		return _connectionTimeout;
 	}
@@ -100,6 +105,10 @@ public class Request {
 		_body = body;
 	}
 
+	public void setCallback(AsyncTaskCallback _callback) {
+		this._callback = _callback;
+	}
+
 	public void setConnectionTimeout(int connectionTimeout) {
 		_connectionTimeout = connectionTimeout;
 	}
@@ -118,6 +127,7 @@ public class Request {
 
 	private Authentication _authentication;
 	private Object _body;
+	private AsyncTaskCallback _callback;
 	private int _connectionTimeout;
 	private Map<String, String> _headers = new HashMap<String, String>();
 	private Method _method;

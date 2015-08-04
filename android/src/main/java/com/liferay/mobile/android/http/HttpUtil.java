@@ -41,6 +41,39 @@ public class HttpUtil {
 		client.cancel(tag);
 	}
 
+	public static void checkPortalException(String json)
+		throws ServerException {
+
+		try {
+			if (isJSONObject(json)) {
+				JSONObject jsonObj = new JSONObject(json);
+
+				if (jsonObj.has("exception")) {
+					String message = jsonObj.getString("exception");
+					String detail = jsonObj.optString("message", null);
+
+					JSONObject error = jsonObj.optJSONObject("error");
+
+					if (error != null) {
+						message = error.getString("type");
+						detail = error.getString("message");
+					}
+
+					if ((message != null) &&
+						message.equals("java.lang.SecurityException")) {
+
+						throw new AuthenticationException(message, detail);
+					}
+
+					throw new ServerException(message, detail);
+				}
+			}
+		}
+		catch (JSONException je) {
+			throw new ServerException(je);
+		}
+	}
+
 	public static void checkStatusCode(Response response)
 		throws ServerException {
 
@@ -152,39 +185,6 @@ public class HttpUtil {
 		checkPortalException(body);
 
 		return new JSONArray("[" + body + "]");
-	}
-
-	protected static void checkPortalException(String json)
-		throws ServerException {
-
-		try {
-			if (isJSONObject(json)) {
-				JSONObject jsonObj = new JSONObject(json);
-
-				if (jsonObj.has("exception")) {
-					String message = jsonObj.getString("exception");
-					String detail = jsonObj.optString("message", null);
-
-					JSONObject error = jsonObj.optJSONObject("error");
-
-					if (error != null) {
-						message = error.getString("type");
-						detail = error.getString("message");
-					}
-
-					if ((message != null) &&
-						message.equals("java.lang.SecurityException")) {
-
-						throw new AuthenticationException(message, detail);
-					}
-
-					throw new ServerException(message, detail);
-				}
-			}
-		}
-		catch (JSONException je) {
-			throw new ServerException(je);
-		}
 	}
 
 	protected static boolean isJSONObject(String json) {
