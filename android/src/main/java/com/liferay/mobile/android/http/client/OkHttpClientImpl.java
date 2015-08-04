@@ -22,7 +22,6 @@ import com.liferay.mobile.android.http.file.FileProgressCallback;
 import com.liferay.mobile.android.http.file.InputStreamBody;
 import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
-
 import com.squareup.okhttp.Authenticator;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -32,18 +31,17 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request.Builder;
 import com.squareup.okhttp.RequestBody;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
-
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import static com.liferay.mobile.android.http.file.InputStreamBody.*;
+import static com.liferay.mobile.android.http.file.InputStreamBody.isCancelled;
 
 /**
  * @author Bruno Farache
@@ -203,13 +201,13 @@ public class OkHttpClientImpl implements HttpClient {
 				}
 
 				@Override
-				public void onResponse(com.squareup.okhttp.Response okResponse)
+				public void onResponse(com.squareup.okhttp.Response response)
 					throws IOException {
 
-					Response response = new Response(okResponse);
-
 					try {
-						JSONArray jsonArray = new JSONArray(response.getBody());
+						JSONArray jsonArray = new JSONArray(
+							new Response(response).getBody());
+
 						jsonArray = callback.inBackground(jsonArray);
 						callback.onPostExecute(jsonArray);
 					}
