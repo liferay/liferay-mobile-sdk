@@ -51,13 +51,13 @@ public class HttpUtil {
 			(status == Status.SEE_OTHER) ||
 			(status == Status.TEMPORARY_REDIRECT)) {
 
-			String URL = response.getHeaders().get(Headers.LOCATION);
+			String url = response.getHeaders().get(Headers.LOCATION);
 
-			if (URL.endsWith("/")) {
-				URL = URL.substring(0, URL.length() - 1);
+			if (url.endsWith("/")) {
+				url = url.substring(0, url.length() - 1);
 			}
 
-			throw new RedirectException(URL);
+			throw new RedirectException(url);
 		}
 
 		if (status == Status.UNAUTHORIZED) {
@@ -76,8 +76,8 @@ public class HttpUtil {
 		throws Exception {
 
 		Request request = new Request(
-			Method.GET, session.getHeaders(), url, null,
-			session.getConnectionTimeout());
+			session.getAuthentication(), Method.GET, session.getHeaders(), url,
+			null, session.getConnectionTimeout());
 
 		return client.download(request, callback);
 	}
