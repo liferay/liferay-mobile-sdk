@@ -52,8 +52,8 @@ public class InputStreamBody extends RequestBody {
 
 		try {
 			is = Okio.source(data.getInputStream());
-			FileProgressCallback callback = data.getCallback();
 			Buffer os = new Buffer();
+			FileProgressCallback callback = data.getCallback();
 
 			while ((is.read(os, 2048) != -1) && !isCancelled(callback)) {
 				byte[] bytes = os.readByteArray();

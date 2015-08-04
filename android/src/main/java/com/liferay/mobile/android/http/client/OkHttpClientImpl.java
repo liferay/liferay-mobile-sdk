@@ -66,9 +66,7 @@ public class OkHttpClientImpl implements HttpClient {
 
 		try {
 			response = send(request);
-
 			HttpUtil.checkStatusCode(response);
-
 			is = response.getBodyAsStream();
 
 			int count;
