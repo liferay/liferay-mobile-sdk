@@ -23,6 +23,7 @@ import com.liferay.mobile.android.http.file.FileProgressCallback;
 import com.liferay.mobile.android.http.file.InputStreamBody;
 import com.liferay.mobile.android.http.file.UploadData;
 
+import com.squareup.okhttp.Authenticator;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.MultipartBuilder;
 import com.squareup.okhttp.OkHttpClient;
@@ -171,7 +172,12 @@ public class OkHttpClientImpl implements HttpClient {
 		Authentication authentication = request.getAuthentication();
 
 		if (authentication != null) {
-			authentication.authenticate(request);
+			if (authentication instanceof Authenticator) {
+				client.setAuthenticator((Authenticator)authentication);
+			}
+			else {
+				authentication.authenticate(request);
+			}
 		}
 
 		Map<String, String> headers = request.getHeaders();

@@ -29,4 +29,6 @@ public class Headers {
 
 	public static final String LOCATION = "Location";
 
+	public static final String WWW_AUTHENTICATE = "WWW-Authenticate";
+
 }
