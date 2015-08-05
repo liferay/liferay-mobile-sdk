@@ -42,7 +42,7 @@ public class HttpUtil {
 
 		Request request = new Request(
 			session.getAuthentication(), Method.GET, session.getHeaders(), url,
-			null, session.getConnectionTimeout());
+			null, session.getConnectionTimeout(), session.getCallback());
 
 		return client.download(request, callback);
 	}
@@ -71,11 +71,17 @@ public class HttpUtil {
 
 		Request request = new Request(
 			session.getAuthentication(), Method.POST, session.getHeaders(), url,
-			commands.toString(), session.getConnectionTimeout());
+			commands.toString(), session.getConnectionTimeout(),
+			session.getCallback());
 
 		Response response = client.send(request);
 
-		return new JSONArray(response.getBody());
+		if (response == null) {
+			return null;
+		}
+		else {
+			return new JSONArray(response.getBody());
+		}
 	}
 
 	public static JSONArray post(Session session, JSONObject command)
@@ -104,7 +110,7 @@ public class HttpUtil {
 		Request request = new Request(
 			session.getAuthentication(), Method.POST, session.getHeaders(),
 			getURL(session, path), command.getJSONObject(path),
-			session.getConnectionTimeout());
+			session.getConnectionTimeout(), session.getCallback());
 
 		Response response = client.upload(request);
 

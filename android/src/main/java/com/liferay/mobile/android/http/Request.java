@@ -28,17 +28,17 @@ public class Request {
 	public Request(
 		Authentication authentication, Method method,
 		Map<String, String> headers, String url, Object body,
-		int connectionTimeout) {
+		int connectionTimeout, AsyncTaskCallback callback) {
 
 		this(
 			authentication, method, headers, url, body, connectionTimeout,
-			null);
+			callback, null);
 	}
 
 	public Request(
 		Authentication authentication, Method method,
 		Map<String, String> headers, String url, Object body,
-		int connectionTimeout, Object tag) {
+		int connectionTimeout, AsyncTaskCallback callback, Object tag) {
 
 		_authentication = authentication;
 		_method = method;
@@ -50,6 +50,7 @@ public class Request {
 		_url = url;
 		_body = body;
 		_connectionTimeout = connectionTimeout;
+		_callback = callback;
 
 		if (tag == null) {
 			tag = this;

@@ -19,6 +19,7 @@ import com.liferay.mobile.android.service.BatchSessionImpl;
 import com.liferay.mobile.android.v62.dlapp.DLAppService;
 
 import java.io.IOException;
+
 import java.nio.charset.StandardCharsets;
 
 import org.json.JSONArray;
