@@ -114,7 +114,12 @@ public class HttpUtil {
 
 		Response response = client.upload(request);
 
-		return new JSONArray("[" + response.getBody() + "]");
+		if (response == null) {
+			return null;
+		}
+		else {
+			return new JSONArray("[" + response.getBody() + "]");
+		}
 	}
 
 	protected static HttpClient client = new OkHttpClientImpl();

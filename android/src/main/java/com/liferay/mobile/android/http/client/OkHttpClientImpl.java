@@ -163,12 +163,13 @@ public class OkHttpClientImpl implements HttpClient {
 		return builder.build();
 	}
 
-	protected Response send(Builder builder, Request request) throws Exception {
+	protected Response send(Builder builder, final Request request)
+		throws Exception {
+
 		builder = builder.url(request.getURL());
 		builder.tag(request.getTag());
 
 		OkHttpClient client = getClient(request.getConnectionTimeout());
-
 		Authentication authentication = request.getAuthentication();
 
 		if (authentication != null) {
@@ -192,7 +193,10 @@ public class OkHttpClientImpl implements HttpClient {
 
 		final AsyncTaskCallback callback = request.getCallback();
 
-		if (callback != null) {
+		if (callback == null) {
+			return new Response(call.execute());
+		}
+		else {
 			call.enqueue(new Callback() {
 
 				@Override
@@ -207,9 +211,13 @@ public class OkHttpClientImpl implements HttpClient {
 					throws IOException {
 
 					try {
-						JSONArray jsonArray = new JSONArray(
-							new Response(response).getBody());
+						String body = new Response(response).getBody();
 
+						if (request.getBody() instanceof JSONObject) {
+							body = "[" + body + "]";
+						}
+
+						JSONArray jsonArray = new JSONArray(body);
 						jsonArray = callback.inBackground(jsonArray);
 						callback.onPostExecute(jsonArray);
 					}
@@ -221,11 +229,6 @@ public class OkHttpClientImpl implements HttpClient {
 			});
 
 			return null;
-		}
-		else {
-			com.squareup.okhttp.Response response = call.execute();
-
-			return new Response(response);
 		}
 	}
 
