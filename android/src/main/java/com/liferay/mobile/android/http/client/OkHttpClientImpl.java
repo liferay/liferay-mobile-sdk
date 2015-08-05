@@ -33,9 +33,7 @@ import com.squareup.okhttp.Request.Builder;
 import com.squareup.okhttp.RequestBody;
 
 import java.io.IOException;
-import java.io.InputStream;
 
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -43,7 +41,7 @@ import java.util.concurrent.TimeUnit;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import static com.liferay.mobile.android.http.file.InputStreamBody.isCancelled;
+import static com.liferay.mobile.android.http.file.FileProgressUtil.transfer;
 
 /**
  * @author Bruno Farache
@@ -63,36 +61,17 @@ public class OkHttpClientImpl implements HttpClient {
 	public Response download(Request request, FileProgressCallback callback)
 		throws Exception {
 
-		Response response = null;
-		InputStream is = null;
+		Response response = send(request);
 
-		try {
-			response = send(request);
-			is = response.getBodyAsStream();
-
-			int count;
-			byte bytes[] = new byte[2048];
-
-			while (((count = is.read(bytes)) != -1) && !isCancelled(callback)) {
-				callback.onBytes(Arrays.copyOfRange(bytes, 0, count));
-				callback.increment(count);
-			}
-
-			if (isCancelled(callback)) {
-				cancel(request.getTag());
-			}
+		if (response == null) {
+			return null;
 		}
-		finally {
-			if (is != null) {
-				try {
-					is.close();
-				}
-				catch (IOException ioe) {
-				}
-			}
-		}
+		else {
+			transfer(
+				response.getBodyAsStream(), callback, request.getTag(), null);
 
-		return response;
+			return response;
+		}
 	}
 
 	@Override

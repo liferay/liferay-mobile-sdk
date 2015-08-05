@@ -14,27 +14,19 @@
 
 package com.liferay.mobile.android.http.file;
 
-import com.liferay.mobile.android.http.HttpUtil;
-
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.internal.Util;
 
 import java.io.IOException;
 
-import okio.Buffer;
 import okio.BufferedSink;
-import okio.Okio;
-import okio.Source;
+
+import static com.liferay.mobile.android.http.file.FileProgressUtil.transfer;
 
 /**
  * @author Bruno Farache
  */
 public class InputStreamBody extends RequestBody {
-
-	public static boolean isCancelled(FileProgressCallback callback) {
-		return (callback != null) && callback.isCancelled();
-	}
 
 	public InputStreamBody(UploadData data, Object tag) {
 		this.data = data;
@@ -48,30 +40,7 @@ public class InputStreamBody extends RequestBody {
 
 	@Override
 	public void writeTo(BufferedSink sink) throws IOException {
-		Source is = null;
-
-		try {
-			is = Okio.source(data.getInputStream());
-			Buffer os = new Buffer();
-			FileProgressCallback callback = data.getCallback();
-
-			while ((is.read(os, 2048) != -1) && !isCancelled(callback)) {
-				byte[] bytes = os.readByteArray();
-				sink.write(bytes);
-
-				if (callback != null) {
-					callback.onBytes(bytes);
-					callback.increment(bytes.length);
-				}
-			}
-
-			if (isCancelled(callback)) {
-				HttpUtil.cancel(tag);
-			}
-		}
-		finally {
-			Util.closeQuietly(is);
-		}
+		transfer(data.getInputStream(), data.getCallback(), tag, sink);
 	}
 
 	protected UploadData data;
