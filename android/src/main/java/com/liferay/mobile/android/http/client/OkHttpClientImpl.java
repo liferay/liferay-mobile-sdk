@@ -125,6 +125,31 @@ public class OkHttpClientImpl implements HttpClient {
 		return send(builder, request);
 	}
 
+	protected void addHeaders(Builder builder, Request request) {
+		Map<String, String> headers = request.getHeaders();
+
+		if (headers != null) {
+			for (Map.Entry<String, String> header : headers.entrySet()) {
+				builder.addHeader(header.getKey(), header.getValue());
+			}
+		}
+	}
+
+	protected void authenticate(OkHttpClient client, Request request)
+		throws Exception {
+
+		Authentication authentication = request.getAuthentication();
+
+		if (authentication != null) {
+			if (authentication instanceof Authenticator) {
+				client.setAuthenticator((Authenticator)authentication);
+			}
+			else {
+				authentication.authenticate(request);
+			}
+		}
+	}
+
 	protected OkHttpClient getClient(int connectionTimeout) {
 		OkHttpClient clone = client.clone();
 
@@ -170,24 +195,9 @@ public class OkHttpClientImpl implements HttpClient {
 		builder.tag(request.getTag());
 
 		OkHttpClient client = getClient(request.getConnectionTimeout());
-		Authentication authentication = request.getAuthentication();
 
-		if (authentication != null) {
-			if (authentication instanceof Authenticator) {
-				client.setAuthenticator((Authenticator)authentication);
-			}
-			else {
-				authentication.authenticate(request);
-			}
-		}
-
-		Map<String, String> headers = request.getHeaders();
-
-		if (headers != null) {
-			for (Map.Entry<String, String> header : headers.entrySet()) {
-				builder.addHeader(header.getKey(), header.getValue());
-			}
-		}
+		authenticate(client, request);
+		addHeaders(builder, request);
 
 		Call call = client.newCall(builder.build());
 
@@ -197,39 +207,44 @@ public class OkHttpClientImpl implements HttpClient {
 			return new Response(call.execute());
 		}
 		else {
-			call.enqueue(new Callback() {
-
-				@Override
-				public void onFailure(
-					com.squareup.okhttp.Request request, IOException ioe) {
-
-					callback.onFailure(ioe);
-				}
-
-				@Override
-				public void onResponse(com.squareup.okhttp.Response response)
-					throws IOException {
-
-					try {
-						String body = new Response(response).getBody();
-
-						if (request.getBody() instanceof JSONObject) {
-							body = "[" + body + "]";
-						}
-
-						JSONArray jsonArray = new JSONArray(body);
-						jsonArray = callback.inBackground(jsonArray);
-						callback.onPostExecute(jsonArray);
-					}
-					catch (Exception e) {
-						callback.onFailure(e);
-					}
-				}
-
-			});
-
+			sendAsync(call, callback, request);
 			return null;
 		}
+	}
+
+	protected void sendAsync(
+		Call call, final AsyncTaskCallback callback, final Request request) {
+
+		call.enqueue(new Callback() {
+
+			@Override
+			public void onFailure(
+				com.squareup.okhttp.Request request, IOException ioe) {
+
+				callback.onFailure(ioe);
+			}
+
+			@Override
+			public void onResponse(com.squareup.okhttp.Response response)
+				throws IOException {
+
+				try {
+					String body = new Response(response).getBody();
+
+					if (request.getBody() instanceof JSONObject) {
+						body = "[" + body + "]";
+					}
+
+					JSONArray jsonArray = new JSONArray(body);
+					jsonArray = callback.inBackground(jsonArray);
+					callback.onPostExecute(jsonArray);
+				}
+				catch (Exception e) {
+					callback.onFailure(e);
+				}
+			}
+
+		});
 	}
 
 	protected OkHttpClient client;
