@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 	s.name					= "Liferay-Sync"
 	s.module_name			= "LRSync"
-	s.version				= "1.1"
+	s.version				= "1.2"
 	s.summary				= "Library for accessing Liferay Sync services."
 	s.homepage				= "https://github.com/liferay/liferay-mobile-sdk"
 	s.license				= {
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 	s.ios.deployment_target	= '7.0'
 	s.source				= {
 								:git => "https://github.com/liferay/liferay-mobile-sdk.git",
-								:tag => "sync-1.1"
+								:tag => "sync-1.2"
 							}
 	s.source_files			= "modules/sync-web/ios/Source/**/*.{h,m}"
 	s.requires_arc			= true
