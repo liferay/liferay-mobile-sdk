@@ -190,13 +190,40 @@ public class SyncDLObjectService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONArray getAllFolderSyncDlObjects(long companyId, long repositoryId) throws Exception {
+	public JSONObject copyFileEntry(long sourceFileEntryId, long repositoryId, long folderId, String sourceFileName, String title, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("companyId", companyId);
+			_params.put("sourceFileEntryId", sourceFileEntryId);
+			_params.put("repositoryId", repositoryId);
+			_params.put("folderId", folderId);
+			_params.put("sourceFileName", checkNull(sourceFileName));
+			_params.put("title", checkNull(title));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+
+			_command.put("/sync-web.syncdlobject/copy-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONArray getAllFolderSyncDlObjects(long repositoryId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
 			_params.put("repositoryId", repositoryId);
 
 			_command.put("/sync-web.syncdlobject/get-all-folder-sync-dl-objects", _params);
@@ -214,37 +241,13 @@ public class SyncDLObjectService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONObject getAllSyncDlObjects(long repositoryId, long folderId) throws Exception {
+	public JSONObject getFileEntrySyncDlObject(long repositoryId, long folderId, String title) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("repositoryId", repositoryId);
-			_params.put("folderId", folderId);
-
-			_command.put("/sync-web.syncdlobject/get-all-sync-dl-objects", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getFileEntrySyncDlObject(long groupId, long folderId, String title) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
 			_params.put("title", checkNull(title));
 
@@ -424,38 +427,15 @@ public class SyncDLObjectService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject getSyncContext(String uuid) throws Exception {
+	public String getSyncDlObjectUpdate(long repositoryId, long lastAccessTime, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("uuid", checkNull(uuid));
-
-			_command.put("/sync-web.syncdlobject/get-sync-context", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getSyncDlObjectUpdate(long companyId, long repositoryId, long lastAccessTime) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
 			_params.put("repositoryId", repositoryId);
 			_params.put("lastAccessTime", lastAccessTime);
+			_params.put("max", max);
 
 			_command.put("/sync-web.syncdlobject/get-sync-dl-object-update", _params);
 		}
@@ -469,16 +449,15 @@ public class SyncDLObjectService extends BaseService {
 			return null;
 		}
 
-		return _result.getJSONObject(0);
+		return _result.getString(0);
 	}
 
-	public JSONObject getSyncDlObjectUpdate(long companyId, long repositoryId, long parentFolderId, long lastAccessTime) throws Exception {
+	public JSONObject getSyncDlObjectUpdate(long repositoryId, long parentFolderId, long lastAccessTime) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("companyId", companyId);
 			_params.put("repositoryId", repositoryId);
 			_params.put("parentFolderId", parentFolderId);
 			_params.put("lastAccessTime", lastAccessTime);

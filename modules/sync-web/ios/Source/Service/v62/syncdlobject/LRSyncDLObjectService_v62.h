@@ -25,9 +25,9 @@
 - (NSDictionary *)checkInFileEntryWithFileEntryId:(long long)fileEntryId majorVersion:(BOOL)majorVersion changeLog:(NSString *)changeLog serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)checkOutFileEntryWithFileEntryId:(long long)fileEntryId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)checkOutFileEntryWithFileEntryId:(long long)fileEntryId owner:(NSString *)owner expirationTime:(long long)expirationTime serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
-- (NSArray *)getAllFolderSyncDlObjectsWithCompanyId:(long long)companyId repositoryId:(long long)repositoryId error:(NSError **)error;
-- (NSDictionary *)getAllSyncDlObjectsWithRepositoryId:(long long)repositoryId folderId:(long long)folderId error:(NSError **)error;
-- (NSDictionary *)getFileEntrySyncDlObjectWithGroupId:(long long)groupId folderId:(long long)folderId title:(NSString *)title error:(NSError **)error;
+- (NSDictionary *)copyFileEntryWithSourceFileEntryId:(long long)sourceFileEntryId repositoryId:(long long)repositoryId folderId:(long long)folderId sourceFileName:(NSString *)sourceFileName title:(NSString *)title serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
+- (NSArray *)getAllFolderSyncDlObjectsWithRepositoryId:(long long)repositoryId error:(NSError **)error;
+- (NSDictionary *)getFileEntrySyncDlObjectWithRepositoryId:(long long)repositoryId folderId:(long long)folderId title:(NSString *)title error:(NSError **)error;
 - (NSArray *)getFileEntrySyncDlObjectsWithRepositoryId:(long long)repositoryId folderId:(long long)folderId error:(NSError **)error;
 - (NSDictionary *)getFolderSyncDlObjectWithFolderId:(long long)folderId error:(NSError **)error;
 - (NSDictionary *)getFolderSyncDlObjectWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId name:(NSString *)name error:(NSError **)error;
@@ -35,9 +35,8 @@
 - (NSDictionary *)getGroupWithGroupId:(long long)groupId error:(NSError **)error;
 - (NSNumber *)getLatestModifiedTime:(NSError **)error;
 - (NSDictionary *)getSyncContext:(NSError **)error;
-- (NSDictionary *)getSyncContextWithUuid:(NSString *)uuid error:(NSError **)error;
-- (NSDictionary *)getSyncDlObjectUpdateWithCompanyId:(long long)companyId repositoryId:(long long)repositoryId lastAccessTime:(long long)lastAccessTime error:(NSError **)error;
-- (NSDictionary *)getSyncDlObjectUpdateWithCompanyId:(long long)companyId repositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId lastAccessTime:(long long)lastAccessTime error:(NSError **)error;
+- (NSString *)getSyncDlObjectUpdateWithRepositoryId:(long long)repositoryId lastAccessTime:(long long)lastAccessTime max:(int)max error:(NSError **)error;
+- (NSDictionary *)getSyncDlObjectUpdateWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId lastAccessTime:(long long)lastAccessTime error:(NSError **)error;
 - (NSArray *)getUserSitesGroups:(NSError **)error;
 - (NSDictionary *)moveFileEntryWithFileEntryId:(long long)fileEntryId newFolderId:(long long)newFolderId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)moveFileEntryToTrashWithFileEntryId:(long long)fileEntryId error:(NSError **)error;
@@ -46,8 +45,8 @@
 - (NSDictionary *)patchFileEntryWithFileEntryId:(long long)fileEntryId sourceVersionId:(long long)sourceVersionId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog majorVersion:(BOOL)majorVersion deltaFile:(LRUploadData *)deltaFile checksum:(NSString *)checksum serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)restoreFileEntryFromTrashWithFileEntryId:(long long)fileEntryId error:(NSError **)error;
 - (NSDictionary *)restoreFolderFromTrashWithFolderId:(long long)folderId error:(NSError **)error;
-- (NSOperation *)updateFileEntriesWithZipFile:(LRUploadData *)zipFile error:(NSError **)error;
-- (NSOperation *)updateFileEntryWithFileEntryId:(long long)fileEntryId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog majorVersion:(BOOL)majorVersion file:(LRUploadData *)file checksum:(NSString *)checksum serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
+- (NSDictionary *)updateFileEntriesWithZipFile:(LRUploadData *)zipFile error:(NSError **)error;
+- (NSDictionary *)updateFileEntryWithFileEntryId:(long long)fileEntryId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog majorVersion:(BOOL)majorVersion file:(LRUploadData *)file checksum:(NSString *)checksum serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)updateFolderWithFolderId:(long long)folderId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 
 @end
