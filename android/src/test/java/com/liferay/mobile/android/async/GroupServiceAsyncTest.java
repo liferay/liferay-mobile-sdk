@@ -22,6 +22,7 @@ import com.liferay.mobile.android.task.callback.typed.JSONArrayAsyncTaskCallback
 import com.liferay.mobile.android.v62.group.GroupService;
 
 import java.io.IOException;
+
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 

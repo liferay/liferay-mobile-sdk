@@ -24,14 +24,16 @@ import com.liferay.mobile.android.service.SessionImpl;
 import com.liferay.mobile.android.task.callback.typed.JSONObjectAsyncTaskCallback;
 import com.liferay.mobile.android.v62.dlapp.DLAppService;
 
-import org.json.JSONObject;
-import org.junit.After;
-import org.junit.Test;
-
 import java.io.IOException;
 import java.io.InputStream;
+
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+
+import org.json.JSONObject;
+
+import org.junit.After;
+import org.junit.Test;
 
 import static org.junit.Assert.*;
 
