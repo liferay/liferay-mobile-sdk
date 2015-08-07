@@ -12,19 +12,22 @@
  * details.
  */
 
-package com.liferay.mobile.android.task.callback;
+package com.liferay.mobile.android.callback.typed;
+
+import com.liferay.mobile.android.callback.BaseCallback;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
  */
-public interface AsyncTaskCallback {
+public abstract class JSONObjectCallback extends BaseCallback<JSONObject> {
 
-	JSONArray inBackground(JSONArray jsonArray) throws Exception;
-
-	void onFailure(Exception exception);
-
-	void onPostExecute(JSONArray jsonArray) throws Exception;
+	@Override
+	public JSONObject inBackground(JSONArray jsonArray) throws JSONException {
+		return jsonArray.getJSONObject(0);
+	}
 
 }

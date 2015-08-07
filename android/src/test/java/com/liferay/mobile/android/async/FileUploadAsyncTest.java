@@ -21,7 +21,7 @@ import com.liferay.mobile.android.http.file.FileUploadTest;
 import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.android.task.callback.typed.JSONObjectAsyncTaskCallback;
+import com.liferay.mobile.android.callback.typed.JSONObjectCallback;
 import com.liferay.mobile.android.v62.dlapp.DLAppService;
 
 import java.io.IOException;
@@ -82,7 +82,7 @@ public class FileUploadAsyncTest extends BaseTest {
 
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		session.setCallback(new JSONObjectAsyncTaskCallback() {
+		session.setCallback(new JSONObjectCallback() {
 
 			@Override
 			public void onSuccess(JSONObject file) {

@@ -15,8 +15,8 @@
 package com.liferay.mobile.android.service;
 
 import com.liferay.mobile.android.auth.Authentication;
+import com.liferay.mobile.android.callback.BatchCallback;
 import com.liferay.mobile.android.http.HttpUtil;
-import com.liferay.mobile.android.task.callback.BatchAsyncTaskCallback;
 
 import java.util.ArrayList;
 
@@ -41,20 +41,19 @@ public class BatchSessionImpl extends SessionImpl {
 	}
 
 	public BatchSessionImpl(
-		String server, Authentication authentication,
-		BatchAsyncTaskCallback callback) {
+		String server, Authentication authentication, BatchCallback callback) {
 
 		super(server, authentication, callback);
 	}
 
 	public BatchSessionImpl(
 		String server, Authentication authentication, int connectionTimeout,
-		BatchAsyncTaskCallback callback) {
+		BatchCallback callback) {
 
 		super(server, authentication, connectionTimeout, callback);
 	}
 
-	public BatchSessionImpl(String server, BatchAsyncTaskCallback callback) {
+	public BatchSessionImpl(String server, BatchCallback callback) {
 		super(server, callback);
 	}
 
@@ -78,7 +77,7 @@ public class BatchSessionImpl extends SessionImpl {
 		return null;
 	}
 
-	public void setCallback(BatchAsyncTaskCallback callback) {
+	public void setCallback(BatchCallback callback) {
 		this.callback = callback;
 	}
 

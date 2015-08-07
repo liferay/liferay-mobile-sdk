@@ -12,24 +12,41 @@
  * details.
  */
 
-package com.liferay.mobile.android.task.callback.typed;
+package com.liferay.mobile.android.callback.typed;
 
-import com.liferay.mobile.android.task.callback.BaseAsyncTaskCallback;
+import java.util.ArrayList;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
  */
-public abstract class JSONObjectAsyncTaskCallback
-		extends BaseAsyncTaskCallback<JSONObject> {
+public abstract class GenericBatchCallback<T> extends GenericCallback<T> {
 
-	public void onPostExecute(JSONArray jsonArray) throws JSONException {
-		JSONObject result = jsonArray.getJSONObject(0);
-
-		onSuccess(result);
+	public ArrayList<T> inBackground(ArrayList<T> results) throws Exception {
+		return results;
 	}
+
+	@Override
+	public T inBackground(JSONArray result) throws Exception {
+		results = new ArrayList<T>();
+
+		for (int i = 0; i < result.length(); i++) {
+			results.add(transform(result.get(i)));
+		}
+
+		results = inBackground(results);
+
+		return null;
+	}
+
+	public abstract void onSuccess(ArrayList<T> results);
+
+	@Override
+	public void onSuccess(T result) {
+		onSuccess(results);
+	}
+
+	protected ArrayList<T> results;
 
 }

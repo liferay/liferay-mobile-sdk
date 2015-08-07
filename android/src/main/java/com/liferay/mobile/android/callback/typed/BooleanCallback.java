@@ -12,9 +12,9 @@
  * details.
  */
 
-package com.liferay.mobile.android.task.callback.typed;
+package com.liferay.mobile.android.callback.typed;
 
-import com.liferay.mobile.android.task.callback.BaseAsyncTaskCallback;
+import com.liferay.mobile.android.callback.BaseCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,13 +22,11 @@ import org.json.JSONException;
 /**
  * @author Bruno Farache
  */
-public abstract class IntegerAsyncTaskCallback
-		extends BaseAsyncTaskCallback<Integer> {
+public abstract class BooleanCallback extends BaseCallback<Boolean> {
 
-	public void onPostExecute(JSONArray jsonArray) throws JSONException {
-		Integer result = jsonArray.getInt(0);
-
-		onSuccess(result);
+	@Override
+	public Boolean inBackground(JSONArray jsonArray) throws JSONException {
+		return jsonArray.getBoolean(0);
 	}
 
 }

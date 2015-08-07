@@ -252,10 +252,10 @@ service calls will be asynchronous. Set it back to null if you want to make
 synchronous calls again.
 
 ```java
-import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
-import com.liferay.mobile.android.task.callback.typed.JSONArrayAsyncTaskCallback;
+import com.liferay.mobile.android.callback.Callback;
+import com.liferay.mobile.android.callback.typed.JSONArrayCallback;
 
-AsyncTaskCallback callback = new JSONArrayAsyncTaskCallback() {
+AsyncTaskCallback callback = new JSONArrayCallback() {
 
 	public void onFailure(Exception exception) {
 		// Implement exception handling code

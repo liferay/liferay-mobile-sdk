@@ -18,7 +18,7 @@ import com.liferay.mobile.android.BaseTest;
 import com.liferay.mobile.android.GroupServiceTest;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.android.task.callback.typed.JSONArrayAsyncTaskCallback;
+import com.liferay.mobile.android.callback.typed.JSONArrayCallback;
 import com.liferay.mobile.android.v62.group.GroupService;
 
 import java.io.IOException;
@@ -48,7 +48,7 @@ public class GroupServiceAsyncTest extends BaseTest {
 		final JSONArray[] sites = { null };
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		session.setCallback(new JSONArrayAsyncTaskCallback() {
+		session.setCallback(new JSONArrayCallback() {
 
 			@Override
 			public void onSuccess(JSONArray result) {

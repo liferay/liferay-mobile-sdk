@@ -15,17 +15,16 @@
 package com.liferay.mobile.android.http.client;
 
 import com.liferay.mobile.android.auth.Authentication;
+import com.liferay.mobile.android.callback.Callback;
 import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.file.FileProgressCallback;
 import com.liferay.mobile.android.http.file.InputStreamBody;
 import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import com.squareup.okhttp.Authenticator;
 import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.MultipartBuilder;
 import com.squareup.okhttp.OkHttpClient;
@@ -38,7 +37,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import static com.liferay.mobile.android.http.file.FileProgressUtil.transfer;
@@ -180,21 +178,19 @@ public class OkHttpClientImpl implements HttpClient {
 
 		Call call = client.newCall(builder.build());
 
-		final AsyncTaskCallback callback = request.getCallback();
+		final Callback callback = request.getCallback();
 
 		if (callback == null) {
 			return new Response(call.execute());
 		}
 		else {
-			sendAsync(call, callback, request);
+			sendAsync(call, callback);
 			return null;
 		}
 	}
 
-	protected void sendAsync(
-		Call call, final AsyncTaskCallback callback, final Request request) {
-
-		call.enqueue(new Callback() {
+	protected void sendAsync(Call call, final Callback callback) {
+		call.enqueue(new com.squareup.okhttp.Callback() {
 
 			@Override
 			public void onFailure(
@@ -207,20 +203,7 @@ public class OkHttpClientImpl implements HttpClient {
 			public void onResponse(com.squareup.okhttp.Response response)
 				throws IOException {
 
-				try {
-					String body = new Response(response).getBody();
-
-					if (request.getBody() instanceof JSONObject) {
-						body = "[" + body + "]";
-					}
-
-					JSONArray jsonArray = new JSONArray(body);
-					jsonArray = callback.inBackground(jsonArray);
-					callback.onPostExecute(jsonArray);
-				}
-				catch (Exception e) {
-					callback.onFailure(e);
-				}
+				callback.inBackground(new Response(response));
 			}
 
 		});

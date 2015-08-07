@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.http;
 
 import com.liferay.mobile.android.auth.Authentication;
-import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
+import com.liferay.mobile.android.callback.Callback;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +28,7 @@ public class Request {
 	public Request(
 		Authentication authentication, Method method,
 		Map<String, String> headers, String url, Object body,
-		int connectionTimeout, AsyncTaskCallback callback) {
+		int connectionTimeout, Callback callback) {
 
 		this(
 			authentication, method, headers, url, body, connectionTimeout,
@@ -38,7 +38,7 @@ public class Request {
 	public Request(
 		Authentication authentication, Method method,
 		Map<String, String> headers, String url, Object body,
-		int connectionTimeout, AsyncTaskCallback callback, Object tag) {
+		int connectionTimeout, Callback callback, Object tag) {
 
 		_authentication = authentication;
 		_method = method;
@@ -74,7 +74,7 @@ public class Request {
 		return _body;
 	}
 
-	public AsyncTaskCallback getCallback() {
+	public Callback getCallback() {
 		return _callback;
 	}
 
@@ -106,8 +106,8 @@ public class Request {
 		_body = body;
 	}
 
-	public void setCallback(AsyncTaskCallback _callback) {
-		this._callback = _callback;
+	public void setCallback(Callback callback) {
+		this._callback = callback;
 	}
 
 	public void setConnectionTimeout(int connectionTimeout) {
@@ -128,7 +128,7 @@ public class Request {
 
 	private Authentication _authentication;
 	private Object _body;
-	private AsyncTaskCallback _callback;
+	private Callback _callback;
 	private int _connectionTimeout;
 	private Map<String, String> _headers = new HashMap<String, String>();
 	private Method _method;

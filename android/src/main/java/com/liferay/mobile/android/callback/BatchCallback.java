@@ -12,9 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.android.task.callback.typed;
-
-import com.liferay.mobile.android.task.callback.BaseAsyncTaskCallback;
+package com.liferay.mobile.android.callback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,13 +20,11 @@ import org.json.JSONException;
 /**
  * @author Bruno Farache
  */
-public abstract class LongAsyncTaskCallback
-		extends BaseAsyncTaskCallback<Long> {
+public abstract class BatchCallback extends BaseCallback<JSONArray> {
 
-	public void onPostExecute(JSONArray jsonArray) throws JSONException {
-		Long result = jsonArray.getLong(0);
-
-		onSuccess(result);
+	@Override
+	public JSONArray inBackground(JSONArray jsonArray) throws JSONException {
+		return jsonArray;
 	}
 
 }

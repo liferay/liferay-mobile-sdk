@@ -12,20 +12,30 @@
  * details.
  */
 
-package com.liferay.mobile.android.task.callback;
+package com.liferay.mobile.android.callback;
+
+import com.liferay.mobile.android.http.Response;
 
 import org.json.JSONArray;
 
 /**
  * @author Bruno Farache
  */
-public abstract class BatchAsyncTaskCallback
-		extends BaseAsyncTaskCallback<JSONArray> {
+public abstract class BaseCallback<T> implements Callback {
 
-	public void onPostExecute(JSONArray jsonArray) {
-		onSuccess(jsonArray);
+	public abstract T inBackground(JSONArray result) throws Exception;
+
+	@Override
+	public void inBackground(Response response) {
+		try {
+			String body = response.getBody();
+			onSuccess(inBackground(new JSONArray(body)));
+		}
+		catch (Exception e) {
+			onFailure(e);
+		}
 	}
 
-	public abstract void onSuccess(JSONArray results);
+	public abstract void onSuccess(T result);
 
 }

@@ -15,9 +15,9 @@
 package com.liferay.mobile.android.service;
 
 import com.liferay.mobile.android.auth.Authentication;
+import com.liferay.mobile.android.callback.Callback;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -45,29 +45,28 @@ public class SessionImpl implements Session {
 		this(server, null, null);
 	}
 
-	public SessionImpl(String server, AsyncTaskCallback callback) {
-		this(server, null, callback);
-	}
-
 	public SessionImpl(String server, Authentication authentication) {
 		this(server, authentication, null);
 	}
 
 	public SessionImpl(
-		String server, Authentication authentication,
-		AsyncTaskCallback callback) {
+		String server, Authentication authentication, Callback callback) {
 
 		this(server, authentication, DEFAULT_CONNECTION_TIMEOUT, callback);
 	}
 
 	public SessionImpl(
 		String server, Authentication authentication, int connectionTimeout,
-		AsyncTaskCallback callback) {
+		Callback callback) {
 
 		this.server = server;
 		this.authentication = authentication;
 		this.connectionTimeout = connectionTimeout;
 		this.callback = callback;
+	}
+
+	public SessionImpl(String server, Callback callback) {
+		this(server, null, callback);
 	}
 
 	@Override
@@ -76,7 +75,7 @@ public class SessionImpl implements Session {
 	}
 
 	@Override
-	public AsyncTaskCallback getCallback() {
+	public Callback getCallback() {
 		return callback;
 	}
 
@@ -106,7 +105,7 @@ public class SessionImpl implements Session {
 	}
 
 	@Override
-	public void setCallback(AsyncTaskCallback callback) {
+	public void setCallback(Callback callback) {
 		this.callback = callback;
 	}
 
@@ -127,6 +126,10 @@ public class SessionImpl implements Session {
 
 	@Override
 	public JSONArray upload(JSONObject command) throws Exception {
+		if (!hasUploadData(command)) {
+			return invoke(command);
+		}
+
 		return HttpUtil.upload(this, command);
 	}
 
@@ -152,7 +155,7 @@ public class SessionImpl implements Session {
 	}
 
 	protected Authentication authentication;
-	protected AsyncTaskCallback callback;
+	protected Callback callback;
 	protected int connectionTimeout;
 	protected Map<String, String> headers = new HashMap<String, String>();
 	protected String server;

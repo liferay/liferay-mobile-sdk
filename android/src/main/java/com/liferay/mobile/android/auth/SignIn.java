@@ -15,10 +15,10 @@
 package com.liferay.mobile.android.auth;
 
 import com.liferay.mobile.android.auth.basic.BasicAuthentication;
+import com.liferay.mobile.android.callback.typed.JSONArrayCallback;
+import com.liferay.mobile.android.callback.typed.JSONObjectCallback;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.android.task.callback.typed.JSONArrayAsyncTaskCallback;
-import com.liferay.mobile.android.task.callback.typed.JSONObjectAsyncTaskCallback;
 import com.liferay.mobile.android.v62.group.GroupService;
 import com.liferay.mobile.android.v62.user.UserService;
 
@@ -31,12 +31,12 @@ import org.json.JSONObject;
 public class SignIn {
 
 	public static void signIn(
-		final Session session, final JSONObjectAsyncTaskCallback callback,
+		final Session session, final JSONObjectCallback callback,
 		final SignInMethod method) {
 
 		GroupService groupService = new GroupService(session);
 
-		session.setCallback(new JSONArrayAsyncTaskCallback() {
+		session.setCallback(new JSONArrayCallback() {
 
 			@Override
 			public void onSuccess(JSONArray sites) {
@@ -85,9 +85,7 @@ public class SignIn {
 		}
 	}
 
-	public static void signIn(
-		Session session, JSONObjectAsyncTaskCallback callback) {
-
+	public static void signIn(Session session, JSONObjectCallback callback) {
 		try {
 			String username = getUsername(session);
 			SignInMethod method = SignInMethod.fromUsername(username);

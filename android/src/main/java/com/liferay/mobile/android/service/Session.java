@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.service;
 
 import com.liferay.mobile.android.auth.Authentication;
-import com.liferay.mobile.android.task.callback.AsyncTaskCallback;
+import com.liferay.mobile.android.callback.Callback;
 
 import java.util.Map;
 
@@ -29,7 +29,7 @@ public interface Session {
 
 	Authentication getAuthentication();
 
-	AsyncTaskCallback getCallback();
+	Callback getCallback();
 
 	int getConnectionTimeout();
 
@@ -41,7 +41,7 @@ public interface Session {
 
 	void setAuthentication(Authentication authentication);
 
-	void setCallback(AsyncTaskCallback callback);
+	void setCallback(Callback callback);
 
 	void setConnectionTimeout(int connectionTimeout);
 
