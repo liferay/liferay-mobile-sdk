@@ -14,6 +14,9 @@
 
 package com.liferay.mobile.android.http;
 
+import com.liferay.mobile.android.callback.BaseCallback;
+import com.liferay.mobile.android.callback.Callback;
+import com.liferay.mobile.android.callback.file.UploadCallback;
 import com.liferay.mobile.android.http.client.HttpClient;
 import com.liferay.mobile.android.http.client.OkHttpClientImpl;
 import com.liferay.mobile.android.http.file.FileProgressCallback;
@@ -107,10 +110,18 @@ public class HttpUtil {
 
 		String path = (String)command.keys().next();
 
+		BaseCallback callback = (BaseCallback)session.getCallback();
+		Callback uploadCallback = null;
+
+		if (callback != null) {
+			uploadCallback = new UploadCallback(
+				(BaseCallback)session.getCallback());
+		}
+
 		Request request = new Request(
 			session.getAuthentication(), Method.POST, session.getHeaders(),
 			getURL(session, path), command.getJSONObject(path),
-			session.getConnectionTimeout(), session.getCallback());
+			session.getConnectionTimeout(), uploadCallback);
 
 		Response response = client.upload(request);
 
@@ -118,7 +129,7 @@ public class HttpUtil {
 			return null;
 		}
 		else {
-			return new JSONArray("[" + response.getBody() + "]");
+			return new JSONArray(UploadCallback.wrap(response.getBody()));
 		}
 	}
 
