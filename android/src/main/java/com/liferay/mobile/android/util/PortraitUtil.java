@@ -14,8 +14,6 @@
 
 package com.liferay.mobile.android.util;
 
-import android.util.Log;
-
 import com.liferay.mobile.android.http.Headers;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.http.Response;
@@ -79,11 +77,6 @@ public class PortraitUtil {
 
 			lastModified = response.getHeaders().get(Headers.LAST_MODIFIED);
 		}
-		catch (Exception e) {
-			Log.e(_CLASS_NAME, "Couldn't download portrait", e);
-
-			throw e;
-		}
 		finally {
 			close(os);
 		}
@@ -115,7 +108,8 @@ public class PortraitUtil {
 	}
 
 	public static String getPortraitURL(
-		Session session, boolean male, long portraitId, String uuid) {
+			Session session, boolean male, long portraitId, String uuid)
+		throws Exception {
 
 		StringBuilder sb = new StringBuilder();
 
@@ -136,25 +130,22 @@ public class PortraitUtil {
 		return sb.toString();
 	}
 
-	protected static void appendToken(StringBuilder sb, String uuid) {
+	protected static void appendToken(StringBuilder sb, String uuid)
+		throws Exception {
+
 		if (Validator.isNull(uuid)) {
 			return;
 		}
 
-		try {
-			MessageDigest digest = MessageDigest.getInstance("SHA-1");
-			digest.update(uuid.getBytes());
+		MessageDigest digest = MessageDigest.getInstance("SHA-1");
+		digest.update(uuid.getBytes());
 
-			byte[] bytes = digest.digest();
-			String token = DatatypeConverter.printBase64Binary(bytes);
+		byte[] bytes = digest.digest();
+		String token = DatatypeConverter.printBase64Binary(bytes);
 
-			if (token != null) {
-				sb.append("&img_id_token=");
-				sb.append(URLEncoder.encode(token, "UTF8"));
-			}
-		}
-		catch (Exception e) {
-			Log.e(_CLASS_NAME, "Couldn't generate portrait image token", e);
+		if (token != null) {
+			sb.append("&img_id_token=");
+			sb.append(URLEncoder.encode(token, "UTF8"));
 		}
 	}
 
@@ -167,7 +158,5 @@ public class PortraitUtil {
 			}
 		}
 	}
-
-	private static final String _CLASS_NAME = PortraitUtil.class.getName();
 
 }
