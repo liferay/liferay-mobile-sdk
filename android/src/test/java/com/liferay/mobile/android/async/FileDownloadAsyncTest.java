@@ -12,21 +12,23 @@
  * details.
  */
 
-package com.liferay.mobile.android.http.file;
+package com.liferay.mobile.android.async;
 
 import com.liferay.mobile.android.BaseTest;
 import com.liferay.mobile.android.DLAppServiceTest;
 import com.liferay.mobile.android.auth.basic.BasicAuthentication;
 import com.liferay.mobile.android.auth.basic.DigestAuthentication;
+import com.liferay.mobile.android.callback.Callback;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.Status;
-import com.liferay.mobile.android.util.PortalVersion;
+import com.liferay.mobile.android.http.file.FileProgressCallback;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import java.net.URI;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import org.json.JSONObject;
 
@@ -39,9 +41,9 @@ import static org.junit.Assert.*;
 /**
  * @author Bruno Farache
  */
-public class FileDownloadTest extends BaseTest {
+public class FileDownloadAsyncTest extends BaseTest {
 
-	public FileDownloadTest() throws IOException {
+	public FileDownloadAsyncTest() throws IOException {
 		super();
 	}
 
@@ -59,8 +61,9 @@ public class FileDownloadTest extends BaseTest {
 			_file.getString(DLAppServiceTest.TITLE);
 
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		final CountDownLatch lock = new CountDownLatch(1);
 
-		FileProgressCallback callback = new FileProgressCallback() {
+		FileProgressCallback fileProgressCallback = new FileProgressCallback() {
 
 			@Override
 			public void onBytes(byte[] bytes) {
@@ -86,53 +89,25 @@ public class FileDownloadTest extends BaseTest {
 
 		};
 
-		Response response = HttpUtil.download(session, url, callback);
-		assertNotNull(response);
-		assertEquals(Status.OK, response.getStatusCode());
-		assertEquals(5, baos.size());
-	}
-
-	@Test
-	public void getDownloadURL() throws Exception {
-		DownloadUtil.encoder = new DownloadUtil.URLEncoder() {
+		session.setCallback(new Callback() {
 
 			@Override
-			public String encode(String path) throws Exception {
-				URI URI = new URI("http", "localhost", path, null);
-
-				path = URI.toASCIIString();
-				path = path.replaceAll("http://localhost", "");
-
-				return path;
+			public void inBackground(Response response) {
+				assertEquals(Status.OK, response.getStatusCode());
+				lock.countDown();
 			}
 
-		};
+			@Override
+			public void onFailure(Exception exception) {
+				fail(exception.getMessage());
+				lock.countDown();
+			}
 
-		String expectedURL = "http://localhost:8080/webdav/guest" +
-			"/document_library" +
-			"/folder%20with%20spaces" +
-			"/file%20%C3%A1%C3%A9%C3%AD%C3%B2%C3%BA%C3%B1.txt";
+		});
 
-		String downloadURL = DownloadUtil.getWebDAVFileURL(
-			session, PortalVersion.V_6_2, "/guest", "/folder with spaces",
-			"file áéíòúñ.txt");
-
-		assertEquals(expectedURL, downloadURL);
-
-		downloadURL = DownloadUtil.getWebDAVFileURL(
-			session, PortalVersion.V_6_2, "guest", "folder with spaces",
-			"/file áéíòúñ.txt");
-
-		assertEquals(expectedURL, downloadURL);
-
-		expectedURL = "http://localhost:8080/webdav/guest" +
-			"/document_library" +
-			"/file%20%C3%A1%C3%A9%C3%AD%C3%B2%C3%BA%C3%B1.txt";
-
-		downloadURL = DownloadUtil.getWebDAVFileURL(
-			session, PortalVersion.V_6_2, "guest", "", "file áéíòúñ.txt");
-
-		assertEquals(expectedURL, downloadURL);
+		HttpUtil.download(session, url, fileProgressCallback);
+		lock.await(500, TimeUnit.MILLISECONDS);
+		assertEquals(5, baos.size());
 	}
 
 	@Before

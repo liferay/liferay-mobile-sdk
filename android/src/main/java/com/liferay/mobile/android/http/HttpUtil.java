@@ -16,6 +16,7 @@ package com.liferay.mobile.android.http;
 
 import com.liferay.mobile.android.callback.BaseCallback;
 import com.liferay.mobile.android.callback.Callback;
+import com.liferay.mobile.android.callback.file.DownloadCallback;
 import com.liferay.mobile.android.callback.file.UploadCallback;
 import com.liferay.mobile.android.http.client.HttpClient;
 import com.liferay.mobile.android.http.client.OkHttpClientImpl;
@@ -24,6 +25,8 @@ import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import static com.liferay.mobile.android.http.file.FileProgressUtil.transfer;
 
 /**
  * @author Bruno Farache
@@ -43,11 +46,31 @@ public class HttpUtil {
 			Session session, String url, FileProgressCallback callback)
 		throws Exception {
 
+		Callback sessionCallback = session.getCallback();
+
+		if (sessionCallback != null) {
+			sessionCallback = new DownloadCallback(sessionCallback, callback);
+		}
+
 		Request request = new Request(
 			session.getAuthentication(), Method.GET, session.getHeaders(), url,
-			null, session.getConnectionTimeout(), session.getCallback());
+			null, session.getConnectionTimeout(), sessionCallback);
 
-		return client.download(request, callback);
+		if (sessionCallback != null) {
+			((DownloadCallback)sessionCallback).setTag(request.getTag());
+		}
+
+		Response response = send(request);
+
+		if (response == null) {
+			return null;
+		}
+		else {
+			transfer(
+				response.getBodyAsStream(), callback, request.getTag(), null);
+
+			return response;
+		}
 	}
 
 	public static String getURL(Session session, String path) {
@@ -110,18 +133,16 @@ public class HttpUtil {
 
 		String path = (String)command.keys().next();
 
-		BaseCallback callback = (BaseCallback)session.getCallback();
-		Callback uploadCallback = null;
+		Callback sessionCallback = session.getCallback();
 
-		if (callback != null) {
-			uploadCallback = new UploadCallback(
-				(BaseCallback)session.getCallback());
+		if (sessionCallback != null) {
+			sessionCallback = new UploadCallback((BaseCallback)sessionCallback);
 		}
 
 		Request request = new Request(
 			session.getAuthentication(), Method.POST, session.getHeaders(),
 			getURL(session, path), command.getJSONObject(path),
-			session.getConnectionTimeout(), uploadCallback);
+			session.getConnectionTimeout(), sessionCallback);
 
 		Response response = client.upload(request);
 

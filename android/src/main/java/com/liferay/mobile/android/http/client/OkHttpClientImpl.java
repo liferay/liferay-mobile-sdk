@@ -19,7 +19,6 @@ import com.liferay.mobile.android.callback.Callback;
 import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.http.file.FileProgressCallback;
 import com.liferay.mobile.android.http.file.InputStreamBody;
 import com.liferay.mobile.android.http.file.UploadData;
 
@@ -39,8 +38,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.json.JSONObject;
 
-import static com.liferay.mobile.android.http.file.FileProgressUtil.transfer;
-
 /**
  * @author Bruno Farache
  */
@@ -53,23 +50,6 @@ public class OkHttpClientImpl implements HttpClient {
 	@Override
 	public void cancel(Object tag) {
 		client.cancel(tag);
-	}
-
-	@Override
-	public Response download(Request request, FileProgressCallback callback)
-		throws Exception {
-
-		Response response = send(request);
-
-		if (response == null) {
-			return null;
-		}
-		else {
-			transfer(
-				response.getBodyAsStream(), callback, request.getTag(), null);
-
-			return response;
-		}
 	}
 
 	@Override

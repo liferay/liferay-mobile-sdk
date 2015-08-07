@@ -16,12 +16,12 @@ package com.liferay.mobile.android.async;
 
 import com.liferay.mobile.android.BaseTest;
 import com.liferay.mobile.android.DLAppServiceTest;
+import com.liferay.mobile.android.callback.typed.JSONObjectCallback;
 import com.liferay.mobile.android.http.file.FileProgressCallback;
 import com.liferay.mobile.android.http.file.FileUploadTest;
 import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.android.callback.typed.JSONObjectCallback;
 import com.liferay.mobile.android.v62.dlapp.DLAppService;
 
 import java.io.IOException;

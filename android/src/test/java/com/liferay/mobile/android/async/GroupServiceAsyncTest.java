@@ -16,9 +16,9 @@ package com.liferay.mobile.android.async;
 
 import com.liferay.mobile.android.BaseTest;
 import com.liferay.mobile.android.GroupServiceTest;
+import com.liferay.mobile.android.callback.typed.JSONArrayCallback;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.android.callback.typed.JSONArrayCallback;
 import com.liferay.mobile.android.v62.group.GroupService;
 
 import java.io.IOException;

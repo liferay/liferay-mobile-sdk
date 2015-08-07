@@ -16,7 +16,6 @@ package com.liferay.mobile.android.http.client;
 
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.http.file.FileProgressCallback;
 
 /**
  * @author Bruno Farache
@@ -24,9 +23,6 @@ import com.liferay.mobile.android.http.file.FileProgressCallback;
 public interface HttpClient {
 
 	void cancel(Object tag);
-
-	Response download(Request request, FileProgressCallback callback)
-		throws Exception;
 
 	Response send(Request request) throws Exception;
 
