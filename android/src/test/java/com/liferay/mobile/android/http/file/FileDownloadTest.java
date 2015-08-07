@@ -26,8 +26,6 @@ import com.liferay.mobile.android.util.PortalVersion;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import java.net.URI;
-
 import org.json.JSONObject;
 
 import org.junit.After;
@@ -94,20 +92,6 @@ public class FileDownloadTest extends BaseTest {
 
 	@Test
 	public void getDownloadURL() throws Exception {
-		DownloadUtil.encoder = new DownloadUtil.URLEncoder() {
-
-			@Override
-			public String encode(String path) throws Exception {
-				URI URI = new URI("http", "localhost", path, null);
-
-				path = URI.toASCIIString();
-				path = path.replaceAll("http://localhost", "");
-
-				return path;
-			}
-
-		};
-
 		String expectedURL = "http://localhost:8080/webdav/guest" +
 			"/document_library" +
 			"/folder%20with%20spaces" +

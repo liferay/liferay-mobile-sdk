@@ -14,8 +14,6 @@
 
 package com.liferay.mobile.android.http.file;
 
-import android.net.Uri;
-
 import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.auth.basic.DigestAuthentication;
 import com.liferay.mobile.android.http.HttpUtil;
@@ -63,14 +61,10 @@ public class DownloadUtil {
 		sb.append(prependSlash(groupFriendlyURL));
 		sb.append("/document_library");
 
-		StringBuilder webdavPath = new StringBuilder();
+		sb.append(prependSlash(folderPath));
+		sb.append(prependSlash(fileTitle));
 
-		webdavPath.append(prependSlash(folderPath));
-		webdavPath.append(prependSlash(fileTitle));
-
-		sb.append(encoder.encode(webdavPath.toString()));
-
-		return sb.toString();
+		return HttpUtil.encodeURLPath(sb.toString());
 	}
 
 	protected static String prependSlash(String string) {
@@ -79,18 +73,6 @@ public class DownloadUtil {
 		}
 
 		return string;
-	}
-
-	protected static URLEncoder encoder = new URLEncoder();
-
-	protected static class URLEncoder {
-
-		public String encode(String path) throws Exception {
-			return Uri.encode(path, ALLOWED_URI_CHARS);
-		}
-
-		private final String ALLOWED_URI_CHARS = "@#&=*+-_.,:!?()/~'%";
-
 	}
 
 }
