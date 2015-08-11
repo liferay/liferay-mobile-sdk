@@ -34,19 +34,19 @@ public class UploadCallback<T> implements Callback {
 	}
 
 	@Override
-	public void inBackground(Response response) {
-		try {
-			String body = wrap(response.getBody());
-			callback.onSuccess(callback.inBackground(new JSONArray(body)));
-		}
-		catch (Exception e) {
-			onFailure(e);
-		}
+	public void doFailure(Exception exception) {
+		callback.doFailure(exception);
 	}
 
 	@Override
-	public void onFailure(Exception exception) {
-		callback.onFailure(exception);
+	public void inBackground(Response response) {
+		try {
+			String body = wrap(response.getBody());
+			callback.doSuccess(callback.inBackground(new JSONArray(body)));
+		}
+		catch (Exception e) {
+			doFailure(e);
+		}
 	}
 
 	protected BaseCallback<T> callback;

@@ -27,22 +27,8 @@ import org.json.JSONArray;
  */
 public abstract class BaseCallback<T> implements Callback {
 
-	public abstract T inBackground(JSONArray result) throws Exception;
-
 	@Override
-	public void inBackground(Response response) {
-		try {
-			String body = response.getBody();
-			_onSuccess(inBackground(new JSONArray(body)));
-		}
-		catch (Exception e) {
-			_onFailure(e);
-		}
-	}
-
-	public abstract void onSuccess(T result);
-
-	private void _onFailure(final Exception e) {
+	public void doFailure(final Exception e) {
 		if (_handler == null) {
 			onFailure(e);
 			return;
@@ -58,7 +44,7 @@ public abstract class BaseCallback<T> implements Callback {
 		});
 	}
 
-	private void _onSuccess(final T result) {
+	public void doSuccess(final T result) {
 		if (_handler == null) {
 			onSuccess(result);
 			return;
@@ -73,6 +59,23 @@ public abstract class BaseCallback<T> implements Callback {
 
 		});
 	}
+
+	public abstract T inBackground(JSONArray result) throws Exception;
+
+	@Override
+	public void inBackground(Response response) {
+		try {
+			String body = response.getBody();
+			doSuccess(inBackground(new JSONArray(body)));
+		}
+		catch (Exception e) {
+			doFailure(e);
+		}
+	}
+
+	public abstract void onFailure(Exception exception);
+
+	public abstract void onSuccess(T result);
 
 	private static Handler _handler;
 

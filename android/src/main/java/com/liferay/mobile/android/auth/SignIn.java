@@ -71,8 +71,8 @@ public class SignIn {
 			}
 
 			@Override
-			public void onFailure(Exception e) {
-				callback.onFailure(e);
+			public void onFailure(Exception exception) {
+				callback.onFailure(exception);
 			}
 
 		});

@@ -33,6 +33,11 @@ public class DownloadCallback implements Callback {
 	}
 
 	@Override
+	public void doFailure(Exception exception) {
+		callback.doFailure(exception);
+	}
+
+	@Override
 	public void inBackground(Response response) {
 		try {
 			transfer(
@@ -41,13 +46,8 @@ public class DownloadCallback implements Callback {
 			callback.inBackground(response);
 		}
 		catch (Exception e) {
-			onFailure(e);
+			doFailure(e);
 		}
-	}
-
-	@Override
-	public void onFailure(Exception exception) {
-		callback.onFailure(exception);
 	}
 
 	public void setTag(Object tag) {

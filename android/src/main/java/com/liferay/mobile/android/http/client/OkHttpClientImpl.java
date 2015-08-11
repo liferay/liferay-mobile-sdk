@@ -182,7 +182,7 @@ public class OkHttpClientImpl implements HttpClient {
 			public void onFailure(
 				com.squareup.okhttp.Request request, IOException ioe) {
 
-				callback.onFailure(ioe);
+				callback.doFailure(ioe);
 			}
 
 			@Override

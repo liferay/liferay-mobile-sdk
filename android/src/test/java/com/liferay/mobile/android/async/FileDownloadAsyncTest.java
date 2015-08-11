@@ -98,7 +98,7 @@ public class FileDownloadAsyncTest extends BaseTest {
 			}
 
 			@Override
-			public void onFailure(Exception exception) {
+			public void doFailure(Exception exception) {
 				fail(exception.getMessage());
 				lock.countDown();
 			}

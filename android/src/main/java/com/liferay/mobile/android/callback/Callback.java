@@ -23,6 +23,6 @@ public interface Callback {
 
 	void inBackground(Response response);
 
-	void onFailure(Exception exception);
+	void doFailure(Exception exception);
 
 }
