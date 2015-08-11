@@ -14,6 +14,8 @@
 
 package com.liferay.mobile.android.http.file;
 
+import static com.liferay.mobile.android.callback.MainThreadRunner.run;
+
 /**
  * @author Igor Oliveira
  */
@@ -21,7 +23,15 @@ public abstract class FileProgressCallback {
 
 	public void increment(int bytesLength) {
 		total = total + bytesLength;
-		onProgress(total);
+
+		run(new Runnable() {
+
+			@Override
+			public void run() {
+				onProgress(total);
+			}
+
+		});
 	}
 
 	public boolean isCancelled() {
