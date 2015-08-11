@@ -14,13 +14,11 @@
 
 package com.liferay.mobile.android.callback;
 
-import android.os.Build;
-import android.os.Handler;
-import android.os.Looper;
-
 import com.liferay.mobile.android.http.Response;
 
 import org.json.JSONArray;
+
+import static com.liferay.mobile.android.callback.MainThreadRunner.run;
 
 /**
  * @author Bruno Farache
@@ -29,12 +27,7 @@ public abstract class BaseCallback<T> implements Callback {
 
 	@Override
 	public void doFailure(final Exception e) {
-		if (_handler == null) {
-			onFailure(e);
-			return;
-		}
-
-		_handler.post(new Runnable() {
+		run(new Runnable() {
 
 			@Override
 			public void run() {
@@ -45,12 +38,7 @@ public abstract class BaseCallback<T> implements Callback {
 	}
 
 	public void doSuccess(final T result) {
-		if (_handler == null) {
-			onSuccess(result);
-			return;
-		}
-
-		_handler.post(new Runnable() {
+		run(new Runnable() {
 
 			@Override
 			public void run() {
@@ -76,19 +64,5 @@ public abstract class BaseCallback<T> implements Callback {
 	public abstract void onFailure(Exception exception);
 
 	public abstract void onSuccess(T result);
-
-	private static Handler _handler;
-
-	static {
-		try {
-			Class.forName("android.os.Build");
-
-			if (Build.VERSION.SDK_INT != 0) {
-				_handler = new Handler(Looper.getMainLooper());
-			}
-		}
-		catch (ClassNotFoundException cnfe) {
-		}
-	}
 
 }
