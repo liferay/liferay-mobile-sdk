@@ -426,6 +426,8 @@
 		CC40D76F1974C76D000254E6 /* LRBlockCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRBlockCallback.m; sourceTree = "<group>"; };
 		CC4B7A2E1938C47F003611C4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		CC5196B31A7944AB0005C238 /* SignInTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInTest.m; sourceTree = "<group>"; };
+		CC6130C61B7A2E1600AF9657 /* Liferay-iOS-SDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Liferay-iOS-SDK.podspec"; path = "../Liferay-iOS-SDK.podspec"; sourceTree = "<group>"; };
+		CC6130C71B7A2E4000AF9657 /* gradle.properties */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gradle.properties; sourceTree = "<group>"; };
 		CC677D2618EC511900F3DFAB /* Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC6ECF261986D83C007F4EBB /* LRLocalizationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRLocalizationUtil.h; sourceTree = "<group>"; };
 		CC6ECF271986D83C007F4EBB /* LRLocalizationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRLocalizationUtil.m; sourceTree = "<group>"; };
@@ -1617,6 +1619,8 @@
 				CCA6594318EC4BE800957D20 /* Frameworks */,
 				CCA6594218EC4BE800957D20 /* Products */,
 				A117FE4665EB31B3A516F02B /* Pods */,
+				CC6130C71B7A2E4000AF9657 /* gradle.properties */,
+				CC6130C61B7A2E1600AF9657 /* Liferay-iOS-SDK.podspec */,
 			);
 			sourceTree = "<group>";
 		};
