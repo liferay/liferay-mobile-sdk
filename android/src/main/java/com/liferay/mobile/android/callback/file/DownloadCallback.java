@@ -16,7 +16,6 @@ package com.liferay.mobile.android.callback.file;
 
 import com.liferay.mobile.android.callback.Callback;
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.http.file.FileProgressCallback;
 
 import static com.liferay.mobile.android.http.file.FileProgressUtil.transfer;
 

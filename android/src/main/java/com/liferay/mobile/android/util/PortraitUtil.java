@@ -14,10 +14,10 @@
 
 package com.liferay.mobile.android.util;
 
+import com.liferay.mobile.android.callback.file.FileProgressCallback;
 import com.liferay.mobile.android.http.Headers;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.http.file.FileProgressCallback;
 import com.liferay.mobile.android.service.Session;
 
 import java.io.Closeable;

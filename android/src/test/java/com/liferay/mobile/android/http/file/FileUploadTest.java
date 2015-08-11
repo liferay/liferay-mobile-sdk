@@ -16,6 +16,7 @@ package com.liferay.mobile.android.http.file;
 
 import com.liferay.mobile.android.BaseTest;
 import com.liferay.mobile.android.DLAppServiceTest;
+import com.liferay.mobile.android.callback.file.FileProgressCallback;
 import com.liferay.mobile.android.v62.dlapp.DLAppService;
 
 import java.io.ByteArrayInputStream;
@@ -92,7 +93,7 @@ public class FileUploadTest extends BaseTest {
 			null);
 
 		assertEquals(fileName, _file.get(DLAppServiceTest.TITLE));
-		assertEquals(5, callback.total);
+		assertEquals(5, callback.getTotal());
 		assertEquals(5, baos.size());
 	}
 
@@ -129,7 +130,7 @@ public class FileUploadTest extends BaseTest {
 			assertTrue(ioe.getMessage().contains("Canceled"));
 		}
 
-		assertEquals(2048 * 2, callback.total);
+		assertEquals(2048 * 2, callback.getTotal());
 	}
 
 	@After
@@ -165,7 +166,7 @@ public class FileUploadTest extends BaseTest {
 			data, null);
 
 		assertEquals(FILE_NAME, _file.get(DLAppServiceTest.TITLE));
-		assertEquals(372434, callback.total);
+		assertEquals(372434, callback.getTotal());
 	}
 
 	private JSONObject _file;

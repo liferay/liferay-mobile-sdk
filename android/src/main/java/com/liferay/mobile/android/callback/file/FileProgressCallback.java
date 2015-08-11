@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.android.http.file;
+package com.liferay.mobile.android.callback.file;
 
 import static com.liferay.mobile.android.callback.MainThreadRunner.run;
 
@@ -20,6 +20,10 @@ import static com.liferay.mobile.android.callback.MainThreadRunner.run;
  * @author Igor Oliveira
  */
 public abstract class FileProgressCallback {
+
+	public int getTotal() {
+		return total;
+	}
 
 	public void increment(int bytesLength) {
 		total = total + bytesLength;

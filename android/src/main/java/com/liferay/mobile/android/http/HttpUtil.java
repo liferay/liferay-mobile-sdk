@@ -17,10 +17,10 @@ package com.liferay.mobile.android.http;
 import com.liferay.mobile.android.callback.BaseCallback;
 import com.liferay.mobile.android.callback.Callback;
 import com.liferay.mobile.android.callback.file.DownloadCallback;
+import com.liferay.mobile.android.callback.file.FileProgressCallback;
 import com.liferay.mobile.android.callback.file.UploadCallback;
 import com.liferay.mobile.android.http.client.HttpClient;
 import com.liferay.mobile.android.http.client.OkHttpClientImpl;
-import com.liferay.mobile.android.http.file.FileProgressCallback;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;

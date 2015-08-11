@@ -19,10 +19,10 @@ import com.liferay.mobile.android.DLAppServiceTest;
 import com.liferay.mobile.android.auth.basic.BasicAuthentication;
 import com.liferay.mobile.android.auth.basic.DigestAuthentication;
 import com.liferay.mobile.android.callback.Callback;
+import com.liferay.mobile.android.callback.file.FileProgressCallback;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.Status;
-import com.liferay.mobile.android.http.file.FileProgressCallback;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

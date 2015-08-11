@@ -18,6 +18,7 @@ import com.liferay.mobile.android.BaseTest;
 import com.liferay.mobile.android.DLAppServiceTest;
 import com.liferay.mobile.android.auth.basic.BasicAuthentication;
 import com.liferay.mobile.android.auth.basic.DigestAuthentication;
+import com.liferay.mobile.android.callback.file.FileProgressCallback;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.Status;

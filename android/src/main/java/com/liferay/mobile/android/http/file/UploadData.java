@@ -14,6 +14,8 @@
 
 package com.liferay.mobile.android.http.file;
 
+import com.liferay.mobile.android.callback.file.FileProgressCallback;
+
 import java.io.InputStream;
 
 /**

@@ -16,6 +16,7 @@ package com.liferay.mobile.android.http.file;
 
 import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.auth.basic.DigestAuthentication;
+import com.liferay.mobile.android.callback.file.FileProgressCallback;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.util.PortalVersion;

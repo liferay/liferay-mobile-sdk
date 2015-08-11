@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android.http.file;
 
+import com.liferay.mobile.android.callback.file.FileProgressCallback;
 import com.liferay.mobile.android.http.HttpUtil;
 
 import com.squareup.okhttp.internal.Util;
