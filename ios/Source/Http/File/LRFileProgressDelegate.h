@@ -18,7 +18,7 @@
 @protocol LRFileProgressDelegate <NSObject>
 
 - (void)onFailure:(NSError *)error;
-- (void)onProgress:(NSData *)data total:(long long)total;
+- (void)onProgress:(NSData *)data totalBytes:(long long)totalBytes;
 
 @optional
 

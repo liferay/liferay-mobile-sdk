@@ -45,9 +45,9 @@ NSString *const TITLE = @"title";
 	[self.monitor signal];
 }
 
-- (void)onProgress:(NSData *)data total:(long long)total {
+- (void)onProgress:(NSData *)data totalBytes:(long long)totalBytes {
 	XCTAssertTrue([NSThread isMainThread]);
-	[self setProgress:total];
+	[self setProgress:totalBytes];
 }
 
 - (void)onSuccess:(NSDictionary *)entry {

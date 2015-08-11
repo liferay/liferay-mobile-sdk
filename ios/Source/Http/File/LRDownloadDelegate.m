@@ -84,7 +84,7 @@
 		[self.outputStream write:&buffer[0] maxLength:length];
 	}
 
-	[self.progressDelegate onProgress:data total:self.totalBytes];
+	[self.progressDelegate onProgress:data totalBytes:self.totalBytes];
 }
 
 - (void)connection:(NSURLConnection *)connection

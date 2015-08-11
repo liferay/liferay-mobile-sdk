@@ -128,7 +128,7 @@
 
 	if (data.progressDelegate) {
 		[operation setUploadProgressBlock:
-			^(NSUInteger bytes, long long totalBytesSent, long long total) {
+			^(NSUInteger bytes, long long totalBytes, long long fileSize) {
 				id<LRFileProgressDelegate> progressDelegate =
 					data.progressDelegate;
 
@@ -144,7 +144,7 @@
 					length:sizeof(bytes)];
 
 				[data.progressDelegate onProgress:uploadedData
-					total:totalBytesSent];
+					totalBytes:totalBytes];
 			}
 		];
 	}
