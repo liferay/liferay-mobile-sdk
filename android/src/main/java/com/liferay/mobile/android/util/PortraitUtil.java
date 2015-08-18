@@ -14,6 +14,8 @@
 
 package com.liferay.mobile.android.util;
 
+import android.util.Base64;
+
 import com.liferay.mobile.android.callback.file.FileProgressCallback;
 import com.liferay.mobile.android.http.Headers;
 import com.liferay.mobile.android.http.HttpUtil;
@@ -141,7 +143,17 @@ public class PortraitUtil {
 		digest.update(uuid.getBytes());
 
 		byte[] bytes = digest.digest();
-		String token = DatatypeConverter.printBase64Binary(bytes);
+
+		String token = null;
+
+		try {
+			token = Base64.encodeToString(bytes, Base64.NO_WRAP);
+		}
+		catch (RuntimeException re) {
+			if ("Stub!".equals(re.getMessage())) {
+				token = DatatypeConverter.printBase64Binary(bytes);
+			}
+		}
 
 		if (token != null) {
 			sb.append("&img_id_token=");
