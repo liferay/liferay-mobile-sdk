@@ -15,7 +15,6 @@
 package com.liferay.mobile.android.callback;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 
 /**
  * @author Bruno Farache
@@ -23,7 +22,7 @@ import org.json.JSONException;
 public abstract class BatchCallback extends BaseCallback<JSONArray> {
 
 	@Override
-	public JSONArray inBackground(JSONArray jsonArray) throws JSONException {
+	public JSONArray inBackground(JSONArray jsonArray) throws Exception {
 		return jsonArray;
 	}
 

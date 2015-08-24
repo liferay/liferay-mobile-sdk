@@ -17,7 +17,6 @@ package com.liferay.mobile.android.callback.typed;
 import com.liferay.mobile.android.callback.BaseCallback;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 
 /**
  * @author Bruno Farache
@@ -25,7 +24,7 @@ import org.json.JSONException;
 public abstract class BooleanCallback extends BaseCallback<Boolean> {
 
 	@Override
-	public Boolean inBackground(JSONArray jsonArray) throws JSONException {
+	public Boolean inBackground(JSONArray jsonArray) throws Exception {
 		return jsonArray.getBoolean(0);
 	}
 

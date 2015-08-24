@@ -17,7 +17,6 @@ package com.liferay.mobile.android.callback.typed;
 import com.liferay.mobile.android.callback.BaseCallback;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -26,7 +25,7 @@ import org.json.JSONObject;
 public abstract class JSONObjectCallback extends BaseCallback<JSONObject> {
 
 	@Override
-	public JSONObject inBackground(JSONArray jsonArray) throws JSONException {
+	public JSONObject inBackground(JSONArray jsonArray) throws Exception {
 		return jsonArray.getJSONObject(0);
 	}
 
