@@ -32,6 +32,10 @@ public abstract class MainThreadRunner {
 		_handler.post(runnable);
 	}
 
+	public static void setHandler(Handler handler) {
+		_handler = handler;
+	}
+
 	private static Handler _handler;
 
 	static {
