@@ -14,6 +14,7 @@
 
 #import "LRDownloadDelegate.h"
 
+#import "LRBasicAuthentication.h"
 #import "LRError.h"
 #import "LRResponseParser.h"
 
@@ -22,7 +23,7 @@
  */
 @implementation LRDownloadDelegate
 
-- (id)initWithAuth:(LRBasicAuthentication *)auth
+- (id)initWithAuth:(id<LRAuthentication>)auth
 		outputStream:(NSOutputStream *)outputStream
 		progressDelegate:(id<LRFileProgressDelegate>)progressDelegate {
 
@@ -50,16 +51,39 @@
 
 	if ([c previousFailureCount] > 1) {
 		NSError *error = [LRError errorWithCode:LRErrorCodeUnauthorized
-			description:@"Authentication failed during download."];
+			description:@"Authentication failed during download"];
 
 		[self.progressDelegate onFailure:error];
 	}
 	else {
-		NSString *user = self.auth.username;
-		NSString *password = self.auth.password;
+		if (!self.auth) {
+			NSError *error = [LRError errorWithCode:LRErrorCodeUnauthorized
+				description:@"Session authentication can't be nil"];
 
-		NSURLCredential *credential = [NSURLCredential credentialWithUser:user
-			password:password persistence:NSURLCredentialPersistenceNone];
+			[self.progressDelegate onFailure:error];
+
+			return;
+		}
+
+		NSString *authClass = NSStringFromClass([self.auth class]);
+		NSString *basicAuthClass = NSStringFromClass(
+			[LRBasicAuthentication class]);
+
+		LRBasicAuthentication *basic = (LRBasicAuthentication *)self.auth;
+
+		if (![authClass isEqualToString:basicAuthClass]) {
+			NSError *error = [LRError errorWithCode:LRErrorCodeUnauthorized
+				description:@"Can't download if authentication implementation" \
+					" is not BasicAuthentication"];
+
+			[self.progressDelegate onFailure:error];
+
+			return;
+		}
+
+		NSURLCredential *credential = [NSURLCredential
+			credentialWithUser:basic.username password:basic.password
+			persistence:NSURLCredentialPersistenceNone];
 
 		[c.sender useCredential:credential forAuthenticationChallenge:c];
 	}

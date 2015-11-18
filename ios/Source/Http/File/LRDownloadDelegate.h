@@ -12,7 +12,7 @@
  * details.
  */
 
-#import "LRBasicAuthentication.h"
+#import "LRAuthentication.h"
 #import "LRFileProgressDelegate.h"
 
 /**
@@ -20,12 +20,12 @@
  */
 @interface LRDownloadDelegate : NSObject <NSURLConnectionDelegate>
 
-@property (nonatomic, strong) LRBasicAuthentication *auth;
+@property (nonatomic, strong) id<LRAuthentication> auth;
 @property (nonatomic, strong) NSOutputStream *outputStream;
 @property (nonatomic) long long totalBytes;
 @property (nonatomic, strong) id<LRFileProgressDelegate> progressDelegate;
 
-- (id)initWithAuth:(LRBasicAuthentication *)auth
+- (id)initWithAuth:(id<LRAuthentication>)auth
 	outputStream:(NSOutputStream *)outputStream
 	progressDelegate:(id<LRFileProgressDelegate>)progressDelegate;
 

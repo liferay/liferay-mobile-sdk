@@ -27,7 +27,7 @@
 		URL:(NSString *)URL outputStream:(NSOutputStream *)outputStream
 		progressDelegate:(id<LRFileProgressDelegate>)progressDelegate {
 
-	LRBasicAuthentication *auth = [LRDownloadUtil _getAuthentication:session];
+	id<LRAuthentication> auth = session.authentication;
 
 	LRDownloadDelegate *delegate = [[LRDownloadDelegate alloc]
 		initWithAuth:auth outputStream:outputStream
@@ -82,24 +82,6 @@
 		stringWithFormat:@"%@%@/webdav%@/document_library%@",
 		session.server, path, [LRDownloadUtil _prependSlash:groupFriendlyURL],
 		webdavPathEscaped];
-}
-
-+ (LRBasicAuthentication *)_getAuthentication:(LRSession *)session {
-	id<LRAuthentication> authentication = session.authentication;
-
-	if (!authentication) {
-		[NSException raise:@"" format:@"Session authentication can't be null"];
-	}
-
-	NSString *authClass = NSStringFromClass([authentication class]);
-	NSString *basicAuthClass = NSStringFromClass([LRBasicAuthentication class]);
-
-	if (![authClass isEqualToString:basicAuthClass]) {
-		[NSException raise:@"" format:@"Can't download if authentication " \
-			"implementation is not BasicAuthentication"];
-	}
-
-	return (LRBasicAuthentication *)authentication;
 }
 
 + (NSString *)_prependSlash:(NSString *)string {
