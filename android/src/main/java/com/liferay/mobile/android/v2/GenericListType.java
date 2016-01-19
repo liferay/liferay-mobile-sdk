@@ -16,30 +16,32 @@ package com.liferay.mobile.android.v2;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.List;
 
 /**
  * @author Bruno Farache
  */
-public class GenericOf<X, Y> implements ParameterizedType {
+public class GenericListType<T> implements ParameterizedType {
 
-	public GenericOf(Class<X> container, Class<Y> wrapped) {
-		this.container = container;
-		this.wrapped = wrapped;
+	public GenericListType(Class<T> clazz) {
+		this.clazz = clazz;
 	}
 
+	@Override
 	public Type[] getActualTypeArguments() {
-		return new Type[]{wrapped};
+		return new Type[]{ clazz };
 	}
 
+	@Override
 	public Type getOwnerType() {
 		return null;
 	}
 
+	@Override
 	public Type getRawType() {
-		return container;
+		return List.class;
 	}
 
-	private final Class<X> container;
-	private final Class<Y> wrapped;
+	protected final Class<T> clazz;
 
 }

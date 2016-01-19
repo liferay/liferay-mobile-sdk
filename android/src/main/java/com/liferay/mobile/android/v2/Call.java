@@ -43,7 +43,7 @@ public class Call {
 		Gson gson = new Gson();
 		String body = response.getBody();
 
-		return gson.fromJson(body, new GenericOf<List, T>(List.class, clazz));
+		return gson.fromJson(body, new GenericListType<T>(clazz));
 	}
 
 	protected String getURL(Session session, String path) {
