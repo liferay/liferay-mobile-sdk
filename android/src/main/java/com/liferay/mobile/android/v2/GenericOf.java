@@ -14,44 +14,32 @@
 
 package com.liferay.mobile.android.v2;
 
-import com.liferay.mobile.android.http.Response;
-
-import static com.liferay.mobile.android.callback.MainThreadRunner.run;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 /**
  * @author Bruno Farache
  */
-public abstract class Callback<T> {
+public class GenericOf<X, Y> implements ParameterizedType {
 
-	public void inBackground(Response response) {
+	public GenericOf(Class<X> container, Class<Y> wrapped) {
+		this.container = container;
+		this.wrapped = wrapped;
 	}
 
-	public void onFailure(Exception exception) {
+	public Type[] getActualTypeArguments() {
+		return new Type[]{wrapped};
 	}
 
-	public void onSuccess(T result) {
+	public Type getOwnerType() {
+		return null;
 	}
 
-	protected void doFailure(final Exception e) {
-		run(new Runnable() {
-
-			@Override
-			public void run() {
-				onFailure(e);
-			}
-
-		});
+	public Type getRawType() {
+		return container;
 	}
 
-	protected void doSuccess(final T result) {
-		run(new Runnable() {
-
-			@Override
-			public void run() {
-				onSuccess(result);
-			}
-
-		});
-	}
+	private final Class<X> container;
+	private final Class<Y> wrapped;
 
 }

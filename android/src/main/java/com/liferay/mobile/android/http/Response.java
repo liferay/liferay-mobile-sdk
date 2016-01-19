@@ -14,16 +14,12 @@
 
 package com.liferay.mobile.android.http;
 
-import com.google.gson.Gson;
-
 import com.liferay.mobile.android.exception.AuthenticationException;
 import com.liferay.mobile.android.exception.RedirectException;
 import com.liferay.mobile.android.exception.ServerException;
 import com.liferay.mobile.android.util.Validator;
 
 import java.io.InputStream;
-
-import java.lang.reflect.Type;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -53,13 +49,6 @@ public class Response {
 		checkPortalException(body);
 
 		return body;
-	}
-
-	public <T> T getBodyAsObject(Type type) throws Exception {
-		Gson gson = new Gson();
-		String body = getBody();
-
-		return gson.fromJson(body, type);
 	}
 
 	public InputStream getBodyAsStream() throws Exception {

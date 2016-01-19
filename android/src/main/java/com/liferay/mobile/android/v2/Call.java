@@ -14,45 +14,36 @@
 
 package com.liferay.mobile.android.v2;
 
+import com.google.gson.Gson;
+
 import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.Session;
 
-import java.lang.reflect.Type;
+import java.util.List;
 
 import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
  */
-public class Call<T> {
+public class Call {
 
-	public Call(JSONObject command, Type type) {
+	public Call(JSONObject command) {
 		this.command = command;
-		this.type = type;
 	}
 
-	public void async(Callback<T> callback) {
-		callback.setCall(this);
+	public void async(Callback callback) {
 	}
 
-	public T execute(Session session) throws Exception {
+	public <T> List<T> list(Session session, Class<T> clazz) throws Exception {
 		Response response = post(session, command);
-		return response.getBodyAsObject(type);
-	}
 
-	protected Response post(Session session, JSONObject command)
-		throws Exception {
+		Gson gson = new Gson();
+		String body = response.getBody();
 
-		String url = getURL(session, "/invoke");
-
-		Request request = new Request(
-			session.getAuthentication(), Method.POST, session.getHeaders(), url,
-			command.toString(), session.getConnectionTimeout(),
-			session.getCallback());
-
-		return client.send(request);
+		return gson.fromJson(body, new GenericOf<List, T>(List.class, clazz));
 	}
 
 	protected String getURL(Session session, String path) {
@@ -71,8 +62,20 @@ public class Call<T> {
 		return sb.toString();
 	}
 
-	protected JSONObject command;
-	protected Type type;
+	protected Response post(Session session, JSONObject command)
+		throws Exception {
+
+		String url = getURL(session, "/invoke");
+
+		Request request = new Request(
+			session.getAuthentication(), Method.POST, session.getHeaders(), url,
+			command.toString(), session.getConnectionTimeout(),
+			session.getCallback());
+
+		return client.send(request);
+	}
+
 	protected OkHttpClientImpl client = new OkHttpClientImpl();
+	protected JSONObject command;
 
 }

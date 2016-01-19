@@ -40,7 +40,7 @@ public class GroupServiceTest extends BaseTest {
 	@Test
 	public void async() throws Exception {
 		GroupService service = new GroupService(session);
-		Call<List<Site>> call = service.getUserSites();
+		Call call = service.getUserSites();
 
 		final CountDownLatch lock = new CountDownLatch(1);
 
@@ -64,10 +64,10 @@ public class GroupServiceTest extends BaseTest {
 	}
 
 	@Test
-	public void execute() throws Exception {
+	public void list() throws Exception {
 		GroupService service = new GroupService(session);
-		Call<List<Site>> call = service.getUserSites();
-		assertUserSites(call.execute(session));
+		Call call = service.getUserSites();
+		assertUserSites(call.list(session, Site.class));
 	}
 
 	@Test

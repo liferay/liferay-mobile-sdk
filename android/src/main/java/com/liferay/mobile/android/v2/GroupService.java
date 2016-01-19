@@ -14,12 +14,8 @@
 
 package com.liferay.mobile.android.v2;
 
-import com.google.gson.reflect.TypeToken;
-
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.Session;
-
-import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,7 +29,7 @@ public class GroupService extends BaseService {
 		super(session);
 	}
 
-	public <T> Call<List<T>> getUserSites() {
+	public Call getUserSites() {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -44,8 +40,7 @@ public class GroupService extends BaseService {
 		catch (JSONException _je) {
 		}
 
-		return new Call<List<T>>(
-			_command, new TypeToken<List<T>>(){}.getType());
+		return new Call(_command);
 	}
 
 }
