@@ -14,6 +14,11 @@
 
 package com.liferay.mobile.android.v2;
 
+import com.liferay.mobile.android.http.Method;
+import com.liferay.mobile.android.http.Request;
+import com.liferay.mobile.android.http.Response;
+import com.liferay.mobile.android.service.Session;
+
 import java.lang.reflect.Type;
 
 import org.json.JSONObject;
@@ -32,11 +37,42 @@ public class Call<T> {
 		callback.setCall(this);
 	}
 
-	public T execute() throws Exception {
-		return null;
+	public T execute(Session session) throws Exception {
+		Response response = post(session, command);
+		return response.getBodyAsObject(type);
+	}
+
+	protected Response post(Session session, JSONObject command)
+		throws Exception {
+
+		String url = getURL(session, "/invoke");
+
+		Request request = new Request(
+			session.getAuthentication(), Method.POST, session.getHeaders(), url,
+			command.toString(), session.getConnectionTimeout(),
+			session.getCallback());
+
+		return client.send(request);
+	}
+
+	protected String getURL(Session session, String path) {
+		StringBuilder sb = new StringBuilder();
+		String server = session.getServer();
+
+		sb.append(server);
+
+		if (!server.endsWith("/")) {
+			sb.append("/");
+		}
+
+		sb.append("api/jsonws");
+		sb.append(path);
+
+		return sb.toString();
 	}
 
 	protected JSONObject command;
 	protected Type type;
+	protected OkHttpClientImpl client = new OkHttpClientImpl();
 
 }
