@@ -44,7 +44,7 @@ public class GroupServiceTest extends BaseTest {
 
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(new Callback<List<Site>>() {
+		call.async(session, new Callback<Site>(Site.class) {
 
 			@Override
 			public void onSuccess(List<Site> sites) {

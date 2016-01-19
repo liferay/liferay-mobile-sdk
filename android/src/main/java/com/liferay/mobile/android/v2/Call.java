@@ -34,16 +34,26 @@ public class Call {
 		this.command = command;
 	}
 
-	public void async(Callback callback) {
+	public void async(Session session, Callback callback) {
+		Request request = getRequest(session, command);
+		client.async(request, callback);
 	}
 
 	public <T> List<T> list(Session session, Class<T> clazz) throws Exception {
-		Response response = post(session, command);
-
 		Gson gson = new Gson();
+		Response response = post(session, command);
 		String body = response.getBody();
 
 		return gson.fromJson(body, new GenericListType<T>(clazz));
+	}
+
+	protected Request getRequest(Session session, JSONObject command) {
+		String url = getURL(session, "/invoke");
+
+		return new Request(
+			session.getAuthentication(), Method.POST, session.getHeaders(), url,
+			command.toString(), session.getConnectionTimeout(),
+			session.getCallback());
 	}
 
 	protected String getURL(Session session, String path) {
@@ -65,14 +75,8 @@ public class Call {
 	protected Response post(Session session, JSONObject command)
 		throws Exception {
 
-		String url = getURL(session, "/invoke");
-
-		Request request = new Request(
-			session.getAuthentication(), Method.POST, session.getHeaders(), url,
-			command.toString(), session.getConnectionTimeout(),
-			session.getCallback());
-
-		return client.send(request);
+		Request request = getRequest(session, command);
+		return client.sync(request);
 	}
 
 	protected OkHttpClientImpl client = new OkHttpClientImpl();

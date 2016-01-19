@@ -15,11 +15,9 @@
 package com.liferay.mobile.android.v2;
 
 import com.liferay.mobile.android.auth.Authentication;
-import com.liferay.mobile.android.callback.Callback;
 import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.http.client.HttpClient;
 import com.liferay.mobile.android.http.file.InputStreamBody;
 import com.liferay.mobile.android.http.file.UploadData;
 
@@ -43,24 +41,84 @@ import org.json.JSONObject;
 /**
  * @author Bruno Farache
  */
-public class OkHttpClientImpl implements HttpClient {
+public class OkHttpClientImpl {
 
 	public OkHttpClientImpl() {
 		client = new OkHttpClient();
 	}
 
-	@Override
 	public void cancel(Object tag) {
 		client.cancel(tag);
 	}
 
-	@Override
 	public String encodeURL(String url) {
 		return HttpUrl.parse(url).toString();
 	}
 
-	@Override
-	public Response send(Request request) throws Exception {
+	public Response sync(Request request) throws Exception {
+		Call call = build(request);
+		return new Response(call.execute());
+	}
+
+	protected void addHeaders(Builder builder, Request request) {
+		Map<String, String> headers = request.getHeaders();
+
+		if (headers != null) {
+			for (Map.Entry<String, String> header : headers.entrySet()) {
+				builder.addHeader(header.getKey(), header.getValue());
+			}
+		}
+	}
+
+	protected void async(Request request, final Callback callback) {
+		Call call = null;
+
+		try {
+			call = build(request);
+		}
+		catch (Exception e) {
+			callback.doFailure(e);
+		}
+
+		if (call == null) {
+			return;
+		}
+
+		call.enqueue(new com.squareup.okhttp.Callback() {
+
+			@Override
+			public void onFailure(
+				com.squareup.okhttp.Request request, IOException ioe) {
+
+				callback.doFailure(ioe);
+			}
+
+			@Override
+			public void onResponse(com.squareup.okhttp.Response response)
+				throws IOException {
+
+				callback.inBackground(new Response(response));
+			}
+
+		});
+	}
+
+	protected void authenticate(OkHttpClient client, Request request)
+		throws Exception {
+
+		Authentication authentication = request.getAuthentication();
+
+		if (authentication != null) {
+			if (authentication instanceof Authenticator) {
+				client.setAuthenticator((Authenticator)authentication);
+			}
+			else {
+				authentication.authenticate(request);
+			}
+		}
+	}
+
+	protected Call build(Request request) throws Exception {
 		Builder builder = new Builder();
 		Method method = request.getMethod();
 
@@ -78,41 +136,24 @@ public class OkHttpClientImpl implements HttpClient {
 			builder.head();
 		}
 
-		return send(builder, request);
+		builder = builder.url(request.getURL());
+		builder.tag(request.getTag());
+
+		OkHttpClient client = getClient(request.getConnectionTimeout());
+
+		authenticate(client, request);
+		addHeaders(builder, request);
+
+		return client.newCall(builder.build());
 	}
 
-	@Override
-	public Response upload(Request request) throws Exception {
-		Builder builder = new Builder();
-		builder.post(getUploadBody(request));
-
-		return send(builder, request);
-	}
-
-	protected void addHeaders(Builder builder, Request request) {
-		Map<String, String> headers = request.getHeaders();
-
-		if (headers != null) {
-			for (Map.Entry<String, String> header : headers.entrySet()) {
-				builder.addHeader(header.getKey(), header.getValue());
-			}
-		}
-	}
-
-	protected void authenticate(OkHttpClient client, Request request)
-		throws Exception {
-
-		Authentication authentication = request.getAuthentication();
-
-		if (authentication != null) {
-			if (authentication instanceof Authenticator) {
-				client.setAuthenticator((Authenticator)authentication);
-			}
-			else {
-				authentication.authenticate(request);
-			}
-		}
-	}
+//	@Override
+//	public Response upload(Request request) throws Exception {
+//		Builder builder = new Builder();
+//		builder.post(getUploadBody(request));
+//
+//		return send(builder, request);
+//	}
 
 	protected OkHttpClient getClient(int connectionTimeout) {
 		OkHttpClient clone = client.clone();
@@ -150,50 +191,6 @@ public class OkHttpClientImpl implements HttpClient {
 		}
 
 		return builder.build();
-	}
-
-	protected Response send(Builder builder, final Request request)
-		throws Exception {
-
-		builder = builder.url(request.getURL());
-		builder.tag(request.getTag());
-
-		OkHttpClient client = getClient(request.getConnectionTimeout());
-
-		authenticate(client, request);
-		addHeaders(builder, request);
-
-		Call call = client.newCall(builder.build());
-
-		final Callback callback = request.getCallback();
-
-		if (callback == null) {
-			return new Response(call.execute());
-		}
-		else {
-			sendAsync(call, callback);
-			return null;
-		}
-	}
-
-	protected void sendAsync(Call call, final Callback callback) {
-		call.enqueue(new com.squareup.okhttp.Callback() {
-
-			@Override
-			public void onFailure(
-				com.squareup.okhttp.Request request, IOException ioe) {
-
-				callback.doFailure(ioe);
-			}
-
-			@Override
-			public void onResponse(com.squareup.okhttp.Response response)
-				throws IOException {
-
-				callback.inBackground(new Response(response));
-			}
-
-		});
 	}
 
 	protected OkHttpClient client;
