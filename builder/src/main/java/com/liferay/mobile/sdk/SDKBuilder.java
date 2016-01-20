@@ -95,12 +95,15 @@ public class SDKBuilder {
 
 		sb.append(url);
 
+		sb.append("/api/jsonws?");
+
 		if (Validator.isNotNull(context)) {
-			sb.append("/");
+			sb.append("contextName=");
 			sb.append(context);
+			sb.append("&");
 		}
 
-		sb.append("/api/jsonws?discover");
+		sb.append("discover");
 
 		if (Validator.isNull(filter)) {
 			sb.append("=/*");
