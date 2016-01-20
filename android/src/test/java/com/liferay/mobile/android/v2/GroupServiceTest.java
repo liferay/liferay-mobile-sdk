@@ -41,7 +41,7 @@ public class GroupServiceTest extends BaseTest {
 	}
 
 	@Test
-	public void async() throws Exception {
+	public void async() throws InterruptedException {
 		GroupService service = new GroupService(session);
 		Call call = service.getUserSites();
 

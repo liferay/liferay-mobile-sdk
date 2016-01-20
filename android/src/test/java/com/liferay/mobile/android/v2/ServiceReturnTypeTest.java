@@ -45,7 +45,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 	}
 
 	@Test
-	public void getAutoDeployDirectoryAsync() throws Exception {
+	public void getAutoDeployDirectoryAsync() throws InterruptedException {
 		PortalService service = new PortalService(session);
 		Call<String> call = service.getAutoDeployDirectory();
 		final CountDownLatch lock = new CountDownLatch(1);
@@ -79,7 +79,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 	}
 
 	@Test
-	public void getCompanyUsersCountAsync() throws Exception {
+	public void getCompanyUsersCountAsync() throws InterruptedException {
 		UserService service = new UserService(session);
 		Call<Integer> call = service.getCompanyUsersCount(props.getCompanyId());
 		final CountDownLatch lock = new CountDownLatch(1);
@@ -119,7 +119,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 	}
 
 	@Test
-	public void getUserIdByEmailAddressAsync() throws Exception {
+	public void getUserIdByEmailAddressAsync() throws InterruptedException {
 		long companyId = props.getCompanyId();
 		final long groupId = props.getGroupId();
 		String login = props.getLogin();
@@ -133,27 +133,22 @@ public class ServiceReturnTypeTest extends BaseTest {
 			public void onSuccess(Long userId) {
 				assertTrue(userId > 0);
 
-				try {
-					Call<Boolean> call = service.hasGroupUser(groupId, userId);
-					call.async(session, new Callback<Boolean>() {
+				Call<Boolean> call = service.hasGroupUser(groupId, userId);
+				call.async(session, new Callback<Boolean>() {
 
-						@Override
-						public void onSuccess(Boolean hasGroupUser) {
-							assertTrue(hasGroupUser);
-							lock.countDown();
-						}
+					@Override
+					public void onSuccess(Boolean hasGroupUser) {
+						assertTrue(hasGroupUser);
+						lock.countDown();
+					}
 
-						@Override
-						public void onFailure(Exception exception) {
-							fail(exception.getMessage());
-							lock.countDown();
-						}
+					@Override
+					public void onFailure(Exception exception) {
+						fail(exception.getMessage());
+						lock.countDown();
+					}
 
-					});
-				}
-				catch (Exception e) {
-					onFailure(e);
-				}
+				});
 			}
 
 			@Override

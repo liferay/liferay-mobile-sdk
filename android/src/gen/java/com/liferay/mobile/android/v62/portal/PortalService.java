@@ -33,7 +33,7 @@ public class PortalService extends BaseService {
 		super(session);
 	}
 
-	public Call<String> getAutoDeployDirectory() throws Exception {
+	public Call<String> getAutoDeployDirectory() {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -42,7 +42,6 @@ public class PortalService extends BaseService {
 			_command.put("/portal/get-auto-deploy-directory", _params);
 		}
 		catch (JSONException _je) {
-			throw new Exception(_je);
 		}
 
 		return new Call<String>(_command, String.class);
