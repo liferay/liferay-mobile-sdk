@@ -66,19 +66,19 @@ public class AndroidBuilder extends BaseBuilder {
 			return actions;
 		}
 
-		actions = new ArrayList<Action>(actions);
+		List<Action> filteredActions = new ArrayList<Action>();
 
+		boolean addRecord = true;
 		for (Action action : actions) {
 			String path = action.getPath();
 
-			if (path.equals("/ddlrecord/add-record")) {
-				actions.remove(action);
-
-				break;
+			if (!path.equals("/ddl.ddlrecord/add-record") || addRecord) {
+				filteredActions.add(action);
+				addRecord = false;
 			}
 		}
 
-		return actions;
+		return filteredActions;
 	}
 
 	protected String getServiceFilePath(
