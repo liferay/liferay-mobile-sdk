@@ -22,6 +22,7 @@ import com.liferay.mobile.android.http.Response;
 import java.lang.reflect.Type;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import static com.liferay.mobile.android.callback.MainThreadRunner.run;
 
@@ -50,6 +51,9 @@ public abstract class Callback<T> {
 
 		builder.registerTypeAdapter(
 			JSONArray.class, new JSONArrayDeserializer());
+
+		builder.registerTypeAdapter(
+			JSONObject.class, new JSONObjectDeserializer());
 
 		return builder.create();
 	}

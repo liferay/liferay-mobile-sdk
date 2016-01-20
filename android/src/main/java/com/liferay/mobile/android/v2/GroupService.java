@@ -30,6 +30,22 @@ public class GroupService extends BaseService {
 		super(session);
 	}
 
+	public Call<JSONObject> getGroup(long groupId) {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+
+			_command.put("/group/get-group", _params);
+		}
+		catch (JSONException _je) {
+		}
+
+		return new Call<JSONObject>(_command, JSONObject.class);
+	}
+
 	public Call<JSONArray> getUserSites() {
 		JSONObject _command = new JSONObject();
 

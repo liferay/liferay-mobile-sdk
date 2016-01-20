@@ -38,6 +38,41 @@ public class GroupServiceTest extends BaseTest {
 	}
 
 	@Test
+	public void getGroup() throws Exception {
+		GroupService service = new GroupService(session);
+		long groupId = props.getGroupId();
+		Call<JSONObject> call = service.getGroup(groupId);
+		JSONObject group = call.execute(session);
+		assertEquals(groupId, group.getLong("groupId"));
+	}
+
+	@Test
+	public void getGroupAsync() throws Exception {
+		GroupService service = new GroupService(session);
+		final long groupId = props.getGroupId();
+		Call<JSONObject> call = service.getGroup(groupId);
+		final CountDownLatch lock = new CountDownLatch(1);
+
+		call.async(session, new Callback<JSONObject>() {
+
+			@Override
+			public void onSuccess(JSONObject group) {
+				assertEquals(groupId, group.optLong("groupId"));
+				lock.countDown();
+			}
+
+			@Override
+			public void onFailure(Exception exception) {
+				fail(exception.getMessage());
+				lock.countDown();
+			}
+
+		});
+
+		lock.await(500, TimeUnit.MILLISECONDS);
+	}
+
+	@Test
 	public void getUserSites() throws Exception {
 		GroupService service = new GroupService(session);
 		Call<JSONArray> call = service.getUserSites();
@@ -48,7 +83,6 @@ public class GroupServiceTest extends BaseTest {
 	public void getUserSitesAsync() throws InterruptedException {
 		GroupService service = new GroupService(session);
 		Call<JSONArray> call = service.getUserSites();
-
 		final CountDownLatch lock = new CountDownLatch(1);
 
 		call.async(session, new Callback<JSONArray>() {
