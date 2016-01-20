@@ -14,15 +14,12 @@
 
 package com.liferay.mobile.android.v2;
 
-import com.google.gson.Gson;
-
 import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.Session;
 
 import java.lang.reflect.Type;
-import java.util.List;
 
 import org.json.JSONObject;
 
@@ -45,14 +42,7 @@ public class Call<T> {
 	public T execute(Session session) throws Exception {
 		Response response = post(session, command);
 		String body = response.getBody();
-		return new Gson().fromJson(body, type);
-	}
-
-	public <T> List<T> list(Session session, Class<T> clazz) throws Exception {
-		Response response = post(session, command);
-		String body = response.getBody();
-
-		return new Gson().fromJson(body, new GenericListType<T>(clazz));
+		return Callback.getGson().fromJson(body, type);
 	}
 
 	protected Request getRequest(Session session, JSONObject command) {
@@ -87,8 +77,8 @@ public class Call<T> {
 		return client.sync(request);
 	}
 
-	protected Type type;
 	protected OkHttpClientImpl client = new OkHttpClientImpl();
 	protected JSONObject command;
+	protected Type type;
 
 }

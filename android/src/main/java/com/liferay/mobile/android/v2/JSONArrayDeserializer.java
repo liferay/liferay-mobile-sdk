@@ -14,34 +14,33 @@
 
 package com.liferay.mobile.android.v2;
 
-import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.Session;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+
+import java.lang.reflect.Type;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
  */
-public class GroupService extends BaseService {
+public class JSONArrayDeserializer implements JsonDeserializer<JSONArray> {
 
-	public GroupService(Session session) {
-		super(session);
-	}
-
-	public Call<JSONArray> getUserSites() {
-		JSONObject _command = new JSONObject();
+	@Override
+	public JSONArray deserialize(
+			JsonElement json, Type type, JsonDeserializationContext context)
+		throws JsonParseException {
 
 		try {
-			JSONObject _params = new JSONObject();
-
-			_command.put("/group/get-user-sites", _params);
+			String value = json.toString();
+			return new JSONArray(value);
 		}
-		catch (JSONException _je) {
+		catch (JSONException je) {
+			throw new JsonParseException(je);
 		}
-
-		return new Call<JSONArray>(_command, JSONArray.class);
 	}
 
 }
