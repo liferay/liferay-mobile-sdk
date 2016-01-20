@@ -65,6 +65,22 @@ public class GroupService extends BaseService {
 		return new Call<Map<String, Object>>(_command, Map.class);
 	}
 
+	public Call<Site> getGroupAsSite(long groupId) {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+
+			_command.put("/group/get-group", _params);
+		}
+		catch (JSONException _je) {
+		}
+
+		return new Call<Site>(_command, Site.class);
+	}
+
 	public Call<JSONArray> getUserSites() {
 		JSONObject _command = new JSONObject();
 
@@ -93,6 +109,22 @@ public class GroupService extends BaseService {
 		GenericListType<Map> type = new GenericListType<Map>(Map.class);
 
 		return new Call<List<Map<String, Object>>>(_command, type);
+	}
+
+	public Call<List<Site>> getUserSitesAsListOfSites() {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_command.put("/group/get-user-sites", _params);
+		}
+		catch (JSONException _je) {
+		}
+
+		GenericListType<Site> type = new GenericListType<Site>(Site.class);
+
+		return new Call<List<Site>>(_command, type);
 	}
 
 }

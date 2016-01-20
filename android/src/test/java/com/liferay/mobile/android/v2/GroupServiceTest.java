@@ -58,6 +58,15 @@ public class GroupServiceTest extends BaseTest {
 	}
 
 	@Test
+	public void getGroupAsSite() throws Exception {
+		GroupService service = new GroupService(session);
+		long groupId = props.getGroupId();
+		Call<Site> call = service.getGroupAsSite(groupId);
+		Site group = call.execute(session);
+		assertEquals(groupId, group.groupId);
+	}
+
+	@Test
 	public void getGroupAsync() throws Exception {
 		GroupService service = new GroupService(session);
 		final long groupId = props.getGroupId();
@@ -96,6 +105,13 @@ public class GroupServiceTest extends BaseTest {
 		Call<List<Map<String, Object>>> call =
 			service.getUserSitesAsListOfMap();
 
+		assertUserSitesAsMap(call.execute(session));
+	}
+
+	@Test
+	public void getUserSitesAsListOfSites() throws Exception {
+		GroupService service = new GroupService(session);
+		Call<List<Site>> call = service.getUserSitesAsListOfSites();
 		assertUserSites(call.execute(session));
 	}
 
@@ -124,23 +140,6 @@ public class GroupServiceTest extends BaseTest {
 		lock.await(500, TimeUnit.MILLISECONDS);
 	}
 
-	protected void assertUserSites(List<Map<String, Object>> sites) {
-		assertNotNull(sites);
-		assertTrue(sites.size() == 3);
-
-		Map<String, Object> site = sites.get(0);
-		assertNotNull(site);
-		assertEquals("/test", site.get("friendlyURL"));
-
-		site = sites.get(1);
-		assertNotNull(site);
-		assertEquals("/global", site.get("friendlyURL"));
-
-		site = sites.get(2);
-		assertNotNull(site);
-		assertEquals("/guest", site.get("friendlyURL"));
-	}
-
 	protected void assertUserSites(JSONArray sites) {
 		assertNotNull(sites);
 		assertTrue(sites.length() == 3);
@@ -156,6 +155,40 @@ public class GroupServiceTest extends BaseTest {
 		jsonObj = sites.optJSONObject(2);
 		assertNotNull(jsonObj);
 		assertEquals("/guest", jsonObj.optString("friendlyURL"));
+	}
+
+	protected void assertUserSites(List<Site> sites) {
+		assertNotNull(sites);
+		assertTrue(sites.size() == 3);
+
+		Site site = sites.get(0);
+		assertNotNull(site);
+		assertEquals("/test", site.friendlyURL);
+
+		site = sites.get(1);
+		assertNotNull(site);
+		assertEquals("/global", site.friendlyURL);
+
+		site = sites.get(2);
+		assertNotNull(site);
+		assertEquals("/guest", site.friendlyURL);
+	}
+
+	protected void assertUserSitesAsMap(List<Map<String, Object>> sites) {
+		assertNotNull(sites);
+		assertTrue(sites.size() == 3);
+
+		Map<String, Object> site = sites.get(0);
+		assertNotNull(site);
+		assertEquals("/test", site.get("friendlyURL"));
+
+		site = sites.get(1);
+		assertNotNull(site);
+		assertEquals("/global", site.get("friendlyURL"));
+
+		site = sites.get(2);
+		assertNotNull(site);
+		assertEquals("/guest", site.get("friendlyURL"));
 	}
 
 }
