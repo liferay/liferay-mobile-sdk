@@ -16,6 +16,8 @@ package com.liferay.mobile.android.v2;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -70,6 +72,13 @@ public class GsonTest {
 	}
 
 	@Test
+	public void jsonArray() throws Exception {
+		String json = "[\"value1\",\"value2\"]";
+		JsonArray jsonArray = new Gson().fromJson(json, JsonArray.class);
+		assertEquals(2, jsonArray.size());
+	}
+
+	@Test
 	public void jsonArrayDeserializer() throws Exception {
 		String json = "[{\"key\":\"value\"}]";
 		GsonBuilder builder = new GsonBuilder();
@@ -84,6 +93,13 @@ public class GsonTest {
 		assertEquals(1, jsonArray.length());
 		JSONObject jsonObject = jsonArray.getJSONObject(0);
 		assertEquals("value", jsonObject.getString("key"));
+	}
+
+	@Test
+	public void jsonObject() throws Exception {
+		String json = "{\"key\":\"value\"}";
+		JsonObject jsonObject = new Gson().fromJson(json, JsonObject.class);
+		assertEquals("value", jsonObject.get("key").getAsString());
 	}
 
 	@Test
