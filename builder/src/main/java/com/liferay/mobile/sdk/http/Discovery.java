@@ -30,7 +30,6 @@ public class Discovery {
 	public Discovery(String json) throws JSONException {
 		JSONObject jsonObj = new JSONObject(json);
 
-		_context = jsonObj.getString("context");
 		_basePath = jsonObj.getString("basePath");
 
 		if (jsonObj.has("discover")) {
@@ -41,10 +40,10 @@ public class Discovery {
 			}
 		}
 
-		JSONArray actions = jsonObj.getJSONArray("actions");
+		JSONArray actions = jsonObj.getJSONArray("services");
 
 		for (int i = 0; i < actions.length(); i++) {
-			Action action = new Action(actions.getJSONObject(i), _context);
+			Action action = new Action(actions.getJSONObject(i));
 
 			_actions.add(action);
 		}
@@ -58,17 +57,12 @@ public class Discovery {
 		return _basePath;
 	}
 
-	public String getContext() {
-		return _context;
-	}
-
 	public ArrayList<String> getDiscover() {
 		return _discover;
 	}
 
 	private ArrayList<Action> _actions = new ArrayList<Action>();
 	private String _basePath;
-	private String _context;
 	private ArrayList<String> _discover = new ArrayList<String>();
 
 }

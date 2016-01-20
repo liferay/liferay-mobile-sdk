@@ -27,15 +27,11 @@ import org.json.JSONObject;
  */
 public class Action {
 
-	public Action(JSONObject jsonObj, String context) throws JSONException {
+	public Action(JSONObject jsonObj) throws JSONException {
 		_method = jsonObj.getString("method");
 		_path = jsonObj.getString("path");
 
-		if (Validator.isNotNull(context)) {
-			_path = _path.replaceFirst("/", ".");
-		}
-
-		_response = jsonObj.getString("response");
+		_response = jsonObj.getJSONObject("returns").getString("type");
 
 		JSONArray parameters = jsonObj.getJSONArray("parameters");
 

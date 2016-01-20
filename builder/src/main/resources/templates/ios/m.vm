@@ -22,8 +22,6 @@ ${esc.h}import "${className}.h"
  * @author Bruno Farache
  */
 
-#set ($context = $discovery.context)
-
 @implementation $className
 
 ##n
@@ -76,7 +74,7 @@ ${esc.h}import "${className}.h"
 		#end
 	#end
 
-	##t	NSDictionary *_command = @{@${esc.q}$context$action.path${esc.q}: _params};
+	##t	NSDictionary *_command = @{@${esc.q}$action.path${esc.q}: _params};
 
 	##n
 

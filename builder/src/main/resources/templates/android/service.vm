@@ -31,8 +31,6 @@ import org.json.JSONObject;
 
 ##n
 
-#set ($context = $discovery.context)
-
 /**
  * @author Bruno Farache
  */
@@ -89,7 +87,7 @@ public class $className extends BaseService {
 		#end
 	#end
 
-	##t			_command.put(${esc.q}$context$action.path${esc.q}, _params);
+	##t			_command.put(${esc.q}$action.path${esc.q}, _params);
 	##t		}
 	##t		catch (JSONException _je) {
 	##t			throw new Exception(_je);
