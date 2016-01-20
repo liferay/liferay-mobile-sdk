@@ -17,6 +17,7 @@ package com.liferay.mobile.android.v2;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.Session;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -40,7 +41,7 @@ public class GroupService extends BaseService {
 		catch (JSONException _je) {
 		}
 
-		return new Call(_command);
+		return new Call(_command, JSONArray.class);
 	}
 
 }

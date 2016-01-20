@@ -28,13 +28,15 @@ import org.json.JSONObject;
 /**
  * @author Bruno Farache
  */
-public class Call {
+public class Call<T> {
 
-	public Call(JSONObject command) {
+	public Call(JSONObject command, Class<T> clazz) {
 		this.command = command;
+		this.clazz = clazz;
 	}
 
-	public void async(Session session, Callback callback) {
+	public void async(Session session, Callback<T> callback) {
+		callback.setClazz(this.clazz);
 		Request request = getRequest(session, command);
 		client.async(request, callback);
 	}
@@ -79,6 +81,7 @@ public class Call {
 		return client.sync(request);
 	}
 
+	protected Class<T> clazz;
 	protected OkHttpClientImpl client = new OkHttpClientImpl();
 	protected JSONObject command;
 

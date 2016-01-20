@@ -44,11 +44,10 @@ public class GroupServiceTest extends BaseTest {
 
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(session, new Callback<Site>(Site.class) {
+		call.async(session, new Callback<Site>() {
 
 			@Override
-			public void onSuccess(List<Site> sites) {
-				assertUserSites(sites);
+			public void onSuccess(Site site) {
 				lock.countDown();
 			}
 

@@ -18,8 +18,6 @@ import com.google.gson.Gson;
 
 import com.liferay.mobile.android.http.Response;
 
-import java.util.List;
-
 import static com.liferay.mobile.android.callback.MainThreadRunner.run;
 
 /**
@@ -27,16 +25,11 @@ import static com.liferay.mobile.android.callback.MainThreadRunner.run;
  */
 public abstract class Callback<T> {
 
-	public Callback(Class<T> clazz) {
-		this.clazz = clazz;
-	}
-
 	public void inBackground(Response response) {
 		try {
-			Gson gson = new Gson();
 			String body = response.getBody();
-			doSuccess(
-				gson.<List<T>>fromJson(body, new GenericListType<T>(clazz)));
+			T result = gson.fromJson(body, clazz);
+			doSuccess(result);
 		}
 		catch (Exception e) {
 			doFailure(e);
@@ -45,7 +38,7 @@ public abstract class Callback<T> {
 
 	public abstract void onFailure(Exception exception);
 
-	public abstract void onSuccess(List<T> result);
+	public abstract void onSuccess(T result);
 
 	protected void doFailure(final Exception e) {
 		run(new Runnable() {
@@ -58,7 +51,7 @@ public abstract class Callback<T> {
 		});
 	}
 
-	protected void doSuccess(final List<T> result) {
+	protected void doSuccess(final T result) {
 		run(new Runnable() {
 
 			@Override
@@ -69,6 +62,11 @@ public abstract class Callback<T> {
 		});
 	}
 
+	protected void setClazz(Class<T> clazz) {
+		this.clazz = clazz;
+	}
+
 	protected Class<T> clazz;
+	protected Gson gson = new Gson();
 
 }
