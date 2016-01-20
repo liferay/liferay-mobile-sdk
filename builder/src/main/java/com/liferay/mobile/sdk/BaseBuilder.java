@@ -51,7 +51,9 @@ public abstract class BaseBuilder implements Builder {
 				continue;
 			}
 
-			String className = path.substring(1, index);
+			int start = path.indexOf(".") == -1 ? path.indexOf("/") : path.indexOf(".");
+
+			String className = path.substring(start + 1, index);
 			List<Action> classActions = actionsMap.get(className);
 
 			if (classActions == null) {
