@@ -21,6 +21,7 @@ import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.Session;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 import org.json.JSONObject;
@@ -30,13 +31,13 @@ import org.json.JSONObject;
  */
 public class Call<T> {
 
-	public Call(JSONObject command, Class<T> clazz) {
+	public Call(JSONObject command, Type type) {
 		this.command = command;
-		this.clazz = clazz;
+		this.type = type;
 	}
 
 	public void async(Session session, Callback<T> callback) {
-		callback.setClazz(this.clazz);
+		callback.setType(this.type);
 		Request request = getRequest(session, command);
 		client.async(request, callback);
 	}
@@ -44,7 +45,7 @@ public class Call<T> {
 	public T execute(Session session) throws Exception {
 		Response response = post(session, command);
 		String body = response.getBody();
-		return new Gson().fromJson(body, clazz);
+		return new Gson().fromJson(body, type);
 	}
 
 	public <T> List<T> list(Session session, Class<T> clazz) throws Exception {
@@ -86,7 +87,7 @@ public class Call<T> {
 		return client.sync(request);
 	}
 
-	protected Class<T> clazz;
+	protected Type type;
 	protected OkHttpClientImpl client = new OkHttpClientImpl();
 	protected JSONObject command;
 

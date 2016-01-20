@@ -18,6 +18,8 @@ import com.google.gson.Gson;
 
 import com.liferay.mobile.android.http.Response;
 
+import java.lang.reflect.Type;
+
 import static com.liferay.mobile.android.callback.MainThreadRunner.run;
 
 /**
@@ -28,7 +30,7 @@ public abstract class Callback<T> {
 	public void inBackground(Response response) {
 		try {
 			String body = response.getBody();
-			T result = gson.fromJson(body, clazz);
+			T result = gson.fromJson(body, type);
 			doSuccess(result);
 		}
 		catch (Exception e) {
@@ -62,11 +64,11 @@ public abstract class Callback<T> {
 		});
 	}
 
-	protected void setClazz(Class<T> clazz) {
-		this.clazz = clazz;
+	protected void setType(Type type) {
+		this.type = type;
 	}
 
-	protected Class<T> clazz;
+	protected Type type;
 	protected Gson gson = new Gson();
 
 }
