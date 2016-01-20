@@ -39,8 +39,34 @@ public class ServiceReturnTypeTest extends BaseTest {
 	@Test
 	public void getAutoDeployDirectory() throws Exception {
 		PortalService service = new PortalService(session);
-		String directory = service.getAutoDeployDirectory();
+		Call<String> call = service.getAutoDeployDirectory();
+		String directory = call.execute(session);
 		assertNotNull(directory);
+	}
+
+	@Test
+	public void getAutoDeployDirectoryAsync() throws Exception {
+		PortalService service = new PortalService(session);
+		Call<String> call = service.getAutoDeployDirectory();
+		final CountDownLatch lock = new CountDownLatch(1);
+
+		call.async(session, new Callback<String>() {
+
+			@Override
+			public void onSuccess(String directory) {
+				assertNotNull(directory);
+				lock.countDown();
+			}
+
+			@Override
+			public void onFailure(Exception exception) {
+				fail(exception.getMessage());
+				lock.countDown();
+			}
+
+		});
+
+		lock.await(500, TimeUnit.MILLISECONDS);
 	}
 
 	@Test
@@ -55,9 +81,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 	@Test
 	public void getCompanyUsersCountAsync() throws Exception {
 		UserService service = new UserService(session);
-
 		Call<Integer> call = service.getCompanyUsersCount(props.getCompanyId());
-
 		final CountDownLatch lock = new CountDownLatch(1);
 
 		call.async(session, new Callback<Integer>() {
@@ -81,14 +105,66 @@ public class ServiceReturnTypeTest extends BaseTest {
 
 	@Test
 	public void getUserIdByEmailAddress() throws Exception {
-		UserService service = new UserService(session);
-		long userId = service.getUserIdByEmailAddress(
-			props.getCompanyId(), props.getLogin());
+		long companyId = props.getCompanyId();
+		long groupId = props.getGroupId();
+		String login = props.getLogin();
 
+		UserService service = new UserService(session);
+		Call<Long> call = service.getUserIdByEmailAddress(companyId, login);
+		long userId = call.execute(session);
 		assertTrue(userId > 0);
 
-		boolean hasGroupUser = service.hasGroupUser(props.getGroupId(), userId);
-		assertTrue(hasGroupUser);
+		Call<Boolean> call2 = service.hasGroupUser(groupId, userId);
+		assertTrue(call2.execute(session));
+	}
+
+	@Test
+	public void getUserIdByEmailAddressAsync() throws Exception {
+		long companyId = props.getCompanyId();
+		final long groupId = props.getGroupId();
+		String login = props.getLogin();
+		final CountDownLatch lock = new CountDownLatch(1);
+		final UserService service = new UserService(session);
+		Call<Long> call = service.getUserIdByEmailAddress(companyId, login);
+
+		call.async(session, new Callback<Long>() {
+
+			@Override
+			public void onSuccess(Long userId) {
+				assertTrue(userId > 0);
+
+				try {
+					Call<Boolean> call = service.hasGroupUser(groupId, userId);
+					call.async(session, new Callback<Boolean>() {
+
+						@Override
+						public void onSuccess(Boolean hasGroupUser) {
+							assertTrue(hasGroupUser);
+							lock.countDown();
+						}
+
+						@Override
+						public void onFailure(Exception exception) {
+							fail(exception.getMessage());
+							lock.countDown();
+						}
+
+					});
+				}
+				catch (Exception e) {
+					onFailure(e);
+				}
+			}
+
+			@Override
+			public void onFailure(Exception exception) {
+				fail(exception.getMessage());
+				lock.countDown();
+			}
+
+		});
+
+		lock.await(500, TimeUnit.MILLISECONDS);
 	}
 
 }

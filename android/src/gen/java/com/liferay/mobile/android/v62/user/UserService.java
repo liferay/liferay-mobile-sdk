@@ -647,7 +647,7 @@ public class UserService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public Long getUserIdByEmailAddress(long companyId, String emailAddress) throws Exception {
+	public Call<Long> getUserIdByEmailAddress(long companyId, String emailAddress) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -662,13 +662,7 @@ public class UserService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getLong(0);
+		return new Call<Long>(_command, Long.class);
 	}
 
 	public Long getUserIdByScreenName(long companyId, String screenName) throws Exception {
@@ -695,7 +689,7 @@ public class UserService extends BaseService {
 		return _result.getLong(0);
 	}
 
-	public Boolean hasGroupUser(long groupId, long userId) throws Exception {
+	public Call<Boolean> hasGroupUser(long groupId, long userId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -710,13 +704,7 @@ public class UserService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getBoolean(0);
+		return new Call<Boolean>(_command, Boolean.class);
 	}
 
 	public Boolean hasRoleUser(long roleId, long userId) throws Exception {
