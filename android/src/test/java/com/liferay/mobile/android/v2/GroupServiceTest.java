@@ -18,6 +18,8 @@ import com.liferay.mobile.android.BaseTest;
 
 import java.io.IOException;
 
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -44,6 +46,15 @@ public class GroupServiceTest extends BaseTest {
 		Call<JSONObject> call = service.getGroup(groupId);
 		JSONObject group = call.execute(session);
 		assertEquals(groupId, group.getLong("groupId"));
+	}
+
+	@Test
+	public void getGroupAsMap() throws Exception {
+		GroupService service = new GroupService(session);
+		long groupId = props.getGroupId();
+		Call<Map<String, Object>> call = service.getGroupAsMap(groupId);
+		Map<String, Object> group = call.execute(session);
+		assertEquals(groupId, Long.parseLong((String) group.get("groupId")));
 	}
 
 	@Test
@@ -80,6 +91,15 @@ public class GroupServiceTest extends BaseTest {
 	}
 
 	@Test
+	public void getUserSitesAsListOfMap() throws Exception {
+		GroupService service = new GroupService(session);
+		Call<List<Map<String, Object>>> call =
+			service.getUserSitesAsListOfMap();
+
+		assertUserSites(call.execute(session));
+	}
+
+	@Test
 	public void getUserSitesAsync() throws InterruptedException {
 		GroupService service = new GroupService(session);
 		Call<JSONArray> call = service.getUserSites();
@@ -104,9 +124,26 @@ public class GroupServiceTest extends BaseTest {
 		lock.await(500, TimeUnit.MILLISECONDS);
 	}
 
+	protected void assertUserSites(List<Map<String, Object>> sites) {
+		assertNotNull(sites);
+		assertTrue(sites.size() == 3);
+
+		Map<String, Object> site = sites.get(0);
+		assertNotNull(site);
+		assertEquals("/test", site.get("friendlyURL"));
+
+		site = sites.get(1);
+		assertNotNull(site);
+		assertEquals("/global", site.get("friendlyURL"));
+
+		site = sites.get(2);
+		assertNotNull(site);
+		assertEquals("/guest", site.get("friendlyURL"));
+	}
+
 	protected void assertUserSites(JSONArray sites) {
 		assertNotNull(sites);
-		assertTrue(sites.length() > 0);
+		assertTrue(sites.length() == 3);
 
 		JSONObject jsonObj = sites.optJSONObject(0);
 		assertNotNull(jsonObj);

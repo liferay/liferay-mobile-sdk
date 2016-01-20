@@ -23,5 +23,6 @@ public class Site {
 	}
 
 	public String friendlyURL;
+	public long groupId;
 
 }

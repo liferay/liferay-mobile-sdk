@@ -69,6 +69,7 @@ public class GsonTest {
 		assertEquals(3, sites.size());
 		Site site = sites.get(0);
 		assertEquals("/test", site.friendlyURL);
+		assertEquals(20249, site.groupId);
 	}
 
 	@Test
