@@ -58,12 +58,66 @@ public class GroupServiceTest extends BaseTest {
 	}
 
 	@Test
+	public void getGroupAsMapAsync() throws Exception {
+		GroupService service = new GroupService(session);
+		final long groupId = props.getGroupId();
+		Call<Map<String, Object>> call = service.getGroupAsMap(groupId);
+		final CountDownLatch lock = new CountDownLatch(1);
+
+		call.async(session, new Callback<Map<String, Object>>() {
+
+			@Override
+			public void onSuccess(Map<String, Object> group) {
+				assertEquals(
+					groupId, Long.parseLong((String) group.get("groupId")));
+
+				lock.countDown();
+			}
+
+			@Override
+			public void onFailure(Exception exception) {
+				fail(exception.getMessage());
+				lock.countDown();
+			}
+
+		});
+
+		lock.await(500, TimeUnit.MILLISECONDS);
+	}
+
+	@Test
 	public void getGroupAsSite() throws Exception {
 		GroupService service = new GroupService(session);
 		long groupId = props.getGroupId();
 		Call<Site> call = service.getGroupAsSite(groupId);
 		Site group = call.execute(session);
 		assertEquals(groupId, group.groupId);
+	}
+
+	@Test
+	public void getGroupAsSiteAsync() throws Exception {
+		GroupService service = new GroupService(session);
+		final long groupId = props.getGroupId();
+		Call<Site> call = service.getGroupAsSite(groupId);
+		final CountDownLatch lock = new CountDownLatch(1);
+
+		call.async(session, new Callback<Site>() {
+
+			@Override
+			public void onSuccess(Site group) {
+				assertEquals(groupId, group.groupId);
+				lock.countDown();
+			}
+
+			@Override
+			public void onFailure(Exception exception) {
+				fail(exception.getMessage());
+				lock.countDown();
+			}
+
+		});
+
+		lock.await(500, TimeUnit.MILLISECONDS);
 	}
 
 	@Test
@@ -109,10 +163,62 @@ public class GroupServiceTest extends BaseTest {
 	}
 
 	@Test
+	public void getUserSitesAsListOfMapAsync() throws InterruptedException {
+		GroupService service = new GroupService(session);
+		Call<List<Map<String, Object>>> call =
+			service.getUserSitesAsListOfMap();
+
+		final CountDownLatch lock = new CountDownLatch(1);
+
+		call.async(session, new Callback<List<Map<String, Object>>>() {
+
+			@Override
+			public void onSuccess(List<Map<String, Object>> sites) {
+				assertUserSitesAsMap(sites);
+				lock.countDown();
+			}
+
+			@Override
+			public void onFailure(Exception exception) {
+				fail(exception.getMessage());
+				lock.countDown();
+			}
+
+		});
+
+		lock.await(500, TimeUnit.MILLISECONDS);
+	}
+
+	@Test
 	public void getUserSitesAsListOfSites() throws Exception {
 		GroupService service = new GroupService(session);
 		Call<List<Site>> call = service.getUserSitesAsListOfSites();
 		assertUserSites(call.execute(session));
+	}
+
+	@Test
+	public void getUserSitesAsListOfSitesAsync() throws InterruptedException {
+		GroupService service = new GroupService(session);
+		Call<List<Site>> call = service.getUserSitesAsListOfSites();
+		final CountDownLatch lock = new CountDownLatch(1);
+
+		call.async(session, new Callback<List<Site>>() {
+
+			@Override
+			public void onSuccess(List<Site> sites) {
+				assertUserSites(sites);
+				lock.countDown();
+			}
+
+			@Override
+			public void onFailure(Exception exception) {
+				fail(exception.getMessage());
+				lock.countDown();
+			}
+
+		});
+
+		lock.await(500, TimeUnit.MILLISECONDS);
 	}
 
 	@Test
