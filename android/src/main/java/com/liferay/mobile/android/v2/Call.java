@@ -41,12 +41,17 @@ public class Call<T> {
 		client.async(request, callback);
 	}
 
+	public T execute(Session session) throws Exception {
+		Response response = post(session, command);
+		String body = response.getBody();
+		return new Gson().fromJson(body, clazz);
+	}
+
 	public <T> List<T> list(Session session, Class<T> clazz) throws Exception {
-		Gson gson = new Gson();
 		Response response = post(session, command);
 		String body = response.getBody();
 
-		return gson.fromJson(body, new GenericListType<T>(clazz));
+		return new Gson().fromJson(body, new GenericListType<T>(clazz));
 	}
 
 	protected Request getRequest(Session session, JSONObject command) {

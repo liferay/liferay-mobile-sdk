@@ -16,15 +16,18 @@ package com.liferay.mobile.android.v2;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import com.liferay.mobile.android.BaseTest;
 
-import org.junit.Test;
-
 import java.io.IOException;
+
 import java.lang.reflect.Type;
+
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+
+import org.junit.Test;
 
 import static org.junit.Assert.*;
 
@@ -63,13 +66,6 @@ public class GroupServiceTest extends BaseTest {
 	}
 
 	@Test
-	public void list() throws Exception {
-		GroupService service = new GroupService(session);
-		Call call = service.getUserSites();
-		assertUserSites(call.list(session, Site.class));
-	}
-
-	@Test
 	public void gson() throws Exception {
 		Gson gson = new Gson();
 
@@ -78,6 +74,13 @@ public class GroupServiceTest extends BaseTest {
 		List<Site> sites = gson.fromJson(json, type);
 
 		assertUserSites(sites);
+	}
+
+	@Test
+	public void list() throws Exception {
+		GroupService service = new GroupService(session);
+		Call call = service.getUserSites();
+		assertUserSites(call.list(session, Site.class));
 	}
 
 	protected void assertUserSites(List<Site> sites) {

@@ -18,15 +18,14 @@ import com.liferay.mobile.android.BaseTest;
 import com.liferay.mobile.android.v62.portal.PortalService;
 import com.liferay.mobile.android.v62.user.UserService;
 
-import org.junit.Test;
-
 import java.io.IOException;
+
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  * @author Bruno Farache
@@ -45,11 +44,19 @@ public class ServiceReturnTypeTest extends BaseTest {
 	}
 
 	@Test
+	public void getCompanyUsersCount() throws Exception {
+		UserService service = new UserService(session);
+		long companyId = props.getCompanyId();
+		Call<Integer> call = service.getCompanyUsersCount(companyId);
+		int count = call.execute(session);
+		assertTrue(count > 0);
+	}
+
+	@Test
 	public void getCompanyUsersCountAsync() throws Exception {
 		UserService service = new UserService(session);
 
-		Call<Integer> call = service.getCompanyUsersCount(
-			props.getCompanyId());
+		Call<Integer> call = service.getCompanyUsersCount(props.getCompanyId());
 
 		final CountDownLatch lock = new CountDownLatch(1);
 

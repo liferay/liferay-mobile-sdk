@@ -41,14 +41,6 @@ public class ServiceReturnTypeTest extends BaseTest {
 	}
 
 	@Test
-	public void getCompanyUsersCount() throws Exception {
-		UserService service = new UserService(session);
-
-		int count = service.getCompanyUsersCount(props.getCompanyId());
-		assertTrue(count > 0);
-	}
-
-	@Test
 	public void getUserIdByEmailAddress() throws Exception {
 		UserService service = new UserService(session);
 
