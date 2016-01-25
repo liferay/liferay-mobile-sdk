@@ -34,13 +34,13 @@ public class LanguageUtil {
 
 	public static final String DOUBLE = "double";
 
-	public static final String FILE = "object<java.io.File>";
+	public static final String FILE = "java.io.File";
 
 	public static final String INT = "int";
 
 	public static final String LONG = "long";
 
-	public static final String OBJECT_PREFIX = "object<";
+	public static final String OBJECT_PREFIX = "com.liferay.";
 
 	public static final String STRING = "string";
 
@@ -77,14 +77,6 @@ public class LanguageUtil {
 
 	public String capitalize(String word) {
 		return WordUtils.capitalize(word);
-	}
-
-	public String getJSONWrapperClassName(String type) {
-		if (type.startsWith(OBJECT_PREFIX)) {
-			return type.substring(7, type.length() - 1);
-		}
-
-		return type;
 	}
 
 	public String getMethodName(String path) {
@@ -129,19 +121,19 @@ public class LanguageUtil {
 	}
 
 	public String getType(String type) {
-		if (type.equals("object<java.lang.Boolean>")) {
+		if (type.equals("java.lang.Boolean")) {
 			return BOOLEAN;
 		}
 
-		if (type.equals("object<java.lang.Double>")) {
+		if (type.equals("java.lang.Double")) {
 			return DOUBLE;
 		}
 
-		if (type.equals("object<java.lang.Integer>")) {
+		if (type.equals("java.lang.Integer")) {
 			return INT;
 		}
 
-		if (type.equals("object<java.lang.Long>")) {
+		if (type.equals("java.lang.Long")) {
 			return LONG;
 		}
 
@@ -149,8 +141,7 @@ public class LanguageUtil {
 	}
 
 	public boolean isArray(String type) {
-		if (type.endsWith("[]") || type.equals("object<list>") ||
-			type.equals("object<com.liferay.portal.kernel.json.JSONArray>") ||
+		if (type.endsWith("[]") ||
 			type.equals("com.liferay.portal.kernel.json.JSONArray")	||
 			type.startsWith("list")) {
 

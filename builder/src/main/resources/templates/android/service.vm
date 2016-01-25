@@ -71,7 +71,7 @@ public class $className extends BaseService {
 		#set ($parameterValue = $parameterName)
 
 		#if ($parameterType == $JSON_OBJECT_WRAPPER)
-			##t			mangleWrapper(_params, ${esc.q}$parameterName${esc.q}, ${esc.q}$languageUtil.getJSONWrapperClassName($parameter.type)${esc.q}, $parameterValue);
+			##t			mangleWrapper(_params, ${esc.q}$parameterName${esc.q}, ${esc.q}$parameter.type${esc.q}, $parameterValue);
 		#else
 			#if ($parameterType == $BYTE_ARRAY)
 				#set ($parameterValue = "toString(${parameterName})")
