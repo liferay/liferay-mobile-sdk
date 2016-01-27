@@ -43,9 +43,7 @@ public class BatchTest extends BaseTest {
 		Response response = Call.batch(
 			session, service.getUserSites(), service.getUserSites());
 
-		List sites = JsonParser.fromJson(
-			response, new GenericListType<List>(List.class));
-
+		List sites = JsonParser.fromJson(response, List.class);
 		assertEquals(2, sites.size());
 
 		GroupServiceTest.assertUserSitesAsMap(
@@ -62,33 +60,31 @@ public class BatchTest extends BaseTest {
 
 		Call.batch(session, new Callback<Response>() {
 
-				@Override
-				public void onSuccess(Response response) {
-					try {
-						List sites = JsonParser.fromJson(
-							response, new GenericListType<List>(List.class));
+			@Override
+			public void onSuccess(Response response) {
+				try {
+					List sites = JsonParser.fromJson(response, List.class);
 
-						assertEquals(2, sites.size());
+					assertEquals(2, sites.size());
 
-						GroupServiceTest.assertUserSitesAsMap(
-							(List<Map<String, Object>>)sites.get(1));
+					GroupServiceTest.assertUserSitesAsMap(
+						(List<Map<String, Object>>)sites.get(1));
 
-						GroupServiceTest.assertUserSitesAsMap(
-							(List<Map<String, Object>>)sites.get(1));
-					}
-					catch (Exception e) {
-						onFailure(e);
-					}
+					GroupServiceTest.assertUserSitesAsMap(
+						(List<Map<String, Object>>)sites.get(1));
 				}
-
-				@Override
-				public void onFailure(Exception exception) {
-					fail(exception.getMessage());
-					lock.countDown();
+				catch (Exception e) {
+					onFailure(e);
 				}
+			}
 
-			},
-			service.getUserSites(), service.getUserSites());
+			@Override
+			public void onFailure(Exception exception) {
+				fail(exception.getMessage());
+				lock.countDown();
+			}
+
+		}, service.getUserSites(), service.getUserSites());
 
 		lock.await(500, TimeUnit.MILLISECONDS);
 	}
