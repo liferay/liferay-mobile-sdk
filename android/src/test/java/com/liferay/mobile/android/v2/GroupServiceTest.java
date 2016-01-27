@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.v2;
 
 import com.liferay.mobile.android.BaseTest;
+import com.liferay.mobile.android.http.Response;
 
 import java.io.IOException;
 
@@ -37,6 +38,40 @@ public class GroupServiceTest extends BaseTest {
 
 	public GroupServiceTest() throws IOException {
 		super();
+	}
+
+	@Test
+	public void disableStaging() throws Exception {
+		GroupService service = new GroupService(session);
+		long groupId = props.getGroupId();
+		Call<Response> call = service.disableStaging(groupId);
+		Response response = call.execute(session);
+		assertEquals(200, response.getStatusCode());
+	}
+
+	@Test
+	public void disableStagingAsync() throws Exception {
+		GroupService service = new GroupService(session);
+		long groupId = props.getGroupId();
+		Call<Response> call = service.disableStaging(groupId);
+		final CountDownLatch lock = new CountDownLatch(1);
+
+		call.async(session, new Callback<Response>() {
+
+			@Override
+			public void onSuccess(Response response) {
+				assertEquals(200, response.getStatusCode());
+				lock.countDown();
+			}
+
+			@Override
+			public void onFailure(Exception exception) {
+				lock.countDown();
+			}
+
+		});
+
+		lock.await(500, TimeUnit.MILLISECONDS);
 	}
 
 	@Test

@@ -17,10 +17,12 @@ package com.liferay.mobile.android.v2;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.liferay.mobile.android.http.Response;
 
 import java.lang.reflect.Type;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
@@ -37,11 +39,16 @@ public class JsonParser {
 			JSONObject.class, new JSONObjectDeserializer());
 
 		gson = builder.create();
-
 	}
 
-	public static <T> T fromJson(String json, Type type) throws Exception {
-		return gson.fromJson(json, type);
+	public static <T> T fromJson(Response response, Type type)
+		throws Exception {
+
+		if (type == Response.class) {
+			return (T)response;
+		}
+
+		return gson.fromJson(response.getBody(), type);
 	}
 
 	protected static Gson gson;

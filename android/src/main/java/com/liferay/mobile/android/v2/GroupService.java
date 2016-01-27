@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android.v2;
 
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.Session;
 
@@ -31,6 +32,23 @@ public class GroupService extends BaseService {
 
 	public GroupService(Session session) {
 		super(session);
+	}
+
+	public Call<Response> disableStaging(long groupId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+
+			_command.put("/group/disable-staging", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		return new Call<Response>(_command, Response.class);
 	}
 
 	public Call<JSONObject> getGroup(long groupId) {
