@@ -42,7 +42,7 @@ public class Call<T> {
 	public T execute(Session session) throws Exception {
 		Response response = post(session, command);
 		String body = response.getBody();
-		return Callback.getGson().fromJson(body, type);
+		return JsonParser.fromJson(body, type);
 	}
 
 	protected Request getRequest(Session session, JSONObject command) {

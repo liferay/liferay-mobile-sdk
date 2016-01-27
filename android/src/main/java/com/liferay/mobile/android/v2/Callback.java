@@ -14,15 +14,9 @@
 
 package com.liferay.mobile.android.v2;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import com.liferay.mobile.android.http.Response;
 
 import java.lang.reflect.Type;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import static com.liferay.mobile.android.callback.MainThreadRunner.run;
 
@@ -33,8 +27,7 @@ public abstract class Callback<T> {
 
 	public void inBackground(Response response) {
 		try {
-			String body = response.getBody();
-			T result = getGson().fromJson(body, type);
+			T result = JsonParser.fromJson(response.getBody(), type);
 			doSuccess(result);
 		}
 		catch (Exception e) {
@@ -45,18 +38,6 @@ public abstract class Callback<T> {
 	public abstract void onFailure(Exception exception);
 
 	public abstract void onSuccess(T result);
-
-	protected static Gson getGson() {
-		GsonBuilder builder = new GsonBuilder();
-
-		builder.registerTypeAdapter(
-			JSONArray.class, new JSONArrayDeserializer());
-
-		builder.registerTypeAdapter(
-			JSONObject.class, new JSONObjectDeserializer());
-
-		return builder.create();
-	}
 
 	protected void doFailure(final Exception e) {
 		run(new Runnable() {
