@@ -21,6 +21,7 @@ import com.liferay.mobile.android.service.Session;
 
 import java.lang.reflect.Type;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -28,24 +29,55 @@ import org.json.JSONObject;
  */
 public class Call<T> {
 
+	public static Response batch(Session session, Call... calls)
+		throws Exception {
+
+		Request request = request(session, commands(calls));
+		return client.sync(request);
+	}
+
+	public static void batch(
+			Session session, Callback<Response> callback, Call... calls)
+		throws Exception {
+
+		callback.type(Response.class);
+		Request request = request(session, commands(calls));
+		client.async(request, callback);
+	}
+
 	public Call(JSONObject command, Type type) {
 		this.command = command;
 		this.type = type;
 	}
 
 	public void async(Session session, Callback<T> callback) {
-		callback.setType(this.type);
-		Request request = getRequest(session, command);
+		callback.type(this.type);
+		Request request = request(session, command.toString());
 		client.async(request, callback);
 	}
 
+	public JSONObject command() {
+		return command;
+	}
+
 	public T execute(Session session) throws Exception {
-		Response response = post(session, command);
+		Request request = request(session, command.toString());
+		Response response = client.sync(request);
 		return JsonParser.fromJson(response, type);
 	}
 
-	protected Request getRequest(Session session, JSONObject command) {
-		String url = getURL(session, "/invoke");
+	protected static String commands(Call[] calls) {
+		JSONArray commands = new JSONArray();
+
+		for (Call call : calls) {
+			commands.put(call.command());
+		}
+
+		return commands.toString();
+	}
+
+	protected static Request request(Session session, String command) {
+		String url = url(session, "/invoke");
 
 		return new Request(
 			session.getAuthentication(), Method.POST, session.getHeaders(), url,
@@ -53,10 +85,9 @@ public class Call<T> {
 			session.getCallback());
 	}
 
-	protected String getURL(Session session, String path) {
+	protected static String url(Session session, String path) {
 		StringBuilder sb = new StringBuilder();
 		String server = session.getServer();
-
 		sb.append(server);
 
 		if (!server.endsWith("/")) {
@@ -69,14 +100,8 @@ public class Call<T> {
 		return sb.toString();
 	}
 
-	protected Response post(Session session, JSONObject command)
-		throws Exception {
+	protected static OkHttpClientImpl client = new OkHttpClientImpl();
 
-		Request request = getRequest(session, command);
-		return client.sync(request);
-	}
-
-	protected OkHttpClientImpl client = new OkHttpClientImpl();
 	protected JSONObject command;
 	protected Type type;
 

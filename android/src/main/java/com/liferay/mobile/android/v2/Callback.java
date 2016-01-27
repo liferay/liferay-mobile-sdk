@@ -61,7 +61,7 @@ public abstract class Callback<T> {
 		});
 	}
 
-	protected void setType(Type type) {
+	protected void type(Type type) {
 		this.type = type;
 	}
 

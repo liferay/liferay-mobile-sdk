@@ -16,7 +16,6 @@ package com.liferay.mobile.android.v2;
 
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.Session;
 
 import java.util.List;
 import java.util.Map;
@@ -30,8 +29,8 @@ import org.json.JSONObject;
  */
 public class GroupService extends BaseService {
 
-	public GroupService(Session session) {
-		super(session);
+	public GroupService() {
+		super(null);
 	}
 
 	public Call<Response> disableStaging(long groupId) throws Exception {

@@ -42,7 +42,7 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void disableStaging() throws Exception {
-		GroupService service = new GroupService(session);
+		GroupService service = new GroupService();
 		long groupId = props.getGroupId();
 		Call<Response> call = service.disableStaging(groupId);
 		Response response = call.execute(session);
@@ -51,7 +51,7 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void disableStagingAsync() throws Exception {
-		GroupService service = new GroupService(session);
+		GroupService service = new GroupService();
 		long groupId = props.getGroupId();
 		Call<Response> call = service.disableStaging(groupId);
 		final CountDownLatch lock = new CountDownLatch(1);
@@ -76,7 +76,7 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void getGroup() throws Exception {
-		GroupService service = new GroupService(session);
+		GroupService service = new GroupService();
 		long groupId = props.getGroupId();
 		Call<JSONObject> call = service.getGroup(groupId);
 		JSONObject group = call.execute(session);
@@ -85,7 +85,7 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void getGroupAsMap() throws Exception {
-		GroupService service = new GroupService(session);
+		GroupService service = new GroupService();
 		long groupId = props.getGroupId();
 		Call<Map<String, Object>> call = service.getGroupAsMap(groupId);
 		Map<String, Object> group = call.execute(session);
@@ -94,7 +94,7 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void getGroupAsMapAsync() throws Exception {
-		GroupService service = new GroupService(session);
+		GroupService service = new GroupService();
 		final long groupId = props.getGroupId();
 		Call<Map<String, Object>> call = service.getGroupAsMap(groupId);
 		final CountDownLatch lock = new CountDownLatch(1);
@@ -122,7 +122,7 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void getGroupAsSite() throws Exception {
-		GroupService service = new GroupService(session);
+		GroupService service = new GroupService();
 		long groupId = props.getGroupId();
 		Call<Site> call = service.getGroupAsSite(groupId);
 		Site group = call.execute(session);
@@ -131,7 +131,7 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void getGroupAsSiteAsync() throws Exception {
-		GroupService service = new GroupService(session);
+		GroupService service = new GroupService();
 		final long groupId = props.getGroupId();
 		Call<Site> call = service.getGroupAsSite(groupId);
 		final CountDownLatch lock = new CountDownLatch(1);
@@ -157,7 +157,7 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void getGroupAsync() throws Exception {
-		GroupService service = new GroupService(session);
+		GroupService service = new GroupService();
 		final long groupId = props.getGroupId();
 		Call<JSONObject> call = service.getGroup(groupId);
 		final CountDownLatch lock = new CountDownLatch(1);
@@ -183,14 +183,14 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void getUserSites() throws Exception {
-		GroupService service = new GroupService(session);
+		GroupService service = new GroupService();
 		Call<JSONArray> call = service.getUserSites();
 		assertUserSites(call.execute(session));
 	}
 
 	@Test
 	public void getUserSitesAsListOfMap() throws Exception {
-		GroupService service = new GroupService(session);
+		GroupService service = new GroupService();
 		Call<List<Map<String, Object>>> call =
 			service.getUserSitesAsListOfMap();
 
@@ -199,7 +199,7 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void getUserSitesAsListOfMapAsync() throws InterruptedException {
-		GroupService service = new GroupService(session);
+		GroupService service = new GroupService();
 		Call<List<Map<String, Object>>> call =
 			service.getUserSitesAsListOfMap();
 
@@ -226,14 +226,14 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void getUserSitesAsListOfSites() throws Exception {
-		GroupService service = new GroupService(session);
+		GroupService service = new GroupService();
 		Call<List<Site>> call = service.getUserSitesAsListOfSites();
 		assertUserSites(call.execute(session));
 	}
 
 	@Test
 	public void getUserSitesAsListOfSitesAsync() throws InterruptedException {
-		GroupService service = new GroupService(session);
+		GroupService service = new GroupService();
 		Call<List<Site>> call = service.getUserSitesAsListOfSites();
 		final CountDownLatch lock = new CountDownLatch(1);
 
@@ -258,7 +258,7 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void getUserSitesAsync() throws InterruptedException {
-		GroupService service = new GroupService(session);
+		GroupService service = new GroupService();
 		Call<JSONArray> call = service.getUserSites();
 		final CountDownLatch lock = new CountDownLatch(1);
 
@@ -315,7 +315,7 @@ public class GroupServiceTest extends BaseTest {
 		assertEquals("/guest", site.friendlyURL);
 	}
 
-	protected void assertUserSitesAsMap(List<Map<String, Object>> sites) {
+	protected static void assertUserSitesAsMap(List<Map<String, Object>> sites) {
 		assertNotNull(sites);
 		assertTrue(sites.size() == 3);
 
