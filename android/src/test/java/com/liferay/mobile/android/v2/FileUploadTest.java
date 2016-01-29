@@ -27,6 +27,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
@@ -42,7 +44,6 @@ public class FileUploadTest extends BaseTest {
 	@Test
 	public void addFileEntry() throws Exception {
 		DLAppService service = new DLAppService();
-
 		long repositoryId = props.getGroupId();
 		long folderId = DLAppServiceTest.PARENT_FOLDER_ID;
 		String fileName = DLAppServiceTest.SOURCE_FILE_NAME;
@@ -86,6 +87,76 @@ public class FileUploadTest extends BaseTest {
 			null);
 
 		_file = call.execute(session);
+
+		assertEquals(fileName, _file.title);
+		assertEquals(5, callback.getTotal());
+		assertEquals(5, baos.size());
+	}
+
+	@Test
+	public void addFileEntryAsync() throws Exception {
+		DLAppService service = new DLAppService();
+		long repositoryId = props.getGroupId();
+		long folderId = DLAppServiceTest.PARENT_FOLDER_ID;
+		String fileName = DLAppServiceTest.SOURCE_FILE_NAME;
+		String mimeType = DLAppServiceTest.MIME_TYPE;
+
+		InputStream is = new ByteArrayInputStream(
+			"Hello".getBytes(StandardCharsets.UTF_8));
+
+		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+		FileProgressCallback callback = new FileProgressCallback() {
+
+			@Override
+			public void onBytes(byte[] bytes) {
+				try {
+					baos.write(bytes);
+				}
+				catch (IOException ioe) {
+					fail(ioe.getMessage());
+				}
+			}
+
+			@Override
+			public void onProgress(int totalBytes) {
+				if (totalBytes == 5) {
+					try {
+						baos.flush();
+					}
+					catch (IOException ioe) {
+						fail(ioe.getMessage());
+					}
+				}
+			}
+
+		};
+
+		UploadData data = new UploadData(is, mimeType, fileName, callback);
+
+		Call<FileEntry> call = service.addFileEntry(
+			repositoryId, folderId, fileName, mimeType, fileName, "", "", data,
+			null);
+
+		final CountDownLatch lock = new CountDownLatch(1);
+
+		call.async(session, new Callback<FileEntry>() {
+
+			@Override
+			public void onSuccess(FileEntry file) {
+				_file = file;
+				lock.countDown();
+			}
+
+			@Override
+			public void onFailure(Exception exception) {
+				fail(exception.getMessage());
+				lock.countDown();
+			}
+
+		});
+
+		lock.await(500, TimeUnit.MILLISECONDS);
 
 		assertEquals(fileName, _file.title);
 		assertEquals(5, callback.getTotal());
