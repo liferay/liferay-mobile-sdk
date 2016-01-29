@@ -15,6 +15,8 @@
 package com.liferay.mobile.android.v2;
 
 import com.liferay.mobile.android.auth.Authentication;
+import com.liferay.mobile.android.http.Headers;
+import com.liferay.mobile.android.http.Headers.ContentType;
 import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
@@ -47,30 +49,7 @@ public class OkHttpClientImpl {
 		client = new OkHttpClient();
 	}
 
-	public void cancel(Object tag) {
-		client.cancel(tag);
-	}
-
-	public String encodeURL(String url) {
-		return HttpUrl.parse(url).toString();
-	}
-
-	public Response sync(Request request) throws Exception {
-		Call call = build(request);
-		return new Response(call.execute());
-	}
-
-	protected void addHeaders(Builder builder, Request request) {
-		Map<String, String> headers = request.getHeaders();
-
-		if (headers != null) {
-			for (Map.Entry<String, String> header : headers.entrySet()) {
-				builder.addHeader(header.getKey(), header.getValue());
-			}
-		}
-	}
-
-	protected void async(Request request, final Callback callback) {
+	public void async(Request request, final Callback callback) {
 		Call call = null;
 
 		try {
@@ -103,6 +82,29 @@ public class OkHttpClientImpl {
 		});
 	}
 
+	public void cancel(Object tag) {
+		client.cancel(tag);
+	}
+
+	public String encodeURL(String url) {
+		return HttpUrl.parse(url).toString();
+	}
+
+	public Response sync(Request request) throws Exception {
+		Call call = build(request);
+		return new Response(call.execute());
+	}
+
+	protected void addHeaders(Builder builder, Request request) {
+		Map<String, String> headers = request.getHeaders();
+
+		if (headers != null) {
+			for (Map.Entry<String, String> header : headers.entrySet()) {
+				builder.addHeader(header.getKey(), header.getValue());
+			}
+		}
+	}
+
 	protected void authenticate(OkHttpClient client, Request request)
 		throws Exception {
 
@@ -123,13 +125,20 @@ public class OkHttpClientImpl {
 		Method method = request.getMethod();
 
 		if (method == Method.POST) {
-			String body = (String)request.getBody();
+			Object body = request.getBody();
 
 			if (body != null) {
-				MediaType type = MediaType.parse(
-					"application/json; charset=utf-8");
+				Map<String, String> headers = request.getHeaders();
+				String contentType = headers.get(Headers.CONTENT_TYPE);
 
-				builder.post(RequestBody.create(type, body));
+				if (contentType.equals(ContentType.JSON.value)) {
+					MediaType type = MediaType.parse(contentType);
+					builder.post(RequestBody.create(type, (String)body));
+				}
+				else if (contentType.equals(ContentType.MULTIPART.value)) {
+					builder.post(
+						getUploadBody((JSONObject)body, request.getTag()));
+				}
 			}
 		}
 		else if (method == Method.HEAD) {
@@ -147,14 +156,6 @@ public class OkHttpClientImpl {
 		return client.newCall(builder.build());
 	}
 
-//	@Override
-//	public Response upload(Request request) throws Exception {
-//		Builder builder = new Builder();
-//		builder.post(getUploadBody(request));
-//
-//		return send(builder, request);
-//	}
-
 	protected OkHttpClient getClient(int connectionTimeout) {
 		OkHttpClient clone = client.clone();
 
@@ -167,11 +168,8 @@ public class OkHttpClientImpl {
 		return clone;
 	}
 
-	protected RequestBody getUploadBody(Request request) {
-		JSONObject body = (JSONObject)request.getBody();
-		Object tag = request.getTag();
-
-		MultipartBuilder builder = new MultipartBuilder()
+	protected RequestBody getUploadBody(JSONObject body, Object tag) {
+		MultipartBuilder multipartBuilder = new MultipartBuilder()
 			.type(MultipartBuilder.FORM);
 
 		Iterator<String> it = body.keys();
@@ -183,14 +181,15 @@ public class OkHttpClientImpl {
 			if (value instanceof UploadData) {
 				UploadData data = (UploadData)value;
 				RequestBody requestBody = new InputStreamBody(data, tag);
-				builder.addFormDataPart(key, data.getFileName(), requestBody);
+				multipartBuilder.addFormDataPart(
+					key, data.getFileName(), requestBody);
 			}
 			else {
-				builder.addFormDataPart(key, value.toString());
+				multipartBuilder.addFormDataPart(key, value.toString());
 			}
 		}
 
-		return builder.build();
+		return multipartBuilder.build();
 	}
 
 	protected OkHttpClient client;

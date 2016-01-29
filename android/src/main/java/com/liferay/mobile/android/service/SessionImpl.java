@@ -19,7 +19,6 @@ import com.liferay.mobile.android.callback.Callback;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.http.file.UploadData;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -86,7 +85,7 @@ public class SessionImpl implements Session {
 
 	@Override
 	public Map<String, String> getHeaders() {
-		return Collections.unmodifiableMap(headers);
+		return headers;
 	}
 
 	@Override

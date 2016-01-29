@@ -21,6 +21,8 @@ public class Headers {
 
 	public static final String AUTHORIZATION = "Authorization";
 
+	public static final String CONTENT_TYPE = "Content-Type";
+
 	public static final String IF_MODIFIED_SINCE = "If-Modified-Since";
 
 	public static final String LAST_MODIFIED = "Last-Modified";
@@ -30,5 +32,18 @@ public class Headers {
 	public static final String LOCATION = "Location";
 
 	public static final String WWW_AUTHENTICATE = "WWW-Authenticate";
+
+	public enum ContentType {
+
+		JSON("application/json; charset=utf-8"),
+		MULTIPART("multipart/form-data;");
+
+		ContentType(String value) {
+			this.value = value;
+		}
+
+		public final String value;
+
+	}
 
 }

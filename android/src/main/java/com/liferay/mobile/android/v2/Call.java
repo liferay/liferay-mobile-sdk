@@ -14,12 +14,16 @@
 
 package com.liferay.mobile.android.v2;
 
+import com.liferay.mobile.android.http.Headers;
+import com.liferay.mobile.android.http.Headers.ContentType;
 import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.Session;
 
 import java.lang.reflect.Type;
+
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,62 +36,79 @@ public class Call<T> {
 	public static Response batch(Session session, Call... calls)
 		throws Exception {
 
-		Request request = request(session, commands(calls));
-		return client.sync(request);
+		JSONArray bodies = bodies(calls);
+		Call<Response> call = new Call<Response>(bodies, Response.class);
+		return call.execute(session);
 	}
 
 	public static void batch(
 			Session session, Callback<Response> callback, Call... calls)
 		throws Exception {
 
-		callback.type(Response.class);
-		Request request = request(session, commands(calls));
-		client.async(request, callback);
+		JSONArray bodies = bodies(calls);
+		Call<Response> call = new Call<Response>(bodies, Response.class);
+		call.async(session, callback);
 	}
 
-	public Call(JSONObject command, Type type) {
-		this.command = command;
+	public Call(Object body, Type type) {
+		this(body, type, ContentType.JSON);
+	}
+
+	public Call(Object body, Type type, ContentType contentType) {
+		this.body = body;
 		this.type = type;
+		this.contentType = contentType;
 	}
 
 	public void async(Session session, Callback<T> callback) {
 		callback.type(this.type);
-		Request request = request(session, command.toString());
+		Request request = request(session);
 		client.async(request, callback);
 	}
 
-	public JSONObject command() {
-		return command;
+	public Object body() {
+		return body;
 	}
 
 	public T execute(Session session) throws Exception {
-		Request request = request(session, command.toString());
+		Request request = request(session);
 		Response response = client.sync(request);
 		return JsonParser.fromJson(response, type);
 	}
 
-	protected static String commands(Call[] calls) {
+	protected static JSONArray bodies(Call[] calls) {
 		JSONArray commands = new JSONArray();
 
 		for (Call call : calls) {
-			commands.put(call.command());
+			commands.put(call.body());
 		}
 
-		return commands.toString();
+		return commands;
 	}
 
-	protected static Request request(Session session, String command) {
-		String url = url(session, "/invoke");
+	protected Request request(Session session) {
+		Map<String, String> headers = session.getHeaders();
+		headers.put(Headers.CONTENT_TYPE, contentType.value);
+		String path = "/invoke";
+
+		if (contentType == ContentType.JSON) {
+			body = body.toString();
+		}
+		else if (contentType == ContentType.MULTIPART) {
+			JSONObject jsonObject = (JSONObject)body;
+			path = (String)jsonObject.keys().next();
+			body = jsonObject.optJSONObject(path);
+		}
+
+		String url = url(session.getServer(), path);
 
 		return new Request(
-			session.getAuthentication(), Method.POST, session.getHeaders(), url,
-			command.toString(), session.getConnectionTimeout(),
-			session.getCallback());
+			session.getAuthentication(), Method.POST, headers, url, body,
+			session.getConnectionTimeout(), session.getCallback());
 	}
 
-	protected static String url(Session session, String path) {
+	protected String url(String server, String path) {
 		StringBuilder sb = new StringBuilder();
-		String server = session.getServer();
 		sb.append(server);
 
 		if (!server.endsWith("/")) {
@@ -101,8 +122,9 @@ public class Call<T> {
 	}
 
 	protected static OkHttpClientImpl client = new OkHttpClientImpl();
+	protected static ContentType contentType;
 
-	protected JSONObject command;
+	protected Object body;
 	protected Type type;
 
 }
