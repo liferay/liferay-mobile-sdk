@@ -18,7 +18,6 @@ import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
-import com.liferay.mobile.android.v2.Call;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -421,7 +420,7 @@ public class UserService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public Call<Integer> getCompanyUsersCount(long companyId) {
+	public Integer getCompanyUsersCount(long companyId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -432,9 +431,16 @@ public class UserService extends BaseService {
 			_command.put("/user/get-company-users-count", _params);
 		}
 		catch (JSONException _je) {
+			throw new Exception(_je);
 		}
 
-		return new Call<Integer>(_command, Integer.class);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public JSONArray getGroupUserIds(long groupId) throws Exception {
@@ -646,7 +652,7 @@ public class UserService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public Call<Long> getUserIdByEmailAddress(long companyId, String emailAddress) {
+	public Long getUserIdByEmailAddress(long companyId, String emailAddress) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -658,9 +664,16 @@ public class UserService extends BaseService {
 			_command.put("/user/get-user-id-by-email-address", _params);
 		}
 		catch (JSONException _je) {
+			throw new Exception(_je);
 		}
 
-		return new Call<Long>(_command, Long.class);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getLong(0);
 	}
 
 	public Long getUserIdByScreenName(long companyId, String screenName) throws Exception {
@@ -687,7 +700,7 @@ public class UserService extends BaseService {
 		return _result.getLong(0);
 	}
 
-	public Call<Boolean> hasGroupUser(long groupId, long userId) {
+	public Boolean hasGroupUser(long groupId, long userId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -699,9 +712,16 @@ public class UserService extends BaseService {
 			_command.put("/user/has-group-user", _params);
 		}
 		catch (JSONException _je) {
+			throw new Exception(_je);
 		}
 
-		return new Call<Boolean>(_command, Boolean.class);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getBoolean(0);
 	}
 
 	public Boolean hasRoleUser(long roleId, long userId) throws Exception {

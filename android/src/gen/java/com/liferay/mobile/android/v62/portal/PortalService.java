@@ -18,7 +18,6 @@ import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
-import com.liferay.mobile.android.v2.Call;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +32,7 @@ public class PortalService extends BaseService {
 		super(session);
 	}
 
-	public Call<String> getAutoDeployDirectory() {
+	public String getAutoDeployDirectory() throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -42,9 +41,16 @@ public class PortalService extends BaseService {
 			_command.put("/portal/get-auto-deploy-directory", _params);
 		}
 		catch (JSONException _je) {
+			throw new Exception(_je);
 		}
 
-		return new Call<String>(_command, String.class);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
 	}
 
 	public Integer getBuildNumber() throws Exception {

@@ -15,8 +15,6 @@
 package com.liferay.mobile.android.v2;
 
 import com.liferay.mobile.android.BaseTest;
-import com.liferay.mobile.android.v62.portal.PortalService;
-import com.liferay.mobile.android.v62.user.UserService;
 
 import java.io.IOException;
 
