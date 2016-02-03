@@ -42,7 +42,7 @@ public class UserService extends BaseService {
 		catch (JSONException _je) {
 		}
 
-		return new Call<Integer>(_command, Integer.class);
+		return new Call<>(_command, Integer.class);
 	}
 
 	public Call<Long> getUserIdByEmailAddress(long companyId, String emailAddress) {
@@ -59,7 +59,7 @@ public class UserService extends BaseService {
 		catch (JSONException _je) {
 		}
 
-		return new Call<Long>(_command, Long.class);
+		return new Call<>(_command, Long.class);
 	}
 
 	public Call<Boolean> hasGroupUser(long groupId, long userId) {
@@ -76,7 +76,7 @@ public class UserService extends BaseService {
 		catch (JSONException _je) {
 		}
 
-		return new Call<Boolean>(_command, Boolean.class);
+		return new Call<>(_command, Boolean.class);
 	}
 
 }
