@@ -21,7 +21,7 @@ import java.lang.reflect.Proxy;
  */
 public class ServiceBuilder {
 
-	public static <T> T create(Class<T> clazz) {
+	public static <T> T build(Class<T> clazz) {
 		Object proxy = Proxy.newProxyInstance(
 			clazz.getClassLoader(), new Class<?>[] { clazz },
 			new ServiceInvocationHandler(clazz));

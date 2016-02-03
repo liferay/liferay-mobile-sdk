@@ -69,7 +69,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 
 	@Test
 	public void getCompanyUsersCount() throws Exception {
-		UserService service = new UserService(session);
+		UserService service = ServiceBuilder.build(UserService.class);
 		long companyId = props.getCompanyId();
 		Call<Integer> call = service.getCompanyUsersCount(companyId);
 		int count = call.execute(session);
@@ -78,7 +78,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 
 	@Test
 	public void getCompanyUsersCountAsync() throws InterruptedException {
-		UserService service = new UserService(session);
+		UserService service = ServiceBuilder.build(UserService.class);
 		Call<Integer> call = service.getCompanyUsersCount(props.getCompanyId());
 		final CountDownLatch lock = new CountDownLatch(1);
 
@@ -107,7 +107,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 		long groupId = props.getGroupId();
 		String login = props.getLogin();
 
-		UserService service = new UserService(session);
+		UserService service = ServiceBuilder.build(UserService.class);
 		Call<Long> call = service.getUserIdByEmailAddress(companyId, login);
 		long userId = call.execute(session);
 		assertTrue(userId > 0);
@@ -122,7 +122,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 		final long groupId = props.getGroupId();
 		String login = props.getLogin();
 		final CountDownLatch lock = new CountDownLatch(1);
-		final UserService service = new UserService(session);
+		final UserService service = ServiceBuilder.build(UserService.class);
 		Call<Long> call = service.getUserIdByEmailAddress(companyId, login);
 
 		call.async(session, new Callback<Long>() {

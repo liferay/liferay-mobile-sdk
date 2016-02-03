@@ -14,69 +14,19 @@
 
 package com.liferay.mobile.android.v2;
 
-import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.Session;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 /**
  * @author Bruno Farache
  */
-public class UserService extends BaseService {
+@Path("/user")
+public interface UserService {
 
-	public UserService(Session session) {
-		super(session);
-	}
+	@Path("/get-company-users-count")
+	Call<Integer> getCompanyUsersCount(@Param("companyId")long companyId);
 
-	public Call<Integer> getCompanyUsersCount(long companyId) {
-		JSONObject _command = new JSONObject();
+	@Path("/get-user-id-by-email-address")
+	Call<Long> getUserIdByEmailAddress(@Param("companyId") long companyId, @Param("emailAddress") String emailAddress);
 
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-
-			_command.put("/user/get-company-users-count", _params);
-		}
-		catch (JSONException _je) {
-		}
-
-		return new Call<>(_command, Integer.class);
-	}
-
-	public Call<Long> getUserIdByEmailAddress(long companyId, String emailAddress) {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("emailAddress", checkNull(emailAddress));
-
-			_command.put("/user/get-user-id-by-email-address", _params);
-		}
-		catch (JSONException _je) {
-		}
-
-		return new Call<>(_command, Long.class);
-	}
-
-	public Call<Boolean> hasGroupUser(long groupId, long userId) {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-
-			_command.put("/user/has-group-user", _params);
-		}
-		catch (JSONException _je) {
-		}
-
-		return new Call<>(_command, Boolean.class);
-	}
+	@Path("/has-group-user")
+	Call<Boolean> hasGroupUser(@Param("groupId") long groupId, @Param("userId") long userId);
 
 }
