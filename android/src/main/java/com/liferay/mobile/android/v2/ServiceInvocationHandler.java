@@ -36,10 +36,26 @@ public class ServiceInvocationHandler implements InvocationHandler {
 	public Object invoke(Object proxy, Method method, Object[] args)
 		throws Throwable {
 
-		JSONObject command = new JSONObject();
-		command.put(getPath(method), getParams(method, args));
+		JSONObject body = new JSONObject();
+		body.put(getPath(method), getParams(method, args));
 
-		return new Call(command, getType(method));
+		return new Call(body, getType(method));
+	}
+
+	protected String getMethodPath(Method method) {
+		Path annotation = method.getAnnotation(Path.class);
+
+		if (annotation != null) {
+			return annotation.value();
+		}
+		else {
+			String methodName = method.getName();
+			String regex = "([a-z])([A-Z]+)";
+			String replacement = "$1-$2";
+			methodName = methodName.replaceAll(regex, replacement);
+
+			return "/" + methodName.toLowerCase();
+		}
 	}
 
 	protected JSONObject getParams(Method method, Object[] args)
@@ -63,17 +79,25 @@ public class ServiceInvocationHandler implements InvocationHandler {
 	}
 
 	protected String getPath(Method method) {
-		StringBuilder sb = new StringBuilder();
-		Path servicePath = service.getAnnotation(Path.class);
+		return getRootPath() + getMethodPath(method);
+	}
 
-		if (servicePath != null) {
-			sb.append(servicePath.value());
+	protected String getRootPath() {
+		Path annotation = service.getAnnotation(Path.class);
+
+		if (annotation != null) {
+			return annotation.value();
 		}
+		else {
+			String className = service.getSimpleName();
 
-		Path methodPath = method.getAnnotation(Path.class);
-		sb.append(methodPath.value());
+			if (className.endsWith("Service")) {
+				className = className.substring(0, className.length() - 7);
+				return "/" + className.toLowerCase();
+			}
 
-		return sb.toString();
+			return "";
+		}
 	}
 
 	protected Type getType(Method method) {
