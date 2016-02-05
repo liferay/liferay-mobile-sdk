@@ -93,6 +93,7 @@ public class ServiceInvocationHandler implements InvocationHandler {
 
 			if (className.endsWith("Service")) {
 				className = className.substring(0, className.length() - 7);
+
 				return "/" + className.toLowerCase();
 			}
 
