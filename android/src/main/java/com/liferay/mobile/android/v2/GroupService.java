@@ -47,7 +47,7 @@ public class GroupService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return new Call<Response>(_command, Response.class);
+		return new Call<>(_command, Response.class);
 	}
 
 	public Call<JSONObject> getGroup(long groupId) {
@@ -63,7 +63,7 @@ public class GroupService extends BaseService {
 		catch (JSONException _je) {
 		}
 
-		return new Call<JSONObject>(_command, JSONObject.class);
+		return new Call<>(_command, JSONObject.class);
 	}
 
 	public Call<Map<String, Object>> getGroupAsMap(long groupId) {
@@ -79,7 +79,7 @@ public class GroupService extends BaseService {
 		catch (JSONException _je) {
 		}
 
-		return new Call<Map<String, Object>>(_command, Map.class);
+		return new Call<>(_command, Map.class);
 	}
 
 	public Call<Site> getGroupAsSite(long groupId) {
@@ -95,7 +95,7 @@ public class GroupService extends BaseService {
 		catch (JSONException _je) {
 		}
 
-		return new Call<Site>(_command, Site.class);
+		return new Call<>(_command, Site.class);
 	}
 
 	public Call<JSONArray> getUserSites() {
@@ -109,7 +109,7 @@ public class GroupService extends BaseService {
 		catch (JSONException _je) {
 		}
 
-		return new Call<JSONArray>(_command, JSONArray.class);
+		return new Call<>(_command, JSONArray.class);
 	}
 
 	public Call<List<Map<String, Object>>> getUserSitesAsListOfMap() {
@@ -125,7 +125,7 @@ public class GroupService extends BaseService {
 
 		GenericListType<Map> type = new GenericListType<Map>(Map.class);
 
-		return new Call<List<Map<String, Object>>>(_command, type);
+		return new Call<>(_command, type);
 	}
 
 	public Call<List<Site>> getUserSitesAsListOfSites() {
@@ -141,7 +141,7 @@ public class GroupService extends BaseService {
 
 		GenericListType<Site> type = new GenericListType<Site>(Site.class);
 
-		return new Call<List<Site>>(_command, type);
+		return new Call<>(_command, type);
 	}
 
 }

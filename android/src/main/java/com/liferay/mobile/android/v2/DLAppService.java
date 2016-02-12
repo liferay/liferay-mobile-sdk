@@ -53,7 +53,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		return new Call<FileEntry>(_body, FileEntry.class, ContentType.MULTIPART);
+		return new Call<>(_body, FileEntry.class, ContentType.MULTIPART);
 	}
 
 }

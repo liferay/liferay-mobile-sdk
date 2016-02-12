@@ -40,7 +40,7 @@ public class PortalService extends BaseService {
 		catch (JSONException _je) {
 		}
 
-		return new Call<String>(_command, String.class);
+		return new Call<>(_command, String.class);
 	}
 
 }
