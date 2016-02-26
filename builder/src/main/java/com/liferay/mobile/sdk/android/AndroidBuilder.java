@@ -17,6 +17,7 @@ package com.liferay.mobile.sdk.android;
 import com.liferay.mobile.sdk.BaseBuilder;
 import com.liferay.mobile.sdk.http.Action;
 import com.liferay.mobile.sdk.http.Discovery;
+import com.liferay.mobile.sdk.java.JavaUtil;
 import com.liferay.mobile.sdk.util.LanguageUtil;
 import com.liferay.mobile.sdk.util.Validator;
 import com.liferay.mobile.sdk.velocity.VelocityUtil;

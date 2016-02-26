@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.android;
+package com.liferay.mobile.sdk.java;
 
 import com.liferay.mobile.sdk.util.LanguageUtil;
 
