@@ -69,6 +69,7 @@ public class AndroidBuilder extends BaseBuilder {
 		List<Action> filteredActions = new ArrayList<Action>();
 
 		boolean addRecord = true;
+
 		for (Action action : actions) {
 			String path = action.getPath();
 

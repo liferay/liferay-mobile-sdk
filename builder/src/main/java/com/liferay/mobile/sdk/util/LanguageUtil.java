@@ -142,7 +142,7 @@ public class LanguageUtil {
 
 	public boolean isArray(String type) {
 		if (type.endsWith("[]") ||
-			type.equals("com.liferay.portal.kernel.json.JSONArray")	||
+			type.equals("com.liferay.portal.kernel.json.JSONArray") ||
 			type.startsWith("list")) {
 
 			return true;

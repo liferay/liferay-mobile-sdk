@@ -14,8 +14,6 @@
 
 package com.liferay.mobile.sdk.http;
 
-import com.liferay.mobile.sdk.util.Validator;
-
 import java.util.ArrayList;
 
 import org.json.JSONArray;

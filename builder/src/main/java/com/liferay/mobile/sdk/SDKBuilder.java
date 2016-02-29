@@ -95,15 +95,7 @@ public class SDKBuilder {
 
 		sb.append(url);
 
-		sb.append("/api/jsonws?");
-
-		if (Validator.isNotNull(context)) {
-			sb.append("contextName=");
-			sb.append(context);
-			sb.append("&");
-		}
-
-		sb.append("discover");
+		sb.append("/api/jsonws?discover");
 
 		if (Validator.isNull(filter)) {
 			sb.append("=/*");
@@ -112,6 +104,11 @@ public class SDKBuilder {
 			sb.append("=/");
 			sb.append(filter);
 			sb.append("/*");
+		}
+
+		if (Validator.isNotNull(context)) {
+			sb.append("&contextName=");
+			sb.append(context);
 		}
 
 		HttpClient client = new DefaultHttpClient();
