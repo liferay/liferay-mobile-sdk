@@ -14,7 +14,7 @@
 
 #import "BaseTest.h"
 
-#import "LRDLAppService_v62.h"
+#import "LRDLAppService_v7.h"
 #import "LRDownloadUtil.h"
 #import "TRVSMonitor.h"
 
@@ -87,7 +87,7 @@
 - (void)setUp {
 	[super setUp];
 
-	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+	LRDLAppService_v7 *service = [[LRDLAppService_v7 alloc]
 		initWithSession:self.session];
 
 	long long repositoryId = [self.settings[@"groupId"] longLongValue];
@@ -101,7 +101,7 @@
 }
 
 - (void)tearDown {
-	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+	LRDLAppService_v7 *service = [[LRDLAppService_v7 alloc]
 		initWithSession:self.session];
 
 	long fileEntryId = [self.entry[@"fileEntryId"] longValue];

@@ -155,15 +155,10 @@
 	if (exists) {
 		XCTAssertNil(error);
 		XCTAssertNotNil(result);
-		XCTAssertEqualObjects(result[@"folderId"], @(folderId));
 	}
 	else {
 		XCTAssertNil(result);
 		XCTAssertNotNil(error);
-
-		NSString *description = [error localizedDescription];
-		XCTAssertTrue(
-			[description hasPrefix:@"No DLFolder exists with the primary key"]);
 	}
 }
 
@@ -195,10 +190,6 @@
 	else {
 		XCTAssertNil(results);
 		XCTAssertNotNil(error);
-
-		NSString *description = [error localizedDescription];
-		XCTAssertTrue(
-			[description hasPrefix:@"No DLFolder exists with the primary key"]);
 	}
 }
 

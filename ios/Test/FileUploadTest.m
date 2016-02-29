@@ -19,7 +19,6 @@
 NSString *const FILE_CONTENT = @"File content.";
 NSString *const GROUP_ID = @"groupId";
 NSString *const MIME_TYPE = @"text/plain";
-NSString *const NO_REPOSITORY_ID = @"No Repository exists with the primary key -1";
 const long long ROOT_FOLDER_ID = 0;
 NSString *const SOURCE_FILE_NAME = @"test.properties";
 NSString *const TITLE = @"title";
@@ -193,7 +192,9 @@ NSString *const TITLE = @"title";
 	[self.monitor wait];
 
 	XCTAssert(self.error);
-	XCTAssertEqualObjects(NO_REPOSITORY_ID, [self.error localizedDescription]);
+	XCTAssertEqualObjects(
+		@"Request failed: internal server error (500)",
+		[self.error localizedDescription]);
 }
 
 - (void)testRepositoryIdServerExceptionSynchronous {
@@ -210,7 +211,8 @@ NSString *const TITLE = @"title";
 		changeLog:@"" bytes:bytes serviceContext:nil error:&error];
 
 	XCTAssert(error);
-	XCTAssertEqualObjects(NO_REPOSITORY_ID, [error localizedDescription]);
+	XCTAssertEqualObjects(
+		  @"The server returned an error code.", [error localizedDescription]);
 }
 
 - (void)setUp {
