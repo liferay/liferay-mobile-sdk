@@ -212,7 +212,7 @@ NSString *const TITLE = @"title";
 
 	XCTAssert(error);
 	XCTAssertEqualObjects(
-		  @"The server returned an error code.", [error localizedDescription]);
+		@"The server returned an error code.", [error localizedDescription]);
 }
 
 - (void)setUp {
