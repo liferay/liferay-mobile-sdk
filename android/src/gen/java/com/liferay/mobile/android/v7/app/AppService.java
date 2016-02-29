@@ -89,7 +89,7 @@ public class AppService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateApp(JSONObject file) throws Exception {
+	public JSONObject updateApp(UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -103,7 +103,7 @@ public class AppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;

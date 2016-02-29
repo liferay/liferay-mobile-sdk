@@ -129,7 +129,7 @@ public class LayoutSetService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateLogo(long groupId, boolean privateLayout, boolean logo, JSONObject file) throws Exception {
+	public void updateLogo(long groupId, boolean privateLayout, boolean logo, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -146,7 +146,7 @@ public class LayoutSetService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		session.upload(_command);
 	}
 
 	public void updateLogo(long groupId, boolean privateLayout, boolean logo, byte[] bytes) throws Exception {

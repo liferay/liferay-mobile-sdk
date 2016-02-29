@@ -829,7 +829,7 @@ public class DLAppService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, JSONObject file, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addFileEntry(long repositoryId, long folderId, String sourceFileName, String mimeType, String title, String description, String changeLog, UploadData file, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -851,7 +851,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;
@@ -860,7 +860,7 @@ public class DLAppService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addTempFileEntry(long groupId, long folderId, String folderName, String fileName, JSONObject file, String mimeType) throws Exception {
+	public JSONObject addTempFileEntry(long groupId, long folderId, String folderName, String fileName, UploadData file, String mimeType) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -879,7 +879,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;
@@ -1084,7 +1084,7 @@ public class DLAppService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, JSONObject file, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateFileEntry(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, UploadData file, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1106,7 +1106,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;
@@ -2192,7 +2192,7 @@ public class DLAppService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateFileEntryAndCheckIn(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, JSONObject file, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateFileEntryAndCheckIn(long fileEntryId, String sourceFileName, String mimeType, String title, String description, String changeLog, boolean majorVersion, UploadData file, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -2214,7 +2214,7 @@ public class DLAppService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;

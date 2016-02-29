@@ -540,7 +540,7 @@ public class WikiPageService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONObject addPageAttachment(long nodeId, String title, String fileName, JSONObject file, String mimeType) throws Exception {
+	public JSONObject addPageAttachment(long nodeId, String title, String fileName, UploadData file, String mimeType) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -558,7 +558,7 @@ public class WikiPageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;

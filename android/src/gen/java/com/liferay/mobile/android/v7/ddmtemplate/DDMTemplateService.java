@@ -595,7 +595,7 @@ public class DDMTemplateService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateTemplate(long templateId, long classPK, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, boolean smallImage, String smallImageURL, JSONObject smallImageFile, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateTemplate(long templateId, long classPK, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, boolean smallImage, String smallImageURL, UploadData smallImageFile, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -621,7 +621,7 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;
@@ -630,7 +630,7 @@ public class DDMTemplateService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addTemplate(long groupId, long classNameId, long classPK, long resourceClassNameId, String templateKey, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, boolean smallImage, String smallImageURL, JSONObject smallImageFile, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addTemplate(long groupId, long classNameId, long classPK, long resourceClassNameId, String templateKey, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, boolean smallImage, String smallImageURL, UploadData smallImageFile, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -659,7 +659,7 @@ public class DDMTemplateService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;

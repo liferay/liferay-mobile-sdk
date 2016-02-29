@@ -797,7 +797,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void importLayouts(long groupId, boolean privateLayout, JSONObject parameterMap, JSONObject file) throws Exception {
+	public void importLayouts(long groupId, boolean privateLayout, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -814,10 +814,10 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		session.upload(_command);
 	}
 
-	public void importLayouts(JSONObjectWrapper exportImportConfiguration, JSONObject file) throws Exception {
+	public void importLayouts(JSONObjectWrapper exportImportConfiguration, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -832,7 +832,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		session.upload(_command);
 	}
 
 	public JSONObject updateLookAndFeel(long groupId, boolean privateLayout, long layoutId, String themeId, String colorSchemeId, String css) throws Exception {
@@ -1387,7 +1387,7 @@ public class LayoutService extends BaseService {
 		return _result.getLong(0);
 	}
 
-	public Long importLayoutsInBackground(String taskName, long groupId, boolean privateLayout, JSONObject parameterMap, JSONObject file) throws Exception {
+	public Long importLayoutsInBackground(String taskName, long groupId, boolean privateLayout, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1405,7 +1405,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;
@@ -1414,7 +1414,7 @@ public class LayoutService extends BaseService {
 		return _result.getLong(0);
 	}
 
-	public void importPortletInfo(String portletId, JSONObject parameterMap, JSONObject file) throws Exception {
+	public void importPortletInfo(String portletId, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1430,10 +1430,10 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		session.upload(_command);
 	}
 
-	public void importPortletInfo(JSONObjectWrapper exportImportConfiguration, JSONObject file) throws Exception {
+	public void importPortletInfo(JSONObjectWrapper exportImportConfiguration, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1448,10 +1448,10 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		session.upload(_command);
 	}
 
-	public void importPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, JSONObject file) throws Exception {
+	public void importPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1469,10 +1469,10 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		session.upload(_command);
 	}
 
-	public void importPortletInfoInBackground(String taskName, String portletId, JSONObject parameterMap, JSONObject file) throws Exception {
+	public void importPortletInfoInBackground(String taskName, String portletId, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1489,10 +1489,10 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		session.upload(_command);
 	}
 
-	public Long importPortletInfoInBackground(String taskName, long plid, long groupId, String portletId, JSONObject parameterMap, JSONObject file) throws Exception {
+	public Long importPortletInfoInBackground(String taskName, long plid, long groupId, String portletId, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1511,7 +1511,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;
@@ -1520,7 +1520,7 @@ public class LayoutService extends BaseService {
 		return _result.getLong(0);
 	}
 
-	public JSONObject validateImportLayoutsFile(JSONObjectWrapper exportImportConfiguration, JSONObject file) throws Exception {
+	public JSONObject validateImportLayoutsFile(JSONObjectWrapper exportImportConfiguration, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1535,7 +1535,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;
@@ -1544,7 +1544,7 @@ public class LayoutService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject validateImportLayoutsFile(long groupId, boolean privateLayout, JSONObject parameterMap, JSONObject file) throws Exception {
+	public JSONObject validateImportLayoutsFile(long groupId, boolean privateLayout, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1561,7 +1561,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;
@@ -1570,7 +1570,7 @@ public class LayoutService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject validateImportPortletInfo(JSONObjectWrapper exportImportConfiguration, JSONObject file) throws Exception {
+	public JSONObject validateImportPortletInfo(JSONObjectWrapper exportImportConfiguration, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1585,7 +1585,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;
@@ -1594,7 +1594,7 @@ public class LayoutService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject validateImportPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, JSONObject file) throws Exception {
+	public JSONObject validateImportPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1612,7 +1612,7 @@ public class LayoutService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;

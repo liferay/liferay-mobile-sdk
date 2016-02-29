@@ -112,7 +112,7 @@ public class MBMessageService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addMessage(long groupId, long categoryId, String subject, String body, String format, String fileName, JSONObject file, boolean anonymous, double priority, boolean allowPingbacks, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addMessage(long groupId, long categoryId, String subject, String body, String format, String fileName, UploadData file, boolean anonymous, double priority, boolean allowPingbacks, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -136,7 +136,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;
@@ -255,7 +255,7 @@ public class MBMessageService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public void addMessageAttachment(long messageId, String fileName, JSONObject file, String mimeType) throws Exception {
+	public void addMessageAttachment(long messageId, String fileName, UploadData file, String mimeType) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -272,7 +272,7 @@ public class MBMessageService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		session.upload(_command);
 	}
 
 	public void deleteMessage(long messageId) throws Exception {

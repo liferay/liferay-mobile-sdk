@@ -78,7 +78,7 @@ public class ExportimportService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public void importLayouts(JSONObjectWrapper exportImportConfiguration, JSONObject file) throws Exception {
+	public void importLayouts(JSONObjectWrapper exportImportConfiguration, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -93,7 +93,7 @@ public class ExportimportService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		session.upload(_command);
 	}
 
 	public Long exportLayoutsAsFileInBackground(long exportImportConfigurationId) throws Exception {
@@ -165,7 +165,7 @@ public class ExportimportService extends BaseService {
 		return _result.getLong(0);
 	}
 
-	public Long importLayoutsInBackground(JSONObjectWrapper exportImportConfiguration, JSONObject file) throws Exception {
+	public Long importLayoutsInBackground(JSONObjectWrapper exportImportConfiguration, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -180,7 +180,7 @@ public class ExportimportService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;
@@ -189,7 +189,7 @@ public class ExportimportService extends BaseService {
 		return _result.getLong(0);
 	}
 
-	public void importPortletInfo(JSONObjectWrapper exportImportConfiguration, JSONObject file) throws Exception {
+	public void importPortletInfo(JSONObjectWrapper exportImportConfiguration, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -204,10 +204,10 @@ public class ExportimportService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		session.upload(_command);
 	}
 
-	public Long importPortletInfoInBackground(JSONObjectWrapper exportImportConfiguration, JSONObject file) throws Exception {
+	public Long importPortletInfoInBackground(JSONObjectWrapper exportImportConfiguration, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -222,7 +222,7 @@ public class ExportimportService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;
@@ -231,7 +231,7 @@ public class ExportimportService extends BaseService {
 		return _result.getLong(0);
 	}
 
-	public JSONObject validateImportLayoutsFile(JSONObjectWrapper exportImportConfiguration, JSONObject file) throws Exception {
+	public JSONObject validateImportLayoutsFile(JSONObjectWrapper exportImportConfiguration, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -246,7 +246,7 @@ public class ExportimportService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;
@@ -255,7 +255,7 @@ public class ExportimportService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject validateImportPortletInfo(JSONObjectWrapper exportImportConfiguration, JSONObject file) throws Exception {
+	public JSONObject validateImportPortletInfo(JSONObjectWrapper exportImportConfiguration, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -270,7 +270,7 @@ public class ExportimportService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;

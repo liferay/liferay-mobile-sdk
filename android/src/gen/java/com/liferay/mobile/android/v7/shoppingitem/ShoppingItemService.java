@@ -32,7 +32,7 @@ public class ShoppingItemService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addItem(long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, boolean sale, boolean smallImage, String smallImageURL, JSONObject smallFile, boolean mediumImage, String mediumImageURL, JSONObject mediumFile, boolean largeImage, String largeImageURL, JSONObject largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addItem(long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, boolean sale, boolean smallImage, String smallImageURL, UploadData smallFile, boolean mediumImage, String mediumImageURL, UploadData mediumFile, boolean largeImage, String largeImageURL, UploadData largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -68,7 +68,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;
@@ -240,7 +240,7 @@ public class ShoppingItemService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONObject updateItem(long itemId, long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, boolean sale, boolean smallImage, String smallImageURL, JSONObject smallFile, boolean mediumImage, String mediumImageURL, JSONObject mediumFile, boolean largeImage, String largeImageURL, JSONObject largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateItem(long itemId, long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, boolean sale, boolean smallImage, String smallImageURL, UploadData smallFile, boolean mediumImage, String mediumImageURL, UploadData mediumFile, boolean largeImage, String largeImageURL, UploadData largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -277,7 +277,7 @@ public class ShoppingItemService extends BaseService {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
+		JSONArray _result = session.upload(_command);
 
 		if (_result == null) {
 			return null;
