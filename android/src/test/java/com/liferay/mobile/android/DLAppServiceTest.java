@@ -16,7 +16,7 @@ package com.liferay.mobile.android;
 
 import com.liferay.mobile.android.exception.ServerException;
 import com.liferay.mobile.android.service.BatchSessionImpl;
-import com.liferay.mobile.android.v62.dlapp.DLAppService;
+import com.liferay.mobile.android.v7.dlapp.DLAppService;
 
 import java.io.IOException;
 

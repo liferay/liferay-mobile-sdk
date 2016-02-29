@@ -17,7 +17,7 @@ package com.liferay.mobile.android.http.file;
 import com.liferay.mobile.android.BaseTest;
 import com.liferay.mobile.android.DLAppServiceTest;
 import com.liferay.mobile.android.callback.file.FileProgressCallback;
-import com.liferay.mobile.android.v62.dlapp.DLAppService;
+import com.liferay.mobile.android.v7.dlapp.DLAppService;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

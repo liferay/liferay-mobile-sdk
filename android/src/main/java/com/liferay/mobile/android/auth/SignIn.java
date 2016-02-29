@@ -19,8 +19,8 @@ import com.liferay.mobile.android.callback.typed.JSONArrayCallback;
 import com.liferay.mobile.android.callback.typed.JSONObjectCallback;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.android.v62.group.GroupService;
-import com.liferay.mobile.android.v62.user.UserService;
+import com.liferay.mobile.android.v7.group.GroupService;
+import com.liferay.mobile.android.v7.user.UserService;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -78,7 +78,7 @@ public class SignIn {
 		});
 
 		try {
-			groupService.getUserSites();
+			groupService.getUserSitesGroups();
 		}
 		catch (Exception e) {
 			callback.onFailure(e);

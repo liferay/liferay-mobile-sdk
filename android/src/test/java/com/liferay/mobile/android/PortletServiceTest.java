@@ -14,7 +14,7 @@
 
 package com.liferay.mobile.android;
 
-import com.liferay.mobile.android.v62.portlet.PortletService;
+import com.liferay.mobile.android.v7.portlet.PortletService;
 
 import java.io.IOException;
 

@@ -15,7 +15,7 @@
 package com.liferay.mobile.android;
 
 import com.liferay.mobile.android.service.BatchSessionImpl;
-import com.liferay.mobile.android.v62.group.GroupService;
+import com.liferay.mobile.android.v7.group.GroupService;
 
 import java.io.IOException;
 
@@ -40,8 +40,8 @@ public class BatchSessionTest extends BaseTest {
 
 		GroupService service = new GroupService(session);
 
-		service.getUserSites();
-		service.getUserSites();
+		service.getUserSitesGroups();
+		service.getUserSitesGroups();
 
 		JSONArray result = session.invoke();
 

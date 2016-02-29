@@ -14,7 +14,7 @@
 
 package com.liferay.mobile.android;
 
-import com.liferay.mobile.android.v62.group.GroupService;
+import com.liferay.mobile.android.v7.group.GroupService;
 
 import java.io.IOException;
 
@@ -49,7 +49,7 @@ public class GroupServiceTest extends BaseTest {
 	public void getUserSites() throws Exception {
 		GroupService service = new GroupService(session);
 
-		JSONArray sites = service.getUserSites();
+		JSONArray sites = service.getUserSitesGroups();
 		assertUserSites(sites);
 	}
 

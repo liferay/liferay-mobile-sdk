@@ -22,7 +22,7 @@ import com.liferay.mobile.android.http.file.FileUploadTest;
 import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.android.v62.dlapp.DLAppService;
+import com.liferay.mobile.android.v7.dlapp.DLAppService;
 
 import java.io.IOException;
 import java.io.InputStream;

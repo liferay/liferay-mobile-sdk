@@ -17,7 +17,7 @@ package com.liferay.mobile.android;
 import com.liferay.mobile.android.exception.ServerException;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.android.v62.group.GroupService;
+import com.liferay.mobile.android.v7.group.GroupService;
 
 import java.io.IOException;
 
@@ -40,7 +40,7 @@ public class UnauthenticatedServiceTest extends BaseTest {
 		GroupService service = new GroupService(session);
 
 		try {
-			service.getUserSites();
+			service.getUserSitesGroups();
 			fail();
 		}
 		catch (ServerException se) {

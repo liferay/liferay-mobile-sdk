@@ -19,7 +19,7 @@ import com.liferay.mobile.android.GroupServiceTest;
 import com.liferay.mobile.android.callback.typed.JSONArrayCallback;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.android.v62.group.GroupService;
+import com.liferay.mobile.android.v7.group.GroupService;
 
 import java.io.IOException;
 
@@ -70,7 +70,7 @@ public class GroupServiceAsyncTest extends BaseTest {
 		});
 
 		GroupService service = new GroupService(session);
-		service.getUserSites();
+		service.getUserSitesGroups();
 
 		lock.await(500, TimeUnit.MILLISECONDS);
 		GroupServiceTest.assertUserSites(sites[0]);
