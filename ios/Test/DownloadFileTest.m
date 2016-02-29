@@ -104,7 +104,7 @@
 	LRDLAppService_v7 *service = [[LRDLAppService_v7 alloc]
 		initWithSession:self.session];
 
-	long fileEntryId = [self.entry[@"fileEntryId"] longValue];
+	long long fileEntryId = [self.entry[@"fileEntryId"] longLongValue];
 	NSError *error;
 
 	[service deleteFileEntryWithFileEntryId:fileEntryId error:&error];
