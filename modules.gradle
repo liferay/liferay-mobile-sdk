@@ -63,7 +63,7 @@ task createModule << {
 	if (console) {
 		def all = project.hasProperty('all')
 
-		def context = read("${N}Context", project.ext['context'])
+		def contexts = read("${N}Context", project.ext['contexts'])
 		def String platforms = project.ext['platforms']
 		def url = project.ext['url']
 		def filter = project.ext['filter']
@@ -80,13 +80,13 @@ task createModule << {
 			version = read('Module Version', version)
 		}
 
-		def moduleDir = "${project.rootDir}/modules/$context/"
+		def moduleDir = "${project.rootDir}/modules/$contexts/"
 		file(moduleDir).mkdirs()
 
 		def props = file("$moduleDir/gradle.properties")
 		props.createNewFile()
 
-		write(props, 'context', context)
+		write(props, 'contexts', contexts)
 		write(props, 'destination', '.')
 
 		if (all) {
@@ -108,7 +108,7 @@ task createModule << {
 		generate.args = [
 			"platforms=$platforms",
 			"url=$url",
-			"context=$context",
+			"contexts=$contexts",
 			"filter=$filter",
 			"packageName=$packageName",
 			"portalVersion=$portalVersion",

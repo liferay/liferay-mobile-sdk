@@ -20,7 +20,7 @@ task generate(type: JavaExec) {
 	args = [
 		"platforms=$platforms",
 		"url=$url",
-		"context=$context",
+		"contexts=$contexts",
 		"filter=$filter",
 		"packageName=$packageName",
 		"portalVersion=$portalVersion",

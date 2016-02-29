@@ -43,7 +43,7 @@ public class SDKBuilder {
 
 		String[] platforms = arguments.get("platforms").split(",");
 		String url = arguments.get("url");
-		String context = arguments.get("context");
+		String[] contexts = arguments.get("contexts").split(",");
 		String packageName = arguments.get("packageName");
 		String filter = arguments.get("filter");
 		int portalVersion = Integer.valueOf(arguments.get("portalVersion"));
@@ -51,7 +51,7 @@ public class SDKBuilder {
 
 		try {
 			builder.build(
-				platforms, url, context, packageName, filter, portalVersion,
+				platforms, url, contexts, packageName, filter, portalVersion,
 				destination);
 		}
 		catch (Exception e) {
@@ -66,24 +66,28 @@ public class SDKBuilder {
 	}
 
 	public void build(
-			String[] platforms, String url, String context, String packageName,
-			String filter, int portalVersion, String destination)
+			String[] platforms, String url, String[] contexts,
+			String packageName, String filter, int portalVersion,
+			String destination)
 		throws Exception {
 
-		Discovery discovery = discover(url, context, filter);
+		for (String context : contexts) {
+			Discovery discovery = discover(url, context, filter);
 
-		for (String platform : platforms) {
-			String className = _properties.getProperty(platform);
-			Builder builder = (Builder)Class.forName(className).newInstance();
+			for (String platform : platforms) {
+				String className = _properties.getProperty(platform);
+				Builder builder = (Builder)Class.forName(
+					className).newInstance();
 
-			if (Validator.isNull(filter)) {
-				builder.buildAll(
-					discovery, packageName, portalVersion, destination);
-			}
-			else {
-				builder.build(
-					discovery, discovery.getActions(), packageName,
-					portalVersion, filter, destination);
+				if (Validator.isNull(filter)) {
+					builder.buildAll(
+						discovery, packageName, portalVersion, destination);
+				}
+				else {
+					builder.build(
+						discovery, discovery.getActions(), packageName,
+						portalVersion, filter, destination);
+				}
 			}
 		}
 	}
@@ -104,6 +108,10 @@ public class SDKBuilder {
 			sb.append("=/");
 			sb.append(filter);
 			sb.append("/*");
+		}
+
+		if ("portal".equals(context)) {
+			context = null;
 		}
 
 		if (Validator.isNotNull(context)) {
