@@ -44,7 +44,7 @@ public class UnauthenticatedServiceTest extends BaseTest {
 			fail();
 		}
 		catch (ServerException se) {
-			assertEquals("Authenticated access required", se.getMessage());
+			assertEquals("Request failed. Response code: 403", se.getMessage());
 		}
 	}
 
