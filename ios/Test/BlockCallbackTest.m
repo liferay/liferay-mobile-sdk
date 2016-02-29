@@ -13,7 +13,7 @@
  */
 
 #import "GroupServiceTest.h"
-#import "LRGroupService_v62.h"
+#import "LRGroupService_v7.h"
 #import "TRVSMonitor.h"
 
 /**
@@ -43,10 +43,10 @@
 		}
 	];
 
-	LRGroupService_v62 *service = [[LRGroupService_v62 alloc]
+	LRGroupService_v7 *service = [[LRGroupService_v7 alloc]
 		initWithSession:session];
 
-	[service getUserSites:&error];
+	[service getUserSitesGroups:&error];
 	[monitor wait];
 
 	[self assert:groups error:error];

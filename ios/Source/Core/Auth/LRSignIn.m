@@ -16,8 +16,8 @@
 
 #import "LRBasicAuthentication.h"
 #import "LRError.h"
-#import "LRGroupService_v62.h"
-#import "LRUserService_v62.h"
+#import "LRGroupService_v7.h"
+#import "LRUserService_v7.h"
 #import "LRValidator.h"
 
 /**
@@ -46,7 +46,7 @@
 + (void)signInWithSession:(LRSession *)session callback:(id<LRCallback>)callback
 		method:(LRSignInMethod)method error:(NSError **)error {
 
-	LRGroupService_v62 *service = [[LRGroupService_v62 alloc]
+	LRGroupService_v7 *service = [[LRGroupService_v7 alloc]
 		initWithSession:session];
 
 	[session
@@ -66,7 +66,7 @@
 
 			[userSession setCallback:callback];
 
-			LRUserService_v62 *userService = [[LRUserService_v62 alloc]
+			LRUserService_v7 *userService = [[LRUserService_v7 alloc]
 				initWithSession:userSession];
 
 			NSString *username = [self _getUsername:session];
@@ -90,7 +90,7 @@
 		}
 	 ];
 
-	[service getUserSites:error];
+	[service getUserSitesGroups:error];
 }
 
 + (NSString *)_getUsername:(LRSession *)session {

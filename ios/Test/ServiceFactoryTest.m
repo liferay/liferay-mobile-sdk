@@ -13,7 +13,7 @@
  */
 
 #import "GroupServiceTest.h"
-#import "LRGroupService_v62.h"
+#import "LRGroupService_v7.h"
 #import "LRServiceFactory.h"
 
 /**
@@ -25,13 +25,13 @@
 @implementation ServiceFactoryTest
 
 - (void)testGetUserSites {
-	Class clazz = [LRGroupService_v62 class];
+	Class clazz = [LRGroupService_v7 class];
 
-	LRGroupService_v62 *service = (LRGroupService_v62 *)[LRServiceFactory
+	LRGroupService_v7 *service = (LRGroupService_v7 *)[LRServiceFactory
 		getService:clazz session:self.session];
 
 	NSError *error;
-	NSArray *groups = [service getUserSites:&error];
+	NSArray *groups = [service getUserSitesGroups:&error];
 
 	[self assert:groups error:error];
 }

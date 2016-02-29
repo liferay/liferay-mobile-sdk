@@ -13,7 +13,7 @@
  */
 
 #import "ServiceContextTest.h"
-#import "LRBookmarksEntryService_v62.h"
+#import "LRBookmarksEntryService_v7.h"
 
 const int PARENT_FOLDER_ID = 0;
 
@@ -52,7 +52,7 @@ const int PARENT_FOLDER_ID = 0;
 		serviceContext:(LRJSONObjectWrapper *)serviceContext
 		error:(NSError *)error {
 
-	LRBookmarksEntryService_v62 *service = [[LRBookmarksEntryService_v62 alloc]
+	LRBookmarksEntryService_v7 *service = [[LRBookmarksEntryService_v7 alloc]
 		initWithSession:self.session];
 
 	long long groupId = [self.settings[@"groupId"] longLongValue];
@@ -65,7 +65,7 @@ const int PARENT_FOLDER_ID = 0;
 }
 
 - (void)deleteBookmarkEntry:(NSDictionary *)entry error:(NSError *)error {
-	LRBookmarksEntryService_v62 *service = [[LRBookmarksEntryService_v62 alloc]
+	LRBookmarksEntryService_v7 *service = [[LRBookmarksEntryService_v7 alloc]
 		initWithSession:self.session];
 
 	[service deleteEntryWithEntryId:[entry[@"entryId"] longLongValue]

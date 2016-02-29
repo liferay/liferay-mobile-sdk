@@ -13,7 +13,7 @@
  */
 
 #import "BaseTest.h"
-#import "LRDLAppService_v62.h"
+#import "LRDLAppService_v7.h"
 #import "TRVSMonitor.h"
 
 NSString *const FILE_CONTENT = @"File content.";
@@ -33,7 +33,7 @@ NSString *const TITLE = @"title";
 @property (nonatomic, strong) NSError *error;
 @property (nonatomic, strong) TRVSMonitor *monitor;
 @property (nonatomic) long long progress;
-@property (nonatomic, strong) LRDLAppService_v62 *service;
+@property (nonatomic, strong) LRDLAppService_v7 *service;
 
 @end
 
@@ -57,7 +57,7 @@ NSString *const TITLE = @"title";
 }
 
 - (void)testAddFileEntryBytes {
-	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+	LRDLAppService_v7 *service = [[LRDLAppService_v7 alloc]
 		initWithSession:self.session];
 
 	long long repositoryId = [self.settings[GROUP_ID] longLongValue];
@@ -197,7 +197,7 @@ NSString *const TITLE = @"title";
 }
 
 - (void)testRepositoryIdServerExceptionSynchronous {
-	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+	LRDLAppService_v7 *service = [[LRDLAppService_v7 alloc]
 		initWithSession:self.session];
 
 	long long repositoryId = -1;
@@ -221,7 +221,7 @@ NSString *const TITLE = @"title";
 	LRSession *session = [[LRSession alloc] initWithSession:self.session];
 	[session setCallback:self];
 
-	self.service = [[LRDLAppService_v62 alloc] initWithSession:session];
+	self.service = [[LRDLAppService_v7 alloc] initWithSession:session];
 }
 
 - (void)tearDown {

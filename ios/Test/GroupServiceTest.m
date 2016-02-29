@@ -13,7 +13,7 @@
  */
 
 #import "GroupServiceTest.h"
-#import "LRGroupService_v62.h"
+#import "LRGroupService_v7.h"
 
 /**
  * @author Jose M. Navarro
@@ -21,23 +21,26 @@
 @implementation GroupServiceTest
 
 - (void)testGetUserSites {
-	LRGroupService_v62 *service = [[LRGroupService_v62 alloc]
+	LRGroupService_v7 *service = [[LRGroupService_v7 alloc]
 		initWithSession:self.session];
 
 	NSError *error;
-	NSArray *groups = [service getUserSites:&error];
+	NSArray *groups = [service getUserSitesGroups:&error];
 
 	[self assert:groups error:error];
 }
 
 - (void)assert:(NSArray *)groups error:(NSError *)error {
 	XCTAssertNil(error);
-	XCTAssertEqual(2, [groups count]);
+	XCTAssertEqual(3, [groups count]);
 
 	NSDictionary *group = groups[0];
 	XCTAssertEqualObjects(@"/test", group[@"friendlyURL"]);
 
 	group = groups[1];
+	XCTAssertEqualObjects(@"/global", group[@"friendlyURL"]);
+
+	group = groups[2];
 	XCTAssertEqualObjects(@"/guest", group[@"friendlyURL"]);
 }
 

@@ -14,7 +14,7 @@
 
 #import "BaseTest.h"
 #import "LRBatchSession.h"
-#import "LRDLAppService_v62.h"
+#import "LRDLAppService_v7.h"
 
 /**
  * @author Jose M. Navarro
@@ -26,7 +26,7 @@
 @implementation DLAppServiceTest
 
 - (void)testAddFolder {
-	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+	LRDLAppService_v7 *service = [[LRDLAppService_v7 alloc]
 		initWithSession:self.session];
 
 	long long repositoryId = [self.settings[@"groupId"] longLongValue];
@@ -58,7 +58,7 @@
 	LRBatchSession *batch = [[LRBatchSession alloc]
 		initWithSession:self.session];
 
-	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+	LRDLAppService_v7 *service = [[LRDLAppService_v7 alloc]
 		initWithSession:batch];
 
 	long long repositoryId = [self.settings[@"groupId"] longLongValue];
@@ -107,7 +107,7 @@
 }
 
 - (void)_deleteFolder:(long long)folderId {
-	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+	LRDLAppService_v7 *service = [[LRDLAppService_v7 alloc]
 		initWithSession:self.session];
 
 	NSError *error;
@@ -123,7 +123,7 @@
 	LRBatchSession *batch = [[LRBatchSession alloc]
 		initWithSession:self.session];
 
-	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+	LRDLAppService_v7 *service = [[LRDLAppService_v7 alloc]
 		initWithSession:batch];
 
 	NSError *error;
@@ -145,7 +145,7 @@
 }
 
 - (void)_getFolder:(long long)folderId exists:(BOOL)exists {
-	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+	LRDLAppService_v7 *service = [[LRDLAppService_v7 alloc]
 		initWithSession:self.session];
 
 	NSError *error;
@@ -171,7 +171,7 @@
 	LRBatchSession *batch = [[LRBatchSession alloc]
 		initWithSession:self.session];
 
-	LRDLAppService_v62 *service = [[LRDLAppService_v62 alloc]
+	LRDLAppService_v7 *service = [[LRDLAppService_v7 alloc]
 		initWithSession:batch];
 
 	NSError *error;

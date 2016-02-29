@@ -54,8 +54,9 @@
 	XCTAssertNotNil(error);
 	XCTAssertNil(user);
 
+	XCTAssertEqual(403, [error code]);
 	XCTAssertEqualObjects(
-		error.localizedDescription, @"Authenticated access required");
+		error.localizedDescription, @"The server returned an error code.");
 }
 
 - (void)testSignInSuccess {

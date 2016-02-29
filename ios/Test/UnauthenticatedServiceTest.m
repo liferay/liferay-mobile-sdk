@@ -33,7 +33,8 @@
 	NSError *error;
 	[service getUserSites:&error];
 
-	XCTAssertEqualObjects(@"Authenticated access required",
+	XCTAssertEqual(404, [error code]);
+	XCTAssertEqualObjects(@"The server returned an error code.",
 		[error localizedDescription]);
 }
 

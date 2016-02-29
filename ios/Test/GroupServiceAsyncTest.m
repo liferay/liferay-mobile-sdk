@@ -14,7 +14,7 @@
 
 #import "GroupServiceTest.h"
 #import "LRCallback.h"
-#import "LRGroupService_v62.h"
+#import "LRGroupService_v7.h"
 #import "TRVSMonitor.h"
 
 /**
@@ -48,11 +48,11 @@
 	LRSession *session = [[LRSession alloc] initWithSession:self.session];
 	[session setCallback:self];
 
-	LRGroupService_v62 *service = [[LRGroupService_v62 alloc]
+	LRGroupService_v7 *service = [[LRGroupService_v7 alloc]
 		initWithSession:session];
 
 	NSError *error;
-	[service getUserSites:&error];
+	[service getUserSitesGroups:&error];
 	[self.monitor wait];
 
 	[self assert:self.groups error:self.error];

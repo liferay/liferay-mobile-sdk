@@ -13,7 +13,7 @@
  */
 
 #import "BaseTest.h"
-#import "LRBookmarksEntryService_v62.h"
+#import "LRBookmarksEntryService_v7.h"
 #import "ServiceContextTest.h"
 
 /**
@@ -30,13 +30,13 @@
 @implementation OrderByComparatorTest
 
 - (void)testGetEntriesDescending {
-	LRBookmarksEntryService_v62 *service = [[LRBookmarksEntryService_v62 alloc]
+	LRBookmarksEntryService_v7 *service = [[LRBookmarksEntryService_v7 alloc]
 		initWithSession:self.session];
 
 	long long groupId = [self.settings[@"groupId"] longLongValue];
 
 	NSString *className =
-		@"com.liferay.portlet.bookmarks.util.comparator.EntryNameComparator";
+		@"com.liferay.bookmarks.util.comparator.EntryNameComparator";
 
 	LRJSONObjectWrapper *orderByComparatorDesc = [[LRJSONObjectWrapper alloc]
 		initWithClassName:className jsonObject:[NSDictionary dictionary]];
@@ -59,7 +59,7 @@
 }
 
 - (void)testNullOrderByComparator {
-	LRBookmarksEntryService_v62 *service = [[LRBookmarksEntryService_v62 alloc]
+	LRBookmarksEntryService_v7 *service = [[LRBookmarksEntryService_v7 alloc]
 		initWithSession:self.session];
 
 	long long groupId = [self.settings[@"groupId"] longLongValue];

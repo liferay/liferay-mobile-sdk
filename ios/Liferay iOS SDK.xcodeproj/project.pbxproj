@@ -142,6 +142,110 @@
 		CC6ECF281986D83C007F4EBB /* LRLocalizationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6ECF271986D83C007F4EBB /* LRLocalizationUtil.m */; };
 		CC6ECF301986DB2F007F4EBB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC6ECF321986DB2F007F4EBB /* Localizable.strings */; };
 		CC83D48F18ED6BE300CFA142 /* BaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC83D48E18ED6BE300CFA142 /* BaseTest.m */; };
+		CC941CAD1C84EB680029C4A6 /* LRAddressService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941B771C84EB670029C4A6 /* LRAddressService_v7.m */; };
+		CC941CAE1C84EB680029C4A6 /* LRAnnouncementsDeliveryService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941B7A1C84EB670029C4A6 /* LRAnnouncementsDeliveryService_v7.m */; };
+		CC941CAF1C84EB680029C4A6 /* LRAnnouncementsEntryService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941B7D1C84EB670029C4A6 /* LRAnnouncementsEntryService_v7.m */; };
+		CC941CB01C84EB680029C4A6 /* LRAnnouncementsFlagService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941B801C84EB670029C4A6 /* LRAnnouncementsFlagService_v7.m */; };
+		CC941CB11C84EB680029C4A6 /* LRAppService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941B831C84EB670029C4A6 /* LRAppService_v7.m */; };
+		CC941CB21C84EB680029C4A6 /* LRAssetCategoryService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941B861C84EB670029C4A6 /* LRAssetCategoryService_v7.m */; };
+		CC941CB31C84EB680029C4A6 /* LRAssetCategoryPropertyService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941B891C84EB670029C4A6 /* LRAssetCategoryPropertyService_v7.m */; };
+		CC941CB41C84EB680029C4A6 /* LRAssetEntryService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941B8C1C84EB670029C4A6 /* LRAssetEntryService_v7.m */; };
+		CC941CB51C84EB680029C4A6 /* LRAssetTagService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941B8F1C84EB670029C4A6 /* LRAssetTagService_v7.m */; };
+		CC941CB61C84EB680029C4A6 /* LRAssetVocabularyService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941B921C84EB670029C4A6 /* LRAssetVocabularyService_v7.m */; };
+		CC941CB71C84EB680029C4A6 /* LRBackgroundTaskService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941B951C84EB670029C4A6 /* LRBackgroundTaskService_v7.m */; };
+		CC941CB81C84EB680029C4A6 /* LRBlogsEntryService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941B981C84EB670029C4A6 /* LRBlogsEntryService_v7.m */; };
+		CC941CB91C84EB680029C4A6 /* LRBookmarksEntryService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941B9B1C84EB670029C4A6 /* LRBookmarksEntryService_v7.m */; };
+		CC941CBA1C84EB680029C4A6 /* LRBookmarksFolderService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941B9E1C84EB670029C4A6 /* LRBookmarksFolderService_v7.m */; };
+		CC941CBB1C84EB680029C4A6 /* LRCalendarService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BA11C84EB670029C4A6 /* LRCalendarService_v7.m */; };
+		CC941CBC1C84EB680029C4A6 /* LRCalendarbookingService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BA41C84EB670029C4A6 /* LRCalendarbookingService_v7.m */; };
+		CC941CBD1C84EB680029C4A6 /* LRCalendarnotificationtemplateService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BA71C84EB670029C4A6 /* LRCalendarnotificationtemplateService_v7.m */; };
+		CC941CBE1C84EB680029C4A6 /* LRCalendarresourceService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BAA1C84EB670029C4A6 /* LRCalendarresourceService_v7.m */; };
+		CC941CBF1C84EB680029C4A6 /* LRClassNameService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BAD1C84EB670029C4A6 /* LRClassNameService_v7.m */; };
+		CC941CC01C84EB680029C4A6 /* LRCommentmanagerjsonwsService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BB01C84EB670029C4A6 /* LRCommentmanagerjsonwsService_v7.m */; };
+		CC941CC11C84EB680029C4A6 /* LRCompanyService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BB31C84EB670029C4A6 /* LRCompanyService_v7.m */; };
+		CC941CC21C84EB680029C4A6 /* LRContactService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BB61C84EB670029C4A6 /* LRContactService_v7.m */; };
+		CC941CC31C84EB680029C4A6 /* LRCountryService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BB91C84EB670029C4A6 /* LRCountryService_v7.m */; };
+		CC941CC41C84EB680029C4A6 /* LRDDLRecordService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BBC1C84EB670029C4A6 /* LRDDLRecordService_v7.m */; };
+		CC941CC51C84EB680029C4A6 /* LRDDLRecordSetService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BBF1C84EB670029C4A6 /* LRDDLRecordSetService_v7.m */; };
+		CC941CC61C84EB680029C4A6 /* LRDdlrecordversionService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BC21C84EB670029C4A6 /* LRDdlrecordversionService_v7.m */; };
+		CC941CC71C84EB680029C4A6 /* LRDdmdataproviderinstanceService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BC51C84EB670029C4A6 /* LRDdmdataproviderinstanceService_v7.m */; };
+		CC941CC81C84EB680029C4A6 /* LRDDMStructureService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BC81C84EB670029C4A6 /* LRDDMStructureService_v7.m */; };
+		CC941CC91C84EB680029C4A6 /* LRDdmstructureversionService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BCB1C84EB670029C4A6 /* LRDdmstructureversionService_v7.m */; };
+		CC941CCA1C84EB680029C4A6 /* LRDDMTemplateService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BCE1C84EB670029C4A6 /* LRDDMTemplateService_v7.m */; };
+		CC941CCB1C84EB680029C4A6 /* LRDdmtemplateversionService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BD11C84EB670029C4A6 /* LRDdmtemplateversionService_v7.m */; };
+		CC941CCC1C84EB680029C4A6 /* LRDLAppService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BD41C84EB670029C4A6 /* LRDLAppService_v7.m */; };
+		CC941CCD1C84EB680029C4A6 /* LRDLFileEntryService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BD71C84EB670029C4A6 /* LRDLFileEntryService_v7.m */; };
+		CC941CCE1C84EB680029C4A6 /* LRDLFileEntryTypeService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BDA1C84EB670029C4A6 /* LRDLFileEntryTypeService_v7.m */; };
+		CC941CCF1C84EB680029C4A6 /* LRDLFileShortcutService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BDD1C84EB670029C4A6 /* LRDLFileShortcutService_v7.m */; };
+		CC941CD01C84EB680029C4A6 /* LRDLFileVersionService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BE01C84EB670029C4A6 /* LRDLFileVersionService_v7.m */; };
+		CC941CD11C84EB680029C4A6 /* LRDLFolderService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BE31C84EB670029C4A6 /* LRDLFolderService_v7.m */; };
+		CC941CD21C84EB680029C4A6 /* LRDltrashService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BE61C84EB670029C4A6 /* LRDltrashService_v7.m */; };
+		CC941CD31C84EB680029C4A6 /* LREmailAddressService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BE91C84EB670029C4A6 /* LREmailAddressService_v7.m */; };
+		CC941CD41C84EB680029C4A6 /* LRExpandoColumnService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BEC1C84EB670029C4A6 /* LRExpandoColumnService_v7.m */; };
+		CC941CD51C84EB680029C4A6 /* LRExpandoValueService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BEF1C84EB670029C4A6 /* LRExpandoValueService_v7.m */; };
+		CC941CD61C84EB680029C4A6 /* LRExportimportService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BF21C84EB670029C4A6 /* LRExportimportService_v7.m */; };
+		CC941CD71C84EB680029C4A6 /* LRExportimportconfigurationService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BF51C84EB670029C4A6 /* LRExportimportconfigurationService_v7.m */; };
+		CC941CD81C84EB680029C4A6 /* LRFlagsEntryService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BF81C84EB670029C4A6 /* LRFlagsEntryService_v7.m */; };
+		CC941CD91C84EB680029C4A6 /* LRGroupService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BFB1C84EB670029C4A6 /* LRGroupService_v7.m */; };
+		CC941CDA1C84EB680029C4A6 /* LRImageService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941BFE1C84EB670029C4A6 /* LRImageService_v7.m */; };
+		CC941CDB1C84EB680029C4A6 /* LRJournalArticleService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C011C84EB670029C4A6 /* LRJournalArticleService_v7.m */; };
+		CC941CDC1C84EB680029C4A6 /* LRJournalFeedService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C041C84EB670029C4A6 /* LRJournalFeedService_v7.m */; };
+		CC941CDD1C84EB680029C4A6 /* LRJournalFolderService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C071C84EB670029C4A6 /* LRJournalFolderService_v7.m */; };
+		CC941CDE1C84EB680029C4A6 /* LRKaleodefinitionService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C0A1C84EB670029C4A6 /* LRKaleodefinitionService_v7.m */; };
+		CC941CDF1C84EB680029C4A6 /* LRLayoutService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C0D1C84EB670029C4A6 /* LRLayoutService_v7.m */; };
+		CC941CE01C84EB680029C4A6 /* LRLayoutBranchService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C101C84EB670029C4A6 /* LRLayoutBranchService_v7.m */; };
+		CC941CE11C84EB680029C4A6 /* LRLayoutPrototypeService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C131C84EB670029C4A6 /* LRLayoutPrototypeService_v7.m */; };
+		CC941CE21C84EB680029C4A6 /* LRLayoutRevisionService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C161C84EB670029C4A6 /* LRLayoutRevisionService_v7.m */; };
+		CC941CE31C84EB680029C4A6 /* LRLayoutSetService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C191C84EB670029C4A6 /* LRLayoutSetService_v7.m */; };
+		CC941CE41C84EB680029C4A6 /* LRLayoutSetBranchService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C1C1C84EB670029C4A6 /* LRLayoutSetBranchService_v7.m */; };
+		CC941CE51C84EB680029C4A6 /* LRLayoutSetPrototypeService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C1F1C84EB670029C4A6 /* LRLayoutSetPrototypeService_v7.m */; };
+		CC941CE61C84EB680029C4A6 /* LRListTypeService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C221C84EB670029C4A6 /* LRListTypeService_v7.m */; };
+		CC941CE71C84EB680029C4A6 /* LRMBBanService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C251C84EB670029C4A6 /* LRMBBanService_v7.m */; };
+		CC941CE81C84EB680029C4A6 /* LRMBCategoryService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C281C84EB670029C4A6 /* LRMBCategoryService_v7.m */; };
+		CC941CE91C84EB680029C4A6 /* LRMBMessageService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C2B1C84EB670029C4A6 /* LRMBMessageService_v7.m */; };
+		CC941CEA1C84EB680029C4A6 /* LRMBThreadService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C2E1C84EB670029C4A6 /* LRMBThreadService_v7.m */; };
+		CC941CEB1C84EB680029C4A6 /* LRMDRActionService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C311C84EB670029C4A6 /* LRMDRActionService_v7.m */; };
+		CC941CEC1C84EB680029C4A6 /* LRMDRRuleService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C341C84EB670029C4A6 /* LRMDRRuleService_v7.m */; };
+		CC941CED1C84EB680029C4A6 /* LRMDRRuleGroupService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C371C84EB670029C4A6 /* LRMDRRuleGroupService_v7.m */; };
+		CC941CEE1C84EB680029C4A6 /* LRMDRRuleGroupInstanceService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C3A1C84EB670029C4A6 /* LRMDRRuleGroupInstanceService_v7.m */; };
+		CC941CEF1C84EB680029C4A6 /* LRMembershipRequestService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C3D1C84EB670029C4A6 /* LRMembershipRequestService_v7.m */; };
+		CC941CF01C84EB680029C4A6 /* LRMicroblogsentryService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C401C84EB670029C4A6 /* LRMicroblogsentryService_v7.m */; };
+		CC941CF11C84EB680029C4A6 /* LROrganizationService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C431C84EB670029C4A6 /* LROrganizationService_v7.m */; };
+		CC941CF21C84EB680029C4A6 /* LROrgLaborService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C461C84EB670029C4A6 /* LROrgLaborService_v7.m */; };
+		CC941CF31C84EB680029C4A6 /* LRPasswordPolicyService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C491C84EB670029C4A6 /* LRPasswordPolicyService_v7.m */; };
+		CC941CF41C84EB680029C4A6 /* LRPermissionService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C4C1C84EB670029C4A6 /* LRPermissionService_v7.m */; };
+		CC941CF51C84EB680029C4A6 /* LRPhoneService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C4F1C84EB670029C4A6 /* LRPhoneService_v7.m */; };
+		CC941CF61C84EB680029C4A6 /* LRPluginSettingService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C521C84EB670029C4A6 /* LRPluginSettingService_v7.m */; };
+		CC941CF71C84EB680029C4A6 /* LRPollsQuestionService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C551C84EB670029C4A6 /* LRPollsQuestionService_v7.m */; };
+		CC941CF81C84EB680029C4A6 /* LRPollsVoteService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C581C84EB670029C4A6 /* LRPollsVoteService_v7.m */; };
+		CC941CF91C84EB680029C4A6 /* LRPortalService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C5B1C84EB680029C4A6 /* LRPortalService_v7.m */; };
+		CC941CFA1C84EB680029C4A6 /* LRPortletService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C5E1C84EB680029C4A6 /* LRPortletService_v7.m */; };
+		CC941CFB1C84EB680029C4A6 /* LRPortletPreferencesService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C611C84EB680029C4A6 /* LRPortletPreferencesService_v7.m */; };
+		CC941CFC1C84EB680029C4A6 /* LRRatingsEntryService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C641C84EB680029C4A6 /* LRRatingsEntryService_v7.m */; };
+		CC941CFD1C84EB680029C4A6 /* LRRegionService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C671C84EB680029C4A6 /* LRRegionService_v7.m */; };
+		CC941CFE1C84EB680029C4A6 /* LRRepositoryService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C6A1C84EB680029C4A6 /* LRRepositoryService_v7.m */; };
+		CC941CFF1C84EB680029C4A6 /* LRResourceBlockService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C6D1C84EB680029C4A6 /* LRResourceBlockService_v7.m */; };
+		CC941D001C84EB680029C4A6 /* LRResourcePermissionService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C701C84EB680029C4A6 /* LRResourcePermissionService_v7.m */; };
+		CC941D011C84EB680029C4A6 /* LRRoleService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C731C84EB680029C4A6 /* LRRoleService_v7.m */; };
+		CC941D021C84EB680029C4A6 /* LRSapentryService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C761C84EB680029C4A6 /* LRSapentryService_v7.m */; };
+		CC941D031C84EB680029C4A6 /* LRShoppingCategoryService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C791C84EB680029C4A6 /* LRShoppingCategoryService_v7.m */; };
+		CC941D041C84EB680029C4A6 /* LRShoppingCouponService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C7C1C84EB680029C4A6 /* LRShoppingCouponService_v7.m */; };
+		CC941D051C84EB680029C4A6 /* LRShoppingItemService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C7F1C84EB680029C4A6 /* LRShoppingItemService_v7.m */; };
+		CC941D061C84EB680029C4A6 /* LRShoppingOrderService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C821C84EB680029C4A6 /* LRShoppingOrderService_v7.m */; };
+		CC941D071C84EB680029C4A6 /* LRSocialActivityService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C851C84EB680029C4A6 /* LRSocialActivityService_v7.m */; };
+		CC941D081C84EB680029C4A6 /* LRSocialActivitySettingService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C881C84EB680029C4A6 /* LRSocialActivitySettingService_v7.m */; };
+		CC941D091C84EB680029C4A6 /* LRSocialRequestService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C8B1C84EB680029C4A6 /* LRSocialRequestService_v7.m */; };
+		CC941D0A1C84EB680029C4A6 /* LRStagingService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C8E1C84EB680029C4A6 /* LRStagingService_v7.m */; };
+		CC941D0B1C84EB680029C4A6 /* LRTeamService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C911C84EB680029C4A6 /* LRTeamService_v7.m */; };
+		CC941D0C1C84EB680029C4A6 /* LRThemeService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C941C84EB680029C4A6 /* LRThemeService_v7.m */; };
+		CC941D0D1C84EB680029C4A6 /* LRTrashEntryService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C971C84EB680029C4A6 /* LRTrashEntryService_v7.m */; };
+		CC941D0E1C84EB680029C4A6 /* LRUserService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C9A1C84EB680029C4A6 /* LRUserService_v7.m */; };
+		CC941D0F1C84EB680029C4A6 /* LRUserGroupService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941C9D1C84EB680029C4A6 /* LRUserGroupService_v7.m */; };
+		CC941D101C84EB680029C4A6 /* LRUserGroupGroupRoleService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941CA01C84EB680029C4A6 /* LRUserGroupGroupRoleService_v7.m */; };
+		CC941D111C84EB680029C4A6 /* LRUserGroupRoleService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941CA31C84EB680029C4A6 /* LRUserGroupRoleService_v7.m */; };
+		CC941D121C84EB680029C4A6 /* LRWebsiteService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941CA61C84EB680029C4A6 /* LRWebsiteService_v7.m */; };
+		CC941D131C84EB680029C4A6 /* LRWikiNodeService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941CA91C84EB680029C4A6 /* LRWikiNodeService_v7.m */; };
+		CC941D141C84EB680029C4A6 /* LRWikiPageService_v7.m in Sources */ = {isa = PBXBuildFile; fileRef = CC941CAC1C84EB680029C4A6 /* LRWikiPageService_v7.m */; };
 		CCA4E4E7193657B900374A79 /* LRPortalVersionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA4E4E51936578900374A79 /* LRPortalVersionUtil.m */; };
 		CCA6594518EC4BE800957D20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
 		CCABA081197C995500A9F8B0 /* LRResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CCABA07F197C995500A9F8B0 /* LRResponseParser.m */; };
@@ -435,6 +539,214 @@
 		CC6ECF351986E565007F4EBB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CC83D48D18ED693600CFA142 /* BaseTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTest.h; sourceTree = "<group>"; };
 		CC83D48E18ED6BE300CFA142 /* BaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTest.m; sourceTree = "<group>"; };
+		CC941B761C84EB670029C4A6 /* LRAddressService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRAddressService_v7.h; sourceTree = "<group>"; };
+		CC941B771C84EB670029C4A6 /* LRAddressService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRAddressService_v7.m; sourceTree = "<group>"; };
+		CC941B791C84EB670029C4A6 /* LRAnnouncementsDeliveryService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRAnnouncementsDeliveryService_v7.h; sourceTree = "<group>"; };
+		CC941B7A1C84EB670029C4A6 /* LRAnnouncementsDeliveryService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRAnnouncementsDeliveryService_v7.m; sourceTree = "<group>"; };
+		CC941B7C1C84EB670029C4A6 /* LRAnnouncementsEntryService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRAnnouncementsEntryService_v7.h; sourceTree = "<group>"; };
+		CC941B7D1C84EB670029C4A6 /* LRAnnouncementsEntryService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRAnnouncementsEntryService_v7.m; sourceTree = "<group>"; };
+		CC941B7F1C84EB670029C4A6 /* LRAnnouncementsFlagService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRAnnouncementsFlagService_v7.h; sourceTree = "<group>"; };
+		CC941B801C84EB670029C4A6 /* LRAnnouncementsFlagService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRAnnouncementsFlagService_v7.m; sourceTree = "<group>"; };
+		CC941B821C84EB670029C4A6 /* LRAppService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRAppService_v7.h; sourceTree = "<group>"; };
+		CC941B831C84EB670029C4A6 /* LRAppService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRAppService_v7.m; sourceTree = "<group>"; };
+		CC941B851C84EB670029C4A6 /* LRAssetCategoryService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRAssetCategoryService_v7.h; sourceTree = "<group>"; };
+		CC941B861C84EB670029C4A6 /* LRAssetCategoryService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRAssetCategoryService_v7.m; sourceTree = "<group>"; };
+		CC941B881C84EB670029C4A6 /* LRAssetCategoryPropertyService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRAssetCategoryPropertyService_v7.h; sourceTree = "<group>"; };
+		CC941B891C84EB670029C4A6 /* LRAssetCategoryPropertyService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRAssetCategoryPropertyService_v7.m; sourceTree = "<group>"; };
+		CC941B8B1C84EB670029C4A6 /* LRAssetEntryService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRAssetEntryService_v7.h; sourceTree = "<group>"; };
+		CC941B8C1C84EB670029C4A6 /* LRAssetEntryService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRAssetEntryService_v7.m; sourceTree = "<group>"; };
+		CC941B8E1C84EB670029C4A6 /* LRAssetTagService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRAssetTagService_v7.h; sourceTree = "<group>"; };
+		CC941B8F1C84EB670029C4A6 /* LRAssetTagService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRAssetTagService_v7.m; sourceTree = "<group>"; };
+		CC941B911C84EB670029C4A6 /* LRAssetVocabularyService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRAssetVocabularyService_v7.h; sourceTree = "<group>"; };
+		CC941B921C84EB670029C4A6 /* LRAssetVocabularyService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRAssetVocabularyService_v7.m; sourceTree = "<group>"; };
+		CC941B941C84EB670029C4A6 /* LRBackgroundTaskService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRBackgroundTaskService_v7.h; sourceTree = "<group>"; };
+		CC941B951C84EB670029C4A6 /* LRBackgroundTaskService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRBackgroundTaskService_v7.m; sourceTree = "<group>"; };
+		CC941B971C84EB670029C4A6 /* LRBlogsEntryService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRBlogsEntryService_v7.h; sourceTree = "<group>"; };
+		CC941B981C84EB670029C4A6 /* LRBlogsEntryService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRBlogsEntryService_v7.m; sourceTree = "<group>"; };
+		CC941B9A1C84EB670029C4A6 /* LRBookmarksEntryService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRBookmarksEntryService_v7.h; sourceTree = "<group>"; };
+		CC941B9B1C84EB670029C4A6 /* LRBookmarksEntryService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRBookmarksEntryService_v7.m; sourceTree = "<group>"; };
+		CC941B9D1C84EB670029C4A6 /* LRBookmarksFolderService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRBookmarksFolderService_v7.h; sourceTree = "<group>"; };
+		CC941B9E1C84EB670029C4A6 /* LRBookmarksFolderService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRBookmarksFolderService_v7.m; sourceTree = "<group>"; };
+		CC941BA01C84EB670029C4A6 /* LRCalendarService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCalendarService_v7.h; sourceTree = "<group>"; };
+		CC941BA11C84EB670029C4A6 /* LRCalendarService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRCalendarService_v7.m; sourceTree = "<group>"; };
+		CC941BA31C84EB670029C4A6 /* LRCalendarbookingService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCalendarbookingService_v7.h; sourceTree = "<group>"; };
+		CC941BA41C84EB670029C4A6 /* LRCalendarbookingService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRCalendarbookingService_v7.m; sourceTree = "<group>"; };
+		CC941BA61C84EB670029C4A6 /* LRCalendarnotificationtemplateService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCalendarnotificationtemplateService_v7.h; sourceTree = "<group>"; };
+		CC941BA71C84EB670029C4A6 /* LRCalendarnotificationtemplateService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRCalendarnotificationtemplateService_v7.m; sourceTree = "<group>"; };
+		CC941BA91C84EB670029C4A6 /* LRCalendarresourceService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCalendarresourceService_v7.h; sourceTree = "<group>"; };
+		CC941BAA1C84EB670029C4A6 /* LRCalendarresourceService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRCalendarresourceService_v7.m; sourceTree = "<group>"; };
+		CC941BAC1C84EB670029C4A6 /* LRClassNameService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRClassNameService_v7.h; sourceTree = "<group>"; };
+		CC941BAD1C84EB670029C4A6 /* LRClassNameService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRClassNameService_v7.m; sourceTree = "<group>"; };
+		CC941BAF1C84EB670029C4A6 /* LRCommentmanagerjsonwsService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCommentmanagerjsonwsService_v7.h; sourceTree = "<group>"; };
+		CC941BB01C84EB670029C4A6 /* LRCommentmanagerjsonwsService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRCommentmanagerjsonwsService_v7.m; sourceTree = "<group>"; };
+		CC941BB21C84EB670029C4A6 /* LRCompanyService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCompanyService_v7.h; sourceTree = "<group>"; };
+		CC941BB31C84EB670029C4A6 /* LRCompanyService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRCompanyService_v7.m; sourceTree = "<group>"; };
+		CC941BB51C84EB670029C4A6 /* LRContactService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRContactService_v7.h; sourceTree = "<group>"; };
+		CC941BB61C84EB670029C4A6 /* LRContactService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRContactService_v7.m; sourceTree = "<group>"; };
+		CC941BB81C84EB670029C4A6 /* LRCountryService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCountryService_v7.h; sourceTree = "<group>"; };
+		CC941BB91C84EB670029C4A6 /* LRCountryService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRCountryService_v7.m; sourceTree = "<group>"; };
+		CC941BBB1C84EB670029C4A6 /* LRDDLRecordService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDDLRecordService_v7.h; sourceTree = "<group>"; };
+		CC941BBC1C84EB670029C4A6 /* LRDDLRecordService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDDLRecordService_v7.m; sourceTree = "<group>"; };
+		CC941BBE1C84EB670029C4A6 /* LRDDLRecordSetService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDDLRecordSetService_v7.h; sourceTree = "<group>"; };
+		CC941BBF1C84EB670029C4A6 /* LRDDLRecordSetService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDDLRecordSetService_v7.m; sourceTree = "<group>"; };
+		CC941BC11C84EB670029C4A6 /* LRDdlrecordversionService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDdlrecordversionService_v7.h; sourceTree = "<group>"; };
+		CC941BC21C84EB670029C4A6 /* LRDdlrecordversionService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDdlrecordversionService_v7.m; sourceTree = "<group>"; };
+		CC941BC41C84EB670029C4A6 /* LRDdmdataproviderinstanceService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDdmdataproviderinstanceService_v7.h; sourceTree = "<group>"; };
+		CC941BC51C84EB670029C4A6 /* LRDdmdataproviderinstanceService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDdmdataproviderinstanceService_v7.m; sourceTree = "<group>"; };
+		CC941BC71C84EB670029C4A6 /* LRDDMStructureService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDDMStructureService_v7.h; sourceTree = "<group>"; };
+		CC941BC81C84EB670029C4A6 /* LRDDMStructureService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDDMStructureService_v7.m; sourceTree = "<group>"; };
+		CC941BCA1C84EB670029C4A6 /* LRDdmstructureversionService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDdmstructureversionService_v7.h; sourceTree = "<group>"; };
+		CC941BCB1C84EB670029C4A6 /* LRDdmstructureversionService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDdmstructureversionService_v7.m; sourceTree = "<group>"; };
+		CC941BCD1C84EB670029C4A6 /* LRDDMTemplateService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDDMTemplateService_v7.h; sourceTree = "<group>"; };
+		CC941BCE1C84EB670029C4A6 /* LRDDMTemplateService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDDMTemplateService_v7.m; sourceTree = "<group>"; };
+		CC941BD01C84EB670029C4A6 /* LRDdmtemplateversionService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDdmtemplateversionService_v7.h; sourceTree = "<group>"; };
+		CC941BD11C84EB670029C4A6 /* LRDdmtemplateversionService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDdmtemplateversionService_v7.m; sourceTree = "<group>"; };
+		CC941BD31C84EB670029C4A6 /* LRDLAppService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDLAppService_v7.h; sourceTree = "<group>"; };
+		CC941BD41C84EB670029C4A6 /* LRDLAppService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDLAppService_v7.m; sourceTree = "<group>"; };
+		CC941BD61C84EB670029C4A6 /* LRDLFileEntryService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDLFileEntryService_v7.h; sourceTree = "<group>"; };
+		CC941BD71C84EB670029C4A6 /* LRDLFileEntryService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDLFileEntryService_v7.m; sourceTree = "<group>"; };
+		CC941BD91C84EB670029C4A6 /* LRDLFileEntryTypeService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDLFileEntryTypeService_v7.h; sourceTree = "<group>"; };
+		CC941BDA1C84EB670029C4A6 /* LRDLFileEntryTypeService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDLFileEntryTypeService_v7.m; sourceTree = "<group>"; };
+		CC941BDC1C84EB670029C4A6 /* LRDLFileShortcutService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDLFileShortcutService_v7.h; sourceTree = "<group>"; };
+		CC941BDD1C84EB670029C4A6 /* LRDLFileShortcutService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDLFileShortcutService_v7.m; sourceTree = "<group>"; };
+		CC941BDF1C84EB670029C4A6 /* LRDLFileVersionService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDLFileVersionService_v7.h; sourceTree = "<group>"; };
+		CC941BE01C84EB670029C4A6 /* LRDLFileVersionService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDLFileVersionService_v7.m; sourceTree = "<group>"; };
+		CC941BE21C84EB670029C4A6 /* LRDLFolderService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDLFolderService_v7.h; sourceTree = "<group>"; };
+		CC941BE31C84EB670029C4A6 /* LRDLFolderService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDLFolderService_v7.m; sourceTree = "<group>"; };
+		CC941BE51C84EB670029C4A6 /* LRDltrashService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDltrashService_v7.h; sourceTree = "<group>"; };
+		CC941BE61C84EB670029C4A6 /* LRDltrashService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDltrashService_v7.m; sourceTree = "<group>"; };
+		CC941BE81C84EB670029C4A6 /* LREmailAddressService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LREmailAddressService_v7.h; sourceTree = "<group>"; };
+		CC941BE91C84EB670029C4A6 /* LREmailAddressService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LREmailAddressService_v7.m; sourceTree = "<group>"; };
+		CC941BEB1C84EB670029C4A6 /* LRExpandoColumnService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRExpandoColumnService_v7.h; sourceTree = "<group>"; };
+		CC941BEC1C84EB670029C4A6 /* LRExpandoColumnService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRExpandoColumnService_v7.m; sourceTree = "<group>"; };
+		CC941BEE1C84EB670029C4A6 /* LRExpandoValueService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRExpandoValueService_v7.h; sourceTree = "<group>"; };
+		CC941BEF1C84EB670029C4A6 /* LRExpandoValueService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRExpandoValueService_v7.m; sourceTree = "<group>"; };
+		CC941BF11C84EB670029C4A6 /* LRExportimportService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRExportimportService_v7.h; sourceTree = "<group>"; };
+		CC941BF21C84EB670029C4A6 /* LRExportimportService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRExportimportService_v7.m; sourceTree = "<group>"; };
+		CC941BF41C84EB670029C4A6 /* LRExportimportconfigurationService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRExportimportconfigurationService_v7.h; sourceTree = "<group>"; };
+		CC941BF51C84EB670029C4A6 /* LRExportimportconfigurationService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRExportimportconfigurationService_v7.m; sourceTree = "<group>"; };
+		CC941BF71C84EB670029C4A6 /* LRFlagsEntryService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRFlagsEntryService_v7.h; sourceTree = "<group>"; };
+		CC941BF81C84EB670029C4A6 /* LRFlagsEntryService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRFlagsEntryService_v7.m; sourceTree = "<group>"; };
+		CC941BFA1C84EB670029C4A6 /* LRGroupService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRGroupService_v7.h; sourceTree = "<group>"; };
+		CC941BFB1C84EB670029C4A6 /* LRGroupService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRGroupService_v7.m; sourceTree = "<group>"; };
+		CC941BFD1C84EB670029C4A6 /* LRImageService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRImageService_v7.h; sourceTree = "<group>"; };
+		CC941BFE1C84EB670029C4A6 /* LRImageService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRImageService_v7.m; sourceTree = "<group>"; };
+		CC941C001C84EB670029C4A6 /* LRJournalArticleService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRJournalArticleService_v7.h; sourceTree = "<group>"; };
+		CC941C011C84EB670029C4A6 /* LRJournalArticleService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRJournalArticleService_v7.m; sourceTree = "<group>"; };
+		CC941C031C84EB670029C4A6 /* LRJournalFeedService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRJournalFeedService_v7.h; sourceTree = "<group>"; };
+		CC941C041C84EB670029C4A6 /* LRJournalFeedService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRJournalFeedService_v7.m; sourceTree = "<group>"; };
+		CC941C061C84EB670029C4A6 /* LRJournalFolderService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRJournalFolderService_v7.h; sourceTree = "<group>"; };
+		CC941C071C84EB670029C4A6 /* LRJournalFolderService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRJournalFolderService_v7.m; sourceTree = "<group>"; };
+		CC941C091C84EB670029C4A6 /* LRKaleodefinitionService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRKaleodefinitionService_v7.h; sourceTree = "<group>"; };
+		CC941C0A1C84EB670029C4A6 /* LRKaleodefinitionService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRKaleodefinitionService_v7.m; sourceTree = "<group>"; };
+		CC941C0C1C84EB670029C4A6 /* LRLayoutService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRLayoutService_v7.h; sourceTree = "<group>"; };
+		CC941C0D1C84EB670029C4A6 /* LRLayoutService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRLayoutService_v7.m; sourceTree = "<group>"; };
+		CC941C0F1C84EB670029C4A6 /* LRLayoutBranchService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRLayoutBranchService_v7.h; sourceTree = "<group>"; };
+		CC941C101C84EB670029C4A6 /* LRLayoutBranchService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRLayoutBranchService_v7.m; sourceTree = "<group>"; };
+		CC941C121C84EB670029C4A6 /* LRLayoutPrototypeService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRLayoutPrototypeService_v7.h; sourceTree = "<group>"; };
+		CC941C131C84EB670029C4A6 /* LRLayoutPrototypeService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRLayoutPrototypeService_v7.m; sourceTree = "<group>"; };
+		CC941C151C84EB670029C4A6 /* LRLayoutRevisionService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRLayoutRevisionService_v7.h; sourceTree = "<group>"; };
+		CC941C161C84EB670029C4A6 /* LRLayoutRevisionService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRLayoutRevisionService_v7.m; sourceTree = "<group>"; };
+		CC941C181C84EB670029C4A6 /* LRLayoutSetService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRLayoutSetService_v7.h; sourceTree = "<group>"; };
+		CC941C191C84EB670029C4A6 /* LRLayoutSetService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRLayoutSetService_v7.m; sourceTree = "<group>"; };
+		CC941C1B1C84EB670029C4A6 /* LRLayoutSetBranchService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRLayoutSetBranchService_v7.h; sourceTree = "<group>"; };
+		CC941C1C1C84EB670029C4A6 /* LRLayoutSetBranchService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRLayoutSetBranchService_v7.m; sourceTree = "<group>"; };
+		CC941C1E1C84EB670029C4A6 /* LRLayoutSetPrototypeService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRLayoutSetPrototypeService_v7.h; sourceTree = "<group>"; };
+		CC941C1F1C84EB670029C4A6 /* LRLayoutSetPrototypeService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRLayoutSetPrototypeService_v7.m; sourceTree = "<group>"; };
+		CC941C211C84EB670029C4A6 /* LRListTypeService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRListTypeService_v7.h; sourceTree = "<group>"; };
+		CC941C221C84EB670029C4A6 /* LRListTypeService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRListTypeService_v7.m; sourceTree = "<group>"; };
+		CC941C241C84EB670029C4A6 /* LRMBBanService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRMBBanService_v7.h; sourceTree = "<group>"; };
+		CC941C251C84EB670029C4A6 /* LRMBBanService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRMBBanService_v7.m; sourceTree = "<group>"; };
+		CC941C271C84EB670029C4A6 /* LRMBCategoryService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRMBCategoryService_v7.h; sourceTree = "<group>"; };
+		CC941C281C84EB670029C4A6 /* LRMBCategoryService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRMBCategoryService_v7.m; sourceTree = "<group>"; };
+		CC941C2A1C84EB670029C4A6 /* LRMBMessageService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRMBMessageService_v7.h; sourceTree = "<group>"; };
+		CC941C2B1C84EB670029C4A6 /* LRMBMessageService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRMBMessageService_v7.m; sourceTree = "<group>"; };
+		CC941C2D1C84EB670029C4A6 /* LRMBThreadService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRMBThreadService_v7.h; sourceTree = "<group>"; };
+		CC941C2E1C84EB670029C4A6 /* LRMBThreadService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRMBThreadService_v7.m; sourceTree = "<group>"; };
+		CC941C301C84EB670029C4A6 /* LRMDRActionService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRMDRActionService_v7.h; sourceTree = "<group>"; };
+		CC941C311C84EB670029C4A6 /* LRMDRActionService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRMDRActionService_v7.m; sourceTree = "<group>"; };
+		CC941C331C84EB670029C4A6 /* LRMDRRuleService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRMDRRuleService_v7.h; sourceTree = "<group>"; };
+		CC941C341C84EB670029C4A6 /* LRMDRRuleService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRMDRRuleService_v7.m; sourceTree = "<group>"; };
+		CC941C361C84EB670029C4A6 /* LRMDRRuleGroupService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRMDRRuleGroupService_v7.h; sourceTree = "<group>"; };
+		CC941C371C84EB670029C4A6 /* LRMDRRuleGroupService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRMDRRuleGroupService_v7.m; sourceTree = "<group>"; };
+		CC941C391C84EB670029C4A6 /* LRMDRRuleGroupInstanceService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRMDRRuleGroupInstanceService_v7.h; sourceTree = "<group>"; };
+		CC941C3A1C84EB670029C4A6 /* LRMDRRuleGroupInstanceService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRMDRRuleGroupInstanceService_v7.m; sourceTree = "<group>"; };
+		CC941C3C1C84EB670029C4A6 /* LRMembershipRequestService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRMembershipRequestService_v7.h; sourceTree = "<group>"; };
+		CC941C3D1C84EB670029C4A6 /* LRMembershipRequestService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRMembershipRequestService_v7.m; sourceTree = "<group>"; };
+		CC941C3F1C84EB670029C4A6 /* LRMicroblogsentryService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRMicroblogsentryService_v7.h; sourceTree = "<group>"; };
+		CC941C401C84EB670029C4A6 /* LRMicroblogsentryService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRMicroblogsentryService_v7.m; sourceTree = "<group>"; };
+		CC941C421C84EB670029C4A6 /* LROrganizationService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LROrganizationService_v7.h; sourceTree = "<group>"; };
+		CC941C431C84EB670029C4A6 /* LROrganizationService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LROrganizationService_v7.m; sourceTree = "<group>"; };
+		CC941C451C84EB670029C4A6 /* LROrgLaborService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LROrgLaborService_v7.h; sourceTree = "<group>"; };
+		CC941C461C84EB670029C4A6 /* LROrgLaborService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LROrgLaborService_v7.m; sourceTree = "<group>"; };
+		CC941C481C84EB670029C4A6 /* LRPasswordPolicyService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPasswordPolicyService_v7.h; sourceTree = "<group>"; };
+		CC941C491C84EB670029C4A6 /* LRPasswordPolicyService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPasswordPolicyService_v7.m; sourceTree = "<group>"; };
+		CC941C4B1C84EB670029C4A6 /* LRPermissionService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPermissionService_v7.h; sourceTree = "<group>"; };
+		CC941C4C1C84EB670029C4A6 /* LRPermissionService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPermissionService_v7.m; sourceTree = "<group>"; };
+		CC941C4E1C84EB670029C4A6 /* LRPhoneService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPhoneService_v7.h; sourceTree = "<group>"; };
+		CC941C4F1C84EB670029C4A6 /* LRPhoneService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPhoneService_v7.m; sourceTree = "<group>"; };
+		CC941C511C84EB670029C4A6 /* LRPluginSettingService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPluginSettingService_v7.h; sourceTree = "<group>"; };
+		CC941C521C84EB670029C4A6 /* LRPluginSettingService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPluginSettingService_v7.m; sourceTree = "<group>"; };
+		CC941C541C84EB670029C4A6 /* LRPollsQuestionService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPollsQuestionService_v7.h; sourceTree = "<group>"; };
+		CC941C551C84EB670029C4A6 /* LRPollsQuestionService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPollsQuestionService_v7.m; sourceTree = "<group>"; };
+		CC941C571C84EB670029C4A6 /* LRPollsVoteService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPollsVoteService_v7.h; sourceTree = "<group>"; };
+		CC941C581C84EB670029C4A6 /* LRPollsVoteService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPollsVoteService_v7.m; sourceTree = "<group>"; };
+		CC941C5A1C84EB680029C4A6 /* LRPortalService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPortalService_v7.h; sourceTree = "<group>"; };
+		CC941C5B1C84EB680029C4A6 /* LRPortalService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPortalService_v7.m; sourceTree = "<group>"; };
+		CC941C5D1C84EB680029C4A6 /* LRPortletService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPortletService_v7.h; sourceTree = "<group>"; };
+		CC941C5E1C84EB680029C4A6 /* LRPortletService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPortletService_v7.m; sourceTree = "<group>"; };
+		CC941C601C84EB680029C4A6 /* LRPortletPreferencesService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPortletPreferencesService_v7.h; sourceTree = "<group>"; };
+		CC941C611C84EB680029C4A6 /* LRPortletPreferencesService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPortletPreferencesService_v7.m; sourceTree = "<group>"; };
+		CC941C631C84EB680029C4A6 /* LRRatingsEntryService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRatingsEntryService_v7.h; sourceTree = "<group>"; };
+		CC941C641C84EB680029C4A6 /* LRRatingsEntryService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRatingsEntryService_v7.m; sourceTree = "<group>"; };
+		CC941C661C84EB680029C4A6 /* LRRegionService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRegionService_v7.h; sourceTree = "<group>"; };
+		CC941C671C84EB680029C4A6 /* LRRegionService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRegionService_v7.m; sourceTree = "<group>"; };
+		CC941C691C84EB680029C4A6 /* LRRepositoryService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRepositoryService_v7.h; sourceTree = "<group>"; };
+		CC941C6A1C84EB680029C4A6 /* LRRepositoryService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRepositoryService_v7.m; sourceTree = "<group>"; };
+		CC941C6C1C84EB680029C4A6 /* LRResourceBlockService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRResourceBlockService_v7.h; sourceTree = "<group>"; };
+		CC941C6D1C84EB680029C4A6 /* LRResourceBlockService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRResourceBlockService_v7.m; sourceTree = "<group>"; };
+		CC941C6F1C84EB680029C4A6 /* LRResourcePermissionService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRResourcePermissionService_v7.h; sourceTree = "<group>"; };
+		CC941C701C84EB680029C4A6 /* LRResourcePermissionService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRResourcePermissionService_v7.m; sourceTree = "<group>"; };
+		CC941C721C84EB680029C4A6 /* LRRoleService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRoleService_v7.h; sourceTree = "<group>"; };
+		CC941C731C84EB680029C4A6 /* LRRoleService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRoleService_v7.m; sourceTree = "<group>"; };
+		CC941C751C84EB680029C4A6 /* LRSapentryService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSapentryService_v7.h; sourceTree = "<group>"; };
+		CC941C761C84EB680029C4A6 /* LRSapentryService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSapentryService_v7.m; sourceTree = "<group>"; };
+		CC941C781C84EB680029C4A6 /* LRShoppingCategoryService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRShoppingCategoryService_v7.h; sourceTree = "<group>"; };
+		CC941C791C84EB680029C4A6 /* LRShoppingCategoryService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRShoppingCategoryService_v7.m; sourceTree = "<group>"; };
+		CC941C7B1C84EB680029C4A6 /* LRShoppingCouponService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRShoppingCouponService_v7.h; sourceTree = "<group>"; };
+		CC941C7C1C84EB680029C4A6 /* LRShoppingCouponService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRShoppingCouponService_v7.m; sourceTree = "<group>"; };
+		CC941C7E1C84EB680029C4A6 /* LRShoppingItemService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRShoppingItemService_v7.h; sourceTree = "<group>"; };
+		CC941C7F1C84EB680029C4A6 /* LRShoppingItemService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRShoppingItemService_v7.m; sourceTree = "<group>"; };
+		CC941C811C84EB680029C4A6 /* LRShoppingOrderService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRShoppingOrderService_v7.h; sourceTree = "<group>"; };
+		CC941C821C84EB680029C4A6 /* LRShoppingOrderService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRShoppingOrderService_v7.m; sourceTree = "<group>"; };
+		CC941C841C84EB680029C4A6 /* LRSocialActivityService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSocialActivityService_v7.h; sourceTree = "<group>"; };
+		CC941C851C84EB680029C4A6 /* LRSocialActivityService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSocialActivityService_v7.m; sourceTree = "<group>"; };
+		CC941C871C84EB680029C4A6 /* LRSocialActivitySettingService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSocialActivitySettingService_v7.h; sourceTree = "<group>"; };
+		CC941C881C84EB680029C4A6 /* LRSocialActivitySettingService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSocialActivitySettingService_v7.m; sourceTree = "<group>"; };
+		CC941C8A1C84EB680029C4A6 /* LRSocialRequestService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSocialRequestService_v7.h; sourceTree = "<group>"; };
+		CC941C8B1C84EB680029C4A6 /* LRSocialRequestService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSocialRequestService_v7.m; sourceTree = "<group>"; };
+		CC941C8D1C84EB680029C4A6 /* LRStagingService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRStagingService_v7.h; sourceTree = "<group>"; };
+		CC941C8E1C84EB680029C4A6 /* LRStagingService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRStagingService_v7.m; sourceTree = "<group>"; };
+		CC941C901C84EB680029C4A6 /* LRTeamService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRTeamService_v7.h; sourceTree = "<group>"; };
+		CC941C911C84EB680029C4A6 /* LRTeamService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRTeamService_v7.m; sourceTree = "<group>"; };
+		CC941C931C84EB680029C4A6 /* LRThemeService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRThemeService_v7.h; sourceTree = "<group>"; };
+		CC941C941C84EB680029C4A6 /* LRThemeService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRThemeService_v7.m; sourceTree = "<group>"; };
+		CC941C961C84EB680029C4A6 /* LRTrashEntryService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRTrashEntryService_v7.h; sourceTree = "<group>"; };
+		CC941C971C84EB680029C4A6 /* LRTrashEntryService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRTrashEntryService_v7.m; sourceTree = "<group>"; };
+		CC941C991C84EB680029C4A6 /* LRUserService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUserService_v7.h; sourceTree = "<group>"; };
+		CC941C9A1C84EB680029C4A6 /* LRUserService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRUserService_v7.m; sourceTree = "<group>"; };
+		CC941C9C1C84EB680029C4A6 /* LRUserGroupService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUserGroupService_v7.h; sourceTree = "<group>"; };
+		CC941C9D1C84EB680029C4A6 /* LRUserGroupService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRUserGroupService_v7.m; sourceTree = "<group>"; };
+		CC941C9F1C84EB680029C4A6 /* LRUserGroupGroupRoleService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUserGroupGroupRoleService_v7.h; sourceTree = "<group>"; };
+		CC941CA01C84EB680029C4A6 /* LRUserGroupGroupRoleService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRUserGroupGroupRoleService_v7.m; sourceTree = "<group>"; };
+		CC941CA21C84EB680029C4A6 /* LRUserGroupRoleService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRUserGroupRoleService_v7.h; sourceTree = "<group>"; };
+		CC941CA31C84EB680029C4A6 /* LRUserGroupRoleService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRUserGroupRoleService_v7.m; sourceTree = "<group>"; };
+		CC941CA51C84EB680029C4A6 /* LRWebsiteService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRWebsiteService_v7.h; sourceTree = "<group>"; };
+		CC941CA61C84EB680029C4A6 /* LRWebsiteService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRWebsiteService_v7.m; sourceTree = "<group>"; };
+		CC941CA81C84EB680029C4A6 /* LRWikiNodeService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRWikiNodeService_v7.h; sourceTree = "<group>"; };
+		CC941CA91C84EB680029C4A6 /* LRWikiNodeService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRWikiNodeService_v7.m; sourceTree = "<group>"; };
+		CC941CAB1C84EB680029C4A6 /* LRWikiPageService_v7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRWikiPageService_v7.h; sourceTree = "<group>"; };
+		CC941CAC1C84EB680029C4A6 /* LRWikiPageService_v7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRWikiPageService_v7.m; sourceTree = "<group>"; };
 		CCA4E4E41936578900374A79 /* LRPortalVersionUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPortalVersionUtil.h; sourceTree = "<group>"; };
 		CCA4E4E51936578900374A79 /* LRPortalVersionUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPortalVersionUtil.m; sourceTree = "<group>"; };
 		CCA6594118EC4BE800957D20 /* libLiferay iOS SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libLiferay iOS SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -546,6 +858,7 @@
 		CC03FB7F18ED7DCC00F3F16C /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				CC941B741C84EB670029C4A6 /* v7 */,
 				CC03FB8018ED7DCC00F3F16C /* v62 */,
 			);
 			path = Service;
@@ -1611,6 +1924,1053 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		CC941B741C84EB670029C4A6 /* v7 */ = {
+			isa = PBXGroup;
+			children = (
+				CC941B751C84EB670029C4A6 /* address */,
+				CC941B781C84EB670029C4A6 /* announcementsdelivery */,
+				CC941B7B1C84EB670029C4A6 /* announcementsentry */,
+				CC941B7E1C84EB670029C4A6 /* announcementsflag */,
+				CC941B811C84EB670029C4A6 /* app */,
+				CC941B841C84EB670029C4A6 /* assetcategory */,
+				CC941B871C84EB670029C4A6 /* assetcategoryproperty */,
+				CC941B8A1C84EB670029C4A6 /* assetentry */,
+				CC941B8D1C84EB670029C4A6 /* assettag */,
+				CC941B901C84EB670029C4A6 /* assetvocabulary */,
+				CC941B931C84EB670029C4A6 /* backgroundtask */,
+				CC941B961C84EB670029C4A6 /* blogsentry */,
+				CC941B991C84EB670029C4A6 /* bookmarksentry */,
+				CC941B9C1C84EB670029C4A6 /* bookmarksfolder */,
+				CC941B9F1C84EB670029C4A6 /* calendar */,
+				CC941BA21C84EB670029C4A6 /* calendarbooking */,
+				CC941BA51C84EB670029C4A6 /* calendarnotificationtemplate */,
+				CC941BA81C84EB670029C4A6 /* calendarresource */,
+				CC941BAB1C84EB670029C4A6 /* classname */,
+				CC941BAE1C84EB670029C4A6 /* commentmanagerjsonws */,
+				CC941BB11C84EB670029C4A6 /* company */,
+				CC941BB41C84EB670029C4A6 /* contact */,
+				CC941BB71C84EB670029C4A6 /* country */,
+				CC941BBA1C84EB670029C4A6 /* ddlrecord */,
+				CC941BBD1C84EB670029C4A6 /* ddlrecordset */,
+				CC941BC01C84EB670029C4A6 /* ddlrecordversion */,
+				CC941BC31C84EB670029C4A6 /* ddmdataproviderinstance */,
+				CC941BC61C84EB670029C4A6 /* ddmstructure */,
+				CC941BC91C84EB670029C4A6 /* ddmstructureversion */,
+				CC941BCC1C84EB670029C4A6 /* ddmtemplate */,
+				CC941BCF1C84EB670029C4A6 /* ddmtemplateversion */,
+				CC941BD21C84EB670029C4A6 /* dlapp */,
+				CC941BD51C84EB670029C4A6 /* dlfileentry */,
+				CC941BD81C84EB670029C4A6 /* dlfileentrytype */,
+				CC941BDB1C84EB670029C4A6 /* dlfileshortcut */,
+				CC941BDE1C84EB670029C4A6 /* dlfileversion */,
+				CC941BE11C84EB670029C4A6 /* dlfolder */,
+				CC941BE41C84EB670029C4A6 /* dltrash */,
+				CC941BE71C84EB670029C4A6 /* emailaddress */,
+				CC941BEA1C84EB670029C4A6 /* expandocolumn */,
+				CC941BED1C84EB670029C4A6 /* expandovalue */,
+				CC941BF01C84EB670029C4A6 /* exportimport */,
+				CC941BF31C84EB670029C4A6 /* exportimportconfiguration */,
+				CC941BF61C84EB670029C4A6 /* flagsentry */,
+				CC941BF91C84EB670029C4A6 /* group */,
+				CC941BFC1C84EB670029C4A6 /* image */,
+				CC941BFF1C84EB670029C4A6 /* journalarticle */,
+				CC941C021C84EB670029C4A6 /* journalfeed */,
+				CC941C051C84EB670029C4A6 /* journalfolder */,
+				CC941C081C84EB670029C4A6 /* kaleodefinition */,
+				CC941C0B1C84EB670029C4A6 /* layout */,
+				CC941C0E1C84EB670029C4A6 /* layoutbranch */,
+				CC941C111C84EB670029C4A6 /* layoutprototype */,
+				CC941C141C84EB670029C4A6 /* layoutrevision */,
+				CC941C171C84EB670029C4A6 /* layoutset */,
+				CC941C1A1C84EB670029C4A6 /* layoutsetbranch */,
+				CC941C1D1C84EB670029C4A6 /* layoutsetprototype */,
+				CC941C201C84EB670029C4A6 /* listtype */,
+				CC941C231C84EB670029C4A6 /* mbban */,
+				CC941C261C84EB670029C4A6 /* mbcategory */,
+				CC941C291C84EB670029C4A6 /* mbmessage */,
+				CC941C2C1C84EB670029C4A6 /* mbthread */,
+				CC941C2F1C84EB670029C4A6 /* mdraction */,
+				CC941C321C84EB670029C4A6 /* mdrrule */,
+				CC941C351C84EB670029C4A6 /* mdrrulegroup */,
+				CC941C381C84EB670029C4A6 /* mdrrulegroupinstance */,
+				CC941C3B1C84EB670029C4A6 /* membershiprequest */,
+				CC941C3E1C84EB670029C4A6 /* microblogsentry */,
+				CC941C411C84EB670029C4A6 /* organization */,
+				CC941C441C84EB670029C4A6 /* orglabor */,
+				CC941C471C84EB670029C4A6 /* passwordpolicy */,
+				CC941C4A1C84EB670029C4A6 /* permission */,
+				CC941C4D1C84EB670029C4A6 /* phone */,
+				CC941C501C84EB670029C4A6 /* pluginsetting */,
+				CC941C531C84EB670029C4A6 /* pollsquestion */,
+				CC941C561C84EB670029C4A6 /* pollsvote */,
+				CC941C591C84EB680029C4A6 /* portal */,
+				CC941C5C1C84EB680029C4A6 /* portlet */,
+				CC941C5F1C84EB680029C4A6 /* portletpreferences */,
+				CC941C621C84EB680029C4A6 /* ratingsentry */,
+				CC941C651C84EB680029C4A6 /* region */,
+				CC941C681C84EB680029C4A6 /* repository */,
+				CC941C6B1C84EB680029C4A6 /* resourceblock */,
+				CC941C6E1C84EB680029C4A6 /* resourcepermission */,
+				CC941C711C84EB680029C4A6 /* role */,
+				CC941C741C84EB680029C4A6 /* sapentry */,
+				CC941C771C84EB680029C4A6 /* shoppingcategory */,
+				CC941C7A1C84EB680029C4A6 /* shoppingcoupon */,
+				CC941C7D1C84EB680029C4A6 /* shoppingitem */,
+				CC941C801C84EB680029C4A6 /* shoppingorder */,
+				CC941C831C84EB680029C4A6 /* socialactivity */,
+				CC941C861C84EB680029C4A6 /* socialactivitysetting */,
+				CC941C891C84EB680029C4A6 /* socialrequest */,
+				CC941C8C1C84EB680029C4A6 /* staging */,
+				CC941C8F1C84EB680029C4A6 /* team */,
+				CC941C921C84EB680029C4A6 /* theme */,
+				CC941C951C84EB680029C4A6 /* trashentry */,
+				CC941C981C84EB680029C4A6 /* user */,
+				CC941C9B1C84EB680029C4A6 /* usergroup */,
+				CC941C9E1C84EB680029C4A6 /* usergroupgrouprole */,
+				CC941CA11C84EB680029C4A6 /* usergrouprole */,
+				CC941CA41C84EB680029C4A6 /* website */,
+				CC941CA71C84EB680029C4A6 /* wikinode */,
+				CC941CAA1C84EB680029C4A6 /* wikipage */,
+			);
+			path = v7;
+			sourceTree = "<group>";
+		};
+		CC941B751C84EB670029C4A6 /* address */ = {
+			isa = PBXGroup;
+			children = (
+				CC941B761C84EB670029C4A6 /* LRAddressService_v7.h */,
+				CC941B771C84EB670029C4A6 /* LRAddressService_v7.m */,
+			);
+			path = address;
+			sourceTree = "<group>";
+		};
+		CC941B781C84EB670029C4A6 /* announcementsdelivery */ = {
+			isa = PBXGroup;
+			children = (
+				CC941B791C84EB670029C4A6 /* LRAnnouncementsDeliveryService_v7.h */,
+				CC941B7A1C84EB670029C4A6 /* LRAnnouncementsDeliveryService_v7.m */,
+			);
+			path = announcementsdelivery;
+			sourceTree = "<group>";
+		};
+		CC941B7B1C84EB670029C4A6 /* announcementsentry */ = {
+			isa = PBXGroup;
+			children = (
+				CC941B7C1C84EB670029C4A6 /* LRAnnouncementsEntryService_v7.h */,
+				CC941B7D1C84EB670029C4A6 /* LRAnnouncementsEntryService_v7.m */,
+			);
+			path = announcementsentry;
+			sourceTree = "<group>";
+		};
+		CC941B7E1C84EB670029C4A6 /* announcementsflag */ = {
+			isa = PBXGroup;
+			children = (
+				CC941B7F1C84EB670029C4A6 /* LRAnnouncementsFlagService_v7.h */,
+				CC941B801C84EB670029C4A6 /* LRAnnouncementsFlagService_v7.m */,
+			);
+			path = announcementsflag;
+			sourceTree = "<group>";
+		};
+		CC941B811C84EB670029C4A6 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				CC941B821C84EB670029C4A6 /* LRAppService_v7.h */,
+				CC941B831C84EB670029C4A6 /* LRAppService_v7.m */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		CC941B841C84EB670029C4A6 /* assetcategory */ = {
+			isa = PBXGroup;
+			children = (
+				CC941B851C84EB670029C4A6 /* LRAssetCategoryService_v7.h */,
+				CC941B861C84EB670029C4A6 /* LRAssetCategoryService_v7.m */,
+			);
+			path = assetcategory;
+			sourceTree = "<group>";
+		};
+		CC941B871C84EB670029C4A6 /* assetcategoryproperty */ = {
+			isa = PBXGroup;
+			children = (
+				CC941B881C84EB670029C4A6 /* LRAssetCategoryPropertyService_v7.h */,
+				CC941B891C84EB670029C4A6 /* LRAssetCategoryPropertyService_v7.m */,
+			);
+			path = assetcategoryproperty;
+			sourceTree = "<group>";
+		};
+		CC941B8A1C84EB670029C4A6 /* assetentry */ = {
+			isa = PBXGroup;
+			children = (
+				CC941B8B1C84EB670029C4A6 /* LRAssetEntryService_v7.h */,
+				CC941B8C1C84EB670029C4A6 /* LRAssetEntryService_v7.m */,
+			);
+			path = assetentry;
+			sourceTree = "<group>";
+		};
+		CC941B8D1C84EB670029C4A6 /* assettag */ = {
+			isa = PBXGroup;
+			children = (
+				CC941B8E1C84EB670029C4A6 /* LRAssetTagService_v7.h */,
+				CC941B8F1C84EB670029C4A6 /* LRAssetTagService_v7.m */,
+			);
+			path = assettag;
+			sourceTree = "<group>";
+		};
+		CC941B901C84EB670029C4A6 /* assetvocabulary */ = {
+			isa = PBXGroup;
+			children = (
+				CC941B911C84EB670029C4A6 /* LRAssetVocabularyService_v7.h */,
+				CC941B921C84EB670029C4A6 /* LRAssetVocabularyService_v7.m */,
+			);
+			path = assetvocabulary;
+			sourceTree = "<group>";
+		};
+		CC941B931C84EB670029C4A6 /* backgroundtask */ = {
+			isa = PBXGroup;
+			children = (
+				CC941B941C84EB670029C4A6 /* LRBackgroundTaskService_v7.h */,
+				CC941B951C84EB670029C4A6 /* LRBackgroundTaskService_v7.m */,
+			);
+			path = backgroundtask;
+			sourceTree = "<group>";
+		};
+		CC941B961C84EB670029C4A6 /* blogsentry */ = {
+			isa = PBXGroup;
+			children = (
+				CC941B971C84EB670029C4A6 /* LRBlogsEntryService_v7.h */,
+				CC941B981C84EB670029C4A6 /* LRBlogsEntryService_v7.m */,
+			);
+			path = blogsentry;
+			sourceTree = "<group>";
+		};
+		CC941B991C84EB670029C4A6 /* bookmarksentry */ = {
+			isa = PBXGroup;
+			children = (
+				CC941B9A1C84EB670029C4A6 /* LRBookmarksEntryService_v7.h */,
+				CC941B9B1C84EB670029C4A6 /* LRBookmarksEntryService_v7.m */,
+			);
+			path = bookmarksentry;
+			sourceTree = "<group>";
+		};
+		CC941B9C1C84EB670029C4A6 /* bookmarksfolder */ = {
+			isa = PBXGroup;
+			children = (
+				CC941B9D1C84EB670029C4A6 /* LRBookmarksFolderService_v7.h */,
+				CC941B9E1C84EB670029C4A6 /* LRBookmarksFolderService_v7.m */,
+			);
+			path = bookmarksfolder;
+			sourceTree = "<group>";
+		};
+		CC941B9F1C84EB670029C4A6 /* calendar */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BA01C84EB670029C4A6 /* LRCalendarService_v7.h */,
+				CC941BA11C84EB670029C4A6 /* LRCalendarService_v7.m */,
+			);
+			path = calendar;
+			sourceTree = "<group>";
+		};
+		CC941BA21C84EB670029C4A6 /* calendarbooking */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BA31C84EB670029C4A6 /* LRCalendarbookingService_v7.h */,
+				CC941BA41C84EB670029C4A6 /* LRCalendarbookingService_v7.m */,
+			);
+			path = calendarbooking;
+			sourceTree = "<group>";
+		};
+		CC941BA51C84EB670029C4A6 /* calendarnotificationtemplate */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BA61C84EB670029C4A6 /* LRCalendarnotificationtemplateService_v7.h */,
+				CC941BA71C84EB670029C4A6 /* LRCalendarnotificationtemplateService_v7.m */,
+			);
+			path = calendarnotificationtemplate;
+			sourceTree = "<group>";
+		};
+		CC941BA81C84EB670029C4A6 /* calendarresource */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BA91C84EB670029C4A6 /* LRCalendarresourceService_v7.h */,
+				CC941BAA1C84EB670029C4A6 /* LRCalendarresourceService_v7.m */,
+			);
+			path = calendarresource;
+			sourceTree = "<group>";
+		};
+		CC941BAB1C84EB670029C4A6 /* classname */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BAC1C84EB670029C4A6 /* LRClassNameService_v7.h */,
+				CC941BAD1C84EB670029C4A6 /* LRClassNameService_v7.m */,
+			);
+			path = classname;
+			sourceTree = "<group>";
+		};
+		CC941BAE1C84EB670029C4A6 /* commentmanagerjsonws */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BAF1C84EB670029C4A6 /* LRCommentmanagerjsonwsService_v7.h */,
+				CC941BB01C84EB670029C4A6 /* LRCommentmanagerjsonwsService_v7.m */,
+			);
+			path = commentmanagerjsonws;
+			sourceTree = "<group>";
+		};
+		CC941BB11C84EB670029C4A6 /* company */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BB21C84EB670029C4A6 /* LRCompanyService_v7.h */,
+				CC941BB31C84EB670029C4A6 /* LRCompanyService_v7.m */,
+			);
+			path = company;
+			sourceTree = "<group>";
+		};
+		CC941BB41C84EB670029C4A6 /* contact */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BB51C84EB670029C4A6 /* LRContactService_v7.h */,
+				CC941BB61C84EB670029C4A6 /* LRContactService_v7.m */,
+			);
+			path = contact;
+			sourceTree = "<group>";
+		};
+		CC941BB71C84EB670029C4A6 /* country */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BB81C84EB670029C4A6 /* LRCountryService_v7.h */,
+				CC941BB91C84EB670029C4A6 /* LRCountryService_v7.m */,
+			);
+			path = country;
+			sourceTree = "<group>";
+		};
+		CC941BBA1C84EB670029C4A6 /* ddlrecord */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BBB1C84EB670029C4A6 /* LRDDLRecordService_v7.h */,
+				CC941BBC1C84EB670029C4A6 /* LRDDLRecordService_v7.m */,
+			);
+			path = ddlrecord;
+			sourceTree = "<group>";
+		};
+		CC941BBD1C84EB670029C4A6 /* ddlrecordset */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BBE1C84EB670029C4A6 /* LRDDLRecordSetService_v7.h */,
+				CC941BBF1C84EB670029C4A6 /* LRDDLRecordSetService_v7.m */,
+			);
+			path = ddlrecordset;
+			sourceTree = "<group>";
+		};
+		CC941BC01C84EB670029C4A6 /* ddlrecordversion */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BC11C84EB670029C4A6 /* LRDdlrecordversionService_v7.h */,
+				CC941BC21C84EB670029C4A6 /* LRDdlrecordversionService_v7.m */,
+			);
+			path = ddlrecordversion;
+			sourceTree = "<group>";
+		};
+		CC941BC31C84EB670029C4A6 /* ddmdataproviderinstance */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BC41C84EB670029C4A6 /* LRDdmdataproviderinstanceService_v7.h */,
+				CC941BC51C84EB670029C4A6 /* LRDdmdataproviderinstanceService_v7.m */,
+			);
+			path = ddmdataproviderinstance;
+			sourceTree = "<group>";
+		};
+		CC941BC61C84EB670029C4A6 /* ddmstructure */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BC71C84EB670029C4A6 /* LRDDMStructureService_v7.h */,
+				CC941BC81C84EB670029C4A6 /* LRDDMStructureService_v7.m */,
+			);
+			path = ddmstructure;
+			sourceTree = "<group>";
+		};
+		CC941BC91C84EB670029C4A6 /* ddmstructureversion */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BCA1C84EB670029C4A6 /* LRDdmstructureversionService_v7.h */,
+				CC941BCB1C84EB670029C4A6 /* LRDdmstructureversionService_v7.m */,
+			);
+			path = ddmstructureversion;
+			sourceTree = "<group>";
+		};
+		CC941BCC1C84EB670029C4A6 /* ddmtemplate */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BCD1C84EB670029C4A6 /* LRDDMTemplateService_v7.h */,
+				CC941BCE1C84EB670029C4A6 /* LRDDMTemplateService_v7.m */,
+			);
+			path = ddmtemplate;
+			sourceTree = "<group>";
+		};
+		CC941BCF1C84EB670029C4A6 /* ddmtemplateversion */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BD01C84EB670029C4A6 /* LRDdmtemplateversionService_v7.h */,
+				CC941BD11C84EB670029C4A6 /* LRDdmtemplateversionService_v7.m */,
+			);
+			path = ddmtemplateversion;
+			sourceTree = "<group>";
+		};
+		CC941BD21C84EB670029C4A6 /* dlapp */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BD31C84EB670029C4A6 /* LRDLAppService_v7.h */,
+				CC941BD41C84EB670029C4A6 /* LRDLAppService_v7.m */,
+			);
+			path = dlapp;
+			sourceTree = "<group>";
+		};
+		CC941BD51C84EB670029C4A6 /* dlfileentry */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BD61C84EB670029C4A6 /* LRDLFileEntryService_v7.h */,
+				CC941BD71C84EB670029C4A6 /* LRDLFileEntryService_v7.m */,
+			);
+			path = dlfileentry;
+			sourceTree = "<group>";
+		};
+		CC941BD81C84EB670029C4A6 /* dlfileentrytype */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BD91C84EB670029C4A6 /* LRDLFileEntryTypeService_v7.h */,
+				CC941BDA1C84EB670029C4A6 /* LRDLFileEntryTypeService_v7.m */,
+			);
+			path = dlfileentrytype;
+			sourceTree = "<group>";
+		};
+		CC941BDB1C84EB670029C4A6 /* dlfileshortcut */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BDC1C84EB670029C4A6 /* LRDLFileShortcutService_v7.h */,
+				CC941BDD1C84EB670029C4A6 /* LRDLFileShortcutService_v7.m */,
+			);
+			path = dlfileshortcut;
+			sourceTree = "<group>";
+		};
+		CC941BDE1C84EB670029C4A6 /* dlfileversion */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BDF1C84EB670029C4A6 /* LRDLFileVersionService_v7.h */,
+				CC941BE01C84EB670029C4A6 /* LRDLFileVersionService_v7.m */,
+			);
+			path = dlfileversion;
+			sourceTree = "<group>";
+		};
+		CC941BE11C84EB670029C4A6 /* dlfolder */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BE21C84EB670029C4A6 /* LRDLFolderService_v7.h */,
+				CC941BE31C84EB670029C4A6 /* LRDLFolderService_v7.m */,
+			);
+			path = dlfolder;
+			sourceTree = "<group>";
+		};
+		CC941BE41C84EB670029C4A6 /* dltrash */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BE51C84EB670029C4A6 /* LRDltrashService_v7.h */,
+				CC941BE61C84EB670029C4A6 /* LRDltrashService_v7.m */,
+			);
+			path = dltrash;
+			sourceTree = "<group>";
+		};
+		CC941BE71C84EB670029C4A6 /* emailaddress */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BE81C84EB670029C4A6 /* LREmailAddressService_v7.h */,
+				CC941BE91C84EB670029C4A6 /* LREmailAddressService_v7.m */,
+			);
+			path = emailaddress;
+			sourceTree = "<group>";
+		};
+		CC941BEA1C84EB670029C4A6 /* expandocolumn */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BEB1C84EB670029C4A6 /* LRExpandoColumnService_v7.h */,
+				CC941BEC1C84EB670029C4A6 /* LRExpandoColumnService_v7.m */,
+			);
+			path = expandocolumn;
+			sourceTree = "<group>";
+		};
+		CC941BED1C84EB670029C4A6 /* expandovalue */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BEE1C84EB670029C4A6 /* LRExpandoValueService_v7.h */,
+				CC941BEF1C84EB670029C4A6 /* LRExpandoValueService_v7.m */,
+			);
+			path = expandovalue;
+			sourceTree = "<group>";
+		};
+		CC941BF01C84EB670029C4A6 /* exportimport */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BF11C84EB670029C4A6 /* LRExportimportService_v7.h */,
+				CC941BF21C84EB670029C4A6 /* LRExportimportService_v7.m */,
+			);
+			path = exportimport;
+			sourceTree = "<group>";
+		};
+		CC941BF31C84EB670029C4A6 /* exportimportconfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BF41C84EB670029C4A6 /* LRExportimportconfigurationService_v7.h */,
+				CC941BF51C84EB670029C4A6 /* LRExportimportconfigurationService_v7.m */,
+			);
+			path = exportimportconfiguration;
+			sourceTree = "<group>";
+		};
+		CC941BF61C84EB670029C4A6 /* flagsentry */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BF71C84EB670029C4A6 /* LRFlagsEntryService_v7.h */,
+				CC941BF81C84EB670029C4A6 /* LRFlagsEntryService_v7.m */,
+			);
+			path = flagsentry;
+			sourceTree = "<group>";
+		};
+		CC941BF91C84EB670029C4A6 /* group */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BFA1C84EB670029C4A6 /* LRGroupService_v7.h */,
+				CC941BFB1C84EB670029C4A6 /* LRGroupService_v7.m */,
+			);
+			path = group;
+			sourceTree = "<group>";
+		};
+		CC941BFC1C84EB670029C4A6 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				CC941BFD1C84EB670029C4A6 /* LRImageService_v7.h */,
+				CC941BFE1C84EB670029C4A6 /* LRImageService_v7.m */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
+		CC941BFF1C84EB670029C4A6 /* journalarticle */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C001C84EB670029C4A6 /* LRJournalArticleService_v7.h */,
+				CC941C011C84EB670029C4A6 /* LRJournalArticleService_v7.m */,
+			);
+			path = journalarticle;
+			sourceTree = "<group>";
+		};
+		CC941C021C84EB670029C4A6 /* journalfeed */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C031C84EB670029C4A6 /* LRJournalFeedService_v7.h */,
+				CC941C041C84EB670029C4A6 /* LRJournalFeedService_v7.m */,
+			);
+			path = journalfeed;
+			sourceTree = "<group>";
+		};
+		CC941C051C84EB670029C4A6 /* journalfolder */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C061C84EB670029C4A6 /* LRJournalFolderService_v7.h */,
+				CC941C071C84EB670029C4A6 /* LRJournalFolderService_v7.m */,
+			);
+			path = journalfolder;
+			sourceTree = "<group>";
+		};
+		CC941C081C84EB670029C4A6 /* kaleodefinition */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C091C84EB670029C4A6 /* LRKaleodefinitionService_v7.h */,
+				CC941C0A1C84EB670029C4A6 /* LRKaleodefinitionService_v7.m */,
+			);
+			path = kaleodefinition;
+			sourceTree = "<group>";
+		};
+		CC941C0B1C84EB670029C4A6 /* layout */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C0C1C84EB670029C4A6 /* LRLayoutService_v7.h */,
+				CC941C0D1C84EB670029C4A6 /* LRLayoutService_v7.m */,
+			);
+			path = layout;
+			sourceTree = "<group>";
+		};
+		CC941C0E1C84EB670029C4A6 /* layoutbranch */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C0F1C84EB670029C4A6 /* LRLayoutBranchService_v7.h */,
+				CC941C101C84EB670029C4A6 /* LRLayoutBranchService_v7.m */,
+			);
+			path = layoutbranch;
+			sourceTree = "<group>";
+		};
+		CC941C111C84EB670029C4A6 /* layoutprototype */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C121C84EB670029C4A6 /* LRLayoutPrototypeService_v7.h */,
+				CC941C131C84EB670029C4A6 /* LRLayoutPrototypeService_v7.m */,
+			);
+			path = layoutprototype;
+			sourceTree = "<group>";
+		};
+		CC941C141C84EB670029C4A6 /* layoutrevision */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C151C84EB670029C4A6 /* LRLayoutRevisionService_v7.h */,
+				CC941C161C84EB670029C4A6 /* LRLayoutRevisionService_v7.m */,
+			);
+			path = layoutrevision;
+			sourceTree = "<group>";
+		};
+		CC941C171C84EB670029C4A6 /* layoutset */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C181C84EB670029C4A6 /* LRLayoutSetService_v7.h */,
+				CC941C191C84EB670029C4A6 /* LRLayoutSetService_v7.m */,
+			);
+			path = layoutset;
+			sourceTree = "<group>";
+		};
+		CC941C1A1C84EB670029C4A6 /* layoutsetbranch */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C1B1C84EB670029C4A6 /* LRLayoutSetBranchService_v7.h */,
+				CC941C1C1C84EB670029C4A6 /* LRLayoutSetBranchService_v7.m */,
+			);
+			path = layoutsetbranch;
+			sourceTree = "<group>";
+		};
+		CC941C1D1C84EB670029C4A6 /* layoutsetprototype */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C1E1C84EB670029C4A6 /* LRLayoutSetPrototypeService_v7.h */,
+				CC941C1F1C84EB670029C4A6 /* LRLayoutSetPrototypeService_v7.m */,
+			);
+			path = layoutsetprototype;
+			sourceTree = "<group>";
+		};
+		CC941C201C84EB670029C4A6 /* listtype */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C211C84EB670029C4A6 /* LRListTypeService_v7.h */,
+				CC941C221C84EB670029C4A6 /* LRListTypeService_v7.m */,
+			);
+			path = listtype;
+			sourceTree = "<group>";
+		};
+		CC941C231C84EB670029C4A6 /* mbban */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C241C84EB670029C4A6 /* LRMBBanService_v7.h */,
+				CC941C251C84EB670029C4A6 /* LRMBBanService_v7.m */,
+			);
+			path = mbban;
+			sourceTree = "<group>";
+		};
+		CC941C261C84EB670029C4A6 /* mbcategory */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C271C84EB670029C4A6 /* LRMBCategoryService_v7.h */,
+				CC941C281C84EB670029C4A6 /* LRMBCategoryService_v7.m */,
+			);
+			path = mbcategory;
+			sourceTree = "<group>";
+		};
+		CC941C291C84EB670029C4A6 /* mbmessage */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C2A1C84EB670029C4A6 /* LRMBMessageService_v7.h */,
+				CC941C2B1C84EB670029C4A6 /* LRMBMessageService_v7.m */,
+			);
+			path = mbmessage;
+			sourceTree = "<group>";
+		};
+		CC941C2C1C84EB670029C4A6 /* mbthread */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C2D1C84EB670029C4A6 /* LRMBThreadService_v7.h */,
+				CC941C2E1C84EB670029C4A6 /* LRMBThreadService_v7.m */,
+			);
+			path = mbthread;
+			sourceTree = "<group>";
+		};
+		CC941C2F1C84EB670029C4A6 /* mdraction */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C301C84EB670029C4A6 /* LRMDRActionService_v7.h */,
+				CC941C311C84EB670029C4A6 /* LRMDRActionService_v7.m */,
+			);
+			path = mdraction;
+			sourceTree = "<group>";
+		};
+		CC941C321C84EB670029C4A6 /* mdrrule */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C331C84EB670029C4A6 /* LRMDRRuleService_v7.h */,
+				CC941C341C84EB670029C4A6 /* LRMDRRuleService_v7.m */,
+			);
+			path = mdrrule;
+			sourceTree = "<group>";
+		};
+		CC941C351C84EB670029C4A6 /* mdrrulegroup */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C361C84EB670029C4A6 /* LRMDRRuleGroupService_v7.h */,
+				CC941C371C84EB670029C4A6 /* LRMDRRuleGroupService_v7.m */,
+			);
+			path = mdrrulegroup;
+			sourceTree = "<group>";
+		};
+		CC941C381C84EB670029C4A6 /* mdrrulegroupinstance */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C391C84EB670029C4A6 /* LRMDRRuleGroupInstanceService_v7.h */,
+				CC941C3A1C84EB670029C4A6 /* LRMDRRuleGroupInstanceService_v7.m */,
+			);
+			path = mdrrulegroupinstance;
+			sourceTree = "<group>";
+		};
+		CC941C3B1C84EB670029C4A6 /* membershiprequest */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C3C1C84EB670029C4A6 /* LRMembershipRequestService_v7.h */,
+				CC941C3D1C84EB670029C4A6 /* LRMembershipRequestService_v7.m */,
+			);
+			path = membershiprequest;
+			sourceTree = "<group>";
+		};
+		CC941C3E1C84EB670029C4A6 /* microblogsentry */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C3F1C84EB670029C4A6 /* LRMicroblogsentryService_v7.h */,
+				CC941C401C84EB670029C4A6 /* LRMicroblogsentryService_v7.m */,
+			);
+			path = microblogsentry;
+			sourceTree = "<group>";
+		};
+		CC941C411C84EB670029C4A6 /* organization */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C421C84EB670029C4A6 /* LROrganizationService_v7.h */,
+				CC941C431C84EB670029C4A6 /* LROrganizationService_v7.m */,
+			);
+			path = organization;
+			sourceTree = "<group>";
+		};
+		CC941C441C84EB670029C4A6 /* orglabor */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C451C84EB670029C4A6 /* LROrgLaborService_v7.h */,
+				CC941C461C84EB670029C4A6 /* LROrgLaborService_v7.m */,
+			);
+			path = orglabor;
+			sourceTree = "<group>";
+		};
+		CC941C471C84EB670029C4A6 /* passwordpolicy */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C481C84EB670029C4A6 /* LRPasswordPolicyService_v7.h */,
+				CC941C491C84EB670029C4A6 /* LRPasswordPolicyService_v7.m */,
+			);
+			path = passwordpolicy;
+			sourceTree = "<group>";
+		};
+		CC941C4A1C84EB670029C4A6 /* permission */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C4B1C84EB670029C4A6 /* LRPermissionService_v7.h */,
+				CC941C4C1C84EB670029C4A6 /* LRPermissionService_v7.m */,
+			);
+			path = permission;
+			sourceTree = "<group>";
+		};
+		CC941C4D1C84EB670029C4A6 /* phone */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C4E1C84EB670029C4A6 /* LRPhoneService_v7.h */,
+				CC941C4F1C84EB670029C4A6 /* LRPhoneService_v7.m */,
+			);
+			path = phone;
+			sourceTree = "<group>";
+		};
+		CC941C501C84EB670029C4A6 /* pluginsetting */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C511C84EB670029C4A6 /* LRPluginSettingService_v7.h */,
+				CC941C521C84EB670029C4A6 /* LRPluginSettingService_v7.m */,
+			);
+			path = pluginsetting;
+			sourceTree = "<group>";
+		};
+		CC941C531C84EB670029C4A6 /* pollsquestion */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C541C84EB670029C4A6 /* LRPollsQuestionService_v7.h */,
+				CC941C551C84EB670029C4A6 /* LRPollsQuestionService_v7.m */,
+			);
+			path = pollsquestion;
+			sourceTree = "<group>";
+		};
+		CC941C561C84EB670029C4A6 /* pollsvote */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C571C84EB670029C4A6 /* LRPollsVoteService_v7.h */,
+				CC941C581C84EB670029C4A6 /* LRPollsVoteService_v7.m */,
+			);
+			path = pollsvote;
+			sourceTree = "<group>";
+		};
+		CC941C591C84EB680029C4A6 /* portal */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C5A1C84EB680029C4A6 /* LRPortalService_v7.h */,
+				CC941C5B1C84EB680029C4A6 /* LRPortalService_v7.m */,
+			);
+			path = portal;
+			sourceTree = "<group>";
+		};
+		CC941C5C1C84EB680029C4A6 /* portlet */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C5D1C84EB680029C4A6 /* LRPortletService_v7.h */,
+				CC941C5E1C84EB680029C4A6 /* LRPortletService_v7.m */,
+			);
+			path = portlet;
+			sourceTree = "<group>";
+		};
+		CC941C5F1C84EB680029C4A6 /* portletpreferences */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C601C84EB680029C4A6 /* LRPortletPreferencesService_v7.h */,
+				CC941C611C84EB680029C4A6 /* LRPortletPreferencesService_v7.m */,
+			);
+			path = portletpreferences;
+			sourceTree = "<group>";
+		};
+		CC941C621C84EB680029C4A6 /* ratingsentry */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C631C84EB680029C4A6 /* LRRatingsEntryService_v7.h */,
+				CC941C641C84EB680029C4A6 /* LRRatingsEntryService_v7.m */,
+			);
+			path = ratingsentry;
+			sourceTree = "<group>";
+		};
+		CC941C651C84EB680029C4A6 /* region */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C661C84EB680029C4A6 /* LRRegionService_v7.h */,
+				CC941C671C84EB680029C4A6 /* LRRegionService_v7.m */,
+			);
+			path = region;
+			sourceTree = "<group>";
+		};
+		CC941C681C84EB680029C4A6 /* repository */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C691C84EB680029C4A6 /* LRRepositoryService_v7.h */,
+				CC941C6A1C84EB680029C4A6 /* LRRepositoryService_v7.m */,
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		CC941C6B1C84EB680029C4A6 /* resourceblock */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C6C1C84EB680029C4A6 /* LRResourceBlockService_v7.h */,
+				CC941C6D1C84EB680029C4A6 /* LRResourceBlockService_v7.m */,
+			);
+			path = resourceblock;
+			sourceTree = "<group>";
+		};
+		CC941C6E1C84EB680029C4A6 /* resourcepermission */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C6F1C84EB680029C4A6 /* LRResourcePermissionService_v7.h */,
+				CC941C701C84EB680029C4A6 /* LRResourcePermissionService_v7.m */,
+			);
+			path = resourcepermission;
+			sourceTree = "<group>";
+		};
+		CC941C711C84EB680029C4A6 /* role */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C721C84EB680029C4A6 /* LRRoleService_v7.h */,
+				CC941C731C84EB680029C4A6 /* LRRoleService_v7.m */,
+			);
+			path = role;
+			sourceTree = "<group>";
+		};
+		CC941C741C84EB680029C4A6 /* sapentry */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C751C84EB680029C4A6 /* LRSapentryService_v7.h */,
+				CC941C761C84EB680029C4A6 /* LRSapentryService_v7.m */,
+			);
+			path = sapentry;
+			sourceTree = "<group>";
+		};
+		CC941C771C84EB680029C4A6 /* shoppingcategory */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C781C84EB680029C4A6 /* LRShoppingCategoryService_v7.h */,
+				CC941C791C84EB680029C4A6 /* LRShoppingCategoryService_v7.m */,
+			);
+			path = shoppingcategory;
+			sourceTree = "<group>";
+		};
+		CC941C7A1C84EB680029C4A6 /* shoppingcoupon */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C7B1C84EB680029C4A6 /* LRShoppingCouponService_v7.h */,
+				CC941C7C1C84EB680029C4A6 /* LRShoppingCouponService_v7.m */,
+			);
+			path = shoppingcoupon;
+			sourceTree = "<group>";
+		};
+		CC941C7D1C84EB680029C4A6 /* shoppingitem */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C7E1C84EB680029C4A6 /* LRShoppingItemService_v7.h */,
+				CC941C7F1C84EB680029C4A6 /* LRShoppingItemService_v7.m */,
+			);
+			path = shoppingitem;
+			sourceTree = "<group>";
+		};
+		CC941C801C84EB680029C4A6 /* shoppingorder */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C811C84EB680029C4A6 /* LRShoppingOrderService_v7.h */,
+				CC941C821C84EB680029C4A6 /* LRShoppingOrderService_v7.m */,
+			);
+			path = shoppingorder;
+			sourceTree = "<group>";
+		};
+		CC941C831C84EB680029C4A6 /* socialactivity */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C841C84EB680029C4A6 /* LRSocialActivityService_v7.h */,
+				CC941C851C84EB680029C4A6 /* LRSocialActivityService_v7.m */,
+			);
+			path = socialactivity;
+			sourceTree = "<group>";
+		};
+		CC941C861C84EB680029C4A6 /* socialactivitysetting */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C871C84EB680029C4A6 /* LRSocialActivitySettingService_v7.h */,
+				CC941C881C84EB680029C4A6 /* LRSocialActivitySettingService_v7.m */,
+			);
+			path = socialactivitysetting;
+			sourceTree = "<group>";
+		};
+		CC941C891C84EB680029C4A6 /* socialrequest */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C8A1C84EB680029C4A6 /* LRSocialRequestService_v7.h */,
+				CC941C8B1C84EB680029C4A6 /* LRSocialRequestService_v7.m */,
+			);
+			path = socialrequest;
+			sourceTree = "<group>";
+		};
+		CC941C8C1C84EB680029C4A6 /* staging */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C8D1C84EB680029C4A6 /* LRStagingService_v7.h */,
+				CC941C8E1C84EB680029C4A6 /* LRStagingService_v7.m */,
+			);
+			path = staging;
+			sourceTree = "<group>";
+		};
+		CC941C8F1C84EB680029C4A6 /* team */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C901C84EB680029C4A6 /* LRTeamService_v7.h */,
+				CC941C911C84EB680029C4A6 /* LRTeamService_v7.m */,
+			);
+			path = team;
+			sourceTree = "<group>";
+		};
+		CC941C921C84EB680029C4A6 /* theme */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C931C84EB680029C4A6 /* LRThemeService_v7.h */,
+				CC941C941C84EB680029C4A6 /* LRThemeService_v7.m */,
+			);
+			path = theme;
+			sourceTree = "<group>";
+		};
+		CC941C951C84EB680029C4A6 /* trashentry */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C961C84EB680029C4A6 /* LRTrashEntryService_v7.h */,
+				CC941C971C84EB680029C4A6 /* LRTrashEntryService_v7.m */,
+			);
+			path = trashentry;
+			sourceTree = "<group>";
+		};
+		CC941C981C84EB680029C4A6 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C991C84EB680029C4A6 /* LRUserService_v7.h */,
+				CC941C9A1C84EB680029C4A6 /* LRUserService_v7.m */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
+		CC941C9B1C84EB680029C4A6 /* usergroup */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C9C1C84EB680029C4A6 /* LRUserGroupService_v7.h */,
+				CC941C9D1C84EB680029C4A6 /* LRUserGroupService_v7.m */,
+			);
+			path = usergroup;
+			sourceTree = "<group>";
+		};
+		CC941C9E1C84EB680029C4A6 /* usergroupgrouprole */ = {
+			isa = PBXGroup;
+			children = (
+				CC941C9F1C84EB680029C4A6 /* LRUserGroupGroupRoleService_v7.h */,
+				CC941CA01C84EB680029C4A6 /* LRUserGroupGroupRoleService_v7.m */,
+			);
+			path = usergroupgrouprole;
+			sourceTree = "<group>";
+		};
+		CC941CA11C84EB680029C4A6 /* usergrouprole */ = {
+			isa = PBXGroup;
+			children = (
+				CC941CA21C84EB680029C4A6 /* LRUserGroupRoleService_v7.h */,
+				CC941CA31C84EB680029C4A6 /* LRUserGroupRoleService_v7.m */,
+			);
+			path = usergrouprole;
+			sourceTree = "<group>";
+		};
+		CC941CA41C84EB680029C4A6 /* website */ = {
+			isa = PBXGroup;
+			children = (
+				CC941CA51C84EB680029C4A6 /* LRWebsiteService_v7.h */,
+				CC941CA61C84EB680029C4A6 /* LRWebsiteService_v7.m */,
+			);
+			path = website;
+			sourceTree = "<group>";
+		};
+		CC941CA71C84EB680029C4A6 /* wikinode */ = {
+			isa = PBXGroup;
+			children = (
+				CC941CA81C84EB680029C4A6 /* LRWikiNodeService_v7.h */,
+				CC941CA91C84EB680029C4A6 /* LRWikiNodeService_v7.m */,
+			);
+			path = wikinode;
+			sourceTree = "<group>";
+		};
+		CC941CAA1C84EB680029C4A6 /* wikipage */ = {
+			isa = PBXGroup;
+			children = (
+				CC941CAB1C84EB680029C4A6 /* LRWikiPageService_v7.h */,
+				CC941CAC1C84EB680029C4A6 /* LRWikiPageService_v7.m */,
+			);
+			path = wikipage;
+			sourceTree = "<group>";
+		};
 		CCA6593818EC4BE800957D20 = {
 			isa = PBXGroup;
 			children = (
@@ -1767,22 +3127,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC941CD91C84EB680029C4A6 /* LRGroupService_v7.m in Sources */,
+				CC941D0F1C84EB680029C4A6 /* LRUserGroupService_v7.m in Sources */,
 				CC6ECF281986D83C007F4EBB /* LRLocalizationUtil.m in Sources */,
 				CC03FCD918ED7DCD00F3F16C /* LRMBCategoryService_v62.m in Sources */,
+				CC941D0E1C84EB680029C4A6 /* LRUserService_v7.m in Sources */,
+				CC941CF11C84EB680029C4A6 /* LROrganizationService_v7.m in Sources */,
 				CC1954B71B66B7AA0000EBEE /* LRUploadUtil.m in Sources */,
+				CC941CEE1C84EB680029C4A6 /* LRMDRRuleGroupInstanceService_v7.m in Sources */,
+				CC941D021C84EB680029C4A6 /* LRSapentryService_v7.m in Sources */,
 				CC2E77E41A3769A9001890A9 /* GroupServiceAsyncTest.m in Sources */,
+				CC941CFE1C84EB680029C4A6 /* LRRepositoryService_v7.m in Sources */,
+				CC941CD11C84EB680029C4A6 /* LRDLFolderService_v7.m in Sources */,
 				CC03FCB518ED7DCD00F3F16C /* LRBookmarksEntryService_v62.m in Sources */,
 				CC03FCC018ED7DCD00F3F16C /* LRDLFileEntryService_v62.m in Sources */,
 				CC03FCD518ED7DCD00F3F16C /* LRLayoutSetBranchService_v62.m in Sources */,
 				CC03FCFA18ED7DCD00F3F16C /* LRSocialActivityService_v62.m in Sources */,
 				CC03FCEE18ED7DCD00F3F16C /* LRRepositoryService_v62.m in Sources */,
 				CC03FD0018ED7DCD00F3F16C /* LRThemeService_v62.m in Sources */,
+				CC941CC71C84EB680029C4A6 /* LRDdmdataproviderinstanceService_v7.m in Sources */,
 				CC2E77EB1A3769A9001890A9 /* ServiceContextTest.m in Sources */,
+				CC941D081C84EB680029C4A6 /* LRSocialActivitySettingService_v7.m in Sources */,
 				CCA4E4E7193657B900374A79 /* LRPortalVersionUtil.m in Sources */,
+				CC941D131C84EB680029C4A6 /* LRWikiNodeService_v7.m in Sources */,
 				CC03FCC518ED7DCD00F3F16C /* LREmailAddressService_v62.m in Sources */,
 				CC03FCAC18ED7DCD00F3F16C /* LRAnnouncementsFlagService_v62.m in Sources */,
+				CC941CBB1C84EB680029C4A6 /* LRCalendarService_v7.m in Sources */,
+				CC941CED1C84EB680029C4A6 /* LRMDRRuleGroupService_v7.m in Sources */,
+				CC941CF31C84EB680029C4A6 /* LRPasswordPolicyService_v7.m in Sources */,
 				CCDCE0591A694BB20045023A /* BatchSessionTest.m in Sources */,
+				CC941CD71C84EB680029C4A6 /* LRExportimportconfigurationService_v7.m in Sources */,
+				CC941CCD1C84EB680029C4A6 /* LRDLFileEntryService_v7.m in Sources */,
+				CC941D0D1C84EB680029C4A6 /* LRTrashEntryService_v7.m in Sources */,
+				CC941D011C84EB680029C4A6 /* LRRoleService_v7.m in Sources */,
 				CC03FCB418ED7DCD00F3F16C /* LRBlogsEntryService_v62.m in Sources */,
+				CC941CD01C84EB680029C4A6 /* LRDLFileVersionService_v7.m in Sources */,
+				CC941D061C84EB680029C4A6 /* LRShoppingOrderService_v7.m in Sources */,
 				CC03FCE818ED7DCD00F3F16C /* LRPollsVoteService_v62.m in Sources */,
 				CC03FCC418ED7DCD00F3F16C /* LRDLFolderService_v62.m in Sources */,
 				CC03FCB918ED7DCD00F3F16C /* LRContactService_v62.m in Sources */,
@@ -1799,111 +3179,195 @@
 				CC03FCAB18ED7DCD00F3F16C /* LRAnnouncementsEntryService_v62.m in Sources */,
 				CC03FCD018ED7DCD00F3F16C /* LRLayoutService_v62.m in Sources */,
 				CC03FCBE18ED7DCD00F3F16C /* LRDDMTemplateService_v62.m in Sources */,
+				CC941CFF1C84EB680029C4A6 /* LRResourceBlockService_v7.m in Sources */,
 				CC03FCA618ED7DCD00F3F16C /* LRServiceFactory.m in Sources */,
+				CC941CB71C84EB680029C4A6 /* LRBackgroundTaskService_v7.m in Sources */,
 				CC03FCB618ED7DCD00F3F16C /* LRBookmarksFolderService_v62.m in Sources */,
+				CC941CF91C84EB680029C4A6 /* LRPortalService_v7.m in Sources */,
 				CC03FD0218ED7DCD00F3F16C /* LRUserService_v62.m in Sources */,
 				CC1954B51B66B7A20000EBEE /* LRDownloadUtil.m in Sources */,
+				CC941CD51C84EB680029C4A6 /* LRExpandoValueService_v7.m in Sources */,
 				CC03FCD418ED7DCD00F3F16C /* LRLayoutSetService_v62.m in Sources */,
 				CC20D9E91A7BB3E300DE7729 /* LRSignIn.m in Sources */,
 				CC2E77E21A3769A9001890A9 /* DLAppServiceTest.m in Sources */,
+				CC941CD41C84EB680029C4A6 /* LRExpandoColumnService_v7.m in Sources */,
 				CC03FD0518ED7DCD00F3F16C /* LRUserGroupRoleService_v62.m in Sources */,
 				CC03FCF518ED7DCD00F3F16C /* LRSCProductVersionService_v62.m in Sources */,
 				CC03FCDB18ED7DCD00F3F16C /* LRMBThreadService_v62.m in Sources */,
 				CC03FCD818ED7DCD00F3F16C /* LRMBBanService_v62.m in Sources */,
+				CC941CB41C84EB680029C4A6 /* LRAssetEntryService_v7.m in Sources */,
 				CC03FCAD18ED7DCD00F3F16C /* LRAssetCategoryService_v62.m in Sources */,
+				CC941CDE1C84EB680029C4A6 /* LRKaleodefinitionService_v7.m in Sources */,
+				CC941D091C84EB680029C4A6 /* LRSocialRequestService_v7.m in Sources */,
+				CC941CBE1C84EB680029C4A6 /* LRCalendarresourceService_v7.m in Sources */,
+				CC941CB11C84EB680029C4A6 /* LRAppService_v7.m in Sources */,
 				CC03FCBA18ED7DCD00F3F16C /* LRCountryService_v62.m in Sources */,
+				CC941CE91C84EB680029C4A6 /* LRMBMessageService_v7.m in Sources */,
 				CC03FCBB18ED7DCD00F3F16C /* LRDDLRecordService_v62.m in Sources */,
+				CC941CE51C84EB680029C4A6 /* LRLayoutSetPrototypeService_v7.m in Sources */,
+				CC941CD61C84EB680029C4A6 /* LRExportimportService_v7.m in Sources */,
 				CC03FD0718ED7DCD00F3F16C /* LRWikiNodeService_v62.m in Sources */,
+				CC941D071C84EB680029C4A6 /* LRSocialActivityService_v7.m in Sources */,
 				CC1954B61B66B7A70000EBEE /* LRUploadData.m in Sources */,
 				CC03FCF618ED7DCD00F3F16C /* LRShoppingCategoryService_v62.m in Sources */,
 				CC03FCB818ED7DCD00F3F16C /* LRCompanyService_v62.m in Sources */,
 				CC03FCA818ED7DCD00F3F16C /* LRHttpUtil.m in Sources */,
+				CC941CF61C84EB680029C4A6 /* LRPluginSettingService_v7.m in Sources */,
 				CC03FCE518ED7DCD00F3F16C /* LRPhoneService_v62.m in Sources */,
+				CC941CCC1C84EB680029C4A6 /* LRDLAppService_v7.m in Sources */,
+				CC941CFB1C84EB680029C4A6 /* LRPortletPreferencesService_v7.m in Sources */,
+				CC941CB91C84EB680029C4A6 /* LRBookmarksEntryService_v7.m in Sources */,
 				CC2E77E71A3769A9001890A9 /* PortalVersionTest.m in Sources */,
+				CC941CEA1C84EB680029C4A6 /* LRMBThreadService_v7.m in Sources */,
+				CC941CB01C84EB680029C4A6 /* LRAnnouncementsFlagService_v7.m in Sources */,
+				CC941CDA1C84EB680029C4A6 /* LRImageService_v7.m in Sources */,
+				CC941CD81C84EB680029C4A6 /* LRFlagsEntryService_v7.m in Sources */,
 				CC20D9E81A7BB3E300DE7729 /* LRCredentialStorage.m in Sources */,
 				CC03FCCF18ED7DCD00F3F16C /* LRJournalTemplateService_v62.m in Sources */,
 				CC03FCF018ED7DCD00F3F16C /* LRResourcePermissionService_v62.m in Sources */,
+				CC941D121C84EB680029C4A6 /* LRWebsiteService_v7.m in Sources */,
+				CC941D031C84EB680029C4A6 /* LRShoppingCategoryService_v7.m in Sources */,
+				CC941CDF1C84EB680029C4A6 /* LRLayoutService_v7.m in Sources */,
 				CC03FCA418ED7DCD00F3F16C /* LRBaseService.m in Sources */,
+				CC941CC91C84EB680029C4A6 /* LRDdmstructureversionService_v7.m in Sources */,
 				CCF5F35E1AB869E0006132AA /* DownloadFileTest.m in Sources */,
 				CC03FCC818ED7DCD00F3F16C /* LRFlagsEntryService_v62.m in Sources */,
 				CC20D9EE1A7BB84B00DE7729 /* LRBasicAuthentication.m in Sources */,
 				CC03FCE018ED7DCD00F3F16C /* LRMembershipRequestService_v62.m in Sources */,
+				CC941CF71C84EB680029C4A6 /* LRPollsQuestionService_v7.m in Sources */,
 				CC03FCC218ED7DCD00F3F16C /* LRDLFileShortcutService_v62.m in Sources */,
 				CC03FCB318ED7DCD00F3F16C /* LRBackgroundTaskService_v62.m in Sources */,
 				CC03FCF418ED7DCD00F3F16C /* LRSCProductEntryService_v62.m in Sources */,
+				CC941D001C84EB680029C4A6 /* LRResourcePermissionService_v7.m in Sources */,
 				CC2E77EC1A3769A9001890A9 /* ServiceFactoryTest.m in Sources */,
+				CC941CE31C84EB680029C4A6 /* LRLayoutSetService_v7.m in Sources */,
 				CC40D76D1974B9D0000254E6 /* LRValidator.m in Sources */,
 				CC03FCC718ED7DCD00F3F16C /* LRExpandoValueService_v62.m in Sources */,
 				CC03FCDD18ED7DCD00F3F16C /* LRMDRRuleService_v62.m in Sources */,
+				CC941CEB1C84EB680029C4A6 /* LRMDRActionService_v7.m in Sources */,
 				CC03FCE618ED7DCD00F3F16C /* LRPluginSettingService_v62.m in Sources */,
 				CC03FD0918ED7DCD00F3F16C /* LRPortraitUtil.m in Sources */,
+				CC941CF81C84EB680029C4A6 /* LRPollsVoteService_v7.m in Sources */,
 				CC03FCD718ED7DCD00F3F16C /* LRListTypeService_v62.m in Sources */,
 				CC03FCEA18ED7DCD00F3F16C /* LRPortletService_v62.m in Sources */,
 				CC03FCC318ED7DCD00F3F16C /* LRDLFileVersionService_v62.m in Sources */,
 				CC03FCF118ED7DCD00F3F16C /* LRRoleService_v62.m in Sources */,
+				CC941CC51C84EB680029C4A6 /* LRDDLRecordSetService_v7.m in Sources */,
+				CC941CCA1C84EB680029C4A6 /* LRDDMTemplateService_v7.m in Sources */,
 				CC03FCDE18ED7DCD00F3F16C /* LRMDRRuleGroupService_v62.m in Sources */,
+				CC941CCE1C84EB680029C4A6 /* LRDLFileEntryTypeService_v7.m in Sources */,
 				CC03FCEC18ED7DCD00F3F16C /* LRRatingsEntryService_v62.m in Sources */,
+				CC941CAF1C84EB680029C4A6 /* LRAnnouncementsEntryService_v7.m in Sources */,
+				CC941CBF1C84EB680029C4A6 /* LRClassNameService_v7.m in Sources */,
+				CC941CF01C84EB680029C4A6 /* LRMicroblogsentryService_v7.m in Sources */,
+				CC941D101C84EB680029C4A6 /* LRUserGroupGroupRoleService_v7.m in Sources */,
+				CC941CE61C84EB680029C4A6 /* LRListTypeService_v7.m in Sources */,
+				CC941CE81C84EB680029C4A6 /* LRMBCategoryService_v7.m in Sources */,
+				CC941CBD1C84EB680029C4A6 /* LRCalendarnotificationtemplateService_v7.m in Sources */,
+				CC941CB81C84EB680029C4A6 /* LRBlogsEntryService_v7.m in Sources */,
+				CC941CAE1C84EB680029C4A6 /* LRAnnouncementsDeliveryService_v7.m in Sources */,
+				CC941CDC1C84EB680029C4A6 /* LRJournalFeedService_v7.m in Sources */,
 				CC03FCCD18ED7DCD00F3F16C /* LRJournalFolderService_v62.m in Sources */,
+				CC941CAD1C84EB680029C4A6 /* LRAddressService_v7.m in Sources */,
+				CC941CEF1C84EB680029C4A6 /* LRMembershipRequestService_v7.m in Sources */,
+				CC941D0C1C84EB680029C4A6 /* LRThemeService_v7.m in Sources */,
+				CC941CC41C84EB680029C4A6 /* LRDDLRecordService_v7.m in Sources */,
+				CC941CEC1C84EB680029C4A6 /* LRMDRRuleService_v7.m in Sources */,
 				CC03FCA718ED7DCD00F3F16C /* LRSession.m in Sources */,
 				CC03FCAF18ED7DCD00F3F16C /* LRAssetEntryService_v62.m in Sources */,
 				CC2E77EE1A3769A9001890A9 /* UnauthenticatedServiceTest.m in Sources */,
+				CC941CCB1C84EB680029C4A6 /* LRDdmtemplateversionService_v7.m in Sources */,
 				CC03FCE918ED7DCD00F3F16C /* LRPortalService_v62.m in Sources */,
 				CC2E77E61A3769A9001890A9 /* OrderByComparatorTest.m in Sources */,
 				CC03FCFC18ED7DCD00F3F16C /* LRSocialRequestService_v62.m in Sources */,
 				CC03FCDC18ED7DCD00F3F16C /* LRMDRActionService_v62.m in Sources */,
+				CC941CDD1C84EB680029C4A6 /* LRJournalFolderService_v7.m in Sources */,
+				CC941CCF1C84EB680029C4A6 /* LRDLFileShortcutService_v7.m in Sources */,
 				CC03FCDA18ED7DCD00F3F16C /* LRMBMessageService_v62.m in Sources */,
+				CC941CFC1C84EB680029C4A6 /* LRRatingsEntryService_v7.m in Sources */,
 				CC03FCCB18ED7DCD00F3F16C /* LRJournalArticleService_v62.m in Sources */,
 				CC03FCB718ED7DCD00F3F16C /* LRClassNameService_v62.m in Sources */,
 				CC03FD0118ED7DCD00F3F16C /* LRTrashEntryService_v62.m in Sources */,
 				CC03FCC118ED7DCD00F3F16C /* LRDLFileEntryTypeService_v62.m in Sources */,
+				CC941D0A1C84EB680029C4A6 /* LRStagingService_v7.m in Sources */,
+				CC941CF51C84EB680029C4A6 /* LRPhoneService_v7.m in Sources */,
 				CC03FCA518ED7DCD00F3F16C /* LRBatchSession.m in Sources */,
 				CC5196B41A7944AB0005C238 /* SignInTest.m in Sources */,
 				CC03FCBC18ED7DCD00F3F16C /* LRDDLRecordSetService_v62.m in Sources */,
 				CC03FCCA18ED7DCD00F3F16C /* LRImageService_v62.m in Sources */,
+				CC941CE11C84EB680029C4A6 /* LRLayoutPrototypeService_v7.m in Sources */,
 				CC2E77E81A3769A9001890A9 /* PortletServiceTest.m in Sources */,
 				CC03FCBD18ED7DCD00F3F16C /* LRDDMStructureService_v62.m in Sources */,
 				CC03FCF318ED7DCD00F3F16C /* LRSCLicenseService_v62.m in Sources */,
 				CC03FCAA18ED7DCD00F3F16C /* LRAnnouncementsDeliveryService_v62.m in Sources */,
+				CC941CE71C84EB680029C4A6 /* LRMBBanService_v7.m in Sources */,
+				CC941CFD1C84EB680029C4A6 /* LRRegionService_v7.m in Sources */,
 				CC03FCFB18ED7DCD00F3F16C /* LRSocialActivitySettingService_v62.m in Sources */,
+				CC941CC81C84EB680029C4A6 /* LRDDMStructureService_v7.m in Sources */,
 				CC03FCD318ED7DCD00F3F16C /* LRLayoutRevisionService_v62.m in Sources */,
 				CC03FCEB18ED7DCD00F3F16C /* LRPortletPreferencesService_v62.m in Sources */,
 				CC40D7701974C76D000254E6 /* LRBlockCallback.m in Sources */,
+				CC941CF41C84EB680029C4A6 /* LRPermissionService_v7.m in Sources */,
+				CC941CC11C84EB680029C4A6 /* LRCompanyService_v7.m in Sources */,
+				CC941D0B1C84EB680029C4A6 /* LRTeamService_v7.m in Sources */,
+				CC941CE21C84EB680029C4A6 /* LRLayoutRevisionService_v7.m in Sources */,
+				CC941CC21C84EB680029C4A6 /* LRContactService_v7.m in Sources */,
 				CC03FCE718ED7DCD00F3F16C /* LRPollsQuestionService_v62.m in Sources */,
 				CC2E77EA1A3769A9001890A9 /* ResponseParserTest.m in Sources */,
 				CC03FCCC18ED7DCD00F3F16C /* LRJournalFeedService_v62.m in Sources */,
+				CC941D051C84EB680029C4A6 /* LRShoppingItemService_v7.m in Sources */,
 				CC03FCBF18ED7DCD00F3F16C /* LRDLAppService_v62.m in Sources */,
 				CC03FCA918ED7DCD00F3F16C /* LRAddressService_v62.m in Sources */,
 				CC03FD0618ED7DCD00F3F16C /* LRWebsiteService_v62.m in Sources */,
 				CC2E77E51A3769A9001890A9 /* GroupServiceTest.m in Sources */,
 				CC03FCE218ED7DCD00F3F16C /* LROrgLaborService_v62.m in Sources */,
 				CCC6A7B61A164BEB00ABB791 /* LRRedirectDelegate.m in Sources */,
+				CC941D041C84EB680029C4A6 /* LRShoppingCouponService_v7.m in Sources */,
 				CC2E77E01A3769A9001890A9 /* BlockCallbackTest.m in Sources */,
 				CC03FCDF18ED7DCD00F3F16C /* LRMDRRuleGroupInstanceService_v62.m in Sources */,
+				CC941CC31C84EB680029C4A6 /* LRCountryService_v7.m in Sources */,
 				CC03FD0318ED7DCD00F3F16C /* LRUserGroupService_v62.m in Sources */,
+				CC941CD31C84EB680029C4A6 /* LREmailAddressService_v7.m in Sources */,
 				CC03FCF818ED7DCD00F3F16C /* LRShoppingItemService_v62.m in Sources */,
+				CC941CFA1C84EB680029C4A6 /* LRPortletService_v7.m in Sources */,
 				CC03FCD218ED7DCD00F3F16C /* LRLayoutPrototypeService_v62.m in Sources */,
 				CC03FCCE18ED7DCD00F3F16C /* LRJournalStructureService_v62.m in Sources */,
+				CC941CBC1C84EB680029C4A6 /* LRCalendarbookingService_v7.m in Sources */,
+				CC941CE41C84EB680029C4A6 /* LRLayoutSetBranchService_v7.m in Sources */,
+				CC941CB51C84EB680029C4A6 /* LRAssetTagService_v7.m in Sources */,
 				CC03FCF218ED7DCD00F3F16C /* LRSCFrameworkVersionService_v62.m in Sources */,
 				CC03FCAE18ED7DCD00F3F16C /* LRAssetCategoryPropertyService_v62.m in Sources */,
 				CC03FCFD18ED7DCD00F3F16C /* LRStagingService_v62.m in Sources */,
+				CC941CB31C84EB680029C4A6 /* LRAssetCategoryPropertyService_v7.m in Sources */,
 				CC03FCEF18ED7DCD00F3F16C /* LRResourceBlockService_v62.m in Sources */,
 				CC03FCC918ED7DCD00F3F16C /* LRGroupService_v62.m in Sources */,
 				CC03FCF918ED7DCD00F3F16C /* LRShoppingOrderService_v62.m in Sources */,
 				CC03FCFF18ED7DCD00F3F16C /* LRTeamService_v62.m in Sources */,
 				CC1954A51B66B2BF0000EBEE /* HeadersTest.m in Sources */,
+				CC941CC01C84EB680029C4A6 /* LRCommentmanagerjsonwsService_v7.m in Sources */,
 				CC03FCED18ED7DCD00F3F16C /* LRRegionService_v62.m in Sources */,
+				CC941CB21C84EB680029C4A6 /* LRAssetCategoryService_v7.m in Sources */,
+				CC941CB61C84EB680029C4A6 /* LRAssetVocabularyService_v7.m in Sources */,
 				CC03FCD618ED7DCD00F3F16C /* LRLayoutSetPrototypeService_v62.m in Sources */,
 				CC03FCB218ED7DCD00F3F16C /* LRAssetVocabularyService_v62.m in Sources */,
 				CC03FCB018ED7DCD00F3F16C /* LRAssetTagService_v62.m in Sources */,
 				CC2E77E31A3769A9001890A9 /* FileUploadTest.m in Sources */,
 				CCABA086197D544B00A9F8B0 /* LRError.m in Sources */,
+				CC941CF21C84EB680029C4A6 /* LROrgLaborService_v7.m in Sources */,
 				CC03FD0818ED7DCD00F3F16C /* LRWikiPageService_v62.m in Sources */,
 				CC1C897919080708004D3C4C /* TRVSMonitor.m in Sources */,
+				CC941CE01C84EB680029C4A6 /* LRLayoutBranchService_v7.m in Sources */,
 				CCCF04E019182584005D1B22 /* LRJSONObjectWrapper.m in Sources */,
+				CC941D141C84EB680029C4A6 /* LRWikiPageService_v7.m in Sources */,
+				CC941CBA1C84EB680029C4A6 /* LRBookmarksFolderService_v7.m in Sources */,
+				CC941CDB1C84EB680029C4A6 /* LRJournalArticleService_v7.m in Sources */,
 				CC03FCE318ED7DCD00F3F16C /* LRPasswordPolicyService_v62.m in Sources */,
 				CC83D48F18ED6BE300CFA142 /* BaseTest.m in Sources */,
+				CC941CD21C84EB680029C4A6 /* LRDltrashService_v7.m in Sources */,
 				CCABA081197C995500A9F8B0 /* LRResponseParser.m in Sources */,
 				CC2E77ED1A3769A9001890A9 /* SpecialCharsTest.m in Sources */,
+				CC941CC61C84EB680029C4A6 /* LRDdlrecordversionService_v7.m in Sources */,
+				CC941D111C84EB680029C4A6 /* LRUserGroupRoleService_v7.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
