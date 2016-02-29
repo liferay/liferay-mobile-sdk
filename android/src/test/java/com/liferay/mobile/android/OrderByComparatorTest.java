@@ -43,7 +43,7 @@ public class OrderByComparatorTest extends BaseTest {
 		long groupId = props.getGroupId();
 
 		String className =
-			"com.liferay.portlet.bookmarks.util.comparator.EntryNameComparator";
+			"com.liferay.bookmarks.util.comparator.EntryNameComparator";
 
 		JSONObjectWrapper orderByComparatorDesc = new JSONObjectWrapper(
 			className, new JSONObject());
