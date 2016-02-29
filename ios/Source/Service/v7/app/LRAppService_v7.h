@@ -22,6 +22,6 @@
 - (NSDictionary *)deleteAppWithAppId:(long long)appId error:(NSError **)error;
 - (void)installAppWithRemoteAppId:(long long)remoteAppId error:(NSError **)error;
 - (void)uninstallAppWithRemoteAppId:(long long)remoteAppId error:(NSError **)error;
-- (NSDictionary *)updateAppWithFile:(NSDictionary *)file error:(NSError **)error;
+- (NSDictionary *)updateAppWithFile:(LRUploadData *)file error:(NSError **)error;
 
 @end

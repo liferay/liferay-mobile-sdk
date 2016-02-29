@@ -49,14 +49,14 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateAppWithFile:(NSDictionary *)file error:(NSError **)error {
+- (NSDictionary *)updateAppWithFile:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"file": [self checkNull: file]
 	}];
 
 	NSDictionary *_command = @{@"/marketplace.app/update-app": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSDictionary *)[self.session upload:_command error:error];
 }
 
 @end
