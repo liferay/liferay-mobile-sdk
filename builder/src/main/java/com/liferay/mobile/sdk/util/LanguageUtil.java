@@ -34,7 +34,7 @@ public class LanguageUtil {
 
 	public static final String DOUBLE = "double";
 
-	public static final String FILE = "java.io.File";
+	public static final String FILE = "file";
 
 	public static final String INT = "int";
 
