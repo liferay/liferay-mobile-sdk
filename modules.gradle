@@ -16,7 +16,7 @@ configure(subprojects.findAll { it.name.startsWith('modules/') }) {
 
 	apply plugin: 'java'
 
-	archivesBaseName = "liferay-${context}-android-sdk"
+	archivesBaseName = "liferay-${contexts}-android-sdk"
 
 	sourceSets {
 		main {
@@ -47,7 +47,7 @@ configure(subprojects.findAll { it.name.startsWith('modules/') }) {
 	task zip(type: Zip) {
 		group = tasksGroup
 		description = 'Zips generated iOS SDK for this module.'
-		baseName = "liferay-${context}-ios-sdk"
+		baseName = "liferay-${contexts}-ios-sdk"
 		destinationDir = project.buildDir
 		version = project.version
 		from 'ios/Source'
