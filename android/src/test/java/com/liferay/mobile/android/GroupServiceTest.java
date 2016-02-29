@@ -38,6 +38,9 @@ public class GroupServiceTest extends BaseTest {
 		assertEquals("/test", jsonObj.getString("friendlyURL"));
 
 		jsonObj = sites.getJSONObject(1);
+		assertEquals("/global", jsonObj.getString("friendlyURL"));
+
+		jsonObj = sites.getJSONObject(2);
 		assertEquals("/guest", jsonObj.getString("friendlyURL"));
 	}
 
