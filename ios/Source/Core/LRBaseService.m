@@ -15,7 +15,7 @@
 #import "LRBaseService.h"
 #import "LRValidator.h"
 
-NSString *const _SERVICE_CONTEXT = @"com.liferay.portal.service.ServiceContext";
+NSString *const _SERVICE_CONTEXT = @"com.liferay.portal.kernel.service.ServiceContext";
 
 /**
  * @author Bruno Farache

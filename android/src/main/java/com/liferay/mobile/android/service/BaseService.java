@@ -83,6 +83,6 @@ public class BaseService {
 	protected Session session;
 
 	private static final String _SERVICE_CONTEXT =
-		"com.liferay.portal.service.ServiceContext";
+		"com.liferay.portal.kernel.service.ServiceContext";
 
 }
