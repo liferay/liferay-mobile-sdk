@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 	s.name					= "Liferay-iOS-SDK"
 	s.module_name			= "LRMobileSDK"
-	s.version				= "6.2.23"
+	s.version				= "7.0.0"
 	s.summary				= "Build iOS apps for Liferay."
 	s.homepage				= "https://github.com/liferay/liferay-mobile-sdk"
 	s.license				= {
@@ -15,9 +15,10 @@ Pod::Spec.new do |s|
 	s.ios.deployment_target	= '7.0'
 	s.source				= {
 								:git => "https://github.com/liferay/liferay-mobile-sdk.git",
-								:tag => "ios-6.2.23"
+								:tag => "ios-7.0.0"
 							}
 	s.source_files			= "ios/Source/**/*.{h,m}"
+	s.exclude_files			= "ios/Source/Service/v62/**"
 	s.resource_bundles		= {
 								"Liferay-iOS-SDK" => [
 									"ios/Source/Util/Localization/*.lproj"
