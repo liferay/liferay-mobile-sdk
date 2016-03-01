@@ -9,6 +9,7 @@ sourceSets {
 	main {
 		java {
 			srcDir 'src/gen/java'
+			exclude '**/v62/**'
 		}
 	}
 }
