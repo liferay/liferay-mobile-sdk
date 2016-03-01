@@ -16,7 +16,7 @@
 
 #import "LRError.h"
 #import "LRHttpUtil.h"
-#import "LRPortalService_v62.h"
+#import "LRPortalService_v7.h"
 
 const int LR_UNKNOWN_VERSION = -1;
 const int LR_VERSION_6_2 = 6200;
@@ -69,7 +69,7 @@ const int LR_VERSION_6_2 = 6200;
 
 	[LRHttpUtil setJSONWSPath:jsonWSPath];
 
-	LRPortalService_v62 *service = [[LRPortalService_v62 alloc]
+	LRPortalService_v7 *service = [[LRPortalService_v7 alloc]
 		initWithSession:session];
 
 	int version = [[service getBuildNumber:error] intValue];
