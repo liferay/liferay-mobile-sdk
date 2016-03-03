@@ -14,9 +14,14 @@
 
 package com.liferay.mobile.sdk.java;
 
+import com.liferay.mobile.android.http.Response;
+import com.liferay.mobile.android.http.file.UploadData;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.sdk.util.LanguageUtil;
 
 import org.apache.commons.lang.WordUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
@@ -92,6 +97,52 @@ public class JavaUtil extends LanguageUtil {
 		}
 
 		return false;
+	}
+
+	public Class type(String type) {
+		type = super.getType(type);
+
+		if (type.equals(BOOLEAN)) {
+			return boolean.class;
+		}
+
+		if (type.equals(BYTE_ARRAY)) {
+			return byte[].class;
+		}
+
+		if (type.equals(DOUBLE)) {
+			return double.class;
+		}
+
+		if (type.equals(INT)) {
+			return int.class;
+		}
+
+		if (type.equals(LONG)) {
+			return long.class;
+		}
+
+		if (type.equals(VOID)) {
+			return Response.class;
+		}
+
+		if (isArray(type)) {
+			return JSONArray.class;
+		}
+
+		if (type.equals(STRING)) {
+			return String.class;
+		}
+
+		if (type.equals(FILE)) {
+			return UploadData.class;
+		}
+
+		if (type.startsWith(OBJECT_PREFIX)) {
+			return JSONObjectWrapper.class;
+		}
+
+		return JSONObject.class;
 	}
 
 }

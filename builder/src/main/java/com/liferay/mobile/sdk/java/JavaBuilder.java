@@ -14,6 +14,10 @@
 
 package com.liferay.mobile.sdk.java;
 
+import com.liferay.mobile.android.http.Response;
+import com.liferay.mobile.android.http.file.UploadData;
+import com.liferay.mobile.android.service.JSONObjectWrapper;
+import com.liferay.mobile.android.v2.Call;
 import com.liferay.mobile.sdk.BaseBuilder;
 import com.liferay.mobile.sdk.http.Action;
 import com.liferay.mobile.sdk.http.Discovery;
@@ -22,8 +26,12 @@ import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.ParameterSpec;
+import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeSpec;
 import com.liferay.mobile.android.v2.Param;
+
+import org.json.JSONArray;
+
 import java.util.List;
 
 import javax.lang.model.element.Modifier;
@@ -61,7 +69,7 @@ public class JavaBuilder extends BaseBuilder {
 					.build();
 
 				ParameterSpec param = ParameterSpec
-					.builder(parameter.getType().getClass(), parameterName)
+					.builder(util.type(parameter.getType()), parameterName)
 					.addAnnotation(annotation)
 					.build();
 
