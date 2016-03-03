@@ -18,6 +18,7 @@ import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Path;
 import com.liferay.mobile.sdk.BaseBuilder;
 import com.liferay.mobile.sdk.http.Action;
 import com.liferay.mobile.sdk.http.Discovery;
@@ -49,28 +50,42 @@ public class JavaBuilder extends BaseBuilder {
 
 		JavaUtil util = new JavaUtil();
 
+		AnnotationSpec servicePathAnnotation = AnnotationSpec
+			.builder(Path.class)
+			.addMember("value", "$S", "/" + filter)
+			.build();
+
 		TypeSpec.Builder service = TypeSpec
 			.interfaceBuilder(util.getServiceClassName(filter))
-			.addModifiers(Modifier.PUBLIC);
+			.addModifiers(Modifier.PUBLIC)
+			.addAnnotation(servicePathAnnotation);
 
 		for (Action action : actions) {
-			String methodName = util.getMethodName(action.getPath());
+			String path = action.getPath();
+			String methodName = util.getMethodName(path);
+			path = path.substring(path.lastIndexOf("/"));
+
+			AnnotationSpec methodPathAnnotation = AnnotationSpec
+				.builder(Path.class)
+				.addMember("value", "$S", path)
+				.build();
 
 			MethodSpec.Builder method = MethodSpec.methodBuilder(methodName)
 				.addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
+				.addAnnotation(methodPathAnnotation)
 				.returns(void.class);
 
 			for (Parameter parameter : action.getParameters()) {
 				String parameterName = parameter.getName();
 
-				AnnotationSpec annotation = AnnotationSpec
+				AnnotationSpec parameterAnnotation = AnnotationSpec
 					.builder(Param.class)
 					.addMember("value", "$S", parameterName)
 					.build();
 
 				ParameterSpec param = ParameterSpec
 					.builder(util.type(parameter.getType()), parameterName)
-					.addAnnotation(annotation)
+					.addAnnotation(parameterAnnotation)
 					.build();
 
 				method.addParameter(param);
