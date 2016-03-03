@@ -21,7 +21,7 @@ package com.liferay.mobile.android.v2;
 public interface UserService {
 
 	@Path("/get-company-users-count")
-	Call<Integer> getCompanyUsersCount(@Param("companyId")long companyId);
+	Call<Integer> getCompanyUsersCount(@Param("companyId") long companyId);
 
 	@Path("/get-user-id-by-email-address")
 	Call<Long> getUserIdByEmailAddress(@Param("companyId") long companyId, @Param("emailAddress") String emailAddress);
