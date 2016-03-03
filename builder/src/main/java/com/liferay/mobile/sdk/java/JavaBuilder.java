@@ -18,11 +18,12 @@ import com.liferay.mobile.sdk.BaseBuilder;
 import com.liferay.mobile.sdk.http.Action;
 import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.http.Parameter;
+import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.ParameterSpec;
 import com.squareup.javapoet.TypeSpec;
-
+import com.liferay.mobile.android.v2.Param;
 import java.util.List;
 
 import javax.lang.model.element.Modifier;
@@ -52,10 +53,19 @@ public class JavaBuilder extends BaseBuilder {
 				.returns(void.class);
 
 			for (Parameter parameter : action.getParameters()) {
-				ParameterSpec parameterSpec = ParameterSpec
-					.builder(parameter.getType().getClass(), parameter.getName()).build();
-//					.addAnnotation(@Param.cla);
-				method.addParameter(parameterSpec);
+				String parameterName = parameter.getName();
+
+				AnnotationSpec annotation = AnnotationSpec
+					.builder(Param.class)
+					.addMember("value", "$S", parameterName)
+					.build();
+
+				ParameterSpec param = ParameterSpec
+					.builder(parameter.getType().getClass(), parameterName)
+					.addAnnotation(annotation)
+					.build();
+
+				method.addParameter(param);
 			}
 
 			service.addMethod(method.build());
