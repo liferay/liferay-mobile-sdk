@@ -5,5 +5,4 @@ task zip(type: Zip) {
 	destinationDir = project.buildDir
 	version = project.version
 	from 'Source'
-	exclude '**/v62/**'
 }
