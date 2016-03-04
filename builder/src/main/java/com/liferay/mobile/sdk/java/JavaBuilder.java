@@ -29,6 +29,7 @@ import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 import com.liferay.mobile.android.v2.Param;
 
+import java.io.File;
 import java.util.List;
 
 import javax.lang.model.element.Modifier;
@@ -93,11 +94,11 @@ public class JavaBuilder extends BaseBuilder {
 			service.addMethod(method.build());
 		}
 
-		JavaFile file = JavaFile.builder("com.liferay.mobile", service.build())
+		JavaFile file = JavaFile.builder(
+				"com.liferay.mobile.android.v62." + filter , service.build())
 			.build();
 
-		String output = file.toString();
-		System.out.println(output);
+		file.writeTo(new File("src/gen/java"));
 	}
 
 }
