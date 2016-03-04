@@ -1,202 +1,30 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package com.liferay.mobile.android.v62.shoppingorder;
 
-import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.service.Session;
-
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import java.lang.String;
 import org.json.JSONObject;
 
-/**
- * @author Bruno Farache
- */
-public class ShoppingOrderService extends BaseService {
+@Path("/shoppingorder")
+public interface ShoppingOrderService {
+  @Path("/complete-order")
+  Call<Response> completeOrder(@Param("groupId") long groupId, @Param("number") String number, @Param("ppTxnId") String ppTxnId, @Param("ppPaymentStatus") String ppPaymentStatus, @Param("ppPaymentGross") double ppPaymentGross, @Param("ppReceiverEmail") String ppReceiverEmail, @Param("ppPayerEmail") String ppPayerEmail, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public ShoppingOrderService(Session session) {
-		super(session);
-	}
+  @Path("/delete-order")
+  Call<Response> deleteOrder(@Param("groupId") long groupId, @Param("orderId") long orderId);
 
-	public void completeOrder(long groupId, String number, String ppTxnId, String ppPaymentStatus, double ppPaymentGross, String ppReceiverEmail, String ppPayerEmail, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-order")
+  Call<JSONObject> getOrder(@Param("groupId") long groupId, @Param("orderId") long orderId);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/send-email")
+  Call<Response> sendEmail(@Param("groupId") long groupId, @Param("orderId") long orderId, @Param("emailType") String emailType, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-			_params.put("groupId", groupId);
-			_params.put("number", checkNull(number));
-			_params.put("ppTxnId", checkNull(ppTxnId));
-			_params.put("ppPaymentStatus", checkNull(ppPaymentStatus));
-			_params.put("ppPaymentGross", ppPaymentGross);
-			_params.put("ppReceiverEmail", checkNull(ppReceiverEmail));
-			_params.put("ppPayerEmail", checkNull(ppPayerEmail));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+  @Path("/update-order")
+  Call<JSONObject> updateOrder(@Param("groupId") long groupId, @Param("orderId") long orderId, @Param("billingFirstName") String billingFirstName, @Param("billingLastName") String billingLastName, @Param("billingEmailAddress") String billingEmailAddress, @Param("billingCompany") String billingCompany, @Param("billingStreet") String billingStreet, @Param("billingCity") String billingCity, @Param("billingState") String billingState, @Param("billingZip") String billingZip, @Param("billingCountry") String billingCountry, @Param("billingPhone") String billingPhone, @Param("shipToBilling") boolean shipToBilling, @Param("shippingFirstName") String shippingFirstName, @Param("shippingLastName") String shippingLastName, @Param("shippingEmailAddress") String shippingEmailAddress, @Param("shippingCompany") String shippingCompany, @Param("shippingStreet") String shippingStreet, @Param("shippingCity") String shippingCity, @Param("shippingState") String shippingState, @Param("shippingZip") String shippingZip, @Param("shippingCountry") String shippingCountry, @Param("shippingPhone") String shippingPhone, @Param("ccName") String ccName, @Param("ccType") String ccType, @Param("ccNumber") String ccNumber, @Param("ccExpMonth") int ccExpMonth, @Param("ccExpYear") int ccExpYear, @Param("ccVerNumber") String ccVerNumber, @Param("comments") String comments);
 
-			_command.put("/shoppingorder/complete-order", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void deleteOrder(long groupId, long orderId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("orderId", orderId);
-
-			_command.put("/shoppingorder/delete-order", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject getOrder(long groupId, long orderId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("orderId", orderId);
-
-			_command.put("/shoppingorder/get-order", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void sendEmail(long groupId, long orderId, String emailType, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("orderId", orderId);
-			_params.put("emailType", checkNull(emailType));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/shoppingorder/send-email", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject updateOrder(long groupId, long orderId, String billingFirstName, String billingLastName, String billingEmailAddress, String billingCompany, String billingStreet, String billingCity, String billingState, String billingZip, String billingCountry, String billingPhone, boolean shipToBilling, String shippingFirstName, String shippingLastName, String shippingEmailAddress, String shippingCompany, String shippingStreet, String shippingCity, String shippingState, String shippingZip, String shippingCountry, String shippingPhone, String ccName, String ccType, String ccNumber, int ccExpMonth, int ccExpYear, String ccVerNumber, String comments) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("orderId", orderId);
-			_params.put("billingFirstName", checkNull(billingFirstName));
-			_params.put("billingLastName", checkNull(billingLastName));
-			_params.put("billingEmailAddress", checkNull(billingEmailAddress));
-			_params.put("billingCompany", checkNull(billingCompany));
-			_params.put("billingStreet", checkNull(billingStreet));
-			_params.put("billingCity", checkNull(billingCity));
-			_params.put("billingState", checkNull(billingState));
-			_params.put("billingZip", checkNull(billingZip));
-			_params.put("billingCountry", checkNull(billingCountry));
-			_params.put("billingPhone", checkNull(billingPhone));
-			_params.put("shipToBilling", shipToBilling);
-			_params.put("shippingFirstName", checkNull(shippingFirstName));
-			_params.put("shippingLastName", checkNull(shippingLastName));
-			_params.put("shippingEmailAddress", checkNull(shippingEmailAddress));
-			_params.put("shippingCompany", checkNull(shippingCompany));
-			_params.put("shippingStreet", checkNull(shippingStreet));
-			_params.put("shippingCity", checkNull(shippingCity));
-			_params.put("shippingState", checkNull(shippingState));
-			_params.put("shippingZip", checkNull(shippingZip));
-			_params.put("shippingCountry", checkNull(shippingCountry));
-			_params.put("shippingPhone", checkNull(shippingPhone));
-			_params.put("ccName", checkNull(ccName));
-			_params.put("ccType", checkNull(ccType));
-			_params.put("ccNumber", checkNull(ccNumber));
-			_params.put("ccExpMonth", ccExpMonth);
-			_params.put("ccExpYear", ccExpYear);
-			_params.put("ccVerNumber", checkNull(ccVerNumber));
-			_params.put("comments", checkNull(comments));
-
-			_command.put("/shoppingorder/update-order", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateOrder(long groupId, long orderId, String ppTxnId, String ppPaymentStatus, double ppPaymentGross, String ppReceiverEmail, String ppPayerEmail) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("orderId", orderId);
-			_params.put("ppTxnId", checkNull(ppTxnId));
-			_params.put("ppPaymentStatus", checkNull(ppPaymentStatus));
-			_params.put("ppPaymentGross", ppPaymentGross);
-			_params.put("ppReceiverEmail", checkNull(ppReceiverEmail));
-			_params.put("ppPayerEmail", checkNull(ppPayerEmail));
-
-			_command.put("/shoppingorder/update-order", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
+  @Path("/update-order")
+  Call<JSONObject> updateOrder(@Param("groupId") long groupId, @Param("orderId") long orderId, @Param("ppTxnId") String ppTxnId, @Param("ppPaymentStatus") String ppPaymentStatus, @Param("ppPaymentGross") double ppPaymentGross, @Param("ppReceiverEmail") String ppReceiverEmail, @Param("ppPayerEmail") String ppPayerEmail);
 }

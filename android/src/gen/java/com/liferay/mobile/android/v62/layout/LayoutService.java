@@ -1,1362 +1,175 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package com.liferay.mobile.android.v62.layout;
 
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.service.Session;
-
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import java.lang.Integer;
+import java.lang.Long;
+import java.lang.String;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * @author Bruno Farache
- */
-public class LayoutService extends BaseService {
-
-	public LayoutService(Session session) {
-		super(session);
-	}
-
-	public JSONObject addLayout(long groupId, boolean privateLayout, long parentLayoutId, String name, String title, String description, String type, boolean hidden, String friendlyURL, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("parentLayoutId", parentLayoutId);
-			_params.put("name", checkNull(name));
-			_params.put("title", checkNull(title));
-			_params.put("description", checkNull(description));
-			_params.put("type", checkNull(type));
-			_params.put("hidden", hidden);
-			_params.put("friendlyURL", checkNull(friendlyURL));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/layout/add-layout", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject addLayout(long groupId, boolean privateLayout, long parentLayoutId, JSONObject localeNamesMap, JSONObject localeTitlesMap, JSONObject descriptionMap, JSONObject keywordsMap, JSONObject robotsMap, String type, boolean hidden, String friendlyURL, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("parentLayoutId", parentLayoutId);
-			_params.put("localeNamesMap", checkNull(localeNamesMap));
-			_params.put("localeTitlesMap", checkNull(localeTitlesMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("keywordsMap", checkNull(keywordsMap));
-			_params.put("robotsMap", checkNull(robotsMap));
-			_params.put("type", checkNull(type));
-			_params.put("hidden", hidden);
-			_params.put("friendlyURL", checkNull(friendlyURL));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/layout/add-layout", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject addLayout(long groupId, boolean privateLayout, long parentLayoutId, JSONObject localeNamesMap, JSONObject localeTitlesMap, JSONObject descriptionMap, JSONObject keywordsMap, JSONObject robotsMap, String type, String typeSettings, boolean hidden, JSONObject friendlyURLMap, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("parentLayoutId", parentLayoutId);
-			_params.put("localeNamesMap", checkNull(localeNamesMap));
-			_params.put("localeTitlesMap", checkNull(localeTitlesMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("keywordsMap", checkNull(keywordsMap));
-			_params.put("robotsMap", checkNull(robotsMap));
-			_params.put("type", checkNull(type));
-			_params.put("typeSettings", checkNull(typeSettings));
-			_params.put("hidden", hidden);
-			_params.put("friendlyURLMap", checkNull(friendlyURLMap));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/layout/add-layout", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
+@Path("/layout")
+public interface LayoutService {
+  @Path("/add-layout")
+  Call<JSONObject> addLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parentLayoutId") long parentLayoutId, @Param("name") String name, @Param("title") String title, @Param("description") String description, @Param("type") String type, @Param("hidden") boolean hidden, @Param("friendlyURL") String friendlyURL, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/add-layout")
+  Call<JSONObject> addLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parentLayoutId") long parentLayoutId, @Param("localeNamesMap") JSONObject localeNamesMap, @Param("localeTitlesMap") JSONObject localeTitlesMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("keywordsMap") JSONObject keywordsMap, @Param("robotsMap") JSONObject robotsMap, @Param("type") String type, @Param("hidden") boolean hidden, @Param("friendlyURL") String friendlyURL, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-		return _result.getJSONObject(0);
-	}
+  @Path("/add-layout")
+  Call<JSONObject> addLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parentLayoutId") long parentLayoutId, @Param("localeNamesMap") JSONObject localeNamesMap, @Param("localeTitlesMap") JSONObject localeTitlesMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("keywordsMap") JSONObject keywordsMap, @Param("robotsMap") JSONObject robotsMap, @Param("type") String type, @Param("typeSettings") String typeSettings, @Param("hidden") boolean hidden, @Param("friendlyURLMap") JSONObject friendlyURLMap, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public void deleteLayout(long plid, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/delete-layout")
+  Call<Response> deleteLayout(@Param("plid") long plid, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/delete-layout")
+  Call<Response> deleteLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutId") long layoutId, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-			_params.put("plid", plid);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+  @Path("/delete-temp-file-entry")
+  Call<Response> deleteTempFileEntry(@Param("groupId") long groupId, @Param("fileName") String fileName, @Param("tempFolderName") String tempFolderName);
 
-			_command.put("/layout/delete-layout", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/export-layouts")
+  Call<JSONArray> exportLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parameterMap") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
 
-		session.invoke(_command);
-	}
+  @Path("/export-layouts")
+  Call<JSONArray> exportLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutIds") JSONArray layoutIds, @Param("parameterMap") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
 
-	public void deleteLayout(long groupId, boolean privateLayout, long layoutId, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/export-layouts-as-file")
+  Call<JSONObject> exportLayoutsAsFile(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutIds") JSONArray layoutIds, @Param("parameterMap") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/export-layouts-as-file-in-background")
+  Call<Long> exportLayoutsAsFileInBackground(@Param("taskName") String taskName, @Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutIds") JSONArray layoutIds, @Param("parameterMap") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("fileName") String fileName);
 
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("layoutId", layoutId);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+  @Path("/export-portlet-info")
+  Call<JSONArray> exportPortletInfo(@Param("companyId") long companyId, @Param("portletId") String portletId, @Param("parameterMap") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
 
-			_command.put("/layout/delete-layout", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/export-portlet-info")
+  Call<JSONArray> exportPortletInfo(@Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @Param("parameterMap") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
 
-		session.invoke(_command);
-	}
+  @Path("/export-portlet-info-as-file")
+  Call<JSONObject> exportPortletInfoAsFile(@Param("portletId") String portletId, @Param("parameterMap") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
 
-	public void deleteTempFileEntry(long groupId, String fileName, String tempFolderName) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/export-portlet-info-as-file")
+  Call<JSONObject> exportPortletInfoAsFile(@Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @Param("parameterMap") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/export-portlet-info-as-file-in-background")
+  Call<Long> exportPortletInfoAsFileInBackground(@Param("taskName") String taskName, @Param("portletId") String portletId, @Param("parameterMap") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("fileName") String fileName);
 
-			_params.put("groupId", groupId);
-			_params.put("fileName", checkNull(fileName));
-			_params.put("tempFolderName", checkNull(tempFolderName));
+  @Path("/export-portlet-info-as-file-in-background")
+  Call<Long> exportPortletInfoAsFileInBackground(@Param("taskName") String taskName, @Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @Param("parameterMap") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("fileName") String fileName);
 
-			_command.put("/layout/delete-temp-file-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/get-ancestor-layouts")
+  Call<JSONArray> getAncestorLayouts(@Param("plid") long plid);
 
-		session.invoke(_command);
-	}
+  @Path("/get-default-plid")
+  Call<Long> getDefaultPlid(@Param("groupId") long groupId, @Param("scopeGroupId") long scopeGroupId, @Param("portletId") String portletId);
 
-	public JSONArray exportLayouts(long groupId, boolean privateLayout, JSONObject parameterMap, long startDate, long endDate) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-default-plid")
+  Call<Long> getDefaultPlid(@Param("groupId") long groupId, @Param("scopeGroupId") long scopeGroupId, @Param("privateLayout") boolean privateLayout, @Param("portletId") String portletId);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-layout-by-uuid-and-group-id")
+  Call<JSONObject> getLayoutByUuidAndGroupId(@Param("uuid") String uuid, @Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout);
 
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("startDate", startDate);
-			_params.put("endDate", endDate);
+  @Path("/get-layout-name")
+  Call<String> getLayoutName(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutId") long layoutId, @Param("languageId") String languageId);
 
-			_command.put("/layout/export-layouts", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/get-layout-references")
+  Call<JSONArray> getLayoutReferences(@Param("companyId") long companyId, @Param("portletId") String portletId, @Param("preferencesKey") String preferencesKey, @Param("preferencesValue") String preferencesValue);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/get-layouts")
+  Call<JSONArray> getLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/get-layouts")
+  Call<JSONArray> getLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parentLayoutId") long parentLayoutId);
 
-		return _result.getJSONArray(0);
-	}
+  @Path("/get-layouts")
+  Call<JSONArray> getLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parentLayoutId") long parentLayoutId, @Param("incomplete") boolean incomplete, @Param("start") int start, @Param("end") int end);
 
-	public JSONArray exportLayouts(long groupId, boolean privateLayout, JSONArray layoutIds, JSONObject parameterMap, long startDate, long endDate) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-layouts-count")
+  Call<Integer> getLayoutsCount(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parentLayoutId") long parentLayoutId);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-temp-file-entry-names")
+  Call<JSONArray> getTempFileEntryNames(@Param("groupId") long groupId, @Param("tempFolderName") String tempFolderName);
 
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("layoutIds", checkNull(layoutIds));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("startDate", startDate);
-			_params.put("endDate", endDate);
+  @Path("/import-layouts")
+  Call<Response> importLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parameterMap") JSONObject parameterMap, @Param("bytes") byte[] bytes);
 
-			_command.put("/layout/export-layouts", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/import-layouts")
+  Call<Response> importLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parameterMap") JSONObject parameterMap, @Param("file") UploadData file);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/import-layouts-in-background")
+  Call<Long> importLayoutsInBackground(@Param("taskName") String taskName, @Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parameterMap") JSONObject parameterMap, @Param("file") UploadData file);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/import-portlet-info")
+  Call<Response> importPortletInfo(@Param("portletId") String portletId, @Param("parameterMap") JSONObject parameterMap, @Param("file") UploadData file);
 
-		return _result.getJSONArray(0);
-	}
+  @Path("/import-portlet-info")
+  Call<Response> importPortletInfo(@Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @Param("parameterMap") JSONObject parameterMap, @Param("file") UploadData file);
 
-	public JSONObject exportLayoutsAsFile(long groupId, boolean privateLayout, JSONArray layoutIds, JSONObject parameterMap, long startDate, long endDate) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/import-portlet-info-in-background")
+  Call<Response> importPortletInfoInBackground(@Param("taskName") String taskName, @Param("portletId") String portletId, @Param("parameterMap") JSONObject parameterMap, @Param("file") UploadData file);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/import-portlet-info-in-background")
+  Call<Long> importPortletInfoInBackground(@Param("taskName") String taskName, @Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @Param("parameterMap") JSONObject parameterMap, @Param("file") UploadData file);
 
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("layoutIds", checkNull(layoutIds));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("startDate", startDate);
-			_params.put("endDate", endDate);
+  @Path("/schedule-publish-to-live")
+  Call<Response> schedulePublishToLive(@Param("sourceGroupId") long sourceGroupId, @Param("targetGroupId") long targetGroupId, @Param("privateLayout") boolean privateLayout, @Param("layoutIdMap") JSONObject layoutIdMap, @Param("parameterMap") JSONObject parameterMap, @Param("scope") String scope, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("groupName") String groupName, @Param("cronText") String cronText, @Param("schedulerStartDate") long schedulerStartDate, @Param("schedulerEndDate") long schedulerEndDate, @Param("description") String description);
 
-			_command.put("/layout/export-layouts-as-file", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/schedule-publish-to-remote")
+  Call<Response> schedulePublishToRemote(@Param("sourceGroupId") long sourceGroupId, @Param("privateLayout") boolean privateLayout, @Param("layoutIdMap") JSONObject layoutIdMap, @Param("parameterMap") JSONObject parameterMap, @Param("remoteAddress") String remoteAddress, @Param("remotePort") int remotePort, @Param("remotePathContext") String remotePathContext, @Param("secureConnection") boolean secureConnection, @Param("remoteGroupId") long remoteGroupId, @Param("remotePrivateLayout") boolean remotePrivateLayout, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("groupName") String groupName, @Param("cronText") String cronText, @Param("schedulerStartDate") long schedulerStartDate, @Param("schedulerEndDate") long schedulerEndDate, @Param("description") String description);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/set-layouts")
+  Call<Response> setLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parentLayoutId") long parentLayoutId, @Param("layoutIds") JSONArray layoutIds, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/unschedule-publish-to-live")
+  Call<Response> unschedulePublishToLive(@Param("groupId") long groupId, @Param("jobName") String jobName, @Param("groupName") String groupName);
 
-		return _result.getJSONObject(0);
-	}
+  @Path("/unschedule-publish-to-remote")
+  Call<Response> unschedulePublishToRemote(@Param("groupId") long groupId, @Param("jobName") String jobName, @Param("groupName") String groupName);
 
-	public Long exportLayoutsAsFileInBackground(String taskName, long groupId, boolean privateLayout, JSONArray layoutIds, JSONObject parameterMap, long startDate, long endDate, String fileName) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/update-layout")
+  Call<JSONObject> updateLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutId") long layoutId, @Param("parentLayoutId") long parentLayoutId, @Param("localeNamesMap") JSONObject localeNamesMap, @Param("localeTitlesMap") JSONObject localeTitlesMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("keywordsMap") JSONObject keywordsMap, @Param("robotsMap") JSONObject robotsMap, @Param("type") String type, @Param("hidden") boolean hidden, @Param("friendlyURL") String friendlyURL, @Param("iconImage") boolean iconImage, @Param("iconBytes") byte[] iconBytes, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/update-layout")
+  Call<JSONObject> updateLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutId") long layoutId, @Param("parentLayoutId") long parentLayoutId, @Param("localeNamesMap") JSONObject localeNamesMap, @Param("localeTitlesMap") JSONObject localeTitlesMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("keywordsMap") JSONObject keywordsMap, @Param("robotsMap") JSONObject robotsMap, @Param("type") String type, @Param("hidden") boolean hidden, @Param("friendlyURLMap") JSONObject friendlyURLMap, @Param("iconImage") boolean iconImage, @Param("iconBytes") byte[] iconBytes, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-			_params.put("taskName", checkNull(taskName));
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("layoutIds", checkNull(layoutIds));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("startDate", startDate);
-			_params.put("endDate", endDate);
-			_params.put("fileName", checkNull(fileName));
+  @Path("/update-layout")
+  Call<JSONObject> updateLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutId") long layoutId, @Param("typeSettings") String typeSettings);
 
-			_command.put("/layout/export-layouts-as-file-in-background", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/update-look-and-feel")
+  Call<JSONObject> updateLookAndFeel(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutId") long layoutId, @Param("themeId") String themeId, @Param("colorSchemeId") String colorSchemeId, @Param("css") String css, @Param("wapTheme") boolean wapTheme);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/update-name")
+  Call<JSONObject> updateName(@Param("plid") long plid, @Param("name") String name, @Param("languageId") String languageId);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/update-name")
+  Call<JSONObject> updateName(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutId") long layoutId, @Param("name") String name, @Param("languageId") String languageId);
 
-		return _result.getLong(0);
-	}
+  @Path("/update-parent-layout-id")
+  Call<JSONObject> updateParentLayoutId(@Param("plid") long plid, @Param("parentPlid") long parentPlid);
 
-	public JSONArray exportPortletInfo(long companyId, String portletId, JSONObject parameterMap, long startDate, long endDate) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/update-parent-layout-id")
+  Call<JSONObject> updateParentLayoutId(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutId") long layoutId, @Param("parentLayoutId") long parentLayoutId);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/update-parent-layout-id-and-priority")
+  Call<JSONObject> updateParentLayoutIdAndPriority(@Param("plid") long plid, @Param("parentPlid") long parentPlid, @Param("priority") int priority);
 
-			_params.put("companyId", companyId);
-			_params.put("portletId", checkNull(portletId));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("startDate", startDate);
-			_params.put("endDate", endDate);
+  @Path("/update-priority")
+  Call<JSONObject> updatePriority(@Param("plid") long plid, @Param("priority") int priority);
 
-			_command.put("/layout/export-portlet-info", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/update-priority")
+  Call<JSONObject> updatePriority(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutId") long layoutId, @Param("priority") int priority);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/update-priority")
+  Call<JSONObject> updatePriority(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutId") long layoutId, @Param("nextLayoutId") long nextLayoutId, @Param("previousLayoutId") long previousLayoutId);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/validate-import-layouts-file")
+  Call<JSONObject> validateImportLayoutsFile(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parameterMap") JSONObject parameterMap, @Param("file") UploadData file);
 
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray exportPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, long startDate, long endDate) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("plid", plid);
-			_params.put("groupId", groupId);
-			_params.put("portletId", checkNull(portletId));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("startDate", startDate);
-			_params.put("endDate", endDate);
-
-			_command.put("/layout/export-portlet-info", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONObject exportPortletInfoAsFile(String portletId, JSONObject parameterMap, long startDate, long endDate) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("portletId", checkNull(portletId));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("startDate", startDate);
-			_params.put("endDate", endDate);
-
-			_command.put("/layout/export-portlet-info-as-file", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject exportPortletInfoAsFile(long plid, long groupId, String portletId, JSONObject parameterMap, long startDate, long endDate) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("plid", plid);
-			_params.put("groupId", groupId);
-			_params.put("portletId", checkNull(portletId));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("startDate", startDate);
-			_params.put("endDate", endDate);
-
-			_command.put("/layout/export-portlet-info-as-file", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public Long exportPortletInfoAsFileInBackground(String taskName, String portletId, JSONObject parameterMap, long startDate, long endDate, String fileName) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("taskName", checkNull(taskName));
-			_params.put("portletId", checkNull(portletId));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("startDate", startDate);
-			_params.put("endDate", endDate);
-			_params.put("fileName", checkNull(fileName));
-
-			_command.put("/layout/export-portlet-info-as-file-in-background", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getLong(0);
-	}
-
-	public Long exportPortletInfoAsFileInBackground(String taskName, long plid, long groupId, String portletId, JSONObject parameterMap, long startDate, long endDate, String fileName) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("taskName", checkNull(taskName));
-			_params.put("plid", plid);
-			_params.put("groupId", groupId);
-			_params.put("portletId", checkNull(portletId));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("startDate", startDate);
-			_params.put("endDate", endDate);
-			_params.put("fileName", checkNull(fileName));
-
-			_command.put("/layout/export-portlet-info-as-file-in-background", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getLong(0);
-	}
-
-	public JSONArray getAncestorLayouts(long plid) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("plid", plid);
-
-			_command.put("/layout/get-ancestor-layouts", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Long getDefaultPlid(long groupId, long scopeGroupId, String portletId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("scopeGroupId", scopeGroupId);
-			_params.put("portletId", checkNull(portletId));
-
-			_command.put("/layout/get-default-plid", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getLong(0);
-	}
-
-	public Long getDefaultPlid(long groupId, long scopeGroupId, boolean privateLayout, String portletId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("scopeGroupId", scopeGroupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("portletId", checkNull(portletId));
-
-			_command.put("/layout/get-default-plid", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getLong(0);
-	}
-
-	public JSONObject getLayoutByUuidAndGroupId(String uuid, long groupId, boolean privateLayout) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("uuid", checkNull(uuid));
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-
-			_command.put("/layout/get-layout-by-uuid-and-group-id", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public String getLayoutName(long groupId, boolean privateLayout, long layoutId, String languageId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("layoutId", layoutId);
-			_params.put("languageId", checkNull(languageId));
-
-			_command.put("/layout/get-layout-name", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getString(0);
-	}
-
-	public JSONArray getLayoutReferences(long companyId, String portletId, String preferencesKey, String preferencesValue) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("portletId", checkNull(portletId));
-			_params.put("preferencesKey", checkNull(preferencesKey));
-			_params.put("preferencesValue", checkNull(preferencesValue));
-
-			_command.put("/layout/get-layout-references", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getLayouts(long groupId, boolean privateLayout) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-
-			_command.put("/layout/get-layouts", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getLayouts(long groupId, boolean privateLayout, long parentLayoutId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("parentLayoutId", parentLayoutId);
-
-			_command.put("/layout/get-layouts", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getLayouts(long groupId, boolean privateLayout, long parentLayoutId, boolean incomplete, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("parentLayoutId", parentLayoutId);
-			_params.put("incomplete", incomplete);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/layout/get-layouts", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getTempFileEntryNames(long groupId, String tempFolderName) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("tempFolderName", checkNull(tempFolderName));
-
-			_command.put("/layout/get-temp-file-entry-names", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public void importLayouts(long groupId, boolean privateLayout, JSONObject parameterMap, byte[] bytes) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("bytes", toString(bytes));
-
-			_command.put("/layout/import-layouts", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void importLayouts(long groupId, boolean privateLayout, JSONObject parameterMap, UploadData file) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("file", checkNull(file));
-
-			_command.put("/layout/import-layouts", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.upload(_command);
-	}
-
-	public Long importLayoutsInBackground(String taskName, long groupId, boolean privateLayout, JSONObject parameterMap, UploadData file) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("taskName", checkNull(taskName));
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("file", checkNull(file));
-
-			_command.put("/layout/import-layouts-in-background", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getLong(0);
-	}
-
-	public void importPortletInfo(String portletId, JSONObject parameterMap, UploadData file) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("portletId", checkNull(portletId));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("file", checkNull(file));
-
-			_command.put("/layout/import-portlet-info", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.upload(_command);
-	}
-
-	public void importPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, UploadData file) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("plid", plid);
-			_params.put("groupId", groupId);
-			_params.put("portletId", checkNull(portletId));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("file", checkNull(file));
-
-			_command.put("/layout/import-portlet-info", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.upload(_command);
-	}
-
-	public void importPortletInfoInBackground(String taskName, String portletId, JSONObject parameterMap, UploadData file) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("taskName", checkNull(taskName));
-			_params.put("portletId", checkNull(portletId));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("file", checkNull(file));
-
-			_command.put("/layout/import-portlet-info-in-background", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.upload(_command);
-	}
-
-	public Long importPortletInfoInBackground(String taskName, long plid, long groupId, String portletId, JSONObject parameterMap, UploadData file) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("taskName", checkNull(taskName));
-			_params.put("plid", plid);
-			_params.put("groupId", groupId);
-			_params.put("portletId", checkNull(portletId));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("file", checkNull(file));
-
-			_command.put("/layout/import-portlet-info-in-background", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getLong(0);
-	}
-
-	public void schedulePublishToLive(long sourceGroupId, long targetGroupId, boolean privateLayout, JSONObject layoutIdMap, JSONObject parameterMap, String scope, long startDate, long endDate, String groupName, String cronText, long schedulerStartDate, long schedulerEndDate, String description) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("sourceGroupId", sourceGroupId);
-			_params.put("targetGroupId", targetGroupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("layoutIdMap", checkNull(layoutIdMap));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("scope", checkNull(scope));
-			_params.put("startDate", startDate);
-			_params.put("endDate", endDate);
-			_params.put("groupName", checkNull(groupName));
-			_params.put("cronText", checkNull(cronText));
-			_params.put("schedulerStartDate", schedulerStartDate);
-			_params.put("schedulerEndDate", schedulerEndDate);
-			_params.put("description", checkNull(description));
-
-			_command.put("/layout/schedule-publish-to-live", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void schedulePublishToRemote(long sourceGroupId, boolean privateLayout, JSONObject layoutIdMap, JSONObject parameterMap, String remoteAddress, int remotePort, String remotePathContext, boolean secureConnection, long remoteGroupId, boolean remotePrivateLayout, long startDate, long endDate, String groupName, String cronText, long schedulerStartDate, long schedulerEndDate, String description) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("sourceGroupId", sourceGroupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("layoutIdMap", checkNull(layoutIdMap));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("remoteAddress", checkNull(remoteAddress));
-			_params.put("remotePort", remotePort);
-			_params.put("remotePathContext", checkNull(remotePathContext));
-			_params.put("secureConnection", secureConnection);
-			_params.put("remoteGroupId", remoteGroupId);
-			_params.put("remotePrivateLayout", remotePrivateLayout);
-			_params.put("startDate", startDate);
-			_params.put("endDate", endDate);
-			_params.put("groupName", checkNull(groupName));
-			_params.put("cronText", checkNull(cronText));
-			_params.put("schedulerStartDate", schedulerStartDate);
-			_params.put("schedulerEndDate", schedulerEndDate);
-			_params.put("description", checkNull(description));
-
-			_command.put("/layout/schedule-publish-to-remote", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void setLayouts(long groupId, boolean privateLayout, long parentLayoutId, JSONArray layoutIds, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("parentLayoutId", parentLayoutId);
-			_params.put("layoutIds", checkNull(layoutIds));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/layout/set-layouts", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void unschedulePublishToLive(long groupId, String jobName, String groupName) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("jobName", checkNull(jobName));
-			_params.put("groupName", checkNull(groupName));
-
-			_command.put("/layout/unschedule-publish-to-live", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void unschedulePublishToRemote(long groupId, String jobName, String groupName) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("jobName", checkNull(jobName));
-			_params.put("groupName", checkNull(groupName));
-
-			_command.put("/layout/unschedule-publish-to-remote", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject updateLayout(long groupId, boolean privateLayout, long layoutId, long parentLayoutId, JSONObject localeNamesMap, JSONObject localeTitlesMap, JSONObject descriptionMap, JSONObject keywordsMap, JSONObject robotsMap, String type, boolean hidden, String friendlyURL, boolean iconImage, byte[] iconBytes, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("layoutId", layoutId);
-			_params.put("parentLayoutId", parentLayoutId);
-			_params.put("localeNamesMap", checkNull(localeNamesMap));
-			_params.put("localeTitlesMap", checkNull(localeTitlesMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("keywordsMap", checkNull(keywordsMap));
-			_params.put("robotsMap", checkNull(robotsMap));
-			_params.put("type", checkNull(type));
-			_params.put("hidden", hidden);
-			_params.put("friendlyURL", checkNull(friendlyURL));
-			_params.put("iconImage", iconImage);
-			_params.put("iconBytes", toString(iconBytes));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/layout/update-layout", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateLayout(long groupId, boolean privateLayout, long layoutId, long parentLayoutId, JSONObject localeNamesMap, JSONObject localeTitlesMap, JSONObject descriptionMap, JSONObject keywordsMap, JSONObject robotsMap, String type, boolean hidden, JSONObject friendlyURLMap, boolean iconImage, byte[] iconBytes, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("layoutId", layoutId);
-			_params.put("parentLayoutId", parentLayoutId);
-			_params.put("localeNamesMap", checkNull(localeNamesMap));
-			_params.put("localeTitlesMap", checkNull(localeTitlesMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("keywordsMap", checkNull(keywordsMap));
-			_params.put("robotsMap", checkNull(robotsMap));
-			_params.put("type", checkNull(type));
-			_params.put("hidden", hidden);
-			_params.put("friendlyURLMap", checkNull(friendlyURLMap));
-			_params.put("iconImage", iconImage);
-			_params.put("iconBytes", toString(iconBytes));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/layout/update-layout", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateLayout(long groupId, boolean privateLayout, long layoutId, String typeSettings) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("layoutId", layoutId);
-			_params.put("typeSettings", checkNull(typeSettings));
-
-			_command.put("/layout/update-layout", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateLookAndFeel(long groupId, boolean privateLayout, long layoutId, String themeId, String colorSchemeId, String css, boolean wapTheme) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("layoutId", layoutId);
-			_params.put("themeId", checkNull(themeId));
-			_params.put("colorSchemeId", checkNull(colorSchemeId));
-			_params.put("css", checkNull(css));
-			_params.put("wapTheme", wapTheme);
-
-			_command.put("/layout/update-look-and-feel", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateName(long plid, String name, String languageId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("plid", plid);
-			_params.put("name", checkNull(name));
-			_params.put("languageId", checkNull(languageId));
-
-			_command.put("/layout/update-name", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateName(long groupId, boolean privateLayout, long layoutId, String name, String languageId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("layoutId", layoutId);
-			_params.put("name", checkNull(name));
-			_params.put("languageId", checkNull(languageId));
-
-			_command.put("/layout/update-name", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateParentLayoutId(long plid, long parentPlid) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("plid", plid);
-			_params.put("parentPlid", parentPlid);
-
-			_command.put("/layout/update-parent-layout-id", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateParentLayoutId(long groupId, boolean privateLayout, long layoutId, long parentLayoutId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("layoutId", layoutId);
-			_params.put("parentLayoutId", parentLayoutId);
-
-			_command.put("/layout/update-parent-layout-id", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updatePriority(long plid, int priority) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("plid", plid);
-			_params.put("priority", priority);
-
-			_command.put("/layout/update-priority", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updatePriority(long groupId, boolean privateLayout, long layoutId, int priority) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("layoutId", layoutId);
-			_params.put("priority", priority);
-
-			_command.put("/layout/update-priority", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updatePriority(long groupId, boolean privateLayout, long layoutId, long nextLayoutId, long previousLayoutId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("layoutId", layoutId);
-			_params.put("nextLayoutId", nextLayoutId);
-			_params.put("previousLayoutId", previousLayoutId);
-
-			_command.put("/layout/update-priority", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject validateImportLayoutsFile(long groupId, boolean privateLayout, JSONObject parameterMap, UploadData file) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("file", checkNull(file));
-
-			_command.put("/layout/validate-import-layouts-file", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject validateImportPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, UploadData file) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("plid", plid);
-			_params.put("groupId", groupId);
-			_params.put("portletId", checkNull(portletId));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("file", checkNull(file));
-
-			_command.put("/layout/validate-import-portlet-info", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
+  @Path("/validate-import-portlet-info")
+  Call<JSONObject> validateImportPortletInfo(@Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @Param("parameterMap") JSONObject parameterMap, @Param("file") UploadData file);
 }

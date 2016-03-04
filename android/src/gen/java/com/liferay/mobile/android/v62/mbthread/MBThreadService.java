@@ -1,529 +1,74 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package com.liferay.mobile.android.v62.mbthread;
 
-import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.service.Session;
-
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import java.lang.Integer;
+import java.lang.String;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * @author Bruno Farache
- */
-public class MBThreadService extends BaseService {
+@Path("/mbthread")
+public interface MBThreadService {
+  @Path("/delete-thread")
+  Call<Response> deleteThread(@Param("threadId") long threadId);
 
-	public MBThreadService(Session session) {
-		super(session);
-	}
+  @Path("/get-group-threads")
+  Call<JSONArray> getGroupThreads(@Param("groupId") long groupId, @Param("userId") long userId, @Param("status") int status, @Param("start") int start, @Param("end") int end);
 
-	public void deleteThread(long threadId) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-group-threads")
+  Call<JSONArray> getGroupThreads(@Param("groupId") long groupId, @Param("userId") long userId, @Param("modifiedDate") long modifiedDate, @Param("status") int status, @Param("start") int start, @Param("end") int end);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-group-threads")
+  Call<JSONArray> getGroupThreads(@Param("groupId") long groupId, @Param("userId") long userId, @Param("status") int status, @Param("subscribed") boolean subscribed, @Param("start") int start, @Param("end") int end);
 
-			_params.put("threadId", threadId);
+  @Path("/get-group-threads")
+  Call<JSONArray> getGroupThreads(@Param("groupId") long groupId, @Param("userId") long userId, @Param("status") int status, @Param("subscribed") boolean subscribed, @Param("includeAnonymous") boolean includeAnonymous, @Param("start") int start, @Param("end") int end);
 
-			_command.put("/mbthread/delete-thread", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONArray getGroupThreads(long groupId, long userId, int status, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-group-threads-count")
+  Call<Integer> getGroupThreadsCount(@Param("groupId") long groupId, @Param("userId") long userId, @Param("status") int status);
 
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-			_params.put("status", status);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/mbthread/get-group-threads", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/get-group-threads-count")
+  Call<Integer> getGroupThreadsCount(@Param("groupId") long groupId, @Param("userId") long userId, @Param("modifiedDate") long modifiedDate, @Param("status") int status);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/get-group-threads-count")
+  Call<Integer> getGroupThreadsCount(@Param("groupId") long groupId, @Param("userId") long userId, @Param("status") int status, @Param("subscribed") boolean subscribed);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/get-group-threads-count")
+  Call<Integer> getGroupThreadsCount(@Param("groupId") long groupId, @Param("userId") long userId, @Param("status") int status, @Param("subscribed") boolean subscribed, @Param("includeAnonymous") boolean includeAnonymous);
 
-		return _result.getJSONArray(0);
-	}
+  @Path("/get-threads")
+  Call<JSONArray> getThreads(@Param("groupId") long groupId, @Param("categoryId") long categoryId, @Param("status") int status, @Param("start") int start, @Param("end") int end);
 
-	public JSONArray getGroupThreads(long groupId, long userId, long modifiedDate, int status, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-threads-count")
+  Call<Integer> getThreadsCount(@Param("groupId") long groupId, @Param("categoryId") long categoryId, @Param("status") int status);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/lock-thread")
+  Call<JSONObject> lockThread(@Param("threadId") long threadId);
 
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-			_params.put("modifiedDate", modifiedDate);
-			_params.put("status", status);
-			_params.put("start", start);
-			_params.put("end", end);
+  @Path("/move-thread")
+  Call<JSONObject> moveThread(@Param("categoryId") long categoryId, @Param("threadId") long threadId);
 
-			_command.put("/mbthread/get-group-threads", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/move-thread-from-trash")
+  Call<JSONObject> moveThreadFromTrash(@Param("categoryId") long categoryId, @Param("threadId") long threadId);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/move-thread-to-trash")
+  Call<JSONObject> moveThreadToTrash(@Param("threadId") long threadId);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/restore-thread-from-trash")
+  Call<Response> restoreThreadFromTrash(@Param("threadId") long threadId);
 
-		return _result.getJSONArray(0);
-	}
+  @Path("/search")
+  Call<JSONObject> search(@Param("groupId") long groupId, @Param("creatorUserId") long creatorUserId, @Param("status") int status, @Param("start") int start, @Param("end") int end);
 
-	public JSONArray getGroupThreads(long groupId, long userId, int status, boolean subscribed, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/search")
+  Call<JSONObject> search(@Param("groupId") long groupId, @Param("creatorUserId") long creatorUserId, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("status") int status, @Param("start") int start, @Param("end") int end);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/split-thread")
+  Call<JSONObject> splitThread(@Param("messageId") long messageId, @Param("subject") String subject, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-			_params.put("status", status);
-			_params.put("subscribed", subscribed);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/mbthread/get-group-threads", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getGroupThreads(long groupId, long userId, int status, boolean subscribed, boolean includeAnonymous, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-			_params.put("status", status);
-			_params.put("subscribed", subscribed);
-			_params.put("includeAnonymous", includeAnonymous);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/mbthread/get-group-threads", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Integer getGroupThreadsCount(long groupId, long userId, int status) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-			_params.put("status", status);
-
-			_command.put("/mbthread/get-group-threads-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public Integer getGroupThreadsCount(long groupId, long userId, long modifiedDate, int status) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-			_params.put("modifiedDate", modifiedDate);
-			_params.put("status", status);
-
-			_command.put("/mbthread/get-group-threads-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public Integer getGroupThreadsCount(long groupId, long userId, int status, boolean subscribed) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-			_params.put("status", status);
-			_params.put("subscribed", subscribed);
-
-			_command.put("/mbthread/get-group-threads-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public Integer getGroupThreadsCount(long groupId, long userId, int status, boolean subscribed, boolean includeAnonymous) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-			_params.put("status", status);
-			_params.put("subscribed", subscribed);
-			_params.put("includeAnonymous", includeAnonymous);
-
-			_command.put("/mbthread/get-group-threads-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public JSONArray getThreads(long groupId, long categoryId, int status, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("categoryId", categoryId);
-			_params.put("status", status);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/mbthread/get-threads", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Integer getThreadsCount(long groupId, long categoryId, int status) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("categoryId", categoryId);
-			_params.put("status", status);
-
-			_command.put("/mbthread/get-threads-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public JSONObject lockThread(long threadId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("threadId", threadId);
-
-			_command.put("/mbthread/lock-thread", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject moveThread(long categoryId, long threadId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("categoryId", categoryId);
-			_params.put("threadId", threadId);
-
-			_command.put("/mbthread/move-thread", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject moveThreadFromTrash(long categoryId, long threadId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("categoryId", categoryId);
-			_params.put("threadId", threadId);
-
-			_command.put("/mbthread/move-thread-from-trash", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject moveThreadToTrash(long threadId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("threadId", threadId);
-
-			_command.put("/mbthread/move-thread-to-trash", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void restoreThreadFromTrash(long threadId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("threadId", threadId);
-
-			_command.put("/mbthread/restore-thread-from-trash", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject search(long groupId, long creatorUserId, int status, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("creatorUserId", creatorUserId);
-			_params.put("status", status);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/mbthread/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject search(long groupId, long creatorUserId, long startDate, long endDate, int status, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("creatorUserId", creatorUserId);
-			_params.put("startDate", startDate);
-			_params.put("endDate", endDate);
-			_params.put("status", status);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/mbthread/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject splitThread(long messageId, String subject, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("messageId", messageId);
-			_params.put("subject", checkNull(subject));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/mbthread/split-thread", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void unlockThread(long threadId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("threadId", threadId);
-
-			_command.put("/mbthread/unlock-thread", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
+  @Path("/unlock-thread")
+  Call<Response> unlockThread(@Param("threadId") long threadId);
 }

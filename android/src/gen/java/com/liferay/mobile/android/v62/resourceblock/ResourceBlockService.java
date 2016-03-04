@@ -1,272 +1,45 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package com.liferay.mobile.android.v62.resourceblock;
 
-import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.service.Session;
-
+import com.liferay.mobile.android.http.Response;
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import java.lang.String;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * @author Bruno Farache
- */
-public class ResourceBlockService extends BaseService {
+@Path("/resourceblock")
+public interface ResourceBlockService {
+  @Path("/add-company-scope-permission")
+  Call<Response> addCompanyScopePermission(@Param("scopeGroupId") long scopeGroupId, @Param("companyId") long companyId, @Param("name") String name, @Param("roleId") long roleId, @Param("actionId") String actionId);
 
-	public ResourceBlockService(Session session) {
-		super(session);
-	}
+  @Path("/add-group-scope-permission")
+  Call<Response> addGroupScopePermission(@Param("scopeGroupId") long scopeGroupId, @Param("companyId") long companyId, @Param("groupId") long groupId, @Param("name") String name, @Param("roleId") long roleId, @Param("actionId") String actionId);
 
-	public void addCompanyScopePermission(long scopeGroupId, long companyId, String name, long roleId, String actionId) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/add-individual-scope-permission")
+  Call<Response> addIndividualScopePermission(@Param("companyId") long companyId, @Param("groupId") long groupId, @Param("name") String name, @Param("primKey") long primKey, @Param("roleId") long roleId, @Param("actionId") String actionId);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/remove-all-group-scope-permissions")
+  Call<Response> removeAllGroupScopePermissions(@Param("scopeGroupId") long scopeGroupId, @Param("companyId") long companyId, @Param("name") String name, @Param("roleId") long roleId, @Param("actionId") String actionId);
 
-			_params.put("scopeGroupId", scopeGroupId);
-			_params.put("companyId", companyId);
-			_params.put("name", checkNull(name));
-			_params.put("roleId", roleId);
-			_params.put("actionId", checkNull(actionId));
+  @Path("/remove-company-scope-permission")
+  Call<Response> removeCompanyScopePermission(@Param("scopeGroupId") long scopeGroupId, @Param("companyId") long companyId, @Param("name") String name, @Param("roleId") long roleId, @Param("actionId") String actionId);
 
-			_command.put("/resourceblock/add-company-scope-permission", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/remove-group-scope-permission")
+  Call<Response> removeGroupScopePermission(@Param("scopeGroupId") long scopeGroupId, @Param("companyId") long companyId, @Param("groupId") long groupId, @Param("name") String name, @Param("roleId") long roleId, @Param("actionId") String actionId);
 
-		session.invoke(_command);
-	}
+  @Path("/remove-individual-scope-permission")
+  Call<Response> removeIndividualScopePermission(@Param("companyId") long companyId, @Param("groupId") long groupId, @Param("name") String name, @Param("primKey") long primKey, @Param("roleId") long roleId, @Param("actionId") String actionId);
 
-	public void addGroupScopePermission(long scopeGroupId, long companyId, long groupId, String name, long roleId, String actionId) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/set-company-scope-permissions")
+  Call<Response> setCompanyScopePermissions(@Param("scopeGroupId") long scopeGroupId, @Param("companyId") long companyId, @Param("name") String name, @Param("roleId") long roleId, @Param("actionIds") JSONArray actionIds);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/set-group-scope-permissions")
+  Call<Response> setGroupScopePermissions(@Param("scopeGroupId") long scopeGroupId, @Param("companyId") long companyId, @Param("groupId") long groupId, @Param("name") String name, @Param("roleId") long roleId, @Param("actionIds") JSONArray actionIds);
 
-			_params.put("scopeGroupId", scopeGroupId);
-			_params.put("companyId", companyId);
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("roleId", roleId);
-			_params.put("actionId", checkNull(actionId));
+  @Path("/set-individual-scope-permissions")
+  Call<Response> setIndividualScopePermissions(@Param("companyId") long companyId, @Param("groupId") long groupId, @Param("name") String name, @Param("primKey") long primKey, @Param("roleIdsToActionIds") JSONObject roleIdsToActionIds);
 
-			_command.put("/resourceblock/add-group-scope-permission", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void addIndividualScopePermission(long companyId, long groupId, String name, long primKey, long roleId, String actionId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("primKey", primKey);
-			_params.put("roleId", roleId);
-			_params.put("actionId", checkNull(actionId));
-
-			_command.put("/resourceblock/add-individual-scope-permission", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void removeAllGroupScopePermissions(long scopeGroupId, long companyId, String name, long roleId, String actionId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("scopeGroupId", scopeGroupId);
-			_params.put("companyId", companyId);
-			_params.put("name", checkNull(name));
-			_params.put("roleId", roleId);
-			_params.put("actionId", checkNull(actionId));
-
-			_command.put("/resourceblock/remove-all-group-scope-permissions", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void removeCompanyScopePermission(long scopeGroupId, long companyId, String name, long roleId, String actionId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("scopeGroupId", scopeGroupId);
-			_params.put("companyId", companyId);
-			_params.put("name", checkNull(name));
-			_params.put("roleId", roleId);
-			_params.put("actionId", checkNull(actionId));
-
-			_command.put("/resourceblock/remove-company-scope-permission", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void removeGroupScopePermission(long scopeGroupId, long companyId, long groupId, String name, long roleId, String actionId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("scopeGroupId", scopeGroupId);
-			_params.put("companyId", companyId);
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("roleId", roleId);
-			_params.put("actionId", checkNull(actionId));
-
-			_command.put("/resourceblock/remove-group-scope-permission", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void removeIndividualScopePermission(long companyId, long groupId, String name, long primKey, long roleId, String actionId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("primKey", primKey);
-			_params.put("roleId", roleId);
-			_params.put("actionId", checkNull(actionId));
-
-			_command.put("/resourceblock/remove-individual-scope-permission", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void setCompanyScopePermissions(long scopeGroupId, long companyId, String name, long roleId, JSONArray actionIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("scopeGroupId", scopeGroupId);
-			_params.put("companyId", companyId);
-			_params.put("name", checkNull(name));
-			_params.put("roleId", roleId);
-			_params.put("actionIds", checkNull(actionIds));
-
-			_command.put("/resourceblock/set-company-scope-permissions", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void setGroupScopePermissions(long scopeGroupId, long companyId, long groupId, String name, long roleId, JSONArray actionIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("scopeGroupId", scopeGroupId);
-			_params.put("companyId", companyId);
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("roleId", roleId);
-			_params.put("actionIds", checkNull(actionIds));
-
-			_command.put("/resourceblock/set-group-scope-permissions", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void setIndividualScopePermissions(long companyId, long groupId, String name, long primKey, JSONObject roleIdsToActionIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("primKey", primKey);
-			_params.put("roleIdsToActionIds", checkNull(roleIdsToActionIds));
-
-			_command.put("/resourceblock/set-individual-scope-permissions", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void setIndividualScopePermissions(long companyId, long groupId, String name, long primKey, long roleId, JSONArray actionIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("primKey", primKey);
-			_params.put("roleId", roleId);
-			_params.put("actionIds", checkNull(actionIds));
-
-			_command.put("/resourceblock/set-individual-scope-permissions", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
+  @Path("/set-individual-scope-permissions")
+  Call<Response> setIndividualScopePermissions(@Param("companyId") long companyId, @Param("groupId") long groupId, @Param("name") String name, @Param("primKey") long primKey, @Param("roleId") long roleId, @Param("actionIds") JSONArray actionIds);
 }

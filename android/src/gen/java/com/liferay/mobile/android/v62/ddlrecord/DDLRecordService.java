@@ -1,165 +1,29 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package com.liferay.mobile.android.v62.ddlrecord;
 
-import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.service.Session;
-
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import java.lang.String;
 import org.json.JSONObject;
 
-/**
- * @author Bruno Farache
- */
-public class DDLRecordService extends BaseService {
+@Path("/ddlrecord")
+public interface DDLRecordService {
+  @Path("/add-record")
+  Call<JSONObject> addRecord(@Param("groupId") long groupId, @Param("recordSetId") long recordSetId, @Param("displayIndex") int displayIndex, @Param("fields") JSONObjectWrapper fields, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public DDLRecordService(Session session) {
-		super(session);
-	}
+  @Path("/add-record")
+  Call<JSONObject> addRecord(@Param("groupId") long groupId, @Param("recordSetId") long recordSetId, @Param("displayIndex") int displayIndex, @Param("fieldsMap") JSONObject fieldsMap, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public JSONObject addRecord(long groupId, long recordSetId, int displayIndex, JSONObject fieldsMap, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/delete-record-locale")
+  Call<JSONObject> deleteRecordLocale(@Param("recordId") long recordId, @Param("locale") String locale, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-record")
+  Call<JSONObject> getRecord(@Param("recordId") long recordId);
 
-			_params.put("groupId", groupId);
-			_params.put("recordSetId", recordSetId);
-			_params.put("displayIndex", displayIndex);
-			_params.put("fieldsMap", checkNull(fieldsMap));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+  @Path("/update-record")
+  Call<JSONObject> updateRecord(@Param("recordId") long recordId, @Param("displayIndex") int displayIndex, @Param("fieldsMap") JSONObject fieldsMap, @Param("mergeFields") boolean mergeFields, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-			_command.put("/ddlrecord/add-record", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject deleteRecordLocale(long recordId, String locale, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("recordId", recordId);
-			_params.put("locale", checkNull(locale));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/ddlrecord/delete-record-locale", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getRecord(long recordId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("recordId", recordId);
-
-			_command.put("/ddlrecord/get-record", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateRecord(long recordId, int displayIndex, JSONObject fieldsMap, boolean mergeFields, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("recordId", recordId);
-			_params.put("displayIndex", displayIndex);
-			_params.put("fieldsMap", checkNull(fieldsMap));
-			_params.put("mergeFields", mergeFields);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/ddlrecord/update-record", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateRecord(long recordId, boolean majorVersion, int displayIndex, JSONObjectWrapper fields, boolean mergeFields, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("recordId", recordId);
-			_params.put("majorVersion", majorVersion);
-			_params.put("displayIndex", displayIndex);
-			mangleWrapper(_params, "fields", "com.liferay.portlet.dynamicdatamapping.storage.Fields", fields);
-			_params.put("mergeFields", mergeFields);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/ddlrecord/update-record", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
+  @Path("/update-record")
+  Call<JSONObject> updateRecord(@Param("recordId") long recordId, @Param("majorVersion") boolean majorVersion, @Param("displayIndex") int displayIndex, @Param("fields") JSONObjectWrapper fields, @Param("mergeFields") boolean mergeFields, @Param("serviceContext") JSONObjectWrapper serviceContext);
 }

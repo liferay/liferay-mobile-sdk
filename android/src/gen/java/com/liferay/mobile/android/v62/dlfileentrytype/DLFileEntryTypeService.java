@@ -1,323 +1,50 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package com.liferay.mobile.android.v62.dlfileentrytype;
 
-import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.service.Session;
-
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import java.lang.Integer;
+import java.lang.String;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * @author Bruno Farache
- */
-public class DLFileEntryTypeService extends BaseService {
+@Path("/dlfileentrytype")
+public interface DLFileEntryTypeService {
+  @Path("/add-file-entry-type")
+  Call<JSONObject> addFileEntryType(@Param("groupId") long groupId, @Param("name") String name, @Param("description") String description, @Param("ddmStructureIds") JSONArray ddmStructureIds, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public DLFileEntryTypeService(Session session) {
-		super(session);
-	}
+  @Path("/add-file-entry-type")
+  Call<JSONObject> addFileEntryType(@Param("groupId") long groupId, @Param("fileEntryTypeKey") String fileEntryTypeKey, @Param("nameMap") JSONObject nameMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("ddmStructureIds") JSONArray ddmStructureIds, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public JSONObject addFileEntryType(long groupId, String name, String description, JSONArray ddmStructureIds, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/delete-file-entry-type")
+  Call<Response> deleteFileEntryType(@Param("fileEntryTypeId") long fileEntryTypeId);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-file-entry-type")
+  Call<JSONObject> getFileEntryType(@Param("fileEntryTypeId") long fileEntryTypeId);
 
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
-			_params.put("ddmStructureIds", checkNull(ddmStructureIds));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+  @Path("/get-file-entry-types")
+  Call<JSONArray> getFileEntryTypes(@Param("groupIds") JSONArray groupIds);
 
-			_command.put("/dlfileentrytype/add-file-entry-type", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/get-file-entry-types")
+  Call<JSONArray> getFileEntryTypes(@Param("groupIds") JSONArray groupIds, @Param("start") int start, @Param("end") int end);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/get-file-entry-types-count")
+  Call<Integer> getFileEntryTypesCount(@Param("groupIds") JSONArray groupIds);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/get-folder-file-entry-types")
+  Call<JSONArray> getFolderFileEntryTypes(@Param("groupIds") JSONArray groupIds, @Param("folderId") long folderId, @Param("inherited") boolean inherited);
 
-		return _result.getJSONObject(0);
-	}
+  @Path("/search")
+  Call<JSONArray> search(@Param("companyId") long companyId, @Param("groupIds") JSONArray groupIds, @Param("keywords") String keywords, @Param("includeBasicFileEntryType") boolean includeBasicFileEntryType, @Param("start") int start, @Param("end") int end, @Param("orderByComparator") JSONObjectWrapper orderByComparator);
 
-	public JSONObject addFileEntryType(long groupId, String fileEntryTypeKey, JSONObject nameMap, JSONObject descriptionMap, JSONArray ddmStructureIds, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/search-count")
+  Call<Integer> searchCount(@Param("companyId") long companyId, @Param("groupIds") JSONArray groupIds, @Param("keywords") String keywords, @Param("includeBasicFileEntryType") boolean includeBasicFileEntryType);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/update-file-entry-type")
+  Call<Response> updateFileEntryType(@Param("fileEntryTypeId") long fileEntryTypeId, @Param("name") String name, @Param("description") String description, @Param("ddmStructureIds") JSONArray ddmStructureIds, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-			_params.put("groupId", groupId);
-			_params.put("fileEntryTypeKey", checkNull(fileEntryTypeKey));
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("ddmStructureIds", checkNull(ddmStructureIds));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/dlfileentrytype/add-file-entry-type", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void deleteFileEntryType(long fileEntryTypeId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("fileEntryTypeId", fileEntryTypeId);
-
-			_command.put("/dlfileentrytype/delete-file-entry-type", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject getFileEntryType(long fileEntryTypeId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("fileEntryTypeId", fileEntryTypeId);
-
-			_command.put("/dlfileentrytype/get-file-entry-type", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONArray getFileEntryTypes(JSONArray groupIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupIds", checkNull(groupIds));
-
-			_command.put("/dlfileentrytype/get-file-entry-types", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getFileEntryTypes(JSONArray groupIds, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupIds", checkNull(groupIds));
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/dlfileentrytype/get-file-entry-types", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Integer getFileEntryTypesCount(JSONArray groupIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupIds", checkNull(groupIds));
-
-			_command.put("/dlfileentrytype/get-file-entry-types-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public JSONArray getFolderFileEntryTypes(JSONArray groupIds, long folderId, boolean inherited) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupIds", checkNull(groupIds));
-			_params.put("folderId", folderId);
-			_params.put("inherited", inherited);
-
-			_command.put("/dlfileentrytype/get-folder-file-entry-types", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray search(long companyId, JSONArray groupIds, String keywords, boolean includeBasicFileEntryType, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("groupIds", checkNull(groupIds));
-			_params.put("keywords", checkNull(keywords));
-			_params.put("includeBasicFileEntryType", includeBasicFileEntryType);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
-
-			_command.put("/dlfileentrytype/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Integer searchCount(long companyId, JSONArray groupIds, String keywords, boolean includeBasicFileEntryType) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("groupIds", checkNull(groupIds));
-			_params.put("keywords", checkNull(keywords));
-			_params.put("includeBasicFileEntryType", includeBasicFileEntryType);
-
-			_command.put("/dlfileentrytype/search-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public void updateFileEntryType(long fileEntryTypeId, String name, String description, JSONArray ddmStructureIds, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("fileEntryTypeId", fileEntryTypeId);
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
-			_params.put("ddmStructureIds", checkNull(ddmStructureIds));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/dlfileentrytype/update-file-entry-type", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void updateFileEntryType(long fileEntryTypeId, JSONObject nameMap, JSONObject descriptionMap, JSONArray ddmStructureIds, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("fileEntryTypeId", fileEntryTypeId);
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("ddmStructureIds", checkNull(ddmStructureIds));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/dlfileentrytype/update-file-entry-type", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
+  @Path("/update-file-entry-type")
+  Call<Response> updateFileEntryType(@Param("fileEntryTypeId") long fileEntryTypeId, @Param("nameMap") JSONObject nameMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("ddmStructureIds") JSONArray ddmStructureIds, @Param("serviceContext") JSONObjectWrapper serviceContext);
 }

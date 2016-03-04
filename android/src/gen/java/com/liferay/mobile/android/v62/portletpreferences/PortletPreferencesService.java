@@ -1,136 +1,26 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package com.liferay.mobile.android.v62.portletpreferences;
 
-import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import java.lang.String;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+@Path("/portletpreferences")
+public interface PortletPreferencesService {
+  @Path("/delete-archived-preferences")
+  Call<Response> deleteArchivedPreferences(@Param("portletItemId") long portletItemId);
 
-/**
- * @author Bruno Farache
- */
-public class PortletPreferencesService extends BaseService {
+  @Path("/restore-archived-preferences")
+  Call<Response> restoreArchivedPreferences(@Param("groupId") long groupId, @Param("layout") JSONObjectWrapper layout, @Param("portletId") String portletId, @Param("portletItem") JSONObjectWrapper portletItem, @Param("preferences") JSONObjectWrapper preferences);
 
-	public PortletPreferencesService(Session session) {
-		super(session);
-	}
+  @Path("/restore-archived-preferences")
+  Call<Response> restoreArchivedPreferences(@Param("groupId") long groupId, @Param("layout") JSONObjectWrapper layout, @Param("portletId") String portletId, @Param("portletItemId") long portletItemId, @Param("preferences") JSONObjectWrapper preferences);
 
-	public void deleteArchivedPreferences(long portletItemId) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/restore-archived-preferences")
+  Call<Response> restoreArchivedPreferences(@Param("groupId") long groupId, @Param("name") String name, @Param("layout") JSONObjectWrapper layout, @Param("portletId") String portletId, @Param("preferences") JSONObjectWrapper preferences);
 
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("portletItemId", portletItemId);
-
-			_command.put("/portletpreferences/delete-archived-preferences", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void restoreArchivedPreferences(long groupId, JSONObjectWrapper layout, String portletId, JSONObjectWrapper portletItem, JSONObjectWrapper preferences) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			mangleWrapper(_params, "layout", "com.liferay.portal.model.Layout", layout);
-			_params.put("portletId", checkNull(portletId));
-			mangleWrapper(_params, "portletItem", "com.liferay.portal.model.PortletItem", portletItem);
-			mangleWrapper(_params, "preferences", "javax.portlet.PortletPreferences", preferences);
-
-			_command.put("/portletpreferences/restore-archived-preferences", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void restoreArchivedPreferences(long groupId, JSONObjectWrapper layout, String portletId, long portletItemId, JSONObjectWrapper preferences) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			mangleWrapper(_params, "layout", "com.liferay.portal.model.Layout", layout);
-			_params.put("portletId", checkNull(portletId));
-			_params.put("portletItemId", portletItemId);
-			mangleWrapper(_params, "preferences", "javax.portlet.PortletPreferences", preferences);
-
-			_command.put("/portletpreferences/restore-archived-preferences", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void restoreArchivedPreferences(long groupId, String name, JSONObjectWrapper layout, String portletId, JSONObjectWrapper preferences) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			mangleWrapper(_params, "layout", "com.liferay.portal.model.Layout", layout);
-			_params.put("portletId", checkNull(portletId));
-			mangleWrapper(_params, "preferences", "javax.portlet.PortletPreferences", preferences);
-
-			_command.put("/portletpreferences/restore-archived-preferences", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void updateArchivePreferences(long userId, long groupId, String name, String portletId, JSONObjectWrapper preferences) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("portletId", checkNull(portletId));
-			mangleWrapper(_params, "preferences", "javax.portlet.PortletPreferences", preferences);
-
-			_command.put("/portletpreferences/update-archive-preferences", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
+  @Path("/update-archive-preferences")
+  Call<Response> updateArchivePreferences(@Param("userId") long userId, @Param("groupId") long groupId, @Param("name") String name, @Param("portletId") String portletId, @Param("preferences") JSONObjectWrapper preferences);
 }

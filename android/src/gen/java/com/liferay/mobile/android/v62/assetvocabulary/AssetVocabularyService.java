@@ -1,570 +1,80 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package com.liferay.mobile.android.v62.assetvocabulary;
 
-import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.service.Session;
-
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import java.lang.Integer;
+import java.lang.String;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * @author Bruno Farache
- */
-public class AssetVocabularyService extends BaseService {
+@Path("/assetvocabulary")
+public interface AssetVocabularyService {
+  @Path("/add-vocabulary")
+  Call<JSONObject> addVocabulary(@Param("title") String title, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public AssetVocabularyService(Session session) {
-		super(session);
-	}
+  @Path("/add-vocabulary")
+  Call<JSONObject> addVocabulary(@Param("titleMap") JSONObject titleMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("settings") String settings, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public JSONObject addVocabulary(String title, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/add-vocabulary")
+  Call<JSONObject> addVocabulary(@Param("title") String title, @Param("titleMap") JSONObject titleMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("settings") String settings, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/delete-vocabularies")
+  Call<Response> deleteVocabularies(@Param("vocabularyIds") JSONArray vocabularyIds);
 
-			_params.put("title", checkNull(title));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+  @Path("/delete-vocabularies")
+  Call<JSONArray> deleteVocabularies(@Param("vocabularyIds") JSONArray vocabularyIds, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-			_command.put("/assetvocabulary/add-vocabulary", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/delete-vocabulary")
+  Call<Response> deleteVocabulary(@Param("vocabularyId") long vocabularyId);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/get-company-vocabularies")
+  Call<JSONArray> getCompanyVocabularies(@Param("companyId") long companyId);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/get-group-vocabularies")
+  Call<JSONArray> getGroupVocabularies(@Param("groupId") long groupId);
 
-		return _result.getJSONObject(0);
-	}
+  @Path("/get-group-vocabularies")
+  Call<JSONArray> getGroupVocabularies(@Param("groupId") long groupId, @Param("createDefaultVocabulary") boolean createDefaultVocabulary);
 
-	public JSONObject addVocabulary(JSONObject titleMap, JSONObject descriptionMap, String settings, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-group-vocabularies")
+  Call<JSONArray> getGroupVocabularies(@Param("groupId") long groupId, @Param("start") int start, @Param("end") int end, @Param("obc") JSONObjectWrapper obc);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-group-vocabularies")
+  Call<JSONArray> getGroupVocabularies(@Param("groupId") long groupId, @Param("name") String name, @Param("start") int start, @Param("end") int end, @Param("obc") JSONObjectWrapper obc);
 
-			_params.put("titleMap", checkNull(titleMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("settings", checkNull(settings));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+  @Path("/get-group-vocabularies-count")
+  Call<Integer> getGroupVocabulariesCount(@Param("groupId") long groupId);
 
-			_command.put("/assetvocabulary/add-vocabulary", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/get-group-vocabularies-count")
+  Call<Integer> getGroupVocabulariesCount(@Param("groupId") long groupId, @Param("name") String name);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/get-group-vocabularies-display")
+  Call<JSONObject> getGroupVocabulariesDisplay(@Param("groupId") long groupId, @Param("name") String name, @Param("start") int start, @Param("end") int end, @Param("obc") JSONObjectWrapper obc);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/get-group-vocabularies-display")
+  Call<JSONObject> getGroupVocabulariesDisplay(@Param("groupId") long groupId, @Param("name") String name, @Param("start") int start, @Param("end") int end, @Param("addDefaultVocabulary") boolean addDefaultVocabulary, @Param("obc") JSONObjectWrapper obc);
 
-		return _result.getJSONObject(0);
-	}
+  @Path("/get-groups-vocabularies")
+  Call<JSONArray> getGroupsVocabularies(@Param("groupIds") JSONArray groupIds);
 
-	public JSONObject addVocabulary(String title, JSONObject titleMap, JSONObject descriptionMap, String settings, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-groups-vocabularies")
+  Call<JSONArray> getGroupsVocabularies(@Param("groupIds") JSONArray groupIds, @Param("className") String className);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-json-group-vocabularies")
+  Call<JSONObject> getJsonGroupVocabularies(@Param("groupId") long groupId, @Param("name") String name, @Param("start") int start, @Param("end") int end, @Param("obc") JSONObjectWrapper obc);
 
-			_params.put("title", checkNull(title));
-			_params.put("titleMap", checkNull(titleMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("settings", checkNull(settings));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+  @Path("/get-vocabularies")
+  Call<JSONArray> getVocabularies(@Param("vocabularyIds") JSONArray vocabularyIds);
 
-			_command.put("/assetvocabulary/add-vocabulary", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/get-vocabulary")
+  Call<JSONObject> getVocabulary(@Param("vocabularyId") long vocabularyId);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/update-vocabulary")
+  Call<JSONObject> updateVocabulary(@Param("vocabularyId") long vocabularyId, @Param("titleMap") JSONObject titleMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("settings") String settings, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void deleteVocabularies(JSONArray vocabularyIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("vocabularyIds", checkNull(vocabularyIds));
-
-			_command.put("/assetvocabulary/delete-vocabularies", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONArray deleteVocabularies(JSONArray vocabularyIds, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("vocabularyIds", checkNull(vocabularyIds));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/assetvocabulary/delete-vocabularies", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public void deleteVocabulary(long vocabularyId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("vocabularyId", vocabularyId);
-
-			_command.put("/assetvocabulary/delete-vocabulary", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONArray getCompanyVocabularies(long companyId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-
-			_command.put("/assetvocabulary/get-company-vocabularies", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getGroupVocabularies(long groupId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-
-			_command.put("/assetvocabulary/get-group-vocabularies", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getGroupVocabularies(long groupId, boolean createDefaultVocabulary) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("createDefaultVocabulary", createDefaultVocabulary);
-
-			_command.put("/assetvocabulary/get-group-vocabularies", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getGroupVocabularies(long groupId, int start, int end, JSONObjectWrapper obc) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
-
-			_command.put("/assetvocabulary/get-group-vocabularies", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getGroupVocabularies(long groupId, String name, int start, int end, JSONObjectWrapper obc) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
-
-			_command.put("/assetvocabulary/get-group-vocabularies", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Integer getGroupVocabulariesCount(long groupId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-
-			_command.put("/assetvocabulary/get-group-vocabularies-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public Integer getGroupVocabulariesCount(long groupId, String name) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-
-			_command.put("/assetvocabulary/get-group-vocabularies-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public JSONObject getGroupVocabulariesDisplay(long groupId, String name, int start, int end, JSONObjectWrapper obc) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
-
-			_command.put("/assetvocabulary/get-group-vocabularies-display", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getGroupVocabulariesDisplay(long groupId, String name, int start, int end, boolean addDefaultVocabulary, JSONObjectWrapper obc) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("start", start);
-			_params.put("end", end);
-			_params.put("addDefaultVocabulary", addDefaultVocabulary);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
-
-			_command.put("/assetvocabulary/get-group-vocabularies-display", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONArray getGroupsVocabularies(JSONArray groupIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupIds", checkNull(groupIds));
-
-			_command.put("/assetvocabulary/get-groups-vocabularies", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getGroupsVocabularies(JSONArray groupIds, String className) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupIds", checkNull(groupIds));
-			_params.put("className", checkNull(className));
-
-			_command.put("/assetvocabulary/get-groups-vocabularies", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONObject getJsonGroupVocabularies(long groupId, String name, int start, int end, JSONObjectWrapper obc) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
-
-			_command.put("/assetvocabulary/get-json-group-vocabularies", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONArray getVocabularies(JSONArray vocabularyIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("vocabularyIds", checkNull(vocabularyIds));
-
-			_command.put("/assetvocabulary/get-vocabularies", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONObject getVocabulary(long vocabularyId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("vocabularyId", vocabularyId);
-
-			_command.put("/assetvocabulary/get-vocabulary", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateVocabulary(long vocabularyId, JSONObject titleMap, JSONObject descriptionMap, String settings, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("vocabularyId", vocabularyId);
-			_params.put("titleMap", checkNull(titleMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("settings", checkNull(settings));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/assetvocabulary/update-vocabulary", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateVocabulary(long vocabularyId, String title, JSONObject titleMap, JSONObject descriptionMap, String settings, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("vocabularyId", vocabularyId);
-			_params.put("title", checkNull(title));
-			_params.put("titleMap", checkNull(titleMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("settings", checkNull(settings));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/assetvocabulary/update-vocabulary", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
+  @Path("/update-vocabulary")
+  Call<JSONObject> updateVocabulary(@Param("vocabularyId") long vocabularyId, @Param("title") String title, @Param("titleMap") JSONObject titleMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("settings") String settings, @Param("serviceContext") JSONObjectWrapper serviceContext);
 }

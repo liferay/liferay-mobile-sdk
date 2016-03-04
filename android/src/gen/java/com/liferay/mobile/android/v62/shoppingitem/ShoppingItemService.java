@@ -1,308 +1,45 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package com.liferay.mobile.android.v62.shoppingitem;
 
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.service.Session;
-
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import java.lang.Integer;
+import java.lang.String;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * @author Bruno Farache
- */
-public class ShoppingItemService extends BaseService {
+@Path("/shoppingitem")
+public interface ShoppingItemService {
+  @Path("/add-book-items")
+  Call<Response> addBookItems(@Param("groupId") long groupId, @Param("categoryId") long categoryId, @Param("isbns") JSONArray isbns);
 
-	public ShoppingItemService(Session session) {
-		super(session);
-	}
+  @Path("/add-item")
+  Call<JSONObject> addItem(@Param("groupId") long groupId, @Param("categoryId") long categoryId, @Param("sku") String sku, @Param("name") String name, @Param("description") String description, @Param("properties") String properties, @Param("fieldsQuantities") String fieldsQuantities, @Param("requiresShipping") boolean requiresShipping, @Param("stockQuantity") int stockQuantity, @Param("featured") boolean featured, @Param("sale") boolean sale, @Param("smallImage") boolean smallImage, @Param("smallImageURL") String smallImageURL, @Param("smallFile") UploadData smallFile, @Param("mediumImage") boolean mediumImage, @Param("mediumImageURL") String mediumImageURL, @Param("mediumFile") UploadData mediumFile, @Param("largeImage") boolean largeImage, @Param("largeImageURL") String largeImageURL, @Param("largeFile") UploadData largeFile, @Param("itemFields") JSONArray itemFields, @Param("itemPrices") JSONArray itemPrices, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public void addBookItems(long groupId, long categoryId, JSONArray isbns) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/delete-item")
+  Call<Response> deleteItem(@Param("itemId") long itemId);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-categories-items-count")
+  Call<Integer> getCategoriesItemsCount(@Param("groupId") long groupId, @Param("categoryIds") JSONArray categoryIds);
 
-			_params.put("groupId", groupId);
-			_params.put("categoryId", categoryId);
-			_params.put("isbns", checkNull(isbns));
+  @Path("/get-item")
+  Call<JSONObject> getItem(@Param("itemId") long itemId);
 
-			_command.put("/shoppingitem/add-book-items", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/get-items")
+  Call<JSONArray> getItems(@Param("groupId") long groupId, @Param("categoryId") long categoryId);
 
-		session.invoke(_command);
-	}
+  @Path("/get-items")
+  Call<JSONArray> getItems(@Param("groupId") long groupId, @Param("categoryId") long categoryId, @Param("start") int start, @Param("end") int end, @Param("obc") JSONObjectWrapper obc);
 
-	public JSONObject addItem(long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, boolean sale, boolean smallImage, String smallImageURL, UploadData smallFile, boolean mediumImage, String mediumImageURL, UploadData mediumFile, boolean largeImage, String largeImageURL, UploadData largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-items-count")
+  Call<Integer> getItemsCount(@Param("groupId") long groupId, @Param("categoryId") long categoryId);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-items-prev-and-next")
+  Call<JSONArray> getItemsPrevAndNext(@Param("itemId") long itemId, @Param("obc") JSONObjectWrapper obc);
 
-			_params.put("groupId", groupId);
-			_params.put("categoryId", categoryId);
-			_params.put("sku", checkNull(sku));
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
-			_params.put("properties", checkNull(properties));
-			_params.put("fieldsQuantities", checkNull(fieldsQuantities));
-			_params.put("requiresShipping", requiresShipping);
-			_params.put("stockQuantity", stockQuantity);
-			_params.put("featured", featured);
-			_params.put("sale", sale);
-			_params.put("smallImage", smallImage);
-			_params.put("smallImageURL", checkNull(smallImageURL));
-			_params.put("smallFile", checkNull(smallFile));
-			_params.put("mediumImage", mediumImage);
-			_params.put("mediumImageURL", checkNull(mediumImageURL));
-			_params.put("mediumFile", checkNull(mediumFile));
-			_params.put("largeImage", largeImage);
-			_params.put("largeImageURL", checkNull(largeImageURL));
-			_params.put("largeFile", checkNull(largeFile));
-			_params.put("itemFields", checkNull(itemFields));
-			_params.put("itemPrices", checkNull(itemPrices));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/shoppingitem/add-item", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void deleteItem(long itemId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("itemId", itemId);
-
-			_command.put("/shoppingitem/delete-item", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public Integer getCategoriesItemsCount(long groupId, JSONArray categoryIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("categoryIds", checkNull(categoryIds));
-
-			_command.put("/shoppingitem/get-categories-items-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public JSONObject getItem(long itemId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("itemId", itemId);
-
-			_command.put("/shoppingitem/get-item", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONArray getItems(long groupId, long categoryId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("categoryId", categoryId);
-
-			_command.put("/shoppingitem/get-items", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getItems(long groupId, long categoryId, int start, int end, JSONObjectWrapper obc) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("categoryId", categoryId);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
-
-			_command.put("/shoppingitem/get-items", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Integer getItemsCount(long groupId, long categoryId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("categoryId", categoryId);
-
-			_command.put("/shoppingitem/get-items-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public JSONArray getItemsPrevAndNext(long itemId, JSONObjectWrapper obc) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("itemId", itemId);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
-
-			_command.put("/shoppingitem/get-items-prev-and-next", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONObject updateItem(long itemId, long groupId, long categoryId, String sku, String name, String description, String properties, String fieldsQuantities, boolean requiresShipping, int stockQuantity, boolean featured, boolean sale, boolean smallImage, String smallImageURL, UploadData smallFile, boolean mediumImage, String mediumImageURL, UploadData mediumFile, boolean largeImage, String largeImageURL, UploadData largeFile, JSONArray itemFields, JSONArray itemPrices, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("itemId", itemId);
-			_params.put("groupId", groupId);
-			_params.put("categoryId", categoryId);
-			_params.put("sku", checkNull(sku));
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
-			_params.put("properties", checkNull(properties));
-			_params.put("fieldsQuantities", checkNull(fieldsQuantities));
-			_params.put("requiresShipping", requiresShipping);
-			_params.put("stockQuantity", stockQuantity);
-			_params.put("featured", featured);
-			_params.put("sale", sale);
-			_params.put("smallImage", smallImage);
-			_params.put("smallImageURL", checkNull(smallImageURL));
-			_params.put("smallFile", checkNull(smallFile));
-			_params.put("mediumImage", mediumImage);
-			_params.put("mediumImageURL", checkNull(mediumImageURL));
-			_params.put("mediumFile", checkNull(mediumFile));
-			_params.put("largeImage", largeImage);
-			_params.put("largeImageURL", checkNull(largeImageURL));
-			_params.put("largeFile", checkNull(largeFile));
-			_params.put("itemFields", checkNull(itemFields));
-			_params.put("itemPrices", checkNull(itemPrices));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/shoppingitem/update-item", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
+  @Path("/update-item")
+  Call<JSONObject> updateItem(@Param("itemId") long itemId, @Param("groupId") long groupId, @Param("categoryId") long categoryId, @Param("sku") String sku, @Param("name") String name, @Param("description") String description, @Param("properties") String properties, @Param("fieldsQuantities") String fieldsQuantities, @Param("requiresShipping") boolean requiresShipping, @Param("stockQuantity") int stockQuantity, @Param("featured") boolean featured, @Param("sale") boolean sale, @Param("smallImage") boolean smallImage, @Param("smallImageURL") String smallImageURL, @Param("smallFile") UploadData smallFile, @Param("mediumImage") boolean mediumImage, @Param("mediumImageURL") String mediumImageURL, @Param("mediumFile") UploadData mediumFile, @Param("largeImage") boolean largeImage, @Param("largeImageURL") String largeImageURL, @Param("largeFile") UploadData largeFile, @Param("itemFields") JSONArray itemFields, @Param("itemPrices") JSONArray itemPrices, @Param("serviceContext") JSONObjectWrapper serviceContext);
 }

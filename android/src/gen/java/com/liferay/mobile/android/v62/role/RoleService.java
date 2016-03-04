@@ -1,389 +1,59 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package com.liferay.mobile.android.v62.role;
 
-import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.service.Session;
-
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import java.lang.Boolean;
+import java.lang.String;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * @author Bruno Farache
- */
-public class RoleService extends BaseService {
+@Path("/role")
+public interface RoleService {
+  @Path("/add-role")
+  Call<JSONObject> addRole(@Param("name") String name, @Param("titleMap") JSONObject titleMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("type") int type);
 
-	public RoleService(Session session) {
-		super(session);
-	}
+  @Path("/add-role")
+  Call<JSONObject> addRole(@Param("className") String className, @Param("classPK") long classPK, @Param("name") String name, @Param("titleMap") JSONObject titleMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("type") int type, @Param("subtype") String subtype, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public JSONObject addRole(String name, JSONObject titleMap, JSONObject descriptionMap, int type) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/add-user-roles")
+  Call<Response> addUserRoles(@Param("userId") long userId, @Param("roleIds") JSONArray roleIds);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/delete-role")
+  Call<Response> deleteRole(@Param("roleId") long roleId);
 
-			_params.put("name", checkNull(name));
-			_params.put("titleMap", checkNull(titleMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("type", type);
+  @Path("/get-group-roles")
+  Call<JSONArray> getGroupRoles(@Param("groupId") long groupId);
 
-			_command.put("/role/add-role", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/get-role")
+  Call<JSONObject> getRole(@Param("roleId") long roleId);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/get-role")
+  Call<JSONObject> getRole(@Param("companyId") long companyId, @Param("name") String name);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/get-user-group-group-roles")
+  Call<JSONArray> getUserGroupGroupRoles(@Param("userId") long userId, @Param("groupId") long groupId);
 
-		return _result.getJSONObject(0);
-	}
+  @Path("/get-user-group-roles")
+  Call<JSONArray> getUserGroupRoles(@Param("userId") long userId, @Param("groupId") long groupId);
 
-	public JSONObject addRole(String className, long classPK, String name, JSONObject titleMap, JSONObject descriptionMap, int type, String subtype, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-user-related-roles")
+  Call<JSONArray> getUserRelatedRoles(@Param("userId") long userId, @Param("groups") JSONArray groups);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-user-roles")
+  Call<JSONArray> getUserRoles(@Param("userId") long userId);
 
-			_params.put("className", checkNull(className));
-			_params.put("classPK", classPK);
-			_params.put("name", checkNull(name));
-			_params.put("titleMap", checkNull(titleMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("type", type);
-			_params.put("subtype", checkNull(subtype));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+  @Path("/has-user-role")
+  Call<Boolean> hasUserRole(@Param("userId") long userId, @Param("companyId") long companyId, @Param("name") String name, @Param("inherited") boolean inherited);
 
-			_command.put("/role/add-role", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/has-user-roles")
+  Call<Boolean> hasUserRoles(@Param("userId") long userId, @Param("companyId") long companyId, @Param("names") JSONArray names, @Param("inherited") boolean inherited);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/unset-user-roles")
+  Call<Response> unsetUserRoles(@Param("userId") long userId, @Param("roleIds") JSONArray roleIds);
 
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void addUserRoles(long userId, JSONArray roleIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("roleIds", checkNull(roleIds));
-
-			_command.put("/role/add-user-roles", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void deleteRole(long roleId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("roleId", roleId);
-
-			_command.put("/role/delete-role", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONArray getGroupRoles(long groupId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-
-			_command.put("/role/get-group-roles", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONObject getRole(long roleId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("roleId", roleId);
-
-			_command.put("/role/get-role", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getRole(long companyId, String name) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("name", checkNull(name));
-
-			_command.put("/role/get-role", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONArray getUserGroupGroupRoles(long userId, long groupId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("groupId", groupId);
-
-			_command.put("/role/get-user-group-group-roles", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getUserGroupRoles(long userId, long groupId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("groupId", groupId);
-
-			_command.put("/role/get-user-group-roles", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getUserRelatedRoles(long userId, JSONArray groups) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("groups", checkNull(groups));
-
-			_command.put("/role/get-user-related-roles", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getUserRoles(long userId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-
-			_command.put("/role/get-user-roles", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Boolean hasUserRole(long userId, long companyId, String name, boolean inherited) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("companyId", companyId);
-			_params.put("name", checkNull(name));
-			_params.put("inherited", inherited);
-
-			_command.put("/role/has-user-role", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getBoolean(0);
-	}
-
-	public Boolean hasUserRoles(long userId, long companyId, JSONArray names, boolean inherited) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("companyId", companyId);
-			_params.put("names", checkNull(names));
-			_params.put("inherited", inherited);
-
-			_command.put("/role/has-user-roles", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getBoolean(0);
-	}
-
-	public void unsetUserRoles(long userId, JSONArray roleIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("roleIds", checkNull(roleIds));
-
-			_command.put("/role/unset-user-roles", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject updateRole(long roleId, String name, JSONObject titleMap, JSONObject descriptionMap, String subtype, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("roleId", roleId);
-			_params.put("name", checkNull(name));
-			_params.put("titleMap", checkNull(titleMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("subtype", checkNull(subtype));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/role/update-role", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
+  @Path("/update-role")
+  Call<JSONObject> updateRole(@Param("roleId") long roleId, @Param("name") String name, @Param("titleMap") JSONObject titleMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("subtype") String subtype, @Param("serviceContext") JSONObjectWrapper serviceContext);
 }

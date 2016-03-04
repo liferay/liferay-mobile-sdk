@@ -1,587 +1,83 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package com.liferay.mobile.android.v62.assettag;
 
-import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.service.Session;
-
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import java.lang.Integer;
+import java.lang.String;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * @author Bruno Farache
- */
-public class AssetTagService extends BaseService {
+@Path("/assettag")
+public interface AssetTagService {
+  @Path("/add-tag")
+  Call<JSONObject> addTag(@Param("name") String name, @Param("tagProperties") JSONArray tagProperties, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public AssetTagService(Session session) {
-		super(session);
-	}
+  @Path("/delete-tag")
+  Call<Response> deleteTag(@Param("tagId") long tagId);
 
-	public JSONObject addTag(String name, JSONArray tagProperties, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/delete-tags")
+  Call<Response> deleteTags(@Param("tagIds") JSONArray tagIds);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-group-tags")
+  Call<JSONArray> getGroupTags(@Param("groupId") long groupId);
 
-			_params.put("name", checkNull(name));
-			_params.put("tagProperties", checkNull(tagProperties));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+  @Path("/get-group-tags")
+  Call<JSONArray> getGroupTags(@Param("groupId") long groupId, @Param("start") int start, @Param("end") int end, @Param("obc") JSONObjectWrapper obc);
 
-			_command.put("/assettag/add-tag", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/get-group-tags-count")
+  Call<Integer> getGroupTagsCount(@Param("groupId") long groupId);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/get-group-tags-display")
+  Call<JSONObject> getGroupTagsDisplay(@Param("groupId") long groupId, @Param("name") String name, @Param("start") int start, @Param("end") int end);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/get-groups-tags")
+  Call<JSONArray> getGroupsTags(@Param("groupIds") JSONArray groupIds);
 
-		return _result.getJSONObject(0);
-	}
+  @Path("/get-json-group-tags")
+  Call<JSONObject> getJsonGroupTags(@Param("groupId") long groupId, @Param("name") String name, @Param("start") int start, @Param("end") int end);
 
-	public void deleteTag(long tagId) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-tag")
+  Call<JSONObject> getTag(@Param("tagId") long tagId);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-tags")
+  Call<JSONArray> getTags(@Param("className") String className, @Param("classPK") long classPK);
 
-			_params.put("tagId", tagId);
+  @Path("/get-tags")
+  Call<JSONArray> getTags(@Param("groupId") long groupId, @Param("classNameId") long classNameId, @Param("name") String name);
 
-			_command.put("/assettag/delete-tag", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/get-tags")
+  Call<JSONArray> getTags(@Param("groupId") long groupId, @Param("name") String name, @Param("tagProperties") JSONArray tagProperties, @Param("start") int start, @Param("end") int end);
 
-		session.invoke(_command);
-	}
+  @Path("/get-tags")
+  Call<JSONArray> getTags(@Param("groupIds") JSONArray groupIds, @Param("name") String name, @Param("tagProperties") JSONArray tagProperties, @Param("start") int start, @Param("end") int end);
 
-	public void deleteTags(JSONArray tagIds) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-tags")
+  Call<JSONArray> getTags(@Param("groupId") long groupId, @Param("classNameId") long classNameId, @Param("name") String name, @Param("start") int start, @Param("end") int end, @Param("obc") JSONObjectWrapper obc);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-tags-count")
+  Call<Integer> getTagsCount(@Param("groupId") long groupId, @Param("name") String name);
 
-			_params.put("tagIds", checkNull(tagIds));
+  @Path("/get-tags-count")
+  Call<Integer> getTagsCount(@Param("groupId") long groupId, @Param("classNameId") long classNameId, @Param("name") String name);
 
-			_command.put("/assettag/delete-tags", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/get-tags-count")
+  Call<Integer> getTagsCount(@Param("groupId") long groupId, @Param("name") String name, @Param("tagProperties") JSONArray tagProperties);
 
-		session.invoke(_command);
-	}
+  @Path("/merge-tags")
+  Call<Response> mergeTags(@Param("fromTagId") long fromTagId, @Param("toTagId") long toTagId, @Param("overrideProperties") boolean overrideProperties);
 
-	public JSONArray getGroupTags(long groupId) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/merge-tags")
+  Call<Response> mergeTags(@Param("fromTagIds") JSONArray fromTagIds, @Param("toTagId") long toTagId, @Param("overrideProperties") boolean overrideProperties);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/search")
+  Call<JSONArray> search(@Param("groupId") long groupId, @Param("name") String name, @Param("tagProperties") JSONArray tagProperties, @Param("start") int start, @Param("end") int end);
 
-			_params.put("groupId", groupId);
+  @Path("/search")
+  Call<JSONArray> search(@Param("groupIds") JSONArray groupIds, @Param("name") String name, @Param("tagProperties") JSONArray tagProperties, @Param("start") int start, @Param("end") int end);
 
-			_command.put("/assettag/get-group-tags", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getGroupTags(long groupId, int start, int end, JSONObjectWrapper obc) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
-
-			_command.put("/assettag/get-group-tags", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Integer getGroupTagsCount(long groupId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-
-			_command.put("/assettag/get-group-tags-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public JSONObject getGroupTagsDisplay(long groupId, String name, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/assettag/get-group-tags-display", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONArray getGroupsTags(JSONArray groupIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupIds", checkNull(groupIds));
-
-			_command.put("/assettag/get-groups-tags", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONObject getJsonGroupTags(long groupId, String name, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/assettag/get-json-group-tags", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getTag(long tagId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("tagId", tagId);
-
-			_command.put("/assettag/get-tag", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONArray getTags(String className, long classPK) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("className", checkNull(className));
-			_params.put("classPK", classPK);
-
-			_command.put("/assettag/get-tags", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getTags(long groupId, long classNameId, String name) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("classNameId", classNameId);
-			_params.put("name", checkNull(name));
-
-			_command.put("/assettag/get-tags", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getTags(long groupId, String name, JSONArray tagProperties, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("tagProperties", checkNull(tagProperties));
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/assettag/get-tags", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getTags(JSONArray groupIds, String name, JSONArray tagProperties, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupIds", checkNull(groupIds));
-			_params.put("name", checkNull(name));
-			_params.put("tagProperties", checkNull(tagProperties));
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/assettag/get-tags", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getTags(long groupId, long classNameId, String name, int start, int end, JSONObjectWrapper obc) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("classNameId", classNameId);
-			_params.put("name", checkNull(name));
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
-
-			_command.put("/assettag/get-tags", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Integer getTagsCount(long groupId, String name) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-
-			_command.put("/assettag/get-tags-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public Integer getTagsCount(long groupId, long classNameId, String name) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("classNameId", classNameId);
-			_params.put("name", checkNull(name));
-
-			_command.put("/assettag/get-tags-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public Integer getTagsCount(long groupId, String name, JSONArray tagProperties) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("tagProperties", checkNull(tagProperties));
-
-			_command.put("/assettag/get-tags-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public void mergeTags(long fromTagId, long toTagId, boolean overrideProperties) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("fromTagId", fromTagId);
-			_params.put("toTagId", toTagId);
-			_params.put("overrideProperties", overrideProperties);
-
-			_command.put("/assettag/merge-tags", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void mergeTags(JSONArray fromTagIds, long toTagId, boolean overrideProperties) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("fromTagIds", checkNull(fromTagIds));
-			_params.put("toTagId", toTagId);
-			_params.put("overrideProperties", overrideProperties);
-
-			_command.put("/assettag/merge-tags", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONArray search(long groupId, String name, JSONArray tagProperties, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("tagProperties", checkNull(tagProperties));
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/assettag/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray search(JSONArray groupIds, String name, JSONArray tagProperties, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupIds", checkNull(groupIds));
-			_params.put("name", checkNull(name));
-			_params.put("tagProperties", checkNull(tagProperties));
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/assettag/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONObject updateTag(long tagId, String name, JSONArray tagProperties, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("tagId", tagId);
-			_params.put("name", checkNull(name));
-			_params.put("tagProperties", checkNull(tagProperties));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/assettag/update-tag", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
+  @Path("/update-tag")
+  Call<JSONObject> updateTag(@Param("tagId") long tagId, @Param("name") String name, @Param("tagProperties") JSONArray tagProperties, @Param("serviceContext") JSONObjectWrapper serviceContext);
 }

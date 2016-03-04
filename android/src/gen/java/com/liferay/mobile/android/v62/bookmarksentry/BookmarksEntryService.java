@@ -1,603 +1,86 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package com.liferay.mobile.android.v62.bookmarksentry;
 
-import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.service.Session;
-
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import java.lang.Integer;
+import java.lang.String;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * @author Bruno Farache
- */
-public class BookmarksEntryService extends BaseService {
+@Path("/bookmarksentry")
+public interface BookmarksEntryService {
+  @Path("/add-entry")
+  Call<JSONObject> addEntry(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("name") String name, @Param("url") String url, @Param("description") String description, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public BookmarksEntryService(Session session) {
-		super(session);
-	}
+  @Path("/delete-entry")
+  Call<Response> deleteEntry(@Param("entryId") long entryId);
 
-	public JSONObject addEntry(long groupId, long folderId, String name, String url, String description, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-entries")
+  Call<JSONArray> getEntries(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("start") int start, @Param("end") int end);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-entries")
+  Call<JSONArray> getEntries(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("start") int start, @Param("end") int end, @Param("orderByComparator") JSONObjectWrapper orderByComparator);
 
-			_params.put("groupId", groupId);
-			_params.put("folderId", folderId);
-			_params.put("name", checkNull(name));
-			_params.put("url", checkNull(url));
-			_params.put("description", checkNull(description));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+  @Path("/get-entries-count")
+  Call<Integer> getEntriesCount(@Param("groupId") long groupId, @Param("folderId") long folderId);
 
-			_command.put("/bookmarksentry/add-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/get-entries-count")
+  Call<Integer> getEntriesCount(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("status") int status);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/get-entry")
+  Call<JSONObject> getEntry(@Param("entryId") long entryId);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/get-folders-entries-count")
+  Call<Integer> getFoldersEntriesCount(@Param("groupId") long groupId, @Param("folderIds") JSONArray folderIds);
 
-		return _result.getJSONObject(0);
-	}
+  @Path("/get-group-entries")
+  Call<JSONArray> getGroupEntries(@Param("groupId") long groupId, @Param("start") int start, @Param("end") int end);
 
-	public void deleteEntry(long entryId) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-group-entries")
+  Call<JSONArray> getGroupEntries(@Param("groupId") long groupId, @Param("userId") long userId, @Param("start") int start, @Param("end") int end);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-group-entries")
+  Call<JSONArray> getGroupEntries(@Param("groupId") long groupId, @Param("userId") long userId, @Param("rootFolderId") long rootFolderId, @Param("start") int start, @Param("end") int end);
 
-			_params.put("entryId", entryId);
+  @Path("/get-group-entries-count")
+  Call<Integer> getGroupEntriesCount(@Param("groupId") long groupId);
 
-			_command.put("/bookmarksentry/delete-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/get-group-entries-count")
+  Call<Integer> getGroupEntriesCount(@Param("groupId") long groupId, @Param("userId") long userId);
 
-		session.invoke(_command);
-	}
+  @Path("/get-group-entries-count")
+  Call<Integer> getGroupEntriesCount(@Param("groupId") long groupId, @Param("userId") long userId, @Param("rootFolderId") long rootFolderId);
 
-	public JSONArray getEntries(long groupId, long folderId, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/move-entry")
+  Call<JSONObject> moveEntry(@Param("entryId") long entryId, @Param("parentFolderId") long parentFolderId);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/move-entry-from-trash")
+  Call<JSONObject> moveEntryFromTrash(@Param("entryId") long entryId, @Param("parentFolderId") long parentFolderId);
 
-			_params.put("groupId", groupId);
-			_params.put("folderId", folderId);
-			_params.put("start", start);
-			_params.put("end", end);
+  @Path("/move-entry-to-trash")
+  Call<JSONObject> moveEntryToTrash(@Param("entryId") long entryId);
 
-			_command.put("/bookmarksentry/get-entries", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/open-entry")
+  Call<JSONObject> openEntry(@Param("entry") JSONObjectWrapper entry);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/open-entry")
+  Call<JSONObject> openEntry(@Param("entryId") long entryId);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/restore-entry-from-trash")
+  Call<Response> restoreEntryFromTrash(@Param("entryId") long entryId);
 
-		return _result.getJSONArray(0);
-	}
+  @Path("/search")
+  Call<JSONObject> search(@Param("groupId") long groupId, @Param("creatorUserId") long creatorUserId, @Param("status") int status, @Param("start") int start, @Param("end") int end);
 
-	public JSONArray getEntries(long groupId, long folderId, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/subscribe-entry")
+  Call<Response> subscribeEntry(@Param("entryId") long entryId);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/unsubscribe-entry")
+  Call<Response> unsubscribeEntry(@Param("entryId") long entryId);
 
-			_params.put("groupId", groupId);
-			_params.put("folderId", folderId);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
-
-			_command.put("/bookmarksentry/get-entries", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Integer getEntriesCount(long groupId, long folderId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("folderId", folderId);
-
-			_command.put("/bookmarksentry/get-entries-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public Integer getEntriesCount(long groupId, long folderId, int status) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("folderId", folderId);
-			_params.put("status", status);
-
-			_command.put("/bookmarksentry/get-entries-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public JSONObject getEntry(long entryId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("entryId", entryId);
-
-			_command.put("/bookmarksentry/get-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public Integer getFoldersEntriesCount(long groupId, JSONArray folderIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("folderIds", checkNull(folderIds));
-
-			_command.put("/bookmarksentry/get-folders-entries-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public JSONArray getGroupEntries(long groupId, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/bookmarksentry/get-group-entries", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getGroupEntries(long groupId, long userId, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/bookmarksentry/get-group-entries", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getGroupEntries(long groupId, long userId, long rootFolderId, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-			_params.put("rootFolderId", rootFolderId);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/bookmarksentry/get-group-entries", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Integer getGroupEntriesCount(long groupId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-
-			_command.put("/bookmarksentry/get-group-entries-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public Integer getGroupEntriesCount(long groupId, long userId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-
-			_command.put("/bookmarksentry/get-group-entries-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public Integer getGroupEntriesCount(long groupId, long userId, long rootFolderId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-			_params.put("rootFolderId", rootFolderId);
-
-			_command.put("/bookmarksentry/get-group-entries-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public JSONObject moveEntry(long entryId, long parentFolderId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("entryId", entryId);
-			_params.put("parentFolderId", parentFolderId);
-
-			_command.put("/bookmarksentry/move-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject moveEntryFromTrash(long entryId, long parentFolderId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("entryId", entryId);
-			_params.put("parentFolderId", parentFolderId);
-
-			_command.put("/bookmarksentry/move-entry-from-trash", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject moveEntryToTrash(long entryId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("entryId", entryId);
-
-			_command.put("/bookmarksentry/move-entry-to-trash", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject openEntry(JSONObjectWrapper entry) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			mangleWrapper(_params, "entry", "com.liferay.portlet.bookmarks.model.BookmarksEntry", entry);
-
-			_command.put("/bookmarksentry/open-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject openEntry(long entryId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("entryId", entryId);
-
-			_command.put("/bookmarksentry/open-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void restoreEntryFromTrash(long entryId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("entryId", entryId);
-
-			_command.put("/bookmarksentry/restore-entry-from-trash", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject search(long groupId, long creatorUserId, int status, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("creatorUserId", creatorUserId);
-			_params.put("status", status);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/bookmarksentry/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void subscribeEntry(long entryId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("entryId", entryId);
-
-			_command.put("/bookmarksentry/subscribe-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void unsubscribeEntry(long entryId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("entryId", entryId);
-
-			_command.put("/bookmarksentry/unsubscribe-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject updateEntry(long entryId, long groupId, long folderId, String name, String url, String description, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("entryId", entryId);
-			_params.put("groupId", groupId);
-			_params.put("folderId", folderId);
-			_params.put("name", checkNull(name));
-			_params.put("url", checkNull(url));
-			_params.put("description", checkNull(description));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/bookmarksentry/update-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
+  @Path("/update-entry")
+  Call<JSONObject> updateEntry(@Param("entryId") long entryId, @Param("groupId") long groupId, @Param("folderId") long folderId, @Param("name") String name, @Param("url") String url, @Param("description") String description, @Param("serviceContext") JSONObjectWrapper serviceContext);
 }

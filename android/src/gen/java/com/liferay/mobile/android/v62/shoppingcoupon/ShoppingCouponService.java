@@ -1,194 +1,28 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package com.liferay.mobile.android.v62.shoppingcoupon;
 
-import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.service.Session;
-
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import java.lang.String;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * @author Bruno Farache
- */
-public class ShoppingCouponService extends BaseService {
+@Path("/shoppingcoupon")
+public interface ShoppingCouponService {
+  @Path("/add-coupon")
+  Call<JSONObject> addCoupon(@Param("code") String code, @Param("autoCode") boolean autoCode, @Param("name") String name, @Param("description") String description, @Param("startDateMonth") int startDateMonth, @Param("startDateDay") int startDateDay, @Param("startDateYear") int startDateYear, @Param("startDateHour") int startDateHour, @Param("startDateMinute") int startDateMinute, @Param("endDateMonth") int endDateMonth, @Param("endDateDay") int endDateDay, @Param("endDateYear") int endDateYear, @Param("endDateHour") int endDateHour, @Param("endDateMinute") int endDateMinute, @Param("neverExpire") boolean neverExpire, @Param("active") boolean active, @Param("limitCategories") String limitCategories, @Param("limitSkus") String limitSkus, @Param("minOrder") double minOrder, @Param("discount") double discount, @Param("discountType") String discountType, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public ShoppingCouponService(Session session) {
-		super(session);
-	}
+  @Path("/delete-coupon")
+  Call<Response> deleteCoupon(@Param("groupId") long groupId, @Param("couponId") long couponId);
 
-	public JSONObject addCoupon(String code, boolean autoCode, String name, String description, int startDateMonth, int startDateDay, int startDateYear, int startDateHour, int startDateMinute, int endDateMonth, int endDateDay, int endDateYear, int endDateHour, int endDateMinute, boolean neverExpire, boolean active, String limitCategories, String limitSkus, double minOrder, double discount, String discountType, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-coupon")
+  Call<JSONObject> getCoupon(@Param("groupId") long groupId, @Param("couponId") long couponId);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/search")
+  Call<JSONArray> search(@Param("groupId") long groupId, @Param("companyId") long companyId, @Param("code") String code, @Param("active") boolean active, @Param("discountType") String discountType, @Param("andOperator") boolean andOperator, @Param("start") int start, @Param("end") int end);
 
-			_params.put("code", checkNull(code));
-			_params.put("autoCode", autoCode);
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
-			_params.put("startDateMonth", startDateMonth);
-			_params.put("startDateDay", startDateDay);
-			_params.put("startDateYear", startDateYear);
-			_params.put("startDateHour", startDateHour);
-			_params.put("startDateMinute", startDateMinute);
-			_params.put("endDateMonth", endDateMonth);
-			_params.put("endDateDay", endDateDay);
-			_params.put("endDateYear", endDateYear);
-			_params.put("endDateHour", endDateHour);
-			_params.put("endDateMinute", endDateMinute);
-			_params.put("neverExpire", neverExpire);
-			_params.put("active", active);
-			_params.put("limitCategories", checkNull(limitCategories));
-			_params.put("limitSkus", checkNull(limitSkus));
-			_params.put("minOrder", minOrder);
-			_params.put("discount", discount);
-			_params.put("discountType", checkNull(discountType));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/shoppingcoupon/add-coupon", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void deleteCoupon(long groupId, long couponId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("couponId", couponId);
-
-			_command.put("/shoppingcoupon/delete-coupon", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject getCoupon(long groupId, long couponId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("couponId", couponId);
-
-			_command.put("/shoppingcoupon/get-coupon", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONArray search(long groupId, long companyId, String code, boolean active, String discountType, boolean andOperator, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("companyId", companyId);
-			_params.put("code", checkNull(code));
-			_params.put("active", active);
-			_params.put("discountType", checkNull(discountType));
-			_params.put("andOperator", andOperator);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/shoppingcoupon/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONObject updateCoupon(long couponId, String name, String description, int startDateMonth, int startDateDay, int startDateYear, int startDateHour, int startDateMinute, int endDateMonth, int endDateDay, int endDateYear, int endDateHour, int endDateMinute, boolean neverExpire, boolean active, String limitCategories, String limitSkus, double minOrder, double discount, String discountType, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("couponId", couponId);
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
-			_params.put("startDateMonth", startDateMonth);
-			_params.put("startDateDay", startDateDay);
-			_params.put("startDateYear", startDateYear);
-			_params.put("startDateHour", startDateHour);
-			_params.put("startDateMinute", startDateMinute);
-			_params.put("endDateMonth", endDateMonth);
-			_params.put("endDateDay", endDateDay);
-			_params.put("endDateYear", endDateYear);
-			_params.put("endDateHour", endDateHour);
-			_params.put("endDateMinute", endDateMinute);
-			_params.put("neverExpire", neverExpire);
-			_params.put("active", active);
-			_params.put("limitCategories", checkNull(limitCategories));
-			_params.put("limitSkus", checkNull(limitSkus));
-			_params.put("minOrder", minOrder);
-			_params.put("discount", discount);
-			_params.put("discountType", checkNull(discountType));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/shoppingcoupon/update-coupon", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
+  @Path("/update-coupon")
+  Call<JSONObject> updateCoupon(@Param("couponId") long couponId, @Param("name") String name, @Param("description") String description, @Param("startDateMonth") int startDateMonth, @Param("startDateDay") int startDateDay, @Param("startDateYear") int startDateYear, @Param("startDateHour") int startDateHour, @Param("startDateMinute") int startDateMinute, @Param("endDateMonth") int endDateMonth, @Param("endDateDay") int endDateDay, @Param("endDateYear") int endDateYear, @Param("endDateHour") int endDateHour, @Param("endDateMinute") int endDateMinute, @Param("neverExpire") boolean neverExpire, @Param("active") boolean active, @Param("limitCategories") String limitCategories, @Param("limitSkus") String limitSkus, @Param("minOrder") double minOrder, @Param("discount") double discount, @Param("discountType") String discountType, @Param("serviceContext") JSONObjectWrapper serviceContext);
 }

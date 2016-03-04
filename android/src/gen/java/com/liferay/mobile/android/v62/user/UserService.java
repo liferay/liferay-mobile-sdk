@@ -1,1357 +1,172 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package com.liferay.mobile.android.v62.user;
 
-import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.service.Session;
-
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import java.lang.Boolean;
+import java.lang.Integer;
+import java.lang.Long;
+import java.lang.String;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * @author Bruno Farache
- */
-public class UserService extends BaseService {
+@Path("/user")
+public interface UserService {
+  @Path("/add-group-users")
+  Call<Response> addGroupUsers(@Param("groupId") long groupId, @Param("userIds") JSONArray userIds, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public UserService(Session session) {
-		super(session);
-	}
+  @Path("/add-organization-users")
+  Call<Response> addOrganizationUsers(@Param("organizationId") long organizationId, @Param("userIds") JSONArray userIds);
 
-	public void addGroupUsers(long groupId, JSONArray userIds, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/add-password-policy-users")
+  Call<Response> addPasswordPolicyUsers(@Param("passwordPolicyId") long passwordPolicyId, @Param("userIds") JSONArray userIds);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/add-role-users")
+  Call<Response> addRoleUsers(@Param("roleId") long roleId, @Param("userIds") JSONArray userIds);
 
-			_params.put("groupId", groupId);
-			_params.put("userIds", checkNull(userIds));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/user/add-group-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void addOrganizationUsers(long organizationId, JSONArray userIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("organizationId", organizationId);
-			_params.put("userIds", checkNull(userIds));
-
-			_command.put("/user/add-organization-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void addPasswordPolicyUsers(long passwordPolicyId, JSONArray userIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("passwordPolicyId", passwordPolicyId);
-			_params.put("userIds", checkNull(userIds));
-
-			_command.put("/user/add-password-policy-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void addRoleUsers(long roleId, JSONArray userIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("roleId", roleId);
-			_params.put("userIds", checkNull(userIds));
-
-			_command.put("/user/add-role-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void addTeamUsers(long teamId, JSONArray userIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("teamId", teamId);
-			_params.put("userIds", checkNull(userIds));
-
-			_command.put("/user/add-team-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject addUser(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds, boolean sendEmail, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("autoPassword", autoPassword);
-			_params.put("password1", checkNull(password1));
-			_params.put("password2", checkNull(password2));
-			_params.put("autoScreenName", autoScreenName);
-			_params.put("screenName", checkNull(screenName));
-			_params.put("emailAddress", checkNull(emailAddress));
-			_params.put("facebookId", facebookId);
-			_params.put("openId", checkNull(openId));
-			_params.put("locale", checkNull(locale));
-			_params.put("firstName", checkNull(firstName));
-			_params.put("middleName", checkNull(middleName));
-			_params.put("lastName", checkNull(lastName));
-			_params.put("prefixId", prefixId);
-			_params.put("suffixId", suffixId);
-			_params.put("male", male);
-			_params.put("birthdayMonth", birthdayMonth);
-			_params.put("birthdayDay", birthdayDay);
-			_params.put("birthdayYear", birthdayYear);
-			_params.put("jobTitle", checkNull(jobTitle));
-			_params.put("groupIds", checkNull(groupIds));
-			_params.put("organizationIds", checkNull(organizationIds));
-			_params.put("roleIds", checkNull(roleIds));
-			_params.put("userGroupIds", checkNull(userGroupIds));
-			_params.put("sendEmail", sendEmail);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/user/add-user", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject addUser(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds, JSONArray addresses, JSONArray emailAddresses, JSONArray phones, JSONArray websites, JSONArray announcementsDelivers, boolean sendEmail, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("autoPassword", autoPassword);
-			_params.put("password1", checkNull(password1));
-			_params.put("password2", checkNull(password2));
-			_params.put("autoScreenName", autoScreenName);
-			_params.put("screenName", checkNull(screenName));
-			_params.put("emailAddress", checkNull(emailAddress));
-			_params.put("facebookId", facebookId);
-			_params.put("openId", checkNull(openId));
-			_params.put("locale", checkNull(locale));
-			_params.put("firstName", checkNull(firstName));
-			_params.put("middleName", checkNull(middleName));
-			_params.put("lastName", checkNull(lastName));
-			_params.put("prefixId", prefixId);
-			_params.put("suffixId", suffixId);
-			_params.put("male", male);
-			_params.put("birthdayMonth", birthdayMonth);
-			_params.put("birthdayDay", birthdayDay);
-			_params.put("birthdayYear", birthdayYear);
-			_params.put("jobTitle", checkNull(jobTitle));
-			_params.put("groupIds", checkNull(groupIds));
-			_params.put("organizationIds", checkNull(organizationIds));
-			_params.put("roleIds", checkNull(roleIds));
-			_params.put("userGroupIds", checkNull(userGroupIds));
-			_params.put("addresses", checkNull(addresses));
-			_params.put("emailAddresses", checkNull(emailAddresses));
-			_params.put("phones", checkNull(phones));
-			_params.put("websites", checkNull(websites));
-			_params.put("announcementsDelivers", checkNull(announcementsDelivers));
-			_params.put("sendEmail", sendEmail);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/user/add-user", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void addUserGroupUsers(long userGroupId, JSONArray userIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userGroupId", userGroupId);
-			_params.put("userIds", checkNull(userIds));
-
-			_command.put("/user/add-user-group-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject addUserWithWorkflow(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds, boolean sendEmail, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("autoPassword", autoPassword);
-			_params.put("password1", checkNull(password1));
-			_params.put("password2", checkNull(password2));
-			_params.put("autoScreenName", autoScreenName);
-			_params.put("screenName", checkNull(screenName));
-			_params.put("emailAddress", checkNull(emailAddress));
-			_params.put("facebookId", facebookId);
-			_params.put("openId", checkNull(openId));
-			_params.put("locale", checkNull(locale));
-			_params.put("firstName", checkNull(firstName));
-			_params.put("middleName", checkNull(middleName));
-			_params.put("lastName", checkNull(lastName));
-			_params.put("prefixId", prefixId);
-			_params.put("suffixId", suffixId);
-			_params.put("male", male);
-			_params.put("birthdayMonth", birthdayMonth);
-			_params.put("birthdayDay", birthdayDay);
-			_params.put("birthdayYear", birthdayYear);
-			_params.put("jobTitle", checkNull(jobTitle));
-			_params.put("groupIds", checkNull(groupIds));
-			_params.put("organizationIds", checkNull(organizationIds));
-			_params.put("roleIds", checkNull(roleIds));
-			_params.put("userGroupIds", checkNull(userGroupIds));
-			_params.put("sendEmail", sendEmail);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/user/add-user-with-workflow", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject addUserWithWorkflow(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupIds, JSONArray addresses, JSONArray emailAddresses, JSONArray phones, JSONArray websites, JSONArray announcementsDelivers, boolean sendEmail, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("autoPassword", autoPassword);
-			_params.put("password1", checkNull(password1));
-			_params.put("password2", checkNull(password2));
-			_params.put("autoScreenName", autoScreenName);
-			_params.put("screenName", checkNull(screenName));
-			_params.put("emailAddress", checkNull(emailAddress));
-			_params.put("facebookId", facebookId);
-			_params.put("openId", checkNull(openId));
-			_params.put("locale", checkNull(locale));
-			_params.put("firstName", checkNull(firstName));
-			_params.put("middleName", checkNull(middleName));
-			_params.put("lastName", checkNull(lastName));
-			_params.put("prefixId", prefixId);
-			_params.put("suffixId", suffixId);
-			_params.put("male", male);
-			_params.put("birthdayMonth", birthdayMonth);
-			_params.put("birthdayDay", birthdayDay);
-			_params.put("birthdayYear", birthdayYear);
-			_params.put("jobTitle", checkNull(jobTitle));
-			_params.put("groupIds", checkNull(groupIds));
-			_params.put("organizationIds", checkNull(organizationIds));
-			_params.put("roleIds", checkNull(roleIds));
-			_params.put("userGroupIds", checkNull(userGroupIds));
-			_params.put("addresses", checkNull(addresses));
-			_params.put("emailAddresses", checkNull(emailAddresses));
-			_params.put("phones", checkNull(phones));
-			_params.put("websites", checkNull(websites));
-			_params.put("announcementsDelivers", checkNull(announcementsDelivers));
-			_params.put("sendEmail", sendEmail);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/user/add-user-with-workflow", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void deletePortrait(long userId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-
-			_command.put("/user/delete-portrait", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void deleteRoleUser(long roleId, long userId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("roleId", roleId);
-			_params.put("userId", userId);
-
-			_command.put("/user/delete-role-user", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void deleteUser(long userId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-
-			_command.put("/user/delete-user", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONArray getCompanyUsers(long companyId, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/user/get-company-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Integer getCompanyUsersCount(long companyId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-
-			_command.put("/user/get-company-users-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public JSONArray getGroupUserIds(long groupId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-
-			_command.put("/user/get-group-user-ids", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getGroupUsers(long groupId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-
-			_command.put("/user/get-group-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getOrganizationUserIds(long organizationId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("organizationId", organizationId);
-
-			_command.put("/user/get-organization-user-ids", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getOrganizationUsers(long organizationId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("organizationId", organizationId);
-
-			_command.put("/user/get-organization-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getRoleUserIds(long roleId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("roleId", roleId);
-
-			_command.put("/user/get-role-user-ids", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONObject getUserByEmailAddress(long companyId, String emailAddress) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("emailAddress", checkNull(emailAddress));
-
-			_command.put("/user/get-user-by-email-address", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getUserById(long userId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-
-			_command.put("/user/get-user-by-id", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getUserByScreenName(long companyId, String screenName) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("screenName", checkNull(screenName));
-
-			_command.put("/user/get-user-by-screen-name", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONArray getUserGroupUsers(long userGroupId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userGroupId", userGroupId);
-
-			_command.put("/user/get-user-group-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Long getUserIdByEmailAddress(long companyId, String emailAddress) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("emailAddress", checkNull(emailAddress));
-
-			_command.put("/user/get-user-id-by-email-address", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getLong(0);
-	}
-
-	public Long getUserIdByScreenName(long companyId, String screenName) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("screenName", checkNull(screenName));
-
-			_command.put("/user/get-user-id-by-screen-name", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getLong(0);
-	}
-
-	public Boolean hasGroupUser(long groupId, long userId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-
-			_command.put("/user/has-group-user", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getBoolean(0);
-	}
-
-	public Boolean hasRoleUser(long roleId, long userId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("roleId", roleId);
-			_params.put("userId", userId);
-
-			_command.put("/user/has-role-user", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getBoolean(0);
-	}
-
-	public Boolean hasRoleUser(long companyId, String name, long userId, boolean inherited) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("name", checkNull(name));
-			_params.put("userId", userId);
-			_params.put("inherited", inherited);
-
-			_command.put("/user/has-role-user", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getBoolean(0);
-	}
-
-	public void setRoleUsers(long roleId, JSONArray userIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("roleId", roleId);
-			_params.put("userIds", checkNull(userIds));
-
-			_command.put("/user/set-role-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
+  @Path("/add-team-users")
+  Call<Response> addTeamUsers(@Param("teamId") long teamId, @Param("userIds") JSONArray userIds);
 
-	public void setUserGroupUsers(long userGroupId, JSONArray userIds) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/add-user")
+  Call<JSONObject> addUser(@Param("companyId") long companyId, @Param("autoPassword") boolean autoPassword, @Param("password1") String password1, @Param("password2") String password2, @Param("autoScreenName") boolean autoScreenName, @Param("screenName") String screenName, @Param("emailAddress") String emailAddress, @Param("facebookId") long facebookId, @Param("openId") String openId, @Param("locale") String locale, @Param("firstName") String firstName, @Param("middleName") String middleName, @Param("lastName") String lastName, @Param("prefixId") int prefixId, @Param("suffixId") int suffixId, @Param("male") boolean male, @Param("birthdayMonth") int birthdayMonth, @Param("birthdayDay") int birthdayDay, @Param("birthdayYear") int birthdayYear, @Param("jobTitle") String jobTitle, @Param("groupIds") JSONArray groupIds, @Param("organizationIds") JSONArray organizationIds, @Param("roleIds") JSONArray roleIds, @Param("userGroupIds") JSONArray userGroupIds, @Param("sendEmail") boolean sendEmail, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userGroupId", userGroupId);
-			_params.put("userIds", checkNull(userIds));
-
-			_command.put("/user/set-user-group-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/add-user")
+  Call<JSONObject> addUser(@Param("companyId") long companyId, @Param("autoPassword") boolean autoPassword, @Param("password1") String password1, @Param("password2") String password2, @Param("autoScreenName") boolean autoScreenName, @Param("screenName") String screenName, @Param("emailAddress") String emailAddress, @Param("facebookId") long facebookId, @Param("openId") String openId, @Param("locale") String locale, @Param("firstName") String firstName, @Param("middleName") String middleName, @Param("lastName") String lastName, @Param("prefixId") int prefixId, @Param("suffixId") int suffixId, @Param("male") boolean male, @Param("birthdayMonth") int birthdayMonth, @Param("birthdayDay") int birthdayDay, @Param("birthdayYear") int birthdayYear, @Param("jobTitle") String jobTitle, @Param("groupIds") JSONArray groupIds, @Param("organizationIds") JSONArray organizationIds, @Param("roleIds") JSONArray roleIds, @Param("userGroupIds") JSONArray userGroupIds, @Param("addresses") JSONArray addresses, @Param("emailAddresses") JSONArray emailAddresses, @Param("phones") JSONArray phones, @Param("websites") JSONArray websites, @Param("announcementsDelivers") JSONArray announcementsDelivers, @Param("sendEmail") boolean sendEmail, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-		session.invoke(_command);
-	}
+  @Path("/add-user-group-users")
+  Call<Response> addUserGroupUsers(@Param("userGroupId") long userGroupId, @Param("userIds") JSONArray userIds);
 
-	public void unsetGroupTeamsUsers(long groupId, JSONArray userIds) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/add-user-with-workflow")
+  Call<JSONObject> addUserWithWorkflow(@Param("companyId") long companyId, @Param("autoPassword") boolean autoPassword, @Param("password1") String password1, @Param("password2") String password2, @Param("autoScreenName") boolean autoScreenName, @Param("screenName") String screenName, @Param("emailAddress") String emailAddress, @Param("facebookId") long facebookId, @Param("openId") String openId, @Param("locale") String locale, @Param("firstName") String firstName, @Param("middleName") String middleName, @Param("lastName") String lastName, @Param("prefixId") int prefixId, @Param("suffixId") int suffixId, @Param("male") boolean male, @Param("birthdayMonth") int birthdayMonth, @Param("birthdayDay") int birthdayDay, @Param("birthdayYear") int birthdayYear, @Param("jobTitle") String jobTitle, @Param("groupIds") JSONArray groupIds, @Param("organizationIds") JSONArray organizationIds, @Param("roleIds") JSONArray roleIds, @Param("userGroupIds") JSONArray userGroupIds, @Param("sendEmail") boolean sendEmail, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/add-user-with-workflow")
+  Call<JSONObject> addUserWithWorkflow(@Param("companyId") long companyId, @Param("autoPassword") boolean autoPassword, @Param("password1") String password1, @Param("password2") String password2, @Param("autoScreenName") boolean autoScreenName, @Param("screenName") String screenName, @Param("emailAddress") String emailAddress, @Param("facebookId") long facebookId, @Param("openId") String openId, @Param("locale") String locale, @Param("firstName") String firstName, @Param("middleName") String middleName, @Param("lastName") String lastName, @Param("prefixId") int prefixId, @Param("suffixId") int suffixId, @Param("male") boolean male, @Param("birthdayMonth") int birthdayMonth, @Param("birthdayDay") int birthdayDay, @Param("birthdayYear") int birthdayYear, @Param("jobTitle") String jobTitle, @Param("groupIds") JSONArray groupIds, @Param("organizationIds") JSONArray organizationIds, @Param("roleIds") JSONArray roleIds, @Param("userGroupIds") JSONArray userGroupIds, @Param("addresses") JSONArray addresses, @Param("emailAddresses") JSONArray emailAddresses, @Param("phones") JSONArray phones, @Param("websites") JSONArray websites, @Param("announcementsDelivers") JSONArray announcementsDelivers, @Param("sendEmail") boolean sendEmail, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-			_params.put("groupId", groupId);
-			_params.put("userIds", checkNull(userIds));
+  @Path("/delete-portrait")
+  Call<Response> deletePortrait(@Param("userId") long userId);
 
-			_command.put("/user/unset-group-teams-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/delete-role-user")
+  Call<Response> deleteRoleUser(@Param("roleId") long roleId, @Param("userId") long userId);
 
-		session.invoke(_command);
-	}
+  @Path("/delete-user")
+  Call<Response> deleteUser(@Param("userId") long userId);
 
-	public void unsetGroupUsers(long groupId, JSONArray userIds, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-company-users")
+  Call<JSONArray> getCompanyUsers(@Param("companyId") long companyId, @Param("start") int start, @Param("end") int end);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-company-users-count")
+  Call<Integer> getCompanyUsersCount(@Param("companyId") long companyId);
 
-			_params.put("groupId", groupId);
-			_params.put("userIds", checkNull(userIds));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+  @Path("/get-group-user-ids")
+  Call<JSONArray> getGroupUserIds(@Param("groupId") long groupId);
 
-			_command.put("/user/unset-group-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/get-group-users")
+  Call<JSONArray> getGroupUsers(@Param("groupId") long groupId);
 
-		session.invoke(_command);
-	}
+  @Path("/get-organization-user-ids")
+  Call<JSONArray> getOrganizationUserIds(@Param("organizationId") long organizationId);
 
-	public void unsetOrganizationUsers(long organizationId, JSONArray userIds) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-organization-users")
+  Call<JSONArray> getOrganizationUsers(@Param("organizationId") long organizationId);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-role-user-ids")
+  Call<JSONArray> getRoleUserIds(@Param("roleId") long roleId);
 
-			_params.put("organizationId", organizationId);
-			_params.put("userIds", checkNull(userIds));
+  @Path("/get-user-by-email-address")
+  Call<JSONObject> getUserByEmailAddress(@Param("companyId") long companyId, @Param("emailAddress") String emailAddress);
 
-			_command.put("/user/unset-organization-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/get-user-by-id")
+  Call<JSONObject> getUserById(@Param("userId") long userId);
 
-		session.invoke(_command);
-	}
+  @Path("/get-user-by-screen-name")
+  Call<JSONObject> getUserByScreenName(@Param("companyId") long companyId, @Param("screenName") String screenName);
 
-	public void unsetPasswordPolicyUsers(long passwordPolicyId, JSONArray userIds) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-user-group-users")
+  Call<JSONArray> getUserGroupUsers(@Param("userGroupId") long userGroupId);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-user-id-by-email-address")
+  Call<Long> getUserIdByEmailAddress(@Param("companyId") long companyId, @Param("emailAddress") String emailAddress);
 
-			_params.put("passwordPolicyId", passwordPolicyId);
-			_params.put("userIds", checkNull(userIds));
+  @Path("/get-user-id-by-screen-name")
+  Call<Long> getUserIdByScreenName(@Param("companyId") long companyId, @Param("screenName") String screenName);
 
-			_command.put("/user/unset-password-policy-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/has-group-user")
+  Call<Boolean> hasGroupUser(@Param("groupId") long groupId, @Param("userId") long userId);
 
-		session.invoke(_command);
-	}
+  @Path("/has-role-user")
+  Call<Boolean> hasRoleUser(@Param("roleId") long roleId, @Param("userId") long userId);
 
-	public void unsetRoleUsers(long roleId, JSONArray userIds) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/has-role-user")
+  Call<Boolean> hasRoleUser(@Param("companyId") long companyId, @Param("name") String name, @Param("userId") long userId, @Param("inherited") boolean inherited);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/set-role-users")
+  Call<Response> setRoleUsers(@Param("roleId") long roleId, @Param("userIds") JSONArray userIds);
 
-			_params.put("roleId", roleId);
-			_params.put("userIds", checkNull(userIds));
+  @Path("/set-user-group-users")
+  Call<Response> setUserGroupUsers(@Param("userGroupId") long userGroupId, @Param("userIds") JSONArray userIds);
 
-			_command.put("/user/unset-role-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/unset-group-teams-users")
+  Call<Response> unsetGroupTeamsUsers(@Param("groupId") long groupId, @Param("userIds") JSONArray userIds);
 
-		session.invoke(_command);
-	}
+  @Path("/unset-group-users")
+  Call<Response> unsetGroupUsers(@Param("groupId") long groupId, @Param("userIds") JSONArray userIds, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public void unsetTeamUsers(long teamId, JSONArray userIds) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/unset-organization-users")
+  Call<Response> unsetOrganizationUsers(@Param("organizationId") long organizationId, @Param("userIds") JSONArray userIds);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/unset-password-policy-users")
+  Call<Response> unsetPasswordPolicyUsers(@Param("passwordPolicyId") long passwordPolicyId, @Param("userIds") JSONArray userIds);
 
-			_params.put("teamId", teamId);
-			_params.put("userIds", checkNull(userIds));
-
-			_command.put("/user/unset-team-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void unsetUserGroupUsers(long userGroupId, JSONArray userIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userGroupId", userGroupId);
-			_params.put("userIds", checkNull(userIds));
-
-			_command.put("/user/unset-user-group-users", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject updateAgreedToTermsOfUse(long userId, boolean agreedToTermsOfUse) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("agreedToTermsOfUse", agreedToTermsOfUse);
-
-			_command.put("/user/update-agreed-to-terms-of-use", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateEmailAddress(long userId, String password, String emailAddress1, String emailAddress2, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/unset-role-users")
+  Call<Response> unsetRoleUsers(@Param("roleId") long roleId, @Param("userIds") JSONArray userIds);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/unset-team-users")
+  Call<Response> unsetTeamUsers(@Param("teamId") long teamId, @Param("userIds") JSONArray userIds);
 
-			_params.put("userId", userId);
-			_params.put("password", checkNull(password));
-			_params.put("emailAddress1", checkNull(emailAddress1));
-			_params.put("emailAddress2", checkNull(emailAddress2));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/user/update-email-address", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/unset-user-group-users")
+  Call<Response> unsetUserGroupUsers(@Param("userGroupId") long userGroupId, @Param("userIds") JSONArray userIds);
 
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
+  @Path("/update-agreed-to-terms-of-use")
+  Call<JSONObject> updateAgreedToTermsOfUse(@Param("userId") long userId, @Param("agreedToTermsOfUse") boolean agreedToTermsOfUse);
 
-		return _result.getJSONObject(0);
-	}
+  @Path("/update-email-address")
+  Call<JSONObject> updateEmailAddress(@Param("userId") long userId, @Param("password") String password, @Param("emailAddress1") String emailAddress1, @Param("emailAddress2") String emailAddress2, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public JSONObject updateIncompleteUser(long companyId, boolean autoPassword, String password1, String password2, boolean autoScreenName, String screenName, String emailAddress, long facebookId, String openId, String locale, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String jobTitle, boolean updateUserInformation, boolean sendEmail, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/update-incomplete-user")
+  Call<JSONObject> updateIncompleteUser(@Param("companyId") long companyId, @Param("autoPassword") boolean autoPassword, @Param("password1") String password1, @Param("password2") String password2, @Param("autoScreenName") boolean autoScreenName, @Param("screenName") String screenName, @Param("emailAddress") String emailAddress, @Param("facebookId") long facebookId, @Param("openId") String openId, @Param("locale") String locale, @Param("firstName") String firstName, @Param("middleName") String middleName, @Param("lastName") String lastName, @Param("prefixId") int prefixId, @Param("suffixId") int suffixId, @Param("male") boolean male, @Param("birthdayMonth") int birthdayMonth, @Param("birthdayDay") int birthdayDay, @Param("birthdayYear") int birthdayYear, @Param("jobTitle") String jobTitle, @Param("updateUserInformation") boolean updateUserInformation, @Param("sendEmail") boolean sendEmail, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/update-lockout-by-id")
+  Call<JSONObject> updateLockoutById(@Param("userId") long userId, @Param("lockout") boolean lockout);
 
-			_params.put("companyId", companyId);
-			_params.put("autoPassword", autoPassword);
-			_params.put("password1", checkNull(password1));
-			_params.put("password2", checkNull(password2));
-			_params.put("autoScreenName", autoScreenName);
-			_params.put("screenName", checkNull(screenName));
-			_params.put("emailAddress", checkNull(emailAddress));
-			_params.put("facebookId", facebookId);
-			_params.put("openId", checkNull(openId));
-			_params.put("locale", checkNull(locale));
-			_params.put("firstName", checkNull(firstName));
-			_params.put("middleName", checkNull(middleName));
-			_params.put("lastName", checkNull(lastName));
-			_params.put("prefixId", prefixId);
-			_params.put("suffixId", suffixId);
-			_params.put("male", male);
-			_params.put("birthdayMonth", birthdayMonth);
-			_params.put("birthdayDay", birthdayDay);
-			_params.put("birthdayYear", birthdayYear);
-			_params.put("jobTitle", checkNull(jobTitle));
-			_params.put("updateUserInformation", updateUserInformation);
-			_params.put("sendEmail", sendEmail);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+  @Path("/update-open-id")
+  Call<JSONObject> updateOpenId(@Param("userId") long userId, @Param("openId") String openId);
 
-			_command.put("/user/update-incomplete-user", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/update-organizations")
+  Call<Response> updateOrganizations(@Param("userId") long userId, @Param("organizationIds") JSONArray organizationIds, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/update-password")
+  Call<JSONObject> updatePassword(@Param("userId") long userId, @Param("password1") String password1, @Param("password2") String password2, @Param("passwordReset") boolean passwordReset);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/update-portrait")
+  Call<JSONObject> updatePortrait(@Param("userId") long userId, @Param("bytes") byte[] bytes);
 
-		return _result.getJSONObject(0);
-	}
+  @Path("/update-reminder-query")
+  Call<JSONObject> updateReminderQuery(@Param("userId") long userId, @Param("question") String question, @Param("answer") String answer);
 
-	public JSONObject updateLockoutById(long userId, boolean lockout) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/update-screen-name")
+  Call<JSONObject> updateScreenName(@Param("userId") long userId, @Param("screenName") String screenName);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/update-status")
+  Call<JSONObject> updateStatus(@Param("userId") long userId, @Param("status") int status);
 
-			_params.put("userId", userId);
-			_params.put("lockout", lockout);
+  @Path("/update-status")
+  Call<JSONObject> updateStatus(@Param("userId") long userId, @Param("status") int status, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-			_command.put("/user/update-lockout-by-id", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/update-user")
+  Call<JSONObject> updateUser(@Param("userId") long userId, @Param("oldPassword") String oldPassword, @Param("newPassword1") String newPassword1, @Param("newPassword2") String newPassword2, @Param("passwordReset") boolean passwordReset, @Param("reminderQueryQuestion") String reminderQueryQuestion, @Param("reminderQueryAnswer") String reminderQueryAnswer, @Param("screenName") String screenName, @Param("emailAddress") String emailAddress, @Param("facebookId") long facebookId, @Param("openId") String openId, @Param("languageId") String languageId, @Param("timeZoneId") String timeZoneId, @Param("greeting") String greeting, @Param("comments") String comments, @Param("firstName") String firstName, @Param("middleName") String middleName, @Param("lastName") String lastName, @Param("prefixId") int prefixId, @Param("suffixId") int suffixId, @Param("male") boolean male, @Param("birthdayMonth") int birthdayMonth, @Param("birthdayDay") int birthdayDay, @Param("birthdayYear") int birthdayYear, @Param("smsSn") String smsSn, @Param("aimSn") String aimSn, @Param("facebookSn") String facebookSn, @Param("icqSn") String icqSn, @Param("jabberSn") String jabberSn, @Param("msnSn") String msnSn, @Param("mySpaceSn") String mySpaceSn, @Param("skypeSn") String skypeSn, @Param("twitterSn") String twitterSn, @Param("ymSn") String ymSn, @Param("jobTitle") String jobTitle, @Param("groupIds") JSONArray groupIds, @Param("organizationIds") JSONArray organizationIds, @Param("roleIds") JSONArray roleIds, @Param("userGroupRoles") JSONArray userGroupRoles, @Param("userGroupIds") JSONArray userGroupIds, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateOpenId(long userId, String openId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("openId", checkNull(openId));
-
-			_command.put("/user/update-open-id", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void updateOrganizations(long userId, JSONArray organizationIds, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("organizationIds", checkNull(organizationIds));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/user/update-organizations", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject updatePassword(long userId, String password1, String password2, boolean passwordReset) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("password1", checkNull(password1));
-			_params.put("password2", checkNull(password2));
-			_params.put("passwordReset", passwordReset);
-
-			_command.put("/user/update-password", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updatePortrait(long userId, byte[] bytes) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("bytes", toString(bytes));
-
-			_command.put("/user/update-portrait", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateReminderQuery(long userId, String question, String answer) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("question", checkNull(question));
-			_params.put("answer", checkNull(answer));
-
-			_command.put("/user/update-reminder-query", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateScreenName(long userId, String screenName) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("screenName", checkNull(screenName));
-
-			_command.put("/user/update-screen-name", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateStatus(long userId, int status) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("status", status);
-
-			_command.put("/user/update-status", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateUser(long userId, String oldPassword, String newPassword1, String newPassword2, boolean passwordReset, String reminderQueryQuestion, String reminderQueryAnswer, String screenName, String emailAddress, long facebookId, String openId, String languageId, String timeZoneId, String greeting, String comments, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String smsSn, String aimSn, String facebookSn, String icqSn, String jabberSn, String msnSn, String mySpaceSn, String skypeSn, String twitterSn, String ymSn, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupRoles, JSONArray userGroupIds, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("oldPassword", checkNull(oldPassword));
-			_params.put("newPassword1", checkNull(newPassword1));
-			_params.put("newPassword2", checkNull(newPassword2));
-			_params.put("passwordReset", passwordReset);
-			_params.put("reminderQueryQuestion", checkNull(reminderQueryQuestion));
-			_params.put("reminderQueryAnswer", checkNull(reminderQueryAnswer));
-			_params.put("screenName", checkNull(screenName));
-			_params.put("emailAddress", checkNull(emailAddress));
-			_params.put("facebookId", facebookId);
-			_params.put("openId", checkNull(openId));
-			_params.put("languageId", checkNull(languageId));
-			_params.put("timeZoneId", checkNull(timeZoneId));
-			_params.put("greeting", checkNull(greeting));
-			_params.put("comments", checkNull(comments));
-			_params.put("firstName", checkNull(firstName));
-			_params.put("middleName", checkNull(middleName));
-			_params.put("lastName", checkNull(lastName));
-			_params.put("prefixId", prefixId);
-			_params.put("suffixId", suffixId);
-			_params.put("male", male);
-			_params.put("birthdayMonth", birthdayMonth);
-			_params.put("birthdayDay", birthdayDay);
-			_params.put("birthdayYear", birthdayYear);
-			_params.put("smsSn", checkNull(smsSn));
-			_params.put("aimSn", checkNull(aimSn));
-			_params.put("facebookSn", checkNull(facebookSn));
-			_params.put("icqSn", checkNull(icqSn));
-			_params.put("jabberSn", checkNull(jabberSn));
-			_params.put("msnSn", checkNull(msnSn));
-			_params.put("mySpaceSn", checkNull(mySpaceSn));
-			_params.put("skypeSn", checkNull(skypeSn));
-			_params.put("twitterSn", checkNull(twitterSn));
-			_params.put("ymSn", checkNull(ymSn));
-			_params.put("jobTitle", checkNull(jobTitle));
-			_params.put("groupIds", checkNull(groupIds));
-			_params.put("organizationIds", checkNull(organizationIds));
-			_params.put("roleIds", checkNull(roleIds));
-			_params.put("userGroupRoles", checkNull(userGroupRoles));
-			_params.put("userGroupIds", checkNull(userGroupIds));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/user/update-user", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateUser(long userId, String oldPassword, String newPassword1, String newPassword2, boolean passwordReset, String reminderQueryQuestion, String reminderQueryAnswer, String screenName, String emailAddress, long facebookId, String openId, String languageId, String timeZoneId, String greeting, String comments, String firstName, String middleName, String lastName, int prefixId, int suffixId, boolean male, int birthdayMonth, int birthdayDay, int birthdayYear, String smsSn, String aimSn, String facebookSn, String icqSn, String jabberSn, String msnSn, String mySpaceSn, String skypeSn, String twitterSn, String ymSn, String jobTitle, JSONArray groupIds, JSONArray organizationIds, JSONArray roleIds, JSONArray userGroupRoles, JSONArray userGroupIds, JSONArray addresses, JSONArray emailAddresses, JSONArray phones, JSONArray websites, JSONArray announcementsDelivers, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("oldPassword", checkNull(oldPassword));
-			_params.put("newPassword1", checkNull(newPassword1));
-			_params.put("newPassword2", checkNull(newPassword2));
-			_params.put("passwordReset", passwordReset);
-			_params.put("reminderQueryQuestion", checkNull(reminderQueryQuestion));
-			_params.put("reminderQueryAnswer", checkNull(reminderQueryAnswer));
-			_params.put("screenName", checkNull(screenName));
-			_params.put("emailAddress", checkNull(emailAddress));
-			_params.put("facebookId", facebookId);
-			_params.put("openId", checkNull(openId));
-			_params.put("languageId", checkNull(languageId));
-			_params.put("timeZoneId", checkNull(timeZoneId));
-			_params.put("greeting", checkNull(greeting));
-			_params.put("comments", checkNull(comments));
-			_params.put("firstName", checkNull(firstName));
-			_params.put("middleName", checkNull(middleName));
-			_params.put("lastName", checkNull(lastName));
-			_params.put("prefixId", prefixId);
-			_params.put("suffixId", suffixId);
-			_params.put("male", male);
-			_params.put("birthdayMonth", birthdayMonth);
-			_params.put("birthdayDay", birthdayDay);
-			_params.put("birthdayYear", birthdayYear);
-			_params.put("smsSn", checkNull(smsSn));
-			_params.put("aimSn", checkNull(aimSn));
-			_params.put("facebookSn", checkNull(facebookSn));
-			_params.put("icqSn", checkNull(icqSn));
-			_params.put("jabberSn", checkNull(jabberSn));
-			_params.put("msnSn", checkNull(msnSn));
-			_params.put("mySpaceSn", checkNull(mySpaceSn));
-			_params.put("skypeSn", checkNull(skypeSn));
-			_params.put("twitterSn", checkNull(twitterSn));
-			_params.put("ymSn", checkNull(ymSn));
-			_params.put("jobTitle", checkNull(jobTitle));
-			_params.put("groupIds", checkNull(groupIds));
-			_params.put("organizationIds", checkNull(organizationIds));
-			_params.put("roleIds", checkNull(roleIds));
-			_params.put("userGroupRoles", checkNull(userGroupRoles));
-			_params.put("userGroupIds", checkNull(userGroupIds));
-			_params.put("addresses", checkNull(addresses));
-			_params.put("emailAddresses", checkNull(emailAddresses));
-			_params.put("phones", checkNull(phones));
-			_params.put("websites", checkNull(websites));
-			_params.put("announcementsDelivers", checkNull(announcementsDelivers));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/user/update-user", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
+  @Path("/update-user")
+  Call<JSONObject> updateUser(@Param("userId") long userId, @Param("oldPassword") String oldPassword, @Param("newPassword1") String newPassword1, @Param("newPassword2") String newPassword2, @Param("passwordReset") boolean passwordReset, @Param("reminderQueryQuestion") String reminderQueryQuestion, @Param("reminderQueryAnswer") String reminderQueryAnswer, @Param("screenName") String screenName, @Param("emailAddress") String emailAddress, @Param("facebookId") long facebookId, @Param("openId") String openId, @Param("languageId") String languageId, @Param("timeZoneId") String timeZoneId, @Param("greeting") String greeting, @Param("comments") String comments, @Param("firstName") String firstName, @Param("middleName") String middleName, @Param("lastName") String lastName, @Param("prefixId") int prefixId, @Param("suffixId") int suffixId, @Param("male") boolean male, @Param("birthdayMonth") int birthdayMonth, @Param("birthdayDay") int birthdayDay, @Param("birthdayYear") int birthdayYear, @Param("smsSn") String smsSn, @Param("aimSn") String aimSn, @Param("facebookSn") String facebookSn, @Param("icqSn") String icqSn, @Param("jabberSn") String jabberSn, @Param("msnSn") String msnSn, @Param("mySpaceSn") String mySpaceSn, @Param("skypeSn") String skypeSn, @Param("twitterSn") String twitterSn, @Param("ymSn") String ymSn, @Param("jobTitle") String jobTitle, @Param("groupIds") JSONArray groupIds, @Param("organizationIds") JSONArray organizationIds, @Param("roleIds") JSONArray roleIds, @Param("userGroupRoles") JSONArray userGroupRoles, @Param("userGroupIds") JSONArray userGroupIds, @Param("addresses") JSONArray addresses, @Param("emailAddresses") JSONArray emailAddresses, @Param("phones") JSONArray phones, @Param("websites") JSONArray websites, @Param("announcementsDelivers") JSONArray announcementsDelivers, @Param("serviceContext") JSONObjectWrapper serviceContext);
 }

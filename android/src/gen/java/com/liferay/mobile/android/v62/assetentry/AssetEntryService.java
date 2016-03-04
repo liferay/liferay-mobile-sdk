@@ -1,308 +1,40 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package com.liferay.mobile.android.v62.assetentry;
 
-import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.service.Session;
-
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import java.lang.Integer;
+import java.lang.String;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * @author Bruno Farache
- */
-public class AssetEntryService extends BaseService {
+@Path("/assetentry")
+public interface AssetEntryService {
+  @Path("/get-company-entries")
+  Call<JSONArray> getCompanyEntries(@Param("companyId") long companyId, @Param("start") int start, @Param("end") int end);
 
-	public AssetEntryService(Session session) {
-		super(session);
-	}
+  @Path("/get-company-entries-count")
+  Call<Integer> getCompanyEntriesCount(@Param("companyId") long companyId);
 
-	public JSONArray getCompanyEntries(long companyId, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-entries")
+  Call<JSONArray> getEntries(@Param("entryQuery") JSONObjectWrapper entryQuery);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-entries-count")
+  Call<Integer> getEntriesCount(@Param("entryQuery") JSONObjectWrapper entryQuery);
 
-			_params.put("companyId", companyId);
-			_params.put("start", start);
-			_params.put("end", end);
+  @Path("/get-entry")
+  Call<JSONObject> getEntry(@Param("entryId") long entryId);
 
-			_command.put("/assetentry/get-company-entries", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/increment-view-counter")
+  Call<JSONObject> incrementViewCounter(@Param("className") String className, @Param("classPK") long classPK);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/update-entry")
+  Call<JSONObject> updateEntry(@Param("groupId") long groupId, @Param("className") String className, @Param("classPK") long classPK, @Param("classUuid") String classUuid, @Param("classTypeId") long classTypeId, @Param("categoryIds") JSONArray categoryIds, @Param("tagNames") JSONArray tagNames, @Param("visible") boolean visible, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("expirationDate") long expirationDate, @Param("mimeType") String mimeType, @Param("title") String title, @Param("description") String description, @Param("summary") String summary, @Param("url") String url, @Param("layoutUuid") String layoutUuid, @Param("height") int height, @Param("width") int width, @Param("priority") int priority, @Param("sync") boolean sync);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/update-entry")
+  Call<JSONObject> updateEntry(@Param("groupId") long groupId, @Param("className") String className, @Param("classPK") long classPK, @Param("classUuid") String classUuid, @Param("classTypeId") long classTypeId, @Param("categoryIds") JSONArray categoryIds, @Param("tagNames") JSONArray tagNames, @Param("visible") boolean visible, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("publishDate") long publishDate, @Param("expirationDate") long expirationDate, @Param("mimeType") String mimeType, @Param("title") String title, @Param("description") String description, @Param("summary") String summary, @Param("url") String url, @Param("layoutUuid") String layoutUuid, @Param("height") int height, @Param("width") int width, @Param("priority") int priority, @Param("sync") boolean sync);
 
-		return _result.getJSONArray(0);
-	}
-
-	public Integer getCompanyEntriesCount(long companyId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-
-			_command.put("/assetentry/get-company-entries-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public JSONArray getEntries(JSONObjectWrapper entryQuery) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			mangleWrapper(_params, "entryQuery", "com.liferay.portlet.asset.service.persistence.AssetEntryQuery", entryQuery);
-
-			_command.put("/assetentry/get-entries", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Integer getEntriesCount(JSONObjectWrapper entryQuery) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			mangleWrapper(_params, "entryQuery", "com.liferay.portlet.asset.service.persistence.AssetEntryQuery", entryQuery);
-
-			_command.put("/assetentry/get-entries-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public JSONObject getEntry(long entryId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("entryId", entryId);
-
-			_command.put("/assetentry/get-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject incrementViewCounter(String className, long classPK) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("className", checkNull(className));
-			_params.put("classPK", classPK);
-
-			_command.put("/assetentry/increment-view-counter", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateEntry(long groupId, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, int priority, boolean sync) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("className", checkNull(className));
-			_params.put("classPK", classPK);
-			_params.put("classUuid", checkNull(classUuid));
-			_params.put("classTypeId", classTypeId);
-			_params.put("categoryIds", checkNull(categoryIds));
-			_params.put("tagNames", checkNull(tagNames));
-			_params.put("visible", visible);
-			_params.put("startDate", startDate);
-			_params.put("endDate", endDate);
-			_params.put("expirationDate", expirationDate);
-			_params.put("mimeType", checkNull(mimeType));
-			_params.put("title", checkNull(title));
-			_params.put("description", checkNull(description));
-			_params.put("summary", checkNull(summary));
-			_params.put("url", checkNull(url));
-			_params.put("layoutUuid", checkNull(layoutUuid));
-			_params.put("height", height);
-			_params.put("width", width);
-			_params.put("priority", priority);
-			_params.put("sync", sync);
-
-			_command.put("/assetentry/update-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateEntry(long groupId, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long publishDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, int priority, boolean sync) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("className", checkNull(className));
-			_params.put("classPK", classPK);
-			_params.put("classUuid", checkNull(classUuid));
-			_params.put("classTypeId", classTypeId);
-			_params.put("categoryIds", checkNull(categoryIds));
-			_params.put("tagNames", checkNull(tagNames));
-			_params.put("visible", visible);
-			_params.put("startDate", startDate);
-			_params.put("endDate", endDate);
-			_params.put("publishDate", publishDate);
-			_params.put("expirationDate", expirationDate);
-			_params.put("mimeType", checkNull(mimeType));
-			_params.put("title", checkNull(title));
-			_params.put("description", checkNull(description));
-			_params.put("summary", checkNull(summary));
-			_params.put("url", checkNull(url));
-			_params.put("layoutUuid", checkNull(layoutUuid));
-			_params.put("height", height);
-			_params.put("width", width);
-			_params.put("priority", priority);
-			_params.put("sync", sync);
-
-			_command.put("/assetentry/update-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateEntry(long groupId, long createDate, long modifiedDate, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, int priority, boolean sync) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("createDate", createDate);
-			_params.put("modifiedDate", modifiedDate);
-			_params.put("className", checkNull(className));
-			_params.put("classPK", classPK);
-			_params.put("classUuid", checkNull(classUuid));
-			_params.put("classTypeId", classTypeId);
-			_params.put("categoryIds", checkNull(categoryIds));
-			_params.put("tagNames", checkNull(tagNames));
-			_params.put("visible", visible);
-			_params.put("startDate", startDate);
-			_params.put("endDate", endDate);
-			_params.put("expirationDate", expirationDate);
-			_params.put("mimeType", checkNull(mimeType));
-			_params.put("title", checkNull(title));
-			_params.put("description", checkNull(description));
-			_params.put("summary", checkNull(summary));
-			_params.put("url", checkNull(url));
-			_params.put("layoutUuid", checkNull(layoutUuid));
-			_params.put("height", height);
-			_params.put("width", width);
-			_params.put("priority", priority);
-			_params.put("sync", sync);
-
-			_command.put("/assetentry/update-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
+  @Path("/update-entry")
+  Call<JSONObject> updateEntry(@Param("groupId") long groupId, @Param("createDate") long createDate, @Param("modifiedDate") long modifiedDate, @Param("className") String className, @Param("classPK") long classPK, @Param("classUuid") String classUuid, @Param("classTypeId") long classTypeId, @Param("categoryIds") JSONArray categoryIds, @Param("tagNames") JSONArray tagNames, @Param("visible") boolean visible, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("expirationDate") long expirationDate, @Param("mimeType") String mimeType, @Param("title") String title, @Param("description") String description, @Param("summary") String summary, @Param("url") String url, @Param("layoutUuid") String layoutUuid, @Param("height") int height, @Param("width") int width, @Param("priority") int priority, @Param("sync") boolean sync);
 }

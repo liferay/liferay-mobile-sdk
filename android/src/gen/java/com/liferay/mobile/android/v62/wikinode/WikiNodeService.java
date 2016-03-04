@@ -1,369 +1,59 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package com.liferay.mobile.android.v62.wikinode;
 
-import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.service.Session;
-
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import java.lang.Integer;
+import java.lang.String;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * @author Bruno Farache
- */
-public class WikiNodeService extends BaseService {
+@Path("/wikinode")
+public interface WikiNodeService {
+  @Path("/add-node")
+  Call<JSONObject> addNode(@Param("name") String name, @Param("description") String description, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public WikiNodeService(Session session) {
-		super(session);
-	}
+  @Path("/delete-node")
+  Call<Response> deleteNode(@Param("nodeId") long nodeId);
 
-	public JSONObject addNode(String name, String description, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-node")
+  Call<JSONObject> getNode(@Param("nodeId") long nodeId);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-node")
+  Call<JSONObject> getNode(@Param("groupId") long groupId, @Param("name") String name);
 
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+  @Path("/get-nodes")
+  Call<JSONArray> getNodes(@Param("groupId") long groupId);
 
-			_command.put("/wikinode/add-node", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/get-nodes")
+  Call<JSONArray> getNodes(@Param("groupId") long groupId, @Param("status") int status);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/get-nodes")
+  Call<JSONArray> getNodes(@Param("groupId") long groupId, @Param("start") int start, @Param("end") int end);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/get-nodes")
+  Call<JSONArray> getNodes(@Param("groupId") long groupId, @Param("status") int status, @Param("start") int start, @Param("end") int end);
 
-		return _result.getJSONObject(0);
-	}
+  @Path("/get-nodes-count")
+  Call<Integer> getNodesCount(@Param("groupId") long groupId);
 
-	public void deleteNode(long nodeId) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-nodes-count")
+  Call<Integer> getNodesCount(@Param("groupId") long groupId, @Param("status") int status);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/move-node-to-trash")
+  Call<JSONObject> moveNodeToTrash(@Param("nodeId") long nodeId);
 
-			_params.put("nodeId", nodeId);
+  @Path("/restore-node-from-trash")
+  Call<Response> restoreNodeFromTrash(@Param("nodeId") long nodeId);
 
-			_command.put("/wikinode/delete-node", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/subscribe-node")
+  Call<Response> subscribeNode(@Param("nodeId") long nodeId);
 
-		session.invoke(_command);
-	}
+  @Path("/unsubscribe-node")
+  Call<Response> unsubscribeNode(@Param("nodeId") long nodeId);
 
-	public JSONObject getNode(long nodeId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("nodeId", nodeId);
-
-			_command.put("/wikinode/get-node", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getNode(long groupId, String name) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-
-			_command.put("/wikinode/get-node", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONArray getNodes(long groupId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-
-			_command.put("/wikinode/get-nodes", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getNodes(long groupId, int status) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("status", status);
-
-			_command.put("/wikinode/get-nodes", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getNodes(long groupId, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/wikinode/get-nodes", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getNodes(long groupId, int status, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("status", status);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/wikinode/get-nodes", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Integer getNodesCount(long groupId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-
-			_command.put("/wikinode/get-nodes-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public Integer getNodesCount(long groupId, int status) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("status", status);
-
-			_command.put("/wikinode/get-nodes-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public JSONObject moveNodeToTrash(long nodeId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("nodeId", nodeId);
-
-			_command.put("/wikinode/move-node-to-trash", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void restoreNodeFromTrash(long nodeId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("nodeId", nodeId);
-
-			_command.put("/wikinode/restore-node-from-trash", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void subscribeNode(long nodeId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("nodeId", nodeId);
-
-			_command.put("/wikinode/subscribe-node", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void unsubscribeNode(long nodeId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("nodeId", nodeId);
-
-			_command.put("/wikinode/unsubscribe-node", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject updateNode(long nodeId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("nodeId", nodeId);
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/wikinode/update-node", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
+  @Path("/update-node")
+  Call<JSONObject> updateNode(@Param("nodeId") long nodeId, @Param("name") String name, @Param("description") String description, @Param("serviceContext") JSONObjectWrapper serviceContext);
 }

@@ -1,603 +1,81 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package com.liferay.mobile.android.v62.organization;
 
-import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.BaseService;
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.service.Session;
-
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import java.lang.Integer;
+import java.lang.Long;
+import java.lang.String;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * @author Bruno Farache
- */
-public class OrganizationService extends BaseService {
+@Path("/organization")
+public interface OrganizationService {
+  @Path("/add-group-organizations")
+  Call<Response> addGroupOrganizations(@Param("groupId") long groupId, @Param("organizationIds") JSONArray organizationIds);
 
-	public OrganizationService(Session session) {
-		super(session);
-	}
+  @Path("/add-organization")
+  Call<JSONObject> addOrganization(@Param("parentOrganizationId") long parentOrganizationId, @Param("name") String name, @Param("type") String type, @Param("recursable") boolean recursable, @Param("regionId") long regionId, @Param("countryId") long countryId, @Param("statusId") int statusId, @Param("comments") String comments, @Param("site") boolean site, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public void addGroupOrganizations(long groupId, JSONArray organizationIds) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/add-organization")
+  Call<JSONObject> addOrganization(@Param("parentOrganizationId") long parentOrganizationId, @Param("name") String name, @Param("type") String type, @Param("regionId") long regionId, @Param("countryId") long countryId, @Param("statusId") int statusId, @Param("comments") String comments, @Param("site") boolean site, @Param("addresses") JSONArray addresses, @Param("emailAddresses") JSONArray emailAddresses, @Param("orgLabors") JSONArray orgLabors, @Param("phones") JSONArray phones, @Param("websites") JSONArray websites, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/add-organization")
+  Call<JSONObject> addOrganization(@Param("parentOrganizationId") long parentOrganizationId, @Param("name") String name, @Param("type") String type, @Param("recursable") boolean recursable, @Param("regionId") long regionId, @Param("countryId") long countryId, @Param("statusId") int statusId, @Param("comments") String comments, @Param("site") boolean site, @Param("addresses") JSONArray addresses, @Param("emailAddresses") JSONArray emailAddresses, @Param("orgLabors") JSONArray orgLabors, @Param("phones") JSONArray phones, @Param("websites") JSONArray websites, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-			_params.put("groupId", groupId);
-			_params.put("organizationIds", checkNull(organizationIds));
+  @Path("/add-organization")
+  Call<JSONObject> addOrganization(@Param("parentOrganizationId") long parentOrganizationId, @Param("name") String name, @Param("type") String type, @Param("regionId") long regionId, @Param("countryId") long countryId, @Param("statusId") int statusId, @Param("comments") String comments, @Param("site") boolean site, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-			_command.put("/organization/add-group-organizations", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/add-password-policy-organizations")
+  Call<Response> addPasswordPolicyOrganizations(@Param("passwordPolicyId") long passwordPolicyId, @Param("organizationIds") JSONArray organizationIds);
 
-		session.invoke(_command);
-	}
+  @Path("/delete-logo")
+  Call<Response> deleteLogo(@Param("organizationId") long organizationId);
 
-	public JSONObject addOrganization(long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/delete-organization")
+  Call<Response> deleteOrganization(@Param("organizationId") long organizationId);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/get-manageable-organizations")
+  Call<JSONArray> getManageableOrganizations(@Param("actionId") String actionId, @Param("max") int max);
 
-			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("name", checkNull(name));
-			_params.put("type", checkNull(type));
-			_params.put("recursable", recursable);
-			_params.put("regionId", regionId);
-			_params.put("countryId", countryId);
-			_params.put("statusId", statusId);
-			_params.put("comments", checkNull(comments));
-			_params.put("site", site);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+  @Path("/get-organization")
+  Call<JSONObject> getOrganization(@Param("organizationId") long organizationId);
 
-			_command.put("/organization/add-organization", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/get-organization-id")
+  Call<Long> getOrganizationId(@Param("companyId") long companyId, @Param("name") String name);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/get-organizations")
+  Call<JSONArray> getOrganizations(@Param("companyId") long companyId, @Param("parentOrganizationId") long parentOrganizationId);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/get-organizations")
+  Call<JSONArray> getOrganizations(@Param("companyId") long companyId, @Param("parentOrganizationId") long parentOrganizationId, @Param("start") int start, @Param("end") int end);
 
-		return _result.getJSONObject(0);
-	}
+  @Path("/get-organizations-count")
+  Call<Integer> getOrganizationsCount(@Param("companyId") long companyId, @Param("parentOrganizationId") long parentOrganizationId);
 
-	public JSONObject addOrganization(long parentOrganizationId, String name, String type, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
+  @Path("/get-user-organizations")
+  Call<JSONArray> getUserOrganizations(@Param("userId") long userId);
 
-		try {
-			JSONObject _params = new JSONObject();
+  @Path("/set-group-organizations")
+  Call<Response> setGroupOrganizations(@Param("groupId") long groupId, @Param("organizationIds") JSONArray organizationIds);
 
-			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("name", checkNull(name));
-			_params.put("type", checkNull(type));
-			_params.put("regionId", regionId);
-			_params.put("countryId", countryId);
-			_params.put("statusId", statusId);
-			_params.put("comments", checkNull(comments));
-			_params.put("site", site);
-			_params.put("addresses", checkNull(addresses));
-			_params.put("emailAddresses", checkNull(emailAddresses));
-			_params.put("orgLabors", checkNull(orgLabors));
-			_params.put("phones", checkNull(phones));
-			_params.put("websites", checkNull(websites));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+  @Path("/unset-group-organizations")
+  Call<Response> unsetGroupOrganizations(@Param("groupId") long groupId, @Param("organizationIds") JSONArray organizationIds);
 
-			_command.put("/organization/add-organization", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
+  @Path("/unset-password-policy-organizations")
+  Call<Response> unsetPasswordPolicyOrganizations(@Param("passwordPolicyId") long passwordPolicyId, @Param("organizationIds") JSONArray organizationIds);
 
-		JSONArray _result = session.invoke(_command);
+  @Path("/update-organization")
+  Call<JSONObject> updateOrganization(@Param("organizationId") long organizationId, @Param("parentOrganizationId") long parentOrganizationId, @Param("name") String name, @Param("type") String type, @Param("regionId") long regionId, @Param("countryId") long countryId, @Param("statusId") int statusId, @Param("comments") String comments, @Param("site") boolean site, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-		if (_result == null) {
-			return null;
-		}
+  @Path("/update-organization")
+  Call<JSONObject> updateOrganization(@Param("organizationId") long organizationId, @Param("parentOrganizationId") long parentOrganizationId, @Param("name") String name, @Param("type") String type, @Param("recursable") boolean recursable, @Param("regionId") long regionId, @Param("countryId") long countryId, @Param("statusId") int statusId, @Param("comments") String comments, @Param("site") boolean site, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-		return _result.getJSONObject(0);
-	}
+  @Path("/update-organization")
+  Call<JSONObject> updateOrganization(@Param("organizationId") long organizationId, @Param("parentOrganizationId") long parentOrganizationId, @Param("name") String name, @Param("type") String type, @Param("regionId") long regionId, @Param("countryId") long countryId, @Param("statusId") int statusId, @Param("comments") String comments, @Param("site") boolean site, @Param("addresses") JSONArray addresses, @Param("emailAddresses") JSONArray emailAddresses, @Param("orgLabors") JSONArray orgLabors, @Param("phones") JSONArray phones, @Param("websites") JSONArray websites, @Param("serviceContext") JSONObjectWrapper serviceContext);
 
-	public JSONObject addOrganization(long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("name", checkNull(name));
-			_params.put("type", checkNull(type));
-			_params.put("recursable", recursable);
-			_params.put("regionId", regionId);
-			_params.put("countryId", countryId);
-			_params.put("statusId", statusId);
-			_params.put("comments", checkNull(comments));
-			_params.put("site", site);
-			_params.put("addresses", checkNull(addresses));
-			_params.put("emailAddresses", checkNull(emailAddresses));
-			_params.put("orgLabors", checkNull(orgLabors));
-			_params.put("phones", checkNull(phones));
-			_params.put("websites", checkNull(websites));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/organization/add-organization", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject addOrganization(long parentOrganizationId, String name, String type, long regionId, long countryId, int statusId, String comments, boolean site, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("name", checkNull(name));
-			_params.put("type", checkNull(type));
-			_params.put("regionId", regionId);
-			_params.put("countryId", countryId);
-			_params.put("statusId", statusId);
-			_params.put("comments", checkNull(comments));
-			_params.put("site", site);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/organization/add-organization", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void addPasswordPolicyOrganizations(long passwordPolicyId, JSONArray organizationIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("passwordPolicyId", passwordPolicyId);
-			_params.put("organizationIds", checkNull(organizationIds));
-
-			_command.put("/organization/add-password-policy-organizations", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void deleteLogo(long organizationId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("organizationId", organizationId);
-
-			_command.put("/organization/delete-logo", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void deleteOrganization(long organizationId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("organizationId", organizationId);
-
-			_command.put("/organization/delete-organization", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONArray getManageableOrganizations(String actionId, int max) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("actionId", checkNull(actionId));
-			_params.put("max", max);
-
-			_command.put("/organization/get-manageable-organizations", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONObject getOrganization(long organizationId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("organizationId", organizationId);
-
-			_command.put("/organization/get-organization", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public Long getOrganizationId(long companyId, String name) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("name", checkNull(name));
-
-			_command.put("/organization/get-organization-id", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getLong(0);
-	}
-
-	public JSONArray getOrganizations(long companyId, long parentOrganizationId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("parentOrganizationId", parentOrganizationId);
-
-			_command.put("/organization/get-organizations", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getOrganizations(long companyId, long parentOrganizationId, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/organization/get-organizations", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Integer getOrganizationsCount(long companyId, long parentOrganizationId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("parentOrganizationId", parentOrganizationId);
-
-			_command.put("/organization/get-organizations-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public JSONArray getUserOrganizations(long userId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-
-			_command.put("/organization/get-user-organizations", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public void setGroupOrganizations(long groupId, JSONArray organizationIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("organizationIds", checkNull(organizationIds));
-
-			_command.put("/organization/set-group-organizations", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void unsetGroupOrganizations(long groupId, JSONArray organizationIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("organizationIds", checkNull(organizationIds));
-
-			_command.put("/organization/unset-group-organizations", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void unsetPasswordPolicyOrganizations(long passwordPolicyId, JSONArray organizationIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("passwordPolicyId", passwordPolicyId);
-			_params.put("organizationIds", checkNull(organizationIds));
-
-			_command.put("/organization/unset-password-policy-organizations", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, long regionId, long countryId, int statusId, String comments, boolean site, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("organizationId", organizationId);
-			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("name", checkNull(name));
-			_params.put("type", checkNull(type));
-			_params.put("regionId", regionId);
-			_params.put("countryId", countryId);
-			_params.put("statusId", statusId);
-			_params.put("comments", checkNull(comments));
-			_params.put("site", site);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/organization/update-organization", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("organizationId", organizationId);
-			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("name", checkNull(name));
-			_params.put("type", checkNull(type));
-			_params.put("recursable", recursable);
-			_params.put("regionId", regionId);
-			_params.put("countryId", countryId);
-			_params.put("statusId", statusId);
-			_params.put("comments", checkNull(comments));
-			_params.put("site", site);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/organization/update-organization", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("organizationId", organizationId);
-			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("name", checkNull(name));
-			_params.put("type", checkNull(type));
-			_params.put("regionId", regionId);
-			_params.put("countryId", countryId);
-			_params.put("statusId", statusId);
-			_params.put("comments", checkNull(comments));
-			_params.put("site", site);
-			_params.put("addresses", checkNull(addresses));
-			_params.put("emailAddresses", checkNull(emailAddresses));
-			_params.put("orgLabors", checkNull(orgLabors));
-			_params.put("phones", checkNull(phones));
-			_params.put("websites", checkNull(websites));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/organization/update-organization", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("organizationId", organizationId);
-			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("name", checkNull(name));
-			_params.put("type", checkNull(type));
-			_params.put("recursable", recursable);
-			_params.put("regionId", regionId);
-			_params.put("countryId", countryId);
-			_params.put("statusId", statusId);
-			_params.put("comments", checkNull(comments));
-			_params.put("site", site);
-			_params.put("addresses", checkNull(addresses));
-			_params.put("emailAddresses", checkNull(emailAddresses));
-			_params.put("orgLabors", checkNull(orgLabors));
-			_params.put("phones", checkNull(phones));
-			_params.put("websites", checkNull(websites));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/organization/update-organization", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
+  @Path("/update-organization")
+  Call<JSONObject> updateOrganization(@Param("organizationId") long organizationId, @Param("parentOrganizationId") long parentOrganizationId, @Param("name") String name, @Param("type") String type, @Param("recursable") boolean recursable, @Param("regionId") long regionId, @Param("countryId") long countryId, @Param("statusId") int statusId, @Param("comments") String comments, @Param("site") boolean site, @Param("addresses") JSONArray addresses, @Param("emailAddresses") JSONArray emailAddresses, @Param("orgLabors") JSONArray orgLabors, @Param("phones") JSONArray phones, @Param("websites") JSONArray websites, @Param("serviceContext") JSONObjectWrapper serviceContext);
 }
