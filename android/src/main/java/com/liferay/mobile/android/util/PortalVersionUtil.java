@@ -20,6 +20,7 @@ import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.v2.ServiceBuilder;
 import com.liferay.mobile.android.v62.portal.PortalService;
 
 /**
@@ -47,12 +48,12 @@ public class PortalVersionUtil {
 
 		HttpUtil.setJSONWSPath(jsonWSPath);
 
-		PortalService service = new PortalService(session);
+		PortalService service = ServiceBuilder.build(PortalService.class);
 
 		int version = PortalVersion.UNKNOWN;
 
 		try {
-			version = service.getBuildNumber();
+			version = service.getBuildNumber().execute(session);
 		}
 		finally {
 			HttpUtil.setJSONWSPath(HttpUtil.JSONWS_PATH_62);

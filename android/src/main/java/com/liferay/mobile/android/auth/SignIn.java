@@ -15,10 +15,10 @@
 package com.liferay.mobile.android.auth;
 
 import com.liferay.mobile.android.auth.basic.BasicAuthentication;
-import com.liferay.mobile.android.callback.typed.JSONArrayCallback;
-import com.liferay.mobile.android.callback.typed.JSONObjectCallback;
 import com.liferay.mobile.android.service.Session;
-import com.liferay.mobile.android.service.SessionImpl;
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.Callback;
+import com.liferay.mobile.android.v2.ServiceBuilder;
 import com.liferay.mobile.android.v62.group.GroupService;
 import com.liferay.mobile.android.v62.user.UserService;
 
@@ -31,61 +31,67 @@ import org.json.JSONObject;
 public class SignIn {
 
 	public static void signIn(
-		final Session session, final JSONObjectCallback callback,
+		final Session session, final Callback<JSONObject> callback,
 		final SignInMethod method) {
 
-		GroupService groupService = new GroupService(session);
-
-		session.setCallback(new JSONArrayCallback() {
-
-			@Override
-			public void onSuccess(JSONArray sites) {
-				if (sites.length() == 0) {
-					onFailure(new Exception("User doesn't belong to any site"));
-				}
-
-				try {
-					JSONObject site = sites.getJSONObject(0);
-					long companyId = site.getLong("companyId");
-
-					Session userSession = new SessionImpl(session);
-					userSession.setCallback(callback);
-
-					UserService userService = new UserService(userSession);
-
-					String username = getUsername(session);
-
-					if (method == SignInMethod.EMAIL) {
-						userService.getUserByEmailAddress(companyId, username);
-					}
-					else if (method == SignInMethod.USER_ID) {
-						userService.getUserById(Long.parseLong(username));
-					}
-					else {
-						userService.getUserByScreenName(companyId, username);
-					}
-				}
-				catch (Exception e) {
-					onFailure(e);
-				}
-			}
-
-			@Override
-			public void onFailure(Exception exception) {
-				callback.onFailure(exception);
-			}
-
-		});
-
 		try {
-			groupService.getUserSites();
+			GroupService groupService = ServiceBuilder.build(
+				GroupService.class);
+
+			Call<JSONArray> call = groupService.getUserSites();
+
+			call.async(session, new Callback<JSONArray>() {
+
+				@Override
+				public void onSuccess(JSONArray sites) {
+					if (sites.length() == 0) {
+						onFailure(
+							new Exception("User doesn't belong to any site"));
+					}
+
+					try {
+						JSONObject site = sites.getJSONObject(0);
+						long companyId = site.getLong("companyId");
+
+						UserService userService = ServiceBuilder.build(
+							UserService.class);
+
+						String username = getUsername(session);
+						Call<JSONObject> call;
+
+						if (method == SignInMethod.EMAIL) {
+							call = userService.getUserByEmailAddress(
+								companyId, username);
+						}
+						else if (method == SignInMethod.USER_ID) {
+							call = userService.getUserById(
+								Long.parseLong(username));
+						}
+						else {
+							call = userService.getUserByScreenName(
+								companyId, username);
+						}
+
+						call.async(session, callback);
+					}
+					catch (Exception e) {
+						onFailure(e);
+					}
+				}
+
+				@Override
+				public void onFailure(Exception exception) {
+					callback.onFailure(exception);
+				}
+
+			});
 		}
 		catch (Exception e) {
 			callback.onFailure(e);
 		}
 	}
 
-	public static void signIn(Session session, JSONObjectCallback callback) {
+	public static void signIn(Session session, Callback<JSONObject> callback) {
 		try {
 			String username = getUsername(session);
 			SignInMethod method = SignInMethod.fromUsername(username);
