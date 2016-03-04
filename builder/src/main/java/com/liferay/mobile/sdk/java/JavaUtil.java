@@ -38,6 +38,40 @@ public class JavaUtil extends LanguageUtil {
 
 	public static final String UPLOAD_DATA = "UploadData";
 
+	public Class returnType(String type) {
+		type = super.getType(type);
+
+		if (type.equals(BOOLEAN)) {
+			return Boolean.class;
+		}
+
+		if (type.equals(DOUBLE)) {
+			return Double.class;
+		}
+
+		if (type.equals(INT)) {
+			return Integer.class;
+		}
+
+		if (type.equals(LONG)) {
+			return Long.class;
+		}
+
+		if (type.equals(VOID)) {
+			return Response.class;
+		}
+
+		if (isArray(type)) {
+			return JSONArray.class;
+		}
+
+		if (type.equals(STRING)) {
+			return String.class;
+		}
+
+		return JSONObject.class;
+	}
+
 	public String getReturnType(String type) {
 		type = getType(type);
 

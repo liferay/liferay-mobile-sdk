@@ -14,9 +14,6 @@
 
 package com.liferay.mobile.sdk.java;
 
-import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.v2.Call;
 import com.liferay.mobile.android.v2.Path;
 import com.liferay.mobile.sdk.BaseBuilder;
@@ -28,10 +25,9 @@ import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.ParameterSpec;
 import com.squareup.javapoet.ParameterizedTypeName;
+import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 import com.liferay.mobile.android.v2.Param;
-
-import org.json.JSONArray;
 
 import java.util.List;
 
@@ -70,10 +66,13 @@ public class JavaBuilder extends BaseBuilder {
 				.addMember("value", "$S", path)
 				.build();
 
+			TypeName returnType = ParameterizedTypeName.get(
+				Call.class, util.returnType(action.getResponse()));
+
 			MethodSpec.Builder method = MethodSpec.methodBuilder(methodName)
 				.addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
 				.addAnnotation(methodPathAnnotation)
-				.returns(void.class);
+				.returns(returnType);
 
 			for (Parameter parameter : action.getParameters()) {
 				String parameterName = parameter.getName();
