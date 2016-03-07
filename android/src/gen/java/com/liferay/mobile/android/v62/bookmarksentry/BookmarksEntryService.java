@@ -3,6 +3,7 @@ package com.liferay.mobile.android.v62.bookmarksentry;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Param;
 import com.liferay.mobile.android.v2.Path;
 import java.lang.Integer;
@@ -13,7 +14,7 @@ import org.json.JSONObject;
 @Path("/bookmarksentry")
 public interface BookmarksEntryService {
   @Path("/add-entry")
-  Call<JSONObject> addEntry(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("name") String name, @Param("url") String url, @Param("description") String description, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> addEntry(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("name") String name, @Param("url") String url, @Param("description") String description, @JsonObject(name="serviceContext", className="com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-entry")
   Call<Response> deleteEntry(@Param("entryId") long entryId);

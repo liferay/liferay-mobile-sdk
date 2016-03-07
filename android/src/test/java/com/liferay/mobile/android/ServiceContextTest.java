@@ -15,12 +15,15 @@
 package com.liferay.mobile.android;
 
 import com.liferay.mobile.android.service.JSONObjectWrapper;
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.ServiceBuilder;
 import com.liferay.mobile.android.v62.bookmarksentry.BookmarksEntryService;
 
 import java.io.IOException;
 
 import java.util.Random;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import org.junit.Test;
@@ -47,29 +50,56 @@ public class ServiceContextTest extends BaseTest {
 		jsonObject.put("uuid", uuid);
 		jsonObject.put("addGroupPermissions", true);
 		jsonObject.put("addGuestPermissions", true);
-		JSONObjectWrapper serviceContext = new JSONObjectWrapper(jsonObject);
 
-		JSONObject entry = addBookmarkEntry("test", serviceContext);
+		JSONObject entry = addBookmarkEntry("test", jsonObject);
 
 		assertEquals(uuid, entry.getString("uuid"));
 
 		deleteBookmarkEntry(entry);
 	}
 
-	public JSONObject addBookmarkEntry(
-			String name, JSONObjectWrapper serviceContext)
+	@Test
+	public void wrapperSerialization() throws JSONException {
+		JSONObject parent = new JSONObject();
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("addGroupPermissions", true);
+		jsonObject.put("addGuestPermissions", true);
+		jsonObject.put("title", "bookmark entry");
+
+		JSONObjectWrapper serviceContext = new JSONObjectWrapper(jsonObject);
+
+		serviceContext.mangle(
+			parent, "serviceContext",
+			"com.liferay.portal.service.ServiceContext");
+
+		assertEquals(
+			"{\"+serviceContext\":" +
+				"\"com.liferay.portal.service.ServiceContext\"," +
+			"\"serviceContext.addGroupPermissions\":true," +
+			"\"serviceContext.title\":\"bookmark entry\"," +
+			"\"serviceContext.addGuestPermissions\":true}",
+			parent.toString());
+	}
+
+	public JSONObject addBookmarkEntry(String name, JSONObject serviceContext)
 		throws Exception {
 
-		BookmarksEntryService service = new BookmarksEntryService(session);
+		BookmarksEntryService service = ServiceBuilder.build(
+			BookmarksEntryService.class);
+
 		long groupId = props.getGroupId();
 
-		return service.addEntry(
+		Call<JSONObject> call = service.addEntry(
 			groupId, PARENT_FOLDER_ID, name, "http://www.liferay.com", "",
 			serviceContext);
+
+		return call.execute(session);
 	}
 
 	public void deleteBookmarkEntry(JSONObject entry) throws Exception {
-		BookmarksEntryService service = new BookmarksEntryService(session);
+		BookmarksEntryService service = ServiceBuilder.build(
+			BookmarksEntryService.class);
+
 		service.deleteEntry(entry.getLong("entryId"));
 	}
 

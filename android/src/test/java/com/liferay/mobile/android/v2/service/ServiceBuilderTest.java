@@ -17,11 +17,12 @@ package com.liferay.mobile.android.v2.service;
 import com.liferay.mobile.android.BaseTest;
 import com.liferay.mobile.android.v2.*;
 
+import java.io.IOException;
+
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.junit.Test;
 
-import java.io.IOException;
+import org.junit.Test;
 
 import static org.junit.Assert.*;
 

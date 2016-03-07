@@ -20,6 +20,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
+import java.util.Iterator;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -66,12 +68,15 @@ public class ServiceInvocationHandler implements InvocationHandler {
 
 		for (int i = 0; i < annotations.length; i++) {
 			for (Annotation paramAnnotation : annotations[i]) {
-				if (!(paramAnnotation instanceof Param)) {
-					continue;
+				if (paramAnnotation instanceof Param) {
+					String name = ((Param)paramAnnotation).value();
+					params.put(name, args[i]);
 				}
-
-				String name = ((Param)paramAnnotation).value();
-				params.put(name, args[i]);
+				else if (paramAnnotation instanceof JsonObject) {
+					mangle(
+						(JsonObject)paramAnnotation, (JSONObject)args[i],
+						params);
+				}
 			}
 		}
 
@@ -106,6 +111,23 @@ public class ServiceInvocationHandler implements InvocationHandler {
 			(ParameterizedType)method.getGenericReturnType();
 
 		return returnType.getActualTypeArguments()[0];
+	}
+
+	protected void mangle(
+			JsonObject annotation, JSONObject param, JSONObject params)
+		throws JSONException {
+
+		String name = annotation.name();
+		String className = annotation.className();
+		params.put("+" + name, className);
+
+		Iterator<String> it = param.keys();
+
+		while (it.hasNext()) {
+			String key = it.next();
+			Object value = param.get(key);
+			params.put(name + "." + key, value);
+		}
 	}
 
 	protected Class<?> service;
