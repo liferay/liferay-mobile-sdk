@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android;
 
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.v2.Call;
 import com.liferay.mobile.android.v2.ServiceBuilder;
 import com.liferay.mobile.android.v62.bookmarksentry.BookmarksEntryService;
@@ -58,29 +57,6 @@ public class ServiceContextTest extends BaseTest {
 		deleteBookmarkEntry(entry);
 	}
 
-	@Test
-	public void wrapperSerialization() throws JSONException {
-		JSONObject parent = new JSONObject();
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("addGroupPermissions", true);
-		jsonObject.put("addGuestPermissions", true);
-		jsonObject.put("title", "bookmark entry");
-
-		JSONObjectWrapper serviceContext = new JSONObjectWrapper(jsonObject);
-
-		serviceContext.mangle(
-			parent, "serviceContext",
-			"com.liferay.portal.service.ServiceContext");
-
-		assertEquals(
-			"{\"+serviceContext\":" +
-				"\"com.liferay.portal.service.ServiceContext\"," +
-			"\"serviceContext.addGroupPermissions\":true," +
-			"\"serviceContext.title\":\"bookmark entry\"," +
-			"\"serviceContext.addGuestPermissions\":true}",
-			parent.toString());
-	}
-
 	public JSONObject addBookmarkEntry(String name, JSONObject serviceContext)
 		throws Exception {
 
@@ -101,6 +77,35 @@ public class ServiceContextTest extends BaseTest {
 			BookmarksEntryService.class);
 
 		service.deleteEntry(entry.getLong("entryId"));
+	}
+
+	@Test
+	public void jsonObjectSerialization() throws JSONException {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("addGroupPermissions", true);
+		jsonObject.put("addGuestPermissions", true);
+		jsonObject.put("title", "bookmark title");
+
+		BookmarksEntryService service = ServiceBuilder.build(
+			BookmarksEntryService.class);
+
+		Call<JSONObject> call = service.addEntry(0, 0, "", "", "", jsonObject);
+
+		JSONObject body = (JSONObject)call.body();
+
+		assertEquals(
+			"{\"/bookmarksentry/add-entry\":{" +
+				"\"+serviceContext\":" +
+					"\"com.liferay.portal.service.ServiceContext\"," +
+				"\"groupId\":0," +
+				"\"serviceContext.addGroupPermissions\":true," +
+				"\"serviceContext.title\":\"bookmark title\"," +
+				"\"description\":\"\"," +
+				"\"name\":\"\"," +
+				"\"serviceContext.addGuestPermissions\":true," +
+				"\"url\":\"\"," +
+				"\"folderId\":0}}",
+			body.toString());
 	}
 
 }
