@@ -15,6 +15,7 @@
 package com.liferay.mobile.sdk.java;
 
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Path;
 import com.liferay.mobile.sdk.BaseBuilder;
 import com.liferay.mobile.sdk.http.Action;
@@ -28,6 +29,8 @@ import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 import com.liferay.mobile.android.v2.Param;
+
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.List;
@@ -78,13 +81,27 @@ public class JavaBuilder extends BaseBuilder {
 			for (Parameter parameter : action.getParameters()) {
 				String parameterName = parameter.getName();
 
-				AnnotationSpec parameterAnnotation = AnnotationSpec
-					.builder(Param.class)
-					.addMember("value", "$S", parameterName)
-					.build();
+				AnnotationSpec parameterAnnotation;
+				Class type = util.type(parameter.getType());
+
+				if (type == JSONObject.class) {
+					parameterAnnotation = AnnotationSpec
+						.builder(JsonObject.class)
+						.addMember("name", "$S", parameterName)
+						.addMember(
+							"className", "$S",
+							util.className(parameter.getType()))
+						.build();
+				}
+				else {
+					parameterAnnotation = AnnotationSpec
+						.builder(Param.class)
+						.addMember("value", "$S", parameterName)
+						.build();
+				}
 
 				ParameterSpec param = ParameterSpec
-					.builder(util.type(parameter.getType()), parameterName)
+					.builder(type, parameterName)
 					.addAnnotation(parameterAnnotation)
 					.build();
 

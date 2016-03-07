@@ -133,6 +133,14 @@ public class JavaUtil extends LanguageUtil {
 		return false;
 	}
 
+	public String className(String type) {
+		if (!type.startsWith(OBJECT_PREFIX)) {
+			return "";
+		}
+
+		return type.substring(7, type.length() - 1);
+	}
+
 	public Class type(String type) {
 		type = super.getType(type);
 
@@ -173,7 +181,7 @@ public class JavaUtil extends LanguageUtil {
 		}
 
 		if (type.startsWith(OBJECT_PREFIX)) {
-			return JSONObjectWrapper.class;
+			return JSONObject.class;
 		}
 
 		return JSONObject.class;
