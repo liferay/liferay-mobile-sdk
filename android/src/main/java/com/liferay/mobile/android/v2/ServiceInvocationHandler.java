@@ -73,9 +73,20 @@ public class ServiceInvocationHandler implements InvocationHandler {
 					params.put(name, args[i]);
 				}
 				else if (paramAnnotation instanceof JsonObject) {
-					mangle(
-						(JsonObject)paramAnnotation, (JSONObject)args[i],
-						params);
+					JSONObject param = (JSONObject)args[i];
+					JsonObject jsonAnnotation = (JsonObject)paramAnnotation;
+					String className = jsonAnnotation.className();
+
+					if (param == null) {
+						if (!className.equals(_SERVICE_CONTEXT)) {
+							params.put(jsonAnnotation.name(), JSONObject.NULL);
+						}
+					}
+					else {
+						mangle(
+							jsonAnnotation.name(), jsonAnnotation.className(),
+							param, params);
+					}
 				}
 			}
 		}
@@ -114,11 +125,9 @@ public class ServiceInvocationHandler implements InvocationHandler {
 	}
 
 	protected void mangle(
-			JsonObject annotation, JSONObject param, JSONObject params)
+			String name, String className, JSONObject param, JSONObject params)
 		throws JSONException {
 
-		String name = annotation.name();
-		String className = annotation.className();
 		params.put("+" + name, className);
 
 		Iterator<String> it = param.keys();
@@ -131,5 +140,8 @@ public class ServiceInvocationHandler implements InvocationHandler {
 	}
 
 	protected Class<?> service;
+
+	private static final String _SERVICE_CONTEXT =
+		"com.liferay.portal.service.ServiceContext";
 
 }
