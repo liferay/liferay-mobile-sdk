@@ -2,6 +2,7 @@ package com.liferay.mobile.android.v62.resourceblock;
 
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Param;
 import com.liferay.mobile.android.v2.Path;
 import java.lang.String;
@@ -38,7 +39,7 @@ public interface ResourceBlockService {
   Call<Response> setGroupScopePermissions(@Param("scopeGroupId") long scopeGroupId, @Param("companyId") long companyId, @Param("groupId") long groupId, @Param("name") String name, @Param("roleId") long roleId, @Param("actionIds") JSONArray actionIds);
 
   @Path("/set-individual-scope-permissions")
-  Call<Response> setIndividualScopePermissions(@Param("companyId") long companyId, @Param("groupId") long groupId, @Param("name") String name, @Param("primKey") long primKey, @Param("roleIdsToActionIds") JSONObject roleIdsToActionIds);
+  Call<Response> setIndividualScopePermissions(@Param("companyId") long companyId, @Param("groupId") long groupId, @Param("name") String name, @Param("primKey") long primKey, @JsonObject(name = "roleIdsToActionIds", className = "") JSONObject roleIdsToActionIds);
 
   @Path("/set-individual-scope-permissions")
   Call<Response> setIndividualScopePermissions(@Param("companyId") long companyId, @Param("groupId") long groupId, @Param("name") String name, @Param("primKey") long primKey, @Param("roleId") long roleId, @Param("actionIds") JSONArray actionIds);

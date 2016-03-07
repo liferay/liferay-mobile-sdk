@@ -1,8 +1,8 @@
 package com.liferay.mobile.android.v62.blogsentry;
 
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Param;
 import com.liferay.mobile.android.v2.Path;
 import java.lang.Integer;
@@ -19,7 +19,7 @@ public interface BlogsEntryService {
   Call<JSONArray> getCompanyEntries(@Param("companyId") long companyId, @Param("displayDate") long displayDate, @Param("status") int status, @Param("max") int max);
 
   @Path("/get-company-entries-rss")
-  Call<String> getCompanyEntriesRss(@Param("companyId") long companyId, @Param("displayDate") long displayDate, @Param("status") int status, @Param("max") int max, @Param("type") String type, @Param("version") double version, @Param("displayStyle") String displayStyle, @Param("feedURL") String feedURL, @Param("entryURL") String entryURL, @Param("themeDisplay") JSONObjectWrapper themeDisplay);
+  Call<String> getCompanyEntriesRss(@Param("companyId") long companyId, @Param("displayDate") long displayDate, @Param("status") int status, @Param("max") int max, @Param("type") String type, @Param("version") double version, @Param("displayStyle") String displayStyle, @Param("feedURL") String feedURL, @Param("entryURL") String entryURL, @JsonObject(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
 
   @Path("/get-entry")
   Call<JSONObject> getEntry(@Param("entryId") long entryId);
@@ -46,7 +46,7 @@ public interface BlogsEntryService {
   Call<Integer> getGroupEntriesCount(@Param("groupId") long groupId, @Param("displayDate") long displayDate, @Param("status") int status);
 
   @Path("/get-group-entries-rss")
-  Call<String> getGroupEntriesRss(@Param("groupId") long groupId, @Param("displayDate") long displayDate, @Param("status") int status, @Param("max") int max, @Param("type") String type, @Param("version") double version, @Param("displayStyle") String displayStyle, @Param("feedURL") String feedURL, @Param("entryURL") String entryURL, @Param("themeDisplay") JSONObjectWrapper themeDisplay);
+  Call<String> getGroupEntriesRss(@Param("groupId") long groupId, @Param("displayDate") long displayDate, @Param("status") int status, @Param("max") int max, @Param("type") String type, @Param("version") double version, @Param("displayStyle") String displayStyle, @Param("feedURL") String feedURL, @Param("entryURL") String entryURL, @JsonObject(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
 
   @Path("/get-groups-entries")
   Call<JSONArray> getGroupsEntries(@Param("companyId") long companyId, @Param("groupId") long groupId, @Param("displayDate") long displayDate, @Param("status") int status, @Param("max") int max);
@@ -55,7 +55,7 @@ public interface BlogsEntryService {
   Call<JSONArray> getOrganizationEntries(@Param("organizationId") long organizationId, @Param("displayDate") long displayDate, @Param("status") int status, @Param("max") int max);
 
   @Path("/get-organization-entries-rss")
-  Call<String> getOrganizationEntriesRss(@Param("organizationId") long organizationId, @Param("displayDate") long displayDate, @Param("status") int status, @Param("max") int max, @Param("type") String type, @Param("version") double version, @Param("displayStyle") String displayStyle, @Param("feedURL") String feedURL, @Param("entryURL") String entryURL, @Param("themeDisplay") JSONObjectWrapper themeDisplay);
+  Call<String> getOrganizationEntriesRss(@Param("organizationId") long organizationId, @Param("displayDate") long displayDate, @Param("status") int status, @Param("max") int max, @Param("type") String type, @Param("version") double version, @Param("displayStyle") String displayStyle, @Param("feedURL") String feedURL, @Param("entryURL") String entryURL, @JsonObject(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
 
   @Path("/move-entry-to-trash")
   Call<JSONObject> moveEntryToTrash(@Param("entryId") long entryId);

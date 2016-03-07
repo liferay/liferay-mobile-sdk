@@ -2,8 +2,8 @@ package com.liferay.mobile.android.v62.wikipage;
 
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Param;
 import com.liferay.mobile.android.v2.Path;
 import java.lang.Integer;
@@ -14,10 +14,10 @@ import org.json.JSONObject;
 @Path("/wikipage")
 public interface WikiPageService {
   @Path("/add-page")
-  Call<JSONObject> addPage(@Param("nodeId") long nodeId, @Param("title") String title, @Param("content") String content, @Param("summary") String summary, @Param("minorEdit") boolean minorEdit, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> addPage(@Param("nodeId") long nodeId, @Param("title") String title, @Param("content") String content, @Param("summary") String summary, @Param("minorEdit") boolean minorEdit, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-page")
-  Call<JSONObject> addPage(@Param("nodeId") long nodeId, @Param("title") String title, @Param("content") String content, @Param("summary") String summary, @Param("minorEdit") boolean minorEdit, @Param("format") String format, @Param("parentTitle") String parentTitle, @Param("redirectTitle") String redirectTitle, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> addPage(@Param("nodeId") long nodeId, @Param("title") String title, @Param("content") String content, @Param("summary") String summary, @Param("minorEdit") boolean minorEdit, @Param("format") String format, @Param("parentTitle") String parentTitle, @Param("redirectTitle") String redirectTitle, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-page-attachment")
   Call<Response> addPageAttachment(@Param("nodeId") long nodeId, @Param("title") String title, @Param("fileName") String fileName, @Param("file") UploadData file, @Param("mimeType") String mimeType);
@@ -26,7 +26,7 @@ public interface WikiPageService {
   Call<Response> addPageAttachments(@Param("nodeId") long nodeId, @Param("title") String title, @Param("inputStreamOVPs") JSONArray inputStreamOVPs);
 
   @Path("/change-parent")
-  Call<Response> changeParent(@Param("nodeId") long nodeId, @Param("title") String title, @Param("newParentTitle") String newParentTitle, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<Response> changeParent(@Param("nodeId") long nodeId, @Param("title") String title, @Param("newParentTitle") String newParentTitle, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/copy-page-attachments")
   Call<Response> copyPageAttachments(@Param("templateNodeId") long templateNodeId, @Param("templateTitle") String templateTitle, @Param("nodeId") long nodeId, @Param("title") String title);
@@ -86,7 +86,7 @@ public interface WikiPageService {
   Call<JSONArray> getPages(@Param("groupId") long groupId, @Param("userId") long userId, @Param("nodeId") long nodeId, @Param("status") int status, @Param("start") int start, @Param("end") int end);
 
   @Path("/get-pages")
-  Call<JSONArray> getPages(@Param("groupId") long groupId, @Param("nodeId") long nodeId, @Param("head") boolean head, @Param("status") int status, @Param("start") int start, @Param("end") int end, @Param("obc") JSONObjectWrapper obc);
+  Call<JSONArray> getPages(@Param("groupId") long groupId, @Param("nodeId") long nodeId, @Param("head") boolean head, @Param("status") int status, @Param("start") int start, @Param("end") int end, @JsonObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-pages-count")
   Call<Integer> getPagesCount(@Param("groupId") long groupId, @Param("nodeId") long nodeId, @Param("head") boolean head);
@@ -110,7 +110,7 @@ public interface WikiPageService {
   Call<JSONArray> getTempPageAttachmentNames(@Param("nodeId") long nodeId, @Param("tempFolderName") String tempFolderName);
 
   @Path("/move-page")
-  Call<Response> movePage(@Param("nodeId") long nodeId, @Param("title") String title, @Param("newTitle") String newTitle, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<Response> movePage(@Param("nodeId") long nodeId, @Param("title") String title, @Param("newTitle") String newTitle, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/move-page-attachment-to-trash")
   Call<JSONObject> movePageAttachmentToTrash(@Param("nodeId") long nodeId, @Param("title") String title, @Param("fileName") String fileName);
@@ -128,7 +128,7 @@ public interface WikiPageService {
   Call<Response> restorePageFromTrash(@Param("resourcePrimKey") long resourcePrimKey);
 
   @Path("/revert-page")
-  Call<JSONObject> revertPage(@Param("nodeId") long nodeId, @Param("title") String title, @Param("version") double version, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> revertPage(@Param("nodeId") long nodeId, @Param("title") String title, @Param("version") double version, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/subscribe-page")
   Call<Response> subscribePage(@Param("nodeId") long nodeId, @Param("title") String title);
@@ -137,5 +137,5 @@ public interface WikiPageService {
   Call<Response> unsubscribePage(@Param("nodeId") long nodeId, @Param("title") String title);
 
   @Path("/update-page")
-  Call<JSONObject> updatePage(@Param("nodeId") long nodeId, @Param("title") String title, @Param("version") double version, @Param("content") String content, @Param("summary") String summary, @Param("minorEdit") boolean minorEdit, @Param("format") String format, @Param("parentTitle") String parentTitle, @Param("redirectTitle") String redirectTitle, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> updatePage(@Param("nodeId") long nodeId, @Param("title") String title, @Param("version") double version, @Param("content") String content, @Param("summary") String summary, @Param("minorEdit") boolean minorEdit, @Param("format") String format, @Param("parentTitle") String parentTitle, @Param("redirectTitle") String redirectTitle, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

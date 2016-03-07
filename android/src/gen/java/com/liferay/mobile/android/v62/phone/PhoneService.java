@@ -1,8 +1,8 @@
 package com.liferay.mobile.android.v62.phone;
 
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Param;
 import com.liferay.mobile.android.v2.Path;
 import java.lang.String;
@@ -15,7 +15,7 @@ public interface PhoneService {
   Call<JSONObject> addPhone(@Param("className") String className, @Param("classPK") long classPK, @Param("number") String number, @Param("extension") String extension, @Param("typeId") int typeId, @Param("primary") boolean primary);
 
   @Path("/add-phone")
-  Call<JSONObject> addPhone(@Param("className") String className, @Param("classPK") long classPK, @Param("number") String number, @Param("extension") String extension, @Param("typeId") int typeId, @Param("primary") boolean primary, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> addPhone(@Param("className") String className, @Param("classPK") long classPK, @Param("number") String number, @Param("extension") String extension, @Param("typeId") int typeId, @Param("primary") boolean primary, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-phone")
   Call<Response> deletePhone(@Param("phoneId") long phoneId);

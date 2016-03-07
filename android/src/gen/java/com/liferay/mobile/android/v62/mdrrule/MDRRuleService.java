@@ -1,8 +1,8 @@
 package com.liferay.mobile.android.v62.mdrrule;
 
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Param;
 import com.liferay.mobile.android.v2.Path;
 import java.lang.String;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 @Path("/mdrrule")
 public interface MDRRuleService {
   @Path("/add-rule")
-  Call<JSONObject> addRule(@Param("ruleGroupId") long ruleGroupId, @Param("nameMap") JSONObject nameMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("type") String type, @Param("typeSettings") String typeSettings, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> addRule(@Param("ruleGroupId") long ruleGroupId, @JsonObject(name = "nameMap", className = "") JSONObject nameMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("type") String type, @Param("typeSettings") String typeSettings, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-rule")
   Call<Response> deleteRule(@Param("ruleId") long ruleId);
@@ -23,8 +23,8 @@ public interface MDRRuleService {
   Call<JSONObject> getRule(@Param("ruleId") long ruleId);
 
   @Path("/update-rule")
-  Call<JSONObject> updateRule(@Param("ruleId") long ruleId, @Param("nameMap") JSONObject nameMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("type") String type, @Param("typeSettings") String typeSettings, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> updateRule(@Param("ruleId") long ruleId, @JsonObject(name = "nameMap", className = "") JSONObject nameMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("type") String type, @Param("typeSettings") String typeSettings, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-rule")
-  Call<JSONObject> updateRule(@Param("ruleId") long ruleId, @Param("nameMap") JSONObject nameMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("type") String type, @Param("typeSettingsProperties") JSONObjectWrapper typeSettingsProperties, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> updateRule(@Param("ruleId") long ruleId, @JsonObject(name = "nameMap", className = "") JSONObject nameMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("type") String type, @JsonObject(name = "typeSettingsProperties", className = "com.liferay.portal.kernel.util.UnicodeProperties") JSONObject typeSettingsProperties, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

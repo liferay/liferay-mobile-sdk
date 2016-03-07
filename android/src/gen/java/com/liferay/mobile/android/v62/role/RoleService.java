@@ -1,8 +1,8 @@
 package com.liferay.mobile.android.v62.role;
 
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Param;
 import com.liferay.mobile.android.v2.Path;
 import java.lang.Boolean;
@@ -13,10 +13,10 @@ import org.json.JSONObject;
 @Path("/role")
 public interface RoleService {
   @Path("/add-role")
-  Call<JSONObject> addRole(@Param("name") String name, @Param("titleMap") JSONObject titleMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("type") int type);
+  Call<JSONObject> addRole(@Param("name") String name, @JsonObject(name = "titleMap", className = "") JSONObject titleMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("type") int type);
 
   @Path("/add-role")
-  Call<JSONObject> addRole(@Param("className") String className, @Param("classPK") long classPK, @Param("name") String name, @Param("titleMap") JSONObject titleMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("type") int type, @Param("subtype") String subtype, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> addRole(@Param("className") String className, @Param("classPK") long classPK, @Param("name") String name, @JsonObject(name = "titleMap", className = "") JSONObject titleMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("type") int type, @Param("subtype") String subtype, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-user-roles")
   Call<Response> addUserRoles(@Param("userId") long userId, @Param("roleIds") JSONArray roleIds);
@@ -55,5 +55,5 @@ public interface RoleService {
   Call<Response> unsetUserRoles(@Param("userId") long userId, @Param("roleIds") JSONArray roleIds);
 
   @Path("/update-role")
-  Call<JSONObject> updateRole(@Param("roleId") long roleId, @Param("name") String name, @Param("titleMap") JSONObject titleMap, @Param("descriptionMap") JSONObject descriptionMap, @Param("subtype") String subtype, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> updateRole(@Param("roleId") long roleId, @Param("name") String name, @JsonObject(name = "titleMap", className = "") JSONObject titleMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("subtype") String subtype, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

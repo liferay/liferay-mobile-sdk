@@ -1,8 +1,8 @@
 package com.liferay.mobile.android.v62.trashentry;
 
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Param;
 import com.liferay.mobile.android.v2.Path;
 import java.lang.String;
@@ -27,10 +27,10 @@ public interface TrashEntryService {
   Call<JSONObject> getEntries(@Param("groupId") long groupId);
 
   @Path("/get-entries")
-  Call<JSONObject> getEntries(@Param("groupId") long groupId, @Param("start") int start, @Param("end") int end, @Param("obc") JSONObjectWrapper obc);
+  Call<JSONObject> getEntries(@Param("groupId") long groupId, @Param("start") int start, @Param("end") int end, @JsonObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/move-entry")
-  Call<Response> moveEntry(@Param("className") String className, @Param("classPK") long classPK, @Param("destinationContainerModelId") long destinationContainerModelId, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<Response> moveEntry(@Param("className") String className, @Param("classPK") long classPK, @Param("destinationContainerModelId") long destinationContainerModelId, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/restore-entry")
   Call<JSONObject> restoreEntry(@Param("entryId") long entryId);

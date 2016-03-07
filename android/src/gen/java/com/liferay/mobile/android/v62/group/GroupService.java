@@ -1,8 +1,8 @@
 package com.liferay.mobile.android.v62.group;
 
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Param;
 import com.liferay.mobile.android.v2.Path;
 import java.lang.Boolean;
@@ -14,13 +14,13 @@ import org.json.JSONObject;
 @Path("/group")
 public interface GroupService {
   @Path("/add-group")
-  Call<JSONObject> addGroup(@Param("parentGroupId") long parentGroupId, @Param("liveGroupId") long liveGroupId, @Param("name") String name, @Param("description") String description, @Param("type") int type, @Param("manualMembership") boolean manualMembership, @Param("membershipRestriction") int membershipRestriction, @Param("friendlyURL") String friendlyURL, @Param("site") boolean site, @Param("active") boolean active, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> addGroup(@Param("parentGroupId") long parentGroupId, @Param("liveGroupId") long liveGroupId, @Param("name") String name, @Param("description") String description, @Param("type") int type, @Param("manualMembership") boolean manualMembership, @Param("membershipRestriction") int membershipRestriction, @Param("friendlyURL") String friendlyURL, @Param("site") boolean site, @Param("active") boolean active, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-group")
-  Call<JSONObject> addGroup(@Param("name") String name, @Param("description") String description, @Param("type") int type, @Param("friendlyURL") String friendlyURL, @Param("site") boolean site, @Param("active") boolean active, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> addGroup(@Param("name") String name, @Param("description") String description, @Param("type") int type, @Param("friendlyURL") String friendlyURL, @Param("site") boolean site, @Param("active") boolean active, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-group")
-  Call<JSONObject> addGroup(@Param("parentGroupId") long parentGroupId, @Param("name") String name, @Param("description") String description, @Param("type") int type, @Param("friendlyURL") String friendlyURL, @Param("site") boolean site, @Param("active") boolean active, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> addGroup(@Param("parentGroupId") long parentGroupId, @Param("name") String name, @Param("description") String description, @Param("type") int type, @Param("friendlyURL") String friendlyURL, @Param("site") boolean site, @Param("active") boolean active, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-role-groups")
   Call<Response> addRoleGroups(@Param("roleId") long roleId, @Param("groupIds") JSONArray groupIds);
@@ -50,10 +50,10 @@ public interface GroupService {
   Call<JSONArray> getGroups(@Param("companyId") long companyId, @Param("parentGroupId") long parentGroupId, @Param("site") boolean site);
 
   @Path("/get-manageable-site-groups")
-  Call<JSONArray> getManageableSiteGroups(@Param("portlets") JSONObject portlets, @Param("max") int max);
+  Call<JSONArray> getManageableSiteGroups(@JsonObject(name = "portlets", className = "") JSONObject portlets, @Param("max") int max);
 
   @Path("/get-manageable-sites")
-  Call<JSONArray> getManageableSites(@Param("portlets") JSONObject portlets, @Param("max") int max);
+  Call<JSONArray> getManageableSites(@JsonObject(name = "portlets", className = "") JSONObject portlets, @Param("max") int max);
 
   @Path("/get-organizations-groups")
   Call<JSONArray> getOrganizationsGroups(@Param("organizations") JSONArray organizations);
@@ -103,12 +103,6 @@ public interface GroupService {
   @Path("/search")
   Call<JSONArray> search(@Param("companyId") long companyId, @Param("name") String name, @Param("description") String description, @Param("params") JSONArray params, @Param("start") int start, @Param("end") int end);
 
-  @Path("/search")
-  Call<JSONArray> search(@Param("companyId") long companyId, @Param("classNameIds") JSONArray classNameIds, @Param("keywords") String keywords, @Param("params") JSONObject params, @Param("start") int start, @Param("end") int end, @Param("obc") JSONObjectWrapper obc);
-
-  @Path("/search")
-  Call<JSONArray> search(@Param("companyId") long companyId, @Param("classNameIds") JSONArray classNameIds, @Param("name") String name, @Param("description") String description, @Param("params") JSONObject params, @Param("andOperator") boolean andOperator, @Param("start") int start, @Param("end") int end, @Param("obc") JSONObjectWrapper obc);
-
   @Path("/search-count")
   Call<Integer> searchCount(@Param("companyId") long companyId, @Param("name") String name, @Param("description") String description, @Param("params") JSONArray params);
 
@@ -122,11 +116,11 @@ public interface GroupService {
   Call<JSONObject> updateFriendlyUrl(@Param("groupId") long groupId, @Param("friendlyURL") String friendlyURL);
 
   @Path("/update-group")
-  Call<JSONObject> updateGroup(@Param("groupId") long groupId, @Param("parentGroupId") long parentGroupId, @Param("name") String name, @Param("description") String description, @Param("type") int type, @Param("manualMembership") boolean manualMembership, @Param("membershipRestriction") int membershipRestriction, @Param("friendlyURL") String friendlyURL, @Param("active") boolean active, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> updateGroup(@Param("groupId") long groupId, @Param("parentGroupId") long parentGroupId, @Param("name") String name, @Param("description") String description, @Param("type") int type, @Param("manualMembership") boolean manualMembership, @Param("membershipRestriction") int membershipRestriction, @Param("friendlyURL") String friendlyURL, @Param("active") boolean active, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-group")
   Call<JSONObject> updateGroup(@Param("groupId") long groupId, @Param("typeSettings") String typeSettings);
 
   @Path("/update-staged-portlets")
-  Call<Response> updateStagedPortlets(@Param("groupId") long groupId, @Param("stagedPortletIds") JSONObject stagedPortletIds);
+  Call<Response> updateStagedPortlets(@Param("groupId") long groupId, @JsonObject(name = "stagedPortletIds", className = "") JSONObject stagedPortletIds);
 }

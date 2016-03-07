@@ -1,8 +1,8 @@
 package com.liferay.mobile.android.v62.socialactivitysetting;
 
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Param;
 import com.liferay.mobile.android.v2.Path;
 import java.lang.String;
@@ -27,7 +27,7 @@ public interface SocialActivitySettingService {
   Call<Response> updateActivitySetting(@Param("groupId") long groupId, @Param("className") String className, @Param("enabled") boolean enabled);
 
   @Path("/update-activity-setting")
-  Call<Response> updateActivitySetting(@Param("groupId") long groupId, @Param("className") String className, @Param("activityType") int activityType, @Param("activityCounterDefinition") JSONObjectWrapper activityCounterDefinition);
+  Call<Response> updateActivitySetting(@Param("groupId") long groupId, @Param("className") String className, @Param("activityType") int activityType, @JsonObject(name = "activityCounterDefinition", className = "com.liferay.portlet.social.model.SocialActivityCounterDefinition") JSONObject activityCounterDefinition);
 
   @Path("/update-activity-settings")
   Call<Response> updateActivitySettings(@Param("groupId") long groupId, @Param("className") String className, @Param("activityType") int activityType, @Param("activityCounterDefinitions") JSONArray activityCounterDefinitions);

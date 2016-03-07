@@ -1,6 +1,7 @@
 package com.liferay.mobile.android.v62.classname;
 
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Param;
 import com.liferay.mobile.android.v2.Path;
 import java.lang.Long;
@@ -13,7 +14,7 @@ public interface ClassNameService {
   Call<JSONObject> fetchClassName(@Param("value") String value);
 
   @Path("/fetch-class-name-id")
-  Call<Long> fetchClassNameId(@Param("clazz") JSONObject clazz);
+  Call<Long> fetchClassNameId(@JsonObject(name = "clazz", className = "") JSONObject clazz);
 
   @Path("/fetch-class-name-id")
   Call<Long> fetchClassNameId(@Param("value") String value);

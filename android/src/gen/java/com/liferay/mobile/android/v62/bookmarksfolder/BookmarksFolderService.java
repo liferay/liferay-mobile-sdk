@@ -1,8 +1,8 @@
 package com.liferay.mobile.android.v62.bookmarksfolder;
 
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Param;
 import com.liferay.mobile.android.v2.Path;
 import java.lang.Integer;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 @Path("/bookmarksfolder")
 public interface BookmarksFolderService {
   @Path("/add-folder")
-  Call<JSONObject> addFolder(@Param("parentFolderId") long parentFolderId, @Param("name") String name, @Param("description") String description, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> addFolder(@Param("parentFolderId") long parentFolderId, @Param("name") String name, @Param("description") String description, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-folder")
   Call<Response> deleteFolder(@Param("folderId") long folderId);
@@ -85,5 +85,5 @@ public interface BookmarksFolderService {
   Call<Response> unsubscribeFolder(@Param("groupId") long groupId, @Param("folderId") long folderId);
 
   @Path("/update-folder")
-  Call<JSONObject> updateFolder(@Param("folderId") long folderId, @Param("parentFolderId") long parentFolderId, @Param("name") String name, @Param("description") String description, @Param("mergeWithParentFolder") boolean mergeWithParentFolder, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> updateFolder(@Param("folderId") long folderId, @Param("parentFolderId") long parentFolderId, @Param("name") String name, @Param("description") String description, @Param("mergeWithParentFolder") boolean mergeWithParentFolder, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

@@ -1,8 +1,8 @@
 package com.liferay.mobile.android.v62.wikinode;
 
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Param;
 import com.liferay.mobile.android.v2.Path;
 import java.lang.Integer;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 @Path("/wikinode")
 public interface WikiNodeService {
   @Path("/add-node")
-  Call<JSONObject> addNode(@Param("name") String name, @Param("description") String description, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> addNode(@Param("name") String name, @Param("description") String description, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-node")
   Call<Response> deleteNode(@Param("nodeId") long nodeId);
@@ -55,5 +55,5 @@ public interface WikiNodeService {
   Call<Response> unsubscribeNode(@Param("nodeId") long nodeId);
 
   @Path("/update-node")
-  Call<JSONObject> updateNode(@Param("nodeId") long nodeId, @Param("name") String name, @Param("description") String description, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> updateNode(@Param("nodeId") long nodeId, @Param("name") String name, @Param("description") String description, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

@@ -1,8 +1,8 @@
 package com.liferay.mobile.android.v62.scproductversion;
 
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Param;
 import com.liferay.mobile.android.v2.Path;
 import java.lang.Integer;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 @Path("/scproductversion")
 public interface SCProductVersionService {
   @Path("/add-product-version")
-  Call<JSONObject> addProductVersion(@Param("productEntryId") long productEntryId, @Param("version") String version, @Param("changeLog") String changeLog, @Param("downloadPageURL") String downloadPageURL, @Param("directDownloadURL") String directDownloadURL, @Param("testDirectDownloadURL") boolean testDirectDownloadURL, @Param("repoStoreArtifact") boolean repoStoreArtifact, @Param("frameworkVersionIds") JSONArray frameworkVersionIds, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> addProductVersion(@Param("productEntryId") long productEntryId, @Param("version") String version, @Param("changeLog") String changeLog, @Param("downloadPageURL") String downloadPageURL, @Param("directDownloadURL") String directDownloadURL, @Param("testDirectDownloadURL") boolean testDirectDownloadURL, @Param("repoStoreArtifact") boolean repoStoreArtifact, @Param("frameworkVersionIds") JSONArray frameworkVersionIds, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-product-version")
   Call<Response> deleteProductVersion(@Param("productVersionId") long productVersionId);

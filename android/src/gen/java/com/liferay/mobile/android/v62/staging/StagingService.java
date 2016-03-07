@@ -2,6 +2,7 @@ package com.liferay.mobile.android.v62.staging;
 
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Param;
 import com.liferay.mobile.android.v2.Path;
 import java.lang.Long;
@@ -17,11 +18,11 @@ public interface StagingService {
   Call<Long> createStagingRequest(@Param("groupId") long groupId, @Param("checksum") String checksum);
 
   @Path("/publish-staging-request")
-  Call<Response> publishStagingRequest(@Param("stagingRequestId") long stagingRequestId, @Param("privateLayout") boolean privateLayout, @Param("parameterMap") JSONObject parameterMap);
+  Call<Response> publishStagingRequest(@Param("stagingRequestId") long stagingRequestId, @Param("privateLayout") boolean privateLayout, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap);
 
   @Path("/update-staging-request")
   Call<Response> updateStagingRequest(@Param("stagingRequestId") long stagingRequestId, @Param("fileName") String fileName, @Param("bytes") byte[] bytes);
 
   @Path("/validate-staging-request")
-  Call<JSONObject> validateStagingRequest(@Param("stagingRequestId") long stagingRequestId, @Param("privateLayout") boolean privateLayout, @Param("parameterMap") JSONObject parameterMap);
+  Call<JSONObject> validateStagingRequest(@Param("stagingRequestId") long stagingRequestId, @Param("privateLayout") boolean privateLayout, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap);
 }

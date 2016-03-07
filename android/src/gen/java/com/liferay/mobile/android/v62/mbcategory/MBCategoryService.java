@@ -1,8 +1,8 @@
 package com.liferay.mobile.android.v62.mbcategory;
 
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Param;
 import com.liferay.mobile.android.v2.Path;
 import java.lang.Integer;
@@ -13,10 +13,10 @@ import org.json.JSONObject;
 @Path("/mbcategory")
 public interface MBCategoryService {
   @Path("/add-category")
-  Call<JSONObject> addCategory(@Param("parentCategoryId") long parentCategoryId, @Param("name") String name, @Param("description") String description, @Param("displayStyle") String displayStyle, @Param("emailAddress") String emailAddress, @Param("inProtocol") String inProtocol, @Param("inServerName") String inServerName, @Param("inServerPort") int inServerPort, @Param("inUseSSL") boolean inUseSSL, @Param("inUserName") String inUserName, @Param("inPassword") String inPassword, @Param("inReadInterval") int inReadInterval, @Param("outEmailAddress") String outEmailAddress, @Param("outCustom") boolean outCustom, @Param("outServerName") String outServerName, @Param("outServerPort") int outServerPort, @Param("outUseSSL") boolean outUseSSL, @Param("outUserName") String outUserName, @Param("outPassword") String outPassword, @Param("mailingListActive") boolean mailingListActive, @Param("allowAnonymousEmail") boolean allowAnonymousEmail, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> addCategory(@Param("parentCategoryId") long parentCategoryId, @Param("name") String name, @Param("description") String description, @Param("displayStyle") String displayStyle, @Param("emailAddress") String emailAddress, @Param("inProtocol") String inProtocol, @Param("inServerName") String inServerName, @Param("inServerPort") int inServerPort, @Param("inUseSSL") boolean inUseSSL, @Param("inUserName") String inUserName, @Param("inPassword") String inPassword, @Param("inReadInterval") int inReadInterval, @Param("outEmailAddress") String outEmailAddress, @Param("outCustom") boolean outCustom, @Param("outServerName") String outServerName, @Param("outServerPort") int outServerPort, @Param("outUseSSL") boolean outUseSSL, @Param("outUserName") String outUserName, @Param("outPassword") String outPassword, @Param("mailingListActive") boolean mailingListActive, @Param("allowAnonymousEmail") boolean allowAnonymousEmail, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-category")
-  Call<JSONObject> addCategory(@Param("userId") long userId, @Param("parentCategoryId") long parentCategoryId, @Param("name") String name, @Param("description") String description, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> addCategory(@Param("userId") long userId, @Param("parentCategoryId") long parentCategoryId, @Param("name") String name, @Param("description") String description, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-category")
   Call<Response> deleteCategory(@Param("categoryId") long categoryId, @Param("includeTrashedEntries") boolean includeTrashedEntries);
@@ -88,5 +88,5 @@ public interface MBCategoryService {
   Call<Response> unsubscribeCategory(@Param("groupId") long groupId, @Param("categoryId") long categoryId);
 
   @Path("/update-category")
-  Call<JSONObject> updateCategory(@Param("categoryId") long categoryId, @Param("parentCategoryId") long parentCategoryId, @Param("name") String name, @Param("description") String description, @Param("displayStyle") String displayStyle, @Param("emailAddress") String emailAddress, @Param("inProtocol") String inProtocol, @Param("inServerName") String inServerName, @Param("inServerPort") int inServerPort, @Param("inUseSSL") boolean inUseSSL, @Param("inUserName") String inUserName, @Param("inPassword") String inPassword, @Param("inReadInterval") int inReadInterval, @Param("outEmailAddress") String outEmailAddress, @Param("outCustom") boolean outCustom, @Param("outServerName") String outServerName, @Param("outServerPort") int outServerPort, @Param("outUseSSL") boolean outUseSSL, @Param("outUserName") String outUserName, @Param("outPassword") String outPassword, @Param("mailingListActive") boolean mailingListActive, @Param("allowAnonymousEmail") boolean allowAnonymousEmail, @Param("mergeWithParentCategory") boolean mergeWithParentCategory, @Param("serviceContext") JSONObjectWrapper serviceContext);
+  Call<JSONObject> updateCategory(@Param("categoryId") long categoryId, @Param("parentCategoryId") long parentCategoryId, @Param("name") String name, @Param("description") String description, @Param("displayStyle") String displayStyle, @Param("emailAddress") String emailAddress, @Param("inProtocol") String inProtocol, @Param("inServerName") String inServerName, @Param("inServerPort") int inServerPort, @Param("inUseSSL") boolean inUseSSL, @Param("inUserName") String inUserName, @Param("inPassword") String inPassword, @Param("inReadInterval") int inReadInterval, @Param("outEmailAddress") String outEmailAddress, @Param("outCustom") boolean outCustom, @Param("outServerName") String outServerName, @Param("outServerPort") int outServerPort, @Param("outUseSSL") boolean outUseSSL, @Param("outUserName") String outUserName, @Param("outPassword") String outPassword, @Param("mailingListActive") boolean mailingListActive, @Param("allowAnonymousEmail") boolean allowAnonymousEmail, @Param("mergeWithParentCategory") boolean mergeWithParentCategory, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }
