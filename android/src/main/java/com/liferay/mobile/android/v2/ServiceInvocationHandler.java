@@ -68,12 +68,14 @@ public class ServiceInvocationHandler implements InvocationHandler {
 
 		for (int i = 0; i < annotations.length; i++) {
 			for (Annotation paramAnnotation : annotations[i]) {
+				Object value = args[i];
+
 				if (paramAnnotation instanceof Param) {
 					String name = ((Param)paramAnnotation).value();
-					params.put(name, args[i]);
+					params.put(name, (value == null) ? JSONObject.NULL : value);
 				}
 				else if (paramAnnotation instanceof JsonObject) {
-					JSONObject param = (JSONObject)args[i];
+					JSONObject param = (JSONObject)value;
 					JsonObject jsonAnnotation = (JsonObject)paramAnnotation;
 					String className = jsonAnnotation.className();
 

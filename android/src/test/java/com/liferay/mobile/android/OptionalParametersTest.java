@@ -14,6 +14,8 @@
 
 package com.liferay.mobile.android;
 
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.ServiceBuilder;
 import com.liferay.mobile.android.v62.dlapp.DLAppService;
 
 import java.io.IOException;
@@ -37,19 +39,19 @@ public class OptionalParametersTest extends BaseTest {
 
 	@Test
 	public void nullFileEntryDescription() throws Exception {
-		DLAppService service = new DLAppService(session);
+		DLAppService service = ServiceBuilder.build(DLAppService.class);
 
 		long fileEntryId = _file.getLong(DLAppServiceTest.FILE_ENTRY_ID);
 		String description = null;
 		byte[] bytes = null;
 
-		JSONObject updatedFile = service.updateFileEntry(
+		Call<JSONObject> call = service.updateFileEntry(
 			fileEntryId, "", "", "", description, "", false, bytes, null);
 
-		assertEquals(
-			fileEntryId, updatedFile.getLong(DLAppServiceTest.FILE_ENTRY_ID));
+		JSONObject file = call.execute(session);
 
-		assertEquals(5, updatedFile.getInt("size"));
+		assertEquals(fileEntryId, file.getLong(DLAppServiceTest.FILE_ENTRY_ID));
+		assertEquals(5, file.getInt("size"));
 	}
 
 	@Before
