@@ -15,11 +15,14 @@
 package com.liferay.mobile.android;
 
 import com.liferay.mobile.android.exception.ServerException;
-import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.ServiceBuilder;
 import com.liferay.mobile.android.v62.group.GroupService;
 
 import java.io.IOException;
+
+import org.json.JSONArray;
 
 import org.junit.Test;
 
@@ -36,11 +39,10 @@ public class UnauthenticatedServiceTest extends BaseTest {
 
 	@Test
 	public void getUserSites() throws Exception {
-		Session session = new SessionImpl(this.session.getServer());
-		GroupService service = new GroupService(session);
-
 		try {
-			service.getUserSites();
+			GroupService service = ServiceBuilder.build(GroupService.class);
+			Call<JSONArray> call = service.getUserSites();
+			call.execute(new SessionImpl(this.session.getServer()));
 			fail();
 		}
 		catch (ServerException se) {

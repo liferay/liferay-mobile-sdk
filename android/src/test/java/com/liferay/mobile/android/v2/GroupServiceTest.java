@@ -281,6 +281,23 @@ public class GroupServiceTest extends BaseTest {
 		lock.await(500, TimeUnit.MILLISECONDS);
 	}
 
+	protected static void assertUserSitesAsMap(List<Map<String, Object>> sites) {
+		assertNotNull(sites);
+		assertTrue(sites.size() == 3);
+
+		Map<String, Object> site = sites.get(0);
+		assertNotNull(site);
+		assertEquals("/test", site.get("friendlyURL"));
+
+		site = sites.get(1);
+		assertNotNull(site);
+		assertEquals("/global", site.get("friendlyURL"));
+
+		site = sites.get(2);
+		assertNotNull(site);
+		assertEquals("/guest", site.get("friendlyURL"));
+	}
+
 	protected void assertUserSites(JSONArray sites) {
 		assertNotNull(sites);
 		assertTrue(sites.length() == 3);
@@ -313,23 +330,6 @@ public class GroupServiceTest extends BaseTest {
 		site = sites.get(2);
 		assertNotNull(site);
 		assertEquals("/guest", site.friendlyURL);
-	}
-
-	protected static void assertUserSitesAsMap(List<Map<String, Object>> sites) {
-		assertNotNull(sites);
-		assertTrue(sites.size() == 3);
-
-		Map<String, Object> site = sites.get(0);
-		assertNotNull(site);
-		assertEquals("/test", site.get("friendlyURL"));
-
-		site = sites.get(1);
-		assertNotNull(site);
-		assertEquals("/global", site.get("friendlyURL"));
-
-		site = sites.get(2);
-		assertNotNull(site);
-		assertEquals("/guest", site.get("friendlyURL"));
 	}
 
 }

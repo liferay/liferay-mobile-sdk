@@ -17,16 +17,16 @@ package com.liferay.mobile.android.v2;
 import com.liferay.mobile.android.BaseTest;
 import com.liferay.mobile.android.http.Response;
 
-import org.junit.Test;
-
 import java.io.IOException;
+
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  * @author Bruno Farache

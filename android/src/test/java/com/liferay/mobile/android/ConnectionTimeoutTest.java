@@ -16,11 +16,15 @@ package com.liferay.mobile.android;
 
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.ServiceBuilder;
 import com.liferay.mobile.android.v62.group.GroupService;
 
 import java.io.IOException;
 
 import java.net.SocketTimeoutException;
+
+import org.json.JSONArray;
 
 import org.junit.Test;
 
@@ -36,13 +40,12 @@ public class ConnectionTimeoutTest extends BaseTest {
 	@Test(expected = SocketTimeoutException.class)
 	public void connectionTimeoutException() throws Exception {
 		Session session = new SessionImpl(this.session);
-
 		session.setServer("http://www.liferay.com");
 		session.setConnectionTimeout(5);
 
-		GroupService service = new GroupService(session);
-
-		service.getUserSites();
+		GroupService service = ServiceBuilder.build(GroupService.class);
+		Call<JSONArray> call = service.getUserSites();
+		call.execute(session);
 	}
 
 }
