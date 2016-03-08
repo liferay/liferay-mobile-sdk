@@ -89,7 +89,7 @@ public class GroupServiceTest extends BaseTest {
 		long groupId = props.getGroupId();
 		Call<Map<String, Object>> call = service.getGroupAsMap(groupId);
 		Map<String, Object> group = call.execute(session);
-		assertEquals(groupId, Long.parseLong((String) group.get("groupId")));
+		assertEquals(groupId, ((Double)group.get("groupId")).longValue());
 	}
 
 	@Test
@@ -104,7 +104,7 @@ public class GroupServiceTest extends BaseTest {
 			@Override
 			public void onSuccess(Map<String, Object> group) {
 				assertEquals(
-					groupId, Long.parseLong((String) group.get("groupId")));
+					groupId, ((Double)group.get("groupId")).longValue());
 
 				lock.countDown();
 			}
@@ -283,7 +283,7 @@ public class GroupServiceTest extends BaseTest {
 
 	protected static void assertUserSitesAsMap(List<Map<String, Object>> sites) {
 		assertNotNull(sites);
-		assertTrue(sites.size() == 3);
+		assertTrue(sites.size() == 2);
 
 		Map<String, Object> site = sites.get(0);
 		assertNotNull(site);
@@ -291,16 +291,12 @@ public class GroupServiceTest extends BaseTest {
 
 		site = sites.get(1);
 		assertNotNull(site);
-		assertEquals("/global", site.get("friendlyURL"));
-
-		site = sites.get(2);
-		assertNotNull(site);
 		assertEquals("/guest", site.get("friendlyURL"));
 	}
 
 	protected void assertUserSites(JSONArray sites) {
 		assertNotNull(sites);
-		assertTrue(sites.length() == 3);
+		assertTrue(sites.length() == 2);
 
 		JSONObject jsonObj = sites.optJSONObject(0);
 		assertNotNull(jsonObj);
@@ -308,26 +304,18 @@ public class GroupServiceTest extends BaseTest {
 
 		jsonObj = sites.optJSONObject(1);
 		assertNotNull(jsonObj);
-		assertEquals("/global", jsonObj.optString("friendlyURL"));
-
-		jsonObj = sites.optJSONObject(2);
-		assertNotNull(jsonObj);
 		assertEquals("/guest", jsonObj.optString("friendlyURL"));
 	}
 
 	protected void assertUserSites(List<Site> sites) {
 		assertNotNull(sites);
-		assertTrue(sites.size() == 3);
+		assertTrue(sites.size() == 2);
 
 		Site site = sites.get(0);
 		assertNotNull(site);
 		assertEquals("/test", site.friendlyURL);
 
 		site = sites.get(1);
-		assertNotNull(site);
-		assertEquals("/global", site.friendlyURL);
-
-		site = sites.get(2);
 		assertNotNull(site);
 		assertEquals("/guest", site.friendlyURL);
 	}
