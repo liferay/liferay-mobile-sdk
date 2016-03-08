@@ -15,7 +15,11 @@
 package com.liferay.mobile.android;
 
 import com.liferay.mobile.android.exception.ServerException;
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.BatchSessionImpl;
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonParser;
+import com.liferay.mobile.android.v2.ServiceBuilder;
 import com.liferay.mobile.android.v62.dlapp.DLAppService;
 
 import java.io.IOException;
@@ -49,40 +53,40 @@ public class DLAppServiceTest extends BaseTest {
 	}
 
 	public JSONObject addFileEntry() throws Exception {
-		DLAppService service = new DLAppService(session);
+		DLAppService service = ServiceBuilder.build(DLAppService.class);
 		long repositoryId = props.getGroupId();
-
 		byte[] bytes = "Hello".getBytes(StandardCharsets.UTF_8);
 
-		return service.addFileEntry(
+		Call<JSONObject> call = service.addFileEntry(
 			repositoryId, PARENT_FOLDER_ID, SOURCE_FILE_NAME, MIME_TYPE,
 			SOURCE_FILE_NAME, "", "", bytes, null);
+
+		return call.execute(session);
 	}
 
 	@Test
 	public void addFileEntryBytes() throws Exception {
 		JSONObject jsonObj = addFileEntry();
-
 		assertEquals(SOURCE_FILE_NAME, jsonObj.get(TITLE));
-
 		deleteFileEntry(jsonObj.getLong(FILE_ENTRY_ID));
 	}
 
 	@Test
 	public void addFolder() throws Exception {
-		DLAppService service = new DLAppService(session);
+		DLAppService service = ServiceBuilder.build(DLAppService.class);
 		long repositoryId = props.getGroupId();
 
-		JSONObject jsonObj = service.addFolder(
+		Call<JSONObject> call = service.addFolder(
 			repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
 
-		assertEquals(_FOLDER_NAME, jsonObj.get(_NAME));
+		JSONObject folder = call.execute(session);
+		assertEquals(_FOLDER_NAME, folder.get(_NAME));
 
-		int count = service.getFoldersCount(
+		Call<Integer> call2 = service.getFoldersCount(
 			repositoryId, PARENT_FOLDER_ID, 0, false);
 
+		int count = call2.execute(session);
 		assertEquals(1, count);
-
 		deleteFolder();
 	}
 
@@ -90,56 +94,64 @@ public class DLAppServiceTest extends BaseTest {
 	public void addFoldersBatch() throws Exception {
 		BatchSessionImpl batch = new BatchSessionImpl(session);
 
-		DLAppService service = new DLAppService(batch);
+		DLAppService service = ServiceBuilder.build(DLAppService.class);
 		long repositoryId = props.getGroupId();
 
-		service.addFolder(
+		Call<JSONObject> call1 = service.addFolder(
 			repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
 
-		service.addFolder(
+		Call<JSONObject> call2 = service.addFolder(
 			repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME_2, "", null);
 
-		JSONArray jsonArray = batch.invoke();
+		Response response = Call.batch(session, call1, call2);
+		JSONArray sites = JsonParser.fromJson(response, JSONArray.class);
 
-		assertEquals(_FOLDER_NAME, jsonArray.getJSONObject(0).get(_NAME));
-		assertEquals(_FOLDER_NAME_2, jsonArray.getJSONObject(1).get(_NAME));
+		assertEquals(_FOLDER_NAME, sites.getJSONObject(0).get(_NAME));
+		assertEquals(_FOLDER_NAME_2, sites.getJSONObject(1).get(_NAME));
 
 		deleteFoldersBatch(batch);
 	}
 
 	public void deleteFileEntry(long fileEntryId) throws Exception {
-		DLAppService service = new DLAppService(session);
-		service.deleteFileEntry(fileEntryId);
+		DLAppService service = ServiceBuilder.build(DLAppService.class);
+		service.deleteFileEntry(fileEntryId).execute(session);
 	}
 
 	public void deleteFolder() throws Exception {
-		DLAppService service = new DLAppService(session);
+		DLAppService service = ServiceBuilder.build(DLAppService.class);
 		long repositoryId = props.getGroupId();
 
-		service.deleteFolder(repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME);
+		Call<Response> call = service.deleteFolder(
+			repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME);
+
+		call.execute(session);
 
 		try {
-			service.getFolder(repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME);
+			Call<JSONObject> call2 = service.getFolder(
+				repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME);
 
+			call2.execute(session);
 			fail();
 		}
 		catch (ServerException se) {
 			String message = se.getMessage();
-
 			assertTrue(message.startsWith("No DLFolder exists with the key"));
 		}
 	}
 
 	public void deleteFoldersBatch(BatchSessionImpl batch) throws Exception {
-		DLAppService service = new DLAppService(batch);
+		DLAppService service = ServiceBuilder.build(DLAppService.class);
 		long repositoryId = props.getGroupId();
 
-		service.deleteFolder(repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME);
-		service.deleteFolder(repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME_2);
+		Call<Response> call1 = service.deleteFolder(
+			repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME);
 
-		JSONArray jsonArray = batch.invoke();
+		Call<Response> call2 = service.deleteFolder(
+			repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME_2);
 
-		assertEquals(2, jsonArray.length());
+		Response response = Call.batch(session, call1, call2);
+		JSONArray sites = JsonParser.fromJson(response, JSONArray.class);
+		assertEquals(2, sites.length());
 	}
 
 	private static final String _FOLDER_NAME = "test";
