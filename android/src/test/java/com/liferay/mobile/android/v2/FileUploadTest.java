@@ -18,6 +18,7 @@ import com.liferay.mobile.android.BaseTest;
 import com.liferay.mobile.android.DLAppServiceTest;
 import com.liferay.mobile.android.callback.file.FileProgressCallback;
 import com.liferay.mobile.android.http.file.UploadData;
+import com.liferay.mobile.android.v62.dlapp.DLAppService;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -39,13 +40,17 @@ import static org.junit.Assert.*;
  */
 public class FileUploadTest extends BaseTest {
 
+	public static final String FILE_NAME = "barto.jpg";
+
+	public static final String MIME_TYPE = "image/jpg";
+
 	public FileUploadTest() throws IOException {
 		super();
 	}
 
 	@Test
 	public void addFileEntry() throws Exception {
-		DLAppService service = new DLAppService();
+		DLAppService service = ServiceBuilder.build(DLAppService.class);
 		long repositoryId = props.getGroupId();
 		long folderId = DLAppServiceTest.PARENT_FOLDER_ID;
 		String fileName = DLAppServiceTest.SOURCE_FILE_NAME;
@@ -97,7 +102,7 @@ public class FileUploadTest extends BaseTest {
 
 	@Test
 	public void addFileEntryAsync() throws Exception {
-		DLAppService service = new DLAppService();
+		DLAppService service = ServiceBuilder.build(DLAppService.class);
 		long repositoryId = props.getGroupId();
 		long folderId = DLAppServiceTest.PARENT_FOLDER_ID;
 		String fileName = DLAppServiceTest.SOURCE_FILE_NAME;
@@ -172,6 +177,32 @@ public class FileUploadTest extends BaseTest {
 			test.deleteFileEntry(_file.fileEntryId);
 			_file = null;
 		}
+	}
+
+	@Test
+	public void uploadPhoto() throws Exception {
+		DLAppService service = ServiceBuilder.build(DLAppService.class);
+		long repositoryId = props.getGroupId();
+		long folderId = DLAppServiceTest.PARENT_FOLDER_ID;
+
+		InputStream is = getClass().getResourceAsStream("/" + FILE_NAME);
+
+		FileProgressCallback callback = new FileProgressCallback() {
+
+			@Override
+			public void onProgress(int totalBytes) {
+			}
+
+		};
+
+		UploadData data = new UploadData(is, MIME_TYPE, FILE_NAME, callback);
+
+		_file = service.addFileEntry(
+			repositoryId, folderId, FILE_NAME, MIME_TYPE, FILE_NAME, "", "",
+			data, null).execute(session);
+
+		assertEquals(FILE_NAME, _file.title);
+		assertEquals(372434, callback.getTotal());
 	}
 
 	private FileEntry _file;

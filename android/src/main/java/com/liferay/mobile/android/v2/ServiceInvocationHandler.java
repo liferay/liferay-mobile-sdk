@@ -41,7 +41,9 @@ public class ServiceInvocationHandler implements InvocationHandler {
 		JSONObject body = new JSONObject();
 		body.put(getPath(method), getParams(method, args));
 
-		return new Call(body, getType(method));
+		Path annotation = method.getAnnotation(Path.class);
+
+		return new Call(body, getType(method), annotation.contentType());
 	}
 
 	protected String getMethodPath(Method method) {

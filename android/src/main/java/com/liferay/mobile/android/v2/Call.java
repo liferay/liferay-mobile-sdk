@@ -37,7 +37,7 @@ public class Call<T> {
 		throws Exception {
 
 		JSONArray bodies = bodies(calls);
-		Call<Response> call = new Call<Response>(bodies, Response.class);
+		Call<Response> call = new Call<>(bodies, Response.class);
 		return call.execute(session);
 	}
 
@@ -46,7 +46,7 @@ public class Call<T> {
 		throws Exception {
 
 		JSONArray bodies = bodies(calls);
-		Call<Response> call = new Call<Response>(bodies, Response.class);
+		Call<Response> call = new Call<>(bodies, Response.class);
 		call.async(session, callback);
 	}
 
