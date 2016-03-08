@@ -14,8 +14,11 @@
 
 package com.liferay.mobile.android;
 
-import com.liferay.mobile.android.service.JSONObjectWrapper;
-import com.liferay.mobile.android.v62.bookmarksentry.BookmarksEntryService;
+import com.liferay.mobile.android.v2.Call;
+import com.liferay.mobile.android.v2.JsonObject;
+import com.liferay.mobile.android.v2.Param;
+import com.liferay.mobile.android.v2.Path;
+import com.liferay.mobile.android.v2.ServiceBuilder;
 
 import java.io.IOException;
 
@@ -39,19 +42,16 @@ public class OrderByComparatorTest extends BaseTest {
 
 	@Test
 	public void getEntriesDescending() throws Exception {
-		BookmarksEntryService service = new BookmarksEntryService(session);
+		BookmarksEntryService service = ServiceBuilder.build(
+			BookmarksEntryService.class);
+
 		long groupId = props.getGroupId();
 
-		String className =
-			"com.liferay.portlet.bookmarks.util.comparator.EntryNameComparator";
-
-		JSONObjectWrapper orderByComparatorDesc = new JSONObjectWrapper(
-			className, new JSONObject());
-
-		JSONArray entries = service.getEntries(
+		Call<JSONArray> call = service.getEntries(
 			groupId, ServiceContextTest.PARENT_FOLDER_ID, -1, -1,
-			orderByComparatorDesc);
+			new JSONObject());
 
+		JSONArray entries = call.execute(session);
 		assertEquals(2, entries.length());
 
 		JSONObject first = entries.getJSONObject(0);
@@ -63,12 +63,15 @@ public class OrderByComparatorTest extends BaseTest {
 
 	@Test
 	public void nullOrderByComparator() throws Exception {
-		BookmarksEntryService service = new BookmarksEntryService(session);
+		BookmarksEntryService service = ServiceBuilder.build(
+			BookmarksEntryService.class);
+
 		long groupId = props.getGroupId();
 
-		JSONArray entries = service.getEntries(
+		Call<JSONArray> call = service.getEntries(
 			groupId, ServiceContextTest.PARENT_FOLDER_ID, -1, -1, null);
 
+		JSONArray entries = call.execute(session);
 		assertEquals(2, entries.length());
 
 		JSONObject first = entries.getJSONObject(0);
@@ -89,6 +92,21 @@ public class OrderByComparatorTest extends BaseTest {
 	public void tearDown() throws Exception {
 		_serviceContextTest.deleteBookmarkEntry(_entryA);
 		_serviceContextTest.deleteBookmarkEntry(_entryZ);
+	}
+
+	@Path("/bookmarksentry")
+	public interface BookmarksEntryService {
+
+		@Path("/get-entries")
+		Call<JSONArray> getEntries(
+			@Param("groupId") long groupId, @Param("folderId") long folderId,
+			@Param("start") int start, @Param("end") int end,
+			@JsonObject(
+				name = "orderByComparator",
+				className = "com.liferay.portlet.bookmarks.util." +
+					"comparator.EntryNameComparator")
+				JSONObject orderByComparator);
+
 	}
 
 	private JSONObject _entryA;

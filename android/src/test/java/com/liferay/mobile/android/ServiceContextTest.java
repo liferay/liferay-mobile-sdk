@@ -76,7 +76,7 @@ public class ServiceContextTest extends BaseTest {
 		BookmarksEntryService service = ServiceBuilder.build(
 			BookmarksEntryService.class);
 
-		service.deleteEntry(entry.getLong("entryId"));
+		service.deleteEntry(entry.getLong("entryId")).execute(session);
 	}
 
 	@Test
