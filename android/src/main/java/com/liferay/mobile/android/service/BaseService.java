@@ -46,7 +46,9 @@ public class BaseService {
 		throws JSONException {
 
 		if (wrapper == null) {
-			if (!className.equals(_SERVICE_CONTEXT_70) && !className.equals(_SERVICE_CONTEXT_62)) {
+			if (!className.equals(_SERVICE_CONTEXT_62) &&
+				!className.equals(_SERVICE_CONTEXT_70)) {
+
 				params.put(name, JSONObject.NULL);
 			}
 
