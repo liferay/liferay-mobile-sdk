@@ -14,9 +14,12 @@
 
 package com.liferay.mobile.sdk.java;
 
+import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.v2.Call;
 import com.liferay.mobile.android.v2.JsonObject;
 import com.liferay.mobile.android.v2.Path;
+import com.liferay.mobile.android.http.Headers.ContentType;
+
 import com.liferay.mobile.sdk.BaseBuilder;
 import com.liferay.mobile.sdk.http.Action;
 import com.liferay.mobile.sdk.http.Discovery;
@@ -65,17 +68,21 @@ public class JavaBuilder extends BaseBuilder {
 			String methodName = util.getMethodName(path);
 			path = path.substring(path.lastIndexOf("/"));
 
-			AnnotationSpec methodPathAnnotation = AnnotationSpec
+			AnnotationSpec.Builder methodPathAnnotation = AnnotationSpec
 				.builder(Path.class)
-				.addMember("value", "$S", path)
-				.build();
+				.addMember("value", "$S", path);
+
+			if (hasUploadData(action.getParameters())) {
+				methodPathAnnotation.addMember(
+					"contentType", "$T.MULTIPART", ContentType.class);
+			}
 
 			TypeName returnType = ParameterizedTypeName.get(
 				Call.class, util.returnType(action.getResponse()));
 
 			MethodSpec.Builder method = MethodSpec.methodBuilder(methodName)
 				.addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
-				.addAnnotation(methodPathAnnotation)
+				.addAnnotation(methodPathAnnotation.build())
 				.returns(returnType);
 
 			for (Parameter parameter : action.getParameters()) {
@@ -116,6 +123,18 @@ public class JavaBuilder extends BaseBuilder {
 			.build();
 
 		file.writeTo(new File("src/gen/java"));
+	}
+
+	protected boolean hasUploadData(List<Parameter> params) {
+		for (Parameter param : params) {
+			Class type = new JavaUtil().type(param.getType());
+
+			if (type == UploadData.class) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }
