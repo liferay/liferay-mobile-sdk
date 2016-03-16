@@ -1,5 +1,6 @@
 package com.liferay.mobile.android.v62.ddmtemplate;
 
+import com.liferay.mobile.android.http.Headers;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.v2.Call;
@@ -16,7 +17,10 @@ public interface DDMTemplateService {
   @Path("/add-template")
   Call<JSONObject> addTemplate(@Param("groupId") long groupId, @Param("classNameId") long classNameId, @Param("classPK") long classPK, @JsonObject(name = "nameMap", className = "") JSONObject nameMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("type") String type, @Param("mode") String mode, @Param("language") String language, @Param("script") String script, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
-  @Path("/add-template")
+  @Path(
+      value = "/add-template",
+      contentType = Headers.ContentType.MULTIPART
+  )
   Call<JSONObject> addTemplate(@Param("groupId") long groupId, @Param("classNameId") long classNameId, @Param("classPK") long classPK, @Param("templateKey") String templateKey, @JsonObject(name = "nameMap", className = "") JSONObject nameMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("type") String type, @Param("mode") String mode, @Param("language") String language, @Param("script") String script, @Param("cacheable") boolean cacheable, @Param("smallImage") boolean smallImage, @Param("smallImageURL") String smallImageURL, @Param("smallImageFile") UploadData smallImageFile, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/copy-template")
@@ -88,6 +92,9 @@ public interface DDMTemplateService {
   @Path("/search-count")
   Call<Integer> searchCount(@Param("companyId") long companyId, @Param("groupIds") JSONArray groupIds, @Param("classNameIds") JSONArray classNameIds, @Param("classPKs") JSONArray classPKs, @Param("keywords") String keywords, @Param("type") String type, @Param("mode") String mode);
 
-  @Path("/update-template")
+  @Path(
+      value = "/update-template",
+      contentType = Headers.ContentType.MULTIPART
+  )
   Call<JSONObject> updateTemplate(@Param("templateId") long templateId, @Param("classPK") long classPK, @JsonObject(name = "nameMap", className = "") JSONObject nameMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("type") String type, @Param("mode") String mode, @Param("language") String language, @Param("script") String script, @Param("cacheable") boolean cacheable, @Param("smallImage") boolean smallImage, @Param("smallImageURL") String smallImageURL, @Param("smallImageFile") UploadData smallImageFile, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

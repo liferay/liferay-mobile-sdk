@@ -1,5 +1,6 @@
 package com.liferay.mobile.android.v62.wikipage;
 
+import com.liferay.mobile.android.http.Headers;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.v2.Call;
@@ -19,7 +20,10 @@ public interface WikiPageService {
   @Path("/add-page")
   Call<JSONObject> addPage(@Param("nodeId") long nodeId, @Param("title") String title, @Param("content") String content, @Param("summary") String summary, @Param("minorEdit") boolean minorEdit, @Param("format") String format, @Param("parentTitle") String parentTitle, @Param("redirectTitle") String redirectTitle, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
-  @Path("/add-page-attachment")
+  @Path(
+      value = "/add-page-attachment",
+      contentType = Headers.ContentType.MULTIPART
+  )
   Call<Response> addPageAttachment(@Param("nodeId") long nodeId, @Param("title") String title, @Param("fileName") String fileName, @Param("file") UploadData file, @Param("mimeType") String mimeType);
 
   @Path("/add-page-attachments")

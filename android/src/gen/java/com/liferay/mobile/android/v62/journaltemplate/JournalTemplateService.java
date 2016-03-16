@@ -1,5 +1,6 @@
 package com.liferay.mobile.android.v62.journaltemplate;
 
+import com.liferay.mobile.android.http.Headers;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.v2.Call;
@@ -16,7 +17,10 @@ public interface JournalTemplateService {
   @Path("/add-template")
   Call<JSONObject> addTemplate(@Param("groupId") long groupId, @Param("templateId") String templateId, @Param("autoTemplateId") boolean autoTemplateId, @Param("structureId") String structureId, @JsonObject(name = "nameMap", className = "") JSONObject nameMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("xsl") String xsl, @Param("formatXsl") boolean formatXsl, @Param("langType") String langType, @Param("cacheable") boolean cacheable, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
-  @Path("/add-template")
+  @Path(
+      value = "/add-template",
+      contentType = Headers.ContentType.MULTIPART
+  )
   Call<JSONObject> addTemplate(@Param("groupId") long groupId, @Param("templateId") String templateId, @Param("autoTemplateId") boolean autoTemplateId, @Param("structureId") String structureId, @JsonObject(name = "nameMap", className = "") JSONObject nameMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("xsl") String xsl, @Param("formatXsl") boolean formatXsl, @Param("langType") String langType, @Param("cacheable") boolean cacheable, @Param("smallImage") boolean smallImage, @Param("smallImageURL") String smallImageURL, @Param("smallFile") UploadData smallFile, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/copy-template")
@@ -49,6 +53,9 @@ public interface JournalTemplateService {
   @Path("/update-template")
   Call<JSONObject> updateTemplate(@Param("groupId") long groupId, @Param("templateId") String templateId, @Param("structureId") String structureId, @JsonObject(name = "nameMap", className = "") JSONObject nameMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("xsl") String xsl, @Param("formatXsl") boolean formatXsl, @Param("langType") String langType, @Param("cacheable") boolean cacheable, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
-  @Path("/update-template")
+  @Path(
+      value = "/update-template",
+      contentType = Headers.ContentType.MULTIPART
+  )
   Call<JSONObject> updateTemplate(@Param("groupId") long groupId, @Param("templateId") String templateId, @Param("structureId") String structureId, @JsonObject(name = "nameMap", className = "") JSONObject nameMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("xsl") String xsl, @Param("formatXsl") boolean formatXsl, @Param("langType") String langType, @Param("cacheable") boolean cacheable, @Param("smallImage") boolean smallImage, @Param("smallImageURL") String smallImageURL, @Param("smallFile") UploadData smallFile, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

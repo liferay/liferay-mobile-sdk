@@ -1,5 +1,6 @@
 package com.liferay.mobile.android.v62.shoppingitem;
 
+import com.liferay.mobile.android.http.Headers;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.v2.Call;
@@ -16,7 +17,10 @@ public interface ShoppingItemService {
   @Path("/add-book-items")
   Call<Response> addBookItems(@Param("groupId") long groupId, @Param("categoryId") long categoryId, @Param("isbns") JSONArray isbns);
 
-  @Path("/add-item")
+  @Path(
+      value = "/add-item",
+      contentType = Headers.ContentType.MULTIPART
+  )
   Call<JSONObject> addItem(@Param("groupId") long groupId, @Param("categoryId") long categoryId, @Param("sku") String sku, @Param("name") String name, @Param("description") String description, @Param("properties") String properties, @Param("fieldsQuantities") String fieldsQuantities, @Param("requiresShipping") boolean requiresShipping, @Param("stockQuantity") int stockQuantity, @Param("featured") boolean featured, @Param("sale") boolean sale, @Param("smallImage") boolean smallImage, @Param("smallImageURL") String smallImageURL, @Param("smallFile") UploadData smallFile, @Param("mediumImage") boolean mediumImage, @Param("mediumImageURL") String mediumImageURL, @Param("mediumFile") UploadData mediumFile, @Param("largeImage") boolean largeImage, @Param("largeImageURL") String largeImageURL, @Param("largeFile") UploadData largeFile, @Param("itemFields") JSONArray itemFields, @Param("itemPrices") JSONArray itemPrices, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-item")
@@ -40,6 +44,9 @@ public interface ShoppingItemService {
   @Path("/get-items-prev-and-next")
   Call<JSONArray> getItemsPrevAndNext(@Param("itemId") long itemId, @JsonObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
-  @Path("/update-item")
+  @Path(
+      value = "/update-item",
+      contentType = Headers.ContentType.MULTIPART
+  )
   Call<JSONObject> updateItem(@Param("itemId") long itemId, @Param("groupId") long groupId, @Param("categoryId") long categoryId, @Param("sku") String sku, @Param("name") String name, @Param("description") String description, @Param("properties") String properties, @Param("fieldsQuantities") String fieldsQuantities, @Param("requiresShipping") boolean requiresShipping, @Param("stockQuantity") int stockQuantity, @Param("featured") boolean featured, @Param("sale") boolean sale, @Param("smallImage") boolean smallImage, @Param("smallImageURL") String smallImageURL, @Param("smallFile") UploadData smallFile, @Param("mediumImage") boolean mediumImage, @Param("mediumImageURL") String mediumImageURL, @Param("mediumFile") UploadData mediumFile, @Param("largeImage") boolean largeImage, @Param("largeImageURL") String largeImageURL, @Param("largeFile") UploadData largeFile, @Param("itemFields") JSONArray itemFields, @Param("itemPrices") JSONArray itemPrices, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

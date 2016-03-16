@@ -1,5 +1,6 @@
 package com.liferay.mobile.android.v62.layoutset;
 
+import com.liferay.mobile.android.http.Headers;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.v2.Call;
@@ -16,7 +17,10 @@ public interface LayoutSetService {
   @Path("/update-logo")
   Call<Response> updateLogo(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("logo") boolean logo, @Param("bytes") byte[] bytes);
 
-  @Path("/update-logo")
+  @Path(
+      value = "/update-logo",
+      contentType = Headers.ContentType.MULTIPART
+  )
   Call<Response> updateLogo(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("logo") boolean logo, @Param("file") UploadData file);
 
   @Path("/update-look-and-feel")
