@@ -14,6 +14,8 @@
 
 package com.liferay.mobile.android.v2;
 
+import com.liferay.mobile.android.http.Headers.ContentType;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -42,8 +44,13 @@ public class ServiceInvocationHandler implements InvocationHandler {
 		body.put(getPath(method), getParams(method, args));
 
 		Path annotation = method.getAnnotation(Path.class);
+		ContentType contentType = ContentType.JSON;
 
-		return new Call(body, getType(method), annotation.contentType());
+		if (annotation != null) {
+			contentType = annotation.contentType();
+		}
+
+		return new Call(body, getType(method), contentType);
 	}
 
 	protected String getMethodPath(Method method) {

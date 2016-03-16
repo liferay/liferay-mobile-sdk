@@ -122,9 +122,9 @@ public class Call<T> {
 	}
 
 	protected static OkHttpClientImpl client = new OkHttpClientImpl();
-	protected static ContentType contentType;
 
 	protected Object body;
+	protected ContentType contentType;
 	protected Type type;
 
 }
