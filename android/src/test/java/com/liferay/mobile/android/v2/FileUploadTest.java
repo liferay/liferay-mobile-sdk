@@ -30,6 +30,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import org.json.JSONObject;
 import org.junit.After;
 import org.junit.Test;
 
@@ -89,13 +90,13 @@ public class FileUploadTest extends BaseTest {
 
 		UploadData data = new UploadData(is, mimeType, fileName, callback);
 
-		Call<FileEntry> call = service.addFileEntry(
+		Call<JSONObject> call = service.addFileEntry(
 			repositoryId, folderId, fileName, mimeType, fileName, "", "", data,
 			null);
 
 		_file = call.execute(session);
 
-		assertEquals(fileName, _file.title);
+		assertEquals(fileName, _file.getString(DLAppServiceTest.TITLE));
 		assertEquals(5, callback.getTotal());
 		assertEquals(5, baos.size());
 	}
@@ -141,16 +142,16 @@ public class FileUploadTest extends BaseTest {
 
 		UploadData data = new UploadData(is, mimeType, fileName, callback);
 
-		Call<FileEntry> call = service.addFileEntry(
+		Call<JSONObject> call = service.addFileEntry(
 			repositoryId, folderId, fileName, mimeType, fileName, "", "", data,
 			null);
 
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(session, new Callback<FileEntry>() {
+		call.async(session, new Callback<JSONObject>() {
 
 			@Override
-			public void onSuccess(FileEntry file) {
+			public void onSuccess(JSONObject file) {
 				_file = file;
 				lock.countDown();
 			}
@@ -165,7 +166,7 @@ public class FileUploadTest extends BaseTest {
 
 		lock.await(500, TimeUnit.MILLISECONDS);
 
-		assertEquals(fileName, _file.title);
+		assertEquals(fileName, _file.getString(DLAppServiceTest.TITLE));
 		assertEquals(5, callback.getTotal());
 		assertEquals(5, baos.size());
 	}
@@ -174,7 +175,7 @@ public class FileUploadTest extends BaseTest {
 	public void tearDown() throws Exception {
 		if (_file != null) {
 			DLAppServiceTest test = new DLAppServiceTest();
-			test.deleteFileEntry(_file.fileEntryId);
+			test.deleteFileEntry(_file.getLong(DLAppServiceTest.FILE_ENTRY_ID));
 			_file = null;
 		}
 	}
@@ -201,10 +202,10 @@ public class FileUploadTest extends BaseTest {
 			repositoryId, folderId, FILE_NAME, MIME_TYPE, FILE_NAME, "", "",
 			data, null).execute(session);
 
-		assertEquals(FILE_NAME, _file.title);
+		assertEquals(FILE_NAME, _file.getString(DLAppServiceTest.TITLE));
 		assertEquals(372434, callback.getTotal());
 	}
 
-	private FileEntry _file;
+	private JSONObject _file;
 
 }
