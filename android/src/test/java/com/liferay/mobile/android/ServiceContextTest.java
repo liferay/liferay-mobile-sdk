@@ -93,19 +93,23 @@ public class ServiceContextTest extends BaseTest {
 
 		JSONObject body = (JSONObject)call.body();
 
+		JSONObject root = body.getJSONObject("/bookmarksentry/add-entry");
 		assertEquals(
-			"{\"/bookmarksentry/add-entry\":{" +
-				"\"+serviceContext\":" +
-					"\"com.liferay.portal.service.ServiceContext\"," +
-				"\"groupId\":0," +
-				"\"serviceContext.addGroupPermissions\":true," +
-				"\"serviceContext.title\":\"bookmark title\"," +
-				"\"description\":\"\"," +
-				"\"name\":\"\"," +
-				"\"serviceContext.addGuestPermissions\":true," +
-				"\"url\":\"\"," +
-				"\"folderId\":0}}",
-			body.toString());
+			"com.liferay.portal.service.ServiceContext",
+			root.getString("+serviceContext"));
+
+		assertEquals(0, root.getInt("groupId"));
+		assertEquals(0, root.getInt("folderId"));
+		assertEquals(
+			true, root.getBoolean("serviceContext.addGroupPermissions"));
+
+		assertEquals(
+			true, root.getBoolean("serviceContext.addGuestPermissions"));
+
+		assertEquals("bookmark title", root.getString("serviceContext.title"));
+		assertEquals("", root.getString("description"));
+		assertEquals("", root.getString("name"));
+		assertEquals("", root.getString("url"));
 	}
 
 }
