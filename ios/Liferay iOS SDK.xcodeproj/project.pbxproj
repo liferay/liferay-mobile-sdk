@@ -138,6 +138,7 @@
 		CC40D7701974C76D000254E6 /* LRBlockCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = CC40D76F1974C76D000254E6 /* LRBlockCallback.m */; };
 		CC4B7A2F1938C47F003611C4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4B7A2E1938C47F003611C4 /* logo.png */; };
 		CC5196B41A7944AB0005C238 /* SignInTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5196B31A7944AB0005C238 /* SignInTest.m */; };
+		CC5A58511C9B247900AD2FB4 /* ValidatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5A58501C9B247900AD2FB4 /* ValidatorTest.m */; };
 		CC677D2818EC511900F3DFAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6594418EC4BE800957D20 /* Foundation.framework */; };
 		CC6ECF281986D83C007F4EBB /* LRLocalizationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6ECF271986D83C007F4EBB /* LRLocalizationUtil.m */; };
 		CC6ECF301986DB2F007F4EBB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC6ECF321986DB2F007F4EBB /* Localizable.strings */; };
@@ -426,6 +427,7 @@
 		CC40D76F1974C76D000254E6 /* LRBlockCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRBlockCallback.m; sourceTree = "<group>"; };
 		CC4B7A2E1938C47F003611C4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		CC5196B31A7944AB0005C238 /* SignInTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInTest.m; sourceTree = "<group>"; };
+		CC5A58501C9B247900AD2FB4 /* ValidatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidatorTest.m; sourceTree = "<group>"; };
 		CC6130C61B7A2E1600AF9657 /* Liferay-iOS-SDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Liferay-iOS-SDK.podspec"; path = "../Liferay-iOS-SDK.podspec"; sourceTree = "<group>"; };
 		CC6130C71B7A2E4000AF9657 /* gradle.properties */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gradle.properties; sourceTree = "<group>"; };
 		CC677D2618EC511900F3DFAB /* Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1597,6 +1599,7 @@
 				CC5196B31A7944AB0005C238 /* SignInTest.m */,
 				CC2E77DE1A3769A9001890A9 /* SpecialCharsTest.m */,
 				CC2E77DF1A3769A9001890A9 /* UnauthenticatedServiceTest.m */,
+				CC5A58501C9B247900AD2FB4 /* ValidatorTest.m */,
 			);
 			path = Test;
 			sourceTree = SOURCE_ROOT;
@@ -1861,6 +1864,7 @@
 				CC03FCBC18ED7DCD00F3F16C /* LRDDLRecordSetService_v62.m in Sources */,
 				CC03FCCA18ED7DCD00F3F16C /* LRImageService_v62.m in Sources */,
 				CC2E77E81A3769A9001890A9 /* PortletServiceTest.m in Sources */,
+				CC5A58511C9B247900AD2FB4 /* ValidatorTest.m in Sources */,
 				CC03FCBD18ED7DCD00F3F16C /* LRDDMStructureService_v62.m in Sources */,
 				CC03FCF318ED7DCD00F3F16C /* LRSCLicenseService_v62.m in Sources */,
 				CC03FCAA18ED7DCD00F3F16C /* LRAnnouncementsDeliveryService_v62.m in Sources */,
