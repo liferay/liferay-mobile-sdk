@@ -20,6 +20,7 @@ import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.v2.HttpClient;
 import com.liferay.mobile.android.v2.OkHttpClientImpl;
 import com.liferay.mobile.android.v2.ServiceBuilder;
 import com.liferay.mobile.android.v62.portal.PortalService;
@@ -71,7 +72,7 @@ public class PortalVersionUtil {
 			.headers(session.getHeaders())
 			.timeout(session.getConnectionTimeout());
 
-		OkHttpClientImpl client = new OkHttpClientImpl();
+		HttpClient client = new OkHttpClientImpl();
 		Response response = client.sync(request);
 		String header = response.getHeaders().get(Headers.LIFERAY_PORTAL);
 

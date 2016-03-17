@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.android.http.client;
+package com.liferay.mobile.android.v2;
 
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
@@ -22,10 +22,10 @@ import com.liferay.mobile.android.http.Response;
  */
 public interface HttpClient {
 
+	void async(Request request, Callback callback);
+
 	void cancel(Object tag);
 
-	Response send(Request request) throws Exception;
-
-	Response upload(Request request) throws Exception;
+	Response sync(Request request) throws Exception;
 
 }

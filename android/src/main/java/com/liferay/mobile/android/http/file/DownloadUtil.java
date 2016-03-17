@@ -25,6 +25,7 @@ import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.util.PortalVersion;
 import com.liferay.mobile.android.util.Validator;
 import com.liferay.mobile.android.v2.Callback;
+import com.liferay.mobile.android.v2.HttpClient;
 import com.liferay.mobile.android.v2.OkHttpClientImpl;
 
 import com.squareup.okhttp.HttpUrl;
@@ -54,7 +55,7 @@ public class DownloadUtil {
 			((DownloadCallback)callback).setTag(tag);
 		}
 
-		OkHttpClientImpl client = new OkHttpClientImpl();
+		HttpClient client = new OkHttpClientImpl();
 
 		if (callback != null) {
 			client.async(request, callback);

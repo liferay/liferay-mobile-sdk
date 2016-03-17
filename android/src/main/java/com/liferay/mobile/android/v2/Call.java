@@ -124,7 +124,7 @@ public class Call<T> {
 		return sb.toString();
 	}
 
-	protected static OkHttpClientImpl client = new OkHttpClientImpl();
+	protected static HttpClient client = new OkHttpClientImpl();
 
 	protected Object body;
 	protected ContentType contentType;

@@ -42,12 +42,13 @@ import org.json.JSONObject;
 /**
  * @author Bruno Farache
  */
-public class OkHttpClientImpl {
+public class OkHttpClientImpl implements HttpClient {
 
 	public OkHttpClientImpl() {
 		client = new OkHttpClient();
 	}
 
+	@Override
 	public void async(Request request, final Callback callback) {
 		Call call = null;
 
@@ -81,10 +82,12 @@ public class OkHttpClientImpl {
 		});
 	}
 
+	@Override
 	public void cancel(Object tag) {
 		client.cancel(tag);
 	}
 
+	@Override
 	public Response sync(Request request) throws Exception {
 		Call call = build(request);
 		return new Response(call.execute());
