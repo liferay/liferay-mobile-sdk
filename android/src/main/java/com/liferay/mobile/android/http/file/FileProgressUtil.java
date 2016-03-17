@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.http.file;
 
 import com.liferay.mobile.android.callback.file.FileProgressCallback;
-import com.liferay.mobile.android.http.HttpUtil;
+import com.liferay.mobile.android.v2.Call;
 
 import com.squareup.okhttp.internal.Util;
 
@@ -61,7 +61,7 @@ public class FileProgressUtil {
 			}
 
 			if (isCancelled(callback)) {
-				HttpUtil.cancel(tag);
+				Call.cancel(tag);
 			}
 		}
 		finally {

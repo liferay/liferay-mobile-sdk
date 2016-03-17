@@ -171,6 +171,42 @@ public class FileUploadTest extends BaseTest {
 		assertEquals(5, baos.size());
 	}
 
+	@Test
+	public void cancel() throws Exception {
+		DLAppService service = ServiceBuilder.build(DLAppService.class);
+
+		long repositoryId = props.getGroupId();
+		long folderId = DLAppServiceTest.PARENT_FOLDER_ID;
+
+		InputStream is = getClass().getResourceAsStream("/" + FILE_NAME);
+
+		final FileProgressCallback callback = new FileProgressCallback() {
+
+			@Override
+			public void onProgress(int totalBytes) {
+				if (totalBytes > 2048) {
+					setCancelled(true);
+				}
+			}
+
+		};
+
+		UploadData data = new UploadData(is, MIME_TYPE, FILE_NAME, callback);
+
+		try {
+			_file = service.addFileEntry(
+				repositoryId, folderId, FILE_NAME, MIME_TYPE, FILE_NAME, "", "",
+				data, null).execute(session);
+
+			fail("Should have thrown IOException");
+		}
+		catch (IOException ioe) {
+			assertTrue(ioe.getMessage().contains("Socket closed"));
+		}
+
+		assertEquals(2048 * 2, callback.getTotal());
+	}
+
 	@After
 	public void tearDown() throws Exception {
 		if (_file != null) {

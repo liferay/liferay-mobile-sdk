@@ -50,6 +50,10 @@ public class Call<T> {
 		call.async(session, callback);
 	}
 
+	public static void cancel(Object tag) {
+		client.cancel(tag);
+	}
+
 	public Call(Object body, Type type) {
 		this(body, type, ContentType.JSON);
 	}

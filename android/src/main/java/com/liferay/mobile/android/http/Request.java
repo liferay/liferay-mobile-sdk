@@ -44,7 +44,7 @@ public class Request {
 		_method = method;
 
 		if (headers != null) {
-			_headers = new HashMap<String, String>(headers);
+			_headers = new HashMap<>(headers);
 		}
 
 		_url = url;
