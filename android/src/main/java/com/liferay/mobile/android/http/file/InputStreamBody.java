@@ -21,7 +21,7 @@ import java.io.IOException;
 
 import okio.BufferedSink;
 
-import static com.liferay.mobile.android.http.file.FileProgressUtil.transfer;
+import static com.liferay.mobile.android.http.file.FileTransfer.transfer;
 
 /**
  * @author Bruno Farache

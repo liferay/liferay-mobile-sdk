@@ -49,8 +49,12 @@ public class Call<T> {
 		call.async(session, callback);
 	}
 
-	public static void cancel(Object tag) {
-		client.cancel(tag);
+	public static void cancel(Object call) {
+		client.cancel(call);
+	}
+
+	public static HttpClient client() {
+		return client;
 	}
 
 	public Call(Object body, Type type) {
@@ -107,6 +111,7 @@ public class Call<T> {
 			.auth(session.getAuthentication())
 			.headers(headers)
 			.body(body)
+			.tag(this)
 			.timeout(session.getConnectionTimeout());
 	}
 

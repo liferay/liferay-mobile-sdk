@@ -24,13 +24,14 @@ import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.util.PortalVersion;
 import com.liferay.mobile.android.util.Validator;
+import com.liferay.mobile.android.v2.Call;
 import com.liferay.mobile.android.v2.Callback;
 import com.liferay.mobile.android.v2.HttpClient;
 import com.liferay.mobile.android.v2.OkHttpClientImpl;
 
 import com.squareup.okhttp.HttpUrl;
 
-import static com.liferay.mobile.android.http.file.FileProgressUtil.transfer;
+import static com.liferay.mobile.android.http.file.FileTransfer.transfer;
 
 /**
  * @author Bruno Farache
@@ -51,11 +52,10 @@ public class DownloadUtil {
 		Object tag = request.tag();
 
 		if (callback != null) {
-			callback = new DownloadCallback(callback, progressCallback);
-			((DownloadCallback)callback).setTag(tag);
+			callback = new DownloadCallback(callback, progressCallback, tag);
 		}
 
-		HttpClient client = new OkHttpClientImpl();
+		HttpClient client = Call.client();
 
 		if (callback != null) {
 			client.async(request, callback);

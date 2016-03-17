@@ -30,7 +30,7 @@ import okio.Source;
 /**
  * @author Bruno Farache
  */
-public class FileProgressUtil {
+public class FileTransfer {
 
 	public static boolean isCancelled(FileProgressCallback callback) {
 		return (callback != null) && callback.isCancelled();
