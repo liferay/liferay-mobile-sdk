@@ -22,6 +22,8 @@ import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.util.PortalVersion;
 import com.liferay.mobile.android.util.Validator;
 
+import com.squareup.okhttp.HttpUrl;
+
 /**
  * @author Bruno Farache
  */
@@ -65,7 +67,7 @@ public class DownloadUtil {
 		sb.append(prependSlash(folderPath));
 		sb.append(prependSlash(fileTitle));
 
-		return HttpUtil.encodeURLPath(sb.toString());
+		return HttpUrl.parse(sb.toString()).toString();
 	}
 
 	protected static String prependSlash(String string) {

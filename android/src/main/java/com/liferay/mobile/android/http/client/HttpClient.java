@@ -24,8 +24,6 @@ public interface HttpClient {
 
 	void cancel(Object tag);
 
-	String encodeURL(String path);
-
 	Response send(Request request) throws Exception;
 
 	Response upload(Request request) throws Exception;

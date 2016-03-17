@@ -73,10 +73,6 @@ public class HttpUtil {
 		}
 	}
 
-	public static String encodeURLPath(String path) {
-		return client.encodeURL(path);
-	}
-
 	public static String getURL(Session session, String path) {
 		StringBuilder sb = new StringBuilder();
 

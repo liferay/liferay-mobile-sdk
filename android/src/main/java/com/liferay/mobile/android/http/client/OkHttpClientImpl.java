@@ -24,7 +24,6 @@ import com.liferay.mobile.android.http.file.UploadData;
 
 import com.squareup.okhttp.Authenticator;
 import com.squareup.okhttp.Call;
-import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.MultipartBuilder;
 import com.squareup.okhttp.OkHttpClient;
@@ -51,11 +50,6 @@ public class OkHttpClientImpl implements HttpClient {
 	@Override
 	public void cancel(Object tag) {
 		client.cancel(tag);
-	}
-
-	@Override
-	public String encodeURL(String url) {
-		return HttpUrl.parse(url).toString();
 	}
 
 	@Override
