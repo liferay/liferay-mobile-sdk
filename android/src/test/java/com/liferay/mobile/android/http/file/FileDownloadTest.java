@@ -23,6 +23,7 @@ import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.Status;
 import com.liferay.mobile.android.util.PortalVersion;
 import com.liferay.mobile.android.v2.Callback;
+import com.liferay.mobile.android.v2.FileUploadTest;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -48,17 +49,65 @@ public class FileDownloadTest extends BaseTest {
 	}
 
 	@Test
-	public void downloadAsync() throws Exception {
-		BasicAuthentication basic =
+	public void cancel() throws Exception {
+		JSONObject file = FileUploadTest.uploadPhoto(props, session);
+
+		try {
+			BasicAuthentication basic =
 				(BasicAuthentication)session.getAuthentication();
 
-		DigestAuthentication digest = new DigestAuthentication(
-				basic.getUsername(), basic.getPassword());
+			session.setAuthentication(new DigestAuthentication(
+				basic.getUsername(), basic.getPassword()));
 
-		session.setAuthentication(digest);
+			String url = session.getServer() + "/webdav/guest/document_library/" +
+				file.getString(DLAppServiceTest.TITLE);
+
+			final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+			FileProgressCallback callback = new FileProgressCallback() {
+
+				@Override
+				public void onBytes(byte[] bytes) {
+					try {
+						baos.write(bytes);
+					}
+					catch (IOException ioe) {
+						fail(ioe.getMessage());
+					}
+				}
+
+				@Override
+				public void onProgress(int totalBytes) {
+					setCancelled(true);
+				}
+
+			};
+
+			Response response = DownloadUtil.download(
+				session, url, null, callback);
+
+			assertNotNull(response);
+			assertEquals(Status.OK, response.getStatusCode());
+			assertTrue(baos.size() < 2048);
+		}
+		finally {
+			if (file != null) {
+				new DLAppServiceTest().deleteFileEntry(
+					file.getLong(DLAppServiceTest.FILE_ENTRY_ID));
+			}
+		}
+	}
+
+	@Test
+	public void downloadAsync() throws Exception {
+		BasicAuthentication basic =
+			(BasicAuthentication)session.getAuthentication();
+
+		session.setAuthentication(
+			new DigestAuthentication(basic.getUsername(), basic.getPassword()));
 
 		String url = session.getServer() + "/webdav/guest/document_library/" +
-				_file.getString(DLAppServiceTest.TITLE);
+			_file.getString(DLAppServiceTest.TITLE);
 
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		final CountDownLatch lock = new CountDownLatch(1);
@@ -115,10 +164,8 @@ public class FileDownloadTest extends BaseTest {
 		BasicAuthentication basic =
 			(BasicAuthentication)session.getAuthentication();
 
-		DigestAuthentication digest = new DigestAuthentication(
-			basic.getUsername(), basic.getPassword());
-
-		session.setAuthentication(digest);
+		session.setAuthentication(
+			new DigestAuthentication(basic.getUsername(), basic.getPassword()));
 
 		String url = session.getServer() + "/webdav/guest/document_library/" +
 			_file.getString(DLAppServiceTest.TITLE);
@@ -194,8 +241,10 @@ public class FileDownloadTest extends BaseTest {
 
 	@After
 	public void tearDown() throws Exception {
-		DLAppServiceTest test = new DLAppServiceTest();
-		test.deleteFileEntry(_file.getLong(DLAppServiceTest.FILE_ENTRY_ID));
+		if (_file != null) {
+			DLAppServiceTest test = new DLAppServiceTest();
+			test.deleteFileEntry(_file.getLong(DLAppServiceTest.FILE_ENTRY_ID));
+		}
 	}
 
 	private JSONObject _file;

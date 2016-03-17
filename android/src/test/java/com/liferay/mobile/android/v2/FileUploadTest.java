@@ -18,6 +18,8 @@ import com.liferay.mobile.android.BaseTest;
 import com.liferay.mobile.android.DLAppServiceTest;
 import com.liferay.mobile.android.callback.file.FileProgressCallback;
 import com.liferay.mobile.android.http.file.UploadData;
+import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.util.PropertiesUtil;
 import com.liferay.mobile.android.v62.dlapp.DLAppService;
 
 import java.io.ByteArrayInputStream;
@@ -45,6 +47,36 @@ public class FileUploadTest extends BaseTest {
 	public static final String FILE_NAME = "barto.jpg";
 
 	public static final String MIME_TYPE = "image/jpg";
+
+	public static JSONObject uploadPhoto(PropertiesUtil props, Session session)
+		throws Exception {
+
+		DLAppService service = ServiceBuilder.build(DLAppService.class);
+		long repositoryId = props.getGroupId();
+		long folderId = DLAppServiceTest.PARENT_FOLDER_ID;
+
+		InputStream is = FileUploadTest.class.getResourceAsStream(
+			"/" + FILE_NAME);
+
+		FileProgressCallback callback = new FileProgressCallback() {
+
+			@Override
+			public void onProgress(int totalBytes) {
+			}
+
+		};
+
+		UploadData data = new UploadData(is, MIME_TYPE, FILE_NAME, callback);
+
+		JSONObject file = service.addFileEntry(
+			repositoryId, folderId, FILE_NAME, MIME_TYPE, FILE_NAME, "", "",
+			data, null).execute(session);
+
+		assertEquals(FILE_NAME, file.getString(DLAppServiceTest.TITLE));
+		assertEquals(372434, callback.getTotal());
+
+		return file;
+	}
 
 	public FileUploadTest() throws IOException {
 		super();
@@ -219,28 +251,7 @@ public class FileUploadTest extends BaseTest {
 
 	@Test
 	public void uploadPhoto() throws Exception {
-		DLAppService service = ServiceBuilder.build(DLAppService.class);
-		long repositoryId = props.getGroupId();
-		long folderId = DLAppServiceTest.PARENT_FOLDER_ID;
-
-		InputStream is = getClass().getResourceAsStream("/" + FILE_NAME);
-
-		FileProgressCallback callback = new FileProgressCallback() {
-
-			@Override
-			public void onProgress(int totalBytes) {
-			}
-
-		};
-
-		UploadData data = new UploadData(is, MIME_TYPE, FILE_NAME, callback);
-
-		_file = service.addFileEntry(
-			repositoryId, folderId, FILE_NAME, MIME_TYPE, FILE_NAME, "", "",
-			data, null).execute(session);
-
-		assertEquals(FILE_NAME, _file.getString(DLAppServiceTest.TITLE));
-		assertEquals(372434, callback.getTotal());
+		_file = uploadPhoto(props, session);
 	}
 
 	private JSONObject _file;
