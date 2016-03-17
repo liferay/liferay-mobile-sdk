@@ -55,10 +55,10 @@ public class OkHttpClientImpl implements HttpClient {
 	@Override
 	public Response send(Request request) throws Exception {
 		Builder builder = new Builder();
-		Method method = request.getMethod();
+		Method method = request.method();
 
 		if (method == Method.POST) {
-			String body = (String)request.getBody();
+			String body = (String)request.body();
 
 			if (body != null) {
 				MediaType type = MediaType.parse(
@@ -83,7 +83,7 @@ public class OkHttpClientImpl implements HttpClient {
 	}
 
 	protected void addHeaders(Builder builder, Request request) {
-		Map<String, String> headers = request.getHeaders();
+		Map<String, String> headers = request.headers();
 
 		if (headers != null) {
 			for (Map.Entry<String, String> header : headers.entrySet()) {
@@ -95,7 +95,7 @@ public class OkHttpClientImpl implements HttpClient {
 	protected void authenticate(OkHttpClient client, Request request)
 		throws Exception {
 
-		Authentication authentication = request.getAuthentication();
+		Authentication authentication = request.auth();
 
 		if (authentication != null) {
 			if (authentication instanceof Authenticator) {
@@ -120,8 +120,8 @@ public class OkHttpClientImpl implements HttpClient {
 	}
 
 	protected RequestBody getUploadBody(Request request) {
-		JSONObject body = (JSONObject)request.getBody();
-		Object tag = request.getTag();
+		JSONObject body = (JSONObject)request.body();
+		Object tag = request.tag();
 
 		MultipartBuilder builder = new MultipartBuilder()
 			.type(MultipartBuilder.FORM);
@@ -148,17 +148,17 @@ public class OkHttpClientImpl implements HttpClient {
 	protected Response send(Builder builder, final Request request)
 		throws Exception {
 
-		builder = builder.url(request.getURL());
-		builder.tag(request.getTag());
+		builder = builder.url(request.url());
+		builder.tag(request.tag());
 
-		OkHttpClient client = getClient(request.getConnectionTimeout());
+		OkHttpClient client = getClient(request.timeout());
 
 		authenticate(client, request);
 		addHeaders(builder, request);
 
 		Call call = client.newCall(builder.build());
 
-		final Callback callback = request.getCallback();
+		final Callback callback = request.callback();
 
 		if (callback == null) {
 			return new Response(call.execute());

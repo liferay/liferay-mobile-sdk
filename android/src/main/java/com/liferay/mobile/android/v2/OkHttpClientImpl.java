@@ -91,7 +91,7 @@ public class OkHttpClientImpl {
 	}
 
 	protected void addHeaders(Builder builder, Request request) {
-		Map<String, String> headers = request.getHeaders();
+		Map<String, String> headers = request.headers();
 
 		if (headers != null) {
 			for (Map.Entry<String, String> header : headers.entrySet()) {
@@ -103,7 +103,7 @@ public class OkHttpClientImpl {
 	protected void authenticate(OkHttpClient client, Request request)
 		throws Exception {
 
-		Authentication authentication = request.getAuthentication();
+		Authentication authentication = request.auth();
 
 		if (authentication != null) {
 			if (authentication instanceof Authenticator) {
@@ -117,13 +117,13 @@ public class OkHttpClientImpl {
 
 	protected Call build(Request request) throws Exception {
 		Builder builder = new Builder();
-		Method method = request.getMethod();
+		Method method = request.method();
 
 		if (method == Method.POST) {
-			Object body = request.getBody();
+			Object body = request.body();
 
 			if (body != null) {
-				Map<String, String> headers = request.getHeaders();
+				Map<String, String> headers = request.headers();
 				String contentType = headers.get(Headers.CONTENT_TYPE);
 
 				if (contentType.equals(ContentType.JSON.value)) {
@@ -132,7 +132,7 @@ public class OkHttpClientImpl {
 				}
 				else if (contentType.equals(ContentType.MULTIPART.value)) {
 					builder.post(
-						getUploadBody((JSONObject)body, request.getTag()));
+						getUploadBody((JSONObject)body, request.tag()));
 				}
 			}
 		}
@@ -140,10 +140,10 @@ public class OkHttpClientImpl {
 			builder.head();
 		}
 
-		builder = builder.url(request.getURL());
-		builder.tag(request.getTag());
+		builder = builder.url(request.url());
+		builder.tag(request.tag());
 
-		OkHttpClient client = getClient(request.getConnectionTimeout());
+		OkHttpClient client = getClient(request.timeout());
 
 		authenticate(client, request);
 		addHeaders(builder, request);

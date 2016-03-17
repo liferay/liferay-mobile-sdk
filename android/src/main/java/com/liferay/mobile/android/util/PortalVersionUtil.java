@@ -65,9 +65,10 @@ public class PortalVersionUtil {
 	protected static int getBuilderNumberHeader(Session session)
 		throws Exception {
 
-		Request request = new Request(
-			Method.HEAD, session.getHeaders(), session.getServer(), null,
-			session.getConnectionTimeout());
+		Request request = Request.url(session.getServer())
+			.method(Method.HEAD)
+			.headers(session.getHeaders())
+			.timeout(session.getConnectionTimeout());
 
 		Response response = HttpUtil.send(request);
 

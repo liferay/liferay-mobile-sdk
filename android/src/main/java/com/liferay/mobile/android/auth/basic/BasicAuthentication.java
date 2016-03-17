@@ -32,7 +32,7 @@ public class BasicAuthentication implements Authentication {
 
 	@Override
 	public void authenticate(Request request) {
-		request.getHeaders().put(
+		request.header(
 			Headers.AUTHORIZATION, Credentials.basic(username, password));
 	}
 

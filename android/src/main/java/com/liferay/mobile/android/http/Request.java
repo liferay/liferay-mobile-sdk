@@ -25,114 +25,98 @@ import java.util.Map;
  */
 public class Request {
 
-	public Request(
-		Authentication authentication, Method method,
-		Map<String, String> headers, String url, Object body,
-		int connectionTimeout, Callback callback) {
+	public static Request url(String url) {
+		Request request = new Request(url);
+		request.tag(request);
+		request.timeout(1500);
+		request.method(Method.POST);
 
-		this(
-			authentication, method, headers, url, body, connectionTimeout,
-			callback, null);
+		return request;
 	}
 
-	public Request(
-		Authentication authentication, Method method,
-		Map<String, String> headers, String url, Object body,
-		int connectionTimeout, Callback callback, Object tag) {
-
-		_authentication = authentication;
-		_method = method;
-
-		if (headers != null) {
-			_headers = new HashMap<>(headers);
-		}
-
-		_url = url;
-		_body = body;
-		_connectionTimeout = connectionTimeout;
-		_callback = callback;
-
-		if (tag == null) {
-			tag = this;
-		}
-
-		_tag = tag;
+	public Request(String url) {
+		this.url = url;
 	}
 
-	public Request(
-		Method method, Map<String, String> headers, String url, Object body,
-		int connectionTimeout) {
-
-		this(null, method, headers, url, body, connectionTimeout, null);
+	public Authentication auth() {
+		return auth;
 	}
 
-	public Authentication getAuthentication() {
-		return _authentication;
+	public Request auth(Authentication auth) {
+		this.auth = auth;
+		return this;
 	}
 
-	public Object getBody() {
-		return _body;
+	public Object body() {
+		return body;
 	}
 
-	public Callback getCallback() {
-		return _callback;
+	public Request body(Object body) {
+		this.body = body;
+		return this;
 	}
 
-	public int getConnectionTimeout() {
-		return _connectionTimeout;
+	public Callback callback() {
+		return callback;
 	}
 
-	public Map<String, String> getHeaders() {
-		return _headers;
+	public Request callback(Callback callback) {
+		this.callback = callback;
+		return this;
 	}
 
-	public Method getMethod() {
-		return _method;
+	public Request header(String key, String value) {
+		this.headers.put(key, value);
+		return this;
 	}
 
-	public Object getTag() {
-		return _tag;
+	public Map<String, String> headers() {
+		return headers;
 	}
 
-	public String getURL() {
-		return _url;
+	public Request headers(Map<String, String> headers) {
+		this.headers = new HashMap<>(headers);
+		return this;
 	}
 
-	public void setAuthentication(Authentication _authentication) {
-		this._authentication = _authentication;
+	public Method method() {
+		return method;
 	}
 
-	public void setBody(Object body) {
-		_body = body;
+	public Request method(Method method) {
+		this.method = method;
+		return this;
 	}
 
-	public void setCallback(Callback callback) {
-		this._callback = callback;
+	public Object tag() {
+		return tag;
 	}
 
-	public void setConnectionTimeout(int connectionTimeout) {
-		_connectionTimeout = connectionTimeout;
+	public Request tag(Object tag) {
+		this.tag = tag;
+		return this;
 	}
 
-	public void setHeaders(Map<String, String> headers) {
-		_headers = headers;
+	public int timeout() {
+		return timeout;
 	}
 
-	public void setMethod(Method method) {
-		_method = method;
+	public Request timeout(int timeout) {
+		this.timeout = timeout;
+		return this;
 	}
 
-	public void setURL(String url) {
-		_url = url;
+	public String url() {
+		return url;
 	}
 
-	private Authentication _authentication;
-	private Object _body;
-	private Callback _callback;
-	private int _connectionTimeout;
-	private Map<String, String> _headers = new HashMap<String, String>();
-	private Method _method;
-	private Object _tag;
-	private String _url;
+	protected Authentication auth;
+	protected Object body;
+	protected Callback callback;
+	protected Map<String, String> headers = new HashMap<>();
+	protected Method method;
+	protected Object tag;
+	protected int timeout;
+	protected String url;
 
 }

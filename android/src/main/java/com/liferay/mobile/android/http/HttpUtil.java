@@ -34,21 +34,26 @@ public class HttpUtil {
 	public static final String JSONWS_PATH_62 = "api/jsonws";
 
 	public static Response download(
-			Session session, String url, FileProgressCallback callback)
+			Session session, String url, FileProgressCallback progressCallback)
 		throws Exception {
 
-		Callback sessionCallback = session.getCallback();
+		Callback callback = session.getCallback();
 
-		if (sessionCallback != null) {
-			sessionCallback = new DownloadCallback(sessionCallback, callback);
+		if (callback != null) {
+			callback = new DownloadCallback(callback, progressCallback);
 		}
 
-		Request request = new Request(
-			session.getAuthentication(), Method.GET, session.getHeaders(), url,
-			null, session.getConnectionTimeout(), sessionCallback);
+		Request request = Request.url(url)
+			.auth(session.getAuthentication())
+			.method(Method.GET)
+			.headers(session.getHeaders())
+			.timeout(session.getConnectionTimeout())
+			.callback(callback);
 
-		if (sessionCallback != null) {
-			((DownloadCallback)sessionCallback).setTag(request.getTag());
+		Object tag = request.tag();
+
+		if (callback != null) {
+			((DownloadCallback)callback).setTag(tag);
 		}
 
 		Response response = send(request);
@@ -57,8 +62,7 @@ public class HttpUtil {
 			return null;
 		}
 		else {
-			transfer(
-				response.getBodyAsStream(), callback, request.getTag(), null);
+			transfer(response.getBodyAsStream(), progressCallback, tag, null);
 
 			return response;
 		}

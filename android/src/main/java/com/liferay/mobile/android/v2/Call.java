@@ -16,7 +16,6 @@ package com.liferay.mobile.android.v2;
 
 import com.liferay.mobile.android.http.Headers;
 import com.liferay.mobile.android.http.Headers.ContentType;
-import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.Session;
@@ -104,11 +103,12 @@ public class Call<T> {
 			body = jsonObject.optJSONObject(path);
 		}
 
-		String url = url(session.getServer(), path);
-
-		return new Request(
-			session.getAuthentication(), Method.POST, headers, url, body,
-			session.getConnectionTimeout(), session.getCallback());
+		return Request.url(url(session.getServer(), path))
+			.auth(session.getAuthentication())
+			.headers(headers)
+			.body(body)
+			.timeout(session.getConnectionTimeout())
+			.callback(session.getCallback());
 	}
 
 	protected String url(String server, String path) {
