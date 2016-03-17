@@ -16,16 +16,9 @@ package com.liferay.mobile.android.service;
 
 import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.callback.Callback;
-import com.liferay.mobile.android.http.HttpUtil;
-import com.liferay.mobile.android.http.file.UploadData;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
@@ -94,11 +87,6 @@ public class SessionImpl implements Session {
 	}
 
 	@Override
-	public JSONArray invoke(JSONObject command) throws Exception {
-		return HttpUtil.post(this, command);
-	}
-
-	@Override
 	public void setAuthentication(Authentication authentication) {
 		this.authentication = authentication;
 	}
@@ -123,40 +111,10 @@ public class SessionImpl implements Session {
 		this.server = server;
 	}
 
-	@Override
-	public JSONArray upload(JSONObject command) throws Exception {
-		if (!hasUploadData(command)) {
-			return invoke(command);
-		}
-
-		return HttpUtil.upload(this, command);
-	}
-
-	protected boolean hasUploadData(JSONObject command) throws JSONException {
-		if (command.length() == 0) {
-			return false;
-		}
-
-		String first = command.names().getString(0);
-		JSONObject params = command.getJSONObject(first);
-
-		Iterator<String> keys = params.keys();
-
-		while (keys.hasNext()) {
-			String key = keys.next();
-
-			if (params.get(key) instanceof UploadData) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
 	protected Authentication authentication;
 	protected Callback callback;
 	protected int connectionTimeout;
-	protected Map<String, String> headers = new HashMap<String, String>();
+	protected Map<String, String> headers = new HashMap<>();
 	protected String server;
 
 }

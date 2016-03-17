@@ -19,9 +19,6 @@ import com.liferay.mobile.android.callback.Callback;
 
 import java.util.Map;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 /**
  * @author Bruno Farache
  */
@@ -37,8 +34,6 @@ public interface Session {
 
 	String getServer();
 
-	JSONArray invoke(JSONObject command) throws Exception;
-
 	void setAuthentication(Authentication authentication);
 
 	void setCallback(Callback callback);
@@ -48,7 +43,5 @@ public interface Session {
 	void setHeaders(Map<String, String> headers);
 
 	void setServer(String server);
-
-	JSONArray upload(JSONObject command) throws Exception;
 
 }

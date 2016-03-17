@@ -16,7 +16,6 @@ package com.liferay.mobile.android;
 
 import com.liferay.mobile.android.exception.ServerException;
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.service.BatchSessionImpl;
 import com.liferay.mobile.android.v2.Call;
 import com.liferay.mobile.android.v2.JsonParser;
 import com.liferay.mobile.android.v2.ServiceBuilder;
@@ -92,8 +91,6 @@ public class DLAppServiceTest extends BaseTest {
 
 	@Test
 	public void addFoldersBatch() throws Exception {
-		BatchSessionImpl batch = new BatchSessionImpl(session);
-
 		DLAppService service = ServiceBuilder.build(DLAppService.class);
 		long repositoryId = props.getGroupId();
 
@@ -109,7 +106,7 @@ public class DLAppServiceTest extends BaseTest {
 		assertEquals(_FOLDER_NAME, sites.getJSONObject(0).get(_NAME));
 		assertEquals(_FOLDER_NAME_2, sites.getJSONObject(1).get(_NAME));
 
-		deleteFoldersBatch(batch);
+		deleteFoldersBatch();
 	}
 
 	public void deleteFileEntry(long fileEntryId) throws Exception {
@@ -117,7 +114,7 @@ public class DLAppServiceTest extends BaseTest {
 		service.deleteFileEntry(fileEntryId).execute(session);
 	}
 
-	public void deleteFolder() throws Exception {
+	protected void deleteFolder() throws Exception {
 		DLAppService service = ServiceBuilder.build(DLAppService.class);
 		long repositoryId = props.getGroupId();
 
@@ -139,7 +136,7 @@ public class DLAppServiceTest extends BaseTest {
 		}
 	}
 
-	public void deleteFoldersBatch(BatchSessionImpl batch) throws Exception {
+	protected void deleteFoldersBatch() throws Exception {
 		DLAppService service = ServiceBuilder.build(DLAppService.class);
 		long repositoryId = props.getGroupId();
 

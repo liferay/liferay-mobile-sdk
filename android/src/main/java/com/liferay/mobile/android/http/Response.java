@@ -59,8 +59,7 @@ public class Response {
 
 	public Map<String, String> getHeaders() {
 		Map<String, List<String>> headers = _response.headers().toMultimap();
-
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, String> map = new HashMap<>();
 
 		for (Map.Entry<String, List<String>> header : headers.entrySet()) {
 			map.put(header.getKey(), header.getValue().get(0));
