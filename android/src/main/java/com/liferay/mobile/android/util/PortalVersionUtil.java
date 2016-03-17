@@ -22,7 +22,6 @@ import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.v2.Call;
 import com.liferay.mobile.android.v2.HttpClient;
-import com.liferay.mobile.android.v2.OkHttpClientImpl;
 import com.liferay.mobile.android.v2.ServiceBuilder;
 import com.liferay.mobile.android.v62.portal.PortalService;
 

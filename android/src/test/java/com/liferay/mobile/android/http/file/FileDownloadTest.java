@@ -22,9 +22,13 @@ import com.liferay.mobile.android.callback.file.FileProgressCallback;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.Status;
 import com.liferay.mobile.android.util.PortalVersion;
+import com.liferay.mobile.android.v2.Callback;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import org.json.JSONObject;
 
@@ -44,7 +48,70 @@ public class FileDownloadTest extends BaseTest {
 	}
 
 	@Test
-	public void download() throws Exception {
+	public void downloadAsync() throws Exception {
+		BasicAuthentication basic =
+				(BasicAuthentication)session.getAuthentication();
+
+		DigestAuthentication digest = new DigestAuthentication(
+				basic.getUsername(), basic.getPassword());
+
+		session.setAuthentication(digest);
+
+		String url = session.getServer() + "/webdav/guest/document_library/" +
+				_file.getString(DLAppServiceTest.TITLE);
+
+		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		final CountDownLatch lock = new CountDownLatch(1);
+
+		FileProgressCallback progressCallback = new FileProgressCallback() {
+
+			@Override
+			public void onBytes(byte[] bytes) {
+				try {
+					baos.write(bytes);
+				}
+				catch (IOException ioe) {
+					fail(ioe.getMessage());
+				}
+			}
+
+			@Override
+			public void onProgress(int totalBytes) {
+				if (totalBytes == 5) {
+					try {
+						baos.flush();
+					}
+					catch (IOException ioe) {
+						fail(ioe.getMessage());
+					}
+				}
+			}
+
+		};
+
+		Callback callback = new Callback<Response>() {
+
+			@Override
+			public void onFailure(Exception exception) {
+				fail(exception.getMessage());
+				lock.countDown();
+			}
+
+			@Override
+			public void onSuccess(Response response) {
+				assertEquals(Status.OK, response.getStatusCode());
+				lock.countDown();
+			}
+
+		};
+
+		DownloadUtil.download(session, url, callback, progressCallback);
+		lock.await(500, TimeUnit.MILLISECONDS);
+		assertEquals(5, baos.size());
+	}
+
+	@Test
+	public void downloadSync() throws Exception {
 		BasicAuthentication basic =
 			(BasicAuthentication)session.getAuthentication();
 

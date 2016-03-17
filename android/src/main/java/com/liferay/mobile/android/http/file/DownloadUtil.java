@@ -27,7 +27,6 @@ import com.liferay.mobile.android.util.Validator;
 import com.liferay.mobile.android.v2.Call;
 import com.liferay.mobile.android.v2.Callback;
 import com.liferay.mobile.android.v2.HttpClient;
-import com.liferay.mobile.android.v2.OkHttpClientImpl;
 
 import com.squareup.okhttp.HttpUrl;
 
