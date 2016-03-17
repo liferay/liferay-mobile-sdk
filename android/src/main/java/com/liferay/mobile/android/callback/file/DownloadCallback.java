@@ -14,34 +14,27 @@
 
 package com.liferay.mobile.android.callback.file;
 
-import com.liferay.mobile.android.callback.Callback;
 import com.liferay.mobile.android.http.Response;
+import com.liferay.mobile.android.v2.Callback;
 
 import static com.liferay.mobile.android.http.file.FileProgressUtil.transfer;
 
 /**
  * @author Bruno Farache
  */
-public class DownloadCallback implements Callback {
+public class DownloadCallback extends Callback {
 
 	public DownloadCallback(
-		Callback callback, FileProgressCallback fileProgressCallback) {
+		Callback callback, FileProgressCallback progressCallback) {
 
 		this.callback = callback;
-		this.fileProgressCallback = fileProgressCallback;
-	}
-
-	@Override
-	public void doFailure(Exception exception) {
-		callback.doFailure(exception);
+		this.progressCallback = progressCallback;
 	}
 
 	@Override
 	public void inBackground(Response response) {
 		try {
-			transfer(
-				response.getBodyAsStream(), fileProgressCallback, tag, null);
-
+			transfer(response.getBodyAsStream(), progressCallback, tag, null);
 			callback.inBackground(response);
 		}
 		catch (Exception e) {
@@ -49,12 +42,22 @@ public class DownloadCallback implements Callback {
 		}
 	}
 
+	@Override
+	public void onFailure(Exception exception) {
+		callback.onFailure(exception);
+	}
+
+	@Override
+	public void onSuccess(Object result) {
+		callback.onSuccess(result);
+	}
+
 	public void setTag(Object tag) {
 		this.tag = tag;
 	}
 
 	protected Callback callback;
-	protected FileProgressCallback fileProgressCallback;
+	protected FileProgressCallback progressCallback;
 	protected Object tag;
 
 }

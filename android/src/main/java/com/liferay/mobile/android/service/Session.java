@@ -15,7 +15,6 @@
 package com.liferay.mobile.android.service;
 
 import com.liferay.mobile.android.auth.Authentication;
-import com.liferay.mobile.android.callback.Callback;
 
 import java.util.Map;
 
@@ -26,8 +25,6 @@ public interface Session {
 
 	Authentication getAuthentication();
 
-	Callback getCallback();
-
 	int getConnectionTimeout();
 
 	Map<String, String> getHeaders();
@@ -35,8 +32,6 @@ public interface Session {
 	String getServer();
 
 	void setAuthentication(Authentication authentication);
-
-	void setCallback(Callback callback);
 
 	void setConnectionTimeout(int connectionTimeout);
 

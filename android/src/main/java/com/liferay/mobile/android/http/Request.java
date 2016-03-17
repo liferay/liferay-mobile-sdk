@@ -15,7 +15,6 @@
 package com.liferay.mobile.android.http;
 
 import com.liferay.mobile.android.auth.Authentication;
-import com.liferay.mobile.android.callback.Callback;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,15 +52,6 @@ public class Request {
 
 	public Request body(Object body) {
 		this.body = body;
-		return this;
-	}
-
-	public Callback callback() {
-		return callback;
-	}
-
-	public Request callback(Callback callback) {
-		this.callback = callback;
 		return this;
 	}
 
@@ -112,7 +102,6 @@ public class Request {
 
 	protected Authentication auth;
 	protected Object body;
-	protected Callback callback;
 	protected Map<String, String> headers = new HashMap<>();
 	protected Method method;
 	protected Object tag;

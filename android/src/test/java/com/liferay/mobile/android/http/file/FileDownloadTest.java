@@ -19,7 +19,6 @@ import com.liferay.mobile.android.DLAppServiceTest;
 import com.liferay.mobile.android.auth.basic.BasicAuthentication;
 import com.liferay.mobile.android.auth.basic.DigestAuthentication;
 import com.liferay.mobile.android.callback.file.FileProgressCallback;
-import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.Status;
 import com.liferay.mobile.android.util.PortalVersion;
@@ -85,7 +84,7 @@ public class FileDownloadTest extends BaseTest {
 
 		};
 
-		Response response = HttpUtil.download(session, url, callback);
+		Response response = DownloadUtil.download(session, url, null, callback);
 		assertNotNull(response);
 		assertEquals(Status.OK, response.getStatusCode());
 		assertEquals(5, baos.size());

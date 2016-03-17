@@ -107,8 +107,7 @@ public class Call<T> {
 			.auth(session.getAuthentication())
 			.headers(headers)
 			.body(body)
-			.timeout(session.getConnectionTimeout())
-			.callback(session.getCallback());
+			.timeout(session.getConnectionTimeout());
 	}
 
 	protected String url(String server, String path) {

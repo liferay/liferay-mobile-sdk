@@ -20,6 +20,7 @@ import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.v2.OkHttpClientImpl;
 import com.liferay.mobile.android.v2.ServiceBuilder;
 import com.liferay.mobile.android.v62.portal.PortalService;
 
@@ -70,21 +71,21 @@ public class PortalVersionUtil {
 			.headers(session.getHeaders())
 			.timeout(session.getConnectionTimeout());
 
-		Response response = HttpUtil.send(request);
+		OkHttpClientImpl client = new OkHttpClientImpl();
+		Response response = client.sync(request);
+		String header = response.getHeaders().get(Headers.LIFERAY_PORTAL);
 
-		String portalHeader = response.getHeaders().get(Headers.LIFERAY_PORTAL);
-
-		if (portalHeader == null) {
+		if (header == null) {
 			return PortalVersion.UNKNOWN;
 		}
 
-		int indexOfBuild = portalHeader.indexOf("Build");
+		int indexOfBuild = header.indexOf("Build");
 
 		if (indexOfBuild == -1) {
 			return PortalVersion.UNKNOWN;
 		}
 		else {
-			String buildNumber = portalHeader.substring(
+			String buildNumber = header.substring(
 				indexOfBuild + 6, indexOfBuild + 10);
 
 			return Integer.valueOf(buildNumber);

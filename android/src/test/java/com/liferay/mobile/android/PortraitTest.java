@@ -36,8 +36,7 @@ public class PortraitTest extends BaseTest {
 	public void downloadPortrait() throws Exception {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		String portraitURL = getPortraitURL();
-
-		PortraitUtil.downloadPortrait(session, portraitURL, baos);
+		PortraitUtil.downloadPortrait(session, portraitURL, baos, null, null);
 
 		assertEquals(7742, baos.size());
 	}

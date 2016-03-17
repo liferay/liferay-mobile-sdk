@@ -18,12 +18,12 @@ import android.util.Base64;
 
 import com.liferay.mobile.android.callback.file.FileProgressCallback;
 import com.liferay.mobile.android.http.Headers;
-import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.http.Response;
+import com.liferay.mobile.android.http.file.DownloadUtil;
 import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.v2.Callback;
 
 import java.io.Closeable;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -44,13 +44,13 @@ public class PortraitUtil {
 
 	public static String downloadPortrait(
 			Session session, String portraitURL, final OutputStream os,
-			String modifiedDate)
+			String modifiedDate, Callback callback)
 		throws Exception {
 
 		String lastModified = null;
 
 		try {
-			Map<String, String> headers = new HashMap<String, String>();
+			Map<String, String> headers = new HashMap<>();
 
 			if (Validator.isNotNull(modifiedDate)) {
 				headers.put(Headers.IF_MODIFIED_SINCE, modifiedDate);
@@ -58,8 +58,8 @@ public class PortraitUtil {
 
 			session.setHeaders(headers);
 
-			Response response = HttpUtil.download(
-				session, portraitURL, new FileProgressCallback() {
+			Response response = DownloadUtil.download(
+				session, portraitURL, callback, new FileProgressCallback() {
 
 				@Override
 				public void onBytes(byte[] bytes) {
@@ -84,29 +84,6 @@ public class PortraitUtil {
 		}
 
 		return lastModified;
-	}
-
-	public static String downloadPortrait(
-			Session session, String portraitURL, OutputStream os)
-		throws Exception {
-
-		return downloadPortrait(session, portraitURL, os, null);
-	}
-
-	public static String downloadPortrait(
-			Session session, String portraitURL, String filePath)
-		throws Exception {
-
-		return downloadPortrait(session, portraitURL, filePath, null);
-	}
-
-	public static String downloadPortrait(
-			Session session, String portraitURL, String filePath,
-			String modifiedDate)
-		throws Exception {
-
-		return downloadPortrait(
-			session, portraitURL, new FileOutputStream(filePath), modifiedDate);
 	}
 
 	public static String getPortraitURL(

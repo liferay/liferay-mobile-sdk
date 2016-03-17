@@ -15,7 +15,6 @@
 package com.liferay.mobile.android.service;
 
 import com.liferay.mobile.android.auth.Authentication;
-import com.liferay.mobile.android.callback.Callback;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,45 +29,28 @@ public class SessionImpl implements Session {
 	public SessionImpl(Session session) {
 		this(
 			session.getServer(), session.getAuthentication(),
-			session.getConnectionTimeout(), session.getCallback());
+			session.getConnectionTimeout());
 	}
 
 	public SessionImpl(String server) {
-		this(server, null, null);
+		this(server, null);
 	}
 
 	public SessionImpl(String server, Authentication authentication) {
-		this(server, authentication, null);
+		this(server, authentication, DEFAULT_CONNECTION_TIMEOUT);
 	}
 
 	public SessionImpl(
-		String server, Authentication authentication, Callback callback) {
-
-		this(server, authentication, DEFAULT_CONNECTION_TIMEOUT, callback);
-	}
-
-	public SessionImpl(
-		String server, Authentication authentication, int connectionTimeout,
-		Callback callback) {
+		String server, Authentication authentication, int connectionTimeout) {
 
 		this.server = server;
 		this.authentication = authentication;
 		this.connectionTimeout = connectionTimeout;
-		this.callback = callback;
-	}
-
-	public SessionImpl(String server, Callback callback) {
-		this(server, null, callback);
 	}
 
 	@Override
 	public Authentication getAuthentication() {
 		return authentication;
-	}
-
-	@Override
-	public Callback getCallback() {
-		return callback;
 	}
 
 	@Override
@@ -92,11 +74,6 @@ public class SessionImpl implements Session {
 	}
 
 	@Override
-	public void setCallback(Callback callback) {
-		this.callback = callback;
-	}
-
-	@Override
 	public void setConnectionTimeout(int connectionTimeout) {
 		this.connectionTimeout = connectionTimeout;
 	}
@@ -112,7 +89,6 @@ public class SessionImpl implements Session {
 	}
 
 	protected Authentication authentication;
-	protected Callback callback;
 	protected int connectionTimeout;
 	protected Map<String, String> headers = new HashMap<>();
 	protected String server;

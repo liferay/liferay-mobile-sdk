@@ -16,22 +16,61 @@ package com.liferay.mobile.android.http.file;
 
 import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.auth.basic.DigestAuthentication;
+import com.liferay.mobile.android.callback.file.DownloadCallback;
 import com.liferay.mobile.android.callback.file.FileProgressCallback;
-import com.liferay.mobile.android.http.HttpUtil;
+import com.liferay.mobile.android.http.Method;
+import com.liferay.mobile.android.http.Request;
+import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.util.PortalVersion;
 import com.liferay.mobile.android.util.Validator;
+import com.liferay.mobile.android.v2.Callback;
+import com.liferay.mobile.android.v2.OkHttpClientImpl;
 
 import com.squareup.okhttp.HttpUrl;
+
+import static com.liferay.mobile.android.http.file.FileProgressUtil.transfer;
 
 /**
  * @author Bruno Farache
  */
 public class DownloadUtil {
 
+	public static Response download(
+			Session session, String url, Callback callback,
+			FileProgressCallback progressCallback)
+		throws Exception {
+
+		Request request = Request.url(url)
+			.auth(session.getAuthentication())
+			.method(Method.GET)
+			.headers(session.getHeaders())
+			.timeout(session.getConnectionTimeout());
+
+		Object tag = request.tag();
+
+		if (callback != null) {
+			callback = new DownloadCallback(callback, progressCallback);
+			((DownloadCallback)callback).setTag(tag);
+		}
+
+		OkHttpClientImpl client = new OkHttpClientImpl();
+
+		if (callback != null) {
+			client.async(request, callback);
+			return null;
+		}
+		else {
+			Response response = client.sync(request);
+			transfer(response.getBodyAsStream(), progressCallback, tag, null);
+			return response;
+		}
+	}
+
 	public static void downloadWebDAVFile(
 			Session session, int portalVersion, String groupFriendlyURL,
-			String folderPath, String fileTitle, FileProgressCallback callback)
+			String folderPath, String fileTitle, Callback callback,
+			FileProgressCallback progressCallback)
 		throws Exception {
 
 		Authentication auth = session.getAuthentication();
@@ -45,7 +84,7 @@ public class DownloadUtil {
 		String url = getWebDAVFileURL(
 			session, portalVersion, groupFriendlyURL, folderPath, fileTitle);
 
-		HttpUtil.download(session, url, callback);
+		download(session, url, callback, progressCallback);
 	}
 
 	protected static String getWebDAVFileURL(

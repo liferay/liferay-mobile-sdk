@@ -18,11 +18,11 @@ import com.liferay.mobile.android.BaseTest;
 import com.liferay.mobile.android.DLAppServiceTest;
 import com.liferay.mobile.android.auth.basic.BasicAuthentication;
 import com.liferay.mobile.android.auth.basic.DigestAuthentication;
-import com.liferay.mobile.android.callback.Callback;
 import com.liferay.mobile.android.callback.file.FileProgressCallback;
-import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.Status;
+import com.liferay.mobile.android.http.file.DownloadUtil;
+import com.liferay.mobile.android.v2.Callback;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -63,7 +63,7 @@ public class FileDownloadAsyncTest extends BaseTest {
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		FileProgressCallback fileProgressCallback = new FileProgressCallback() {
+		FileProgressCallback progressCallback = new FileProgressCallback() {
 
 			@Override
 			public void onBytes(byte[] bytes) {
@@ -89,23 +89,23 @@ public class FileDownloadAsyncTest extends BaseTest {
 
 		};
 
-		session.setCallback(new Callback() {
+		Callback callback = new Callback<Response>() {
 
 			@Override
-			public void inBackground(Response response) {
-				assertEquals(Status.OK, response.getStatusCode());
-				lock.countDown();
-			}
-
-			@Override
-			public void doFailure(Exception exception) {
+			public void onFailure(Exception exception) {
 				fail(exception.getMessage());
 				lock.countDown();
 			}
 
-		});
+			@Override
+			public void onSuccess(Response response) {
+				assertEquals(Status.OK, response.getStatusCode());
+				lock.countDown();
+			}
 
-		HttpUtil.download(session, url, fileProgressCallback);
+		};
+
+		DownloadUtil.download(session, url, callback, progressCallback);
 		lock.await(500, TimeUnit.MILLISECONDS);
 		assertEquals(5, baos.size());
 	}

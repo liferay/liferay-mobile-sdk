@@ -14,15 +14,6 @@
 
 package com.liferay.mobile.android.http;
 
-import com.liferay.mobile.android.callback.Callback;
-import com.liferay.mobile.android.callback.file.DownloadCallback;
-import com.liferay.mobile.android.callback.file.FileProgressCallback;
-import com.liferay.mobile.android.http.client.HttpClient;
-import com.liferay.mobile.android.http.client.OkHttpClientImpl;
-import com.liferay.mobile.android.service.Session;
-
-import static com.liferay.mobile.android.http.file.FileProgressUtil.transfer;
-
 /**
  * @author Bruno Farache
  * @author Silvio Santos
@@ -33,51 +24,10 @@ public class HttpUtil {
 
 	public static final String JSONWS_PATH_62 = "api/jsonws";
 
-	public static Response download(
-			Session session, String url, FileProgressCallback progressCallback)
-		throws Exception {
-
-		Callback callback = session.getCallback();
-
-		if (callback != null) {
-			callback = new DownloadCallback(callback, progressCallback);
-		}
-
-		Request request = Request.url(url)
-			.auth(session.getAuthentication())
-			.method(Method.GET)
-			.headers(session.getHeaders())
-			.timeout(session.getConnectionTimeout())
-			.callback(callback);
-
-		Object tag = request.tag();
-
-		if (callback != null) {
-			((DownloadCallback)callback).setTag(tag);
-		}
-
-		Response response = send(request);
-
-		if (response == null) {
-			return null;
-		}
-		else {
-			transfer(response.getBodyAsStream(), progressCallback, tag, null);
-
-			return response;
-		}
-	}
-
-	public static Response send(Request request) throws Exception {
-		return client.send(request);
-	}
-
 	@SuppressWarnings("unused")
 	public static void setJSONWSPath(String jsonwsPath) {
 		_JSONWS_PATH = jsonwsPath;
 	}
-
-	protected static HttpClient client = new OkHttpClientImpl();
 
 	private static String _JSONWS_PATH = JSONWS_PATH_62;
 
