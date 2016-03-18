@@ -24,6 +24,12 @@
 
 - (void)testValidateEmail {
 	XCTAssertTrue([LRValidator isEmailAddress:@"bruno.farache@liferay.com"]);
+	XCTAssertTrue([LRValidator isEmailAddress:@"liferay@pineapple.works"]);
+	XCTAssertTrue([LRValidator isEmailAddress:@"someperson@italy.travel"]);
+
+	XCTAssertFalse([LRValidator isEmailAddress:@"bruno"]);
+	XCTAssertFalse([LRValidator isEmailAddress:@"@liferay.com"]);
+	XCTAssertFalse([LRValidator isEmailAddress:@"bruno@"]);
 }
 
 @end
