@@ -71,15 +71,18 @@ Mobile SDK project using Git:
 ```sh
 git clone git@github.com:liferay/liferay-mobile-sdk.git
 ```
-Since the SDK Builder is changing constantly, it's safer to checkout the latest
-stable release, for example:
+
+Since the SDK Builder changes frequently, it's safer to checkout the latest 
+stable release. Stable SDK Builder releases correspond to tags with the 
+`builder-` prefix in GitHub. For example, you can use the following command to 
+check out the `builder-6.2.0.17` tag in a new branch of the same name: 
 
 ```sh
 git checkout tags/builder-6.2.0.17 -b builder-6.2.0.17
 ```
 
-You can check what's the latest stable version [on this page](https://github.com/liferay/liferay-mobile-sdk/tags).
- SDK Builder releases are tagged with the `builder-` prefix.
+Check for the latest stable SDK Builder version 
+[here in GitHub](https://github.com/liferay/liferay-mobile-sdk/tags).
 
 Alternatively, you can use the SDK Builder as a standalone library, its jar
 is available of both JCenter and Maven Central repositories:
