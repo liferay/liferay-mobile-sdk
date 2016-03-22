@@ -37,6 +37,7 @@
 - (NSDictionary *)getSyncContext:(NSError **)error;
 - (NSString *)getSyncDlObjectUpdateWithRepositoryId:(long long)repositoryId lastAccessTime:(long long)lastAccessTime max:(int)max error:(NSError **)error;
 - (NSDictionary *)getSyncDlObjectUpdateWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId lastAccessTime:(long long)lastAccessTime error:(NSError **)error;
+- (NSString *)getSyncDlObjectUpdateWithRepositoryId:(long long)repositoryId lastAccessTime:(long long)lastAccessTime max:(int)max retrieveFromCache:(BOOL)retrieveFromCache error:(NSError **)error;
 - (NSArray *)getUserSitesGroups:(NSError **)error;
 - (NSDictionary *)moveFileEntryWithFileEntryId:(long long)fileEntryId newFolderId:(long long)newFolderId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)moveFileEntryToTrashWithFileEntryId:(long long)fileEntryId error:(NSError **)error;

@@ -477,6 +477,32 @@ public class SyncDLObjectService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public String getSyncDlObjectUpdate(long repositoryId, long lastAccessTime, int max, boolean retrieveFromCache) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("lastAccessTime", lastAccessTime);
+			_params.put("max", max);
+			_params.put("retrieveFromCache", retrieveFromCache);
+
+			_command.put("/sync-web.syncdlobject/get-sync-dl-object-update", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
+	}
+
 	public JSONArray getUserSitesGroups() throws Exception {
 		JSONObject _command = new JSONObject();
 

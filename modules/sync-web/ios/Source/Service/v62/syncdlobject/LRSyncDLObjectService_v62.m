@@ -238,6 +238,19 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
+- (NSString *)getSyncDlObjectUpdateWithRepositoryId:(long long)repositoryId lastAccessTime:(long long)lastAccessTime max:(int)max retrieveFromCache:(BOOL)retrieveFromCache error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"repositoryId": @(repositoryId),
+		@"lastAccessTime": @(lastAccessTime),
+		@"max": @(max),
+		@"retrieveFromCache": @(retrieveFromCache)
+	}];
+
+	NSDictionary *_command = @{@"/sync-web.syncdlobject/get-sync-dl-object-update": _params};
+
+	return (NSString *)[self.session invoke:_command error:error];
+}
+
 - (NSArray *)getUserSitesGroups:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 	}];
