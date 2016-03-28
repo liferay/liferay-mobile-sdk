@@ -36,7 +36,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 
 	@Test
 	public void getAutoDeployDirectory() throws Exception {
-		PortalService service = new PortalService(session);
+		PortalService service = new PortalService();
 		Call<String> call = service.getAutoDeployDirectory();
 		String directory = call.execute(session);
 		assertNotNull(directory);
@@ -44,7 +44,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 
 	@Test
 	public void getAutoDeployDirectoryAsync() throws InterruptedException {
-		PortalService service = new PortalService(session);
+		PortalService service = new PortalService();
 		Call<String> call = service.getAutoDeployDirectory();
 		final CountDownLatch lock = new CountDownLatch(1);
 

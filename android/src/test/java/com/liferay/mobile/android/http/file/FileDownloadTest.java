@@ -59,7 +59,8 @@ public class FileDownloadTest extends BaseTest {
 			session.setAuthentication(new DigestAuthentication(
 				basic.getUsername(), basic.getPassword()));
 
-			String url = session.getServer() + "/webdav/guest/document_library/" +
+			String url = session.getServer() +
+				"/webdav/guest/document_library/" +
 				file.getString(DLAppServiceTest.TITLE);
 
 			final ByteArrayOutputStream baos = new ByteArrayOutputStream();

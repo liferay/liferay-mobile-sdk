@@ -23,27 +23,27 @@ import android.os.Looper;
  */
 public abstract class MainThreadRunner {
 
+	public static void handler(Handler handler) {
+		MainThreadRunner.handler = handler;
+	}
+
 	public static void run(Runnable runnable) {
-		if (_handler == null) {
+		if (handler == null) {
 			runnable.run();
 			return;
 		}
 
-		_handler.post(runnable);
+		handler.post(runnable);
 	}
 
-	public static void setHandler(Handler handler) {
-		_handler = handler;
-	}
-
-	private static Handler _handler;
+	protected static Handler handler;
 
 	static {
 		try {
 			Class.forName("android.os.Build");
 
 			if (Build.VERSION.SDK_INT != 0) {
-				_handler = new Handler(Looper.getMainLooper());
+				handler = new Handler(Looper.getMainLooper());
 			}
 		}
 		catch (ClassNotFoundException cnfe) {

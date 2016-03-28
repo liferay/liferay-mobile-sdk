@@ -88,15 +88,13 @@ public class ServiceInvocationHandler implements InvocationHandler {
 					JsonObject jsonAnnotation = (JsonObject)paramAnnotation;
 					String className = jsonAnnotation.className();
 
-					if (param == null) {
-						if (!className.equals(_SERVICE_CONTEXT)) {
-							params.put(jsonAnnotation.name(), JSONObject.NULL);
-						}
-					}
-					else {
+					if (param != null) {
 						mangle(
 							jsonAnnotation.name(), jsonAnnotation.className(),
 							param, params);
+					}
+					else if (!className.equals(_SERVICE_CONTEXT)) {
+						params.put(jsonAnnotation.name(), JSONObject.NULL);
 					}
 				}
 			}

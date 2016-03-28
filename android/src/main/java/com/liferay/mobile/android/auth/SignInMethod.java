@@ -15,6 +15,10 @@
 package com.liferay.mobile.android.auth;
 
 import com.liferay.mobile.android.util.Validator;
+
+/**
+ * @author Bruno Farache
+ */
 public enum SignInMethod {
 
 	USER_ID, EMAIL, SCREEN_NAME;

@@ -15,7 +15,6 @@
 package com.liferay.mobile.android.v2;
 
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.service.BaseService;
 
 import java.util.List;
 import java.util.Map;
@@ -27,11 +26,7 @@ import org.json.JSONObject;
 /**
  * @author Bruno Farache
  */
-public class GroupService extends BaseService {
-
-	public GroupService() {
-		super(null);
-	}
+public class GroupService {
 
 	public Call<Response> disableStaging(long groupId) throws Exception {
 		JSONObject _command = new JSONObject();

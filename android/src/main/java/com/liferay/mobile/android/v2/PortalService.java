@@ -14,20 +14,13 @@
 
 package com.liferay.mobile.android.v2;
 
-import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.Session;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
  */
-public class PortalService extends BaseService {
-
-	public PortalService(Session session) {
-		super(session);
-	}
+public class PortalService {
 
 	public Call<String> getAutoDeployDirectory() {
 		JSONObject _command = new JSONObject();
