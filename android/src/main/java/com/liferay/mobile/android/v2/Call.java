@@ -126,11 +126,10 @@ public class Call<T> {
 		}
 
 		return Request.url(config.url() + path)
-			.auth(config.auth())
+			.config(config)
 			.headers(headers)
 			.body(body)
-			.tag(this)
-			.timeout(config.timeout());
+			.tag(this);
 	}
 
 	protected static HttpClient client = new OkHttpClientImpl();

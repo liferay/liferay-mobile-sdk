@@ -43,10 +43,8 @@ public class DownloadUtil {
 		throws Exception {
 
 		Request request = Request.url(url)
-			.auth(config.auth())
 			.method(Method.GET)
-			.headers(config.headers())
-			.timeout(config.timeout());
+			.config(config);
 
 		Object tag = request.tag();
 

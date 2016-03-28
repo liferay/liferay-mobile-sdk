@@ -52,6 +52,14 @@ public class Request {
 		return this;
 	}
 
+	public Request config(Config config) {
+		auth(config.auth());
+		headers(config.headers());
+		timeout(config.timeout());
+
+		return this;
+	}
+
 	public Request header(String key, String value) {
 		headers.put(key, value);
 		return this;

@@ -68,8 +68,7 @@ public class PortalVersionUtil {
 
 		Request request = Request.url(config.server())
 			.method(Method.HEAD)
-			.headers(config.headers())
-			.timeout(config.timeout());
+			.config(config);
 
 		HttpClient client = Call.client();
 		Response response = client.sync(request);
