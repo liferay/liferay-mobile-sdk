@@ -50,16 +50,16 @@ public class FileDownloadTest extends BaseTest {
 
 	@Test
 	public void cancel() throws Exception {
-		JSONObject file = FileUploadTest.uploadPhoto(props, session);
+		JSONObject file = FileUploadTest.uploadPhoto(props, config);
 
 		try {
 			BasicAuthentication basic =
-				(BasicAuthentication)session.getAuthentication();
+				(BasicAuthentication)config.getAuthentication();
 
-			session.setAuthentication(new DigestAuthentication(
+			config.setAuthentication(new DigestAuthentication(
 				basic.getUsername(), basic.getPassword()));
 
-			String url = session.getServer() +
+			String url = config.getServer() +
 				"/webdav/guest/document_library/" +
 				file.getString(DLAppServiceTest.TITLE);
 
@@ -85,7 +85,7 @@ public class FileDownloadTest extends BaseTest {
 			};
 
 			Response response = DownloadUtil.download(
-				session, url, null, callback);
+				config, url, null, callback);
 
 			assertNotNull(response);
 			assertEquals(Status.OK, response.getStatusCode());
@@ -102,12 +102,12 @@ public class FileDownloadTest extends BaseTest {
 	@Test
 	public void downloadAsync() throws Exception {
 		BasicAuthentication basic =
-			(BasicAuthentication)session.getAuthentication();
+			(BasicAuthentication)config.getAuthentication();
 
-		session.setAuthentication(
+		config.setAuthentication(
 			new DigestAuthentication(basic.getUsername(), basic.getPassword()));
 
-		String url = session.getServer() + "/webdav/guest/document_library/" +
+		String url = config.getServer() + "/webdav/guest/document_library/" +
 			_file.getString(DLAppServiceTest.TITLE);
 
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -155,7 +155,7 @@ public class FileDownloadTest extends BaseTest {
 
 		};
 
-		DownloadUtil.download(session, url, callback, progressCallback);
+		DownloadUtil.download(config, url, callback, progressCallback);
 		lock.await(500, TimeUnit.MILLISECONDS);
 		assertEquals(5, baos.size());
 	}
@@ -163,12 +163,12 @@ public class FileDownloadTest extends BaseTest {
 	@Test
 	public void downloadSync() throws Exception {
 		BasicAuthentication basic =
-			(BasicAuthentication)session.getAuthentication();
+			(BasicAuthentication)config.getAuthentication();
 
-		session.setAuthentication(
+		config.setAuthentication(
 			new DigestAuthentication(basic.getUsername(), basic.getPassword()));
 
-		String url = session.getServer() + "/webdav/guest/document_library/" +
+		String url = config.getServer() + "/webdav/guest/document_library/" +
 			_file.getString(DLAppServiceTest.TITLE);
 
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -199,7 +199,7 @@ public class FileDownloadTest extends BaseTest {
 
 		};
 
-		Response response = DownloadUtil.download(session, url, null, callback);
+		Response response = DownloadUtil.download(config, url, null, callback);
 		assertNotNull(response);
 		assertEquals(Status.OK, response.getStatusCode());
 		assertEquals(5, baos.size());
@@ -213,13 +213,13 @@ public class FileDownloadTest extends BaseTest {
 			"/file%20%C3%A1%C3%A9%C3%AD%C3%B2%C3%BA%C3%B1.txt";
 
 		String downloadURL = DownloadUtil.getWebDAVFileURL(
-			session, PortalVersion.V_6_2, "/guest", "/folder with spaces",
+			config, PortalVersion.V_6_2, "/guest", "/folder with spaces",
 			"file áéíòúñ.txt");
 
 		assertEquals(expectedURL, downloadURL);
 
 		downloadURL = DownloadUtil.getWebDAVFileURL(
-			session, PortalVersion.V_6_2, "guest", "folder with spaces",
+			config, PortalVersion.V_6_2, "guest", "folder with spaces",
 			"/file áéíòúñ.txt");
 
 		assertEquals(expectedURL, downloadURL);
@@ -229,7 +229,7 @@ public class FileDownloadTest extends BaseTest {
 			"/file%20%C3%A1%C3%A9%C3%AD%C3%B2%C3%BA%C3%B1.txt";
 
 		downloadURL = DownloadUtil.getWebDAVFileURL(
-			session, PortalVersion.V_6_2, "guest", "", "file áéíòúñ.txt");
+			config, PortalVersion.V_6_2, "guest", "", "file áéíòúñ.txt");
 
 		assertEquals(expectedURL, downloadURL);
 	}

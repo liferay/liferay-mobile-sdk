@@ -15,7 +15,7 @@
 package com.liferay.mobile.android;
 
 import com.liferay.mobile.android.exception.ServerException;
-import com.liferay.mobile.android.service.SessionImpl;
+import com.liferay.mobile.android.service.Config;
 import com.liferay.mobile.android.v2.Call;
 import com.liferay.mobile.android.v2.ServiceBuilder;
 import com.liferay.mobile.android.v62.group.GroupService;
@@ -42,7 +42,7 @@ public class UnauthenticatedServiceTest extends BaseTest {
 		try {
 			GroupService service = ServiceBuilder.build(GroupService.class);
 			Call<JSONArray> call = service.getUserSites();
-			call.execute(new SessionImpl(this.session.getServer()));
+			call.execute(new Config(this.config.getServer()));
 			fail();
 		}
 		catch (ServerException se) {

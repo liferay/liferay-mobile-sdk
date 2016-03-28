@@ -20,7 +20,7 @@ import com.liferay.mobile.android.callback.file.FileProgressCallback;
 import com.liferay.mobile.android.http.Headers;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.file.DownloadUtil;
-import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.service.Config;
 import com.liferay.mobile.android.v2.Callback;
 
 import java.io.Closeable;
@@ -43,7 +43,7 @@ import javax.xml.bind.DatatypeConverter;
 public class PortraitUtil {
 
 	public static String downloadPortrait(
-			Session session, String portraitURL, final OutputStream os,
+			Config config, String portraitURL, final OutputStream os,
 			String modifiedDate, Callback callback)
 		throws Exception {
 
@@ -56,10 +56,10 @@ public class PortraitUtil {
 				headers.put(Headers.IF_MODIFIED_SINCE, modifiedDate);
 			}
 
-			session.setHeaders(headers);
+			config.setHeaders(headers);
 
 			Response response = DownloadUtil.download(
-				session, portraitURL, callback, new FileProgressCallback() {
+				config, portraitURL, callback, new FileProgressCallback() {
 
 				@Override
 				public void onBytes(byte[] bytes) {
@@ -87,12 +87,12 @@ public class PortraitUtil {
 	}
 
 	public static String getPortraitURL(
-			Session session, boolean male, long portraitId, String uuid)
+			Config config, boolean male, long portraitId, String uuid)
 		throws Exception {
 
 		StringBuilder sb = new StringBuilder();
 
-		sb.append(session.getServer());
+		sb.append(config.getServer());
 		sb.append("/image/user_");
 
 		if (male) {

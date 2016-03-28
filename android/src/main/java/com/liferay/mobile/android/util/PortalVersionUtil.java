@@ -19,7 +19,7 @@ import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.service.Config;
 import com.liferay.mobile.android.v2.Call;
 import com.liferay.mobile.android.v2.HttpClient;
 import com.liferay.mobile.android.v2.ServiceBuilder;
@@ -30,32 +30,32 @@ import com.liferay.mobile.android.v62.portal.PortalService;
  */
 public class PortalVersionUtil {
 
-	public static int getPortalVersion(Session session) throws Exception {
-		int version = getBuilderNumberHeader(session);
+	public static int getPortalVersion(Config config) throws Exception {
+		int version = getBuilderNumberHeader(config);
 
 		if (version == PortalVersion.UNKNOWN) {
 			try {
-				version = getBuilderNumber(session, HttpUtil.JSONWS_PATH_62);
+				version = getBuilderNumber(config, HttpUtil.JSONWS_PATH_62);
 			}
 			catch (Exception e) {
-				version = getBuilderNumber(session, HttpUtil.JSONWS_PATH_61);
+				version = getBuilderNumber(config, HttpUtil.JSONWS_PATH_61);
 			}
 		}
 
 		return version;
 	}
 
-	protected static int getBuilderNumber(Session session, String jsonWSPath)
+	protected static int getBuilderNumber(Config config, String path)
 		throws Exception {
 
-		HttpUtil.setJSONWSPath(jsonWSPath);
+		HttpUtil.setJSONWSPath(path);
 
 		PortalService service = ServiceBuilder.build(PortalService.class);
 
 		int version = PortalVersion.UNKNOWN;
 
 		try {
-			version = service.getBuildNumber().execute(session);
+			version = service.getBuildNumber().execute(config);
 		}
 		finally {
 			HttpUtil.setJSONWSPath(HttpUtil.JSONWS_PATH_62);
@@ -64,13 +64,13 @@ public class PortalVersionUtil {
 		return version;
 	}
 
-	protected static int getBuilderNumberHeader(Session session)
+	protected static int getBuilderNumberHeader(Config config)
 		throws Exception {
 
-		Request request = Request.url(session.getServer())
+		Request request = Request.url(config.getServer())
 			.method(Method.HEAD)
-			.headers(session.getHeaders())
-			.timeout(session.getConnectionTimeout());
+			.headers(config.getHeaders())
+			.timeout(config.getConnectionTimeout());
 
 		HttpClient client = Call.client();
 		Response response = client.sync(request);

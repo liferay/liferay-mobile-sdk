@@ -15,7 +15,7 @@
 package com.liferay.mobile.android.auth;
 
 import com.liferay.mobile.android.auth.basic.BasicAuthentication;
-import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.service.Config;
 import com.liferay.mobile.android.v2.Call;
 import com.liferay.mobile.android.v2.Callback;
 import com.liferay.mobile.android.v2.ServiceBuilder;
@@ -30,8 +30,20 @@ import org.json.JSONObject;
  */
 public class SignIn {
 
+	public static void signIn(Config config, Callback<JSONObject> callback) {
+		try {
+			String username = getUsername(config);
+			SignInMethod method = SignInMethod.fromUsername(username);
+
+			signIn(config, callback, method);
+		}
+		catch (Exception e) {
+			callback.onFailure(e);
+		}
+	}
+
 	public static void signIn(
-		final Session session, final Callback<JSONObject> callback,
+		final Config config, final Callback<JSONObject> callback,
 		final SignInMethod method) {
 
 		try {
@@ -40,7 +52,7 @@ public class SignIn {
 
 			Call<JSONArray> call = groupService.getUserSites();
 
-			call.async(session, new Callback<JSONArray>() {
+			call.async(config, new Callback<JSONArray>() {
 
 				@Override
 				public void onSuccess(JSONArray sites) {
@@ -56,7 +68,7 @@ public class SignIn {
 						UserService userService = ServiceBuilder.build(
 							UserService.class);
 
-						String username = getUsername(session);
+						String username = getUsername(config);
 						Call<JSONObject> call;
 
 						if (method == SignInMethod.EMAIL) {
@@ -72,7 +84,7 @@ public class SignIn {
 								companyId, username);
 						}
 
-						call.async(session, callback);
+						call.async(config, callback);
 					}
 					catch (Exception e) {
 						onFailure(e);
@@ -91,20 +103,8 @@ public class SignIn {
 		}
 	}
 
-	public static void signIn(Session session, Callback<JSONObject> callback) {
-		try {
-			String username = getUsername(session);
-			SignInMethod method = SignInMethod.fromUsername(username);
-
-			signIn(session, callback, method);
-		}
-		catch (Exception e) {
-			callback.onFailure(e);
-		}
-	}
-
-	protected static String getUsername(Session session) throws Exception {
-		Authentication auth = session.getAuthentication();
+	protected static String getUsername(Config config) throws Exception {
+		Authentication auth = config.getAuthentication();
 
 		if (auth == null) {
 			throw new Exception("Session's authentication can't be null");

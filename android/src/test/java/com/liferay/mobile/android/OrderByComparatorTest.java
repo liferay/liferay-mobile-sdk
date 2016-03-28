@@ -51,7 +51,7 @@ public class OrderByComparatorTest extends BaseTest {
 			groupId, ServiceContextTest.PARENT_FOLDER_ID, -1, -1,
 			new JSONObject());
 
-		JSONArray entries = call.execute(session);
+		JSONArray entries = call.execute(config);
 		assertEquals(2, entries.length());
 
 		JSONObject first = entries.getJSONObject(0);
@@ -71,7 +71,7 @@ public class OrderByComparatorTest extends BaseTest {
 		Call<JSONArray> call = service.getEntries(
 			groupId, ServiceContextTest.PARENT_FOLDER_ID, -1, -1, null);
 
-		JSONArray entries = call.execute(session);
+		JSONArray entries = call.execute(config);
 		assertEquals(2, entries.length());
 
 		JSONObject first = entries.getJSONObject(0);

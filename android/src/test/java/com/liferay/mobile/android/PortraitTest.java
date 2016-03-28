@@ -36,7 +36,7 @@ public class PortraitTest extends BaseTest {
 	public void downloadPortrait() throws Exception {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		String portraitURL = getPortraitURL();
-		PortraitUtil.downloadPortrait(session, portraitURL, baos, null, null);
+		PortraitUtil.downloadPortrait(config, portraitURL, baos, null, null);
 
 		assertEquals(7742, baos.size());
 	}
@@ -50,7 +50,7 @@ public class PortraitTest extends BaseTest {
 		String uuid = null;
 
 		String portraitURL = PortraitUtil.getPortraitURL(
-			session, true, portraitId, uuid);
+			config, true, portraitId, uuid);
 
 		assertEquals(expectedURL, portraitURL);
 
@@ -60,7 +60,7 @@ public class PortraitTest extends BaseTest {
 		uuid = "c0c65ba5-c2ba-4bf5-9e42-7330adb1b5b8";
 
 		portraitURL = PortraitUtil.getPortraitURL(
-			session, true, portraitId, uuid);
+			config, true, portraitId, uuid);
 
 		assertEquals(expectedURL, portraitURL);
 

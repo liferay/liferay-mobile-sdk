@@ -18,7 +18,7 @@ import com.liferay.mobile.android.http.Headers;
 import com.liferay.mobile.android.http.Headers.ContentType;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.service.Session;
+import com.liferay.mobile.android.service.Config;
 
 import java.lang.reflect.Type;
 
@@ -32,21 +32,21 @@ import org.json.JSONObject;
  */
 public class Call<T> {
 
-	public static Response batch(Session session, Call... calls)
+	public static Response batch(Config config, Call... calls)
 		throws Exception {
 
 		JSONArray bodies = bodies(calls);
 		Call<Response> call = new Call<>(bodies, Response.class);
-		return call.execute(session);
+		return call.execute(config);
 	}
 
 	public static void batch(
-			Session session, Callback<Response> callback, Call... calls)
+			Config config, Callback<Response> callback, Call... calls)
 		throws Exception {
 
 		JSONArray bodies = bodies(calls);
 		Call<Response> call = new Call<>(bodies, Response.class);
-		call.async(session, callback);
+		call.async(config, callback);
 	}
 
 	public static void cancel(Object call) {
@@ -67,9 +67,9 @@ public class Call<T> {
 		this.contentType = contentType;
 	}
 
-	public void async(Session session, Callback<T> callback) {
+	public void async(Config config, Callback<T> callback) {
 		callback.type(this.type);
-		Request request = request(session);
+		Request request = request(config);
 		client.async(request, callback);
 	}
 
@@ -77,8 +77,8 @@ public class Call<T> {
 		return body;
 	}
 
-	public T execute(Session session) throws Exception {
-		Request request = request(session);
+	public T execute(Config config) throws Exception {
+		Request request = request(config);
 		Response response = client.sync(request);
 		return JsonParser.fromJson(response, type);
 	}
@@ -93,8 +93,8 @@ public class Call<T> {
 		return commands;
 	}
 
-	protected Request request(Session session) {
-		Map<String, String> headers = session.getHeaders();
+	protected Request request(Config config) {
+		Map<String, String> headers = config.getHeaders();
 		headers.put(Headers.CONTENT_TYPE, contentType.value);
 		String path = "/invoke";
 
@@ -107,12 +107,12 @@ public class Call<T> {
 			body = jsonObject.optJSONObject(path);
 		}
 
-		return Request.url(url(session.getServer(), path))
-			.auth(session.getAuthentication())
+		return Request.url(url(config.getServer(), path))
+			.auth(config.getAuthentication())
 			.headers(headers)
 			.body(body)
 			.tag(this)
-			.timeout(session.getConnectionTimeout());
+			.timeout(config.getConnectionTimeout());
 	}
 
 	protected String url(String server, String path) {

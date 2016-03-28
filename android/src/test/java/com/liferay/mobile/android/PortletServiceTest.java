@@ -37,7 +37,7 @@ public class PortletServiceTest extends BaseTest {
 	@Test
 	public void getWarPortlets() throws Exception {
 		PortletService service = ServiceBuilder.build(PortletService.class);
-		JSONArray array = service.getWarPortlets().execute(session);
+		JSONArray array = service.getWarPortlets().execute(config);
 		assertNotNull(array);
 		assertTrue(array.length() > 0);
 	}

@@ -60,7 +60,7 @@ public class DLAppServiceTest extends BaseTest {
 			repositoryId, PARENT_FOLDER_ID, SOURCE_FILE_NAME, MIME_TYPE,
 			SOURCE_FILE_NAME, "", "", bytes, null);
 
-		return call.execute(session);
+		return call.execute(config);
 	}
 
 	@Test
@@ -78,13 +78,13 @@ public class DLAppServiceTest extends BaseTest {
 		Call<JSONObject> call = service.addFolder(
 			repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME, "", null);
 
-		JSONObject folder = call.execute(session);
+		JSONObject folder = call.execute(config);
 		assertEquals(_FOLDER_NAME, folder.get(_NAME));
 
 		Call<Integer> call2 = service.getFoldersCount(
 			repositoryId, PARENT_FOLDER_ID, 0, false);
 
-		int count = call2.execute(session);
+		int count = call2.execute(config);
 		assertEquals(1, count);
 		deleteFolder();
 	}
@@ -100,7 +100,7 @@ public class DLAppServiceTest extends BaseTest {
 		Call<JSONObject> call2 = service.addFolder(
 			repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME_2, "", null);
 
-		Response response = Call.batch(session, call1, call2);
+		Response response = Call.batch(config, call1, call2);
 		JSONArray sites = JsonParser.fromJson(response, JSONArray.class);
 
 		assertEquals(_FOLDER_NAME, sites.getJSONObject(0).get(_NAME));
@@ -111,7 +111,7 @@ public class DLAppServiceTest extends BaseTest {
 
 	public void deleteFileEntry(long fileEntryId) throws Exception {
 		DLAppService service = ServiceBuilder.build(DLAppService.class);
-		service.deleteFileEntry(fileEntryId).execute(session);
+		service.deleteFileEntry(fileEntryId).execute(config);
 	}
 
 	protected void deleteFolder() throws Exception {
@@ -121,13 +121,13 @@ public class DLAppServiceTest extends BaseTest {
 		Call<Response> call = service.deleteFolder(
 			repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME);
 
-		call.execute(session);
+		call.execute(config);
 
 		try {
 			Call<JSONObject> call2 = service.getFolder(
 				repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME);
 
-			call2.execute(session);
+			call2.execute(config);
 			fail();
 		}
 		catch (ServerException se) {
@@ -146,7 +146,7 @@ public class DLAppServiceTest extends BaseTest {
 		Call<Response> call2 = service.deleteFolder(
 			repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME_2);
 
-		Response response = Call.batch(session, call1, call2);
+		Response response = Call.batch(config, call1, call2);
 		JSONArray sites = JsonParser.fromJson(response, JSONArray.class);
 		assertEquals(2, sites.length());
 	}

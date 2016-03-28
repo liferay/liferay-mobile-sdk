@@ -38,7 +38,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 	public void getAutoDeployDirectory() throws Exception {
 		PortalService service = new PortalService();
 		Call<String> call = service.getAutoDeployDirectory();
-		String directory = call.execute(session);
+		String directory = call.execute(config);
 		assertNotNull(directory);
 	}
 
@@ -48,7 +48,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 		Call<String> call = service.getAutoDeployDirectory();
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(session, new Callback<String>() {
+		call.async(config, new Callback<String>() {
 
 			@Override
 			public void onSuccess(String directory) {
@@ -72,7 +72,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 		UserService service = ServiceBuilder.build(UserService.class);
 		long companyId = props.getCompanyId();
 		Call<Integer> call = service.getCompanyUsersCount(companyId);
-		int count = call.execute(session);
+		int count = call.execute(config);
 		assertTrue(count > 0);
 	}
 
@@ -82,7 +82,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 		Call<Integer> call = service.getCompanyUsersCount(props.getCompanyId());
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(session, new Callback<Integer>() {
+		call.async(config, new Callback<Integer>() {
 
 			@Override
 			public void onSuccess(Integer count) {
@@ -109,11 +109,11 @@ public class ServiceReturnTypeTest extends BaseTest {
 
 		UserService service = ServiceBuilder.build(UserService.class);
 		Call<Long> call = service.getUserIdByEmailAddress(companyId, login);
-		long userId = call.execute(session);
+		long userId = call.execute(config);
 		assertTrue(userId > 0);
 
 		Call<Boolean> call2 = service.hasGroupUser(groupId, userId);
-		assertTrue(call2.execute(session));
+		assertTrue(call2.execute(config));
 	}
 
 	@Test
@@ -125,14 +125,14 @@ public class ServiceReturnTypeTest extends BaseTest {
 		final UserService service = ServiceBuilder.build(UserService.class);
 		Call<Long> call = service.getUserIdByEmailAddress(companyId, login);
 
-		call.async(session, new Callback<Long>() {
+		call.async(config, new Callback<Long>() {
 
 			@Override
 			public void onSuccess(Long userId) {
 				assertTrue(userId > 0);
 
 				Call<Boolean> call = service.hasGroupUser(groupId, userId);
-				call.async(session, new Callback<Boolean>() {
+				call.async(config, new Callback<Boolean>() {
 
 					@Override
 					public void onSuccess(Boolean hasGroupUser) {

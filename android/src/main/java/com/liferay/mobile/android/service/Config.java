@@ -22,25 +22,25 @@ import java.util.Map;
 /**
  * @author Bruno Farache
  */
-public class SessionImpl implements Session {
+public class Config {
 
 	public static final int DEFAULT_CONNECTION_TIMEOUT = 15000;
 
-	public SessionImpl(Session session) {
+	public Config(Config config) {
 		this(
-			session.getServer(), session.getAuthentication(),
-			session.getConnectionTimeout());
+			config.getServer(), config.getAuthentication(),
+			config.getConnectionTimeout());
 	}
 
-	public SessionImpl(String server) {
+	public Config(String server) {
 		this(server, null);
 	}
 
-	public SessionImpl(String server, Authentication authentication) {
+	public Config(String server, Authentication authentication) {
 		this(server, authentication, DEFAULT_CONNECTION_TIMEOUT);
 	}
 
-	public SessionImpl(
+	public Config(
 		String server, Authentication authentication, int connectionTimeout) {
 
 		this.server = server;
@@ -48,42 +48,34 @@ public class SessionImpl implements Session {
 		this.connectionTimeout = connectionTimeout;
 	}
 
-	@Override
 	public Authentication getAuthentication() {
 		return authentication;
 	}
 
-	@Override
 	public int getConnectionTimeout() {
 		return connectionTimeout;
 	}
 
-	@Override
 	public Map<String, String> getHeaders() {
 		return headers;
 	}
 
-	@Override
 	public String getServer() {
 		return server;
 	}
 
-	@Override
 	public void setAuthentication(Authentication authentication) {
 		this.authentication = authentication;
 	}
 
-	@Override
 	public void setConnectionTimeout(int connectionTimeout) {
 		this.connectionTimeout = connectionTimeout;
 	}
 
-	@Override
 	public void setHeaders(Map<String, String> headers) {
 		this.headers = headers;
 	}
 
-	@Override
 	public void setServer(String server) {
 		this.server = server;
 	}

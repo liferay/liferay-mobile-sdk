@@ -51,7 +51,7 @@ public class GroupServiceTest extends BaseTest {
 	public void getUserSites() throws Exception {
 		GroupService service = ServiceBuilder.build(GroupService.class);
 		Call<JSONArray> sites = service.getUserSites();
-		assertUserSites(sites.execute(session));
+		assertUserSites(sites.execute(config));
 	}
 
 }
