@@ -42,6 +42,11 @@ public class Config {
 		return this;
 	}
 
+	public Config header(String key, String value) {
+		this.headers.put(key, value);
+		return this;
+	}
+
 	public Map<String, String> headers() {
 		return headers;
 	}

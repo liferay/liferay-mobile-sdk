@@ -53,10 +53,8 @@ public class PortraitUtil {
 			Map<String, String> headers = new HashMap<>();
 
 			if (Validator.isNotNull(modifiedDate)) {
-				headers.put(Headers.IF_MODIFIED_SINCE, modifiedDate);
+				config.header(Headers.IF_MODIFIED_SINCE, modifiedDate);
 			}
-
-			config.headers(headers);
 
 			Response response = DownloadUtil.download(
 				config, portraitURL, callback, new FileProgressCallback() {
