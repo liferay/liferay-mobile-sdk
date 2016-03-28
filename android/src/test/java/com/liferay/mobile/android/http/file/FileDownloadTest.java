@@ -59,7 +59,7 @@ public class FileDownloadTest extends BaseTest {
 			config.auth(new DigestAuthentication(
 				basic.getUsername(), basic.getPassword()));
 
-			String url = config.url() +
+			String url = config.server() +
 				"/webdav/guest/document_library/" +
 				file.getString(DLAppServiceTest.TITLE);
 
@@ -107,7 +107,7 @@ public class FileDownloadTest extends BaseTest {
 		config.auth(
 			new DigestAuthentication(basic.getUsername(), basic.getPassword()));
 
-		String url = config.url() + "/webdav/guest/document_library/" +
+		String url = config.server() + "/webdav/guest/document_library/" +
 			_file.getString(DLAppServiceTest.TITLE);
 
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -168,7 +168,7 @@ public class FileDownloadTest extends BaseTest {
 		config.auth(
 			new DigestAuthentication(basic.getUsername(), basic.getPassword()));
 
-		String url = config.url() + "/webdav/guest/document_library/" +
+		String url = config.server() + "/webdav/guest/document_library/" +
 			_file.getString(DLAppServiceTest.TITLE);
 
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream();

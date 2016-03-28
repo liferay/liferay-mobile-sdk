@@ -15,7 +15,6 @@
 package com.liferay.mobile.android.util;
 
 import com.liferay.mobile.android.http.Headers;
-import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
@@ -35,10 +34,10 @@ public class PortalVersionUtil {
 
 		if (version == PortalVersion.UNKNOWN) {
 			try {
-				version = getBuilderNumber(config, HttpUtil.JSONWS_PATH_62);
+				version = getBuilderNumber(config, Config.PATH_62);
 			}
 			catch (Exception e) {
-				version = getBuilderNumber(config, HttpUtil.JSONWS_PATH_61);
+				version = getBuilderNumber(config, Config.PATH_61);
 			}
 		}
 
@@ -48,7 +47,7 @@ public class PortalVersionUtil {
 	protected static int getBuilderNumber(Config config, String path)
 		throws Exception {
 
-		HttpUtil.setJSONWSPath(path);
+		config.path(path);
 
 		PortalService service = ServiceBuilder.build(PortalService.class);
 
@@ -58,7 +57,7 @@ public class PortalVersionUtil {
 			version = service.getBuildNumber().execute(config);
 		}
 		finally {
-			HttpUtil.setJSONWSPath(HttpUtil.JSONWS_PATH_62);
+			config.path(Config.PATH_62);
 		}
 
 		return version;
@@ -67,7 +66,7 @@ public class PortalVersionUtil {
 	protected static int getBuilderNumberHeader(Config config)
 		throws Exception {
 
-		Request request = Request.url(config.url())
+		Request request = Request.url(config.server())
 			.method(Method.HEAD)
 			.headers(config.headers())
 			.timeout(config.timeout());

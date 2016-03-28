@@ -107,26 +107,12 @@ public class Call<T> {
 			body = jsonObject.optJSONObject(path);
 		}
 
-		return Request.url(url(config.url(), path))
+		return Request.url(config.url() + path)
 			.auth(config.auth())
 			.headers(headers)
 			.body(body)
 			.tag(this)
 			.timeout(config.timeout());
-	}
-
-	protected String url(String server, String path) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(server);
-
-		if (!server.endsWith("/")) {
-			sb.append("/");
-		}
-
-		sb.append("api/jsonws");
-		sb.append(path);
-
-		return sb.toString();
 	}
 
 	protected static HttpClient client = new OkHttpClientImpl();

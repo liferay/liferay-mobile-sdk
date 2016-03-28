@@ -26,9 +26,14 @@ public class Config {
 
 	public static final int DEFAULT_TIMEOUT = 15000;
 
-	public static Config url(String url) {
-		Config config = new Config(url);
+	public static final String PATH_61 = "api/secure/jsonws";
+
+	public static final String PATH_62 = "api/jsonws";
+
+	public static Config server(String server) {
+		Config config = new Config(server);
 		config.timeout(DEFAULT_TIMEOUT);
+		config.path(PATH_62);
 
 		return config;
 	}
@@ -43,7 +48,7 @@ public class Config {
 	}
 
 	public Config header(String key, String value) {
-		this.headers.put(key, value);
+		headers.put(key, value);
 		return this;
 	}
 
@@ -56,6 +61,19 @@ public class Config {
 		return this;
 	}
 
+	public String path() {
+		return path;
+	}
+
+	public Config path(String path) {
+		this.path = path;
+		return this;
+	}
+
+	public String server() {
+		return server;
+	}
+
 	public int timeout() {
 		return timeout;
 	}
@@ -66,16 +84,26 @@ public class Config {
 	}
 
 	public String url() {
-		return url;
+		StringBuilder sb = new StringBuilder();
+		sb.append(server);
+
+		if (!server.endsWith("/")) {
+			sb.append("/");
+		}
+
+		sb.append(path);
+
+		return sb.toString();
 	}
 
-	protected Config(String url) {
-		this.url = url;
+	protected Config(String server) {
+		this.server = server;
 	}
 
 	protected Authentication auth;
 	protected Map<String, String> headers = new HashMap<>();
+	protected String path;
+	protected String server;
 	protected int timeout;
-	protected String url;
 
 }

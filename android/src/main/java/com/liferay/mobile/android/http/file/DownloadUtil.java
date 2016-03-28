@@ -93,7 +93,7 @@ public class DownloadUtil {
 		throws Exception {
 
 		StringBuilder sb = new StringBuilder();
-		sb.append(config.url());
+		sb.append(config.server());
 
 		if (portalVersion < PortalVersion.V_6_2) {
 			sb.append("/api/secure");

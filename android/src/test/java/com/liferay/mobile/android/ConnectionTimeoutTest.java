@@ -38,7 +38,7 @@ public class ConnectionTimeoutTest {
 
 	@Test(expected = SocketTimeoutException.class)
 	public void connectionTimeoutException() throws Exception {
-		Config config = Config.url("http://www.liferay.com").timeout(5);
+		Config config = Config.server("http://www.liferay.com").timeout(5);
 		GroupService service = ServiceBuilder.build(GroupService.class);
 		Call<JSONArray> call = service.getUserSites();
 		call.execute(config);

@@ -90,7 +90,7 @@ public class PortraitUtil {
 
 		StringBuilder sb = new StringBuilder();
 
-		sb.append(config.url());
+		sb.append(config.server());
 		sb.append("/image/user_");
 
 		if (male) {

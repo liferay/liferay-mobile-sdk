@@ -35,7 +35,6 @@ public class PortalVersionTest extends BaseTest {
 	@Test
 	public void getPortalVersion() throws Exception {
 		int version = PortalVersionUtil.getPortalVersion(config);
-
 		assertTrue(version >= PortalVersion.V_6_2);
 	}
 

@@ -32,7 +32,7 @@ public abstract class BaseTest {
 		Authentication auth = new BasicAuthentication(
 			props.getLogin(), props.getPassword());
 
-		config = Config.url(props.getUrl()).auth(auth);
+		config = Config.server(props.getUrl()).auth(auth);
 	}
 
 	protected Config config;

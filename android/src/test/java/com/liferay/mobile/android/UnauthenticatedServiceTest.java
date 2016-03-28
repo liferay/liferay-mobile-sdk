@@ -42,7 +42,7 @@ public class UnauthenticatedServiceTest extends BaseTest {
 		try {
 			GroupService service = ServiceBuilder.build(GroupService.class);
 			Call<JSONArray> call = service.getUserSites();
-			call.execute(Config.url(this.config.url()));
+			call.execute(Config.server(this.config.server()));
 			fail();
 		}
 		catch (ServerException se) {

@@ -53,7 +53,7 @@ public class Request {
 	}
 
 	public Request header(String key, String value) {
-		this.headers.put(key, value);
+		headers.put(key, value);
 		return this;
 	}
 
