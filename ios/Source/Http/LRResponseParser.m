@@ -94,27 +94,25 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 		return nil;
 	}
 
-	NSString *exception = [json objectForKey:@"exception"];
+	NSString *message = [json objectForKey:@"exception"];
 
-	if (!exception) {
+	if (!message) {
 		return nil;
 	}
 
-	NSString *type = [json objectForKey:@"type"];
-	NSError *error;
+	NSString *detail = [json objectForKey:@"message"];
+	NSDictionary *errorValue = [json objectForKey:@"error"];
 
-	if (type) {
-		NSDictionary *userInfo = @{
-			NSLocalizedFailureReasonErrorKey: exception
-		};
+	if (errorValue) {
+		message = [json objectForKey:@"type"];
+	}
 
-		error = [LRError errorWithCode:LRErrorCodePortalException
-			description:type userInfo:userInfo];
-	}
-	else {
-		error = [LRError errorWithCode:LRErrorCodePortalException
-			description:exception];
-	}
+	NSDictionary *userInfo = @{
+		NSLocalizedFailureReasonErrorKey: message
+	};
+
+	NSError *error = [LRError errorWithCode:LRErrorCodePortalException
+		description:detail userInfo:userInfo];
 
 	return error;
 }
