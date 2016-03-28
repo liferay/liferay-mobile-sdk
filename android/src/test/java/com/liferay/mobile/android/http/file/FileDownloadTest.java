@@ -21,6 +21,7 @@ import com.liferay.mobile.android.auth.basic.DigestAuthentication;
 import com.liferay.mobile.android.callback.file.FileProgressCallback;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.Status;
+import com.liferay.mobile.android.service.Config;
 import com.liferay.mobile.android.util.PortalVersion;
 import com.liferay.mobile.android.v2.Callback;
 import com.liferay.mobile.android.v2.FileUploadTest;
@@ -50,12 +51,11 @@ public class FileDownloadTest extends BaseTest {
 
 	@Test
 	public void cancel() throws Exception {
-		JSONObject file = FileUploadTest.uploadPhoto(props, config);
+		JSONObject file = FileUploadTest.uploadPhoto(props);
 
 		try {
-			BasicAuthentication basic =
-				(BasicAuthentication)config.auth();
-
+			Config config = Config.global();
+			BasicAuthentication basic = (BasicAuthentication)config.auth();
 			config.auth(new DigestAuthentication(
 				basic.getUsername(), basic.getPassword()));
 
@@ -85,7 +85,7 @@ public class FileDownloadTest extends BaseTest {
 			};
 
 			Response response = DownloadUtil.download(
-				config, url, null, callback);
+				Config.global(), url, null, callback);
 
 			assertNotNull(response);
 			assertEquals(Status.OK, response.getStatusCode());
@@ -101,8 +101,8 @@ public class FileDownloadTest extends BaseTest {
 
 	@Test
 	public void downloadAsync() throws Exception {
-		BasicAuthentication basic =
-			(BasicAuthentication)config.auth();
+		Config config = Config.global();
+		BasicAuthentication basic = (BasicAuthentication)config.auth();
 
 		config.auth(
 			new DigestAuthentication(basic.getUsername(), basic.getPassword()));
@@ -162,8 +162,8 @@ public class FileDownloadTest extends BaseTest {
 
 	@Test
 	public void downloadSync() throws Exception {
-		BasicAuthentication basic =
-			(BasicAuthentication)config.auth();
+		Config config = Config.global();
+		BasicAuthentication basic = (BasicAuthentication)config.auth();
 
 		config.auth(
 			new DigestAuthentication(basic.getUsername(), basic.getPassword()));
@@ -207,6 +207,8 @@ public class FileDownloadTest extends BaseTest {
 
 	@Test
 	public void getDownloadURL() throws Exception {
+		Config config = Config.global();
+
 		String expectedURL = "http://localhost:8080/webdav/guest" +
 			"/document_library" +
 			"/folder%20with%20spaces" +

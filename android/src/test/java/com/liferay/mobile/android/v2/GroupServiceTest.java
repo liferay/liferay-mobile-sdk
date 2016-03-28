@@ -45,7 +45,7 @@ public class GroupServiceTest extends BaseTest {
 		GroupService service = new GroupService();
 		long groupId = props.getGroupId();
 		Call<Response> call = service.disableStaging(groupId);
-		Response response = call.execute(config);
+		Response response = call.execute();
 		assertEquals(200, response.getStatusCode());
 	}
 
@@ -56,7 +56,7 @@ public class GroupServiceTest extends BaseTest {
 		Call<Response> call = service.disableStaging(groupId);
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(config, new Callback<Response>() {
+		call.async(new Callback<Response>() {
 
 			@Override
 			public void onSuccess(Response response) {
@@ -79,7 +79,7 @@ public class GroupServiceTest extends BaseTest {
 		GroupService service = new GroupService();
 		long groupId = props.getGroupId();
 		Call<JSONObject> call = service.getGroup(groupId);
-		JSONObject group = call.execute(config);
+		JSONObject group = call.execute();
 		assertEquals(groupId, group.getLong("groupId"));
 	}
 
@@ -88,7 +88,7 @@ public class GroupServiceTest extends BaseTest {
 		GroupService service = new GroupService();
 		long groupId = props.getGroupId();
 		Call<Map<String, Object>> call = service.getGroupAsMap(groupId);
-		Map<String, Object> group = call.execute(config);
+		Map<String, Object> group = call.execute();
 		assertEquals(groupId, ((Double)group.get("groupId")).longValue());
 	}
 
@@ -99,7 +99,7 @@ public class GroupServiceTest extends BaseTest {
 		Call<Map<String, Object>> call = service.getGroupAsMap(groupId);
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(config, new Callback<Map<String, Object>>() {
+		call.async(new Callback<Map<String, Object>>() {
 
 			@Override
 			public void onSuccess(Map<String, Object> group) {
@@ -125,7 +125,7 @@ public class GroupServiceTest extends BaseTest {
 		GroupService service = new GroupService();
 		long groupId = props.getGroupId();
 		Call<Site> call = service.getGroupAsSite(groupId);
-		Site group = call.execute(config);
+		Site group = call.execute();
 		assertEquals(groupId, group.groupId);
 	}
 
@@ -136,7 +136,7 @@ public class GroupServiceTest extends BaseTest {
 		Call<Site> call = service.getGroupAsSite(groupId);
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(config, new Callback<Site>() {
+		call.async(new Callback<Site>() {
 
 			@Override
 			public void onSuccess(Site group) {
@@ -162,7 +162,7 @@ public class GroupServiceTest extends BaseTest {
 		Call<JSONObject> call = service.getGroup(groupId);
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(config, new Callback<JSONObject>() {
+		call.async(new Callback<JSONObject>() {
 
 			@Override
 			public void onSuccess(JSONObject group) {
@@ -185,7 +185,7 @@ public class GroupServiceTest extends BaseTest {
 	public void getUserSites() throws Exception {
 		GroupService service = new GroupService();
 		Call<JSONArray> call = service.getUserSites();
-		assertUserSites(call.execute(config));
+		assertUserSites(call.execute());
 	}
 
 	@Test
@@ -194,7 +194,7 @@ public class GroupServiceTest extends BaseTest {
 		Call<List<Map<String, Object>>> call =
 			service.getUserSitesAsListOfMap();
 
-		assertUserSitesAsMap(call.execute(config));
+		assertUserSitesAsMap(call.execute());
 	}
 
 	@Test
@@ -205,7 +205,7 @@ public class GroupServiceTest extends BaseTest {
 
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(config, new Callback<List<Map<String, Object>>>() {
+		call.async(new Callback<List<Map<String, Object>>>() {
 
 			@Override
 			public void onSuccess(List<Map<String, Object>> sites) {
@@ -228,7 +228,7 @@ public class GroupServiceTest extends BaseTest {
 	public void getUserSitesAsListOfSites() throws Exception {
 		GroupService service = new GroupService();
 		Call<List<Site>> call = service.getUserSitesAsListOfSites();
-		assertUserSites(call.execute(config));
+		assertUserSites(call.execute());
 	}
 
 	@Test
@@ -237,7 +237,7 @@ public class GroupServiceTest extends BaseTest {
 		Call<List<Site>> call = service.getUserSitesAsListOfSites();
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(config, new Callback<List<Site>>() {
+		call.async(new Callback<List<Site>>() {
 
 			@Override
 			public void onSuccess(List<Site> sites) {
@@ -262,7 +262,7 @@ public class GroupServiceTest extends BaseTest {
 		Call<JSONArray> call = service.getUserSites();
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(config, new Callback<JSONArray>() {
+		call.async(new Callback<JSONArray>() {
 
 			@Override
 			public void onSuccess(JSONArray sites) {

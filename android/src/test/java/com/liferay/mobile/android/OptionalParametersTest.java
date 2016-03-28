@@ -48,8 +48,7 @@ public class OptionalParametersTest extends BaseTest {
 		Call<JSONObject> call = service.updateFileEntry(
 			fileEntryId, "", "", "", description, "", false, bytes, null);
 
-		JSONObject file = call.execute(config);
-
+		JSONObject file = call.execute();
 		assertEquals(fileEntryId, file.getLong(DLAppServiceTest.FILE_ENTRY_ID));
 		assertEquals(5, file.getInt("size"));
 	}

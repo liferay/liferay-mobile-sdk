@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android;
 
+import com.liferay.mobile.android.service.Config;
 import com.liferay.mobile.android.util.PortalVersion;
 import com.liferay.mobile.android.util.PortalVersionUtil;
 
@@ -34,7 +35,7 @@ public class PortalVersionTest extends BaseTest {
 
 	@Test
 	public void getPortalVersion() throws Exception {
-		int version = PortalVersionUtil.getPortalVersion(config);
+		int version = PortalVersionUtil.getPortalVersion(Config.global());
 		assertTrue(version >= PortalVersion.V_6_2);
 	}
 

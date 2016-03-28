@@ -32,6 +32,16 @@ import org.json.JSONObject;
  */
 public class Call<T> {
 
+	public static Response batch(Call... calls) throws Exception {
+		return batch(Config.global(), calls);
+	}
+
+	public static void batch(Callback<Response> callback, Call... calls)
+		throws Exception {
+
+		batch(Config.global(), callback, calls);
+	}
+
 	public static Response batch(Config config, Call... calls)
 		throws Exception {
 
@@ -67,6 +77,10 @@ public class Call<T> {
 		this.contentType = contentType;
 	}
 
+	public void async(Callback<T> callback) {
+		async(Config.global(), callback);
+	}
+
 	public void async(Config config, Callback<T> callback) {
 		callback.type(this.type);
 		Request request = request(config);
@@ -75,6 +89,10 @@ public class Call<T> {
 
 	public Object body() {
 		return body;
+	}
+
+	public T execute() throws Exception {
+		return execute(Config.global());
 	}
 
 	public T execute(Config config) throws Exception {

@@ -48,7 +48,7 @@ public class FileUploadTest extends BaseTest {
 
 	public static final String MIME_TYPE = "image/jpg";
 
-	public static JSONObject uploadPhoto(PropertiesUtil props, Config config)
+	public static JSONObject uploadPhoto(PropertiesUtil props)
 		throws Exception {
 
 		DLAppService service = ServiceBuilder.build(DLAppService.class);
@@ -70,7 +70,7 @@ public class FileUploadTest extends BaseTest {
 
 		JSONObject file = service.addFileEntry(
 			repositoryId, folderId, FILE_NAME, MIME_TYPE, FILE_NAME, "", "",
-			data, null).execute(config);
+			data, null).execute(Config.global());
 
 		assertEquals(FILE_NAME, file.getString(DLAppServiceTest.TITLE));
 		assertEquals(372434, callback.getTotal());
@@ -127,7 +127,7 @@ public class FileUploadTest extends BaseTest {
 			repositoryId, folderId, fileName, mimeType, fileName, "", "", data,
 			null);
 
-		_file = call.execute(config);
+		_file = call.execute();
 
 		assertEquals(fileName, _file.getString(DLAppServiceTest.TITLE));
 		assertEquals(5, callback.getTotal());
@@ -181,7 +181,7 @@ public class FileUploadTest extends BaseTest {
 
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(config, new Callback<JSONObject>() {
+		call.async(new Callback<JSONObject>() {
 
 			@Override
 			public void onSuccess(JSONObject file) {
@@ -229,7 +229,7 @@ public class FileUploadTest extends BaseTest {
 		try {
 			_file = service.addFileEntry(
 				repositoryId, folderId, FILE_NAME, MIME_TYPE, FILE_NAME, "", "",
-				data, null).execute(config);
+				data, null).execute();
 
 			fail("Should have thrown IOException");
 		}
@@ -251,7 +251,7 @@ public class FileUploadTest extends BaseTest {
 
 	@Test
 	public void uploadPhoto() throws Exception {
-		_file = uploadPhoto(props, config);
+		_file = uploadPhoto(props);
 	}
 
 	private JSONObject _file;

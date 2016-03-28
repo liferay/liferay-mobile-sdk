@@ -69,14 +69,14 @@ public class ServiceContextTest extends BaseTest {
 			groupId, PARENT_FOLDER_ID, name, "http://www.liferay.com", "",
 			serviceContext);
 
-		return call.execute(config);
+		return call.execute();
 	}
 
 	public void deleteBookmarkEntry(JSONObject entry) throws Exception {
 		BookmarksEntryService service = ServiceBuilder.build(
 			BookmarksEntryService.class);
 
-		service.deleteEntry(entry.getLong("entryId")).execute(config);
+		service.deleteEntry(entry.getLong("entryId")).execute();
 	}
 
 	@Test

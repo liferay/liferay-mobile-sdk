@@ -30,6 +30,14 @@ public class Config {
 
 	public static final String PATH_62 = "api/jsonws";
 
+	public static Config global() {
+		return global;
+	}
+
+	public static void global(Config global) {
+		Config.global = global;
+	}
+
 	public static Config server(String server) {
 		Config config = new Config(server);
 		config.timeout(DEFAULT_TIMEOUT);
@@ -99,6 +107,8 @@ public class Config {
 	protected Config(String server) {
 		this.server = server;
 	}
+
+	protected static Config global;
 
 	protected Authentication auth;
 	protected Map<String, String> headers = new HashMap<>();

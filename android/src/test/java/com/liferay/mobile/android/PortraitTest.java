@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android;
 
+import com.liferay.mobile.android.service.Config;
 import com.liferay.mobile.android.util.PortraitUtil;
 
 import java.io.ByteArrayOutputStream;
@@ -36,7 +37,8 @@ public class PortraitTest extends BaseTest {
 	public void downloadPortrait() throws Exception {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		String portraitURL = getPortraitURL();
-		PortraitUtil.downloadPortrait(config, portraitURL, baos, null, null);
+		PortraitUtil.downloadPortrait(
+			Config.global(), portraitURL, baos, null, null);
 
 		assertEquals(7742, baos.size());
 	}
@@ -50,7 +52,7 @@ public class PortraitTest extends BaseTest {
 		String uuid = null;
 
 		String portraitURL = PortraitUtil.getPortraitURL(
-			config, true, portraitId, uuid);
+			Config.global(), true, portraitId, uuid);
 
 		assertEquals(expectedURL, portraitURL);
 
@@ -60,7 +62,7 @@ public class PortraitTest extends BaseTest {
 		uuid = "c0c65ba5-c2ba-4bf5-9e42-7330adb1b5b8";
 
 		portraitURL = PortraitUtil.getPortraitURL(
-			config, true, portraitId, uuid);
+			Config.global(), true, portraitId, uuid);
 
 		assertEquals(expectedURL, portraitURL);
 
