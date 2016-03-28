@@ -30,7 +30,7 @@ import org.junit.Test;
 /**
  * @author Bruno Farache
  */
-public class ConnectionTimeoutTest extends BaseTest {
+public class ConnectionTimeoutTest {
 
 	public ConnectionTimeoutTest() throws IOException {
 		super();
@@ -38,10 +38,7 @@ public class ConnectionTimeoutTest extends BaseTest {
 
 	@Test(expected = SocketTimeoutException.class)
 	public void connectionTimeoutException() throws Exception {
-		Config config = new Config(this.config);
-		config.setServer("http://www.liferay.com");
-		config.setConnectionTimeout(5);
-
+		Config config = Config.url("http://www.liferay.com").timeout(5);
 		GroupService service = ServiceBuilder.build(GroupService.class);
 		Call<JSONArray> call = service.getUserSites();
 		call.execute(config);

@@ -67,10 +67,10 @@ public class PortalVersionUtil {
 	protected static int getBuilderNumberHeader(Config config)
 		throws Exception {
 
-		Request request = Request.url(config.getServer())
+		Request request = Request.url(config.url())
 			.method(Method.HEAD)
-			.headers(config.getHeaders())
-			.timeout(config.getConnectionTimeout());
+			.headers(config.headers())
+			.timeout(config.timeout());
 
 		HttpClient client = Call.client();
 		Response response = client.sync(request);

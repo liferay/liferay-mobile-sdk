@@ -29,10 +29,10 @@ public abstract class BaseTest {
 	public BaseTest() throws IOException {
 		props = new PropertiesUtil();
 
-		Authentication authentication = new BasicAuthentication(
+		Authentication auth = new BasicAuthentication(
 			props.getLogin(), props.getPassword());
 
-		config = new Config(props.getUrl(), authentication);
+		config = Config.url(props.getUrl()).auth(auth);
 	}
 
 	protected Config config;

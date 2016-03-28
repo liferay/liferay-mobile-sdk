@@ -104,7 +104,7 @@ public class SignIn {
 	}
 
 	protected static String getUsername(Config config) throws Exception {
-		Authentication auth = config.getAuthentication();
+		Authentication auth = config.auth();
 
 		if (auth == null) {
 			throw new Exception("Session's authentication can't be null");

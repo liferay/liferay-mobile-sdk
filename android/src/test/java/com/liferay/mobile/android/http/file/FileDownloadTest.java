@@ -54,12 +54,12 @@ public class FileDownloadTest extends BaseTest {
 
 		try {
 			BasicAuthentication basic =
-				(BasicAuthentication)config.getAuthentication();
+				(BasicAuthentication)config.auth();
 
-			config.setAuthentication(new DigestAuthentication(
+			config.auth(new DigestAuthentication(
 				basic.getUsername(), basic.getPassword()));
 
-			String url = config.getServer() +
+			String url = config.url() +
 				"/webdav/guest/document_library/" +
 				file.getString(DLAppServiceTest.TITLE);
 
@@ -102,12 +102,12 @@ public class FileDownloadTest extends BaseTest {
 	@Test
 	public void downloadAsync() throws Exception {
 		BasicAuthentication basic =
-			(BasicAuthentication)config.getAuthentication();
+			(BasicAuthentication)config.auth();
 
-		config.setAuthentication(
+		config.auth(
 			new DigestAuthentication(basic.getUsername(), basic.getPassword()));
 
-		String url = config.getServer() + "/webdav/guest/document_library/" +
+		String url = config.url() + "/webdav/guest/document_library/" +
 			_file.getString(DLAppServiceTest.TITLE);
 
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -163,12 +163,12 @@ public class FileDownloadTest extends BaseTest {
 	@Test
 	public void downloadSync() throws Exception {
 		BasicAuthentication basic =
-			(BasicAuthentication)config.getAuthentication();
+			(BasicAuthentication)config.auth();
 
-		config.setAuthentication(
+		config.auth(
 			new DigestAuthentication(basic.getUsername(), basic.getPassword()));
 
-		String url = config.getServer() + "/webdav/guest/document_library/" +
+		String url = config.url() + "/webdav/guest/document_library/" +
 			_file.getString(DLAppServiceTest.TITLE);
 
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream();

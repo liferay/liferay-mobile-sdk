@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.http;
 
 import com.liferay.mobile.android.auth.Authentication;
+import com.liferay.mobile.android.service.Config;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,14 +28,10 @@ public class Request {
 	public static Request url(String url) {
 		Request request = new Request(url);
 		request.tag(request);
-		request.timeout(1500);
+		request.timeout(Config.DEFAULT_TIMEOUT);
 		request.method(Method.POST);
 
 		return request;
-	}
-
-	public Request(String url) {
-		this.url = url;
 	}
 
 	public Authentication auth() {
@@ -98,6 +95,10 @@ public class Request {
 
 	public String url() {
 		return url;
+	}
+
+	protected Request(String url) {
+		this.url = url;
 	}
 
 	protected Authentication auth;

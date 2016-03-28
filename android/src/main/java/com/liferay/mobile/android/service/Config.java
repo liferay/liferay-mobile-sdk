@@ -24,65 +24,53 @@ import java.util.Map;
  */
 public class Config {
 
-	public static final int DEFAULT_CONNECTION_TIMEOUT = 15000;
+	public static final int DEFAULT_TIMEOUT = 15000;
 
-	public Config(Config config) {
-		this(
-			config.getServer(), config.getAuthentication(),
-			config.getConnectionTimeout());
+	public static Config url(String url) {
+		Config config = new Config(url);
+		config.timeout(DEFAULT_TIMEOUT);
+
+		return config;
 	}
 
-	public Config(String server) {
-		this(server, null);
+	public Authentication auth() {
+		return auth;
 	}
 
-	public Config(String server, Authentication authentication) {
-		this(server, authentication, DEFAULT_CONNECTION_TIMEOUT);
+	public Config auth(Authentication auth) {
+		this.auth = auth;
+		return this;
 	}
 
-	public Config(
-		String server, Authentication authentication, int connectionTimeout) {
-
-		this.server = server;
-		this.authentication = authentication;
-		this.connectionTimeout = connectionTimeout;
-	}
-
-	public Authentication getAuthentication() {
-		return authentication;
-	}
-
-	public int getConnectionTimeout() {
-		return connectionTimeout;
-	}
-
-	public Map<String, String> getHeaders() {
+	public Map<String, String> headers() {
 		return headers;
 	}
 
-	public String getServer() {
-		return server;
-	}
-
-	public void setAuthentication(Authentication authentication) {
-		this.authentication = authentication;
-	}
-
-	public void setConnectionTimeout(int connectionTimeout) {
-		this.connectionTimeout = connectionTimeout;
-	}
-
-	public void setHeaders(Map<String, String> headers) {
+	public Config headers(Map<String, String> headers) {
 		this.headers = headers;
+		return this;
 	}
 
-	public void setServer(String server) {
-		this.server = server;
+	public int timeout() {
+		return timeout;
 	}
 
-	protected Authentication authentication;
-	protected int connectionTimeout;
+	public Config timeout(int timeout) {
+		this.timeout = timeout;
+		return this;
+	}
+
+	public String url() {
+		return url;
+	}
+
+	protected Config(String url) {
+		this.url = url;
+	}
+
+	protected Authentication auth;
 	protected Map<String, String> headers = new HashMap<>();
-	protected String server;
+	protected int timeout;
+	protected String url;
 
 }

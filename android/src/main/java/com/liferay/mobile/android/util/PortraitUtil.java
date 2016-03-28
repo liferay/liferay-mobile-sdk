@@ -56,7 +56,7 @@ public class PortraitUtil {
 				headers.put(Headers.IF_MODIFIED_SINCE, modifiedDate);
 			}
 
-			config.setHeaders(headers);
+			config.headers(headers);
 
 			Response response = DownloadUtil.download(
 				config, portraitURL, callback, new FileProgressCallback() {
@@ -92,7 +92,7 @@ public class PortraitUtil {
 
 		StringBuilder sb = new StringBuilder();
 
-		sb.append(config.getServer());
+		sb.append(config.url());
 		sb.append("/image/user_");
 
 		if (male) {

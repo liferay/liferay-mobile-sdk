@@ -94,7 +94,7 @@ public class Call<T> {
 	}
 
 	protected Request request(Config config) {
-		Map<String, String> headers = config.getHeaders();
+		Map<String, String> headers = config.headers();
 		headers.put(Headers.CONTENT_TYPE, contentType.value);
 		String path = "/invoke";
 
@@ -107,12 +107,12 @@ public class Call<T> {
 			body = jsonObject.optJSONObject(path);
 		}
 
-		return Request.url(url(config.getServer(), path))
-			.auth(config.getAuthentication())
+		return Request.url(url(config.url(), path))
+			.auth(config.auth())
 			.headers(headers)
 			.body(body)
 			.tag(this)
-			.timeout(config.getConnectionTimeout());
+			.timeout(config.timeout());
 	}
 
 	protected String url(String server, String path) {

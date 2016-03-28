@@ -43,10 +43,10 @@ public class DownloadUtil {
 		throws Exception {
 
 		Request request = Request.url(url)
-			.auth(config.getAuthentication())
+			.auth(config.auth())
 			.method(Method.GET)
-			.headers(config.getHeaders())
-			.timeout(config.getConnectionTimeout());
+			.headers(config.headers())
+			.timeout(config.timeout());
 
 		Object tag = request.tag();
 
@@ -73,7 +73,7 @@ public class DownloadUtil {
 			FileProgressCallback progressCallback)
 		throws Exception {
 
-		Authentication auth = config.getAuthentication();
+		Authentication auth = config.auth();
 
 		if ((auth != null) && !(auth instanceof DigestAuthentication)) {
 			throw new Exception(
@@ -93,7 +93,7 @@ public class DownloadUtil {
 		throws Exception {
 
 		StringBuilder sb = new StringBuilder();
-		sb.append(config.getServer());
+		sb.append(config.url());
 
 		if (portalVersion < PortalVersion.V_6_2) {
 			sb.append("/api/secure");
