@@ -40,7 +40,7 @@ public class BatchTest extends BaseTest {
 	@Test
 	public void getUserSites() throws Exception {
 		GroupService service = new GroupService();
-		Response response = Call.batch(
+		Response response = Batch.execute(
 			service.getUserSites(), service.getUserSites());
 
 		List sites = JsonParser.fromJson(response, List.class);
@@ -58,7 +58,7 @@ public class BatchTest extends BaseTest {
 		GroupService service = new GroupService();
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		Call.batch(new Callback<Response>() {
+		Batch.async(new Callback<Response>() {
 
 			@Override
 			public void onSuccess(Response response) {

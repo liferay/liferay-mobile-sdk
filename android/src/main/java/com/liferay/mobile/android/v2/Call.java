@@ -32,33 +32,6 @@ import org.json.JSONObject;
  */
 public class Call<T> {
 
-	public static Response batch(Call... calls) throws Exception {
-		return batch(Config.global(), calls);
-	}
-
-	public static void batch(Callback<Response> callback, Call... calls)
-		throws Exception {
-
-		batch(Config.global(), callback, calls);
-	}
-
-	public static Response batch(Config config, Call... calls)
-		throws Exception {
-
-		JSONArray bodies = bodies(calls);
-		Call<Response> call = new Call<>(bodies, Response.class);
-		return call.execute(config);
-	}
-
-	public static void batch(
-			Config config, Callback<Response> callback, Call... calls)
-		throws Exception {
-
-		JSONArray bodies = bodies(calls);
-		Call<Response> call = new Call<>(bodies, Response.class);
-		call.async(config, callback);
-	}
-
 	public static void cancel(Object call) {
 		client.cancel(call);
 	}

@@ -16,6 +16,7 @@ package com.liferay.mobile.android;
 
 import com.liferay.mobile.android.exception.ServerException;
 import com.liferay.mobile.android.http.Response;
+import com.liferay.mobile.android.v2.Batch;
 import com.liferay.mobile.android.v2.Call;
 import com.liferay.mobile.android.v2.JsonParser;
 import com.liferay.mobile.android.v2.ServiceBuilder;
@@ -100,7 +101,7 @@ public class DLAppServiceTest extends BaseTest {
 		Call<JSONObject> call2 = service.addFolder(
 			repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME_2, "", null);
 
-		Response response = Call.batch(call1, call2);
+		Response response = Batch.execute(call1, call2);
 		JSONArray sites = JsonParser.fromJson(response, JSONArray.class);
 
 		assertEquals(_FOLDER_NAME, sites.getJSONObject(0).get(_NAME));
@@ -146,7 +147,7 @@ public class DLAppServiceTest extends BaseTest {
 		Call<Response> call2 = service.deleteFolder(
 			repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME_2);
 
-		Response response = Call.batch(call1, call2);
+		Response response = Batch.execute(call1, call2);
 		JSONArray sites = JsonParser.fromJson(response, JSONArray.class);
 		assertEquals(2, sites.length());
 	}
