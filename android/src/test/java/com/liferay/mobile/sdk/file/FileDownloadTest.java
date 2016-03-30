@@ -23,7 +23,6 @@ import com.liferay.mobile.sdk.auth.DigestAuthentication;
 import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.http.Status;
 import com.liferay.mobile.sdk.util.PortalVersion;
-import com.liferay.mobile.sdk.v2.FileUploadTest;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

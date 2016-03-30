@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.v2;
+package com.liferay.mobile.sdk.file;
 
 import com.liferay.mobile.sdk.BaseTest;
 import com.liferay.mobile.sdk.Call;
@@ -20,8 +20,6 @@ import com.liferay.mobile.sdk.Callback;
 import com.liferay.mobile.sdk.Config;
 import com.liferay.mobile.sdk.DLAppServiceTest;
 import com.liferay.mobile.sdk.ServiceBuilder;
-import com.liferay.mobile.sdk.file.FileProgressCallback;
-import com.liferay.mobile.sdk.file.UploadData;
 import com.liferay.mobile.sdk.util.PropertiesUtil;
 import com.liferay.mobile.sdk.v62.dlapp.DLAppService;
 
