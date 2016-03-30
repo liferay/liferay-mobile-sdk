@@ -12,11 +12,9 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.v2.service;
+package com.liferay.mobile.sdk;
 
-import com.liferay.mobile.sdk.BaseTest;
-import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.ServiceBuilder;
+import com.liferay.mobile.sdk.v2.service.UserService;
 
 import java.io.IOException;
 

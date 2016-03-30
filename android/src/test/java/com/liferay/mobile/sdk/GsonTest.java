@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.v2;
+package com.liferay.mobile.sdk;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -23,6 +23,7 @@ import com.google.gson.reflect.TypeToken;
 import com.liferay.mobile.sdk.json.GenericListType;
 import com.liferay.mobile.sdk.json.JSONArrayDeserializer;
 import com.liferay.mobile.sdk.json.JSONObjectDeserializer;
+import com.liferay.mobile.sdk.v2.Site;
 
 import java.lang.reflect.Type;
 
@@ -60,14 +61,49 @@ public class GsonTest {
 		List<Object> list = new Gson().fromJson(json, type);
 
 		assertEquals(2, list.size());
-		assertEquals("value", ((Map)((Map)list.get(0)).get("key")).get("child"));
+		assertEquals(
+			"value", ((Map)((Map)list.get(0)).get("key")).get("child"));
+
 		assertEquals(2, ((Double)list.get(1)).intValue());
 	}
 
 	@Test
 	public void genericListType() throws Exception {
-		String json = "[{\"classNameId\":\"20005\",\"classPK\":\"20247\",\"companyId\":\"20202\",\"creatorUserId\":\"20247\",\"description\":\"\",\"descriptionCurrentValue\":\"\",\"friendlyURL\":\"\\/test\",\"groupId\":\"20249\",\"groupKey\":\"20247\",\"liveGroupId\":\"0\",\"membershipRestriction\":0,\"mvccVersion\":\"0\",\"name\":\"\",\"nameCurrentValue\":\"\",\"parentGroupId\":\"0\",\"remoteStagingGroupCount\":0,\"treePath\":\"\\/20249\\/\",\"type\":0,\"typeSettings\":\"\",\"uuid\":\"9cb53101-c40a-e531-4c1d-41dce639d11f\"},{\"classNameId\":\"20019\",\"classPK\":\"20202\",\"companyId\":\"20202\",\"creatorUserId\":\"20205\",\"description\":\"\",\"descriptionCurrentValue\":\"\",\"friendlyURL\":\"\\/global\",\"groupId\":\"20243\",\"groupKey\":\"20202\",\"liveGroupId\":\"0\",\"membershipRestriction\":0,\"mvccVersion\":\"0\",\"name\":\"<?xml version='1.0' encoding='UTF-8'?><root available-locales=\\\"en_US\\\" default-locale=\\\"en_US\\\"><Name language-id=\\\"en_US\\\">Global<\\/Name><\\/root>\",\"nameCurrentValue\":\"Global\",\"parentGroupId\":\"0\",\"remoteStagingGroupCount\":0,\"treePath\":\"\\/20243\\/\",\"type\":0,\"typeSettings\":\"\",\"uuid\":\"930b9fe3-f6aa-52a6-b543-677f649a29e3\"},{\"classNameId\":\"20001\",\"classPK\":\"20229\",\"companyId\":\"20202\",\"creatorUserId\":\"20205\",\"description\":\"\",\"descriptionCurrentValue\":\"\",\"friendlyURL\":\"\\/guest\",\"groupId\":\"20229\",\"groupKey\":\"Guest\",\"liveGroupId\":\"0\",\"membershipRestriction\":0,\"mvccVersion\":\"0\",\"name\":\"<?xml version='1.0' encoding='UTF-8'?><root available-locales=\\\"en_US\\\" default-locale=\\\"en_US\\\"><Name language-id=\\\"en_US\\\">Guest<\\/Name><\\/root>\",\"nameCurrentValue\":\"Guest\",\"parentGroupId\":\"0\",\"remoteStagingGroupCount\":0,\"treePath\":\"\\/20229\\/\",\"type\":1,\"typeSettings\":\"\",\"uuid\":\"27ea3725-f4f8-7478-030c-78f8470869e4\"}]";
-		Type type = new GenericListType<Site>(Site.class);
+		String json = "[{" +
+			"\"classNameId\":\"20005\",\"classPK\":\"20247\"," +
+			"\"companyId\":\"20202\",\"creatorUserId\":\"20247\"," +
+			"\"description\":\"\",\"descriptionCurrentValue\":\"\"," +
+			"\"friendlyURL\":\"\\/test\",\"groupId\":\"20249\"," +
+			"\"groupKey\":\"20247\",\"liveGroupId\":\"0\"," +
+			"\"membershipRestriction\":0,\"mvccVersion\":\"0\",\"name\":\"\"," +
+			"\"nameCurrentValue\":\"\",\"parentGroupId\":\"0\"," +
+			"\"remoteStagingGroupCount\":0,\"treePath\":\"\\/20249\\/\"," +
+			"\"type\":0,\"typeSettings\":\"\"," +
+			"\"uuid\":\"9cb53101-c40a-e531-4c1d-41dce639d11f\"" +
+			"}," +
+			"{\"classNameId\":\"20019\",\"classPK\":\"20202\"," +
+			"\"companyId\":\"20202\",\"creatorUserId\":\"20205\"," +
+			"\"description\":\"\",\"descriptionCurrentValue\":\"\"," +
+			"\"friendlyURL\":\"\\/global\",\"groupId\":\"20243\"," +
+			"\"groupKey\":\"20202\",\"liveGroupId\":\"0\"," +
+			"\"membershipRestriction\":0,\"mvccVersion\":\"0\"," +
+			"\"name\":\"Global\",\"nameCurrentValue\":\"Global\"," +
+			"\"parentGroupId\":\"0\",\"remoteStagingGroupCount\":0," +
+			"\"treePath\":\"\\/20243\\/\",\"type\":0,\"typeSettings\":\"\"," +
+			"\"uuid\":\"930b9fe3-f6aa-52a6-b543-677f649a29e3\"" +
+			"}," +
+			"{\"classNameId\":\"20001\",\"classPK\":\"20229\"," +
+			"\"companyId\":\"20202\",\"creatorUserId\":\"20205\"," +
+			"\"description\":\"\",\"descriptionCurrentValue\":\"\"," +
+			"\"friendlyURL\":\"\\/guest\",\"groupId\":\"20229\"," +
+			"\"groupKey\":\"Guest\",\"liveGroupId\":\"0\"," +
+			"\"membershipRestriction\":0,\"mvccVersion\":\"0\"," +
+			"\"name\":\"Guest\",\"nameCurrentValue\":\"Guest\"," +
+			"\"parentGroupId\":\"0\",\"remoteStagingGroupCount\":0," +
+			"\"treePath\":\"\\/20229\\/\",\"type\":1,\"typeSettings\":\"\"," +
+			"\"uuid\":\"27ea3725-f4f8-7478-030c-78f8470869e4\"}]";
+
+		Type type = new GenericListType<>(Site.class);
 		List<Site> sites = new Gson().fromJson(json, type);
 
 		assertEquals(3, sites.size());
