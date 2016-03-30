@@ -30,14 +30,6 @@ public class Config {
 
 	public static final String PATH_62 = "api/jsonws";
 
-	public synchronized static Config global() {
-		return global;
-	}
-
-	public synchronized static void global(Config global) {
-		Config.global = global;
-	}
-
 	public static Config server(String server) {
 		Config config = new Config(server);
 		config.timeout(DEFAULT_TIMEOUT);
@@ -53,6 +45,14 @@ public class Config {
 	public Config auth(Authentication auth) {
 		this.auth = auth;
 		return this;
+	}
+
+	public synchronized static Config global() {
+		return global;
+	}
+
+	public synchronized static void global(Config global) {
+		Config.global = global;
 	}
 
 	public Config header(String key, String value) {
