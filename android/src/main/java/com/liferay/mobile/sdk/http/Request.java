@@ -14,8 +14,8 @@
 
 package com.liferay.mobile.sdk.http;
 
+import com.liferay.mobile.sdk.Config;
 import com.liferay.mobile.sdk.auth.Authentication;
-import com.liferay.mobile.sdk.service.Config;
 
 import java.util.HashMap;
 import java.util.Map;

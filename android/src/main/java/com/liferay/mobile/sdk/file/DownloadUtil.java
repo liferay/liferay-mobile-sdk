@@ -16,12 +16,12 @@ package com.liferay.mobile.sdk.file;
 
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.Callback;
+import com.liferay.mobile.sdk.Config;
 import com.liferay.mobile.sdk.auth.Authentication;
 import com.liferay.mobile.sdk.auth.DigestAuthentication;
 import com.liferay.mobile.sdk.http.Method;
 import com.liferay.mobile.sdk.http.Request;
 import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.service.Config;
 import com.liferay.mobile.sdk.util.PortalVersion;
 import com.liferay.mobile.sdk.util.Validator;
 import com.liferay.mobile.sdk.v2.HttpClient;

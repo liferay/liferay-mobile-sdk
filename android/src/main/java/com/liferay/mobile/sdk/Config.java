@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.service;
+package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.auth.Authentication;
 

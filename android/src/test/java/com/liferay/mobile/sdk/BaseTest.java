@@ -16,7 +16,6 @@ package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.auth.Authentication;
 import com.liferay.mobile.sdk.auth.BasicAuthentication;
-import com.liferay.mobile.sdk.service.Config;
 import com.liferay.mobile.sdk.util.PropertiesUtil;
 
 import java.io.IOException;

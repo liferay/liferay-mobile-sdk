@@ -19,7 +19,6 @@ import com.liferay.mobile.sdk.http.Headers.ContentType;
 import com.liferay.mobile.sdk.http.Request;
 import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.json.JSONParser;
-import com.liferay.mobile.sdk.service.Config;
 import com.liferay.mobile.sdk.v2.HttpClient;
 import com.liferay.mobile.sdk.v2.OkHttpClientImpl;
 

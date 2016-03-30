@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.sdk;
 
-import com.liferay.mobile.sdk.service.Config;
 import com.liferay.mobile.sdk.util.PortraitUtil;
 
 import java.io.ByteArrayOutputStream;

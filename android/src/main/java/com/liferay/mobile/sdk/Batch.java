@@ -15,7 +15,6 @@
 package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.service.Config;
 
 /**
  * @author Bruno Farache
