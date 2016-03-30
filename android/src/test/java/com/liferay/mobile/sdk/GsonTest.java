@@ -23,7 +23,7 @@ import com.google.gson.reflect.TypeToken;
 import com.liferay.mobile.sdk.json.GenericListType;
 import com.liferay.mobile.sdk.json.JSONArrayDeserializer;
 import com.liferay.mobile.sdk.json.JSONObjectDeserializer;
-import com.liferay.mobile.sdk.v2.Site;
+import com.liferay.mobile.sdk.service.Site;
 
 import java.lang.reflect.Type;
 

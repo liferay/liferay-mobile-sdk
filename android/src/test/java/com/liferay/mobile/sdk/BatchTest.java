@@ -12,13 +12,11 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.v2;
+package com.liferay.mobile.sdk;
 
-import com.liferay.mobile.sdk.BaseTest;
-import com.liferay.mobile.sdk.Batch;
-import com.liferay.mobile.sdk.Callback;
 import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.json.JSONParser;
+import com.liferay.mobile.sdk.service.CustomGroupService;
 
 import java.io.IOException;
 
@@ -42,7 +40,7 @@ public class BatchTest extends BaseTest {
 
 	@Test
 	public void getUserSites() throws Exception {
-		GroupService service = new GroupService();
+		CustomGroupService service = new CustomGroupService();
 		Response response = Batch.execute(
 			service.getUserSites(), service.getUserSites());
 
@@ -58,7 +56,7 @@ public class BatchTest extends BaseTest {
 
 	@Test
 	public void getUserSitesAsync() throws Exception {
-		GroupService service = new GroupService();
+		CustomGroupService service = new CustomGroupService();
 		final CountDownLatch lock = new CountDownLatch(1);
 
 		Batch.async(new Callback<Response>() {

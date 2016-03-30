@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.v2;
+package com.liferay.mobile.sdk.service;
 
 /**
  * @author Bruno Farache

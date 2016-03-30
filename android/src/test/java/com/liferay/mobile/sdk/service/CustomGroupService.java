@@ -12,10 +12,9 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.v2;
+package com.liferay.mobile.sdk.service;
 
 import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.json.GenericListType;
 
 import java.util.List;
@@ -28,40 +27,7 @@ import org.json.JSONObject;
 /**
  * @author Bruno Farache
  */
-public class GroupService {
-
-	public Call<Response> disableStaging(long groupId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-
-			_command.put("/group/disable-staging", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		return new Call<>(_command, Response.class);
-	}
-
-	public Call<JSONObject> getGroup(long groupId) {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-
-			_command.put("/group/get-group", _params);
-		}
-		catch (JSONException _je) {
-		}
-
-		return new Call<>(_command, JSONObject.class);
-	}
+public class CustomGroupService {
 
 	public Call<Map<String, Object>> getGroupAsMap(long groupId) {
 		JSONObject _command = new JSONObject();
@@ -120,7 +86,7 @@ public class GroupService {
 		catch (JSONException _je) {
 		}
 
-		GenericListType<Map> type = new GenericListType<Map>(Map.class);
+		GenericListType<Map> type = new GenericListType<>(Map.class);
 
 		return new Call<>(_command, type);
 	}
@@ -136,7 +102,7 @@ public class GroupService {
 		catch (JSONException _je) {
 		}
 
-		GenericListType<Site> type = new GenericListType<Site>(Site.class);
+		GenericListType<Site> type = new GenericListType<>(Site.class);
 
 		return new Call<>(_command, type);
 	}
