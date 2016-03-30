@@ -12,9 +12,8 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.http.file;
+package com.liferay.mobile.sdk.file;
 
-import com.liferay.mobile.sdk.callback.file.FileProgressCallback;
 import com.liferay.mobile.sdk.v2.Call;
 
 import com.squareup.okhttp.internal.Util;

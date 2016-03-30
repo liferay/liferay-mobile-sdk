@@ -16,8 +16,8 @@ package com.liferay.mobile.sdk.v2;
 
 import com.liferay.mobile.sdk.BaseTest;
 import com.liferay.mobile.sdk.DLAppServiceTest;
-import com.liferay.mobile.sdk.callback.file.FileProgressCallback;
-import com.liferay.mobile.sdk.http.file.UploadData;
+import com.liferay.mobile.sdk.file.FileProgressCallback;
+import com.liferay.mobile.sdk.file.UploadData;
 import com.liferay.mobile.sdk.service.Config;
 import com.liferay.mobile.sdk.util.PropertiesUtil;
 import com.liferay.mobile.sdk.v62.dlapp.DLAppService;

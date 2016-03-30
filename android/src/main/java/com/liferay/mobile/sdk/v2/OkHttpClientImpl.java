@@ -15,13 +15,13 @@
 package com.liferay.mobile.sdk.v2;
 
 import com.liferay.mobile.sdk.auth.Authentication;
+import com.liferay.mobile.sdk.file.InputStreamBody;
+import com.liferay.mobile.sdk.file.UploadData;
 import com.liferay.mobile.sdk.http.Headers;
 import com.liferay.mobile.sdk.http.Headers.ContentType;
 import com.liferay.mobile.sdk.http.Method;
 import com.liferay.mobile.sdk.http.Request;
 import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.http.file.InputStreamBody;
-import com.liferay.mobile.sdk.http.file.UploadData;
 
 import com.squareup.okhttp.Authenticator;
 import com.squareup.okhttp.Call;

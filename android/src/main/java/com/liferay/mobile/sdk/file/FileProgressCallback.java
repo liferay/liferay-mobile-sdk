@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.callback.file;
+package com.liferay.mobile.sdk.file;
 
 import static com.liferay.mobile.sdk.callback.MainThreadRunner.run;
 

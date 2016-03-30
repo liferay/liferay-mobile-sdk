@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.http.file;
+package com.liferay.mobile.sdk.file;
 
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.RequestBody;
@@ -21,7 +21,7 @@ import java.io.IOException;
 
 import okio.BufferedSink;
 
-import static com.liferay.mobile.sdk.http.file.FileTransfer.transfer;
+import static com.liferay.mobile.sdk.file.FileTransfer.transfer;
 
 /**
  * @author Bruno Farache

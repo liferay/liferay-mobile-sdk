@@ -12,12 +12,12 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.callback.file;
+package com.liferay.mobile.sdk.file;
 
 import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.v2.Callback;
 
-import static com.liferay.mobile.sdk.http.file.FileTransfer.transfer;
+import static com.liferay.mobile.sdk.file.FileTransfer.transfer;
 
 /**
  * @author Bruno Farache

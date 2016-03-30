@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.http.file;
+package com.liferay.mobile.sdk.file;
 
 import java.io.IOException;
 import java.io.OutputStream;

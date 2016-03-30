@@ -12,9 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.http.file;
-
-import com.liferay.mobile.sdk.callback.file.FileProgressCallback;
+package com.liferay.mobile.sdk.file;
 
 import java.io.InputStream;
 

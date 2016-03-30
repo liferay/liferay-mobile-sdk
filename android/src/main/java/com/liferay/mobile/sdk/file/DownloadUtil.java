@@ -12,12 +12,10 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.http.file;
+package com.liferay.mobile.sdk.file;
 
 import com.liferay.mobile.sdk.auth.Authentication;
 import com.liferay.mobile.sdk.auth.basic.DigestAuthentication;
-import com.liferay.mobile.sdk.callback.file.DownloadCallback;
-import com.liferay.mobile.sdk.callback.file.FileProgressCallback;
 import com.liferay.mobile.sdk.http.Method;
 import com.liferay.mobile.sdk.http.Request;
 import com.liferay.mobile.sdk.http.Response;
@@ -29,8 +27,6 @@ import com.liferay.mobile.sdk.v2.Callback;
 import com.liferay.mobile.sdk.v2.HttpClient;
 
 import com.squareup.okhttp.HttpUrl;
-
-import static com.liferay.mobile.sdk.http.file.FileTransfer.transfer;
 
 /**
  * @author Bruno Farache
@@ -60,7 +56,9 @@ public class DownloadUtil {
 		}
 		else {
 			Response response = client.sync(request);
-			transfer(response.getBodyAsStream(), progressCallback, tag, null);
+			FileTransfer.transfer(
+				response.getBodyAsStream(), progressCallback, tag, null);
+
 			return response;
 		}
 	}
