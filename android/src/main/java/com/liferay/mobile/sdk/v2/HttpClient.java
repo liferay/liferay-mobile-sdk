@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.sdk.v2;
 
+import com.liferay.mobile.sdk.Callback;
 import com.liferay.mobile.sdk.http.Request;
 import com.liferay.mobile.sdk.http.Response;
 

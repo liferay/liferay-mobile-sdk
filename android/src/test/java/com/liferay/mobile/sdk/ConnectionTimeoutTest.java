@@ -15,7 +15,6 @@
 package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.service.Config;
-import com.liferay.mobile.sdk.v2.Call;
 import com.liferay.mobile.sdk.v2.ServiceBuilder;
 import com.liferay.mobile.sdk.v62.group.GroupService;
 

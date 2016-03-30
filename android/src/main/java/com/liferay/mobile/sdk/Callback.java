@@ -12,9 +12,10 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.v2;
+package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.http.Response;
+import com.liferay.mobile.sdk.v2.JsonParser;
 
 import java.lang.reflect.Type;
 
@@ -24,6 +25,28 @@ import static com.liferay.mobile.sdk.callback.MainThreadRunner.run;
  * @author Bruno Farache
  */
 public abstract class Callback<T> {
+
+	public void doFailure(final Exception e) {
+		run(new Runnable() {
+
+			@Override
+			public void run() {
+				onFailure(e);
+			}
+
+		});
+	}
+
+	public void doSuccess(final T result) {
+		run(new Runnable() {
+
+			@Override
+			public void run() {
+				onSuccess(result);
+			}
+
+		});
+	}
 
 	public void inBackground(Response response) {
 		try {
@@ -38,28 +61,6 @@ public abstract class Callback<T> {
 	public abstract void onFailure(Exception exception);
 
 	public abstract void onSuccess(T result);
-
-	protected void doFailure(final Exception e) {
-		run(new Runnable() {
-
-			@Override
-			public void run() {
-				onFailure(e);
-			}
-
-		});
-	}
-
-	protected void doSuccess(final T result) {
-		run(new Runnable() {
-
-			@Override
-			public void run() {
-				onSuccess(result);
-			}
-
-		});
-	}
 
 	protected void type(Type type) {
 		this.type = type;

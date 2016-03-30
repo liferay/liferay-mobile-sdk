@@ -16,12 +16,12 @@ package com.liferay.mobile.sdk.util;
 
 import android.util.Base64;
 
+import com.liferay.mobile.sdk.Callback;
 import com.liferay.mobile.sdk.file.DownloadUtil;
 import com.liferay.mobile.sdk.file.FileProgressCallback;
 import com.liferay.mobile.sdk.http.Headers;
 import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.service.Config;
-import com.liferay.mobile.sdk.v2.Callback;
 
 import java.io.Closeable;
 import java.io.IOException;

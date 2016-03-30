@@ -14,7 +14,7 @@
 
 package com.liferay.mobile.sdk.file;
 
-import com.liferay.mobile.sdk.v2.Call;
+import com.liferay.mobile.sdk.Call;
 
 import com.squareup.okhttp.internal.Util;
 

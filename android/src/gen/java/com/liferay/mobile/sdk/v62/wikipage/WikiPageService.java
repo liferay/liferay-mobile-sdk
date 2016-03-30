@@ -1,9 +1,9 @@
 package com.liferay.mobile.sdk.v62.wikipage;
 
+import com.liferay.mobile.sdk.Call;
+import com.liferay.mobile.sdk.file.UploadData;
 import com.liferay.mobile.sdk.http.Headers;
 import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.file.UploadData;
-import com.liferay.mobile.sdk.v2.Call;
 import com.liferay.mobile.sdk.v2.JsonObject;
 import com.liferay.mobile.sdk.v2.Param;
 import com.liferay.mobile.sdk.v2.Path;

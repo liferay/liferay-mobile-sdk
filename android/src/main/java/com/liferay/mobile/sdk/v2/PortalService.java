@@ -14,6 +14,8 @@
 
 package com.liferay.mobile.sdk.v2;
 
+import com.liferay.mobile.sdk.Call;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 

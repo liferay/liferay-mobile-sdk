@@ -14,8 +14,8 @@
 
 package com.liferay.mobile.sdk.file;
 
+import com.liferay.mobile.sdk.Callback;
 import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.v2.Callback;
 
 import static com.liferay.mobile.sdk.file.FileTransfer.transfer;
 

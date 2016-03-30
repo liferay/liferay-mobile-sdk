@@ -15,12 +15,12 @@
 package com.liferay.mobile.sdk.java;
 
 import com.liferay.mobile.sdk.BaseBuilder;
+import com.liferay.mobile.sdk.Call;
+import com.liferay.mobile.sdk.file.UploadData;
 import com.liferay.mobile.sdk.http.Action;
 import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.http.Headers.ContentType;
 import com.liferay.mobile.sdk.http.Parameter;
-import com.liferay.mobile.sdk.file.UploadData;
-import com.liferay.mobile.sdk.v2.Call;
 import com.liferay.mobile.sdk.v2.JsonObject;
 import com.liferay.mobile.sdk.v2.Param;
 import com.liferay.mobile.sdk.v2.Path;

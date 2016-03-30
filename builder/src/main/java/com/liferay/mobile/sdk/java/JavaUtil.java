@@ -14,8 +14,8 @@
 
 package com.liferay.mobile.sdk.java;
 
-import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.file.UploadData;
+import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.util.LanguageUtil;
 
 import org.apache.commons.lang.WordUtils;

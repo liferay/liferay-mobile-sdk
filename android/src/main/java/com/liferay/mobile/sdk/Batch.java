@@ -12,12 +12,10 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.v2;
+package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.service.Config;
-
-import static com.liferay.mobile.sdk.v2.Call.bodies;
 
 /**
  * @author Bruno Farache
@@ -34,7 +32,7 @@ public class Batch {
 			Config config, Callback<Response> callback, Call... calls)
 		throws Exception {
 
-		Call<Response> call = new Call<>(bodies(calls), Response.class);
+		Call<Response> call = new Call<>(Call.bodies(calls), Response.class);
 		call.async(config, callback);
 	}
 
@@ -45,7 +43,7 @@ public class Batch {
 	public static Response execute(Config config, Call... calls)
 		throws Exception {
 
-		Call<Response> call = new Call<>(bodies(calls), Response.class);
+		Call<Response> call = new Call<>(Call.bodies(calls), Response.class);
 		return call.execute(config);
 	}
 
