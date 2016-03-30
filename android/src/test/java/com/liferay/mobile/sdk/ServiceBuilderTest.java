@@ -14,7 +14,8 @@
 
 package com.liferay.mobile.sdk;
 
-import com.liferay.mobile.sdk.v2.service.UserService;
+import com.liferay.mobile.sdk.service.UserService;
+import com.liferay.mobile.sdk.service.UserServiceFullyAnnotated;
 
 import java.io.IOException;
 
@@ -36,8 +37,8 @@ public class ServiceBuilderTest extends BaseTest {
 
 	@Test
 	public void fullyAnnotated() throws Exception {
-		com.liferay.mobile.sdk.v2.UserService service = ServiceBuilder.build(
-			com.liferay.mobile.sdk.v2.UserService.class);
+		UserServiceFullyAnnotated service = ServiceBuilder.build(
+			UserServiceFullyAnnotated.class);
 
 		Call<Integer> call = service.getCompanyUsersCount(props.getCompanyId());
 		assertGetCompanyUsersCount(call);

@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.v2;
+package com.liferay.mobile.sdk.service;
 
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.annotation.Param;
@@ -22,15 +22,18 @@ import com.liferay.mobile.sdk.annotation.Path;
  * @author Bruno Farache
  */
 @Path("/user")
-public interface UserService {
+public interface UserServiceFullyAnnotated {
 
 	@Path("/get-company-users-count")
 	Call<Integer> getCompanyUsersCount(@Param("companyId") long companyId);
 
 	@Path("/get-user-id-by-email-address")
-	Call<Long> getUserIdByEmailAddress(@Param("companyId") long companyId, @Param("emailAddress") String emailAddress);
+	Call<Long> getUserIdByEmailAddress(
+		@Param("companyId") long companyId,
+		@Param("emailAddress") String emailAddress);
 
 	@Path("/has-group-user")
-	Call<Boolean> hasGroupUser(@Param("groupId") long groupId, @Param("userId") long userId);
+	Call<Boolean> hasGroupUser(
+		@Param("groupId") long groupId, @Param("userId") long userId);
 
 }

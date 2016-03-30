@@ -14,8 +14,8 @@
 
 package com.liferay.mobile.sdk;
 
-import com.liferay.mobile.sdk.v2.PortalService;
-import com.liferay.mobile.sdk.v2.UserService;
+import com.liferay.mobile.sdk.service.UserServiceFullyAnnotated;
+import com.liferay.mobile.sdk.v62.portal.PortalService;
 
 import java.io.IOException;
 
@@ -37,7 +37,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 
 	@Test
 	public void getAutoDeployDirectory() throws Exception {
-		PortalService service = new PortalService();
+		PortalService service = ServiceBuilder.build(PortalService.class);
 		Call<String> call = service.getAutoDeployDirectory();
 		String directory = call.execute();
 		assertNotNull(directory);
@@ -45,7 +45,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 
 	@Test
 	public void getAutoDeployDirectoryAsync() throws InterruptedException {
-		PortalService service = new PortalService();
+		PortalService service = ServiceBuilder.build(PortalService.class);
 		Call<String> call = service.getAutoDeployDirectory();
 		final CountDownLatch lock = new CountDownLatch(1);
 
@@ -70,7 +70,9 @@ public class ServiceReturnTypeTest extends BaseTest {
 
 	@Test
 	public void getCompanyUsersCount() throws Exception {
-		UserService service = ServiceBuilder.build(UserService.class);
+		UserServiceFullyAnnotated service = ServiceBuilder.build(
+			UserServiceFullyAnnotated.class);
+
 		long companyId = props.getCompanyId();
 		Call<Integer> call = service.getCompanyUsersCount(companyId);
 		int count = call.execute();
@@ -79,7 +81,9 @@ public class ServiceReturnTypeTest extends BaseTest {
 
 	@Test
 	public void getCompanyUsersCountAsync() throws InterruptedException {
-		UserService service = ServiceBuilder.build(UserService.class);
+		UserServiceFullyAnnotated service = ServiceBuilder.build(
+			UserServiceFullyAnnotated.class);
+
 		Call<Integer> call = service.getCompanyUsersCount(props.getCompanyId());
 		final CountDownLatch lock = new CountDownLatch(1);
 
@@ -108,7 +112,9 @@ public class ServiceReturnTypeTest extends BaseTest {
 		long groupId = props.getGroupId();
 		String login = props.getLogin();
 
-		UserService service = ServiceBuilder.build(UserService.class);
+		UserServiceFullyAnnotated service = ServiceBuilder.build(
+			UserServiceFullyAnnotated.class);
+
 		Call<Long> call = service.getUserIdByEmailAddress(companyId, login);
 		long userId = call.execute();
 		assertTrue(userId > 0);
@@ -123,7 +129,9 @@ public class ServiceReturnTypeTest extends BaseTest {
 		final long groupId = props.getGroupId();
 		String login = props.getLogin();
 		final CountDownLatch lock = new CountDownLatch(1);
-		final UserService service = ServiceBuilder.build(UserService.class);
+		final UserServiceFullyAnnotated service = ServiceBuilder.build(
+			UserServiceFullyAnnotated.class);
+
 		Call<Long> call = service.getUserIdByEmailAddress(companyId, login);
 
 		call.async(new Callback<Long>() {
