@@ -1,9 +1,9 @@
 package com.liferay.mobile.sdk.v62.orglabor;
 
 import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.Path;
+import com.liferay.mobile.sdk.http.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

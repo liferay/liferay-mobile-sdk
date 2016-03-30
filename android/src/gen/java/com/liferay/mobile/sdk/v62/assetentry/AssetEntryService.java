@@ -1,8 +1,8 @@
 package com.liferay.mobile.sdk.v62.assetentry;
 
 import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.annotation.JsonObject;
 import com.liferay.mobile.sdk.annotation.Param;
+import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
 import java.lang.Integer;
 import java.lang.String;
@@ -18,10 +18,10 @@ public interface AssetEntryService {
   Call<Integer> getCompanyEntriesCount(@Param("companyId") long companyId);
 
   @Path("/get-entries")
-  Call<JSONArray> getEntries(@JsonObject(name = "entryQuery", className = "com.liferay.portlet.asset.service.persistence.AssetEntryQuery") JSONObject entryQuery);
+  Call<JSONArray> getEntries(@ParamObject(name = "entryQuery", className = "com.liferay.portlet.asset.service.persistence.AssetEntryQuery") JSONObject entryQuery);
 
   @Path("/get-entries-count")
-  Call<Integer> getEntriesCount(@JsonObject(name = "entryQuery", className = "com.liferay.portlet.asset.service.persistence.AssetEntryQuery") JSONObject entryQuery);
+  Call<Integer> getEntriesCount(@ParamObject(name = "entryQuery", className = "com.liferay.portlet.asset.service.persistence.AssetEntryQuery") JSONObject entryQuery);
 
   @Path("/get-entry")
   Call<JSONObject> getEntry(@Param("entryId") long entryId);

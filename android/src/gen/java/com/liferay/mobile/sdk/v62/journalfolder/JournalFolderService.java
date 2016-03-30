@@ -1,10 +1,10 @@
 package com.liferay.mobile.sdk.v62.journalfolder;
 
 import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.annotation.JsonObject;
 import com.liferay.mobile.sdk.annotation.Param;
+import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
+import com.liferay.mobile.sdk.http.Response;
 import java.lang.Integer;
 import java.lang.String;
 import org.json.JSONArray;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 @Path("/journalfolder")
 public interface JournalFolderService {
   @Path("/add-folder")
-  Call<JSONObject> addFolder(@Param("groupId") long groupId, @Param("parentFolderId") long parentFolderId, @Param("name") String name, @Param("description") String description, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addFolder(@Param("groupId") long groupId, @Param("parentFolderId") long parentFolderId, @Param("name") String name, @Param("description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-folder")
   Call<Response> deleteFolder(@Param("folderId") long folderId);
@@ -43,10 +43,10 @@ public interface JournalFolderService {
   Call<JSONArray> getFolders(@Param("groupId") long groupId, @Param("parentFolderId") long parentFolderId, @Param("status") int status, @Param("start") int start, @Param("end") int end);
 
   @Path("/get-folders-and-articles")
-  Call<JSONArray> getFoldersAndArticles(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("start") int start, @Param("end") int end, @JsonObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> getFoldersAndArticles(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-folders-and-articles")
-  Call<JSONArray> getFoldersAndArticles(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("status") int status, @Param("start") int start, @Param("end") int end, @JsonObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> getFoldersAndArticles(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("status") int status, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-folders-and-articles-count")
   Call<Integer> getFoldersAndArticlesCount(@Param("groupId") long groupId, @Param("folderId") long folderId);
@@ -70,10 +70,10 @@ public interface JournalFolderService {
   Call<JSONArray> getSubfolderIds(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("recurse") boolean recurse);
 
   @Path("/move-folder")
-  Call<JSONObject> moveFolder(@Param("folderId") long folderId, @Param("parentFolderId") long parentFolderId, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> moveFolder(@Param("folderId") long folderId, @Param("parentFolderId") long parentFolderId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/move-folder-from-trash")
-  Call<JSONObject> moveFolderFromTrash(@Param("folderId") long folderId, @Param("parentFolderId") long parentFolderId, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> moveFolderFromTrash(@Param("folderId") long folderId, @Param("parentFolderId") long parentFolderId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/move-folder-to-trash")
   Call<JSONObject> moveFolderToTrash(@Param("folderId") long folderId);
@@ -82,5 +82,5 @@ public interface JournalFolderService {
   Call<Response> restoreFolderFromTrash(@Param("folderId") long folderId);
 
   @Path("/update-folder")
-  Call<JSONObject> updateFolder(@Param("folderId") long folderId, @Param("parentFolderId") long parentFolderId, @Param("name") String name, @Param("description") String description, @Param("mergeWithParentFolder") boolean mergeWithParentFolder, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateFolder(@Param("folderId") long folderId, @Param("parentFolderId") long parentFolderId, @Param("name") String name, @Param("description") String description, @Param("mergeWithParentFolder") boolean mergeWithParentFolder, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

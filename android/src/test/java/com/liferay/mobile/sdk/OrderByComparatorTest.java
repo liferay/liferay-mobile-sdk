@@ -14,7 +14,7 @@
 
 package com.liferay.mobile.sdk;
 
-import com.liferay.mobile.sdk.annotation.JsonObject;
+import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.v2.ServiceBuilder;
@@ -100,7 +100,7 @@ public class OrderByComparatorTest extends BaseTest {
 		Call<JSONArray> getEntries(
 			@Param("groupId") long groupId, @Param("folderId") long folderId,
 			@Param("start") int start, @Param("end") int end,
-			@JsonObject(
+			@ParamObject(
 				name = "orderByComparator",
 				className = "com.liferay.portlet.bookmarks.util." +
 					"comparator.EntryNameComparator")

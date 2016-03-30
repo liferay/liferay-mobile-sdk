@@ -1,10 +1,10 @@
 package com.liferay.mobile.sdk.v62.usergroup;
 
 import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.annotation.JsonObject;
 import com.liferay.mobile.sdk.annotation.Param;
+import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
+import com.liferay.mobile.sdk.http.Response;
 import java.lang.String;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,7 +21,7 @@ public interface UserGroupService {
   Call<JSONObject> addUserGroup(@Param("name") String name, @Param("description") String description);
 
   @Path("/add-user-group")
-  Call<JSONObject> addUserGroup(@Param("name") String name, @Param("description") String description, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addUserGroup(@Param("name") String name, @Param("description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-user-group")
   Call<Response> deleteUserGroup(@Param("userGroupId") long userGroupId);
@@ -45,5 +45,5 @@ public interface UserGroupService {
   Call<JSONObject> updateUserGroup(@Param("userGroupId") long userGroupId, @Param("name") String name, @Param("description") String description);
 
   @Path("/update-user-group")
-  Call<JSONObject> updateUserGroup(@Param("userGroupId") long userGroupId, @Param("name") String name, @Param("description") String description, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateUserGroup(@Param("userGroupId") long userGroupId, @Param("name") String name, @Param("description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

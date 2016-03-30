@@ -1,10 +1,10 @@
 package com.liferay.mobile.sdk.v62.assettag;
 
 import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.annotation.JsonObject;
 import com.liferay.mobile.sdk.annotation.Param;
+import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
+import com.liferay.mobile.sdk.http.Response;
 import java.lang.Integer;
 import java.lang.String;
 import org.json.JSONArray;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 @Path("/assettag")
 public interface AssetTagService {
   @Path("/add-tag")
-  Call<JSONObject> addTag(@Param("name") String name, @Param("tagProperties") JSONArray tagProperties, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addTag(@Param("name") String name, @Param("tagProperties") JSONArray tagProperties, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-tag")
   Call<Response> deleteTag(@Param("tagId") long tagId);
@@ -25,7 +25,7 @@ public interface AssetTagService {
   Call<JSONArray> getGroupTags(@Param("groupId") long groupId);
 
   @Path("/get-group-tags")
-  Call<JSONArray> getGroupTags(@Param("groupId") long groupId, @Param("start") int start, @Param("end") int end, @JsonObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> getGroupTags(@Param("groupId") long groupId, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-group-tags-count")
   Call<Integer> getGroupTagsCount(@Param("groupId") long groupId);
@@ -55,7 +55,7 @@ public interface AssetTagService {
   Call<JSONArray> getTags(@Param("groupIds") JSONArray groupIds, @Param("name") String name, @Param("tagProperties") JSONArray tagProperties, @Param("start") int start, @Param("end") int end);
 
   @Path("/get-tags")
-  Call<JSONArray> getTags(@Param("groupId") long groupId, @Param("classNameId") long classNameId, @Param("name") String name, @Param("start") int start, @Param("end") int end, @JsonObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> getTags(@Param("groupId") long groupId, @Param("classNameId") long classNameId, @Param("name") String name, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-tags-count")
   Call<Integer> getTagsCount(@Param("groupId") long groupId, @Param("name") String name);
@@ -79,5 +79,5 @@ public interface AssetTagService {
   Call<JSONArray> search(@Param("groupIds") JSONArray groupIds, @Param("name") String name, @Param("tagProperties") JSONArray tagProperties, @Param("start") int start, @Param("end") int end);
 
   @Path("/update-tag")
-  Call<JSONObject> updateTag(@Param("tagId") long tagId, @Param("name") String name, @Param("tagProperties") JSONArray tagProperties, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateTag(@Param("tagId") long tagId, @Param("name") String name, @Param("tagProperties") JSONArray tagProperties, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

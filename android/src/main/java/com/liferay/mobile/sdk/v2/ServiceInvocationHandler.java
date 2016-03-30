@@ -15,8 +15,8 @@
 package com.liferay.mobile.sdk.v2;
 
 import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.annotation.JsonObject;
 import com.liferay.mobile.sdk.annotation.Param;
+import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Headers.ContentType;
 
@@ -87,9 +87,9 @@ public class ServiceInvocationHandler implements InvocationHandler {
 					String name = ((Param)paramAnnotation).value();
 					params.put(name, (value == null) ? JSONObject.NULL : value);
 				}
-				else if (paramAnnotation instanceof JsonObject) {
+				else if (paramAnnotation instanceof ParamObject) {
 					JSONObject param = (JSONObject)value;
-					JsonObject jsonAnnotation = (JsonObject)paramAnnotation;
+					ParamObject jsonAnnotation = (ParamObject)paramAnnotation;
 					String className = jsonAnnotation.className();
 
 					if (param != null) {

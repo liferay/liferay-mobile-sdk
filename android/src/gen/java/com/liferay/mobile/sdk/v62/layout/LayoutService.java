@@ -1,12 +1,12 @@
 package com.liferay.mobile.sdk.v62.layout;
 
 import com.liferay.mobile.sdk.Call;
+import com.liferay.mobile.sdk.annotation.Param;
+import com.liferay.mobile.sdk.annotation.ParamObject;
+import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.file.UploadData;
 import com.liferay.mobile.sdk.http.Headers;
 import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.annotation.JsonObject;
-import com.liferay.mobile.sdk.annotation.Param;
-import com.liferay.mobile.sdk.annotation.Path;
 import java.lang.Long;
 import java.lang.String;
 import org.json.JSONArray;
@@ -15,52 +15,52 @@ import org.json.JSONObject;
 @Path("/layout")
 public interface LayoutService {
   @Path("/add-layout")
-  Call<JSONObject> addLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parentLayoutId") long parentLayoutId, @Param("name") String name, @Param("title") String title, @Param("description") String description, @Param("type") String type, @Param("hidden") boolean hidden, @Param("friendlyURL") String friendlyURL, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parentLayoutId") long parentLayoutId, @Param("name") String name, @Param("title") String title, @Param("description") String description, @Param("type") String type, @Param("hidden") boolean hidden, @Param("friendlyURL") String friendlyURL, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-layout")
-  Call<JSONObject> addLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parentLayoutId") long parentLayoutId, @JsonObject(name = "localeNamesMap", className = "") JSONObject localeNamesMap, @JsonObject(name = "localeTitlesMap", className = "") JSONObject localeTitlesMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @JsonObject(name = "keywordsMap", className = "") JSONObject keywordsMap, @JsonObject(name = "robotsMap", className = "") JSONObject robotsMap, @Param("type") String type, @Param("hidden") boolean hidden, @Param("friendlyURL") String friendlyURL, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parentLayoutId") long parentLayoutId, @ParamObject(name = "localeNamesMap", className = "") JSONObject localeNamesMap, @ParamObject(name = "localeTitlesMap", className = "") JSONObject localeTitlesMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @ParamObject(name = "keywordsMap", className = "") JSONObject keywordsMap, @ParamObject(name = "robotsMap", className = "") JSONObject robotsMap, @Param("type") String type, @Param("hidden") boolean hidden, @Param("friendlyURL") String friendlyURL, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-layout")
-  Call<JSONObject> addLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parentLayoutId") long parentLayoutId, @JsonObject(name = "localeNamesMap", className = "") JSONObject localeNamesMap, @JsonObject(name = "localeTitlesMap", className = "") JSONObject localeTitlesMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @JsonObject(name = "keywordsMap", className = "") JSONObject keywordsMap, @JsonObject(name = "robotsMap", className = "") JSONObject robotsMap, @Param("type") String type, @Param("typeSettings") String typeSettings, @Param("hidden") boolean hidden, @JsonObject(name = "friendlyURLMap", className = "") JSONObject friendlyURLMap, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parentLayoutId") long parentLayoutId, @ParamObject(name = "localeNamesMap", className = "") JSONObject localeNamesMap, @ParamObject(name = "localeTitlesMap", className = "") JSONObject localeTitlesMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @ParamObject(name = "keywordsMap", className = "") JSONObject keywordsMap, @ParamObject(name = "robotsMap", className = "") JSONObject robotsMap, @Param("type") String type, @Param("typeSettings") String typeSettings, @Param("hidden") boolean hidden, @ParamObject(name = "friendlyURLMap", className = "") JSONObject friendlyURLMap, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-layout")
-  Call<Response> deleteLayout(@Param("plid") long plid, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<Response> deleteLayout(@Param("plid") long plid, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-layout")
-  Call<Response> deleteLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutId") long layoutId, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<Response> deleteLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutId") long layoutId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-temp-file-entry")
   Call<Response> deleteTempFileEntry(@Param("groupId") long groupId, @Param("fileName") String fileName, @Param("tempFolderName") String tempFolderName);
 
   @Path("/export-layouts")
-  Call<JSONArray> exportLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
+  Call<JSONArray> exportLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
 
   @Path("/export-layouts")
-  Call<JSONArray> exportLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutIds") JSONArray layoutIds, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
+  Call<JSONArray> exportLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutIds") JSONArray layoutIds, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
 
   @Path("/export-layouts-as-file")
-  Call<JSONObject> exportLayoutsAsFile(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutIds") JSONArray layoutIds, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
+  Call<JSONObject> exportLayoutsAsFile(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutIds") JSONArray layoutIds, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
 
   @Path("/export-layouts-as-file-in-background")
-  Call<Long> exportLayoutsAsFileInBackground(@Param("taskName") String taskName, @Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutIds") JSONArray layoutIds, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("fileName") String fileName);
+  Call<Long> exportLayoutsAsFileInBackground(@Param("taskName") String taskName, @Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutIds") JSONArray layoutIds, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("fileName") String fileName);
 
   @Path("/export-portlet-info")
-  Call<JSONArray> exportPortletInfo(@Param("companyId") long companyId, @Param("portletId") String portletId, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
+  Call<JSONArray> exportPortletInfo(@Param("companyId") long companyId, @Param("portletId") String portletId, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
 
   @Path("/export-portlet-info")
-  Call<JSONArray> exportPortletInfo(@Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
+  Call<JSONArray> exportPortletInfo(@Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
 
   @Path("/export-portlet-info-as-file")
-  Call<JSONObject> exportPortletInfoAsFile(@Param("portletId") String portletId, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
+  Call<JSONObject> exportPortletInfoAsFile(@Param("portletId") String portletId, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
 
   @Path("/export-portlet-info-as-file")
-  Call<JSONObject> exportPortletInfoAsFile(@Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
+  Call<JSONObject> exportPortletInfoAsFile(@Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate);
 
   @Path("/export-portlet-info-as-file-in-background")
-  Call<Long> exportPortletInfoAsFileInBackground(@Param("taskName") String taskName, @Param("portletId") String portletId, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("fileName") String fileName);
+  Call<Long> exportPortletInfoAsFileInBackground(@Param("taskName") String taskName, @Param("portletId") String portletId, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("fileName") String fileName);
 
   @Path("/export-portlet-info-as-file-in-background")
-  Call<Long> exportPortletInfoAsFileInBackground(@Param("taskName") String taskName, @Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("fileName") String fileName);
+  Call<Long> exportPortletInfoAsFileInBackground(@Param("taskName") String taskName, @Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("fileName") String fileName);
 
   @Path("/get-ancestor-layouts")
   Call<JSONArray> getAncestorLayouts(@Param("plid") long plid);
@@ -93,52 +93,52 @@ public interface LayoutService {
   Call<JSONArray> getTempFileEntryNames(@Param("groupId") long groupId, @Param("tempFolderName") String tempFolderName);
 
   @Path("/import-layouts")
-  Call<Response> importLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("bytes") byte[] bytes);
+  Call<Response> importLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("bytes") byte[] bytes);
 
   @Path(
       value = "/import-layouts",
       contentType = Headers.ContentType.MULTIPART
   )
-  Call<Response> importLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
+  Call<Response> importLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
 
   @Path(
       value = "/import-layouts-in-background",
       contentType = Headers.ContentType.MULTIPART
   )
-  Call<Long> importLayoutsInBackground(@Param("taskName") String taskName, @Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
+  Call<Long> importLayoutsInBackground(@Param("taskName") String taskName, @Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
 
   @Path(
       value = "/import-portlet-info",
       contentType = Headers.ContentType.MULTIPART
   )
-  Call<Response> importPortletInfo(@Param("portletId") String portletId, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
+  Call<Response> importPortletInfo(@Param("portletId") String portletId, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
 
   @Path(
       value = "/import-portlet-info",
       contentType = Headers.ContentType.MULTIPART
   )
-  Call<Response> importPortletInfo(@Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
+  Call<Response> importPortletInfo(@Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
 
   @Path(
       value = "/import-portlet-info-in-background",
       contentType = Headers.ContentType.MULTIPART
   )
-  Call<Response> importPortletInfoInBackground(@Param("taskName") String taskName, @Param("portletId") String portletId, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
+  Call<Response> importPortletInfoInBackground(@Param("taskName") String taskName, @Param("portletId") String portletId, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
 
   @Path(
       value = "/import-portlet-info-in-background",
       contentType = Headers.ContentType.MULTIPART
   )
-  Call<Long> importPortletInfoInBackground(@Param("taskName") String taskName, @Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
+  Call<Long> importPortletInfoInBackground(@Param("taskName") String taskName, @Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
 
   @Path("/schedule-publish-to-live")
-  Call<Response> schedulePublishToLive(@Param("sourceGroupId") long sourceGroupId, @Param("targetGroupId") long targetGroupId, @Param("privateLayout") boolean privateLayout, @JsonObject(name = "layoutIdMap", className = "") JSONObject layoutIdMap, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("scope") String scope, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("groupName") String groupName, @Param("cronText") String cronText, @Param("schedulerStartDate") long schedulerStartDate, @Param("schedulerEndDate") long schedulerEndDate, @Param("description") String description);
+  Call<Response> schedulePublishToLive(@Param("sourceGroupId") long sourceGroupId, @Param("targetGroupId") long targetGroupId, @Param("privateLayout") boolean privateLayout, @ParamObject(name = "layoutIdMap", className = "") JSONObject layoutIdMap, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("scope") String scope, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("groupName") String groupName, @Param("cronText") String cronText, @Param("schedulerStartDate") long schedulerStartDate, @Param("schedulerEndDate") long schedulerEndDate, @Param("description") String description);
 
   @Path("/schedule-publish-to-remote")
-  Call<Response> schedulePublishToRemote(@Param("sourceGroupId") long sourceGroupId, @Param("privateLayout") boolean privateLayout, @JsonObject(name = "layoutIdMap", className = "") JSONObject layoutIdMap, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("remoteAddress") String remoteAddress, @Param("remotePort") int remotePort, @Param("remotePathContext") String remotePathContext, @Param("secureConnection") boolean secureConnection, @Param("remoteGroupId") long remoteGroupId, @Param("remotePrivateLayout") boolean remotePrivateLayout, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("groupName") String groupName, @Param("cronText") String cronText, @Param("schedulerStartDate") long schedulerStartDate, @Param("schedulerEndDate") long schedulerEndDate, @Param("description") String description);
+  Call<Response> schedulePublishToRemote(@Param("sourceGroupId") long sourceGroupId, @Param("privateLayout") boolean privateLayout, @ParamObject(name = "layoutIdMap", className = "") JSONObject layoutIdMap, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("remoteAddress") String remoteAddress, @Param("remotePort") int remotePort, @Param("remotePathContext") String remotePathContext, @Param("secureConnection") boolean secureConnection, @Param("remoteGroupId") long remoteGroupId, @Param("remotePrivateLayout") boolean remotePrivateLayout, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("groupName") String groupName, @Param("cronText") String cronText, @Param("schedulerStartDate") long schedulerStartDate, @Param("schedulerEndDate") long schedulerEndDate, @Param("description") String description);
 
   @Path("/set-layouts")
-  Call<Response> setLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parentLayoutId") long parentLayoutId, @Param("layoutIds") JSONArray layoutIds, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<Response> setLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("parentLayoutId") long parentLayoutId, @Param("layoutIds") JSONArray layoutIds, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/unschedule-publish-to-live")
   Call<Response> unschedulePublishToLive(@Param("groupId") long groupId, @Param("jobName") String jobName, @Param("groupName") String groupName);
@@ -147,10 +147,10 @@ public interface LayoutService {
   Call<Response> unschedulePublishToRemote(@Param("groupId") long groupId, @Param("jobName") String jobName, @Param("groupName") String groupName);
 
   @Path("/update-layout")
-  Call<JSONObject> updateLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutId") long layoutId, @Param("parentLayoutId") long parentLayoutId, @JsonObject(name = "localeNamesMap", className = "") JSONObject localeNamesMap, @JsonObject(name = "localeTitlesMap", className = "") JSONObject localeTitlesMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @JsonObject(name = "keywordsMap", className = "") JSONObject keywordsMap, @JsonObject(name = "robotsMap", className = "") JSONObject robotsMap, @Param("type") String type, @Param("hidden") boolean hidden, @Param("friendlyURL") String friendlyURL, @Param("iconImage") boolean iconImage, @Param("iconBytes") byte[] iconBytes, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutId") long layoutId, @Param("parentLayoutId") long parentLayoutId, @ParamObject(name = "localeNamesMap", className = "") JSONObject localeNamesMap, @ParamObject(name = "localeTitlesMap", className = "") JSONObject localeTitlesMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @ParamObject(name = "keywordsMap", className = "") JSONObject keywordsMap, @ParamObject(name = "robotsMap", className = "") JSONObject robotsMap, @Param("type") String type, @Param("hidden") boolean hidden, @Param("friendlyURL") String friendlyURL, @Param("iconImage") boolean iconImage, @Param("iconBytes") byte[] iconBytes, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-layout")
-  Call<JSONObject> updateLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutId") long layoutId, @Param("parentLayoutId") long parentLayoutId, @JsonObject(name = "localeNamesMap", className = "") JSONObject localeNamesMap, @JsonObject(name = "localeTitlesMap", className = "") JSONObject localeTitlesMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @JsonObject(name = "keywordsMap", className = "") JSONObject keywordsMap, @JsonObject(name = "robotsMap", className = "") JSONObject robotsMap, @Param("type") String type, @Param("hidden") boolean hidden, @JsonObject(name = "friendlyURLMap", className = "") JSONObject friendlyURLMap, @Param("iconImage") boolean iconImage, @Param("iconBytes") byte[] iconBytes, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutId") long layoutId, @Param("parentLayoutId") long parentLayoutId, @ParamObject(name = "localeNamesMap", className = "") JSONObject localeNamesMap, @ParamObject(name = "localeTitlesMap", className = "") JSONObject localeTitlesMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @ParamObject(name = "keywordsMap", className = "") JSONObject keywordsMap, @ParamObject(name = "robotsMap", className = "") JSONObject robotsMap, @Param("type") String type, @Param("hidden") boolean hidden, @ParamObject(name = "friendlyURLMap", className = "") JSONObject friendlyURLMap, @Param("iconImage") boolean iconImage, @Param("iconBytes") byte[] iconBytes, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-layout")
   Call<JSONObject> updateLayout(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutId") long layoutId, @Param("typeSettings") String typeSettings);
@@ -183,11 +183,11 @@ public interface LayoutService {
       value = "/validate-import-layouts-file",
       contentType = Headers.ContentType.MULTIPART
   )
-  Call<JSONObject> validateImportLayoutsFile(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
+  Call<JSONObject> validateImportLayoutsFile(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
 
   @Path(
       value = "/validate-import-portlet-info",
       contentType = Headers.ContentType.MULTIPART
   )
-  Call<JSONObject> validateImportPortletInfo(@Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @JsonObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
+  Call<JSONObject> validateImportPortletInfo(@Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
 }

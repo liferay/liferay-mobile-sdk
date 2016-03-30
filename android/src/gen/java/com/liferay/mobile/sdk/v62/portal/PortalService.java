@@ -1,9 +1,9 @@
 package com.liferay.mobile.sdk.v62.portal;
 
 import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.Path;
+import com.liferay.mobile.sdk.http.Response;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;

@@ -1,10 +1,10 @@
 package com.liferay.mobile.sdk.v62.bookmarksentry;
 
 import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.annotation.JsonObject;
 import com.liferay.mobile.sdk.annotation.Param;
+import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
+import com.liferay.mobile.sdk.http.Response;
 import java.lang.Integer;
 import java.lang.String;
 import org.json.JSONArray;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 @Path("/bookmarksentry")
 public interface BookmarksEntryService {
   @Path("/add-entry")
-  Call<JSONObject> addEntry(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("name") String name, @Param("url") String url, @Param("description") String description, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addEntry(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("name") String name, @Param("url") String url, @Param("description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-entry")
   Call<Response> deleteEntry(@Param("entryId") long entryId);
@@ -22,7 +22,7 @@ public interface BookmarksEntryService {
   Call<JSONArray> getEntries(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("start") int start, @Param("end") int end);
 
   @Path("/get-entries")
-  Call<JSONArray> getEntries(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("start") int start, @Param("end") int end, @JsonObject(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject orderByComparator);
+  Call<JSONArray> getEntries(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("start") int start, @Param("end") int end, @ParamObject(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject orderByComparator);
 
   @Path("/get-entries-count")
   Call<Integer> getEntriesCount(@Param("groupId") long groupId, @Param("folderId") long folderId);
@@ -64,7 +64,7 @@ public interface BookmarksEntryService {
   Call<JSONObject> moveEntryToTrash(@Param("entryId") long entryId);
 
   @Path("/open-entry")
-  Call<JSONObject> openEntry(@JsonObject(name = "entry", className = "com.liferay.portlet.bookmarks.model.BookmarksEntry") JSONObject entry);
+  Call<JSONObject> openEntry(@ParamObject(name = "entry", className = "com.liferay.portlet.bookmarks.model.BookmarksEntry") JSONObject entry);
 
   @Path("/open-entry")
   Call<JSONObject> openEntry(@Param("entryId") long entryId);
@@ -82,5 +82,5 @@ public interface BookmarksEntryService {
   Call<Response> unsubscribeEntry(@Param("entryId") long entryId);
 
   @Path("/update-entry")
-  Call<JSONObject> updateEntry(@Param("entryId") long entryId, @Param("groupId") long groupId, @Param("folderId") long folderId, @Param("name") String name, @Param("url") String url, @Param("description") String description, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateEntry(@Param("entryId") long entryId, @Param("groupId") long groupId, @Param("folderId") long folderId, @Param("name") String name, @Param("url") String url, @Param("description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

@@ -1,10 +1,10 @@
 package com.liferay.mobile.sdk.v62.website;
 
 import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.annotation.JsonObject;
 import com.liferay.mobile.sdk.annotation.Param;
+import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
+import com.liferay.mobile.sdk.http.Response;
 import java.lang.String;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -15,7 +15,7 @@ public interface WebsiteService {
   Call<JSONObject> addWebsite(@Param("className") String className, @Param("classPK") long classPK, @Param("url") String url, @Param("typeId") int typeId, @Param("primary") boolean primary);
 
   @Path("/add-website")
-  Call<JSONObject> addWebsite(@Param("className") String className, @Param("classPK") long classPK, @Param("url") String url, @Param("typeId") int typeId, @Param("primary") boolean primary, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addWebsite(@Param("className") String className, @Param("classPK") long classPK, @Param("url") String url, @Param("typeId") int typeId, @Param("primary") boolean primary, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-website")
   Call<Response> deleteWebsite(@Param("websiteId") long websiteId);

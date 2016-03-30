@@ -1,10 +1,10 @@
 package com.liferay.mobile.sdk.v62.role;
 
 import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.annotation.JsonObject;
 import com.liferay.mobile.sdk.annotation.Param;
+import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
+import com.liferay.mobile.sdk.http.Response;
 import java.lang.Boolean;
 import java.lang.String;
 import org.json.JSONArray;
@@ -13,10 +13,10 @@ import org.json.JSONObject;
 @Path("/role")
 public interface RoleService {
   @Path("/add-role")
-  Call<JSONObject> addRole(@Param("name") String name, @JsonObject(name = "titleMap", className = "") JSONObject titleMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("type") int type);
+  Call<JSONObject> addRole(@Param("name") String name, @ParamObject(name = "titleMap", className = "") JSONObject titleMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("type") int type);
 
   @Path("/add-role")
-  Call<JSONObject> addRole(@Param("className") String className, @Param("classPK") long classPK, @Param("name") String name, @JsonObject(name = "titleMap", className = "") JSONObject titleMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("type") int type, @Param("subtype") String subtype, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addRole(@Param("className") String className, @Param("classPK") long classPK, @Param("name") String name, @ParamObject(name = "titleMap", className = "") JSONObject titleMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("type") int type, @Param("subtype") String subtype, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-user-roles")
   Call<Response> addUserRoles(@Param("userId") long userId, @Param("roleIds") JSONArray roleIds);
@@ -55,5 +55,5 @@ public interface RoleService {
   Call<Response> unsetUserRoles(@Param("userId") long userId, @Param("roleIds") JSONArray roleIds);
 
   @Path("/update-role")
-  Call<JSONObject> updateRole(@Param("roleId") long roleId, @Param("name") String name, @JsonObject(name = "titleMap", className = "") JSONObject titleMap, @JsonObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("subtype") String subtype, @JsonObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateRole(@Param("roleId") long roleId, @Param("name") String name, @ParamObject(name = "titleMap", className = "") JSONObject titleMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("subtype") String subtype, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }
