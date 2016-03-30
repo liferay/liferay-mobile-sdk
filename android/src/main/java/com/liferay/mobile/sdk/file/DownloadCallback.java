@@ -35,7 +35,7 @@ public class DownloadCallback extends Callback {
 	@Override
 	public void inBackground(Response response) {
 		try {
-			transfer(response.getBodyAsStream(), progressCallback, tag, null);
+			transfer(response.bodyAsStream(), progressCallback, tag, null);
 			callback.inBackground(response);
 		}
 		catch (Exception e) {

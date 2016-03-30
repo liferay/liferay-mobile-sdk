@@ -48,7 +48,7 @@ public class JSONParser {
 			return (T)response;
 		}
 
-		return gson.fromJson(response.getBody(), type);
+		return gson.fromJson(response.body(), type);
 	}
 
 	protected static Gson gson;

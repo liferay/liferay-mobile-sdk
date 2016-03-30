@@ -48,7 +48,7 @@ public class GroupServiceTest extends BaseTest {
 		long groupId = props.getGroupId();
 		Call<Response> call = service.disableStaging(groupId);
 		Response response = call.execute();
-		assertEquals(200, response.getStatusCode());
+		assertEquals(200, response.statusCode());
 	}
 
 	@Test
@@ -62,7 +62,7 @@ public class GroupServiceTest extends BaseTest {
 
 			@Override
 			public void onSuccess(Response response) {
-				assertEquals(200, response.getStatusCode());
+				assertEquals(200, response.statusCode());
 				lock.countDown();
 			}
 

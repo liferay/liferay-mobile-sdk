@@ -42,7 +42,7 @@ public class Response {
 		_response = response;
 	}
 
-	public String getBody() throws Exception {
+	public String body() throws Exception {
 		String body = _response.body().string();
 
 		checkStatusCode();
@@ -51,13 +51,13 @@ public class Response {
 		return body;
 	}
 
-	public InputStream getBodyAsStream() throws Exception {
+	public InputStream bodyAsStream() throws Exception {
 		checkStatusCode();
 
 		return _response.body().byteStream();
 	}
 
-	public Map<String, String> getHeaders() {
+	public Map<String, String> headers() {
 		Map<String, List<String>> headers = _response.headers().toMultimap();
 		Map<String, String> map = new HashMap<>();
 
@@ -68,7 +68,7 @@ public class Response {
 		return Collections.unmodifiableMap(map);
 	}
 
-	public int getStatusCode() {
+	public int statusCode() {
 		return _response.code();
 	}
 
@@ -104,14 +104,14 @@ public class Response {
 	}
 
 	protected void checkStatusCode() throws ServerException {
-		int status = getStatusCode();
+		int status = statusCode();
 
 		if ((status == Status.MOVED_PERMANENTLY) ||
 			(status == Status.MOVED_TEMPORARILY) ||
 			(status == Status.SEE_OTHER) ||
 			(status == Status.TEMPORARY_REDIRECT)) {
 
-			String url = getHeaders().get(Headers.LOCATION);
+			String url = headers().get(Headers.LOCATION);
 
 			if (url.endsWith("/")) {
 				url = url.substring(0, url.length() - 1);

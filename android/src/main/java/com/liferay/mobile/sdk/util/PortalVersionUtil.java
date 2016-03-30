@@ -72,7 +72,7 @@ public class PortalVersionUtil {
 
 		HttpClient client = Call.client();
 		Response response = client.sync(request);
-		String header = response.getHeaders().get(Headers.LIFERAY_PORTAL);
+		String header = response.headers().get(Headers.LIFERAY_PORTAL);
 
 		if (header == null) {
 			return PortalVersion.UNKNOWN;

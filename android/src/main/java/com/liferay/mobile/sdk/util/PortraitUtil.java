@@ -75,7 +75,7 @@ public class PortraitUtil {
 
 			});
 
-			lastModified = response.getHeaders().get(Headers.LAST_MODIFIED);
+			lastModified = response.headers().get(Headers.LAST_MODIFIED);
 		}
 		finally {
 			close(os);

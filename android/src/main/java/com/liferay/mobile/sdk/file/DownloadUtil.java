@@ -57,7 +57,7 @@ public class DownloadUtil {
 		else {
 			Response response = client.sync(request);
 			FileTransfer.transfer(
-				response.getBodyAsStream(), progressCallback, tag, null);
+				response.bodyAsStream(), progressCallback, tag, null);
 
 			return response;
 		}

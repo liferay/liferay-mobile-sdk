@@ -87,7 +87,7 @@ public class FileDownloadTest extends BaseTest {
 				Config.global(), url, null, callback);
 
 			assertNotNull(response);
-			assertEquals(Status.OK, response.getStatusCode());
+			assertEquals(Status.OK, response.statusCode());
 			assertTrue(baos.size() < 2048);
 		}
 		finally {
@@ -148,7 +148,7 @@ public class FileDownloadTest extends BaseTest {
 
 			@Override
 			public void onSuccess(Response response) {
-				assertEquals(Status.OK, response.getStatusCode());
+				assertEquals(Status.OK, response.statusCode());
 				lock.countDown();
 			}
 
@@ -200,7 +200,7 @@ public class FileDownloadTest extends BaseTest {
 
 		Response response = DownloadUtil.download(config, url, null, callback);
 		assertNotNull(response);
-		assertEquals(Status.OK, response.getStatusCode());
+		assertEquals(Status.OK, response.statusCode());
 		assertEquals(5, baos.size());
 	}
 
