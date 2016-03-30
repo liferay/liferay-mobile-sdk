@@ -14,16 +14,17 @@
 
 package com.liferay.mobile.sdk.java;
 
-import com.liferay.mobile.android.http.file.UploadData;
-import com.liferay.mobile.android.v2.Call;
-import com.liferay.mobile.android.v2.JsonObject;
-import com.liferay.mobile.android.v2.Path;
-import com.liferay.mobile.android.http.Headers.ContentType;
-
 import com.liferay.mobile.sdk.BaseBuilder;
 import com.liferay.mobile.sdk.http.Action;
 import com.liferay.mobile.sdk.http.Discovery;
+import com.liferay.mobile.sdk.http.Headers.ContentType;
 import com.liferay.mobile.sdk.http.Parameter;
+import com.liferay.mobile.sdk.http.file.UploadData;
+import com.liferay.mobile.sdk.v2.Call;
+import com.liferay.mobile.sdk.v2.JsonObject;
+import com.liferay.mobile.sdk.v2.Param;
+import com.liferay.mobile.sdk.v2.Path;
+
 import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
@@ -31,14 +32,14 @@ import com.squareup.javapoet.ParameterSpec;
 import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
-import com.liferay.mobile.android.v2.Param;
-
-import org.json.JSONObject;
 
 import java.io.File;
+
 import java.util.List;
 
 import javax.lang.model.element.Modifier;
+
+import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
@@ -119,7 +120,7 @@ public class JavaBuilder extends BaseBuilder {
 		}
 
 		JavaFile file = JavaFile.builder(
-				"com.liferay.mobile.android.v62." + filter , service.build())
+			"com.liferay.mobile.sdk.v62." + filter , service.build())
 			.build();
 
 		file.writeTo(new File("src/gen/java"));

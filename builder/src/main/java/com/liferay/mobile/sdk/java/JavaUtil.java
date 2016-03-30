@@ -14,11 +14,12 @@
 
 package com.liferay.mobile.sdk.java;
 
-import com.liferay.mobile.android.http.Response;
-import com.liferay.mobile.android.http.file.UploadData;
+import com.liferay.mobile.sdk.http.Response;
+import com.liferay.mobile.sdk.http.file.UploadData;
 import com.liferay.mobile.sdk.util.LanguageUtil;
 
 import org.apache.commons.lang.WordUtils;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -37,38 +38,12 @@ public class JavaUtil extends LanguageUtil {
 
 	public static final String UPLOAD_DATA = "UploadData";
 
-	public Class returnType(String type) {
-		type = super.getType(type);
-
-		if (type.equals(BOOLEAN)) {
-			return Boolean.class;
+	public String className(String type) {
+		if (!type.startsWith(OBJECT_PREFIX)) {
+			return "";
 		}
 
-		if (type.equals(DOUBLE)) {
-			return Double.class;
-		}
-
-		if (type.equals(INT)) {
-			return Integer.class;
-		}
-
-		if (type.equals(LONG)) {
-			return Long.class;
-		}
-
-		if (type.equals(VOID)) {
-			return Response.class;
-		}
-
-		if (isArray(type)) {
-			return JSONArray.class;
-		}
-
-		if (type.equals(STRING)) {
-			return String.class;
-		}
-
-		return JSONObject.class;
+		return type.substring(7, type.length() - 1);
 	}
 
 	public String getReturnType(String type) {
@@ -132,12 +107,38 @@ public class JavaUtil extends LanguageUtil {
 		return false;
 	}
 
-	public String className(String type) {
-		if (!type.startsWith(OBJECT_PREFIX)) {
-			return "";
+	public Class returnType(String type) {
+		type = super.getType(type);
+
+		if (type.equals(BOOLEAN)) {
+			return Boolean.class;
 		}
 
-		return type.substring(7, type.length() - 1);
+		if (type.equals(DOUBLE)) {
+			return Double.class;
+		}
+
+		if (type.equals(INT)) {
+			return Integer.class;
+		}
+
+		if (type.equals(LONG)) {
+			return Long.class;
+		}
+
+		if (type.equals(VOID)) {
+			return Response.class;
+		}
+
+		if (isArray(type)) {
+			return JSONArray.class;
+		}
+
+		if (type.equals(STRING)) {
+			return String.class;
+		}
+
+		return JSONObject.class;
 	}
 
 	public Class type(String type) {
