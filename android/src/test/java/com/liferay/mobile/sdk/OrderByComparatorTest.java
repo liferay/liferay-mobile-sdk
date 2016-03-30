@@ -14,9 +14,9 @@
 
 package com.liferay.mobile.sdk;
 
-import com.liferay.mobile.sdk.v2.JsonObject;
-import com.liferay.mobile.sdk.v2.Param;
-import com.liferay.mobile.sdk.v2.Path;
+import com.liferay.mobile.sdk.annotation.JsonObject;
+import com.liferay.mobile.sdk.annotation.Param;
+import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.v2.ServiceBuilder;
 
 import java.io.IOException;

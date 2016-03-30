@@ -12,9 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.v2;
-
-import com.liferay.mobile.sdk.http.Headers.ContentType;
+package com.liferay.mobile.sdk.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -25,11 +23,11 @@ import java.lang.annotation.Target;
  * @author Bruno Farache
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.TYPE, ElementType.METHOD })
-public @interface Path {
+@Target({ ElementType.PARAMETER })
+public @interface JsonObject {
 
-	ContentType contentType() default ContentType.JSON;
+	String className();
 
-	String value();
+	String name();
 
 }

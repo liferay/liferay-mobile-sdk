@@ -15,6 +15,9 @@
 package com.liferay.mobile.sdk.v2;
 
 import com.liferay.mobile.sdk.Call;
+import com.liferay.mobile.sdk.annotation.JsonObject;
+import com.liferay.mobile.sdk.annotation.Param;
+import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Headers.ContentType;
 
 import java.lang.annotation.Annotation;

@@ -1,8 +1,8 @@
 package com.liferay.mobile.sdk.v62.dlfileversion;
 
 import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.v2.Param;
-import com.liferay.mobile.sdk.v2.Path;
+import com.liferay.mobile.sdk.annotation.Param;
+import com.liferay.mobile.sdk.annotation.Path;
 import java.lang.Integer;
 import org.json.JSONArray;
 import org.json.JSONObject;

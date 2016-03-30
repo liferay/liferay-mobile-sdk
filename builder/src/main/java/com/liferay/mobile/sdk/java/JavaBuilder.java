@@ -21,9 +21,9 @@ import com.liferay.mobile.sdk.http.Action;
 import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.http.Headers.ContentType;
 import com.liferay.mobile.sdk.http.Parameter;
-import com.liferay.mobile.sdk.v2.JsonObject;
-import com.liferay.mobile.sdk.v2.Param;
-import com.liferay.mobile.sdk.v2.Path;
+import com.liferay.mobile.sdk.annotation.JsonObject;
+import com.liferay.mobile.sdk.annotation.Param;
+import com.liferay.mobile.sdk.annotation.Path;
 
 import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.JavaFile;

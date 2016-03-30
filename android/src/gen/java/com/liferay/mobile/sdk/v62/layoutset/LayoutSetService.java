@@ -4,8 +4,8 @@ import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.file.UploadData;
 import com.liferay.mobile.sdk.http.Headers;
 import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.v2.Param;
-import com.liferay.mobile.sdk.v2.Path;
+import com.liferay.mobile.sdk.annotation.Param;
+import com.liferay.mobile.sdk.annotation.Path;
 import java.lang.String;
 import org.json.JSONObject;
 

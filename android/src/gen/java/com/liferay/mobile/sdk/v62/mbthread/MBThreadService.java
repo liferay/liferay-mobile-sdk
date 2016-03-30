@@ -2,9 +2,9 @@ package com.liferay.mobile.sdk.v62.mbthread;
 
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.v2.JsonObject;
-import com.liferay.mobile.sdk.v2.Param;
-import com.liferay.mobile.sdk.v2.Path;
+import com.liferay.mobile.sdk.annotation.JsonObject;
+import com.liferay.mobile.sdk.annotation.Param;
+import com.liferay.mobile.sdk.annotation.Path;
 import java.lang.Integer;
 import java.lang.String;
 import org.json.JSONArray;
