@@ -18,10 +18,10 @@ import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.Config;
 import com.liferay.mobile.sdk.ServiceBuilder;
 import com.liferay.mobile.sdk.http.Headers;
+import com.liferay.mobile.sdk.http.HttpClient;
 import com.liferay.mobile.sdk.http.Method;
 import com.liferay.mobile.sdk.http.Request;
 import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.v2.HttpClient;
 import com.liferay.mobile.sdk.v62.portal.PortalService;
 
 /**

@@ -12,11 +12,9 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.v2;
+package com.liferay.mobile.sdk.http;
 
 import com.liferay.mobile.sdk.Callback;
-import com.liferay.mobile.sdk.http.Request;
-import com.liferay.mobile.sdk.http.Response;
 
 /**
  * @author Bruno Farache

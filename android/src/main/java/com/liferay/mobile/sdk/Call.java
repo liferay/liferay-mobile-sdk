@@ -16,11 +16,11 @@ package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.http.Headers;
 import com.liferay.mobile.sdk.http.Headers.ContentType;
+import com.liferay.mobile.sdk.http.HttpClient;
+import com.liferay.mobile.sdk.http.OkHttpClientImpl;
 import com.liferay.mobile.sdk.http.Request;
 import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.json.JSONParser;
-import com.liferay.mobile.sdk.v2.HttpClient;
-import com.liferay.mobile.sdk.v2.OkHttpClientImpl;
 
 import java.lang.reflect.Type;
 
@@ -36,10 +36,6 @@ public class Call<T> {
 
 	public static void cancel(Object call) {
 		client.cancel(call);
-	}
-
-	public static HttpClient client() {
-		return client;
 	}
 
 	public Call(Object body, Type type) {
@@ -64,6 +60,14 @@ public class Call<T> {
 
 	public Object body() {
 		return body;
+	}
+
+	public synchronized static HttpClient client() {
+		return client;
+	}
+
+	public synchronized static void client(HttpClient client) {
+		Call.client = client;
 	}
 
 	public T execute() throws Exception {
