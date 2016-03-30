@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.sdk;
 
-import com.liferay.mobile.sdk.v2.ServiceBuilder;
 import com.liferay.mobile.sdk.v62.portlet.PortletService;
 
 import java.io.IOException;

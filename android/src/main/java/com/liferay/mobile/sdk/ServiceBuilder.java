@@ -12,9 +12,8 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.v2;
+package com.liferay.mobile.sdk;
 
-import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
@@ -47,8 +46,8 @@ public class ServiceBuilder {
 
 	static class Handler implements InvocationHandler {
 
-		public Handler(Class<?> service) {
-			this.service = service;
+		public Handler(Class<?> clazz) {
+			this.clazz = clazz;
 		}
 
 		@Override
@@ -56,7 +55,7 @@ public class ServiceBuilder {
 			throws Throwable {
 
 			JSONObject body = new JSONObject();
-			body.put(getPath(method), getParams(method, args));
+			body.put(path(method), params(method, args));
 
 			Path annotation = method.getAnnotation(Path.class);
 			Headers.ContentType contentType = Headers.ContentType.JSON;
@@ -65,10 +64,10 @@ public class ServiceBuilder {
 				contentType = annotation.contentType();
 			}
 
-			return new Call(body, getType(method), contentType);
+			return new Call(body, type(method), contentType);
 		}
 
-		protected String getMethodPath(Method method) {
+		protected String methodPath(Method method) {
 			Path annotation = method.getAnnotation(Path.class);
 
 			if (annotation != null) {
@@ -84,7 +83,7 @@ public class ServiceBuilder {
 			}
 		}
 
-		protected JSONObject getParams(Method method, Object[] args)
+		protected JSONObject params(Method method, Object[] args)
 			throws JSONException {
 
 			JSONObject params = new JSONObject();
@@ -109,7 +108,8 @@ public class ServiceBuilder {
 						String className = paramObject.className();
 
 						if (param != null) {
-							mangle(paramObject.name(), className, param, params);
+							mangle(
+								paramObject.name(), className, param, params);
 						}
 						else if (!className.equals(_SERVICE_CONTEXT)) {
 							params.put(paramObject.name(), JSONObject.NULL);
@@ -121,18 +121,18 @@ public class ServiceBuilder {
 			return params;
 		}
 
-		protected String getPath(Method method) {
-			return getRootPath() + getMethodPath(method);
+		protected String path(Method method) {
+			return rootPath() + methodPath(method);
 		}
 
-		protected String getRootPath() {
-			Path annotation = service.getAnnotation(Path.class);
+		protected String rootPath() {
+			Path annotation = clazz.getAnnotation(Path.class);
 
 			if (annotation != null) {
 				return annotation.value();
 			}
 			else {
-				String className = service.getSimpleName();
+				String className = clazz.getSimpleName();
 
 				if (className.endsWith("Service")) {
 					className = className.substring(0, className.length() - 7);
@@ -144,7 +144,7 @@ public class ServiceBuilder {
 			}
 		}
 
-		protected Type getType(Method method) {
+		protected Type type(Method method) {
 			ParameterizedType returnType =
 				(ParameterizedType)method.getGenericReturnType();
 
@@ -167,7 +167,7 @@ public class ServiceBuilder {
 			}
 		}
 
-		protected Class<?> service;
+		protected Class<?> clazz;
 
 		private static final String _SERVICE_CONTEXT =
 			"com.liferay.portal.service.ServiceContext";

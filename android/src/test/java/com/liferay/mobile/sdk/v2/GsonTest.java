@@ -19,6 +19,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
+
 import com.liferay.mobile.sdk.json.GenericListType;
 import com.liferay.mobile.sdk.json.JSONArrayDeserializer;
 import com.liferay.mobile.sdk.json.JSONObjectDeserializer;

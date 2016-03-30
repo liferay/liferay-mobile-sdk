@@ -15,14 +15,14 @@
 package com.liferay.mobile.sdk.file;
 
 import com.liferay.mobile.sdk.BaseTest;
+import com.liferay.mobile.sdk.Callback;
+import com.liferay.mobile.sdk.Config;
 import com.liferay.mobile.sdk.DLAppServiceTest;
 import com.liferay.mobile.sdk.auth.BasicAuthentication;
 import com.liferay.mobile.sdk.auth.DigestAuthentication;
 import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.http.Status;
-import com.liferay.mobile.sdk.Config;
 import com.liferay.mobile.sdk.util.PortalVersion;
-import com.liferay.mobile.sdk.Callback;
 import com.liferay.mobile.sdk.v2.FileUploadTest;
 
 import java.io.ByteArrayOutputStream;

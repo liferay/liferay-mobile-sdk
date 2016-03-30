@@ -17,7 +17,6 @@ package com.liferay.mobile.sdk;
 import com.liferay.mobile.sdk.exception.ServerException;
 import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.json.JSONParser;
-import com.liferay.mobile.sdk.v2.ServiceBuilder;
 import com.liferay.mobile.sdk.v62.dlapp.DLAppService;
 
 import java.io.IOException;

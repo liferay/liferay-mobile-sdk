@@ -17,6 +17,7 @@ package com.liferay.mobile.sdk.v2;
 import com.liferay.mobile.sdk.BaseTest;
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.Callback;
+import com.liferay.mobile.sdk.ServiceBuilder;
 
 import java.io.IOException;
 
