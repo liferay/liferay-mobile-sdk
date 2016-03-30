@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.sdk.auth;
 
-import com.liferay.mobile.sdk.auth.basic.BasicAuthentication;
 import com.liferay.mobile.sdk.service.Config;
 import com.liferay.mobile.sdk.v2.Call;
 import com.liferay.mobile.sdk.v2.Callback;

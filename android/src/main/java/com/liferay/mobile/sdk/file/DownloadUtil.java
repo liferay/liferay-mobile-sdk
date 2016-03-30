@@ -15,7 +15,7 @@
 package com.liferay.mobile.sdk.file;
 
 import com.liferay.mobile.sdk.auth.Authentication;
-import com.liferay.mobile.sdk.auth.basic.DigestAuthentication;
+import com.liferay.mobile.sdk.auth.DigestAuthentication;
 import com.liferay.mobile.sdk.http.Method;
 import com.liferay.mobile.sdk.http.Request;
 import com.liferay.mobile.sdk.http.Response;

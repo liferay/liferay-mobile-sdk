@@ -12,9 +12,8 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.auth.basic;
+package com.liferay.mobile.sdk.auth;
 
-import com.liferay.mobile.sdk.auth.Authentication;
 import com.liferay.mobile.sdk.http.Headers;
 import com.liferay.mobile.sdk.http.Request;
 

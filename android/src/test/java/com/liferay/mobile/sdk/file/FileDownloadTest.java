@@ -16,10 +16,8 @@ package com.liferay.mobile.sdk.file;
 
 import com.liferay.mobile.sdk.BaseTest;
 import com.liferay.mobile.sdk.DLAppServiceTest;
-import com.liferay.mobile.sdk.auth.basic.BasicAuthentication;
-import com.liferay.mobile.sdk.auth.basic.DigestAuthentication;
-import com.liferay.mobile.sdk.file.DownloadUtil;
-import com.liferay.mobile.sdk.file.FileProgressCallback;
+import com.liferay.mobile.sdk.auth.BasicAuthentication;
+import com.liferay.mobile.sdk.auth.DigestAuthentication;
 import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.http.Status;
 import com.liferay.mobile.sdk.service.Config;
