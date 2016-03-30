@@ -12,45 +12,35 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.v2;
+package com.liferay.mobile.sdk.json;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import com.liferay.mobile.sdk.http.Response;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
 
-import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
  */
-public class JsonParser {
+public class JSONObjectDeserializer implements JsonDeserializer<JSONObject> {
 
-	static {
-		GsonBuilder builder = new GsonBuilder();
+	@Override
+	public JSONObject deserialize(
+			JsonElement json, Type type, JsonDeserializationContext context)
+		throws JsonParseException {
 
-		builder.registerTypeAdapter(
-			JSONArray.class, new JSONArrayDeserializer());
-
-		builder.registerTypeAdapter(
-			JSONObject.class, new JSONObjectDeserializer());
-
-		gson = builder.create();
-	}
-
-	public static <T> T fromJson(Response response, Type type)
-		throws Exception {
-
-		if (type == Response.class) {
-			return (T)response;
+		try {
+			String value = json.toString();
+			return new JSONObject(value);
 		}
-
-		return gson.fromJson(response.getBody(), type);
+		catch (JSONException je) {
+			throw new JsonParseException(je);
+		}
 	}
-
-	protected static Gson gson;
 
 }

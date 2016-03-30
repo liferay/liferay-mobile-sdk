@@ -15,7 +15,7 @@
 package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.v2.JsonParser;
+import com.liferay.mobile.sdk.json.JSONParser;
 
 import java.lang.reflect.Type;
 
@@ -50,7 +50,7 @@ public abstract class Callback<T> {
 
 	public void inBackground(Response response) {
 		try {
-			T result = JsonParser.fromJson(response, type);
+			T result = JSONParser.fromJson(response, type);
 			doSuccess(result);
 		}
 		catch (Exception e) {

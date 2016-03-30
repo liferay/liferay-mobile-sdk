@@ -18,9 +18,9 @@ import com.liferay.mobile.sdk.http.Headers;
 import com.liferay.mobile.sdk.http.Headers.ContentType;
 import com.liferay.mobile.sdk.http.Request;
 import com.liferay.mobile.sdk.http.Response;
+import com.liferay.mobile.sdk.json.JSONParser;
 import com.liferay.mobile.sdk.service.Config;
 import com.liferay.mobile.sdk.v2.HttpClient;
-import com.liferay.mobile.sdk.v2.JsonParser;
 import com.liferay.mobile.sdk.v2.OkHttpClientImpl;
 
 import java.lang.reflect.Type;
@@ -74,7 +74,7 @@ public class Call<T> {
 	public T execute(Config config) throws Exception {
 		Request request = request(config);
 		Response response = client.sync(request);
-		return JsonParser.fromJson(response, type);
+		return JSONParser.fromJson(response, type);
 	}
 
 	protected static JSONArray bodies(Call[] calls) {

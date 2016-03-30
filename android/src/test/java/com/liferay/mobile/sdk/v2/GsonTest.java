@@ -19,6 +19,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
+import com.liferay.mobile.sdk.json.GenericListType;
+import com.liferay.mobile.sdk.json.JSONArrayDeserializer;
+import com.liferay.mobile.sdk.json.JSONObjectDeserializer;
 
 import java.lang.reflect.Type;
 
@@ -40,7 +43,7 @@ public class GsonTest {
 	@Test
 	public void arrayWithObject() throws Exception {
 		String json = "[{\"key\":{\"child\":\"value\"}}]";
-		Type type = new GenericListType<Map>(Map.class);
+		Type type = new GenericListType<>(Map.class);
 		List<Map<String, Map<String, Object>>> list = new Gson().fromJson(
 			json, type);
 
@@ -51,7 +54,7 @@ public class GsonTest {
 	@Test
 	public void arrayWithObjectAndPrimitive() throws Exception {
 		String json = "[{\"key\":{\"child\":\"value\"}},2]";
-		Type type = new GenericListType<Object>(Object.class);
+		Type type = new GenericListType<>(Object.class);
 
 		List<Object> list = new Gson().fromJson(json, type);
 

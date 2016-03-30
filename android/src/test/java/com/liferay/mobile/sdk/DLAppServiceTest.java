@@ -16,7 +16,7 @@ package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.exception.ServerException;
 import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.v2.JsonParser;
+import com.liferay.mobile.sdk.json.JSONParser;
 import com.liferay.mobile.sdk.v2.ServiceBuilder;
 import com.liferay.mobile.sdk.v62.dlapp.DLAppService;
 
@@ -100,7 +100,7 @@ public class DLAppServiceTest extends BaseTest {
 			repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME_2, "", null);
 
 		Response response = Batch.execute(call1, call2);
-		JSONArray sites = JsonParser.fromJson(response, JSONArray.class);
+		JSONArray sites = JSONParser.fromJson(response, JSONArray.class);
 
 		assertEquals(_FOLDER_NAME, sites.getJSONObject(0).get(_NAME));
 		assertEquals(_FOLDER_NAME_2, sites.getJSONObject(1).get(_NAME));
@@ -146,7 +146,7 @@ public class DLAppServiceTest extends BaseTest {
 			repositoryId, PARENT_FOLDER_ID, _FOLDER_NAME_2);
 
 		Response response = Batch.execute(call1, call2);
-		JSONArray sites = JsonParser.fromJson(response, JSONArray.class);
+		JSONArray sites = JSONParser.fromJson(response, JSONArray.class);
 		assertEquals(2, sites.length());
 	}
 

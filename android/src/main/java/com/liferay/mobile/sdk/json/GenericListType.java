@@ -12,35 +12,37 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.v2;
+package com.liferay.mobile.sdk.json;
 
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
 /**
  * @author Bruno Farache
  */
-public class JSONObjectDeserializer implements JsonDeserializer<JSONObject> {
+public class GenericListType<T> implements ParameterizedType {
+
+	public GenericListType(Class<T> clazz) {
+		this.clazz = clazz;
+	}
 
 	@Override
-	public JSONObject deserialize(
-			JsonElement json, Type type, JsonDeserializationContext context)
-		throws JsonParseException {
-
-		try {
-			String value = json.toString();
-			return new JSONObject(value);
-		}
-		catch (JSONException je) {
-			throw new JsonParseException(je);
-		}
+	public Type[] getActualTypeArguments() {
+		return new Type[]{ clazz };
 	}
+
+	@Override
+	public Type getOwnerType() {
+		return null;
+	}
+
+	@Override
+	public Type getRawType() {
+		return List.class;
+	}
+
+	protected final Class<T> clazz;
 
 }

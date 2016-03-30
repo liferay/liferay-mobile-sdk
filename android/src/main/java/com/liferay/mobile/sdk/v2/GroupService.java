@@ -16,6 +16,7 @@ package com.liferay.mobile.sdk.v2;
 
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.http.Response;
+import com.liferay.mobile.sdk.json.GenericListType;
 
 import java.util.List;
 import java.util.Map;
