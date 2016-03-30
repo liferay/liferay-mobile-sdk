@@ -14,12 +14,16 @@
 
 package com.liferay.mobile.sdk;
 
+import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
+
 import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.json.JSONParser;
 
 import java.lang.reflect.Type;
 
-import static com.liferay.mobile.sdk.callback.MainThreadRunner.run;
+import static com.liferay.mobile.sdk.Callback.ThreadRunner.run;
 
 /**
  * @author Bruno Farache
@@ -61,6 +65,37 @@ public abstract class Callback<T> {
 	public abstract void onFailure(Exception exception);
 
 	public abstract void onSuccess(T result);
+
+	public static class ThreadRunner {
+
+		public synchronized static void handler(Handler handler) {
+			ThreadRunner.handler = handler;
+		}
+
+		public static void run(Runnable runnable) {
+			if (handler == null) {
+				runnable.run();
+				return;
+			}
+
+			handler.post(runnable);
+		}
+
+		protected static Handler handler;
+
+		static {
+			try {
+				Class.forName("android.os.Build");
+
+				if (Build.VERSION.SDK_INT != 0) {
+					handler = new Handler(Looper.getMainLooper());
+				}
+			}
+			catch (ClassNotFoundException cnfe) {
+			}
+		}
+
+	}
 
 	protected void type(Type type) {
 		this.type = type;

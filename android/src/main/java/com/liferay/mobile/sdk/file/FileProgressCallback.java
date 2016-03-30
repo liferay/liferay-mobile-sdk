@@ -14,7 +14,7 @@
 
 package com.liferay.mobile.sdk.file;
 
-import static com.liferay.mobile.sdk.callback.MainThreadRunner.run;
+import static com.liferay.mobile.sdk.Callback.ThreadRunner.run;
 
 /**
  * @author Igor Oliveira
