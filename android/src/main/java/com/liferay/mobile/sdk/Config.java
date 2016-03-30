@@ -30,11 +30,11 @@ public class Config {
 
 	public static final String PATH_62 = "api/jsonws";
 
-	public static Config global() {
+	public synchronized static Config global() {
 		return global;
 	}
 
-	public static void global(Config global) {
+	public synchronized static void global(Config global) {
 		Config.global = global;
 	}
 
