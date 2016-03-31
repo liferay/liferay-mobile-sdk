@@ -39,11 +39,11 @@ public class Response {
 	}
 
 	public Response(com.squareup.okhttp.Response response) {
-		_response = response;
+		this.response = response;
 	}
 
 	public String body() throws Exception {
-		String body = _response.body().string();
+		String body = response.body().string();
 
 		checkStatusCode();
 		checkPortalException(body);
@@ -54,11 +54,11 @@ public class Response {
 	public InputStream bodyAsStream() throws Exception {
 		checkStatusCode();
 
-		return _response.body().byteStream();
+		return response.body().byteStream();
 	}
 
 	public Map<String, String> headers() {
-		Map<String, List<String>> headers = _response.headers().toMultimap();
+		Map<String, List<String>> headers = response.headers().toMultimap();
 		Map<String, String> map = new HashMap<>();
 
 		for (Map.Entry<String, List<String>> header : headers.entrySet()) {
@@ -69,7 +69,7 @@ public class Response {
 	}
 
 	public int statusCode() {
-		return _response.code();
+		return response.code();
 	}
 
 	protected void checkPortalException(String json) throws ServerException {
@@ -139,6 +139,6 @@ public class Response {
 		return false;
 	}
 
-	private com.squareup.okhttp.Response _response;
+	protected com.squareup.okhttp.Response response;
 
 }
