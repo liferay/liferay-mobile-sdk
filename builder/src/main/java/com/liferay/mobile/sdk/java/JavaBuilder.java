@@ -119,8 +119,16 @@ public class JavaBuilder extends BaseBuilder {
 			service.addMethod(method.build());
 		}
 
-		JavaFile file = JavaFile.builder(
-			"com.liferay.mobile.sdk.v62." + filter , service.build())
+		StringBuilder sb = new StringBuilder(packageName);
+
+		sb.append(".v");
+		sb.append(version);
+		sb.append(".");
+		sb.append(filter);
+
+		packageName = sb.toString();
+
+		JavaFile file = JavaFile.builder(packageName, service.build())
 			.build();
 
 		file.writeTo(new File("src/gen/java"));
