@@ -47,6 +47,10 @@ public class Config {
 		return this;
 	}
 
+	public Config clone() {
+		return new Config(this);
+	}
+
 	public synchronized static Config global() {
 		return global;
 	}
@@ -102,6 +106,14 @@ public class Config {
 		sb.append(path);
 
 		return sb.toString();
+	}
+
+	protected Config(Config config) {
+		this.auth = config.auth();
+		this.headers = config.headers();
+		this.path = config.path();
+		this.server = config.server();
+		this.timeout = config.timeout();
 	}
 
 	protected Config(String server) {
