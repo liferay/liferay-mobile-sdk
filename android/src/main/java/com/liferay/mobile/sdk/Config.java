@@ -61,7 +61,7 @@ public class Config {
 	}
 
 	public Map<String, String> headers() {
-		return headers;
+		return new HashMap<>(headers);
 	}
 
 	public Config headers(Map<String, String> headers) {

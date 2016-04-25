@@ -24,8 +24,6 @@ import com.liferay.mobile.sdk.json.JSONParser;
 
 import java.lang.reflect.Type;
 
-import java.util.Map;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -91,8 +89,8 @@ public class Call<T> {
 	}
 
 	protected Request request(Config config) {
-		Map<String, String> headers = config.headers();
-		headers.put(Headers.CONTENT_TYPE, contentType.value);
+		config.header(Headers.CONTENT_TYPE, contentType.value);
+
 		String path = "/invoke";
 
 		if (contentType == ContentType.JSON) {
@@ -106,7 +104,6 @@ public class Call<T> {
 
 		return Request.url(config.url() + path)
 			.config(config)
-			.headers(headers)
 			.body(body)
 			.tag(this);
 	}
