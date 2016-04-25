@@ -57,7 +57,8 @@ public class JavaBuilder extends BaseBuilder {
 
 		AnnotationSpec servicePathAnnotation = AnnotationSpec
 			.builder(Path.class)
-			.addMember("value", "$S", contextPath(discovery, filter))
+			.addMember(
+				"value", "$S", contextPath(discovery.getContext(), filter))
 			.build();
 
 		TypeSpec.Builder service = TypeSpec
@@ -135,9 +136,7 @@ public class JavaBuilder extends BaseBuilder {
 		file.writeTo(new File("src/gen/java"));
 	}
 
-	protected String contextPath(Discovery discovery, String filter) {
-		String context = discovery.getContext();
-
+	protected String contextPath(String context, String filter) {
 		if (Validator.isNotNull(context)) {
 			context += ".";
 		}
