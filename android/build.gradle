@@ -1,4 +1,4 @@
-archivesBaseName = 'liferay-android-sdk'
+archivesBaseName = 'liferay-mobile-sdk'
 
 apply from: '../formatter.gradle'
 format.workingDir = 'src/main/java'

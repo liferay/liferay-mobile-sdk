@@ -10,7 +10,4 @@ dependencies {
 	compile group: 'org.apache.velocity', name: 'velocity-tools', version: '2.0'
 	compile group: 'org.json', name: 'json', version: '20140107'
 	compile project(':android')
-
-	runtime group: 'com.liferay.mobile', name: 'liferay-sdk-builder-sample', version: '[6.2,)'
-	runtime group: 'com.github.ithildir', name: 'liferay-sdk-builder-windows', version: '[6.2,)'
 }
