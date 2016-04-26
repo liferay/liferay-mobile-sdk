@@ -75,7 +75,7 @@ public class Call<T> {
 	public T execute(Config config) throws Exception {
 		Request request = request(config);
 		Response response = client.sync(request);
-		return JSONParser.fromJson(response, type);
+		return JSONParser.fromJSON(response, type);
 	}
 
 	protected static JSONArray bodies(Call[] calls) {

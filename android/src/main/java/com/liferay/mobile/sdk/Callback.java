@@ -54,7 +54,7 @@ public abstract class Callback<T> {
 
 	public void inBackground(Response response) {
 		try {
-			T result = JSONParser.fromJson(response, type);
+			T result = JSONParser.fromJSON(response, type);
 			doSuccess(result);
 		}
 		catch (Exception e) {
