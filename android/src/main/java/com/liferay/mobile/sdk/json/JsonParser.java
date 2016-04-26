@@ -21,6 +21,10 @@ import com.liferay.mobile.sdk.http.Response;
 
 import java.lang.reflect.Type;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -29,26 +33,40 @@ import org.json.JSONObject;
  */
 public class JSONParser {
 
-	static {
-		GsonBuilder builder = new GsonBuilder();
-
-		builder.registerTypeAdapter(
-			JSONArray.class, new JSONArrayDeserializer());
-
-		builder.registerTypeAdapter(
-			JSONObject.class, new JSONObjectDeserializer());
-
-		gson = builder.create();
-	}
-
-	public static <T> T fromJson(Response response, Type type)
+	public static <T> T fromJSON(Response response, Type type)
 		throws Exception {
 
 		if (type == Response.class) {
 			return (T)response;
 		}
 
-		return gson.fromJson(response.body(), type);
+		return gson().fromJson(response.body(), type);
+	}
+
+	public synchronized static void addAdapter(Type type, Object adapter) {
+		adapters.put(type, adapter);
+		gson = null;
+	}
+
+	protected synchronized static Gson gson() {
+		if (gson == null) {
+			GsonBuilder builder = new GsonBuilder();
+
+			for (Entry<Type, Object> entry : adapters.entrySet()) {
+				builder.registerTypeAdapter(entry.getKey(), entry.getValue());
+			}
+
+			gson = builder.create();
+		}
+
+		return gson;
+	}
+
+	protected static Map<Type, Object> adapters = new HashMap<>();
+
+	static {
+		addAdapter(JSONArray.class, new JSONArrayDeserializer());
+		addAdapter(JSONObject.class, new JSONObjectDeserializer());
 	}
 
 	protected static Gson gson;
