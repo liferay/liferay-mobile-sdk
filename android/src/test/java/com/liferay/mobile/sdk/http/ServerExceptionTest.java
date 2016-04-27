@@ -46,8 +46,8 @@ public class ServerExceptionTest extends BaseTest {
 		json.put("message", "Authenticated access required");
 
 		try {
-			Response response = new Response();
-			response.checkPortalException(json.toString());
+			ResponseValidator validator = new ResponseValidator();
+			validator.validateBody(json.toString());
 			fail("Should have thrown AuthenticationException");
 		}
 		catch (AuthenticationException ae) {
@@ -75,8 +75,8 @@ public class ServerExceptionTest extends BaseTest {
 		json.put("message", message);
 
 		try {
-			Response response = new Response();
-			response.checkPortalException(json.toString());
+			ResponseValidator validator = new ResponseValidator();
+			validator.validateBody(json.toString());
 			fail("Should have detected portal exception.");
 		}
 		catch (ServerException se) {
@@ -95,8 +95,8 @@ public class ServerExceptionTest extends BaseTest {
 		json.put("exception", exception);
 
 		try {
-			Response response = new Response();
-			response.checkPortalException(json.toString());
+			ResponseValidator validator = new ResponseValidator();
+			validator.validateBody(json.toString());
 			fail("Should have detected portal exception.");
 		}
 		catch (ServerException se) {
@@ -118,8 +118,8 @@ public class ServerExceptionTest extends BaseTest {
 		json.put("message", folderName);
 
 		try {
-			Response response = new Response();
-			response.checkPortalException(json.toString());
+			ResponseValidator validator = new ResponseValidator();
+			validator.validateBody(json.toString());
 			fail("Should have detected portal exception.");
 		}
 		catch (ServerException se) {
@@ -151,8 +151,8 @@ public class ServerExceptionTest extends BaseTest {
 		json.put("error", error);
 
 		try {
-			Response response = new Response();
-			response.checkPortalException(json.toString());
+			ResponseValidator validator = new ResponseValidator();
+			validator.validateBody(json.toString());
 			fail("Should have detected portal exception.");
 		}
 		catch (ServerException se) {

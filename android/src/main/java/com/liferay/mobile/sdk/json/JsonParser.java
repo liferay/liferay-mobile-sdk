@@ -17,8 +17,6 @@ package com.liferay.mobile.sdk.json;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import com.liferay.mobile.sdk.http.Response;
-
 import java.lang.reflect.Type;
 
 import java.util.HashMap;
@@ -33,17 +31,13 @@ import org.json.JSONObject;
  */
 public class JSONParser {
 
-	public static <T> T fromJSON(Response response, Type type)
-		throws Exception {
-
-		if (type == Response.class) {
-			return (T)response;
-		}
-
-		return gson().fromJson(response.body(), type);
+	public static <T> T fromJSON(String json, Type type) throws Exception {
+		return gson().fromJson(json, type);
 	}
 
-	public synchronized static void addAdapter(Type type, Object adapter) {
+	public synchronized static void registerTypeAdapter(
+		Type type, Object adapter) {
+
 		adapters.put(type, adapter);
 		gson = null;
 	}
@@ -65,8 +59,8 @@ public class JSONParser {
 	protected static Map<Type, Object> adapters = new HashMap<>();
 
 	static {
-		addAdapter(JSONArray.class, new JSONArrayDeserializer());
-		addAdapter(JSONObject.class, new JSONObjectDeserializer());
+		registerTypeAdapter(JSONArray.class, new JSONArrayDeserializer());
+		registerTypeAdapter(JSONObject.class, new JSONObjectDeserializer());
 	}
 
 	protected static Gson gson;

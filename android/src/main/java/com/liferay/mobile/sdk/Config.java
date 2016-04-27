@@ -15,6 +15,7 @@
 package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.auth.Authentication;
+import com.liferay.mobile.sdk.http.ResponseValidator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +35,7 @@ public class Config {
 		Config config = new Config(server);
 		config.timeout(DEFAULT_TIMEOUT);
 		config.path(PATH_62);
+		config.responseValidator(new ResponseValidator());
 
 		return config;
 	}
@@ -82,6 +84,15 @@ public class Config {
 		return this;
 	}
 
+	public ResponseValidator responseValidator() {
+		return responseValidator;
+	}
+
+	public Config responseValidator(ResponseValidator responseValidator) {
+		this.responseValidator = responseValidator;
+		return this;
+	}
+
 	public String server() {
 		return server;
 	}
@@ -125,6 +136,7 @@ public class Config {
 	protected Authentication auth;
 	protected Map<String, String> headers = new HashMap<>();
 	protected String path;
+	protected ResponseValidator responseValidator;
 	protected String server;
 	protected int timeout;
 

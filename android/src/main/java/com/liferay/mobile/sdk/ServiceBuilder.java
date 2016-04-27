@@ -17,7 +17,7 @@ package com.liferay.mobile.sdk;
 import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
-import com.liferay.mobile.sdk.http.Headers;
+import com.liferay.mobile.sdk.http.Headers.ContentType;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationHandler;
@@ -58,7 +58,7 @@ public class ServiceBuilder {
 			body.put(path(method), params(method, args));
 
 			Path annotation = method.getAnnotation(Path.class);
-			Headers.ContentType contentType = Headers.ContentType.JSON;
+			ContentType contentType = ContentType.JSON;
 
 			if (annotation != null) {
 				contentType = annotation.contentType();
@@ -111,7 +111,7 @@ public class ServiceBuilder {
 							mangle(
 								paramObject.name(), className, param, params);
 						}
-						else if (!className.equals(_SERVICE_CONTEXT)) {
+						else if (!className.equals(SERVICE_CONTEXT)) {
 							params.put(paramObject.name(), JSONObject.NULL);
 						}
 					}
@@ -169,7 +169,7 @@ public class ServiceBuilder {
 
 		protected Class<?> clazz;
 
-		private static final String _SERVICE_CONTEXT =
+		protected static final String SERVICE_CONTEXT =
 			"com.liferay.portal.service.ServiceContext";
 
 	}

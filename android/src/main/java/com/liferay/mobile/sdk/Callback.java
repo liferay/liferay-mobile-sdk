@@ -19,6 +19,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.liferay.mobile.sdk.http.Response;
+import com.liferay.mobile.sdk.http.ResponseValidator;
 import com.liferay.mobile.sdk.json.JSONParser;
 
 import java.lang.reflect.Type;
@@ -54,7 +55,16 @@ public abstract class Callback<T> {
 
 	public void inBackground(Response response) {
 		try {
-			T result = JSONParser.fromJSON(response, type);
+			ResponseValidator validator = config.responseValidator();
+			validator.validateStatusCode(response);
+
+			if (type == Response.class) {
+				doSuccess((T)response);
+				return;
+			}
+
+			String json = validator.validateBody(response.body());
+			T result = JSONParser.fromJSON(json, type);
 			doSuccess(result);
 		}
 		catch (Exception e) {
@@ -97,10 +107,12 @@ public abstract class Callback<T> {
 
 	}
 
-	protected void type(Type type) {
+	protected void init(Config config, Type type) {
+		this.config = config;
 		this.type = type;
 	}
 
+	protected Config config;
 	protected Type type;
 
 }

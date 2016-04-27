@@ -20,6 +20,7 @@ import com.liferay.mobile.sdk.http.HttpClient;
 import com.liferay.mobile.sdk.http.OkHttpClientImpl;
 import com.liferay.mobile.sdk.http.Request;
 import com.liferay.mobile.sdk.http.Response;
+import com.liferay.mobile.sdk.http.ResponseValidator;
 import com.liferay.mobile.sdk.json.JSONParser;
 
 import java.lang.reflect.Type;
@@ -51,7 +52,7 @@ public class Call<T> {
 	}
 
 	public void async(Config config, Callback<T> callback) {
-		callback.type(this.type);
+		callback.init(config, type);
 		Request request = request(config);
 		client.async(request, callback);
 	}
@@ -75,7 +76,15 @@ public class Call<T> {
 	public T execute(Config config) throws Exception {
 		Request request = request(config);
 		Response response = client.sync(request);
-		return JSONParser.fromJSON(response, type);
+		ResponseValidator validator = config.responseValidator();
+		validator.validateStatusCode(response);
+
+		if (type == Response.class) {
+			return (T)response;
+		}
+
+		String json = validator.validateBody(response.body());
+		return JSONParser.fromJSON(json, type);
 	}
 
 	protected static JSONArray bodies(Call[] calls) {
