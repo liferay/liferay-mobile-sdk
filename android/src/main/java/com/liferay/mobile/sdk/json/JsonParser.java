@@ -16,6 +16,8 @@ package com.liferay.mobile.sdk.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
 import java.lang.reflect.Type;
 
@@ -33,6 +35,10 @@ public class JSONParser {
 
 	public static <T> T fromJSON(String json, Type type) throws Exception {
 		return gson().fromJson(json, type);
+	}
+
+	public static JsonElement parse(String json) {
+		return parser.parse(json);
 	}
 
 	public synchronized static void registerTypeAdapter(
@@ -64,5 +70,7 @@ public class JSONParser {
 	}
 
 	protected static Gson gson;
+
+	protected static JsonParser parser = new JsonParser();
 
 }
