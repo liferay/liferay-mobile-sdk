@@ -33,6 +33,10 @@ import org.json.JSONObject;
  */
 public class JSONParser {
 
+	public static <T> T fromJSON(JsonElement json, Type type) throws Exception {
+		return gson().fromJson(json, type);
+	}
+
 	public static <T> T fromJSON(String json, Type type) throws Exception {
 		return gson().fromJson(json, type);
 	}
@@ -70,7 +74,6 @@ public class JSONParser {
 	}
 
 	protected static Gson gson;
-
 	protected static JsonParser parser = new JsonParser();
 
 }
