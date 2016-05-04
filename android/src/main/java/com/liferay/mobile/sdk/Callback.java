@@ -42,6 +42,10 @@ public abstract class Callback<T> {
 		});
 	}
 
+	public T doInBackground(T result) throws Exception {
+		return result;
+	}
+
 	public void doSuccess(final T result) {
 		run(new Runnable() {
 
@@ -59,22 +63,18 @@ public abstract class Callback<T> {
 			validator.validateStatusCode(response);
 
 			if (type == Response.class) {
-				doSuccess(inBackground((T)response));
+				doSuccess(doInBackground((T)response));
 				return;
 			}
 
 			String json = validator.validateBody(response.body());
 			T result = JSONParser.fromJSON(json, type);
-			inBackground(result);
+			doInBackground(result);
 			doSuccess(result);
 		}
 		catch (Exception e) {
 			doFailure(e);
 		}
-	}
-
-	public T inBackground(T result) {
-		return result;
 	}
 
 	public abstract void onFailure(Exception exception);
