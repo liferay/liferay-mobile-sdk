@@ -283,6 +283,32 @@ public class GroupServiceTest extends BaseTest {
 		lock.await(500, TimeUnit.MILLISECONDS);
 	}
 
+	protected static void assertUserSites(JSONArray sites) {
+		assertNotNull(sites);
+		assertTrue(sites.length() == 2);
+
+		JSONObject jsonObj = sites.optJSONObject(0);
+		assertNotNull(jsonObj);
+		assertEquals("/test", jsonObj.optString("friendlyURL"));
+
+		jsonObj = sites.optJSONObject(1);
+		assertNotNull(jsonObj);
+		assertEquals("/guest", jsonObj.optString("friendlyURL"));
+	}
+
+	protected static void assertUserSites(List<Site> sites) {
+		assertNotNull(sites);
+		assertTrue(sites.size() == 2);
+
+		Site site = sites.get(0);
+		assertNotNull(site);
+		assertEquals("/test", site.friendlyURL);
+
+		site = sites.get(1);
+		assertNotNull(site);
+		assertEquals("/guest", site.friendlyURL);
+	}
+
 	protected static void assertUserSitesAsMap(
 		List<Map<String, Object>> sites) {
 
@@ -296,32 +322,6 @@ public class GroupServiceTest extends BaseTest {
 		site = sites.get(1);
 		assertNotNull(site);
 		assertEquals("/guest", site.get("friendlyURL"));
-	}
-
-	protected void assertUserSites(JSONArray sites) {
-		assertNotNull(sites);
-		assertTrue(sites.length() == 2);
-
-		JSONObject jsonObj = sites.optJSONObject(0);
-		assertNotNull(jsonObj);
-		assertEquals("/test", jsonObj.optString("friendlyURL"));
-
-		jsonObj = sites.optJSONObject(1);
-		assertNotNull(jsonObj);
-		assertEquals("/guest", jsonObj.optString("friendlyURL"));
-	}
-
-	protected void assertUserSites(List<Site> sites) {
-		assertNotNull(sites);
-		assertTrue(sites.size() == 2);
-
-		Site site = sites.get(0);
-		assertNotNull(site);
-		assertEquals("/test", site.friendlyURL);
-
-		site = sites.get(1);
-		assertNotNull(site);
-		assertEquals("/guest", site.friendlyURL);
 	}
 
 }

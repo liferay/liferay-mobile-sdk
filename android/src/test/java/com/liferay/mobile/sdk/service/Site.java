@@ -22,6 +22,25 @@ public class Site {
 	public Site() {
 	}
 
+	public Site(String friendlyURL) {
+		this.friendlyURL = friendlyURL;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null || !(obj instanceof Site)) {
+			return false;
+		}
+
+		String friendlyURL = ((Site)obj).friendlyURL;
+
+		if (friendlyURL == null) {
+			return false;
+		}
+
+		return friendlyURL.equals(this.friendlyURL);
+	}
+
 	public String friendlyURL;
 	public long groupId;
 
