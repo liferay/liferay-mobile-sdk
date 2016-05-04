@@ -59,17 +59,22 @@ public abstract class Callback<T> {
 			validator.validateStatusCode(response);
 
 			if (type == Response.class) {
-				doSuccess((T)response);
+				doSuccess(inBackground((T)response));
 				return;
 			}
 
 			String json = validator.validateBody(response.body());
 			T result = JSONParser.fromJSON(json, type);
+			inBackground(result);
 			doSuccess(result);
 		}
 		catch (Exception e) {
 			doFailure(e);
 		}
+	}
+
+	public T inBackground(T result) {
+		return result;
 	}
 
 	public abstract void onFailure(Exception exception);
