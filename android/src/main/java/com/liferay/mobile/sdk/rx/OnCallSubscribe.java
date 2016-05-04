@@ -12,36 +12,41 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.service;
+package com.liferay.mobile.sdk.rx;
 
 import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.json.GenericListType;
-import com.liferay.mobile.sdk.rx.OnCallSubscribe;
 
-import java.util.List;
+import rx.Observable.OnSubscribe;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import rx.Observable;
+import rx.Subscriber;
 
 /**
  * @author Bruno Farache
  */
-public class ObservableGroupService {
+public class OnCallSubscribe<T> implements OnSubscribe<T> {
 
-	public Observable<List<Site>> getUserSites() {
-		JSONObject command = new JSONObject();
-
-		try {
-			command.put("/group/get-user-sites", new JSONObject());
-		}
-		catch (JSONException je) {
-		}
-
-		GenericListType<Site> type = new GenericListType<>(Site.class);
-		Call<List<Site>> call = new Call<>(command, type);
-		return Observable.create(new OnCallSubscribe<>(call));
+	public OnCallSubscribe(Call<T> call) {
+		this.call = call;
 	}
+
+	@Override
+	public void call(Subscriber<? super T> subscriber) {
+		try {
+			if (!subscriber.isUnsubscribed()) {
+				subscriber.onNext(call.execute());
+			}
+		}
+		catch (Exception e) {
+			if (!subscriber.isUnsubscribed()) {
+				subscriber.onError(e);
+			}
+		}
+
+		if (!subscriber.isUnsubscribed()) {
+			subscriber.onCompleted();
+		}
+	}
+
+	protected Call<T> call;
 
 }
