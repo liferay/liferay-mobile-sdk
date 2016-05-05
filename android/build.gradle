@@ -1,9 +1,45 @@
-archivesBaseName = 'liferay-mobile-sdk'
+plugins {
+	id 'java'
+	id 'maven-publish'
+	id 'com.jfrog.bintray' version '1.6'
+}
 
 apply from: '../formatter.gradle'
 format.workingDir = 'src/main/java'
 
 apply from: '../sdk-builder.gradle'
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+			artifactId 'liferay-mobile-sdk'
+			artifact sourceJar
+		}
+	}
+}
+
+bintray {
+	user = property('user')
+	key = property('key')
+
+	publications = ['mavenJava']
+
+	pkg {
+		repo = 'liferay-mobile'
+		name = 'liferay-mobile-sdk'
+		userOrg = 'liferay'
+		licenses = ['LGPL-2.1']
+		vcsUrl = 'https://github.com/liferay/liferay-mobile-sdk.git'
+
+		version {
+			name = project.version
+		}
+	}
+}
 
 sourceSets {
 	main {
@@ -27,16 +63,7 @@ task formatTest(type: JavaExec) {
 	workingDir = 'src/test/java'
 }
 
-def excluded = "${packageName.replaceAll('\\.', '/')}/v*/**"
-
-task jarCore(type: Jar, dependsOn: classes) {
-	classifier = 'core'
-	from sourceSets.main.output
-	exclude(excluded)
-}
-
-task jarCoreSources(type: Jar, dependsOn: classes) {
-	classifier = 'core-sources'
+task sourceJar(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
 	from sourceSets.main.allSource
-	exclude(excluded)
 }

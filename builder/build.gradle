@@ -1,3 +1,8 @@
+plugins {
+	id 'java'
+	id 'com.jfrog.bintray' version '1.6'
+}
+
 archivesBaseName = 'liferay-sdk-builder'
 
 apply from: '../formatter.gradle'

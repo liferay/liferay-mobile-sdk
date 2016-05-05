@@ -5,86 +5,12 @@ ext {
 allprojects {
 	repositories {
 		mavenLocal()
+		jcenter()
 		mavenCentral()
 	}
 }
 
 apply from: 'modules.gradle'
-
-configure(subprojects.findAll { it.name != 'ios' }) {
-	apply plugin: 'java'
-	apply plugin: 'eclipse'
-	apply plugin: 'idea'
-	apply plugin: 'maven'
-	apply plugin: 'signing'
-
-	sourceCompatibility = JavaVersion.VERSION_1_7
-	targetCompatibility = JavaVersion.VERSION_1_7
-
-	install {
-		repositories.mavenInstaller {
-			pom.groupId = 'com.liferay.mobile'
-
-			pom.project {
-				name project.description
-				description project.description
-				url 'https://www.liferay.com/community/liferay-projects/liferay-mobile-sdk/overview'
-				licenses {
-					license {
-						name 'LGPL 2.1'
-						url 'http://opensource.org/licenses/lgpl-2.1.php'
-						distribution 'repo'
-					}
-				}
-				scm {
-					url 'https://github.com/liferay/liferay-mobile-sdk'
-					connection 'scm:git:git://github.com/liferay/liferay-mobile-sdk.git'
-				}
-				developers {
-					developer {
-						id 'brunofarache'
-						name 'Bruno Farache'
-						email 'bruno.farache@liferay.com'
-					}
-				}
-			}
-		}
-	}
-
-	task jarSources(type: Jar, dependsOn: classes) {
-		classifier = 'sources'
-		from sourceSets.main.allSource
-	}
-
-	task jarJavadoc(type: Jar, dependsOn: javadoc) {
-		classifier = 'javadoc'
-		from javadoc.destinationDir
-	}
-
-	artifacts {
-		archives jarSources
-		archives jarJavadoc
-	}
-
-	signing {
-		sign configurations.archives
-	}
-
-	task publish(type: Copy, dependsOn: install) {
-		group = tasksGroup
-		description = 'Prepares artifacts for publishing to Maven Central.'
-		from 'build/poms'
-		into 'build/libs'
-
-		rename { String name ->
-			name.replace('pom-default.xml', "${archivesBaseName}-${version}.pom")
-		}
-
-		doLast {
-			signing.sign file("build/libs/${archivesBaseName}-${version}.pom")
-		}
-	}
-}
 
 task wrapper(type: Wrapper) {
 	gradleVersion = '2.13'
