@@ -18,6 +18,7 @@ import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Headers.ContentType;
+import com.liferay.mobile.sdk.rx.OnCallSubscribe;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationHandler;
@@ -30,6 +31,8 @@ import java.util.Iterator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import rx.Observable;
 
 /**
  * @author Bruno Farache
@@ -64,7 +67,19 @@ public class ServiceBuilder {
 				contentType = annotation.contentType();
 			}
 
-			return new Call(body, type(method), contentType);
+			Type returnType = method.getReturnType();
+			Type genericReturnType = genericReturnType(method);
+			Call call = new Call(body, genericReturnType, contentType);
+
+			if (returnType == Call.class) {
+				return call;
+			}
+
+			if (returnType == Observable.class) {
+				return Observable.create(new OnCallSubscribe<>(call));
+			}
+
+			return null;
 		}
 
 		protected String methodPath(Method method) {
@@ -144,7 +159,7 @@ public class ServiceBuilder {
 			}
 		}
 
-		protected Type type(Method method) {
+		protected Type genericReturnType(Method method) {
 			ParameterizedType returnType =
 				(ParameterizedType)method.getGenericReturnType();
 

@@ -14,8 +14,8 @@
 
 package com.liferay.mobile.sdk;
 
-import com.liferay.mobile.sdk.service.ObservableGroupService;
 import com.liferay.mobile.sdk.service.Site;
+import com.liferay.mobile.sdk.service.rx.GroupService;
 
 import java.io.IOException;
 
@@ -39,7 +39,7 @@ public class ObservableGroupServiceTest extends BaseTest {
 
 	@Test
 	public void getUserSites() throws Exception {
-		ObservableGroupService service = new ObservableGroupService();
+		GroupService service = ServiceBuilder.build(GroupService.class);
 		Observable<List<Site>> observable = service.getUserSites();
 		TestSubscriber<List<Site>> subscriber = new TestSubscriber<>();
 		observable.subscribe(subscriber);
