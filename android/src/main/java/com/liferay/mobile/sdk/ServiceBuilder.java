@@ -17,7 +17,7 @@ package com.liferay.mobile.sdk;
 import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
-import com.liferay.mobile.sdk.http.Headers.ContentType;
+import com.liferay.mobile.sdk.http.ContentType;
 import com.liferay.mobile.sdk.rx.OnCallSubscribe;
 
 import java.lang.annotation.Annotation;

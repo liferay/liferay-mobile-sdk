@@ -14,8 +14,8 @@
 
 package com.liferay.mobile.sdk;
 
+import com.liferay.mobile.sdk.http.ContentType;
 import com.liferay.mobile.sdk.http.Headers;
-import com.liferay.mobile.sdk.http.Headers.ContentType;
 import com.liferay.mobile.sdk.http.HttpClient;
 import com.liferay.mobile.sdk.http.OkHttpClientImpl;
 import com.liferay.mobile.sdk.http.Request;

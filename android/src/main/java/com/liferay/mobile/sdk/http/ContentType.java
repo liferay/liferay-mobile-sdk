@@ -12,24 +12,19 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.annotation;
-
-import com.liferay.mobile.sdk.http.ContentType;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+package com.liferay.mobile.sdk.http;
 
 /**
  * @author Bruno Farache
  */
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.TYPE, ElementType.METHOD })
-public @interface Path {
+public enum ContentType {
 
-	ContentType contentType() default ContentType.JSON;
+	JSON("application/json; charset=utf-8"), MULTIPART("multipart/form-data;");
 
-	String value();
+	ContentType(String value) {
+		this.value = value;
+	}
+
+	public final String value;
 
 }

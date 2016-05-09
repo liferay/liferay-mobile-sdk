@@ -33,17 +33,4 @@ public class Headers {
 
 	public static final String WWW_AUTHENTICATE = "WWW-Authenticate";
 
-	public enum ContentType {
-
-		JSON("application/json; charset=utf-8"),
-		MULTIPART("multipart/form-data;");
-
-		ContentType(String value) {
-			this.value = value;
-		}
-
-		public final String value;
-
-	}
-
 }
