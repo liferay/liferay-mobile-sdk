@@ -30,4 +30,7 @@ public interface GroupService {
 	@Path("/get-user-sites")
 	Observable<List<Site>> getUserSites();
 
+	@Path("/nonexistent")
+	Observable<List<Site>> nonexistent();
+
 }

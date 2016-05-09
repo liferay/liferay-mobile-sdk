@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.sdk;
 
+import com.liferay.mobile.sdk.exception.ServerException;
 import com.liferay.mobile.sdk.service.Site;
 import com.liferay.mobile.sdk.service.rx.GroupService;
 
@@ -45,8 +46,21 @@ public class ObservableGroupServiceTest extends BaseTest {
 		observable.subscribe(subscriber);
 
 		subscriber.assertNoErrors();
+		subscriber.assertCompleted();
 		subscriber.assertValues(
 			Arrays.asList(new Site("/test"), new Site("/guest")));
+	}
+
+	@Test
+	public void nonexistent() throws Exception {
+		GroupService service = ServiceBuilder.build(GroupService.class);
+		Observable<List<Site>> observable = service.nonexistent();
+		TestSubscriber<List<Site>> subscriber = new TestSubscriber<>();
+		observable.subscribe(subscriber);
+
+		subscriber.assertError(ServerException.class);
+		subscriber.assertNotCompleted();
+		subscriber.assertNoValues();
 	}
 
 }
