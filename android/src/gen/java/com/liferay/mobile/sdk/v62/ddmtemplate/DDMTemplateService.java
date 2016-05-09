@@ -5,7 +5,7 @@ import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.file.UploadData;
-import com.liferay.mobile.sdk.http.Headers;
+import com.liferay.mobile.sdk.http.ContentType;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Integer;
 import java.lang.String;
@@ -19,7 +19,7 @@ public interface DDMTemplateService {
 
   @Path(
       value = "/add-template",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<JSONObject> addTemplate(@Param("groupId") long groupId, @Param("classNameId") long classNameId, @Param("classPK") long classPK, @Param("templateKey") String templateKey, @ParamObject(name = "nameMap", className = "") JSONObject nameMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("type") String type, @Param("mode") String mode, @Param("language") String language, @Param("script") String script, @Param("cacheable") boolean cacheable, @Param("smallImage") boolean smallImage, @Param("smallImageURL") String smallImageURL, @Param("smallImageFile") UploadData smallImageFile, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
@@ -94,7 +94,7 @@ public interface DDMTemplateService {
 
   @Path(
       value = "/update-template",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<JSONObject> updateTemplate(@Param("templateId") long templateId, @Param("classPK") long classPK, @ParamObject(name = "nameMap", className = "") JSONObject nameMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("type") String type, @Param("mode") String mode, @Param("language") String language, @Param("script") String script, @Param("cacheable") boolean cacheable, @Param("smallImage") boolean smallImage, @Param("smallImageURL") String smallImageURL, @Param("smallImageFile") UploadData smallImageFile, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

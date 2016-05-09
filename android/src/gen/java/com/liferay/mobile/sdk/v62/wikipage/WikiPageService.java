@@ -5,7 +5,7 @@ import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.file.UploadData;
-import com.liferay.mobile.sdk.http.Headers;
+import com.liferay.mobile.sdk.http.ContentType;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Integer;
 import java.lang.String;
@@ -22,7 +22,7 @@ public interface WikiPageService {
 
   @Path(
       value = "/add-page-attachment",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<Response> addPageAttachment(@Param("nodeId") long nodeId, @Param("title") String title, @Param("fileName") String fileName, @Param("file") UploadData file, @Param("mimeType") String mimeType);
 

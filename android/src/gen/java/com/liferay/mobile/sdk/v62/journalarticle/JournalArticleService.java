@@ -5,7 +5,7 @@ import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.file.UploadData;
-import com.liferay.mobile.sdk.http.Headers;
+import com.liferay.mobile.sdk.http.ContentType;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Integer;
 import java.lang.String;
@@ -19,7 +19,7 @@ public interface JournalArticleService {
 
   @Path(
       value = "/add-article",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<JSONObject> addArticle(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("classNameId") long classNameId, @Param("classPK") long classPK, @Param("articleId") String articleId, @Param("autoArticleId") boolean autoArticleId, @ParamObject(name = "titleMap", className = "") JSONObject titleMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("content") String content, @Param("type") String type, @Param("ddmStructureKey") String ddmStructureKey, @Param("ddmTemplateKey") String ddmTemplateKey, @Param("layoutUuid") String layoutUuid, @Param("displayDateMonth") int displayDateMonth, @Param("displayDateDay") int displayDateDay, @Param("displayDateYear") int displayDateYear, @Param("displayDateHour") int displayDateHour, @Param("displayDateMinute") int displayDateMinute, @Param("expirationDateMonth") int expirationDateMonth, @Param("expirationDateDay") int expirationDateDay, @Param("expirationDateYear") int expirationDateYear, @Param("expirationDateHour") int expirationDateHour, @Param("expirationDateMinute") int expirationDateMinute, @Param("neverExpire") boolean neverExpire, @Param("reviewDateMonth") int reviewDateMonth, @Param("reviewDateDay") int reviewDateDay, @Param("reviewDateYear") int reviewDateYear, @Param("reviewDateHour") int reviewDateHour, @Param("reviewDateMinute") int reviewDateMinute, @Param("neverReview") boolean neverReview, @Param("indexable") boolean indexable, @Param("smallImage") boolean smallImage, @Param("smallImageURL") String smallImageURL, @Param("smallFile") UploadData smallFile, @ParamObject(name = "images", className = "") JSONObject images, @Param("articleURL") String articleURL, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
@@ -175,7 +175,7 @@ public interface JournalArticleService {
 
   @Path(
       value = "/update-article",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<JSONObject> updateArticle(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("articleId") String articleId, @Param("version") double version, @ParamObject(name = "titleMap", className = "") JSONObject titleMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("content") String content, @Param("type") String type, @Param("ddmStructureKey") String ddmStructureKey, @Param("ddmTemplateKey") String ddmTemplateKey, @Param("layoutUuid") String layoutUuid, @Param("displayDateMonth") int displayDateMonth, @Param("displayDateDay") int displayDateDay, @Param("displayDateYear") int displayDateYear, @Param("displayDateHour") int displayDateHour, @Param("displayDateMinute") int displayDateMinute, @Param("expirationDateMonth") int expirationDateMonth, @Param("expirationDateDay") int expirationDateDay, @Param("expirationDateYear") int expirationDateYear, @Param("expirationDateHour") int expirationDateHour, @Param("expirationDateMinute") int expirationDateMinute, @Param("neverExpire") boolean neverExpire, @Param("reviewDateMonth") int reviewDateMonth, @Param("reviewDateDay") int reviewDateDay, @Param("reviewDateYear") int reviewDateYear, @Param("reviewDateHour") int reviewDateHour, @Param("reviewDateMinute") int reviewDateMinute, @Param("neverReview") boolean neverReview, @Param("indexable") boolean indexable, @Param("smallImage") boolean smallImage, @Param("smallImageURL") String smallImageURL, @Param("smallFile") UploadData smallFile, @ParamObject(name = "images", className = "") JSONObject images, @Param("articleURL") String articleURL, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 

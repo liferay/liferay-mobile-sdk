@@ -4,7 +4,7 @@ import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.file.UploadData;
-import com.liferay.mobile.sdk.http.Headers;
+import com.liferay.mobile.sdk.http.ContentType;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.String;
 import org.json.JSONObject;
@@ -19,7 +19,7 @@ public interface LayoutSetService {
 
   @Path(
       value = "/update-logo",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<Response> updateLogo(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("logo") boolean logo, @Param("file") UploadData file);
 

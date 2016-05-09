@@ -5,7 +5,7 @@ import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.file.UploadData;
-import com.liferay.mobile.sdk.http.Headers;
+import com.liferay.mobile.sdk.http.ContentType;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Long;
 import java.lang.String;
@@ -97,37 +97,37 @@ public interface LayoutService {
 
   @Path(
       value = "/import-layouts",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<Response> importLayouts(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
 
   @Path(
       value = "/import-layouts-in-background",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<Long> importLayoutsInBackground(@Param("taskName") String taskName, @Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
 
   @Path(
       value = "/import-portlet-info",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<Response> importPortletInfo(@Param("portletId") String portletId, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
 
   @Path(
       value = "/import-portlet-info",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<Response> importPortletInfo(@Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
 
   @Path(
       value = "/import-portlet-info-in-background",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<Response> importPortletInfoInBackground(@Param("taskName") String taskName, @Param("portletId") String portletId, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
 
   @Path(
       value = "/import-portlet-info-in-background",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<Long> importPortletInfoInBackground(@Param("taskName") String taskName, @Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
 
@@ -181,13 +181,13 @@ public interface LayoutService {
 
   @Path(
       value = "/validate-import-layouts-file",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<JSONObject> validateImportLayoutsFile(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
 
   @Path(
       value = "/validate-import-portlet-info",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<JSONObject> validateImportPortletInfo(@Param("plid") long plid, @Param("groupId") long groupId, @Param("portletId") String portletId, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap, @Param("file") UploadData file);
 }

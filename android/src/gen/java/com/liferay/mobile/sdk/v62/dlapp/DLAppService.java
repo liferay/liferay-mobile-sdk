@@ -5,7 +5,7 @@ import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.file.UploadData;
-import com.liferay.mobile.sdk.http.Headers;
+import com.liferay.mobile.sdk.http.ContentType;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -20,7 +20,7 @@ public interface DLAppService {
 
   @Path(
       value = "/add-file-entry",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<JSONObject> addFileEntry(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("sourceFileName") String sourceFileName, @Param("mimeType") String mimeType, @Param("title") String title, @Param("description") String description, @Param("changeLog") String changeLog, @Param("file") UploadData file, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
@@ -32,7 +32,7 @@ public interface DLAppService {
 
   @Path(
       value = "/add-temp-file-entry",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<JSONObject> addTempFileEntry(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("fileName") String fileName, @Param("tempFolderName") String tempFolderName, @Param("file") UploadData file, @Param("mimeType") String mimeType);
 
@@ -323,13 +323,13 @@ public interface DLAppService {
 
   @Path(
       value = "/update-file-entry",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<JSONObject> updateFileEntry(@Param("fileEntryId") long fileEntryId, @Param("sourceFileName") String sourceFileName, @Param("mimeType") String mimeType, @Param("title") String title, @Param("description") String description, @Param("changeLog") String changeLog, @Param("majorVersion") boolean majorVersion, @Param("file") UploadData file, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path(
       value = "/update-file-entry-and-check-in",
-      contentType = Headers.ContentType.MULTIPART
+      contentType = ContentType.MULTIPART
   )
   Call<JSONObject> updateFileEntryAndCheckIn(@Param("fileEntryId") long fileEntryId, @Param("sourceFileName") String sourceFileName, @Param("mimeType") String mimeType, @Param("title") String title, @Param("description") String description, @Param("changeLog") String changeLog, @Param("majorVersion") boolean majorVersion, @Param("file") UploadData file, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
