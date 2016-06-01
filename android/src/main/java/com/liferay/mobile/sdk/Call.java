@@ -98,8 +98,6 @@ public class Call<T> {
 	}
 
 	protected Request request(Config config) {
-		config.header(Headers.CONTENT_TYPE, contentType.value);
-
 		String path = "/invoke";
 
 		if (contentType == ContentType.JSON) {
@@ -113,6 +111,7 @@ public class Call<T> {
 
 		return Request.url(config.url() + path)
 			.config(config)
+			.header(Headers.CONTENT_TYPE, contentType.value)
 			.body(body)
 			.tag(this);
 	}

@@ -16,6 +16,7 @@ package com.liferay.mobile.sdk.util;
 
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.Config;
+import com.liferay.mobile.sdk.Config.Builder;
 import com.liferay.mobile.sdk.ServiceBuilder;
 import com.liferay.mobile.sdk.http.Headers;
 import com.liferay.mobile.sdk.http.HttpClient;
@@ -34,33 +35,24 @@ public class PortalVersionUtil {
 
 		if (version == PortalVersion.UNKNOWN) {
 			try {
-				version = getBuilderNumber(config, Config.PATH_62);
+				version = getBuilderNumber(
+					config.newBuilder(), Builder.PATH_62);
 			}
 			catch (Exception e) {
-				version = getBuilderNumber(config, Config.PATH_61);
+				version = getBuilderNumber(
+					config.newBuilder(), Builder.PATH_61);
 			}
 		}
 
 		return version;
 	}
 
-	protected static int getBuilderNumber(Config config, String path)
+	protected static int getBuilderNumber(Builder builder, String path)
 		throws Exception {
 
-		config.path(path);
-
+		builder.path(path);
 		PortalService service = ServiceBuilder.build(PortalService.class);
-
-		int version = PortalVersion.UNKNOWN;
-
-		try {
-			version = service.getBuildNumber().execute(config);
-		}
-		finally {
-			config.path(Config.PATH_62);
-		}
-
-		return version;
+		return service.getBuildNumber().execute(builder.build());
 	}
 
 	protected static int getBuilderNumberHeader(Config config)

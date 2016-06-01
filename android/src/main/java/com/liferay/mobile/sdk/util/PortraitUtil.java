@@ -31,9 +31,6 @@ import java.net.URLEncoder;
 
 import java.security.MessageDigest;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.xml.bind.DatatypeConverter;
 
 /**
@@ -50,10 +47,10 @@ public class PortraitUtil {
 		String lastModified = null;
 
 		try {
-			Map<String, String> headers = new HashMap<>();
-
 			if (Validator.isNotNull(modifiedDate)) {
-				config.header(Headers.IF_MODIFIED_SINCE, modifiedDate);
+				config = config.newBuilder()
+					.header(Headers.IF_MODIFIED_SINCE, modifiedDate)
+					.build();
 			}
 
 			Response response = DownloadUtil.download(

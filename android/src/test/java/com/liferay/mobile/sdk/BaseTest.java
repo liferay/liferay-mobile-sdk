@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.sdk;
 
+import com.liferay.mobile.sdk.Config.Builder;
 import com.liferay.mobile.sdk.auth.Authentication;
 import com.liferay.mobile.sdk.auth.BasicAuthentication;
 import com.liferay.mobile.sdk.util.PropertiesUtil;
@@ -31,7 +32,7 @@ public abstract class BaseTest {
 		Authentication auth = new BasicAuthentication(
 			props.getLogin(), props.getPassword());
 
-		Config.global(Config.server(props.getUrl()).auth(auth));
+		Config.global(new Builder(props.getUrl()).auth(auth).build());
 	}
 
 	protected PropertiesUtil props;

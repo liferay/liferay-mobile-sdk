@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.sdk;
 
+import com.liferay.mobile.sdk.Config.Builder;
 import com.liferay.mobile.sdk.exception.ServerException;
 import com.liferay.mobile.sdk.v62.group.GroupService;
 
@@ -39,7 +40,8 @@ public class UnauthenticatedServiceTest extends BaseTest {
 		try {
 			GroupService service = ServiceBuilder.build(GroupService.class);
 			Call<JSONArray> call = service.getUserSites();
-			call.execute(Config.server(Config.global().server()));
+			Config global = Config.global();
+			call.execute(new Builder(global.server()).build());
 			fail();
 		}
 		catch (ServerException se) {

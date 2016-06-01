@@ -25,32 +25,8 @@ import java.util.Map;
  */
 public class Config {
 
-	public static final int DEFAULT_TIMEOUT = 15000;
-
-	public static final String PATH_61 = "api/secure/jsonws";
-
-	public static final String PATH_62 = "api/jsonws";
-
-	public static Config server(String server) {
-		Config config = new Config(server);
-		config.timeout(DEFAULT_TIMEOUT);
-		config.path(PATH_62);
-		config.responseValidator(new ResponseValidator());
-
-		return config;
-	}
-
 	public Authentication auth() {
 		return auth;
-	}
-
-	public Config auth(Authentication auth) {
-		this.auth = auth;
-		return this;
-	}
-
-	public Config clone() {
-		return new Config(this);
 	}
 
 	public synchronized static Config global() {
@@ -61,36 +37,20 @@ public class Config {
 		Config.global = global;
 	}
 
-	public Config header(String key, String value) {
-		headers.put(key, value);
-		return this;
-	}
-
 	public Map<String, String> headers() {
 		return new HashMap<>(headers);
 	}
 
-	public Config headers(Map<String, String> headers) {
-		this.headers = headers;
-		return this;
+	public Builder newBuilder() {
+		return new Builder(this);
 	}
 
 	public String path() {
 		return path;
 	}
 
-	public Config path(String path) {
-		this.path = path;
-		return this;
-	}
-
 	public ResponseValidator responseValidator() {
 		return responseValidator;
-	}
-
-	public Config responseValidator(ResponseValidator responseValidator) {
-		this.responseValidator = responseValidator;
-		return this;
 	}
 
 	public String server() {
@@ -99,11 +59,6 @@ public class Config {
 
 	public int timeout() {
 		return timeout;
-	}
-
-	public Config timeout(int timeout) {
-		this.timeout = timeout;
-		return this;
 	}
 
 	public String url() {
@@ -119,25 +74,90 @@ public class Config {
 		return sb.toString();
 	}
 
-	protected Config(Config config) {
-		this.auth = config.auth();
-		this.headers = config.headers();
-		this.path = config.path();
-		this.server = config.server();
-		this.timeout = config.timeout();
+	public static class Builder {
+
+		public static final int DEFAULT_TIMEOUT = 15000;
+
+		public static final String PATH_61 = "api/secure/jsonws";
+
+		public static final String PATH_62 = "api/jsonws";
+
+		public Builder(String server) {
+			this.headers = new HashMap<>();
+			this.path = PATH_62;
+			this.responseValidator = new ResponseValidator();
+			this.server = server;
+			this.timeout = DEFAULT_TIMEOUT;
+		}
+
+		protected Builder(Config config) {
+			this.auth = config.auth;
+			this.headers = config.headers;
+			this.path = config.path;
+			this.responseValidator = config.responseValidator;
+			this.server = config.server;
+			this.timeout = config.timeout;
+		}
+
+		public Builder auth(Authentication auth) {
+			this.auth = auth;
+			return this;
+		}
+
+		public Builder header(String key, String value) {
+			headers.put(key, value);
+			return this;
+		}
+
+		public Builder headers(Map<String, String> headers) {
+			this.headers = headers;
+			return this;
+		}
+
+		public Builder path(String path) {
+			this.path = path;
+			return this;
+		}
+
+		public Builder responseValidator(ResponseValidator responseValidator) {
+			this.responseValidator = responseValidator;
+			return this;
+		}
+
+		public Builder timeout(int timeout) {
+			this.timeout = timeout;
+			return this;
+		}
+
+		public Config build() {
+			return new Config(this);
+		}
+
+		protected Authentication auth;
+		protected Map<String, String> headers;
+		protected String path;
+		protected ResponseValidator responseValidator;
+		protected String server;
+		protected int timeout;
+
 	}
 
-	protected Config(String server) {
-		this.server = server;
+	protected Config(Builder builder) {
+		this.auth = builder.auth;
+		this.headers = new HashMap<>(builder.headers);
+		this.path = builder.path;
+		this.responseValidator = builder.responseValidator;
+		this.server = builder.server;
+		this.timeout = builder.timeout;
 	}
 
 	protected static Config global;
 
-	protected Authentication auth;
-	protected Map<String, String> headers = new HashMap<>();
-	protected String path;
-	protected ResponseValidator responseValidator;
-	protected String server;
-	protected int timeout;
+	protected final Authentication auth;
+	protected final Map<String, String> headers;
+	protected final String path;
+	protected final ResponseValidator responseValidator;
+	protected final String server;
+	protected final int timeout;
 
 }

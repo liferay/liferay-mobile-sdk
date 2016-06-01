@@ -15,6 +15,7 @@
 package com.liferay.mobile.sdk.http;
 
 import com.liferay.mobile.sdk.Config;
+import com.liferay.mobile.sdk.Config.Builder;
 import com.liferay.mobile.sdk.auth.Authentication;
 
 import java.util.HashMap;
@@ -28,7 +29,7 @@ public class Request {
 	public static Request url(String url) {
 		Request request = new Request(url);
 		request.tag(request);
-		request.timeout(Config.DEFAULT_TIMEOUT);
+		request.timeout(Builder.DEFAULT_TIMEOUT);
 		request.method(Method.POST);
 
 		return request;

@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.sdk;
 
+import com.liferay.mobile.sdk.Config.Builder;
 import com.liferay.mobile.sdk.v62.group.GroupService;
 
 import java.io.IOException;
@@ -35,7 +36,10 @@ public class ConnectionTimeoutTest {
 
 	@Test(expected = SocketTimeoutException.class)
 	public void connectionTimeoutException() throws Exception {
-		Config config = Config.server("http://www.liferay.com").timeout(5);
+		Config config = new Builder("http://www.liferay.com")
+			.timeout(5)
+			.build();
+
 		GroupService service = ServiceBuilder.build(GroupService.class);
 		Call<JSONArray> call = service.getUserSites();
 		call.execute(config);

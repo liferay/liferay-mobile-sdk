@@ -52,10 +52,7 @@ public class FileDownloadTest extends BaseTest {
 		JSONObject file = FileUploadTest.uploadPhoto(props);
 
 		try {
-			Config config = Config.global();
-			BasicAuthentication basic = (BasicAuthentication)config.auth();
-			config.auth(new DigestAuthentication(
-				basic.getUsername(), basic.getPassword()));
+			Config config = getDigestAuthenticationConfig();
 
 			String url = config.server() +
 				"/webdav/guest/document_library/" +
@@ -83,7 +80,7 @@ public class FileDownloadTest extends BaseTest {
 			};
 
 			Response response = DownloadUtil.download(
-				Config.global(), url, null, callback);
+				config, url, null, callback);
 
 			assertNotNull(response);
 			assertEquals(Status.OK, response.statusCode());
@@ -99,11 +96,7 @@ public class FileDownloadTest extends BaseTest {
 
 	@Test
 	public void downloadAsync() throws Exception {
-		Config config = Config.global();
-		BasicAuthentication basic = (BasicAuthentication)config.auth();
-
-		config.auth(
-			new DigestAuthentication(basic.getUsername(), basic.getPassword()));
+		Config config = getDigestAuthenticationConfig();
 
 		String url = config.server() + "/webdav/guest/document_library/" +
 			_file.getString(DLAppServiceTest.TITLE);
@@ -160,11 +153,7 @@ public class FileDownloadTest extends BaseTest {
 
 	@Test
 	public void downloadSync() throws Exception {
-		Config config = Config.global();
-		BasicAuthentication basic = (BasicAuthentication)config.auth();
-
-		config.auth(
-			new DigestAuthentication(basic.getUsername(), basic.getPassword()));
+		Config config = getDigestAuthenticationConfig();
 
 		String url = config.server() + "/webdav/guest/document_library/" +
 			_file.getString(DLAppServiceTest.TITLE);
@@ -246,6 +235,15 @@ public class FileDownloadTest extends BaseTest {
 			DLAppServiceTest test = new DLAppServiceTest();
 			test.deleteFileEntry(_file.getLong(DLAppServiceTest.FILE_ENTRY_ID));
 		}
+	}
+
+	protected Config getDigestAuthenticationConfig() {
+		Config global = Config.global();
+		BasicAuthentication basic = (BasicAuthentication)global.auth();
+		DigestAuthentication digest = new DigestAuthentication(
+			basic.getUsername(), basic.getPassword());
+
+		return global.newBuilder().auth(digest).build();
 	}
 
 	private JSONObject _file;
