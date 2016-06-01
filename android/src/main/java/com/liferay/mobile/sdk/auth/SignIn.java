@@ -115,7 +115,7 @@ public class SignIn {
 					"BasicAuthentication");
 		}
 
-		return ((BasicAuthentication)auth).getUsername();
+		return ((BasicAuthentication)auth).username();
 	}
 
 }

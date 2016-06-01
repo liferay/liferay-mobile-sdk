@@ -109,11 +109,12 @@ public class Call<T> {
 			body = jsonObject.optJSONObject(path);
 		}
 
-		return Request.url(config.url() + path)
+		return new Request.Builder(config.url() + path)
 			.config(config)
 			.header(Headers.CONTENT_TYPE, contentType.value)
 			.body(body)
-			.tag(this);
+			.tag(this)
+			.build();
 	}
 
 	protected static HttpClient client = new OkHttpClientImpl();

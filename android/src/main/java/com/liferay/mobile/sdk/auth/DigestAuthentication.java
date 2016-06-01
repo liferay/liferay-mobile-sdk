@@ -33,15 +33,18 @@ import org.apache.http.message.BasicHttpRequest;
 /**
  * @author Silvio Santos
  */
-public class DigestAuthentication extends BasicAuthentication
-	implements Authenticator {
+public class DigestAuthentication implements Authenticator, Authentication {
 
 	public DigestAuthentication(String username, String password) {
-		super(username, password);
+		this.username = username;
+		this.password = password;
 	}
 
 	@Override
-	public void authenticate(com.liferay.mobile.sdk.http.Request request) {
+	public com.liferay.mobile.sdk.http.Request authenticate(
+		com.liferay.mobile.sdk.http.Request request) {
+
+		return request;
 	}
 
 	@Override
@@ -83,5 +86,16 @@ public class DigestAuthentication extends BasicAuthentication
 
 		return null;
 	}
+
+	public String password() {
+		return password;
+	}
+
+	public String username() {
+		return username;
+	}
+
+	protected String password;
+	protected String username;
 
 }

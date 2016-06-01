@@ -15,7 +15,6 @@
 package com.liferay.mobile.sdk.http;
 
 import com.liferay.mobile.sdk.Config;
-import com.liferay.mobile.sdk.Config.Builder;
 import com.liferay.mobile.sdk.auth.Authentication;
 
 import java.util.HashMap;
@@ -26,96 +25,130 @@ import java.util.Map;
  */
 public class Request {
 
-	public static Request url(String url) {
-		Request request = new Request(url);
-		request.tag(request);
-		request.timeout(Builder.DEFAULT_TIMEOUT);
-		request.method(Method.POST);
-
-		return request;
-	}
-
 	public Authentication auth() {
 		return auth;
-	}
-
-	public Request auth(Authentication auth) {
-		this.auth = auth;
-		return this;
 	}
 
 	public Object body() {
 		return body;
 	}
 
-	public Request body(Object body) {
-		this.body = body;
-		return this;
-	}
-
-	public Request config(Config config) {
-		auth(config.auth());
-		headers(config.headers());
-		timeout(config.timeout());
-
-		return this;
-	}
-
-	public Request header(String key, String value) {
-		headers.put(key, value);
-		return this;
-	}
-
 	public Map<String, String> headers() {
-		return headers;
-	}
-
-	public Request headers(Map<String, String> headers) {
-		this.headers = new HashMap<>(headers);
-		return this;
+		return new HashMap<>(headers);
 	}
 
 	public Method method() {
 		return method;
 	}
 
-	public Request method(Method method) {
-		this.method = method;
-		return this;
+	public Builder newBuilder() {
+		return new Builder(this);
 	}
 
 	public Object tag() {
 		return tag;
 	}
 
-	public Request tag(Object tag) {
-		this.tag = tag;
-		return this;
-	}
-
 	public int timeout() {
 		return timeout;
-	}
-
-	public Request timeout(int timeout) {
-		this.timeout = timeout;
-		return this;
 	}
 
 	public String url() {
 		return url;
 	}
 
-	protected Request(String url) {
-		this.url = url;
+	public static class Builder {
+
+		public Builder(String url) {
+			this.method = Method.POST;
+			this.timeout = Config.Builder.DEFAULT_TIMEOUT;
+			this.url = url;
+			this.headers = new HashMap<>();
+		}
+
+		public Builder config(Config config) {
+			auth(config.auth());
+			headers(config.headers());
+			timeout(config.timeout());
+
+			return this;
+		}
+
+		public Request build() {
+			return new Request(this);
+		}
+
+		public Builder auth(Authentication auth) {
+			this.auth = auth;
+			return this;
+		}
+
+		public Builder body(Object body) {
+			this.body = body;
+			return this;
+		}
+
+		public Builder header(String key, String value) {
+			headers.put(key, value);
+			return this;
+		}
+
+		public Builder headers(Map<String, String> headers) {
+			this.headers = headers;
+			return this;
+		}
+
+		public Builder method(Method method) {
+			this.method = method;
+			return this;
+		}
+
+		public Builder tag(Object tag) {
+			this.tag = tag;
+			return this;
+		}
+
+		public Builder timeout(int timeout) {
+			this.timeout = timeout;
+			return this;
+		}
+
+		protected Builder(Request request) {
+			this.auth = request.auth;
+			this.body = request.body;
+			this.headers = request.headers;
+			this.method = request.method;
+			this.tag = request.tag;
+			this.timeout = request.timeout;
+			this.url = request.url;
+		}
+
+		protected Authentication auth;
+		protected Object body;
+		protected Map<String, String> headers;
+		protected Method method;
+		protected Object tag;
+		protected int timeout;
+		protected String url;
+
 	}
 
-	protected Authentication auth;
-	protected Object body;
-	protected Map<String, String> headers = new HashMap<>();
-	protected Method method;
-	protected Object tag;
-	protected int timeout;
-	protected String url;
+	protected Request(Builder builder) {
+		this.auth = builder.auth;
+		this.body = builder.body;
+		this.headers = new HashMap<>(builder.headers);
+		this.method = builder.method;
+		this.tag = (builder.tag != null) ? builder.tag : this;
+		this.timeout = builder.timeout;
+		this.url = builder.url;
+	}
+
+	protected final Authentication auth;
+	protected final Object body;
+	protected final Map<String, String> headers;
+	protected final Method method;
+	protected final Object tag;
+	protected final int timeout;
+	protected final String url;
 
 }

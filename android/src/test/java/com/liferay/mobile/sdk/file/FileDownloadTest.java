@@ -241,7 +241,7 @@ public class FileDownloadTest extends BaseTest {
 		Config global = Config.global();
 		BasicAuthentication basic = (BasicAuthentication)global.auth();
 		DigestAuthentication digest = new DigestAuthentication(
-			basic.getUsername(), basic.getPassword());
+			basic.username(), basic.password());
 
 		return global.newBuilder().auth(digest).build();
 	}

@@ -21,6 +21,6 @@ import com.liferay.mobile.sdk.http.Request;
  */
 public interface Authentication {
 
-	void authenticate(Request request) throws Exception;
+	Request authenticate(Request request) throws Exception;
 
 }

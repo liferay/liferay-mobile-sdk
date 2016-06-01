@@ -30,25 +30,19 @@ public class BasicAuthentication implements Authentication {
 	}
 
 	@Override
-	public void authenticate(Request request) {
-		request.header(
-			Headers.AUTHORIZATION, Credentials.basic(username, password));
+	public Request authenticate(Request request) {
+		return request.newBuilder()
+			.header(
+				Headers.AUTHORIZATION, Credentials.basic(username, password))
+			.build();
 	}
 
-	public String getPassword() {
+	public String password() {
 		return password;
 	}
 
-	public String getUsername() {
+	public String username() {
 		return username;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	protected String password;

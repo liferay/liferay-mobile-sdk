@@ -38,9 +38,10 @@ public class DownloadUtil {
 			FileProgressCallback progressCallback)
 		throws Exception {
 
-		Request request = Request.url(url)
+		Request request = new Request.Builder(url)
 			.method(Method.GET)
-			.config(config);
+			.config(config)
+			.build();
 
 		Object tag = request.tag();
 

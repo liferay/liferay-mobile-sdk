@@ -58,9 +58,10 @@ public class PortalVersionUtil {
 	protected static int getBuilderNumberHeader(Config config)
 		throws Exception {
 
-		Request request = Request.url(config.server())
+		Request request = new Request.Builder(config.server())
 			.method(Method.HEAD)
-			.config(config);
+			.config(config)
+			.build();
 
 		HttpClient client = Call.client();
 		Response response = client.sync(request);

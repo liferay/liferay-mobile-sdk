@@ -99,7 +99,7 @@ public class OkHttpClientImpl implements HttpClient {
 		}
 	}
 
-	protected void authenticate(OkHttpClient client, Request request)
+	protected Request authenticate(OkHttpClient client, Request request)
 		throws Exception {
 
 		Authentication authentication = request.auth();
@@ -109,9 +109,11 @@ public class OkHttpClientImpl implements HttpClient {
 				client.setAuthenticator((Authenticator)authentication);
 			}
 			else {
-				authentication.authenticate(request);
+				request = authentication.authenticate(request);
 			}
 		}
+
+		return request;
 	}
 
 	protected Call build(Request request) throws Exception {
@@ -143,8 +145,7 @@ public class OkHttpClientImpl implements HttpClient {
 		builder.tag(request.tag());
 
 		OkHttpClient client = getClient(request.timeout());
-
-		authenticate(client, request);
+		request = authenticate(client, request);
 		addHeaders(builder, request);
 
 		return client.newCall(builder.build());

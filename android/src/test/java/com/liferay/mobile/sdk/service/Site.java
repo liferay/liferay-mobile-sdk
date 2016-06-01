@@ -19,16 +19,13 @@ package com.liferay.mobile.sdk.service;
  */
 public class Site {
 
-	public Site() {
-	}
-
 	public Site(String friendlyURL) {
 		this.friendlyURL = friendlyURL;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null || !(obj instanceof Site)) {
+		if ((obj == null) || !(obj instanceof Site)) {
 			return false;
 		}
 
