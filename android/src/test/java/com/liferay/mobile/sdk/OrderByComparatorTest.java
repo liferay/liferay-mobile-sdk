@@ -15,7 +15,6 @@
 package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.annotation.Param;
-import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
 
 import java.io.IOException;
@@ -99,8 +98,8 @@ public class OrderByComparatorTest extends BaseTest {
 		Call<JSONArray> getEntries(
 			@Param(name = "groupId") long groupId,
 			@Param(name = "folderId") long folderId,
-			@Param(name = "start") int start,@Param(name = "end") int end,
-			@ParamObject(
+			@Param(name = "start") int start, @Param(name = "end") int end,
+			@Param(
 				name = "orderByComparator",
 				className = "com.liferay.portlet.bookmarks.util." +
 					"comparator.EntryNameComparator")

@@ -15,11 +15,11 @@
 package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.annotation.Param;
-import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Params;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.ContentType;
 import com.liferay.mobile.sdk.rx.OnCallSubscribe;
+import com.liferay.mobile.sdk.util.Validator;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationHandler;
@@ -108,29 +108,25 @@ public class ServiceBuilder {
 			Annotation[][] annotations = method.getParameterAnnotations();
 
 			for (int i = 0; i < annotations.length; i++) {
-				for (Annotation paramAnnotation : annotations[i]) {
+				for (Annotation annotation : annotations[i]) {
+					Param param = (Param)annotation;
+					String name = param.name();
+					String className = param.className();
 					Object value = args[i];
 
-					if (paramAnnotation instanceof Param) {
-						String name = ((Param)paramAnnotation).name();
-
+					if (Validator.isNull(className)) {
 						if (value == null) {
 							value = JSONObject.NULL;
 						}
 
 						params.put(name, value);
 					}
-					else if (paramAnnotation instanceof ParamObject) {
-						JSONObject param = (JSONObject)value;
-						ParamObject paramObject = (ParamObject)paramAnnotation;
-						String className = paramObject.className();
-
-						if (param != null) {
-							mangle(
-								paramObject.name(), className, param, params);
+					else {
+						if (value != null) {
+							mangle(name, className, (JSONObject)value, params);
 						}
 						else if (!className.equals(SERVICE_CONTEXT)) {
-							params.put(paramObject.name(), JSONObject.NULL);
+							params.put(name, JSONObject.NULL);
 						}
 					}
 				}

@@ -17,7 +17,6 @@ package com.liferay.mobile.sdk.java;
 import com.liferay.mobile.sdk.BaseBuilder;
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.annotation.Param;
-import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.file.UploadData;
 import com.liferay.mobile.sdk.http.Action;
@@ -96,7 +95,7 @@ public class JavaBuilder extends BaseBuilder {
 
 				if (type == JSONObject.class) {
 					parameterAnnotation = AnnotationSpec
-						.builder(ParamObject.class)
+						.builder(Param.class)
 						.addMember("name", "$S", parameterName)
 						.addMember(
 							"className", "$S",
