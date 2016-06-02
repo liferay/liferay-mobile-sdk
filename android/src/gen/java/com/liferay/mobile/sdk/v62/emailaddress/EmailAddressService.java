@@ -2,7 +2,6 @@ package com.liferay.mobile.sdk.v62.emailaddress;
 
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.annotation.Param;
-import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.String;
@@ -15,7 +14,7 @@ public interface EmailAddressService {
   Call<JSONObject> addEmailAddress(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "address") String address, @Param(name = "typeId") int typeId, @Param(name = "primary") boolean primary);
 
   @Path("/add-email-address")
-  Call<JSONObject> addEmailAddress(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "address") String address, @Param(name = "typeId") int typeId, @Param(name = "primary") boolean primary, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addEmailAddress(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "address") String address, @Param(name = "typeId") int typeId, @Param(name = "primary") boolean primary, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-email-address")
   Call<Response> deleteEmailAddress(@Param(name = "emailAddressId") long emailAddressId);

@@ -2,7 +2,6 @@ package com.liferay.mobile.sdk.v62.repository;
 
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.annotation.Param;
-import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.String;
@@ -12,7 +11,7 @@ import org.json.JSONObject;
 @Path("/repository")
 public interface RepositoryService {
   @Path("/add-repository")
-  Call<JSONObject> addRepository(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "portletId") String portletId, @ParamObject(name = "typeSettingsProperties", className = "com.liferay.portal.kernel.util.UnicodeProperties") JSONObject typeSettingsProperties, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addRepository(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "portletId") String portletId, @Param(name = "typeSettingsProperties", className = "com.liferay.portal.kernel.util.UnicodeProperties") JSONObject typeSettingsProperties, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/check-repository")
   Call<Response> checkRepository(@Param(name = "repositoryId") long repositoryId);

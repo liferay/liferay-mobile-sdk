@@ -2,7 +2,6 @@ package com.liferay.mobile.sdk.v62.mbthread;
 
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.annotation.Param;
-import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Integer;
@@ -67,7 +66,7 @@ public interface MBThreadService {
   Call<JSONObject> search(@Param(name = "groupId") long groupId, @Param(name = "creatorUserId") long creatorUserId, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/split-thread")
-  Call<JSONObject> splitThread(@Param(name = "messageId") long messageId, @Param(name = "subject") String subject, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> splitThread(@Param(name = "messageId") long messageId, @Param(name = "subject") String subject, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/unlock-thread")
   Call<Response> unlockThread(@Param(name = "threadId") long threadId);

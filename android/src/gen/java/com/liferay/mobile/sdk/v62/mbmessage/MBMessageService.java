@@ -2,7 +2,6 @@ package com.liferay.mobile.sdk.v62.mbmessage;
 
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.annotation.Param;
-import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Integer;
@@ -13,19 +12,19 @@ import org.json.JSONObject;
 @Path("/mbmessage")
 public interface MBMessageService {
   @Path("/add-discussion-message")
-  Call<JSONObject> addDiscussionMessage(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "permissionClassName") String permissionClassName, @Param(name = "permissionClassPK") long permissionClassPK, @Param(name = "permissionOwnerId") long permissionOwnerId, @Param(name = "threadId") long threadId, @Param(name = "parentMessageId") long parentMessageId, @Param(name = "subject") String subject, @Param(name = "body") String body, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addDiscussionMessage(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "permissionClassName") String permissionClassName, @Param(name = "permissionClassPK") long permissionClassPK, @Param(name = "permissionOwnerId") long permissionOwnerId, @Param(name = "threadId") long threadId, @Param(name = "parentMessageId") long parentMessageId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-message")
-  Call<JSONObject> addMessage(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "format") String format, @Param(name = "inputStreamOVPs") JSONArray inputStreamOVPs, @Param(name = "anonymous") boolean anonymous, @Param(name = "priority") double priority, @Param(name = "allowPingbacks") boolean allowPingbacks, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addMessage(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "format") String format, @Param(name = "inputStreamOVPs") JSONArray inputStreamOVPs, @Param(name = "anonymous") boolean anonymous, @Param(name = "priority") double priority, @Param(name = "allowPingbacks") boolean allowPingbacks, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-message")
-  Call<JSONObject> addMessage(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "threadId") long threadId, @Param(name = "parentMessageId") long parentMessageId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "format") String format, @Param(name = "inputStreamOVPs") JSONArray inputStreamOVPs, @Param(name = "anonymous") boolean anonymous, @Param(name = "priority") double priority, @Param(name = "allowPingbacks") boolean allowPingbacks, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addMessage(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "threadId") long threadId, @Param(name = "parentMessageId") long parentMessageId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "format") String format, @Param(name = "inputStreamOVPs") JSONArray inputStreamOVPs, @Param(name = "anonymous") boolean anonymous, @Param(name = "priority") double priority, @Param(name = "allowPingbacks") boolean allowPingbacks, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-message")
-  Call<JSONObject> addMessage(@Param(name = "categoryId") long categoryId, @Param(name = "subject") String subject, @Param(name = "body") String body, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addMessage(@Param(name = "categoryId") long categoryId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-message")
-  Call<JSONObject> addMessage(@Param(name = "parentMessageId") long parentMessageId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "format") String format, @Param(name = "inputStreamOVPs") JSONArray inputStreamOVPs, @Param(name = "anonymous") boolean anonymous, @Param(name = "priority") double priority, @Param(name = "allowPingbacks") boolean allowPingbacks, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addMessage(@Param(name = "parentMessageId") long parentMessageId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "format") String format, @Param(name = "inputStreamOVPs") JSONArray inputStreamOVPs, @Param(name = "anonymous") boolean anonymous, @Param(name = "priority") double priority, @Param(name = "allowPingbacks") boolean allowPingbacks, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-discussion-message")
   Call<Response> deleteDiscussionMessage(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "permissionClassName") String permissionClassName, @Param(name = "permissionClassPK") long permissionClassPK, @Param(name = "permissionOwnerId") long permissionOwnerId, @Param(name = "messageId") long messageId);
@@ -43,19 +42,19 @@ public interface MBMessageService {
   Call<Integer> getCategoryMessagesCount(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "status") int status);
 
   @Path("/get-category-messages-rss")
-  Call<String> getCategoryMessagesRss(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @ParamObject(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
+  Call<String> getCategoryMessagesRss(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @Param(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
 
   @Path("/get-company-messages-rss")
-  Call<String> getCompanyMessagesRss(@Param(name = "companyId") long companyId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @ParamObject(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
+  Call<String> getCompanyMessagesRss(@Param(name = "companyId") long companyId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @Param(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
 
   @Path("/get-group-messages-count")
   Call<Integer> getGroupMessagesCount(@Param(name = "groupId") long groupId, @Param(name = "status") int status);
 
   @Path("/get-group-messages-rss")
-  Call<String> getGroupMessagesRss(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @ParamObject(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
+  Call<String> getGroupMessagesRss(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @Param(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
 
   @Path("/get-group-messages-rss")
-  Call<String> getGroupMessagesRss(@Param(name = "groupId") long groupId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @ParamObject(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
+  Call<String> getGroupMessagesRss(@Param(name = "groupId") long groupId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @Param(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
 
   @Path("/get-message")
   Call<JSONObject> getMessage(@Param(name = "messageId") long messageId);
@@ -73,7 +72,7 @@ public interface MBMessageService {
   Call<Integer> getThreadMessagesCount(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "threadId") long threadId, @Param(name = "status") int status);
 
   @Path("/get-thread-messages-rss")
-  Call<String> getThreadMessagesRss(@Param(name = "threadId") long threadId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @ParamObject(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
+  Call<String> getThreadMessagesRss(@Param(name = "threadId") long threadId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @Param(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
 
   @Path("/restore-message-attachment-from-trash")
   Call<Response> restoreMessageAttachmentFromTrash(@Param(name = "messageId") long messageId, @Param(name = "fileName") String fileName);
@@ -88,8 +87,8 @@ public interface MBMessageService {
   Call<Response> updateAnswer(@Param(name = "messageId") long messageId, @Param(name = "answer") boolean answer, @Param(name = "cascade") boolean cascade);
 
   @Path("/update-discussion-message")
-  Call<JSONObject> updateDiscussionMessage(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "permissionClassName") String permissionClassName, @Param(name = "permissionClassPK") long permissionClassPK, @Param(name = "permissionOwnerId") long permissionOwnerId, @Param(name = "messageId") long messageId, @Param(name = "subject") String subject, @Param(name = "body") String body, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateDiscussionMessage(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "permissionClassName") String permissionClassName, @Param(name = "permissionClassPK") long permissionClassPK, @Param(name = "permissionOwnerId") long permissionOwnerId, @Param(name = "messageId") long messageId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-message")
-  Call<JSONObject> updateMessage(@Param(name = "messageId") long messageId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "inputStreamOVPs") JSONArray inputStreamOVPs, @Param(name = "existingFiles") JSONArray existingFiles, @Param(name = "priority") double priority, @Param(name = "allowPingbacks") boolean allowPingbacks, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateMessage(@Param(name = "messageId") long messageId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "inputStreamOVPs") JSONArray inputStreamOVPs, @Param(name = "existingFiles") JSONArray existingFiles, @Param(name = "priority") double priority, @Param(name = "allowPingbacks") boolean allowPingbacks, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

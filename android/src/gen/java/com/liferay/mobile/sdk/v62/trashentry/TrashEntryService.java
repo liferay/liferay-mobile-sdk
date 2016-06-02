@@ -2,7 +2,6 @@ package com.liferay.mobile.sdk.v62.trashentry;
 
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.annotation.Param;
-import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.String;
@@ -27,10 +26,10 @@ public interface TrashEntryService {
   Call<JSONObject> getEntries(@Param(name = "groupId") long groupId);
 
   @Path("/get-entries")
-  Call<JSONObject> getEntries(@Param(name = "groupId") long groupId, @Param(name = "start") int start, @Param(name = "end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONObject> getEntries(@Param(name = "groupId") long groupId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/move-entry")
-  Call<Response> moveEntry(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "destinationContainerModelId") long destinationContainerModelId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<Response> moveEntry(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "destinationContainerModelId") long destinationContainerModelId, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/restore-entry")
   Call<JSONObject> restoreEntry(@Param(name = "entryId") long entryId);

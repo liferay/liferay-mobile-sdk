@@ -2,7 +2,6 @@ package com.liferay.mobile.sdk.v62.scframeworkversion;
 
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.annotation.Param;
-import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.String;
@@ -12,7 +11,7 @@ import org.json.JSONObject;
 @Path("/scframeworkversion")
 public interface SCFrameworkVersionService {
   @Path("/add-framework-version")
-  Call<JSONObject> addFrameworkVersion(@Param(name = "name") String name, @Param(name = "url") String url, @Param(name = "active") boolean active, @Param(name = "priority") int priority, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addFrameworkVersion(@Param(name = "name") String name, @Param(name = "url") String url, @Param(name = "active") boolean active, @Param(name = "priority") int priority, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-framework-version")
   Call<Response> deleteFrameworkVersion(@Param(name = "frameworkVersionId") long frameworkVersionId);
