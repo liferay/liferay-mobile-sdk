@@ -16,7 +16,6 @@ package com.liferay.mobile.sdk.http;
 
 import java.io.InputStream;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,18 +31,24 @@ public class Response {
 	}
 
 	public String bodyAsString() throws Exception {
-		return response.body().string();
+		if (bodyAsString == null) {
+			bodyAsString = response.body().string();
+		}
+
+		return bodyAsString;
 	}
 
 	public Map<String, String> headers() {
-		Map<String, List<String>> headers = response.headers().toMultimap();
-		Map<String, String> map = new HashMap<>();
+		if (headers == null) {
+			headers = new HashMap<>();
+			Map<String, List<String>> map = response.headers().toMultimap();
 
-		for (Entry<String, List<String>> header : headers.entrySet()) {
-			map.put(header.getKey(), header.getValue().get(0));
+			for (Entry<String, List<String>> header : map.entrySet()) {
+				headers.put(header.getKey(), header.getValue().get(0));
+			}
 		}
 
-		return Collections.unmodifiableMap(map);
+		return new HashMap<>(headers);
 	}
 
 	public Builder newBuilder() {
@@ -76,6 +81,8 @@ public class Response {
 		this.response = builder.response;
 	}
 
+	protected String bodyAsString;
+	protected Map<String, String> headers;
 	protected final com.squareup.okhttp.Response response;
 
 }
