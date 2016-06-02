@@ -67,7 +67,7 @@ public abstract class Callback<T> {
 				return;
 			}
 
-			String json = validator.validateBody(response.body());
+			String json = validator.validateBody(response.bodyAsString());
 			T result = JSONParser.fromJSON(json, type);
 			doInBackground(result);
 			doSuccess(result);

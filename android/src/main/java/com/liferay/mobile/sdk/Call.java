@@ -83,7 +83,7 @@ public class Call<T> {
 			return (T)response;
 		}
 
-		String json = validator.validateBody(response.body());
+		String json = validator.validateBody(response.bodyAsString());
 		return JSONParser.fromJSON(json, type);
 	}
 

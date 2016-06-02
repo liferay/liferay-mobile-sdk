@@ -72,7 +72,7 @@ public class OkHttpClientImpl implements HttpClient {
 			public void onResponse(com.squareup.okhttp.Response response)
 				throws IOException {
 
-				callback.inBackground(new Response(response));
+				callback.inBackground(new Response.Builder(response).build());
 			}
 
 		});
@@ -86,7 +86,7 @@ public class OkHttpClientImpl implements HttpClient {
 	@Override
 	public Response sync(Request request) throws Exception {
 		Call call = build(request);
-		return new Response(call.execute());
+		return new Response.Builder(call.execute()).build();
 	}
 
 	protected void addHeaders(Builder builder, Request request) {

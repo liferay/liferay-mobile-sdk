@@ -27,20 +27,12 @@ import java.util.Map.Entry;
  */
 public class Response {
 
-	public Response() {
-		this(null);
-	}
-
-	public Response(com.squareup.okhttp.Response response) {
-		this.response = response;
-	}
-
-	public String body() throws Exception {
-		return response.body().string();
-	}
-
 	public InputStream bodyAsStream() throws Exception {
 		return response.body().byteStream();
+	}
+
+	public String bodyAsString() throws Exception {
+		return response.body().string();
 	}
 
 	public Map<String, String> headers() {
@@ -54,10 +46,36 @@ public class Response {
 		return Collections.unmodifiableMap(map);
 	}
 
+	public Builder newBuilder() {
+		return new Builder(this);
+	}
+
 	public int statusCode() {
 		return response.code();
 	}
 
-	protected com.squareup.okhttp.Response response;
+	public static class Builder {
+
+		public Builder(com.squareup.okhttp.Response response) {
+			this.response = response;
+		}
+
+		public Builder(Response response) {
+			this.response = response.response;
+		}
+
+		public Response build() {
+			return new Response(this);
+		}
+
+		protected com.squareup.okhttp.Response response;
+
+	}
+
+	protected Response(Builder builder) {
+		this.response = builder.response;
+	}
+
+	protected final com.squareup.okhttp.Response response;
 
 }

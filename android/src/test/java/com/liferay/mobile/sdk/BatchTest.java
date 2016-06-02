@@ -44,7 +44,7 @@ public class BatchTest extends BaseTest {
 		Response response = Batch.execute(
 			service.getUserSites(), service.getUserSites());
 
-		List sites = JSONParser.fromJSON(response.body(), List.class);
+		List sites = JSONParser.fromJSON(response.bodyAsString(), List.class);
 		assertEquals(2, sites.size());
 
 		GroupServiceTest.assertUserSitesAsMap(
@@ -65,7 +65,7 @@ public class BatchTest extends BaseTest {
 			public void onSuccess(Response response) {
 				try {
 					List sites = JSONParser.fromJSON(
-						response.body(), List.class);
+						response.bodyAsString(), List.class);
 
 					assertEquals(2, sites.size());
 
