@@ -14,6 +14,8 @@
 
 package com.liferay.mobile.sdk;
 
+import com.liferay.mobile.sdk.annotation.Default;
+import com.liferay.mobile.sdk.annotation.Defaults;
 import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.ParamObject;
 import com.liferay.mobile.sdk.annotation.Path;
@@ -102,6 +104,8 @@ public class ServiceBuilder {
 			throws JSONException {
 
 			JSONObject params = new JSONObject();
+			addDefaultParams(method, params);
+
 			Annotation[][] annotations = method.getParameterAnnotations();
 
 			for (int i = 0; i < annotations.length; i++) {
@@ -134,6 +138,32 @@ public class ServiceBuilder {
 			}
 
 			return params;
+		}
+
+		protected void addDefaultParams(Method method, JSONObject jsonObject)
+			throws JSONException {
+
+			Default defaultParam = method.getAnnotation(Default.class);
+
+			if (defaultParam != null) {
+				addDefaultParam(jsonObject, defaultParam);
+			}
+
+			Defaults defaultParams = method.getAnnotation(Defaults.class);
+
+			if (defaultParams != null) {
+				Default[] params = defaultParams.value();
+
+				for (Default param : params) {
+					addDefaultParam(jsonObject, param);
+				}
+			}
+		}
+
+		protected void addDefaultParam(JSONObject params, Default defaultParam)
+			throws JSONException {
+
+			params.put(defaultParam.name(), defaultParam.value());
 		}
 
 		protected String path(Method method) {
