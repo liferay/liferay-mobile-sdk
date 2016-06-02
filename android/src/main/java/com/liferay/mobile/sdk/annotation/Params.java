@@ -24,8 +24,8 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.METHOD })
-public @interface Defaults {
+public @interface Params {
 
-	Default[] value() default {};
+	Param[] value() default {};
 
 }

@@ -22,6 +22,6 @@ import com.liferay.mobile.sdk.annotation.Param;
  */
 public interface UserService {
 
-	Call<Integer> getCompanyUsersCount(@Param("companyId") long companyId);
+	Call<Integer> getCompanyUsersCount(@Param(name = "companyId") long companyId);
 
 }

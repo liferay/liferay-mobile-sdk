@@ -14,10 +14,9 @@
 
 package com.liferay.mobile.sdk;
 
-import com.liferay.mobile.sdk.annotation.Default;
-import com.liferay.mobile.sdk.annotation.Defaults;
 import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.ParamObject;
+import com.liferay.mobile.sdk.annotation.Params;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.ContentType;
 import com.liferay.mobile.sdk.rx.OnCallSubscribe;
@@ -113,7 +112,7 @@ public class ServiceBuilder {
 					Object value = args[i];
 
 					if (paramAnnotation instanceof Param) {
-						String name = ((Param)paramAnnotation).value();
+						String name = ((Param)paramAnnotation).name();
 
 						if (value == null) {
 							value = JSONObject.NULL;
@@ -143,24 +142,24 @@ public class ServiceBuilder {
 		protected void addDefaultParams(Method method, JSONObject jsonObject)
 			throws JSONException {
 
-			Default defaultParam = method.getAnnotation(Default.class);
+			Param defaultParam = method.getAnnotation(Param.class);
 
 			if (defaultParam != null) {
 				addDefaultParam(jsonObject, defaultParam);
 			}
 
-			Defaults defaultParams = method.getAnnotation(Defaults.class);
+			Params defaultParams = method.getAnnotation(Params.class);
 
 			if (defaultParams != null) {
-				Default[] params = defaultParams.value();
+				Param[] params = defaultParams.value();
 
-				for (Default param : params) {
+				for (Param param : params) {
 					addDefaultParam(jsonObject, param);
 				}
 			}
 		}
 
-		protected void addDefaultParam(JSONObject params, Default defaultParam)
+		protected void addDefaultParam(JSONObject params, Param defaultParam)
 			throws JSONException {
 
 			params.put(defaultParam.name(), defaultParam.value());

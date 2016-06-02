@@ -14,9 +14,8 @@
 
 package com.liferay.mobile.sdk;
 
-import com.liferay.mobile.sdk.annotation.Default;
-import com.liferay.mobile.sdk.annotation.Defaults;
 import com.liferay.mobile.sdk.annotation.Param;
+import com.liferay.mobile.sdk.annotation.Params;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.service.Site;
 
@@ -45,7 +44,7 @@ public class DefaultParamsTest extends BaseTest {
 	@Test
 	public void getGroupWithCompanyId() throws Exception {
 		GroupService service = ServiceBuilder.build(GroupService.class);
-		Site site = service.getGroupWithCompanyId("Guest").execute();
+		Site site = service.getGroupWithName("Guest").execute();
 		assertEquals(props.getGroupId(), site.groupId);
 	}
 
@@ -60,21 +59,21 @@ public class DefaultParamsTest extends BaseTest {
 	public interface GroupService {
 
 		@Path("/get-group")
-		@Default(name = "groupId", value = "10184")
+		@Param(name = "groupId", value = "10184")
 		Call<Site> getGroup();
 
 		@Path("/get-group")
-		@Defaults( {
-			@Default(name = "companyId", value = "10157"),
-			@Default(name = "name", value = "Guest")
+		@Params( {
+			@Param(name = "companyId", value = "10157"),
+			@Param(name = "name", value = "Guest")
 		})
 		Call<Site> getGroupWithCompanyIdAndName();
 
 		@Path("/get-group")
-		@Defaults( {
-			@Default(name = "companyId", value = "10157"),
+		@Params( {
+			@Param(name = "companyId", value = "10157"),
 		})
-		Call<Site> getGroupWithCompanyId(@Param("name") String name);
+		Call<Site> getGroupWithName(@Param(name = "name") String name);
 
 	}
 

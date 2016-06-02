@@ -97,8 +97,9 @@ public class OrderByComparatorTest extends BaseTest {
 
 		@Path("/get-entries")
 		Call<JSONArray> getEntries(
-			@Param("groupId") long groupId, @Param("folderId") long folderId,
-			@Param("start") int start, @Param("end") int end,
+			@Param(name = "groupId") long groupId,
+			@Param(name = "folderId") long folderId,
+			@Param(name = "start") int start,@Param(name = "end") int end,
 			@ParamObject(
 				name = "orderByComparator",
 				className = "com.liferay.portlet.bookmarks.util." +

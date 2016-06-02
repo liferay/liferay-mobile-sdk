@@ -25,15 +25,17 @@ import com.liferay.mobile.sdk.annotation.Path;
 public interface UserServiceFullyAnnotated {
 
 	@Path("/get-company-users-count")
-	Call<Integer> getCompanyUsersCount(@Param("companyId") long companyId);
+	Call<Integer> getCompanyUsersCount(
+		@Param(name = "companyId") long companyId);
 
 	@Path("/get-user-id-by-email-address")
 	Call<Long> getUserIdByEmailAddress(
-		@Param("companyId") long companyId,
-		@Param("emailAddress") String emailAddress);
+		@Param(name = "companyId") long companyId,
+		@Param(name = "emailAddress") String emailAddress);
 
 	@Path("/has-group-user")
 	Call<Boolean> hasGroupUser(
-		@Param("groupId") long groupId, @Param("userId") long userId);
+		@Param(name = "groupId") long groupId,
+		@Param(name = "userId") long userId);
 
 }

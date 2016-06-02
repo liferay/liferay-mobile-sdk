@@ -106,7 +106,7 @@ public class JavaBuilder extends BaseBuilder {
 				else {
 					parameterAnnotation = AnnotationSpec
 						.builder(Param.class)
-						.addMember("value", "$S", parameterName)
+						.addMember("name", "$S", parameterName)
 						.build();
 				}
 
