@@ -9,8 +9,8 @@ import java.lang.String;
 @Path("/backgroundtask")
 public interface BackgroundTaskService {
   @Path("/get-background-task-status-json")
-  Call<String> getBackgroundTaskStatusJson(@Param("backgroundTaskId") long backgroundTaskId);
+  Call<String> getBackgroundTaskStatusJson(@Param(name = "backgroundTaskId") long backgroundTaskId);
 
   @Path("/get-background-tasks-count")
-  Call<Integer> getBackgroundTasksCount(@Param("groupId") long groupId, @Param("taskExecutorClassName") String taskExecutorClassName, @Param("completed") String completed);
+  Call<Integer> getBackgroundTasksCount(@Param(name = "groupId") long groupId, @Param(name = "taskExecutorClassName") String taskExecutorClassName, @Param(name = "completed") String completed);
 }

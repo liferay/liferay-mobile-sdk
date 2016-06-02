@@ -9,5 +9,5 @@ import org.json.JSONObject;
 @Path("/announcementsdelivery")
 public interface AnnouncementsDeliveryService {
   @Path("/update-delivery")
-  Call<JSONObject> updateDelivery(@Param("userId") long userId, @Param("type") String type, @Param("email") boolean email, @Param("sms") boolean sms, @Param("website") boolean website);
+  Call<JSONObject> updateDelivery(@Param(name = "userId") long userId, @Param(name = "type") String type, @Param(name = "email") boolean email, @Param(name = "sms") boolean sms, @Param(name = "website") boolean website);
 }

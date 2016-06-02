@@ -17,19 +17,19 @@ public interface PortalService {
   Call<Integer> getBuildNumber();
 
   @Path("/test-add-class-name-and-test-transaction-portlet-bar_-portal-rollback")
-  Call<Response> testAddClassNameAndTestTransactionPortletBar_PortalRollback(@Param("transactionPortletBarText") String transactionPortletBarText);
+  Call<Response> testAddClassNameAndTestTransactionPortletBar_PortalRollback(@Param(name = "transactionPortletBarText") String transactionPortletBarText);
 
   @Path("/test-add-class-name-and-test-transaction-portlet-bar_-portlet-rollback")
-  Call<Response> testAddClassNameAndTestTransactionPortletBar_PortletRollback(@Param("transactionPortletBarText") String transactionPortletBarText);
+  Call<Response> testAddClassNameAndTestTransactionPortletBar_PortletRollback(@Param(name = "transactionPortletBarText") String transactionPortletBarText);
 
   @Path("/test-add-class-name-and-test-transaction-portlet-bar_-success")
-  Call<Response> testAddClassNameAndTestTransactionPortletBar_Success(@Param("transactionPortletBarText") String transactionPortletBarText);
+  Call<Response> testAddClassNameAndTestTransactionPortletBar_Success(@Param(name = "transactionPortletBarText") String transactionPortletBarText);
 
   @Path("/test-add-class-name_-rollback")
-  Call<Response> testAddClassName_Rollback(@Param("classNameValue") String classNameValue);
+  Call<Response> testAddClassName_Rollback(@Param(name = "classNameValue") String classNameValue);
 
   @Path("/test-add-class-name_-success")
-  Call<Response> testAddClassName_Success(@Param("classNameValue") String classNameValue);
+  Call<Response> testAddClassName_Success(@Param(name = "classNameValue") String classNameValue);
 
   @Path("/test-auto-sync-hibernate-session-state-on-tx-creation")
   Call<Response> testAutoSyncHibernateSessionStateOnTxCreation();

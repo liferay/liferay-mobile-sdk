@@ -16,335 +16,335 @@ import org.json.JSONObject;
 @Path("/dlapp")
 public interface DLAppService {
   @Path("/add-file-entry")
-  Call<JSONObject> addFileEntry(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("sourceFileName") String sourceFileName, @Param("mimeType") String mimeType, @Param("title") String title, @Param("description") String description, @Param("changeLog") String changeLog, @Param("bytes") byte[] bytes, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addFileEntry(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "sourceFileName") String sourceFileName, @Param(name = "mimeType") String mimeType, @Param(name = "title") String title, @Param(name = "description") String description, @Param(name = "changeLog") String changeLog, @Param(name = "bytes") byte[] bytes, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path(
       value = "/add-file-entry",
       contentType = ContentType.MULTIPART
   )
-  Call<JSONObject> addFileEntry(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("sourceFileName") String sourceFileName, @Param("mimeType") String mimeType, @Param("title") String title, @Param("description") String description, @Param("changeLog") String changeLog, @Param("file") UploadData file, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addFileEntry(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "sourceFileName") String sourceFileName, @Param(name = "mimeType") String mimeType, @Param(name = "title") String title, @Param(name = "description") String description, @Param(name = "changeLog") String changeLog, @Param(name = "file") UploadData file, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-file-shortcut")
-  Call<JSONObject> addFileShortcut(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("toFileEntryId") long toFileEntryId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addFileShortcut(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "toFileEntryId") long toFileEntryId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-folder")
-  Call<JSONObject> addFolder(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId, @Param("name") String name, @Param("description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addFolder(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path(
       value = "/add-temp-file-entry",
       contentType = ContentType.MULTIPART
   )
-  Call<JSONObject> addTempFileEntry(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("fileName") String fileName, @Param("tempFolderName") String tempFolderName, @Param("file") UploadData file, @Param("mimeType") String mimeType);
+  Call<JSONObject> addTempFileEntry(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "fileName") String fileName, @Param(name = "tempFolderName") String tempFolderName, @Param(name = "file") UploadData file, @Param(name = "mimeType") String mimeType);
 
   @Path("/cancel-check-out")
-  Call<Response> cancelCheckOut(@Param("fileEntryId") long fileEntryId);
+  Call<Response> cancelCheckOut(@Param(name = "fileEntryId") long fileEntryId);
 
   @Path("/check-in-file-entry")
-  Call<Response> checkInFileEntry(@Param("fileEntryId") long fileEntryId, @Param("lockUuid") String lockUuid);
+  Call<Response> checkInFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "lockUuid") String lockUuid);
 
   @Path("/check-in-file-entry")
-  Call<Response> checkInFileEntry(@Param("fileEntryId") long fileEntryId, @Param("lockUuid") String lockUuid, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<Response> checkInFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "lockUuid") String lockUuid, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/check-in-file-entry")
-  Call<Response> checkInFileEntry(@Param("fileEntryId") long fileEntryId, @Param("majorVersion") boolean majorVersion, @Param("changeLog") String changeLog, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<Response> checkInFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "majorVersion") boolean majorVersion, @Param(name = "changeLog") String changeLog, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/check-out-file-entry")
-  Call<Response> checkOutFileEntry(@Param("fileEntryId") long fileEntryId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<Response> checkOutFileEntry(@Param(name = "fileEntryId") long fileEntryId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/check-out-file-entry")
-  Call<JSONObject> checkOutFileEntry(@Param("fileEntryId") long fileEntryId, @Param("owner") String owner, @Param("expirationTime") long expirationTime, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> checkOutFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "owner") String owner, @Param(name = "expirationTime") long expirationTime, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/copy-folder")
-  Call<JSONObject> copyFolder(@Param("repositoryId") long repositoryId, @Param("sourceFolderId") long sourceFolderId, @Param("parentFolderId") long parentFolderId, @Param("name") String name, @Param("description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> copyFolder(@Param(name = "repositoryId") long repositoryId, @Param(name = "sourceFolderId") long sourceFolderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-file-entry")
-  Call<Response> deleteFileEntry(@Param("fileEntryId") long fileEntryId);
+  Call<Response> deleteFileEntry(@Param(name = "fileEntryId") long fileEntryId);
 
   @Path("/delete-file-entry-by-title")
-  Call<Response> deleteFileEntryByTitle(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("title") String title);
+  Call<Response> deleteFileEntryByTitle(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "title") String title);
 
   @Path("/delete-file-shortcut")
-  Call<Response> deleteFileShortcut(@Param("fileShortcutId") long fileShortcutId);
+  Call<Response> deleteFileShortcut(@Param(name = "fileShortcutId") long fileShortcutId);
 
   @Path("/delete-file-version")
-  Call<Response> deleteFileVersion(@Param("fileEntryId") long fileEntryId, @Param("version") String version);
+  Call<Response> deleteFileVersion(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "version") String version);
 
   @Path("/delete-folder")
-  Call<Response> deleteFolder(@Param("folderId") long folderId);
+  Call<Response> deleteFolder(@Param(name = "folderId") long folderId);
 
   @Path("/delete-folder")
-  Call<Response> deleteFolder(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId, @Param("name") String name);
+  Call<Response> deleteFolder(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name);
 
   @Path("/delete-temp-file-entry")
-  Call<Response> deleteTempFileEntry(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("fileName") String fileName, @Param("tempFolderName") String tempFolderName);
+  Call<Response> deleteTempFileEntry(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "fileName") String fileName, @Param(name = "tempFolderName") String tempFolderName);
 
   @Path("/get-file-entries")
-  Call<JSONArray> getFileEntries(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId);
+  Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId);
 
   @Path("/get-file-entries")
-  Call<JSONArray> getFileEntries(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("fileEntryTypeId") long fileEntryTypeId);
+  Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "fileEntryTypeId") long fileEntryTypeId);
 
   @Path("/get-file-entries")
-  Call<JSONArray> getFileEntries(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("mimeTypes") JSONArray mimeTypes);
+  Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes);
 
   @Path("/get-file-entries")
-  Call<JSONArray> getFileEntries(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-file-entries")
-  Call<JSONArray> getFileEntries(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("fileEntryTypeId") long fileEntryTypeId, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "fileEntryTypeId") long fileEntryTypeId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-file-entries")
-  Call<JSONArray> getFileEntries(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "start") int start, @Param(name = "end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-file-entries")
-  Call<JSONArray> getFileEntries(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("fileEntryTypeId") long fileEntryTypeId, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "fileEntryTypeId") long fileEntryTypeId, @Param(name = "start") int start, @Param(name = "end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-file-entries-and-file-shortcuts")
-  Call<JSONArray> getFileEntriesAndFileShortcuts(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("status") int status, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getFileEntriesAndFileShortcuts(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-file-entries-and-file-shortcuts-count")
-  Call<Integer> getFileEntriesAndFileShortcutsCount(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("status") int status);
+  Call<Integer> getFileEntriesAndFileShortcutsCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "status") int status);
 
   @Path("/get-file-entries-and-file-shortcuts-count")
-  Call<Integer> getFileEntriesAndFileShortcutsCount(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("status") int status, @Param("mimeTypes") JSONArray mimeTypes);
+  Call<Integer> getFileEntriesAndFileShortcutsCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "mimeTypes") JSONArray mimeTypes);
 
   @Path("/get-file-entries-count")
-  Call<Integer> getFileEntriesCount(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId);
+  Call<Integer> getFileEntriesCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId);
 
   @Path("/get-file-entries-count")
-  Call<Integer> getFileEntriesCount(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("fileEntryTypeId") long fileEntryTypeId);
+  Call<Integer> getFileEntriesCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "fileEntryTypeId") long fileEntryTypeId);
 
   @Path("/get-file-entry")
-  Call<JSONObject> getFileEntry(@Param("fileEntryId") long fileEntryId);
+  Call<JSONObject> getFileEntry(@Param(name = "fileEntryId") long fileEntryId);
 
   @Path("/get-file-entry")
-  Call<JSONObject> getFileEntry(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("title") String title);
+  Call<JSONObject> getFileEntry(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "title") String title);
 
   @Path("/get-file-entry-by-uuid-and-group-id")
-  Call<JSONObject> getFileEntryByUuidAndGroupId(@Param("uuid") String uuid, @Param("groupId") long groupId);
+  Call<JSONObject> getFileEntryByUuidAndGroupId(@Param(name = "uuid") String uuid, @Param(name = "groupId") long groupId);
 
   @Path("/get-file-shortcut")
-  Call<JSONObject> getFileShortcut(@Param("fileShortcutId") long fileShortcutId);
+  Call<JSONObject> getFileShortcut(@Param(name = "fileShortcutId") long fileShortcutId);
 
   @Path("/get-folder")
-  Call<JSONObject> getFolder(@Param("folderId") long folderId);
+  Call<JSONObject> getFolder(@Param(name = "folderId") long folderId);
 
   @Path("/get-folder")
-  Call<JSONObject> getFolder(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId, @Param("name") String name);
+  Call<JSONObject> getFolder(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name);
 
   @Path("/get-folders")
-  Call<JSONArray> getFolders(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId);
+  Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId);
 
   @Path("/get-folders")
-  Call<JSONArray> getFolders(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId, @Param("includeMountFolders") boolean includeMountFolders);
+  Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "includeMountFolders") boolean includeMountFolders);
 
   @Path("/get-folders")
-  Call<JSONArray> getFolders(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-folders")
-  Call<JSONArray> getFolders(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId, @Param("includeMountFolders") boolean includeMountFolders, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-folders")
-  Call<JSONArray> getFolders(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "start") int start, @Param(name = "end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-folders")
-  Call<JSONArray> getFolders(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId, @Param("includeMountFolders") boolean includeMountFolders, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-folders")
-  Call<JSONArray> getFolders(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId, @Param("status") int status, @Param("includeMountFolders") boolean includeMountFolders, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "status") int status, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-folders-and-file-entries-and-file-shortcuts")
-  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("status") int status, @Param("includeMountFolders") boolean includeMountFolders, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-folders-and-file-entries-and-file-shortcuts")
-  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("status") int status, @Param("includeMountFolders") boolean includeMountFolders, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-folders-and-file-entries-and-file-shortcuts")
-  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("status") int status, @Param("mimeTypes") JSONArray mimeTypes, @Param("includeMountFolders") boolean includeMountFolders, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-folders-and-file-entries-and-file-shortcuts-count")
-  Call<Integer> getFoldersAndFileEntriesAndFileShortcutsCount(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("status") int status, @Param("includeMountFolders") boolean includeMountFolders);
+  Call<Integer> getFoldersAndFileEntriesAndFileShortcutsCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "includeMountFolders") boolean includeMountFolders);
 
   @Path("/get-folders-and-file-entries-and-file-shortcuts-count")
-  Call<Integer> getFoldersAndFileEntriesAndFileShortcutsCount(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("status") int status, @Param("mimeTypes") JSONArray mimeTypes, @Param("includeMountFolders") boolean includeMountFolders);
+  Call<Integer> getFoldersAndFileEntriesAndFileShortcutsCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "includeMountFolders") boolean includeMountFolders);
 
   @Path("/get-folders-count")
-  Call<Integer> getFoldersCount(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId);
+  Call<Integer> getFoldersCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId);
 
   @Path("/get-folders-count")
-  Call<Integer> getFoldersCount(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId, @Param("includeMountFolders") boolean includeMountFolders);
+  Call<Integer> getFoldersCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "includeMountFolders") boolean includeMountFolders);
 
   @Path("/get-folders-count")
-  Call<Integer> getFoldersCount(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId, @Param("status") int status, @Param("includeMountFolders") boolean includeMountFolders);
+  Call<Integer> getFoldersCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "status") int status, @Param(name = "includeMountFolders") boolean includeMountFolders);
 
   @Path("/get-folders-file-entries-count")
-  Call<Integer> getFoldersFileEntriesCount(@Param("repositoryId") long repositoryId, @Param("folderIds") JSONArray folderIds, @Param("status") int status);
+  Call<Integer> getFoldersFileEntriesCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderIds") JSONArray folderIds, @Param(name = "status") int status);
 
   @Path("/get-group-file-entries")
-  Call<JSONArray> getGroupFileEntries(@Param("groupId") long groupId, @Param("userId") long userId, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-group-file-entries")
-  Call<JSONArray> getGroupFileEntries(@Param("groupId") long groupId, @Param("userId") long userId, @Param("rootFolderId") long rootFolderId, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-group-file-entries")
-  Call<JSONArray> getGroupFileEntries(@Param("groupId") long groupId, @Param("userId") long userId, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "start") int start, @Param(name = "end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-group-file-entries")
-  Call<JSONArray> getGroupFileEntries(@Param("groupId") long groupId, @Param("userId") long userId, @Param("rootFolderId") long rootFolderId, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "start") int start, @Param(name = "end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-group-file-entries")
-  Call<JSONArray> getGroupFileEntries(@Param("groupId") long groupId, @Param("userId") long userId, @Param("rootFolderId") long rootFolderId, @Param("mimeTypes") JSONArray mimeTypes, @Param("status") int status, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-group-file-entries-count")
-  Call<Integer> getGroupFileEntriesCount(@Param("groupId") long groupId, @Param("userId") long userId);
+  Call<Integer> getGroupFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId);
 
   @Path("/get-group-file-entries-count")
-  Call<Integer> getGroupFileEntriesCount(@Param("groupId") long groupId, @Param("userId") long userId, @Param("rootFolderId") long rootFolderId);
+  Call<Integer> getGroupFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId);
 
   @Path("/get-group-file-entries-count")
-  Call<Integer> getGroupFileEntriesCount(@Param("groupId") long groupId, @Param("userId") long userId, @Param("rootFolderId") long rootFolderId, @Param("mimeTypes") JSONArray mimeTypes, @Param("status") int status);
+  Call<Integer> getGroupFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status);
 
   @Path("/get-mount-folders")
-  Call<JSONArray> getMountFolders(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId);
+  Call<JSONArray> getMountFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId);
 
   @Path("/get-mount-folders")
-  Call<JSONArray> getMountFolders(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getMountFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-mount-folders")
-  Call<JSONArray> getMountFolders(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> getMountFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "start") int start, @Param(name = "end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-mount-folders-count")
-  Call<Integer> getMountFoldersCount(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId);
+  Call<Integer> getMountFoldersCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId);
 
   @Path("/get-subfolder-ids")
-  Call<JSONArray> getSubfolderIds(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId);
+  Call<JSONArray> getSubfolderIds(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId);
 
   @Path("/get-subfolder-ids")
-  Call<JSONArray> getSubfolderIds(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("recurse") boolean recurse);
+  Call<JSONArray> getSubfolderIds(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "recurse") boolean recurse);
 
   @Path("/get-subfolder-ids")
-  Call<Response> getSubfolderIds(@Param("repositoryId") long repositoryId, @Param("folderIds") JSONArray folderIds, @Param("folderId") long folderId);
+  Call<Response> getSubfolderIds(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderIds") JSONArray folderIds, @Param(name = "folderId") long folderId);
 
   @Path("/get-temp-file-entry-names")
-  Call<JSONArray> getTempFileEntryNames(@Param("groupId") long groupId, @Param("folderId") long folderId, @Param("tempFolderName") String tempFolderName);
+  Call<JSONArray> getTempFileEntryNames(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "tempFolderName") String tempFolderName);
 
   @Path("/lock-file-entry")
-  Call<JSONObject> lockFileEntry(@Param("fileEntryId") long fileEntryId);
+  Call<JSONObject> lockFileEntry(@Param(name = "fileEntryId") long fileEntryId);
 
   @Path("/lock-file-entry")
-  Call<JSONObject> lockFileEntry(@Param("fileEntryId") long fileEntryId, @Param("owner") String owner, @Param("expirationTime") long expirationTime);
+  Call<JSONObject> lockFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "owner") String owner, @Param(name = "expirationTime") long expirationTime);
 
   @Path("/lock-folder")
-  Call<JSONObject> lockFolder(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId);
+  Call<JSONObject> lockFolder(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId);
 
   @Path("/lock-folder")
-  Call<JSONObject> lockFolder(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("owner") String owner, @Param("inheritable") boolean inheritable, @Param("expirationTime") long expirationTime);
+  Call<JSONObject> lockFolder(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "owner") String owner, @Param(name = "inheritable") boolean inheritable, @Param(name = "expirationTime") long expirationTime);
 
   @Path("/move-file-entry")
-  Call<JSONObject> moveFileEntry(@Param("fileEntryId") long fileEntryId, @Param("newFolderId") long newFolderId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> moveFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "newFolderId") long newFolderId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/move-file-entry-from-trash")
-  Call<JSONObject> moveFileEntryFromTrash(@Param("fileEntryId") long fileEntryId, @Param("newFolderId") long newFolderId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> moveFileEntryFromTrash(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "newFolderId") long newFolderId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/move-file-entry-to-trash")
-  Call<JSONObject> moveFileEntryToTrash(@Param("fileEntryId") long fileEntryId);
+  Call<JSONObject> moveFileEntryToTrash(@Param(name = "fileEntryId") long fileEntryId);
 
   @Path("/move-file-shortcut-from-trash")
-  Call<JSONObject> moveFileShortcutFromTrash(@Param("fileShortcutId") long fileShortcutId, @Param("newFolderId") long newFolderId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> moveFileShortcutFromTrash(@Param(name = "fileShortcutId") long fileShortcutId, @Param(name = "newFolderId") long newFolderId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/move-file-shortcut-to-trash")
-  Call<JSONObject> moveFileShortcutToTrash(@Param("fileShortcutId") long fileShortcutId);
+  Call<JSONObject> moveFileShortcutToTrash(@Param(name = "fileShortcutId") long fileShortcutId);
 
   @Path("/move-folder")
-  Call<JSONObject> moveFolder(@Param("folderId") long folderId, @Param("parentFolderId") long parentFolderId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> moveFolder(@Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/move-folder-from-trash")
-  Call<JSONObject> moveFolderFromTrash(@Param("folderId") long folderId, @Param("parentFolderId") long parentFolderId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> moveFolderFromTrash(@Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/move-folder-to-trash")
-  Call<JSONObject> moveFolderToTrash(@Param("folderId") long folderId);
+  Call<JSONObject> moveFolderToTrash(@Param(name = "folderId") long folderId);
 
   @Path("/refresh-file-entry-lock")
-  Call<JSONObject> refreshFileEntryLock(@Param("lockUuid") String lockUuid, @Param("companyId") long companyId, @Param("expirationTime") long expirationTime);
+  Call<JSONObject> refreshFileEntryLock(@Param(name = "lockUuid") String lockUuid, @Param(name = "companyId") long companyId, @Param(name = "expirationTime") long expirationTime);
 
   @Path("/refresh-folder-lock")
-  Call<JSONObject> refreshFolderLock(@Param("lockUuid") String lockUuid, @Param("companyId") long companyId, @Param("expirationTime") long expirationTime);
+  Call<JSONObject> refreshFolderLock(@Param(name = "lockUuid") String lockUuid, @Param(name = "companyId") long companyId, @Param(name = "expirationTime") long expirationTime);
 
   @Path("/restore-file-entry-from-trash")
-  Call<Response> restoreFileEntryFromTrash(@Param("fileEntryId") long fileEntryId);
+  Call<Response> restoreFileEntryFromTrash(@Param(name = "fileEntryId") long fileEntryId);
 
   @Path("/restore-file-shortcut-from-trash")
-  Call<Response> restoreFileShortcutFromTrash(@Param("fileShortcutId") long fileShortcutId);
+  Call<Response> restoreFileShortcutFromTrash(@Param(name = "fileShortcutId") long fileShortcutId);
 
   @Path("/restore-folder-from-trash")
-  Call<Response> restoreFolderFromTrash(@Param("folderId") long folderId);
+  Call<Response> restoreFolderFromTrash(@Param(name = "folderId") long folderId);
 
   @Path("/revert-file-entry")
-  Call<Response> revertFileEntry(@Param("fileEntryId") long fileEntryId, @Param("version") String version, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<Response> revertFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "version") String version, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/search")
-  Call<JSONObject> search(@Param("repositoryId") long repositoryId, @ParamObject(name = "searchContext", className = "com.liferay.portal.kernel.search.SearchContext") JSONObject searchContext);
+  Call<JSONObject> search(@Param(name = "repositoryId") long repositoryId, @ParamObject(name = "searchContext", className = "com.liferay.portal.kernel.search.SearchContext") JSONObject searchContext);
 
   @Path("/search")
-  Call<JSONObject> search(@Param("repositoryId") long repositoryId, @ParamObject(name = "searchContext", className = "com.liferay.portal.kernel.search.SearchContext") JSONObject searchContext, @ParamObject(name = "query", className = "com.liferay.portal.kernel.search.Query") JSONObject query);
+  Call<JSONObject> search(@Param(name = "repositoryId") long repositoryId, @ParamObject(name = "searchContext", className = "com.liferay.portal.kernel.search.SearchContext") JSONObject searchContext, @ParamObject(name = "query", className = "com.liferay.portal.kernel.search.Query") JSONObject query);
 
   @Path("/search")
-  Call<JSONObject> search(@Param("repositoryId") long repositoryId, @Param("creatorUserId") long creatorUserId, @Param("status") int status, @Param("start") int start, @Param("end") int end);
+  Call<JSONObject> search(@Param(name = "repositoryId") long repositoryId, @Param(name = "creatorUserId") long creatorUserId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/search")
-  Call<JSONObject> search(@Param("repositoryId") long repositoryId, @Param("creatorUserId") long creatorUserId, @Param("folderId") long folderId, @Param("mimeTypes") JSONArray mimeTypes, @Param("status") int status, @Param("start") int start, @Param("end") int end);
+  Call<JSONObject> search(@Param(name = "repositoryId") long repositoryId, @Param(name = "creatorUserId") long creatorUserId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/subscribe-file-entry-type")
-  Call<Response> subscribeFileEntryType(@Param("groupId") long groupId, @Param("fileEntryTypeId") long fileEntryTypeId);
+  Call<Response> subscribeFileEntryType(@Param(name = "groupId") long groupId, @Param(name = "fileEntryTypeId") long fileEntryTypeId);
 
   @Path("/subscribe-folder")
-  Call<Response> subscribeFolder(@Param("groupId") long groupId, @Param("folderId") long folderId);
+  Call<Response> subscribeFolder(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
 
   @Path("/unlock-file-entry")
-  Call<Response> unlockFileEntry(@Param("fileEntryId") long fileEntryId);
+  Call<Response> unlockFileEntry(@Param(name = "fileEntryId") long fileEntryId);
 
   @Path("/unlock-file-entry")
-  Call<Response> unlockFileEntry(@Param("fileEntryId") long fileEntryId, @Param("lockUuid") String lockUuid);
+  Call<Response> unlockFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "lockUuid") String lockUuid);
 
   @Path("/unlock-folder")
-  Call<Response> unlockFolder(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("lockUuid") String lockUuid);
+  Call<Response> unlockFolder(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "lockUuid") String lockUuid);
 
   @Path("/unlock-folder")
-  Call<Response> unlockFolder(@Param("repositoryId") long repositoryId, @Param("parentFolderId") long parentFolderId, @Param("name") String name, @Param("lockUuid") String lockUuid);
+  Call<Response> unlockFolder(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "lockUuid") String lockUuid);
 
   @Path("/unsubscribe-file-entry-type")
-  Call<Response> unsubscribeFileEntryType(@Param("groupId") long groupId, @Param("fileEntryTypeId") long fileEntryTypeId);
+  Call<Response> unsubscribeFileEntryType(@Param(name = "groupId") long groupId, @Param(name = "fileEntryTypeId") long fileEntryTypeId);
 
   @Path("/unsubscribe-folder")
-  Call<Response> unsubscribeFolder(@Param("groupId") long groupId, @Param("folderId") long folderId);
+  Call<Response> unsubscribeFolder(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
 
   @Path("/update-file-entry")
-  Call<JSONObject> updateFileEntry(@Param("fileEntryId") long fileEntryId, @Param("sourceFileName") String sourceFileName, @Param("mimeType") String mimeType, @Param("title") String title, @Param("description") String description, @Param("changeLog") String changeLog, @Param("majorVersion") boolean majorVersion, @Param("bytes") byte[] bytes, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "sourceFileName") String sourceFileName, @Param(name = "mimeType") String mimeType, @Param(name = "title") String title, @Param(name = "description") String description, @Param(name = "changeLog") String changeLog, @Param(name = "majorVersion") boolean majorVersion, @Param(name = "bytes") byte[] bytes, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path(
       value = "/update-file-entry",
       contentType = ContentType.MULTIPART
   )
-  Call<JSONObject> updateFileEntry(@Param("fileEntryId") long fileEntryId, @Param("sourceFileName") String sourceFileName, @Param("mimeType") String mimeType, @Param("title") String title, @Param("description") String description, @Param("changeLog") String changeLog, @Param("majorVersion") boolean majorVersion, @Param("file") UploadData file, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "sourceFileName") String sourceFileName, @Param(name = "mimeType") String mimeType, @Param(name = "title") String title, @Param(name = "description") String description, @Param(name = "changeLog") String changeLog, @Param(name = "majorVersion") boolean majorVersion, @Param(name = "file") UploadData file, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path(
       value = "/update-file-entry-and-check-in",
       contentType = ContentType.MULTIPART
   )
-  Call<JSONObject> updateFileEntryAndCheckIn(@Param("fileEntryId") long fileEntryId, @Param("sourceFileName") String sourceFileName, @Param("mimeType") String mimeType, @Param("title") String title, @Param("description") String description, @Param("changeLog") String changeLog, @Param("majorVersion") boolean majorVersion, @Param("file") UploadData file, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateFileEntryAndCheckIn(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "sourceFileName") String sourceFileName, @Param(name = "mimeType") String mimeType, @Param(name = "title") String title, @Param(name = "description") String description, @Param(name = "changeLog") String changeLog, @Param(name = "majorVersion") boolean majorVersion, @Param(name = "file") UploadData file, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-file-shortcut")
-  Call<JSONObject> updateFileShortcut(@Param("fileShortcutId") long fileShortcutId, @Param("folderId") long folderId, @Param("toFileEntryId") long toFileEntryId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateFileShortcut(@Param(name = "fileShortcutId") long fileShortcutId, @Param(name = "folderId") long folderId, @Param(name = "toFileEntryId") long toFileEntryId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-folder")
-  Call<JSONObject> updateFolder(@Param("folderId") long folderId, @Param("name") String name, @Param("description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "name") String name, @Param(name = "description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/verify-file-entry-check-out")
-  Call<Boolean> verifyFileEntryCheckOut(@Param("repositoryId") long repositoryId, @Param("fileEntryId") long fileEntryId, @Param("lockUuid") String lockUuid);
+  Call<Boolean> verifyFileEntryCheckOut(@Param(name = "repositoryId") long repositoryId, @Param(name = "fileEntryId") long fileEntryId, @Param(name = "lockUuid") String lockUuid);
 
   @Path("/verify-file-entry-lock")
-  Call<Boolean> verifyFileEntryLock(@Param("repositoryId") long repositoryId, @Param("fileEntryId") long fileEntryId, @Param("lockUuid") String lockUuid);
+  Call<Boolean> verifyFileEntryLock(@Param(name = "repositoryId") long repositoryId, @Param(name = "fileEntryId") long fileEntryId, @Param(name = "lockUuid") String lockUuid);
 
   @Path("/verify-inheritable-lock")
-  Call<Boolean> verifyInheritableLock(@Param("repositoryId") long repositoryId, @Param("folderId") long folderId, @Param("lockUuid") String lockUuid);
+  Call<Boolean> verifyInheritableLock(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "lockUuid") String lockUuid);
 }

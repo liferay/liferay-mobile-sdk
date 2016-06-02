@@ -13,80 +13,80 @@ import org.json.JSONObject;
 @Path("/mbcategory")
 public interface MBCategoryService {
   @Path("/add-category")
-  Call<JSONObject> addCategory(@Param("parentCategoryId") long parentCategoryId, @Param("name") String name, @Param("description") String description, @Param("displayStyle") String displayStyle, @Param("emailAddress") String emailAddress, @Param("inProtocol") String inProtocol, @Param("inServerName") String inServerName, @Param("inServerPort") int inServerPort, @Param("inUseSSL") boolean inUseSSL, @Param("inUserName") String inUserName, @Param("inPassword") String inPassword, @Param("inReadInterval") int inReadInterval, @Param("outEmailAddress") String outEmailAddress, @Param("outCustom") boolean outCustom, @Param("outServerName") String outServerName, @Param("outServerPort") int outServerPort, @Param("outUseSSL") boolean outUseSSL, @Param("outUserName") String outUserName, @Param("outPassword") String outPassword, @Param("mailingListActive") boolean mailingListActive, @Param("allowAnonymousEmail") boolean allowAnonymousEmail, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addCategory(@Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "displayStyle") String displayStyle, @Param(name = "emailAddress") String emailAddress, @Param(name = "inProtocol") String inProtocol, @Param(name = "inServerName") String inServerName, @Param(name = "inServerPort") int inServerPort, @Param(name = "inUseSSL") boolean inUseSSL, @Param(name = "inUserName") String inUserName, @Param(name = "inPassword") String inPassword, @Param(name = "inReadInterval") int inReadInterval, @Param(name = "outEmailAddress") String outEmailAddress, @Param(name = "outCustom") boolean outCustom, @Param(name = "outServerName") String outServerName, @Param(name = "outServerPort") int outServerPort, @Param(name = "outUseSSL") boolean outUseSSL, @Param(name = "outUserName") String outUserName, @Param(name = "outPassword") String outPassword, @Param(name = "mailingListActive") boolean mailingListActive, @Param(name = "allowAnonymousEmail") boolean allowAnonymousEmail, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-category")
-  Call<JSONObject> addCategory(@Param("userId") long userId, @Param("parentCategoryId") long parentCategoryId, @Param("name") String name, @Param("description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addCategory(@Param(name = "userId") long userId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "name") String name, @Param(name = "description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-category")
-  Call<Response> deleteCategory(@Param("categoryId") long categoryId, @Param("includeTrashedEntries") boolean includeTrashedEntries);
+  Call<Response> deleteCategory(@Param(name = "categoryId") long categoryId, @Param(name = "includeTrashedEntries") boolean includeTrashedEntries);
 
   @Path("/delete-category")
-  Call<Response> deleteCategory(@Param("groupId") long groupId, @Param("categoryId") long categoryId);
+  Call<Response> deleteCategory(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId);
 
   @Path("/get-categories")
-  Call<JSONArray> getCategories(@Param("groupId") long groupId);
+  Call<JSONArray> getCategories(@Param(name = "groupId") long groupId);
 
   @Path("/get-categories")
-  Call<JSONArray> getCategories(@Param("groupId") long groupId, @Param("status") int status);
+  Call<JSONArray> getCategories(@Param(name = "groupId") long groupId, @Param(name = "status") int status);
 
   @Path("/get-categories")
-  Call<JSONArray> getCategories(@Param("groupId") long groupId, @Param("parentCategoryId") long parentCategoryId, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getCategories(@Param(name = "groupId") long groupId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-categories")
-  Call<JSONArray> getCategories(@Param("groupId") long groupId, @Param("parentCategoryIds") JSONArray parentCategoryIds, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getCategories(@Param(name = "groupId") long groupId, @Param(name = "parentCategoryIds") JSONArray parentCategoryIds, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-categories")
-  Call<JSONArray> getCategories(@Param("groupId") long groupId, @Param("parentCategoryId") long parentCategoryId, @Param("status") int status, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getCategories(@Param(name = "groupId") long groupId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-categories")
-  Call<JSONArray> getCategories(@Param("groupId") long groupId, @Param("parentCategoryIds") JSONArray parentCategoryIds, @Param("status") int status, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getCategories(@Param(name = "groupId") long groupId, @Param(name = "parentCategoryIds") JSONArray parentCategoryIds, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-categories-count")
-  Call<Integer> getCategoriesCount(@Param("groupId") long groupId, @Param("parentCategoryId") long parentCategoryId);
+  Call<Integer> getCategoriesCount(@Param(name = "groupId") long groupId, @Param(name = "parentCategoryId") long parentCategoryId);
 
   @Path("/get-categories-count")
-  Call<Integer> getCategoriesCount(@Param("groupId") long groupId, @Param("parentCategoryIds") JSONArray parentCategoryIds);
+  Call<Integer> getCategoriesCount(@Param(name = "groupId") long groupId, @Param(name = "parentCategoryIds") JSONArray parentCategoryIds);
 
   @Path("/get-categories-count")
-  Call<Integer> getCategoriesCount(@Param("groupId") long groupId, @Param("parentCategoryId") long parentCategoryId, @Param("status") int status);
+  Call<Integer> getCategoriesCount(@Param(name = "groupId") long groupId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "status") int status);
 
   @Path("/get-categories-count")
-  Call<Integer> getCategoriesCount(@Param("groupId") long groupId, @Param("parentCategoryIds") JSONArray parentCategoryIds, @Param("status") int status);
+  Call<Integer> getCategoriesCount(@Param(name = "groupId") long groupId, @Param(name = "parentCategoryIds") JSONArray parentCategoryIds, @Param(name = "status") int status);
 
   @Path("/get-category")
-  Call<JSONObject> getCategory(@Param("categoryId") long categoryId);
+  Call<JSONObject> getCategory(@Param(name = "categoryId") long categoryId);
 
   @Path("/get-category-ids")
-  Call<JSONArray> getCategoryIds(@Param("groupId") long groupId, @Param("categoryId") long categoryId);
+  Call<JSONArray> getCategoryIds(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId);
 
   @Path("/get-subcategory-ids")
-  Call<JSONArray> getSubcategoryIds(@Param("categoryIds") JSONArray categoryIds, @Param("groupId") long groupId, @Param("categoryId") long categoryId);
+  Call<JSONArray> getSubcategoryIds(@Param(name = "categoryIds") JSONArray categoryIds, @Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId);
 
   @Path("/get-subscribed-categories")
-  Call<JSONArray> getSubscribedCategories(@Param("groupId") long groupId, @Param("userId") long userId, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getSubscribedCategories(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-subscribed-categories-count")
-  Call<Integer> getSubscribedCategoriesCount(@Param("groupId") long groupId, @Param("userId") long userId);
+  Call<Integer> getSubscribedCategoriesCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId);
 
   @Path("/move-category")
-  Call<JSONObject> moveCategory(@Param("categoryId") long categoryId, @Param("parentCategoryId") long parentCategoryId, @Param("mergeWithParentCategory") boolean mergeWithParentCategory);
+  Call<JSONObject> moveCategory(@Param(name = "categoryId") long categoryId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "mergeWithParentCategory") boolean mergeWithParentCategory);
 
   @Path("/move-category-from-trash")
-  Call<JSONObject> moveCategoryFromTrash(@Param("categoryId") long categoryId, @Param("newCategoryId") long newCategoryId);
+  Call<JSONObject> moveCategoryFromTrash(@Param(name = "categoryId") long categoryId, @Param(name = "newCategoryId") long newCategoryId);
 
   @Path("/move-category-to-trash")
-  Call<JSONObject> moveCategoryToTrash(@Param("categoryId") long categoryId);
+  Call<JSONObject> moveCategoryToTrash(@Param(name = "categoryId") long categoryId);
 
   @Path("/restore-category-from-trash")
-  Call<Response> restoreCategoryFromTrash(@Param("categoryId") long categoryId);
+  Call<Response> restoreCategoryFromTrash(@Param(name = "categoryId") long categoryId);
 
   @Path("/subscribe-category")
-  Call<Response> subscribeCategory(@Param("groupId") long groupId, @Param("categoryId") long categoryId);
+  Call<Response> subscribeCategory(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId);
 
   @Path("/unsubscribe-category")
-  Call<Response> unsubscribeCategory(@Param("groupId") long groupId, @Param("categoryId") long categoryId);
+  Call<Response> unsubscribeCategory(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId);
 
   @Path("/update-category")
-  Call<JSONObject> updateCategory(@Param("categoryId") long categoryId, @Param("parentCategoryId") long parentCategoryId, @Param("name") String name, @Param("description") String description, @Param("displayStyle") String displayStyle, @Param("emailAddress") String emailAddress, @Param("inProtocol") String inProtocol, @Param("inServerName") String inServerName, @Param("inServerPort") int inServerPort, @Param("inUseSSL") boolean inUseSSL, @Param("inUserName") String inUserName, @Param("inPassword") String inPassword, @Param("inReadInterval") int inReadInterval, @Param("outEmailAddress") String outEmailAddress, @Param("outCustom") boolean outCustom, @Param("outServerName") String outServerName, @Param("outServerPort") int outServerPort, @Param("outUseSSL") boolean outUseSSL, @Param("outUserName") String outUserName, @Param("outPassword") String outPassword, @Param("mailingListActive") boolean mailingListActive, @Param("allowAnonymousEmail") boolean allowAnonymousEmail, @Param("mergeWithParentCategory") boolean mergeWithParentCategory, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateCategory(@Param(name = "categoryId") long categoryId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "displayStyle") String displayStyle, @Param(name = "emailAddress") String emailAddress, @Param(name = "inProtocol") String inProtocol, @Param(name = "inServerName") String inServerName, @Param(name = "inServerPort") int inServerPort, @Param(name = "inUseSSL") boolean inUseSSL, @Param(name = "inUserName") String inUserName, @Param(name = "inPassword") String inPassword, @Param(name = "inReadInterval") int inReadInterval, @Param(name = "outEmailAddress") String outEmailAddress, @Param(name = "outCustom") boolean outCustom, @Param(name = "outServerName") String outServerName, @Param(name = "outServerPort") int outServerPort, @Param(name = "outUseSSL") boolean outUseSSL, @Param(name = "outUserName") String outUserName, @Param(name = "outPassword") String outPassword, @Param(name = "mailingListActive") boolean mailingListActive, @Param(name = "allowAnonymousEmail") boolean allowAnonymousEmail, @Param(name = "mergeWithParentCategory") boolean mergeWithParentCategory, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

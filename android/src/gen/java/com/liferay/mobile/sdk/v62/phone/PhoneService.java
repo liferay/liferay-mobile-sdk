@@ -12,20 +12,20 @@ import org.json.JSONObject;
 @Path("/phone")
 public interface PhoneService {
   @Path("/add-phone")
-  Call<JSONObject> addPhone(@Param("className") String className, @Param("classPK") long classPK, @Param("number") String number, @Param("extension") String extension, @Param("typeId") int typeId, @Param("primary") boolean primary);
+  Call<JSONObject> addPhone(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "number") String number, @Param(name = "extension") String extension, @Param(name = "typeId") int typeId, @Param(name = "primary") boolean primary);
 
   @Path("/add-phone")
-  Call<JSONObject> addPhone(@Param("className") String className, @Param("classPK") long classPK, @Param("number") String number, @Param("extension") String extension, @Param("typeId") int typeId, @Param("primary") boolean primary, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addPhone(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "number") String number, @Param(name = "extension") String extension, @Param(name = "typeId") int typeId, @Param(name = "primary") boolean primary, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-phone")
-  Call<Response> deletePhone(@Param("phoneId") long phoneId);
+  Call<Response> deletePhone(@Param(name = "phoneId") long phoneId);
 
   @Path("/get-phone")
-  Call<JSONObject> getPhone(@Param("phoneId") long phoneId);
+  Call<JSONObject> getPhone(@Param(name = "phoneId") long phoneId);
 
   @Path("/get-phones")
-  Call<JSONArray> getPhones(@Param("className") String className, @Param("classPK") long classPK);
+  Call<JSONArray> getPhones(@Param(name = "className") String className, @Param(name = "classPK") long classPK);
 
   @Path("/update-phone")
-  Call<JSONObject> updatePhone(@Param("phoneId") long phoneId, @Param("number") String number, @Param("extension") String extension, @Param("typeId") int typeId, @Param("primary") boolean primary);
+  Call<JSONObject> updatePhone(@Param(name = "phoneId") long phoneId, @Param(name = "number") String number, @Param(name = "extension") String extension, @Param(name = "typeId") int typeId, @Param(name = "primary") boolean primary);
 }

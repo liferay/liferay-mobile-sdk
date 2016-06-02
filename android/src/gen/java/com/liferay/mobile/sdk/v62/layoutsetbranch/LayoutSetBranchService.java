@@ -12,17 +12,17 @@ import org.json.JSONObject;
 @Path("/layoutsetbranch")
 public interface LayoutSetBranchService {
   @Path("/add-layout-set-branch")
-  Call<JSONObject> addLayoutSetBranch(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("name") String name, @Param("description") String description, @Param("master") boolean master, @Param("copyLayoutSetBranchId") long copyLayoutSetBranchId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addLayoutSetBranch(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "master") boolean master, @Param(name = "copyLayoutSetBranchId") long copyLayoutSetBranchId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-layout-set-branch")
-  Call<Response> deleteLayoutSetBranch(@Param("layoutSetBranchId") long layoutSetBranchId);
+  Call<Response> deleteLayoutSetBranch(@Param(name = "layoutSetBranchId") long layoutSetBranchId);
 
   @Path("/get-layout-set-branches")
-  Call<JSONArray> getLayoutSetBranches(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout);
+  Call<JSONArray> getLayoutSetBranches(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout);
 
   @Path("/merge-layout-set-branch")
-  Call<JSONObject> mergeLayoutSetBranch(@Param("layoutSetBranchId") long layoutSetBranchId, @Param("mergeLayoutSetBranchId") long mergeLayoutSetBranchId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> mergeLayoutSetBranch(@Param(name = "layoutSetBranchId") long layoutSetBranchId, @Param(name = "mergeLayoutSetBranchId") long mergeLayoutSetBranchId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-layout-set-branch")
-  Call<JSONObject> updateLayoutSetBranch(@Param("groupId") long groupId, @Param("layoutSetBranchId") long layoutSetBranchId, @Param("name") String name, @Param("description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateLayoutSetBranch(@Param(name = "groupId") long groupId, @Param(name = "layoutSetBranchId") long layoutSetBranchId, @Param(name = "name") String name, @Param(name = "description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

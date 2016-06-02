@@ -9,5 +9,5 @@ import org.json.JSONObject;
 @Path("/socialrequest")
 public interface SocialRequestService {
   @Path("/update-request")
-  Call<JSONObject> updateRequest(@Param("requestId") long requestId, @Param("status") int status, @ParamObject(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
+  Call<JSONObject> updateRequest(@Param(name = "requestId") long requestId, @Param(name = "status") int status, @ParamObject(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
 }

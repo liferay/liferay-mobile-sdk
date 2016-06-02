@@ -11,17 +11,17 @@ import org.json.JSONObject;
 @Path("/assettagproperty")
 public interface AssetTagPropertyService {
   @Path("/add-tag-property")
-  Call<JSONObject> addTagProperty(@Param("tagId") long tagId, @Param("key") String key, @Param("value") String value);
+  Call<JSONObject> addTagProperty(@Param(name = "tagId") long tagId, @Param(name = "key") String key, @Param(name = "value") String value);
 
   @Path("/delete-tag-property")
-  Call<Response> deleteTagProperty(@Param("tagPropertyId") long tagPropertyId);
+  Call<Response> deleteTagProperty(@Param(name = "tagPropertyId") long tagPropertyId);
 
   @Path("/get-tag-properties")
-  Call<JSONArray> getTagProperties(@Param("tagId") long tagId);
+  Call<JSONArray> getTagProperties(@Param(name = "tagId") long tagId);
 
   @Path("/get-tag-property-values")
-  Call<JSONArray> getTagPropertyValues(@Param("companyId") long companyId, @Param("key") String key);
+  Call<JSONArray> getTagPropertyValues(@Param(name = "companyId") long companyId, @Param(name = "key") String key);
 
   @Path("/update-tag-property")
-  Call<JSONObject> updateTagProperty(@Param("tagPropertyId") long tagPropertyId, @Param("key") String key, @Param("value") String value);
+  Call<JSONObject> updateTagProperty(@Param(name = "tagPropertyId") long tagPropertyId, @Param(name = "key") String key, @Param(name = "value") String value);
 }

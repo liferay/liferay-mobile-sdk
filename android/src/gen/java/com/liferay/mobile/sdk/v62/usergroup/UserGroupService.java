@@ -12,38 +12,38 @@ import org.json.JSONObject;
 @Path("/usergroup")
 public interface UserGroupService {
   @Path("/add-group-user-groups")
-  Call<Response> addGroupUserGroups(@Param("groupId") long groupId, @Param("userGroupIds") JSONArray userGroupIds);
+  Call<Response> addGroupUserGroups(@Param(name = "groupId") long groupId, @Param(name = "userGroupIds") JSONArray userGroupIds);
 
   @Path("/add-team-user-groups")
-  Call<Response> addTeamUserGroups(@Param("teamId") long teamId, @Param("userGroupIds") JSONArray userGroupIds);
+  Call<Response> addTeamUserGroups(@Param(name = "teamId") long teamId, @Param(name = "userGroupIds") JSONArray userGroupIds);
 
   @Path("/add-user-group")
-  Call<JSONObject> addUserGroup(@Param("name") String name, @Param("description") String description);
+  Call<JSONObject> addUserGroup(@Param(name = "name") String name, @Param(name = "description") String description);
 
   @Path("/add-user-group")
-  Call<JSONObject> addUserGroup(@Param("name") String name, @Param("description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addUserGroup(@Param(name = "name") String name, @Param(name = "description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-user-group")
-  Call<Response> deleteUserGroup(@Param("userGroupId") long userGroupId);
+  Call<Response> deleteUserGroup(@Param(name = "userGroupId") long userGroupId);
 
   @Path("/get-user-group")
-  Call<JSONObject> getUserGroup(@Param("name") String name);
+  Call<JSONObject> getUserGroup(@Param(name = "name") String name);
 
   @Path("/get-user-group")
-  Call<JSONObject> getUserGroup(@Param("userGroupId") long userGroupId);
+  Call<JSONObject> getUserGroup(@Param(name = "userGroupId") long userGroupId);
 
   @Path("/get-user-user-groups")
-  Call<JSONArray> getUserUserGroups(@Param("userId") long userId);
+  Call<JSONArray> getUserUserGroups(@Param(name = "userId") long userId);
 
   @Path("/unset-group-user-groups")
-  Call<Response> unsetGroupUserGroups(@Param("groupId") long groupId, @Param("userGroupIds") JSONArray userGroupIds);
+  Call<Response> unsetGroupUserGroups(@Param(name = "groupId") long groupId, @Param(name = "userGroupIds") JSONArray userGroupIds);
 
   @Path("/unset-team-user-groups")
-  Call<Response> unsetTeamUserGroups(@Param("teamId") long teamId, @Param("userGroupIds") JSONArray userGroupIds);
+  Call<Response> unsetTeamUserGroups(@Param(name = "teamId") long teamId, @Param(name = "userGroupIds") JSONArray userGroupIds);
 
   @Path("/update-user-group")
-  Call<JSONObject> updateUserGroup(@Param("userGroupId") long userGroupId, @Param("name") String name, @Param("description") String description);
+  Call<JSONObject> updateUserGroup(@Param(name = "userGroupId") long userGroupId, @Param(name = "name") String name, @Param(name = "description") String description);
 
   @Path("/update-user-group")
-  Call<JSONObject> updateUserGroup(@Param("userGroupId") long userGroupId, @Param("name") String name, @Param("description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateUserGroup(@Param(name = "userGroupId") long userGroupId, @Param(name = "name") String name, @Param(name = "description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

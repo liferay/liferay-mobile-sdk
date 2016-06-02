@@ -9,11 +9,11 @@ import org.json.JSONObject;
 @Path("/announcementsflag")
 public interface AnnouncementsFlagService {
   @Path("/add-flag")
-  Call<Response> addFlag(@Param("entryId") long entryId, @Param("value") int value);
+  Call<Response> addFlag(@Param(name = "entryId") long entryId, @Param(name = "value") int value);
 
   @Path("/delete-flag")
-  Call<Response> deleteFlag(@Param("flagId") long flagId);
+  Call<Response> deleteFlag(@Param(name = "flagId") long flagId);
 
   @Path("/get-flag")
-  Call<JSONObject> getFlag(@Param("entryId") long entryId, @Param("value") int value);
+  Call<JSONObject> getFlag(@Param(name = "entryId") long entryId, @Param(name = "value") int value);
 }

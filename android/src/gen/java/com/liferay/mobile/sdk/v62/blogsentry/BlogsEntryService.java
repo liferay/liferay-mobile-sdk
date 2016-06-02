@@ -13,59 +13,59 @@ import org.json.JSONObject;
 @Path("/blogsentry")
 public interface BlogsEntryService {
   @Path("/delete-entry")
-  Call<Response> deleteEntry(@Param("entryId") long entryId);
+  Call<Response> deleteEntry(@Param(name = "entryId") long entryId);
 
   @Path("/get-company-entries")
-  Call<JSONArray> getCompanyEntries(@Param("companyId") long companyId, @Param("displayDate") long displayDate, @Param("status") int status, @Param("max") int max);
+  Call<JSONArray> getCompanyEntries(@Param(name = "companyId") long companyId, @Param(name = "displayDate") long displayDate, @Param(name = "status") int status, @Param(name = "max") int max);
 
   @Path("/get-company-entries-rss")
-  Call<String> getCompanyEntriesRss(@Param("companyId") long companyId, @Param("displayDate") long displayDate, @Param("status") int status, @Param("max") int max, @Param("type") String type, @Param("version") double version, @Param("displayStyle") String displayStyle, @Param("feedURL") String feedURL, @Param("entryURL") String entryURL, @ParamObject(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
+  Call<String> getCompanyEntriesRss(@Param(name = "companyId") long companyId, @Param(name = "displayDate") long displayDate, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @ParamObject(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
 
   @Path("/get-entry")
-  Call<JSONObject> getEntry(@Param("entryId") long entryId);
+  Call<JSONObject> getEntry(@Param(name = "entryId") long entryId);
 
   @Path("/get-entry")
-  Call<JSONObject> getEntry(@Param("groupId") long groupId, @Param("urlTitle") String urlTitle);
+  Call<JSONObject> getEntry(@Param(name = "groupId") long groupId, @Param(name = "urlTitle") String urlTitle);
 
   @Path("/get-group-entries")
-  Call<JSONArray> getGroupEntries(@Param("groupId") long groupId, @Param("status") int status, @Param("max") int max);
+  Call<JSONArray> getGroupEntries(@Param(name = "groupId") long groupId, @Param(name = "status") int status, @Param(name = "max") int max);
 
   @Path("/get-group-entries")
-  Call<JSONArray> getGroupEntries(@Param("groupId") long groupId, @Param("displayDate") long displayDate, @Param("status") int status, @Param("max") int max);
+  Call<JSONArray> getGroupEntries(@Param(name = "groupId") long groupId, @Param(name = "displayDate") long displayDate, @Param(name = "status") int status, @Param(name = "max") int max);
 
   @Path("/get-group-entries")
-  Call<JSONArray> getGroupEntries(@Param("groupId") long groupId, @Param("status") int status, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getGroupEntries(@Param(name = "groupId") long groupId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-group-entries")
-  Call<JSONArray> getGroupEntries(@Param("groupId") long groupId, @Param("displayDate") long displayDate, @Param("status") int status, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getGroupEntries(@Param(name = "groupId") long groupId, @Param(name = "displayDate") long displayDate, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-group-entries-count")
-  Call<Integer> getGroupEntriesCount(@Param("groupId") long groupId, @Param("status") int status);
+  Call<Integer> getGroupEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "status") int status);
 
   @Path("/get-group-entries-count")
-  Call<Integer> getGroupEntriesCount(@Param("groupId") long groupId, @Param("displayDate") long displayDate, @Param("status") int status);
+  Call<Integer> getGroupEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "displayDate") long displayDate, @Param(name = "status") int status);
 
   @Path("/get-group-entries-rss")
-  Call<String> getGroupEntriesRss(@Param("groupId") long groupId, @Param("displayDate") long displayDate, @Param("status") int status, @Param("max") int max, @Param("type") String type, @Param("version") double version, @Param("displayStyle") String displayStyle, @Param("feedURL") String feedURL, @Param("entryURL") String entryURL, @ParamObject(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
+  Call<String> getGroupEntriesRss(@Param(name = "groupId") long groupId, @Param(name = "displayDate") long displayDate, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @ParamObject(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
 
   @Path("/get-groups-entries")
-  Call<JSONArray> getGroupsEntries(@Param("companyId") long companyId, @Param("groupId") long groupId, @Param("displayDate") long displayDate, @Param("status") int status, @Param("max") int max);
+  Call<JSONArray> getGroupsEntries(@Param(name = "companyId") long companyId, @Param(name = "groupId") long groupId, @Param(name = "displayDate") long displayDate, @Param(name = "status") int status, @Param(name = "max") int max);
 
   @Path("/get-organization-entries")
-  Call<JSONArray> getOrganizationEntries(@Param("organizationId") long organizationId, @Param("displayDate") long displayDate, @Param("status") int status, @Param("max") int max);
+  Call<JSONArray> getOrganizationEntries(@Param(name = "organizationId") long organizationId, @Param(name = "displayDate") long displayDate, @Param(name = "status") int status, @Param(name = "max") int max);
 
   @Path("/get-organization-entries-rss")
-  Call<String> getOrganizationEntriesRss(@Param("organizationId") long organizationId, @Param("displayDate") long displayDate, @Param("status") int status, @Param("max") int max, @Param("type") String type, @Param("version") double version, @Param("displayStyle") String displayStyle, @Param("feedURL") String feedURL, @Param("entryURL") String entryURL, @ParamObject(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
+  Call<String> getOrganizationEntriesRss(@Param(name = "organizationId") long organizationId, @Param(name = "displayDate") long displayDate, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @ParamObject(name = "themeDisplay", className = "com.liferay.portal.theme.ThemeDisplay") JSONObject themeDisplay);
 
   @Path("/move-entry-to-trash")
-  Call<JSONObject> moveEntryToTrash(@Param("entryId") long entryId);
+  Call<JSONObject> moveEntryToTrash(@Param(name = "entryId") long entryId);
 
   @Path("/restore-entry-from-trash")
-  Call<Response> restoreEntryFromTrash(@Param("entryId") long entryId);
+  Call<Response> restoreEntryFromTrash(@Param(name = "entryId") long entryId);
 
   @Path("/subscribe")
-  Call<Response> subscribe(@Param("groupId") long groupId);
+  Call<Response> subscribe(@Param(name = "groupId") long groupId);
 
   @Path("/unsubscribe")
-  Call<Response> unsubscribe(@Param("groupId") long groupId);
+  Call<Response> unsubscribe(@Param(name = "groupId") long groupId);
 }

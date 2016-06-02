@@ -13,20 +13,20 @@ import org.json.JSONObject;
 @Path("/scproductversion")
 public interface SCProductVersionService {
   @Path("/add-product-version")
-  Call<JSONObject> addProductVersion(@Param("productEntryId") long productEntryId, @Param("version") String version, @Param("changeLog") String changeLog, @Param("downloadPageURL") String downloadPageURL, @Param("directDownloadURL") String directDownloadURL, @Param("testDirectDownloadURL") boolean testDirectDownloadURL, @Param("repoStoreArtifact") boolean repoStoreArtifact, @Param("frameworkVersionIds") JSONArray frameworkVersionIds, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addProductVersion(@Param(name = "productEntryId") long productEntryId, @Param(name = "version") String version, @Param(name = "changeLog") String changeLog, @Param(name = "downloadPageURL") String downloadPageURL, @Param(name = "directDownloadURL") String directDownloadURL, @Param(name = "testDirectDownloadURL") boolean testDirectDownloadURL, @Param(name = "repoStoreArtifact") boolean repoStoreArtifact, @Param(name = "frameworkVersionIds") JSONArray frameworkVersionIds, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-product-version")
-  Call<Response> deleteProductVersion(@Param("productVersionId") long productVersionId);
+  Call<Response> deleteProductVersion(@Param(name = "productVersionId") long productVersionId);
 
   @Path("/get-product-version")
-  Call<JSONObject> getProductVersion(@Param("productVersionId") long productVersionId);
+  Call<JSONObject> getProductVersion(@Param(name = "productVersionId") long productVersionId);
 
   @Path("/get-product-versions")
-  Call<JSONArray> getProductVersions(@Param("productEntryId") long productEntryId, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getProductVersions(@Param(name = "productEntryId") long productEntryId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-product-versions-count")
-  Call<Integer> getProductVersionsCount(@Param("productEntryId") long productEntryId);
+  Call<Integer> getProductVersionsCount(@Param(name = "productEntryId") long productEntryId);
 
   @Path("/update-product-version")
-  Call<JSONObject> updateProductVersion(@Param("productVersionId") long productVersionId, @Param("version") String version, @Param("changeLog") String changeLog, @Param("downloadPageURL") String downloadPageURL, @Param("directDownloadURL") String directDownloadURL, @Param("testDirectDownloadURL") boolean testDirectDownloadURL, @Param("repoStoreArtifact") boolean repoStoreArtifact, @Param("frameworkVersionIds") JSONArray frameworkVersionIds);
+  Call<JSONObject> updateProductVersion(@Param(name = "productVersionId") long productVersionId, @Param(name = "version") String version, @Param(name = "changeLog") String changeLog, @Param(name = "downloadPageURL") String downloadPageURL, @Param(name = "directDownloadURL") String directDownloadURL, @Param(name = "testDirectDownloadURL") boolean testDirectDownloadURL, @Param(name = "repoStoreArtifact") boolean repoStoreArtifact, @Param(name = "frameworkVersionIds") JSONArray frameworkVersionIds);
 }

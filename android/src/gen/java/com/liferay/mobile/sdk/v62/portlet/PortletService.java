@@ -13,5 +13,5 @@ public interface PortletService {
   Call<JSONArray> getWarPortlets();
 
   @Path("/update-portlet")
-  Call<JSONObject> updatePortlet(@Param("companyId") long companyId, @Param("portletId") String portletId, @Param("roles") String roles, @Param("active") boolean active);
+  Call<JSONObject> updatePortlet(@Param(name = "companyId") long companyId, @Param(name = "portletId") String portletId, @Param(name = "roles") String roles, @Param(name = "active") boolean active);
 }

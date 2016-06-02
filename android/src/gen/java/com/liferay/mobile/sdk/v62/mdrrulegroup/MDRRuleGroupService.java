@@ -10,20 +10,20 @@ import org.json.JSONObject;
 @Path("/mdrrulegroup")
 public interface MDRRuleGroupService {
   @Path("/add-rule-group")
-  Call<JSONObject> addRuleGroup(@Param("groupId") long groupId, @ParamObject(name = "nameMap", className = "") JSONObject nameMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addRuleGroup(@Param(name = "groupId") long groupId, @ParamObject(name = "nameMap", className = "") JSONObject nameMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/copy-rule-group")
-  Call<JSONObject> copyRuleGroup(@Param("ruleGroupId") long ruleGroupId, @Param("groupId") long groupId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> copyRuleGroup(@Param(name = "ruleGroupId") long ruleGroupId, @Param(name = "groupId") long groupId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-rule-group")
-  Call<Response> deleteRuleGroup(@Param("ruleGroupId") long ruleGroupId);
+  Call<Response> deleteRuleGroup(@Param(name = "ruleGroupId") long ruleGroupId);
 
   @Path("/fetch-rule-group")
-  Call<JSONObject> fetchRuleGroup(@Param("ruleGroupId") long ruleGroupId);
+  Call<JSONObject> fetchRuleGroup(@Param(name = "ruleGroupId") long ruleGroupId);
 
   @Path("/get-rule-group")
-  Call<JSONObject> getRuleGroup(@Param("ruleGroupId") long ruleGroupId);
+  Call<JSONObject> getRuleGroup(@Param(name = "ruleGroupId") long ruleGroupId);
 
   @Path("/update-rule-group")
-  Call<JSONObject> updateRuleGroup(@Param("ruleGroupId") long ruleGroupId, @ParamObject(name = "nameMap", className = "") JSONObject nameMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateRuleGroup(@Param(name = "ruleGroupId") long ruleGroupId, @ParamObject(name = "nameMap", className = "") JSONObject nameMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

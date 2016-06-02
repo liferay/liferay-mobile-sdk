@@ -13,62 +13,62 @@ import org.json.JSONObject;
 @Path("/mbthread")
 public interface MBThreadService {
   @Path("/delete-thread")
-  Call<Response> deleteThread(@Param("threadId") long threadId);
+  Call<Response> deleteThread(@Param(name = "threadId") long threadId);
 
   @Path("/get-group-threads")
-  Call<JSONArray> getGroupThreads(@Param("groupId") long groupId, @Param("userId") long userId, @Param("status") int status, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-group-threads")
-  Call<JSONArray> getGroupThreads(@Param("groupId") long groupId, @Param("userId") long userId, @Param("modifiedDate") long modifiedDate, @Param("status") int status, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "modifiedDate") long modifiedDate, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-group-threads")
-  Call<JSONArray> getGroupThreads(@Param("groupId") long groupId, @Param("userId") long userId, @Param("status") int status, @Param("subscribed") boolean subscribed, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "subscribed") boolean subscribed, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-group-threads")
-  Call<JSONArray> getGroupThreads(@Param("groupId") long groupId, @Param("userId") long userId, @Param("status") int status, @Param("subscribed") boolean subscribed, @Param("includeAnonymous") boolean includeAnonymous, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "subscribed") boolean subscribed, @Param(name = "includeAnonymous") boolean includeAnonymous, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-group-threads-count")
-  Call<Integer> getGroupThreadsCount(@Param("groupId") long groupId, @Param("userId") long userId, @Param("status") int status);
+  Call<Integer> getGroupThreadsCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status);
 
   @Path("/get-group-threads-count")
-  Call<Integer> getGroupThreadsCount(@Param("groupId") long groupId, @Param("userId") long userId, @Param("modifiedDate") long modifiedDate, @Param("status") int status);
+  Call<Integer> getGroupThreadsCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "modifiedDate") long modifiedDate, @Param(name = "status") int status);
 
   @Path("/get-group-threads-count")
-  Call<Integer> getGroupThreadsCount(@Param("groupId") long groupId, @Param("userId") long userId, @Param("status") int status, @Param("subscribed") boolean subscribed);
+  Call<Integer> getGroupThreadsCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "subscribed") boolean subscribed);
 
   @Path("/get-group-threads-count")
-  Call<Integer> getGroupThreadsCount(@Param("groupId") long groupId, @Param("userId") long userId, @Param("status") int status, @Param("subscribed") boolean subscribed, @Param("includeAnonymous") boolean includeAnonymous);
+  Call<Integer> getGroupThreadsCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "subscribed") boolean subscribed, @Param(name = "includeAnonymous") boolean includeAnonymous);
 
   @Path("/get-threads")
-  Call<JSONArray> getThreads(@Param("groupId") long groupId, @Param("categoryId") long categoryId, @Param("status") int status, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getThreads(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-threads-count")
-  Call<Integer> getThreadsCount(@Param("groupId") long groupId, @Param("categoryId") long categoryId, @Param("status") int status);
+  Call<Integer> getThreadsCount(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "status") int status);
 
   @Path("/lock-thread")
-  Call<JSONObject> lockThread(@Param("threadId") long threadId);
+  Call<JSONObject> lockThread(@Param(name = "threadId") long threadId);
 
   @Path("/move-thread")
-  Call<JSONObject> moveThread(@Param("categoryId") long categoryId, @Param("threadId") long threadId);
+  Call<JSONObject> moveThread(@Param(name = "categoryId") long categoryId, @Param(name = "threadId") long threadId);
 
   @Path("/move-thread-from-trash")
-  Call<JSONObject> moveThreadFromTrash(@Param("categoryId") long categoryId, @Param("threadId") long threadId);
+  Call<JSONObject> moveThreadFromTrash(@Param(name = "categoryId") long categoryId, @Param(name = "threadId") long threadId);
 
   @Path("/move-thread-to-trash")
-  Call<JSONObject> moveThreadToTrash(@Param("threadId") long threadId);
+  Call<JSONObject> moveThreadToTrash(@Param(name = "threadId") long threadId);
 
   @Path("/restore-thread-from-trash")
-  Call<Response> restoreThreadFromTrash(@Param("threadId") long threadId);
+  Call<Response> restoreThreadFromTrash(@Param(name = "threadId") long threadId);
 
   @Path("/search")
-  Call<JSONObject> search(@Param("groupId") long groupId, @Param("creatorUserId") long creatorUserId, @Param("status") int status, @Param("start") int start, @Param("end") int end);
+  Call<JSONObject> search(@Param(name = "groupId") long groupId, @Param(name = "creatorUserId") long creatorUserId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/search")
-  Call<JSONObject> search(@Param("groupId") long groupId, @Param("creatorUserId") long creatorUserId, @Param("startDate") long startDate, @Param("endDate") long endDate, @Param("status") int status, @Param("start") int start, @Param("end") int end);
+  Call<JSONObject> search(@Param(name = "groupId") long groupId, @Param(name = "creatorUserId") long creatorUserId, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/split-thread")
-  Call<JSONObject> splitThread(@Param("messageId") long messageId, @Param("subject") String subject, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> splitThread(@Param(name = "messageId") long messageId, @Param(name = "subject") String subject, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/unlock-thread")
-  Call<Response> unlockThread(@Param("threadId") long threadId);
+  Call<Response> unlockThread(@Param(name = "threadId") long threadId);
 }

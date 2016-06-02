@@ -12,29 +12,29 @@ import org.json.JSONObject;
 @Path("/trashentry")
 public interface TrashEntryService {
   @Path("/delete-entries")
-  Call<Response> deleteEntries(@Param("entryIds") JSONArray entryIds);
+  Call<Response> deleteEntries(@Param(name = "entryIds") JSONArray entryIds);
 
   @Path("/delete-entries")
-  Call<Response> deleteEntries(@Param("groupId") long groupId);
+  Call<Response> deleteEntries(@Param(name = "groupId") long groupId);
 
   @Path("/delete-entry")
-  Call<Response> deleteEntry(@Param("entryId") long entryId);
+  Call<Response> deleteEntry(@Param(name = "entryId") long entryId);
 
   @Path("/delete-entry")
-  Call<Response> deleteEntry(@Param("className") String className, @Param("classPK") long classPK);
+  Call<Response> deleteEntry(@Param(name = "className") String className, @Param(name = "classPK") long classPK);
 
   @Path("/get-entries")
-  Call<JSONObject> getEntries(@Param("groupId") long groupId);
+  Call<JSONObject> getEntries(@Param(name = "groupId") long groupId);
 
   @Path("/get-entries")
-  Call<JSONObject> getEntries(@Param("groupId") long groupId, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONObject> getEntries(@Param(name = "groupId") long groupId, @Param(name = "start") int start, @Param(name = "end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/move-entry")
-  Call<Response> moveEntry(@Param("className") String className, @Param("classPK") long classPK, @Param("destinationContainerModelId") long destinationContainerModelId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<Response> moveEntry(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "destinationContainerModelId") long destinationContainerModelId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/restore-entry")
-  Call<JSONObject> restoreEntry(@Param("entryId") long entryId);
+  Call<JSONObject> restoreEntry(@Param(name = "entryId") long entryId);
 
   @Path("/restore-entry")
-  Call<JSONObject> restoreEntry(@Param("entryId") long entryId, @Param("overrideClassPK") long overrideClassPK, @Param("name") String name);
+  Call<JSONObject> restoreEntry(@Param(name = "entryId") long entryId, @Param(name = "overrideClassPK") long overrideClassPK, @Param(name = "name") String name);
 }

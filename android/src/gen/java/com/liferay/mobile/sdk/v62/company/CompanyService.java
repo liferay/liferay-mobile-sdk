@@ -10,32 +10,32 @@ import org.json.JSONObject;
 @Path("/company")
 public interface CompanyService {
   @Path("/delete-logo")
-  Call<Response> deleteLogo(@Param("companyId") long companyId);
+  Call<Response> deleteLogo(@Param(name = "companyId") long companyId);
 
   @Path("/get-company-by-id")
-  Call<JSONObject> getCompanyById(@Param("companyId") long companyId);
+  Call<JSONObject> getCompanyById(@Param(name = "companyId") long companyId);
 
   @Path("/get-company-by-logo-id")
-  Call<JSONObject> getCompanyByLogoId(@Param("logoId") long logoId);
+  Call<JSONObject> getCompanyByLogoId(@Param(name = "logoId") long logoId);
 
   @Path("/get-company-by-mx")
-  Call<JSONObject> getCompanyByMx(@Param("mx") String mx);
+  Call<JSONObject> getCompanyByMx(@Param(name = "mx") String mx);
 
   @Path("/get-company-by-virtual-host")
-  Call<JSONObject> getCompanyByVirtualHost(@Param("virtualHost") String virtualHost);
+  Call<JSONObject> getCompanyByVirtualHost(@Param(name = "virtualHost") String virtualHost);
 
   @Path("/get-company-by-web-id")
-  Call<JSONObject> getCompanyByWebId(@Param("webId") String webId);
+  Call<JSONObject> getCompanyByWebId(@Param(name = "webId") String webId);
 
   @Path("/update-company")
-  Call<JSONObject> updateCompany(@Param("companyId") long companyId, @Param("virtualHost") String virtualHost, @Param("mx") String mx, @Param("homeURL") String homeURL, @Param("name") String name, @Param("legalName") String legalName, @Param("legalId") String legalId, @Param("legalType") String legalType, @Param("sicCode") String sicCode, @Param("tickerSymbol") String tickerSymbol, @Param("industry") String industry, @Param("type") String type, @Param("size") String size);
+  Call<JSONObject> updateCompany(@Param(name = "companyId") long companyId, @Param(name = "virtualHost") String virtualHost, @Param(name = "mx") String mx, @Param(name = "homeURL") String homeURL, @Param(name = "name") String name, @Param(name = "legalName") String legalName, @Param(name = "legalId") String legalId, @Param(name = "legalType") String legalType, @Param(name = "sicCode") String sicCode, @Param(name = "tickerSymbol") String tickerSymbol, @Param(name = "industry") String industry, @Param(name = "type") String type, @Param(name = "size") String size);
 
   @Path("/update-company")
-  Call<JSONObject> updateCompany(@Param("companyId") long companyId, @Param("virtualHost") String virtualHost, @Param("mx") String mx, @Param("maxUsers") int maxUsers, @Param("active") boolean active);
+  Call<JSONObject> updateCompany(@Param(name = "companyId") long companyId, @Param(name = "virtualHost") String virtualHost, @Param(name = "mx") String mx, @Param(name = "maxUsers") int maxUsers, @Param(name = "active") boolean active);
 
   @Path("/update-display")
-  Call<Response> updateDisplay(@Param("companyId") long companyId, @Param("languageId") String languageId, @Param("timeZoneId") String timeZoneId);
+  Call<Response> updateDisplay(@Param(name = "companyId") long companyId, @Param(name = "languageId") String languageId, @Param(name = "timeZoneId") String timeZoneId);
 
   @Path("/update-logo")
-  Call<JSONObject> updateLogo(@Param("companyId") long companyId, @Param("bytes") byte[] bytes);
+  Call<JSONObject> updateLogo(@Param(name = "companyId") long companyId, @Param(name = "bytes") byte[] bytes);
 }

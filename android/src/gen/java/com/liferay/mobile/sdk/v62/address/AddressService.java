@@ -12,20 +12,20 @@ import org.json.JSONObject;
 @Path("/address")
 public interface AddressService {
   @Path("/add-address")
-  Call<JSONObject> addAddress(@Param("className") String className, @Param("classPK") long classPK, @Param("street1") String street1, @Param("street2") String street2, @Param("street3") String street3, @Param("city") String city, @Param("zip") String zip, @Param("regionId") long regionId, @Param("countryId") long countryId, @Param("typeId") int typeId, @Param("mailing") boolean mailing, @Param("primary") boolean primary);
+  Call<JSONObject> addAddress(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "street1") String street1, @Param(name = "street2") String street2, @Param(name = "street3") String street3, @Param(name = "city") String city, @Param(name = "zip") String zip, @Param(name = "regionId") long regionId, @Param(name = "countryId") long countryId, @Param(name = "typeId") int typeId, @Param(name = "mailing") boolean mailing, @Param(name = "primary") boolean primary);
 
   @Path("/add-address")
-  Call<JSONObject> addAddress(@Param("className") String className, @Param("classPK") long classPK, @Param("street1") String street1, @Param("street2") String street2, @Param("street3") String street3, @Param("city") String city, @Param("zip") String zip, @Param("regionId") long regionId, @Param("countryId") long countryId, @Param("typeId") int typeId, @Param("mailing") boolean mailing, @Param("primary") boolean primary, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addAddress(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "street1") String street1, @Param(name = "street2") String street2, @Param(name = "street3") String street3, @Param(name = "city") String city, @Param(name = "zip") String zip, @Param(name = "regionId") long regionId, @Param(name = "countryId") long countryId, @Param(name = "typeId") int typeId, @Param(name = "mailing") boolean mailing, @Param(name = "primary") boolean primary, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-address")
-  Call<Response> deleteAddress(@Param("addressId") long addressId);
+  Call<Response> deleteAddress(@Param(name = "addressId") long addressId);
 
   @Path("/get-address")
-  Call<JSONObject> getAddress(@Param("addressId") long addressId);
+  Call<JSONObject> getAddress(@Param(name = "addressId") long addressId);
 
   @Path("/get-addresses")
-  Call<JSONArray> getAddresses(@Param("className") String className, @Param("classPK") long classPK);
+  Call<JSONArray> getAddresses(@Param(name = "className") String className, @Param(name = "classPK") long classPK);
 
   @Path("/update-address")
-  Call<JSONObject> updateAddress(@Param("addressId") long addressId, @Param("street1") String street1, @Param("street2") String street2, @Param("street3") String street3, @Param("city") String city, @Param("zip") String zip, @Param("regionId") long regionId, @Param("countryId") long countryId, @Param("typeId") int typeId, @Param("mailing") boolean mailing, @Param("primary") boolean primary);
+  Call<JSONObject> updateAddress(@Param(name = "addressId") long addressId, @Param(name = "street1") String street1, @Param(name = "street2") String street2, @Param(name = "street3") String street3, @Param(name = "city") String city, @Param(name = "zip") String zip, @Param(name = "regionId") long regionId, @Param(name = "countryId") long countryId, @Param(name = "typeId") int typeId, @Param(name = "mailing") boolean mailing, @Param(name = "primary") boolean primary);
 }

@@ -9,5 +9,5 @@ import java.lang.String;
 @Path("/permission")
 public interface PermissionService {
   @Path("/check-permission")
-  Call<Response> checkPermission(@Param("groupId") long groupId, @Param("name") String name, @Param("primKey") String primKey);
+  Call<Response> checkPermission(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "primKey") String primKey);
 }

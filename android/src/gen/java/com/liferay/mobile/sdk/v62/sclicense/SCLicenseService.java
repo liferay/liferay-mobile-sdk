@@ -10,14 +10,14 @@ import org.json.JSONObject;
 @Path("/sclicense")
 public interface SCLicenseService {
   @Path("/add-license")
-  Call<JSONObject> addLicense(@Param("name") String name, @Param("url") String url, @Param("openSource") boolean openSource, @Param("active") boolean active, @Param("recommended") boolean recommended);
+  Call<JSONObject> addLicense(@Param(name = "name") String name, @Param(name = "url") String url, @Param(name = "openSource") boolean openSource, @Param(name = "active") boolean active, @Param(name = "recommended") boolean recommended);
 
   @Path("/delete-license")
-  Call<Response> deleteLicense(@Param("licenseId") long licenseId);
+  Call<Response> deleteLicense(@Param(name = "licenseId") long licenseId);
 
   @Path("/get-license")
-  Call<JSONObject> getLicense(@Param("licenseId") long licenseId);
+  Call<JSONObject> getLicense(@Param(name = "licenseId") long licenseId);
 
   @Path("/update-license")
-  Call<JSONObject> updateLicense(@Param("licenseId") long licenseId, @Param("name") String name, @Param("url") String url, @Param("openSource") boolean openSource, @Param("active") boolean active, @Param("recommended") boolean recommended);
+  Call<JSONObject> updateLicense(@Param(name = "licenseId") long licenseId, @Param(name = "name") String name, @Param(name = "url") String url, @Param(name = "openSource") boolean openSource, @Param(name = "active") boolean active, @Param(name = "recommended") boolean recommended);
 }

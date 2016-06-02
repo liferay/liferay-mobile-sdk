@@ -12,29 +12,29 @@ import org.json.JSONObject;
 @Path("/team")
 public interface TeamService {
   @Path("/add-team")
-  Call<JSONObject> addTeam(@Param("groupId") long groupId, @Param("name") String name, @Param("description") String description);
+  Call<JSONObject> addTeam(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "description") String description);
 
   @Path("/delete-team")
-  Call<Response> deleteTeam(@Param("teamId") long teamId);
+  Call<Response> deleteTeam(@Param(name = "teamId") long teamId);
 
   @Path("/get-group-teams")
-  Call<JSONArray> getGroupTeams(@Param("groupId") long groupId);
+  Call<JSONArray> getGroupTeams(@Param(name = "groupId") long groupId);
 
   @Path("/get-team")
-  Call<JSONObject> getTeam(@Param("teamId") long teamId);
+  Call<JSONObject> getTeam(@Param(name = "teamId") long teamId);
 
   @Path("/get-team")
-  Call<JSONObject> getTeam(@Param("groupId") long groupId, @Param("name") String name);
+  Call<JSONObject> getTeam(@Param(name = "groupId") long groupId, @Param(name = "name") String name);
 
   @Path("/get-user-teams")
-  Call<JSONArray> getUserTeams(@Param("userId") long userId);
+  Call<JSONArray> getUserTeams(@Param(name = "userId") long userId);
 
   @Path("/get-user-teams")
-  Call<JSONArray> getUserTeams(@Param("userId") long userId, @Param("groupId") long groupId);
+  Call<JSONArray> getUserTeams(@Param(name = "userId") long userId, @Param(name = "groupId") long groupId);
 
   @Path("/has-user-team")
-  Call<Boolean> hasUserTeam(@Param("userId") long userId, @Param("teamId") long teamId);
+  Call<Boolean> hasUserTeam(@Param(name = "userId") long userId, @Param(name = "teamId") long teamId);
 
   @Path("/update-team")
-  Call<JSONObject> updateTeam(@Param("teamId") long teamId, @Param("name") String name, @Param("description") String description);
+  Call<JSONObject> updateTeam(@Param(name = "teamId") long teamId, @Param(name = "name") String name, @Param(name = "description") String description);
 }

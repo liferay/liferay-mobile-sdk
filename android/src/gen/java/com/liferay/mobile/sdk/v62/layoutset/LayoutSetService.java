@@ -12,23 +12,23 @@ import org.json.JSONObject;
 @Path("/layoutset")
 public interface LayoutSetService {
   @Path("/update-layout-set-prototype-link-enabled")
-  Call<Response> updateLayoutSetPrototypeLinkEnabled(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("layoutSetPrototypeLinkEnabled") boolean layoutSetPrototypeLinkEnabled, @Param("layoutSetPrototypeUuid") String layoutSetPrototypeUuid);
+  Call<Response> updateLayoutSetPrototypeLinkEnabled(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutSetPrototypeLinkEnabled") boolean layoutSetPrototypeLinkEnabled, @Param(name = "layoutSetPrototypeUuid") String layoutSetPrototypeUuid);
 
   @Path("/update-logo")
-  Call<Response> updateLogo(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("logo") boolean logo, @Param("bytes") byte[] bytes);
+  Call<Response> updateLogo(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "logo") boolean logo, @Param(name = "bytes") byte[] bytes);
 
   @Path(
       value = "/update-logo",
       contentType = ContentType.MULTIPART
   )
-  Call<Response> updateLogo(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("logo") boolean logo, @Param("file") UploadData file);
+  Call<Response> updateLogo(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "logo") boolean logo, @Param(name = "file") UploadData file);
 
   @Path("/update-look-and-feel")
-  Call<JSONObject> updateLookAndFeel(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("themeId") String themeId, @Param("colorSchemeId") String colorSchemeId, @Param("css") String css, @Param("wapTheme") boolean wapTheme);
+  Call<JSONObject> updateLookAndFeel(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "themeId") String themeId, @Param(name = "colorSchemeId") String colorSchemeId, @Param(name = "css") String css, @Param(name = "wapTheme") boolean wapTheme);
 
   @Path("/update-settings")
-  Call<JSONObject> updateSettings(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("settings") String settings);
+  Call<JSONObject> updateSettings(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "settings") String settings);
 
   @Path("/update-virtual-host")
-  Call<JSONObject> updateVirtualHost(@Param("groupId") long groupId, @Param("privateLayout") boolean privateLayout, @Param("virtualHost") String virtualHost);
+  Call<JSONObject> updateVirtualHost(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "virtualHost") String virtualHost);
 }

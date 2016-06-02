@@ -13,47 +13,47 @@ import org.json.JSONObject;
 @Path("/wikinode")
 public interface WikiNodeService {
   @Path("/add-node")
-  Call<JSONObject> addNode(@Param("name") String name, @Param("description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addNode(@Param(name = "name") String name, @Param(name = "description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-node")
-  Call<Response> deleteNode(@Param("nodeId") long nodeId);
+  Call<Response> deleteNode(@Param(name = "nodeId") long nodeId);
 
   @Path("/get-node")
-  Call<JSONObject> getNode(@Param("nodeId") long nodeId);
+  Call<JSONObject> getNode(@Param(name = "nodeId") long nodeId);
 
   @Path("/get-node")
-  Call<JSONObject> getNode(@Param("groupId") long groupId, @Param("name") String name);
+  Call<JSONObject> getNode(@Param(name = "groupId") long groupId, @Param(name = "name") String name);
 
   @Path("/get-nodes")
-  Call<JSONArray> getNodes(@Param("groupId") long groupId);
+  Call<JSONArray> getNodes(@Param(name = "groupId") long groupId);
 
   @Path("/get-nodes")
-  Call<JSONArray> getNodes(@Param("groupId") long groupId, @Param("status") int status);
+  Call<JSONArray> getNodes(@Param(name = "groupId") long groupId, @Param(name = "status") int status);
 
   @Path("/get-nodes")
-  Call<JSONArray> getNodes(@Param("groupId") long groupId, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getNodes(@Param(name = "groupId") long groupId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-nodes")
-  Call<JSONArray> getNodes(@Param("groupId") long groupId, @Param("status") int status, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getNodes(@Param(name = "groupId") long groupId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-nodes-count")
-  Call<Integer> getNodesCount(@Param("groupId") long groupId);
+  Call<Integer> getNodesCount(@Param(name = "groupId") long groupId);
 
   @Path("/get-nodes-count")
-  Call<Integer> getNodesCount(@Param("groupId") long groupId, @Param("status") int status);
+  Call<Integer> getNodesCount(@Param(name = "groupId") long groupId, @Param(name = "status") int status);
 
   @Path("/move-node-to-trash")
-  Call<JSONObject> moveNodeToTrash(@Param("nodeId") long nodeId);
+  Call<JSONObject> moveNodeToTrash(@Param(name = "nodeId") long nodeId);
 
   @Path("/restore-node-from-trash")
-  Call<Response> restoreNodeFromTrash(@Param("nodeId") long nodeId);
+  Call<Response> restoreNodeFromTrash(@Param(name = "nodeId") long nodeId);
 
   @Path("/subscribe-node")
-  Call<Response> subscribeNode(@Param("nodeId") long nodeId);
+  Call<Response> subscribeNode(@Param(name = "nodeId") long nodeId);
 
   @Path("/unsubscribe-node")
-  Call<Response> unsubscribeNode(@Param("nodeId") long nodeId);
+  Call<Response> unsubscribeNode(@Param(name = "nodeId") long nodeId);
 
   @Path("/update-node")
-  Call<JSONObject> updateNode(@Param("nodeId") long nodeId, @Param("name") String name, @Param("description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateNode(@Param(name = "nodeId") long nodeId, @Param(name = "name") String name, @Param(name = "description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

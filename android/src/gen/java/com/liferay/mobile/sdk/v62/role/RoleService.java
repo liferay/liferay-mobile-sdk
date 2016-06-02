@@ -13,47 +13,47 @@ import org.json.JSONObject;
 @Path("/role")
 public interface RoleService {
   @Path("/add-role")
-  Call<JSONObject> addRole(@Param("name") String name, @ParamObject(name = "titleMap", className = "") JSONObject titleMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("type") int type);
+  Call<JSONObject> addRole(@Param(name = "name") String name, @ParamObject(name = "titleMap", className = "") JSONObject titleMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "type") int type);
 
   @Path("/add-role")
-  Call<JSONObject> addRole(@Param("className") String className, @Param("classPK") long classPK, @Param("name") String name, @ParamObject(name = "titleMap", className = "") JSONObject titleMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("type") int type, @Param("subtype") String subtype, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addRole(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "name") String name, @ParamObject(name = "titleMap", className = "") JSONObject titleMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "type") int type, @Param(name = "subtype") String subtype, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-user-roles")
-  Call<Response> addUserRoles(@Param("userId") long userId, @Param("roleIds") JSONArray roleIds);
+  Call<Response> addUserRoles(@Param(name = "userId") long userId, @Param(name = "roleIds") JSONArray roleIds);
 
   @Path("/delete-role")
-  Call<Response> deleteRole(@Param("roleId") long roleId);
+  Call<Response> deleteRole(@Param(name = "roleId") long roleId);
 
   @Path("/get-group-roles")
-  Call<JSONArray> getGroupRoles(@Param("groupId") long groupId);
+  Call<JSONArray> getGroupRoles(@Param(name = "groupId") long groupId);
 
   @Path("/get-role")
-  Call<JSONObject> getRole(@Param("roleId") long roleId);
+  Call<JSONObject> getRole(@Param(name = "roleId") long roleId);
 
   @Path("/get-role")
-  Call<JSONObject> getRole(@Param("companyId") long companyId, @Param("name") String name);
+  Call<JSONObject> getRole(@Param(name = "companyId") long companyId, @Param(name = "name") String name);
 
   @Path("/get-user-group-group-roles")
-  Call<JSONArray> getUserGroupGroupRoles(@Param("userId") long userId, @Param("groupId") long groupId);
+  Call<JSONArray> getUserGroupGroupRoles(@Param(name = "userId") long userId, @Param(name = "groupId") long groupId);
 
   @Path("/get-user-group-roles")
-  Call<JSONArray> getUserGroupRoles(@Param("userId") long userId, @Param("groupId") long groupId);
+  Call<JSONArray> getUserGroupRoles(@Param(name = "userId") long userId, @Param(name = "groupId") long groupId);
 
   @Path("/get-user-related-roles")
-  Call<JSONArray> getUserRelatedRoles(@Param("userId") long userId, @Param("groups") JSONArray groups);
+  Call<JSONArray> getUserRelatedRoles(@Param(name = "userId") long userId, @Param(name = "groups") JSONArray groups);
 
   @Path("/get-user-roles")
-  Call<JSONArray> getUserRoles(@Param("userId") long userId);
+  Call<JSONArray> getUserRoles(@Param(name = "userId") long userId);
 
   @Path("/has-user-role")
-  Call<Boolean> hasUserRole(@Param("userId") long userId, @Param("companyId") long companyId, @Param("name") String name, @Param("inherited") boolean inherited);
+  Call<Boolean> hasUserRole(@Param(name = "userId") long userId, @Param(name = "companyId") long companyId, @Param(name = "name") String name, @Param(name = "inherited") boolean inherited);
 
   @Path("/has-user-roles")
-  Call<Boolean> hasUserRoles(@Param("userId") long userId, @Param("companyId") long companyId, @Param("names") JSONArray names, @Param("inherited") boolean inherited);
+  Call<Boolean> hasUserRoles(@Param(name = "userId") long userId, @Param(name = "companyId") long companyId, @Param(name = "names") JSONArray names, @Param(name = "inherited") boolean inherited);
 
   @Path("/unset-user-roles")
-  Call<Response> unsetUserRoles(@Param("userId") long userId, @Param("roleIds") JSONArray roleIds);
+  Call<Response> unsetUserRoles(@Param(name = "userId") long userId, @Param(name = "roleIds") JSONArray roleIds);
 
   @Path("/update-role")
-  Call<JSONObject> updateRole(@Param("roleId") long roleId, @Param("name") String name, @ParamObject(name = "titleMap", className = "") JSONObject titleMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("subtype") String subtype, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateRole(@Param(name = "roleId") long roleId, @Param(name = "name") String name, @ParamObject(name = "titleMap", className = "") JSONObject titleMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "subtype") String subtype, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

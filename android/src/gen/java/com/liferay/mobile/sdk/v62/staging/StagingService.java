@@ -12,17 +12,17 @@ import org.json.JSONObject;
 @Path("/staging")
 public interface StagingService {
   @Path("/clean-up-staging-request")
-  Call<Response> cleanUpStagingRequest(@Param("stagingRequestId") long stagingRequestId);
+  Call<Response> cleanUpStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId);
 
   @Path("/create-staging-request")
-  Call<Long> createStagingRequest(@Param("groupId") long groupId, @Param("checksum") String checksum);
+  Call<Long> createStagingRequest(@Param(name = "groupId") long groupId, @Param(name = "checksum") String checksum);
 
   @Path("/publish-staging-request")
-  Call<Response> publishStagingRequest(@Param("stagingRequestId") long stagingRequestId, @Param("privateLayout") boolean privateLayout, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap);
+  Call<Response> publishStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "privateLayout") boolean privateLayout, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap);
 
   @Path("/update-staging-request")
-  Call<Response> updateStagingRequest(@Param("stagingRequestId") long stagingRequestId, @Param("fileName") String fileName, @Param("bytes") byte[] bytes);
+  Call<Response> updateStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "fileName") String fileName, @Param(name = "bytes") byte[] bytes);
 
   @Path("/validate-staging-request")
-  Call<JSONObject> validateStagingRequest(@Param("stagingRequestId") long stagingRequestId, @Param("privateLayout") boolean privateLayout, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap);
+  Call<JSONObject> validateStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "privateLayout") boolean privateLayout, @ParamObject(name = "parameterMap", className = "") JSONObject parameterMap);
 }

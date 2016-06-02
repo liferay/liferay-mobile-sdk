@@ -11,11 +11,11 @@ import org.json.JSONObject;
 @Path("/contact")
 public interface ContactService {
   @Path("/get-contact")
-  Call<JSONObject> getContact(@Param("contactId") long contactId);
+  Call<JSONObject> getContact(@Param(name = "contactId") long contactId);
 
   @Path("/get-contacts")
-  Call<JSONArray> getContacts(@Param("classNameId") long classNameId, @Param("classPK") long classPK, @Param("start") int start, @Param("end") int end, @ParamObject(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject orderByComparator);
+  Call<JSONArray> getContacts(@Param(name = "classNameId") long classNameId, @Param(name = "classPK") long classPK, @Param(name = "start") int start, @Param(name = "end") int end, @ParamObject(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject orderByComparator);
 
   @Path("/get-contacts-count")
-  Call<Integer> getContactsCount(@Param("classNameId") long classNameId, @Param("classPK") long classPK);
+  Call<Integer> getContactsCount(@Param(name = "classNameId") long classNameId, @Param(name = "classPK") long classPK);
 }

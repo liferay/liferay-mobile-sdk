@@ -13,26 +13,26 @@ import org.json.JSONObject;
 @Path("/shoppingcategory")
 public interface ShoppingCategoryService {
   @Path("/add-category")
-  Call<JSONObject> addCategory(@Param("parentCategoryId") long parentCategoryId, @Param("name") String name, @Param("description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addCategory(@Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "name") String name, @Param(name = "description") String description, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-category")
-  Call<Response> deleteCategory(@Param("categoryId") long categoryId);
+  Call<Response> deleteCategory(@Param(name = "categoryId") long categoryId);
 
   @Path("/get-categories")
-  Call<JSONArray> getCategories(@Param("groupId") long groupId);
+  Call<JSONArray> getCategories(@Param(name = "groupId") long groupId);
 
   @Path("/get-categories")
-  Call<JSONArray> getCategories(@Param("groupId") long groupId, @Param("parentCategoryId") long parentCategoryId, @Param("start") int start, @Param("end") int end);
+  Call<JSONArray> getCategories(@Param(name = "groupId") long groupId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-categories-count")
-  Call<Integer> getCategoriesCount(@Param("groupId") long groupId, @Param("parentCategoryId") long parentCategoryId);
+  Call<Integer> getCategoriesCount(@Param(name = "groupId") long groupId, @Param(name = "parentCategoryId") long parentCategoryId);
 
   @Path("/get-category")
-  Call<JSONObject> getCategory(@Param("categoryId") long categoryId);
+  Call<JSONObject> getCategory(@Param(name = "categoryId") long categoryId);
 
   @Path("/get-subcategory-ids")
-  Call<Response> getSubcategoryIds(@Param("categoryIds") JSONArray categoryIds, @Param("groupId") long groupId, @Param("categoryId") long categoryId);
+  Call<Response> getSubcategoryIds(@Param(name = "categoryIds") JSONArray categoryIds, @Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId);
 
   @Path("/update-category")
-  Call<JSONObject> updateCategory(@Param("categoryId") long categoryId, @Param("parentCategoryId") long parentCategoryId, @Param("name") String name, @Param("description") String description, @Param("mergeWithParentCategory") boolean mergeWithParentCategory, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateCategory(@Param(name = "categoryId") long categoryId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "mergeWithParentCategory") boolean mergeWithParentCategory, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

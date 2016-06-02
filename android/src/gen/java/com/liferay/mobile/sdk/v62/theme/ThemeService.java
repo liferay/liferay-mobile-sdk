@@ -8,7 +8,7 @@ import org.json.JSONArray;
 @Path("/theme")
 public interface ThemeService {
   @Path("/get-themes")
-  Call<JSONArray> getThemes(@Param("companyId") long companyId);
+  Call<JSONArray> getThemes(@Param(name = "companyId") long companyId);
 
   @Path("/get-war-themes")
   Call<JSONArray> getWarThemes();

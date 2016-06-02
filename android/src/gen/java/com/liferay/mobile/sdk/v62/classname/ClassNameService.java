@@ -11,11 +11,11 @@ import org.json.JSONObject;
 @Path("/classname")
 public interface ClassNameService {
   @Path("/fetch-class-name")
-  Call<JSONObject> fetchClassName(@Param("value") String value);
+  Call<JSONObject> fetchClassName(@Param(name = "value") String value);
 
   @Path("/fetch-class-name-id")
   Call<Long> fetchClassNameId(@ParamObject(name = "clazz", className = "") JSONObject clazz);
 
   @Path("/fetch-class-name-id")
-  Call<Long> fetchClassNameId(@Param("value") String value);
+  Call<Long> fetchClassNameId(@Param(name = "value") String value);
 }

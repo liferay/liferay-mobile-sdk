@@ -12,20 +12,20 @@ import org.json.JSONObject;
 @Path("/website")
 public interface WebsiteService {
   @Path("/add-website")
-  Call<JSONObject> addWebsite(@Param("className") String className, @Param("classPK") long classPK, @Param("url") String url, @Param("typeId") int typeId, @Param("primary") boolean primary);
+  Call<JSONObject> addWebsite(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "url") String url, @Param(name = "typeId") int typeId, @Param(name = "primary") boolean primary);
 
   @Path("/add-website")
-  Call<JSONObject> addWebsite(@Param("className") String className, @Param("classPK") long classPK, @Param("url") String url, @Param("typeId") int typeId, @Param("primary") boolean primary, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addWebsite(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "url") String url, @Param(name = "typeId") int typeId, @Param(name = "primary") boolean primary, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-website")
-  Call<Response> deleteWebsite(@Param("websiteId") long websiteId);
+  Call<Response> deleteWebsite(@Param(name = "websiteId") long websiteId);
 
   @Path("/get-website")
-  Call<JSONObject> getWebsite(@Param("websiteId") long websiteId);
+  Call<JSONObject> getWebsite(@Param(name = "websiteId") long websiteId);
 
   @Path("/get-websites")
-  Call<JSONArray> getWebsites(@Param("className") String className, @Param("classPK") long classPK);
+  Call<JSONArray> getWebsites(@Param(name = "className") String className, @Param(name = "classPK") long classPK);
 
   @Path("/update-website")
-  Call<JSONObject> updateWebsite(@Param("websiteId") long websiteId, @Param("url") String url, @Param("typeId") int typeId, @Param("primary") boolean primary);
+  Call<JSONObject> updateWebsite(@Param(name = "websiteId") long websiteId, @Param(name = "url") String url, @Param(name = "typeId") int typeId, @Param(name = "primary") boolean primary);
 }

@@ -11,14 +11,14 @@ import org.json.JSONObject;
 @Path("/membershiprequest")
 public interface MembershipRequestService {
   @Path("/add-membership-request")
-  Call<JSONObject> addMembershipRequest(@Param("groupId") long groupId, @Param("comments") String comments, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addMembershipRequest(@Param(name = "groupId") long groupId, @Param(name = "comments") String comments, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-membership-requests")
-  Call<Response> deleteMembershipRequests(@Param("groupId") long groupId, @Param("statusId") int statusId);
+  Call<Response> deleteMembershipRequests(@Param(name = "groupId") long groupId, @Param(name = "statusId") int statusId);
 
   @Path("/get-membership-request")
-  Call<JSONObject> getMembershipRequest(@Param("membershipRequestId") long membershipRequestId);
+  Call<JSONObject> getMembershipRequest(@Param(name = "membershipRequestId") long membershipRequestId);
 
   @Path("/update-status")
-  Call<Response> updateStatus(@Param("membershipRequestId") long membershipRequestId, @Param("reviewComments") String reviewComments, @Param("statusId") int statusId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<Response> updateStatus(@Param(name = "membershipRequestId") long membershipRequestId, @Param(name = "reviewComments") String reviewComments, @Param(name = "statusId") int statusId, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

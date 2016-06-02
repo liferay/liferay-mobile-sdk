@@ -11,5 +11,5 @@ import org.json.JSONObject;
 @Path("/flagsentry")
 public interface FlagsEntryService {
   @Path("/add-entry")
-  Call<Response> addEntry(@Param("className") String className, @Param("classPK") long classPK, @Param("reporterEmailAddress") String reporterEmailAddress, @Param("reportedUserId") long reportedUserId, @Param("contentTitle") String contentTitle, @Param("contentURL") String contentURL, @Param("reason") String reason, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<Response> addEntry(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "reporterEmailAddress") String reporterEmailAddress, @Param(name = "reportedUserId") long reportedUserId, @Param(name = "contentTitle") String contentTitle, @Param(name = "contentURL") String contentURL, @Param(name = "reason") String reason, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

@@ -9,5 +9,5 @@ import org.json.JSONObject;
 @Path("/pluginsetting")
 public interface PluginSettingService {
   @Path("/update-plugin-setting")
-  Call<JSONObject> updatePluginSetting(@Param("companyId") long companyId, @Param("pluginId") String pluginId, @Param("pluginType") String pluginType, @Param("roles") String roles, @Param("active") boolean active);
+  Call<JSONObject> updatePluginSetting(@Param(name = "companyId") long companyId, @Param(name = "pluginId") String pluginId, @Param(name = "pluginType") String pluginType, @Param(name = "roles") String roles, @Param(name = "active") boolean active);
 }

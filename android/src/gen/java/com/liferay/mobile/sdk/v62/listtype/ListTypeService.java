@@ -11,14 +11,14 @@ import org.json.JSONObject;
 @Path("/listtype")
 public interface ListTypeService {
   @Path("/get-list-type")
-  Call<JSONObject> getListType(@Param("listTypeId") int listTypeId);
+  Call<JSONObject> getListType(@Param(name = "listTypeId") int listTypeId);
 
   @Path("/get-list-types")
-  Call<JSONArray> getListTypes(@Param("type") String type);
+  Call<JSONArray> getListTypes(@Param(name = "type") String type);
 
   @Path("/validate")
-  Call<Response> validate(@Param("listTypeId") int listTypeId, @Param("type") String type);
+  Call<Response> validate(@Param(name = "listTypeId") int listTypeId, @Param(name = "type") String type);
 
   @Path("/validate")
-  Call<Response> validate(@Param("listTypeId") int listTypeId, @Param("classNameId") long classNameId, @Param("type") String type);
+  Call<Response> validate(@Param(name = "listTypeId") int listTypeId, @Param(name = "classNameId") long classNameId, @Param(name = "type") String type);
 }

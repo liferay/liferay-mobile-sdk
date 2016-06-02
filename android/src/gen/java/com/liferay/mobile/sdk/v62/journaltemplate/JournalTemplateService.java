@@ -15,47 +15,47 @@ import org.json.JSONObject;
 @Path("/journaltemplate")
 public interface JournalTemplateService {
   @Path("/add-template")
-  Call<JSONObject> addTemplate(@Param("groupId") long groupId, @Param("templateId") String templateId, @Param("autoTemplateId") boolean autoTemplateId, @Param("structureId") String structureId, @ParamObject(name = "nameMap", className = "") JSONObject nameMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("xsl") String xsl, @Param("formatXsl") boolean formatXsl, @Param("langType") String langType, @Param("cacheable") boolean cacheable, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addTemplate(@Param(name = "groupId") long groupId, @Param(name = "templateId") String templateId, @Param(name = "autoTemplateId") boolean autoTemplateId, @Param(name = "structureId") String structureId, @ParamObject(name = "nameMap", className = "") JSONObject nameMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "xsl") String xsl, @Param(name = "formatXsl") boolean formatXsl, @Param(name = "langType") String langType, @Param(name = "cacheable") boolean cacheable, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path(
       value = "/add-template",
       contentType = ContentType.MULTIPART
   )
-  Call<JSONObject> addTemplate(@Param("groupId") long groupId, @Param("templateId") String templateId, @Param("autoTemplateId") boolean autoTemplateId, @Param("structureId") String structureId, @ParamObject(name = "nameMap", className = "") JSONObject nameMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("xsl") String xsl, @Param("formatXsl") boolean formatXsl, @Param("langType") String langType, @Param("cacheable") boolean cacheable, @Param("smallImage") boolean smallImage, @Param("smallImageURL") String smallImageURL, @Param("smallFile") UploadData smallFile, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addTemplate(@Param(name = "groupId") long groupId, @Param(name = "templateId") String templateId, @Param(name = "autoTemplateId") boolean autoTemplateId, @Param(name = "structureId") String structureId, @ParamObject(name = "nameMap", className = "") JSONObject nameMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "xsl") String xsl, @Param(name = "formatXsl") boolean formatXsl, @Param(name = "langType") String langType, @Param(name = "cacheable") boolean cacheable, @Param(name = "smallImage") boolean smallImage, @Param(name = "smallImageURL") String smallImageURL, @Param(name = "smallFile") UploadData smallFile, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/copy-template")
-  Call<JSONObject> copyTemplate(@Param("groupId") long groupId, @Param("oldTemplateId") String oldTemplateId, @Param("newTemplateId") String newTemplateId, @Param("autoTemplateId") boolean autoTemplateId);
+  Call<JSONObject> copyTemplate(@Param(name = "groupId") long groupId, @Param(name = "oldTemplateId") String oldTemplateId, @Param(name = "newTemplateId") String newTemplateId, @Param(name = "autoTemplateId") boolean autoTemplateId);
 
   @Path("/delete-template")
-  Call<Response> deleteTemplate(@Param("groupId") long groupId, @Param("templateId") String templateId);
+  Call<Response> deleteTemplate(@Param(name = "groupId") long groupId, @Param(name = "templateId") String templateId);
 
   @Path("/get-structure-templates")
-  Call<JSONArray> getStructureTemplates(@Param("groupId") long groupId, @Param("structureId") String structureId);
+  Call<JSONArray> getStructureTemplates(@Param(name = "groupId") long groupId, @Param(name = "structureId") String structureId);
 
   @Path("/get-template")
-  Call<JSONObject> getTemplate(@Param("groupId") long groupId, @Param("templateId") String templateId);
+  Call<JSONObject> getTemplate(@Param(name = "groupId") long groupId, @Param(name = "templateId") String templateId);
 
   @Path("/get-template")
-  Call<JSONObject> getTemplate(@Param("groupId") long groupId, @Param("templateId") String templateId, @Param("includeGlobalTemplates") boolean includeGlobalTemplates);
+  Call<JSONObject> getTemplate(@Param(name = "groupId") long groupId, @Param(name = "templateId") String templateId, @Param(name = "includeGlobalTemplates") boolean includeGlobalTemplates);
 
   @Path("/search")
-  Call<JSONArray> search(@Param("companyId") long companyId, @Param("groupIds") JSONArray groupIds, @Param("templateId") String templateId, @Param("structureId") String structureId, @Param("structureIdComparator") String structureIdComparator, @Param("name") String name, @Param("description") String description, @Param("andOperator") boolean andOperator, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "templateId") String templateId, @Param(name = "structureId") String structureId, @Param(name = "structureIdComparator") String structureIdComparator, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "andOperator") boolean andOperator, @Param(name = "start") int start, @Param(name = "end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/search")
-  Call<JSONArray> search(@Param("companyId") long companyId, @Param("groupIds") JSONArray groupIds, @Param("keywords") String keywords, @Param("structureId") String structureId, @Param("structureIdComparator") String structureIdComparator, @Param("start") int start, @Param("end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "keywords") String keywords, @Param(name = "structureId") String structureId, @Param(name = "structureIdComparator") String structureIdComparator, @Param(name = "start") int start, @Param(name = "end") int end, @ParamObject(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/search-count")
-  Call<Integer> searchCount(@Param("companyId") long companyId, @Param("groupIds") JSONArray groupIds, @Param("keywords") String keywords, @Param("structureId") String structureId, @Param("structureIdComparator") String structureIdComparator);
+  Call<Integer> searchCount(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "keywords") String keywords, @Param(name = "structureId") String structureId, @Param(name = "structureIdComparator") String structureIdComparator);
 
   @Path("/search-count")
-  Call<Integer> searchCount(@Param("companyId") long companyId, @Param("groupIds") JSONArray groupIds, @Param("templateId") String templateId, @Param("structureId") String structureId, @Param("structureIdComparator") String structureIdComparator, @Param("name") String name, @Param("description") String description, @Param("andOperator") boolean andOperator);
+  Call<Integer> searchCount(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "templateId") String templateId, @Param(name = "structureId") String structureId, @Param(name = "structureIdComparator") String structureIdComparator, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "andOperator") boolean andOperator);
 
   @Path("/update-template")
-  Call<JSONObject> updateTemplate(@Param("groupId") long groupId, @Param("templateId") String templateId, @Param("structureId") String structureId, @ParamObject(name = "nameMap", className = "") JSONObject nameMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("xsl") String xsl, @Param("formatXsl") boolean formatXsl, @Param("langType") String langType, @Param("cacheable") boolean cacheable, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateTemplate(@Param(name = "groupId") long groupId, @Param(name = "templateId") String templateId, @Param(name = "structureId") String structureId, @ParamObject(name = "nameMap", className = "") JSONObject nameMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "xsl") String xsl, @Param(name = "formatXsl") boolean formatXsl, @Param(name = "langType") String langType, @Param(name = "cacheable") boolean cacheable, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path(
       value = "/update-template",
       contentType = ContentType.MULTIPART
   )
-  Call<JSONObject> updateTemplate(@Param("groupId") long groupId, @Param("templateId") String templateId, @Param("structureId") String structureId, @ParamObject(name = "nameMap", className = "") JSONObject nameMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param("xsl") String xsl, @Param("formatXsl") boolean formatXsl, @Param("langType") String langType, @Param("cacheable") boolean cacheable, @Param("smallImage") boolean smallImage, @Param("smallImageURL") String smallImageURL, @Param("smallFile") UploadData smallFile, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateTemplate(@Param(name = "groupId") long groupId, @Param(name = "templateId") String templateId, @Param(name = "structureId") String structureId, @ParamObject(name = "nameMap", className = "") JSONObject nameMap, @ParamObject(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "xsl") String xsl, @Param(name = "formatXsl") boolean formatXsl, @Param(name = "langType") String langType, @Param(name = "cacheable") boolean cacheable, @Param(name = "smallImage") boolean smallImage, @Param(name = "smallImageURL") String smallImageURL, @Param(name = "smallFile") UploadData smallFile, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

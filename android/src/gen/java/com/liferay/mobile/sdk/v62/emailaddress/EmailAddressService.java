@@ -12,20 +12,20 @@ import org.json.JSONObject;
 @Path("/emailaddress")
 public interface EmailAddressService {
   @Path("/add-email-address")
-  Call<JSONObject> addEmailAddress(@Param("className") String className, @Param("classPK") long classPK, @Param("address") String address, @Param("typeId") int typeId, @Param("primary") boolean primary);
+  Call<JSONObject> addEmailAddress(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "address") String address, @Param(name = "typeId") int typeId, @Param(name = "primary") boolean primary);
 
   @Path("/add-email-address")
-  Call<JSONObject> addEmailAddress(@Param("className") String className, @Param("classPK") long classPK, @Param("address") String address, @Param("typeId") int typeId, @Param("primary") boolean primary, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addEmailAddress(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "address") String address, @Param(name = "typeId") int typeId, @Param(name = "primary") boolean primary, @ParamObject(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-email-address")
-  Call<Response> deleteEmailAddress(@Param("emailAddressId") long emailAddressId);
+  Call<Response> deleteEmailAddress(@Param(name = "emailAddressId") long emailAddressId);
 
   @Path("/get-email-address")
-  Call<JSONObject> getEmailAddress(@Param("emailAddressId") long emailAddressId);
+  Call<JSONObject> getEmailAddress(@Param(name = "emailAddressId") long emailAddressId);
 
   @Path("/get-email-addresses")
-  Call<JSONArray> getEmailAddresses(@Param("className") String className, @Param("classPK") long classPK);
+  Call<JSONArray> getEmailAddresses(@Param(name = "className") String className, @Param(name = "classPK") long classPK);
 
   @Path("/update-email-address")
-  Call<JSONObject> updateEmailAddress(@Param("emailAddressId") long emailAddressId, @Param("address") String address, @Param("typeId") int typeId, @Param("primary") boolean primary);
+  Call<JSONObject> updateEmailAddress(@Param(name = "emailAddressId") long emailAddressId, @Param(name = "address") String address, @Param(name = "typeId") int typeId, @Param(name = "primary") boolean primary);
 }

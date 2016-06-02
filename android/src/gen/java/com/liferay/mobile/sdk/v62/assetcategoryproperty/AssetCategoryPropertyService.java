@@ -11,17 +11,17 @@ import org.json.JSONObject;
 @Path("/assetcategoryproperty")
 public interface AssetCategoryPropertyService {
   @Path("/add-category-property")
-  Call<JSONObject> addCategoryProperty(@Param("entryId") long entryId, @Param("key") String key, @Param("value") String value);
+  Call<JSONObject> addCategoryProperty(@Param(name = "entryId") long entryId, @Param(name = "key") String key, @Param(name = "value") String value);
 
   @Path("/delete-category-property")
-  Call<Response> deleteCategoryProperty(@Param("categoryPropertyId") long categoryPropertyId);
+  Call<Response> deleteCategoryProperty(@Param(name = "categoryPropertyId") long categoryPropertyId);
 
   @Path("/get-category-properties")
-  Call<JSONArray> getCategoryProperties(@Param("entryId") long entryId);
+  Call<JSONArray> getCategoryProperties(@Param(name = "entryId") long entryId);
 
   @Path("/get-category-property-values")
-  Call<JSONArray> getCategoryPropertyValues(@Param("companyId") long companyId, @Param("key") String key);
+  Call<JSONArray> getCategoryPropertyValues(@Param(name = "companyId") long companyId, @Param(name = "key") String key);
 
   @Path("/update-category-property")
-  Call<JSONObject> updateCategoryProperty(@Param("categoryPropertyId") long categoryPropertyId, @Param("key") String key, @Param("value") String value);
+  Call<JSONObject> updateCategoryProperty(@Param(name = "categoryPropertyId") long categoryPropertyId, @Param(name = "key") String key, @Param(name = "value") String value);
 }

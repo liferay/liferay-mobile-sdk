@@ -8,5 +8,5 @@ import org.json.JSONObject;
 @Path("/image")
 public interface ImageService {
   @Path("/get-image")
-  Call<JSONObject> getImage(@Param("imageId") long imageId);
+  Call<JSONObject> getImage(@Param(name = "imageId") long imageId);
 }
