@@ -71,7 +71,7 @@ public class DefaultParamsTest extends BaseTest {
 
 		@Path("/get-group")
 		@Params( {
-			@Param(name = "companyId", value = "10157"),
+			@Param(name = "companyId", value = "10157")
 		})
 		Call<Site> getGroupWithName(@Param(name = "name") String name);
 
