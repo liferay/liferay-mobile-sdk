@@ -23,8 +23,8 @@ publishing {
 }
 
 bintray {
-	user = property('user')
-	key = property('key')
+	user = hasProperty('user') ? property('user') : ''
+	key = hasProperty('key') ? property('key') : ''
 
 	publications = ['mavenJava']
 
