@@ -66,7 +66,7 @@ public class PortalVersionUtil {
 
 		Request request = new Request(
 			Method.HEAD, session.getHeaders(), session.getServer(), null,
-			session.getConnectionTimeout());
+			session.getConnectionTimeout(), true);
 
 		Response response = HttpUtil.send(request);
 

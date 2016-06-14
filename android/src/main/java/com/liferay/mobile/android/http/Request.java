@@ -32,13 +32,22 @@ public class Request {
 
 		this(
 			authentication, method, headers, url, body, connectionTimeout,
-			callback, null);
+			callback, null, false);
 	}
 
 	public Request(
 		Authentication authentication, Method method,
 		Map<String, String> headers, String url, Object body,
-		int connectionTimeout, Callback callback, Object tag) {
+		int connectionTimeout, Callback callback,  Object tag) {
+
+		this(authentication, method, headers, url, body,
+			connectionTimeout, callback, tag, false);
+	}
+
+	public Request(
+		Authentication authentication, Method method,
+		Map<String, String> headers, String url, Object body,
+		int connectionTimeout, Callback callback, Object tag, boolean followRedirects) {
 
 		_authentication = authentication;
 		_method = method;
@@ -57,6 +66,7 @@ public class Request {
 		}
 
 		_tag = tag;
+		_followRedirects = followRedirects;
 	}
 
 	public Request(
@@ -64,6 +74,14 @@ public class Request {
 		int connectionTimeout) {
 
 		this(null, method, headers, url, body, connectionTimeout, null);
+	}
+
+	public Request(
+			Method method, Map<String, String> headers, String url, Object body,
+			int connectionTimeout, boolean followRedirects) {
+
+		this(null, method, headers, url, body, connectionTimeout, null,
+				null, followRedirects);
 	}
 
 	public Authentication getAuthentication() {
@@ -102,6 +120,10 @@ public class Request {
 		this._authentication = _authentication;
 	}
 
+	public boolean isFollowRedirects() {
+		return _followRedirects;
+	}
+
 	public void setBody(Object body) {
 		_body = body;
 	}
@@ -126,6 +148,10 @@ public class Request {
 		_url = url;
 	}
 
+	public void setFollowRedirects(boolean followRedirects) {
+		_followRedirects = followRedirects;
+	}
+
 	private Authentication _authentication;
 	private Object _body;
 	private Callback _callback;
@@ -134,5 +160,6 @@ public class Request {
 	private Method _method;
 	private Object _tag;
 	private String _url;
+	private boolean _followRedirects;
 
 }
