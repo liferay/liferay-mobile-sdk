@@ -122,7 +122,9 @@ public class OkHttpClientImpl implements HttpClient {
 		authenticate(client, request);
 		addHeaders(builder, request);
 
-		OkHttpClient client = getClient(request.getConnectionTimeout());
+		OkHttpClient client = getClient(
+				request.getConnectionTimeout(), request.isFollowRedirects());
+		
 		Call call = client.newCall(builder.build());
 
 		final Callback callback = request.getCallback();
@@ -136,14 +138,14 @@ public class OkHttpClientImpl implements HttpClient {
 		}
 	}
 
-	protected OkHttpClient getClient(int connectionTimeout) {
+	protected OkHttpClient getClient(int connectionTimeout, boolean followRedirects) {
 		OkHttpClient clone = client.clone();
 
 		clone.setConnectTimeout(connectionTimeout, TimeUnit.MILLISECONDS);
 		clone.setReadTimeout(connectionTimeout, TimeUnit.MILLISECONDS);
 		clone.setWriteTimeout(connectionTimeout, TimeUnit.MILLISECONDS);
 
-		clone.setFollowRedirects(false);
+		clone.setFollowRedirects(followRedirects);
 
 		return clone;
 	}
