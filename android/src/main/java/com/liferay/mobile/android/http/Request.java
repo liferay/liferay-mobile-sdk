@@ -32,13 +32,23 @@ public class Request {
 
 		this(
 			authentication, method, headers, url, body, connectionTimeout,
-			callback, null);
+			callback, null, null, false);
 	}
 
 	public Request(
 		Authentication authentication, Method method,
 		Map<String, String> headers, String url, Object body,
-		int connectionTimeout, Callback callback, Object tag) {
+		int connectionTimeout, Callback callback,  Object tag) {
+
+		this(authentication, method, headers, url, body,
+			connectionTimeout, callback, tag, null, false);
+	}
+
+	public Request(
+		Authentication authentication, Method method,
+		Map<String, String> headers, String url, Object body,
+		int connectionTimeout, Callback callback, Object tag, String mediaType,
+		boolean followRedirects) {
 
 		_authentication = authentication;
 		_method = method;
@@ -57,6 +67,8 @@ public class Request {
 		}
 
 		_tag = tag;
+		_mediaType = mediaType;
+		_followRedirects = followRedirects;
 	}
 
 	public Request(
@@ -98,8 +110,16 @@ public class Request {
 		return _url;
 	}
 
+	public String getMediaType() {
+		return _mediaType;
+	}
+
 	public void setAuthentication(Authentication _authentication) {
 		this._authentication = _authentication;
+	}
+
+	public boolean isFollowRedirects() {
+		return _followRedirects;
 	}
 
 	public void setBody(Object body) {
@@ -126,6 +146,14 @@ public class Request {
 		_url = url;
 	}
 
+	public void setMediaType(String mediaType) {
+		_mediaType = mediaType;
+	}
+
+	public void setFollowRedirects(boolean followRedirects) {
+		_followRedirects = followRedirects;
+	}
+
 	private Authentication _authentication;
 	private Object _body;
 	private Callback _callback;
@@ -134,5 +162,7 @@ public class Request {
 	private Method _method;
 	private Object _tag;
 	private String _url;
+	private String _mediaType;
+	private boolean _followRedirects;
 
 }
