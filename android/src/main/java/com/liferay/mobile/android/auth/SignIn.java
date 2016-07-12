@@ -66,7 +66,7 @@ public class SignIn {
 			cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
 			okHttpClient.setCookieHandler(cookieManager);
 
-			Map<String, String> headers = new HashMap<>(session.getHeaders());
+			Map<String, String> headers = new HashMap<String, String>(session.getHeaders());
 			headers.put("Cookie", "COOKIE_SUPPORT=true;");
 			session.setHeaders(headers);
 
