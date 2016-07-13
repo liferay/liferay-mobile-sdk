@@ -33,8 +33,6 @@ import com.squareup.okhttp.RequestBody;
 
 import java.io.IOException;
 
-import java.net.CookieHandler;
-import java.net.CookieManager;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -69,12 +67,8 @@ public class OkHttpClientImpl implements HttpClient {
 			String body = (String)request.getBody();
 
 			if (body != null) {
-				String mediaType = request.getMediaType();
-				if (mediaType == null) {
-					mediaType = "application/json; charset=utf-8";
-				}
-
-				MediaType type = MediaType.parse(mediaType);
+				MediaType type = MediaType.parse(
+					"application/json; charset=utf-8");
 
 				builder.post(RequestBody.create(type, body));
 			}
@@ -119,14 +113,14 @@ public class OkHttpClientImpl implements HttpClient {
 		}
 	}
 
-	protected OkHttpClient getClient(int connectionTimeout, boolean followRedirects) {
+	protected OkHttpClient getClient(int connectionTimeout) {
 		OkHttpClient clone = client.clone();
 
 		clone.setConnectTimeout(connectionTimeout, TimeUnit.MILLISECONDS);
 		clone.setReadTimeout(connectionTimeout, TimeUnit.MILLISECONDS);
 		clone.setWriteTimeout(connectionTimeout, TimeUnit.MILLISECONDS);
 
-		clone.setFollowRedirects(followRedirects);
+		clone.setFollowRedirects(false);
 
 		return clone;
 	}
@@ -163,8 +157,7 @@ public class OkHttpClientImpl implements HttpClient {
 		builder = builder.url(request.getURL());
 		builder.tag(request.getTag());
 
-		OkHttpClient client = getClient(request.getConnectionTimeout(),
-			request.isFollowRedirects());
+		OkHttpClient client = getClient(request.getConnectionTimeout());
 
 		authenticate(client, request);
 		addHeaders(builder, request);
@@ -200,10 +193,6 @@ public class OkHttpClientImpl implements HttpClient {
 			}
 
 		});
-	}
-
-	public void setCookieHandler(CookieHandler cookieHandler) {
-		client.setCookieHandler(cookieHandler);
 	}
 
 	protected OkHttpClient client;
