@@ -16,7 +16,6 @@ package com.liferay.mobile.android.auth;
 
 import com.liferay.mobile.android.auth.basic.BasicAuthentication;
 import com.liferay.mobile.android.auth.basic.CookieAuthentication;
-import com.liferay.mobile.android.callback.BaseCallback;
 import com.liferay.mobile.android.exception.AuthenticationException;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
@@ -46,7 +45,7 @@ import okio.Buffer;
  */
 public class CookieSignIn {
 
-	public static void signIn(Session session, BaseCallback<Session> callback) {
+	public static void signIn(Session session, CookieCallback callback) {
 		try {
 			if (!(session.getAuthentication() instanceof BasicAuthentication)) {
 				throw new Exception(
@@ -86,6 +85,14 @@ public class CookieSignIn {
 		}
 	}
 
+	public interface CookieCallback {
+
+		void onSuccess(Session session);
+
+		void onFailure(Exception e);
+
+	}
+
 	protected static String getBody(BasicAuthentication authentication)
 		throws IOException {
 
@@ -101,7 +108,7 @@ public class CookieSignIn {
 	}
 
 	protected static Callback getCallback(
-		final String server, final BaseCallback<Session> callback,
+		final String server, final CookieCallback callback,
 		final CookieManager cookieManager) {
 
 		return new Callback() {
