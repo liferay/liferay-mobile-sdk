@@ -1,20 +1,23 @@
+/**
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ */
+
 package com.liferay.mobile.android.auth.basic;
 
 import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.http.Request;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.FormEncodingBuilder;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
 
-import java.io.IOException;
-import java.net.CookieManager;
-import java.net.CookiePolicy;
-import java.net.CookieStore;
-import java.net.HttpCookie;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author Javier Gamarra
@@ -33,9 +36,6 @@ public class CookieAuthentication implements Authentication {
 		headers.put("X-CSRF-Token", authToken);
 	}
 
-	private String authToken;
-	private String cookieHeader;
-
 	public String getAuthToken() {
 		return authToken;
 	}
@@ -43,4 +43,8 @@ public class CookieAuthentication implements Authentication {
 	public String getCookieHeader() {
 		return cookieHeader;
 	}
+
+	protected String authToken;
+	protected String cookieHeader;
+
 }

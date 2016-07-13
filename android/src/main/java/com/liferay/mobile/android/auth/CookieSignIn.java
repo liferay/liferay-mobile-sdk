@@ -21,6 +21,7 @@ import com.liferay.mobile.android.exception.AuthenticationException;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
 import com.liferay.mobile.android.util.Validator;
+
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
@@ -32,6 +33,7 @@ import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
+
 import java.net.CookieManager;
 import java.net.CookiePolicy;
 import java.net.CookieStore;
@@ -84,7 +86,21 @@ public class CookieSignIn {
 		}
 	}
 
-	private static Callback getCallback(
+	protected static String getBody(BasicAuthentication authentication)
+		throws IOException {
+
+		RequestBody formBody = new FormEncodingBuilder()
+			.add("login", authentication.getUsername())
+			.add("password", authentication.getPassword())
+			.build();
+
+		Buffer buffer = new Buffer();
+		formBody.writeTo(buffer);
+
+		return buffer.readUtf8();
+	}
+
+	protected static Callback getCallback(
 		final String server, final BaseCallback<Session> callback,
 		final CookieManager cookieManager) {
 
@@ -109,8 +125,8 @@ public class CookieSignIn {
 					cookieManager.getCookieStore());
 
 				if (Validator.isNotNull(cookieHeader)) {
-					Authentication authentication =
-						new CookieAuthentication(authToken, cookieHeader);
+					Authentication authentication = new CookieAuthentication(
+						authToken, cookieHeader);
 
 					Session session = new SessionImpl(server, authentication);
 					callback.onSuccess(session);
@@ -124,7 +140,7 @@ public class CookieSignIn {
 		};
 	}
 
-	private static String getHttpCookies(CookieStore cookieStore) {
+	protected static String getHttpCookies(CookieStore cookieStore) {
 		StringBuilder cookies = new StringBuilder();
 
 		for (HttpCookie cookie : cookieStore.getCookies()) {
@@ -135,7 +151,7 @@ public class CookieSignIn {
 		return cookies.toString();
 	}
 
-	private static String getLoginURL(String server) {
+	protected static String getLoginURL(String server) {
 		if (!server.endsWith("/")) {
 			server = server + "/";
 		}
@@ -143,21 +159,8 @@ public class CookieSignIn {
 		return server + "c/portal/login";
 	}
 
-	private static String getBody(BasicAuthentication authentication)
-		throws IOException {
+	protected static final String AUTH_TOKEN = "Liferay.authToken=\"";
 
-		RequestBody formBody = new FormEncodingBuilder()
-			.add("login", authentication.getUsername())
-			.add("password", authentication.getPassword())
-			.build();
-
-		Buffer buffer = new Buffer();
-		formBody.writeTo(buffer);
-
-		return buffer.readUtf8();
-	}
-
-	private static final int TOKEN_LENGTH = 8;
-	private static final String AUTH_TOKEN = "Liferay.authToken=\"";
+	protected static final int TOKEN_LENGTH = 8;
 
 }
