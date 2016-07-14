@@ -3,12 +3,7 @@ configurations {
 }
 
 dependencies {
-	if (project.parent && (project.parent.name == 'liferay-mobile-sdk')) {
-		builder project(':builder')
-	}
-	else {
-		builder group: 'com.liferay.mobile', name: 'liferay-sdk-builder', version: '6.2.0.+'
-	}
+	builder group: 'com.liferay.mobile', name: 'liferay-sdk-builder', version: '2.0-beta-3'
 }
 
 task generate(type: JavaExec) {
