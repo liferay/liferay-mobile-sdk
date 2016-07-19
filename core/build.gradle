@@ -31,7 +31,7 @@ bintray {
 		name = 'liferay-mobile-sdk'
 		userOrg = 'liferay'
 		licenses = ['LGPL-2.1']
-		vcsUrl = 'https://github.com/liferay/liferay-mobile-sdk.git'
+		vcsUrl = 'https://github.com/brunofarache/liferay-android-sdk.git'
 
 		version {
 			name = project.version
