@@ -18,12 +18,12 @@ import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.Config;
 import com.liferay.mobile.sdk.Config.Builder;
 import com.liferay.mobile.sdk.ServiceBuilder;
+import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Headers;
 import com.liferay.mobile.sdk.http.HttpClient;
 import com.liferay.mobile.sdk.http.Method;
 import com.liferay.mobile.sdk.http.Request;
 import com.liferay.mobile.sdk.http.Response;
-import com.liferay.mobile.sdk.v62.portal.PortalService;
 
 /**
  * @author Bruno Farache
@@ -82,6 +82,14 @@ public class PortalVersionUtil {
 
 			return Integer.valueOf(buildNumber);
 		}
+	}
+
+	@Path("/portal")
+	interface PortalService {
+
+		@Path("/get-build-number")
+		Call<Integer> getBuildNumber();
+
 	}
 
 }

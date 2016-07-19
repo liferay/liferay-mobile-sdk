@@ -18,8 +18,8 @@ import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.Callback;
 import com.liferay.mobile.sdk.Config;
 import com.liferay.mobile.sdk.ServiceBuilder;
-import com.liferay.mobile.sdk.v62.group.GroupService;
-import com.liferay.mobile.sdk.v62.user.UserService;
+import com.liferay.mobile.sdk.annotation.Param;
+import com.liferay.mobile.sdk.annotation.Path;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -116,6 +116,32 @@ public class SignIn {
 		}
 
 		return ((BasicAuthentication)auth).username();
+	}
+
+	@Path("/group")
+	interface GroupService {
+
+		@Path("/get-user-sites")
+		Call<JSONArray> getUserSites();
+
+	}
+
+	@Path("/user")
+	interface UserService {
+
+		@Path("/get-user-by-email-address")
+		Call<JSONObject> getUserByEmailAddress(
+			@Param(name = "companyId") long companyId,
+			@Param(name = "emailAddress") String emailAddress);
+
+		@Path("/get-user-by-id")
+		Call<JSONObject> getUserById(@Param(name = "userId") long userId);
+
+		@Path("/get-user-by-screen-name")
+		Call<JSONObject> getUserByScreenName(
+			@Param(name = "companyId") long companyId,
+			@Param(name = "screenName") String screenName);
+
 	}
 
 }
