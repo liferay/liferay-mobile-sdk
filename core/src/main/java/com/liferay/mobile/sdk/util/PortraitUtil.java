@@ -116,15 +116,14 @@ public class PortraitUtil {
 
 		byte[] bytes = digest.digest();
 
-		String token = null;
+		String token;
 
 		try {
+			Class.forName("android.util.Base64");
 			token = Base64.encodeToString(bytes, Base64.NO_WRAP);
 		}
-		catch (RuntimeException re) {
-			if ("Stub!".equals(re.getMessage())) {
-				token = DatatypeConverter.printBase64Binary(bytes);
-			}
+		catch (ClassNotFoundException cnfe) {
+			token = DatatypeConverter.printBase64Binary(bytes);
 		}
 
 		if (token != null) {

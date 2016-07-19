@@ -4,4 +4,6 @@ plugins {
 
 dependencies {
 	compile project(':core')
+
+	compileOnly group: 'com.google.android', name: 'android', version: '2.3.3'
 }
