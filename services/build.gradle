@@ -2,8 +2,30 @@ plugins {
 	id 'java'
 }
 
-dependencies {
-	compile project(':core')
+configurations {
+	builder
+}
 
+dependencies {
+	builder group: 'com.liferay.mobile', name: 'liferay-sdk-builder', version: '2.0-beta-1'
+
+	compile project(':core')
 	compileOnly group: 'com.google.android', name: 'android', version: '2.3.3'
+}
+
+task generate(type: JavaExec) {
+	group = 'Liferay'
+	description = 'Runs Liferay SDK Builder with arguments set in gradle.properties.'
+	main = 'com.liferay.mobile.sdk.SDKBuilder'
+	classpath = configurations.builder
+
+	args = [
+		"platforms=$platforms",
+		"url=$url",
+		"context=$context",
+		"filter=$filter",
+		"packageName=$packageName",
+		"portalVersion=$portalVersion",
+		"destination=$destination"
+	]
 }
