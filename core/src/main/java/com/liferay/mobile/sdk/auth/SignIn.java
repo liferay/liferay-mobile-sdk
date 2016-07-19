@@ -123,7 +123,6 @@ public class SignIn {
 
 		@Path("/get-user-sites")
 		Call<JSONArray> getUserSites();
-
 	}
 
 	@Path("/user")
@@ -141,7 +140,6 @@ public class SignIn {
 		Call<JSONObject> getUserByScreenName(
 			@Param(name = "companyId") long companyId,
 			@Param(name = "screenName") String screenName);
-
 	}
 
 }

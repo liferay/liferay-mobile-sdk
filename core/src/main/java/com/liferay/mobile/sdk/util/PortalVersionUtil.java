@@ -89,7 +89,6 @@ public class PortalVersionUtil {
 
 		@Path("/get-build-number")
 		Call<Integer> getBuildNumber();
-
 	}
 
 }
