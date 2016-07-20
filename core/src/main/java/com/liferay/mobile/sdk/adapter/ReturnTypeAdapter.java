@@ -12,41 +12,19 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.rx;
+package com.liferay.mobile.sdk.adapter;
 
 import com.liferay.mobile.sdk.Call;
 
-import rx.Observable.OnSubscribe;
-
-import rx.Subscriber;
+import java.lang.reflect.Type;
 
 /**
  * @author Bruno Farache
  */
-public class OnCallSubscribe<T> implements OnSubscribe<T> {
+public interface ReturnTypeAdapter<T> {
 
-	public OnCallSubscribe(Call<T> call) {
-		this.call = call;
-	}
+	T adapt(Call call);
 
-	@Override
-	public void call(Subscriber<? super T> subscriber) {
-		try {
-			if (!subscriber.isUnsubscribed()) {
-				subscriber.onNext(call.execute());
-			}
-		}
-		catch (Exception e) {
-			if (!subscriber.isUnsubscribed()) {
-				subscriber.onError(e);
-			}
-		}
-
-		if (!subscriber.isUnsubscribed()) {
-			subscriber.onCompleted();
-		}
-	}
-
-	protected Call<T> call;
+	Type type();
 
 }

@@ -12,17 +12,27 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.service;
+package com.liferay.mobile.sdk.adapter;
 
 import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.annotation.Param;
+
+import java.lang.reflect.Type;
+
+import rx.Observable;
 
 /**
  * @author Bruno Farache
  */
-public interface UserService {
+public class ObservableAdapter implements ReturnTypeAdapter<Observable> {
 
-	Call<Integer> getCompanyUsersCount(
-		@Param(name = "companyId") long companyId);
+	@Override
+	public Observable adapt(Call call) {
+		return Observable.create(new OnCallSubscribe<>(call));
+	}
+
+	@Override
+	public Type type() {
+		return Observable.class;
+	}
 
 }

@@ -10,8 +10,7 @@ configurations {
 
 dependencies {
 	builder group: 'com.liferay.mobile', name: 'liferay-sdk-builder', version: '2.0-beta-4'
-
-	compileOnly project(':core')
+	compile project(':core')
 	compileOnly group: 'com.google.android', name: 'android', version: '2.3.3'
 }
 

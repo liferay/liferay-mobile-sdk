@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.sdk;
 
+import com.liferay.mobile.sdk.adapter.ObservableAdapter;
 import com.liferay.mobile.sdk.exception.ServerException;
 import com.liferay.mobile.sdk.service.Site;
 import com.liferay.mobile.sdk.service.rx.GroupService;
@@ -36,6 +37,7 @@ public class ObservableGroupServiceTest extends BaseTest {
 
 	public ObservableGroupServiceTest() throws IOException {
 		super();
+		ServiceBuilder.registerReturnTypeAdapter(new ObservableAdapter());
 	}
 
 	@Test

@@ -11,18 +11,3 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
-
-package com.liferay.mobile.sdk.service;
-
-import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.annotation.Param;
-
-/**
- * @author Bruno Farache
- */
-public interface UserService {
-
-	Call<Integer> getCompanyUsersCount(
-		@Param(name = "companyId") long companyId);
-
-}

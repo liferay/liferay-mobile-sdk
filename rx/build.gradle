@@ -11,24 +11,15 @@ sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
 
 dependencies {
-	compile group: 'com.google.code.gson', name: 'gson', version: '2.6.2'
-	compile group: 'com.squareup.okhttp', name: 'okhttp', version: '2.7.5'
-
-	compileOnly group: 'com.google.android', name: 'android', version: '2.3.3'
-
-	testCompile project(':rx')
-	testCompile project(':services')
-	testCompile group: 'junit', name: 'junit', version: '4.12-beta-3'
-	testCompile group: 'org.json', name: 'json', version: '20160212'
-
-	testRuntime group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.0.1'
+	compile project(':core')
+	compile group: 'io.reactivex', name: 'rxjava', version: '1.1.3'
 }
 
 publishing {
 	publications {
 		mavenJava(MavenPublication) {
 			from components.java
-			artifactId 'liferay-mobile-sdk'
+			artifactId 'liferay-mobile-sdk-rx'
 			artifact sourceJar
 		}
 	}
@@ -42,7 +33,7 @@ bintray {
 
 	pkg {
 		repo = 'liferay-mobile'
-		name = 'liferay-mobile-sdk'
+		name = 'liferay-mobile-sdk-rx'
 		userOrg = 'liferay'
 		licenses = ['LGPL-2.1']
 		vcsUrl = 'https://github.com/brunofarache/liferay-android-sdk.git'

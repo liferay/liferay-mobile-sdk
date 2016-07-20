@@ -12,17 +12,41 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.service;
+package com.liferay.mobile.sdk.adapter;
 
 import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.annotation.Param;
+
+import rx.Observable.OnSubscribe;
+
+import rx.Subscriber;
 
 /**
  * @author Bruno Farache
  */
-public interface UserService {
+public class OnCallSubscribe<T> implements OnSubscribe<T> {
 
-	Call<Integer> getCompanyUsersCount(
-		@Param(name = "companyId") long companyId);
+	public OnCallSubscribe(Call<T> call) {
+		this.call = call;
+	}
+
+	@Override
+	public void call(Subscriber<? super T> subscriber) {
+		try {
+			if (!subscriber.isUnsubscribed()) {
+				subscriber.onNext(call.execute());
+			}
+		}
+		catch (Exception e) {
+			if (!subscriber.isUnsubscribed()) {
+				subscriber.onError(e);
+			}
+		}
+
+		if (!subscriber.isUnsubscribed()) {
+			subscriber.onCompleted();
+		}
+	}
+
+	protected Call<T> call;
 
 }
