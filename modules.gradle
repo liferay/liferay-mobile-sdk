@@ -12,8 +12,7 @@ ext {
 apply from: 'sdk-builder.gradle'
 
 configure(subprojects.findAll { it.name.startsWith('modules/') }) {
-	apply from: 'https://raw.githubusercontent.com/brunofarache/liferay-mobile-sdk/master/sdk-builder.gradle'
-
+	apply from: '../../sdk-builder.gradle'
 	apply plugin: 'java'
 
 	archivesBaseName = "liferay-${contexts}-android-sdk"
