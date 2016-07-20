@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
 	id 'maven-publish'
-	id 'com.jfrog.bintray' version '1.6'
+	id 'com.jfrog.bintray' version '1.7.1'
 }
 
 apply from: 'formatter.gradle'
@@ -21,8 +21,8 @@ publishing {
 }
 
 bintray {
-	user = hasProperty('user') ? property('user') : ''
-	key = hasProperty('key') ? property('key') : ''
+	user = findProperty('user') ?: ''
+	key = findProperty('key') ?: ''
 
 	publications = ['mavenJava']
 

@@ -1,5 +1,7 @@
 plugins {
 	id 'java'
+	id 'maven-publish'
+	id 'com.jfrog.bintray' version '1.7.1'
 }
 
 configurations {
@@ -9,8 +11,37 @@ configurations {
 dependencies {
 	builder group: 'com.liferay.mobile', name: 'liferay-sdk-builder', version: '2.0-beta-4'
 
-	compile project(':core')
+	compileOnly project(':core')
 	compileOnly group: 'com.google.android', name: 'android', version: '2.3.3'
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+			artifactId 'liferay-mobile-sdk-services'
+			artifact sourceJar
+		}
+	}
+}
+
+bintray {
+	user = findProperty('user') ?: ''
+	key = findProperty('key') ?: ''
+
+	publications = ['mavenJava']
+
+	pkg {
+		repo = 'liferay-mobile'
+		name = 'liferay-mobile-sdk-services'
+		userOrg = 'liferay'
+		licenses = ['LGPL-2.1']
+		vcsUrl = 'https://github.com/brunofarache/liferay-android-sdk.git'
+
+		version {
+			name = project.version
+		}
+	}
 }
 
 task generate(type: JavaExec) {
@@ -28,4 +59,9 @@ task generate(type: JavaExec) {
 		"portalVersion=$portalVersion",
 		"destination=$destination"
 	]
+}
+
+task sourceJar(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
 }
