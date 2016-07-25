@@ -44,14 +44,14 @@ public class DefaultParamsTest extends BaseTest {
 	@Test
 	public void getGroupWithCompanyId() throws Exception {
 		GroupService service = ServiceBuilder.build(GroupService.class);
-		Site site = service.getGroupWithName("Guest").execute();
+		Site site = service.getGroupWithKey("Guest").execute();
 		assertEquals(props.getGroupId(), site.groupId);
 	}
 
 	@Test
 	public void getGroupWithCompanyIdAndName() throws Exception {
 		GroupService service = ServiceBuilder.build(GroupService.class);
-		Site site = service.getGroupWithCompanyIdAndName().execute();
+		Site site = service.getGroupWithCompanyIdAndKey().execute();
 		assertEquals(props.getGroupId(), site.groupId);
 	}
 
@@ -65,15 +65,15 @@ public class DefaultParamsTest extends BaseTest {
 		@Path("/get-group")
 		@Params( {
 			@Param(name = "companyId", value = "20116"),
-			@Param(name = "name", value = "Guest")
+			@Param(name = "groupKey", value = "Guest")
 		})
-		Call<Site> getGroupWithCompanyIdAndName();
+		Call<Site> getGroupWithCompanyIdAndKey();
 
 		@Path("/get-group")
 		@Params( {
 			@Param(name = "companyId", value = "20116")
 		})
-		Call<Site> getGroupWithName(@Param(name = "name") String name);
+		Call<Site> getGroupWithKey(@Param(name = "groupKey") String groupKey);
 
 	}
 
