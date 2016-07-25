@@ -43,14 +43,15 @@ public class ObservableGroupServiceTest extends BaseTest {
 	@Test
 	public void getUserSites() throws Exception {
 		GroupService service = ServiceBuilder.build(GroupService.class);
-		Observable<List<Site>> observable = service.getUserSites();
+		Observable<List<Site>> observable = service.getUserSitesGroups();
 		TestSubscriber<List<Site>> subscriber = new TestSubscriber<>();
 		observable.subscribe(subscriber);
 
 		subscriber.assertNoErrors();
 		subscriber.assertCompleted();
 		subscriber.assertValues(
-			Arrays.asList(new Site("/test"), new Site("/guest")));
+			Arrays.asList(
+				new Site("/test"), new Site("/global"), new Site("/guest")));
 	}
 
 	@Test

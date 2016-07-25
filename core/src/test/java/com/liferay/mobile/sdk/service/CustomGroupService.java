@@ -61,27 +61,13 @@ public class CustomGroupService {
 		return new Call<>(_command, Site.class);
 	}
 
-	public Call<JSONArray> getUserSites() {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_command.put("/group/get-user-sites", _params);
-		}
-		catch (JSONException _je) {
-		}
-
-		return new Call<>(_command, JSONArray.class);
-	}
-
 	public Call<List<Map<String, Object>>> getUserSitesAsListOfMap() {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_command.put("/group/get-user-sites", _params);
+			_command.put("/group/get-user-sites-groups", _params);
 		}
 		catch (JSONException _je) {
 		}
@@ -97,7 +83,7 @@ public class CustomGroupService {
 		try {
 			JSONObject _params = new JSONObject();
 
-			_command.put("/group/get-user-sites", _params);
+			_command.put("/group/get-user-sites-groups", _params);
 		}
 		catch (JSONException _je) {
 		}
@@ -105,6 +91,20 @@ public class CustomGroupService {
 		GenericListType<Site> type = new GenericListType<>(Site.class);
 
 		return new Call<>(_command, type);
+	}
+
+	public Call<JSONArray> getUserSitesGroups() {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_command.put("/group/get-user-sites-groups", _params);
+		}
+		catch (JSONException _je) {
+		}
+
+		return new Call<>(_command, JSONArray.class);
 	}
 
 }

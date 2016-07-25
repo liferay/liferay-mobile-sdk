@@ -42,7 +42,7 @@ public class BatchTest extends BaseTest {
 	public void getUserSites() throws Exception {
 		CustomGroupService service = new CustomGroupService();
 		Response response = Batch.execute(
-			service.getUserSites(), service.getUserSites());
+			service.getUserSitesGroups(), service.getUserSitesGroups());
 
 		List sites = JSONParser.fromJSON(response.bodyAsString(), List.class);
 		assertEquals(2, sites.size());
@@ -86,7 +86,7 @@ public class BatchTest extends BaseTest {
 				lock.countDown();
 			}
 
-		}, service.getUserSites(), service.getUserSites());
+		}, service.getUserSitesGroups(), service.getUserSitesGroups());
 
 		lock.await(500, TimeUnit.MILLISECONDS);
 	}

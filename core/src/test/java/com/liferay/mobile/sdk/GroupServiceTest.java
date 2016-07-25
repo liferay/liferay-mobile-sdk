@@ -21,6 +21,7 @@ import com.liferay.mobile.sdk.v7.group.GroupService;
 
 import java.io.IOException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
@@ -91,7 +92,7 @@ public class GroupServiceTest extends BaseTest {
 		long groupId = props.getGroupId();
 		Call<Map<String, Object>> call = service.getGroupAsMap(groupId);
 		Map<String, Object> group = call.execute();
-		assertEquals(groupId, ((Double)group.get("groupId")).longValue());
+		assertEquals(String.valueOf(groupId), group.get("groupId"));
 	}
 
 	@Test
@@ -261,7 +262,7 @@ public class GroupServiceTest extends BaseTest {
 	@Test
 	public void getUserSitesAsync() throws InterruptedException {
 		CustomGroupService service = new CustomGroupService();
-		Call<JSONArray> call = service.getUserSites();
+		Call<JSONArray> call = service.getUserSitesGroups();
 		final CountDownLatch lock = new CountDownLatch(1);
 
 		call.async(new Callback<JSONArray>() {
@@ -283,22 +284,21 @@ public class GroupServiceTest extends BaseTest {
 		lock.await(500, TimeUnit.MILLISECONDS);
 	}
 
-	protected static void assertUserSites(JSONArray sites) {
-		assertNotNull(sites);
-		assertTrue(sites.length() == 2);
+	protected static void assertUserSites(JSONArray jsonArray) {
+		assertNotNull(jsonArray);
+		List<Site> sites = new ArrayList<>();
 
-		JSONObject jsonObj = sites.optJSONObject(0);
-		assertNotNull(jsonObj);
-		assertEquals("/test", jsonObj.optString("friendlyURL"));
+		for (int i = 0; i < jsonArray.length(); i++) {
+			JSONObject jsonObj = jsonArray.optJSONObject(i);
+			sites.add(new Site(jsonObj.optString("friendlyURL")));
+		}
 
-		jsonObj = sites.optJSONObject(1);
-		assertNotNull(jsonObj);
-		assertEquals("/guest", jsonObj.optString("friendlyURL"));
+		assertUserSites(sites);
 	}
 
 	protected static void assertUserSites(List<Site> sites) {
 		assertNotNull(sites);
-		assertTrue(sites.size() == 2);
+		assertTrue(sites.size() == 3);
 
 		Site site = sites.get(0);
 		assertNotNull(site);
@@ -306,22 +306,22 @@ public class GroupServiceTest extends BaseTest {
 
 		site = sites.get(1);
 		assertNotNull(site);
+		assertEquals("/global", site.friendlyURL);
+
+		site = sites.get(2);
+		assertNotNull(site);
 		assertEquals("/guest", site.friendlyURL);
 	}
 
-	protected static void assertUserSitesAsMap(
-		List<Map<String, Object>> sites) {
+	protected static void assertUserSitesAsMap(List<Map<String, Object>> list) {
+		assertNotNull(list);
+		List<Site> sites = new ArrayList<>();
 
-		assertNotNull(sites);
-		assertTrue(sites.size() == 2);
+		for (Map<String, Object> map : list) {
+			sites.add(new Site((String)map.get("friendlyURL")));
+		}
 
-		Map<String, Object> site = sites.get(0);
-		assertNotNull(site);
-		assertEquals("/test", site.get("friendlyURL"));
-
-		site = sites.get(1);
-		assertNotNull(site);
-		assertEquals("/guest", site.get("friendlyURL"));
+		assertUserSites(sites);
 	}
 
 }

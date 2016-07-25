@@ -27,8 +27,8 @@ import rx.Observable;
 @Path("/group")
 public interface GroupService {
 
-	@Path("/get-user-sites")
-	Observable<List<Site>> getUserSites();
+	@Path("/get-user-sites-groups")
+	Observable<List<Site>> getUserSitesGroups();
 
 	@Path("/nonexistent")
 	Observable<List<Site>> nonexistent();

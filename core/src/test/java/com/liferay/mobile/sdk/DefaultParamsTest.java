@@ -59,19 +59,19 @@ public class DefaultParamsTest extends BaseTest {
 	public interface GroupService {
 
 		@Path("/get-group")
-		@Param(name = "groupId", value = "10184")
+		@Param(name = "groupId", value = "20147")
 		Call<Site> getGroup();
 
 		@Path("/get-group")
 		@Params( {
-			@Param(name = "companyId", value = "10157"),
+			@Param(name = "companyId", value = "20116"),
 			@Param(name = "name", value = "Guest")
 		})
 		Call<Site> getGroupWithCompanyIdAndName();
 
 		@Path("/get-group")
 		@Params( {
-			@Param(name = "companyId", value = "10157")
+			@Param(name = "companyId", value = "20116")
 		})
 		Call<Site> getGroupWithName(@Param(name = "name") String name);
 
