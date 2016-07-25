@@ -131,7 +131,8 @@ public class DLAppServiceTest extends BaseTest {
 		}
 		catch (ServerException se) {
 			String message = se.getMessage();
-			assertTrue(message.startsWith("No DLFolder exists with the key"));
+			assertTrue(
+				message.startsWith("Request failed. Response code: 500"));
 		}
 	}
 
