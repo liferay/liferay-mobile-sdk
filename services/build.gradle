@@ -9,7 +9,7 @@ configurations {
 }
 
 dependencies {
-	builder group: 'com.liferay.mobile', name: 'liferay-sdk-builder', version: '2.0-beta-4'
+	builder group: 'com.liferay.mobile', name: 'liferay-sdk-builder', version: '2.0-beta-5'
 	compile project(':core')
 	compileOnly group: 'com.google.android', name: 'android', version: '2.3.3'
 }
@@ -52,7 +52,7 @@ task generate(type: JavaExec) {
 	args = [
 		"platforms=$platforms",
 		"url=$url",
-		"context=$context",
+		"contexts=$contexts",
 		"filter=$filter",
 		"packageName=$packageName",
 		"portalVersion=$portalVersion",
