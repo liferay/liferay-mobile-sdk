@@ -12,7 +12,7 @@ import org.json.JSONObject;
 @Path("/journal.journalfolder")
 public interface JournalFolderService {
   @Path("/add-folder")
-  Call<JSONObject> addFolder(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addFolder(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-folder")
   Call<Response> deleteFolder(@Param(name = "folderId") long folderId);
@@ -48,13 +48,13 @@ public interface JournalFolderService {
   Call<JSONArray> getFolders(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-folders-and-articles")
-  Call<JSONArray> getFoldersAndArticles(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getFoldersAndArticles(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-folders-and-articles")
-  Call<JSONArray> getFoldersAndArticles(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getFoldersAndArticles(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-folders-and-articles")
-  Call<JSONArray> getFoldersAndArticles(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getFoldersAndArticles(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-folders-and-articles-count")
   Call<Integer> getFoldersAndArticlesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
@@ -84,10 +84,10 @@ public interface JournalFolderService {
   Call<Response> getSubfolderIds(@Param(name = "folderIds") JSONArray folderIds, @Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "recurse") boolean recurse);
 
   @Path("/move-folder")
-  Call<JSONObject> moveFolder(@Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> moveFolder(@Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/move-folder-from-trash")
-  Call<JSONObject> moveFolderFromTrash(@Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> moveFolderFromTrash(@Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/move-folder-to-trash")
   Call<JSONObject> moveFolderToTrash(@Param(name = "folderId") long folderId);
@@ -102,8 +102,8 @@ public interface JournalFolderService {
   Call<Response> unsubscribe(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
 
   @Path("/update-folder")
-  Call<JSONObject> updateFolder(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "mergeWithParentFolder") boolean mergeWithParentFolder, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateFolder(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "mergeWithParentFolder") boolean mergeWithParentFolder, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-folder")
-  Call<JSONObject> updateFolder(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "restrictionType") int restrictionType, @Param(name = "mergeWithParentFolder") boolean mergeWithParentFolder, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateFolder(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "restrictionType") int restrictionType, @Param(name = "mergeWithParentFolder") boolean mergeWithParentFolder, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 }

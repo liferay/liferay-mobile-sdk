@@ -20,10 +20,10 @@ public interface AssetEntryService {
   Call<Integer> getCompanyEntriesCount(@Param(name = "companyId") long companyId);
 
   @Path("/get-entries")
-  Call<JSONArray> getEntries(@Param(name = "entryQuery", className = "") JSONObject entryQuery);
+  Call<JSONArray> getEntries(@Param(name = "entryQuery", className = "com.liferay.asset.kernel.service.persistence.AssetEntryQuery") JSONObject entryQuery);
 
   @Path("/get-entries-count")
-  Call<Integer> getEntriesCount(@Param(name = "entryQuery", className = "") JSONObject entryQuery);
+  Call<Integer> getEntriesCount(@Param(name = "entryQuery", className = "com.liferay.asset.kernel.service.persistence.AssetEntryQuery") JSONObject entryQuery);
 
   @Path("/get-entry")
   Call<JSONObject> getEntry(@Param(name = "entryId") long entryId);

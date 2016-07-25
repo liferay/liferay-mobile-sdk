@@ -11,7 +11,7 @@ import org.json.JSONObject;
 @Path("/website")
 public interface WebsiteService {
   @Path("/add-website")
-  Call<JSONObject> addWebsite(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "url") String url, @Param(name = "typeId") long typeId, @Param(name = "primary") boolean primary, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addWebsite(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "url") String url, @Param(name = "typeId") long typeId, @Param(name = "primary") boolean primary, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-website")
   Call<Response> deleteWebsite(@Param(name = "websiteId") long websiteId);

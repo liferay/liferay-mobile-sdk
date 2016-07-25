@@ -12,7 +12,7 @@ import org.json.JSONObject;
 @Path("/bookmarks.bookmarksfolder")
 public interface BookmarksFolderService {
   @Path("/add-folder")
-  Call<JSONObject> addFolder(@Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addFolder(@Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-folder")
   Call<Response> deleteFolder(@Param(name = "folderId") long folderId);
@@ -90,8 +90,8 @@ public interface BookmarksFolderService {
   Call<Response> unsubscribeFolder(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
 
   @Path("/update-folder")
-  Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-folder")
-  Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "mergeWithParentFolder") boolean mergeWithParentFolder, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "mergeWithParentFolder") boolean mergeWithParentFolder, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 }

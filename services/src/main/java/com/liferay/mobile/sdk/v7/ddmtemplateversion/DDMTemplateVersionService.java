@@ -16,7 +16,7 @@ public interface DDMTemplateVersionService {
   Call<JSONObject> getTemplateVersion(@Param(name = "templateVersionId") long templateVersionId);
 
   @Path("/get-template-versions")
-  Call<JSONArray> getTemplateVersions(@Param(name = "templateId") long templateId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "") JSONObject orderByComparator);
+  Call<JSONArray> getTemplateVersions(@Param(name = "templateId") long templateId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMTemplateVersion>") JSONObject orderByComparator);
 
   @Path("/get-template-versions-count")
   Call<Integer> getTemplateVersionsCount(@Param(name = "templateId") long templateId);

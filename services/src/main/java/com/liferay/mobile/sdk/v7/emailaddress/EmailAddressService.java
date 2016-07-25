@@ -11,7 +11,7 @@ import org.json.JSONObject;
 @Path("/emailaddress")
 public interface EmailAddressService {
   @Path("/add-email-address")
-  Call<JSONObject> addEmailAddress(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "address") String address, @Param(name = "typeId") long typeId, @Param(name = "primary") boolean primary, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addEmailAddress(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "address") String address, @Param(name = "typeId") long typeId, @Param(name = "primary") boolean primary, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-email-address")
   Call<Response> deleteEmailAddress(@Param(name = "emailAddressId") long emailAddressId);

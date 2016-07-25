@@ -16,7 +16,7 @@ public interface DDMStructureVersionService {
   Call<JSONObject> getStructureVersion(@Param(name = "structureVersionId") long structureVersionId);
 
   @Path("/get-structure-versions")
-  Call<JSONArray> getStructureVersions(@Param(name = "structureId") long structureId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "") JSONObject orderByComparator);
+  Call<JSONArray> getStructureVersions(@Param(name = "structureId") long structureId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMStructureVersion>") JSONObject orderByComparator);
 
   @Path("/get-structure-versions-count")
   Call<Integer> getStructureVersionsCount(@Param(name = "structureId") long structureId);

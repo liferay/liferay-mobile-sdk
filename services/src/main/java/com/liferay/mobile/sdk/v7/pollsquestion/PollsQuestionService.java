@@ -4,13 +4,14 @@ import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Response;
+import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Path("/polls.pollsquestion")
 public interface PollsQuestionService {
   @Path("/add-question")
-  Call<JSONObject> addQuestion(@Param(name = "titleMap", className = "") JSONObject titleMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "expirationDateMonth") int expirationDateMonth, @Param(name = "expirationDateDay") int expirationDateDay, @Param(name = "expirationDateYear") int expirationDateYear, @Param(name = "expirationDateHour") int expirationDateHour, @Param(name = "expirationDateMinute") int expirationDateMinute, @Param(name = "neverExpire") boolean neverExpire, @Param(name = "choices") JSONArray choices, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addQuestion(@Param(name = "titleMap") Map titleMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "expirationDateMonth") int expirationDateMonth, @Param(name = "expirationDateDay") int expirationDateDay, @Param(name = "expirationDateYear") int expirationDateYear, @Param(name = "expirationDateHour") int expirationDateHour, @Param(name = "expirationDateMinute") int expirationDateMinute, @Param(name = "neverExpire") boolean neverExpire, @Param(name = "choices") JSONArray choices, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-question")
   Call<Response> deleteQuestion(@Param(name = "questionId") long questionId);
@@ -19,5 +20,5 @@ public interface PollsQuestionService {
   Call<JSONObject> getQuestion(@Param(name = "questionId") long questionId);
 
   @Path("/update-question")
-  Call<JSONObject> updateQuestion(@Param(name = "questionId") long questionId, @Param(name = "titleMap", className = "") JSONObject titleMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "expirationDateMonth") int expirationDateMonth, @Param(name = "expirationDateDay") int expirationDateDay, @Param(name = "expirationDateYear") int expirationDateYear, @Param(name = "expirationDateHour") int expirationDateHour, @Param(name = "expirationDateMinute") int expirationDateMinute, @Param(name = "neverExpire") boolean neverExpire, @Param(name = "choices") JSONArray choices, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateQuestion(@Param(name = "questionId") long questionId, @Param(name = "titleMap") Map titleMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "expirationDateMonth") int expirationDateMonth, @Param(name = "expirationDateDay") int expirationDateDay, @Param(name = "expirationDateYear") int expirationDateYear, @Param(name = "expirationDateHour") int expirationDateHour, @Param(name = "expirationDateMinute") int expirationDateMinute, @Param(name = "neverExpire") boolean neverExpire, @Param(name = "choices") JSONArray choices, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 }

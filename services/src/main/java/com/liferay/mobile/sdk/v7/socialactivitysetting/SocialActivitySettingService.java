@@ -26,7 +26,7 @@ public interface SocialActivitySettingService {
   Call<Response> updateActivitySetting(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "enabled") boolean enabled);
 
   @Path("/update-activity-setting")
-  Call<Response> updateActivitySetting(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "activityType") int activityType, @Param(name = "activityCounterDefinition", className = "") JSONObject activityCounterDefinition);
+  Call<Response> updateActivitySetting(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "activityType") int activityType, @Param(name = "activityCounterDefinition", className = "com.liferay.social.kernel.model.SocialActivityCounterDefinition") JSONObject activityCounterDefinition);
 
   @Path("/update-activity-settings")
   Call<Response> updateActivitySettings(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "activityType") int activityType, @Param(name = "activityCounterDefinitions") JSONArray activityCounterDefinitions);

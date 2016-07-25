@@ -5,16 +5,17 @@ import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.Path;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Path("/sap.sapentry")
 public interface SAPEntryService {
   @Path("/add-sap-entry")
-  Call<JSONObject> addSAPEntry(@Param(name = "allowedServiceSignatures") String allowedServiceSignatures, @Param(name = "defaultSAPEntry") boolean defaultSAPEntry, @Param(name = "enabled") boolean enabled, @Param(name = "name") String name, @Param(name = "titleMap", className = "") JSONObject titleMap, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addSAPEntry(@Param(name = "allowedServiceSignatures") String allowedServiceSignatures, @Param(name = "defaultSAPEntry") boolean defaultSAPEntry, @Param(name = "enabled") boolean enabled, @Param(name = "name") String name, @Param(name = "titleMap") Map titleMap, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-sap-entry")
-  Call<JSONObject> deleteSAPEntry(@Param(name = "sapEntry", className = "") JSONObject sapEntry);
+  Call<JSONObject> deleteSAPEntry(@Param(name = "sapEntry", className = "com.liferay.portal.security.service.access.policy.model.SAPEntry") JSONObject sapEntry);
 
   @Path("/delete-sap-entry")
   Call<JSONObject> deleteSAPEntry(@Param(name = "sapEntryId") long sapEntryId);
@@ -26,7 +27,7 @@ public interface SAPEntryService {
   Call<JSONArray> getCompanySAPEntries(@Param(name = "companyId") long companyId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-company-sap-entries")
-  Call<JSONArray> getCompanySAPEntries(@Param(name = "companyId") long companyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getCompanySAPEntries(@Param(name = "companyId") long companyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.portal.security.service.access.policy.model.SAPEntry>") JSONObject obc);
 
   @Path("/get-company-sap-entries-count")
   Call<Integer> getCompanySAPEntriesCount(@Param(name = "companyId") long companyId);
@@ -38,5 +39,5 @@ public interface SAPEntryService {
   Call<JSONObject> getSAPEntry(@Param(name = "companyId") long companyId, @Param(name = "name") String name);
 
   @Path("/update-sap-entry")
-  Call<JSONObject> updateSAPEntry(@Param(name = "sapEntryId") long sapEntryId, @Param(name = "allowedServiceSignatures") String allowedServiceSignatures, @Param(name = "defaultSAPEntry") boolean defaultSAPEntry, @Param(name = "enabled") boolean enabled, @Param(name = "name") String name, @Param(name = "titleMap", className = "") JSONObject titleMap, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateSAPEntry(@Param(name = "sapEntryId") long sapEntryId, @Param(name = "allowedServiceSignatures") String allowedServiceSignatures, @Param(name = "defaultSAPEntry") boolean defaultSAPEntry, @Param(name = "enabled") boolean enabled, @Param(name = "name") String name, @Param(name = "titleMap") Map titleMap, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 }

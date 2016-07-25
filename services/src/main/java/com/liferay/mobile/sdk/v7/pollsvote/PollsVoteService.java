@@ -8,5 +8,5 @@ import org.json.JSONObject;
 @Path("/polls.pollsvote")
 public interface PollsVoteService {
   @Path("/add-vote")
-  Call<JSONObject> addVote(@Param(name = "questionId") long questionId, @Param(name = "choiceId") long choiceId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addVote(@Param(name = "questionId") long questionId, @Param(name = "choiceId") long choiceId, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 }

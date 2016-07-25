@@ -13,7 +13,7 @@ import org.json.JSONObject;
 @Path("/dlfolder")
 public interface DLFolderService {
   @Path("/add-folder")
-  Call<JSONObject> addFolder(@Param(name = "groupId") long groupId, @Param(name = "repositoryId") long repositoryId, @Param(name = "mountPoint") boolean mountPoint, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addFolder(@Param(name = "groupId") long groupId, @Param(name = "repositoryId") long repositoryId, @Param(name = "mountPoint") boolean mountPoint, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-folder")
   Call<Response> deleteFolder(@Param(name = "folderId") long folderId);
@@ -43,28 +43,28 @@ public interface DLFolderService {
   Call<JSONArray> getFolderIds(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
 
   @Path("/get-folders")
-  Call<JSONArray> getFolders(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getFolders(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.document.library.kernel.model.DLFolder>") JSONObject obc);
 
   @Path("/get-folders")
-  Call<JSONArray> getFolders(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "status") int status, @Param(name = "includeMountfolders") boolean includeMountfolders, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getFolders(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "status") int status, @Param(name = "includeMountfolders") boolean includeMountfolders, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.document.library.kernel.model.DLFolder>") JSONObject obc);
 
   @Path("/get-folders-and-file-entries-and-file-shortcuts")
-  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "queryDefinition", className = "") JSONObject queryDefinition);
+  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "queryDefinition", className = "com.liferay.portal.kernel.dao.orm.QueryDefinition") JSONObject queryDefinition);
 
   @Path("/get-folders-and-file-entries-and-file-shortcuts")
-  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-folders-and-file-entries-and-file-shortcuts")
-  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-folders-and-file-entries-and-file-shortcuts-count")
   Call<Integer> getFoldersAndFileEntriesAndFileShortcutsCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "includeMountFolders") boolean includeMountFolders);
 
   @Path("/get-folders-and-file-entries-and-file-shortcuts-count")
-  Call<Integer> getFoldersAndFileEntriesAndFileShortcutsCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "queryDefinition", className = "") JSONObject queryDefinition);
+  Call<Integer> getFoldersAndFileEntriesAndFileShortcutsCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "includeMountFolders") boolean includeMountFolders);
 
   @Path("/get-folders-and-file-entries-and-file-shortcuts-count")
-  Call<Integer> getFoldersAndFileEntriesAndFileShortcutsCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "includeMountFolders") boolean includeMountFolders);
+  Call<Integer> getFoldersAndFileEntriesAndFileShortcutsCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "queryDefinition", className = "com.liferay.portal.kernel.dao.orm.QueryDefinition") JSONObject queryDefinition);
 
   @Path("/get-folders-count")
   Call<Integer> getFoldersCount(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId);
@@ -73,16 +73,16 @@ public interface DLFolderService {
   Call<Integer> getFoldersCount(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "status") int status, @Param(name = "includeMountfolders") boolean includeMountfolders);
 
   @Path("/get-mount-folders")
-  Call<JSONArray> getMountFolders(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getMountFolders(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.document.library.kernel.model.DLFolder>") JSONObject obc);
 
   @Path("/get-mount-folders-count")
   Call<Integer> getMountFoldersCount(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId);
 
   @Path("/get-subfolder-ids")
-  Call<Response> getSubfolderIds(@Param(name = "folderIds") JSONArray folderIds, @Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
+  Call<JSONArray> getSubfolderIds(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "recurse") boolean recurse);
 
   @Path("/get-subfolder-ids")
-  Call<JSONArray> getSubfolderIds(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "recurse") boolean recurse);
+  Call<Response> getSubfolderIds(@Param(name = "folderIds") JSONArray folderIds, @Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
 
   @Path("/get-subfolder-ids")
   Call<Response> getSubfolderIds(@Param(name = "folderIds") JSONArray folderIds, @Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "recurse") boolean recurse);
@@ -103,7 +103,7 @@ public interface DLFolderService {
   Call<JSONObject> lockFolder(@Param(name = "folderId") long folderId, @Param(name = "owner") String owner, @Param(name = "inheritable") boolean inheritable, @Param(name = "expirationTime") long expirationTime);
 
   @Path("/move-folder")
-  Call<JSONObject> moveFolder(@Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> moveFolder(@Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/refresh-folder-lock")
   Call<JSONObject> refreshFolderLock(@Param(name = "lockUuid") String lockUuid, @Param(name = "companyId") long companyId, @Param(name = "expirationTime") long expirationTime);
@@ -115,13 +115,13 @@ public interface DLFolderService {
   Call<Response> unlockFolder(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "lockUuid") String lockUuid);
 
   @Path("/update-folder")
-  Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "defaultFileEntryTypeId") long defaultFileEntryTypeId, @Param(name = "fileEntryTypeIds") JSONArray fileEntryTypeIds, @Param(name = "overrideFileEntryTypes") boolean overrideFileEntryTypes, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "defaultFileEntryTypeId") long defaultFileEntryTypeId, @Param(name = "fileEntryTypeIds") JSONArray fileEntryTypeIds, @Param(name = "overrideFileEntryTypes") boolean overrideFileEntryTypes, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-folder")
-  Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "defaultFileEntryTypeId") long defaultFileEntryTypeId, @Param(name = "fileEntryTypeIds") JSONArray fileEntryTypeIds, @Param(name = "restrictionType") int restrictionType, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "defaultFileEntryTypeId") long defaultFileEntryTypeId, @Param(name = "fileEntryTypeIds") JSONArray fileEntryTypeIds, @Param(name = "restrictionType") int restrictionType, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-folder")
-  Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "defaultFileEntryTypeId") long defaultFileEntryTypeId, @Param(name = "fileEntryTypeIds") JSONArray fileEntryTypeIds, @Param(name = "restrictionType") int restrictionType, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "defaultFileEntryTypeId") long defaultFileEntryTypeId, @Param(name = "fileEntryTypeIds") JSONArray fileEntryTypeIds, @Param(name = "restrictionType") int restrictionType, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/verify-inheritable-lock")
   Call<Boolean> verifyInheritableLock(@Param(name = "folderId") long folderId, @Param(name = "lockUuid") String lockUuid);

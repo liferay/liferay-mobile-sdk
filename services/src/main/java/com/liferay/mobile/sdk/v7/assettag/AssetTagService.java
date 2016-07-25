@@ -12,7 +12,7 @@ import org.json.JSONObject;
 @Path("/assettag")
 public interface AssetTagService {
   @Path("/add-tag")
-  Call<JSONObject> addTag(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addTag(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-tag")
   Call<Response> deleteTag(@Param(name = "tagId") long tagId);
@@ -24,7 +24,7 @@ public interface AssetTagService {
   Call<JSONArray> getGroupTags(@Param(name = "groupId") long groupId);
 
   @Path("/get-group-tags")
-  Call<JSONArray> getGroupTags(@Param(name = "groupId") long groupId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getGroupTags(@Param(name = "groupId") long groupId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.asset.kernel.model.AssetTag>") JSONObject obc);
 
   @Path("/get-group-tags-count")
   Call<Integer> getGroupTagsCount(@Param(name = "groupId") long groupId);
@@ -51,13 +51,13 @@ public interface AssetTagService {
   Call<JSONArray> getTags(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-tags")
-  Call<JSONArray> getTags(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getTags(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.asset.kernel.model.AssetTag>") JSONObject obc);
 
   @Path("/get-tags")
-  Call<JSONArray> getTags(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getTags(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.asset.kernel.model.AssetTag>") JSONObject obc);
 
   @Path("/get-tags")
-  Call<JSONArray> getTags(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getTags(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.asset.kernel.model.AssetTag>") JSONObject obc);
 
   @Path("/get-tags-count")
   Call<Integer> getTagsCount(@Param(name = "groupId") long groupId, @Param(name = "name") String name);
@@ -81,5 +81,5 @@ public interface AssetTagService {
   Call<JSONArray> search(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/update-tag")
-  Call<JSONObject> updateTag(@Param(name = "tagId") long tagId, @Param(name = "name") String name, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateTag(@Param(name = "tagId") long tagId, @Param(name = "name") String name, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 }

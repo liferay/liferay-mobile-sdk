@@ -9,8 +9,8 @@ import org.json.JSONObject;
 @Path("/mbban")
 public interface MBBanService {
   @Path("/add-ban")
-  Call<JSONObject> addBan(@Param(name = "banUserId") long banUserId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addBan(@Param(name = "banUserId") long banUserId, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-ban")
-  Call<Response> deleteBan(@Param(name = "banUserId") long banUserId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<Response> deleteBan(@Param(name = "banUserId") long banUserId, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 }

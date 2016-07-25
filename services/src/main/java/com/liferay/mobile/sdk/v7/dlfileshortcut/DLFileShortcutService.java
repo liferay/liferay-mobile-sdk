@@ -9,7 +9,7 @@ import org.json.JSONObject;
 @Path("/dlfileshortcut")
 public interface DLFileShortcutService {
   @Path("/add-file-shortcut")
-  Call<JSONObject> addFileShortcut(@Param(name = "groupId") long groupId, @Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "toFileEntryId") long toFileEntryId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addFileShortcut(@Param(name = "groupId") long groupId, @Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "toFileEntryId") long toFileEntryId, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-file-shortcut")
   Call<Response> deleteFileShortcut(@Param(name = "fileShortcutId") long fileShortcutId);
@@ -18,7 +18,7 @@ public interface DLFileShortcutService {
   Call<JSONObject> getFileShortcut(@Param(name = "fileShortcutId") long fileShortcutId);
 
   @Path("/update-file-shortcut")
-  Call<JSONObject> updateFileShortcut(@Param(name = "fileShortcutId") long fileShortcutId, @Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "toFileEntryId") long toFileEntryId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateFileShortcut(@Param(name = "fileShortcutId") long fileShortcutId, @Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "toFileEntryId") long toFileEntryId, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-file-shortcuts")
   Call<Response> updateFileShortcuts(@Param(name = "oldToFileEntryId") long oldToFileEntryId, @Param(name = "newToFileEntryId") long newToFileEntryId);

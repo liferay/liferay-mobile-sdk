@@ -20,7 +20,7 @@ public interface DDLRecordVersionService {
   Call<JSONArray> getRecordVersions(@Param(name = "recordId") long recordId);
 
   @Path("/get-record-versions")
-  Call<JSONArray> getRecordVersions(@Param(name = "recordId") long recordId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "") JSONObject orderByComparator);
+  Call<JSONArray> getRecordVersions(@Param(name = "recordId") long recordId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.lists.model.DDLRecordVersion>") JSONObject orderByComparator);
 
   @Path("/get-record-versions-count")
   Call<Integer> getRecordVersionsCount(@Param(name = "recordId") long recordId);

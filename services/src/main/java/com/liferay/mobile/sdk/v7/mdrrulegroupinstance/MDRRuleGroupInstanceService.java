@@ -12,16 +12,16 @@ import org.json.JSONObject;
 @Path("/mdr.mdrrulegroupinstance")
 public interface MDRRuleGroupInstanceService {
   @Path("/add-rule-group-instance")
-  Call<JSONObject> addRuleGroupInstance(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "ruleGroupId") long ruleGroupId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addRuleGroupInstance(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "ruleGroupId") long ruleGroupId, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-rule-group-instance")
-  Call<JSONObject> addRuleGroupInstance(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "ruleGroupId") long ruleGroupId, @Param(name = "priority") int priority, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addRuleGroupInstance(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "ruleGroupId") long ruleGroupId, @Param(name = "priority") int priority, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-rule-group-instance")
   Call<Response> deleteRuleGroupInstance(@Param(name = "ruleGroupInstanceId") long ruleGroupInstanceId);
 
   @Path("/get-rule-group-instances")
-  Call<JSONArray> getRuleGroupInstances(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "") JSONObject orderByComparator);
+  Call<JSONArray> getRuleGroupInstances(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.mobile.device.rules.model.MDRRuleGroupInstance>") JSONObject orderByComparator);
 
   @Path("/get-rule-group-instances-count")
   Call<Integer> getRuleGroupInstancesCount(@Param(name = "className") String className, @Param(name = "classPK") long classPK);

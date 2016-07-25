@@ -12,53 +12,53 @@ import org.json.JSONObject;
 @Path("/exportimport")
 public interface ExportImportService {
   @Path("/export-layouts-as-file")
-  Call<JSONObject> exportLayoutsAsFile(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
+  Call<JSONObject> exportLayoutsAsFile(@Param(name = "exportImportConfiguration", className = "com.liferay.exportimport.kernel.model.ExportImportConfiguration") JSONObject exportImportConfiguration);
 
   @Path("/export-layouts-as-file-in-background")
-  Call<Long> exportLayoutsAsFileInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
+  Call<Long> exportLayoutsAsFileInBackground(@Param(name = "exportImportConfiguration", className = "com.liferay.exportimport.kernel.model.ExportImportConfiguration") JSONObject exportImportConfiguration);
 
   @Path("/export-layouts-as-file-in-background")
   Call<Long> exportLayoutsAsFileInBackground(@Param(name = "exportImportConfigurationId") long exportImportConfigurationId);
 
   @Path("/export-portlet-info-as-file")
-  Call<JSONObject> exportPortletInfoAsFile(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
+  Call<JSONObject> exportPortletInfoAsFile(@Param(name = "exportImportConfiguration", className = "com.liferay.exportimport.kernel.model.ExportImportConfiguration") JSONObject exportImportConfiguration);
 
   @Path("/export-portlet-info-as-file-in-background")
-  Call<Long> exportPortletInfoAsFileInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
+  Call<Long> exportPortletInfoAsFileInBackground(@Param(name = "exportImportConfiguration", className = "com.liferay.exportimport.kernel.model.ExportImportConfiguration") JSONObject exportImportConfiguration);
 
   @Path(
       value = "/import-layouts",
       contentType = ContentType.MULTIPART
   )
-  Call<Response> importLayouts(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
+  Call<Response> importLayouts(@Param(name = "exportImportConfiguration", className = "com.liferay.exportimport.kernel.model.ExportImportConfiguration") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
 
   @Path(
       value = "/import-layouts-in-background",
       contentType = ContentType.MULTIPART
   )
-  Call<Long> importLayoutsInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
+  Call<Long> importLayoutsInBackground(@Param(name = "exportImportConfiguration", className = "com.liferay.exportimport.kernel.model.ExportImportConfiguration") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
 
   @Path(
       value = "/import-portlet-info",
       contentType = ContentType.MULTIPART
   )
-  Call<Response> importPortletInfo(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
+  Call<Response> importPortletInfo(@Param(name = "exportImportConfiguration", className = "com.liferay.exportimport.kernel.model.ExportImportConfiguration") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
 
   @Path(
       value = "/import-portlet-info-in-background",
       contentType = ContentType.MULTIPART
   )
-  Call<Long> importPortletInfoInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
+  Call<Long> importPortletInfoInBackground(@Param(name = "exportImportConfiguration", className = "com.liferay.exportimport.kernel.model.ExportImportConfiguration") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
 
   @Path(
       value = "/validate-import-layouts-file",
       contentType = ContentType.MULTIPART
   )
-  Call<JSONObject> validateImportLayoutsFile(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
+  Call<JSONObject> validateImportLayoutsFile(@Param(name = "exportImportConfiguration", className = "com.liferay.exportimport.kernel.model.ExportImportConfiguration") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
 
   @Path(
       value = "/validate-import-portlet-info",
       contentType = ContentType.MULTIPART
   )
-  Call<JSONObject> validateImportPortletInfo(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
+  Call<JSONObject> validateImportPortletInfo(@Param(name = "exportImportConfiguration", className = "com.liferay.exportimport.kernel.model.ExportImportConfiguration") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
 }

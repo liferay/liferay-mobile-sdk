@@ -11,7 +11,7 @@ import org.json.JSONObject;
 @Path("/microblogs.microblogsentry")
 public interface MicroblogsEntryService {
   @Path("/add-microblogs-entry")
-  Call<JSONObject> addMicroblogsEntry(@Param(name = "userId") long userId, @Param(name = "content") String content, @Param(name = "type") int type, @Param(name = "parentMicroblogsEntryId") long parentMicroblogsEntryId, @Param(name = "socialRelationType") int socialRelationType, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addMicroblogsEntry(@Param(name = "userId") long userId, @Param(name = "content") String content, @Param(name = "type") int type, @Param(name = "parentMicroblogsEntryId") long parentMicroblogsEntryId, @Param(name = "socialRelationType") int socialRelationType, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-microblogs-entry")
   Call<JSONObject> deleteMicroblogsEntry(@Param(name = "microblogsEntryId") long microblogsEntryId);
@@ -44,5 +44,5 @@ public interface MicroblogsEntryService {
   Call<Integer> getUserMicroblogsEntriesCount(@Param(name = "microblogsEntryUserId") long microblogsEntryUserId, @Param(name = "type") int type);
 
   @Path("/update-microblogs-entry")
-  Call<JSONObject> updateMicroblogsEntry(@Param(name = "microblogsEntryId") long microblogsEntryId, @Param(name = "content") String content, @Param(name = "socialRelationType") int socialRelationType, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateMicroblogsEntry(@Param(name = "microblogsEntryId") long microblogsEntryId, @Param(name = "content") String content, @Param(name = "socialRelationType") int socialRelationType, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 }

@@ -7,19 +7,20 @@ import com.liferay.mobile.sdk.http.Response;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Path("/group")
 public interface GroupService {
   @Path("/add-group")
-  Call<JSONObject> addGroup(@Param(name = "parentGroupId") long parentGroupId, @Param(name = "liveGroupId") long liveGroupId, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "site") boolean site, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addGroup(@Param(name = "parentGroupId") long parentGroupId, @Param(name = "liveGroupId") long liveGroupId, @Param(name = "nameMap") Map nameMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "site") boolean site, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-group")
-  Call<JSONObject> addGroup(@Param(name = "parentGroupId") long parentGroupId, @Param(name = "liveGroupId") long liveGroupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "site") boolean site, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addGroup(@Param(name = "parentGroupId") long parentGroupId, @Param(name = "liveGroupId") long liveGroupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "site") boolean site, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-group")
-  Call<JSONObject> addGroup(@Param(name = "parentGroupId") long parentGroupId, @Param(name = "liveGroupId") long liveGroupId, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "site") boolean site, @Param(name = "inheritContent") boolean inheritContent, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addGroup(@Param(name = "parentGroupId") long parentGroupId, @Param(name = "liveGroupId") long liveGroupId, @Param(name = "nameMap") Map nameMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "site") boolean site, @Param(name = "inheritContent") boolean inheritContent, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-role-groups")
   Call<Response> addRoleGroups(@Param(name = "roleId") long roleId, @Param(name = "groupIds") JSONArray groupIds);
@@ -85,10 +86,10 @@ public interface GroupService {
   Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "params") JSONArray params, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/search")
-  Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "classNameIds") JSONArray classNameIds, @Param(name = "keywords") String keywords, @Param(name = "params", className = "") JSONObject params, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "classNameIds") JSONArray classNameIds, @Param(name = "keywords") String keywords, @Param(name = "params") Map params, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.portal.kernel.model.Group>") JSONObject obc);
 
   @Path("/search")
-  Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "classNameIds") JSONArray classNameIds, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "params", className = "") JSONObject params, @Param(name = "andOperator") boolean andOperator, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "classNameIds") JSONArray classNameIds, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "params") Map params, @Param(name = "andOperator") boolean andOperator, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.portal.kernel.model.Group>") JSONObject obc);
 
   @Path("/search-count")
   Call<Integer> searchCount(@Param(name = "companyId") long companyId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "params") JSONArray params);
@@ -106,11 +107,11 @@ public interface GroupService {
   Call<JSONObject> updateGroup(@Param(name = "groupId") long groupId, @Param(name = "typeSettings") String typeSettings);
 
   @Path("/update-group")
-  Call<JSONObject> updateGroup(@Param(name = "groupId") long groupId, @Param(name = "parentGroupId") long parentGroupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "inheritContent") boolean inheritContent, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateGroup(@Param(name = "groupId") long groupId, @Param(name = "parentGroupId") long parentGroupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "inheritContent") boolean inheritContent, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-group")
-  Call<JSONObject> updateGroup(@Param(name = "groupId") long groupId, @Param(name = "parentGroupId") long parentGroupId, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "inheritContent") boolean inheritContent, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateGroup(@Param(name = "groupId") long groupId, @Param(name = "parentGroupId") long parentGroupId, @Param(name = "nameMap") Map nameMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "inheritContent") boolean inheritContent, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-staged-portlets")
-  Call<Response> updateStagedPortlets(@Param(name = "groupId") long groupId, @Param(name = "stagedPortletIds", className = "") JSONObject stagedPortletIds);
+  Call<Response> updateStagedPortlets(@Param(name = "groupId") long groupId, @Param(name = "stagedPortletIds") Map stagedPortletIds);
 }

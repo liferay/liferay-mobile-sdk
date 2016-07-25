@@ -6,6 +6,7 @@ import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Long;
 import java.lang.String;
+import java.util.Map;
 import org.json.JSONObject;
 
 @Path("/staging")
@@ -17,14 +18,14 @@ public interface StagingService {
   Call<Long> createStagingRequest(@Param(name = "groupId") long groupId, @Param(name = "checksum") String checksum);
 
   @Path("/publish-staging-request")
-  Call<JSONObject> publishStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
+  Call<JSONObject> publishStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "exportImportConfiguration", className = "com.liferay.exportimport.kernel.model.ExportImportConfiguration") JSONObject exportImportConfiguration);
 
   @Path("/publish-staging-request")
-  Call<JSONObject> publishStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap);
+  Call<JSONObject> publishStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap") Map parameterMap);
 
   @Path("/update-staging-request")
   Call<Response> updateStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "fileName") String fileName, @Param(name = "bytes") byte[] bytes);
 
   @Path("/validate-staging-request")
-  Call<JSONObject> validateStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap);
+  Call<JSONObject> validateStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap") Map parameterMap);
 }

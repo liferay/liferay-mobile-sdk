@@ -20,7 +20,7 @@ public interface UserGroupService {
   Call<JSONObject> addUserGroup(@Param(name = "name") String name, @Param(name = "description") String description);
 
   @Path("/add-user-group")
-  Call<JSONObject> addUserGroup(@Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addUserGroup(@Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-user-group")
   Call<Response> deleteUserGroup(@Param(name = "userGroupId") long userGroupId);
@@ -50,5 +50,5 @@ public interface UserGroupService {
   Call<JSONObject> updateUserGroup(@Param(name = "userGroupId") long userGroupId, @Param(name = "name") String name, @Param(name = "description") String description);
 
   @Path("/update-user-group")
-  Call<JSONObject> updateUserGroup(@Param(name = "userGroupId") long userGroupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateUserGroup(@Param(name = "userGroupId") long userGroupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 }
