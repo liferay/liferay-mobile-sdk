@@ -39,11 +39,11 @@ public class PortraitTest extends BaseTest {
 		PortraitUtil.downloadPortrait(
 			Config.global(), portraitURL, baos, null, null);
 
-		assertEquals(7742, baos.size());
+		assertEquals(7933, baos.size());
 	}
 
 	protected String getPortraitURL() throws Exception {
-		long portraitId = 10974;
+		long portraitId = 34921;
 
 		String expectedURL = "http://localhost:8080/image/user_male_portrait?" +
 			"img_id=" + portraitId;
@@ -56,9 +56,9 @@ public class PortraitTest extends BaseTest {
 		assertEquals(expectedURL, portraitURL);
 
 		expectedURL = expectedURL +
-			"&img_id_token=U6W2%2BvmVgE%2FyBnzvklnWO%2BqHPck%3D";
+			"&img_id_token=fz33PSWiwof%2Bf%2BpfAzTd%2FyQG4QA%3D";
 
-		uuid = "c0c65ba5-c2ba-4bf5-9e42-7330adb1b5b8";
+		uuid = "1a9fb888-bd6d-75d2-6448-49748b0cc7f0";
 
 		portraitURL = PortraitUtil.getPortraitURL(
 			Config.global(), true, portraitId, uuid);
