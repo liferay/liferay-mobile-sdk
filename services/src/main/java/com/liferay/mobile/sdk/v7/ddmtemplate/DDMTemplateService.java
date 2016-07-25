@@ -3,6 +3,8 @@ package com.liferay.mobile.sdk.v7.ddmtemplate;
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.Path;
+import com.liferay.mobile.sdk.file.UploadData;
+import com.liferay.mobile.sdk.http.ContentType;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Integer;
 import java.lang.String;
@@ -14,8 +16,11 @@ public interface DDMTemplateService {
   @Path("/add-template")
   Call<JSONObject> addTemplate(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "classPK") long classPK, @Param(name = "resourceClassNameId") long resourceClassNameId, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "type") String type, @Param(name = "mode") String mode, @Param(name = "language") String language, @Param(name = "script") String script, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
-  @Path("/add-template")
-  Call<JSONObject> addTemplate(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "classPK") long classPK, @Param(name = "resourceClassNameId") long resourceClassNameId, @Param(name = "templateKey") String templateKey, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "type") String type, @Param(name = "mode") String mode, @Param(name = "language") String language, @Param(name = "script") String script, @Param(name = "cacheable") boolean cacheable, @Param(name = "smallImage") boolean smallImage, @Param(name = "smallImageURL") String smallImageURL, @Param(name = "smallImageFile", className = "") JSONObject smallImageFile, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  @Path(
+      value = "/add-template",
+      contentType = ContentType.MULTIPART
+  )
+  Call<JSONObject> addTemplate(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "classPK") long classPK, @Param(name = "resourceClassNameId") long resourceClassNameId, @Param(name = "templateKey") String templateKey, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "type") String type, @Param(name = "mode") String mode, @Param(name = "language") String language, @Param(name = "script") String script, @Param(name = "cacheable") boolean cacheable, @Param(name = "smallImage") boolean smallImage, @Param(name = "smallImageURL") String smallImageURL, @Param(name = "smallImageFile") UploadData smallImageFile, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/copy-template")
   Call<JSONObject> copyTemplate(@Param(name = "templateId") long templateId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
@@ -95,6 +100,9 @@ public interface DDMTemplateService {
   @Path("/update-template")
   Call<JSONObject> updateTemplate(@Param(name = "templateId") long templateId, @Param(name = "classPK") long classPK, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "type") String type, @Param(name = "mode") String mode, @Param(name = "language") String language, @Param(name = "script") String script, @Param(name = "cacheable") boolean cacheable, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
-  @Path("/update-template")
-  Call<JSONObject> updateTemplate(@Param(name = "templateId") long templateId, @Param(name = "classPK") long classPK, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "type") String type, @Param(name = "mode") String mode, @Param(name = "language") String language, @Param(name = "script") String script, @Param(name = "cacheable") boolean cacheable, @Param(name = "smallImage") boolean smallImage, @Param(name = "smallImageURL") String smallImageURL, @Param(name = "smallImageFile", className = "") JSONObject smallImageFile, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  @Path(
+      value = "/update-template",
+      contentType = ContentType.MULTIPART
+  )
+  Call<JSONObject> updateTemplate(@Param(name = "templateId") long templateId, @Param(name = "classPK") long classPK, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "type") String type, @Param(name = "mode") String mode, @Param(name = "language") String language, @Param(name = "script") String script, @Param(name = "cacheable") boolean cacheable, @Param(name = "smallImage") boolean smallImage, @Param(name = "smallImageURL") String smallImageURL, @Param(name = "smallImageFile") UploadData smallImageFile, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 }

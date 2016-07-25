@@ -3,6 +3,8 @@ package com.liferay.mobile.sdk.v7.wikipage;
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.Path;
+import com.liferay.mobile.sdk.file.UploadData;
+import com.liferay.mobile.sdk.http.ContentType;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Integer;
 import java.lang.String;
@@ -17,8 +19,11 @@ public interface WikiPageService {
   @Path("/add-page")
   Call<JSONObject> addPage(@Param(name = "nodeId") long nodeId, @Param(name = "title") String title, @Param(name = "content") String content, @Param(name = "summary") String summary, @Param(name = "minorEdit") boolean minorEdit, @Param(name = "format") String format, @Param(name = "parentTitle") String parentTitle, @Param(name = "redirectTitle") String redirectTitle, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
-  @Path("/add-page-attachment")
-  Call<JSONObject> addPageAttachment(@Param(name = "nodeId") long nodeId, @Param(name = "title") String title, @Param(name = "fileName") String fileName, @Param(name = "file", className = "") JSONObject file, @Param(name = "mimeType") String mimeType);
+  @Path(
+      value = "/add-page-attachment",
+      contentType = ContentType.MULTIPART
+  )
+  Call<JSONObject> addPageAttachment(@Param(name = "nodeId") long nodeId, @Param(name = "title") String title, @Param(name = "fileName") String fileName, @Param(name = "file") UploadData file, @Param(name = "mimeType") String mimeType);
 
   @Path("/add-page-attachments")
   Call<JSONArray> addPageAttachments(@Param(name = "nodeId") long nodeId, @Param(name = "title") String title, @Param(name = "inputStreamOVPs") JSONArray inputStreamOVPs);

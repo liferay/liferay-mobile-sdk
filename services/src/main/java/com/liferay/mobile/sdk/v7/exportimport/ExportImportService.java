@@ -3,6 +3,8 @@ package com.liferay.mobile.sdk.v7.exportimport;
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.Path;
+import com.liferay.mobile.sdk.file.UploadData;
+import com.liferay.mobile.sdk.http.ContentType;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Long;
 import org.json.JSONObject;
@@ -24,21 +26,39 @@ public interface ExportImportService {
   @Path("/export-portlet-info-as-file-in-background")
   Call<Long> exportPortletInfoAsFileInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
 
-  @Path("/import-layouts")
-  Call<Response> importLayouts(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/import-layouts",
+      contentType = ContentType.MULTIPART
+  )
+  Call<Response> importLayouts(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
 
-  @Path("/import-layouts-in-background")
-  Call<Long> importLayoutsInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/import-layouts-in-background",
+      contentType = ContentType.MULTIPART
+  )
+  Call<Long> importLayoutsInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
 
-  @Path("/import-portlet-info")
-  Call<Response> importPortletInfo(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/import-portlet-info",
+      contentType = ContentType.MULTIPART
+  )
+  Call<Response> importPortletInfo(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
 
-  @Path("/import-portlet-info-in-background")
-  Call<Long> importPortletInfoInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/import-portlet-info-in-background",
+      contentType = ContentType.MULTIPART
+  )
+  Call<Long> importPortletInfoInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
 
-  @Path("/validate-import-layouts-file")
-  Call<JSONObject> validateImportLayoutsFile(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/validate-import-layouts-file",
+      contentType = ContentType.MULTIPART
+  )
+  Call<JSONObject> validateImportLayoutsFile(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
 
-  @Path("/validate-import-portlet-info")
-  Call<JSONObject> validateImportPortletInfo(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/validate-import-portlet-info",
+      contentType = ContentType.MULTIPART
+  )
+  Call<JSONObject> validateImportPortletInfo(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
 }

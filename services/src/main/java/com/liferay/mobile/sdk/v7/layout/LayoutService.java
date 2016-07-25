@@ -3,6 +3,8 @@ package com.liferay.mobile.sdk.v7.layout;
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.Path;
+import com.liferay.mobile.sdk.file.UploadData;
+import com.liferay.mobile.sdk.http.ContentType;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Integer;
 import java.lang.Long;
@@ -105,32 +107,56 @@ public interface LayoutService {
   @Path("/get-temp-file-names")
   Call<JSONArray> getTempFileNames(@Param(name = "groupId") long groupId, @Param(name = "folderName") String folderName);
 
-  @Path("/import-layouts")
-  Call<Response> importLayouts(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/import-layouts",
+      contentType = ContentType.MULTIPART
+  )
+  Call<Response> importLayouts(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
 
-  @Path("/import-layouts")
-  Call<Response> importLayouts(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/import-layouts",
+      contentType = ContentType.MULTIPART
+  )
+  Call<Response> importLayouts(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file") UploadData file);
 
   @Path("/import-layouts")
   Call<Response> importLayouts(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "bytes") byte[] bytes);
 
-  @Path("/import-layouts-in-background")
-  Call<Long> importLayoutsInBackground(@Param(name = "taskName") String taskName, @Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/import-layouts-in-background",
+      contentType = ContentType.MULTIPART
+  )
+  Call<Long> importLayoutsInBackground(@Param(name = "taskName") String taskName, @Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file") UploadData file);
 
-  @Path("/import-portlet-info")
-  Call<Response> importPortletInfo(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/import-portlet-info",
+      contentType = ContentType.MULTIPART
+  )
+  Call<Response> importPortletInfo(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
 
-  @Path("/import-portlet-info")
-  Call<Response> importPortletInfo(@Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/import-portlet-info",
+      contentType = ContentType.MULTIPART
+  )
+  Call<Response> importPortletInfo(@Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file") UploadData file);
 
-  @Path("/import-portlet-info")
-  Call<Response> importPortletInfo(@Param(name = "plid") long plid, @Param(name = "groupId") long groupId, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/import-portlet-info",
+      contentType = ContentType.MULTIPART
+  )
+  Call<Response> importPortletInfo(@Param(name = "plid") long plid, @Param(name = "groupId") long groupId, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file") UploadData file);
 
-  @Path("/import-portlet-info-in-background")
-  Call<Response> importPortletInfoInBackground(@Param(name = "taskName") String taskName, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/import-portlet-info-in-background",
+      contentType = ContentType.MULTIPART
+  )
+  Call<Response> importPortletInfoInBackground(@Param(name = "taskName") String taskName, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file") UploadData file);
 
-  @Path("/import-portlet-info-in-background")
-  Call<Long> importPortletInfoInBackground(@Param(name = "taskName") String taskName, @Param(name = "plid") long plid, @Param(name = "groupId") long groupId, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/import-portlet-info-in-background",
+      contentType = ContentType.MULTIPART
+  )
+  Call<Long> importPortletInfoInBackground(@Param(name = "taskName") String taskName, @Param(name = "plid") long plid, @Param(name = "groupId") long groupId, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file") UploadData file);
 
   @Path("/schedule-publish-to-live")
   Call<Response> schedulePublishToLive(@Param(name = "sourceGroupId") long sourceGroupId, @Param(name = "targetGroupId") long targetGroupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutIds") JSONArray layoutIds, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "groupName") String groupName, @Param(name = "cronText") String cronText, @Param(name = "schedulerStartDate") long schedulerStartDate, @Param(name = "schedulerEndDate") long schedulerEndDate, @Param(name = "description") String description);
@@ -189,15 +215,27 @@ public interface LayoutService {
   @Path("/update-priority")
   Call<JSONObject> updatePriority(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutId") long layoutId, @Param(name = "nextLayoutId") long nextLayoutId, @Param(name = "previousLayoutId") long previousLayoutId);
 
-  @Path("/validate-import-layouts-file")
-  Call<JSONObject> validateImportLayoutsFile(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/validate-import-layouts-file",
+      contentType = ContentType.MULTIPART
+  )
+  Call<JSONObject> validateImportLayoutsFile(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
 
-  @Path("/validate-import-layouts-file")
-  Call<JSONObject> validateImportLayoutsFile(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/validate-import-layouts-file",
+      contentType = ContentType.MULTIPART
+  )
+  Call<JSONObject> validateImportLayoutsFile(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file") UploadData file);
 
-  @Path("/validate-import-portlet-info")
-  Call<JSONObject> validateImportPortletInfo(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/validate-import-portlet-info",
+      contentType = ContentType.MULTIPART
+  )
+  Call<JSONObject> validateImportPortletInfo(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file") UploadData file);
 
-  @Path("/validate-import-portlet-info")
-  Call<JSONObject> validateImportPortletInfo(@Param(name = "plid") long plid, @Param(name = "groupId") long groupId, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
+  @Path(
+      value = "/validate-import-portlet-info",
+      contentType = ContentType.MULTIPART
+  )
+  Call<JSONObject> validateImportPortletInfo(@Param(name = "plid") long plid, @Param(name = "groupId") long groupId, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file") UploadData file);
 }

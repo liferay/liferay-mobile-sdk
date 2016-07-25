@@ -3,6 +3,8 @@ package com.liferay.mobile.sdk.v7.mbmessage;
 import com.liferay.mobile.sdk.Call;
 import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.Path;
+import com.liferay.mobile.sdk.file.UploadData;
+import com.liferay.mobile.sdk.http.ContentType;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Integer;
 import java.lang.String;
@@ -23,11 +25,17 @@ public interface MBMessageService {
   @Path("/add-message")
   Call<JSONObject> addMessage(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "format") String format, @Param(name = "inputStreamOVPs") JSONArray inputStreamOVPs, @Param(name = "anonymous") boolean anonymous, @Param(name = "priority") double priority, @Param(name = "allowPingbacks") boolean allowPingbacks, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
-  @Path("/add-message")
-  Call<JSONObject> addMessage(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "format") String format, @Param(name = "fileName") String fileName, @Param(name = "file", className = "") JSONObject file, @Param(name = "anonymous") boolean anonymous, @Param(name = "priority") double priority, @Param(name = "allowPingbacks") boolean allowPingbacks, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  @Path(
+      value = "/add-message",
+      contentType = ContentType.MULTIPART
+  )
+  Call<JSONObject> addMessage(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "format") String format, @Param(name = "fileName") String fileName, @Param(name = "file") UploadData file, @Param(name = "anonymous") boolean anonymous, @Param(name = "priority") double priority, @Param(name = "allowPingbacks") boolean allowPingbacks, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
-  @Path("/add-message-attachment")
-  Call<Response> addMessageAttachment(@Param(name = "messageId") long messageId, @Param(name = "fileName") String fileName, @Param(name = "file", className = "") JSONObject file, @Param(name = "mimeType") String mimeType);
+  @Path(
+      value = "/add-message-attachment",
+      contentType = ContentType.MULTIPART
+  )
+  Call<Response> addMessageAttachment(@Param(name = "messageId") long messageId, @Param(name = "fileName") String fileName, @Param(name = "file") UploadData file, @Param(name = "mimeType") String mimeType);
 
   @Path("/delete-discussion-message")
   Call<Response> deleteDiscussionMessage(@Param(name = "messageId") long messageId);
