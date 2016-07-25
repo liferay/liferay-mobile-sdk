@@ -91,7 +91,7 @@ public class OrderByComparatorTest extends BaseTest {
 		_serviceContextTest.deleteBookmarkEntry(_entryZ);
 	}
 
-	@Path("/bookmarksentry")
+	@Path("/bookmarks.bookmarksentry")
 	public interface BookmarksEntryService {
 
 		@Path("/get-entries")
@@ -101,8 +101,8 @@ public class OrderByComparatorTest extends BaseTest {
 			@Param(name = "start") int start, @Param(name = "end") int end,
 			@Param(
 				name = "orderByComparator",
-				className = "com.liferay.portlet.bookmarks.util." +
-					"comparator.EntryNameComparator")
+				className = "com.liferay.bookmarks.util.comparator." +
+					"EntryNameComparator")
 				JSONObject orderByComparator);
 
 	}
