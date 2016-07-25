@@ -91,9 +91,11 @@ public class ServiceContextTest extends BaseTest {
 
 		JSONObject body = (JSONObject)call.body();
 
-		JSONObject root = body.getJSONObject("/bookmarksentry/add-entry");
+		JSONObject root = body.getJSONObject(
+			"/bookmarks.bookmarksentry/add-entry");
+
 		assertEquals(
-			"com.liferay.portal.service.ServiceContext",
+			"com.liferay.portal.kernel.service.ServiceContext",
 			root.getString("+serviceContext"));
 
 		assertEquals(0, root.getInt("groupId"));

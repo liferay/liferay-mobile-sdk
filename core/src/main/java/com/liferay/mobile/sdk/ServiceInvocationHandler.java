@@ -108,6 +108,11 @@ class ServiceInvocationHandler implements InvocationHandler {
 		return returnType.getActualTypeArguments()[0];
 	}
 
+	protected boolean isServiceContext(String className) {
+		return className.equals(SERVICE_CONTEXT_V62) ||
+			className.equals(SERVICE_CONTEXT_V7);
+	}
+
 	protected void mangle(
 			String name, String className, JSONObject param, JSONObject params)
 		throws JSONException {
@@ -165,7 +170,7 @@ class ServiceInvocationHandler implements InvocationHandler {
 					if (value != null) {
 						mangle(name, className, (JSONObject)value, params);
 					}
-					else if (!className.equals(SERVICE_CONTEXT)) {
+					else if (!isServiceContext(className)) {
 						params.put(name, JSONObject.NULL);
 					}
 				}
@@ -198,7 +203,10 @@ class ServiceInvocationHandler implements InvocationHandler {
 		}
 	}
 
-	protected static final String SERVICE_CONTEXT =
+	protected static final String SERVICE_CONTEXT_V7 =
+		"com.liferay.portal.kernel.service.ServiceContext";
+
+	protected static final String SERVICE_CONTEXT_V62 =
 		"com.liferay.portal.service.ServiceContext";
 
 	protected Class<?> clazz;
