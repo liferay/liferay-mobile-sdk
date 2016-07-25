@@ -21,7 +21,7 @@ import com.liferay.mobile.sdk.Config;
 import com.liferay.mobile.sdk.DLAppServiceTest;
 import com.liferay.mobile.sdk.ServiceBuilder;
 import com.liferay.mobile.sdk.util.PropertiesUtil;
-import com.liferay.mobile.sdk.v62.dlapp.DLAppService;
+import com.liferay.mobile.sdk.v7.dlapp.DLAppService;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

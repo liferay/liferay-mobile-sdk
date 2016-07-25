@@ -17,7 +17,7 @@ package com.liferay.mobile.sdk;
 import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.service.CustomGroupService;
 import com.liferay.mobile.sdk.service.Site;
-import com.liferay.mobile.sdk.v62.group.GroupService;
+import com.liferay.mobile.sdk.v7.group.GroupService;
 
 import java.io.IOException;
 
@@ -186,7 +186,7 @@ public class GroupServiceTest extends BaseTest {
 	@Test
 	public void getUserSites() throws Exception {
 		GroupService service = ServiceBuilder.build(GroupService.class);
-		Call<JSONArray> call = service.getUserSites();
+		Call<JSONArray> call = service.getUserSitesGroups();
 		assertUserSites(call.execute());
 	}
 

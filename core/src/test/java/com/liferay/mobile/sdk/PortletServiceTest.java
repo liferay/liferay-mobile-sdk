@@ -14,7 +14,7 @@
 
 package com.liferay.mobile.sdk;
 
-import com.liferay.mobile.sdk.v62.portlet.PortletService;
+import com.liferay.mobile.sdk.v7.portlet.PortletService;
 
 import java.io.IOException;
 
@@ -36,7 +36,7 @@ public class PortletServiceTest extends BaseTest {
 	@Test
 	public void getWarPortlets() throws Exception {
 		PortletService service = ServiceBuilder.build(PortletService.class);
-		JSONArray array = service.getWarPortlets().execute();
+		JSONArray array = service.getWARPortlets().execute();
 		assertNotNull(array);
 		assertTrue(array.length() > 0);
 	}

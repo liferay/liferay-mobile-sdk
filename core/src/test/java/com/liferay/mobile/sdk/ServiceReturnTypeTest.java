@@ -15,7 +15,7 @@
 package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.service.UserServiceFullyAnnotated;
-import com.liferay.mobile.sdk.v62.portal.PortalService;
+import com.liferay.mobile.sdk.v7.portal.PortalService;
 
 import java.io.IOException;
 

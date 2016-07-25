@@ -14,7 +14,7 @@
 
 package com.liferay.mobile.sdk;
 
-import com.liferay.mobile.sdk.v62.dlapp.DLAppService;
+import com.liferay.mobile.sdk.v7.dlapp.DLAppService;
 
 import java.io.IOException;
 

@@ -15,7 +15,7 @@
 package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.Config.Builder;
-import com.liferay.mobile.sdk.v62.group.GroupService;
+import com.liferay.mobile.sdk.v7.group.GroupService;
 
 import java.io.IOException;
 
@@ -41,7 +41,7 @@ public class ConnectionTimeoutTest {
 			.build();
 
 		GroupService service = ServiceBuilder.build(GroupService.class);
-		Call<JSONArray> call = service.getUserSites();
+		Call<JSONArray> call = service.getUserSitesGroups();
 		call.execute(config);
 	}
 
