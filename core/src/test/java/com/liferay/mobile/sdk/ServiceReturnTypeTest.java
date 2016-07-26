@@ -45,27 +45,15 @@ public class ServiceReturnTypeTest extends BaseTest {
 
 	@Test
 	public void getAutoDeployDirectoryAsync() throws InterruptedException {
-		PortalService service = ServiceBuilder.build(PortalService.class);
-		Call<String> call = service.getAutoDeployDirectory();
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(new Callback<String>() {
-
-			@Override
-			public void onSuccess(String directory) {
-				assertNotNull(directory);
-				lock.countDown();
-			}
-
-			@Override
-			public void onFailure(Exception exception) {
-				fail(exception.getMessage());
-				lock.countDown();
-			}
-
-		});
+		PortalService service = ServiceBuilder.build(PortalService.class);
+		Call<String> call = service.getAutoDeployDirectory();
+		TestCallback<String> callback = new TestCallback<>(lock);
+		call.async(callback);
 
 		lock.await(500, TimeUnit.MILLISECONDS);
+		assertNotNull(callback.result);
 	}
 
 	@Test
@@ -81,29 +69,17 @@ public class ServiceReturnTypeTest extends BaseTest {
 
 	@Test
 	public void getCompanyUsersCountAsync() throws InterruptedException {
+		final CountDownLatch lock = new CountDownLatch(1);
+
 		UserServiceFullyAnnotated service = ServiceBuilder.build(
 			UserServiceFullyAnnotated.class);
 
 		Call<Integer> call = service.getCompanyUsersCount(props.getCompanyId());
-		final CountDownLatch lock = new CountDownLatch(1);
-
-		call.async(new Callback<Integer>() {
-
-			@Override
-			public void onSuccess(Integer count) {
-				assertTrue(count > 0);
-				lock.countDown();
-			}
-
-			@Override
-			public void onFailure(Exception exception) {
-				fail(exception.getMessage());
-				lock.countDown();
-			}
-
-		});
+		TestCallback<Integer> callback = new TestCallback<>(lock);
+		call.async(callback);
 
 		lock.await(500, TimeUnit.MILLISECONDS);
+		assertTrue(callback.result > 0);
 	}
 
 	@Test
@@ -125,48 +101,30 @@ public class ServiceReturnTypeTest extends BaseTest {
 
 	@Test
 	public void getUserIdByEmailAddressAsync() throws InterruptedException {
+		final CountDownLatch lock = new CountDownLatch(1);
+
 		long companyId = props.getCompanyId();
 		final long groupId = props.getGroupId();
 		String login = props.getLogin();
-		final CountDownLatch lock = new CountDownLatch(1);
 		final UserServiceFullyAnnotated service = ServiceBuilder.build(
 			UserServiceFullyAnnotated.class);
 
 		Call<Long> call = service.getUserIdByEmailAddress(companyId, login);
-
-		call.async(new Callback<Long>() {
-
-			@Override
-			public void onSuccess(Long userId) {
-				assertTrue(userId > 0);
-
-				Call<Boolean> call = service.hasGroupUser(groupId, userId);
-				call.async(new Callback<Boolean>() {
-
-					@Override
-					public void onSuccess(Boolean hasGroupUser) {
-						assertTrue(hasGroupUser);
-						lock.countDown();
-					}
-
-					@Override
-					public void onFailure(Exception exception) {
-						fail(exception.getMessage());
-						lock.countDown();
-					}
-
-				});
-			}
-
-			@Override
-			public void onFailure(Exception exception) {
-				fail(exception.getMessage());
-				lock.countDown();
-			}
-
-		});
+		TestCallback<Long> callback = new TestCallback<>(lock);
+		call.async(callback);
 
 		lock.await(500, TimeUnit.MILLISECONDS);
+		long userId = callback.result;
+		assertTrue(userId > 0);
+
+		final CountDownLatch lock2 = new CountDownLatch(1);
+
+		Call<Boolean> call2 = service.hasGroupUser(groupId, userId);
+		TestCallback<Boolean> callback2 = new TestCallback<>(lock2);
+		call2.async(callback2);
+
+		lock2.await(500, TimeUnit.MILLISECONDS);
+		assertTrue(callback2.result);
 	}
 
 }

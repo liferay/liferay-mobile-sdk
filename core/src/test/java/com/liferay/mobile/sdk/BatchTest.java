@@ -56,39 +56,28 @@ public class BatchTest extends BaseTest {
 
 	@Test
 	public void getUserSitesAsync() throws Exception {
-		CustomGroupService service = new CustomGroupService();
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		Batch.async(new Callback<Response>() {
+		CustomGroupService service = new CustomGroupService();
 
-			@Override
-			public void onSuccess(Response response) {
-				try {
-					List sites = JSONParser.fromJSON(
-						response.bodyAsString(), List.class);
+		TestCallback<Response> callback = new TestCallback<>(lock);
 
-					assertEquals(2, sites.size());
-
-					GroupServiceTest.assertUserSitesAsMap(
-						(List<Map<String, Object>>)sites.get(0));
-
-					GroupServiceTest.assertUserSitesAsMap(
-						(List<Map<String, Object>>)sites.get(1));
-				}
-				catch (Exception e) {
-					onFailure(e);
-				}
-			}
-
-			@Override
-			public void onFailure(Exception exception) {
-				fail(exception.getMessage());
-				lock.countDown();
-			}
-
-		}, service.getUserSitesGroups(), service.getUserSitesGroups());
+		Batch.async(
+			callback, service.getUserSitesGroups(),
+			service.getUserSitesGroups());
 
 		lock.await(500, TimeUnit.MILLISECONDS);
+
+		List sites = JSONParser.fromJSON(
+			callback.result.bodyAsString(), List.class);
+
+		assertEquals(2, sites.size());
+
+		GroupServiceTest.assertUserSitesAsMap(
+			(List<Map<String, Object>>)sites.get(0));
+
+		GroupServiceTest.assertUserSitesAsMap(
+			(List<Map<String, Object>>)sites.get(1));
 	}
 
 }

@@ -54,27 +54,17 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void disableStagingAsync() throws Exception {
-		GroupService service = ServiceBuilder.build(GroupService.class);
-		long groupId = props.getGroupId();
-		Call<Response> call = service.disableStaging(groupId);
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(new Callback<Response>() {
+		GroupService service = ServiceBuilder.build(GroupService.class);
+		long groupId = props.getGroupId();
 
-			@Override
-			public void onSuccess(Response response) {
-				assertEquals(200, response.statusCode());
-				lock.countDown();
-			}
-
-			@Override
-			public void onFailure(Exception exception) {
-				lock.countDown();
-			}
-
-		});
+		Call<Response> call = service.disableStaging(groupId);
+		TestCallback<Response> callback = new TestCallback<>(lock);
+		call.async(callback);
 
 		lock.await(500, TimeUnit.MILLISECONDS);
+		assertEquals(200, callback.result.statusCode());
 	}
 
 	@Test
@@ -97,30 +87,17 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void getGroupAsMapAsync() throws Exception {
-		CustomGroupService service = new CustomGroupService();
-		final long groupId = props.getGroupId();
-		Call<Map<String, Object>> call = service.getGroupAsMap(groupId);
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(new Callback<Map<String, Object>>() {
+		CustomGroupService service = new CustomGroupService();
+		long groupId = props.getGroupId();
 
-			@Override
-			public void onSuccess(Map<String, Object> group) {
-				assertEquals(
-					groupId, ((Double)group.get("groupId")).longValue());
-
-				lock.countDown();
-			}
-
-			@Override
-			public void onFailure(Exception exception) {
-				fail(exception.getMessage());
-				lock.countDown();
-			}
-
-		});
+		Call<Map<String, Object>> call = service.getGroupAsMap(groupId);
+		TestCallback<Map<String, Object>> callback = new TestCallback<>(lock);
+		call.async(callback);
 
 		lock.await(500, TimeUnit.MILLISECONDS);
+		assertEquals(String.valueOf(groupId), callback.result.get("groupId"));
 	}
 
 	@Test
@@ -134,54 +111,32 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void getGroupAsSiteAsync() throws Exception {
-		CustomGroupService service = new CustomGroupService();
-		final long groupId = props.getGroupId();
-		Call<Site> call = service.getGroupAsSite(groupId);
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(new Callback<Site>() {
+		CustomGroupService service = new CustomGroupService();
+		final long groupId = props.getGroupId();
 
-			@Override
-			public void onSuccess(Site group) {
-				assertEquals(groupId, group.groupId);
-				lock.countDown();
-			}
-
-			@Override
-			public void onFailure(Exception exception) {
-				fail(exception.getMessage());
-				lock.countDown();
-			}
-
-		});
+		Call<Site> call = service.getGroupAsSite(groupId);
+		TestCallback<Site> callback = new TestCallback<>(lock);
+		call.async(callback);
 
 		lock.await(500, TimeUnit.MILLISECONDS);
+		assertEquals(groupId, callback.result.groupId);
 	}
 
 	@Test
 	public void getGroupAsync() throws Exception {
-		GroupService service = ServiceBuilder.build(GroupService.class);
-		final long groupId = props.getGroupId();
-		Call<JSONObject> call = service.getGroup(groupId);
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(new Callback<JSONObject>() {
+		GroupService service = ServiceBuilder.build(GroupService.class);
+		final long groupId = props.getGroupId();
 
-			@Override
-			public void onSuccess(JSONObject group) {
-				assertEquals(groupId, group.optLong("groupId"));
-				lock.countDown();
-			}
-
-			@Override
-			public void onFailure(Exception exception) {
-				fail(exception.getMessage());
-				lock.countDown();
-			}
-
-		});
+		Call<JSONObject> call = service.getGroup(groupId);
+		TestCallback<JSONObject> callback = new TestCallback<>(lock);
+		call.async(callback);
 
 		lock.await(500, TimeUnit.MILLISECONDS);
+		assertEquals(groupId, callback.result.optLong("groupId"));
 	}
 
 	@Test
@@ -202,29 +157,19 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void getUserSitesAsListOfMapAsync() throws InterruptedException {
+		final CountDownLatch lock = new CountDownLatch(1);
+
 		CustomGroupService service = new CustomGroupService();
 		Call<List<Map<String, Object>>> call =
 			service.getUserSitesAsListOfMap();
 
-		final CountDownLatch lock = new CountDownLatch(1);
+		TestCallback<List<Map<String, Object>>> callback = new TestCallback<>(
+			lock);
 
-		call.async(new Callback<List<Map<String, Object>>>() {
-
-			@Override
-			public void onSuccess(List<Map<String, Object>> sites) {
-				assertUserSitesAsMap(sites);
-				lock.countDown();
-			}
-
-			@Override
-			public void onFailure(Exception exception) {
-				fail(exception.getMessage());
-				lock.countDown();
-			}
-
-		});
+		call.async(callback);
 
 		lock.await(500, TimeUnit.MILLISECONDS);
+		assertUserSitesAsMap(callback.result);
 	}
 
 	@Test
@@ -236,52 +181,28 @@ public class GroupServiceTest extends BaseTest {
 
 	@Test
 	public void getUserSitesAsListOfSitesAsync() throws InterruptedException {
-		CustomGroupService service = new CustomGroupService();
-		Call<List<Site>> call = service.getUserSitesAsListOfSites();
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(new Callback<List<Site>>() {
-
-			@Override
-			public void onSuccess(List<Site> sites) {
-				assertUserSites(sites);
-				lock.countDown();
-			}
-
-			@Override
-			public void onFailure(Exception exception) {
-				fail(exception.getMessage());
-				lock.countDown();
-			}
-
-		});
+		CustomGroupService service = new CustomGroupService();
+		Call<List<Site>> call = service.getUserSitesAsListOfSites();
+		TestCallback<List<Site>> callback = new TestCallback<>(lock);
+		call.async(callback);
 
 		lock.await(500, TimeUnit.MILLISECONDS);
+		assertUserSites(callback.result);
 	}
 
 	@Test
 	public void getUserSitesAsync() throws InterruptedException {
-		CustomGroupService service = new CustomGroupService();
-		Call<JSONArray> call = service.getUserSitesGroups();
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(new Callback<JSONArray>() {
-
-			@Override
-			public void onSuccess(JSONArray sites) {
-				assertUserSites(sites);
-				lock.countDown();
-			}
-
-			@Override
-			public void onFailure(Exception exception) {
-				fail(exception.getMessage());
-				lock.countDown();
-			}
-
-		});
+		CustomGroupService service = new CustomGroupService();
+		Call<JSONArray> call = service.getUserSitesGroups();
+		TestCallback<JSONArray> callback = new TestCallback<>(lock);
+		call.async(callback);
 
 		lock.await(500, TimeUnit.MILLISECONDS);
+		assertUserSites(callback.result);
 	}
 
 	protected static void assertUserSites(JSONArray jsonArray) {
