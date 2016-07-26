@@ -42,7 +42,7 @@ public interface BlogsEntryService {
   Call<JSONArray> getGroupEntries(@Param(name = "groupId") long groupId, @Param(name = "displayDate") long displayDate, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-group-entries")
-  Call<JSONArray> getGroupEntries(@Param(name = "groupId") long groupId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.blogs.kernel.model.BlogsEntry>") JSONObject obc);
+  Call<JSONArray> getGroupEntries(@Param(name = "groupId") long groupId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-group-entries-count")
   Call<Integer> getGroupEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "status") int status);
@@ -54,10 +54,10 @@ public interface BlogsEntryService {
   Call<String> getGroupEntriesRSS(@Param(name = "groupId") long groupId, @Param(name = "displayDate") long displayDate, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @Param(name = "themeDisplay", className = "com.liferay.portal.kernel.theme.ThemeDisplay") JSONObject themeDisplay);
 
   @Path("/get-group-user-entries")
-  Call<JSONArray> getGroupUserEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.blogs.kernel.model.BlogsEntry>") JSONObject obc);
+  Call<JSONArray> getGroupUserEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-group-user-entries")
-  Call<JSONArray> getGroupUserEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "statuses") JSONArray statuses, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.blogs.kernel.model.BlogsEntry>") JSONObject obc);
+  Call<JSONArray> getGroupUserEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "statuses") JSONArray statuses, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-group-user-entries-count")
   Call<Integer> getGroupUserEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status);

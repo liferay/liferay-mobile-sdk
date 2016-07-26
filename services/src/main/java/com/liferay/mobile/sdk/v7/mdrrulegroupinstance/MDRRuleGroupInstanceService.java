@@ -21,7 +21,7 @@ public interface MDRRuleGroupInstanceService {
   Call<Response> deleteRuleGroupInstance(@Param(name = "ruleGroupInstanceId") long ruleGroupInstanceId);
 
   @Path("/get-rule-group-instances")
-  Call<JSONArray> getRuleGroupInstances(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.mobile.device.rules.model.MDRRuleGroupInstance>") JSONObject orderByComparator);
+  Call<JSONArray> getRuleGroupInstances(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject orderByComparator);
 
   @Path("/get-rule-group-instances-count")
   Call<Integer> getRuleGroupInstancesCount(@Param(name = "className") String className, @Param(name = "classPK") long classPK);

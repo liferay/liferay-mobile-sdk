@@ -28,10 +28,10 @@ public interface CompanyService {
   Call<JSONObject> getCompanyByWebId(@Param(name = "webId") String webId);
 
   @Path("/update-company")
-  Call<JSONObject> updateCompany(@Param(name = "companyId") long companyId, @Param(name = "virtualHost") String virtualHost, @Param(name = "mx") String mx, @Param(name = "homeURL") String homeURL, @Param(name = "name") String name, @Param(name = "legalName") String legalName, @Param(name = "legalId") String legalId, @Param(name = "legalType") String legalType, @Param(name = "sicCode") String sicCode, @Param(name = "tickerSymbol") String tickerSymbol, @Param(name = "industry") String industry, @Param(name = "type") String type, @Param(name = "size") String size);
+  Call<JSONObject> updateCompany(@Param(name = "companyId") long companyId, @Param(name = "virtualHost") String virtualHost, @Param(name = "mx") String mx, @Param(name = "maxUsers") int maxUsers, @Param(name = "active") boolean active);
 
   @Path("/update-company")
-  Call<JSONObject> updateCompany(@Param(name = "companyId") long companyId, @Param(name = "virtualHost") String virtualHost, @Param(name = "mx") String mx, @Param(name = "maxUsers") int maxUsers, @Param(name = "active") boolean active);
+  Call<JSONObject> updateCompany(@Param(name = "companyId") long companyId, @Param(name = "virtualHost") String virtualHost, @Param(name = "mx") String mx, @Param(name = "homeURL") String homeURL, @Param(name = "name") String name, @Param(name = "legalName") String legalName, @Param(name = "legalId") String legalId, @Param(name = "legalType") String legalType, @Param(name = "sicCode") String sicCode, @Param(name = "tickerSymbol") String tickerSymbol, @Param(name = "industry") String industry, @Param(name = "type") String type, @Param(name = "size") String size);
 
   @Path("/update-display")
   Call<Response> updateDisplay(@Param(name = "companyId") long companyId, @Param(name = "languageId") String languageId, @Param(name = "timeZoneId") String timeZoneId);

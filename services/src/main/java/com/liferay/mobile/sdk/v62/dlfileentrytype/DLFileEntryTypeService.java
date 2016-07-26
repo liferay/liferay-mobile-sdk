@@ -15,7 +15,7 @@ public interface DLFileEntryTypeService {
   Call<JSONObject> addFileEntryType(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-file-entry-type")
-  Call<JSONObject> addFileEntryType(@Param(name = "groupId") long groupId, @Param(name = "fileEntryTypeKey") String fileEntryTypeKey, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addFileEntryType(@Param(name = "groupId") long groupId, @Param(name = "fileEntryTypeKey") String fileEntryTypeKey, @Param(name = "nameMap") JSONObject nameMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-file-entry-type")
   Call<Response> deleteFileEntryType(@Param(name = "fileEntryTypeId") long fileEntryTypeId);
@@ -45,5 +45,5 @@ public interface DLFileEntryTypeService {
   Call<Response> updateFileEntryType(@Param(name = "fileEntryTypeId") long fileEntryTypeId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-file-entry-type")
-  Call<Response> updateFileEntryType(@Param(name = "fileEntryTypeId") long fileEntryTypeId, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<Response> updateFileEntryType(@Param(name = "fileEntryTypeId") long fileEntryTypeId, @Param(name = "nameMap") JSONObject nameMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

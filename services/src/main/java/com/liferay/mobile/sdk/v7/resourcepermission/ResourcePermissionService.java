@@ -5,8 +5,8 @@ import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.String;
-import java.util.Map;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 @Path("/resourcepermission")
 public interface ResourcePermissionService {
@@ -20,7 +20,7 @@ public interface ResourcePermissionService {
   Call<Response> removeResourcePermissions(@Param(name = "groupId") long groupId, @Param(name = "companyId") long companyId, @Param(name = "name") String name, @Param(name = "scope") int scope, @Param(name = "roleId") long roleId, @Param(name = "actionId") String actionId);
 
   @Path("/set-individual-resource-permissions")
-  Call<Response> setIndividualResourcePermissions(@Param(name = "groupId") long groupId, @Param(name = "companyId") long companyId, @Param(name = "name") String name, @Param(name = "primKey") String primKey, @Param(name = "roleIdsToActionIds") Map roleIdsToActionIds);
+  Call<Response> setIndividualResourcePermissions(@Param(name = "groupId") long groupId, @Param(name = "companyId") long companyId, @Param(name = "name") String name, @Param(name = "primKey") String primKey, @Param(name = "roleIdsToActionIds") JSONObject roleIdsToActionIds);
 
   @Path("/set-individual-resource-permissions")
   Call<Response> setIndividualResourcePermissions(@Param(name = "groupId") long groupId, @Param(name = "companyId") long companyId, @Param(name = "name") String name, @Param(name = "primKey") String primKey, @Param(name = "roleId") long roleId, @Param(name = "actionIds") JSONArray actionIds);

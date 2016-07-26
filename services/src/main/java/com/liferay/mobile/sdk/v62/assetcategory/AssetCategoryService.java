@@ -15,7 +15,7 @@ public interface AssetCategoryService {
   Call<JSONObject> addCategory(@Param(name = "title") String title, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-category")
-  Call<JSONObject> addCategory(@Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "titleMap", className = "") JSONObject titleMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "categoryProperties") JSONArray categoryProperties, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addCategory(@Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "titleMap") JSONObject titleMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "categoryProperties") JSONArray categoryProperties, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-categories")
   Call<Response> deleteCategories(@Param(name = "categoryIds") JSONArray categoryIds);
@@ -90,5 +90,5 @@ public interface AssetCategoryService {
   Call<JSONArray> search(@Param(name = "groupId") long groupId, @Param(name = "keywords") String keywords, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/update-category")
-  Call<JSONObject> updateCategory(@Param(name = "categoryId") long categoryId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "titleMap", className = "") JSONObject titleMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "categoryProperties") JSONArray categoryProperties, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateCategory(@Param(name = "categoryId") long categoryId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "titleMap") JSONObject titleMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "categoryProperties") JSONArray categoryProperties, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

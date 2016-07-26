@@ -89,10 +89,10 @@ public interface WikiPageService {
   Call<JSONArray> getPages(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "nodeId") long nodeId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-pages")
-  Call<JSONArray> getPages(@Param(name = "groupId") long groupId, @Param(name = "nodeId") long nodeId, @Param(name = "head") boolean head, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.wiki.model.WikiPage>") JSONObject obc);
+  Call<JSONArray> getPages(@Param(name = "groupId") long groupId, @Param(name = "nodeId") long nodeId, @Param(name = "head") boolean head, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-pages")
-  Call<JSONArray> getPages(@Param(name = "groupId") long groupId, @Param(name = "nodeId") long nodeId, @Param(name = "head") boolean head, @Param(name = "userId") long userId, @Param(name = "includeOwner") boolean includeOwner, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.wiki.model.WikiPage>") JSONObject obc);
+  Call<JSONArray> getPages(@Param(name = "groupId") long groupId, @Param(name = "nodeId") long nodeId, @Param(name = "head") boolean head, @Param(name = "userId") long userId, @Param(name = "includeOwner") boolean includeOwner, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-pages-count")
   Call<Integer> getPagesCount(@Param(name = "groupId") long groupId, @Param(name = "nodeId") long nodeId, @Param(name = "head") boolean head);

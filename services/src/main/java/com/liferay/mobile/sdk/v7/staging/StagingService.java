@@ -6,7 +6,6 @@ import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Long;
 import java.lang.String;
-import java.util.Map;
 import org.json.JSONObject;
 
 @Path("/staging")
@@ -21,11 +20,11 @@ public interface StagingService {
   Call<JSONObject> publishStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "exportImportConfiguration", className = "com.liferay.exportimport.kernel.model.ExportImportConfiguration") JSONObject exportImportConfiguration);
 
   @Path("/publish-staging-request")
-  Call<JSONObject> publishStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap") Map parameterMap);
+  Call<JSONObject> publishStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap") JSONObject parameterMap);
 
   @Path("/update-staging-request")
   Call<Response> updateStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "fileName") String fileName, @Param(name = "bytes") byte[] bytes);
 
   @Path("/validate-staging-request")
-  Call<JSONObject> validateStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap") Map parameterMap);
+  Call<JSONObject> validateStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap") JSONObject parameterMap);
 }

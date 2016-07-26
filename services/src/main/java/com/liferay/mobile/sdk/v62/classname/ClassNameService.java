@@ -13,7 +13,7 @@ public interface ClassNameService {
   Call<JSONObject> fetchClassName(@Param(name = "value") String value);
 
   @Path("/fetch-class-name-id")
-  Call<Long> fetchClassNameId(@Param(name = "clazz", className = "") JSONObject clazz);
+  Call<Long> fetchClassNameId(@Param(name = "clazz", className = "java.lang.Class") JSONObject clazz);
 
   @Path("/fetch-class-name-id")
   Call<Long> fetchClassNameId(@Param(name = "value") String value);

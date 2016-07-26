@@ -38,7 +38,7 @@ public interface ResourceBlockService {
   Call<Response> setGroupScopePermissions(@Param(name = "scopeGroupId") long scopeGroupId, @Param(name = "companyId") long companyId, @Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "roleId") long roleId, @Param(name = "actionIds") JSONArray actionIds);
 
   @Path("/set-individual-scope-permissions")
-  Call<Response> setIndividualScopePermissions(@Param(name = "companyId") long companyId, @Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "primKey") long primKey, @Param(name = "roleIdsToActionIds", className = "") JSONObject roleIdsToActionIds);
+  Call<Response> setIndividualScopePermissions(@Param(name = "companyId") long companyId, @Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "primKey") long primKey, @Param(name = "roleIdsToActionIds") JSONObject roleIdsToActionIds);
 
   @Path("/set-individual-scope-permissions")
   Call<Response> setIndividualScopePermissions(@Param(name = "companyId") long companyId, @Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "primKey") long primKey, @Param(name = "roleId") long roleId, @Param(name = "actionIds") JSONArray actionIds);

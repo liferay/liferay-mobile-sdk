@@ -16,6 +16,9 @@ public interface OrganizationService {
   Call<Response> addGroupOrganizations(@Param(name = "groupId") long groupId, @Param(name = "organizationIds") JSONArray organizationIds);
 
   @Path("/add-organization")
+  Call<JSONObject> addOrganization(@Param(name = "parentOrganizationId") long parentOrganizationId, @Param(name = "name") String name, @Param(name = "type") String type, @Param(name = "regionId") long regionId, @Param(name = "countryId") long countryId, @Param(name = "statusId") int statusId, @Param(name = "comments") String comments, @Param(name = "site") boolean site, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+
+  @Path("/add-organization")
   Call<JSONObject> addOrganization(@Param(name = "parentOrganizationId") long parentOrganizationId, @Param(name = "name") String name, @Param(name = "type") String type, @Param(name = "recursable") boolean recursable, @Param(name = "regionId") long regionId, @Param(name = "countryId") long countryId, @Param(name = "statusId") int statusId, @Param(name = "comments") String comments, @Param(name = "site") boolean site, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-organization")
@@ -23,9 +26,6 @@ public interface OrganizationService {
 
   @Path("/add-organization")
   Call<JSONObject> addOrganization(@Param(name = "parentOrganizationId") long parentOrganizationId, @Param(name = "name") String name, @Param(name = "type") String type, @Param(name = "recursable") boolean recursable, @Param(name = "regionId") long regionId, @Param(name = "countryId") long countryId, @Param(name = "statusId") int statusId, @Param(name = "comments") String comments, @Param(name = "site") boolean site, @Param(name = "addresses") JSONArray addresses, @Param(name = "emailAddresses") JSONArray emailAddresses, @Param(name = "orgLabors") JSONArray orgLabors, @Param(name = "phones") JSONArray phones, @Param(name = "websites") JSONArray websites, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
-
-  @Path("/add-organization")
-  Call<JSONObject> addOrganization(@Param(name = "parentOrganizationId") long parentOrganizationId, @Param(name = "name") String name, @Param(name = "type") String type, @Param(name = "regionId") long regionId, @Param(name = "countryId") long countryId, @Param(name = "statusId") int statusId, @Param(name = "comments") String comments, @Param(name = "site") boolean site, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-password-policy-organizations")
   Call<Response> addPasswordPolicyOrganizations(@Param(name = "passwordPolicyId") long passwordPolicyId, @Param(name = "organizationIds") JSONArray organizationIds);

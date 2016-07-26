@@ -21,7 +21,7 @@ public interface BookmarksEntryService {
   Call<JSONArray> getEntries(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-entries")
-  Call<JSONArray> getEntries(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.bookmarks.model.BookmarksEntry>") JSONObject orderByComparator);
+  Call<JSONArray> getEntries(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject orderByComparator);
 
   @Path("/get-entries-count")
   Call<Integer> getEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);

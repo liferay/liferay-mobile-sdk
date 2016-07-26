@@ -29,7 +29,7 @@ public interface TrashEntryService {
   Call<JSONArray> getEntries(@Param(name = "groupId") long groupId, @Param(name = "className") String className);
 
   @Path("/get-entries")
-  Call<JSONObject> getEntries(@Param(name = "groupId") long groupId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.trash.kernel.model.TrashEntry>") JSONObject obc);
+  Call<JSONObject> getEntries(@Param(name = "groupId") long groupId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/move-entry")
   Call<Response> moveEntry(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "destinationContainerModelId") long destinationContainerModelId, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);

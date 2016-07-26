@@ -36,7 +36,7 @@ public interface WikiNodeService {
   Call<JSONArray> getNodes(@Param(name = "groupId") long groupId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-nodes")
-  Call<JSONArray> getNodes(@Param(name = "groupId") long groupId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.wiki.model.WikiNode>") JSONObject obc);
+  Call<JSONArray> getNodes(@Param(name = "groupId") long groupId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-nodes-count")
   Call<Integer> getNodesCount(@Param(name = "groupId") long groupId);

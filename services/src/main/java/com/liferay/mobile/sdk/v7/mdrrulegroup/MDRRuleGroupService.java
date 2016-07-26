@@ -5,14 +5,13 @@ import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Integer;
-import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Path("/mdr.mdrrulegroup")
 public interface MDRRuleGroupService {
   @Path("/add-rule-group")
-  Call<JSONObject> addRuleGroup(@Param(name = "groupId") long groupId, @Param(name = "nameMap") Map nameMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addRuleGroup(@Param(name = "groupId") long groupId, @Param(name = "nameMap") JSONObject nameMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/copy-rule-group")
   Call<JSONObject> copyRuleGroup(@Param(name = "ruleGroupId") long ruleGroupId, @Param(name = "groupId") long groupId, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
@@ -33,5 +32,5 @@ public interface MDRRuleGroupService {
   Call<Integer> getRuleGroupsCount(@Param(name = "groupIds") JSONArray groupIds);
 
   @Path("/update-rule-group")
-  Call<JSONObject> updateRuleGroup(@Param(name = "ruleGroupId") long ruleGroupId, @Param(name = "nameMap") Map nameMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateRuleGroup(@Param(name = "ruleGroupId") long ruleGroupId, @Param(name = "nameMap") JSONObject nameMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 }

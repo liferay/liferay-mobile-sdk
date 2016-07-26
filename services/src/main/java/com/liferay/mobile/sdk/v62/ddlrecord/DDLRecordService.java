@@ -18,7 +18,7 @@ public interface DDLRecordService {
   Call<JSONObject> getRecord(@Param(name = "recordId") long recordId);
 
   @Path("/update-record")
-  Call<JSONObject> updateRecord(@Param(name = "recordId") long recordId, @Param(name = "displayIndex") int displayIndex, @Param(name = "fieldsMap", className = "") JSONObject fieldsMap, @Param(name = "mergeFields") boolean mergeFields, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateRecord(@Param(name = "recordId") long recordId, @Param(name = "displayIndex") int displayIndex, @Param(name = "fieldsMap") JSONObject fieldsMap, @Param(name = "mergeFields") boolean mergeFields, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-record")
   Call<JSONObject> updateRecord(@Param(name = "recordId") long recordId, @Param(name = "majorVersion") boolean majorVersion, @Param(name = "displayIndex") int displayIndex, @Param(name = "fields", className = "com.liferay.portlet.dynamicdatamapping.storage.Fields") JSONObject fields, @Param(name = "mergeFields") boolean mergeFields, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
