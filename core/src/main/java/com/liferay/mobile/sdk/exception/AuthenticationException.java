@@ -19,6 +19,10 @@ package com.liferay.mobile.sdk.exception;
  */
 public class AuthenticationException extends ServerException {
 
+	public AuthenticationException(String message) {
+		super(message);
+	}
+
 	public AuthenticationException(String message, String detail) {
 		super(message, detail);
 	}
