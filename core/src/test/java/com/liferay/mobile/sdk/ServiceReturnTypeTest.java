@@ -20,7 +20,6 @@ import com.liferay.mobile.sdk.v7.portal.PortalService;
 import java.io.IOException;
 
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 
@@ -52,7 +51,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 		TestCallback<String> callback = new TestCallback<>(lock);
 		call.async(callback);
 
-		lock.await(500, TimeUnit.MILLISECONDS);
+		await(lock);
 		assertNotNull(callback.result);
 	}
 
@@ -78,7 +77,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 		TestCallback<Integer> callback = new TestCallback<>(lock);
 		call.async(callback);
 
-		lock.await(500, TimeUnit.MILLISECONDS);
+		await(lock);
 		assertTrue(callback.result > 0);
 	}
 
@@ -113,7 +112,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 		TestCallback<Long> callback = new TestCallback<>(lock);
 		call.async(callback);
 
-		lock.await(500, TimeUnit.MILLISECONDS);
+		await(lock);
 		long userId = callback.result;
 		assertTrue(userId > 0);
 
@@ -123,7 +122,7 @@ public class ServiceReturnTypeTest extends BaseTest {
 		TestCallback<Boolean> callback2 = new TestCallback<>(lock2);
 		call2.async(callback2);
 
-		lock2.await(500, TimeUnit.MILLISECONDS);
+		await(lock2);
 		assertTrue(callback2.result);
 	}
 

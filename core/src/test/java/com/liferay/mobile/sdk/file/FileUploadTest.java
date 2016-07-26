@@ -31,7 +31,6 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 import org.json.JSONObject;
 
@@ -198,7 +197,7 @@ public class FileUploadTest extends BaseTest {
 
 		});
 
-		lock.await(500, TimeUnit.MILLISECONDS);
+		await(lock);
 
 		assertEquals(fileName, _file.getString(DLAppServiceTest.TITLE));
 		assertEquals(5, callback.getTotal());

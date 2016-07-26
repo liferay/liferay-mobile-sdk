@@ -21,6 +21,9 @@ import com.liferay.mobile.sdk.util.PropertiesUtil;
 
 import java.io.IOException;
 
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author Bruno Farache
  */
@@ -33,6 +36,10 @@ public abstract class BaseTest {
 			props.getLogin(), props.getPassword());
 
 		Config.global(new Builder(props.getUrl()).auth(auth).build());
+	}
+
+	public void await(CountDownLatch lock) throws InterruptedException {
+		lock.await(500, TimeUnit.MILLISECONDS);
 	}
 
 	protected PropertiesUtil props;

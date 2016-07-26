@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -63,7 +62,7 @@ public class GroupServiceTest extends BaseTest {
 		TestCallback<Response> callback = new TestCallback<>(lock);
 		call.async(callback);
 
-		lock.await(500, TimeUnit.MILLISECONDS);
+		await(lock);
 		assertEquals(200, callback.result.statusCode());
 	}
 
@@ -96,7 +95,7 @@ public class GroupServiceTest extends BaseTest {
 		TestCallback<Map<String, Object>> callback = new TestCallback<>(lock);
 		call.async(callback);
 
-		lock.await(500, TimeUnit.MILLISECONDS);
+		await(lock);
 		assertEquals(String.valueOf(groupId), callback.result.get("groupId"));
 	}
 
@@ -120,7 +119,7 @@ public class GroupServiceTest extends BaseTest {
 		TestCallback<Site> callback = new TestCallback<>(lock);
 		call.async(callback);
 
-		lock.await(500, TimeUnit.MILLISECONDS);
+		await(lock);
 		assertEquals(groupId, callback.result.groupId);
 	}
 
@@ -135,7 +134,7 @@ public class GroupServiceTest extends BaseTest {
 		TestCallback<JSONObject> callback = new TestCallback<>(lock);
 		call.async(callback);
 
-		lock.await(500, TimeUnit.MILLISECONDS);
+		await(lock);
 		assertEquals(groupId, callback.result.optLong("groupId"));
 	}
 
@@ -168,7 +167,7 @@ public class GroupServiceTest extends BaseTest {
 
 		call.async(callback);
 
-		lock.await(500, TimeUnit.MILLISECONDS);
+		await(lock);
 		assertUserSitesAsMap(callback.result);
 	}
 
@@ -188,7 +187,7 @@ public class GroupServiceTest extends BaseTest {
 		TestCallback<List<Site>> callback = new TestCallback<>(lock);
 		call.async(callback);
 
-		lock.await(500, TimeUnit.MILLISECONDS);
+		await(lock);
 		assertUserSites(callback.result);
 	}
 
@@ -201,7 +200,7 @@ public class GroupServiceTest extends BaseTest {
 		TestCallback<JSONArray> callback = new TestCallback<>(lock);
 		call.async(callback);
 
-		lock.await(500, TimeUnit.MILLISECONDS);
+		await(lock);
 		assertUserSites(callback.result);
 	}
 

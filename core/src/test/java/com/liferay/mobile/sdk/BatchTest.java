@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 
@@ -66,7 +65,7 @@ public class BatchTest extends BaseTest {
 			callback, service.getUserSitesGroups(),
 			service.getUserSitesGroups());
 
-		lock.await(500, TimeUnit.MILLISECONDS);
+		await(lock);
 
 		List sites = JSONParser.fromJSON(
 			callback.result.bodyAsString(), List.class);

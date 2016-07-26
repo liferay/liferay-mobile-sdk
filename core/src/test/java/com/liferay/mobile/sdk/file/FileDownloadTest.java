@@ -28,7 +28,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 import org.json.JSONObject;
 
@@ -147,7 +146,7 @@ public class FileDownloadTest extends BaseTest {
 		};
 
 		DownloadUtil.download(config, url, callback, progressCallback);
-		lock.await(500, TimeUnit.MILLISECONDS);
+		await(lock);
 		assertEquals(5, baos.size());
 	}
 
