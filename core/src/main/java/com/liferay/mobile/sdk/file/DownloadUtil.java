@@ -23,6 +23,7 @@ import com.liferay.mobile.sdk.http.HttpClient;
 import com.liferay.mobile.sdk.http.Method;
 import com.liferay.mobile.sdk.http.Request;
 import com.liferay.mobile.sdk.http.Response;
+import com.liferay.mobile.sdk.http.ResponseValidator;
 import com.liferay.mobile.sdk.util.PortalVersion;
 import com.liferay.mobile.sdk.util.Validator;
 
@@ -46,6 +47,7 @@ public class DownloadUtil {
 		Object tag = request.tag();
 
 		if (callback != null) {
+			callback.init(config, Response.class);
 			callback = new DownloadCallback(callback, progressCallback, tag);
 		}
 
@@ -57,6 +59,9 @@ public class DownloadUtil {
 		}
 		else {
 			Response response = client.sync(request);
+			ResponseValidator validator = config.responseValidator();
+			validator.validateStatusCode(response);
+
 			FileTransfer.transfer(
 				response.bodyAsStream(), progressCallback, tag, null);
 

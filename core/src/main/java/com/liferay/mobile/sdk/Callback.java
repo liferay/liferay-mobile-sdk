@@ -77,6 +77,11 @@ public abstract class Callback<T> {
 		}
 	}
 
+	public void init(Config config, Type type) {
+		this.config = config;
+		this.type = type;
+	}
+
 	public abstract void onFailure(Exception exception);
 
 	public abstract void onSuccess(T result);
@@ -110,11 +115,6 @@ public abstract class Callback<T> {
 			}
 		}
 
-	}
-
-	protected void init(Config config, Type type) {
-		this.config = config;
-		this.type = type;
 	}
 
 	protected Config config;
