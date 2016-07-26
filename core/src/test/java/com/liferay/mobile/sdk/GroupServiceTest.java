@@ -15,6 +15,7 @@
 package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.http.Response;
+import com.liferay.mobile.sdk.http.Status;
 import com.liferay.mobile.sdk.service.CustomGroupService;
 import com.liferay.mobile.sdk.service.Site;
 import com.liferay.mobile.sdk.v7.group.GroupService;
@@ -48,7 +49,7 @@ public class GroupServiceTest extends BaseTest {
 		long groupId = props.getGroupId();
 		Call<Response> call = service.disableStaging(groupId);
 		Response response = call.execute();
-		assertEquals(200, response.statusCode());
+		assertEquals(Status.OK, response.statusCode());
 	}
 
 	@Test
@@ -63,7 +64,7 @@ public class GroupServiceTest extends BaseTest {
 		call.async(callback);
 
 		await(lock);
-		assertEquals(200, callback.result.statusCode());
+		assertEquals(Status.OK, callback.result.statusCode());
 	}
 
 	@Test

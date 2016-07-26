@@ -38,6 +38,10 @@ public class TestCallback<T> extends Callback<T> {
 		lock.countDown();
 	}
 
+	public T result() {
+		return result;
+	}
+
 	protected CountDownLatch lock;
 	protected T result;
 

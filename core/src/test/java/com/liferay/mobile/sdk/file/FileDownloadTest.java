@@ -15,9 +15,9 @@
 package com.liferay.mobile.sdk.file;
 
 import com.liferay.mobile.sdk.BaseTest;
-import com.liferay.mobile.sdk.Callback;
 import com.liferay.mobile.sdk.Config;
 import com.liferay.mobile.sdk.DLAppServiceTest;
+import com.liferay.mobile.sdk.TestCallback;
 import com.liferay.mobile.sdk.auth.BasicAuthentication;
 import com.liferay.mobile.sdk.auth.DigestAuthentication;
 import com.liferay.mobile.sdk.http.Response;
@@ -59,7 +59,7 @@ public class FileDownloadTest extends BaseTest {
 
 			final ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-			FileProgressCallback callback = new FileProgressCallback() {
+			FileProgressCallback progressCallback = new FileProgressCallback() {
 
 				@Override
 				public void onBytes(byte[] bytes) {
@@ -79,7 +79,7 @@ public class FileDownloadTest extends BaseTest {
 			};
 
 			Response response = DownloadUtil.download(
-				config, url, null, callback);
+				config, url, null, progressCallback);
 
 			assertNotNull(response);
 			assertEquals(Status.OK, response.statusCode());
@@ -98,7 +98,7 @@ public class FileDownloadTest extends BaseTest {
 		Config config = getDigestAuthenticationConfig();
 
 		String url = config.server() + "/webdav/guest/document_library/" +
-			_file.getString(DLAppServiceTest.TITLE);
+			file.getString(DLAppServiceTest.TITLE);
 
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		final CountDownLatch lock = new CountDownLatch(1);
@@ -129,24 +129,11 @@ public class FileDownloadTest extends BaseTest {
 
 		};
 
-		Callback callback = new Callback<Response>() {
-
-			@Override
-			public void onFailure(Exception exception) {
-				fail(exception.getMessage());
-				lock.countDown();
-			}
-
-			@Override
-			public void onSuccess(Response response) {
-				assertEquals(Status.OK, response.statusCode());
-				lock.countDown();
-			}
-
-		};
-
+		TestCallback<Response> callback = new TestCallback<>(lock);
 		DownloadUtil.download(config, url, callback, progressCallback);
+
 		await(lock);
+		assertEquals(Status.OK, callback.result().statusCode());
 		assertEquals(5, baos.size());
 	}
 
@@ -155,11 +142,11 @@ public class FileDownloadTest extends BaseTest {
 		Config config = getDigestAuthenticationConfig();
 
 		String url = config.server() + "/webdav/guest/document_library/" +
-			_file.getString(DLAppServiceTest.TITLE);
+			file.getString(DLAppServiceTest.TITLE);
 
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-		FileProgressCallback callback = new FileProgressCallback() {
+		FileProgressCallback progressCallback = new FileProgressCallback() {
 
 			@Override
 			public void onBytes(byte[] bytes) {
@@ -185,7 +172,9 @@ public class FileDownloadTest extends BaseTest {
 
 		};
 
-		Response response = DownloadUtil.download(config, url, null, callback);
+		Response response = DownloadUtil.download(
+			config, url, null, progressCallback);
+
 		assertNotNull(response);
 		assertEquals(Status.OK, response.statusCode());
 		assertEquals(5, baos.size());
@@ -225,14 +214,14 @@ public class FileDownloadTest extends BaseTest {
 	@Before
 	public void setUp() throws Exception {
 		DLAppServiceTest test = new DLAppServiceTest();
-		_file = test.addFileEntry();
+		file = test.addFileEntry();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		if (_file != null) {
+		if (file != null) {
 			DLAppServiceTest test = new DLAppServiceTest();
-			test.deleteFileEntry(_file.getLong(DLAppServiceTest.FILE_ENTRY_ID));
+			test.deleteFileEntry(file.getLong(DLAppServiceTest.FILE_ENTRY_ID));
 		}
 	}
 
@@ -245,6 +234,6 @@ public class FileDownloadTest extends BaseTest {
 		return global.newBuilder().auth(digest).build();
 	}
 
-	private JSONObject _file;
+	protected JSONObject file;
 
 }

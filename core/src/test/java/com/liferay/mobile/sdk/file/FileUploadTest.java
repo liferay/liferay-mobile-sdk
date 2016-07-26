@@ -16,10 +16,10 @@ package com.liferay.mobile.sdk.file;
 
 import com.liferay.mobile.sdk.BaseTest;
 import com.liferay.mobile.sdk.Call;
-import com.liferay.mobile.sdk.Callback;
 import com.liferay.mobile.sdk.Config;
 import com.liferay.mobile.sdk.DLAppServiceTest;
 import com.liferay.mobile.sdk.ServiceBuilder;
+import com.liferay.mobile.sdk.TestCallback;
 import com.liferay.mobile.sdk.util.PropertiesUtil;
 import com.liferay.mobile.sdk.v7.dlapp.DLAppService;
 
@@ -127,9 +127,9 @@ public class FileUploadTest extends BaseTest {
 			repositoryId, folderId, fileName, mimeType, fileName, "", "", data,
 			null);
 
-		_file = call.execute();
+		file = call.execute();
 
-		assertEquals(fileName, _file.getString(DLAppServiceTest.TITLE));
+		assertEquals(fileName, file.getString(DLAppServiceTest.TITLE));
 		assertEquals(5, callback.getTotal());
 		assertEquals(5, baos.size());
 	}
@@ -147,7 +147,7 @@ public class FileUploadTest extends BaseTest {
 
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-		FileProgressCallback callback = new FileProgressCallback() {
+		FileProgressCallback progressCallback = new FileProgressCallback() {
 
 			@Override
 			public void onBytes(byte[] bytes) {
@@ -173,7 +173,8 @@ public class FileUploadTest extends BaseTest {
 
 		};
 
-		UploadData data = new UploadData(is, mimeType, fileName, callback);
+		UploadData data = new UploadData(
+			is, mimeType, fileName, progressCallback);
 
 		Call<JSONObject> call = service.addFileEntry(
 			repositoryId, folderId, fileName, mimeType, fileName, "", "", data,
@@ -181,26 +182,13 @@ public class FileUploadTest extends BaseTest {
 
 		final CountDownLatch lock = new CountDownLatch(1);
 
-		call.async(new Callback<JSONObject>() {
-
-			@Override
-			public void onSuccess(JSONObject file) {
-				_file = file;
-				lock.countDown();
-			}
-
-			@Override
-			public void onFailure(Exception exception) {
-				fail(exception.getMessage());
-				lock.countDown();
-			}
-
-		});
+		TestCallback<JSONObject> callback = new TestCallback<>(lock);
+		call.async(callback);
 
 		await(lock);
-
-		assertEquals(fileName, _file.getString(DLAppServiceTest.TITLE));
-		assertEquals(5, callback.getTotal());
+		this.file = callback.result();
+		assertEquals(fileName, file.getString(DLAppServiceTest.TITLE));
+		assertEquals(5, progressCallback.getTotal());
 		assertEquals(5, baos.size());
 	}
 
@@ -227,7 +215,7 @@ public class FileUploadTest extends BaseTest {
 		UploadData data = new UploadData(is, MIME_TYPE, FILE_NAME, callback);
 
 		try {
-			_file = service.addFileEntry(
+			file = service.addFileEntry(
 				repositoryId, folderId, FILE_NAME, MIME_TYPE, FILE_NAME, "", "",
 				data, null).execute();
 
@@ -242,18 +230,18 @@ public class FileUploadTest extends BaseTest {
 
 	@After
 	public void tearDown() throws Exception {
-		if (_file != null) {
+		if (file != null) {
 			DLAppServiceTest test = new DLAppServiceTest();
-			test.deleteFileEntry(_file.getLong(DLAppServiceTest.FILE_ENTRY_ID));
-			_file = null;
+			test.deleteFileEntry(file.getLong(DLAppServiceTest.FILE_ENTRY_ID));
+			file = null;
 		}
 	}
 
 	@Test
 	public void uploadPhoto() throws Exception {
-		_file = uploadPhoto(props);
+		file = uploadPhoto(props);
 	}
 
-	private JSONObject _file;
+	protected JSONObject file;
 
 }
