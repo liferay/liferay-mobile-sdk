@@ -63,7 +63,7 @@ class ServiceInvocationHandler implements InvocationHandler {
 			return call;
 		}
 
-		ReturnTypeAdapter adapter = ServiceBuilder.returnTypeAdapters.get(
+		ReturnTypeAdapter adapter = ServiceBuilder.returnTypeAdapters().get(
 			returnType);
 
 		if (adapter != null) {
