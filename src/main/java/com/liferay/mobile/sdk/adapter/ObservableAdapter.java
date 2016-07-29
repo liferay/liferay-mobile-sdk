@@ -19,6 +19,7 @@ import com.liferay.mobile.sdk.Call;
 import java.lang.reflect.Type;
 
 import rx.Observable;
+import rx.Subscriber;
 
 /**
  * @author Bruno Farache
@@ -33,6 +34,33 @@ public class ObservableAdapter implements ReturnTypeAdapter<Observable> {
 	@Override
 	public Type type() {
 		return Observable.class;
+	}
+
+	class OnCallSubscribe<T> implements Observable.OnSubscribe<T> {
+
+		OnCallSubscribe(Call<T> call) {
+			this.call = call;
+		}
+
+		@Override
+		public void call(Subscriber<? super T> subscriber) {
+			try {
+				if (!subscriber.isUnsubscribed()) {
+					subscriber.onNext(call.execute());
+				}
+			}
+			catch (Exception e) {
+				if (!subscriber.isUnsubscribed()) {
+					subscriber.onError(e);
+				}
+			}
+
+			if (!subscriber.isUnsubscribed()) {
+				subscriber.onCompleted();
+			}
+		}
+
+		protected Call<T> call;
 	}
 
 }
