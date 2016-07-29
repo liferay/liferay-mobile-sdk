@@ -8,7 +8,6 @@ apply from: 'formatter.gradle'
 format.workingDir = 'src'
 
 sourceCompatibility = JavaVersion.VERSION_1_7
-targetCompatibility = JavaVersion.VERSION_1_7
 
 dependencies {
 	compile project(':core')
