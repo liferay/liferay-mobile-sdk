@@ -1,8 +1,22 @@
+buildscript {
+	dependencies {
+		classpath group: 'com.liferay', name: 'com.liferay.gradle.plugins.source.formatter', version: '1.0.3'
+	}
+
+	repositories {
+		maven {
+			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
+		}
+	}
+}
+
 plugins {
 	id 'java'
 	id 'maven-publish'
 	id 'com.jfrog.bintray' version '1.7.1'
 }
+
+apply plugin: 'com.liferay.source.formatter'
 
 repositories {
 	mavenLocal()
@@ -10,10 +24,12 @@ repositories {
 	mavenCentral()
 }
 
-apply from: 'formatter.gradle'
-format.workingDir = 'src'
-
 sourceCompatibility = JavaVersion.VERSION_1_7
+
+formatSource {
+	baseDirName = 'src/main/java'
+	copyrightFileName = 'LICENSE'
+}
 
 dependencies {
 	compile group: 'com.google.code.gson', name: 'gson', version: '2.6.2'
