@@ -37,6 +37,14 @@ public class Call<T> {
 		client.cancel(call);
 	}
 
+	public synchronized static HttpClient client() {
+		return client;
+	}
+
+	public synchronized static void client(HttpClient client) {
+		Call.client = client;
+	}
+
 	public Call(Object body, Type type) {
 		this(body, type, ContentType.JSON);
 	}
@@ -61,14 +69,6 @@ public class Call<T> {
 		return body;
 	}
 
-	public synchronized static HttpClient client() {
-		return client;
-	}
-
-	public synchronized static void client(HttpClient client) {
-		Call.client = client;
-	}
-
 	public T execute() throws Exception {
 		return execute(Config.global());
 	}
@@ -77,6 +77,7 @@ public class Call<T> {
 		Request request = request(config);
 		Response response = client.sync(request);
 		ResponseValidator validator = config.responseValidator();
+
 		validator.validateStatusCode(response);
 
 		if (type == Response.class) {
@@ -105,6 +106,7 @@ public class Call<T> {
 		}
 		else if (contentType == ContentType.MULTIPART) {
 			JSONObject jsonObject = (JSONObject)body;
+
 			path = (String)jsonObject.keys().next();
 			body = jsonObject.optJSONObject(path);
 		}

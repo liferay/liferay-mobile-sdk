@@ -38,8 +38,8 @@ public class JSONArrayDeserializer implements JsonDeserializer<JSONArray> {
 			String value = json.toString();
 			return new JSONArray(value);
 		}
-		catch (JSONException je) {
-			throw new JsonParseException(je);
+		catch (JSONException jsone) {
+			throw new JsonParseException(jsone);
 		}
 	}
 

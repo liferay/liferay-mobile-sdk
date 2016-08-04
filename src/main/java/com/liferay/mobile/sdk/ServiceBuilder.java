@@ -29,7 +29,7 @@ public class ServiceBuilder {
 
 	public static <T> T build(Class<T> clazz) {
 		Object proxy = Proxy.newProxyInstance(
-			clazz.getClassLoader(), new Class<?>[] { clazz },
+			clazz.getClassLoader(), new Class<?>[] {clazz},
 			new ServiceInvocationHandler(clazz));
 
 		return (T)proxy;

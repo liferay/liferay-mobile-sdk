@@ -14,10 +14,10 @@
 
 package com.liferay.mobile.sdk.file;
 
+import static com.liferay.mobile.sdk.file.FileTransfer.transfer;
+
 import com.liferay.mobile.sdk.Callback;
 import com.liferay.mobile.sdk.http.Response;
-
-import static com.liferay.mobile.sdk.file.FileTransfer.transfer;
 
 /**
  * @author Bruno Farache

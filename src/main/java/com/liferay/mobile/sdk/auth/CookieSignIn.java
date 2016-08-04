@@ -55,6 +55,7 @@ public class CookieSignIn {
 			OkHttpClient client = new OkHttpClient();
 
 			CookieManager cookieManager = new CookieManager();
+
 			cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
 
 			client.setCookieHandler(cookieManager);
@@ -73,6 +74,7 @@ public class CookieSignIn {
 			builder.url(getLoginURL(config.server()));
 
 			Call call = client.newCall(builder.build());
+
 			call.enqueue(getCallback(callback, cookieManager));
 		}
 		catch (Exception e) {

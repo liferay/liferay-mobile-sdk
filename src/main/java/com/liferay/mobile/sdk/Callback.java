@@ -14,6 +14,8 @@
 
 package com.liferay.mobile.sdk;
 
+import static com.liferay.mobile.sdk.Callback.ThreadRunner.run;
+
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -23,8 +25,6 @@ import com.liferay.mobile.sdk.http.ResponseValidator;
 import com.liferay.mobile.sdk.json.JSONParser;
 
 import java.lang.reflect.Type;
-
-import static com.liferay.mobile.sdk.Callback.ThreadRunner.run;
 
 /**
  * @author Bruno Farache
@@ -60,6 +60,7 @@ public abstract class Callback<T> {
 	public void inBackground(Response response) {
 		try {
 			ResponseValidator validator = config.responseValidator();
+
 			validator.validateStatusCode(response);
 
 			if (type == Response.class) {

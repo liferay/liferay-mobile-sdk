@@ -32,7 +32,11 @@ import okio.Source;
 public class FileTransfer {
 
 	public static boolean isCancelled(FileProgressCallback callback) {
-		return (callback != null) && callback.isCancelled();
+		if ((callback != null) && callback.isCancelled()) {
+			return true;
+		}
+
+		return false;
 	}
 
 	public static void transfer(

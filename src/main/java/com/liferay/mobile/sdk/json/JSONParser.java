@@ -67,13 +67,12 @@ public class JSONParser {
 	}
 
 	protected static Map<Type, Object> adapters = new HashMap<>();
+	protected static Gson gson;
+	protected static JsonParser parser = new JsonParser();
 
 	static {
 		registerTypeAdapter(JSONArray.class, new JSONArrayDeserializer());
 		registerTypeAdapter(JSONObject.class, new JSONObjectDeserializer());
 	}
-
-	protected static Gson gson;
-	protected static JsonParser parser = new JsonParser();
 
 }

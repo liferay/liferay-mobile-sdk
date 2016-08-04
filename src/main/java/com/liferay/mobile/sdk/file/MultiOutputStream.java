@@ -27,7 +27,7 @@ import java.util.List;
 public class MultiOutputStream extends OutputStream {
 
 	public MultiOutputStream(OutputStream... streams) {
-		_streams = new ArrayList<OutputStream>(Arrays.asList(streams));
+		_streams = new ArrayList<>(Arrays.asList(streams));
 	}
 
 	public void addOutputStream(OutputStream os) {

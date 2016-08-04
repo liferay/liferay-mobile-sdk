@@ -23,7 +23,7 @@ import java.lang.annotation.Target;
  * @author Bruno Farache
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.METHOD })
+@Target({ElementType.METHOD})
 public @interface Params {
 
 	Param[] value() default {};

@@ -46,6 +46,7 @@ class ServiceInvocationHandler implements InvocationHandler {
 		throws Throwable {
 
 		JSONObject body = new JSONObject();
+
 		body.put(path(method), params(method, args));
 
 		Path annotation = method.getAnnotation(Path.class);
@@ -155,6 +156,7 @@ class ServiceInvocationHandler implements InvocationHandler {
 		for (int i = 0; i < annotations.length; i++) {
 			for (Annotation annotation : annotations[i]) {
 				Param param = (Param)annotation;
+
 				String name = param.name();
 				String className = param.className();
 				Object value = args[i];

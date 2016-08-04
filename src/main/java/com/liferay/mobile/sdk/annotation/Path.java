@@ -25,7 +25,7 @@ import java.lang.annotation.Target;
  * @author Bruno Farache
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 public @interface Path {
 
 	ContentType contentType() default ContentType.JSON;

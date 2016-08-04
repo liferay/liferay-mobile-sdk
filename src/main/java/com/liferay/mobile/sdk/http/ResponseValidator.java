@@ -53,8 +53,8 @@ public class ResponseValidator {
 				throw new ServerException(message, detail);
 			}
 		}
-		catch (JSONException je) {
-			throw new ServerException(je);
+		catch (JSONException jsone) {
+			throw new ServerException(jsone);
 		}
 
 		return json;

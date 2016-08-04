@@ -33,7 +33,11 @@ public class Validator {
 	}
 
 	public static boolean isNull(byte[] bytes) {
-		return (bytes == null || (bytes.length == 0));
+		if ((bytes == null || (bytes.length == 0))) {
+			return true;
+		}
+
+		return false;
 	}
 
 	public static boolean isNull(String s) {
@@ -81,7 +85,6 @@ public class Validator {
 
 	private static Pattern _emailAddressPattern = Pattern.compile(
 		"[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@" +
-			"(?:[a-zA-Z0-9](?:-*[a-zA-Z0-9])?\\.*)+"
-	);
+			"(?:[a-zA-Z0-9](?:-*[a-zA-Z0-9])?\\.*)+");
 
 }

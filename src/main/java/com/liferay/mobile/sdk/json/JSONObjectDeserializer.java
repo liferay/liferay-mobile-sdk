@@ -38,8 +38,8 @@ public class JSONObjectDeserializer implements JsonDeserializer<JSONObject> {
 			String value = json.toString();
 			return new JSONObject(value);
 		}
-		catch (JSONException je) {
-			throw new JsonParseException(je);
+		catch (JSONException jsone) {
+			throw new JsonParseException(jsone);
 		}
 	}
 

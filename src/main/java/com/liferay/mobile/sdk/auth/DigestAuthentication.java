@@ -52,6 +52,7 @@ public class DigestAuthentication implements Authenticator, Authentication {
 		throws IOException {
 
 		Request request = response.request();
+
 		Builder builder = request.newBuilder();
 
 		try {
@@ -60,6 +61,7 @@ public class DigestAuthentication implements Authenticator, Authentication {
 				response.header(Headers.WWW_AUTHENTICATE));
 
 			DigestScheme scheme = new DigestScheme();
+
 			scheme.processChallenge(authenticateHeader);
 
 			BasicHttpRequest basicHttpRequest = new BasicHttpRequest(

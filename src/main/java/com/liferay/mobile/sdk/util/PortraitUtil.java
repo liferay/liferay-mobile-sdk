@@ -112,6 +112,7 @@ public class PortraitUtil {
 		}
 
 		MessageDigest digest = MessageDigest.getInstance("SHA-1");
+
 		digest.update(uuid.getBytes());
 
 		byte[] bytes = digest.digest();

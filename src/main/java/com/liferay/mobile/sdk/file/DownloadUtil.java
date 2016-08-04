@@ -60,6 +60,7 @@ public class DownloadUtil {
 		else {
 			Response response = client.sync(request);
 			ResponseValidator validator = config.responseValidator();
+
 			validator.validateStatusCode(response);
 
 			FileTransfer.transfer(
@@ -95,6 +96,7 @@ public class DownloadUtil {
 		throws Exception {
 
 		StringBuilder sb = new StringBuilder();
+
 		sb.append(config.server());
 
 		if (portalVersion < PortalVersion.V_6_2) {

@@ -30,7 +30,7 @@ public class GenericListType<T> implements ParameterizedType {
 
 	@Override
 	public Type[] getActualTypeArguments() {
-		return new Type[]{ clazz };
+		return new Type[] {clazz};
 	}
 
 	@Override

@@ -66,18 +66,6 @@ public class Request {
 			this.headers = new HashMap<>();
 		}
 
-		public Builder config(Config config) {
-			auth(config.auth());
-			headers(config.headers());
-			timeout(config.timeout());
-
-			return this;
-		}
-
-		public Request build() {
-			return new Request(this);
-		}
-
 		public Builder auth(Authentication auth) {
 			this.auth = auth;
 			return this;
@@ -85,6 +73,18 @@ public class Request {
 
 		public Builder body(Object body) {
 			this.body = body;
+			return this;
+		}
+
+		public Request build() {
+			return new Request(this);
+		}
+
+		public Builder config(Config config) {
+			auth(config.auth());
+			headers(config.headers());
+			timeout(config.timeout());
+
 			return this;
 		}
 

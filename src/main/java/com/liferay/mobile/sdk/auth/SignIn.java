@@ -62,6 +62,7 @@ public class SignIn {
 
 					try {
 						JSONObject site = sites.getJSONObject(0);
+
 						long companyId = site.getLong("companyId");
 
 						UserService userService = ServiceBuilder.build(

@@ -14,14 +14,14 @@
 
 package com.liferay.mobile.sdk.file;
 
+import static com.liferay.mobile.sdk.file.FileTransfer.transfer;
+
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.RequestBody;
 
 import java.io.IOException;
 
 import okio.BufferedSink;
-
-import static com.liferay.mobile.sdk.file.FileTransfer.transfer;
 
 /**
  * @author Bruno Farache

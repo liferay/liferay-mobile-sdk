@@ -52,6 +52,7 @@ public class PortalVersionUtil {
 
 		builder.path(path);
 		PortalService service = ServiceBuilder.build(PortalService.class);
+
 		return service.getBuildNumber().execute(builder.build());
 	}
 
@@ -64,7 +65,9 @@ public class PortalVersionUtil {
 			.build();
 
 		HttpClient client = Call.client();
+
 		Response response = client.sync(request);
+
 		String header = response.headers().get(Headers.LIFERAY_PORTAL);
 
 		if (header == null) {

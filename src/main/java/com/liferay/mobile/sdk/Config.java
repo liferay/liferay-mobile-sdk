@@ -25,16 +25,16 @@ import java.util.Map;
  */
 public class Config {
 
-	public Authentication auth() {
-		return auth;
-	}
-
 	public synchronized static Config global() {
 		return global;
 	}
 
 	public synchronized static void global(Config global) {
 		Config.global = global;
+	}
+
+	public Authentication auth() {
+		return auth;
 	}
 
 	public Map<String, String> headers() {
@@ -63,6 +63,7 @@ public class Config {
 
 	public String url() {
 		StringBuilder sb = new StringBuilder();
+
 		sb.append(server);
 
 		if (!server.endsWith("/")) {
@@ -90,18 +91,13 @@ public class Config {
 			this.timeout = DEFAULT_TIMEOUT;
 		}
 
-		protected Builder(Config config) {
-			this.auth = config.auth;
-			this.headers = config.headers;
-			this.path = config.path;
-			this.responseValidator = config.responseValidator;
-			this.server = config.server;
-			this.timeout = config.timeout;
-		}
-
 		public Builder auth(Authentication auth) {
 			this.auth = auth;
 			return this;
+		}
+
+		public Config build() {
+			return new Config(this);
 		}
 
 		public Builder header(String key, String value) {
@@ -129,8 +125,13 @@ public class Config {
 			return this;
 		}
 
-		public Config build() {
-			return new Config(this);
+		protected Builder(Config config) {
+			this.auth = config.auth;
+			this.headers = config.headers;
+			this.path = config.path;
+			this.responseValidator = config.responseValidator;
+			this.server = config.server;
+			this.timeout = config.timeout;
 		}
 
 		protected Authentication auth;

@@ -86,6 +86,7 @@ public class OkHttpClientImpl implements HttpClient {
 	@Override
 	public Response sync(Request request) throws Exception {
 		Call call = build(request);
+
 		return new Response.Builder(call.execute()).build();
 	}
 
