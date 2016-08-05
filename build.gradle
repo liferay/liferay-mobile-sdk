@@ -26,6 +26,13 @@ repositories {
 
 sourceCompatibility = JavaVersion.VERSION_1_7
 
+ext {
+	artifactId = 'liferay-mobile-sdk'
+}
+
+group 'com.liferay.mobile'
+version '2.0'
+
 formatSource {
 	baseDirName = 'src/main/java'
 	copyrightFileName = 'LICENSE'
@@ -50,7 +57,7 @@ publishing {
 	publications {
 		mavenJava(MavenPublication) {
 			from components.java
-			artifactId 'liferay-mobile-sdk'
+			artifactId project.ext.artifactId
 			artifact sourceJar
 		}
 	}
@@ -64,7 +71,7 @@ bintray {
 
 	pkg {
 		repo = 'liferay-mobile'
-		name = 'liferay-mobile-sdk'
+		name = project.ext.artifactId
 		userOrg = 'liferay'
 		licenses = ['LGPL-2.1']
 		vcsUrl = 'https://github.com/brunofarache/liferay-android-sdk.git'
