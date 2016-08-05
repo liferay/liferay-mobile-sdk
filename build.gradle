@@ -57,7 +57,7 @@ publishing {
 	publications {
 		mavenJava(MavenPublication) {
 			from components.java
-			artifactId project.ext.artifactId
+			artifactId project.artifactId
 			artifact sourceJar
 		}
 	}
@@ -71,7 +71,7 @@ bintray {
 
 	pkg {
 		repo = 'liferay-mobile'
-		name = project.ext.artifactId
+		name = project.artifactId
 		userOrg = 'liferay'
 		licenses = ['LGPL-2.1']
 		vcsUrl = 'https://github.com/brunofarache/liferay-android-sdk.git'
