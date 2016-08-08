@@ -111,10 +111,8 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 		NSLocalizedFailureReasonErrorKey: message
 	};
 
-	NSError *error = [LRError errorWithCode:LRErrorCodePortalException
+	return [LRError errorWithCode:LRErrorCodePortalException
 		description:detail userInfo:userInfo];
-
-	return error;
 }
 
 + (BOOL)_isRedirect:(long)statusCode {
