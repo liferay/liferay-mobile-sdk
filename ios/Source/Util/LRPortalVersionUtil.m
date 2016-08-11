@@ -20,6 +20,7 @@
 
 const int LR_UNKNOWN_VERSION = -1;
 const int LR_VERSION_6_2 = 6200;
+const int LR_VERSION_7 = 7000;
 
 /**
  * @author Bruno Farache
