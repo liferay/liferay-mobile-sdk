@@ -126,7 +126,9 @@ public class Response {
 				"Authentication failed.", "HTTP Status Code 401");
 		}
 
-		if (status != Status.OK) {
+		if ((status != Status.OK) &&
+			(status != Status.INTERNAL_SERVER_ERROR)) {
+
 			throw new ServerException(
 				"Request failed. Response code: " + status);
 		}
