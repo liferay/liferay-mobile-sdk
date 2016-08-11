@@ -19,6 +19,8 @@ package com.liferay.mobile.android.http;
  */
 public class Status {
 
+	public static final int INTERNAL_SERVER_ERROR = 500;
+
 	public static final int MOVED_PERMANENTLY = 301;
 
 	public static final int MOVED_TEMPORARILY = 302;
