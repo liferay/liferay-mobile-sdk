@@ -17,6 +17,7 @@
 #import "LRBatchSession.h"
 #import "LRError.h"
 
+const int LR_HTTP_STATUS_INTERNAL_ERROR = 500;
 const int LR_HTTP_STATUS_MOVED_PERMANENTLY = 301;
 const int LR_HTTP_STATUS_MOVED_TEMPORARILY = 302;
 const int LR_HTTP_STATUS_OK = 200;
@@ -81,7 +82,9 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 		error = [LRError errorWithCode:LRErrorCodeRedirect
 			description:@"url-has-moved" userInfo:userInfo];
 	}
-	else if (statusCode != LR_HTTP_STATUS_OK) {
+	else if (statusCode != LR_HTTP_STATUS_OK &&
+			statusCode != LR_HTTP_STATUS_INTERNAL_ERROR) {
+
 		error = [LRError errorWithCode:statusCode description:@"http-error"];
 	}
 
@@ -105,6 +108,10 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 
 	if (errorValue) {
 		message = [json objectForKey:@"type"];
+	}
+
+	if (!message) {
+		message = [json objectForKey:@"exception"];
 	}
 
 	NSDictionary *userInfo = @{
