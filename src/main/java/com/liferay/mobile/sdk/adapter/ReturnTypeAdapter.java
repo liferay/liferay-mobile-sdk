@@ -16,15 +16,13 @@ package com.liferay.mobile.sdk.adapter;
 
 import com.liferay.mobile.sdk.Call;
 
-import java.lang.reflect.Type;
-
 /**
  * @author Bruno Farache
  */
-public interface ReturnTypeAdapter<T> {
+public interface ReturnTypeAdapter<T, E> {
 
-	T adapt(Call call);
+	E adapt(Call<T> call);
 
-	Type type();
+	Class<E> type();
 
 }

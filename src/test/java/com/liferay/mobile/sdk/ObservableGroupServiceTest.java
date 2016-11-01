@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.sdk;
 
+import com.liferay.mobile.sdk.adapter.CallObservable;
 import com.liferay.mobile.sdk.adapter.ObservableAdapter;
 import com.liferay.mobile.sdk.exception.ServerException;
 import com.liferay.mobile.sdk.service.Site;
@@ -52,6 +53,27 @@ public class ObservableGroupServiceTest extends BaseTest {
 		subscriber.assertValues(
 			Arrays.asList(
 				new Site("/test"), new Site("/global"), new Site("/guest")));
+	}
+
+	@Test
+	public void localConfig() throws Exception {
+		GroupService service = ServiceBuilder.build(GroupService.class);
+
+		CallObservable<List<Site>> observable =
+			(CallObservable<List<Site>>)service.getUserSitesGroups();
+
+		Config config = Config.global().newBuilder()
+			.path("/invalidpath")
+			.build();
+
+		observable.config(config);
+
+		TestSubscriber<List<Site>> subscriber = new TestSubscriber<>();
+		observable.subscribe(subscriber);
+
+		subscriber.assertError(ServerException.class);
+		subscriber.assertNotCompleted();
+		subscriber.assertNoValues();
 	}
 
 	@Test

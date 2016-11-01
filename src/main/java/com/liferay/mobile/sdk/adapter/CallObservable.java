@@ -15,27 +15,33 @@
 package com.liferay.mobile.sdk.adapter;
 
 import com.liferay.mobile.sdk.Call;
+import com.liferay.mobile.sdk.Config;
 
 import rx.Observable;
 
 /**
  * @author Bruno Farache
  */
-public class ObservableAdapter<T> implements ReturnTypeAdapter<T, Observable> {
+public class CallObservable<T> extends Observable<T> {
 
-	@Override
-	public Observable<T> adapt(Call<T> call) {
-		CallOnSubscribe<T> subscribe = new CallOnSubscribe<>();
-		CallObservable<T> observable = new CallObservable<>(subscribe, call);
-
-		subscribe.observable(observable);
-
-		return observable;
+	public Call<T> call() {
+		return call;
 	}
 
-	@Override
-	public Class<Observable> type() {
-		return Observable.class;
+	public Config config() {
+		return config;
 	}
+
+	public void config(Config config) {
+		this.config = config;
+	}
+
+	protected CallObservable(CallOnSubscribe<T> subscribe, Call<T> call) {
+		super(subscribe);
+		this.call = call;
+	}
+
+	protected Call<T> call;
+	protected Config config = Config.global();
 
 }
