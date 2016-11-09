@@ -46,11 +46,11 @@ dependencies {
 		compile group: 'com.liferay.mobile', name: 'liferay-mobile-sdk-services', version: '1.0'
 	}
 
-It contains prebuilt interfaces for both [Liferay Portal 6.2 and 7.0](https://github.com/brunofarache/liferay-sdk-builder/tree/master/services/src/main/java/com/liferay/mobile/sdk).
+	It contains prebuilt interfaces for both [Liferay Portal 6.2 and 7.0](https://github.com/brunofarache/liferay-sdk-builder/tree/master/services/src/main/java/com/liferay/mobile/sdk).
 
-Alternatively, you can also use the [SDK Builder](https://github.com/brunofarache/liferay-sdk-builder/tree/master/services/src/main/java/com/liferay/mobile/sdk)
-to generate these interfaces for your custom API. However, it probably just
-simpler for you to build them manually, as described above.
+	Alternatively, you can also use the [SDK Builder](https://github.com/brunofarache/liferay-sdk-builder/tree/master/services/src/main/java/com/liferay/mobile/sdk)
+	to generate these interfaces for your custom API. However, it probably just
+	simpler for you to build them manually, as described above.
 
 3. Call the remote API:
 
