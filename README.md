@@ -6,8 +6,8 @@
 * [Basics](#basics)
 * [Asynchronous](#asynchronous)
 * [Config](#config)
+* [JSON Deserialization](#json-deserialization)
 * [Remote Methods Parameters](#remote-methods-parameters)
-* [Json Deserialization](#json-deserialization)
 * [Unauthenticated Requests](#unauthenticated-requests)
 * [Batch](#batch)
 * [RxJava](#rxjava)
@@ -115,10 +115,52 @@ The `onSuccess` and `onFailure` methods are called on the main UI thread after
 the request has finished.
 
 ## Config
-## Remote Methods Parameters
-## Json Deserialization
 
-#### Unauthenticated Requests
+## JSON Deserialization
+
+Return types aren't limited to `JSONObject` or `JSONArray` only, you can write
+your own POJO and make the method return it. For example, you can write a `Site`
+class and use it as a return type:
+
+```java
+public class Site {
+
+	public String friendlyURL;
+	public long groupId;
+
+}
+```
+
+```java
+@Path("/get-user-sites-groups")
+Observable<List<Site>> getUserSitesGroups();
+```
+
+The SDK uses the [Gson](https://github.com/google/gson) library for serializing
+and deserializing objects. If you want to have a custom way of deserializing
+JSON, you can register a new type adapter:
+
+```java
+public class SiteDeserializer implements JsonDeserializer<Site> {
+
+	@Override
+	public Site deserialize(
+			JsonElement json, Type type, JsonDeserializationContext context)
+		throws JsonParseException {
+
+		// Write your custom deserialization logic
+	}
+
+}
+```
+
+```java
+JSONParser.registerTypeAdapter(Site.class, new SiteDeserializer());
+```
+
+## Remote Methods Parameters
+
+## Unauthenticated Requests
 
 It's also possible to create a `Config` instance that has no authentication
 information, which will make request as `Guest` to the portal:
@@ -179,15 +221,8 @@ The SDK supports [RxJava](http://reactivex.io/). If you want to use RxJava,
 change the return type from `Call` to `Observable`: 
 
 ```java
-import rx.Observable;
-
-@Path("/group")
-public interface GroupService {
-
-	@Path("/get-user-sites-groups")
-	Observable<JSONArray> getUserSitesGroups();
-
-}
+@Path("/get-user-sites-groups")
+Observable<List<Site>> getUserSitesGroups();
 ```
 
 ```java
