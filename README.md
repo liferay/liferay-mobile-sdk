@@ -78,6 +78,7 @@ have access to them, add this dependency to your project as well:
 
 	JSONArray groups = call.execute(config);
 	```
+
 ## Asynchronous
 
 Android doesn't allow synchronous HTTP requests, like we demonstrated above,
