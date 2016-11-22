@@ -20,6 +20,8 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.liferay.mobile.sdk.callback.OnFailure;
+import com.liferay.mobile.sdk.callback.OnSuccess;
 import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.http.ResponseValidator;
 import com.liferay.mobile.sdk.json.JSONParser;
@@ -29,7 +31,7 @@ import java.lang.reflect.Type;
 /**
  * @author Bruno Farache
  */
-public abstract class Callback<T> {
+public abstract class Callback<T> implements OnSuccess<T>, OnFailure {
 
 	public void doFailure(final Exception e) {
 		run(new Runnable() {
@@ -82,10 +84,6 @@ public abstract class Callback<T> {
 		this.config = config;
 		this.type = type;
 	}
-
-	public abstract void onFailure(Exception exception);
-
-	public abstract void onSuccess(T result);
 
 	public static class ThreadRunner {
 

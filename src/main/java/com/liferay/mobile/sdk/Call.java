@@ -14,6 +14,8 @@
 
 package com.liferay.mobile.sdk;
 
+import com.liferay.mobile.sdk.callback.OnFailure;
+import com.liferay.mobile.sdk.callback.OnSuccess;
 import com.liferay.mobile.sdk.http.ContentType;
 import com.liferay.mobile.sdk.http.Headers;
 import com.liferay.mobile.sdk.http.HttpClient;
@@ -63,6 +65,34 @@ public class Call<T> {
 		callback.init(config, type);
 		Request request = request(config);
 		client.async(request, callback);
+	}
+
+	public void async(
+		Config config, final OnSuccess<T> onSuccess,
+		final OnFailure onFailure) {
+
+		if ((onSuccess == null) || (onFailure == null)) {
+			throw new IllegalArgumentException(
+				"onSuccess and onFailure cannot be null");
+		}
+
+		async(config, new Callback<T>() {
+
+			@Override
+			public void onFailure(Exception exception) {
+				onFailure.onFailure(exception);
+			}
+
+			@Override
+			public void onSuccess(T result) {
+				onSuccess.onSuccess(result);
+			}
+
+		});
+	}
+
+	public void async(OnSuccess<T> onSuccess, OnFailure onFailure) {
+		async(Config.global(), onSuccess, onFailure);
 	}
 
 	public Object body() {

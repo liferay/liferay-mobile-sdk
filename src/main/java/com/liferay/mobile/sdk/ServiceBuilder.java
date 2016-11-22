@@ -15,6 +15,7 @@
 package com.liferay.mobile.sdk;
 
 import com.liferay.mobile.sdk.adapter.ReturnTypeAdapter;
+import com.liferay.mobile.sdk.annotation.ServiceInvocationHandler;
 
 import java.lang.reflect.Proxy;
 import java.lang.reflect.Type;

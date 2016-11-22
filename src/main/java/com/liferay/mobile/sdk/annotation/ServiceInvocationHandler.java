@@ -12,12 +12,11 @@
  * details.
  */
 
-package com.liferay.mobile.sdk;
+package com.liferay.mobile.sdk.annotation;
 
+import com.liferay.mobile.sdk.Call;
+import com.liferay.mobile.sdk.ServiceBuilder;
 import com.liferay.mobile.sdk.adapter.ReturnTypeAdapter;
-import com.liferay.mobile.sdk.annotation.Param;
-import com.liferay.mobile.sdk.annotation.Params;
-import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.ContentType;
 import com.liferay.mobile.sdk.util.Validator;
 
@@ -35,7 +34,7 @@ import org.json.JSONObject;
 /**
  * @author Bruno Farache
  */
-class ServiceInvocationHandler implements InvocationHandler {
+public class ServiceInvocationHandler implements InvocationHandler {
 
 	public ServiceInvocationHandler(Class<?> clazz) {
 		this.clazz = clazz;
@@ -110,8 +109,13 @@ class ServiceInvocationHandler implements InvocationHandler {
 	}
 
 	protected boolean isServiceContext(String className) {
-		return className.equals(SERVICE_CONTEXT_V62) ||
-			className.equals(SERVICE_CONTEXT_V7);
+		if (className.equals(SERVICE_CONTEXT_V62) ||
+			className.equals(SERVICE_CONTEXT_V7)) {
+
+			return true;
+		}
+
+		return false;
 	}
 
 	protected void mangle(
