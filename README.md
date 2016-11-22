@@ -2,19 +2,26 @@
 
 # Liferay Android SDK
 
+* [What's new?](#whats-new)
 * [Setup](#setup)
 * [Basics](#basics)
 * [Asynchronous](#asynchronous)
 * [Config](#config)
+* [Request Cancelation](#request-cancelation)
+* [Void Return Types](#void-return-types)
 * [JSON Deserialization](#json-deserialization)
 * [Remote Methods Parameters](#remote-methods-parameters)
 * [Unauthenticated Requests](#unauthenticated-requests)
 * [Batch](#batch)
 * [RxJava](#rxjava)
 
+## What's new
+
+Check this [presentation](https://speakerdeck.com/sgosantos/whats-new-in-liferay-mobile-sdk-2-dot-0-for-android) about what's new in Liferay Android SDK 2.0.
+
 ## Setup
 
-Add Liferay Android SDK as a dependency to your Android project:
+Add Liferay Android SDK as a dependency to your project:
 
 ```groovy
 repositories {
@@ -25,6 +32,9 @@ dependencies {
 	compile group: 'com.liferay.mobile', name: 'liferay-mobile-sdk', version: '2.0.1'
 }
 ```
+
+This library can be used in any Java project, even non-Android projects, there's
+no dependency on Android.
 
 ## Basics
 
@@ -116,6 +126,52 @@ the request has finished.
 
 ## Config
 
+The `Config` object allows the configuration of the following request
+properties: server URL, timeout in milliseconds, HTTP headers and a 
+`Authentication` instance for handling authentication.
+
+All `Authentication` implementations are available [here](https://github.com/brunofarache/liferay-android-sdk/tree/master/src/main/java/com/liferay/mobile/sdk/auth). The following
+authentication mechanisms are supported: basic, digest and cookie
+authentication.
+
+`Config` objects are immutable and you can only change them by cloning an
+instance first:
+
+```java
+Config cloned = config.newBuilder().timeout(1000).build();
+```
+
+It's possible to set a global config object. This way you don't need to pass a 
+`config` instance every time `call.execute()` or `call.async(...)` are called.
+
+You can set a global config instance like this:
+
+```java
+Config.global(config);
+```
+
+## Request Cancelation
+
+It can be useful to cancel ongoing requests in case the user wants to cancel a
+file upload, for example. You need to hold the `call` instance and call:
+
+```java
+Call.cancel(call);
+```
+
+## Void Return Types
+
+There are some portal remote methods that return `void`, in this case, you just
+need to change the return type to `Call<Response>`:
+
+```java
+@Path("/disable-staging")
+Call<Response> disableStaging(@Param(name = "groupId") long groupId);
+```
+
+You can check the response's `statusCode()` method to confirm if the request
+succeeded or not.
+
 ## JSON Deserialization
 
 Return types aren't limited to `JSONObject` or `JSONArray` only, you can write
@@ -125,8 +181,8 @@ class and use it as a return type:
 ```java
 public class Site {
 
-	public String friendlyURL;
-	public long groupId;
+	String friendlyURL;
+	long groupId;
 
 }
 ```
