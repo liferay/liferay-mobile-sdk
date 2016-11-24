@@ -19,7 +19,9 @@
  */
 @implementation LRCookieAuthentication
 
-- (id)initWithAuthToken:(NSString *)authToken cookieHeader:(NSString *)cookieHeader {
+- (id)initWithAuthToken:(NSString *)authToken
+	   cookieHeader:(NSString *)cookieHeader {
+
 	self = [super init];
 
 	if (self) {
@@ -31,10 +33,11 @@
 }
 
 -(void)authenticate:(NSMutableURLRequest *)request {
-	[request addValue:[NSString stringWithFormat:@"COOKIE_SUPPORT=true; %@", self.cookieHeader]
-		forHTTPHeaderField:@"Cookie"];
+	NSString *value = [NSString
+		stringWithFormat:@"COOKIE_SUPPORT=true; %@", self.cookieHeader];
+
+	[request addValue:value forHTTPHeaderField:@"Cookie"];
 	[request addValue:self.authToken forHTTPHeaderField:@"X-CSRF-Token"];
 }
 
 @end
-

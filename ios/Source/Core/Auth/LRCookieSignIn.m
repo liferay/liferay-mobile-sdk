@@ -14,8 +14,8 @@
 
 #import "LRCookieSignIn.h"
 #import "LRBasicAuthentication.h"
-#import "LRHttpUtil.h"
 #import "LRCookieAuthentication.h"
+#import "LRHttpUtil.h"
 
 const int AUTH_TOKEN_LENGTH = 8;
 
@@ -24,10 +24,12 @@ const int AUTH_TOKEN_LENGTH = 8;
  */
 @implementation LRCookieSignIn
 
-+ (void)signInWithSession:(LRSession *)session callback:(id<LRCookieCallback>)callback {
++ (void)signInWithSession:(LRSession *)session
+		callback:(id<LRCookieCallback>)callback {
+
 	[[NSHTTPCookieStorage sharedHTTPCookieStorage]
-			setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
-	
+		setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+
 	id<LRAuthentication> authentication = session.authentication;
 
 	if (!authentication) {
@@ -35,77 +37,78 @@ const int AUTH_TOKEN_LENGTH = 8;
 	}
 
 	if (![authentication isKindOfClass:[LRBasicAuthentication class]]) {
-		[NSException raise:@"" format:@"Can't sign in if authentication " \
-			"implementation is not BasicAuthentication"];
+		[NSException raise:@""
+			format:@"Can't sign in if authentication implementation is not " \
+			"BasicAuthentication"];
 	}
 
-	LRBasicAuthentication *basicAuthentication = (LRBasicAuthentication *) authentication;
+	LRBasicAuthentication *basicAuthentication =
+		(LRBasicAuthentication *)authentication;
 
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
-			[self _getLoginURL: session.server]];
+		[self _getLoginURL: session.server]];
 
 	NSData *body = [self _getBody:basicAuthentication];
 	NSString *postLength = [NSString stringWithFormat:@"%d",(int)[body length]];
 
 	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-	[request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+	[request addValue:@"application/x-www-form-urlencoded"
+		forHTTPHeaderField:@"Content-Type"];
+
 	[request setHTTPMethod:LR_POST];
 	[request setHTTPBody:body];
 
-	NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
-			completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+	NSURLSessionTask *task = [[NSURLSession sharedSession]
+		dataTaskWithRequest:request
+		completionHandler:^(NSData *data, NSURLResponse *r, NSError *error) {
+			if (error != nil) {
+				[callback onFailure:error];
+				return;
+			}
 
-				if (error != nil) {
-					[callback onFailure:error];
-					return;
-				}
+			NSString *authToken = [self _getAuthToken:data];
 
-				NSString *authToken = [self _getAuthToken:data];
+			NSString *cookieHeader = [self
+				_getHttpCookies:[NSHTTPCookieStorage sharedHTTPCookieStorage]
+				requestURL:request.URL];
 
-				NSString *cookieHeader = [self _getHttpCookies:
-						[NSHTTPCookieStorage sharedHTTPCookieStorage] requestURL:request.URL];
+			[[NSHTTPCookieStorage sharedHTTPCookieStorage]
+				setCookieAcceptPolicy:
+					NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain];
 
-				[[NSHTTPCookieStorage sharedHTTPCookieStorage]
-						setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain];
+			LRCookieAuthentication *auth = [[LRCookieAuthentication alloc]
+				initWithAuthToken:authToken cookieHeader:cookieHeader];
 
-				LRCookieAuthentication *auth = [[LRCookieAuthentication alloc]
-						initWithAuthToken:authToken cookieHeader:cookieHeader];
+			LRSession *cookieSession = [[LRSession alloc]
+				initWithServer:session.server authentication:auth];
 
-				LRSession *cookieSession = [[LRSession alloc] initWithServer:session.server
-						authentication:auth];
-
-				[callback onSuccess:cookieSession];
-	}];
+			[callback onSuccess:cookieSession];
+		}];
 	
 	[task resume];
 }
 
-+ (NSURL *)_getLoginURL:(NSString *)server {
-	if (![server hasSuffix:@"/"]) {
-		server = [server stringByAppendingString:@"/"];
-	}
++ (NSString *)_getAuthToken:(NSData *)htmlData {
+	NSString *html = [[NSString alloc]initWithData:htmlData
+		encoding:NSUTF8StringEncoding];
 
-	return [NSURL URLWithString:[server stringByAppendingString:@"c/portal/login"]];
+	NSRange range = [html rangeOfString:@"Liferay.authToken=\""];
+	range = NSMakeRange(range.location + range.length, AUTH_TOKEN_LENGTH);
+
+	return [html substringWithRange:range];
 }
 
 + (NSData *)_getBody:(LRBasicAuthentication *)basicAuthentication {
-
 	NSString *bodyString = [NSString stringWithFormat:@"login=%@&password=%@",
 			basicAuthentication.username, basicAuthentication.password];
 
 	return [bodyString dataUsingEncoding:NSASCIIStringEncoding];
 }
 
-+ (NSString *)_getAuthToken:(NSData * )htmlData {
-	NSString *html = [[NSString alloc]initWithData:htmlData encoding:NSUTF8StringEncoding];
++ (NSString *)_getHttpCookies:(NSHTTPCookieStorage *)storage
+	   requestURL:(NSURL *)requestURL {
 
-	NSRange range = [html rangeOfString:@"Liferay.authToken=\""];
-
-	return [html substringWithRange:NSMakeRange(range.location + range.length, AUTH_TOKEN_LENGTH)];
-}
-
-+ (NSString *)_getHttpCookies:(NSHTTPCookieStorage *)storage requestURL:(NSURL *)requestURL {
-	NSArray* allCookies = [storage cookiesForURL:requestURL];
+	NSArray *allCookies = [storage cookiesForURL:requestURL];
 
 	NSMutableString *cookieHeader = [NSMutableString string];
 	
@@ -114,6 +117,16 @@ const int AUTH_TOKEN_LENGTH = 8;
 	}
 
 	return cookieHeader;
+}
+
++ (NSURL *)_getLoginURL:(NSString *)server {
+	if (![server hasSuffix:@"/"]) {
+		server = [server stringByAppendingString:@"/"];
+	}
+
+	server = [server stringByAppendingString:@"c/portal/login"];
+
+	return [NSURL URLWithString:server];
 }
 
 @end

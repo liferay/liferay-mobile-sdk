@@ -22,6 +22,7 @@
 @property (nonatomic, copy) NSString *authToken;
 @property (nonatomic, copy) NSString *cookieHeader;
 
-- (id)initWithAuthToken:(NSString *)authToken cookieHeader:(NSString *)cookieHeader;
+- (id)initWithAuthToken:(NSString *)authToken
+	cookieHeader:(NSString *)cookieHeader;
 
 @end

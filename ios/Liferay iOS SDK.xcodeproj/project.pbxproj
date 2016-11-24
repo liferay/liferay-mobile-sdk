@@ -1885,12 +1885,12 @@
 				0B57EC261D9AA80E00D0AD23 /* Cookie */,
 				CC20D9EB1A7BB77100DE7729 /* Basic */,
 				CC20D9EA1A7BB68A00DE7729 /* LRAuthentication.h */,
+				0B57EC2A1D9AA81D00D0AD23 /* LRCookieSignIn.h */,
+				0B57EC2B1D9AA81D00D0AD23 /* LRCookieSignIn.m */,
 				CC20D9E41A7BB3E300DE7729 /* LRCredentialStorage.h */,
 				CC20D9E51A7BB3E300DE7729 /* LRCredentialStorage.m */,
 				CC20D9E61A7BB3E300DE7729 /* LRSignIn.h */,
 				CC20D9E71A7BB3E300DE7729 /* LRSignIn.m */,
-				0B57EC2A1D9AA81D00D0AD23 /* LRCookieSignIn.h */,
-				0B57EC2B1D9AA81D00D0AD23 /* LRCookieSignIn.m */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1913,8 +1913,8 @@
 				CC83D48E18ED6BE300CFA142 /* BaseTest.m */,
 				CCDCE0581A694BB20045023A /* BatchSessionTest.m */,
 				CC2E77CF1A3769A9001890A9 /* BlockCallbackTest.m */,
-				CC2E77D01A3769A9001890A9 /* CredentialStorageTest.m */,
 				0B57EC2D1D9AA86800D0AD23 /* CookieAuthenticationTest.m */,
+				CC2E77D01A3769A9001890A9 /* CredentialStorageTest.m */,
 				CC2E77D11A3769A9001890A9 /* DLAppServiceTest.m */,
 				CCF5F35D1AB869E0006132AA /* DownloadFileTest.m */,
 				CC2E77D21A3769A9001890A9 /* FileUploadTest.m */,

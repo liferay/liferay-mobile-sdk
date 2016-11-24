@@ -1,17 +1,24 @@
-//
-//  CookieAuthenticationTest.m
-//  Liferay iOS SDK
-//
-//  Created by Victor Galán on 27/09/16.
-//  Copyright © 2016 Liferay Inc. All rights reserved.
-//
+/**
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ */
 
 #import "BaseTest.h"
+#import "GroupServiceTest.h"
 #import "LRGroupService_v7.h"
 #import "LRCookieSignIn.h"
 #import "TRVSMonitor.h"
 
-@interface CookieAuthenticationTest : BaseTest <LRCookieCallback>
+@interface CookieAuthenticationTest : GroupServiceTest <LRCookieCallback>
 
 @property (nonatomic, strong) NSError *error;
 @property (nonatomic, strong) NSArray *groups;
@@ -19,6 +26,9 @@
 
 @end
 
+/**
+ * @author Victor Galán
+ */
 @implementation CookieAuthenticationTest
 
 - (void)testCookieSignIn {
@@ -26,15 +36,15 @@
 	self.monitor = [TRVSMonitor monitor];
 
 	[LRCookieSignIn signInWithSession:session callback:self];
-	
-	[self.monitor wait];
 
+	[self.monitor wait];
 	[self assert:self.groups error:self.error];
 }
 
 - (void) onSuccess:(LRSession *)session {
-	LRGroupService_v7 *service = [[LRGroupService_v7 alloc] initWithSession:session];
-	
+	LRGroupService_v7 *service = [[LRGroupService_v7 alloc]
+		initWithSession:session];
+
 	NSError *error;
 	self.groups = [service getUserSitesGroups:&error];
 
@@ -44,20 +54,6 @@
 - (void)onFailure:(NSError *)error {
 	[self setError:error];
 	[self.monitor signal];
-}
-
-- (void)assert:(NSArray *)groups error:(NSError *)error {
-	XCTAssertNil(error);
-	XCTAssertEqual(3, [groups count]);
-
-	NSDictionary *group = groups[0];
-	XCTAssertEqualObjects(@"/test", group[@"friendlyURL"]);
-
-	group = groups[1];
-	XCTAssertEqualObjects(@"/global", group[@"friendlyURL"]);
-
-	group = groups[2];
-	XCTAssertEqualObjects(@"/guest", group[@"friendlyURL"]);
 }
 
 @end
