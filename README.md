@@ -62,9 +62,9 @@ This library can be used in any Java project, even non-Android projects. There's
 	}
 	```
 
-	This dependency contains prebuilt interfaces for both [Liferay Portal 6.2 and 7.0](https://github.com/brunofarache/liferay-sdk-builder/tree/master/services/src/main/java/com/liferay/mobile/sdk).
+	This dependency contains prebuilt interfaces for both [Liferay Portal 6.2 and 7.0](https://github.com/liferay-mobile/liferay-sdk-builder/tree/master/services/src/main/java/com/liferay/mobile/sdk).
 
-	Alternatively, you can also use the [SDK Builder](https://github.com/brunofarache/liferay-sdk-builder/tree/master/services/src/main/java/com/liferay/mobile/sdk)
+	Alternatively, you can also use the [SDK Builder](https://github.com/liferay-mobile/liferay-sdk-builder/tree/master/services/src/main/java/com/liferay/mobile/sdk)
 	to generate these interfaces for your custom API. It's usually simpler, however, for you to use the prebuilt ones as described above.
 
 3. Call the remote API:
@@ -116,7 +116,7 @@ The `onSuccess` and `onFailure` methods are called on the main UI thread after t
 
 The `Config` object lets you configure the following request properties: server URL, timeout (in milliseconds), HTTP headers, and an `Authentication` instance for handling authentication.
 
-All `Authentication` implementations are available [here](https://github.com/brunofarache/liferay-android-sdk/tree/master/src/main/java/com/liferay/mobile/sdk/auth). The following authentication mechanisms are supported: basic, digest, and cookie authentication.
+All `Authentication` implementations are available [here](https://github.com/liferay-mobile/liferay-android-sdk/tree/master/src/main/java/com/liferay/mobile/sdk/auth). The following authentication mechanisms are supported: basic, digest, and cookie authentication.
 
 `Config` objects are immutable and you can only change them by cloning an instance first:
 
