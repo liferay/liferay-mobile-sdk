@@ -64,8 +64,7 @@ This library can be used in any Java project, even non-Android projects. There's
 
 	This dependency contains prebuilt interfaces for both [Liferay Portal 6.2 and 7.0](https://github.com/liferay-mobile/liferay-sdk-builder/tree/master/services/src/main/java/com/liferay/mobile/sdk).
 
-	Alternatively, you can also use the [SDK Builder](https://github.com/liferay-mobile/liferay-sdk-builder/tree/master/services/src/main/java/com/liferay/mobile/sdk)
-	to generate these interfaces for your custom API. It's usually simpler, however, for you to use the prebuilt ones as described above.
+	Alternatively, you can also use the [SDK Builder](https://github.com/liferay-mobile/liferay-sdk-builder) to generate these interfaces for your custom API. It's usually simpler, however, for you to use the prebuilt ones as described above.
 
 3. Call the remote API:
 
