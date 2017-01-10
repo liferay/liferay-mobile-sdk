@@ -14,8 +14,8 @@
 The Liferay Push framework is comprised of 3 main components:
 
 * Liferay Push Notifications Portlet
-* [Liferay Push Android API](android/README.md)
-* [Liferay Push iOS API](ios/README.md)
+* [Liferay Push Android API](https://github.com/liferay-mobile/liferay-push-android/blob/master/README.md)
+* [Liferay Push iOS API](https://github.com/liferay-mobile/liferay-push-ios/blob/master/README.md)
 
 This document describes how to install and configure the Liferay Push Notifications Portlet. This portlet is necessary to enable Liferay Push. It's responsible for making the bridge between mobile apps, your Liferay Portal instance, and the iOS and Android push notification services. Once you install this portlet, mobile users can register their devices with your portal instance. The Push Notifications Portlet also provides an API that developers can leverage to send push notifications from their plugins.
 
