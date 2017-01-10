@@ -21,7 +21,7 @@ This document describes how to install and configure the Liferay Push Notificati
 
 For example, if you've developed your own blogs portlet and a corresponding mobile app, you can use Liferay Push to notify users on their mobile devices whenever a new blog post is made. Instead of having to poll the server every few seconds, your mobile app can just wait for announcements. In other words, you can use Liferay Push so that the server only communicates with your mobile app when there's something to communicate. This is one of the main benefits of using push notifications.
 
-In addition to the Liferay Push Notifications Portlet, Liferay Push also has client libraries for Android and iOS. To see how your mobile app can leverage the Liferay Push framework, see the client library documentation for [Android](android/README.md) and [iOS](ios/README.md). 
+In addition to the Liferay Push Notifications Portlet, Liferay Push also has client libraries for Android and iOS. To see how your mobile app can leverage the Liferay Push framework, see the client library documentation for [Android](https://github.com/liferay-mobile/liferay-push-android/blob/master/README.md) and [iOS](https://github.com/liferay-mobile/liferay-push-ios/blob/master/README.md). 
 
 ## Setup
 
