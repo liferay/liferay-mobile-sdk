@@ -31,7 +31,7 @@ ext {
 }
 
 group 'com.liferay.mobile'
-version '2.0.1'
+version '2.0.2'
 
 formatSource {
 	baseDirName = 'src/main/java'
