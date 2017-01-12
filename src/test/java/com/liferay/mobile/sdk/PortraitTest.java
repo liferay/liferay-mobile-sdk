@@ -28,6 +28,10 @@ import static org.junit.Assert.assertEquals;
  */
 public class PortraitTest extends BaseTest {
 
+	public static final long PORTRAIT_ID = 34921;
+
+	public static final String UUID = "1a9fb888-bd6d-75d2-6448-49748b0cc7f0";
+
 	public PortraitTest() throws IOException {
 		super();
 	}
@@ -35,37 +39,36 @@ public class PortraitTest extends BaseTest {
 	@Test
 	public void downloadPortrait() throws Exception {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		String portraitURL = getPortraitURL();
+		String portraitURL = PortraitUtil.getPortraitURL(
+			Config.global(), true, PORTRAIT_ID, UUID);
+
 		PortraitUtil.downloadPortrait(
 			Config.global(), portraitURL, baos, null, null);
 
 		assertEquals(7933, baos.size());
 	}
 
-	protected String getPortraitURL() throws Exception {
-		long portraitId = 34921;
-
+	@Test
+	public void portraitURLWithoutUuid() throws Exception  {
 		String expectedURL = "http://localhost:8080/image/user_male_portrait?" +
-			"img_id=" + portraitId;
-
-		String uuid = null;
+			"img_id=" + PORTRAIT_ID;
 
 		String portraitURL = PortraitUtil.getPortraitURL(
-			Config.global(), true, portraitId, uuid);
+			Config.global(), true, PORTRAIT_ID, null);
 
 		assertEquals(expectedURL, portraitURL);
+	}
 
-		expectedURL = expectedURL +
+	@Test
+	public void portraitURLWithUuid() throws Exception  {
+		String expectedURL = "http://localhost:8080/image/user_male_portrait?" +
+			"img_id=" + PORTRAIT_ID +
 			"&img_id_token=fz33PSWiwof%2Bf%2BpfAzTd%2FyQG4QA%3D";
 
-		uuid = "1a9fb888-bd6d-75d2-6448-49748b0cc7f0";
-
-		portraitURL = PortraitUtil.getPortraitURL(
-			Config.global(), true, portraitId, uuid);
+		String portraitURL = PortraitUtil.getPortraitURL(
+			Config.global(), true, PORTRAIT_ID, UUID);
 
 		assertEquals(expectedURL, portraitURL);
-
-		return portraitURL;
 	}
 
 }

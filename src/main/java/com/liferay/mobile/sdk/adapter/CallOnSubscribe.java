@@ -29,7 +29,8 @@ public class CallOnSubscribe<T> implements Observable.OnSubscribe<T> {
 				subscriber.onNext(observable.call.execute(observable.config));
 				subscriber.onCompleted();
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			if (!subscriber.isUnsubscribed()) {
 				subscriber.onError(e);
 			}

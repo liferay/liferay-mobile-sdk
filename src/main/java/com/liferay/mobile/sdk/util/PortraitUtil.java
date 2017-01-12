@@ -14,8 +14,6 @@
 
 package com.liferay.mobile.sdk.util;
 
-import android.util.Base64;
-
 import com.liferay.mobile.sdk.Callback;
 import com.liferay.mobile.sdk.Config;
 import com.liferay.mobile.sdk.file.DownloadUtil;
@@ -31,7 +29,7 @@ import java.net.URLEncoder;
 
 import java.security.MessageDigest;
 
-import javax.xml.bind.DatatypeConverter;
+import org.apache.commons.codec.binary.Base64;
 
 /**
  * @author Bruno Farache
@@ -112,25 +110,13 @@ public class PortraitUtil {
 		}
 
 		MessageDigest digest = MessageDigest.getInstance("SHA-1");
-
 		digest.update(uuid.getBytes());
-
 		byte[] bytes = digest.digest();
+		byte[] encodedBytes = Base64.encodeBase64(bytes);
+		String token = new String(encodedBytes);
 
-		String token;
-
-		try {
-			Class.forName("android.util.Base64");
-			token = Base64.encodeToString(bytes, Base64.NO_WRAP);
-		}
-		catch (ClassNotFoundException cnfe) {
-			token = DatatypeConverter.printBase64Binary(bytes);
-		}
-
-		if (token != null) {
-			sb.append("&img_id_token=");
-			sb.append(URLEncoder.encode(token, "UTF8"));
-		}
+		sb.append("&img_id_token=");
+		sb.append(URLEncoder.encode(token, "UTF8"));
 	}
 
 	protected static void close(Closeable closeable) {
