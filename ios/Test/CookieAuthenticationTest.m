@@ -16,6 +16,7 @@
 #import "GroupServiceTest.h"
 #import "LRGroupService_v7.h"
 #import "LRCookieSignIn.h"
+#import "LRCookieAuthentication.h"
 #import "TRVSMonitor.h"
 
 @interface CookieAuthenticationTest : GroupServiceTest <LRCookieCallback>
@@ -33,6 +34,17 @@
 
 - (void)testCookieSignIn {
 	LRSession *session = [[LRSession alloc] initWithSession:self.session];
+	self.monitor = [TRVSMonitor monitor];
+
+	[LRCookieSignIn signInWithSession:session callback:self];
+
+	[self.monitor wait];
+	[self assert:self.groups error:self.error];
+}
+
+- (void) testCookieSignInWithCookieSession {
+	LRCookieAuthentication *auth = [[LRCookieAuthentication alloc] initWithAuthToken:@"" cookieHeader:@"" username:@"test@liferay.com" password:@"test"];
+	LRSession *session = [[LRSession alloc]initWithServer:self.session.server authentication:auth];
 	self.monitor = [TRVSMonitor monitor];
 
 	[LRCookieSignIn signInWithSession:session callback:self];
