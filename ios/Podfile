@@ -1,3 +1,8 @@
-podspec :path => '../Liferay-iOS-SDK.podspec'
 
-link_with 'Test'
+abstract_target "mobile-sdk" do
+
+	podspec :path => '../Liferay-iOS-SDK.podspec'
+
+	target 'Liferay iOS SDK'
+	target 'Test'
+end
