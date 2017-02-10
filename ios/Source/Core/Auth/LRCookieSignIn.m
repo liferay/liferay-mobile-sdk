@@ -36,19 +36,30 @@ const int AUTH_TOKEN_LENGTH = 8;
 		[NSException raise:@"" format:@"Session authentication can't be null"];
 	}
 
-	if (![authentication isKindOfClass:[LRBasicAuthentication class]]) {
-		[NSException raise:@""
-			format:@"Can't sign in if authentication implementation is not " \
-			"BasicAuthentication"];
-	}
+	NSString *username, *password;
 
-	LRBasicAuthentication *basicAuthentication =
-		(LRBasicAuthentication *)authentication;
+	if ([authentication isKindOfClass:[LRBasicAuthentication class]]) {
+		LRBasicAuthentication *basicAuth = authentication;
+
+		username = basicAuth.username;
+		password = basicAuth.password;
+	}
+	else if ([authentication isKindOfClass:[LRCookieAuthentication class]]){
+		LRCookieAuthentication *cookieAuth = authentication;
+
+		username = cookieAuth.username;
+		password = cookieAuth.password;
+	}
+	else {
+		[NSException raise:@""
+					format:@"Can't sign in if authentication implementation is not " \
+			"BasicAuthentication or CookieAuthentication"];
+	}
 
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
 		[self _getLoginURL: session.server]];
 
-	NSData *body = [self _getBody:basicAuthentication];
+	NSData *body = [self _getBodyWithUsername:username password:password];
 	NSString *postLength = [NSString stringWithFormat:@"%d",(int)[body length]];
 
 	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
@@ -77,7 +88,7 @@ const int AUTH_TOKEN_LENGTH = 8;
 					NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain];
 
 			LRCookieAuthentication *auth = [[LRCookieAuthentication alloc]
-				initWithAuthToken:authToken cookieHeader:cookieHeader];
+				initWithAuthToken:authToken cookieHeader:cookieHeader username:username password:password];
 
 			LRSession *cookieSession = [[LRSession alloc]
 				initWithServer:session.server authentication:auth];
@@ -98,9 +109,9 @@ const int AUTH_TOKEN_LENGTH = 8;
 	return [html substringWithRange:range];
 }
 
-+ (NSData *)_getBody:(LRBasicAuthentication *)basicAuthentication {
++ (NSData *)_getBodyWithUsername:(NSString *)username password:(NSString *) password {
 	NSString *bodyString = [NSString stringWithFormat:@"login=%@&password=%@",
-			basicAuthentication.username, basicAuthentication.password];
+			username, password];
 
 	return [bodyString dataUsingEncoding:NSASCIIStringEncoding];
 }
