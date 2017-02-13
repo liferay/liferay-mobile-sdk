@@ -16,6 +16,7 @@
 #import "LRBasicAuthentication.h"
 #import "LRCookieAuthentication.h"
 #import "LRHttpUtil.h"
+#import "LRError.h"
 
 const int AUTH_TOKEN_LENGTH = 8;
 
@@ -73,7 +74,15 @@ const int AUTH_TOKEN_LENGTH = 8;
 		dataTaskWithRequest:request
 		completionHandler:^(NSData *data, NSURLResponse *r, NSError *error) {
 			if (error != nil) {
-				[callback onFailure:error];
+				NSHTTPURLResponse *response = r;
+				if (response.statusCode == 500) {
+					NSError * error = [LRError errorWithCode:403
+						description:@"Failed to get the cookie auth"];
+					[callback onFailure:error];
+				}
+				else {
+					[callback onFailure:error];
+				}
 				return;
 			}
 
