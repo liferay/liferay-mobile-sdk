@@ -20,9 +20,9 @@
 @implementation LRCookieAuthentication
 
 - (id)initWithAuthToken:(NSString *)authToken
-			cookieHeader:(NSString *)cookieHeader
-			username:(NSString *)username
-			password:(NSString *) password {
+		cookieHeader:(NSString *)cookieHeader
+		username:(NSString *)username
+		password:(NSString *) password {
 
 	self = [super init];
 
