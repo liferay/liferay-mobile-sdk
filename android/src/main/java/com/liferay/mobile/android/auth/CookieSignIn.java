@@ -185,24 +185,22 @@ public class CookieSignIn {
 	}
 
 	protected Call signIn() throws Exception {
-		if (session.getAuthentication() instanceof BasicAuthentication) {
-			BasicAuthentication basicAuthentication =
-				(BasicAuthentication)session.getAuthentication();
-
-			username = basicAuthentication.getUsername();
-			password = basicAuthentication.getPassword();
-		}
-		else {
+		if (!(session.getAuthentication() instanceof BasicAuthentication)) {
 			throw new Exception(
 				"Can't sign in if authentication implementation is not " +
 					"BasicAuthentication");
 		}
 
-		OkHttpClient client = new OkHttpClient();
+		BasicAuthentication basicAuthentication =
+			(BasicAuthentication)session.getAuthentication();
+
+		username = basicAuthentication.getUsername();
+		password = basicAuthentication.getPassword();
 
 		cookieManager = new CookieManager();
 		cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
 
+		OkHttpClient client = new OkHttpClient();
 		client.setCookieHandler(cookieManager);
 		client.setFollowRedirects(true);
 
