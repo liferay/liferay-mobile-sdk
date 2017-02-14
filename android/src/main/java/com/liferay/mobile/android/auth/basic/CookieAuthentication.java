@@ -22,15 +22,16 @@ import java.util.Map;
 /**
  * @author Javier Gamarra
  */
-public class CookieAuthentication implements Authentication {
+public class CookieAuthentication extends BasicAuthentication {
 
-	public CookieAuthentication(String authToken, String cookieHeader) {
+	public CookieAuthentication(String authToken, String cookieHeader, String username, String password) {
+		super(username, password);
 		this.authToken = authToken;
 		this.cookieHeader = cookieHeader;
 	}
 
 	@Override
-	public void authenticate(Request request) throws Exception {
+	public void authenticate(Request request)  {
 		Map<String, String> headers = request.getHeaders();
 		headers.put("Cookie", "COOKIE_SUPPORT=true; " + cookieHeader);
 		headers.put("X-CSRF-Token", authToken);
