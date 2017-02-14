@@ -42,12 +42,20 @@ import okio.Buffer;
 
 /**
  * @author Javier Gamarra
+ * @author Victor Galán
  */
 public class CookieSignIn {
 
 	public static void signIn(Session session, CookieCallback callback) {
 		try {
-			if (!(session.getAuthentication() instanceof BasicAuthentication)) {
+			String username, password;
+			if ((session.getAuthentication() instanceof BasicAuthentication)) {
+				BasicAuthentication basicAuthentication =
+					(BasicAuthentication) session.getAuthentication();
+				username = basicAuthentication.getUsername();
+				password = basicAuthentication.getPassword();
+			}
+			else {
 				throw new Exception(
 					"Can't sign in if authentication implementation is not " +
 						"BasicAuthentication");
@@ -61,28 +69,46 @@ public class CookieSignIn {
 			client.setCookieHandler(cookieManager);
 			client.setFollowRedirects(true);
 
-			Builder builder = new Builder();
-
-			MediaType contentType = MediaType.parse(
-				"application/x-www-form-urlencoded");
-
-			BasicAuthentication authentication =
-				(BasicAuthentication)session.getAuthentication();
-
-			builder.post(
-				RequestBody.create(contentType, getBody(authentication)));
-
-			builder.addHeader("Cookie", "COOKIE_SUPPORT=true;");
-			builder.url(getLoginURL(session.getServer()));
+			Builder builder = getBuilder(session, username, password);
 
 			Call call = client.newCall(builder.build());
 
 			call.enqueue(
-				getCallback(session.getServer(), callback, cookieManager));
+				getCallback(session.getServer(), callback, cookieManager, username, password));
 		}
 		catch (Exception e) {
 			callback.onFailure(e);
 		}
+	}
+
+	public static Session signIn(Session session) throws Exception {
+
+		String username, password;
+		if ((session.getAuthentication() instanceof BasicAuthentication)) {
+			BasicAuthentication basicAuthentication =
+				(BasicAuthentication) session.getAuthentication();
+			username = basicAuthentication.getUsername();
+			password = basicAuthentication.getPassword();
+		} else {
+			throw new Exception(
+				"Can't sign in if authentication implementation is not " + "BasicAuthentication");
+		}
+
+		OkHttpClient client = new OkHttpClient();
+
+		CookieManager cookieManager = new CookieManager();
+		cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
+
+		client.setCookieHandler(cookieManager);
+		client.setFollowRedirects(true);
+
+		Builder builder = getBuilder(session, username, password);
+
+		Call call = client.newCall(builder.build());
+
+		Response response = call.execute();
+
+		return parseResponse(response, session.getServer(), cookieManager, username, password);
 	}
 
 	public interface CookieCallback {
@@ -93,12 +119,28 @@ public class CookieSignIn {
 
 	}
 
-	protected static String getBody(BasicAuthentication authentication)
+	protected static Builder getBuilder(Session session, String username, String password) throws IOException {
+		Builder builder = new Builder();
+
+		MediaType contentType = MediaType.parse(
+			"application/x-www-form-urlencoded");
+
+
+		builder.post(
+			RequestBody.create(contentType, getBody(username, password)));
+
+		builder.addHeader("Cookie", "COOKIE_SUPPORT=true;");
+		builder.url(getLoginURL(session.getServer()));
+
+		return builder;
+	}
+
+	protected static String getBody(String username, String password)
 		throws IOException {
 
 		RequestBody formBody = new FormEncodingBuilder()
-			.add("login", authentication.getUsername())
-			.add("password", authentication.getPassword())
+			.add("login", username)
+			.add("password",password)
 			.build();
 
 		Buffer buffer = new Buffer();
@@ -109,7 +151,7 @@ public class CookieSignIn {
 
 	protected static Callback getCallback(
 		final String server, final CookieCallback callback,
-		final CookieManager cookieManager) {
+		final CookieManager cookieManager, final String username, final String password) {
 
 		return new Callback() {
 
@@ -119,32 +161,43 @@ public class CookieSignIn {
 			}
 
 			@Override
-			public void onResponse(Response response) throws IOException {
-				String body = response.body().string();
-
-				Integer position = body.indexOf(AUTH_TOKEN) +
-					AUTH_TOKEN.length();
-
-				String authToken = body.substring(
-					position, position + TOKEN_LENGTH);
-
-				String cookieHeader = getHttpCookies(
-					cookieManager.getCookieStore());
-
-				if (Validator.isNotNull(cookieHeader)) {
-					Authentication authentication = new CookieAuthentication(
-						authToken, cookieHeader);
-
-					Session session = new SessionImpl(server, authentication);
+			public void onResponse(Response response) {
+				try {
+					Session session = parseResponse(response, server, cookieManager, username, password);
 					callback.onSuccess(session);
 				}
-				else {
-					callback.onFailure(
-						new AuthenticationException("Cookie invalid or empty"));
+				catch (Exception e) {
+					callback.onFailure(e);
 				}
 			}
-
 		};
+	}
+
+	protected static Session parseResponse(Response response, String server, CookieManager cookieManager,
+			String username, String password) throws Exception {
+
+		if (response.code() == 500) {
+			throw new AuthenticationException("Cookie invalid or empty");
+		}
+		String body = response.body().string();
+
+		Integer position = body.indexOf(AUTH_TOKEN) +
+			AUTH_TOKEN.length();
+
+		String authToken = body.substring(
+			position, position + TOKEN_LENGTH);
+
+		String cookieHeader = getHttpCookies(cookieManager.getCookieStore());
+
+		if (Validator.isNotNull(cookieHeader)) {
+			Authentication authentication = new CookieAuthentication(
+				authToken, cookieHeader, username, password);
+
+			return new SessionImpl(server, authentication);
+		}
+		else {
+			throw new AuthenticationException("Cookie invalid or empty");
+		}
 	}
 
 	protected static String getHttpCookies(CookieStore cookieStore) {
