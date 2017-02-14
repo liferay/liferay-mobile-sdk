@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.auth.basic;
 
-import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.http.Request;
 
 import java.util.Map;
@@ -24,14 +23,18 @@ import java.util.Map;
  */
 public class CookieAuthentication extends BasicAuthentication {
 
-	public CookieAuthentication(String authToken, String cookieHeader, String username, String password) {
+	public CookieAuthentication(
+		String authToken, String cookieHeader, String username,
+		String password) {
+
 		super(username, password);
+
 		this.authToken = authToken;
 		this.cookieHeader = cookieHeader;
 	}
 
 	@Override
-	public void authenticate(Request request)  {
+	public void authenticate(Request request) {
 		Map<String, String> headers = request.getHeaders();
 		headers.put("Cookie", "COOKIE_SUPPORT=true; " + cookieHeader);
 		headers.put("X-CSRF-Token", authToken);
