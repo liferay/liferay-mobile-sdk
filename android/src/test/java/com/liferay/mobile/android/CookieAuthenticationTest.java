@@ -40,7 +40,19 @@ public class CookieAuthenticationTest extends BaseTest {
 	}
 
 	@Test
-	public void signIn() throws Exception {
+	public void signIn_sync() throws Exception {
+		Session session = new SessionImpl(this.session);
+		JSONArray[] sites = { null };
+
+		Session cookieSession = CookieSignIn.signIn(session);
+		GroupService service = new GroupService(cookieSession);
+		sites[0] = service.getUserSitesGroups();
+
+		GroupServiceTest.assertUserSites(sites[0]);
+	}
+
+	@Test
+	public void signIn_async() throws Exception {
 		Session session = new SessionImpl(this.session);
 		final JSONArray[] sites = { null };
 		final CountDownLatch lock = new CountDownLatch(1);
