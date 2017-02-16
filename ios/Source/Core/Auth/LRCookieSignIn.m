@@ -133,6 +133,21 @@ const int AUTH_TOKEN_LENGTH = 8;
 	[task resume];
 }
 
+- (void) URLSession:(NSURLSession *)session
+		task:(NSURLSessionTask *)task
+		willPerformHTTPRedirection:(NSHTTPURLResponse *)response
+		newRequest:(NSURLRequest *)request
+		completionHandler:(void (^)(NSURLRequest * _Nullable))completionHandler {
+
+	NSString *cookies = [self _getHttpCookies:
+			[NSHTTPCookieStorage sharedHTTPCookieStorage] requestURL:response.URL];
+
+	NSMutableURLRequest *mutableRequest = request.mutableCopy;
+
+	[mutableRequest addValue:[NSString stringWithFormat:@"%@", cookies] forHTTPHeaderField:@"Cookie"];
+
+	completionHandler(mutableRequest);
+}
 - (NSString *)_getAuthToken:(NSData *)htmlData {
 	NSString *html = [[NSString alloc]initWithData:htmlData
 		encoding:NSUTF8StringEncoding];
