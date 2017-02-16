@@ -20,12 +20,28 @@
 
 const int AUTH_TOKEN_LENGTH = 8;
 
+@interface LRCookieSignIn()
+
+@property (nonatomic) BOOL retried;
+
+@end
+
 /**
  * @author Victor Galán
  */
 @implementation LRCookieSignIn
 
-+ (void)signInWithSession:(LRSession *)session
+- (instancetype) init {
+	self = [super init];
+
+	if (self) {
+		self.retried = NO;
+	}
+
+	return self;
+}
+
+- (void)signInWithSession:(LRSession *)session
 		callback:(id<LRCookieCallback>)callback {
 
 	[[NSHTTPCookieStorage sharedHTTPCookieStorage]
@@ -67,6 +83,7 @@ const int AUTH_TOKEN_LENGTH = 8;
 
 	[request setHTTPMethod:LR_POST];
 	[request setHTTPBody:body];
+	NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
 
 	NSURLSessionTask *task = [[NSURLSession sharedSession]
 		dataTaskWithRequest:request
@@ -75,6 +92,12 @@ const int AUTH_TOKEN_LENGTH = 8;
 				NSHTTPURLResponse *response = r;
 
 				if (response.statusCode == 500) {
+					if (!self.retried) {
+						self.retried = YES;
+						[self signInWithSession:session callback:callback];
+						return;
+					}
+
 					NSError * error = [LRError errorWithCode:403
 						description:@"Failed to get the cookie auth"];
 
@@ -110,7 +133,7 @@ const int AUTH_TOKEN_LENGTH = 8;
 	[task resume];
 }
 
-+ (NSString *)_getAuthToken:(NSData *)htmlData {
+- (NSString *)_getAuthToken:(NSData *)htmlData {
 	NSString *html = [[NSString alloc]initWithData:htmlData
 		encoding:NSUTF8StringEncoding];
 
@@ -120,7 +143,7 @@ const int AUTH_TOKEN_LENGTH = 8;
 	return [html substringWithRange:range];
 }
 
-+ (NSData *)_getBodyWithUsername:(NSString *)username
+- (NSData *)_getBodyWithUsername:(NSString *)username password:(NSString *) password {
 		password:(NSString *) password {
 
 	NSString *bodyString = [NSString stringWithFormat:@"login=%@&password=%@",
@@ -129,7 +152,7 @@ const int AUTH_TOKEN_LENGTH = 8;
 	return [bodyString dataUsingEncoding:NSASCIIStringEncoding];
 }
 
-+ (NSString *)_getHttpCookies:(NSHTTPCookieStorage *)storage
+- (NSString *)_getHttpCookies:(NSHTTPCookieStorage *)storage
 	   requestURL:(NSURL *)requestURL {
 
 	NSArray *allCookies = [storage cookiesForURL:requestURL];
@@ -143,7 +166,7 @@ const int AUTH_TOKEN_LENGTH = 8;
 	return cookieHeader;
 }
 
-+ (NSURL *)_getLoginURL:(NSString *)server {
+- (NSURL *)_getLoginURL:(NSString *)server {
 	if (![server hasSuffix:@"/"]) {
 		server = [server stringByAppendingString:@"/"];
 	}
