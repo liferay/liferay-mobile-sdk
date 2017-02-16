@@ -26,7 +26,7 @@
  */
 @interface LRCookieSignIn : NSObject
 
-- (void)signInWithSession:(LRSession *)session
++ (void)signInWithSession:(LRSession *)session
 	callback:(id<LRCookieCallback>)callback;
 
 @end

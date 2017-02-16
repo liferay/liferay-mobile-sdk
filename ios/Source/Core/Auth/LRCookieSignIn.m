@@ -46,65 +46,11 @@ const int AUTH_TOKEN_LENGTH = 8;
 	return self;
 }
 
-- (void)signInWithSession:(LRSession *)session
-		callback:(id<LRCookieCallback>)callback {
++ (void)signInWithSession:(LRSession *)session
+	callback:(id<LRCookieCallback>)callback {
 
-	self.server = session.server;
-	self.callback = callback;
-
-	[[NSHTTPCookieStorage sharedHTTPCookieStorage]
-		setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
-
-	id<LRAuthentication> authentication = session.authentication;
-
-	if (!authentication) {
-		[NSException raise:@"" format:@"Session authentication can't be null"];
-	}
-
-	//NSString *username, *password;
-
-	if ([authentication isKindOfClass:[LRBasicAuthentication class]]) {
-		LRBasicAuthentication *basicAuth = authentication;
-		self.username = basicAuth.username;
-		self.password = basicAuth.password;
-	}
-	else if ([authentication isKindOfClass:[LRCookieAuthentication class]]){
-		LRCookieAuthentication *cookieAuth = authentication;
-		self.username = cookieAuth.username;
-		self.password = cookieAuth.password;
-	}
-	else {
-		[NSException raise:@""
-			format:@"Can't sign in if authentication implementation is not " \
-			"BasicAuthentication or CookieAuthentication"];
-	}
-
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
-		[self _getLoginURL: session.server]];
-
-	NSData *body = [self _getBodyWithUsername:self.username password:self.password];
-	NSString *postLength = [NSString stringWithFormat:@"%d",(int)[body length]];
-
-	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-	[request addValue:@"application/x-www-form-urlencoded"
-		forHTTPHeaderField:@"Content-Type"];
-	[request addValue:@"COOKIE_SUPPORT=true" forHTTPHeaderField:@"Cookie"];
-
-	[request setHTTPMethod:LR_POST];
-	[request setHTTPBody:body];
-	NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-
-	NSURLSession *urlSession = [NSURLSession
-			sessionWithConfiguration:config
-			delegate:self delegateQueue:nil];
-
-
-
-
-
-	NSURLSessionTask *task = [urlSession dataTaskWithRequest:request];
-
-	[task resume];
+	LRCookieSignIn *cookieSignIn = [[LRCookieSignIn alloc] init];
+	[cookieSignIn _signInWithSession:session callback:callback];
 }
 
 - (void) URLSession:(NSURLSession *)session
@@ -122,7 +68,6 @@ const int AUTH_TOKEN_LENGTH = 8;
 
 	completionHandler(mutableRequest);
 }
-
 
 - (void)URLSession:(NSURLSession *)session
 		dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
@@ -208,5 +153,65 @@ const int AUTH_TOKEN_LENGTH = 8;
 	return [NSURL URLWithString:server];
 }
 
+- (void)_signInWithSession:(LRSession *)session
+				  callback:(id<LRCookieCallback>)callback {
+
+	self.server = session.server;
+	self.callback = callback;
+
+	[[NSHTTPCookieStorage sharedHTTPCookieStorage]
+		setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+
+	id<LRAuthentication> authentication = session.authentication;
+
+	if (!authentication) {
+		[NSException raise:@"" format:@"Session authentication can't be null"];
+	}
+
+	//NSString *username, *password;
+
+	if ([authentication isKindOfClass:[LRBasicAuthentication class]]) {
+		LRBasicAuthentication *basicAuth = authentication;
+		self.username = basicAuth.username;
+		self.password = basicAuth.password;
+	}
+	else if ([authentication isKindOfClass:[LRCookieAuthentication class]]){
+		LRCookieAuthentication *cookieAuth = authentication;
+		self.username = cookieAuth.username;
+		self.password = cookieAuth.password;
+	}
+	else {
+		[NSException raise:@""
+					format:@"Can't sign in if authentication implementation is not " \
+			"BasicAuthentication or CookieAuthentication"];
+	}
+
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+									[self _getLoginURL: session.server]];
+
+	NSData *body = [self _getBodyWithUsername:self.username password:self.password];
+	NSString *postLength = [NSString stringWithFormat:@"%d",(int)[body length]];
+
+	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+	[request addValue:@"application/x-www-form-urlencoded"
+   forHTTPHeaderField:@"Content-Type"];
+	[request addValue:@"COOKIE_SUPPORT=true" forHTTPHeaderField:@"Cookie"];
+
+	[request setHTTPMethod:LR_POST];
+	[request setHTTPBody:body];
+	NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+
+	NSURLSession *urlSession = [NSURLSession
+								sessionWithConfiguration:config
+								delegate:self delegateQueue:nil];
+
+
+
+
+
+	NSURLSessionTask *task = [urlSession dataTaskWithRequest:request];
+	
+	[task resume];
+}
 
 @end
