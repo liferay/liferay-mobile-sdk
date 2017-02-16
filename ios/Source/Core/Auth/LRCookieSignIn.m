@@ -27,7 +27,7 @@ const int AUTH_TOKEN_LENGTH = 8;
 @property (nonatomic, copy) NSString *server;
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, copy) NSString *password;
-@property (nonatomic) NSMutableData *htmlData;
+@property (nonatomic) NSMutableData *responseData;
 
 @end
 
@@ -40,7 +40,7 @@ const int AUTH_TOKEN_LENGTH = 8;
 	self = [super init];
 
 	if (self) {
-		self.htmlData = [[NSMutableData alloc] init];
+		self.responseData = [[NSMutableData alloc] init];
 	}
 
 	return self;
@@ -53,26 +53,29 @@ const int AUTH_TOKEN_LENGTH = 8;
 	[cookieSignIn _signInWithSession:session callback:callback];
 }
 
-- (void) URLSession:(NSURLSession *)session
+- (void)URLSession:(NSURLSession *)session
 		task:(NSURLSessionTask *)task
 		willPerformHTTPRedirection:(NSHTTPURLResponse *)response
 		newRequest:(NSURLRequest *)request
 		completionHandler:(void (^)(NSURLRequest * _Nullable))completionHandler {
 
 	NSString *cookies = [self _getHttpCookies:
-			[NSHTTPCookieStorage sharedHTTPCookieStorage] requestURL:response.URL];
+		[NSHTTPCookieStorage sharedHTTPCookieStorage]
+			requestURL:response.URL];
 
 	NSMutableURLRequest *mutableRequest = request.mutableCopy;
 
-	[mutableRequest addValue:[NSString stringWithFormat:@"%@", cookies] forHTTPHeaderField:@"Cookie"];
+	[mutableRequest addValue:[NSString stringWithFormat:@"%@", cookies]
+		  forHTTPHeaderField:@"Cookie"];
 
 	completionHandler(mutableRequest);
 }
 
 - (void)URLSession:(NSURLSession *)session
-		dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
+		dataTask:(NSURLSessionDataTask *)dataTask
+		didReceiveData:(NSData *)data {
 
-	[self.htmlData appendData:data];
+	[self.responseData appendData:data];
 }
 
 -(void)URLSession:(NSURLSession *)session
@@ -80,32 +83,32 @@ const int AUTH_TOKEN_LENGTH = 8;
 
 	if (error != nil) {
 		NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+
 		if(response.statusCode == 500) {
-			NSError * error = [LRError errorWithCode:403 description:@"Failed to get the cookie auth"];
-			[self.callback onFailure:error];
+			error = [LRError errorWithCode:403
+				description:@"Failed to get the cookie auth"];
 		}
-		else {
-			[self.callback onFailure:error];
-		}
+
+		[self.callback onFailure:error];
 	}
 	else {
-		NSString *authToken = [self _getAuthToken:self.htmlData];
+		NSString *authToken = [self _getAuthToken:self.responseData];
 
 		NSString *cookieHeader =
-				[self _getHttpCookies:[NSHTTPCookieStorage sharedHTTPCookieStorage]
-						requestURL:task.response.URL];
+			[self _getHttpCookies:[NSHTTPCookieStorage sharedHTTPCookieStorage]
+				requestURL:task.response.URL];
 
 		[[NSHTTPCookieStorage sharedHTTPCookieStorage]
 		 setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain];
 
 		LRCookieAuthentication *auth = [[LRCookieAuthentication alloc]
-				initWithAuthToken:authToken
-				cookieHeader:cookieHeader
-				username:self.username
-				password:self.password];
+			initWithAuthToken:authToken
+			cookieHeader:cookieHeader
+			username:self.username
+			password:self.password];
 
 		LRSession *cookieSession = [[LRSession alloc]
-				initWithServer:self.server authentication:auth];
+			initWithServer:self.server authentication:auth];
 
 		[self.callback onSuccess:cookieSession];
 	}
@@ -121,7 +124,8 @@ const int AUTH_TOKEN_LENGTH = 8;
 	return [html substringWithRange:range];
 }
 
-- (NSData *)_getBodyWithUsername:(NSString *)username password:(NSString *) password {
+- (NSData *)_getBodyWithUsername:(NSString *)username
+	password:(NSString *) password {
 
 	NSString *bodyString = [NSString stringWithFormat:@"login=%@&password=%@",
 		username, password];
@@ -154,7 +158,7 @@ const int AUTH_TOKEN_LENGTH = 8;
 }
 
 - (void)_signInWithSession:(LRSession *)session
-				  callback:(id<LRCookieCallback>)callback {
+	callback:(id<LRCookieCallback>)callback {
 
 	self.server = session.server;
 	self.callback = callback;
@@ -168,8 +172,6 @@ const int AUTH_TOKEN_LENGTH = 8;
 		[NSException raise:@"" format:@"Session authentication can't be null"];
 	}
 
-	//NSString *username, *password;
-
 	if ([authentication isKindOfClass:[LRBasicAuthentication class]]) {
 		LRBasicAuthentication *basicAuth = authentication;
 		self.username = basicAuth.username;
@@ -182,32 +184,31 @@ const int AUTH_TOKEN_LENGTH = 8;
 	}
 	else {
 		[NSException raise:@""
-					format:@"Can't sign in if authentication implementation is not " \
+			format:@"Can't sign in if authentication implementation is not " \
 			"BasicAuthentication or CookieAuthentication"];
 	}
 
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
 									[self _getLoginURL: session.server]];
 
-	NSData *body = [self _getBodyWithUsername:self.username password:self.password];
+	NSData *body = [self _getBodyWithUsername:self.username
+		password:self.password];
+
 	NSString *postLength = [NSString stringWithFormat:@"%d",(int)[body length]];
 
 	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
 	[request addValue:@"application/x-www-form-urlencoded"
-   forHTTPHeaderField:@"Content-Type"];
+	forHTTPHeaderField:@"Content-Type"];
 	[request addValue:@"COOKIE_SUPPORT=true" forHTTPHeaderField:@"Cookie"];
 
 	[request setHTTPMethod:LR_POST];
 	[request setHTTPBody:body];
-	NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+	NSURLSessionConfiguration *config = [NSURLSessionConfiguration
+		defaultSessionConfiguration];
 
 	NSURLSession *urlSession = [NSURLSession
 								sessionWithConfiguration:config
 								delegate:self delegateQueue:nil];
-
-
-
-
 
 	NSURLSessionTask *task = [urlSession dataTaskWithRequest:request];
 	
