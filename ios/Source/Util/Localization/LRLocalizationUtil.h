@@ -15,8 +15,10 @@
 /**
  * @author Bruno Farache
  */
+NS_ASSUME_NONNULL_BEGIN
 @interface LRLocalizationUtil : NSObject
 
 + (NSString *)localize:(NSString *)key;
 
 @end
+NS_ASSUME_NONNULL_END

@@ -17,10 +17,10 @@
  */
 @interface LRValidator : NSObject
 
-+ (BOOL)isEmailAddress:(NSString *)emailAddress;
-+ (BOOL)isEmpty:(NSString *)string;
-+ (BOOL)isEmpty:(NSString *)string trim:(BOOL)trim;
-+ (BOOL)isNotEmpty:(NSString *)string;
-+ (BOOL)isNull:(NSData *)data;
++ (BOOL)isEmailAddress:(NSString * _Nullable)emailAddress;
++ (BOOL)isEmpty:(NSString * _Nullable)string;
++ (BOOL)isEmpty:(NSString * _Nullable)string trim:(BOOL)trim;
++ (BOOL)isNotEmpty:(NSString * _Nullable)string;
++ (BOOL)isNull:(NSData * _Nullable)data;
 
 @end

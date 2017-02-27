@@ -13,6 +13,7 @@
  */
 
 #import "LRSession.h"
+#import "Macros.h"
 
 extern const int LR_UNKNOWN_VERSION;
 extern const int LR_VERSION_6_2;
@@ -22,8 +23,11 @@ extern const int LR_VERSION_7;
  * @author Bruno Farache
  * @author Josiane Bezerra
  */
+NS_ASSUME_NONNULL_BEGIN
 @interface LRPortalVersionUtil : NSObject
 
-+ (int)getPortalVersion:(LRSession *)session error:(NSError **)error;
++ (int)getPortalVersion:(LRSession *)session error:(NSError * _Nullable * _Nullable)error
+CONVERT_ERROR_TO_THROWS;
 
 @end
+NS_ASSUME_NONNULL_END

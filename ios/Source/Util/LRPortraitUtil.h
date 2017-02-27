@@ -13,22 +13,26 @@
  */
 
 #import "LRSession.h"
+#import "Macros.h"
 
 /**
  * @author Bruno Farache
  * @author Josiane Bezerra
  */
+NS_ASSUME_NONNULL_BEGIN
 @interface LRPortraitUtil : NSObject
 
 + (NSString *)downloadPortrait:(LRSession *)session
-	portraitURL:(NSString *)portraitURL data:(NSData **)data
-	error:(NSError **)error;
+	portraitURL:(NSString *)portraitURL data:(NSData * _Nonnull * _Nullable)data
+	error:(NSError * _Nullable * _Nullable)error CONVERT_ERROR_TO_THROWS;
 
 + (NSString *)downloadPortrait:(LRSession *)session
-	portraitURL:(NSString *)portraitURL data:(NSData **)data
-	modifiedDate:(NSString *)modifiedDate error:(NSError **)error;
+	portraitURL:(NSString *)portraitURL data:(NSData * _Nonnull * _Nullable)data
+	modifiedDate:(NSString *)modifiedDate error:(NSError * _Nullable * _Nullable)error
+	CONVERT_ERROR_TO_THROWS;
 
 + (NSString *)getPortraitURL:(LRSession *)session male:(BOOL)male
-	portraitId:(long long)portraitId uuid:(NSString *)uuid;
+	portraitId:(long long)portraitId uuid:(NSString * _Nullable)uuid;
 
 @end
+NS_ASSUME_NONNULL_END
