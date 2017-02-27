@@ -15,8 +15,11 @@
 /**
  * @author Bruno Farache
  */
+
+NS_ASSUME_NONNULL_BEGIN
 @protocol LRAuthentication <NSObject>
 
 - (void)authenticate:(NSMutableURLRequest *)request;
 
 @end
+NS_ASSUME_NONNULL_END

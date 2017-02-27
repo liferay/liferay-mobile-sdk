@@ -14,6 +14,7 @@
 
 #import "LRSession.h"
 #import "LRCookieCallback.h"
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  * @author Victor Galán
@@ -33,3 +34,4 @@ typedef void (^ChallengeBlock)(NSURLAuthenticationChallenge *challenge,
 	error:(NSError **)error;
 
 @end
+NS_ASSUME_NONNULL_END

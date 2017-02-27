@@ -24,12 +24,14 @@ typedef NS_ENUM(NSInteger, LRSignInMethod) {
 /**
  * @author Bruno Farache
  */
+NS_ASSUME_NONNULL_BEGIN
 @interface LRSignIn : NSObject
 
 + (void)signInWithSession:(LRSession *)session callback:(id<LRCallback>)callback
-	error:(NSError **)error;
+	error:(NSError * _Nullable * _Nullable)error;
 
 + (void)signInWithSession:(LRSession *)session callback:(id<LRCallback>)callback
-	method:(LRSignInMethod)method error:(NSError **)error;
+	method:(LRSignInMethod)method error:(NSError * _Nullable * _Nullable)error;
 
 @end
+NS_ASSUME_NONNULL_END

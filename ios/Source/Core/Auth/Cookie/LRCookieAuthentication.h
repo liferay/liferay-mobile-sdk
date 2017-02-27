@@ -17,6 +17,7 @@
 /**
  * @author Victor Galán
  */
+NS_ASSUME_NONNULL_BEGIN
 @interface LRCookieAuthentication : NSObject <LRAuthentication>
 
 @property (nonatomic, copy) NSString *authToken;
@@ -43,3 +44,4 @@
 	lastCookieRefresh:(NSTimeInterval)lastCookieRefresh;
 
 @end
+NS_ASSUME_NONNULL_END

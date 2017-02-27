@@ -17,6 +17,7 @@
 /**
  * @author Bruno Farache
  */
+NS_ASSUME_NONNULL_BEGIN
 @interface LRBasicAuthentication : NSObject <LRAuthentication>
 
 @property (nonatomic, strong) NSString *password;
@@ -25,3 +26,4 @@
 - (id)initWithUsername:(NSString *)username password:(NSString *)password;
 
 @end
+NS_ASSUME_NONNULL_END
