@@ -31,7 +31,7 @@ ${esc.h}endif
 ##n
 
 #foreach ($action in $actions)
-	#objectiveCMethodSignature($action ";")
+	#objectiveCMethodSignature($action ";", "true")
 #end
 
 ##n

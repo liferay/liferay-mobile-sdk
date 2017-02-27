@@ -17,7 +17,7 @@
 	public $returnType $methodName($parameterList) throws Exception {
 #end
 
-#macro(objectiveCMethodSignature $action $suffix)
+#macro(objectiveCMethodSignature $action $suffix $isHeaderFile)
 	#set ($returnType = $languageUtil.getReturnType($action.response))
 	#set ($methodName = $languageUtil.getMethodName($action.path))
 	#set ($parameters = $action.parameters)
@@ -27,6 +27,13 @@
 		#set ($suffix = ":(NSError **)error$suffix")
 	#else
 		#set ($suffix = " error:(NSError **)error$suffix")
+	#end
+
+	## Methods that returns void are converted to swift with a NSErrorPointer instead of throws
+	## this forces the compiler to convert the error into throws
+	#if ($returnType == "void" && $isHeaderFile == "true")
+		#set ($suffixLength = $suffix.length() - 1)
+		#set ($suffix = "$suffix.substring(0, $suffixLength) CONVERT_ERROR_TO_THROWS;")
 	#end
 
 	#foreach ($parameter in $parameters)
