@@ -15,6 +15,7 @@
 /**
  * @author Bruno Farache
  */
+NS_ASSUME_NONNULL_BEGIN
 @protocol LRFileProgressDelegate <NSObject>
 
 - (void)onFailure:(NSError *)error;
@@ -26,3 +27,4 @@
 - (void)onFinished;
 
 @end
+NS_ASSUME_NONNULL_END

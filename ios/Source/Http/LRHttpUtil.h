@@ -14,6 +14,7 @@
 
 #import "LRSession.h"
 
+NS_ASSUME_NONNULL_BEGIN
 extern NSString *const LR_GET;
 extern NSString *const LR_HEAD;
 extern NSString *const LR_JSONWS_PATH_V61;
@@ -28,19 +29,20 @@ extern NSString *const LR_POST;
 + (NSString *)encodeURL:(NSString *)URL;
 
 + (NSString *)escape:(NSString *)string include:(NSString *)include
-	ignore:(NSString *)ignore;
+	ignore:(NSString * _Nullable)ignore;
 
 + (NSMutableURLRequest *)getRequestWithSession:(LRSession *)session
 	URL:(NSURL *)URL;
 
 + (NSURL *)getURL:(LRSession *)session path:(NSString *)path;
 
-+ (NSArray *)post:(LRSession *)session command:(NSDictionary *)command
++ (NSArray * _Nullable)post:(LRSession *)session command:(NSDictionary *)command
 	error:(NSError **)error;
 
-+ (NSArray *)post:(LRSession *)session commands:(NSArray *)commands
++ (NSArray * _Nullable)post:(LRSession *)session commands:(NSArray *)commands
 	error:(NSError **)error;
 
 + (void)setJSONWSPath:(NSString *)path;
 
 @end
+NS_ASSUME_NONNULL_END

@@ -18,6 +18,7 @@
 /**
  * @author Bruno Farache
  */
+NS_ASSUME_NONNULL_BEGIN
 @interface LRDownloadDelegate : NSObject <NSURLConnectionDelegate>
 
 @property (nonatomic, strong) id<LRAuthentication> auth;
@@ -30,3 +31,4 @@
 	progressDelegate:(id<LRFileProgressDelegate>)progressDelegate;
 
 @end
+NS_ASSUME_NONNULL_END

@@ -19,6 +19,7 @@
 /**
  * @author Bruno Farache
  */
+NS_ASSUME_NONNULL_BEGIN
 @interface LRDownloadUtil : NSObject
 
 + (void)downloadWithSession:(LRSession *)session
@@ -38,3 +39,4 @@
 	folderPath:(NSString *)folderPath fileTitle:(NSString *)fileTitle;
 
 @end
+NS_ASSUME_NONNULL_END

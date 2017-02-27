@@ -12,6 +12,7 @@
  * details.
  */
 
+NS_ASSUME_NONNULL_BEGIN
 extern NSString *const LR_ERROR_DOMAIN;
 
 typedef NS_ENUM(NSInteger, LRErrorCode) {
@@ -30,6 +31,7 @@ typedef NS_ENUM(NSInteger, LRErrorCode) {
 	description:(NSString *)description;
 
 + (NSError *)errorWithCode:(LRErrorCode)code description:(NSString *)description
-   userInfo:(NSDictionary *)userInfo;
+   userInfo:(NSDictionary * _Nullable)userInfo;
 
 @end
+NS_ASSUME_NONNULL_END

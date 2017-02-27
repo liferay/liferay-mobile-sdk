@@ -13,13 +13,14 @@
  */
 
 #import "LRSession.h"
+#import "Macros.h"
 
 /**
  * @author Bruno Farache
  */
 @interface LRUploadUtil : NSObject
 
-+ (void)upload:(LRSession *)session command:(NSDictionary *)command
-	error:(NSError **)error;
++ (void)upload:(LRSession * _Nonnull)session command:(NSDictionary * _Nonnull)command
+	error:(NSError * _Nullable * _Nullable)error CONVERT_ERROR_TO_THROWS;
 
 @end

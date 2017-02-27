@@ -17,6 +17,7 @@
 /**
  * @author Bruno Farache
  */
+NS_ASSUME_NONNULL_BEGIN
 @interface LRUploadData : NSObject
 
 @property (nonatomic, strong) NSData *data;
@@ -30,14 +31,15 @@
 
 - (id)initWithData:(NSData *)data fileName:(NSString *)fileName
 	mimeType:(NSString *)mimeType
-	progressDelegate:(id<LRFileProgressDelegate>)progressDelegate;
+	progressDelegate:(nullable id<LRFileProgressDelegate>)progressDelegate;
 
 - (id)initWithFileURL:(NSURL *)fileURL fileName:(NSString *)fileName
 	mimeType:(NSString *)mimeType
-	progressDelegate:(id<LRFileProgressDelegate>)progressDelegate;
+	progressDelegate:(nullable id<LRFileProgressDelegate>)progressDelegate;
 
 - (id)initWithInputStream:(NSInputStream *)inputStream length:(int64_t)length
 	fileName:(NSString *)fileName mimeType:(NSString *)mimeType
-	progressDelegate:(id<LRFileProgressDelegate>)progressDelegate;
+	progressDelegate:(nullable id<LRFileProgressDelegate>)progressDelegate;
 
 @end
+NS_ASSUME_NONNULL_END

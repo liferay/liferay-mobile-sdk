@@ -20,9 +20,11 @@ extern const int LR_HTTP_STATUS_UNAUTHORIZED;
 /**
  * @author Bruno Farache
  */
+NS_ASSUME_NONNULL_BEGIN
 @interface LRResponseParser : NSObject
 
-+ (id)parse:(id)data request:(NSURLRequest *)request
-	response:(NSHTTPURLResponse *)response error:(NSError **)error;
++ (nullable id)parse:(id)data request:(NSURLRequest *)request
+	response:(NSHTTPURLResponse *)response error:(NSError * _Nullable * _Nullable)error;
 
 @end
+NS_ASSUME_NONNULL_END
