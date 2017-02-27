@@ -296,6 +296,7 @@
 		0B57EC2B1D9AA81D00D0AD23 /* LRCookieSignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRCookieSignIn.m; sourceTree = "<group>"; };
 		0B57EC2D1D9AA86800D0AD23 /* CookieAuthenticationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookieAuthenticationTest.m; sourceTree = "<group>"; };
 		0B62685E1EE9AA3700B81D67 /* LRCookieSignIn+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LRCookieSignIn+Test.h"; sourceTree = "<group>"; };
+		0B89AD6B1E5F313300D57681 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
 		0B6268611EE9AAF500B81D67 /* ParseAuthTokenTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseAuthTokenTest.m; sourceTree = "<group>"; };
 		18CD854F54CBDD248C048762 /* Pods-mobile-sdk-Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-sdk-Test.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mobile-sdk-Test/Pods-mobile-sdk-Test.debug.xcconfig"; sourceTree = "<group>"; };
 		38316EDF65692D8428B60858 /* Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mobile-sdk-Liferay iOS SDK/Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig"; sourceTree = "<group>"; };
@@ -875,6 +876,7 @@
 				CC03FB7A18ED7DCC00F3F16C /* LRSession.h */,
 				CC03FB7B18ED7DCC00F3F16C /* LRSession.m */,
 				D6D5FCFF20402890008361FF /* LRBlockCookieCallback.h */,
+				0B89AD6B1E5F313300D57681 /* Macros.h */,
 				D6D5FD0020402890008361FF /* LRBlockCookieCallback.m */,
 			);
 			path = Core;
