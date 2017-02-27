@@ -17,21 +17,24 @@
 #import "LRJSONObjectWrapper.h"
 #import "LRUploadData.h"
 #import "LRSession.h"
+#import "Macros.h"
 
 /**
  * @author Bruno Farache
  */
+NS_ASSUME_NONNULL_BEGIN
 @interface LRBaseService : NSObject
 
 @property (nonatomic, strong) LRSession *session;
 
 - (id)initWithSession:(LRSession *)session;
 - (BOOL)boolValue:(NSNumber *)number;
-- (id)checkNull:(id)object;
+- (id)checkNull:(nullable id)object;
 - (void)mangleWrapperWithParams:(NSMutableDictionary *)params
 	name:(NSString *)name className:(NSString *)className
-	wrapper:(LRJSONObjectWrapper *)wrapper;
+	wrapper:(LRJSONObjectWrapper * _Nullable)wrapper;
 
-- (NSString *)toString:(NSData *)data;
+- (NSString *)toString:(NSData * _Nullable)data;
 
 @end
+NS_ASSUME_NONNULL_END

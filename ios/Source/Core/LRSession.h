@@ -18,39 +18,41 @@
 /**
  * @author Bruno Farache
  */
+NS_ASSUME_NONNULL_BEGIN
 @interface LRSession : NSObject
 
-@property (nonatomic, strong) id<LRAuthentication> authentication;
-@property (nonatomic, strong) id<LRCallback> callback;
+@property (nonatomic, strong, nullable) id<LRAuthentication> authentication;
+@property (nonatomic, strong, nullable) id<LRCallback> callback;
 @property (nonatomic) int connectionTimeout;
-@property (nonatomic, strong) NSDictionary *headers;
+@property (nonatomic, strong, nullable) NSDictionary *headers;
 @property (nonatomic, strong) NSString *server;
 @property (nonatomic, strong) NSOperationQueue *queue;
 
 - (id)initWithServer:(NSString *)server;
-- (id)initWithServer:(NSString *)server callback:(id<LRCallback>)callback;
+- (id)initWithServer:(NSString *)server callback:(id<LRCallback> _Nullable)callback;
 
 - (id)initWithServer:(NSString *)server
-	authentication:(id<LRAuthentication>)authentication;
+	authentication:(id<LRAuthentication> _Nullable)authentication;
 
 - (id)initWithServer:(NSString *)server
-	authentication:(id<LRAuthentication>)authentication
-	callback:(id<LRCallback>)callback;
+	authentication:(id<LRAuthentication> _Nullable)authentication
+	callback:(id<LRCallback> _Nullable)callback;
 
 - (id)initWithServer:(NSString *)server
-	authentication:(id<LRAuthentication>)authentication
+	authentication:(id<LRAuthentication> _Nullable)authentication
 	connectionTimeout:(int)connectionTimeout
-	callback:(id<LRCallback>)callback;
+	callback:(id<LRCallback> _Nullable)callback;
 
 - (id)initWithServer:(NSString *)server
-	authentication:(id<LRAuthentication>)authentication
+	authentication:(id<LRAuthentication> _Nullable)authentication
 	connectionTimeout:(int)connectionTimeout
-	callback:(id<LRCallback>)callback queue:(NSOperationQueue *)queue;
+	callback:(id<LRCallback> _Nullable)callback queue:(NSOperationQueue * _Nullable)queue;
 
 - (id)initWithSession:(LRSession *)session;
 
-- (id)invoke:(NSDictionary *)command error:(NSError **)error;
+- (nullable id)invoke:(NSDictionary *)command error:(NSError * _Nullable * _Nullable)error;
 - (void)onSuccess:(LRSuccessBlock)success onFailure:(LRFailureBlock)failure;
-- (id)upload:(NSDictionary *)command error:(NSError **)error;
+- (nullable id)upload:(NSDictionary *)command error:(NSError * _Nullable * _Nullable)error;
 
 @end
+NS_ASSUME_NONNULL_END

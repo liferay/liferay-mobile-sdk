@@ -14,6 +14,8 @@
 
 #import "LRCallback.h"
 
+
+NS_ASSUME_NONNULL_BEGIN
 typedef void (^LRFailureBlock)(NSError *);
 typedef void (^LRSuccessBlock)(id);
 
@@ -28,3 +30,5 @@ typedef void (^LRSuccessBlock)(id);
 - (id)initWithSuccess:(LRSuccessBlock)success failure:(LRFailureBlock)failure;
 
 @end
+
+NS_ASSUME_NONNULL_END

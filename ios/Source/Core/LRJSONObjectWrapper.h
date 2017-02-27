@@ -15,16 +15,18 @@
 /**
  * @author Bruno Farache
  */
+NS_ASSUME_NONNULL_BEGIN
 @interface LRJSONObjectWrapper : NSObject
 
 @property (nonatomic, strong) NSString *className;
 @property (nonatomic, strong) NSDictionary *jsonObject;
 
 - (id)initWithJSONObject:(NSDictionary *)jsonObject;
-- (id)initWithClassName:(NSString *)className
+- (id)initWithClassName:(NSString * _Nullable)className
 	jsonObject:(NSDictionary *)jsonObject;
 
 - (void)mangleWithParams:(NSMutableDictionary *)params name:(NSString *)name
 	className:(NSString *)className;
 
 @end
+NS_ASSUME_NONNULL_END

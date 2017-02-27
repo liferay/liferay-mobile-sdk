@@ -15,9 +15,12 @@
 /**
  * @author Bruno Farache
  */
+
+NS_ASSUME_NONNULL_BEGIN
 @protocol LRCallback <NSObject>
 
 - (void)onFailure:(NSError *)error;
 - (void)onSuccess:(id)result;
 
 @end
+NS_ASSUME_NONNULL_END

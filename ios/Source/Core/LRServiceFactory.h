@@ -19,7 +19,7 @@
  */
 @interface LRServiceFactory : NSObject
 
-+ (LRBaseService *)getService:(Class)clazz;
-+ (LRBaseService *)getService:(Class)clazz session:(LRSession *)session;
++ (nullable LRBaseService *)getService:(Class _Nonnull)clazz;
++ (nullable LRBaseService *)getService:(Class _Nonnull)clazz session:(LRSession * _Nullable)session;
 
 @end
