@@ -24,9 +24,9 @@
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords error:(NSError **)error;
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator error:(NSError **)error;
 - (NSDictionary *)addDataProviderInstanceWithGroupId:(long long)groupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmFormValues:(LRJSONObjectWrapper *)ddmFormValues type:(NSString *)type serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
-- (void)deleteDataProviderInstanceWithDataProviderInstanceId:(long long)dataProviderInstanceId error:(NSError **)error;
 - (NSDictionary *)fetchDataProviderInstanceWithDataProviderInstanceId:(long long)dataProviderInstanceId error:(NSError **)error;
 - (NSDictionary *)getDataProviderInstanceWithDataProviderInstanceId:(long long)dataProviderInstanceId error:(NSError **)error;
+- (void)deleteDataProviderInstanceWithDataProviderInstanceId:(long long)dataProviderInstanceId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSDictionary *)updateDataProviderInstanceWithDataProviderInstanceId:(long long)dataProviderInstanceId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmFormValues:(LRJSONObjectWrapper *)ddmFormValues serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 
 @end

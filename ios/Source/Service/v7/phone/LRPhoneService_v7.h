@@ -22,7 +22,7 @@
 - (NSArray *)getPhonesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
 - (NSDictionary *)addPhoneWithClassName:(NSString *)className classPK:(long long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(long long)typeId primary:(BOOL)primary serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)updatePhoneWithPhoneId:(long long)phoneId number:(NSString *)number extension:(NSString *)extension typeId:(long long)typeId primary:(BOOL)primary error:(NSError **)error;
-- (void)deletePhoneWithPhoneId:(long long)phoneId error:(NSError **)error;
 - (NSDictionary *)getPhoneWithPhoneId:(long long)phoneId error:(NSError **)error;
+- (void)deletePhoneWithPhoneId:(long long)phoneId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 
 @end

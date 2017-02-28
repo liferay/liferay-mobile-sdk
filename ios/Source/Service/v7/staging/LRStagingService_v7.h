@@ -22,8 +22,8 @@
 - (NSNumber *)createStagingRequestWithGroupId:(long long)groupId checksum:(NSString *)checksum error:(NSError **)error;
 - (NSDictionary *)publishStagingRequestWithStagingRequestId:(long long)stagingRequestId exportImportConfiguration:(LRJSONObjectWrapper *)exportImportConfiguration error:(NSError **)error;
 - (NSDictionary *)publishStagingRequestWithStagingRequestId:(long long)stagingRequestId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap error:(NSError **)error;
-- (void)cleanUpStagingRequestWithStagingRequestId:(long long)stagingRequestId error:(NSError **)error;
-- (void)updateStagingRequestWithStagingRequestId:(long long)stagingRequestId fileName:(NSString *)fileName bytes:(NSData *)bytes error:(NSError **)error;
+- (void)cleanUpStagingRequestWithStagingRequestId:(long long)stagingRequestId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
+- (void)updateStagingRequestWithStagingRequestId:(long long)stagingRequestId fileName:(NSString *)fileName bytes:(NSData *)bytes error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSDictionary *)validateStagingRequestWithStagingRequestId:(long long)stagingRequestId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap error:(NSError **)error;
 
 @end

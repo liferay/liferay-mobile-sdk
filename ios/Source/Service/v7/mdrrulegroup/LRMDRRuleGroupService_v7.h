@@ -21,7 +21,7 @@
 
 - (NSDictionary *)copyRuleGroupWithRuleGroupId:(long long)ruleGroupId groupId:(long long)groupId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addRuleGroupWithGroupId:(long long)groupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
-- (void)deleteRuleGroupWithRuleGroupId:(long long)ruleGroupId error:(NSError **)error;
+- (void)deleteRuleGroupWithRuleGroupId:(long long)ruleGroupId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSDictionary *)fetchRuleGroupWithRuleGroupId:(long long)ruleGroupId error:(NSError **)error;
 - (NSDictionary *)getRuleGroupWithRuleGroupId:(long long)ruleGroupId error:(NSError **)error;
 - (NSArray *)getRuleGroupsWithGroupIds:(NSArray *)groupIds start:(int)start end:(int)end error:(NSError **)error;

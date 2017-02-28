@@ -37,7 +37,7 @@
 - (BOOL)isManageableFromGroupWithCalendarId:(long long)calendarId groupId:(long long)groupId error:(NSError **)error;
 - (NSDictionary *)fetchCalendarWithCalendarId:(long long)calendarId error:(NSError **)error;
 - (NSString *)exportCalendarWithCalendarId:(long long)calendarId type:(NSString *)type error:(NSError **)error;
-- (void)importCalendarWithCalendarId:(long long)calendarId data:(NSString *)data type:(NSString *)type error:(NSError **)error;
+- (void)importCalendarWithCalendarId:(long long)calendarId data:(NSString *)data type:(NSString *)type error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSDictionary *)updateColorWithCalendarId:(long long)calendarId color:(int)color serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 
 @end

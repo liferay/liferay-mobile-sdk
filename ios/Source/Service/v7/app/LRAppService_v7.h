@@ -20,8 +20,8 @@
 @interface LRAppService_v7 : LRBaseService
 
 - (NSDictionary *)deleteAppWithAppId:(long long)appId error:(NSError **)error;
-- (void)installAppWithRemoteAppId:(long long)remoteAppId error:(NSError **)error;
-- (void)uninstallAppWithRemoteAppId:(long long)remoteAppId error:(NSError **)error;
+- (void)installAppWithRemoteAppId:(long long)remoteAppId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
+- (void)uninstallAppWithRemoteAppId:(long long)remoteAppId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSDictionary *)updateAppWithFile:(LRUploadData *)file error:(NSError **)error;
 
 @end

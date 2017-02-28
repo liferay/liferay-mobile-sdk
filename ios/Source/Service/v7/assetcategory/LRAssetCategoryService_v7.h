@@ -34,9 +34,9 @@
 - (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long long)groupId name:(NSString *)name vocabularyId:(long long)vocabularyId error:(NSError **)error;
 - (NSDictionary *)addCategoryWithGroupId:(long long)groupId parentCategoryId:(long long)parentCategoryId titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap vocabularyId:(long long)vocabularyId categoryProperties:(NSArray *)categoryProperties serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addCategoryWithGroupId:(long long)groupId title:(NSString *)title vocabularyId:(long long)vocabularyId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
-- (void)deleteCategoriesWithCategoryIds:(NSArray *)categoryIds error:(NSError **)error;
+- (void)deleteCategoriesWithCategoryIds:(NSArray *)categoryIds error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSArray *)deleteCategoriesWithCategoryIds:(NSArray *)categoryIds serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
-- (void)deleteCategoryWithCategoryId:(long long)categoryId error:(NSError **)error;
+- (void)deleteCategoryWithCategoryId:(long long)categoryId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSArray *)getChildCategoriesWithParentCategoryId:(long long)parentCategoryId error:(NSError **)error;
 - (NSArray *)getChildCategoriesWithParentCategoryId:(long long)parentCategoryId start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error;
 - (NSArray *)getVocabularyRootCategoriesWithGroupId:(long long)groupId vocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error;

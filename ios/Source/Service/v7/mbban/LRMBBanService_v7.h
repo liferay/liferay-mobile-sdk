@@ -20,6 +20,6 @@
 @interface LRMBBanService_v7 : LRBaseService
 
 - (NSDictionary *)addBanWithBanUserId:(long long)banUserId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
-- (void)deleteBanWithBanUserId:(long long)banUserId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
+- (void)deleteBanWithBanUserId:(long long)banUserId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 
 @end

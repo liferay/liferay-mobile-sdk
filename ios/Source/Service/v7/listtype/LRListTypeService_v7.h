@@ -19,9 +19,9 @@
  */
 @interface LRListTypeService_v7 : LRBaseService
 
-- (void)validateWithListTypeId:(long long)listTypeId classNameId:(long long)classNameId type:(NSString *)type error:(NSError **)error;
-- (void)validateWithListTypeId:(long long)listTypeId type:(NSString *)type error:(NSError **)error;
 - (NSDictionary *)getListTypeWithListTypeId:(long long)listTypeId error:(NSError **)error;
 - (NSArray *)getListTypesWithType:(NSString *)type error:(NSError **)error;
+- (void)validateWithListTypeId:(long long)listTypeId classNameId:(long long)classNameId type:(NSString *)type error:(NSError **)error CONVERT_ERROR_TO_THROWS;
+- (void)validateWithListTypeId:(long long)listTypeId type:(NSString *)type error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 
 @end

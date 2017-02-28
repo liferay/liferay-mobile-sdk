@@ -30,10 +30,10 @@
 - (NSArray *)getNodesWithGroupId:(long long)groupId status:(int)status error:(NSError **)error;
 - (NSNumber *)getNodesCountWithGroupId:(long long)groupId status:(int)status error:(NSError **)error;
 - (NSNumber *)getNodesCountWithGroupId:(long long)groupId error:(NSError **)error;
+- (void)deleteNodeWithNodeId:(long long)nodeId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
+- (void)unsubscribeNodeWithNodeId:(long long)nodeId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSDictionary *)moveNodeToTrashWithNodeId:(long long)nodeId error:(NSError **)error;
-- (void)restoreNodeFromTrashWithNodeId:(long long)nodeId error:(NSError **)error;
-- (void)subscribeNodeWithNodeId:(long long)nodeId error:(NSError **)error;
-- (void)unsubscribeNodeWithNodeId:(long long)nodeId error:(NSError **)error;
-- (void)deleteNodeWithNodeId:(long long)nodeId error:(NSError **)error;
+- (void)restoreNodeFromTrashWithNodeId:(long long)nodeId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
+- (void)subscribeNodeWithNodeId:(long long)nodeId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 
 @end

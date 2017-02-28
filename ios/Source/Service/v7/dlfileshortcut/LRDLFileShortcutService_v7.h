@@ -21,8 +21,8 @@
 
 - (NSDictionary *)getFileShortcutWithFileShortcutId:(long long)fileShortcutId error:(NSError **)error;
 - (NSDictionary *)addFileShortcutWithGroupId:(long long)groupId repositoryId:(long long)repositoryId folderId:(long long)folderId toFileEntryId:(long long)toFileEntryId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
-- (void)deleteFileShortcutWithFileShortcutId:(long long)fileShortcutId error:(NSError **)error;
+- (void)deleteFileShortcutWithFileShortcutId:(long long)fileShortcutId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSDictionary *)updateFileShortcutWithFileShortcutId:(long long)fileShortcutId repositoryId:(long long)repositoryId folderId:(long long)folderId toFileEntryId:(long long)toFileEntryId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
-- (void)updateFileShortcutsWithOldToFileEntryId:(long long)oldToFileEntryId newToFileEntryId:(long long)newToFileEntryId error:(NSError **)error;
+- (void)updateFileShortcutsWithOldToFileEntryId:(long long)oldToFileEntryId newToFileEntryId:(long long)newToFileEntryId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 
 @end

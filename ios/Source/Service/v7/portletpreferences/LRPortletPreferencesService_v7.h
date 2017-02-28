@@ -19,6 +19,6 @@
  */
 @interface LRPortletPreferencesService_v7 : LRBaseService
 
-- (void)deleteArchivedPreferencesWithPortletItemId:(long long)portletItemId error:(NSError **)error;
+- (void)deleteArchivedPreferencesWithPortletItemId:(long long)portletItemId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 
 @end

@@ -23,6 +23,6 @@
 - (NSArray *)getAddressesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
 - (NSDictionary *)addAddressWithClassName:(NSString *)className classPK:(long long)classPK street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long long)regionId countryId:(long long)countryId typeId:(long long)typeId mailing:(BOOL)mailing primary:(BOOL)primary serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)updateAddressWithAddressId:(long long)addressId street1:(NSString *)street1 street2:(NSString *)street2 street3:(NSString *)street3 city:(NSString *)city zip:(NSString *)zip regionId:(long long)regionId countryId:(long long)countryId typeId:(long long)typeId mailing:(BOOL)mailing primary:(BOOL)primary error:(NSError **)error;
-- (void)deleteAddressWithAddressId:(long long)addressId error:(NSError **)error;
+- (void)deleteAddressWithAddressId:(long long)addressId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 
 @end

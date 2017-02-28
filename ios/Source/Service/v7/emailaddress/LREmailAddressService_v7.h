@@ -19,11 +19,11 @@
  */
 @interface LREmailAddressService_v7 : LRBaseService
 
+- (void)deleteEmailAddressWithEmailAddressId:(long long)emailAddressId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSArray *)getEmailAddressesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
 - (NSDictionary *)getEmailAddressWithEmailAddressId:(long long)emailAddressId error:(NSError **)error;
 - (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long long)classPK address:(NSString *)address typeId:(long long)typeId primary:(BOOL)primary serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)updateEmailAddressWithEmailAddressId:(long long)emailAddressId address:(NSString *)address typeId:(long long)typeId primary:(BOOL)primary error:(NSError **)error;
-- (void)deleteEmailAddressWithEmailAddressId:(long long)emailAddressId error:(NSError **)error;
 - (NSDictionary *)fetchEmailAddressWithEmailAddressId:(long long)emailAddressId error:(NSError **)error;
 
 @end

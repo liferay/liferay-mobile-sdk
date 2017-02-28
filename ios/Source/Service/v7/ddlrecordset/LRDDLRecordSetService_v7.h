@@ -21,7 +21,7 @@
 
 - (NSArray *)searchWithCompanyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name description:(NSString *)description scope:(int)scope andOperator:(BOOL)andOperator start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error;
 - (NSArray *)searchWithCompanyId:(long long)companyId groupId:(long long)groupId keywords:(NSString *)keywords scope:(int)scope start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error;
-- (void)deleteRecordSetWithRecordSetId:(long long)recordSetId error:(NSError **)error;
+- (void)deleteRecordSetWithRecordSetId:(long long)recordSetId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSDictionary *)addRecordSetWithGroupId:(long long)groupId ddmStructureId:(long long)ddmStructureId recordSetKey:(NSString *)recordSetKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap minDisplayRows:(int)minDisplayRows scope:(int)scope serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)fetchRecordSetWithRecordSetId:(long long)recordSetId error:(NSError **)error;
 - (NSArray *)getRecordSetsWithGroupIds:(NSArray *)groupIds error:(NSError **)error;

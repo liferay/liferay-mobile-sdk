@@ -21,11 +21,11 @@
 
 - (NSArray *)getCommentsWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK start:(int)start end:(int)end error:(NSError **)error;
 - (NSNumber *)addCommentWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK body:(NSString *)body error:(NSError **)error;
-- (void)deleteCommentWithCommentId:(long long)commentId error:(NSError **)error;
+- (void)deleteCommentWithCommentId:(long long)commentId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
+- (void)subscribeDiscussionWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK error:(NSError **)error CONVERT_ERROR_TO_THROWS;
+- (void)unsubscribeDiscussionWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSNumber *)getCommentsCountWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
 - (BOOL)hasDiscussionWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
-- (void)subscribeDiscussionWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
-- (void)unsubscribeDiscussionWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
 - (NSNumber *)updateCommentWithClassName:(NSString *)className classPK:(long long)classPK commentId:(long long)commentId subject:(NSString *)subject body:(NSString *)body error:(NSError **)error;
 
 @end

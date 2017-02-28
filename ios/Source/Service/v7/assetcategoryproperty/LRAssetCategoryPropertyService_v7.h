@@ -19,7 +19,7 @@
  */
 @interface LRAssetCategoryPropertyService_v7 : LRBaseService
 
-- (void)deleteCategoryPropertyWithCategoryPropertyId:(long long)categoryPropertyId error:(NSError **)error;
+- (void)deleteCategoryPropertyWithCategoryPropertyId:(long long)categoryPropertyId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSArray *)getCategoryPropertiesWithEntryId:(long long)entryId error:(NSError **)error;
 - (NSArray *)getCategoryPropertyValuesWithCompanyId:(long long)companyId key:(NSString *)key error:(NSError **)error;
 - (NSDictionary *)addCategoryPropertyWithEntryId:(long long)entryId key:(NSString *)key value:(NSString *)value error:(NSError **)error;

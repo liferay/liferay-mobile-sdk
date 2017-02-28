@@ -22,14 +22,14 @@
 - (NSArray *)getEntriesWithGroupId:(long long)groupId className:(NSString *)className error:(NSError **)error;
 - (NSDictionary *)getEntriesWithGroupId:(long long)groupId error:(NSError **)error;
 - (NSDictionary *)getEntriesWithGroupId:(long long)groupId start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error;
-- (void)deleteEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
-- (void)deleteEntryWithEntryId:(long long)entryId error:(NSError **)error;
-- (void)moveEntryWithClassName:(NSString *)className classPK:(long long)classPK destinationContainerModelId:(long long)destinationContainerModelId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
-- (void)deleteEntriesWithEntryIds:(NSArray *)entryIds error:(NSError **)error;
-- (void)deleteEntriesWithGroupId:(long long)groupId error:(NSError **)error;
+- (void)moveEntryWithClassName:(NSString *)className classPK:(long long)classPK destinationContainerModelId:(long long)destinationContainerModelId serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error CONVERT_ERROR_TO_THROWS;
+- (void)deleteEntriesWithEntryIds:(NSArray *)entryIds error:(NSError **)error CONVERT_ERROR_TO_THROWS;
+- (void)deleteEntriesWithGroupId:(long long)groupId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSDictionary *)restoreEntryWithEntryId:(long long)entryId error:(NSError **)error;
 - (NSDictionary *)restoreEntryWithEntryId:(long long)entryId overrideClassPK:(long long)overrideClassPK name:(NSString *)name error:(NSError **)error;
 - (NSDictionary *)restoreEntryWithClassName:(NSString *)className classPK:(long long)classPK overrideClassPK:(long long)overrideClassPK name:(NSString *)name error:(NSError **)error;
 - (NSDictionary *)restoreEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
+- (void)deleteEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error CONVERT_ERROR_TO_THROWS;
+- (void)deleteEntryWithEntryId:(long long)entryId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 
 @end

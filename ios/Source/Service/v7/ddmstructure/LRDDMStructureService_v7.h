@@ -28,8 +28,8 @@
 - (NSDictionary *)getStructureWithGroupId:(long long)groupId classNameId:(long long)classNameId structureKey:(NSString *)structureKey error:(NSError **)error;
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds classNameId:(long long)classNameId name:(NSString *)name description:(NSString *)description storageType:(NSString *)storageType type:(int)type status:(int)status andOperator:(BOOL)andOperator error:(NSError **)error;
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds classNameId:(long long)classNameId keywords:(NSString *)keywords status:(int)status error:(NSError **)error;
-- (void)deleteStructureWithStructureId:(long long)structureId error:(NSError **)error;
 - (NSDictionary *)addStructureWithGroupId:(long long)groupId parentStructureId:(long long)parentStructureId classNameId:(long long)classNameId structureKey:(NSString *)structureKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmForm:(LRJSONObjectWrapper *)ddmForm ddmFormLayout:(LRJSONObjectWrapper *)ddmFormLayout storageType:(NSString *)storageType type:(int)type serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
+- (void)deleteStructureWithStructureId:(long long)structureId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSDictionary *)addStructureWithUserId:(long long)userId groupId:(long long)groupId classNameId:(long long)classNameId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addStructureWithUserId:(long long)userId groupId:(long long)groupId classNameId:(long long)classNameId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmForm:(LRJSONObjectWrapper *)ddmForm ddmFormLayout:(LRJSONObjectWrapper *)ddmFormLayout storageType:(NSString *)storageType serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addStructureWithUserId:(long long)userId groupId:(long long)groupId parentStructureKey:(NSString *)parentStructureKey classNameId:(long long)classNameId structureKey:(NSString *)structureKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap xsd:(NSString *)xsd storageType:(NSString *)storageType type:(int)type serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
@@ -43,6 +43,6 @@
 - (NSDictionary *)copyStructureWithStructureId:(long long)structureId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSArray *)getStructuresWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds classNameId:(long long)classNameId status:(int)status error:(NSError **)error;
 - (NSArray *)getStructuresWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds classNameId:(long long)classNameId status:(int)status start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error;
-- (void)revertStructureWithStructureId:(long long)structureId version:(NSString *)version serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
+- (void)revertStructureWithStructureId:(long long)structureId version:(NSString *)version serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 
 @end

@@ -23,7 +23,7 @@
 - (NSDictionary *)getItemWithItemId:(long long)itemId error:(NSError **)error;
 - (NSArray *)getItemsWithGroupId:(long long)groupId categoryId:(long long)categoryId error:(NSError **)error;
 - (NSArray *)getItemsWithGroupId:(long long)groupId categoryId:(long long)categoryId start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error;
-- (void)deleteItemWithItemId:(long long)itemId error:(NSError **)error;
+- (void)deleteItemWithItemId:(long long)itemId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSNumber *)getCategoriesItemsCountWithGroupId:(long long)groupId categoryIds:(NSArray *)categoryIds error:(NSError **)error;
 - (NSNumber *)getItemsCountWithGroupId:(long long)groupId categoryId:(long long)categoryId error:(NSError **)error;
 - (NSArray *)getItemsPrevAndNextWithItemId:(long long)itemId obc:(LRJSONObjectWrapper *)obc error:(NSError **)error;

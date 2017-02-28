@@ -28,10 +28,10 @@
 - (NSDictionary *)updateUserGroupWithUserGroupId:(long long)userGroupId name:(NSString *)name description:(NSString *)description serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)fetchUserGroupWithUserGroupId:(long long)userGroupId error:(NSError **)error;
 - (NSArray *)getUserUserGroupsWithUserId:(long long)userId error:(NSError **)error;
-- (void)deleteUserGroupWithUserGroupId:(long long)userGroupId error:(NSError **)error;
-- (void)addGroupUserGroupsWithGroupId:(long long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error;
-- (void)addTeamUserGroupsWithTeamId:(long long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error;
-- (void)unsetGroupUserGroupsWithGroupId:(long long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error;
-- (void)unsetTeamUserGroupsWithTeamId:(long long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error;
+- (void)deleteUserGroupWithUserGroupId:(long long)userGroupId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
+- (void)addTeamUserGroupsWithTeamId:(long long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error CONVERT_ERROR_TO_THROWS;
+- (void)addGroupUserGroupsWithGroupId:(long long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error CONVERT_ERROR_TO_THROWS;
+- (void)unsetGroupUserGroupsWithGroupId:(long long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error CONVERT_ERROR_TO_THROWS;
+- (void)unsetTeamUserGroupsWithTeamId:(long long)teamId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 
 @end

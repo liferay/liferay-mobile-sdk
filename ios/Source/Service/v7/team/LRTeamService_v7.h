@@ -28,7 +28,7 @@
 - (NSNumber *)searchCountWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description params:(NSDictionary *)params error:(NSError **)error;
 - (NSArray *)getUserTeamsWithUserId:(long long)userId groupId:(long long)groupId error:(NSError **)error;
 - (NSArray *)getUserTeamsWithUserId:(long long)userId error:(NSError **)error;
-- (void)deleteTeamWithTeamId:(long long)teamId error:(NSError **)error;
+- (void)deleteTeamWithTeamId:(long long)teamId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSArray *)getGroupTeamsWithGroupId:(long long)groupId error:(NSError **)error;
 - (BOOL)hasUserTeamWithUserId:(long long)userId teamId:(long long)teamId error:(NSError **)error;
 

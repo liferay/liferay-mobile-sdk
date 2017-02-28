@@ -33,10 +33,10 @@
 - (NSDictionary *)fetchRoleWithRoleId:(long long)roleId error:(NSError **)error;
 - (NSArray *)getUserRolesWithUserId:(long long)userId error:(NSError **)error;
 - (NSArray *)getUserGroupRolesWithUserId:(long long)userId groupId:(long long)groupId error:(NSError **)error;
-- (void)deleteRoleWithRoleId:(long long)roleId error:(NSError **)error;
-- (void)addUserRolesWithUserId:(long long)userId roleIds:(NSArray *)roleIds error:(NSError **)error;
+- (void)addUserRolesWithUserId:(long long)userId roleIds:(NSArray *)roleIds error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSArray *)getUserGroupGroupRolesWithUserId:(long long)userId groupId:(long long)groupId error:(NSError **)error;
-- (void)unsetUserRolesWithUserId:(long long)userId roleIds:(NSArray *)roleIds error:(NSError **)error;
+- (void)unsetUserRolesWithUserId:(long long)userId roleIds:(NSArray *)roleIds error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSArray *)getGroupRolesWithGroupId:(long long)groupId error:(NSError **)error;
+- (void)deleteRoleWithRoleId:(long long)roleId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 
 @end

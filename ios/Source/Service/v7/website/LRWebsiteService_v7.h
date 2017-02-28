@@ -23,6 +23,6 @@
 - (NSDictionary *)getWebsiteWithWebsiteId:(long long)websiteId error:(NSError **)error;
 - (NSDictionary *)addWebsiteWithClassName:(NSString *)className classPK:(long long)classPK url:(NSString *)url typeId:(long long)typeId primary:(BOOL)primary serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)updateWebsiteWithWebsiteId:(long long)websiteId url:(NSString *)url typeId:(long long)typeId primary:(BOOL)primary error:(NSError **)error;
-- (void)deleteWebsiteWithWebsiteId:(long long)websiteId error:(NSError **)error;
+- (void)deleteWebsiteWithWebsiteId:(long long)websiteId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 
 @end

@@ -22,7 +22,7 @@
 - (NSDictionary *)addVocabularyWithGroupId:(long long)groupId title:(NSString *)title serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addVocabularyWithGroupId:(long long)groupId title:(NSString *)title titleMap:(NSDictionary *)titleMap descriptionMap:(NSDictionary *)descriptionMap settings:(NSString *)settings serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSArray *)deleteVocabulariesWithVocabularyIds:(NSArray *)vocabularyIds serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
-- (void)deleteVocabularyWithVocabularyId:(long long)vocabularyId error:(NSError **)error;
+- (void)deleteVocabularyWithVocabularyId:(long long)vocabularyId error:(NSError **)error CONVERT_ERROR_TO_THROWS;
 - (NSArray *)getCompanyVocabulariesWithCompanyId:(long long)companyId error:(NSError **)error;
 - (NSArray *)getGroupsVocabulariesWithGroupIds:(NSArray *)groupIds className:(NSString *)className error:(NSError **)error;
 - (NSArray *)getGroupsVocabulariesWithGroupIds:(NSArray *)groupIds error:(NSError **)error;
