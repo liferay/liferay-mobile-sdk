@@ -97,9 +97,10 @@ const int AUTH_TOKEN_LENGTH = 8;
 		}
 	}
 	else {
-		[self.callback onFailure:[LRError errorWithCode:challenge.failureResponse
+		NSHTTPURLResponse *response = (NSHTTPURLResponse *)challenge.failureResponse;
+		[self.callback onFailure:[LRError errorWithCode:response.statusCode
 			description:@"Error authenticating"
-			userInfo:@{@"underlyingResponse": challenge.failureResponse}]];
+			userInfo:@{@"underlyingResponse": response}]];
 	}
 }
 
