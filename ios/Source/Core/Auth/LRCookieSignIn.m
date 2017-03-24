@@ -29,7 +29,7 @@ const int AUTH_TOKEN_LENGTH = 8;
 @property (nonatomic, copy) NSString *password;
 @property (nonatomic) NSMutableData *responseData;
 @property (nonatomic) void (^challengeBlock)(NSURLAuthenticationChallenge *challenge,
-		void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable));
+		void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *));
 
 @end
 
@@ -57,7 +57,7 @@ const int AUTH_TOKEN_LENGTH = 8;
 		callback:(id<LRCookieCallback>)callback
 		challengeBlock: (void (^)(NSURLAuthenticationChallenge *challenge,
 			void (^)(NSURLSessionAuthChallengeDisposition,
-			NSURLCredential * _Nullable))) challengeBlock {
+			NSURLCredential *))) challengeBlock {
 
 	LRCookieSignIn *cookieSignIn = [[LRCookieSignIn alloc] init];
 	cookieSignIn.challengeBlock = challengeBlock;
@@ -69,7 +69,7 @@ const int AUTH_TOKEN_LENGTH = 8;
 		task:(NSURLSessionTask *)task
 		willPerformHTTPRedirection:(NSHTTPURLResponse *)response
 		newRequest:(NSURLRequest *)request
-		completionHandler:(void (^)(NSURLRequest * _Nullable))completionHandler {
+		completionHandler:(void (^)(NSURLRequest *))completionHandler {
 
 	NSString *cookies = [self _getHttpCookies:
 		[NSHTTPCookieStorage sharedHTTPCookieStorage]
@@ -86,7 +86,7 @@ const int AUTH_TOKEN_LENGTH = 8;
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
 		didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
 		completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition,
-			NSURLCredential * _Nullable))completionHandler {
+			NSURLCredential *))completionHandler {
 
 	if (challenge.previousFailureCount == 0) {
 		if (self.challengeBlock) {
