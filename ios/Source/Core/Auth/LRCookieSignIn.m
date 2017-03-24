@@ -94,6 +94,12 @@ const int AUTH_TOKEN_LENGTH = 8;
 	else {
 		NSString *authToken = [self _getAuthToken:self.responseData];
 
+		if (!authToken) {
+			error = [LRError errorWithCode:400 description:@"Failed to get the auth token"];
+			[self.callback onFailure:error];
+			return;
+		}
+
 		NSString *cookieHeader =
 			[self _getHttpCookies:[NSHTTPCookieStorage sharedHTTPCookieStorage]
 				requestURL:task.response.URL];
@@ -119,8 +125,12 @@ const int AUTH_TOKEN_LENGTH = 8;
 		encoding:NSUTF8StringEncoding];
 
 	NSRange range = [html rangeOfString:@"Liferay.authToken=\""];
-	range = NSMakeRange(range.location + range.length, AUTH_TOKEN_LENGTH);
 
+	if (range.location == NSNotFound) {
+		return nil;
+	}
+
+	range = NSMakeRange(range.location + range.length, AUTH_TOKEN_LENGTH);
 	return [html substringWithRange:range];
 }
 
