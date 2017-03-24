@@ -29,4 +29,9 @@
 + (void)signInWithSession:(LRSession *)session
 	callback:(id<LRCookieCallback>)callback;
 
++ (void)signInWithSession:(LRSession *)session
+	callback:(id<LRCookieCallback>)callback
+	challengeBlock: (void (^)(NSURLAuthenticationChallenge *challenge,
+		void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))) challengeBlock;
+
 @end

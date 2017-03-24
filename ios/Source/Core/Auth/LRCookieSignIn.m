@@ -28,6 +28,8 @@ const int AUTH_TOKEN_LENGTH = 8;
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, copy) NSString *password;
 @property (nonatomic) NSMutableData *responseData;
+@property (nonatomic) void (^challengeBlock)(NSURLAuthenticationChallenge *challenge,
+		void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable));
 
 @end
 
@@ -47,9 +49,19 @@ const int AUTH_TOKEN_LENGTH = 8;
 }
 
 + (void)signInWithSession:(LRSession *)session
-	callback:(id<LRCookieCallback>)callback {
+		callback:(id<LRCookieCallback>)callback {
+	[self signInWithSession:session callback:callback challengeBlock:nil];
+}
+
++ (void)signInWithSession:(LRSession *)session
+		callback:(id<LRCookieCallback>)callback
+		challengeBlock: (void (^)(NSURLAuthenticationChallenge *challenge,
+			void (^)(NSURLSessionAuthChallengeDisposition,
+			NSURLCredential * _Nullable))) challengeBlock {
 
 	LRCookieSignIn *cookieSignIn = [[LRCookieSignIn alloc] init];
+	cookieSignIn.challengeBlock = challengeBlock;
+
 	[cookieSignIn _signInWithSession:session callback:callback];
 }
 
@@ -69,6 +81,26 @@ const int AUTH_TOKEN_LENGTH = 8;
 		  forHTTPHeaderField:@"Cookie"];
 
 	completionHandler(mutableRequest);
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
+		didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
+		completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition,
+			NSURLCredential * _Nullable))completionHandler {
+
+	if (challenge.previousFailureCount == 0) {
+		if (self.challengeBlock) {
+			self.challengeBlock(challenge, completionHandler);
+		}
+		else {
+			completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+		}
+	}
+	else {
+		[self.callback onFailure:[LRError errorWithCode:challenge.failureResponse
+			description:@"Error authenticating"
+			userInfo:@{@"underlyingResponse": challenge.failureResponse}]];
+	}
 }
 
 - (void)URLSession:(NSURLSession *)session
