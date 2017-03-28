@@ -30,6 +30,7 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Request.Builder;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
+import com.squareup.okhttp.Authenticator;
 
 import java.io.IOException;
 
@@ -47,7 +48,16 @@ import okio.Buffer;
 public class CookieSignIn {
 
 	public static Session signIn(Session session) throws Exception {
-		CookieSignIn cookieSignIn = new CookieSignIn(session);
+		Authenticator authenticator = null;
+		return signIn(session, authenticator);
+	}
+
+	public static void signIn(Session session, CookieCallback callback) {
+		signIn(session, callback, null);
+	}
+
+	public static Session signIn(Session session, Authenticator authenticator) throws Exception {
+		CookieSignIn cookieSignIn = new CookieSignIn(session, authenticator);
 		Call call = cookieSignIn.signIn();
 
 		Response response = call.execute();
@@ -57,9 +67,9 @@ public class CookieSignIn {
 			cookieSignIn.username, cookieSignIn.password);
 	}
 
-	public static void signIn(Session session, CookieCallback callback) {
+	public static void signIn(Session session, CookieCallback callback, Authenticator authenticator) {
 		try {
-			CookieSignIn cookieSignIn = new CookieSignIn(session);
+			CookieSignIn cookieSignIn = new CookieSignIn(session, authenticator);
 			Call call = cookieSignIn.signIn();
 
 			Callback requestCallback = getCallback(
@@ -201,6 +211,11 @@ public class CookieSignIn {
 		cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
 
 		OkHttpClient client = new OkHttpClient();
+
+		if (authenticator != null) {
+			client.setAuthenticator(authenticator);
+		}
+
 		client.setCookieHandler(cookieManager);
 		client.setFollowRedirects(true);
 
@@ -213,13 +228,15 @@ public class CookieSignIn {
 
 	protected static final int TOKEN_LENGTH = 8;
 
+	protected Authenticator authenticator;
 	protected CookieManager cookieManager;
 	protected String password;
 	protected Session session;
 	protected String username;
 
-	private CookieSignIn(Session session) {
+	private CookieSignIn(Session session, Authenticator authenticator) {
 		this.session = session;
+		this.authenticator = authenticator;
 	}
 
 }
