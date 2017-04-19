@@ -127,8 +127,6 @@ createModule {
 	description = "Creates SDK Builder modules."
 }
 
-createModule.finalizedBy(generate)
-
 def addTextColor(text, startColor, endColor=COLORS.WHITE) {
 	return "${Character.toChars(27)}[${startColor}m${text}${Character.toChars(27)}[${endColor}m"
 }

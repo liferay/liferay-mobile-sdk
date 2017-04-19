@@ -8,7 +8,7 @@
 	* [Download](#download)
 	* [Create your own module](#create-your-own-module)
 	* [Properties](#properties)
-	* [Updating remote services](#updating-remote-services)
+	* [Generating remote services](#generating-remote-services)
 * [Building a Liferay Android SDK](#building-a-liferay-android-sdk)
 * [Building a Liferay iOS SDK](#building-a-liferay-ios-sdk)
 * [Other platforms](#other-platforms)
@@ -78,7 +78,7 @@ stable release. Stable SDK Builder releases correspond to tags with the
 check out the `builder-6.2.0.17` tag in a new branch of the same name: 
 
 ```sh
-git checkout tags/builder-6.2.0.17 -b builder-6.2.0.17
+git checkout tags/builder-6.2.0.18 -b builder-6.2.0.18
 ```
 
 Check for the latest stable SDK Builder version 
@@ -180,20 +180,17 @@ There is also a `destination` property that can be only set in `gradle.propertie
 property refers to the destination folder where the generate source files will be stored,
 you generally won't need to changes this.
 
-#### Updating remote services
+#### Generating remote services
 
-After you have created your module, check the `modules/${your_portlet_context}` folder,
-it should contain the generated code for your portlet client API.
+After you have created your module, check the `modules/${your_portlet_context}` folder.
 
-The source files will be written by default to `android/src/gen/java` and `ios/Source`.
-
-If you have updated your remote portlet services on the server side and need to update
-the generated code, run the following command from your module folder:
+Run the following command from your module folder:
 
     ../../gradlew generate
 
-This will run builders for each platform and regenerate the client side code in the same
-default folders.
+The source files will be written by default to `android/src/gen/java` and `ios/Source`.
+
+If you have updated your remote portlet services on the server side and need to update the generated code, run the same command above.
 
 ### Building a Liferay Android SDK
 
