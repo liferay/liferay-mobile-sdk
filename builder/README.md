@@ -166,18 +166,17 @@ you generally won't need to changes this.
 
 #### Updating remote services
 
-After you have created your module, check the `modules/${your_portlet_context}` folder,
-it should contain the generated code for your portlet client API.
+After you have created your module, check the `modules/${your_portlet_context}` folder.
 
-The source files will be written by default to `android/src/gen/java` and `ios/Source`.
-
-If you have updated your remote portlet services on the server side and need to update
-the generated code, run the following command from your module folder:
+Run the following command from your module folder:
 
     ../../gradlew generate
 
-This will run builders for each platform and regenerate the client side code in the same
-default folders.
+The source files will be written by default to `android/src/gen/java` and `ios/Source`.
+
+This will run builders for each platform and regenerate the client side code in the folders above.
+
+If you have updated your remote portlet services on the server side and need to update the generated code, just run `../../gradlew generate` again from your module folder.
 
 ### Building a Liferay Android SDK
 
