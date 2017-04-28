@@ -102,6 +102,12 @@ public class Response {
 		catch (JSONException je) {
 			throw new ServerException(je);
 		}
+
+		int status = getStatusCode();
+		if (status != Status.OK) {
+			throw new ServerException(
+					"Request failed. Response code: " + status);
+		}
 	}
 
 	protected void checkStatusCode() throws ServerException {
@@ -124,11 +130,6 @@ public class Response {
 		if (status == Status.UNAUTHORIZED) {
 			throw new AuthenticationException(
 				"Authentication failed.", "HTTP Status Code 401");
-		}
-
-		if ((status != Status.OK) && (status != Status.INTERNAL_SERVER_ERROR)) {
-			throw new ServerException(
-				"Request failed. Response code: " + status);
 		}
 	}
 
