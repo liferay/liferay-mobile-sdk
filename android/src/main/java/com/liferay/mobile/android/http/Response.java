@@ -104,6 +104,7 @@ public class Response {
 		}
 
 		int status = getStatusCode();
+
 		if (status != Status.OK) {
 			throw new ServerException(
 					"Request failed. Response code: " + status);
