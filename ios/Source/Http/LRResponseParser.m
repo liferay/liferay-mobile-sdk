@@ -44,8 +44,15 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 	}
 	else {
 		*error = [self _checkPortalException:data];
+		long statusCode = [response statusCode];
 
 		if (*error) {
+			return nil;
+		}
+		else if (statusCode != LR_HTTP_STATUS_OK) {
+			*error =
+				[LRError errorWithCode:statusCode description:@"http-error"];
+
 			return nil;
 		}
 
@@ -81,11 +88,6 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 
 		error = [LRError errorWithCode:LRErrorCodeRedirect
 			description:@"url-has-moved" userInfo:userInfo];
-	}
-	else if (statusCode != LR_HTTP_STATUS_OK &&
-			statusCode != LR_HTTP_STATUS_INTERNAL_ERROR) {
-
-		error = [LRError errorWithCode:statusCode description:@"http-error"];
 	}
 
 	return error;
