@@ -109,7 +109,8 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 	NSDictionary *errorValue = [json objectForKey:@"error"];
 
 	if (errorValue) {
-		message = [json objectForKey:@"type"];
+		message = [errorValue objectForKey:@"type"];
+		detail = [errorValue objectForKey:@"message"];
 	}
 
 	if (!message) {
