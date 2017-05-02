@@ -40,24 +40,28 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 	}
 
 	if ([data isKindOfClass:[NSData class]]) {
-		return [self _parse:data error:error];
+		data = [self _parse:data error:error];
 	}
-	else {
-		*error = [self _checkPortalException:data];
-		long statusCode = [response statusCode];
 
-		if (*error) {
-			return nil;
-		}
-		else if (statusCode != LR_HTTP_STATUS_OK) {
-			*error =
-				[LRError errorWithCode:statusCode description:@"http-error"];
-
-			return nil;
-		}
-
-		return data;
+	if (*error) {
+		return nil;
 	}
+
+	*error = [self _checkPortalException:data];
+
+	if (*error) {
+		return nil;
+	}
+
+	NSInteger statusCode = [response statusCode];
+
+	if (statusCode != LR_HTTP_STATUS_OK) {
+		*error = [LRError errorWithCode:statusCode description:@"http-error"];
+
+		return nil;
+	}
+
+	return data;
 }
 
 + (NSError *)_checkHTTPError:(NSURLRequest *)request
@@ -145,12 +149,7 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 
 		*error = [LRError errorWithCode:LRErrorCodeParse
 			description:@"json-parsing-error" userInfo:userInfo];
-	}
-	else {
-		*error = [self _checkPortalException:json];
-	}
 
-	if (*error) {
 		return nil;
 	}
 
