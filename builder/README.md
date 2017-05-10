@@ -112,6 +112,11 @@ it needs to generate code for your portlet. If for some reason you need more
 control over these properties, run the same command with the `all` argument:
 
     ./gradlew createModule -P=all
+    
+> If you receive an "Error while getting console" message. Make the call in no daemon mode:
+>
+>    ./gradlew createModule --no-daemon
+>    
 
 If you receive an "Error while getting console" message. Disable daemon mode:
 
