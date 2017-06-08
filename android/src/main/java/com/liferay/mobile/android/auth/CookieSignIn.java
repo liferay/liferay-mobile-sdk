@@ -140,16 +140,8 @@ public class CookieSignIn {
 			throw new AuthenticationException("Cookie invalid or empty");
 		}
 
-		Pattern tokenPattern = Pattern.compile(".*Liferay.authToken\\s*=\\s*[\"'](.{8})[\"'].*");
 		String body = response.body().string();
-
-		Matcher matcher = tokenPattern.matcher(body);
-
-		if (!matcher.find()) {
-			throw new AuthenticationException("Cookie invalid or empty");
-		}
-
-		String authToken = matcher.group(1);
+		String authToken = parseAuthToken(body);
 		String cookieHeader = getHttpCookies(cookieManager.getCookieStore());
 
 		if (Validator.isNotNull(cookieHeader)) {
@@ -161,6 +153,18 @@ public class CookieSignIn {
 		else {
 			throw new AuthenticationException("Cookie invalid or empty");
 		}
+	}
+
+	protected static String parseAuthToken(String body) throws IOException, AuthenticationException {
+		Pattern tokenPattern = Pattern.compile(".*Liferay.authToken\\s*=\\s*[\"'](.{8})[\"'].*");
+
+		Matcher matcher = tokenPattern.matcher(body);
+
+		if (!matcher.find()) {
+			throw new AuthenticationException("Cookie invalid or empty");
+		}
+
+		return matcher.group(1);
 	}
 
 	protected String getBody(String username, String password)
