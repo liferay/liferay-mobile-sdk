@@ -123,7 +123,9 @@
 		[self.callback onFailure:error];
 	}
 	else {
-		NSString *authToken = [self _getAuthToken:self.responseData];
+		NSString *html = [[NSString alloc]initWithData: self.responseData
+			encoding:NSUTF8StringEncoding];
+		NSString *authToken = [self _getAuthToken:html];
 
 		if (!authToken) {
 			error = [LRError errorWithCode:400 description:@"Failed to get the auth token"];
@@ -151,9 +153,7 @@
 	}
 }
 
-- (NSString *)_getAuthToken:(NSData *)htmlData {
-	NSString *html = [[NSString alloc]initWithData:htmlData
-		encoding:NSUTF8StringEncoding];
+- (NSString *)_getAuthToken:(NSString *)html {
 
 	NSRegularExpression *regex = [NSRegularExpression
 		regularExpressionWithPattern:@"Liferay.authToken\\s*=\\s*[\"'](.{8})[\"']"
