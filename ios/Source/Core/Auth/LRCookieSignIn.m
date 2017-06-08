@@ -18,8 +18,6 @@
 #import "LRError.h"
 #import "LRHttpUtil.h"
 
-const int AUTH_TOKEN_LENGTH = 8;
-
 @interface LRCookieSignIn() <NSURLSessionDelegate,
 		NSURLSessionDataDelegate, NSURLSessionTaskDelegate>
 
@@ -157,13 +155,23 @@ const int AUTH_TOKEN_LENGTH = 8;
 	NSString *html = [[NSString alloc]initWithData:htmlData
 		encoding:NSUTF8StringEncoding];
 
-	NSRange range = [html rangeOfString:@"Liferay.authToken=\""];
+	NSRegularExpression *regex = [NSRegularExpression
+		regularExpressionWithPattern:@"Liferay.authToken\\s*=\\s*[\"'](.{8})[\"']"
+		options:0 error:nil];
+
+	NSTextCheckingResult *match = [regex firstMatchInString:html
+		options:0 range:NSMakeRange(0, html.length)];
+
+	if (match.numberOfRanges < 2) {
+		return nil;
+	}
+
+	NSRange range = [match rangeAtIndex:1];
 
 	if (range.location == NSNotFound) {
 		return nil;
 	}
 
-	range = NSMakeRange(range.location + range.length, AUTH_TOKEN_LENGTH);
 	return [html substringWithRange:range];
 }
 
