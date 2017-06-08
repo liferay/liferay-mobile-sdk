@@ -290,6 +290,7 @@
 		0B57EC2A1D9AA81D00D0AD23 /* LRCookieSignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCookieSignIn.h; sourceTree = "<group>"; };
 		0B57EC2B1D9AA81D00D0AD23 /* LRCookieSignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRCookieSignIn.m; sourceTree = "<group>"; };
 		0B57EC2D1D9AA86800D0AD23 /* CookieAuthenticationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookieAuthenticationTest.m; sourceTree = "<group>"; };
+		0B62685E1EE9AA3700B81D67 /* LRCookieSignIn+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LRCookieSignIn+Test.h"; sourceTree = "<group>"; };
 		18CD854F54CBDD248C048762 /* Pods-mobile-sdk-Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-sdk-Test.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mobile-sdk-Test/Pods-mobile-sdk-Test.debug.xcconfig"; sourceTree = "<group>"; };
 		38316EDF65692D8428B60858 /* Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mobile-sdk-Liferay iOS SDK/Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig"; sourceTree = "<group>"; };
 		8B7FD4FF85FE802EBA325FBD /* Pods-mobile-sdk-Liferay iOS SDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-sdk-Liferay iOS SDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-mobile-sdk-Liferay iOS SDK/Pods-mobile-sdk-Liferay iOS SDK.release.xcconfig"; sourceTree = "<group>"; };
@@ -1941,6 +1942,7 @@
 				CC2E77DE1A3769A9001890A9 /* SpecialCharsTest.m */,
 				CC2E77DF1A3769A9001890A9 /* UnauthenticatedServiceTest.m */,
 				CC5A58501C9B247900AD2FB4 /* ValidatorTest.m */,
+				0B62685E1EE9AA3700B81D67 /* LRCookieSignIn+Test.h */,
 			);
 			path = Test;
 			sourceTree = SOURCE_ROOT;
