@@ -10,6 +10,7 @@
 		0B57EC291D9AA80E00D0AD23 /* LRCookieAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57EC281D9AA80E00D0AD23 /* LRCookieAuthentication.m */; };
 		0B57EC2C1D9AA81D00D0AD23 /* LRCookieSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57EC2B1D9AA81D00D0AD23 /* LRCookieSignIn.m */; };
 		0B57EC2E1D9AA86800D0AD23 /* CookieAuthenticationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57EC2D1D9AA86800D0AD23 /* CookieAuthenticationTest.m */; };
+		0B6268621EE9AAF500B81D67 /* ParseAuthTokenTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6268611EE9AAF500B81D67 /* ParseAuthTokenTest.m */; };
 		87C8D0C95025EA314CC11BBC /* libPods-mobile-sdk-Liferay iOS SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12B01AB1138179D989511F7 /* libPods-mobile-sdk-Liferay iOS SDK.a */; };
 		C42E38B6066A8FEA9F781821 /* libPods-mobile-sdk-Test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7ED85BFD06170E8C7DA6BA2 /* libPods-mobile-sdk-Test.a */; };
 		CC03FB6F18ED7BA000F3F16C /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC03FB6C18ED7BA000F3F16C /* settings.plist */; };
@@ -291,6 +292,7 @@
 		0B57EC2B1D9AA81D00D0AD23 /* LRCookieSignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRCookieSignIn.m; sourceTree = "<group>"; };
 		0B57EC2D1D9AA86800D0AD23 /* CookieAuthenticationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookieAuthenticationTest.m; sourceTree = "<group>"; };
 		0B62685E1EE9AA3700B81D67 /* LRCookieSignIn+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LRCookieSignIn+Test.h"; sourceTree = "<group>"; };
+		0B6268611EE9AAF500B81D67 /* ParseAuthTokenTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseAuthTokenTest.m; sourceTree = "<group>"; };
 		18CD854F54CBDD248C048762 /* Pods-mobile-sdk-Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-sdk-Test.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mobile-sdk-Test/Pods-mobile-sdk-Test.debug.xcconfig"; sourceTree = "<group>"; };
 		38316EDF65692D8428B60858 /* Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mobile-sdk-Liferay iOS SDK/Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig"; sourceTree = "<group>"; };
 		8B7FD4FF85FE802EBA325FBD /* Pods-mobile-sdk-Liferay iOS SDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-sdk-Liferay iOS SDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-mobile-sdk-Liferay iOS SDK/Pods-mobile-sdk-Liferay iOS SDK.release.xcconfig"; sourceTree = "<group>"; };
@@ -1943,6 +1945,7 @@
 				CC2E77DF1A3769A9001890A9 /* UnauthenticatedServiceTest.m */,
 				CC5A58501C9B247900AD2FB4 /* ValidatorTest.m */,
 				0B62685E1EE9AA3700B81D67 /* LRCookieSignIn+Test.h */,
+				0B6268611EE9AAF500B81D67 /* ParseAuthTokenTest.m */,
 			);
 			path = Test;
 			sourceTree = SOURCE_ROOT;
@@ -3248,6 +3251,7 @@
 				CC941D061C84EB680029C4A6 /* LRShoppingOrderService_v7.m in Sources */,
 				CC03FCE818ED7DCD00F3F16C /* LRPollsVoteService_v62.m in Sources */,
 				CC03FCC418ED7DCD00F3F16C /* LRDLFolderService_v62.m in Sources */,
+				0B6268621EE9AAF500B81D67 /* ParseAuthTokenTest.m in Sources */,
 				CC03FCB918ED7DCD00F3F16C /* LRContactService_v62.m in Sources */,
 				CC1954B41B66B79E0000EBEE /* LRDownloadDelegate.m in Sources */,
 				CC03FCE118ED7DCD00F3F16C /* LROrganizationService_v62.m in Sources */,
@@ -3557,7 +3561,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -3589,7 +3593,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
