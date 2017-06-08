@@ -38,6 +38,8 @@ import java.net.CookieManager;
 import java.net.CookiePolicy;
 import java.net.CookieStore;
 import java.net.HttpCookie;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import okio.Buffer;
 
@@ -138,9 +140,16 @@ public class CookieSignIn {
 			throw new AuthenticationException("Cookie invalid or empty");
 		}
 
+		Pattern tokenPattern = Pattern.compile(".*Liferay.authToken\\s*=\\s*[\"'](.{8})[\"'].*");
 		String body = response.body().string();
-		Integer position = body.indexOf(AUTH_TOKEN) + AUTH_TOKEN.length();
-		String authToken = body.substring(position, position + TOKEN_LENGTH);
+
+		Matcher matcher = tokenPattern.matcher(body);
+
+		if (!matcher.find()) {
+			throw new AuthenticationException("Cookie invalid or empty");
+		}
+
+		String authToken = matcher.group(1);
 		String cookieHeader = getHttpCookies(cookieManager.getCookieStore());
 
 		if (Validator.isNotNull(cookieHeader)) {
@@ -223,10 +232,6 @@ public class CookieSignIn {
 
 		return client.newCall(builder.build());
 	}
-
-	protected static final String AUTH_TOKEN = "Liferay.authToken=\"";
-
-	protected static final int TOKEN_LENGTH = 8;
 
 	protected Authenticator authenticator;
 	protected CookieManager cookieManager;
