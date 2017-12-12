@@ -14,7 +14,7 @@
 
 ##n
 
-${esc.h}if defined(LIFERAY_MOBILE_SDK_MODULE) && defined(LIFERAY_MOBILE_SDK_APP)
+${esc.h}if defined(LIFERAY_MOBILE_SDK_FRAMEWORK) && defined(LIFERAY_MOBILE_SDK_APP)
     @import LRMobileSDK;
 ${esc.h}else
     ${esc.h}import "LRBaseService.h"
