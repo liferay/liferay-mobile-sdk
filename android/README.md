@@ -74,19 +74,6 @@ You can do the same and add to your pom.xml if you are using Maven:
 Gradle and Maven will download all the necessary dependencies before building
 your project.
 
-> If you get errors such as `Duplicate files copied in APK META-INF/NOTICE`
-> when building with Gradle, add this to your `build.gradle` file:
-> ```groovy
-> android {
-> 	...
-> 	packagingOptions {
->		exclude 'META-INF/LICENSE'
->		exclude 'META-INF/NOTICE'
-> 	}
->	...
-> }
-> ```
-
 ## Compatibility
 
 #### Liferay
@@ -155,7 +142,7 @@ tests.
 	```java
 	import com.liferay.mobile.android.auth.SignIn;
 
-	SignIn.signIn(session, new JSONObjectAsyncTaskCallback() {
+	SignIn.signIn(session, new JSONObjectCallback() {
 
 		@Override
 		public void onSuccess(JSONObject userJSONObject) {
@@ -255,7 +242,7 @@ synchronous calls again.
 import com.liferay.mobile.android.callback.Callback;
 import com.liferay.mobile.android.callback.typed.JSONArrayCallback;
 
-AsyncTaskCallback callback = new JSONArrayCallback() {
+Callback callback = new JSONArrayCallback() {
 
 	public void onFailure(Exception exception) {
 		// Implement exception handling code
@@ -280,20 +267,20 @@ server side. For example, if you pass a `groupId` that doesn't exist, the portal
 will complain about it and the SDK will wrap the error message with a
 `ServerException`.
 
-There are many `AsyncTaskCallback` implementations, one for each service method
-return type: `JSONObjectAsyncTaskCallback`, `JSONArrayAsyncTaskCallback`,
-`StringAsyncTaskCallback`, `BooleanAsyncTaskCallback`,
-`IntegerAsyncTaskCallback`, `LongAsyncTaskCallback`, and
-`DoubleAsyncTaskCallback`. Pick the appropriate implementation for your service
+There are many `Callback` implementations, one for each service method
+return type: `JSONObjectCallback`, `JSONArrayCallback`,
+`StringCallback`, `BooleanCallback`,
+`IntegerCallback`, `LongCallback`, and
+`DoubleCallback`. Pick the appropriate implementation for your service
 method return type. In the example above, since `getGroupEntries` returns a
-JSONArray, you must use the `JSONArrayAsyncTaskCallback` instance.
+JSONArray, you must use the `JSONArrayCallback` instance.
 
-It's also possible to use a generic `AsyncTaskCallback` implementation called
-`GenericAsyncTaskCallback`. For this implementation, you must implement a
+It's also possible to use a generic `Callback` implementation called
+`GenericCallback`. For this implementation, you must implement a
 transform method and handle JSON parsing by yourself.
 
 > If you still don't want to use any of these callbacks, you can implement
-`AsyncTaskCallback` directly, but be careful, you should always get the first
+`Callback` directly, but be careful, you should always get the first
 element of the JSONArray passed as a parameter to the `onPostExecute(JSONArray
 jsonArray)` method (i.e., `jsonArray.get(0)`).
 
@@ -337,12 +324,12 @@ Finally, call the `invoke()` method from the session object. It returns a
 results matches the order of the service calls.
 
 If you want to make batch calls asynchronously, set the callback as a
-`BatchAsyncTaskCallback` instance:
+`BatchCallback` instance:
 
 ```java
-import com.liferay.mobile.android.task.callback.BatchAsyncTaskCallback;
+import com.liferay.mobile.android.callback.BatchCallback;
 
-batch.setCallback(new BatchAsyncTaskCallback() {
+batch.setCallback(new BatchCallback() {
 		
 	public void onFailure(Exception exception) {
 	}
