@@ -26,10 +26,10 @@
  */
 @interface LRCookieSignIn : NSObject
 
-+ (void)signInWithSession:(LRSession *)session
++ (LRSession *)signInWithSession:(LRSession *)session
 	callback:(id<LRCookieCallback>)callback;
 
-+ (void)signInWithSession:(LRSession *)session
++ (LRSession *)signInWithSession:(LRSession *)session
 	callback:(id<LRCookieCallback>)callback
 	challengeBlock: (void (^)(NSURLAuthenticationChallenge *challenge,
 		void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))) challengeBlock;

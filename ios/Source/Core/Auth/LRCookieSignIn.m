@@ -28,6 +28,8 @@
 @property (nonatomic) NSMutableData *responseData;
 @property (nonatomic) void (^challengeBlock)(NSURLAuthenticationChallenge *challenge,
 		void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *));
+@property (nonatomic) LRSession *cookieSession;
+@property (nonatomic) dispatch_semaphore_t syncSemaphore;
 
 @end
 
@@ -41,17 +43,18 @@
 
 	if (self) {
 		self.responseData = [[NSMutableData alloc] init];
+		self.syncSemaphore = dispatch_semaphore_create(0);
 	}
 
 	return self;
 }
 
-+ (void)signInWithSession:(LRSession *)session
++ (LRSession *)signInWithSession:(LRSession *)session
 		callback:(id<LRCookieCallback>)callback {
-	[self signInWithSession:session callback:callback challengeBlock:nil];
+	return [self signInWithSession:session callback:callback challengeBlock:nil];
 }
 
-+ (void)signInWithSession:(LRSession *)session
++ (LRSession *)signInWithSession:(LRSession *)session
 		callback:(id<LRCookieCallback>)callback
 		challengeBlock: (void (^)(NSURLAuthenticationChallenge *challenge,
 			void (^)(NSURLSessionAuthChallengeDisposition,
@@ -60,7 +63,7 @@
 	LRCookieSignIn *cookieSignIn = [[LRCookieSignIn alloc] init];
 	cookieSignIn.challengeBlock = challengeBlock;
 
-	[cookieSignIn _signInWithSession:session callback:callback];
+	return [cookieSignIn _signInWithSession:session callback:callback];
 }
 
 - (void)URLSession:(NSURLSession *)session
@@ -146,10 +149,17 @@
 			username:self.username
 			password:self.password];
 
-		LRSession *cookieSession = [[LRSession alloc]
+		auth.lastCookieRefresh = [[NSDate date] timeIntervalSince1970];
+
+		self.cookieSession = [[LRSession alloc]
 			initWithServer:self.server authentication:auth];
 
-		[self.callback onSuccess:cookieSession];
+		if (self.callback == nil) {
+			dispatch_semaphore_signal(self.syncSemaphore);
+		}
+		else {
+			[self.callback onSuccess:self.cookieSession];
+		}
 	}
 }
 
@@ -208,7 +218,7 @@
 	return [NSURL URLWithString:server];
 }
 
-- (void)_signInWithSession:(LRSession *)session
+- (LRSession *)_signInWithSession:(LRSession *)session
 	callback:(id<LRCookieCallback>)callback {
 
 	self.server = session.server;
@@ -264,6 +274,14 @@
 	NSURLSessionTask *task = [urlSession dataTaskWithRequest:request];
 	
 	[task resume];
+
+	if (self.callback == nil) {
+		dispatch_semaphore_wait(self.syncSemaphore, DISPATCH_TIME_FOREVER);
+		return self.cookieSession;
+	}
+	else {
+		return nil;
+	}
 }
 
 @end
