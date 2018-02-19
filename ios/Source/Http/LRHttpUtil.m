@@ -17,6 +17,7 @@
 #import "LRBatchSession.h"
 #import "LRRedirectDelegate.h"
 #import "LRResponseParser.h"
+#import "LRCookieExpirationHandler.h"
 
 NSString *const LR_BLANK = @"";
 NSString *const LR_GET = @"GET";
@@ -132,13 +133,19 @@ typedef void (^LRHandler)(
 + (id)_sendRequest:(NSMutableURLRequest *)request session:(LRSession *)session
 		error:(NSError **)error {
 
+	LRCookieExpirationHandler *handler = [LRCookieExpirationHandler shared];
+
 	if (session.callback) {
-		[self _sendAsynchronousRequest:request session:session];
+		[handler reloadCookieLoginIfNeeded:session withCompletionHandler:^(LRSession * session) {
+			[self _sendAsynchronousRequest:request session:session];
+		}];
 
 		return nil;
 	}
 	else {
 		NSHTTPURLResponse *response;
+
+		session = [handler reloadCookieLoginIfNeeded:session withCompletionHandler:nil];
 
 		NSData *data = [NSURLConnection sendSynchronousRequest:request
 			returningResponse:&response error:error];

@@ -10,7 +10,6 @@
 #import "LRCookieAuthentication.h"
 #import "LRCookieSignIn.h"
 #import "LRBlockCallback.h"
-#import "LRCookieAuthentication+Private.h"
 
 
 @interface LRCookieExpirationHandler() {

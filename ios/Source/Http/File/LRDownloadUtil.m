@@ -17,6 +17,7 @@
 #import "LRHttpUtil.h"
 #import "LRPortalVersionUtil.h"
 #import "LRValidator.h"
+#import "LRCookieExpirationHandler.h"
 
 /**
  * @author Bruno Farache
@@ -27,21 +28,26 @@
 		URL:(NSString *)URL outputStream:(NSOutputStream *)outputStream
 		progressDelegate:(id<LRFileProgressDelegate>)progressDelegate {
 
-	id<LRAuthentication> auth = session.authentication;
+	LRCookieExpirationHandler *handler = [LRCookieExpirationHandler shared];
 
-	LRDownloadDelegate *delegate = [[LRDownloadDelegate alloc]
-		initWithAuth:auth outputStream:outputStream
-		progressDelegate:progressDelegate];
+	[handler reloadCookieLoginIfNeeded:session withCompletionHandler:^(LRSession *session) {
 
-	NSMutableURLRequest *request = [LRHttpUtil getRequestWithSession:session
-		URL:[NSURL URLWithString:URL]];
+		id<LRAuthentication> auth = session.authentication;
 
-	[auth authenticate:request];
+		LRDownloadDelegate *delegate = [[LRDownloadDelegate alloc]
+			initWithAuth:auth outputStream:outputStream
+			progressDelegate:progressDelegate];
 
-	NSURLConnection *connection = [[NSURLConnection alloc]
-		initWithRequest:request delegate:delegate startImmediately:NO];
+		NSMutableURLRequest *request = [LRHttpUtil getRequestWithSession:session
+			URL:[NSURL URLWithString:URL]];
 
-	[connection start];
+		[auth authenticate:request];
+
+		NSURLConnection *connection = [[NSURLConnection alloc]
+			initWithRequest:request delegate:delegate startImmediately:NO];
+
+		[connection start];
+	}];
 }
 
 + (void)downloadWebDAVFileWithSession:(LRSession *)session

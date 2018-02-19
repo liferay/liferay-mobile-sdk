@@ -18,6 +18,7 @@
 #import "LRHttpUtil.h"
 #import "LRUploadData.h"
 #import "LRResponseParser.h"
+#import "LRCookieExpirationHandler.h"
 
 /**
  * @author Bruno Farache
@@ -118,19 +119,21 @@
 	[request setAllHTTPHeaderFields:session.headers];
 	[request setTimeoutInterval:session.connectionTimeout];
 
-	if (session.authentication) {
-		[session.authentication authenticate:request];
-	}
+	LRCookieExpirationHandler *handler = [LRCookieExpirationHandler shared];
 
-    __weak __typeof(AFHTTPRequestOperation *)operation = [manager
-		HTTPRequestOperationWithRequest:request success:success
-		failure:failure];
+	[handler reloadCookieLoginIfNeeded:session
+		withCompletionHandler:^(LRSession *session) {
 
-	if (data.progressDelegate) {
-		[operation setUploadProgressBlock:
-			^(NSUInteger bytes, long long totalBytes, long long fileSize) {
-				id<LRFileProgressDelegate> progressDelegate =
-					data.progressDelegate;
+		if (session.authentication) {
+			[session.authentication authenticate:request];
+		}
+
+		__weak __typeof(AFHTTPRequestOperation *)operation = [manager
+			HTTPRequestOperationWithRequest:request success:success failure:failure];
+
+		if (data.progressDelegate) {
+			[operation setUploadProgressBlock: ^(NSUInteger bytes, long long totalBytes, long long fileSize) {
+				id<LRFileProgressDelegate> progressDelegate = data.progressDelegate;
 
 				if ([progressDelegate respondsToSelector:@selector(isCancelled)]
 					&& [progressDelegate isCancelled]) {
@@ -145,11 +148,12 @@
 
 				[data.progressDelegate onProgress:uploadedData
 					totalBytes:totalBytes];
-			}
-		];
-	}
+			 	}
+			 ];
+		}
 
-    [manager.operationQueue addOperation:operation];
+		[manager.operationQueue addOperation:operation];
+	}];
 }
 
 @end
