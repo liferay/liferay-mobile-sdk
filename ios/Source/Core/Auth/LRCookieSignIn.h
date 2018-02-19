@@ -13,13 +13,7 @@
  */
 
 #import "LRSession.h"
-
-@protocol LRCookieCallback <NSObject>
-
-- (void)onFailure:(NSError *)error;
-- (void)onSuccess:(LRSession *)session;
-
-@end
+#import "LRCookieCallback.h"
 
 /**
  * @author Victor Galán

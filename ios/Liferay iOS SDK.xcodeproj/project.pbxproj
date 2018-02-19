@@ -780,6 +780,7 @@
 		CCF098001ABA355E0023951B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CCF5F35D1AB869E0006132AA /* DownloadFileTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadFileTest.m; sourceTree = "<group>"; };
 		D12B01AB1138179D989511F7 /* libPods-mobile-sdk-Liferay iOS SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobile-sdk-Liferay iOS SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6E082032036FD37008BBCC0 /* LRCookieCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCookieCallback.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -858,6 +859,7 @@
 				CC40D76E1974C76D000254E6 /* LRBlockCallback.h */,
 				CC40D76F1974C76D000254E6 /* LRBlockCallback.m */,
 				CC03FB7718ED7DCC00F3F16C /* LRCallback.h */,
+				D6E082032036FD37008BBCC0 /* LRCookieCallback.h */,
 				CCD60E10191820BE00935937 /* LRJSONObjectWrapper.h */,
 				CCD60E11191820BE00935937 /* LRJSONObjectWrapper.m */,
 				CC03FB7818ED7DCC00F3F16C /* LRServiceFactory.h */,
