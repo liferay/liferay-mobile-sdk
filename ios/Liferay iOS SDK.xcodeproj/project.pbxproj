@@ -261,6 +261,7 @@
 		CCDCE0591A694BB20045023A /* BatchSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDCE0581A694BB20045023A /* BatchSessionTest.m */; };
 		CCF098011ABA355E0023951B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF098001ABA355E0023951B /* UIKit.framework */; };
 		CCF5F35E1AB869E0006132AA /* DownloadFileTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F35D1AB869E0006132AA /* DownloadFileTest.m */; };
+		D6E081FF2036F0A7008BBCC0 /* LRCookieExpirationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E081FE2036F0A7008BBCC0 /* LRCookieExpirationHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -780,6 +781,8 @@
 		CCF098001ABA355E0023951B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CCF5F35D1AB869E0006132AA /* DownloadFileTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadFileTest.m; sourceTree = "<group>"; };
 		D12B01AB1138179D989511F7 /* libPods-mobile-sdk-Liferay iOS SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobile-sdk-Liferay iOS SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6E081FD2036F0A7008BBCC0 /* LRCookieExpirationHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRCookieExpirationHandler.h; sourceTree = "<group>"; };
+		D6E081FE2036F0A7008BBCC0 /* LRCookieExpirationHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRCookieExpirationHandler.m; sourceTree = "<group>"; };
 		D6E082032036FD37008BBCC0 /* LRCookieCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCookieCallback.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1903,6 +1906,8 @@
 				CC20D9E51A7BB3E300DE7729 /* LRCredentialStorage.m */,
 				CC20D9E61A7BB3E300DE7729 /* LRSignIn.h */,
 				CC20D9E71A7BB3E300DE7729 /* LRSignIn.m */,
+				D6E081FD2036F0A7008BBCC0 /* LRCookieExpirationHandler.h */,
+				D6E081FE2036F0A7008BBCC0 /* LRCookieExpirationHandler.m */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
