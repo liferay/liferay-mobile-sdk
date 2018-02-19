@@ -13,6 +13,7 @@
  */
 
 #import "LRCallback.h"
+#import "LRCookieCallback.h"
 
 typedef void (^LRFailureBlock)(NSError *);
 typedef void (^LRSuccessBlock)(id);
@@ -20,7 +21,7 @@ typedef void (^LRSuccessBlock)(id);
 /**
  * @author Bruno Farache
  */
-@interface LRBlockCallback : NSObject <LRCallback>
+@interface LRBlockCallback : NSObject <LRCallback, LRCookieCallback>
 
 @property (nonatomic, copy) LRFailureBlock failure;
 @property (nonatomic, copy) LRSuccessBlock success;
