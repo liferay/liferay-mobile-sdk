@@ -24,9 +24,22 @@
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, copy) NSString *password;
 
+@property (nonatomic) BOOL shouldHandleExpiration;
+// Cookie expiration time. In minutes
+@property (nonatomic) double cookieExpirationTime;
+@property (nonatomic) NSTimeInterval lastCookieRefresh;
+
 - (id)initWithAuthToken:(NSString *)authToken
 	cookieHeader:(NSString *)cookieHeader
 	username: (NSString *) username
 	password: (NSString *) password;
+
+- (id)initWithAuthToken:(NSString *)authToken
+	cookieHeader:(NSString *)cookieHeader
+	username: (NSString *) username
+	password: (NSString *) password
+	shouldHandleExpiration:(BOOL)shouldHandleExpiration
+	cookieExpirationTime: (double)cookieExpirationTime
+	lastCookieRefresh:(NSTimeInterval)lastCookieRefresh;
 
 @end

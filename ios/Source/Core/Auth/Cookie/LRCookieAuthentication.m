@@ -24,6 +24,22 @@
 		username:(NSString *)username
 		password:(NSString *) password {
 
+	return [self initWithAuthToken:authToken
+			cookieHeader:cookieHeader
+			username:username password:password
+			shouldHandleExpiration:YES
+			cookieExpirationTime:(15 * 60)
+			lastCookieRefresh:0];
+}
+
+- (id)initWithAuthToken:(NSString *)authToken
+		cookieHeader:(NSString *)cookieHeader
+		username:(NSString *)username
+		password:(NSString *)password
+ 		shouldHandleExpiration:(BOOL)shouldHandleExpiration
+		cookieExpirationTime:(double)cookieExpirationTime
+		lastCookieRefresh:(NSTimeInterval)lastCookieRefresh {
+
 	self = [super init];
 
 	if (self) {
@@ -31,6 +47,10 @@
 		self.cookieHeader = cookieHeader;
 		self.username = username;
 		self.password = password;
+
+		self.lastCookieRefresh = lastCookieRefresh;
+		self.cookieExpirationTime = 15 * 60;
+		self.shouldHandleExpiration = YES;
 	}
 
 	return self;
