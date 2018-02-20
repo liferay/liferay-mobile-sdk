@@ -15,6 +15,7 @@
 #import <Foundation/Foundation.h>
 #import "LRCallback.h"
 #import "LRSession.h"
+#import "LRCookieSignIn.h"
 
 
 @interface LRCookieExpirationHandler : NSObject
@@ -24,5 +25,8 @@
 - (LRSession *)reloadCookieLoginIfNeeded: (LRSession *) session
 	withCompletionHandler:(void (^)(LRSession *, NSError *))completionHandler
 	error: (NSError **)error;
+
+- (void)registerAuthenticationChallengeBlock: (ChallengeBlock)challengeBlock
+	forServer:(NSString *)server;
 
 @end

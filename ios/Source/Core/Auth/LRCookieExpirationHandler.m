@@ -20,6 +20,7 @@
 
 @interface LRCookieExpirationHandler() {
 	dispatch_semaphore_t syncSemaphore;
+	NSMutableDictionary *challengeBlocks;
 }
 
 @end
@@ -41,6 +42,7 @@
 
 	if (self) {
 		syncSemaphore = dispatch_semaphore_create(1);
+		challengeBlocks = [NSMutableDictionary dictionary];
 	}
 
 	return self;
@@ -57,9 +59,11 @@
 
 		dispatch_semaphore_wait(syncSemaphore, DISPATCH_TIME_FOREVER);
 		if ([self shouldCookieBeUpdated: session.authentication]) {
+			ChallengeBlock challengeBlock = [challengeBlocks objectForKey:session.server];
+
 			if (completionHandler == nil) {
 				LRSession *cookieSession =  [LRCookieSignIn
-					signInWithSession:session callback:nil error: error];
+					signInWithSession:session callback:nil challengeBlock:challengeBlock error: error];
 				[self copyConfigurationValuesFromOldAuth:session.authentication
 					toNewAuth:cookieSession.authentication];
 				session.authentication = cookieSession.authentication;
@@ -82,7 +86,7 @@
 				}];
 
 				[LRCookieSignIn signInWithSession:session
-					callback:callback error:nil];
+					callback:callback challengeBlock:challengeBlock error:nil];
 
 				return nil;
 			}
@@ -99,6 +103,10 @@
 		completionHandler(session, nil);
 		return nil;
 	}
+}
+
+- (void)registerAuthenticationChallengeBlock:(ChallengeBlock)challengeBlock forServer:(NSString *)server {
+	[challengeBlocks setObject:[challengeBlock copy] forKey:server];
 }
 
 - (BOOL)shouldCookieBeUpdated:(LRCookieAuthentication *)cookieAuth {

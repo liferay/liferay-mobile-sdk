@@ -17,6 +17,7 @@
 #import "LRCookieAuthentication.h"
 #import "LRError.h"
 #import "LRHttpUtil.h"
+#import "LRCookieExpirationHandler.h"
 
 @interface LRCookieSignIn() <NSURLSessionDelegate,
 		NSURLSessionDataDelegate, NSURLSessionTaskDelegate>
@@ -62,6 +63,11 @@
 
 	LRCookieSignIn *cookieSignIn = [[LRCookieSignIn alloc] init];
 	cookieSignIn.challengeBlock = challengeBlock;
+
+	if (challengeBlock) {
+		[[LRCookieExpirationHandler shared]
+			registerAuthenticationChallengeBlock:challengeBlock forServer:session.server];
+	}
 
 	return [cookieSignIn _signInWithSession:session callback:callback error:error];
 }
