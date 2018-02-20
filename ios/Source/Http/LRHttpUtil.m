@@ -113,10 +113,6 @@ typedef void (^LRHandler)(
 	[request setValue:@"application/json; charset=utf-8"
 		forHTTPHeaderField:@"Content-Type"];
 
-	if (session.authentication) {
-		[session.authentication authenticate:request];
-	}
-
 	return [self _sendRequest:request session:session error:error];
 }
 
@@ -137,6 +133,7 @@ typedef void (^LRHandler)(
 
 	if (session.callback) {
 		[handler reloadCookieLoginIfNeeded:session withCompletionHandler:^(LRSession * session) {
+			[session.authentication authenticate:request];
 			[self _sendAsynchronousRequest:request session:session];
 		}];
 
@@ -146,6 +143,7 @@ typedef void (^LRHandler)(
 		NSHTTPURLResponse *response;
 
 		session = [handler reloadCookieLoginIfNeeded:session withCompletionHandler:nil];
+		[session.authentication authenticate:request];
 
 		NSData *data = [NSURLConnection sendSynchronousRequest:request
 			returningResponse:&response error:error];
