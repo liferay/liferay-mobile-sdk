@@ -60,18 +60,24 @@
 			if (completionHandler == nil) {
 				LRSession *cookieSession =  [LRCookieSignIn
 					signInWithSession:session callback:nil challengeBlock:nil];
-				session.authentication = session.authentication;
-				[self resetLastRefreshTimeAndUnlock: session.authentication];
+				[self copyConfigurationValuesFromOldAuth:session.authentication
+					toNewAuth:cookieSession.authentication];
+				session.authentication = cookieSession.authentication;
+
+				dispatch_semaphore_signal(syncSemaphore);
 				return session;
 			}
 			else {
 				LRBlockCallback *callback = [[LRBlockCallback alloc]
 					initWithSuccess:^(LRSession *cookieSession) {
+					[self copyConfigurationValuesFromOldAuth:session.authentication
+						toNewAuth:cookieSession.authentication];
 					session.authentication = cookieSession.authentication;
-					[self resetLastRefreshTimeAndUnlock: session.authentication];
+
+					dispatch_semaphore_signal(syncSemaphore);
 					completionHandler((LRSession *) cookieSession);
 				} failure:^(NSError * error) {
-					[self resetLastRefreshTimeAndUnlock: session.authentication];
+					dispatch_semaphore_signal(syncSemaphore);
 					completionHandler((LRSession *) session);
 				}];
 
@@ -105,10 +111,12 @@
 	return NO;
 }
 
-- (void)resetLastRefreshTimeAndUnlock:(LRCookieAuthentication *)cookieAuth {
-	cookieAuth.lastCookieRefresh = [[NSDate date] timeIntervalSince1970];
-	dispatch_semaphore_signal(syncSemaphore);
-}
+- (void)copyConfigurationValuesFromOldAuth:(LRCookieAuthentication *)oldAuth
+	toNewAuth:(LRCookieAuthentication *)newAuth {
 
+	newAuth.lastCookieRefresh = oldAuth.lastCookieRefresh;
+	newAuth.cookieExpirationTime = oldAuth.cookieExpirationTime;
+	newAuth.shouldHandleExpiration = oldAuth.shouldHandleExpiration;
+}
 
 @end
