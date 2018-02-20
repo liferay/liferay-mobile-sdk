@@ -18,15 +18,18 @@
 /**
  * @author Victor Galán
  */
+
 @interface LRCookieSignIn : NSObject
+
+typedef void (^ChallengeBlock)(NSURLAuthenticationChallenge *challenge,
+	void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *));
 
 + (LRSession *)signInWithSession:(LRSession *)session
 	callback:(id<LRCookieCallback>)callback error:(NSError **)error;
 
 + (LRSession *)signInWithSession:(LRSession *)session
 	callback:(id<LRCookieCallback>)callback
-	challengeBlock: (void (^)(NSURLAuthenticationChallenge *challenge,
-		void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))) challengeBlock
+	challengeBlock:(ChallengeBlock)challengeBlock
 	error:(NSError **)error;
 
 @end

@@ -26,8 +26,7 @@
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, copy) NSString *password;
 @property (nonatomic) NSMutableData *responseData;
-@property (nonatomic) void (^challengeBlock)(NSURLAuthenticationChallenge *challenge,
-		void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *));
+@property (nonatomic) ChallengeBlock challengeBlock;
 @property (nonatomic) LRSession *cookieSession;
 @property (nonatomic) NSError *error;
 @property (nonatomic) dispatch_semaphore_t syncSemaphore;
@@ -58,9 +57,7 @@
 
 + (LRSession *)signInWithSession:(LRSession *)session
 		callback:(id<LRCookieCallback>)callback
-		challengeBlock: (void (^)(NSURLAuthenticationChallenge *challenge,
-			void (^)(NSURLSessionAuthChallengeDisposition,
-			NSURLCredential *))) challengeBlock
+		challengeBlock:(ChallengeBlock)challengeBlock
 		error:(NSError **)error {
 
 	LRCookieSignIn *cookieSignIn = [[LRCookieSignIn alloc] init];
