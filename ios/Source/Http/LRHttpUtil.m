@@ -132,18 +132,27 @@ typedef void (^LRHandler)(
 	LRCookieExpirationHandler *handler = [LRCookieExpirationHandler shared];
 
 	if (session.callback) {
-		[handler reloadCookieLoginIfNeeded:session withCompletionHandler:^(LRSession * session) {
-			[session.authentication authenticate:request];
-			[self _sendAsynchronousRequest:request session:session];
-		}];
+		[handler reloadCookieLoginIfNeeded:session withCompletionHandler:^(LRSession *session, NSError *error) {
+			if (session) {
+				[session.authentication authenticate:request];
+				[self _sendAsynchronousRequest:request session:session];
+			}
+			else {
+				[session.callback onFailure:error];
+			}
+		} error:nil];
 
 		return nil;
 	}
 	else {
 		NSHTTPURLResponse *response;
 
-		session = [handler reloadCookieLoginIfNeeded:session withCompletionHandler:nil];
+		session = [handler reloadCookieLoginIfNeeded:session withCompletionHandler:nil error:error];
 		[session.authentication authenticate:request];
+
+		if (*error) {
+			return nil;
+		}
 
 		NSData *data = [NSURLConnection sendSynchronousRequest:request
 			returningResponse:&response error:error];

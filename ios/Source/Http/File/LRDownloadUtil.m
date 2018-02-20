@@ -30,24 +30,29 @@
 
 	LRCookieExpirationHandler *handler = [LRCookieExpirationHandler shared];
 
-	[handler reloadCookieLoginIfNeeded:session withCompletionHandler:^(LRSession *session) {
+	[handler reloadCookieLoginIfNeeded:session withCompletionHandler:
+	 	^(LRSession *session, NSError *error) {
+			if (session) {
+				id<LRAuthentication> auth = session.authentication;
 
-		id<LRAuthentication> auth = session.authentication;
+				LRDownloadDelegate *delegate = [[LRDownloadDelegate alloc]
+					initWithAuth:auth outputStream:outputStream
+					progressDelegate:progressDelegate];
 
-		LRDownloadDelegate *delegate = [[LRDownloadDelegate alloc]
-			initWithAuth:auth outputStream:outputStream
-			progressDelegate:progressDelegate];
+				NSMutableURLRequest *request = [LRHttpUtil getRequestWithSession:session
+					URL:[NSURL URLWithString:URL]];
 
-		NSMutableURLRequest *request = [LRHttpUtil getRequestWithSession:session
-			URL:[NSURL URLWithString:URL]];
+				[auth authenticate:request];
 
-		[auth authenticate:request];
+				NSURLConnection *connection = [[NSURLConnection alloc]
+					initWithRequest:request delegate:delegate startImmediately:NO];
 
-		NSURLConnection *connection = [[NSURLConnection alloc]
-			initWithRequest:request delegate:delegate startImmediately:NO];
-
-		[connection start];
-	}];
+				[connection start];
+			}
+			else {
+				[progressDelegate onFailure:error];
+			}
+	} error: nil];
 }
 
 + (void)downloadWebDAVFileWithSession:(LRSession *)session

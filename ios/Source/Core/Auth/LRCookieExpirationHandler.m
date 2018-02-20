@@ -47,7 +47,7 @@
 }
 
 - (LRSession *)reloadCookieLoginIfNeeded: (LRSession *) session
-	withCompletionHandler:(void (^)(LRSession *))completionHandler {
+	withCompletionHandler:(void (^)(LRSession *, NSError *))completionHandler error:(NSError **)error {
 
 	LRCookieAuthentication *auth = (LRCookieAuthentication *) session.authentication;
 
@@ -59,7 +59,7 @@
 		if ([self shouldCookieBeUpdated: session.authentication]) {
 			if (completionHandler == nil) {
 				LRSession *cookieSession =  [LRCookieSignIn
-					signInWithSession:session callback:nil challengeBlock:nil];
+					signInWithSession:session callback:nil error: error];
 				[self copyConfigurationValuesFromOldAuth:session.authentication
 					toNewAuth:cookieSession.authentication];
 				session.authentication = cookieSession.authentication;
@@ -75,14 +75,14 @@
 					session.authentication = cookieSession.authentication;
 
 					dispatch_semaphore_signal(syncSemaphore);
-					completionHandler((LRSession *) cookieSession);
+					completionHandler((LRSession *) cookieSession, nil);
 				} failure:^(NSError * error) {
 					dispatch_semaphore_signal(syncSemaphore);
-					completionHandler((LRSession *) session);
+					completionHandler(nil, error);
 				}];
 
 				[LRCookieSignIn signInWithSession:session
-					callback:callback challengeBlock:nil];
+					callback:callback error:nil];
 
 				return nil;
 			}
@@ -96,7 +96,7 @@
 		return session;
 	}
 	else {
-		completionHandler(session);
+		completionHandler(session, nil);
 		return nil;
 	}
 }

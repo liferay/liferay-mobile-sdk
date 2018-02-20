@@ -29,6 +29,7 @@
 @property (nonatomic) void (^challengeBlock)(NSURLAuthenticationChallenge *challenge,
 		void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *));
 @property (nonatomic) LRSession *cookieSession;
+@property (nonatomic) NSError *error;
 @property (nonatomic) dispatch_semaphore_t syncSemaphore;
 
 @end
@@ -44,26 +45,28 @@
 	if (self) {
 		self.responseData = [[NSMutableData alloc] init];
 		self.syncSemaphore = dispatch_semaphore_create(0);
+		self.error = nil;
 	}
 
 	return self;
 }
 
 + (LRSession *)signInWithSession:(LRSession *)session
-		callback:(id<LRCookieCallback>)callback {
-	return [self signInWithSession:session callback:callback challengeBlock:nil];
+	callback:(id<LRCookieCallback>)callback error:(NSError **)error {
+	return [self signInWithSession:session callback:callback challengeBlock:nil error:error];
 }
 
 + (LRSession *)signInWithSession:(LRSession *)session
 		callback:(id<LRCookieCallback>)callback
 		challengeBlock: (void (^)(NSURLAuthenticationChallenge *challenge,
 			void (^)(NSURLSessionAuthChallengeDisposition,
-			NSURLCredential *))) challengeBlock {
+			NSURLCredential *))) challengeBlock
+		error:(NSError **)error {
 
 	LRCookieSignIn *cookieSignIn = [[LRCookieSignIn alloc] init];
 	cookieSignIn.challengeBlock = challengeBlock;
 
-	return [cookieSignIn _signInWithSession:session callback:callback];
+	return [cookieSignIn _signInWithSession:session callback:callback error:error];
 }
 
 - (void)URLSession:(NSURLSession *)session
@@ -123,7 +126,13 @@
 				description:@"Failed to get the cookie auth"];
 		}
 
-		[self.callback onFailure:error];
+		if (self.callback) {
+			[self.callback onFailure:error];
+		}
+		else {
+			self.error = error;
+			dispatch_semaphore_signal(self.syncSemaphore);
+		}
 	}
 	else {
 		NSString *html = [[NSString alloc]initWithData: self.responseData
@@ -154,11 +163,11 @@
 		self.cookieSession = [[LRSession alloc]
 			initWithServer:self.server authentication:auth];
 
-		if (self.callback == nil) {
-			dispatch_semaphore_signal(self.syncSemaphore);
+		if (self.callback) {
+			[self.callback onSuccess:self.cookieSession];
 		}
 		else {
-			[self.callback onSuccess:self.cookieSession];
+			dispatch_semaphore_signal(self.syncSemaphore);
 		}
 	}
 }
@@ -219,7 +228,8 @@
 }
 
 - (LRSession *)_signInWithSession:(LRSession *)session
-	callback:(id<LRCookieCallback>)callback {
+	callback:(id<LRCookieCallback>)callback
+	error: (NSError **)error {
 
 	self.server = session.server;
 	self.callback = callback;
@@ -275,12 +285,19 @@
 	
 	[task resume];
 
-	if (self.callback == nil) {
-		dispatch_semaphore_wait(self.syncSemaphore, DISPATCH_TIME_FOREVER);
-		return self.cookieSession;
+	if (self.callback) {
+		return nil;
 	}
 	else {
-		return nil;
+		dispatch_semaphore_wait(self.syncSemaphore, DISPATCH_TIME_FOREVER);
+
+		if (self.cookieSession) {
+			return self.cookieSession;
+		}
+		else {
+			*error = self.error;
+			return nil;
+		}
 	}
 }
 

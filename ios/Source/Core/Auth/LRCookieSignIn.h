@@ -21,11 +21,12 @@
 @interface LRCookieSignIn : NSObject
 
 + (LRSession *)signInWithSession:(LRSession *)session
-	callback:(id<LRCookieCallback>)callback;
+	callback:(id<LRCookieCallback>)callback error:(NSError **)error;
 
 + (LRSession *)signInWithSession:(LRSession *)session
 	callback:(id<LRCookieCallback>)callback
 	challengeBlock: (void (^)(NSURLAuthenticationChallenge *challenge,
-		void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))) challengeBlock;
+		void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))) challengeBlock
+	error:(NSError **)error;
 
 @end

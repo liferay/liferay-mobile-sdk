@@ -122,38 +122,43 @@
 	LRCookieExpirationHandler *handler = [LRCookieExpirationHandler shared];
 
 	[handler reloadCookieLoginIfNeeded:session
-		withCompletionHandler:^(LRSession *session) {
+		withCompletionHandler:^(LRSession *session, NSError *error) {
 
-		if (session.authentication) {
-			[session.authentication authenticate:request];
+		if (session) {
+			if (session.authentication) {
+				[session.authentication authenticate:request];
+			}
+
+			__weak __typeof(AFHTTPRequestOperation *)operation = [manager
+				HTTPRequestOperationWithRequest:request success:success failure:failure];
+
+			if (data.progressDelegate) {
+				[operation setUploadProgressBlock: ^(NSUInteger bytes, long long totalBytes, long long fileSize) {
+					id<LRFileProgressDelegate> progressDelegate = data.progressDelegate;
+
+					if ([progressDelegate respondsToSelector:@selector(isCancelled)]
+						&& [progressDelegate isCancelled]) {
+
+						[operation cancel];
+
+						return;
+					}
+
+					NSData *uploadedData = [NSData dataWithBytes:&bytes
+						length:sizeof(bytes)];
+
+					[data.progressDelegate onProgress:uploadedData
+						totalBytes:totalBytes];
+					}
+				 ];
+			}
+
+			[manager.operationQueue addOperation:operation];
 		}
-
-		__weak __typeof(AFHTTPRequestOperation *)operation = [manager
-			HTTPRequestOperationWithRequest:request success:success failure:failure];
-
-		if (data.progressDelegate) {
-			[operation setUploadProgressBlock: ^(NSUInteger bytes, long long totalBytes, long long fileSize) {
-				id<LRFileProgressDelegate> progressDelegate = data.progressDelegate;
-
-				if ([progressDelegate respondsToSelector:@selector(isCancelled)]
-					&& [progressDelegate isCancelled]) {
-
-					[operation cancel];
-
-					return;
-				}
-
-				NSData *uploadedData = [NSData dataWithBytes:&bytes
-					length:sizeof(bytes)];
-
-				[data.progressDelegate onProgress:uploadedData
-					totalBytes:totalBytes];
-			 	}
-			 ];
+		else {
+			failure(nil, error);
 		}
-
-		[manager.operationQueue addOperation:operation];
-	}];
+	} error:nil];
 }
 
 @end

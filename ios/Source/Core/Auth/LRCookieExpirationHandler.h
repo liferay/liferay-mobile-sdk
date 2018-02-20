@@ -22,6 +22,7 @@
 + (LRCookieExpirationHandler *)shared;
 
 - (LRSession *)reloadCookieLoginIfNeeded: (LRSession *) session
-	withCompletionHandler:(void (^)(LRSession *))completionHandler;
+	withCompletionHandler:(void (^)(LRSession *, NSError *))completionHandler
+	error: (NSError **)error;
 
 @end
