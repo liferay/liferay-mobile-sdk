@@ -64,8 +64,6 @@
 			if (completionHandler == nil) {
 				LRSession *cookieSession =  [LRCookieSignIn
 					signInWithSession:session callback:nil challengeBlock:challengeBlock error: error];
-				[self copyConfigurationValuesFromOldAuth:session.authentication
-					toNewAuth:cookieSession.authentication];
 				session.authentication = cookieSession.authentication;
 
 				dispatch_semaphore_signal(syncSemaphore);
@@ -74,8 +72,6 @@
 			else {
 				LRBlockCallback *callback = [[LRBlockCallback alloc]
 					initWithSuccess:^(LRSession *cookieSession) {
-					[self copyConfigurationValuesFromOldAuth:session.authentication
-						toNewAuth:cookieSession.authentication];
 					session.authentication = cookieSession.authentication;
 
 					dispatch_semaphore_signal(syncSemaphore);
@@ -117,14 +113,6 @@
 	}
 
 	return NO;
-}
-
-- (void)copyConfigurationValuesFromOldAuth:(LRCookieAuthentication *)oldAuth
-	toNewAuth:(LRCookieAuthentication *)newAuth {
-
-	newAuth.lastCookieRefresh = oldAuth.lastCookieRefresh;
-	newAuth.cookieExpirationTime = oldAuth.cookieExpirationTime;
-	newAuth.shouldHandleExpiration = oldAuth.shouldHandleExpiration;
 }
 
 @end

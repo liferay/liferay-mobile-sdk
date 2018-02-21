@@ -24,11 +24,10 @@
 
 @property (nonatomic) id<LRCookieCallback> callback;
 @property (nonatomic, copy) NSString *server;
-@property (nonatomic, copy) NSString *username;
-@property (nonatomic, copy) NSString *password;
 @property (nonatomic) NSMutableData *responseData;
 @property (nonatomic) ChallengeBlock challengeBlock;
 @property (nonatomic) LRSession *cookieSession;
+@property (nonatomic) LRCookieAuthentication *authentication;
 @property (nonatomic) NSError *error;
 @property (nonatomic) dispatch_semaphore_t syncSemaphore;
 
@@ -155,16 +154,12 @@
 		[[NSHTTPCookieStorage sharedHTTPCookieStorage]
 		 setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain];
 
-		LRCookieAuthentication *auth = [[LRCookieAuthentication alloc]
-			initWithAuthToken:authToken
-			cookieHeader:cookieHeader
-			username:self.username
-			password:self.password];
-
-		auth.lastCookieRefresh = [[NSDate date] timeIntervalSince1970];
+		self.authentication.authToken = authToken;
+		self.authentication.cookieHeader = cookieHeader;
+		self.authentication.lastCookieRefresh = [[NSDate date] timeIntervalSince1970];
 
 		self.cookieSession = [[LRSession alloc]
-			initWithServer:self.server authentication:auth];
+			initWithServer:self.server authentication:self.authentication];
 
 		if (self.callback) {
 			[self.callback onSuccess:self.cookieSession];
@@ -246,15 +241,8 @@
 		[NSException raise:@"" format:@"Session authentication can't be null"];
 	}
 
-	if ([authentication isKindOfClass:[LRBasicAuthentication class]]) {
-		LRBasicAuthentication *basicAuth = authentication;
-		self.username = basicAuth.username;
-		self.password = basicAuth.password;
-	}
-	else if ([authentication isKindOfClass:[LRCookieAuthentication class]]){
-		LRCookieAuthentication *cookieAuth = authentication;
-		self.username = cookieAuth.username;
-		self.password = cookieAuth.password;
+	if ([authentication isKindOfClass:[LRCookieAuthentication class]]){
+		self.authentication = authentication;
 	}
 	else {
 		[NSException raise:@""
@@ -265,8 +253,8 @@
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
 									[self _getLoginURL: session.server]];
 
-	NSData *body = [self _getBodyWithUsername:self.username
-		password:self.password];
+	NSData *body = [self _getBodyWithUsername:self.authentication.username
+		password:self.authentication.password];
 
 	NSString *postLength = [NSString stringWithFormat:@"%d",(int)[body length]];
 
