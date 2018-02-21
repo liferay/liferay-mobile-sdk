@@ -49,8 +49,8 @@
 		self.password = password;
 
 		self.lastCookieRefresh = lastCookieRefresh;
-		self.cookieExpirationTime = 15 * 60;
-		self.shouldHandleExpiration = YES;
+		self.cookieExpirationTime = cookieExpirationTime;
+		self.shouldHandleExpiration = shouldHandleExpiration;
 	}
 
 	return self;
