@@ -25,13 +25,14 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void (^ChallengeBlock)(NSURLAuthenticationChallenge *challenge,
 	void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *));
 
-+ (LRSession *)signInWithSession:(LRSession *)session
-	callback:(id<LRCookieCallback>)callback error:(NSError **)error;
++ (nullable LRSession *)signInWithSession:(LRSession *)session
+	callback:(nullable id<LRCookieCallback>)callback
+	error:(NSError * _Nullable * _Nullable)error;
 
-+ (LRSession *)signInWithSession:(LRSession *)session
-	callback:(id<LRCookieCallback>)callback
-	challengeBlock:(ChallengeBlock)challengeBlock
-	error:(NSError **)error;
++ (nullable LRSession *)signInWithSession:(LRSession *)session
+	callback:(nullable id<LRCookieCallback>)callback
+	challengeBlock:(nullable ChallengeBlock)challengeBlock
+	error:(NSError * _Nullable * _Nullable)error;
 
 @end
 NS_ASSUME_NONNULL_END
