@@ -25,7 +25,7 @@
 @property (nonatomic, copy) NSString *password;
 
 @property (nonatomic) BOOL shouldHandleExpiration;
-// Cookie expiration time. In minutes
+// Cookie expiration time. In seconds
 @property (nonatomic) double cookieExpirationTime;
 @property (nonatomic) NSTimeInterval lastCookieRefresh;
 
