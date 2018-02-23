@@ -226,6 +226,7 @@ public class CookieSignIn {
 		OkHttpClient client = new OkHttpClient();
 
 		if (authenticator != null) {
+			CookieExpirationHandler.registerAuthenticatorForServer(session.getServer(), authenticator);
 			client.setAuthenticator(authenticator);
 		}
 
