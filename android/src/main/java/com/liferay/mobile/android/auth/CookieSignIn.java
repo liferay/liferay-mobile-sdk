@@ -200,6 +200,10 @@ public class CookieSignIn {
 	}
 
 	protected String getLoginURL(String server) {
+		if (server.contains("/api/jsonws/invoke")) {
+			server = server.substring(0, server.indexOf("/api/jsonws/invoke"));
+		}
+
 		if (!server.endsWith("/")) {
 			server = server + "/";
 		}
