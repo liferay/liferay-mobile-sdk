@@ -15,7 +15,7 @@
 #import "LRCookieExpirationHandler.h"
 #import "LRCookieAuthentication.h"
 #import "LRCookieSignIn.h"
-#import "LRBlockCallback.h"
+#import "LRBlockCookieCallback.h"
 
 
 @interface LRCookieExpirationHandler() {
@@ -70,7 +70,7 @@
 				return session;
 			}
 			else {
-				LRBlockCallback *callback = [[LRBlockCallback alloc]
+				LRBlockCookieCallback *callback = [[LRBlockCookieCallback alloc]
 					initWithSuccess:^(LRSession *cookieSession) {
 					session.authentication = cookieSession.authentication;
 

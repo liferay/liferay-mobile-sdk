@@ -12,12 +12,21 @@
  * details.
  */
 
-#import "LRSession.h"
+#import <Foundation/Foundation.h>
+#import "LRCookieCallback.h"
 
-@protocol LRCookieCallback <NSObject>
+typedef void (^LRCookieFailureBlock)(NSError *);
+typedef void (^LRCookieSuccessBlock)(LRSession *);
 
-- (void)onFailure:(NSError *)error;
-- (void)onSuccess:(LRSession *)session;
+/**
+ * @author Víctor Galán
+ */
+@interface LRBlockCookieCallback : NSObject <LRCookieCallback>
+
+@property (nonatomic, copy) LRCookieFailureBlock failure;
+@property (nonatomic, copy) LRCookieSuccessBlock success;
+
+- (id)initWithSuccess:(LRCookieSuccessBlock)success failure:(LRCookieFailureBlock)failure;
 
 @end
 

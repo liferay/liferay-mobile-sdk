@@ -261,6 +261,7 @@
 		CCDCE0591A694BB20045023A /* BatchSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDCE0581A694BB20045023A /* BatchSessionTest.m */; };
 		CCF098011ABA355E0023951B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF098001ABA355E0023951B /* UIKit.framework */; };
 		CCF5F35E1AB869E0006132AA /* DownloadFileTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F35D1AB869E0006132AA /* DownloadFileTest.m */; };
+		D6D5FD0120402890008361FF /* LRBlockCookieCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D5FD0020402890008361FF /* LRBlockCookieCallback.m */; };
 		D6E081FF2036F0A7008BBCC0 /* LRCookieExpirationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E081FE2036F0A7008BBCC0 /* LRCookieExpirationHandler.m */; };
 /* End PBXBuildFile section */
 
@@ -781,6 +782,8 @@
 		CCF098001ABA355E0023951B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CCF5F35D1AB869E0006132AA /* DownloadFileTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadFileTest.m; sourceTree = "<group>"; };
 		D12B01AB1138179D989511F7 /* libPods-mobile-sdk-Liferay iOS SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobile-sdk-Liferay iOS SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6D5FCFF20402890008361FF /* LRBlockCookieCallback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRBlockCookieCallback.h; sourceTree = "<group>"; };
+		D6D5FD0020402890008361FF /* LRBlockCookieCallback.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRBlockCookieCallback.m; sourceTree = "<group>"; };
 		D6E081FD2036F0A7008BBCC0 /* LRCookieExpirationHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRCookieExpirationHandler.h; sourceTree = "<group>"; };
 		D6E081FE2036F0A7008BBCC0 /* LRCookieExpirationHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRCookieExpirationHandler.m; sourceTree = "<group>"; };
 		D6E082032036FD37008BBCC0 /* LRCookieCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCookieCallback.h; sourceTree = "<group>"; };
@@ -869,6 +872,8 @@
 				CC03FB7918ED7DCC00F3F16C /* LRServiceFactory.m */,
 				CC03FB7A18ED7DCC00F3F16C /* LRSession.h */,
 				CC03FB7B18ED7DCC00F3F16C /* LRSession.m */,
+				D6D5FCFF20402890008361FF /* LRBlockCookieCallback.h */,
+				D6D5FD0020402890008361FF /* LRBlockCookieCallback.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -3478,6 +3483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6D5FD0120402890008361FF /* LRBlockCookieCallback.m in Sources */,
 				D6E081FF2036F0A7008BBCC0 /* LRCookieExpirationHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
