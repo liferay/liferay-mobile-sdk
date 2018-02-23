@@ -15,6 +15,8 @@
 package com.liferay.mobile.android.http.client;
 
 import com.liferay.mobile.android.auth.Authentication;
+import com.liferay.mobile.android.auth.CookieExpirationHandler;
+import com.liferay.mobile.android.auth.CookieSignIn;
 import com.liferay.mobile.android.callback.Callback;
 import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
@@ -22,6 +24,7 @@ import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.file.InputStreamBody;
 import com.liferay.mobile.android.http.file.UploadData;
 
+import com.liferay.mobile.android.service.Session;
 import com.squareup.okhttp.Authenticator;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.HttpUrl;
@@ -154,14 +157,43 @@ public class OkHttpClientImpl implements HttpClient {
 	protected Response send(Builder builder, final Request request)
 		throws Exception {
 
-		builder = builder.url(request.getURL());
+		final Builder finalBuilder = builder.url(request.getURL());
 		builder.tag(request.getTag());
 
-		OkHttpClient client = getClient(request.getConnectionTimeout());
+		final Callback callback = request.getCallback();
 
+		if (request.getCallback() == null) {
+			Session session = CookieExpirationHandler.reloadSessionIfNeeded(request, null);
+			request.setAuthentication(session.getAuthentication());
+
+			return doSend(builder, request);
+		}
+		else {
+			CookieExpirationHandler.reloadSessionIfNeeded(request, new CookieSignIn.CookieCallback() {
+				@Override
+				public void onSuccess(Session session) {
+					try {
+						doSend(finalBuilder, request);
+					} catch (Exception e) {
+						onFailure(e);
+					}
+				}
+
+				@Override
+				public void onFailure(Exception e) {
+					callback.doFailure(e);
+				}
+			});
+
+			return null;
+		}
+	}
+
+	private Response doSend(Builder builder, Request request) throws Exception {
 		authenticate(client, request);
 		addHeaders(builder, request);
 
+		OkHttpClient client = getClient(request.getConnectionTimeout());
 		Call call = client.newCall(builder.build());
 
 		final Callback callback = request.getCallback();
