@@ -66,7 +66,7 @@ public class CookieSignIn {
 
 		return parseResponse(
 			response, session.getServer(), cookieSignIn.cookieManager,
-			cookieSignIn.username, cookieSignIn.password);
+				(CookieAuthentication) session.getAuthentication());
 	}
 
 	public static void signIn(Session session, CookieCallback callback, Authenticator authenticator) {
@@ -76,7 +76,7 @@ public class CookieSignIn {
 
 			Callback requestCallback = getCallback(
 				session.getServer(), callback, cookieSignIn.cookieManager,
-				cookieSignIn.username, cookieSignIn.password);
+					(CookieAuthentication) session.getAuthentication());
 
 			call.enqueue(requestCallback);
 		}
@@ -94,9 +94,8 @@ public class CookieSignIn {
 	}
 
 	protected static Callback getCallback(
-		final String server, final CookieCallback callback,
-		final CookieManager cookieManager, final String username,
-		final String password) {
+			final String server, final CookieCallback callback,
+			final CookieManager cookieManager, final CookieAuthentication authentication) {
 
 		return new Callback() {
 
@@ -109,7 +108,7 @@ public class CookieSignIn {
 			public void onResponse(Response response) {
 				try {
 					Session session = parseResponse(
-						response, server, cookieManager, username, password);
+						response, server, cookieManager, authentication);
 
 					callback.onSuccess(session);
 				}
@@ -133,7 +132,7 @@ public class CookieSignIn {
 
 	protected static Session parseResponse(
 			Response response, String server, CookieManager cookieManager,
-			String username, String password)
+			CookieAuthentication authentication)
 		throws Exception {
 
 		if (response.code() == 500) {
@@ -145,8 +144,9 @@ public class CookieSignIn {
 		String cookieHeader = getHttpCookies(cookieManager.getCookieStore());
 
 		if (Validator.isNotNull(cookieHeader)) {
-			Authentication authentication = new CookieAuthentication(
-				authToken, cookieHeader, username, password);
+			authentication.setAuthToken(authToken);
+			authentication.setCookieHeader(cookieHeader);
+			authentication.setLastCookieRefresh(System.currentTimeMillis());
 
 			return new SessionImpl(server, authentication);
 		}
@@ -208,17 +208,17 @@ public class CookieSignIn {
 	}
 
 	protected Call signIn() throws Exception {
-		if (!(session.getAuthentication() instanceof BasicAuthentication)) {
+		if (!(session.getAuthentication() instanceof CookieAuthentication)) {
 			throw new Exception(
 				"Can't sign in if authentication implementation is not " +
-					"BasicAuthentication");
+					"CookieAuthentication");
 		}
 
-		BasicAuthentication basicAuthentication =
-			(BasicAuthentication)session.getAuthentication();
+		CookieAuthentication cookieAuthentication =
+			(CookieAuthentication)session.getAuthentication();
 
-		username = basicAuthentication.getUsername();
-		password = basicAuthentication.getPassword();
+		username = cookieAuthentication.getUsername();
+		password = cookieAuthentication.getPassword();
 
 		cookieManager = new CookieManager();
 		cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
