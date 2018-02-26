@@ -22,8 +22,7 @@ public class CookieExpirationHandler {
     public static Session reloadSessionIfNeeded(final Request request, final CookieCallback callback) throws Exception {
         final Session session = new SessionImpl(request.getURL(), request.getAuthentication());
 
-        if ((request.getAuthentication() instanceof CookieAuthentication)
-                && ((CookieAuthentication) request.getAuthentication()).shouldHandleExpiration()) {
+        if (shouldCheckCookieExpiration(request.getAuthentication())) {
 
             CookieAuthentication authentication = (CookieAuthentication) request.getAuthentication();
 
@@ -97,4 +96,15 @@ public class CookieExpirationHandler {
 
         return false;
     }
+
+    private static boolean shouldCheckCookieExpiration(Authentication authentication) {
+        if (authentication instanceof CookieAuthentication) {
+            CookieAuthentication cookieAuthentication = (CookieAuthentication) authentication;
+
+            if (cookieAuthentication.shouldHandleExpiration()) {
+                return true
+            }
+        }
+
+        return false;
 }
