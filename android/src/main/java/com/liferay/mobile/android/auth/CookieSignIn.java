@@ -66,7 +66,7 @@ public class CookieSignIn {
 
 		return parseResponse(
 			response, session.getServer(), cookieSignIn.cookieManager,
-				(CookieAuthentication) session.getAuthentication());
+				getCookieAuthentication(session.getAuthentication()));
 	}
 
 	public static void signIn(Session session, CookieCallback callback, Authenticator authenticator) {
@@ -76,7 +76,7 @@ public class CookieSignIn {
 
 			Callback requestCallback = getCallback(
 				session.getServer(), callback, cookieSignIn.cookieManager,
-					(CookieAuthentication) session.getAuthentication());
+					getCookieAuthentication(session.getAuthentication()));
 
 			call.enqueue(requestCallback);
 		}
@@ -211,6 +211,10 @@ public class CookieSignIn {
 		return server + "c/portal/login";
 	}
 
+	protected static CookieAuthentication getCookieAuthentication(Authentication authentication) {
+        return (CookieAuthentication) authentication;
+	}
+
 	protected Call signIn() throws Exception {
 		if (!(session.getAuthentication() instanceof CookieAuthentication)) {
 			throw new Exception(
@@ -219,7 +223,7 @@ public class CookieSignIn {
 		}
 
 		CookieAuthentication cookieAuthentication =
-			(CookieAuthentication)session.getAuthentication();
+			getCookieAuthentication(session.getAuthentication());
 
 		username = cookieAuthentication.getUsername();
 		password = cookieAuthentication.getPassword();

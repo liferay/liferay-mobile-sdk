@@ -102,9 +102,10 @@ public class CookieExpirationHandler {
             CookieAuthentication cookieAuthentication = (CookieAuthentication) authentication;
 
             if (cookieAuthentication.shouldHandleExpiration()) {
-                return true
+                return true;
             }
         }
 
         return false;
+    }
 }
