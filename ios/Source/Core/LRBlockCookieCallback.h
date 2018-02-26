@@ -15,6 +15,7 @@
 #import <Foundation/Foundation.h>
 #import "LRCookieCallback.h"
 
+NS_ASSUME_NONNULL_BEGIN
 typedef void (^LRCookieFailureBlock)(NSError *);
 typedef void (^LRCookieSuccessBlock)(LRSession *);
 
@@ -29,4 +30,5 @@ typedef void (^LRCookieSuccessBlock)(LRSession *);
 - (id)initWithSuccess:(LRCookieSuccessBlock)success failure:(LRCookieFailureBlock)failure;
 
 @end
+NS_ASSUME_NONNULL_END
 
