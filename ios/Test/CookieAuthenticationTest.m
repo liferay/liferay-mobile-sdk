@@ -38,7 +38,7 @@
 	LRSession *session = [[LRSession alloc] initWithSession:self.session];
 	self.monitor = [TRVSMonitor monitor];
 
-	[LRCookieSignIn signInWithSession:session callback:self];
+	[LRCookieSignIn signInWithSession:session callback:self error:nil];
 
 	[self.monitor wait];
 	[self assert:self.groups error:self.error];
@@ -57,7 +57,7 @@
 
 	self.monitor = [TRVSMonitor monitor];
 
-	[LRCookieSignIn signInWithSession:session callback:self];
+	[LRCookieSignIn signInWithSession:session callback:self error:nil];
 
 	[self.monitor wait];
 	[self assert:self.groups error:self.error];

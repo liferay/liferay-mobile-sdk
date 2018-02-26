@@ -261,6 +261,8 @@
 		CCDCE0591A694BB20045023A /* BatchSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDCE0581A694BB20045023A /* BatchSessionTest.m */; };
 		CCF098011ABA355E0023951B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF098001ABA355E0023951B /* UIKit.framework */; };
 		CCF5F35E1AB869E0006132AA /* DownloadFileTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F35D1AB869E0006132AA /* DownloadFileTest.m */; };
+		D69987E6204441660094C8B3 /* LRCookieExpirationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E081FE2036F0A7008BBCC0 /* LRCookieExpirationHandler.m */; };
+		D69987E7204441CF0094C8B3 /* LRBlockCookieCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D5FD0020402890008361FF /* LRBlockCookieCallback.m */; };
 		D6D5FD0120402890008361FF /* LRBlockCookieCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D5FD0020402890008361FF /* LRBlockCookieCallback.m */; };
 		D6E081FF2036F0A7008BBCC0 /* LRCookieExpirationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E081FE2036F0A7008BBCC0 /* LRCookieExpirationHandler.m */; };
 /* End PBXBuildFile section */
@@ -3371,6 +3373,7 @@
 				CC941CE81C84EB680029C4A6 /* LRMBCategoryService_v7.m in Sources */,
 				CC941CBD1C84EB680029C4A6 /* LRCalendarnotificationtemplateService_v7.m in Sources */,
 				CC941CB81C84EB680029C4A6 /* LRBlogsEntryService_v7.m in Sources */,
+				D69987E6204441660094C8B3 /* LRCookieExpirationHandler.m in Sources */,
 				CC941CAE1C84EB680029C4A6 /* LRAnnouncementsDeliveryService_v7.m in Sources */,
 				CC941CDC1C84EB680029C4A6 /* LRJournalFeedService_v7.m in Sources */,
 				CC03FCCD18ED7DCD00F3F16C /* LRJournalFolderService_v62.m in Sources */,
@@ -3415,6 +3418,7 @@
 				CC03FCEB18ED7DCD00F3F16C /* LRPortletPreferencesService_v62.m in Sources */,
 				CC40D7701974C76D000254E6 /* LRBlockCallback.m in Sources */,
 				CC941CF41C84EB680029C4A6 /* LRPermissionService_v7.m in Sources */,
+				D69987E7204441CF0094C8B3 /* LRBlockCookieCallback.m in Sources */,
 				CC941CC11C84EB680029C4A6 /* LRCompanyService_v7.m in Sources */,
 				CC941D0B1C84EB680029C4A6 /* LRTeamService_v7.m in Sources */,
 				CC941CE21C84EB680029C4A6 /* LRLayoutRevisionService_v7.m in Sources */,
