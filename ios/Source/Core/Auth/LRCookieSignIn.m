@@ -247,7 +247,7 @@
 	else {
 		[NSException raise:@""
 			format:@"Can't sign in if authentication implementation is not " \
-			"BasicAuthentication or CookieAuthentication"];
+			"CookieAuthentication"];
 	}
 
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
