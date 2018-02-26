@@ -17,7 +17,6 @@
 #import "LRCookieSignIn.h"
 #import "LRBlockCookieCallback.h"
 
-
 @interface LRCookieExpirationHandler() {
 	dispatch_semaphore_t syncSemaphore;
 	NSMutableDictionary *challengeBlocks;

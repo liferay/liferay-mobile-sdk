@@ -34,7 +34,7 @@
  */
 @implementation CookieAuthenticationTest
 
-- (void) testCookieSignInWithCookieSession {
+- (void)testCookieSignInWithCookieSession {
 	LRBasicAuthentication *basicAuth =
 		(LRBasicAuthentication *)self.session.authentication;
 
@@ -53,7 +53,7 @@
 	[self assert:self.groups error:self.error];
 }
 
-- (void) onSuccess:(LRSession *)session {
+- (void)onSuccess:(LRSession *)session {
 	LRGroupService_v7 *service = [[LRGroupService_v7 alloc]
 		initWithSession:session];
 

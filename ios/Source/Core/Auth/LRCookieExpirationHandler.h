@@ -17,7 +17,6 @@
 #import "LRSession.h"
 #import "LRCookieSignIn.h"
 
-
 @interface LRCookieExpirationHandler : NSObject
 
 + (LRCookieExpirationHandler *)shared;
@@ -26,7 +25,7 @@
 	withCompletionHandler:(void (^)(LRSession *, NSError *))completionHandler
 	error: (NSError **)error;
 
-- (void)registerAuthenticationChallengeBlock: (ChallengeBlock)challengeBlock
+- (void)registerAuthenticationChallengeBlock:(ChallengeBlock)challengeBlock
 	forServer:(NSString *)server;
 
 @end
