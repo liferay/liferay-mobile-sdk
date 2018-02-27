@@ -15,6 +15,7 @@
 package com.liferay.mobile.android;
 
 import com.liferay.mobile.android.auth.CookieSignIn;
+import com.liferay.mobile.android.auth.basic.CookieAuthentication;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
 import com.liferay.mobile.android.v7.group.GroupService;
@@ -37,6 +38,11 @@ public class CookieAuthenticationTest extends BaseTest {
 
 	public CookieAuthenticationTest() throws IOException {
 		super();
+
+		CookieAuthentication cookieAuthentication = new CookieAuthentication
+				("", "", props.getLogin(), props.getPassword());
+
+		session.setAuthentication(cookieAuthentication);
 	}
 
 	@Test
