@@ -14,13 +14,13 @@
 
 package com.liferay.mobile.android.auth;
 
-import com.liferay.mobile.android.auth.basic.BasicAuthentication;
 import com.liferay.mobile.android.auth.basic.CookieAuthentication;
 import com.liferay.mobile.android.exception.AuthenticationException;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
 import com.liferay.mobile.android.util.Validator;
 
+import com.squareup.okhttp.Authenticator;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
@@ -30,7 +30,6 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Request.Builder;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
-import com.squareup.okhttp.Authenticator;
 
 import java.io.IOException;
 
@@ -38,6 +37,7 @@ import java.net.CookieManager;
 import java.net.CookiePolicy;
 import java.net.CookieStore;
 import java.net.HttpCookie;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -54,11 +54,9 @@ public class CookieSignIn {
 		return signIn(session, authenticator);
 	}
 
-	public static void signIn(Session session, CookieCallback callback) {
-		signIn(session, callback, null);
-	}
+	public static Session signIn(Session session, Authenticator authenticator)
+		throws Exception {
 
-	public static Session signIn(Session session, Authenticator authenticator) throws Exception {
 		CookieSignIn cookieSignIn = new CookieSignIn(session, authenticator);
 		Call call = cookieSignIn.signIn();
 
@@ -66,17 +64,26 @@ public class CookieSignIn {
 
 		return parseResponse(
 			response, session.getServer(), cookieSignIn.cookieManager,
-				getCookieAuthentication(session.getAuthentication()));
+			getCookieAuthentication(session.getAuthentication()));
 	}
 
-	public static void signIn(Session session, CookieCallback callback, Authenticator authenticator) {
+	public static void signIn(Session session, CookieCallback callback) {
+		signIn(session, callback, null);
+	}
+
+	public static void signIn(
+			Session session, CookieCallback callback,
+			Authenticator authenticator) {
+
 		try {
-			CookieSignIn cookieSignIn = new CookieSignIn(session, authenticator);
+			CookieSignIn cookieSignIn = new CookieSignIn(
+					session, authenticator);
+
 			Call call = cookieSignIn.signIn();
 
 			Callback requestCallback = getCallback(
 				session.getServer(), callback, cookieSignIn.cookieManager,
-					getCookieAuthentication(session.getAuthentication()));
+				getCookieAuthentication(session.getAuthentication()));
 
 			call.enqueue(requestCallback);
 		}
@@ -95,7 +102,8 @@ public class CookieSignIn {
 
 	protected static Callback getCallback(
 			final String server, final CookieCallback callback,
-			final CookieManager cookieManager, final CookieAuthentication authentication) {
+			final CookieManager cookieManager,
+			final CookieAuthentication authentication) {
 
 		return new Callback() {
 
@@ -119,6 +127,12 @@ public class CookieSignIn {
 		};
 	}
 
+	protected static CookieAuthentication getCookieAuthentication(
+			Authentication authentication) {
+
+		return (CookieAuthentication)authentication;
+	}
+
 	protected static String getHttpCookies(CookieStore cookieStore) {
 		StringBuilder cookies = new StringBuilder();
 
@@ -128,6 +142,21 @@ public class CookieSignIn {
 		}
 
 		return cookies.toString();
+	}
+
+	protected static String parseAuthToken(String body)
+		throws AuthenticationException, IOException {
+
+		Pattern tokenPattern = Pattern.compile(
+				".*Liferay.authToken\\s*=\\s*[\"'](.{8})[\"'].*");
+
+		Matcher matcher = tokenPattern.matcher(body);
+
+		if (!matcher.find()) {
+			throw new AuthenticationException("Cookie invalid or empty");
+		}
+
+		return matcher.group(1);
 	}
 
 	protected static Session parseResponse(
@@ -155,16 +184,9 @@ public class CookieSignIn {
 		}
 	}
 
-	protected static String parseAuthToken(String body) throws IOException, AuthenticationException {
-		Pattern tokenPattern = Pattern.compile(".*Liferay.authToken\\s*=\\s*[\"'](.{8})[\"'].*");
-
-		Matcher matcher = tokenPattern.matcher(body);
-
-		if (!matcher.find()) {
-			throw new AuthenticationException("Cookie invalid or empty");
-		}
-
-		return matcher.group(1);
+	protected CookieSignIn(Session session, Authenticator authenticator) {
+		this.session = session;
+		this.authenticator = authenticator;
 	}
 
 	protected String getBody(String username, String password)
@@ -211,10 +233,6 @@ public class CookieSignIn {
 		return server + "c/portal/login";
 	}
 
-	protected static CookieAuthentication getCookieAuthentication(Authentication authentication) {
-        return (CookieAuthentication) authentication;
-	}
-
 	protected Call signIn() throws Exception {
 		if (!(session.getAuthentication() instanceof CookieAuthentication)) {
 			throw new Exception(
@@ -222,8 +240,8 @@ public class CookieSignIn {
 					"CookieAuthentication");
 		}
 
-		CookieAuthentication cookieAuthentication =
-			getCookieAuthentication(session.getAuthentication());
+		CookieAuthentication cookieAuthentication = getCookieAuthentication(
+			session.getAuthentication());
 
 		username = cookieAuthentication.getUsername();
 		password = cookieAuthentication.getPassword();
@@ -234,7 +252,9 @@ public class CookieSignIn {
 		OkHttpClient client = new OkHttpClient();
 
 		if (authenticator != null) {
-			CookieExpirationHandler.registerAuthenticatorForServer(session.getServer(), authenticator);
+			CookieExpirationHandler.registerAuthenticatorForServer(
+					session.getServer(), authenticator);
+
 			client.setAuthenticator(authenticator);
 		}
 
@@ -251,10 +271,5 @@ public class CookieSignIn {
 	protected String password;
 	protected Session session;
 	protected String username;
-
-	private CookieSignIn(Session session, Authenticator authenticator) {
-		this.session = session;
-		this.authenticator = authenticator;
-	}
 
 }

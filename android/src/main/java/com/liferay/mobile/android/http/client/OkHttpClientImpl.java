@@ -23,8 +23,8 @@ import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
 import com.liferay.mobile.android.http.file.InputStreamBody;
 import com.liferay.mobile.android.http.file.UploadData;
-
 import com.liferay.mobile.android.service.Session;
+
 import com.squareup.okhttp.Authenticator;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.HttpUrl;
@@ -116,6 +116,26 @@ public class OkHttpClientImpl implements HttpClient {
 		}
 	}
 
+	protected Response doSend(Builder builder, Request request)
+		throws Exception {
+
+		authenticate(client, request);
+		addHeaders(builder, request);
+
+		OkHttpClient client = getClient(request.getConnectionTimeout());
+		Call call = client.newCall(builder.build());
+
+		final Callback callback = request.getCallback();
+
+		if (callback == null) {
+			return new Response(call.execute());
+		}
+		else {
+			sendAsync(call, callback);
+			return null;
+		}
+	}
+
 	protected OkHttpClient getClient(int connectionTimeout) {
 		OkHttpClient clone = client.clone();
 
@@ -163,18 +183,23 @@ public class OkHttpClientImpl implements HttpClient {
 		final Callback callback = request.getCallback();
 
 		if (request.getCallback() == null) {
-			Session session = CookieExpirationHandler.reloadSessionIfNeeded(request, null);
+			Session session = CookieExpirationHandler.reloadSessionIfNeeded(
+					request, null);
+
 			request.setAuthentication(session.getAuthentication());
 
 			return doSend(builder, request);
 		}
 		else {
-			CookieExpirationHandler.reloadSessionIfNeeded(request, new CookieSignIn.CookieCallback() {
+			CookieExpirationHandler.reloadSessionIfNeeded(
+					request, new CookieSignIn.CookieCallback() {
+
 				@Override
 				public void onSuccess(Session session) {
 					try {
 						doSend(finalBuilder, request);
-					} catch (Exception e) {
+					}
+					catch (Exception e) {
 						onFailure(e);
 					}
 				}
@@ -185,24 +210,6 @@ public class OkHttpClientImpl implements HttpClient {
 				}
 			});
 
-			return null;
-		}
-	}
-
-	private Response doSend(Builder builder, Request request) throws Exception {
-		authenticate(client, request);
-		addHeaders(builder, request);
-
-		OkHttpClient client = getClient(request.getConnectionTimeout());
-		Call call = client.newCall(builder.build());
-
-		final Callback callback = request.getCallback();
-
-		if (callback == null) {
-			return new Response(call.execute());
-		}
-		else {
-			sendAsync(call, callback);
 			return null;
 		}
 	}
