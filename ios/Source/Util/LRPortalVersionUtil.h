@@ -18,6 +18,7 @@
 extern const int LR_UNKNOWN_VERSION;
 extern const int LR_VERSION_6_2;
 extern const int LR_VERSION_7;
+extern const int LR_VERSION_7_1;
 
 /**
  * @author Bruno Farache

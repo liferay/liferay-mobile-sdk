@@ -25,4 +25,6 @@ public class PortalVersion {
 
 	public static final int V_7 = 7000;
 
+	public static final int V_7_1 = 7100;
+
 }
