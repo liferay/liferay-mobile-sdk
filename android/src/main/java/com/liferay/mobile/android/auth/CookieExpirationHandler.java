@@ -40,8 +40,6 @@ public class CookieExpirationHandler {
                         request.setAuthentication(cookieSession.getAuthentication());
 
                         return cookieSession;
-                    } catch (Exception e) {
-                        throw e;
                     } finally {
                         lock.unlock();
                     }
