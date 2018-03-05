@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v62.layoutsetprototype;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -124,14 +123,18 @@ public class LayoutSetPrototypeService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONObject updateLayoutSetPrototype(long layoutSetPrototypeId, String settings) throws Exception {
+	public JSONObject updateLayoutSetPrototype(long layoutSetPrototypeId, JSONObject nameMap, String description, boolean active, boolean layoutsUpdateable, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("layoutSetPrototypeId", layoutSetPrototypeId);
-			_params.put("settings", checkNull(settings));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("description", checkNull(description));
+			_params.put("active", active);
+			_params.put("layoutsUpdateable", layoutsUpdateable);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/layoutsetprototype/update-layout-set-prototype", _params);
 		}
@@ -148,18 +151,14 @@ public class LayoutSetPrototypeService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateLayoutSetPrototype(long layoutSetPrototypeId, JSONObject nameMap, String description, boolean active, boolean layoutsUpdateable, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateLayoutSetPrototype(long layoutSetPrototypeId, String settings) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("layoutSetPrototypeId", layoutSetPrototypeId);
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("description", checkNull(description));
-			_params.put("active", active);
-			_params.put("layoutsUpdateable", layoutsUpdateable);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_params.put("settings", checkNull(settings));
 
 			_command.put("/layoutsetprototype/update-layout-set-prototype", _params);
 		}

@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.journalfeed;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -71,6 +70,41 @@ public class JournalFeedService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public void deleteFeed(long feedId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("feedId", feedId);
+
+			_command.put("/journal.journalfeed/delete-feed", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void deleteFeed(long groupId, String feedId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("feedId", checkNull(feedId));
+
+			_command.put("/journal.journalfeed/delete-feed", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public JSONObject getFeed(long feedId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -116,41 +150,6 @@ public class JournalFeedService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
-	}
-
-	public void deleteFeed(long feedId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("feedId", feedId);
-
-			_command.put("/journal.journalfeed/delete-feed", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void deleteFeed(long groupId, String feedId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("feedId", checkNull(feedId));
-
-			_command.put("/journal.journalfeed/delete-feed", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
 	}
 
 	public JSONObject updateFeed(long groupId, String feedId, String name, String description, String ddmStructureKey, String ddmTemplateKey, String ddmRendererTemplateKey, int delta, String orderByCol, String orderByType, String targetLayoutFriendlyUrl, String targetPortletId, String contentField, String feedType, double feedVersion, JSONObjectWrapper serviceContext) throws Exception {

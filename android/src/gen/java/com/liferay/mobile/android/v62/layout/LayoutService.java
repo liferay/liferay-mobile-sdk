@@ -32,38 +32,6 @@ public class LayoutService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addLayout(long groupId, boolean privateLayout, long parentLayoutId, String name, String title, String description, String type, boolean hidden, String friendlyURL, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("parentLayoutId", parentLayoutId);
-			_params.put("name", checkNull(name));
-			_params.put("title", checkNull(title));
-			_params.put("description", checkNull(description));
-			_params.put("type", checkNull(type));
-			_params.put("hidden", hidden);
-			_params.put("friendlyURL", checkNull(friendlyURL));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/layout/add-layout", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
 	public JSONObject addLayout(long groupId, boolean privateLayout, long parentLayoutId, JSONObject localeNamesMap, JSONObject localeTitlesMap, JSONObject descriptionMap, JSONObject keywordsMap, JSONObject robotsMap, String type, boolean hidden, String friendlyURL, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -133,22 +101,36 @@ public class LayoutService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public void deleteLayout(long plid, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addLayout(long groupId, boolean privateLayout, long parentLayoutId, String name, String title, String description, String type, boolean hidden, String friendlyURL, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("plid", plid);
+			_params.put("groupId", groupId);
+			_params.put("privateLayout", privateLayout);
+			_params.put("parentLayoutId", parentLayoutId);
+			_params.put("name", checkNull(name));
+			_params.put("title", checkNull(title));
+			_params.put("description", checkNull(description));
+			_params.put("type", checkNull(type));
+			_params.put("hidden", hidden);
+			_params.put("friendlyURL", checkNull(friendlyURL));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
-			_command.put("/layout/delete-layout", _params);
+			_command.put("/layout/add-layout", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void deleteLayout(long groupId, boolean privateLayout, long layoutId, JSONObjectWrapper serviceContext) throws Exception {
@@ -160,6 +142,24 @@ public class LayoutService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
 			_params.put("layoutId", layoutId);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+
+			_command.put("/layout/delete-layout", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void deleteLayout(long plid, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("plid", plid);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/layout/delete-layout", _params);
@@ -190,7 +190,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONArray exportLayouts(long groupId, boolean privateLayout, JSONObject parameterMap, long startDate, long endDate) throws Exception {
+	public JSONArray exportLayouts(long groupId, boolean privateLayout, JSONArray layoutIds, JSONObject parameterMap, long startDate, long endDate) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -198,6 +198,7 @@ public class LayoutService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
+			_params.put("layoutIds", checkNull(layoutIds));
 			_params.put("parameterMap", checkNull(parameterMap));
 			_params.put("startDate", startDate);
 			_params.put("endDate", endDate);
@@ -217,7 +218,7 @@ public class LayoutService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray exportLayouts(long groupId, boolean privateLayout, JSONArray layoutIds, JSONObject parameterMap, long startDate, long endDate) throws Exception {
+	public JSONArray exportLayouts(long groupId, boolean privateLayout, JSONObject parameterMap, long startDate, long endDate) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -225,7 +226,6 @@ public class LayoutService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("layoutIds", checkNull(layoutIds));
 			_params.put("parameterMap", checkNull(parameterMap));
 			_params.put("startDate", startDate);
 			_params.put("endDate", endDate);
@@ -303,33 +303,6 @@ public class LayoutService extends BaseService {
 		return _result.getLong(0);
 	}
 
-	public JSONArray exportPortletInfo(long companyId, String portletId, JSONObject parameterMap, long startDate, long endDate) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("portletId", checkNull(portletId));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("startDate", startDate);
-			_params.put("endDate", endDate);
-
-			_command.put("/layout/export-portlet-info", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
 	public JSONArray exportPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, long startDate, long endDate) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -358,18 +331,19 @@ public class LayoutService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONObject exportPortletInfoAsFile(String portletId, JSONObject parameterMap, long startDate, long endDate) throws Exception {
+	public JSONArray exportPortletInfo(long companyId, String portletId, JSONObject parameterMap, long startDate, long endDate) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
+			_params.put("companyId", companyId);
 			_params.put("portletId", checkNull(portletId));
 			_params.put("parameterMap", checkNull(parameterMap));
 			_params.put("startDate", startDate);
 			_params.put("endDate", endDate);
 
-			_command.put("/layout/export-portlet-info-as-file", _params);
+			_command.put("/layout/export-portlet-info", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -381,7 +355,7 @@ public class LayoutService extends BaseService {
 			return null;
 		}
 
-		return _result.getJSONObject(0);
+		return _result.getJSONArray(0);
 	}
 
 	public JSONObject exportPortletInfoAsFile(long plid, long groupId, String portletId, JSONObject parameterMap, long startDate, long endDate) throws Exception {
@@ -412,13 +386,41 @@ public class LayoutService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public Long exportPortletInfoAsFileInBackground(String taskName, String portletId, JSONObject parameterMap, long startDate, long endDate, String fileName) throws Exception {
+	public JSONObject exportPortletInfoAsFile(String portletId, JSONObject parameterMap, long startDate, long endDate) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("portletId", checkNull(portletId));
+			_params.put("parameterMap", checkNull(parameterMap));
+			_params.put("startDate", startDate);
+			_params.put("endDate", endDate);
+
+			_command.put("/layout/export-portlet-info-as-file", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public Long exportPortletInfoAsFileInBackground(String taskName, long plid, long groupId, String portletId, JSONObject parameterMap, long startDate, long endDate, String fileName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("taskName", checkNull(taskName));
+			_params.put("plid", plid);
+			_params.put("groupId", groupId);
 			_params.put("portletId", checkNull(portletId));
 			_params.put("parameterMap", checkNull(parameterMap));
 			_params.put("startDate", startDate);
@@ -440,15 +442,13 @@ public class LayoutService extends BaseService {
 		return _result.getLong(0);
 	}
 
-	public Long exportPortletInfoAsFileInBackground(String taskName, long plid, long groupId, String portletId, JSONObject parameterMap, long startDate, long endDate, String fileName) throws Exception {
+	public Long exportPortletInfoAsFileInBackground(String taskName, String portletId, JSONObject parameterMap, long startDate, long endDate, String fileName) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("taskName", checkNull(taskName));
-			_params.put("plid", plid);
-			_params.put("groupId", groupId);
 			_params.put("portletId", checkNull(portletId));
 			_params.put("parameterMap", checkNull(parameterMap));
 			_params.put("startDate", startDate);
@@ -493,7 +493,7 @@ public class LayoutService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public Long getDefaultPlid(long groupId, long scopeGroupId, String portletId) throws Exception {
+	public Long getDefaultPlid(long groupId, long scopeGroupId, boolean privateLayout, String portletId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -501,6 +501,7 @@ public class LayoutService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("scopeGroupId", scopeGroupId);
+			_params.put("privateLayout", privateLayout);
 			_params.put("portletId", checkNull(portletId));
 
 			_command.put("/layout/get-default-plid", _params);
@@ -518,7 +519,7 @@ public class LayoutService extends BaseService {
 		return _result.getLong(0);
 	}
 
-	public Long getDefaultPlid(long groupId, long scopeGroupId, boolean privateLayout, String portletId) throws Exception {
+	public Long getDefaultPlid(long groupId, long scopeGroupId, String portletId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -526,7 +527,6 @@ public class LayoutService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("scopeGroupId", scopeGroupId);
-			_params.put("privateLayout", privateLayout);
 			_params.put("portletId", checkNull(portletId));
 
 			_command.put("/layout/get-default-plid", _params);
@@ -789,25 +789,6 @@ public class LayoutService extends BaseService {
 		return _result.getLong(0);
 	}
 
-	public void importPortletInfo(String portletId, JSONObject parameterMap, UploadData file) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("portletId", checkNull(portletId));
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("file", checkNull(file));
-
-			_command.put("/layout/import-portlet-info", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.upload(_command);
-	}
-
 	public void importPortletInfo(long plid, long groupId, String portletId, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -829,18 +810,17 @@ public class LayoutService extends BaseService {
 		session.upload(_command);
 	}
 
-	public void importPortletInfoInBackground(String taskName, String portletId, JSONObject parameterMap, UploadData file) throws Exception {
+	public void importPortletInfo(String portletId, JSONObject parameterMap, UploadData file) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("taskName", checkNull(taskName));
 			_params.put("portletId", checkNull(portletId));
 			_params.put("parameterMap", checkNull(parameterMap));
 			_params.put("file", checkNull(file));
 
-			_command.put("/layout/import-portlet-info-in-background", _params);
+			_command.put("/layout/import-portlet-info", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -875,6 +855,26 @@ public class LayoutService extends BaseService {
 		}
 
 		return _result.getLong(0);
+	}
+
+	public void importPortletInfoInBackground(String taskName, String portletId, JSONObject parameterMap, UploadData file) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("taskName", checkNull(taskName));
+			_params.put("portletId", checkNull(portletId));
+			_params.put("parameterMap", checkNull(parameterMap));
+			_params.put("file", checkNull(file));
+
+			_command.put("/layout/import-portlet-info-in-background", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.upload(_command);
 	}
 
 	public void schedulePublishToLive(long sourceGroupId, long targetGroupId, boolean privateLayout, JSONObject layoutIdMap, JSONObject parameterMap, String scope, long startDate, long endDate, String groupName, String cronText, long schedulerStartDate, long schedulerEndDate, String description) throws Exception {
@@ -998,7 +998,7 @@ public class LayoutService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateLayout(long groupId, boolean privateLayout, long layoutId, long parentLayoutId, JSONObject localeNamesMap, JSONObject localeTitlesMap, JSONObject descriptionMap, JSONObject keywordsMap, JSONObject robotsMap, String type, boolean hidden, String friendlyURL, boolean iconImage, byte[] iconBytes, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateLayout(long groupId, boolean privateLayout, long layoutId, long parentLayoutId, JSONObject localeNamesMap, JSONObject localeTitlesMap, JSONObject descriptionMap, JSONObject keywordsMap, JSONObject robotsMap, String type, boolean hidden, JSONObject friendlyURLMap, boolean iconImage, byte[] iconBytes, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1015,7 +1015,7 @@ public class LayoutService extends BaseService {
 			_params.put("robotsMap", checkNull(robotsMap));
 			_params.put("type", checkNull(type));
 			_params.put("hidden", hidden);
-			_params.put("friendlyURL", checkNull(friendlyURL));
+			_params.put("friendlyURLMap", checkNull(friendlyURLMap));
 			_params.put("iconImage", iconImage);
 			_params.put("iconBytes", toString(iconBytes));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
@@ -1035,7 +1035,7 @@ public class LayoutService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateLayout(long groupId, boolean privateLayout, long layoutId, long parentLayoutId, JSONObject localeNamesMap, JSONObject localeTitlesMap, JSONObject descriptionMap, JSONObject keywordsMap, JSONObject robotsMap, String type, boolean hidden, JSONObject friendlyURLMap, boolean iconImage, byte[] iconBytes, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateLayout(long groupId, boolean privateLayout, long layoutId, long parentLayoutId, JSONObject localeNamesMap, JSONObject localeTitlesMap, JSONObject descriptionMap, JSONObject keywordsMap, JSONObject robotsMap, String type, boolean hidden, String friendlyURL, boolean iconImage, byte[] iconBytes, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1052,7 +1052,7 @@ public class LayoutService extends BaseService {
 			_params.put("robotsMap", checkNull(robotsMap));
 			_params.put("type", checkNull(type));
 			_params.put("hidden", hidden);
-			_params.put("friendlyURLMap", checkNull(friendlyURLMap));
+			_params.put("friendlyURL", checkNull(friendlyURL));
 			_params.put("iconImage", iconImage);
 			_params.put("iconBytes", toString(iconBytes));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
@@ -1127,31 +1127,6 @@ public class LayoutService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateName(long plid, String name, String languageId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("plid", plid);
-			_params.put("name", checkNull(name));
-			_params.put("languageId", checkNull(languageId));
-
-			_command.put("/layout/update-name", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
 	public JSONObject updateName(long groupId, boolean privateLayout, long layoutId, String name, String languageId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -1179,16 +1154,17 @@ public class LayoutService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateParentLayoutId(long plid, long parentPlid) throws Exception {
+	public JSONObject updateName(long plid, String name, String languageId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("plid", plid);
-			_params.put("parentPlid", parentPlid);
+			_params.put("name", checkNull(name));
+			_params.put("languageId", checkNull(languageId));
 
-			_command.put("/layout/update-parent-layout-id", _params);
+			_command.put("/layout/update-name", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -1229,16 +1205,16 @@ public class LayoutService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updatePriority(long plid, int priority) throws Exception {
+	public JSONObject updateParentLayoutId(long plid, long parentPlid) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("plid", plid);
-			_params.put("priority", priority);
+			_params.put("parentPlid", parentPlid);
 
-			_command.put("/layout/update-priority", _params);
+			_command.put("/layout/update-parent-layout-id", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -1290,6 +1266,30 @@ public class LayoutService extends BaseService {
 			_params.put("layoutId", layoutId);
 			_params.put("nextLayoutId", nextLayoutId);
 			_params.put("previousLayoutId", previousLayoutId);
+
+			_command.put("/layout/update-priority", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject updatePriority(long plid, int priority) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("plid", plid);
+			_params.put("priority", priority);
 
 			_command.put("/layout/update-priority", _params);
 		}

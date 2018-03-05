@@ -32,102 +32,6 @@ public class MBMessageService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject getMessage(long messageId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("messageId", messageId);
-
-			_command.put("/mbmessage/get-message", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONArray getThreadMessages(long groupId, long categoryId, long threadId, int status, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("categoryId", categoryId);
-			_params.put("threadId", threadId);
-			_params.put("status", status);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/mbmessage/get-thread-messages", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Integer getCategoryMessagesCount(long groupId, long categoryId, int status) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("categoryId", categoryId);
-			_params.put("status", status);
-
-			_command.put("/mbmessage/get-category-messages-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public void addMessageAttachment(long messageId, String fileName, UploadData file, String mimeType) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("messageId", messageId);
-			_params.put("fileName", checkNull(fileName));
-			_params.put("file", checkNull(file));
-			_params.put("mimeType", checkNull(mimeType));
-
-			_command.put("/mbmessage/add-message-attachment", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.upload(_command);
-	}
-
 	public JSONObject addDiscussionMessage(long groupId, String className, long classPK, long threadId, long parentMessageId, String subject, String body, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -144,6 +48,38 @@ public class MBMessageService extends BaseService {
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
 			_command.put("/mbmessage/add-discussion-message", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject addMessage(long groupId, long categoryId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("categoryId", categoryId);
+			_params.put("subject", checkNull(subject));
+			_params.put("body", checkNull(body));
+			_params.put("format", checkNull(format));
+			_params.put("inputStreamOVPs", checkNull(inputStreamOVPs));
+			_params.put("anonymous", anonymous);
+			_params.put("priority", priority);
+			_params.put("allowPingbacks", allowPingbacks);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
+
+			_command.put("/mbmessage/add-message", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -217,38 +153,6 @@ public class MBMessageService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addMessage(long groupId, long categoryId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("categoryId", categoryId);
-			_params.put("subject", checkNull(subject));
-			_params.put("body", checkNull(body));
-			_params.put("format", checkNull(format));
-			_params.put("inputStreamOVPs", checkNull(inputStreamOVPs));
-			_params.put("anonymous", anonymous);
-			_params.put("priority", priority);
-			_params.put("allowPingbacks", allowPingbacks);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/mbmessage/add-message", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
 	public JSONObject addMessage(long parentMessageId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -278,6 +182,26 @@ public class MBMessageService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
+	}
+
+	public void addMessageAttachment(long messageId, String fileName, UploadData file, String mimeType) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("messageId", messageId);
+			_params.put("fileName", checkNull(fileName));
+			_params.put("file", checkNull(file));
+			_params.put("mimeType", checkNull(mimeType));
+
+			_command.put("/mbmessage/add-message-attachment", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.upload(_command);
 	}
 
 	public void deleteDiscussionMessage(long messageId) throws Exception {
@@ -416,6 +340,94 @@ public class MBMessageService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
+	public Integer getCategoryMessagesCount(long groupId, long categoryId, int status) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("categoryId", categoryId);
+			_params.put("status", status);
+
+			_command.put("/mbmessage/get-category-messages-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
+	}
+
+	public String getCategoryMessagesRss(long groupId, long categoryId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("categoryId", categoryId);
+			_params.put("status", status);
+			_params.put("max", max);
+			_params.put("type", checkNull(type));
+			_params.put("version", version);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
+			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.kernel.theme.ThemeDisplay", themeDisplay);
+
+			_command.put("/mbmessage/get-category-messages-rss", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
+	}
+
+	public String getCompanyMessagesRss(long companyId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("status", status);
+			_params.put("max", max);
+			_params.put("type", checkNull(type));
+			_params.put("version", version);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
+			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.kernel.theme.ThemeDisplay", themeDisplay);
+
+			_command.put("/mbmessage/get-company-messages-rss", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
+	}
+
 	public Integer getGroupMessagesCount(long groupId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -438,6 +450,92 @@ public class MBMessageService extends BaseService {
 		}
 
 		return _result.getInt(0);
+	}
+
+	public String getGroupMessagesRss(long groupId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("status", status);
+			_params.put("max", max);
+			_params.put("type", checkNull(type));
+			_params.put("version", version);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
+			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.kernel.theme.ThemeDisplay", themeDisplay);
+
+			_command.put("/mbmessage/get-group-messages-rss", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
+	}
+
+	public String getGroupMessagesRss(long groupId, long userId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("status", status);
+			_params.put("max", max);
+			_params.put("type", checkNull(type));
+			_params.put("version", version);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
+			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.kernel.theme.ThemeDisplay", themeDisplay);
+
+			_command.put("/mbmessage/get-group-messages-rss", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
+	}
+
+	public JSONObject getMessage(long messageId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("messageId", messageId);
+
+			_command.put("/mbmessage/get-message", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getMessageDisplay(long messageId, int status) throws Exception {
@@ -490,6 +588,59 @@ public class MBMessageService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public Integer getThreadAnswersCount(long groupId, long categoryId, long threadId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("categoryId", categoryId);
+			_params.put("threadId", threadId);
+
+			_command.put("/mbmessage/get-thread-answers-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
+	}
+
+	public JSONArray getThreadMessages(long groupId, long categoryId, long threadId, int status, int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("categoryId", categoryId);
+			_params.put("threadId", threadId);
+			_params.put("status", status);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/mbmessage/get-thread-messages", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
 	public Integer getThreadMessagesCount(long groupId, long categoryId, long threadId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -514,6 +665,37 @@ public class MBMessageService extends BaseService {
 		}
 
 		return _result.getInt(0);
+	}
+
+	public String getThreadMessagesRss(long threadId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("threadId", threadId);
+			_params.put("status", status);
+			_params.put("max", max);
+			_params.put("type", checkNull(type));
+			_params.put("version", version);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
+			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.kernel.theme.ThemeDisplay", themeDisplay);
+
+			_command.put("/mbmessage/get-thread-messages-rss", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
 	}
 
 	public void restoreMessageAttachmentFromTrash(long messageId, String fileName) throws Exception {
@@ -643,188 +825,6 @@ public class MBMessageService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
-	}
-
-	public String getCategoryMessagesRss(long groupId, long categoryId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("categoryId", categoryId);
-			_params.put("status", status);
-			_params.put("max", max);
-			_params.put("type", checkNull(type));
-			_params.put("version", version);
-			_params.put("displayStyle", checkNull(displayStyle));
-			_params.put("feedURL", checkNull(feedURL));
-			_params.put("entryURL", checkNull(entryURL));
-			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.kernel.theme.ThemeDisplay", themeDisplay);
-
-			_command.put("/mbmessage/get-category-messages-rss", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getString(0);
-	}
-
-	public String getCompanyMessagesRss(long companyId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("status", status);
-			_params.put("max", max);
-			_params.put("type", checkNull(type));
-			_params.put("version", version);
-			_params.put("displayStyle", checkNull(displayStyle));
-			_params.put("feedURL", checkNull(feedURL));
-			_params.put("entryURL", checkNull(entryURL));
-			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.kernel.theme.ThemeDisplay", themeDisplay);
-
-			_command.put("/mbmessage/get-company-messages-rss", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getString(0);
-	}
-
-	public String getGroupMessagesRss(long groupId, long userId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-			_params.put("status", status);
-			_params.put("max", max);
-			_params.put("type", checkNull(type));
-			_params.put("version", version);
-			_params.put("displayStyle", checkNull(displayStyle));
-			_params.put("feedURL", checkNull(feedURL));
-			_params.put("entryURL", checkNull(entryURL));
-			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.kernel.theme.ThemeDisplay", themeDisplay);
-
-			_command.put("/mbmessage/get-group-messages-rss", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getString(0);
-	}
-
-	public String getGroupMessagesRss(long groupId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("status", status);
-			_params.put("max", max);
-			_params.put("type", checkNull(type));
-			_params.put("version", version);
-			_params.put("displayStyle", checkNull(displayStyle));
-			_params.put("feedURL", checkNull(feedURL));
-			_params.put("entryURL", checkNull(entryURL));
-			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.kernel.theme.ThemeDisplay", themeDisplay);
-
-			_command.put("/mbmessage/get-group-messages-rss", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getString(0);
-	}
-
-	public Integer getThreadAnswersCount(long groupId, long categoryId, long threadId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("categoryId", categoryId);
-			_params.put("threadId", threadId);
-
-			_command.put("/mbmessage/get-thread-answers-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public String getThreadMessagesRss(long threadId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("threadId", threadId);
-			_params.put("status", status);
-			_params.put("max", max);
-			_params.put("type", checkNull(type));
-			_params.put("version", version);
-			_params.put("displayStyle", checkNull(displayStyle));
-			_params.put("feedURL", checkNull(feedURL));
-			_params.put("entryURL", checkNull(entryURL));
-			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.kernel.theme.ThemeDisplay", themeDisplay);
-
-			_command.put("/mbmessage/get-thread-messages-rss", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getString(0);
 	}
 
 }

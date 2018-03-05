@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.mdrrulegroup;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,6 +29,32 @@ public class MDRRuleGroupService extends BaseService {
 
 	public MDRRuleGroupService(Session session) {
 		super(session);
+	}
+
+	public JSONObject addRuleGroup(long groupId, JSONObject nameMap, JSONObject descriptionMap, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
+
+			_command.put("/mdr.mdrrulegroup/add-rule-group", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject copyRuleGroup(long ruleGroupId, long groupId, JSONObjectWrapper serviceContext) throws Exception {
@@ -72,32 +97,6 @@ public class MDRRuleGroupService extends BaseService {
 		}
 
 		session.invoke(_command);
-	}
-
-	public JSONObject addRuleGroup(long groupId, JSONObject nameMap, JSONObject descriptionMap, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/mdr.mdrrulegroup/add-rule-group", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
 	}
 
 	public JSONObject fetchRuleGroup(long ruleGroupId) throws Exception {

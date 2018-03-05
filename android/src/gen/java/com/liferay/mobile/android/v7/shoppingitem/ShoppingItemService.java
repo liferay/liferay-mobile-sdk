@@ -77,6 +77,47 @@ public class ShoppingItemService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public void deleteItem(long itemId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("itemId", itemId);
+
+			_command.put("/shopping.shoppingitem/delete-item", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public Integer getCategoriesItemsCount(long groupId, JSONArray categoryIds) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("categoryIds", checkNull(categoryIds));
+
+			_command.put("/shopping.shoppingitem/get-categories-items-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
+	}
+
 	public JSONObject getItem(long itemId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -149,47 +190,6 @@ public class ShoppingItemService extends BaseService {
 		}
 
 		return _result.getJSONArray(0);
-	}
-
-	public void deleteItem(long itemId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("itemId", itemId);
-
-			_command.put("/shopping.shoppingitem/delete-item", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public Integer getCategoriesItemsCount(long groupId, JSONArray categoryIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("categoryIds", checkNull(categoryIds));
-
-			_command.put("/shopping.shoppingitem/get-categories-items-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
 	}
 
 	public Integer getItemsCount(long groupId, long categoryId) throws Exception {

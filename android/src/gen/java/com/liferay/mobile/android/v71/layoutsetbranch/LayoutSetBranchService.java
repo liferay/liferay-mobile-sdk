@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.layoutsetbranch;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -61,33 +60,6 @@ public class LayoutSetBranchService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateLayoutSetBranch(long groupId, long layoutSetBranchId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("layoutSetBranchId", layoutSetBranchId);
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/layoutsetbranch/update-layout-set-branch", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
 	public void deleteLayoutSetBranch(long layoutSetBranchId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -103,6 +75,30 @@ public class LayoutSetBranchService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONArray getLayoutSetBranches(long groupId, boolean privateLayout) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("privateLayout", privateLayout);
+
+			_command.put("/layoutsetbranch/get-layout-set-branches", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONObject mergeLayoutSetBranch(long layoutSetBranchId, long mergeLayoutSetBranchId, JSONObjectWrapper serviceContext) throws Exception {
@@ -130,16 +126,19 @@ public class LayoutSetBranchService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONArray getLayoutSetBranches(long groupId, boolean privateLayout) throws Exception {
+	public JSONObject updateLayoutSetBranch(long groupId, long layoutSetBranchId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
+			_params.put("layoutSetBranchId", layoutSetBranchId);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
-			_command.put("/layoutsetbranch/get-layout-set-branches", _params);
+			_command.put("/layoutsetbranch/update-layout-set-branch", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -151,7 +150,7 @@ public class LayoutSetBranchService extends BaseService {
 			return null;
 		}
 
-		return _result.getJSONArray(0);
+		return _result.getJSONObject(0);
 	}
 
 }

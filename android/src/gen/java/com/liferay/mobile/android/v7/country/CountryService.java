@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v7.country;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,29 +28,6 @@ public class CountryService extends BaseService {
 
 	public CountryService(Session session) {
 		super(session);
-	}
-
-	public JSONObject getCountry(long countryId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("countryId", countryId);
-
-			_command.put("/country/get-country", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
 	}
 
 	public JSONObject addCountry(String name, String a2, String a3, String number, String idd, boolean active) throws Exception {
@@ -152,6 +127,27 @@ public class CountryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public JSONArray getCountries() throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_command.put("/country/get-countries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
 	public JSONArray getCountries(boolean active) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -175,13 +171,15 @@ public class CountryService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getCountries() throws Exception {
+	public JSONObject getCountry(long countryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_command.put("/country/get-countries", _params);
+			_params.put("countryId", countryId);
+
+			_command.put("/country/get-country", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -193,7 +191,7 @@ public class CountryService extends BaseService {
 			return null;
 		}
 
-		return _result.getJSONArray(0);
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getCountryByA2(String a2) throws Exception {

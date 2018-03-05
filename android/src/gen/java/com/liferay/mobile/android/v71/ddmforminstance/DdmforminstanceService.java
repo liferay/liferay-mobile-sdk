@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.ddmforminstance;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,139 +29,6 @@ public class DdmforminstanceService extends BaseService {
 
 	public DdmforminstanceService(Session session) {
 		super(session);
-	}
-
-	public JSONArray search(long companyId, long groupId, String keywords, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("groupId", groupId);
-			_params.put("keywords", checkNull(keywords));
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMFormInstance>", orderByComparator);
-
-			_command.put("/ddm.ddmforminstance/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray search(long companyId, long groupId, JSONArray names, JSONArray descriptions, boolean andOperator, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("groupId", groupId);
-			_params.put("names", checkNull(names));
-			_params.put("descriptions", checkNull(descriptions));
-			_params.put("andOperator", andOperator);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMFormInstance>", orderByComparator);
-
-			_command.put("/ddm.ddmforminstance/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Integer searchCount(long companyId, long groupId, String keywords) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("groupId", groupId);
-			_params.put("keywords", checkNull(keywords));
-
-			_command.put("/ddm.ddmforminstance/search-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public Integer searchCount(long companyId, long groupId, JSONArray names, JSONArray descriptions, boolean andOperator) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("groupId", groupId);
-			_params.put("names", checkNull(names));
-			_params.put("descriptions", checkNull(descriptions));
-			_params.put("andOperator", andOperator);
-
-			_command.put("/ddm.ddmforminstance/search-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public JSONObject getFormInstance(long ddmFormInstanceId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("ddmFormInstanceId", ddmFormInstanceId);
-
-			_command.put("/ddm.ddmforminstance/get-form-instance", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
 	}
 
 	public JSONObject addFormInstance(long groupId, long ddmStructureId, JSONObject nameMap, JSONObject descriptionMap, JSONObjectWrapper settingsDDMFormValues, JSONObjectWrapper serviceContext) throws Exception {
@@ -233,6 +99,29 @@ public class DdmforminstanceService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public JSONObject getFormInstance(long ddmFormInstanceId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("ddmFormInstanceId", ddmFormInstanceId);
+
+			_command.put("/ddm.ddmforminstance/get-form-instance", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
 	public JSONArray getFormInstances(JSONArray groupIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -254,6 +143,116 @@ public class DdmforminstanceService extends BaseService {
 		}
 
 		return _result.getJSONArray(0);
+	}
+
+	public JSONArray search(long companyId, long groupId, JSONArray names, JSONArray descriptions, boolean andOperator, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("names", checkNull(names));
+			_params.put("descriptions", checkNull(descriptions));
+			_params.put("andOperator", andOperator);
+			_params.put("start", start);
+			_params.put("end", end);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMFormInstance>", orderByComparator);
+
+			_command.put("/ddm.ddmforminstance/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public JSONArray search(long companyId, long groupId, String keywords, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("keywords", checkNull(keywords));
+			_params.put("start", start);
+			_params.put("end", end);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMFormInstance>", orderByComparator);
+
+			_command.put("/ddm.ddmforminstance/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public Integer searchCount(long companyId, long groupId, JSONArray names, JSONArray descriptions, boolean andOperator) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("names", checkNull(names));
+			_params.put("descriptions", checkNull(descriptions));
+			_params.put("andOperator", andOperator);
+
+			_command.put("/ddm.ddmforminstance/search-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
+	}
+
+	public Integer searchCount(long companyId, long groupId, String keywords) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("keywords", checkNull(keywords));
+
+			_command.put("/ddm.ddmforminstance/search-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 	public JSONObject updateFormInstance(long formInstanceId, JSONObjectWrapper settingsDDMFormValues) throws Exception {

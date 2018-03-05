@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.ddmforminstancerecordversion;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,6 +29,29 @@ public class DdmforminstancerecordversionService extends BaseService {
 
 	public DdmforminstancerecordversionService(Session session) {
 		super(session);
+	}
+
+	public JSONObject getFormInstanceRecordVersion(long ddmFormInstanceRecordVersionId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("ddmFormInstanceRecordVersionId", ddmFormInstanceRecordVersionId);
+
+			_command.put("/ddm.ddmforminstancerecordversion/get-form-instance-record-version", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getFormInstanceRecordVersion(long ddmFormInstanceRecordId, String version) throws Exception {
@@ -56,39 +78,13 @@ public class DdmforminstancerecordversionService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject getFormInstanceRecordVersion(long ddmFormInstanceRecordVersionId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("ddmFormInstanceRecordVersionId", ddmFormInstanceRecordVersionId);
-
-			_command.put("/ddm.ddmforminstancerecordversion/get-form-instance-record-version", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONArray getFormInstanceRecordVersions(long ddmFormInstanceRecordId, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
+	public JSONArray getFormInstanceRecordVersions(long ddmFormInstanceRecordId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("ddmFormInstanceRecordId", ddmFormInstanceRecordId);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMFormInstanceRecordVersion>", orderByComparator);
 
 			_command.put("/ddm.ddmforminstancerecordversion/get-form-instance-record-versions", _params);
 		}
@@ -105,13 +101,16 @@ public class DdmforminstancerecordversionService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getFormInstanceRecordVersions(long ddmFormInstanceRecordId) throws Exception {
+	public JSONArray getFormInstanceRecordVersions(long ddmFormInstanceRecordId, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("ddmFormInstanceRecordId", ddmFormInstanceRecordId);
+			_params.put("start", start);
+			_params.put("end", end);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMFormInstanceRecordVersion>", orderByComparator);
 
 			_command.put("/ddm.ddmforminstancerecordversion/get-form-instance-record-versions", _params);
 		}

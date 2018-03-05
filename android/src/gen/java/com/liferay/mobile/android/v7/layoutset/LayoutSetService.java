@@ -16,7 +16,6 @@ package com.liferay.mobile.android.v7.layoutset;
 
 import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -32,7 +31,7 @@ public class LayoutSetService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject updateVirtualHost(long groupId, boolean privateLayout, String virtualHost) throws Exception {
+	public void updateLayoutSetPrototypeLinkEnabled(long groupId, boolean privateLayout, boolean layoutSetPrototypeLinkEnabled, String layoutSetPrototypeUuid) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -40,9 +39,71 @@ public class LayoutSetService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("virtualHost", checkNull(virtualHost));
+			_params.put("layoutSetPrototypeLinkEnabled", layoutSetPrototypeLinkEnabled);
+			_params.put("layoutSetPrototypeUuid", checkNull(layoutSetPrototypeUuid));
 
-			_command.put("/layoutset/update-virtual-host", _params);
+			_command.put("/layoutset/update-layout-set-prototype-link-enabled", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void updateLogo(long groupId, boolean privateLayout, boolean logo, byte[] bytes) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("privateLayout", privateLayout);
+			_params.put("logo", logo);
+			_params.put("bytes", toString(bytes));
+
+			_command.put("/layoutset/update-logo", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void updateLogo(long groupId, boolean privateLayout, boolean logo, UploadData file) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("privateLayout", privateLayout);
+			_params.put("logo", logo);
+			_params.put("file", checkNull(file));
+
+			_command.put("/layoutset/update-logo", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.upload(_command);
+	}
+
+	public JSONObject updateLookAndFeel(long groupId, boolean privateLayout, String themeId, String colorSchemeId, String css) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("privateLayout", privateLayout);
+			_params.put("themeId", checkNull(themeId));
+			_params.put("colorSchemeId", checkNull(colorSchemeId));
+			_params.put("css", checkNull(css));
+
+			_command.put("/layoutset/update-look-and-feel", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -82,7 +143,7 @@ public class LayoutSetService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateLookAndFeel(long groupId, boolean privateLayout, String themeId, String colorSchemeId, String css) throws Exception {
+	public JSONObject updateVirtualHost(long groupId, boolean privateLayout, String virtualHost) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -90,11 +151,9 @@ public class LayoutSetService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("privateLayout", privateLayout);
-			_params.put("themeId", checkNull(themeId));
-			_params.put("colorSchemeId", checkNull(colorSchemeId));
-			_params.put("css", checkNull(css));
+			_params.put("virtualHost", checkNull(virtualHost));
 
-			_command.put("/layoutset/update-look-and-feel", _params);
+			_command.put("/layoutset/update-virtual-host", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -107,66 +166,6 @@ public class LayoutSetService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
-	}
-
-	public void updateLayoutSetPrototypeLinkEnabled(long groupId, boolean privateLayout, boolean layoutSetPrototypeLinkEnabled, String layoutSetPrototypeUuid) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("layoutSetPrototypeLinkEnabled", layoutSetPrototypeLinkEnabled);
-			_params.put("layoutSetPrototypeUuid", checkNull(layoutSetPrototypeUuid));
-
-			_command.put("/layoutset/update-layout-set-prototype-link-enabled", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void updateLogo(long groupId, boolean privateLayout, boolean logo, UploadData file) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("logo", logo);
-			_params.put("file", checkNull(file));
-
-			_command.put("/layoutset/update-logo", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.upload(_command);
-	}
-
-	public void updateLogo(long groupId, boolean privateLayout, boolean logo, byte[] bytes) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("logo", logo);
-			_params.put("bytes", toString(bytes));
-
-			_command.put("/layoutset/update-logo", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
 	}
 
 }

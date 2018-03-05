@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v7.shoppingorder;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,6 +29,48 @@ public class ShoppingOrderService extends BaseService {
 
 	public ShoppingOrderService(Session session) {
 		super(session);
+	}
+
+	public void completeOrder(long groupId, String number, String ppTxnId, String ppPaymentStatus, double ppPaymentGross, String ppReceiverEmail, String ppPayerEmail, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("number", checkNull(number));
+			_params.put("ppTxnId", checkNull(ppTxnId));
+			_params.put("ppPaymentStatus", checkNull(ppPaymentStatus));
+			_params.put("ppPaymentGross", ppPaymentGross);
+			_params.put("ppReceiverEmail", checkNull(ppReceiverEmail));
+			_params.put("ppPayerEmail", checkNull(ppPayerEmail));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
+
+			_command.put("/shopping.shoppingorder/complete-order", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void deleteOrder(long groupId, long orderId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("orderId", orderId);
+
+			_command.put("/shopping.shoppingorder/delete-order", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 	public JSONObject getOrder(long groupId, long orderId) throws Exception {
@@ -68,48 +109,6 @@ public class ShoppingOrderService extends BaseService {
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
 			_command.put("/shopping.shoppingorder/send-email", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void completeOrder(long groupId, String number, String ppTxnId, String ppPaymentStatus, double ppPaymentGross, String ppReceiverEmail, String ppPayerEmail, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("number", checkNull(number));
-			_params.put("ppTxnId", checkNull(ppTxnId));
-			_params.put("ppPaymentStatus", checkNull(ppPaymentStatus));
-			_params.put("ppPaymentGross", ppPaymentGross);
-			_params.put("ppReceiverEmail", checkNull(ppReceiverEmail));
-			_params.put("ppPayerEmail", checkNull(ppPayerEmail));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/shopping.shoppingorder/complete-order", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void deleteOrder(long groupId, long orderId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("orderId", orderId);
-
-			_command.put("/shopping.shoppingorder/delete-order", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

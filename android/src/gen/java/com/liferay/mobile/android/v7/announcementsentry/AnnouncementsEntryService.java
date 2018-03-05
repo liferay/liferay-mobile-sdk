@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v7.announcementsentry;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -74,6 +72,23 @@ public class AnnouncementsEntryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public void deleteEntry(long entryId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("entryId", entryId);
+
+			_command.put("/announcementsentry/delete-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public JSONObject getEntry(long entryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -95,23 +110,6 @@ public class AnnouncementsEntryService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
-	}
-
-	public void deleteEntry(long entryId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("entryId", entryId);
-
-			_command.put("/announcementsentry/delete-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
 	}
 
 	public JSONObject updateEntry(long entryId, String title, String content, String url, String type, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, boolean displayImmediately, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, int priority) throws Exception {

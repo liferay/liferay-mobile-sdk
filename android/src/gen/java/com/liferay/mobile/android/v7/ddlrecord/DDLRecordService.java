@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v7.ddlrecord;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -190,16 +189,16 @@ public class DDLRecordService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateRecord(long recordId, int displayIndex, JSONObject fieldsMap, boolean mergeFields, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateRecord(long recordId, boolean majorVersion, int displayIndex, JSONObjectWrapper ddmFormValues, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("recordId", recordId);
+			_params.put("majorVersion", majorVersion);
 			_params.put("displayIndex", displayIndex);
-			_params.put("fieldsMap", checkNull(fieldsMap));
-			_params.put("mergeFields", mergeFields);
+			mangleWrapper(_params, "ddmFormValues", "com.liferay.dynamic.data.mapping.storage.DDMFormValues", ddmFormValues);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
 			_command.put("/ddl.ddlrecord/update-record", _params);
@@ -217,16 +216,16 @@ public class DDLRecordService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateRecord(long recordId, boolean majorVersion, int displayIndex, JSONObjectWrapper ddmFormValues, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateRecord(long recordId, int displayIndex, JSONObject fieldsMap, boolean mergeFields, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("recordId", recordId);
-			_params.put("majorVersion", majorVersion);
 			_params.put("displayIndex", displayIndex);
-			mangleWrapper(_params, "ddmFormValues", "com.liferay.dynamic.data.mapping.storage.DDMFormValues", ddmFormValues);
+			_params.put("fieldsMap", checkNull(fieldsMap));
+			_params.put("mergeFields", mergeFields);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
 			_command.put("/ddl.ddlrecord/update-record", _params);

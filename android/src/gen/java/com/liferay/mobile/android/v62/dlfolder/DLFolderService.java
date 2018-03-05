@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v62.dlfolder;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -265,7 +264,7 @@ public class DLFolderService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getFolders(long groupId, long parentFolderId, int start, int end, JSONObjectWrapper obc) throws Exception {
+	public JSONArray getFolders(long groupId, long parentFolderId, int status, boolean includeMountfolders, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -273,6 +272,8 @@ public class DLFolderService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("parentFolderId", parentFolderId);
+			_params.put("status", status);
+			_params.put("includeMountfolders", includeMountfolders);
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -292,7 +293,7 @@ public class DLFolderService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getFolders(long groupId, long parentFolderId, int status, boolean includeMountfolders, int start, int end, JSONObjectWrapper obc) throws Exception {
+	public JSONArray getFolders(long groupId, long parentFolderId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -300,8 +301,6 @@ public class DLFolderService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("parentFolderId", parentFolderId);
-			_params.put("status", status);
-			_params.put("includeMountfolders", includeMountfolders);
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -746,13 +745,15 @@ public class DLFolderService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public void unlockFolder(long folderId, String lockUuid) throws Exception {
+	public void unlockFolder(long groupId, long parentFolderId, String name, String lockUuid) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("folderId", folderId);
+			_params.put("groupId", groupId);
+			_params.put("parentFolderId", parentFolderId);
+			_params.put("name", checkNull(name));
 			_params.put("lockUuid", checkNull(lockUuid));
 
 			_command.put("/dlfolder/unlock-folder", _params);
@@ -764,15 +765,13 @@ public class DLFolderService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void unlockFolder(long groupId, long parentFolderId, String name, String lockUuid) throws Exception {
+	public void unlockFolder(long folderId, String lockUuid) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupId", groupId);
-			_params.put("parentFolderId", parentFolderId);
-			_params.put("name", checkNull(name));
+			_params.put("folderId", folderId);
 			_params.put("lockUuid", checkNull(lockUuid));
 
 			_command.put("/dlfolder/unlock-folder", _params);

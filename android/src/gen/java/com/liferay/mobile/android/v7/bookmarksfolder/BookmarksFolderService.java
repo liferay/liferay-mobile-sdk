@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v7.bookmarksfolder;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,6 +29,67 @@ public class BookmarksFolderService extends BaseService {
 
 	public BookmarksFolderService(Session session) {
 		super(session);
+	}
+
+	public JSONObject addFolder(long parentFolderId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("parentFolderId", parentFolderId);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
+
+			_command.put("/bookmarks.bookmarksfolder/add-folder", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public void deleteFolder(long folderId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("folderId", folderId);
+
+			_command.put("/bookmarks.bookmarksfolder/delete-folder", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void deleteFolder(long folderId, boolean includeTrashedEntries) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("folderId", folderId);
+			_params.put("includeTrashedEntries", includeTrashedEntries);
+
+			_command.put("/bookmarks.bookmarksfolder/delete-folder", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 	public JSONObject getFolder(long folderId) throws Exception {
@@ -53,6 +113,30 @@ public class BookmarksFolderService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
+	}
+
+	public JSONArray getFolderIds(long groupId, long folderId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+
+			_command.put("/bookmarks.bookmarksfolder/get-folder-ids", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getFolders(long groupId) throws Exception {
@@ -155,31 +239,7 @@ public class BookmarksFolderService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONObject moveFolder(long folderId, long parentFolderId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("folderId", folderId);
-			_params.put("parentFolderId", parentFolderId);
-
-			_command.put("/bookmarks.bookmarksfolder/move-folder", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONArray getFolderIds(long groupId, long folderId) throws Exception {
+	public JSONArray getFoldersAndEntries(long groupId, long folderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -188,7 +248,7 @@ public class BookmarksFolderService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
 
-			_command.put("/bookmarks.bookmarksfolder/get-folder-ids", _params);
+			_command.put("/bookmarks.bookmarksfolder/get-folders-and-entries", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -203,7 +263,7 @@ public class BookmarksFolderService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public void subscribeFolder(long groupId, long folderId) throws Exception {
+	public JSONArray getFoldersAndEntries(long groupId, long folderId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -211,100 +271,85 @@ public class BookmarksFolderService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-
-			_command.put("/bookmarks.bookmarksfolder/subscribe-folder", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void unsubscribeFolder(long groupId, long folderId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("folderId", folderId);
-
-			_command.put("/bookmarks.bookmarksfolder/unsubscribe-folder", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject updateFolder(long folderId, long parentFolderId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("folderId", folderId);
-			_params.put("parentFolderId", parentFolderId);
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/bookmarks.bookmarksfolder/update-folder", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateFolder(long folderId, long parentFolderId, String name, String description, boolean mergeWithParentFolder, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("folderId", folderId);
-			_params.put("parentFolderId", parentFolderId);
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
-			_params.put("mergeWithParentFolder", mergeWithParentFolder);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/bookmarks.bookmarksfolder/update-folder", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public Integer getFoldersCount(long groupId, long parentFolderId, int status) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("parentFolderId", parentFolderId);
 			_params.put("status", status);
 
-			_command.put("/bookmarks.bookmarksfolder/get-folders-count", _params);
+			_command.put("/bookmarks.bookmarksfolder/get-folders-and-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public JSONArray getFoldersAndEntries(long groupId, long folderId, int status, int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+			_params.put("status", status);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/bookmarks.bookmarksfolder/get-folders-and-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public Integer getFoldersAndEntriesCount(long groupId, long folderId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+
+			_command.put("/bookmarks.bookmarksfolder/get-folders-and-entries-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
+	}
+
+	public Integer getFoldersAndEntriesCount(long groupId, long folderId, int status) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+			_params.put("status", status);
+
+			_command.put("/bookmarks.bookmarksfolder/get-folders-and-entries-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -343,17 +388,17 @@ public class BookmarksFolderService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public JSONArray getSubfolderIds(long groupId, long folderId, boolean recurse) throws Exception {
+	public Integer getFoldersCount(long groupId, long parentFolderId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("folderId", folderId);
-			_params.put("recurse", recurse);
+			_params.put("parentFolderId", parentFolderId);
+			_params.put("status", status);
 
-			_command.put("/bookmarks.bookmarksfolder/get-subfolder-ids", _params);
+			_command.put("/bookmarks.bookmarksfolder/get-folders-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -365,7 +410,7 @@ public class BookmarksFolderService extends BaseService {
 			return null;
 		}
 
-		return _result.getJSONArray(0);
+		return _result.getInt(0);
 	}
 
 	public void getSubfolderIds(JSONArray folderIds, long groupId, long folderId) throws Exception {
@@ -405,6 +450,73 @@ public class BookmarksFolderService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONArray getSubfolderIds(long groupId, long folderId, boolean recurse) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+			_params.put("recurse", recurse);
+
+			_command.put("/bookmarks.bookmarksfolder/get-subfolder-ids", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public void mergeFolders(long folderId, long parentFolderId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("folderId", folderId);
+			_params.put("parentFolderId", parentFolderId);
+
+			_command.put("/bookmarks.bookmarksfolder/merge-folders", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public JSONObject moveFolder(long folderId, long parentFolderId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("folderId", folderId);
+			_params.put("parentFolderId", parentFolderId);
+
+			_command.put("/bookmarks.bookmarksfolder/move-folder", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject moveFolderFromTrash(long folderId, long parentFolderId) throws Exception {
@@ -471,15 +583,16 @@ public class BookmarksFolderService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteFolder(long folderId) throws Exception {
+	public void subscribeFolder(long groupId, long folderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
+			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
 
-			_command.put("/bookmarks.bookmarksfolder/delete-folder", _params);
+			_command.put("/bookmarks.bookmarksfolder/subscribe-folder", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -488,16 +601,16 @@ public class BookmarksFolderService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteFolder(long folderId, boolean includeTrashedEntries) throws Exception {
+	public void unsubscribeFolder(long groupId, long folderId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
+			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("includeTrashedEntries", includeTrashedEntries);
 
-			_command.put("/bookmarks.bookmarksfolder/delete-folder", _params);
+			_command.put("/bookmarks.bookmarksfolder/unsubscribe-folder", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -506,18 +619,20 @@ public class BookmarksFolderService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject addFolder(long parentFolderId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateFolder(long folderId, long parentFolderId, String name, String description, boolean mergeWithParentFolder, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
+			_params.put("folderId", folderId);
 			_params.put("parentFolderId", parentFolderId);
 			_params.put("name", checkNull(name));
 			_params.put("description", checkNull(description));
+			_params.put("mergeWithParentFolder", mergeWithParentFolder);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
-			_command.put("/bookmarks.bookmarksfolder/add-folder", _params);
+			_command.put("/bookmarks.bookmarksfolder/update-folder", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -532,83 +647,7 @@ public class BookmarksFolderService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONArray getFoldersAndEntries(long groupId, long folderId, int status, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("folderId", folderId);
-			_params.put("status", status);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/bookmarks.bookmarksfolder/get-folders-and-entries", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getFoldersAndEntries(long groupId, long folderId, int status) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("folderId", folderId);
-			_params.put("status", status);
-
-			_command.put("/bookmarks.bookmarksfolder/get-folders-and-entries", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getFoldersAndEntries(long groupId, long folderId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("folderId", folderId);
-
-			_command.put("/bookmarks.bookmarksfolder/get-folders-and-entries", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public void mergeFolders(long folderId, long parentFolderId) throws Exception {
+	public JSONObject updateFolder(long folderId, long parentFolderId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -616,26 +655,11 @@ public class BookmarksFolderService extends BaseService {
 
 			_params.put("folderId", folderId);
 			_params.put("parentFolderId", parentFolderId);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
-			_command.put("/bookmarks.bookmarksfolder/merge-folders", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public Integer getFoldersAndEntriesCount(long groupId, long folderId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("folderId", folderId);
-
-			_command.put("/bookmarks.bookmarksfolder/get-folders-and-entries-count", _params);
+			_command.put("/bookmarks.bookmarksfolder/update-folder", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -647,32 +671,7 @@ public class BookmarksFolderService extends BaseService {
 			return null;
 		}
 
-		return _result.getInt(0);
-	}
-
-	public Integer getFoldersAndEntriesCount(long groupId, long folderId, int status) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("folderId", folderId);
-			_params.put("status", status);
-
-			_command.put("/bookmarks.bookmarksfolder/get-folders-and-entries-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
+		return _result.getJSONObject(0);
 	}
 
 }

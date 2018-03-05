@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v7.ddlrecordset;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -32,23 +31,108 @@ public class DDLRecordSetService extends BaseService {
 		super(session);
 	}
 
-	public JSONArray search(long companyId, long groupId, String name, String description, int scope, boolean andOperator, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
+	public JSONObject addRecordSet(long groupId, long ddmStructureId, String recordSetKey, JSONObject nameMap, JSONObject descriptionMap, int minDisplayRows, int scope, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
+			_params.put("ddmStructureId", ddmStructureId);
+			_params.put("recordSetKey", checkNull(recordSetKey));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("minDisplayRows", minDisplayRows);
 			_params.put("scope", scope);
-			_params.put("andOperator", andOperator);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.lists.model.DDLRecordSet>", orderByComparator);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
-			_command.put("/ddl.ddlrecordset/search", _params);
+			_command.put("/ddl.ddlrecordset/add-record-set", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public void deleteRecordSet(long recordSetId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("recordSetId", recordSetId);
+
+			_command.put("/ddl.ddlrecordset/delete-record-set", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public JSONObject fetchRecordSet(long recordSetId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("recordSetId", recordSetId);
+
+			_command.put("/ddl.ddlrecordset/fetch-record-set", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject getRecordSet(long recordSetId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("recordSetId", recordSetId);
+
+			_command.put("/ddl.ddlrecordset/get-record-set", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONArray getRecordSets(JSONArray groupIds) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupIds", checkNull(groupIds));
+
+			_command.put("/ddl.ddlrecordset/get-record-sets", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -92,85 +176,23 @@ public class DDLRecordSetService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public void deleteRecordSet(long recordSetId) throws Exception {
+	public JSONArray search(long companyId, long groupId, String name, String description, int scope, boolean andOperator, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("recordSetId", recordSetId);
-
-			_command.put("/ddl.ddlrecordset/delete-record-set", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject addRecordSet(long groupId, long ddmStructureId, String recordSetKey, JSONObject nameMap, JSONObject descriptionMap, int minDisplayRows, int scope, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
+			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("ddmStructureId", ddmStructureId);
-			_params.put("recordSetKey", checkNull(recordSetKey));
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("minDisplayRows", minDisplayRows);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("scope", scope);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
+			_params.put("andOperator", andOperator);
+			_params.put("start", start);
+			_params.put("end", end);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.lists.model.DDLRecordSet>", orderByComparator);
 
-			_command.put("/ddl.ddlrecordset/add-record-set", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject fetchRecordSet(long recordSetId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("recordSetId", recordSetId);
-
-			_command.put("/ddl.ddlrecordset/fetch-record-set", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONArray getRecordSets(JSONArray groupIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupIds", checkNull(groupIds));
-
-			_command.put("/ddl.ddlrecordset/get-record-sets", _params);
+			_command.put("/ddl.ddlrecordset/search", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -185,15 +207,18 @@ public class DDLRecordSetService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONObject getRecordSet(long recordSetId) throws Exception {
+	public Integer searchCount(long companyId, long groupId, String keywords, int scope) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("recordSetId", recordSetId);
+			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("keywords", checkNull(keywords));
+			_params.put("scope", scope);
 
-			_command.put("/ddl.ddlrecordset/get-record-set", _params);
+			_command.put("/ddl.ddlrecordset/search-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -205,7 +230,7 @@ public class DDLRecordSetService extends BaseService {
 			return null;
 		}
 
-		return _result.getJSONObject(0);
+		return _result.getInt(0);
 	}
 
 	public Integer searchCount(long companyId, long groupId, String name, String description, int scope, boolean andOperator) throws Exception {
@@ -236,32 +261,6 @@ public class DDLRecordSetService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public Integer searchCount(long companyId, long groupId, String keywords, int scope) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("groupId", groupId);
-			_params.put("keywords", checkNull(keywords));
-			_params.put("scope", scope);
-
-			_command.put("/ddl.ddlrecordset/search-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
 	public JSONObject updateMinDisplayRows(long recordSetId, int minDisplayRows, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -273,6 +272,30 @@ public class DDLRecordSetService extends BaseService {
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
 			_command.put("/ddl.ddlrecordset/update-min-display-rows", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject updateRecordSet(long recordSetId, JSONObjectWrapper settingsDDMFormValues) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("recordSetId", recordSetId);
+			mangleWrapper(_params, "settingsDDMFormValues", "com.liferay.dynamic.data.mapping.storage.DDMFormValues", settingsDDMFormValues);
+
+			_command.put("/ddl.ddlrecordset/update-record-set", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -328,30 +351,6 @@ public class DDLRecordSetService extends BaseService {
 			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("minDisplayRows", minDisplayRows);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/ddl.ddlrecordset/update-record-set", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateRecordSet(long recordSetId, JSONObjectWrapper settingsDDMFormValues) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("recordSetId", recordSetId);
-			mangleWrapper(_params, "settingsDDMFormValues", "com.liferay.dynamic.data.mapping.storage.DDMFormValues", settingsDDMFormValues);
 
 			_command.put("/ddl.ddlrecordset/update-record-set", _params);
 		}

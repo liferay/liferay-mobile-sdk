@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v62.announcementsentry;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -32,7 +30,7 @@ public class AnnouncementsEntryService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addEntry(long plid, long classNameId, long classPK, String title, String content, String url, String type, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, int priority, boolean alert) throws Exception {
+	public JSONObject addEntry(long plid, long classNameId, long classPK, String title, String content, String url, String type, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, boolean displayImmediately, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, int priority, boolean alert) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -50,6 +48,7 @@ public class AnnouncementsEntryService extends BaseService {
 			_params.put("displayDateYear", displayDateYear);
 			_params.put("displayDateHour", displayDateHour);
 			_params.put("displayDateMinute", displayDateMinute);
+			_params.put("displayImmediately", displayImmediately);
 			_params.put("expirationDateMonth", expirationDateMonth);
 			_params.put("expirationDateDay", expirationDateDay);
 			_params.put("expirationDateYear", expirationDateYear);
@@ -73,7 +72,7 @@ public class AnnouncementsEntryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addEntry(long plid, long classNameId, long classPK, String title, String content, String url, String type, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, boolean displayImmediately, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, int priority, boolean alert) throws Exception {
+	public JSONObject addEntry(long plid, long classNameId, long classPK, String title, String content, String url, String type, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, int priority, boolean alert) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -91,7 +90,6 @@ public class AnnouncementsEntryService extends BaseService {
 			_params.put("displayDateYear", displayDateYear);
 			_params.put("displayDateHour", displayDateHour);
 			_params.put("displayDateMinute", displayDateMinute);
-			_params.put("displayImmediately", displayImmediately);
 			_params.put("expirationDateMonth", expirationDateMonth);
 			_params.put("expirationDateDay", expirationDateDay);
 			_params.put("expirationDateYear", expirationDateYear);

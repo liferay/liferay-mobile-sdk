@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v7.sapentry;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -32,13 +31,12 @@ public class SapentryService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject updateSapEntry(long sapEntryId, String allowedServiceSignatures, boolean defaultSAPEntry, boolean enabled, String name, JSONObject titleMap, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addSapEntry(String allowedServiceSignatures, boolean defaultSAPEntry, boolean enabled, String name, JSONObject titleMap, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("sapEntryId", sapEntryId);
 			_params.put("allowedServiceSignatures", checkNull(allowedServiceSignatures));
 			_params.put("defaultSAPEntry", defaultSAPEntry);
 			_params.put("enabled", enabled);
@@ -46,53 +44,7 @@ public class SapentryService extends BaseService {
 			_params.put("titleMap", checkNull(titleMap));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
-			_command.put("/sap.sapentry/update-sap-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public Integer getCompanySapEntriesCount(long companyId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-
-			_command.put("/sap.sapentry/get-company-sap-entries-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public JSONObject deleteSapEntry(long sapEntryId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("sapEntryId", sapEntryId);
-
-			_command.put("/sap.sapentry/delete-sap-entry", _params);
+			_command.put("/sap.sapentry/add-sap-entry", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -114,6 +66,29 @@ public class SapentryService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			mangleWrapper(_params, "sapEntry", "com.liferay.service.access.policy.model.SAPEntry", sapEntry);
+
+			_command.put("/sap.sapentry/delete-sap-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject deleteSapEntry(long sapEntryId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("sapEntryId", sapEntryId);
 
 			_command.put("/sap.sapentry/delete-sap-entry", _params);
 		}
@@ -205,16 +180,15 @@ public class SapentryService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONObject getSapEntry(long companyId, String name) throws Exception {
+	public Integer getCompanySapEntriesCount(long companyId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("name", checkNull(name));
 
-			_command.put("/sap.sapentry/get-sap-entry", _params);
+			_command.put("/sap.sapentry/get-company-sap-entries-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -226,7 +200,7 @@ public class SapentryService extends BaseService {
 			return null;
 		}
 
-		return _result.getJSONObject(0);
+		return _result.getInt(0);
 	}
 
 	public JSONObject getSapEntry(long sapEntryId) throws Exception {
@@ -252,12 +226,37 @@ public class SapentryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addSapEntry(String allowedServiceSignatures, boolean defaultSAPEntry, boolean enabled, String name, JSONObject titleMap, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject getSapEntry(long companyId, String name) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
+			_params.put("companyId", companyId);
+			_params.put("name", checkNull(name));
+
+			_command.put("/sap.sapentry/get-sap-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject updateSapEntry(long sapEntryId, String allowedServiceSignatures, boolean defaultSAPEntry, boolean enabled, String name, JSONObject titleMap, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("sapEntryId", sapEntryId);
 			_params.put("allowedServiceSignatures", checkNull(allowedServiceSignatures));
 			_params.put("defaultSAPEntry", defaultSAPEntry);
 			_params.put("enabled", enabled);
@@ -265,7 +264,7 @@ public class SapentryService extends BaseService {
 			_params.put("titleMap", checkNull(titleMap));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
-			_command.put("/sap.sapentry/add-sap-entry", _params);
+			_command.put("/sap.sapentry/update-sap-entry", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

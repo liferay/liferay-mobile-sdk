@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.mdraction;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,34 +29,6 @@ public class MDRActionService extends BaseService {
 
 	public MDRActionService(Session session) {
 		super(session);
-	}
-
-	public JSONObject addAction(long ruleGroupInstanceId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("ruleGroupInstanceId", ruleGroupInstanceId);
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("type", checkNull(type));
-			_params.put("typeSettings", checkNull(typeSettings));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/mdr.mdraction/add-action", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
 	}
 
 	public JSONObject addAction(long ruleGroupInstanceId, JSONObject nameMap, JSONObject descriptionMap, String type, JSONObject typeSettingsProperties, JSONObjectWrapper serviceContext) throws Exception {
@@ -88,48 +59,20 @@ public class MDRActionService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateAction(long actionId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addAction(long ruleGroupInstanceId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("actionId", actionId);
+			_params.put("ruleGroupInstanceId", ruleGroupInstanceId);
 			_params.put("nameMap", checkNull(nameMap));
 			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("type", checkNull(type));
 			_params.put("typeSettings", checkNull(typeSettings));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
-			_command.put("/mdr.mdraction/update-action", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateAction(long actionId, JSONObject nameMap, JSONObject descriptionMap, String type, JSONObject typeSettingsProperties, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("actionId", actionId);
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("type", checkNull(type));
-			_params.put("typeSettingsProperties", checkNull(typeSettingsProperties));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/mdr.mdraction/update-action", _params);
+			_command.put("/mdr.mdraction/add-action", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -193,6 +136,62 @@ public class MDRActionService extends BaseService {
 			_params.put("actionId", actionId);
 
 			_command.put("/mdr.mdraction/get-action", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject updateAction(long actionId, JSONObject nameMap, JSONObject descriptionMap, String type, JSONObject typeSettingsProperties, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("actionId", actionId);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("type", checkNull(type));
+			_params.put("typeSettingsProperties", checkNull(typeSettingsProperties));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
+
+			_command.put("/mdr.mdraction/update-action", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject updateAction(long actionId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("actionId", actionId);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("type", checkNull(type));
+			_params.put("typeSettings", checkNull(typeSettings));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
+
+			_command.put("/mdr.mdraction/update-action", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

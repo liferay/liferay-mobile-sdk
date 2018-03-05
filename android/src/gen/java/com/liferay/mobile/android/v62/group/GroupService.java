@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v62.group;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -65,12 +64,13 @@ public class GroupService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addGroup(String name, String description, int type, String friendlyURL, boolean site, boolean active, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addGroup(long parentGroupId, String name, String description, int type, String friendlyURL, boolean site, boolean active, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
+			_params.put("parentGroupId", parentGroupId);
 			_params.put("name", checkNull(name));
 			_params.put("description", checkNull(description));
 			_params.put("type", type);
@@ -94,13 +94,12 @@ public class GroupService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addGroup(long parentGroupId, String name, String description, int type, String friendlyURL, boolean site, boolean active, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addGroup(String name, String description, int type, String friendlyURL, boolean site, boolean active, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("parentGroupId", parentGroupId);
 			_params.put("name", checkNull(name));
 			_params.put("description", checkNull(description));
 			_params.put("type", type);
@@ -472,7 +471,7 @@ public class GroupService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getUserPlaces(long userId, JSONArray classNames, int max) throws Exception {
+	public JSONArray getUserPlaces(long userId, JSONArray classNames, boolean includeControlPanel, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -480,6 +479,7 @@ public class GroupService extends BaseService {
 
 			_params.put("userId", userId);
 			_params.put("classNames", checkNull(classNames));
+			_params.put("includeControlPanel", includeControlPanel);
 			_params.put("max", max);
 
 			_command.put("/group/get-user-places", _params);
@@ -497,7 +497,7 @@ public class GroupService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getUserPlaces(long userId, JSONArray classNames, boolean includeControlPanel, int max) throws Exception {
+	public JSONArray getUserPlaces(long userId, JSONArray classNames, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -505,7 +505,6 @@ public class GroupService extends BaseService {
 
 			_params.put("userId", userId);
 			_params.put("classNames", checkNull(classNames));
-			_params.put("includeControlPanel", includeControlPanel);
 			_params.put("max", max);
 
 			_command.put("/group/get-user-places", _params);
@@ -610,7 +609,7 @@ public class GroupService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getUserSitesGroups(long userId, JSONArray classNames, int max) throws Exception {
+	public JSONArray getUserSitesGroups(long userId, JSONArray classNames, boolean includeControlPanel, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -618,6 +617,7 @@ public class GroupService extends BaseService {
 
 			_params.put("userId", userId);
 			_params.put("classNames", checkNull(classNames));
+			_params.put("includeControlPanel", includeControlPanel);
 			_params.put("max", max);
 
 			_command.put("/group/get-user-sites-groups", _params);
@@ -635,7 +635,7 @@ public class GroupService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getUserSitesGroups(long userId, JSONArray classNames, boolean includeControlPanel, int max) throws Exception {
+	public JSONArray getUserSitesGroups(long userId, JSONArray classNames, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -643,7 +643,6 @@ public class GroupService extends BaseService {
 
 			_params.put("userId", userId);
 			_params.put("classNames", checkNull(classNames));
-			_params.put("includeControlPanel", includeControlPanel);
 			_params.put("max", max);
 
 			_command.put("/group/get-user-sites-groups", _params);

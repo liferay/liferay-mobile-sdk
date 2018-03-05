@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v7.company;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -32,6 +30,23 @@ public class CompanyService extends BaseService {
 		super(session);
 	}
 
+	public void deleteLogo(long companyId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+
+			_command.put("/company/delete-logo", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public JSONObject getCompanyById(long companyId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -41,6 +56,98 @@ public class CompanyService extends BaseService {
 			_params.put("companyId", companyId);
 
 			_command.put("/company/get-company-by-id", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject getCompanyByLogoId(long logoId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("logoId", logoId);
+
+			_command.put("/company/get-company-by-logo-id", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject getCompanyByMx(String mx) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("mx", checkNull(mx));
+
+			_command.put("/company/get-company-by-mx", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject getCompanyByVirtualHost(String virtualHost) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("virtualHost", checkNull(virtualHost));
+
+			_command.put("/company/get-company-by-virtual-host", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject getCompanyByWebId(String webId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("webId", checkNull(webId));
+
+			_command.put("/company/get-company-by-web-id", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -140,115 +247,6 @@ public class CompanyService extends BaseService {
 			_params.put("size", checkNull(size));
 
 			_command.put("/company/update-company", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void deleteLogo(long companyId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-
-			_command.put("/company/delete-logo", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject getCompanyByLogoId(long logoId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("logoId", logoId);
-
-			_command.put("/company/get-company-by-logo-id", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getCompanyByMx(String mx) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("mx", checkNull(mx));
-
-			_command.put("/company/get-company-by-mx", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getCompanyByVirtualHost(String virtualHost) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("virtualHost", checkNull(virtualHost));
-
-			_command.put("/company/get-company-by-virtual-host", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getCompanyByWebId(String webId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("webId", checkNull(webId));
-
-			_command.put("/company/get-company-by-web-id", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

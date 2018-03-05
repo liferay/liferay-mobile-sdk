@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v7.ddmstructureversion;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -78,29 +77,6 @@ public class DdmstructureversionService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public Integer getStructureVersionsCount(long structureId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("structureId", structureId);
-
-			_command.put("/ddm.ddmstructureversion/get-structure-versions-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
 	public JSONArray getStructureVersions(long structureId, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -125,6 +101,29 @@ public class DdmstructureversionService extends BaseService {
 		}
 
 		return _result.getJSONArray(0);
+	}
+
+	public Integer getStructureVersionsCount(long structureId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("structureId", structureId);
+
+			_command.put("/ddm.ddmstructureversion/get-structure-versions-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 }

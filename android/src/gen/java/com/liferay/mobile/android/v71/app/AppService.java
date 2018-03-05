@@ -16,7 +16,6 @@ package com.liferay.mobile.android.v71.app;
 
 import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,6 +29,29 @@ public class AppService extends BaseService {
 
 	public AppService(Session session) {
 		super(session);
+	}
+
+	public JSONObject deleteApp(long appId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("appId", appId);
+
+			_command.put("/marketplace.app/delete-app", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void installApp(long remoteAppId) throws Exception {
@@ -81,29 +103,6 @@ public class AppService extends BaseService {
 		}
 
 		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject deleteApp(long appId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("appId", appId);
-
-			_command.put("/marketplace.app/delete-app", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
 
 		if (_result == null) {
 			return null;

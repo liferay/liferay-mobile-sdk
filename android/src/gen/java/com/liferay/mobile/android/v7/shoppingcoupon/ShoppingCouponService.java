@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v7.shoppingcoupon;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,36 +29,6 @@ public class ShoppingCouponService extends BaseService {
 
 	public ShoppingCouponService(Session session) {
 		super(session);
-	}
-
-	public JSONArray search(long groupId, long companyId, String code, boolean active, String discountType, boolean andOperator, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("companyId", companyId);
-			_params.put("code", checkNull(code));
-			_params.put("active", active);
-			_params.put("discountType", checkNull(discountType));
-			_params.put("andOperator", andOperator);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/shopping.shoppingcoupon/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
 	}
 
 	public JSONObject addCoupon(String code, boolean autoCode, String name, String description, int startDateMonth, int startDateDay, int startDateYear, int startDateHour, int startDateMinute, int endDateMonth, int endDateDay, int endDateYear, int endDateHour, int endDateMinute, boolean neverExpire, boolean active, String limitCategories, String limitSkus, double minOrder, double discount, String discountType, JSONObjectWrapper serviceContext) throws Exception {
@@ -146,6 +115,36 @@ public class ShoppingCouponService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
+	}
+
+	public JSONArray search(long groupId, long companyId, String code, boolean active, String discountType, boolean andOperator, int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("companyId", companyId);
+			_params.put("code", checkNull(code));
+			_params.put("active", active);
+			_params.put("discountType", checkNull(discountType));
+			_params.put("andOperator", andOperator);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/shopping.shoppingcoupon/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONObject updateCoupon(long couponId, String name, String description, int startDateMonth, int startDateDay, int startDateYear, int startDateHour, int startDateMinute, int endDateMonth, int endDateDay, int endDateYear, int endDateHour, int endDateMinute, boolean neverExpire, boolean active, String limitCategories, String limitSkus, double minOrder, double discount, String discountType, JSONObjectWrapper serviceContext) throws Exception {

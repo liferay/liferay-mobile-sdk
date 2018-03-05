@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v71.announcementsflag;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -32,23 +30,6 @@ public class AnnouncementsFlagService extends BaseService {
 		super(session);
 	}
 
-	public void deleteFlag(long flagId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("flagId", flagId);
-
-			_command.put("/announcementsflag/delete-flag", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
 	public void addFlag(long entryId, int value) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -59,6 +40,23 @@ public class AnnouncementsFlagService extends BaseService {
 			_params.put("value", value);
 
 			_command.put("/announcementsflag/add-flag", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void deleteFlag(long flagId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("flagId", flagId);
+
+			_command.put("/announcementsflag/delete-flag", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

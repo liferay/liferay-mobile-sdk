@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v7.layoutbranch;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -59,6 +58,23 @@ public class LayoutBranchService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public void deleteLayoutBranch(long layoutBranchId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("layoutBranchId", layoutBranchId);
+
+			_command.put("/layoutbranch/delete-layout-branch", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public JSONObject updateLayoutBranch(long layoutBranchId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -83,23 +99,6 @@ public class LayoutBranchService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
-	}
-
-	public void deleteLayoutBranch(long layoutBranchId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("layoutBranchId", layoutBranchId);
-
-			_command.put("/layoutbranch/delete-layout-branch", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
 	}
 
 }

@@ -32,61 +32,6 @@ public class JournalArticleService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addArticle(long groupId, long folderId, long classNameId, long classPK, String articleId, boolean autoArticleId, JSONObject titleMap, JSONObject descriptionMap, String content, String type, String ddmStructureKey, String ddmTemplateKey, String layoutUuid, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, boolean neverExpire, int reviewDateMonth, int reviewDateDay, int reviewDateYear, int reviewDateHour, int reviewDateMinute, boolean neverReview, boolean indexable, String articleURL, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("folderId", folderId);
-			_params.put("classNameId", classNameId);
-			_params.put("classPK", classPK);
-			_params.put("articleId", checkNull(articleId));
-			_params.put("autoArticleId", autoArticleId);
-			_params.put("titleMap", checkNull(titleMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("content", checkNull(content));
-			_params.put("type", checkNull(type));
-			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
-			_params.put("ddmTemplateKey", checkNull(ddmTemplateKey));
-			_params.put("layoutUuid", checkNull(layoutUuid));
-			_params.put("displayDateMonth", displayDateMonth);
-			_params.put("displayDateDay", displayDateDay);
-			_params.put("displayDateYear", displayDateYear);
-			_params.put("displayDateHour", displayDateHour);
-			_params.put("displayDateMinute", displayDateMinute);
-			_params.put("expirationDateMonth", expirationDateMonth);
-			_params.put("expirationDateDay", expirationDateDay);
-			_params.put("expirationDateYear", expirationDateYear);
-			_params.put("expirationDateHour", expirationDateHour);
-			_params.put("expirationDateMinute", expirationDateMinute);
-			_params.put("neverExpire", neverExpire);
-			_params.put("reviewDateMonth", reviewDateMonth);
-			_params.put("reviewDateDay", reviewDateDay);
-			_params.put("reviewDateYear", reviewDateYear);
-			_params.put("reviewDateHour", reviewDateHour);
-			_params.put("reviewDateMinute", reviewDateMinute);
-			_params.put("neverReview", neverReview);
-			_params.put("indexable", indexable);
-			_params.put("articleURL", checkNull(articleURL));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/journalarticle/add-article", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
 	public JSONObject addArticle(long groupId, long folderId, long classNameId, long classPK, String articleId, boolean autoArticleId, JSONObject titleMap, JSONObject descriptionMap, String content, String type, String ddmStructureKey, String ddmTemplateKey, String layoutUuid, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, boolean neverExpire, int reviewDateMonth, int reviewDateDay, int reviewDateYear, int reviewDateHour, int reviewDateMinute, boolean neverReview, boolean indexable, boolean smallImage, String smallImageURL, UploadData smallFile, JSONObject images, String articleURL, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -146,6 +91,61 @@ public class JournalArticleService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public JSONObject addArticle(long groupId, long folderId, long classNameId, long classPK, String articleId, boolean autoArticleId, JSONObject titleMap, JSONObject descriptionMap, String content, String type, String ddmStructureKey, String ddmTemplateKey, String layoutUuid, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, boolean neverExpire, int reviewDateMonth, int reviewDateDay, int reviewDateYear, int reviewDateHour, int reviewDateMinute, boolean neverReview, boolean indexable, String articleURL, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+			_params.put("classNameId", classNameId);
+			_params.put("classPK", classPK);
+			_params.put("articleId", checkNull(articleId));
+			_params.put("autoArticleId", autoArticleId);
+			_params.put("titleMap", checkNull(titleMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("content", checkNull(content));
+			_params.put("type", checkNull(type));
+			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
+			_params.put("ddmTemplateKey", checkNull(ddmTemplateKey));
+			_params.put("layoutUuid", checkNull(layoutUuid));
+			_params.put("displayDateMonth", displayDateMonth);
+			_params.put("displayDateDay", displayDateDay);
+			_params.put("displayDateYear", displayDateYear);
+			_params.put("displayDateHour", displayDateHour);
+			_params.put("displayDateMinute", displayDateMinute);
+			_params.put("expirationDateMonth", expirationDateMonth);
+			_params.put("expirationDateDay", expirationDateDay);
+			_params.put("expirationDateYear", expirationDateYear);
+			_params.put("expirationDateHour", expirationDateHour);
+			_params.put("expirationDateMinute", expirationDateMinute);
+			_params.put("neverExpire", neverExpire);
+			_params.put("reviewDateMonth", reviewDateMonth);
+			_params.put("reviewDateDay", reviewDateDay);
+			_params.put("reviewDateYear", reviewDateYear);
+			_params.put("reviewDateHour", reviewDateHour);
+			_params.put("reviewDateMinute", reviewDateMinute);
+			_params.put("neverReview", neverReview);
+			_params.put("indexable", indexable);
+			_params.put("articleURL", checkNull(articleURL));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+
+			_command.put("/journalarticle/add-article", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
 	public JSONObject copyArticle(long groupId, String oldArticleId, String newArticleId, boolean autoArticleId, double version) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -173,26 +173,6 @@ public class JournalArticleService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public void deleteArticle(long groupId, String articleId, String articleURL, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("articleId", checkNull(articleId));
-			_params.put("articleURL", checkNull(articleURL));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/journalarticle/delete-article", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
 	public void deleteArticle(long groupId, String articleId, double version, String articleURL, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -214,7 +194,7 @@ public class JournalArticleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void expireArticle(long groupId, String articleId, String articleURL, JSONObjectWrapper serviceContext) throws Exception {
+	public void deleteArticle(long groupId, String articleId, String articleURL, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -225,7 +205,7 @@ public class JournalArticleService extends BaseService {
 			_params.put("articleURL", checkNull(articleURL));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
-			_command.put("/journalarticle/expire-article", _params);
+			_command.put("/journalarticle/delete-article", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -259,6 +239,26 @@ public class JournalArticleService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
+	}
+
+	public void expireArticle(long groupId, String articleId, String articleURL, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("articleId", checkNull(articleId));
+			_params.put("articleURL", checkNull(articleURL));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+
+			_command.put("/journalarticle/expire-article", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 	public JSONObject getArticle(long id) throws Exception {
@@ -382,7 +382,7 @@ public class JournalArticleService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public String getArticleContent(long groupId, String articleId, String languageId, JSONObjectWrapper themeDisplay) throws Exception {
+	public String getArticleContent(long groupId, String articleId, double version, String languageId, JSONObjectWrapper themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -390,6 +390,7 @@ public class JournalArticleService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("articleId", checkNull(articleId));
+			_params.put("version", version);
 			_params.put("languageId", checkNull(languageId));
 			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
@@ -408,7 +409,7 @@ public class JournalArticleService extends BaseService {
 		return _result.getString(0);
 	}
 
-	public String getArticleContent(long groupId, String articleId, double version, String languageId, JSONObjectWrapper themeDisplay) throws Exception {
+	public String getArticleContent(long groupId, String articleId, String languageId, JSONObjectWrapper themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -416,7 +417,6 @@ public class JournalArticleService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("articleId", checkNull(articleId));
-			_params.put("version", version);
 			_params.put("languageId", checkNull(languageId));
 			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
 
@@ -537,14 +537,16 @@ public class JournalArticleService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getArticlesByStructureId(long groupId, String ddmStructureKey, int start, int end, JSONObjectWrapper obc) throws Exception {
+	public JSONArray getArticlesByStructureId(long groupId, long classNameId, String ddmStructureKey, int status, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
 			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
+			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -564,16 +566,14 @@ public class JournalArticleService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getArticlesByStructureId(long groupId, long classNameId, String ddmStructureKey, int status, int start, int end, JSONObjectWrapper obc) throws Exception {
+	public JSONArray getArticlesByStructureId(long groupId, String ddmStructureKey, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("classNameId", classNameId);
 			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
-			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -666,14 +666,16 @@ public class JournalArticleService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public Integer getArticlesCountByStructureId(long groupId, String ddmStructureKey) throws Exception {
+	public Integer getArticlesCountByStructureId(long groupId, long classNameId, String ddmStructureKey, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
 			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
+			_params.put("status", status);
 
 			_command.put("/journalarticle/get-articles-count-by-structure-id", _params);
 		}
@@ -690,16 +692,14 @@ public class JournalArticleService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public Integer getArticlesCountByStructureId(long groupId, long classNameId, String ddmStructureKey, int status) throws Exception {
+	public Integer getArticlesCountByStructureId(long groupId, String ddmStructureKey) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("classNameId", classNameId);
 			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
-			_params.put("status", status);
 
 			_command.put("/journalarticle/get-articles-count-by-structure-id", _params);
 		}
@@ -764,7 +764,7 @@ public class JournalArticleService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public JSONArray getGroupArticles(long groupId, long userId, long rootFolderId, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
+	public JSONArray getGroupArticles(long groupId, long userId, long rootFolderId, int status, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -773,6 +773,7 @@ public class JournalArticleService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("userId", userId);
 			_params.put("rootFolderId", rootFolderId);
+			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
@@ -792,7 +793,7 @@ public class JournalArticleService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getGroupArticles(long groupId, long userId, long rootFolderId, int status, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
+	public JSONArray getGroupArticles(long groupId, long userId, long rootFolderId, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -801,7 +802,6 @@ public class JournalArticleService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("userId", userId);
 			_params.put("rootFolderId", rootFolderId);
-			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
@@ -964,14 +964,14 @@ public class JournalArticleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject moveArticleFromTrash(long groupId, String articleId, long newFolderId, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject moveArticleFromTrash(long groupId, long resourcePrimKey, long newFolderId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("articleId", checkNull(articleId));
+			_params.put("resourcePrimKey", resourcePrimKey);
 			_params.put("newFolderId", newFolderId);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -990,14 +990,14 @@ public class JournalArticleService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject moveArticleFromTrash(long groupId, long resourcePrimKey, long newFolderId, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject moveArticleFromTrash(long groupId, String articleId, long newFolderId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("resourcePrimKey", resourcePrimKey);
+			_params.put("articleId", checkNull(articleId));
 			_params.put("newFolderId", newFolderId);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -1119,6 +1119,33 @@ public class JournalArticleService extends BaseService {
 		session.invoke(_command);
 	}
 
+	public JSONObject search(long groupId, long creatorUserId, int status, int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("creatorUserId", creatorUserId);
+			_params.put("status", status);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/journalarticle/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
 	public JSONArray search(long companyId, long groupId, JSONArray folderIds, long classNameId, String keywords, double version, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -1138,48 +1165,6 @@ public class JournalArticleService extends BaseService {
 			_params.put("displayDateLT", displayDateLT);
 			_params.put("status", status);
 			_params.put("reviewDate", reviewDate);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
-
-			_command.put("/journalarticle/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray search(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, double version, String title, String description, String content, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator, int start, int end, JSONObjectWrapper obc) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("groupId", groupId);
-			_params.put("folderIds", checkNull(folderIds));
-			_params.put("classNameId", classNameId);
-			_params.put("articleId", checkNull(articleId));
-			_params.put("version", version);
-			_params.put("title", checkNull(title));
-			_params.put("description", checkNull(description));
-			_params.put("content", checkNull(content));
-			_params.put("type", checkNull(type));
-			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
-			_params.put("ddmTemplateKey", checkNull(ddmTemplateKey));
-			_params.put("displayDateGT", displayDateGT);
-			_params.put("displayDateLT", displayDateLT);
-			_params.put("status", status);
-			_params.put("reviewDate", reviewDate);
-			_params.put("andOperator", andOperator);
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -1241,17 +1226,32 @@ public class JournalArticleService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONObject search(long groupId, long creatorUserId, int status, int start, int end) throws Exception {
+	public JSONArray search(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, double version, String title, String description, String content, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
+			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("creatorUserId", creatorUserId);
+			_params.put("folderIds", checkNull(folderIds));
+			_params.put("classNameId", classNameId);
+			_params.put("articleId", checkNull(articleId));
+			_params.put("version", version);
+			_params.put("title", checkNull(title));
+			_params.put("description", checkNull(description));
+			_params.put("content", checkNull(content));
+			_params.put("type", checkNull(type));
+			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
+			_params.put("ddmTemplateKey", checkNull(ddmTemplateKey));
+			_params.put("displayDateGT", displayDateGT);
+			_params.put("displayDateLT", displayDateLT);
 			_params.put("status", status);
+			_params.put("reviewDate", reviewDate);
+			_params.put("andOperator", andOperator);
 			_params.put("start", start);
 			_params.put("end", end);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/journalarticle/search", _params);
 		}
@@ -1265,7 +1265,7 @@ public class JournalArticleService extends BaseService {
 			return null;
 		}
 
-		return _result.getJSONObject(0);
+		return _result.getJSONArray(0);
 	}
 
 	public Integer searchCount(long companyId, long groupId, JSONArray folderIds, long classNameId, String keywords, double version, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate) throws Exception {
@@ -1303,7 +1303,7 @@ public class JournalArticleService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public Integer searchCount(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, double version, String title, String description, String content, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator) throws Exception {
+	public Integer searchCount(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, double version, String title, String description, String content, String type, JSONArray ddmStructureKeys, JSONArray ddmTemplateKeys, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1319,8 +1319,8 @@ public class JournalArticleService extends BaseService {
 			_params.put("description", checkNull(description));
 			_params.put("content", checkNull(content));
 			_params.put("type", checkNull(type));
-			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
-			_params.put("ddmTemplateKey", checkNull(ddmTemplateKey));
+			_params.put("ddmStructureKeys", checkNull(ddmStructureKeys));
+			_params.put("ddmTemplateKeys", checkNull(ddmTemplateKeys));
 			_params.put("displayDateGT", displayDateGT);
 			_params.put("displayDateLT", displayDateLT);
 			_params.put("status", status);
@@ -1342,7 +1342,7 @@ public class JournalArticleService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public Integer searchCount(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, double version, String title, String description, String content, String type, JSONArray ddmStructureKeys, JSONArray ddmTemplateKeys, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator) throws Exception {
+	public Integer searchCount(long companyId, long groupId, JSONArray folderIds, long classNameId, String articleId, double version, String title, String description, String content, String type, String ddmStructureKey, String ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, boolean andOperator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -1358,8 +1358,8 @@ public class JournalArticleService extends BaseService {
 			_params.put("description", checkNull(description));
 			_params.put("content", checkNull(content));
 			_params.put("type", checkNull(type));
-			_params.put("ddmStructureKeys", checkNull(ddmStructureKeys));
-			_params.put("ddmTemplateKeys", checkNull(ddmTemplateKeys));
+			_params.put("ddmStructureKey", checkNull(ddmStructureKey));
+			_params.put("ddmTemplateKey", checkNull(ddmTemplateKey));
 			_params.put("displayDateGT", displayDateGT);
 			_params.put("displayDateLT", displayDateLT);
 			_params.put("status", status);

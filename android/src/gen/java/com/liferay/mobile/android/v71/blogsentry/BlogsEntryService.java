@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.blogsentry;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -70,6 +69,81 @@ public class BlogsEntryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public void deleteEntry(long entryId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("entryId", entryId);
+
+			_command.put("/blogsentry/delete-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public JSONArray getCompanyEntries(long companyId, long displayDate, int status, int max) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("displayDate", displayDate);
+			_params.put("status", status);
+			_params.put("max", max);
+
+			_command.put("/blogsentry/get-company-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public String getCompanyEntriesRss(long companyId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("displayDate", displayDate);
+			_params.put("status", status);
+			_params.put("max", max);
+			_params.put("type", checkNull(type));
+			_params.put("version", version);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
+			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.kernel.theme.ThemeDisplay", themeDisplay);
+
+			_command.put("/blogsentry/get-company-entries-rss", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
+	}
+
 	public JSONObject getEntry(long entryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -117,77 +191,15 @@ public class BlogsEntryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public void subscribe(long groupId) throws Exception {
+	public JSONArray getGroupEntries(long groupId, int status, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-
-			_command.put("/blogsentry/subscribe", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void unsubscribe(long groupId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-
-			_command.put("/blogsentry/unsubscribe", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONArray getCompanyEntries(long companyId, long displayDate, int status, int max) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("displayDate", displayDate);
 			_params.put("status", status);
 			_params.put("max", max);
-
-			_command.put("/blogsentry/get-company-entries", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getGroupEntries(long groupId, int status, int start, int end, JSONObjectWrapper obc) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("status", status);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.blogs.kernel.model.BlogsEntry>", obc);
 
 			_command.put("/blogsentry/get-group-entries", _params);
 		}
@@ -214,6 +226,33 @@ public class BlogsEntryService extends BaseService {
 			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
+
+			_command.put("/blogsentry/get-group-entries", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public JSONArray getGroupEntries(long groupId, int status, int start, int end, JSONObjectWrapper obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("status", status);
+			_params.put("start", start);
+			_params.put("end", end);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.blogs.kernel.model.BlogsEntry>", obc);
 
 			_command.put("/blogsentry/get-group-entries", _params);
 		}
@@ -283,31 +322,6 @@ public class BlogsEntryService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getGroupEntries(long groupId, int status, int max) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("status", status);
-			_params.put("max", max);
-
-			_command.put("/blogsentry/get-group-entries", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
 	public Integer getGroupEntriesCount(long groupId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -355,6 +369,38 @@ public class BlogsEntryService extends BaseService {
 		}
 
 		return _result.getInt(0);
+	}
+
+	public String getGroupEntriesRss(long groupId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("displayDate", displayDate);
+			_params.put("status", status);
+			_params.put("max", max);
+			_params.put("type", checkNull(type));
+			_params.put("version", version);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
+			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.kernel.theme.ThemeDisplay", themeDisplay);
+
+			_command.put("/blogsentry/get-group-entries-rss", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
 	}
 
 	public JSONArray getGroupsEntries(long companyId, long groupId, long displayDate, int status, int max) throws Exception {
@@ -440,7 +486,7 @@ public class BlogsEntryService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public Integer getGroupUserEntriesCount(long groupId, long userId, JSONArray statuses) throws Exception {
+	public Integer getGroupUserEntriesCount(long groupId, long userId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -448,7 +494,7 @@ public class BlogsEntryService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("userId", userId);
-			_params.put("statuses", checkNull(statuses));
+			_params.put("status", status);
 
 			_command.put("/blogsentry/get-group-user-entries-count", _params);
 		}
@@ -465,7 +511,7 @@ public class BlogsEntryService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public Integer getGroupUserEntriesCount(long groupId, long userId, int status) throws Exception {
+	public Integer getGroupUserEntriesCount(long groupId, long userId, JSONArray statuses) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -473,7 +519,7 @@ public class BlogsEntryService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("userId", userId);
-			_params.put("status", status);
+			_params.put("statuses", checkNull(statuses));
 
 			_command.put("/blogsentry/get-group-user-entries-count", _params);
 		}
@@ -516,6 +562,38 @@ public class BlogsEntryService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
+	public String getOrganizationEntriesRss(long organizationId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("organizationId", organizationId);
+			_params.put("displayDate", displayDate);
+			_params.put("status", status);
+			_params.put("max", max);
+			_params.put("type", checkNull(type));
+			_params.put("version", version);
+			_params.put("displayStyle", checkNull(displayStyle));
+			_params.put("feedURL", checkNull(feedURL));
+			_params.put("entryURL", checkNull(entryURL));
+			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.kernel.theme.ThemeDisplay", themeDisplay);
+
+			_command.put("/blogsentry/get-organization-entries-rss", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
+	}
+
 	public JSONObject moveEntryToTrash(long entryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -556,111 +634,32 @@ public class BlogsEntryService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public String getGroupEntriesRss(long groupId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
+	public void subscribe(long groupId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("displayDate", displayDate);
-			_params.put("status", status);
-			_params.put("max", max);
-			_params.put("type", checkNull(type));
-			_params.put("version", version);
-			_params.put("displayStyle", checkNull(displayStyle));
-			_params.put("feedURL", checkNull(feedURL));
-			_params.put("entryURL", checkNull(entryURL));
-			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.kernel.theme.ThemeDisplay", themeDisplay);
 
-			_command.put("/blogsentry/get-group-entries-rss", _params);
+			_command.put("/blogsentry/subscribe", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getString(0);
+		session.invoke(_command);
 	}
 
-	public String getCompanyEntriesRss(long companyId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
+	public void unsubscribe(long groupId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("companyId", companyId);
-			_params.put("displayDate", displayDate);
-			_params.put("status", status);
-			_params.put("max", max);
-			_params.put("type", checkNull(type));
-			_params.put("version", version);
-			_params.put("displayStyle", checkNull(displayStyle));
-			_params.put("feedURL", checkNull(feedURL));
-			_params.put("entryURL", checkNull(entryURL));
-			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.kernel.theme.ThemeDisplay", themeDisplay);
+			_params.put("groupId", groupId);
 
-			_command.put("/blogsentry/get-company-entries-rss", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getString(0);
-	}
-
-	public String getOrganizationEntriesRss(long organizationId, long displayDate, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("organizationId", organizationId);
-			_params.put("displayDate", displayDate);
-			_params.put("status", status);
-			_params.put("max", max);
-			_params.put("type", checkNull(type));
-			_params.put("version", version);
-			_params.put("displayStyle", checkNull(displayStyle));
-			_params.put("feedURL", checkNull(feedURL));
-			_params.put("entryURL", checkNull(entryURL));
-			mangleWrapper(_params, "themeDisplay", "com.liferay.portal.kernel.theme.ThemeDisplay", themeDisplay);
-
-			_command.put("/blogsentry/get-organization-entries-rss", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getString(0);
-	}
-
-	public void deleteEntry(long entryId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("entryId", entryId);
-
-			_command.put("/blogsentry/delete-entry", _params);
+			_command.put("/blogsentry/unsubscribe", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

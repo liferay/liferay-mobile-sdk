@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v62.dlfileentry;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -55,6 +54,26 @@ public class DLFileEntryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public void checkInFileEntry(long fileEntryId, boolean major, String changeLog, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+			_params.put("major", major);
+			_params.put("changeLog", checkNull(changeLog));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+
+			_command.put("/dlfileentry/check-in-file-entry", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public void checkInFileEntry(long fileEntryId, String lockUuid) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -81,26 +100,6 @@ public class DLFileEntryService extends BaseService {
 
 			_params.put("fileEntryId", fileEntryId);
 			_params.put("lockUuid", checkNull(lockUuid));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/dlfileentry/check-in-file-entry", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void checkInFileEntry(long fileEntryId, boolean major, String changeLog, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("fileEntryId", fileEntryId);
-			_params.put("major", major);
-			_params.put("changeLog", checkNull(changeLog));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/dlfileentry/check-in-file-entry", _params);
@@ -314,7 +313,7 @@ public class DLFileEntryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONArray getFileEntries(long groupId, long folderId, int start, int end, JSONObjectWrapper obc) throws Exception {
+	public JSONArray getFileEntries(long groupId, long folderId, int status, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -322,6 +321,7 @@ public class DLFileEntryService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
+			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -341,7 +341,7 @@ public class DLFileEntryService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getFileEntries(long groupId, long folderId, long fileEntryTypeId, int start, int end, JSONObjectWrapper obc) throws Exception {
+	public JSONArray getFileEntries(long groupId, long folderId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -349,7 +349,6 @@ public class DLFileEntryService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("fileEntryTypeId", fileEntryTypeId);
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -397,7 +396,7 @@ public class DLFileEntryService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getFileEntries(long groupId, long folderId, int status, int start, int end, JSONObjectWrapper obc) throws Exception {
+	public JSONArray getFileEntries(long groupId, long folderId, long fileEntryTypeId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -405,7 +404,7 @@ public class DLFileEntryService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("status", status);
+			_params.put("fileEntryTypeId", fileEntryTypeId);
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -449,7 +448,7 @@ public class DLFileEntryService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public Integer getFileEntriesCount(long groupId, long folderId, long fileEntryTypeId) throws Exception {
+	public Integer getFileEntriesCount(long groupId, long folderId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -457,7 +456,7 @@ public class DLFileEntryService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("fileEntryTypeId", fileEntryTypeId);
+			_params.put("status", status);
 
 			_command.put("/dlfileentry/get-file-entries-count", _params);
 		}
@@ -499,7 +498,7 @@ public class DLFileEntryService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public Integer getFileEntriesCount(long groupId, long folderId, int status) throws Exception {
+	public Integer getFileEntriesCount(long groupId, long folderId, long fileEntryTypeId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -507,7 +506,7 @@ public class DLFileEntryService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("status", status);
+			_params.put("fileEntryTypeId", fileEntryTypeId);
 
 			_command.put("/dlfileentry/get-file-entries-count", _params);
 		}

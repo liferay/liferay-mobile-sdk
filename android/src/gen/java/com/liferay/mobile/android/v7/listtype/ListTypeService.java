@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v7.listtype;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,43 +28,6 @@ public class ListTypeService extends BaseService {
 
 	public ListTypeService(Session session) {
 		super(session);
-	}
-
-	public void validate(long listTypeId, long classNameId, String type) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("listTypeId", listTypeId);
-			_params.put("classNameId", classNameId);
-			_params.put("type", checkNull(type));
-
-			_command.put("/listtype/validate", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void validate(long listTypeId, String type) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("listTypeId", listTypeId);
-			_params.put("type", checkNull(type));
-
-			_command.put("/listtype/validate", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
 	}
 
 	public JSONObject getListType(long listTypeId) throws Exception {
@@ -113,6 +74,43 @@ public class ListTypeService extends BaseService {
 		}
 
 		return _result.getJSONArray(0);
+	}
+
+	public void validate(long listTypeId, long classNameId, String type) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("listTypeId", listTypeId);
+			_params.put("classNameId", classNameId);
+			_params.put("type", checkNull(type));
+
+			_command.put("/listtype/validate", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void validate(long listTypeId, String type) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("listTypeId", listTypeId);
+			_params.put("type", checkNull(type));
+
+			_command.put("/listtype/validate", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 }

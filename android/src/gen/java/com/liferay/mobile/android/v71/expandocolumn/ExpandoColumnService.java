@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v71.expandocolumn;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -32,7 +30,7 @@ public class ExpandoColumnService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addColumn(long tableId, String name, int type, JSONObject defaultData) throws Exception {
+	public JSONObject addColumn(long tableId, String name, int type) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -41,7 +39,6 @@ public class ExpandoColumnService extends BaseService {
 			_params.put("tableId", tableId);
 			_params.put("name", checkNull(name));
 			_params.put("type", type);
-			_params.put("defaultData", checkNull(defaultData));
 
 			_command.put("/expandocolumn/add-column", _params);
 		}
@@ -58,7 +55,7 @@ public class ExpandoColumnService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addColumn(long tableId, String name, int type) throws Exception {
+	public JSONObject addColumn(long tableId, String name, int type, JSONObject defaultData) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -67,6 +64,7 @@ public class ExpandoColumnService extends BaseService {
 			_params.put("tableId", tableId);
 			_params.put("name", checkNull(name));
 			_params.put("type", type);
+			_params.put("defaultData", checkNull(defaultData));
 
 			_command.put("/expandocolumn/add-column", _params);
 		}

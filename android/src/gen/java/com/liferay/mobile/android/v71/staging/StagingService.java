@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.staging;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,6 +29,23 @@ public class StagingService extends BaseService {
 
 	public StagingService(Session session) {
 		super(session);
+	}
+
+	public void cleanUpStagingRequest(long stagingRequestId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("stagingRequestId", stagingRequestId);
+
+			_command.put("/staging/clean-up-staging-request", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 	public Long createStagingRequest(long groupId, String checksum) throws Exception {
@@ -54,6 +70,51 @@ public class StagingService extends BaseService {
 		}
 
 		return _result.getLong(0);
+	}
+
+	public Boolean hasRemoteLayout(String uuid, long groupId, boolean privateLayout) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("uuid", checkNull(uuid));
+			_params.put("groupId", groupId);
+			_params.put("privateLayout", privateLayout);
+
+			_command.put("/staging/has-remote-layout", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getBoolean(0);
+	}
+
+	public void propagateExportImportLifecycleEvent(int code, int processFlag, String processId, JSONArray arguments) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("code", code);
+			_params.put("processFlag", processFlag);
+			_params.put("processId", checkNull(processId));
+			_params.put("arguments", checkNull(arguments));
+
+			_command.put("/staging/propagate-export-import-lifecycle-event", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 	public JSONObject publishStagingRequest(long stagingRequestId, boolean privateLayout, JSONObject parameterMap) throws Exception {
@@ -105,48 +166,6 @@ public class StagingService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public void cleanUpStagingRequest(long stagingRequestId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("stagingRequestId", stagingRequestId);
-
-			_command.put("/staging/clean-up-staging-request", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public Boolean hasRemoteLayout(String uuid, long groupId, boolean privateLayout) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("uuid", checkNull(uuid));
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-
-			_command.put("/staging/has-remote-layout", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getBoolean(0);
-	}
-
 	public void updateStagingRequest(long stagingRequestId, String fileName, byte[] bytes) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -189,26 +208,6 @@ public class StagingService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
-	}
-
-	public void propagateExportImportLifecycleEvent(int code, int processFlag, String processId, JSONArray arguments) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("code", code);
-			_params.put("processFlag", processFlag);
-			_params.put("processId", checkNull(processId));
-			_params.put("arguments", checkNull(arguments));
-
-			_command.put("/staging/propagate-export-import-lifecycle-event", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
 	}
 
 }

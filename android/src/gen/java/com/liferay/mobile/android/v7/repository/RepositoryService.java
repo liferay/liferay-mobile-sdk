@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v7.repository;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,71 +29,6 @@ public class RepositoryService extends BaseService {
 
 	public RepositoryService(Session session) {
 		super(session);
-	}
-
-	public JSONObject getTypeSettingsProperties(long repositoryId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("repositoryId", repositoryId);
-
-			_command.put("/repository/get-type-settings-properties", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getRepository(long repositoryId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("repositoryId", repositoryId);
-
-			_command.put("/repository/get-repository", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void updateRepository(long repositoryId, String name, String description) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("repositoryId", repositoryId);
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
-
-			_command.put("/repository/update-repository", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
 	}
 
 	public JSONObject addRepository(long groupId, long classNameId, long parentFolderId, String name, String description, String portletId, JSONObject typeSettingsProperties, JSONObjectWrapper serviceContext) throws Exception {
@@ -159,6 +93,29 @@ public class RepositoryService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject getRepository(long repositoryId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+
+			_command.put("/repository/get-repository", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONArray getSupportedConfigurations(long classNameId) throws Exception {
@@ -230,6 +187,48 @@ public class RepositoryService extends BaseService {
 		}
 
 		return _result.getJSONArray(0);
+	}
+
+	public JSONObject getTypeSettingsProperties(long repositoryId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+
+			_command.put("/repository/get-type-settings-properties", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public void updateRepository(long repositoryId, String name, String description) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("repositoryId", repositoryId);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+
+			_command.put("/repository/update-repository", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 }

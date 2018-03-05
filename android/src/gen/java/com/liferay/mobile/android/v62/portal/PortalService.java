@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v62.portal;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -74,6 +72,40 @@ public class PortalService extends BaseService {
 		return _result.getInt(0);
 	}
 
+	public void testAddClassName_Rollback(String classNameValue) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("classNameValue", checkNull(classNameValue));
+
+			_command.put("/portal/test-add-class-name_-rollback", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void testAddClassName_Success(String classNameValue) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("classNameValue", checkNull(classNameValue));
+
+			_command.put("/portal/test-add-class-name_-success", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public void testAddClassNameAndTestTransactionPortletBar_PortalRollback(String transactionPortletBarText) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -117,40 +149,6 @@ public class PortalService extends BaseService {
 			_params.put("transactionPortletBarText", checkNull(transactionPortletBarText));
 
 			_command.put("/portal/test-add-class-name-and-test-transaction-portlet-bar_-success", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void testAddClassName_Rollback(String classNameValue) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("classNameValue", checkNull(classNameValue));
-
-			_command.put("/portal/test-add-class-name_-rollback", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void testAddClassName_Success(String classNameValue) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("classNameValue", checkNull(classNameValue));
-
-			_command.put("/portal/test-add-class-name_-success", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

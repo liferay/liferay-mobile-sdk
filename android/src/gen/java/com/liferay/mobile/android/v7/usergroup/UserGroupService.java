@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v7.usergroup;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -32,73 +31,40 @@ public class UserGroupService extends BaseService {
 		super(session);
 	}
 
-	public JSONArray getUserGroups(long companyId) throws Exception {
+	public void addGroupUserGroups(long groupId, JSONArray userGroupIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("userGroupIds", checkNull(userGroupIds));
 
-			_command.put("/usergroup/get-user-groups", _params);
+			_command.put("/usergroup/add-group-user-groups", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
+		session.invoke(_command);
 	}
 
-	public JSONObject getUserGroup(long userGroupId) throws Exception {
+	public void addTeamUserGroups(long teamId, JSONArray userGroupIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("userGroupId", userGroupId);
+			_params.put("teamId", teamId);
+			_params.put("userGroupIds", checkNull(userGroupIds));
 
-			_command.put("/usergroup/get-user-group", _params);
+			_command.put("/usergroup/add-team-user-groups", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getUserGroup(String name) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("name", checkNull(name));
-
-			_command.put("/usergroup/get-user-group", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
+		session.invoke(_command);
 	}
 
 	public JSONObject addUserGroup(String name, String description) throws Exception {
@@ -150,6 +116,174 @@ public class UserGroupService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public void deleteUserGroup(long userGroupId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("userGroupId", userGroupId);
+
+			_command.put("/usergroup/delete-user-group", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public JSONObject fetchUserGroup(long userGroupId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("userGroupId", userGroupId);
+
+			_command.put("/usergroup/fetch-user-group", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject getUserGroup(long userGroupId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("userGroupId", userGroupId);
+
+			_command.put("/usergroup/get-user-group", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject getUserGroup(String name) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("name", checkNull(name));
+
+			_command.put("/usergroup/get-user-group", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONArray getUserGroups(long companyId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+
+			_command.put("/usergroup/get-user-groups", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public JSONArray getUserUserGroups(long userId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("userId", userId);
+
+			_command.put("/usergroup/get-user-user-groups", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public void unsetGroupUserGroups(long groupId, JSONArray userGroupIds) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userGroupIds", checkNull(userGroupIds));
+
+			_command.put("/usergroup/unset-group-user-groups", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void unsetTeamUserGroups(long teamId, JSONArray userGroupIds) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("teamId", teamId);
+			_params.put("userGroupIds", checkNull(userGroupIds));
+
+			_command.put("/usergroup/unset-team-user-groups", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public JSONObject updateUserGroup(long userGroupId, String name, String description) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -199,141 +333,6 @@ public class UserGroupService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
-	}
-
-	public JSONObject fetchUserGroup(long userGroupId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userGroupId", userGroupId);
-
-			_command.put("/usergroup/fetch-user-group", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONArray getUserUserGroups(long userId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-
-			_command.put("/usergroup/get-user-user-groups", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public void deleteUserGroup(long userGroupId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userGroupId", userGroupId);
-
-			_command.put("/usergroup/delete-user-group", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void addGroupUserGroups(long groupId, JSONArray userGroupIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("userGroupIds", checkNull(userGroupIds));
-
-			_command.put("/usergroup/add-group-user-groups", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void addTeamUserGroups(long teamId, JSONArray userGroupIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("teamId", teamId);
-			_params.put("userGroupIds", checkNull(userGroupIds));
-
-			_command.put("/usergroup/add-team-user-groups", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void unsetGroupUserGroups(long groupId, JSONArray userGroupIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("userGroupIds", checkNull(userGroupIds));
-
-			_command.put("/usergroup/unset-group-user-groups", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void unsetTeamUserGroups(long teamId, JSONArray userGroupIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("teamId", teamId);
-			_params.put("userGroupIds", checkNull(userGroupIds));
-
-			_command.put("/usergroup/unset-team-user-groups", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
 	}
 
 }

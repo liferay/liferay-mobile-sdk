@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v62.usergroupgrouprole;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,25 +28,6 @@ public class UserGroupGroupRoleService extends BaseService {
 
 	public UserGroupGroupRoleService(Session session) {
 		super(session);
-	}
-
-	public void addUserGroupGroupRoles(long userGroupId, long groupId, JSONArray roleIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userGroupId", userGroupId);
-			_params.put("groupId", groupId);
-			_params.put("roleIds", checkNull(roleIds));
-
-			_command.put("/usergroupgrouprole/add-user-group-group-roles", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
 	}
 
 	public void addUserGroupGroupRoles(JSONArray userGroupIds, long groupId, long roleId) throws Exception {
@@ -70,7 +49,7 @@ public class UserGroupGroupRoleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteUserGroupGroupRoles(long userGroupId, long groupId, JSONArray roleIds) throws Exception {
+	public void addUserGroupGroupRoles(long userGroupId, long groupId, JSONArray roleIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -80,7 +59,7 @@ public class UserGroupGroupRoleService extends BaseService {
 			_params.put("groupId", groupId);
 			_params.put("roleIds", checkNull(roleIds));
 
-			_command.put("/usergroupgrouprole/delete-user-group-group-roles", _params);
+			_command.put("/usergroupgrouprole/add-user-group-group-roles", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -98,6 +77,25 @@ public class UserGroupGroupRoleService extends BaseService {
 			_params.put("userGroupIds", checkNull(userGroupIds));
 			_params.put("groupId", groupId);
 			_params.put("roleId", roleId);
+
+			_command.put("/usergroupgrouprole/delete-user-group-group-roles", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void deleteUserGroupGroupRoles(long userGroupId, long groupId, JSONArray roleIds) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("userGroupId", userGroupId);
+			_params.put("groupId", groupId);
+			_params.put("roleIds", checkNull(roleIds));
 
 			_command.put("/usergroupgrouprole/delete-user-group-group-roles", _params);
 		}

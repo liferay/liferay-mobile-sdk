@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v7.phone;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -32,30 +31,6 @@ public class PhoneService extends BaseService {
 		super(session);
 	}
 
-	public JSONArray getPhones(String className, long classPK) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("className", checkNull(className));
-			_params.put("classPK", classPK);
-
-			_command.put("/phone/get-phones", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
 	public JSONObject addPhone(String className, long classPK, String number, String extension, long typeId, boolean primary, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -71,33 +46,6 @@ public class PhoneService extends BaseService {
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
 			_command.put("/phone/add-phone", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updatePhone(long phoneId, String number, String extension, long typeId, boolean primary) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("phoneId", phoneId);
-			_params.put("number", checkNull(number));
-			_params.put("extension", checkNull(extension));
-			_params.put("typeId", typeId);
-			_params.put("primary", primary);
-
-			_command.put("/phone/update-phone", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -138,6 +86,57 @@ public class PhoneService extends BaseService {
 			_params.put("phoneId", phoneId);
 
 			_command.put("/phone/get-phone", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONArray getPhones(String className, long classPK) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("className", checkNull(className));
+			_params.put("classPK", classPK);
+
+			_command.put("/phone/get-phones", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public JSONObject updatePhone(long phoneId, String number, String extension, long typeId, boolean primary) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("phoneId", phoneId);
+			_params.put("number", checkNull(number));
+			_params.put("extension", checkNull(extension));
+			_params.put("typeId", typeId);
+			_params.put("primary", primary);
+
+			_command.put("/phone/update-phone", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

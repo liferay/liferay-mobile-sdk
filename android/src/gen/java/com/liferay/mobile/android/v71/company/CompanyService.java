@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v71.company;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,105 +28,6 @@ public class CompanyService extends BaseService {
 
 	public CompanyService(Session session) {
 		super(session);
-	}
-
-	public JSONObject updateCompany(long companyId, String virtualHost, String mx, String homeURL, boolean logo, byte[] logoBytes, String name, String legalName, String legalId, String legalType, String sicCode, String tickerSymbol, String industry, String type, String size) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("virtualHost", checkNull(virtualHost));
-			_params.put("mx", checkNull(mx));
-			_params.put("homeURL", checkNull(homeURL));
-			_params.put("logo", logo);
-			_params.put("logoBytes", toString(logoBytes));
-			_params.put("name", checkNull(name));
-			_params.put("legalName", checkNull(legalName));
-			_params.put("legalId", checkNull(legalId));
-			_params.put("legalType", checkNull(legalType));
-			_params.put("sicCode", checkNull(sicCode));
-			_params.put("tickerSymbol", checkNull(tickerSymbol));
-			_params.put("industry", checkNull(industry));
-			_params.put("type", checkNull(type));
-			_params.put("size", checkNull(size));
-
-			_command.put("/company/update-company", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateCompany(long companyId, String virtualHost, String mx, int maxUsers, boolean active) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("virtualHost", checkNull(virtualHost));
-			_params.put("mx", checkNull(mx));
-			_params.put("maxUsers", maxUsers);
-			_params.put("active", active);
-
-			_command.put("/company/update-company", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateCompany(long companyId, String virtualHost, String mx, String homeURL, String name, String legalName, String legalId, String legalType, String sicCode, String tickerSymbol, String industry, String type, String size) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("virtualHost", checkNull(virtualHost));
-			_params.put("mx", checkNull(mx));
-			_params.put("homeURL", checkNull(homeURL));
-			_params.put("name", checkNull(name));
-			_params.put("legalName", checkNull(legalName));
-			_params.put("legalId", checkNull(legalId));
-			_params.put("legalType", checkNull(legalType));
-			_params.put("sicCode", checkNull(sicCode));
-			_params.put("tickerSymbol", checkNull(tickerSymbol));
-			_params.put("industry", checkNull(industry));
-			_params.put("type", checkNull(type));
-			_params.put("size", checkNull(size));
-
-			_command.put("/company/update-company", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
 	}
 
 	public void deleteLogo(long companyId) throws Exception {
@@ -146,6 +45,29 @@ public class CompanyService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject getCompanyById(long companyId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+
+			_command.put("/company/get-company-by-id", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getCompanyByLogoId(long logoId) throws Exception {
@@ -240,6 +162,105 @@ public class CompanyService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public JSONObject updateCompany(long companyId, String virtualHost, String mx, int maxUsers, boolean active) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("virtualHost", checkNull(virtualHost));
+			_params.put("mx", checkNull(mx));
+			_params.put("maxUsers", maxUsers);
+			_params.put("active", active);
+
+			_command.put("/company/update-company", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject updateCompany(long companyId, String virtualHost, String mx, String homeURL, boolean logo, byte[] logoBytes, String name, String legalName, String legalId, String legalType, String sicCode, String tickerSymbol, String industry, String type, String size) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("virtualHost", checkNull(virtualHost));
+			_params.put("mx", checkNull(mx));
+			_params.put("homeURL", checkNull(homeURL));
+			_params.put("logo", logo);
+			_params.put("logoBytes", toString(logoBytes));
+			_params.put("name", checkNull(name));
+			_params.put("legalName", checkNull(legalName));
+			_params.put("legalId", checkNull(legalId));
+			_params.put("legalType", checkNull(legalType));
+			_params.put("sicCode", checkNull(sicCode));
+			_params.put("tickerSymbol", checkNull(tickerSymbol));
+			_params.put("industry", checkNull(industry));
+			_params.put("type", checkNull(type));
+			_params.put("size", checkNull(size));
+
+			_command.put("/company/update-company", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject updateCompany(long companyId, String virtualHost, String mx, String homeURL, String name, String legalName, String legalId, String legalType, String sicCode, String tickerSymbol, String industry, String type, String size) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("virtualHost", checkNull(virtualHost));
+			_params.put("mx", checkNull(mx));
+			_params.put("homeURL", checkNull(homeURL));
+			_params.put("name", checkNull(name));
+			_params.put("legalName", checkNull(legalName));
+			_params.put("legalId", checkNull(legalId));
+			_params.put("legalType", checkNull(legalType));
+			_params.put("sicCode", checkNull(sicCode));
+			_params.put("tickerSymbol", checkNull(tickerSymbol));
+			_params.put("industry", checkNull(industry));
+			_params.put("type", checkNull(type));
+			_params.put("size", checkNull(size));
+
+			_command.put("/company/update-company", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
 	public void updateDisplay(long companyId, String languageId, String timeZoneId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -269,29 +290,6 @@ public class CompanyService extends BaseService {
 			_params.put("bytes", toString(bytes));
 
 			_command.put("/company/update-logo", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getCompanyById(long companyId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-
-			_command.put("/company/get-company-by-id", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v62.socialactivity;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -32,31 +30,6 @@ public class SocialActivityService extends BaseService {
 		super(session);
 	}
 
-	public JSONArray getActivities(String className, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("className", checkNull(className));
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/socialactivity/get-activities", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
 	public JSONArray getActivities(long classNameId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -64,33 +37,6 @@ public class SocialActivityService extends BaseService {
 			JSONObject _params = new JSONObject();
 
 			_params.put("classNameId", classNameId);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/socialactivity/get-activities", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getActivities(long mirrorActivityId, String className, long classPK, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("mirrorActivityId", mirrorActivityId);
-			_params.put("className", checkNull(className));
-			_params.put("classPK", classPK);
 			_params.put("start", start);
 			_params.put("end", end);
 
@@ -136,13 +82,65 @@ public class SocialActivityService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public Integer getActivitiesCount(String className) throws Exception {
+	public JSONArray getActivities(long mirrorActivityId, String className, long classPK, int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("mirrorActivityId", mirrorActivityId);
+			_params.put("className", checkNull(className));
+			_params.put("classPK", classPK);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/socialactivity/get-activities", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public JSONArray getActivities(String className, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("className", checkNull(className));
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/socialactivity/get-activities", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public Integer getActivitiesCount(long classNameId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("classNameId", classNameId);
 
 			_command.put("/socialactivity/get-activities-count", _params);
 		}
@@ -159,13 +157,15 @@ public class SocialActivityService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public Integer getActivitiesCount(long classNameId) throws Exception {
+	public Integer getActivitiesCount(long mirrorActivityId, long classNameId, long classPK) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
+			_params.put("mirrorActivityId", mirrorActivityId);
 			_params.put("classNameId", classNameId);
+			_params.put("classPK", classPK);
 
 			_command.put("/socialactivity/get-activities-count", _params);
 		}
@@ -207,15 +207,13 @@ public class SocialActivityService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public Integer getActivitiesCount(long mirrorActivityId, long classNameId, long classPK) throws Exception {
+	public Integer getActivitiesCount(String className) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("mirrorActivityId", mirrorActivityId);
-			_params.put("classNameId", classNameId);
-			_params.put("classPK", classPK);
+			_params.put("className", checkNull(className));
 
 			_command.put("/socialactivity/get-activities-count", _params);
 		}

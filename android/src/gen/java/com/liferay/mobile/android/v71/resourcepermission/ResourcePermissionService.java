@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v71.resourcepermission;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -100,6 +98,27 @@ public class ResourcePermissionService extends BaseService {
 		session.invoke(_command);
 	}
 
+	public void setIndividualResourcePermissions(long groupId, long companyId, String name, String primKey, JSONObject roleIdsToActionIds) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("companyId", companyId);
+			_params.put("name", checkNull(name));
+			_params.put("primKey", checkNull(primKey));
+			_params.put("roleIdsToActionIds", checkNull(roleIdsToActionIds));
+
+			_command.put("/resourcepermission/set-individual-resource-permissions", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public void setIndividualResourcePermissions(long groupId, long companyId, String name, String primKey, long roleId, JSONArray actionIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -112,27 +131,6 @@ public class ResourcePermissionService extends BaseService {
 			_params.put("primKey", checkNull(primKey));
 			_params.put("roleId", roleId);
 			_params.put("actionIds", checkNull(actionIds));
-
-			_command.put("/resourcepermission/set-individual-resource-permissions", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void setIndividualResourcePermissions(long groupId, long companyId, String name, String primKey, JSONObject roleIdsToActionIds) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("companyId", companyId);
-			_params.put("name", checkNull(name));
-			_params.put("primKey", checkNull(primKey));
-			_params.put("roleIdsToActionIds", checkNull(roleIdsToActionIds));
 
 			_command.put("/resourcepermission/set-individual-resource-permissions", _params);
 		}

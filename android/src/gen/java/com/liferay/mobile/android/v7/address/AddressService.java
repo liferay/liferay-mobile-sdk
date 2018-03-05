@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v7.address;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,6 +29,58 @@ public class AddressService extends BaseService {
 
 	public AddressService(Session session) {
 		super(session);
+	}
+
+	public JSONObject addAddress(String className, long classPK, String street1, String street2, String street3, String city, String zip, long regionId, long countryId, long typeId, boolean mailing, boolean primary, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("className", checkNull(className));
+			_params.put("classPK", classPK);
+			_params.put("street1", checkNull(street1));
+			_params.put("street2", checkNull(street2));
+			_params.put("street3", checkNull(street3));
+			_params.put("city", checkNull(city));
+			_params.put("zip", checkNull(zip));
+			_params.put("regionId", regionId);
+			_params.put("countryId", countryId);
+			_params.put("typeId", typeId);
+			_params.put("mailing", mailing);
+			_params.put("primary", primary);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
+
+			_command.put("/address/add-address", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public void deleteAddress(long addressId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("addressId", addressId);
+
+			_command.put("/address/delete-address", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 	public JSONObject getAddress(long addressId) throws Exception {
@@ -79,41 +130,6 @@ public class AddressService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONObject addAddress(String className, long classPK, String street1, String street2, String street3, String city, String zip, long regionId, long countryId, long typeId, boolean mailing, boolean primary, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("className", checkNull(className));
-			_params.put("classPK", classPK);
-			_params.put("street1", checkNull(street1));
-			_params.put("street2", checkNull(street2));
-			_params.put("street3", checkNull(street3));
-			_params.put("city", checkNull(city));
-			_params.put("zip", checkNull(zip));
-			_params.put("regionId", regionId);
-			_params.put("countryId", countryId);
-			_params.put("typeId", typeId);
-			_params.put("mailing", mailing);
-			_params.put("primary", primary);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/address/add-address", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
 	public JSONObject updateAddress(long addressId, String street1, String street2, String street3, String city, String zip, long regionId, long countryId, long typeId, boolean mailing, boolean primary) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -145,23 +161,6 @@ public class AddressService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
-	}
-
-	public void deleteAddress(long addressId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("addressId", addressId);
-
-			_command.put("/address/delete-address", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
 	}
 
 }

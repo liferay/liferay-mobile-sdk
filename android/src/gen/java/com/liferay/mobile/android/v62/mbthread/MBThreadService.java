@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v62.mbthread;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -47,6 +46,63 @@ public class MBThreadService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONArray getGroupThreads(long groupId, long userId, int status, boolean subscribed, boolean includeAnonymous, int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("status", status);
+			_params.put("subscribed", subscribed);
+			_params.put("includeAnonymous", includeAnonymous);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/mbthread/get-group-threads", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public JSONArray getGroupThreads(long groupId, long userId, int status, boolean subscribed, int start, int end) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("status", status);
+			_params.put("subscribed", subscribed);
+			_params.put("start", start);
+			_params.put("end", end);
+
+			_command.put("/mbthread/get-group-threads", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public JSONArray getGroupThreads(long groupId, long userId, int status, int start, int end) throws Exception {
@@ -104,63 +160,6 @@ public class MBThreadService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getGroupThreads(long groupId, long userId, int status, boolean subscribed, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-			_params.put("status", status);
-			_params.put("subscribed", subscribed);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/mbthread/get-group-threads", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray getGroupThreads(long groupId, long userId, int status, boolean subscribed, boolean includeAnonymous, int start, int end) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-			_params.put("status", status);
-			_params.put("subscribed", subscribed);
-			_params.put("includeAnonymous", includeAnonymous);
-			_params.put("start", start);
-			_params.put("end", end);
-
-			_command.put("/mbthread/get-group-threads", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
 	public Integer getGroupThreadsCount(long groupId, long userId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -169,32 +168,6 @@ public class MBThreadService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("userId", userId);
-			_params.put("status", status);
-
-			_command.put("/mbthread/get-group-threads-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public Integer getGroupThreadsCount(long groupId, long userId, long modifiedDate, int status) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("userId", userId);
-			_params.put("modifiedDate", modifiedDate);
 			_params.put("status", status);
 
 			_command.put("/mbthread/get-group-threads-count", _params);
@@ -249,6 +222,32 @@ public class MBThreadService extends BaseService {
 			_params.put("status", status);
 			_params.put("subscribed", subscribed);
 			_params.put("includeAnonymous", includeAnonymous);
+
+			_command.put("/mbthread/get-group-threads-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
+	}
+
+	public Integer getGroupThreadsCount(long groupId, long userId, long modifiedDate, int status) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("userId", userId);
+			_params.put("modifiedDate", modifiedDate);
+			_params.put("status", status);
 
 			_command.put("/mbthread/get-group-threads-count", _params);
 		}

@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v62.dlfileentrytype;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -32,15 +31,16 @@ public class DLFileEntryTypeService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addFileEntryType(long groupId, String name, String description, JSONArray ddmStructureIds, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addFileEntryType(long groupId, String fileEntryTypeKey, JSONObject nameMap, JSONObject descriptionMap, JSONArray ddmStructureIds, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
+			_params.put("fileEntryTypeKey", checkNull(fileEntryTypeKey));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("ddmStructureIds", checkNull(ddmStructureIds));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -59,16 +59,15 @@ public class DLFileEntryTypeService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addFileEntryType(long groupId, String fileEntryTypeKey, JSONObject nameMap, JSONObject descriptionMap, JSONArray ddmStructureIds, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addFileEntryType(long groupId, String name, String description, JSONArray ddmStructureIds, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("fileEntryTypeKey", checkNull(fileEntryTypeKey));
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("ddmStructureIds", checkNull(ddmStructureIds));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -278,15 +277,15 @@ public class DLFileEntryTypeService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public void updateFileEntryType(long fileEntryTypeId, String name, String description, JSONArray ddmStructureIds, JSONObjectWrapper serviceContext) throws Exception {
+	public void updateFileEntryType(long fileEntryTypeId, JSONObject nameMap, JSONObject descriptionMap, JSONArray ddmStructureIds, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryTypeId", fileEntryTypeId);
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("ddmStructureIds", checkNull(ddmStructureIds));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
@@ -299,15 +298,15 @@ public class DLFileEntryTypeService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void updateFileEntryType(long fileEntryTypeId, JSONObject nameMap, JSONObject descriptionMap, JSONArray ddmStructureIds, JSONObjectWrapper serviceContext) throws Exception {
+	public void updateFileEntryType(long fileEntryTypeId, String name, String description, JSONArray ddmStructureIds, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryTypeId", fileEntryTypeId);
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("ddmStructureIds", checkNull(ddmStructureIds));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 

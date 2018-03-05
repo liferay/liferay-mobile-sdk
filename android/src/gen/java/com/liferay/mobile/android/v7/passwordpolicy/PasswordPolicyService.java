@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v7.passwordpolicy;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -80,6 +79,46 @@ public class PasswordPolicyService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public void deletePasswordPolicy(long passwordPolicyId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("passwordPolicyId", passwordPolicyId);
+
+			_command.put("/passwordpolicy/delete-password-policy", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public JSONObject fetchPasswordPolicy(long passwordPolicyId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("passwordPolicyId", passwordPolicyId);
+
+			_command.put("/passwordpolicy/fetch-password-policy", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
 	public JSONObject updatePasswordPolicy(long passwordPolicyId, String name, String description, boolean changeable, boolean changeRequired, long minAge, boolean checkSyntax, boolean allowDictionaryWords, int minAlphanumeric, int minLength, int minLowerCase, int minNumbers, int minSymbols, int minUpperCase, String regex, boolean history, int historyCount, boolean expireable, long maxAge, long warningTime, int graceLimit, boolean lockout, int maxFailure, long lockoutDuration, long resetFailureCount, long resetTicketMaxAge, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -115,46 +154,6 @@ public class PasswordPolicyService extends BaseService {
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
 			_command.put("/passwordpolicy/update-password-policy", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void deletePasswordPolicy(long passwordPolicyId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("passwordPolicyId", passwordPolicyId);
-
-			_command.put("/passwordpolicy/delete-password-policy", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject fetchPasswordPolicy(long passwordPolicyId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("passwordPolicyId", passwordPolicyId);
-
-			_command.put("/passwordpolicy/fetch-password-policy", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v7.staging;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,6 +29,23 @@ public class StagingService extends BaseService {
 
 	public StagingService(Session session) {
 		super(session);
+	}
+
+	public void cleanUpStagingRequest(long stagingRequestId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("stagingRequestId", stagingRequestId);
+
+			_command.put("/staging/clean-up-staging-request", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 	public Long createStagingRequest(long groupId, String checksum) throws Exception {
@@ -54,30 +70,6 @@ public class StagingService extends BaseService {
 		}
 
 		return _result.getLong(0);
-	}
-
-	public JSONObject publishStagingRequest(long stagingRequestId, JSONObjectWrapper exportImportConfiguration) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("stagingRequestId", stagingRequestId);
-			mangleWrapper(_params, "exportImportConfiguration", "com.liferay.exportimport.kernel.model.ExportImportConfiguration", exportImportConfiguration);
-
-			_command.put("/staging/publish-staging-request", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
 	}
 
 	public JSONObject publishStagingRequest(long stagingRequestId, boolean privateLayout, JSONObject parameterMap) throws Exception {
@@ -105,21 +97,28 @@ public class StagingService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public void cleanUpStagingRequest(long stagingRequestId) throws Exception {
+	public JSONObject publishStagingRequest(long stagingRequestId, JSONObjectWrapper exportImportConfiguration) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("stagingRequestId", stagingRequestId);
+			mangleWrapper(_params, "exportImportConfiguration", "com.liferay.exportimport.kernel.model.ExportImportConfiguration", exportImportConfiguration);
 
-			_command.put("/staging/clean-up-staging-request", _params);
+			_command.put("/staging/publish-staging-request", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void updateStagingRequest(long stagingRequestId, String fileName, byte[] bytes) throws Exception {

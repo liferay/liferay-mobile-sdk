@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v71.dlfileversion;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -103,14 +101,13 @@ public class DLFileVersionService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public JSONObject getLatestFileVersion(long fileEntryId, boolean excludeWorkingCopy) throws Exception {
+	public JSONObject getLatestFileVersion(long fileEntryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
-			_params.put("excludeWorkingCopy", excludeWorkingCopy);
 
 			_command.put("/dlfileversion/get-latest-file-version", _params);
 		}
@@ -127,13 +124,14 @@ public class DLFileVersionService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject getLatestFileVersion(long fileEntryId) throws Exception {
+	public JSONObject getLatestFileVersion(long fileEntryId, boolean excludeWorkingCopy) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
+			_params.put("excludeWorkingCopy", excludeWorkingCopy);
 
 			_command.put("/dlfileversion/get-latest-file-version", _params);
 		}

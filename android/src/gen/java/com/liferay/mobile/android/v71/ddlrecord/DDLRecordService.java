@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.ddlrecord;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -49,52 +48,6 @@ public class DDLRecordService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONArray getRecords(long recordSetId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("recordSetId", recordSetId);
-
-			_command.put("/ddl.ddlrecord/get-records", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONObject getRecord(long recordId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("recordId", recordId);
-
-			_command.put("/ddl.ddlrecord/get-record", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
 	public JSONObject deleteRecordLocale(long recordId, String locale, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -120,19 +73,15 @@ public class DDLRecordService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateRecord(long recordId, int displayIndex, JSONObject fieldsMap, boolean mergeFields, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject getRecord(long recordId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("recordId", recordId);
-			_params.put("displayIndex", displayIndex);
-			_params.put("fieldsMap", checkNull(fieldsMap));
-			_params.put("mergeFields", mergeFields);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
-			_command.put("/ddl.ddlrecord/update-record", _params);
+			_command.put("/ddl.ddlrecord/get-record", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -145,6 +94,67 @@ public class DDLRecordService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
+	}
+
+	public JSONArray getRecords(long recordSetId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("recordSetId", recordSetId);
+
+			_command.put("/ddl.ddlrecord/get-records", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public void revertRecord(long recordId, String version, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("recordId", recordId);
+			_params.put("version", checkNull(version));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
+
+			_command.put("/ddl.ddlrecord/revert-record", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public void revertRecordVersion(long recordId, String version, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("recordId", recordId);
+			_params.put("version", checkNull(version));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
+
+			_command.put("/ddl.ddlrecord/revert-record-version", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 	public JSONObject updateRecord(long recordId, boolean majorVersion, int displayIndex, JSONObjectWrapper fields, boolean mergeFields, JSONObjectWrapper serviceContext) throws Exception {
@@ -202,42 +212,31 @@ public class DDLRecordService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public void revertRecord(long recordId, String version, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateRecord(long recordId, int displayIndex, JSONObject fieldsMap, boolean mergeFields, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("recordId", recordId);
-			_params.put("version", checkNull(version));
+			_params.put("displayIndex", displayIndex);
+			_params.put("fieldsMap", checkNull(fieldsMap));
+			_params.put("mergeFields", mergeFields);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
-			_command.put("/ddl.ddlrecord/revert-record", _params);
+			_command.put("/ddl.ddlrecord/update-record", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
 		}
 
-		session.invoke(_command);
-	}
+		JSONArray _result = session.invoke(_command);
 
-	public void revertRecordVersion(long recordId, String version, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("recordId", recordId);
-			_params.put("version", checkNull(version));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/ddl.ddlrecord/revert-record-version", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
+		if (_result == null) {
+			return null;
 		}
 
-		session.invoke(_command);
+		return _result.getJSONObject(0);
 	}
 
 }

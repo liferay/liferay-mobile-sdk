@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v7.expandovalue;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,6 +28,34 @@ public class ExpandoValueService extends BaseService {
 
 	public ExpandoValueService(Session session) {
 		super(session);
+	}
+
+	public JSONObject addValue(long companyId, String className, String tableName, String columnName, long classPK, String data) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("className", checkNull(className));
+			_params.put("tableName", checkNull(tableName));
+			_params.put("columnName", checkNull(columnName));
+			_params.put("classPK", classPK);
+			_params.put("data", checkNull(data));
+
+			_command.put("/expandovalue/add-value", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public void addValues(long companyId, String className, String tableName, long classPK, JSONObject attributeValues) throws Exception {
@@ -93,34 +119,6 @@ public class ExpandoValueService extends BaseService {
 			_params.put("classPK", classPK);
 
 			_command.put("/expandovalue/get-data", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject addValue(long companyId, String className, String tableName, String columnName, long classPK, String data) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("className", checkNull(className));
-			_params.put("tableName", checkNull(tableName));
-			_params.put("columnName", checkNull(columnName));
-			_params.put("classPK", classPK);
-			_params.put("data", checkNull(data));
-
-			_command.put("/expandovalue/add-value", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

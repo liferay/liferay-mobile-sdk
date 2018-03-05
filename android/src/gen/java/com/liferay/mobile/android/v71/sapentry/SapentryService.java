@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.sapentry;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -60,13 +59,13 @@ public class SapentryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject deleteSapEntry(long sapEntryId) throws Exception {
+	public JSONObject deleteSapEntry(JSONObjectWrapper sapEntry) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("sapEntryId", sapEntryId);
+			mangleWrapper(_params, "sapEntry", "com.liferay.portal.security.service.access.policy.model.SAPEntry", sapEntry);
 
 			_command.put("/sap.sapentry/delete-sap-entry", _params);
 		}
@@ -83,13 +82,13 @@ public class SapentryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject deleteSapEntry(JSONObjectWrapper sapEntry) throws Exception {
+	public JSONObject deleteSapEntry(long sapEntryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			mangleWrapper(_params, "sapEntry", "com.liferay.portal.security.service.access.policy.model.SAPEntry", sapEntry);
+			_params.put("sapEntryId", sapEntryId);
 
 			_command.put("/sap.sapentry/delete-sap-entry", _params);
 		}
@@ -130,7 +129,7 @@ public class SapentryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONArray getCompanySapEntries(long companyId, int start, int end, JSONObjectWrapper obc) throws Exception {
+	public JSONArray getCompanySapEntries(long companyId, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -139,7 +138,6 @@ public class SapentryService extends BaseService {
 			_params.put("companyId", companyId);
 			_params.put("start", start);
 			_params.put("end", end);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.portal.security.service.access.policy.model.SAPEntry>", obc);
 
 			_command.put("/sap.sapentry/get-company-sap-entries", _params);
 		}
@@ -156,7 +154,7 @@ public class SapentryService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getCompanySapEntries(long companyId, int start, int end) throws Exception {
+	public JSONArray getCompanySapEntries(long companyId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -165,6 +163,7 @@ public class SapentryService extends BaseService {
 			_params.put("companyId", companyId);
 			_params.put("start", start);
 			_params.put("end", end);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.portal.security.service.access.policy.model.SAPEntry>", obc);
 
 			_command.put("/sap.sapentry/get-company-sap-entries", _params);
 		}

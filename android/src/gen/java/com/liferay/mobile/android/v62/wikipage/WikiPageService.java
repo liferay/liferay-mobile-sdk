@@ -458,12 +458,13 @@ public class WikiPageService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONObject getPage(long nodeId, String title) throws Exception {
+	public JSONObject getPage(long groupId, long nodeId, String title) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
+			_params.put("groupId", groupId);
 			_params.put("nodeId", nodeId);
 			_params.put("title", checkNull(title));
 
@@ -482,13 +483,12 @@ public class WikiPageService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject getPage(long groupId, long nodeId, String title) throws Exception {
+	public JSONObject getPage(long nodeId, String title) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupId", groupId);
 			_params.put("nodeId", nodeId);
 			_params.put("title", checkNull(title));
 
@@ -557,18 +557,19 @@ public class WikiPageService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONArray getPages(long groupId, long userId, long nodeId, int status, int start, int end) throws Exception {
+	public JSONArray getPages(long groupId, long nodeId, boolean head, int status, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("userId", userId);
 			_params.put("nodeId", nodeId);
+			_params.put("head", head);
 			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/wikipage/get-pages", _params);
 		}
@@ -585,19 +586,18 @@ public class WikiPageService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getPages(long groupId, long nodeId, boolean head, int status, int start, int end, JSONObjectWrapper obc) throws Exception {
+	public JSONArray getPages(long groupId, long userId, long nodeId, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
+			_params.put("userId", userId);
 			_params.put("nodeId", nodeId);
-			_params.put("head", head);
 			_params.put("status", status);
 			_params.put("start", start);
 			_params.put("end", end);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
 			_command.put("/wikipage/get-pages", _params);
 		}

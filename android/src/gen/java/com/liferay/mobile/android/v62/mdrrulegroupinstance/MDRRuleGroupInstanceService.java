@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v62.mdrrulegroupinstance;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -32,7 +31,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addRuleGroupInstance(long groupId, String className, long classPK, long ruleGroupId, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addRuleGroupInstance(long groupId, String className, long classPK, long ruleGroupId, int priority, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -42,6 +41,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 			_params.put("ruleGroupId", ruleGroupId);
+			_params.put("priority", priority);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdrrulegroupinstance/add-rule-group-instance", _params);
@@ -59,7 +59,7 @@ public class MDRRuleGroupInstanceService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addRuleGroupInstance(long groupId, String className, long classPK, long ruleGroupId, int priority, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addRuleGroupInstance(long groupId, String className, long classPK, long ruleGroupId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -69,7 +69,6 @@ public class MDRRuleGroupInstanceService extends BaseService {
 			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 			_params.put("ruleGroupId", ruleGroupId);
-			_params.put("priority", priority);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdrrulegroupinstance/add-rule-group-instance", _params);

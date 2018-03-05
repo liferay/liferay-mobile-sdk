@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v62.company;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -164,6 +162,33 @@ public class CompanyService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public JSONObject updateCompany(long companyId, String virtualHost, String mx, int maxUsers, boolean active) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("virtualHost", checkNull(virtualHost));
+			_params.put("mx", checkNull(mx));
+			_params.put("maxUsers", maxUsers);
+			_params.put("active", active);
+
+			_command.put("/company/update-company", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
 	public JSONObject updateCompany(long companyId, String virtualHost, String mx, String homeURL, String name, String legalName, String legalId, String legalType, String sicCode, String tickerSymbol, String industry, String type, String size) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -183,33 +208,6 @@ public class CompanyService extends BaseService {
 			_params.put("industry", checkNull(industry));
 			_params.put("type", checkNull(type));
 			_params.put("size", checkNull(size));
-
-			_command.put("/company/update-company", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateCompany(long companyId, String virtualHost, String mx, int maxUsers, boolean active) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("virtualHost", checkNull(virtualHost));
-			_params.put("mx", checkNull(mx));
-			_params.put("maxUsers", maxUsers);
-			_params.put("active", active);
 
 			_command.put("/company/update-company", _params);
 		}

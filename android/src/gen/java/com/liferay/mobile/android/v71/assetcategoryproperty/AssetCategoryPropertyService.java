@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v71.assetcategoryproperty;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,23 +28,6 @@ public class AssetCategoryPropertyService extends BaseService {
 
 	public AssetCategoryPropertyService(Session session) {
 		super(session);
-	}
-
-	public void deleteCategoryProperty(long categoryPropertyId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("categoryPropertyId", categoryPropertyId);
-
-			_command.put("/assetcategoryproperty/delete-category-property", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
 	}
 
 	public JSONObject addCategoryProperty(long entryId, String key, String value) throws Exception {
@@ -72,6 +53,23 @@ public class AssetCategoryPropertyService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
+	}
+
+	public void deleteCategoryProperty(long categoryPropertyId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("categoryPropertyId", categoryPropertyId);
+
+			_command.put("/assetcategoryproperty/delete-category-property", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 	public JSONArray getCategoryProperties(long entryId) throws Exception {

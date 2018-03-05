@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.ddlrecordsetversion;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,29 +29,6 @@ public class DdlrecordsetversionService extends BaseService {
 
 	public DdlrecordsetversionService(Session session) {
 		super(session);
-	}
-
-	public JSONObject getRecordSetVersion(long recordSetVersionId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("recordSetVersionId", recordSetVersionId);
-
-			_command.put("/ddl.ddlrecordsetversion/get-record-set-version", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
 	}
 
 	public JSONObject getLatestRecordSetVersion(long recordSetId) throws Exception {
@@ -78,15 +54,15 @@ public class DdlrecordsetversionService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public Integer getRecordSetVersionsCount(long recordSetId) throws Exception {
+	public JSONObject getRecordSetVersion(long recordSetVersionId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("recordSetId", recordSetId);
+			_params.put("recordSetVersionId", recordSetVersionId);
 
-			_command.put("/ddl.ddlrecordsetversion/get-record-set-versions-count", _params);
+			_command.put("/ddl.ddlrecordsetversion/get-record-set-version", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -98,7 +74,7 @@ public class DdlrecordsetversionService extends BaseService {
 			return null;
 		}
 
-		return _result.getInt(0);
+		return _result.getJSONObject(0);
 	}
 
 	public JSONArray getRecordSetVersions(long recordSetId, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
@@ -125,6 +101,29 @@ public class DdlrecordsetversionService extends BaseService {
 		}
 
 		return _result.getJSONArray(0);
+	}
+
+	public Integer getRecordSetVersionsCount(long recordSetId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("recordSetId", recordSetId);
+
+			_command.put("/ddl.ddlrecordsetversion/get-record-set-versions-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
 	}
 
 }

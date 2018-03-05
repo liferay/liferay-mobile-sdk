@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v7.mdrrulegroup;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -32,17 +31,18 @@ public class MDRRuleGroupService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject copyRuleGroup(long ruleGroupId, long groupId, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addRuleGroup(long groupId, JSONObject nameMap, JSONObject descriptionMap, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("ruleGroupId", ruleGroupId);
 			_params.put("groupId", groupId);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
-			_command.put("/mdr.mdrrulegroup/copy-rule-group", _params);
+			_command.put("/mdr.mdrrulegroup/add-rule-group", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -57,18 +57,17 @@ public class MDRRuleGroupService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addRuleGroup(long groupId, JSONObject nameMap, JSONObject descriptionMap, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject copyRuleGroup(long ruleGroupId, long groupId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
+			_params.put("ruleGroupId", ruleGroupId);
 			_params.put("groupId", groupId);
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
-			_command.put("/mdr.mdrrulegroup/add-rule-group", _params);
+			_command.put("/mdr.mdrrulegroup/copy-rule-group", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.website;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -32,32 +31,6 @@ public class WebsiteService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject updateWebsite(long websiteId, String url, long typeId, boolean primary) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("websiteId", websiteId);
-			_params.put("url", checkNull(url));
-			_params.put("typeId", typeId);
-			_params.put("primary", primary);
-
-			_command.put("/website/update-website", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
 	public JSONObject addWebsite(String className, long classPK, String url, long typeId, boolean primary, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -72,29 +45,6 @@ public class WebsiteService extends BaseService {
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
 			_command.put("/website/add-website", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getWebsite(long websiteId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("websiteId", websiteId);
-
-			_command.put("/website/get-website", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -126,6 +76,29 @@ public class WebsiteService extends BaseService {
 		session.invoke(_command);
 	}
 
+	public JSONObject getWebsite(long websiteId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("websiteId", websiteId);
+
+			_command.put("/website/get-website", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
 	public JSONArray getWebsites(String className, long classPK) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -148,6 +121,32 @@ public class WebsiteService extends BaseService {
 		}
 
 		return _result.getJSONArray(0);
+	}
+
+	public JSONObject updateWebsite(long websiteId, String url, long typeId, boolean primary) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("websiteId", websiteId);
+			_params.put("url", checkNull(url));
+			_params.put("typeId", typeId);
+			_params.put("primary", primary);
+
+			_command.put("/website/update-website", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 }

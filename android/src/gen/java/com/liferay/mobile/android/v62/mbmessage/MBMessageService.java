@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v62.mbmessage;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -65,7 +64,7 @@ public class MBMessageService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addMessage(long groupId, long categoryId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addMessage(long groupId, long categoryId, long threadId, long parentMessageId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -73,6 +72,8 @@ public class MBMessageService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("categoryId", categoryId);
+			_params.put("threadId", threadId);
+			_params.put("parentMessageId", parentMessageId);
 			_params.put("subject", checkNull(subject));
 			_params.put("body", checkNull(body));
 			_params.put("format", checkNull(format));
@@ -97,7 +98,7 @@ public class MBMessageService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addMessage(long groupId, long categoryId, long threadId, long parentMessageId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addMessage(long groupId, long categoryId, String subject, String body, String format, JSONArray inputStreamOVPs, boolean anonymous, double priority, boolean allowPingbacks, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -105,8 +106,6 @@ public class MBMessageService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("categoryId", categoryId);
-			_params.put("threadId", threadId);
-			_params.put("parentMessageId", parentMessageId);
 			_params.put("subject", checkNull(subject));
 			_params.put("body", checkNull(body));
 			_params.put("format", checkNull(format));
@@ -384,14 +383,13 @@ public class MBMessageService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public String getGroupMessagesRss(long groupId, long userId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
+	public String getGroupMessagesRss(long groupId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("userId", userId);
 			_params.put("status", status);
 			_params.put("max", max);
 			_params.put("type", checkNull(type));
@@ -416,13 +414,14 @@ public class MBMessageService extends BaseService {
 		return _result.getString(0);
 	}
 
-	public String getGroupMessagesRss(long groupId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
+	public String getGroupMessagesRss(long groupId, long userId, int status, int max, String type, double version, String displayStyle, String feedURL, String entryURL, JSONObjectWrapper themeDisplay) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
+			_params.put("userId", userId);
 			_params.put("status", status);
 			_params.put("max", max);
 			_params.put("type", checkNull(type));

@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.layoutsetprototype;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -32,40 +31,19 @@ public class LayoutSetPrototypeService extends BaseService {
 		super(session);
 	}
 
-	public JSONArray search(long companyId, boolean active, JSONObjectWrapper obc) throws Exception {
+	public JSONObject addLayoutSetPrototype(JSONObject nameMap, JSONObject descriptionMap, boolean active, boolean layoutsUpdateable, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("companyId", companyId);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("active", active);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.portal.kernel.model.LayoutSetPrototype>", obc);
+			_params.put("layoutsUpdateable", layoutsUpdateable);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
-			_command.put("/layoutsetprototype/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONObject getLayoutSetPrototype(long layoutSetPrototypeId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("layoutSetPrototypeId", layoutSetPrototypeId);
-
-			_command.put("/layoutsetprototype/get-layout-set-prototype", _params);
+			_command.put("/layoutsetprototype/add-layout-set-prototype", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -107,19 +85,108 @@ public class LayoutSetPrototypeService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addLayoutSetPrototype(JSONObject nameMap, JSONObject descriptionMap, boolean active, boolean layoutsUpdateable, JSONObjectWrapper serviceContext) throws Exception {
+	public void deleteLayoutSetPrototype(long layoutSetPrototypeId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
+			_params.put("layoutSetPrototypeId", layoutSetPrototypeId);
+
+			_command.put("/layoutsetprototype/delete-layout-set-prototype", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public JSONObject fetchLayoutSetPrototype(long layoutSetPrototypeId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("layoutSetPrototypeId", layoutSetPrototypeId);
+
+			_command.put("/layoutsetprototype/fetch-layout-set-prototype", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject getLayoutSetPrototype(long layoutSetPrototypeId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("layoutSetPrototypeId", layoutSetPrototypeId);
+
+			_command.put("/layoutsetprototype/get-layout-set-prototype", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONArray search(long companyId, boolean active, JSONObjectWrapper obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("active", active);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.portal.kernel.model.LayoutSetPrototype>", obc);
+
+			_command.put("/layoutsetprototype/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public JSONObject updateLayoutSetPrototype(long layoutSetPrototypeId, JSONObject nameMap, JSONObject descriptionMap, boolean active, boolean layoutsUpdateable, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("layoutSetPrototypeId", layoutSetPrototypeId);
 			_params.put("nameMap", checkNull(nameMap));
 			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("active", active);
 			_params.put("layoutsUpdateable", layoutsUpdateable);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
-			_command.put("/layoutsetprototype/add-layout-set-prototype", _params);
+			_command.put("/layoutsetprototype/update-layout-set-prototype", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -162,34 +229,6 @@ public class LayoutSetPrototypeService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateLayoutSetPrototype(long layoutSetPrototypeId, JSONObject nameMap, JSONObject descriptionMap, boolean active, boolean layoutsUpdateable, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("layoutSetPrototypeId", layoutSetPrototypeId);
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("active", active);
-			_params.put("layoutsUpdateable", layoutsUpdateable);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/layoutsetprototype/update-layout-set-prototype", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
 	public JSONObject updateLayoutSetPrototype(long layoutSetPrototypeId, String settings) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -212,46 +251,6 @@ public class LayoutSetPrototypeService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
-	}
-
-	public JSONObject fetchLayoutSetPrototype(long layoutSetPrototypeId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("layoutSetPrototypeId", layoutSetPrototypeId);
-
-			_command.put("/layoutsetprototype/fetch-layout-set-prototype", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void deleteLayoutSetPrototype(long layoutSetPrototypeId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("layoutSetPrototypeId", layoutSetPrototypeId);
-
-			_command.put("/layoutsetprototype/delete-layout-set-prototype", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
 	}
 
 }

@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v7.layoutprototype;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,31 +29,6 @@ public class LayoutPrototypeService extends BaseService {
 
 	public LayoutPrototypeService(Session session) {
 		super(session);
-	}
-
-	public JSONArray search(long companyId, boolean active, JSONObjectWrapper obc) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("active", active);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.portal.kernel.model.LayoutPrototype>", obc);
-
-			_command.put("/layoutprototype/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
 	}
 
 	public JSONObject addLayoutPrototype(JSONObject nameMap, JSONObject descriptionMap, boolean active, JSONObjectWrapper serviceContext) throws Exception {
@@ -109,6 +83,94 @@ public class LayoutPrototypeService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public void deleteLayoutPrototype(long layoutPrototypeId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("layoutPrototypeId", layoutPrototypeId);
+
+			_command.put("/layoutprototype/delete-layout-prototype", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public JSONObject fetchLayoutPrototype(long layoutPrototypeId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("layoutPrototypeId", layoutPrototypeId);
+
+			_command.put("/layoutprototype/fetch-layout-prototype", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject getLayoutPrototype(long layoutPrototypeId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("layoutPrototypeId", layoutPrototypeId);
+
+			_command.put("/layoutprototype/get-layout-prototype", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONArray search(long companyId, boolean active, JSONObjectWrapper obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("active", active);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.portal.kernel.model.LayoutPrototype>", obc);
+
+			_command.put("/layoutprototype/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
 	public JSONObject updateLayoutPrototype(long layoutPrototypeId, JSONObject nameMap, JSONObject descriptionMap, boolean active, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -149,69 +211,6 @@ public class LayoutPrototypeService extends BaseService {
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
 			_command.put("/layoutprototype/update-layout-prototype", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getLayoutPrototype(long layoutPrototypeId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("layoutPrototypeId", layoutPrototypeId);
-
-			_command.put("/layoutprototype/get-layout-prototype", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public void deleteLayoutPrototype(long layoutPrototypeId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("layoutPrototypeId", layoutPrototypeId);
-
-			_command.put("/layoutprototype/delete-layout-prototype", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject fetchLayoutPrototype(long layoutPrototypeId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("layoutPrototypeId", layoutPrototypeId);
-
-			_command.put("/layoutprototype/fetch-layout-prototype", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v62.usergroup;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -134,13 +133,13 @@ public class UserGroupService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject getUserGroup(String name) throws Exception {
+	public JSONObject getUserGroup(long userGroupId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("name", checkNull(name));
+			_params.put("userGroupId", userGroupId);
 
 			_command.put("/usergroup/get-user-group", _params);
 		}
@@ -157,13 +156,13 @@ public class UserGroupService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject getUserGroup(long userGroupId) throws Exception {
+	public JSONObject getUserGroup(String name) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("userGroupId", userGroupId);
+			_params.put("name", checkNull(name));
 
 			_command.put("/usergroup/get-user-group", _params);
 		}

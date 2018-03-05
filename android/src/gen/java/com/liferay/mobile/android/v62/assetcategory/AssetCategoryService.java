@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v62.assetcategory;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -32,14 +31,17 @@ public class AssetCategoryService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addCategory(String title, long vocabularyId, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addCategory(long parentCategoryId, JSONObject titleMap, JSONObject descriptionMap, long vocabularyId, JSONArray categoryProperties, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("title", checkNull(title));
+			_params.put("parentCategoryId", parentCategoryId);
+			_params.put("titleMap", checkNull(titleMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("vocabularyId", vocabularyId);
+			_params.put("categoryProperties", checkNull(categoryProperties));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assetcategory/add-category", _params);
@@ -57,17 +59,14 @@ public class AssetCategoryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject addCategory(long parentCategoryId, JSONObject titleMap, JSONObject descriptionMap, long vocabularyId, JSONArray categoryProperties, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject addCategory(String title, long vocabularyId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("parentCategoryId", parentCategoryId);
-			_params.put("titleMap", checkNull(titleMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("title", checkNull(title));
 			_params.put("vocabularyId", vocabularyId);
-			_params.put("categoryProperties", checkNull(categoryProperties));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/assetcategory/add-category", _params);
@@ -607,15 +606,15 @@ public class AssetCategoryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONArray search(long groupId, String name, JSONArray categoryProperties, int start, int end) throws Exception {
+	public JSONArray search(JSONArray groupIds, String name, JSONArray vocabularyIds, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupId", groupId);
+			_params.put("groupIds", checkNull(groupIds));
 			_params.put("name", checkNull(name));
-			_params.put("categoryProperties", checkNull(categoryProperties));
+			_params.put("vocabularyIds", checkNull(vocabularyIds));
 			_params.put("start", start);
 			_params.put("end", end);
 
@@ -634,15 +633,15 @@ public class AssetCategoryService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray search(JSONArray groupIds, String name, JSONArray vocabularyIds, int start, int end) throws Exception {
+	public JSONArray search(long groupId, String name, JSONArray categoryProperties, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupIds", checkNull(groupIds));
+			_params.put("groupId", groupId);
 			_params.put("name", checkNull(name));
-			_params.put("vocabularyIds", checkNull(vocabularyIds));
+			_params.put("categoryProperties", checkNull(categoryProperties));
 			_params.put("start", start);
 			_params.put("end", end);
 

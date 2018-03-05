@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.layoutbranch;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,32 +29,6 @@ public class LayoutBranchService extends BaseService {
 
 	public LayoutBranchService(Session session) {
 		super(session);
-	}
-
-	public JSONObject updateLayoutBranch(long layoutBranchId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("layoutBranchId", layoutBranchId);
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/layoutbranch/update-layout-branch", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
 	}
 
 	public JSONObject addLayoutBranch(long layoutRevisionId, String name, String description, boolean master, JSONObjectWrapper serviceContext) throws Exception {
@@ -100,6 +73,32 @@ public class LayoutBranchService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject updateLayoutBranch(long layoutBranchId, String name, String description, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("layoutBranchId", layoutBranchId);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
+
+			_command.put("/layoutbranch/update-layout-branch", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 }

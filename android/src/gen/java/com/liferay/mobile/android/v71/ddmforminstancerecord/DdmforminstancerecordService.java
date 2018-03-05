@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.ddmforminstancerecord;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,46 +29,6 @@ public class DdmforminstancerecordService extends BaseService {
 
 	public DdmforminstancerecordService(Session session) {
 		super(session);
-	}
-
-	public JSONArray getFormInstanceRecords(long ddmFormInstanceId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("ddmFormInstanceId", ddmFormInstanceId);
-
-			_command.put("/ddm.ddmforminstancerecord/get-form-instance-records", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public void deleteFormInstanceRecord(long ddmFormInstanceRecordId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("ddmFormInstanceRecordId", ddmFormInstanceRecordId);
-
-			_command.put("/ddm.ddmforminstancerecord/delete-form-instance-record", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
 	}
 
 	public JSONObject addFormInstanceRecord(long groupId, long ddmFormInstanceId, JSONObjectWrapper ddmFormValues, JSONObjectWrapper serviceContext) throws Exception {
@@ -98,6 +57,23 @@ public class DdmforminstancerecordService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public void deleteFormInstanceRecord(long ddmFormInstanceRecordId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("ddmFormInstanceRecordId", ddmFormInstanceRecordId);
+
+			_command.put("/ddm.ddmforminstancerecord/delete-form-instance-record", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
 	public JSONObject getFormInstanceRecord(long ddmFormInstanceRecordId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -119,6 +95,29 @@ public class DdmforminstancerecordService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
+	}
+
+	public JSONArray getFormInstanceRecords(long ddmFormInstanceId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("ddmFormInstanceId", ddmFormInstanceId);
+
+			_command.put("/ddm.ddmforminstancerecord/get-form-instance-records", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
 	}
 
 	public void revertFormInstanceRecord(long ddmFormInstanceRecordId, String version, JSONObjectWrapper serviceContext) throws Exception {

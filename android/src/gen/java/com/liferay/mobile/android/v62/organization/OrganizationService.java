@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v62.organization;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -48,6 +47,43 @@ public class OrganizationService extends BaseService {
 		}
 
 		session.invoke(_command);
+	}
+
+	public JSONObject addOrganization(long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("parentOrganizationId", parentOrganizationId);
+			_params.put("name", checkNull(name));
+			_params.put("type", checkNull(type));
+			_params.put("recursable", recursable);
+			_params.put("regionId", regionId);
+			_params.put("countryId", countryId);
+			_params.put("statusId", statusId);
+			_params.put("comments", checkNull(comments));
+			_params.put("site", site);
+			_params.put("addresses", checkNull(addresses));
+			_params.put("emailAddresses", checkNull(emailAddresses));
+			_params.put("orgLabors", checkNull(orgLabors));
+			_params.put("phones", checkNull(phones));
+			_params.put("websites", checkNull(websites));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+
+			_command.put("/organization/add-organization", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONObject addOrganization(long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONObjectWrapper serviceContext) throws Exception {
@@ -91,43 +127,6 @@ public class OrganizationService extends BaseService {
 			_params.put("parentOrganizationId", parentOrganizationId);
 			_params.put("name", checkNull(name));
 			_params.put("type", checkNull(type));
-			_params.put("regionId", regionId);
-			_params.put("countryId", countryId);
-			_params.put("statusId", statusId);
-			_params.put("comments", checkNull(comments));
-			_params.put("site", site);
-			_params.put("addresses", checkNull(addresses));
-			_params.put("emailAddresses", checkNull(emailAddresses));
-			_params.put("orgLabors", checkNull(orgLabors));
-			_params.put("phones", checkNull(phones));
-			_params.put("websites", checkNull(websites));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/organization/add-organization", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject addOrganization(long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("parentOrganizationId", parentOrganizationId);
-			_params.put("name", checkNull(name));
-			_params.put("type", checkNull(type));
-			_params.put("recursable", recursable);
 			_params.put("regionId", regionId);
 			_params.put("countryId", countryId);
 			_params.put("statusId", statusId);
@@ -460,7 +459,7 @@ public class OrganizationService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, long regionId, long countryId, int statusId, String comments, boolean site, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -470,11 +469,17 @@ public class OrganizationService extends BaseService {
 			_params.put("parentOrganizationId", parentOrganizationId);
 			_params.put("name", checkNull(name));
 			_params.put("type", checkNull(type));
+			_params.put("recursable", recursable);
 			_params.put("regionId", regionId);
 			_params.put("countryId", countryId);
 			_params.put("statusId", statusId);
 			_params.put("comments", checkNull(comments));
 			_params.put("site", site);
+			_params.put("addresses", checkNull(addresses));
+			_params.put("emailAddresses", checkNull(emailAddresses));
+			_params.put("orgLabors", checkNull(orgLabors));
+			_params.put("phones", checkNull(phones));
+			_params.put("websites", checkNull(websites));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/organization/update-organization", _params);
@@ -562,7 +567,7 @@ public class OrganizationService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, boolean recursable, long regionId, long countryId, int statusId, String comments, boolean site, JSONArray addresses, JSONArray emailAddresses, JSONArray orgLabors, JSONArray phones, JSONArray websites, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateOrganization(long organizationId, long parentOrganizationId, String name, String type, long regionId, long countryId, int statusId, String comments, boolean site, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -572,17 +577,11 @@ public class OrganizationService extends BaseService {
 			_params.put("parentOrganizationId", parentOrganizationId);
 			_params.put("name", checkNull(name));
 			_params.put("type", checkNull(type));
-			_params.put("recursable", recursable);
 			_params.put("regionId", regionId);
 			_params.put("countryId", countryId);
 			_params.put("statusId", statusId);
 			_params.put("comments", checkNull(comments));
 			_params.put("site", site);
-			_params.put("addresses", checkNull(addresses));
-			_params.put("emailAddresses", checkNull(emailAddresses));
-			_params.put("orgLabors", checkNull(orgLabors));
-			_params.put("phones", checkNull(phones));
-			_params.put("websites", checkNull(websites));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/organization/update-organization", _params);

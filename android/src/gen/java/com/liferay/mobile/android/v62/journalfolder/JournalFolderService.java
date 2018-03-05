@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v62.journalfolder;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -266,6 +265,34 @@ public class JournalFolderService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
+	public JSONArray getFoldersAndArticles(long groupId, long folderId, int status, int start, int end, JSONObjectWrapper obc) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("folderId", folderId);
+			_params.put("status", status);
+			_params.put("start", start);
+			_params.put("end", end);
+			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+
+			_command.put("/journalfolder/get-folders-and-articles", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
 	public JSONArray getFoldersAndArticles(long groupId, long folderId, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -293,20 +320,17 @@ public class JournalFolderService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getFoldersAndArticles(long groupId, long folderId, int status, int start, int end, JSONObjectWrapper obc) throws Exception {
+	public Integer getFoldersAndArticlesCount(long groupId, JSONArray folderIds, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("folderId", folderId);
+			_params.put("folderIds", checkNull(folderIds));
 			_params.put("status", status);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
 
-			_command.put("/journalfolder/get-folders-and-articles", _params);
+			_command.put("/journalfolder/get-folders-and-articles-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -318,7 +342,7 @@ public class JournalFolderService extends BaseService {
 			return null;
 		}
 
-		return _result.getJSONArray(0);
+		return _result.getInt(0);
 	}
 
 	public Integer getFoldersAndArticlesCount(long groupId, long folderId) throws Exception {
@@ -353,31 +377,6 @@ public class JournalFolderService extends BaseService {
 
 			_params.put("groupId", groupId);
 			_params.put("folderId", folderId);
-			_params.put("status", status);
-
-			_command.put("/journalfolder/get-folders-and-articles-count", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getInt(0);
-	}
-
-	public Integer getFoldersAndArticlesCount(long groupId, JSONArray folderIds, int status) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("folderIds", checkNull(folderIds));
 			_params.put("status", status);
 
 			_command.put("/journalfolder/get-folders-and-articles-count", _params);

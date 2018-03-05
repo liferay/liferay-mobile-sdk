@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.mdrrulegroupinstance;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,23 +29,6 @@ public class MDRRuleGroupInstanceService extends BaseService {
 
 	public MDRRuleGroupInstanceService(Session session) {
 		super(session);
-	}
-
-	public void deleteRuleGroupInstance(long ruleGroupInstanceId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("ruleGroupInstanceId", ruleGroupInstanceId);
-
-			_command.put("/mdr.mdrrulegroupinstance/delete-rule-group-instance", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
 	}
 
 	public JSONObject addRuleGroupInstance(long groupId, String className, long classPK, long ruleGroupId, int priority, JSONObjectWrapper serviceContext) throws Exception {
@@ -102,6 +84,23 @@ public class MDRRuleGroupInstanceService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
+	}
+
+	public void deleteRuleGroupInstance(long ruleGroupInstanceId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("ruleGroupInstanceId", ruleGroupInstanceId);
+
+			_command.put("/mdr.mdrrulegroupinstance/delete-rule-group-instance", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 	public JSONArray getRuleGroupInstances(String className, long classPK, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {

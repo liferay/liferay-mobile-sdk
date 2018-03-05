@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.contact;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,6 +29,29 @@ public class ContactService extends BaseService {
 
 	public ContactService(Session session) {
 		super(session);
+	}
+
+	public JSONObject getContact(long contactId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("contactId", contactId);
+
+			_command.put("/contact/get-contact", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
 	}
 
 	public JSONArray getContacts(long classNameId, long classPK, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
@@ -81,29 +103,6 @@ public class ContactService extends BaseService {
 		}
 
 		return _result.getInt(0);
-	}
-
-	public JSONObject getContact(long contactId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("contactId", contactId);
-
-			_command.put("/contact/get-contact", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
 	}
 
 }

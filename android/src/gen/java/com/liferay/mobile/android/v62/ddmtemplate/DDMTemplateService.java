@@ -101,13 +101,15 @@ public class DDMTemplateService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject copyTemplate(long templateId, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject copyTemplate(long templateId, JSONObject nameMap, JSONObject descriptionMap, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("templateId", templateId);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmtemplate/copy-template", _params);
@@ -125,15 +127,13 @@ public class DDMTemplateService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject copyTemplate(long templateId, JSONObject nameMap, JSONObject descriptionMap, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject copyTemplate(long templateId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("templateId", templateId);
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/ddmtemplate/copy-template", _params);
@@ -471,16 +471,16 @@ public class DDMTemplateService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public JSONArray search(long companyId, long groupId, long classNameId, long classPK, String keywords, String type, String mode, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
+	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, String keywords, String type, String mode, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupId", groupId);
-			_params.put("classNameId", classNameId);
-			_params.put("classPK", classPK);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("classNameIds", checkNull(classNameIds));
+			_params.put("classPKs", checkNull(classPKs));
 			_params.put("keywords", checkNull(keywords));
 			_params.put("type", checkNull(type));
 			_params.put("mode", checkNull(mode));
@@ -503,7 +503,7 @@ public class DDMTemplateService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, String keywords, String type, String mode, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
+	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, String name, String description, String type, String mode, String language, boolean andOperator, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -513,6 +513,41 @@ public class DDMTemplateService extends BaseService {
 			_params.put("groupIds", checkNull(groupIds));
 			_params.put("classNameIds", checkNull(classNameIds));
 			_params.put("classPKs", checkNull(classPKs));
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("type", checkNull(type));
+			_params.put("mode", checkNull(mode));
+			_params.put("language", checkNull(language));
+			_params.put("andOperator", andOperator);
+			_params.put("start", start);
+			_params.put("end", end);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
+
+			_command.put("/ddmtemplate/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public JSONArray search(long companyId, long groupId, long classNameId, long classPK, String keywords, String type, String mode, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
+			_params.put("classPK", classPK);
 			_params.put("keywords", checkNull(keywords));
 			_params.put("type", checkNull(type));
 			_params.put("mode", checkNull(mode));
@@ -570,7 +605,7 @@ public class DDMTemplateService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, String name, String description, String type, String mode, String language, boolean andOperator, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
+	public Integer searchCount(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, String keywords, String type, String mode) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -580,47 +615,9 @@ public class DDMTemplateService extends BaseService {
 			_params.put("groupIds", checkNull(groupIds));
 			_params.put("classNameIds", checkNull(classNameIds));
 			_params.put("classPKs", checkNull(classPKs));
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
+			_params.put("keywords", checkNull(keywords));
 			_params.put("type", checkNull(type));
 			_params.put("mode", checkNull(mode));
-			_params.put("language", checkNull(language));
-			_params.put("andOperator", andOperator);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
-
-			_command.put("/ddmtemplate/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public Integer searchCount(long companyId, long groupId, long classNameId, long classPK, String name, String description, String type, String mode, String language, boolean andOperator) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("groupId", groupId);
-			_params.put("classNameId", classNameId);
-			_params.put("classPK", classPK);
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
-			_params.put("type", checkNull(type));
-			_params.put("mode", checkNull(mode));
-			_params.put("language", checkNull(language));
-			_params.put("andOperator", andOperator);
 
 			_command.put("/ddmtemplate/search-count", _params);
 		}
@@ -698,19 +695,22 @@ public class DDMTemplateService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public Integer searchCount(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, String keywords, String type, String mode) throws Exception {
+	public Integer searchCount(long companyId, long groupId, long classNameId, long classPK, String name, String description, String type, String mode, String language, boolean andOperator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("companyId", companyId);
-			_params.put("groupIds", checkNull(groupIds));
-			_params.put("classNameIds", checkNull(classNameIds));
-			_params.put("classPKs", checkNull(classPKs));
-			_params.put("keywords", checkNull(keywords));
+			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
+			_params.put("classPK", classPK);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("type", checkNull(type));
 			_params.put("mode", checkNull(mode));
+			_params.put("language", checkNull(language));
+			_params.put("andOperator", andOperator);
 
 			_command.put("/ddmtemplate/search-count", _params);
 		}

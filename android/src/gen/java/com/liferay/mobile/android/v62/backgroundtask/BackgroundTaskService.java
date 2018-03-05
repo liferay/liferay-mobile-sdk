@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v62.backgroundtask;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -30,29 +28,6 @@ public class BackgroundTaskService extends BaseService {
 
 	public BackgroundTaskService(Session session) {
 		super(session);
-	}
-
-	public String getBackgroundTaskStatusJson(long backgroundTaskId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("backgroundTaskId", backgroundTaskId);
-
-			_command.put("/backgroundtask/get-background-task-status-json", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getString(0);
 	}
 
 	public Integer getBackgroundTasksCount(long groupId, String taskExecutorClassName, String completed) throws Exception {
@@ -78,6 +53,29 @@ public class BackgroundTaskService extends BaseService {
 		}
 
 		return _result.getInt(0);
+	}
+
+	public String getBackgroundTaskStatusJson(long backgroundTaskId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("backgroundTaskId", backgroundTaskId);
+
+			_command.put("/backgroundtask/get-background-task-status-json", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
 	}
 
 }

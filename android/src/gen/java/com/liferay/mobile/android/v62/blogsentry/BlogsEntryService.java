@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v62.blogsentry;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -179,16 +178,16 @@ public class BlogsEntryService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getGroupEntries(long groupId, long displayDate, int status, int max) throws Exception {
+	public JSONArray getGroupEntries(long groupId, int status, int start, int end) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("displayDate", displayDate);
 			_params.put("status", status);
-			_params.put("max", max);
+			_params.put("start", start);
+			_params.put("end", end);
 
 			_command.put("/blogsentry/get-group-entries", _params);
 		}
@@ -205,16 +204,16 @@ public class BlogsEntryService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getGroupEntries(long groupId, int status, int start, int end) throws Exception {
+	public JSONArray getGroupEntries(long groupId, long displayDate, int status, int max) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
+			_params.put("displayDate", displayDate);
 			_params.put("status", status);
-			_params.put("start", start);
-			_params.put("end", end);
+			_params.put("max", max);
 
 			_command.put("/blogsentry/get-group-entries", _params);
 		}

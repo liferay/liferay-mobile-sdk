@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v62.assetentry;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -173,13 +172,15 @@ public class AssetEntryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateEntry(long groupId, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, int priority, boolean sync) throws Exception {
+	public JSONObject updateEntry(long groupId, long createDate, long modifiedDate, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, int priority, boolean sync) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
+			_params.put("createDate", createDate);
+			_params.put("modifiedDate", modifiedDate);
 			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 			_params.put("classUuid", checkNull(classUuid));
@@ -260,15 +261,13 @@ public class AssetEntryService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateEntry(long groupId, long createDate, long modifiedDate, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, int priority, boolean sync) throws Exception {
+	public JSONObject updateEntry(long groupId, String className, long classPK, String classUuid, long classTypeId, JSONArray categoryIds, JSONArray tagNames, boolean visible, long startDate, long endDate, long expirationDate, String mimeType, String title, String description, String summary, String url, String layoutUuid, int height, int width, int priority, boolean sync) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("groupId", groupId);
-			_params.put("createDate", createDate);
-			_params.put("modifiedDate", modifiedDate);
 			_params.put("className", checkNull(className));
 			_params.put("classPK", classPK);
 			_params.put("classUuid", checkNull(classUuid));

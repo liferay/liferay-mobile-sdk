@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v62.mdrrule;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -123,7 +122,7 @@ public class MDRRuleService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateRule(long ruleId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateRule(long ruleId, JSONObject nameMap, JSONObject descriptionMap, String type, JSONObjectWrapper typeSettingsProperties, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -133,7 +132,7 @@ public class MDRRuleService extends BaseService {
 			_params.put("nameMap", checkNull(nameMap));
 			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("type", checkNull(type));
-			_params.put("typeSettings", checkNull(typeSettings));
+			mangleWrapper(_params, "typeSettingsProperties", "com.liferay.portal.kernel.util.UnicodeProperties", typeSettingsProperties);
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdrrule/update-rule", _params);
@@ -151,7 +150,7 @@ public class MDRRuleService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject updateRule(long ruleId, JSONObject nameMap, JSONObject descriptionMap, String type, JSONObjectWrapper typeSettingsProperties, JSONObjectWrapper serviceContext) throws Exception {
+	public JSONObject updateRule(long ruleId, JSONObject nameMap, JSONObject descriptionMap, String type, String typeSettings, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -161,7 +160,7 @@ public class MDRRuleService extends BaseService {
 			_params.put("nameMap", checkNull(nameMap));
 			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("type", checkNull(type));
-			mangleWrapper(_params, "typeSettingsProperties", "com.liferay.portal.kernel.util.UnicodeProperties", typeSettingsProperties);
+			_params.put("typeSettings", checkNull(typeSettings));
 			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
 
 			_command.put("/mdrrule/update-rule", _params);

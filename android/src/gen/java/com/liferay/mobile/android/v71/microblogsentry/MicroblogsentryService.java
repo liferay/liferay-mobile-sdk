@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.microblogsentry;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -132,15 +131,13 @@ public class MicroblogsentryService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONObject getMicroblogsEntry(long microblogsEntryId) throws Exception {
+	public Integer getMicroblogsEntriesCount() throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("microblogsEntryId", microblogsEntryId);
-
-			_command.put("/microblogs.microblogsentry/get-microblogs-entry", _params);
+			_command.put("/microblogs.microblogsentry/get-microblogs-entries-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -152,7 +149,7 @@ public class MicroblogsentryService extends BaseService {
 			return null;
 		}
 
-		return _result.getJSONObject(0);
+		return _result.getInt(0);
 	}
 
 	public Integer getMicroblogsEntriesCount(String assetTagName) throws Exception {
@@ -178,13 +175,15 @@ public class MicroblogsentryService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public Integer getMicroblogsEntriesCount() throws Exception {
+	public JSONObject getMicroblogsEntry(long microblogsEntryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_command.put("/microblogs.microblogsentry/get-microblogs-entries-count", _params);
+			_params.put("microblogsEntryId", microblogsEntryId);
+
+			_command.put("/microblogs.microblogsentry/get-microblogs-entry", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -196,7 +195,7 @@ public class MicroblogsentryService extends BaseService {
 			return null;
 		}
 
-		return _result.getInt(0);
+		return _result.getJSONObject(0);
 	}
 
 	public JSONArray getUserMicroblogsEntries(long microblogsEntryUserId, int start, int end) throws Exception {

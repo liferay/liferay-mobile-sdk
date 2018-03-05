@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v62.journalstructure;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -155,13 +154,13 @@ public class JournalStructureService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONArray getStructures(long groupId) throws Exception {
+	public JSONArray getStructures(JSONArray groupIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupId", groupId);
+			_params.put("groupIds", checkNull(groupIds));
 
 			_command.put("/journalstructure/get-structures", _params);
 		}
@@ -178,13 +177,13 @@ public class JournalStructureService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getStructures(JSONArray groupIds) throws Exception {
+	public JSONArray getStructures(long groupId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupIds", checkNull(groupIds));
+			_params.put("groupId", groupId);
 
 			_command.put("/journalstructure/get-structures", _params);
 		}

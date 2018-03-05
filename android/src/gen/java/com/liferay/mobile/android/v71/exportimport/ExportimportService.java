@@ -32,6 +32,29 @@ public class ExportimportService extends BaseService {
 		super(session);
 	}
 
+	public JSONObject exportLayoutsAsFile(JSONObjectWrapper exportImportConfiguration) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			mangleWrapper(_params, "exportImportConfiguration", "com.liferay.exportimport.kernel.model.ExportImportConfiguration", exportImportConfiguration);
+
+			_command.put("/exportimport/export-layouts-as-file", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
 	public JSONObject exportLayoutsAsFile(long userId, long groupId, boolean privateLayout, JSONObject parameterMap) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -58,7 +81,7 @@ public class ExportimportService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject exportLayoutsAsFile(JSONObjectWrapper exportImportConfiguration) throws Exception {
+	public Long exportLayoutsAsFileInBackground(JSONObjectWrapper exportImportConfiguration) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -66,7 +89,7 @@ public class ExportimportService extends BaseService {
 
 			mangleWrapper(_params, "exportImportConfiguration", "com.liferay.exportimport.kernel.model.ExportImportConfiguration", exportImportConfiguration);
 
-			_command.put("/exportimport/export-layouts-as-file", _params);
+			_command.put("/exportimport/export-layouts-as-file-in-background", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -78,30 +101,7 @@ public class ExportimportService extends BaseService {
 			return null;
 		}
 
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject exportPortletInfoAsFile(JSONObjectWrapper exportImportConfiguration) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			mangleWrapper(_params, "exportImportConfiguration", "com.liferay.exportimport.kernel.model.ExportImportConfiguration", exportImportConfiguration);
-
-			_command.put("/exportimport/export-portlet-info-as-file", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
+		return _result.getLong(0);
 	}
 
 	public Long exportLayoutsAsFileInBackground(long exportImportConfigurationId) throws Exception {
@@ -127,7 +127,7 @@ public class ExportimportService extends BaseService {
 		return _result.getLong(0);
 	}
 
-	public Long exportLayoutsAsFileInBackground(JSONObjectWrapper exportImportConfiguration) throws Exception {
+	public JSONObject exportPortletInfoAsFile(JSONObjectWrapper exportImportConfiguration) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -135,7 +135,7 @@ public class ExportimportService extends BaseService {
 
 			mangleWrapper(_params, "exportImportConfiguration", "com.liferay.exportimport.kernel.model.ExportImportConfiguration", exportImportConfiguration);
 
-			_command.put("/exportimport/export-layouts-as-file-in-background", _params);
+			_command.put("/exportimport/export-portlet-info-as-file", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -147,7 +147,7 @@ public class ExportimportService extends BaseService {
 			return null;
 		}
 
-		return _result.getLong(0);
+		return _result.getJSONObject(0);
 	}
 
 	public Long exportPortletInfoAsFileInBackground(JSONObjectWrapper exportImportConfiguration) throws Exception {
@@ -171,6 +171,45 @@ public class ExportimportService extends BaseService {
 		}
 
 		return _result.getLong(0);
+	}
+
+	public void importLayouts(JSONObjectWrapper exportImportConfiguration, UploadData file) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			mangleWrapper(_params, "exportImportConfiguration", "com.liferay.exportimport.kernel.model.ExportImportConfiguration", exportImportConfiguration);
+			_params.put("file", checkNull(file));
+
+			_command.put("/exportimport/import-layouts", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.upload(_command);
+	}
+
+	public void importLayouts(long userId, long groupId, boolean privateLayout, JSONObject parameterMap, UploadData file) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("userId", userId);
+			_params.put("groupId", groupId);
+			_params.put("privateLayout", privateLayout);
+			_params.put("parameterMap", checkNull(parameterMap));
+			_params.put("file", checkNull(file));
+
+			_command.put("/exportimport/import-layouts", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.upload(_command);
 	}
 
 	public Long importLayoutsInBackground(JSONObjectWrapper exportImportConfiguration, UploadData file) throws Exception {
@@ -285,45 +324,6 @@ public class ExportimportService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
-	}
-
-	public void importLayouts(long userId, long groupId, boolean privateLayout, JSONObject parameterMap, UploadData file) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("userId", userId);
-			_params.put("groupId", groupId);
-			_params.put("privateLayout", privateLayout);
-			_params.put("parameterMap", checkNull(parameterMap));
-			_params.put("file", checkNull(file));
-
-			_command.put("/exportimport/import-layouts", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.upload(_command);
-	}
-
-	public void importLayouts(JSONObjectWrapper exportImportConfiguration, UploadData file) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			mangleWrapper(_params, "exportImportConfiguration", "com.liferay.exportimport.kernel.model.ExportImportConfiguration", exportImportConfiguration);
-			_params.put("file", checkNull(file));
-
-			_command.put("/exportimport/import-layouts", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.upload(_command);
 	}
 
 }

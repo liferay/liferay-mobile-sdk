@@ -32,39 +32,6 @@ public class JournalTemplateService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject addTemplate(long groupId, String templateId, boolean autoTemplateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("templateId", checkNull(templateId));
-			_params.put("autoTemplateId", autoTemplateId);
-			_params.put("structureId", checkNull(structureId));
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("xsl", checkNull(xsl));
-			_params.put("formatXsl", formatXsl);
-			_params.put("langType", checkNull(langType));
-			_params.put("cacheable", cacheable);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/journaltemplate/add-template", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
 	public JSONObject addTemplate(long groupId, String templateId, boolean autoTemplateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, UploadData smallFile, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -93,6 +60,39 @@ public class JournalTemplateService extends BaseService {
 		}
 
 		JSONArray _result = session.upload(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject addTemplate(long groupId, String templateId, boolean autoTemplateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("templateId", checkNull(templateId));
+			_params.put("autoTemplateId", autoTemplateId);
+			_params.put("structureId", checkNull(structureId));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("xsl", checkNull(xsl));
+			_params.put("formatXsl", formatXsl);
+			_params.put("langType", checkNull(langType));
+			_params.put("cacheable", cacheable);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+
+			_command.put("/journaltemplate/add-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
 
 		if (_result == null) {
 			return null;
@@ -218,7 +218,7 @@ public class JournalTemplateService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONArray search(long companyId, JSONArray groupIds, String templateId, String structureId, String structureIdComparator, String name, String description, boolean andOperator, int start, int end, JSONObjectWrapper obc) throws Exception {
+	public JSONArray search(long companyId, JSONArray groupIds, String keywords, String structureId, String structureIdComparator, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -226,12 +226,9 @@ public class JournalTemplateService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("groupIds", checkNull(groupIds));
-			_params.put("templateId", checkNull(templateId));
+			_params.put("keywords", checkNull(keywords));
 			_params.put("structureId", checkNull(structureId));
 			_params.put("structureIdComparator", checkNull(structureIdComparator));
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
-			_params.put("andOperator", andOperator);
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -251,7 +248,7 @@ public class JournalTemplateService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray search(long companyId, JSONArray groupIds, String keywords, String structureId, String structureIdComparator, int start, int end, JSONObjectWrapper obc) throws Exception {
+	public JSONArray search(long companyId, JSONArray groupIds, String templateId, String structureId, String structureIdComparator, String name, String description, boolean andOperator, int start, int end, JSONObjectWrapper obc) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -259,9 +256,12 @@ public class JournalTemplateService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("groupIds", checkNull(groupIds));
-			_params.put("keywords", checkNull(keywords));
+			_params.put("templateId", checkNull(templateId));
 			_params.put("structureId", checkNull(structureId));
 			_params.put("structureIdComparator", checkNull(structureIdComparator));
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("andOperator", andOperator);
 			_params.put("start", start);
 			_params.put("end", end);
 			mangleWrapper(_params, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
@@ -338,38 +338,6 @@ public class JournalTemplateService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public JSONObject updateTemplate(long groupId, String templateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("templateId", checkNull(templateId));
-			_params.put("structureId", checkNull(structureId));
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("xsl", checkNull(xsl));
-			_params.put("formatXsl", formatXsl);
-			_params.put("langType", checkNull(langType));
-			_params.put("cacheable", cacheable);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
-
-			_command.put("/journaltemplate/update-template", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
 	public JSONObject updateTemplate(long groupId, String templateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, boolean smallImage, String smallImageURL, UploadData smallFile, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -397,6 +365,38 @@ public class JournalTemplateService extends BaseService {
 		}
 
 		JSONArray _result = session.upload(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject updateTemplate(long groupId, String templateId, String structureId, JSONObject nameMap, JSONObject descriptionMap, String xsl, boolean formatXsl, String langType, boolean cacheable, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("templateId", checkNull(templateId));
+			_params.put("structureId", checkNull(structureId));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("xsl", checkNull(xsl));
+			_params.put("formatXsl", formatXsl);
+			_params.put("langType", checkNull(langType));
+			_params.put("cacheable", cacheable);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+
+			_command.put("/journaltemplate/update-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
 
 		if (_result == null) {
 			return null;

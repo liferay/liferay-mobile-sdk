@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.membershiprequest;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -57,26 +56,6 @@ public class MembershipRequestService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public void updateStatus(long membershipRequestId, String reviewComments, long statusId, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("membershipRequestId", membershipRequestId);
-			_params.put("reviewComments", checkNull(reviewComments));
-			_params.put("statusId", statusId);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/membershiprequest/update-status", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
 	public void deleteMembershipRequests(long groupId, long statusId) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -116,6 +95,26 @@ public class MembershipRequestService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
+	}
+
+	public void updateStatus(long membershipRequestId, String reviewComments, long statusId, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("membershipRequestId", membershipRequestId);
+			_params.put("reviewComments", checkNull(reviewComments));
+			_params.put("statusId", statusId);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
+
+			_command.put("/membershiprequest/update-status", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 }

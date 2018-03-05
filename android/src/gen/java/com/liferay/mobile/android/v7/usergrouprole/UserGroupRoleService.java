@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v7.usergrouprole;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -70,15 +68,15 @@ public class UserGroupRoleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteUserGroupRoles(long userId, long groupId, JSONArray roleIds) throws Exception {
+	public void deleteUserGroupRoles(JSONArray userIds, long groupId, long roleId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("userId", userId);
+			_params.put("userIds", checkNull(userIds));
 			_params.put("groupId", groupId);
-			_params.put("roleIds", checkNull(roleIds));
+			_params.put("roleId", roleId);
 
 			_command.put("/usergrouprole/delete-user-group-roles", _params);
 		}
@@ -89,15 +87,15 @@ public class UserGroupRoleService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void deleteUserGroupRoles(JSONArray userIds, long groupId, long roleId) throws Exception {
+	public void deleteUserGroupRoles(long userId, long groupId, JSONArray roleIds) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("userIds", checkNull(userIds));
+			_params.put("userId", userId);
 			_params.put("groupId", groupId);
-			_params.put("roleId", roleId);
+			_params.put("roleIds", checkNull(roleIds));
 
 			_command.put("/usergrouprole/delete-user-group-roles", _params);
 		}

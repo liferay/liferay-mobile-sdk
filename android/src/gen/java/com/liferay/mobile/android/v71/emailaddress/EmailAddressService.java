@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v71.emailaddress;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -30,32 +29,6 @@ public class EmailAddressService extends BaseService {
 
 	public EmailAddressService(Session session) {
 		super(session);
-	}
-
-	public JSONObject updateEmailAddress(long emailAddressId, String address, long typeId, boolean primary) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("emailAddressId", emailAddressId);
-			_params.put("address", checkNull(address));
-			_params.put("typeId", typeId);
-			_params.put("primary", primary);
-
-			_command.put("/emailaddress/update-email-address", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
 	}
 
 	public JSONObject addEmailAddress(String className, long classPK, String address, long typeId, boolean primary, JSONObjectWrapper serviceContext) throws Exception {
@@ -126,6 +99,29 @@ public class EmailAddressService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
+	public JSONObject getEmailAddress(long emailAddressId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("emailAddressId", emailAddressId);
+
+			_command.put("/emailaddress/get-email-address", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
 	public JSONArray getEmailAddresses(String className, long classPK) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -150,15 +146,18 @@ public class EmailAddressService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONObject getEmailAddress(long emailAddressId) throws Exception {
+	public JSONObject updateEmailAddress(long emailAddressId, String address, long typeId, boolean primary) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("emailAddressId", emailAddressId);
+			_params.put("address", checkNull(address));
+			_params.put("typeId", typeId);
+			_params.put("primary", primary);
 
-			_command.put("/emailaddress/get-email-address", _params);
+			_command.put("/emailaddress/update-email-address", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

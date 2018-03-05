@@ -14,7 +14,6 @@
 
 package com.liferay.mobile.android.v7.dltrash;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
@@ -32,15 +31,17 @@ public class DltrashService extends BaseService {
 		super(session);
 	}
 
-	public JSONObject moveFileEntryToTrash(long fileEntryId) throws Exception {
+	public JSONObject moveFileEntryFromTrash(long fileEntryId, long newFolderId, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
 			_params.put("fileEntryId", fileEntryId);
+			_params.put("newFolderId", newFolderId);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
-			_command.put("/dltrash/move-file-entry-to-trash", _params);
+			_command.put("/dltrash/move-file-entry-from-trash", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -55,7 +56,7 @@ public class DltrashService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public void restoreFileEntryFromTrash(long fileEntryId) throws Exception {
+	public JSONObject moveFileEntryToTrash(long fileEntryId) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -63,26 +64,7 @@ public class DltrashService extends BaseService {
 
 			_params.put("fileEntryId", fileEntryId);
 
-			_command.put("/dltrash/restore-file-entry-from-trash", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONObject moveFileEntryFromTrash(long fileEntryId, long newFolderId, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("fileEntryId", fileEntryId);
-			_params.put("newFolderId", newFolderId);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/dltrash/move-file-entry-from-trash", _params);
+			_command.put("/dltrash/move-file-entry-to-trash", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -191,6 +173,23 @@ public class DltrashService extends BaseService {
 		}
 
 		return _result.getJSONObject(0);
+	}
+
+	public void restoreFileEntryFromTrash(long fileEntryId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("fileEntryId", fileEntryId);
+
+			_command.put("/dltrash/restore-file-entry-from-trash", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
 	}
 
 	public void restoreFileShortcutFromTrash(long fileShortcutId) throws Exception {

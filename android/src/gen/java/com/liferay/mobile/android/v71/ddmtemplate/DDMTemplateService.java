@@ -32,63 +32,25 @@ public class DDMTemplateService extends BaseService {
 		super(session);
 	}
 
-	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, long resourceClassNameId, String keywords, String type, String mode, int status, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
+	public JSONObject addTemplate(long groupId, long classNameId, long classPK, long resourceClassNameId, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("companyId", companyId);
-			_params.put("groupIds", checkNull(groupIds));
-			_params.put("classNameIds", checkNull(classNameIds));
-			_params.put("classPKs", checkNull(classPKs));
-			_params.put("resourceClassNameId", resourceClassNameId);
-			_params.put("keywords", checkNull(keywords));
-			_params.put("type", checkNull(type));
-			_params.put("mode", checkNull(mode));
-			_params.put("status", status);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMTemplate>", orderByComparator);
-
-			_command.put("/ddm.ddmtemplate/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray search(long companyId, long groupId, long classNameId, long classPK, long resourceClassNameId, String name, String description, String type, String mode, String language, int status, boolean andOperator, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
 			_params.put("classPK", classPK);
 			_params.put("resourceClassNameId", resourceClassNameId);
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("type", checkNull(type));
 			_params.put("mode", checkNull(mode));
 			_params.put("language", checkNull(language));
-			_params.put("status", status);
-			_params.put("andOperator", andOperator);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMTemplate>", orderByComparator);
+			_params.put("script", checkNull(script));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
-			_command.put("/ddm.ddmtemplate/search", _params);
+			_command.put("/ddm.ddmtemplate/add-template", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -100,66 +62,111 @@ public class DDMTemplateService extends BaseService {
 			return null;
 		}
 
-		return _result.getJSONArray(0);
+		return _result.getJSONObject(0);
 	}
 
-	public JSONArray search(long companyId, long groupId, long classNameId, long classPK, long resourceClassNameId, String keywords, String type, String mode, int status, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
+	public JSONObject addTemplate(long groupId, long classNameId, long classPK, long resourceClassNameId, String templateKey, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, boolean smallImage, String smallImageURL, UploadData smallImageFile, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
 			_params.put("classPK", classPK);
 			_params.put("resourceClassNameId", resourceClassNameId);
-			_params.put("keywords", checkNull(keywords));
-			_params.put("type", checkNull(type));
-			_params.put("mode", checkNull(mode));
-			_params.put("status", status);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMTemplate>", orderByComparator);
-
-			_command.put("/ddm.ddmtemplate/search", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, long resourceClassNameId, String name, String description, String type, String mode, String language, int status, boolean andOperator, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("companyId", companyId);
-			_params.put("groupIds", checkNull(groupIds));
-			_params.put("classNameIds", checkNull(classNameIds));
-			_params.put("classPKs", checkNull(classPKs));
-			_params.put("resourceClassNameId", resourceClassNameId);
-			_params.put("name", checkNull(name));
-			_params.put("description", checkNull(description));
+			_params.put("templateKey", checkNull(templateKey));
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
 			_params.put("type", checkNull(type));
 			_params.put("mode", checkNull(mode));
 			_params.put("language", checkNull(language));
-			_params.put("status", status);
-			_params.put("andOperator", andOperator);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMTemplate>", orderByComparator);
+			_params.put("script", checkNull(script));
+			_params.put("cacheable", cacheable);
+			_params.put("smallImage", smallImage);
+			_params.put("smallImageURL", checkNull(smallImageURL));
+			_params.put("smallImageFile", checkNull(smallImageFile));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
-			_command.put("/ddm.ddmtemplate/search", _params);
+			_command.put("/ddm.ddmtemplate/add-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.upload(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject copyTemplate(long templateId, JSONObject nameMap, JSONObject descriptionMap, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("templateId", templateId);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
+
+			_command.put("/ddm.ddmtemplate/copy-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject copyTemplate(long templateId, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("templateId", templateId);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
+
+			_command.put("/ddm.ddmtemplate/copy-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONArray copyTemplates(long classNameId, long oldClassPK, long resourceClassNameId, long newClassPK, String type, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("classNameId", classNameId);
+			_params.put("oldClassPK", oldClassPK);
+			_params.put("resourceClassNameId", resourceClassNameId);
+			_params.put("newClassPK", newClassPK);
+			_params.put("type", checkNull(type));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
+
+			_command.put("/ddm.ddmtemplate/copy-templates", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -174,7 +181,123 @@ public class DDMTemplateService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getTemplates(long companyId, long groupId, long classNameId, long classPK, long resourceClassNameId, int status) throws Exception {
+	public void deleteTemplate(long templateId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("templateId", templateId);
+
+			_command.put("/ddm.ddmtemplate/delete-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public JSONObject fetchTemplate(long groupId, long classNameId, String templateKey) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
+			_params.put("templateKey", checkNull(templateKey));
+
+			_command.put("/ddm.ddmtemplate/fetch-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject getTemplate(long templateId) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("templateId", templateId);
+
+			_command.put("/ddm.ddmtemplate/get-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject getTemplate(long groupId, long classNameId, String templateKey) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
+			_params.put("templateKey", checkNull(templateKey));
+
+			_command.put("/ddm.ddmtemplate/get-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONObject getTemplate(long groupId, long classNameId, String templateKey, boolean includeAncestorTemplates) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
+			_params.put("templateKey", checkNull(templateKey));
+			_params.put("includeAncestorTemplates", includeAncestorTemplates);
+
+			_command.put("/ddm.ddmtemplate/get-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONObject(0);
+	}
+
+	public JSONArray getTemplates(long companyId, long groupId, long classNameId, long resourceClassNameId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -183,7 +306,6 @@ public class DDMTemplateService extends BaseService {
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
-			_params.put("classPK", classPK);
 			_params.put("resourceClassNameId", resourceClassNameId);
 			_params.put("status", status);
 
@@ -231,7 +353,7 @@ public class DDMTemplateService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public JSONArray getTemplates(long companyId, long groupId, long classNameId, long resourceClassNameId, int status) throws Exception {
+	public JSONArray getTemplates(long companyId, long groupId, long classNameId, long classPK, long resourceClassNameId, int status) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -240,6 +362,7 @@ public class DDMTemplateService extends BaseService {
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
+			_params.put("classPK", classPK);
 			_params.put("resourceClassNameId", resourceClassNameId);
 			_params.put("status", status);
 
@@ -317,7 +440,211 @@ public class DDMTemplateService extends BaseService {
 		return _result.getJSONArray(0);
 	}
 
-	public Integer searchCount(long companyId, long groupId, long classNameId, long classPK, long resourceClassNameId, String name, String description, String type, String mode, String language, int status, boolean andOperator) throws Exception {
+	public JSONArray getTemplatesByClassPk(long companyId, long groupId, long classPK, long resourceClassNameId, int status) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("classPK", classPK);
+			_params.put("resourceClassNameId", resourceClassNameId);
+			_params.put("status", status);
+
+			_command.put("/ddm.ddmtemplate/get-templates-by-class-pk", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public JSONArray getTemplatesByStructureClassNameId(long groupId, long structureClassNameId, int status, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("structureClassNameId", structureClassNameId);
+			_params.put("status", status);
+			_params.put("start", start);
+			_params.put("end", end);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMTemplate>", orderByComparator);
+
+			_command.put("/ddm.ddmtemplate/get-templates-by-structure-class-name-id", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public Integer getTemplatesByStructureClassNameIdCount(long groupId, long structureClassNameId, int status) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("groupId", groupId);
+			_params.put("structureClassNameId", structureClassNameId);
+			_params.put("status", status);
+
+			_command.put("/ddm.ddmtemplate/get-templates-by-structure-class-name-id-count", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getInt(0);
+	}
+
+	public void revertTemplate(long templateId, String version, JSONObjectWrapper serviceContext) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("templateId", templateId);
+			_params.put("version", checkNull(version));
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
+
+			_command.put("/ddm.ddmtemplate/revert-template", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		session.invoke(_command);
+	}
+
+	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, long resourceClassNameId, String keywords, String type, String mode, int status, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("classNameIds", checkNull(classNameIds));
+			_params.put("classPKs", checkNull(classPKs));
+			_params.put("resourceClassNameId", resourceClassNameId);
+			_params.put("keywords", checkNull(keywords));
+			_params.put("type", checkNull(type));
+			_params.put("mode", checkNull(mode));
+			_params.put("status", status);
+			_params.put("start", start);
+			_params.put("end", end);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMTemplate>", orderByComparator);
+
+			_command.put("/ddm.ddmtemplate/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public JSONArray search(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, long resourceClassNameId, String name, String description, String type, String mode, String language, int status, boolean andOperator, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupIds", checkNull(groupIds));
+			_params.put("classNameIds", checkNull(classNameIds));
+			_params.put("classPKs", checkNull(classPKs));
+			_params.put("resourceClassNameId", resourceClassNameId);
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
+			_params.put("type", checkNull(type));
+			_params.put("mode", checkNull(mode));
+			_params.put("language", checkNull(language));
+			_params.put("status", status);
+			_params.put("andOperator", andOperator);
+			_params.put("start", start);
+			_params.put("end", end);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMTemplate>", orderByComparator);
+
+			_command.put("/ddm.ddmtemplate/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public JSONArray search(long companyId, long groupId, long classNameId, long classPK, long resourceClassNameId, String keywords, String type, String mode, int status, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_params.put("companyId", companyId);
+			_params.put("groupId", groupId);
+			_params.put("classNameId", classNameId);
+			_params.put("classPK", classPK);
+			_params.put("resourceClassNameId", resourceClassNameId);
+			_params.put("keywords", checkNull(keywords));
+			_params.put("type", checkNull(type));
+			_params.put("mode", checkNull(mode));
+			_params.put("status", status);
+			_params.put("start", start);
+			_params.put("end", end);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMTemplate>", orderByComparator);
+
+			_command.put("/ddm.ddmtemplate/search", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getJSONArray(0);
+	}
+
+	public JSONArray search(long companyId, long groupId, long classNameId, long classPK, long resourceClassNameId, String name, String description, String type, String mode, String language, int status, boolean andOperator, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -335,8 +662,11 @@ public class DDMTemplateService extends BaseService {
 			_params.put("language", checkNull(language));
 			_params.put("status", status);
 			_params.put("andOperator", andOperator);
+			_params.put("start", start);
+			_params.put("end", end);
+			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMTemplate>", orderByComparator);
 
-			_command.put("/ddm.ddmtemplate/search-count", _params);
+			_command.put("/ddm.ddmtemplate/search", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -348,7 +678,7 @@ public class DDMTemplateService extends BaseService {
 			return null;
 		}
 
-		return _result.getInt(0);
+		return _result.getJSONArray(0);
 	}
 
 	public Integer searchCount(long companyId, JSONArray groupIds, JSONArray classNameIds, JSONArray classPKs, long resourceClassNameId, String keywords, String type, String mode, int status) throws Exception {
@@ -447,57 +777,7 @@ public class DDMTemplateService extends BaseService {
 		return _result.getInt(0);
 	}
 
-	public JSONObject copyTemplate(long templateId, JSONObject nameMap, JSONObject descriptionMap, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("templateId", templateId);
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/ddm.ddmtemplate/copy-template", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject copyTemplate(long templateId, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("templateId", templateId);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/ddm.ddmtemplate/copy-template", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONArray getTemplatesByClassPk(long companyId, long groupId, long classPK, long resourceClassNameId, int status) throws Exception {
+	public Integer searchCount(long companyId, long groupId, long classNameId, long classPK, long resourceClassNameId, String name, String description, String type, String mode, String language, int status, boolean andOperator) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
@@ -505,107 +785,18 @@ public class DDMTemplateService extends BaseService {
 
 			_params.put("companyId", companyId);
 			_params.put("groupId", groupId);
-			_params.put("classPK", classPK);
-			_params.put("resourceClassNameId", resourceClassNameId);
-			_params.put("status", status);
-
-			_command.put("/ddm.ddmtemplate/get-templates-by-class-pk", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONObject addTemplate(long groupId, long classNameId, long classPK, long resourceClassNameId, String templateKey, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, boolean smallImage, String smallImageURL, UploadData smallImageFile, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
 			_params.put("classNameId", classNameId);
 			_params.put("classPK", classPK);
 			_params.put("resourceClassNameId", resourceClassNameId);
-			_params.put("templateKey", checkNull(templateKey));
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("name", checkNull(name));
+			_params.put("description", checkNull(description));
 			_params.put("type", checkNull(type));
 			_params.put("mode", checkNull(mode));
 			_params.put("language", checkNull(language));
-			_params.put("script", checkNull(script));
-			_params.put("cacheable", cacheable);
-			_params.put("smallImage", smallImage);
-			_params.put("smallImageURL", checkNull(smallImageURL));
-			_params.put("smallImageFile", checkNull(smallImageFile));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/ddm.ddmtemplate/add-template", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.upload(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject addTemplate(long groupId, long classNameId, long classPK, long resourceClassNameId, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("classNameId", classNameId);
-			_params.put("classPK", classPK);
-			_params.put("resourceClassNameId", resourceClassNameId);
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("type", checkNull(type));
-			_params.put("mode", checkNull(mode));
-			_params.put("language", checkNull(language));
-			_params.put("script", checkNull(script));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/ddm.ddmtemplate/add-template", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public Integer getTemplatesByStructureClassNameIdCount(long groupId, long structureClassNameId, int status) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("structureClassNameId", structureClassNameId);
 			_params.put("status", status);
+			_params.put("andOperator", andOperator);
 
-			_command.put("/ddm.ddmtemplate/get-templates-by-structure-class-name-id-count", _params);
+			_command.put("/ddm.ddmtemplate/search-count", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -618,204 +809,6 @@ public class DDMTemplateService extends BaseService {
 		}
 
 		return _result.getInt(0);
-	}
-
-	public JSONArray getTemplatesByStructureClassNameId(long groupId, long structureClassNameId, int status, int start, int end, JSONObjectWrapper orderByComparator) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("structureClassNameId", structureClassNameId);
-			_params.put("status", status);
-			_params.put("start", start);
-			_params.put("end", end);
-			mangleWrapper(_params, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMTemplate>", orderByComparator);
-
-			_command.put("/ddm.ddmtemplate/get-templates-by-structure-class-name-id", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public void revertTemplate(long templateId, String version, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("templateId", templateId);
-			_params.put("version", checkNull(version));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/ddm.ddmtemplate/revert-template", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public void deleteTemplate(long templateId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("templateId", templateId);
-
-			_command.put("/ddm.ddmtemplate/delete-template", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
-	public JSONArray copyTemplates(long classNameId, long oldClassPK, long resourceClassNameId, long newClassPK, String type, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("classNameId", classNameId);
-			_params.put("oldClassPK", oldClassPK);
-			_params.put("resourceClassNameId", resourceClassNameId);
-			_params.put("newClassPK", newClassPK);
-			_params.put("type", checkNull(type));
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/ddm.ddmtemplate/copy-templates", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONArray(0);
-	}
-
-	public JSONObject getTemplate(long groupId, long classNameId, String templateKey) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("classNameId", classNameId);
-			_params.put("templateKey", checkNull(templateKey));
-
-			_command.put("/ddm.ddmtemplate/get-template", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getTemplate(long templateId) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("templateId", templateId);
-
-			_command.put("/ddm.ddmtemplate/get-template", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject getTemplate(long groupId, long classNameId, String templateKey, boolean includeAncestorTemplates) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("groupId", groupId);
-			_params.put("classNameId", classNameId);
-			_params.put("templateKey", checkNull(templateKey));
-			_params.put("includeAncestorTemplates", includeAncestorTemplates);
-
-			_command.put("/ddm.ddmtemplate/get-template", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
-	}
-
-	public JSONObject updateTemplate(long templateId, long classPK, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, JSONObjectWrapper serviceContext) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("templateId", templateId);
-			_params.put("classPK", classPK);
-			_params.put("nameMap", checkNull(nameMap));
-			_params.put("descriptionMap", checkNull(descriptionMap));
-			_params.put("type", checkNull(type));
-			_params.put("mode", checkNull(mode));
-			_params.put("language", checkNull(language));
-			_params.put("script", checkNull(script));
-			_params.put("cacheable", cacheable);
-			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
-
-			_command.put("/ddm.ddmtemplate/update-template", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getJSONObject(0);
 	}
 
 	public JSONObject updateTemplate(long templateId, long classPK, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, boolean smallImage, String smallImageURL, UploadData smallImageFile, JSONObjectWrapper serviceContext) throws Exception {
@@ -853,17 +846,24 @@ public class DDMTemplateService extends BaseService {
 		return _result.getJSONObject(0);
 	}
 
-	public JSONObject fetchTemplate(long groupId, long classNameId, String templateKey) throws Exception {
+	public JSONObject updateTemplate(long templateId, long classPK, JSONObject nameMap, JSONObject descriptionMap, String type, String mode, String language, String script, boolean cacheable, JSONObjectWrapper serviceContext) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_params.put("groupId", groupId);
-			_params.put("classNameId", classNameId);
-			_params.put("templateKey", checkNull(templateKey));
+			_params.put("templateId", templateId);
+			_params.put("classPK", classPK);
+			_params.put("nameMap", checkNull(nameMap));
+			_params.put("descriptionMap", checkNull(descriptionMap));
+			_params.put("type", checkNull(type));
+			_params.put("mode", checkNull(mode));
+			_params.put("language", checkNull(language));
+			_params.put("script", checkNull(script));
+			_params.put("cacheable", cacheable);
+			mangleWrapper(_params, "serviceContext", "com.liferay.portal.kernel.service.ServiceContext", serviceContext);
 
-			_command.put("/ddm.ddmtemplate/fetch-template", _params);
+			_command.put("/ddm.ddmtemplate/update-template", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);

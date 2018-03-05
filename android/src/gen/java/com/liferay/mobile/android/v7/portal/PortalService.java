@@ -14,9 +14,7 @@
 
 package com.liferay.mobile.android.v7.portal;
 
-import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;
-import com.liferay.mobile.android.service.JSONObjectWrapper;
 import com.liferay.mobile.android.service.Session;
 
 import org.json.JSONArray;
@@ -32,13 +30,13 @@ public class PortalService extends BaseService {
 		super(session);
 	}
 
-	public String getVersion() throws Exception {
+	public String getAutoDeployDirectory() throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_command.put("/portal/get-version", _params);
+			_command.put("/portal/get-auto-deploy-directory", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
@@ -72,6 +70,27 @@ public class PortalService extends BaseService {
 		}
 
 		return _result.getInt(0);
+	}
+
+	public String getVersion() throws Exception {
+		JSONObject _command = new JSONObject();
+
+		try {
+			JSONObject _params = new JSONObject();
+
+			_command.put("/portal/get-version", _params);
+		}
+		catch (JSONException _je) {
+			throw new Exception(_je);
+		}
+
+		JSONArray _result = session.invoke(_command);
+
+		if (_result == null) {
+			return null;
+		}
+
+		return _result.getString(0);
 	}
 
 	public void testAddClassName_Rollback(String classNameValue) throws Exception {
@@ -108,23 +127,6 @@ public class PortalService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public void testAddClassNameAndTestTransactionPortletBar_PortletRollback(String transactionPortletBarText) throws Exception {
-		JSONObject _command = new JSONObject();
-
-		try {
-			JSONObject _params = new JSONObject();
-
-			_params.put("transactionPortletBarText", checkNull(transactionPortletBarText));
-
-			_command.put("/portal/test-add-class-name-and-test-transaction-portlet-bar_-portlet-rollback", _params);
-		}
-		catch (JSONException _je) {
-			throw new Exception(_je);
-		}
-
-		session.invoke(_command);
-	}
-
 	public void testAddClassNameAndTestTransactionPortletBar_PortalRollback(String transactionPortletBarText) throws Exception {
 		JSONObject _command = new JSONObject();
 
@@ -142,25 +144,21 @@ public class PortalService extends BaseService {
 		session.invoke(_command);
 	}
 
-	public String getAutoDeployDirectory() throws Exception {
+	public void testAddClassNameAndTestTransactionPortletBar_PortletRollback(String transactionPortletBarText) throws Exception {
 		JSONObject _command = new JSONObject();
 
 		try {
 			JSONObject _params = new JSONObject();
 
-			_command.put("/portal/get-auto-deploy-directory", _params);
+			_params.put("transactionPortletBarText", checkNull(transactionPortletBarText));
+
+			_command.put("/portal/test-add-class-name-and-test-transaction-portlet-bar_-portlet-rollback", _params);
 		}
 		catch (JSONException _je) {
 			throw new Exception(_je);
 		}
 
-		JSONArray _result = session.invoke(_command);
-
-		if (_result == null) {
-			return null;
-		}
-
-		return _result.getString(0);
+		session.invoke(_command);
 	}
 
 	public void testAddClassNameAndTestTransactionPortletBar_Success(String transactionPortletBarText) throws Exception {
