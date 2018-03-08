@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol LRFileProgressDelegate <NSObject>
 
 - (void)onFailure:(NSError *)error;
-- (void)onProgress:(NSData *)data totalBytes:(long long)totalBytes;
+- (void)onProgressTotalBytes:(long long)totalBytes;
 
 @optional
 

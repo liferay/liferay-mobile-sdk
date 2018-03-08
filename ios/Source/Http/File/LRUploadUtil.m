@@ -13,8 +13,7 @@
  */
 
 #import "LRUploadUtil.h"
-
-#import "AFNetworking.h"
+#import <AFNetworking/AFNetworking.h>
 #import "LRHttpUtil.h"
 #import "LRUploadData.h"
 #import "LRResponseParser.h"
@@ -60,13 +59,10 @@
 						length:data.length mimeType:data.mimeType];
 				}
 			}
-			success:^(AFHTTPRequestOperation *operation, id json) {
+			success:^(NSHTTPURLResponse *response, NSURL *requestURL, id json) {
 				NSError *serverError;
 
-				NSURLRequest *request = operation.request;
-				NSHTTPURLResponse *response = operation.response;
-
-				[LRResponseParser parse:json request:request response:response
+				[LRResponseParser parse:json request:requestURL response: response
 					error:&serverError];
 
 				if (serverError) {
@@ -77,7 +73,7 @@
 
 				[session.callback onSuccess:json];
 			}
-			failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+			failure:^(NSError *error) {
 				[session.callback onFailure:error];
 			}
 			error:error
@@ -105,14 +101,15 @@
 + (void)_post:(LRSession *)session data:(LRUploadData *)data URL:(NSString *)URL
 		parameters:(id)parameters
 		constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> form))block
-		success:(void (^)(AFHTTPRequestOperation *o, id json))success
-		failure:(void (^)(AFHTTPRequestOperation *o, NSError *error))failure
+		success:(void (^)(NSHTTPURLResponse *response, NSURL *url, id json))success
+		failure:(void (^)(NSError *error))failure
 		error:(NSError **)error {
 
-	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager
-		manager];
 
-    NSMutableURLRequest *request = [manager.requestSerializer
+	AFURLSessionManager *manager = [[AFURLSessionManager alloc]
+		initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+
+	NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer]
 		multipartFormRequestWithMethod:LR_POST URLString:URL
 		parameters:parameters constructingBodyWithBlock:block error:nil];
 
@@ -129,34 +126,40 @@
 				[session.authentication authenticate:request];
 			}
 
-			__weak __typeof(AFHTTPRequestOperation *)operation = [manager
-				HTTPRequestOperationWithRequest:request success:success failure:failure];
+			NSURLSessionUploadTask * uploadTask = [manager
+				uploadTaskWithStreamedRequest:request progress:
+					^(NSProgress * _Nonnull uploadProgress) {
+						if (data.progressDelegate) {
 
-			if (data.progressDelegate) {
-				[operation setUploadProgressBlock: ^(NSUInteger bytes, long long totalBytes, long long fileSize) {
-					id<LRFileProgressDelegate> progressDelegate = data.progressDelegate;
+							id<LRFileProgressDelegate> progressDelegate = data.progressDelegate;
 
-					if ([progressDelegate respondsToSelector:@selector(isCancelled)]
-						&& [progressDelegate isCancelled]) {
+							if ([progressDelegate respondsToSelector:@selector(isCancelled)]
+								&& [progressDelegate isCancelled]) {
 
-						[operation cancel];
+								[uploadProgress cancel];
 
-						return;
-					}
+								return;
+							}
 
-					NSData *uploadedData = [NSData dataWithBytes:&bytes
-						length:sizeof(bytes)];
+							[data.progressDelegate onProgressTotalBytes: uploadProgress.completedUnitCount];
 
-					[data.progressDelegate onProgress:uploadedData
-						totalBytes:totalBytes];
-					}
-				 ];
-			}
+						}
+				} completionHandler:
+					^(NSURLResponse * _Nonnull response,
+					id  _Nullable responseObject, NSError * _Nullable error) {
 
-			[manager.operationQueue addOperation:operation];
+						if (error) {
+							failure(error);
+						}
+						else {
+							success((NSHTTPURLResponse *) response, request.URL, responseObject);
+						}
+				}];
+
+			[uploadTask resume];
 		}
 		else {
-			failure(nil, error);
+			failure(error);
 		}
 	} error:nil];
 }

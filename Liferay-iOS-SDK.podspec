@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
 								]
 							}
 	s.requires_arc			= true
-	s.dependency			"AFNetworking", "= 2.6.3"
+	s.dependency			"AFNetworking", "~> 3.0"
 	s.pod_target_xcconfig = { 'OTHER_CFLAGS' => '-DLIFERAY_MOBILE_SDK_FRAMEWORK=1' }
 	s.user_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => 'LIFERAY_MOBILE_SDK_APP=1' }
 	s.private_header_files = [

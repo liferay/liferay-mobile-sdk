@@ -161,7 +161,7 @@ typedef void (^LRHandler)(
 			return nil;
 		}
 
-		return [LRResponseParser parse:data request:request response:response
+		return [LRResponseParser parse:data request:request.URL response:response
 			error:error];
 	}
 }
@@ -181,7 +181,7 @@ typedef void (^LRHandler)(
 				NSError *serverError;
 				NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
 
-				id json = [LRResponseParser parse:data request:request
+				id json = [LRResponseParser parse:data request:request.URL
 					response:httpResponse error:&serverError];
 
 				if (serverError) {

@@ -108,7 +108,7 @@
 		[self.outputStream write:&buffer[0] maxLength:length];
 	}
 
-	[self.progressDelegate onProgress:data totalBytes:self.totalBytes];
+	[self.progressDelegate onProgressTotalBytes:self.totalBytes];
 }
 
 - (void)connection:(NSURLConnection *)connection
@@ -116,6 +116,7 @@
 
 	NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
 	NSInteger code = [httpResponse statusCode];
+
 
 	if (code != LR_HTTP_STATUS_OK) {
 		NSString *description = [NSString stringWithFormat:@"HTTP Error: %li",
