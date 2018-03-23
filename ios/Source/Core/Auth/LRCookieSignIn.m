@@ -33,10 +33,18 @@
 
 @end
 
+static NSMutableDictionary<NSString *, ChallengeBlock> *challengeBlocks;
+
 /**
  * @author Victor Galán
  */
 @implementation LRCookieSignIn
+
++ (void)initialize {
+	if (!challengeBlocks) {
+		challengeBlocks = [[NSMutableDictionary alloc] init];
+	}
+}
 
 - (instancetype) init {
 	self = [super init];
@@ -50,23 +58,18 @@
 	return self;
 }
 
-+ (LRSession *)signInWithSession:(LRSession *)session
-	callback:(id<LRCookieCallback>)callback error:(NSError **)error {
-	return [self signInWithSession:session callback:callback challengeBlock:nil error:error];
++ (void)registerAuthenticationChallengeBlock:(ChallengeBlock)challengeBlock
+	forServer:(NSString *)server {
+	[challengeBlocks setObject:[challengeBlock copy] forKey:server];
 }
+
 
 + (LRSession *)signInWithSession:(LRSession *)session
 		callback:(id<LRCookieCallback>)callback
-		challengeBlock:(ChallengeBlock)challengeBlock
 		error:(NSError **)error {
 
 	LRCookieSignIn *cookieSignIn = [[LRCookieSignIn alloc] init];
-	cookieSignIn.challengeBlock = challengeBlock;
-
-	if (challengeBlock) {
-		[[LRCookieExpirationHandler shared]
-			registerAuthenticationChallengeBlock:challengeBlock forServer:session.server];
-	}
+	cookieSignIn.challengeBlock = [challengeBlocks objectForKey:session.server];
 
 	return [cookieSignIn _signInWithSession:session callback:callback error:error];
 }
