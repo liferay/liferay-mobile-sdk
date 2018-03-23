@@ -16,18 +16,10 @@
 #import "LRCallback.h"
 #import "LRSession.h"
 #import "LRCookieSignIn.h"
+#import "LRAuthenticationRefreshHandler.h"
 
 NS_ASSUME_NONNULL_BEGIN
-@interface LRCookieExpirationHandler : NSObject
-
-+ (LRCookieExpirationHandler *)shared;
-
-- (nullable LRSession *)reloadCookieLoginIfNeeded: (LRSession *) session
-	withCompletionHandler:(nullable void (^)(LRSession *, NSError *))completionHandler
-	error: (NSError * _Nullable * _Nullable)error;
-
-- (void)registerAuthenticationChallengeBlock:(ChallengeBlock)challengeBlock
-	forServer:(NSString *)server;
+@interface LRCookieExpirationHandler : NSObject <LRAuthenticationRefreshHandler>
 
 @end
 NS_ASSUME_NONNULL_END
