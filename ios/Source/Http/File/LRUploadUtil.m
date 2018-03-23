@@ -116,11 +116,7 @@
 	[request setAllHTTPHeaderFields:session.headers];
 	[request setTimeoutInterval:session.connectionTimeout];
 
-	LRCookieExpirationHandler *handler = [LRCookieExpirationHandler shared];
-
-	[handler reloadCookieLoginIfNeeded:session
-		withCompletionHandler:^(LRSession *session, NSError *error) {
-
+	[LRHttpUtil requestFreshAuthentication:session handler:^(LRSession *session, NSError *error) {
 		if (session) {
 			if (session.authentication) {
 				[session.authentication authenticate:request];
@@ -141,8 +137,9 @@
 								return;
 							}
 
-							[data.progressDelegate onProgressTotalBytes: uploadProgress.completedUnitCount];
-
+							dispatch_async(dispatch_get_main_queue(), ^{
+								[data.progressDelegate onProgress:uploadProgress];
+							});
 						}
 				} completionHandler:
 					^(NSURLResponse * _Nonnull response,
@@ -162,6 +159,7 @@
 			failure(error);
 		}
 	} error:nil];
+
 }
 
 @end

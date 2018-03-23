@@ -51,6 +51,10 @@ typedef void (^LRHandler)(
 	delegate:(nullable id<NSURLSessionDelegate>)delegate
 	session:(LRSession *)session response:(NSHTTPURLResponse * _Nullable * _Nullable)response
 	error:(NSError *_Nullable *_Nullable)error;
+
++ (nullable LRSession *)requestFreshAuthentication:(LRSession *)session
+	handler:(nullable LRSessionHandler)handler error:(NSError * _Nullable * _Nullable)error;
+
 + (void)setJSONWSPath:(NSString *)path;
 
 + (void)setRefreshFactory:(LRAuthenticationRefreshFactory *)refreshFactory;
