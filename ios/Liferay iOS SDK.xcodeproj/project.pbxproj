@@ -483,6 +483,12 @@
 		D669F7002052A0F700B44162 /* LRWikiPageService_v71.m in Sources */ = {isa = PBXBuildFile; fileRef = D669F6292052A0F600B44162 /* LRWikiPageService_v71.m */; };
 		D669F7012052A0F700B44162 /* LRWikiPageService_v71.m in Sources */ = {isa = PBXBuildFile; fileRef = D669F6292052A0F600B44162 /* LRWikiPageService_v71.m */; };
 		D69987E7204441CF0094C8B3 /* LRBlockCookieCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D5FD0020402890008361FF /* LRBlockCookieCallback.m */; };
+		D6B7414D20655AFD003CE0B9 /* LRAuthorizationFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B7414820655AFC003CE0B9 /* LRAuthorizationFlow.m */; };
+		D6B7414E20655AFD003CE0B9 /* LRAuthorizationFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B7414820655AFC003CE0B9 /* LRAuthorizationFlow.m */; };
+		D6B7414F20655AFD003CE0B9 /* LROAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B7414A20655AFC003CE0B9 /* LROAuth2Authentication.m */; };
+		D6B7415020655AFD003CE0B9 /* LROAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B7414A20655AFC003CE0B9 /* LROAuth2Authentication.m */; };
+		D6B7415520655B11003CE0B9 /* LROAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B7415420655B11003CE0B9 /* LROAuth2SignIn.m */; };
+		D6B7415620655B11003CE0B9 /* LROAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B7415420655B11003CE0B9 /* LROAuth2SignIn.m */; };
 		D6D5FD0120402890008361FF /* LRBlockCookieCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D5FD0020402890008361FF /* LRBlockCookieCallback.m */; };
 		D6E081FF2036F0A7008BBCC0 /* LRCookieExpirationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E081FE2036F0A7008BBCC0 /* LRCookieExpirationHandler.m */; };
 /* End PBXBuildFile section */
@@ -1226,6 +1232,13 @@
 		D669F6262052A0F600B44162 /* LRWikiNodeService_v71.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRWikiNodeService_v71.m; sourceTree = "<group>"; };
 		D669F6282052A0F600B44162 /* LRWikiPageService_v71.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRWikiPageService_v71.h; sourceTree = "<group>"; };
 		D669F6292052A0F600B44162 /* LRWikiPageService_v71.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRWikiPageService_v71.m; sourceTree = "<group>"; };
+		D6B7414620655AFC003CE0B9 /* LROAuth2AuthorizationFlow+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LROAuth2AuthorizationFlow+Private.h"; sourceTree = "<group>"; };
+		D6B7414720655AFC003CE0B9 /* LROAuth2AuthorizationFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LROAuth2AuthorizationFlow.h; sourceTree = "<group>"; };
+		D6B7414820655AFC003CE0B9 /* LRAuthorizationFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRAuthorizationFlow.m; sourceTree = "<group>"; };
+		D6B7414920655AFC003CE0B9 /* LROAuth2Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LROAuth2Authentication.h; sourceTree = "<group>"; };
+		D6B7414A20655AFC003CE0B9 /* LROAuth2Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LROAuth2Authentication.m; sourceTree = "<group>"; };
+		D6B7415320655B10003CE0B9 /* LROAuth2SignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LROAuth2SignIn.h; sourceTree = "<group>"; };
+		D6B7415420655B11003CE0B9 /* LROAuth2SignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LROAuth2SignIn.m; sourceTree = "<group>"; };
 		D6D5FCFF20402890008361FF /* LRBlockCookieCallback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRBlockCookieCallback.h; sourceTree = "<group>"; };
 		D6D5FD0020402890008361FF /* LRBlockCookieCallback.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRBlockCookieCallback.m; sourceTree = "<group>"; };
 		D6E081FD2036F0A7008BBCC0 /* LRCookieExpirationHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRCookieExpirationHandler.h; sourceTree = "<group>"; };
@@ -2349,6 +2362,7 @@
 		CC20D9E31A7BB3E300DE7729 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				D6B7414520655AFC003CE0B9 /* OAuth2 */,
 				0B57EC261D9AA80E00D0AD23 /* Cookie */,
 				CC20D9EB1A7BB77100DE7729 /* Basic */,
 				CC20D9EA1A7BB68A00DE7729 /* LRAuthentication.h */,
@@ -2356,6 +2370,8 @@
 				0B57EC2B1D9AA81D00D0AD23 /* LRCookieSignIn.m */,
 				CC20D9E41A7BB3E300DE7729 /* LRCredentialStorage.h */,
 				CC20D9E51A7BB3E300DE7729 /* LRCredentialStorage.m */,
+				D6B7415320655B10003CE0B9 /* LROAuth2SignIn.h */,
+				D6B7415420655B11003CE0B9 /* LROAuth2SignIn.m */,
 				CC20D9E61A7BB3E300DE7729 /* LRSignIn.h */,
 				CC20D9E71A7BB3E300DE7729 /* LRSignIn.m */,
 			);
@@ -4598,6 +4614,18 @@
 			path = wikipage;
 			sourceTree = "<group>";
 		};
+		D6B7414520655AFC003CE0B9 /* OAuth2 */ = {
+			isa = PBXGroup;
+			children = (
+				D6B7414620655AFC003CE0B9 /* LROAuth2AuthorizationFlow+Private.h */,
+				D6B7414720655AFC003CE0B9 /* LROAuth2AuthorizationFlow.h */,
+				D6B7414820655AFC003CE0B9 /* LRAuthorizationFlow.m */,
+				D6B7414920655AFC003CE0B9 /* LROAuth2Authentication.h */,
+				D6B7414A20655AFC003CE0B9 /* LROAuth2Authentication.m */,
+			);
+			path = OAuth2;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -4861,6 +4889,7 @@
 				D669F64B2052A0F700B44162 /* LRCalendarnotificationtemplateService_v71.m in Sources */,
 				CC03FCB618ED7DCD00F3F16C /* LRBookmarksFolderService_v62.m in Sources */,
 				D669F6EB2052A0F700B44162 /* LRSocialRequestService_v71.m in Sources */,
+				D6B7414E20655AFD003CE0B9 /* LRAuthorizationFlow.m in Sources */,
 				CC941CF91C84EB680029C4A6 /* LRPortalService_v7.m in Sources */,
 				CC03FD0218ED7DCD00F3F16C /* LRUserService_v62.m in Sources */,
 				D669F6352052A0F700B44162 /* LRAssetCategoryService_v71.m in Sources */,
@@ -5074,6 +5103,7 @@
 				D669F67F2052A0F700B44162 /* LRDltrashService_v71.m in Sources */,
 				CC03FCDF18ED7DCD00F3F16C /* LRMDRRuleGroupInstanceService_v62.m in Sources */,
 				D669F63D2052A0F700B44162 /* LRAssetVocabularyService_v71.m in Sources */,
+				D6B7415620655B11003CE0B9 /* LROAuth2SignIn.m in Sources */,
 				CC941CC31C84EB680029C4A6 /* LRCountryService_v7.m in Sources */,
 				CC03FD0318ED7DCD00F3F16C /* LRUserGroupService_v62.m in Sources */,
 				CC941CD31C84EB680029C4A6 /* LREmailAddressService_v7.m in Sources */,
@@ -5107,6 +5137,7 @@
 				CC941CC01C84EB680029C4A6 /* LRCommentmanagerjsonwsService_v7.m in Sources */,
 				CC03FCED18ED7DCD00F3F16C /* LRRegionService_v62.m in Sources */,
 				CC941CB21C84EB680029C4A6 /* LRAssetCategoryService_v7.m in Sources */,
+				D6B7415020655AFD003CE0B9 /* LROAuth2Authentication.m in Sources */,
 				CC941CB61C84EB680029C4A6 /* LRAssetVocabularyService_v7.m in Sources */,
 				CC03FCD618ED7DCD00F3F16C /* LRLayoutSetPrototypeService_v62.m in Sources */,
 				CC03FCB218ED7DCD00F3F16C /* LRAssetVocabularyService_v62.m in Sources */,
@@ -5189,8 +5220,10 @@
 				D669F6E62052A0F700B44162 /* LRSocialActivityService_v71.m in Sources */,
 				D669F66C2052A0F700B44162 /* LRDdmstructureversionService_v71.m in Sources */,
 				D669F64A2052A0F700B44162 /* LRCalendarnotificationtemplateService_v71.m in Sources */,
+				D6B7415520655B11003CE0B9 /* LROAuth2SignIn.m in Sources */,
 				D669F6DC2052A0F700B44162 /* LRSapentryService_v71.m in Sources */,
 				D669F6D42052A0F700B44162 /* LRRepositoryService_v71.m in Sources */,
+				D6B7414F20655AFD003CE0B9 /* LROAuth2Authentication.m in Sources */,
 				D669F62C2052A0F700B44162 /* LRAnnouncementsDeliveryService_v71.m in Sources */,
 				D669F6362052A0F700B44162 /* LRAssetCategoryPropertyService_v71.m in Sources */,
 				D669F6D02052A0F700B44162 /* LRRatingsEntryService_v71.m in Sources */,
@@ -5210,6 +5243,7 @@
 				D669F6C62052A0F700B44162 /* LRPluginSettingService_v71.m in Sources */,
 				D669F6EC2052A0F700B44162 /* LRStagingService_v71.m in Sources */,
 				D669F6C22052A0F700B44162 /* LRPermissionService_v71.m in Sources */,
+				D6B7414D20655AFD003CE0B9 /* LRAuthorizationFlow.m in Sources */,
 				D669F6EE2052A0F700B44162 /* LRTeamService_v71.m in Sources */,
 				D669F6462052A0F700B44162 /* LRCalendarService_v71.m in Sources */,
 				D63CC71E2059638400DDF8C7 /* LRBasicAuthRefreshHandler.m in Sources */,
