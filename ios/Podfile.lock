@@ -14,13 +14,26 @@ PODS:
   - AFNetworking/Serialization (3.2.0)
   - AFNetworking/UIKit (3.2.0):
     - AFNetworking/NSURLSession
+  - AppAuth (0.92.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - AppAuth (from `https://github.com/openid/AppAuth-iOS`, branch `master`)
+
+EXTERNAL SOURCES:
+  AppAuth:
+    :branch: master
+    :git: https://github.com/openid/AppAuth-iOS
+
+CHECKOUT OPTIONS:
+  AppAuth:
+    :commit: b420522dae9f74d536ab81dfe9c5aaee7ecb0099
+    :git: https://github.com/openid/AppAuth-iOS
 
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  AppAuth: 3f4f1d6d85ad631d0bbf15ffcdc10c447face97a
 
-PODFILE CHECKSUM: c18a66017b74d2aa99bb4e2705055dbf9e810505
+PODFILE CHECKSUM: eeb3d2d3b6fe742eab29584f522e2b480973f496
 
 COCOAPODS: 1.4.0
