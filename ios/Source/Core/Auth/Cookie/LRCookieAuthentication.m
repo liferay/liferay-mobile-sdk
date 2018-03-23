@@ -60,8 +60,8 @@
 	NSString *value = [NSString
 		stringWithFormat:@"COOKIE_SUPPORT=true; %@", self.cookieHeader];
 
-	[request addValue:value forHTTPHeaderField:@"Cookie"];
-	[request addValue:self.authToken forHTTPHeaderField:@"X-CSRF-Token"];
+	[request setValue:value forHTTPHeaderField:@"Cookie"];
+	[request setValue:self.authToken forHTTPHeaderField:@"X-CSRF-Token"];
 }
 
 @end
