@@ -13,6 +13,8 @@
  */
 
 #import "LRSession.h"
+#import "LRAuthenticationRefreshHandler.h"
+#import "LRAuthenticationRefreshFactory.h"
 
 NS_ASSUME_NONNULL_BEGIN
 extern NSString *const LR_GET;
@@ -20,6 +22,9 @@ extern NSString *const LR_HEAD;
 extern NSString *const LR_JSONWS_PATH_V61;
 extern NSString *const LR_JSONWS_PATH_V62;
 extern NSString *const LR_POST;
+
+typedef void (^LRHandler)(
+	NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error);
 
 /**
  * @author Bruno Farache
@@ -47,6 +52,8 @@ extern NSString *const LR_POST;
 	session:(LRSession *)session response:(NSHTTPURLResponse * _Nullable * _Nullable)response
 	error:(NSError *_Nullable *_Nullable)error;
 + (void)setJSONWSPath:(NSString *)path;
+
++ (void)setRefreshFactory:(LRAuthenticationRefreshFactory *)refreshFactory;
 
 @end
 NS_ASSUME_NONNULL_END

@@ -17,7 +17,7 @@
 #import "LRBatchSession.h"
 #import "LRRedirectDelegate.h"
 #import "LRResponseParser.h"
-#import "LRCookieExpirationHandler.h"
+
 
 NSString *const LR_BLANK = @"";
 NSString *const LR_GET = @"GET";
@@ -28,17 +28,20 @@ NSString *const LR_POST = @"POST";
 
 static NSString *_JSONWS_PATH;
 
+static LRAuthenticationRefreshFactory *_REFRESH_FACTORY;
+
 /**
  * @author Bruno Farache
  */
 @implementation LRHttpUtil
 
-typedef void (^LRHandler)(
-	NSData *data, NSURLResponse *response, NSError *error);
 
 + (void)initialize {
 	if (!_JSONWS_PATH) {
 		_JSONWS_PATH = LR_JSONWS_PATH_V62;
+	}
+	if (!_REFRESH_FACTORY) {
+		_REFRESH_FACTORY = [[LRAuthenticationRefreshFactory alloc] init];
 	}
 }
 
@@ -113,65 +116,12 @@ typedef void (^LRHandler)(
 	[request setValue:@"application/json; charset=utf-8"
 		forHTTPHeaderField:@"Content-Type"];
 
-	return [self _sendRequest:request session:session error:error];
-}
-
-+ (void)setJSONWSPath:(NSString *)path {
-	_JSONWS_PATH = path;
-}
-
-+ (void)_dispatchMainThread:(void (^)(void))block {
-	dispatch_async(dispatch_get_main_queue(), ^{
-		block();
-	});
-}
-
-+ (id)_sendRequest:(NSMutableURLRequest *)request session:(LRSession *)session
-		error:(NSError **)error {
-
-	LRCookieExpirationHandler *handler = [LRCookieExpirationHandler shared];
+	LRRedirectDelegate *delegate = [[LRRedirectDelegate alloc] init];
 
 	if (session.callback) {
-		[handler reloadCookieLoginIfNeeded:session withCompletionHandler:^(LRSession *session, NSError *error) {
-			if (session) {
-				[session.authentication authenticate:request];
-				[self _sendAsynchronousRequest:request session:session];
-			}
-			else {
-				[session.callback onFailure:error];
-			}
-		} error:nil];
+		id<LRCallback> callback = session.callback;
 
-		return nil;
-	}
-	else {
-		NSHTTPURLResponse *response;
-
-		session = [handler reloadCookieLoginIfNeeded:session withCompletionHandler:nil error:error];
-		[session.authentication authenticate:request];
-
-		if (*error) {
-			return nil;
-		}
-
-		NSData *data = [NSURLConnection sendSynchronousRequest:request
-			returningResponse:&response error:error];
-
-		if (*error) {
-			return nil;
-		}
-
-		return [LRResponseParser parse:data request:request.URL response:response
-			error:error];
-	}
-}
-
-+ (void)_sendAsynchronousRequest:(NSURLRequest *)request
-		session:(LRSession *)session {
-
-	id<LRCallback> callback = session.callback;
-
-	LRHandler handler = ^(NSData *data, NSURLResponse *response, NSError *e) {
+		LRHandler handler = ^(NSData *data, NSURLResponse *response, NSError *e) {
 			if (e) {
 				[self _dispatchMainThread: ^{
 					[callback onFailure:e];
@@ -182,7 +132,7 @@ typedef void (^LRHandler)(
 				NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
 
 				id json = [LRResponseParser parse:data request:request.URL
-					response:httpResponse error:&serverError];
+										 response:httpResponse error:&serverError];
 
 				if (serverError) {
 					[self _dispatchMainThread: ^{
@@ -203,18 +153,51 @@ typedef void (^LRHandler)(
 					}];
 				}
 			}
-	};
+		};
 
-	NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration
-		ephemeralSessionConfiguration];
 
-	LRRedirectDelegate *delegate = [[LRRedirectDelegate alloc] init];
+		[self sendAsyncRequest:request delegate:delegate
+			session: session handler:handler];
+
+		return nil;
+	}
+	else {
+		NSHTTPURLResponse *response;
+
+		NSData *json = [self sendSyncRequest:request delegate:delegate
+									 session:session response:&response error:error];
+
+		if (*error) {
+			return nil;
+		}
+
+		return [LRResponseParser parse:json request:request.URL response:response
+			error:error];
+	}
+}
+
++ (void)setJSONWSPath:(NSString *)path {
+	_JSONWS_PATH = path;
+}
+
++ (void)setRefreshFactory:(LRAuthenticationRefreshFactory *)refreshFactory {
+	_REFRESH_FACTORY = refreshFactory;
+}
+
++ (void)_dispatchMainThread:(void (^)(void))block {
+	dispatch_async(dispatch_get_main_queue(), ^{
+		block();
+	});
+}
+
 + (NSData *)sendSyncRequest:(NSMutableURLRequest *)request
 	delegate:(id<NSURLSessionDelegate>)delegate session:(LRSession *)session
 	response:(NSHTTPURLResponse *__autoreleasing  _Nullable *)response
 	error:(NSError *__autoreleasing  _Nullable *)error {
 
 	__block NSData *data;
+
+	session = [self requestFreshAuthentication:session handler:nil error:error];
 
 	[session.authentication authenticate:request];
 
@@ -244,6 +227,41 @@ typedef void (^LRHandler)(
 
 	return data;
 }
+
++ (void)sendAsyncRequest:(NSMutableURLRequest *)request
+	delegate:(id<NSURLSessionDelegate>)delegate session:(LRSession *)session handler:(LRHandler)handler {
+
+	[self requestFreshAuthentication:session handler:^(LRSession *session, NSError *error) {
+		if (session) {
+			[session.authentication authenticate:request];
+
+			NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+			NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:configuration
+				delegate:delegate delegateQueue:session.queue];
+
+			if (handler) {
+				[[urlSession dataTaskWithRequest:request completionHandler:handler] resume];
+			}
+			else {
+				[[urlSession dataTaskWithRequest:request] resume];
+			}
+		}
+		else {
+			handler(nil, nil, error);
+		}
+	} error:nil];
+
+
+}
+
++ (LRSession *)requestFreshAuthentication:(LRSession *)session
+	handler:(LRSessionHandler)handler error:(NSError **)error {
+
+	id<LRAuthenticationRefreshHandler> refreshHandler =
+		[_REFRESH_FACTORY authenticationRefreshHandlerForAuthentication:session.authentication];
+
+
+	return [refreshHandler refreshAuthentication:session handler:handler error:error];
 }
 
 @end

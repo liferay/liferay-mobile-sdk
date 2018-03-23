@@ -21,6 +21,8 @@
 NS_ASSUME_NONNULL_BEGIN
 @interface LRSession : NSObject
 
+typedef void (^LRSessionHandler)(LRSession * _Nullable, NSError * _Nullable);
+
 @property (nonatomic, strong, nullable) id<LRAuthentication> authentication;
 @property (nonatomic, strong, nullable) id<LRCallback> callback;
 @property (nonatomic) int connectionTimeout;
