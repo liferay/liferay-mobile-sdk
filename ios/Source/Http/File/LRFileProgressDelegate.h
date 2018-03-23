@@ -15,11 +15,12 @@
 /**
  * @author Bruno Farache
  */
+
 NS_ASSUME_NONNULL_BEGIN
 @protocol LRFileProgressDelegate <NSObject>
 
 - (void)onFailure:(NSError *)error;
-- (void)onProgressTotalBytes:(long long)totalBytes;
+- (void)onProgress:(NSProgress *)progress;
 
 @optional
 
