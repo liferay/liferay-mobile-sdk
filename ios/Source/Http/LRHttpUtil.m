@@ -72,6 +72,7 @@ static LRAuthenticationRefreshFactory *_REFRESH_FACTORY;
 		timeoutInterval:session.connectionTimeout];
 
 	[request setAllHTTPHeaderFields:session.headers];
+	[request setTimeoutInterval:session.connectionTimeout];
 
 	return request;
 }
