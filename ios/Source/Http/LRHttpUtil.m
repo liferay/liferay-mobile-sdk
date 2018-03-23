@@ -209,15 +209,41 @@ typedef void (^LRHandler)(
 		ephemeralSessionConfiguration];
 
 	LRRedirectDelegate *delegate = [[LRRedirectDelegate alloc] init];
++ (NSData *)sendSyncRequest:(NSMutableURLRequest *)request
+	delegate:(id<NSURLSessionDelegate>)delegate session:(LRSession *)session
+	response:(NSHTTPURLResponse *__autoreleasing  _Nullable *)response
+	error:(NSError *__autoreleasing  _Nullable *)error {
 
-	NSURLSession *urlSession = [NSURLSession
-		sessionWithConfiguration:configuration delegate:delegate
-		delegateQueue:session.queue];
+	__block NSData *data;
+
+	[session.authentication authenticate:request];
+
+	NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+	NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:configuration
+		delegate:delegate delegateQueue:session.queue];
+
+	dispatch_semaphore_t syncSemaphore = dispatch_semaphore_create(0);
+
+	LRHandler handler = ^(NSData *d, NSURLResponse *r, NSError *e) {
+		if(e) {
+			*error = e;
+		}
+		else {
+			data = d;
+			*response = (NSHTTPURLResponse *) r;
+		}
+		dispatch_semaphore_signal(syncSemaphore);
+	};
 
 	NSURLSessionDataTask *task = [urlSession dataTaskWithRequest:request
 		completionHandler:handler];
 
 	[task resume];
+
+	dispatch_semaphore_wait(syncSemaphore, DISPATCH_TIME_FOREVER);
+
+	return data;
+}
 }
 
 @end

@@ -42,6 +42,10 @@ extern NSString *const LR_POST;
 + (NSArray * _Nullable)post:(LRSession *)session commands:(NSArray *)commands
 	error:(NSError **)error;
 
++ (NSData * _Nullable)sendSyncRequest:(NSMutableURLRequest *)request
+	delegate:(nullable id<NSURLSessionDelegate>)delegate
+	session:(LRSession *)session response:(NSHTTPURLResponse * _Nullable * _Nullable)response
+	error:(NSError *_Nullable *_Nullable)error;
 + (void)setJSONWSPath:(NSString *)path;
 
 @end
