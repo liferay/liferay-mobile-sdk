@@ -19,12 +19,14 @@
  * @author Bruno Farache
  */
 NS_ASSUME_NONNULL_BEGIN
-@interface LRDownloadDelegate : NSObject <NSURLConnectionDelegate>
+@interface LRDownloadDelegate : NSObject <NSURLSessionDelegate,
+	NSURLSessionDataDelegate, NSURLSessionTaskDelegate>
 
 @property (nonatomic, strong) id<LRAuthentication> auth;
 @property (nonatomic, strong) NSOutputStream *outputStream;
 @property (nonatomic) long long totalBytes;
 @property (nonatomic, strong) id<LRFileProgressDelegate> progressDelegate;
+@property (nonatomic, strong) NSProgress *downloadProgress;
 
 - (id)initWithAuth:(id<LRAuthentication>)auth
 	outputStream:(NSOutputStream *)outputStream
