@@ -12,11 +12,9 @@
  * details.
  */
 
-#import "LROAuth2AuthorizationFlow.h"
 #import <AppAuth/AppAuth.h>
+#import <Foundation/Foundation.h>
 
-@interface LROAuth2AuthorizationFlow (Private)
-
-- (instancetype)initWithExternalUserAgentSession:(id<OIDAuthorizationFlowSession>)userAgentSession;
+@interface SafariAuthorizationUICoordinator : NSObject <OIDAuthorizationUICoordinator>
 
 @end

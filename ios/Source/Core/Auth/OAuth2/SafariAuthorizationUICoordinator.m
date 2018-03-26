@@ -12,11 +12,22 @@
  * details.
  */
 
-#import "LROAuth2AuthorizationFlow.h"
-#import <AppAuth/AppAuth.h>
+#import "SafariAuthorizationUICoordinator.h"
 
-@interface LROAuth2AuthorizationFlow (Private)
+@implementation SafariAuthorizationUICoordinator
 
-- (instancetype)initWithExternalUserAgentSession:(id<OIDAuthorizationFlowSession>)userAgentSession;
+- (BOOL)presentAuthorizationRequest:(OIDAuthorizationRequest *)request
+	session:(id<OIDAuthorizationFlowSession>)session {
+
+	NSURL *requestURL = [request authorizationRequestURL];
+	BOOL openedInBrowser = [[UIApplication sharedApplication] openURL:requestURL];
+	return openedInBrowser;
+}
+
+- (void)dismissAuthorizationAnimated:(BOOL)animated
+	completion:(void (^)(void))completion {
+
+	completion();
+}
 
 @end

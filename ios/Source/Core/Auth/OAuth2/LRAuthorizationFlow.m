@@ -18,13 +18,13 @@
 
 @interface LROAuth2AuthorizationFlow ()
 
-@property (nonatomic) id<OIDExternalUserAgentSession> userAgentSession;
+@property (nonatomic) id<OIDAuthorizationFlowSession> userAgentSession;
 
 @end
 
 @implementation LROAuth2AuthorizationFlow
 
-- (instancetype)initWithExternalUserAgentSession:(id<OIDExternalUserAgentSession>)userAgentSession {
+- (instancetype)initWithExternalUserAgentSession:(id<OIDAuthorizationFlowSession>)userAgentSession {
 	self = [super self];
 
 	if (self) {
@@ -35,11 +35,7 @@
 }
 
 - (BOOL)resumeAuthorizationFlowWithURL:(NSURL *)URL {
-	return [self.userAgentSession resumeExternalUserAgentFlowWithURL:URL];
-}
-
-- (void)cancel {
-	[self.userAgentSession cancel];
+	return [self.userAgentSession resumeAuthorizationFlowWithURL:URL];
 }
 
 @end

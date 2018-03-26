@@ -22,7 +22,5 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)resumeAuthorizationFlowWithURL:(NSURL *)URL;
 
-- (void)cancel;
-
 @end
 NS_ASSUME_NONNULL_END

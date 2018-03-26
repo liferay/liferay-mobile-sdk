@@ -3,8 +3,6 @@ abstract_target "mobile-sdk" do
 
 	podspec :path => '../Liferay-iOS-SDK.podspec'
 
-	target 'Liferay iOS SDK' do
-		pod 'AppAuth', :git => 'https://github.com/openid/AppAuth-iOS', :branch => 'master'
-	end
+	target 'Liferay iOS SDK' 
 	target 'Test'
 end
