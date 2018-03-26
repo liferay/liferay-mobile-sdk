@@ -490,6 +490,8 @@
 		D6B7415520655B11003CE0B9 /* LROAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B7415420655B11003CE0B9 /* LROAuth2SignIn.m */; };
 		D6B7415620655B11003CE0B9 /* LROAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B7415420655B11003CE0B9 /* LROAuth2SignIn.m */; };
 		D6D5FD0120402890008361FF /* LRBlockCookieCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D5FD0020402890008361FF /* LRBlockCookieCallback.m */; };
+		D6DBDEE22068DE18004F979F /* SafariAuthorizationUICoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DBDEE12068DE18004F979F /* SafariAuthorizationUICoordinator.m */; };
+		D6DBDEE32068DFF4004F979F /* SafariAuthorizationUICoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DBDEE12068DE18004F979F /* SafariAuthorizationUICoordinator.m */; };
 		D6E081FF2036F0A7008BBCC0 /* LRCookieExpirationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E081FE2036F0A7008BBCC0 /* LRCookieExpirationHandler.m */; };
 /* End PBXBuildFile section */
 
@@ -1241,6 +1243,8 @@
 		D6B7415420655B11003CE0B9 /* LROAuth2SignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LROAuth2SignIn.m; sourceTree = "<group>"; };
 		D6D5FCFF20402890008361FF /* LRBlockCookieCallback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRBlockCookieCallback.h; sourceTree = "<group>"; };
 		D6D5FD0020402890008361FF /* LRBlockCookieCallback.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRBlockCookieCallback.m; sourceTree = "<group>"; };
+		D6DBDEE02068DE18004F979F /* SafariAuthorizationUICoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafariAuthorizationUICoordinator.h; sourceTree = "<group>"; };
+		D6DBDEE12068DE18004F979F /* SafariAuthorizationUICoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafariAuthorizationUICoordinator.m; sourceTree = "<group>"; };
 		D6E081FD2036F0A7008BBCC0 /* LRCookieExpirationHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRCookieExpirationHandler.h; sourceTree = "<group>"; };
 		D6E081FE2036F0A7008BBCC0 /* LRCookieExpirationHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRCookieExpirationHandler.m; sourceTree = "<group>"; };
 		D6E082032036FD37008BBCC0 /* LRCookieCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCookieCallback.h; sourceTree = "<group>"; };
@@ -4622,6 +4626,8 @@
 				D6B7414820655AFC003CE0B9 /* LRAuthorizationFlow.m */,
 				D6B7414920655AFC003CE0B9 /* LROAuth2Authentication.h */,
 				D6B7414A20655AFC003CE0B9 /* LROAuth2Authentication.m */,
+				D6DBDEE02068DE18004F979F /* SafariAuthorizationUICoordinator.h */,
+				D6DBDEE12068DE18004F979F /* SafariAuthorizationUICoordinator.m */,
 			);
 			path = OAuth2;
 			sourceTree = "<group>";
@@ -5106,6 +5112,7 @@
 				D6B7415620655B11003CE0B9 /* LROAuth2SignIn.m in Sources */,
 				CC941CC31C84EB680029C4A6 /* LRCountryService_v7.m in Sources */,
 				CC03FD0318ED7DCD00F3F16C /* LRUserGroupService_v62.m in Sources */,
+				D6DBDEE32068DFF4004F979F /* SafariAuthorizationUICoordinator.m in Sources */,
 				CC941CD31C84EB680029C4A6 /* LREmailAddressService_v7.m in Sources */,
 				CC03FCF818ED7DCD00F3F16C /* LRShoppingItemService_v62.m in Sources */,
 				CC941CFA1C84EB680029C4A6 /* LRPortletService_v7.m in Sources */,
@@ -5208,6 +5215,7 @@
 				D669F6682052A0F700B44162 /* LRDdmforminstanceversionService_v71.m in Sources */,
 				D669F6902052A0F700B44162 /* LRJournalArticleService_v71.m in Sources */,
 				D669F6942052A0F700B44162 /* LRJournalFolderService_v71.m in Sources */,
+				D6DBDEE22068DE18004F979F /* SafariAuthorizationUICoordinator.m in Sources */,
 				D669F64E2052A0F700B44162 /* LRClassNameService_v71.m in Sources */,
 				D669F6742052A0F700B44162 /* LRDLFileEntryService_v71.m in Sources */,
 				D669F67C2052A0F700B44162 /* LRDLFolderService_v71.m in Sources */,

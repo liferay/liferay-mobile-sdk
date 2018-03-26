@@ -15,6 +15,7 @@
 #import "LROAuth2SignIn.h"
 #import <AppAuth/AppAuth.h>
 #import "LROAuth2AuthorizationFlow+Private.h"
+#import "SafariAuthorizationUICoordinator.h"
 #import "LRError.h"
 
 static NSString *_TOKEN_PATH;
@@ -37,10 +38,10 @@ static NSString *_AUTHORIZATION_PATH;
 		initWithConfiguration:serviceConfig clientId:clientId scopes:scopes
 		redirectURL:redirectURL responseType:OIDResponseTypeCode additionalParameters:nil];
 
-	id<OIDExternalUserAgent> externalUserAgent = [OIDExternalUserAgentIOSCustomBrowser CustomBrowserSafari];
+	SafariAuthorizationUICoordinator *coordinator = [[SafariAuthorizationUICoordinator alloc] init];
 
-	id<OIDExternalUserAgentSession> userAgentSesion = [OIDAuthState
-		authStateByPresentingAuthorizationRequest:request externalUserAgent:externalUserAgent
+	id<OIDAuthorizationFlowSession> userAgentSesion = [OIDAuthState
+		authStateByPresentingAuthorizationRequest:request UICoordinator:coordinator
 		callback:^(OIDAuthState *authState, NSError *error) {
 			if (error) {
 				callback(nil, error);
