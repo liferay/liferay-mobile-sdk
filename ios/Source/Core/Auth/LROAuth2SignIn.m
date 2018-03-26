@@ -155,7 +155,15 @@ static NSString *_AUTHORIZATION_PATH;
 
 + (LRSession *)sendTokenRequestSync:(OIDTokenRequest *)tokenRequest
 	session:(LRSession *)session error:(NSError **)error {
+	if ([NSThread isMainThread]) {
+		[NSException raise:@"Sync request in main thread"
+			format:@"You can't execute a sync request in the main thread. " \
+			"You should either set a callback to dispatch the call asynchronously" \
+			"or execute this in another thread"];
+	}
+
 	dispatch_semaphore_t syncSemaphore = dispatch_semaphore_create(0);
+
 	__block LROAuth2Authentication *auth;
 
 	[OIDAuthorizationService performTokenRequest:tokenRequest
