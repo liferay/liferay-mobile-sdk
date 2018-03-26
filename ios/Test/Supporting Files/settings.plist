@@ -9,8 +9,8 @@
 	<key>password</key>
 	<string>test</string>
 	<key>groupId</key>
-	<integer>20232</integer>
+	<integer>20143</integer>
 	<key>portalVersion</key>
-	<integer>7000</integer>
+	<real>7003</real>
 </dict>
 </plist>

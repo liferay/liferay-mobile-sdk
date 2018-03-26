@@ -12,20 +12,13 @@
  * details.
  */
 
-/**
- * @author Bruno Farache
- */
 
-NS_ASSUME_NONNULL_BEGIN
-@protocol LRFileProgressDelegate <NSObject>
+#import <Foundation/Foundation.h>
+#import "LRSession.h"
 
-- (void)onFailure:(NSError *)error;
-- (void)onProgress:(NSProgress *)progress;
+@protocol LRAuthenticationRefreshHandler <NSObject>
 
-@optional
-
-- (BOOL)isCancelled;
-- (void)onFinished;
+- (nullable LRSession *)refreshAuthentication:(LRSession * _Nonnull)session
+	handler:(nullable LRSessionHandler)handler error:(NSError * _Nullable * _Nullable)error;
 
 @end
-NS_ASSUME_NONNULL_END

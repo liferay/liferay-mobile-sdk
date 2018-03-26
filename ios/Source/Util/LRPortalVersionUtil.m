@@ -29,7 +29,7 @@ const int LR_VERSION_7_1 = 7000;
 @implementation LRPortalVersionUtil
 
 + (int)getPortalVersion:(LRSession *)session error:(NSError **)error {
-	int version = [self _getBuilderNumberHeader:session.server error:error];
+	int version = [self _getBuilderNumberHeader:session error:error];
 
 	if (*error) {
 		return LR_UNKNOWN_VERSION;
@@ -85,16 +85,16 @@ const int LR_VERSION_7_1 = 7000;
 	return version;
 }
 
-+ (int)_getBuilderNumberHeader:(NSString *)URL error:(NSError **)error {
++ (int)_getBuilderNumberHeader:(LRSession *)session error:(NSError **)error {
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
-		initWithURL:[NSURL URLWithString:URL]];
+		initWithURL:[NSURL URLWithString:session.server]];
 
 	[request setHTTPMethod:LR_HEAD];
 
 	NSHTTPURLResponse *response;
 
-	[NSURLConnection sendSynchronousRequest:request returningResponse:&response
-		error:error];
+	[LRHttpUtil sendSyncRequest:request delegate:nil
+		session:session response:&response error:error];
 
 	if (*error) {
 		return LR_UNKNOWN_VERSION;

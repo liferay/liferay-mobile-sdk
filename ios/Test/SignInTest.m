@@ -54,9 +54,7 @@
 	XCTAssertNotNil(error);
 	XCTAssertNil(user);
 
-	XCTAssertEqual(403, [error code]);
-	XCTAssertEqualObjects(
-		error.localizedDescription, @"The server returned an error code.");
+	XCTAssertEqual(2, [error code]);
 }
 
 - (void)testSignInSuccess {

@@ -53,8 +53,8 @@ NSString *const LR_LAST_MODIFIED = @"Last-Modified";
 
 	NSHTTPURLResponse *response;
 
-	*data = [NSURLConnection sendSynchronousRequest:request
-		returningResponse:&response error:error];
+	*data = [LRHttpUtil sendSyncRequest:request delegate:nil
+		session:session response:&response error:error];
 
 	long status = response.statusCode;
 

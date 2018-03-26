@@ -51,7 +51,42 @@
 
 	[self.monitor wait];
 	[self assert:self.groups error:self.error];
+
+	[[NSHTTPCookieStorage sharedHTTPCookieStorage] removeCookiesSinceDate:[NSDate distantPast]];
 }
+
+- (void)testCookieReload {
+	LRBasicAuthentication *basicAuth =
+	(LRBasicAuthentication *)self.session.authentication;
+
+	LRCookieAuthentication *auth = [[LRCookieAuthentication alloc]
+		initWithAuthToken:@"" cookieHeader:@"" username:basicAuth.username
+		password:basicAuth.password];
+	auth.cookieExpirationTime = 0;
+
+	LRSession *session = [[LRSession alloc]initWithServer:self.session.server
+		authentication:auth];
+
+	self.monitor = [TRVSMonitor monitor];
+
+	session = [LRCookieSignIn signInWithSession:session callback:nil error:nil];
+	NSString *cookieHeaderBeforeRefreshing = auth.cookieHeader;
+
+	LRGroupService_v7 *service = [[LRGroupService_v7 alloc]
+		initWithSession:session];
+
+	NSError *error;
+	self.groups = [service getUserSitesGroups:&error];
+
+	[self assert:self.groups error:self.error];
+
+	NSString *cookieHeaderAfterRefreshing = auth.cookieHeader;
+
+	XCTAssertFalse([cookieHeaderBeforeRefreshing isEqualToString:cookieHeaderAfterRefreshing]);
+
+	[[NSHTTPCookieStorage sharedHTTPCookieStorage] removeCookiesSinceDate:[NSDate distantPast]];
+}
+
 
 - (void)onSuccess:(LRSession *)session {
 	LRGroupService_v7 *service = [[LRGroupService_v7 alloc]

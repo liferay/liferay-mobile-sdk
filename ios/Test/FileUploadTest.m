@@ -15,6 +15,7 @@
 #import "BaseTest.h"
 #import "LRDLAppService_v7.h"
 #import "TRVSMonitor.h"
+#import "LRBasicAuthentication.h"
 
 NSString *const FILE_CONTENT = @"File content.";
 NSString *const GROUP_ID = @"groupId";
@@ -44,9 +45,10 @@ NSString *const TITLE = @"title";
 	[self.monitor signal];
 }
 
-- (void)onProgress:(NSData *)data totalBytes:(long long)totalBytes {
+- (void)onProgress:(NSProgress *)progress {
 	XCTAssertTrue([NSThread isMainThread]);
-	[self setProgress:totalBytes];
+
+	[self setProgress:progress.completedUnitCount];
 }
 
 - (void)onSuccess:(NSDictionary *)entry {
@@ -148,7 +150,7 @@ NSString *const TITLE = @"title";
 
 	XCTAssertNil(self.error);
 	XCTAssertEqualObjects(name, self.entry[TITLE]);
-	XCTAssertEqual(44302, self.progress);
+	XCTAssertEqual(50944, self.progress);
 }
 
 - (void)testAddFileEntryURL {
@@ -212,7 +214,7 @@ NSString *const TITLE = @"title";
 
 	XCTAssert(error);
 	XCTAssertEqualObjects(
-		@"The server returned an error code.", [error localizedDescription]);
+		@"No Group exists with the key {repositoryId=-1}", [error localizedDescription]);
 }
 
 - (void)setUp {

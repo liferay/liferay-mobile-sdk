@@ -30,10 +30,10 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
  */
 @implementation LRResponseParser
 
-+ (id)parse:(id)data request:(NSURLRequest *)request
++ (id)parse:(id)data request:(NSURL *)requestURL
 		response:(NSHTTPURLResponse *)response error:(NSError **)error {
 
-	*error = [self _checkHTTPError:request response:response];
+	*error = [self _checkHTTPError:requestURL response:response];
 
 	if (*error) {
 		return nil;
@@ -64,12 +64,11 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
 	return data;
 }
 
-+ (NSError *)_checkHTTPError:(NSURLRequest *)request
++ (NSError *)_checkHTTPError:(NSURL *)requestURL
 		response:(NSHTTPURLResponse *)response {
 
 	NSError *error;
 
-	NSURL *requestURL = [request URL];
 	NSURL *responseURL = [response URL];
 	long statusCode = [response statusCode];
 

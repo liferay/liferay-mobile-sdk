@@ -12,20 +12,20 @@
  * details.
  */
 
-/**
- * @author Bruno Farache
- */
+#import "LRBasicAuthRefreshHandler.h"
 
-NS_ASSUME_NONNULL_BEGIN
-@protocol LRFileProgressDelegate <NSObject>
+@implementation LRBasicAuthRefreshHandler
 
-- (void)onFailure:(NSError *)error;
-- (void)onProgress:(NSProgress *)progress;
+- (LRSession *)refreshAuthentication:(LRSession *)session
+	handler:(LRSessionHandler)handler error:(NSError **)error {
 
-@optional
-
-- (BOOL)isCancelled;
-- (void)onFinished;
+	if (handler) {
+		handler(session, nil);
+		return nil;
+	}
+	else {
+		return session;
+	}
+}
 
 @end
-NS_ASSUME_NONNULL_END

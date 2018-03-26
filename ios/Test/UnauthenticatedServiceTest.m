@@ -13,7 +13,7 @@
  */
 
 #import "BaseTest.h"
-#import "LRGroupService_v62.h"
+#import "LRGroupService_v7.h"
 
 /**
  * @author Jose M. Navarro
@@ -27,14 +27,15 @@
 	LRSession *session = [[LRSession alloc]
 		initWithServer:self.session.server];
 
-	LRGroupService_v62 *service = [[LRGroupService_v62 alloc]
+	LRGroupService_v7 *service = [[LRGroupService_v7 alloc]
 		initWithSession:session];
 
 	NSError *error;
-	[service getUserSites:&error];
 
-	XCTAssertEqual(404, [error code]);
-	XCTAssertEqualObjects(@"The server returned an error code.",
+	[service getUserSitesGroups:&error];
+
+	XCTAssertEqual(2, [error code]);
+	XCTAssertEqualObjects(@"Access denied to com.liferay.portal.kernel.service.GroupService#getUserSitesGroups",
 		[error localizedDescription]);
 }
 

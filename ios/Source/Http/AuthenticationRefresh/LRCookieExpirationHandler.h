@@ -12,20 +12,14 @@
  * details.
  */
 
-/**
- * @author Bruno Farache
- */
+#import <Foundation/Foundation.h>
+#import "LRCallback.h"
+#import "LRSession.h"
+#import "LRCookieSignIn.h"
+#import "LRAuthenticationRefreshHandler.h"
 
 NS_ASSUME_NONNULL_BEGIN
-@protocol LRFileProgressDelegate <NSObject>
-
-- (void)onFailure:(NSError *)error;
-- (void)onProgress:(NSProgress *)progress;
-
-@optional
-
-- (BOOL)isCancelled;
-- (void)onFinished;
+@interface LRCookieExpirationHandler : NSObject <LRAuthenticationRefreshHandler>
 
 @end
 NS_ASSUME_NONNULL_END

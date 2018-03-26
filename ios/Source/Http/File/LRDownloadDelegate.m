@@ -38,64 +38,48 @@
 	return self;
 }
 
-#pragma mark - NSURLConnectionDelegate
+#pragma mark - NSURLSessionDelegate
 
-- (void)connection:(NSURLConnection *)connection
-		didFailWithError:(NSError *)error {
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
 
-	[self.progressDelegate onFailure:error];
-}
-
-- (void)connection:(NSURLConnection *)connection
-		didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)c  {
-
-	if ([c previousFailureCount] > 1) {
-		NSError *error = [LRError errorWithCode:LRErrorCodeUnauthorized
-			description:@"Authentication failed during download"];
-
+	if (error) {
 		[self.progressDelegate onFailure:error];
 	}
 	else {
-		if (!self.auth) {
-			NSError *error = [LRError errorWithCode:LRErrorCodeUnauthorized
-				description:@"Session authentication can't be nil"];
+		NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
+		NSInteger code = [httpResponse statusCode];
 
+
+		if (code != LR_HTTP_STATUS_OK) {
+			NSString *description = [NSString stringWithFormat:@"HTTP Error: %li",
+									 (long)code];
+
+			NSError *error = [LRError errorWithCode:code description:description];
 			[self.progressDelegate onFailure:error];
-
-			return;
 		}
-
-		NSString *authClass = NSStringFromClass([self.auth class]);
-		NSString *basicAuthClass = NSStringFromClass(
-			[LRBasicAuthentication class]);
-
-		LRBasicAuthentication *basic = (LRBasicAuthentication *)self.auth;
-
-		if (![authClass isEqualToString:basicAuthClass]) {
-			NSError *error = [LRError errorWithCode:LRErrorCodeUnauthorized
-				description:@"Can't download if authentication implementation" \
-					" is not BasicAuthentication"];
-
-			[self.progressDelegate onFailure:error];
-
-			return;
+		else {
+			if ([self.progressDelegate respondsToSelector:@selector(onFinished)]) {
+				[self.progressDelegate onFinished];
+			}
 		}
-
-		NSURLCredential *credential = [NSURLCredential
-			credentialWithUser:basic.username password:basic.password
-			persistence:NSURLCredentialPersistenceNone];
-
-		[c.sender useCredential:credential forAuthenticationChallenge:c];
 	}
 }
 
-#pragma mark - NSURLConnectionDataDelegate
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
+	if (self.downloadProgress == nil) {
+		self.downloadProgress = [[NSProgress alloc] initWithParent:nil userInfo:nil];
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+		__weak typeof(dataTask) weakTask = dataTask;
+		self.downloadProgress.cancellable = YES;
+		self.downloadProgress.cancellationHandler = ^{
+			[weakTask cancel];
+		};
+	}
+
 	if ([self.progressDelegate respondsToSelector:@selector(isCancelled)] &&
 		[self.progressDelegate isCancelled]) {
 
-		[connection cancel];
+		[dataTask cancel];
 
 		return;
 	}
@@ -108,27 +92,52 @@
 		[self.outputStream write:&buffer[0] maxLength:length];
 	}
 
-	[self.progressDelegate onProgress:data totalBytes:self.totalBytes];
+	self.downloadProgress.totalUnitCount = dataTask.countOfBytesExpectedToReceive;
+	self.downloadProgress.completedUnitCount = dataTask.countOfBytesReceived;
+
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[self.progressDelegate onProgress:self.downloadProgress];
+	});
 }
 
-- (void)connection:(NSURLConnection *)connection
-		didReceiveResponse:(NSURLResponse *)response {
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
+	if ([challenge previousFailureCount] > 1) {
+		NSError *error = [LRError errorWithCode:LRErrorCodeUnauthorized
+									description:@"Authentication failed during download"];
 
-	NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-	NSInteger code = [httpResponse statusCode];
-
-	if (code != LR_HTTP_STATUS_OK) {
-		NSString *description = [NSString stringWithFormat:@"HTTP Error: %li",
-			(long)code];
-
-		NSError *error = [LRError errorWithCode:code description:description];
 		[self.progressDelegate onFailure:error];
 	}
-}
+	else {
+		if (!self.auth) {
+			NSError *error = [LRError errorWithCode:LRErrorCodeUnauthorized
+										description:@"Session authentication can't be nil"];
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	if ([self.progressDelegate respondsToSelector:@selector(onFinished)]) {
-		[self.progressDelegate onFinished];
+			[self.progressDelegate onFailure:error];
+
+			return;
+		}
+
+		NSString *authClass = NSStringFromClass([self.auth class]);
+		NSString *basicAuthClass = NSStringFromClass(
+													 [LRBasicAuthentication class]);
+
+		LRBasicAuthentication *basic = (LRBasicAuthentication *)self.auth;
+
+		if (![authClass isEqualToString:basicAuthClass]) {
+			NSError *error = [LRError errorWithCode:LRErrorCodeUnauthorized
+										description:@"Can't download if authentication implementation" \
+							  " is not BasicAuthentication"];
+
+			[self.progressDelegate onFailure:error];
+
+			return;
+		}
+
+		NSURLCredential *credential = [NSURLCredential
+									   credentialWithUser:basic.username password:basic.password
+									   persistence:NSURLCredentialPersistenceNone];
+
+		completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
 	}
 }
 

@@ -38,10 +38,9 @@
 - (void)onFinished {
 	[self.monitor signal];
 }
-
-- (void)onProgress:(NSData *)data totalBytes:(long long)totalBytes {
+- (void)onProgress:(NSProgress *)progress {
 	XCTAssertTrue([NSThread isMainThread]);
-	XCTAssertEqual([self.entry[@"size"] longLongValue], totalBytes);
+	XCTAssertEqual([self.entry[@"size"] longLongValue], progress.totalUnitCount);
 	[self.monitor signal];
 }
 

@@ -36,7 +36,7 @@
 
 	NSError *error;
 
-	id result = [LRResponseParser parse:data request:request response:response
+	id result = [LRResponseParser parse:data request:request.URL response:response
 		error:&error];
 
 	[self _assertWithResult:result error:error];
@@ -54,7 +54,7 @@
 
 	NSError *error;
 
-	id result = [LRResponseParser parse:data request:request response:response
+	id result = [LRResponseParser parse:data request:request.URL response:response
 		error:&error];
 
 	[self _assertWithResult:result error:error];
@@ -83,13 +83,13 @@
 	NSHTTPURLResponse *response = [self
 		_createResponseWithStatusCode:LR_HTTP_STATUS_OK];
 
-	id result = [LRResponseParser parse:data request:request response:response
+	id result = [LRResponseParser parse:data request:request.URL response:response
 		error:&error];
 
 	[self _assertWithResult:result error:error];
 
 	XCTAssertEqual(LRErrorCodePortalException, error.code);
-	XCTAssertEqualObjects(exception, [error localizedDescription]);
+	XCTAssertEqualObjects(exception, [error localizedFailureReason]);
 }
 
 - (void)testPortalExceptionWithMessage {
@@ -110,7 +110,7 @@
 	NSHTTPURLResponse *response = [self
 		_createResponseWithStatusCode:LR_HTTP_STATUS_OK];
 
-	id result = [LRResponseParser parse:data request:request
+	id result = [LRResponseParser parse:data request:request.URL
 		response:response error:&error];
 
 	[self _assertWithResult:result error:error];
@@ -118,7 +118,7 @@
 	XCTAssertEqual(LRErrorCodePortalException, error.code);
 
 	NSString *localizedDescription = [LRLocalizationUtil localize:type];
-	XCTAssertEqualObjects(localizedDescription, [error localizedDescription]);
+	XCTAssertEqualObjects(@"The operation couldn’t be completed. No such user with primary key 1", [error localizedDescription]);
 	XCTAssertEqualObjects(exception, [error localizedFailureReason]);
 }
 
@@ -135,7 +135,7 @@
 
 	NSError *error;
 
-	id result = [LRResponseParser parse:data request:request response:response
+	id result = [LRResponseParser parse:data request:request.URL response:response
 		error:&error];
 
 	[self _assertWithResult:result error:error];
@@ -159,7 +159,7 @@
 
 	NSError *error;
 
-	id result = [LRResponseParser parse:data request:request response:response
+	id result = [LRResponseParser parse:data request:request.URL response:response
 		error:&error];
 
 	[self _assertWithResult:result error:error];

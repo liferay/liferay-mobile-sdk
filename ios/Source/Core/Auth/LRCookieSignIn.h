@@ -23,15 +23,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LRCookieSignIn : NSObject
 
 typedef void (^ChallengeBlock)(NSURLAuthenticationChallenge *challenge,
-	void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *));
+	void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable));
+
++ (void)registerAuthenticationChallengeBlock:(ChallengeBlock)challengeBlock
+	forServer:(NSString *)server;
 
 + (nullable LRSession *)signInWithSession:(LRSession *)session
 	callback:(nullable id<LRCookieCallback>)callback
-	error:(NSError * _Nullable * _Nullable)error;
-
-+ (nullable LRSession *)signInWithSession:(LRSession *)session
-	callback:(nullable id<LRCookieCallback>)callback
-	challengeBlock:(nullable ChallengeBlock)challengeBlock
 	error:(NSError * _Nullable * _Nullable)error;
 
 @end
