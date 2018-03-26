@@ -492,6 +492,7 @@
 		D6D5FD0120402890008361FF /* LRBlockCookieCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D5FD0020402890008361FF /* LRBlockCookieCallback.m */; };
 		D6DBDEE22068DE18004F979F /* SafariAuthorizationUICoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DBDEE12068DE18004F979F /* SafariAuthorizationUICoordinator.m */; };
 		D6DBDEE32068DFF4004F979F /* SafariAuthorizationUICoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DBDEE12068DE18004F979F /* SafariAuthorizationUICoordinator.m */; };
+		D6DBDEE52068F22E004F979F /* OAuth2AuthenticationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DBDEE42068F22E004F979F /* OAuth2AuthenticationTest.m */; };
 		D6E081FF2036F0A7008BBCC0 /* LRCookieExpirationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E081FE2036F0A7008BBCC0 /* LRCookieExpirationHandler.m */; };
 /* End PBXBuildFile section */
 
@@ -1245,6 +1246,7 @@
 		D6D5FD0020402890008361FF /* LRBlockCookieCallback.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRBlockCookieCallback.m; sourceTree = "<group>"; };
 		D6DBDEE02068DE18004F979F /* SafariAuthorizationUICoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafariAuthorizationUICoordinator.h; sourceTree = "<group>"; };
 		D6DBDEE12068DE18004F979F /* SafariAuthorizationUICoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafariAuthorizationUICoordinator.m; sourceTree = "<group>"; };
+		D6DBDEE42068F22E004F979F /* OAuth2AuthenticationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuth2AuthenticationTest.m; sourceTree = "<group>"; };
 		D6E081FD2036F0A7008BBCC0 /* LRCookieExpirationHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRCookieExpirationHandler.h; sourceTree = "<group>"; };
 		D6E081FE2036F0A7008BBCC0 /* LRCookieExpirationHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRCookieExpirationHandler.m; sourceTree = "<group>"; };
 		D6E082032036FD37008BBCC0 /* LRCookieCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCookieCallback.h; sourceTree = "<group>"; };
@@ -2401,6 +2403,7 @@
 				CCDCE0581A694BB20045023A /* BatchSessionTest.m */,
 				CC2E77CF1A3769A9001890A9 /* BlockCallbackTest.m */,
 				0B57EC2D1D9AA86800D0AD23 /* CookieAuthenticationTest.m */,
+				D6DBDEE42068F22E004F979F /* OAuth2AuthenticationTest.m */,
 				CC2E77D01A3769A9001890A9 /* CredentialStorageTest.m */,
 				CC2E77D11A3769A9001890A9 /* DLAppServiceTest.m */,
 				CCF5F35D1AB869E0006132AA /* DownloadFileTest.m */,
@@ -4823,6 +4826,7 @@
 				D669F6C52052A0F700B44162 /* LRPhoneService_v71.m in Sources */,
 				CC941CEE1C84EB680029C4A6 /* LRMDRRuleGroupInstanceService_v7.m in Sources */,
 				CC941D021C84EB680029C4A6 /* LRSapentryService_v7.m in Sources */,
+				D6DBDEE52068F22E004F979F /* OAuth2AuthenticationTest.m in Sources */,
 				CC2E77E41A3769A9001890A9 /* GroupServiceAsyncTest.m in Sources */,
 				D669F6CB2052A0F700B44162 /* LRPollsVoteService_v71.m in Sources */,
 				CC941CFE1C84EB680029C4A6 /* LRRepositoryService_v7.m in Sources */,
