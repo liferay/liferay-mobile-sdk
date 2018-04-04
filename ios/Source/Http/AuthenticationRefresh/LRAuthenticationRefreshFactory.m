@@ -11,6 +11,8 @@
 #import "LRCookieExpirationHandler.h"
 #import "LRCookieAuthentication.h"
 #import "LRBasicAuthRefreshHandler.h"
+#import "LROAuth2Authentication.h"
+#import "LROAuth2RefreshHandler.h"
 
 @implementation LRAuthenticationRefreshFactory
 
@@ -19,6 +21,10 @@
 
 	if ([authentication isKindOfClass:[LRCookieAuthentication class]]) {
 		return [[LRCookieExpirationHandler alloc] init];
+	}
+
+	if ([authentication isKindOfClass:[LROAuth2Authentication class]]) {
+		return [[LROAuth2RefreshHandler alloc] init];
 	}
 
 	return [[LRBasicAuthRefreshHandler alloc] init];
