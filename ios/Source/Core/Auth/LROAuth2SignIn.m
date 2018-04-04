@@ -164,13 +164,14 @@ static NSString *_AUTHORIZATION_PATH;
 	}
 
 	dispatch_semaphore_t syncSemaphore = dispatch_semaphore_create(0);
-
+	
 	__block LROAuth2Authentication *auth;
+	__block NSError *localError;
 
 	[OIDAuthorizationService performTokenRequest:tokenRequest
 		callback:^(OIDTokenResponse * tokenResponse, NSError *e) {
 			if (e) {
-				*error = e;
+				localError = e;
 			}
 			else {
 				auth = [[LROAuth2Authentication alloc]
@@ -184,8 +185,14 @@ static NSString *_AUTHORIZATION_PATH;
 
 	dispatch_semaphore_wait(syncSemaphore, DISPATCH_TIME_FOREVER);
 
-	session.authentication = auth;
-	return session;
+	if (auth) {
+		session.authentication = auth;
+		return session;
+	}
+	else {
+		*error = localError;
+		return nil;
+	}
 }
 
 + (OIDServiceConfiguration *)serviceConfigurationWithSession:(LRSession *)session {
