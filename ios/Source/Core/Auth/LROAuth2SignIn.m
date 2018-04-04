@@ -51,8 +51,8 @@ static NSString *_AUTHORIZATION_PATH;
 					initWithAccessToken:authState.lastTokenResponse.accessToken
 					refreshToken:authState.refreshToken scope:authState.scope
 					accessTokenExpirationDate:authState.lastTokenResponse.accessTokenExpirationDate
-					clientId:authState.lastAuthorizationResponse.request.clientID
-					clientSecret:authState.lastAuthorizationResponse.request.clientSecret];
+					clientId:clientId
+					clientSecret:nil];
 
 				session.authentication = auth;
 				callback(session, nil);
@@ -116,7 +116,8 @@ static NSString *_AUTHORIZATION_PATH;
 
 	OIDTokenRequest *tokenRequest = [[OIDTokenRequest alloc] initWithConfiguration:serviceConfig
 		grantType:OIDGrantTypeRefreshToken authorizationCode:nil redirectURL:nil clientID:authentication.clientId
-		clientSecret:authentication.clientSecret scopes:scopes refreshToken:nil codeVerifier:nil
+		clientSecret:authentication.clientSecret scopes:scopes
+		refreshToken:authentication.refreshToken codeVerifier:nil
 		additionalParameters:nil];
 
 	if (callback) {

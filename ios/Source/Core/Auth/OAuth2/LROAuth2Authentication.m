@@ -28,6 +28,8 @@
 		self.refreshToken = refreshToken;
 		self.scope = scope;
 		self.accessTokenExpirationDate = accessTokenExpirationDate;
+		self.clientId = clientId;
+		self.clientSecret = clientSecret;
 	}
 
 	return self;
