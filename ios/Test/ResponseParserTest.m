@@ -36,7 +36,7 @@
 
 	NSError *error;
 
-	id result = [LRResponseParser parse:data request:request.URL response:response
+	id result = [LRResponseParser parse:data requestURL:request.URL response:response
 		error:&error];
 
 	[self _assertWithResult:result error:error];
@@ -54,7 +54,7 @@
 
 	NSError *error;
 
-	id result = [LRResponseParser parse:data request:request.URL response:response
+	id result = [LRResponseParser parse:data requestURL:request.URL response:response
 		error:&error];
 
 	[self _assertWithResult:result error:error];
@@ -83,7 +83,7 @@
 	NSHTTPURLResponse *response = [self
 		_createResponseWithStatusCode:LR_HTTP_STATUS_OK];
 
-	id result = [LRResponseParser parse:data request:request.URL response:response
+	id result = [LRResponseParser parse:data requestURL:request.URL response:response
 		error:&error];
 
 	[self _assertWithResult:result error:error];
@@ -110,7 +110,7 @@
 	NSHTTPURLResponse *response = [self
 		_createResponseWithStatusCode:LR_HTTP_STATUS_OK];
 
-	id result = [LRResponseParser parse:data request:request.URL
+	id result = [LRResponseParser parse:data requestURL:request.URL
 		response:response error:&error];
 
 	[self _assertWithResult:result error:error];
@@ -135,7 +135,7 @@
 
 	NSError *error;
 
-	id result = [LRResponseParser parse:data request:request.URL response:response
+	id result = [LRResponseParser parse:data requestURL:request.URL response:response
 		error:&error];
 
 	[self _assertWithResult:result error:error];
@@ -159,7 +159,7 @@
 
 	NSError *error;
 
-	id result = [LRResponseParser parse:data request:request.URL response:response
+	id result = [LRResponseParser parse:data requestURL:request.URL response:response
 		error:&error];
 
 	[self _assertWithResult:result error:error];

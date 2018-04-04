@@ -30,7 +30,7 @@ const int LR_HTTP_STATUS_UNAUTHORIZED = 401;
  */
 @implementation LRResponseParser
 
-+ (id)parse:(id)data request:(NSURL *)requestURL
++ (id)parse:(id)data requestURL:(NSURL *)requestURL
 		response:(NSHTTPURLResponse *)response error:(NSError **)error {
 
 	*error = [self _checkHTTPError:requestURL response:response];
