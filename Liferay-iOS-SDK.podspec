@@ -12,8 +12,8 @@ Pod::Spec.new do |s|
 								"Bruno Farache" => "bruno.farache@liferay.com"
 							}
 	s.osx.deployment_target = "10.9"
-    s.ios.deployment_target = "8.0"
-    s.tvos.deployment_target = "9.0"
+	s.ios.deployment_target = "8.0"
+	s.tvos.deployment_target = "9.0"
 	s.watchos.deployment_target = "2.0"
 	s.ios.deployment_target	= '7.0'
 	s.source				= {
@@ -33,7 +33,6 @@ Pod::Spec.new do |s|
 	s.pod_target_xcconfig = { 'OTHER_CFLAGS' => '-DLIFERAY_MOBILE_SDK_FRAMEWORK=1' }
 	s.user_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => 'LIFERAY_MOBILE_SDK_APP=1' }
 	s.private_header_files = [
-								'ios/Source/Core/Auth/LRCookieExpirationHandler.h',
-								'ios/Source/Core/Auth/OAuth2/LRAuthorizationFlow+Private.h'
+								'ios/Source/Core/Auth/OAuth2/LROAuth2AuthorizationFlow+Private.h'
 							]
 end
