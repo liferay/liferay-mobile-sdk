@@ -132,7 +132,7 @@ static LRAuthenticationRefreshFactory *_REFRESH_FACTORY;
 				NSError *serverError;
 				NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
 
-				id json = [LRResponseParser parse:data request:request.URL
+				id json = [LRResponseParser parse:data requestURL:request.URL
 										 response:httpResponse error:&serverError];
 
 				if (serverError) {
@@ -172,7 +172,7 @@ static LRAuthenticationRefreshFactory *_REFRESH_FACTORY;
 			return nil;
 		}
 
-		return [LRResponseParser parse:json request:request.URL response:response
+		return [LRResponseParser parse:json requestURL:request.URL response:response
 			error:error];
 	}
 }

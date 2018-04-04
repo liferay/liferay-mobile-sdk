@@ -62,7 +62,7 @@
 			success:^(NSHTTPURLResponse *response, NSURL *requestURL, id json) {
 				NSError *serverError;
 
-				[LRResponseParser parse:json request:requestURL response: response
+				[LRResponseParser parse:json requestURL:requestURL response: response
 					error:&serverError];
 
 				if (serverError) {
