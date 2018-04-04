@@ -117,13 +117,7 @@
 			return;
 		}
 
-		NSString *authClass = NSStringFromClass([self.auth class]);
-		NSString *basicAuthClass = NSStringFromClass(
-													 [LRBasicAuthentication class]);
-
-		LRBasicAuthentication *basic = (LRBasicAuthentication *)self.auth;
-
-		if (![authClass isEqualToString:basicAuthClass]) {
+		if ([self.auth class] != [LRBasicAuthentication class]) {
 			NSError *error = [LRError errorWithCode:LRErrorCodeUnauthorized
 										description:@"Can't download if authentication implementation" \
 							  " is not BasicAuthentication"];
@@ -132,6 +126,8 @@
 
 			return;
 		}
+		
+		LRBasicAuthentication *basic = (LRBasicAuthentication *)self.auth;
 
 		NSURLCredential *credential = [NSURLCredential
 									   credentialWithUser:basic.username password:basic.password
