@@ -38,4 +38,8 @@
 	return [self.userAgentSession resumeAuthorizationFlowWithURL:URL];
 }
 
+- (void)cancel {
+	[self.userAgentSession cancel];
+}
+
 @end
