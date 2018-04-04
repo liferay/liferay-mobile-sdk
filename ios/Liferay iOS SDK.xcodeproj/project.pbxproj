@@ -261,11 +261,13 @@
 		CCDCE0591A694BB20045023A /* BatchSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDCE0581A694BB20045023A /* BatchSessionTest.m */; };
 		CCF098011ABA355E0023951B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF098001ABA355E0023951B /* UIKit.framework */; };
 		CCF5F35E1AB869E0006132AA /* DownloadFileTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF5F35D1AB869E0006132AA /* DownloadFileTest.m */; };
+		D62E6E6D20737ED000CEABA4 /* LROAuth2RefreshHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D62E6E6B20737ED000CEABA4 /* LROAuth2RefreshHandler.m */; };
 		D63CC71E2059638400DDF8C7 /* LRBasicAuthRefreshHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D63CC71D2059638400DDF8C7 /* LRBasicAuthRefreshHandler.m */; };
 		D63CC71F2059648C00DDF8C7 /* LRCookieExpirationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E081FE2036F0A7008BBCC0 /* LRCookieExpirationHandler.m */; };
 		D63CC72220596A0A00DDF8C7 /* LRAuthenticationRefreshFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D63CC72120596A0A00DDF8C7 /* LRAuthenticationRefreshFactory.m */; };
 		D63CC7232059709900DDF8C7 /* LRAuthenticationRefreshFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D63CC72120596A0A00DDF8C7 /* LRAuthenticationRefreshFactory.m */; };
 		D63CC724205970A500DDF8C7 /* LRBasicAuthRefreshHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D63CC71D2059638400DDF8C7 /* LRBasicAuthRefreshHandler.m */; };
+		D64D3F342074D4A500B04225 /* LROAuth2RefreshHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D62E6E6B20737ED000CEABA4 /* LROAuth2RefreshHandler.m */; };
 		D669F62A2052A0F700B44162 /* LRAddressService_v71.m in Sources */ = {isa = PBXBuildFile; fileRef = D669F4E82052A0F600B44162 /* LRAddressService_v71.m */; };
 		D669F62B2052A0F700B44162 /* LRAddressService_v71.m in Sources */ = {isa = PBXBuildFile; fileRef = D669F4E82052A0F600B44162 /* LRAddressService_v71.m */; };
 		D669F62C2052A0F700B44162 /* LRAnnouncementsDeliveryService_v71.m in Sources */ = {isa = PBXBuildFile; fileRef = D669F4EB2052A0F600B44162 /* LRAnnouncementsDeliveryService_v71.m */; };
@@ -1014,6 +1016,8 @@
 		CCF098001ABA355E0023951B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CCF5F35D1AB869E0006132AA /* DownloadFileTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadFileTest.m; sourceTree = "<group>"; };
 		D12B01AB1138179D989511F7 /* libPods-mobile-sdk-Liferay iOS SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobile-sdk-Liferay iOS SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D62E6E6B20737ED000CEABA4 /* LROAuth2RefreshHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LROAuth2RefreshHandler.m; sourceTree = "<group>"; };
+		D62E6E6C20737ED000CEABA4 /* LROAuth2RefreshHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LROAuth2RefreshHandler.h; sourceTree = "<group>"; };
 		D63CC71B2059616300DDF8C7 /* LRAuthenticationRefreshHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRAuthenticationRefreshHandler.h; sourceTree = "<group>"; };
 		D63CC71C2059638400DDF8C7 /* LRBasicAuthRefreshHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRBasicAuthRefreshHandler.h; sourceTree = "<group>"; };
 		D63CC71D2059638400DDF8C7 /* LRBasicAuthRefreshHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRBasicAuthRefreshHandler.m; sourceTree = "<group>"; };
@@ -3523,6 +3527,8 @@
 		D63CC71220581B1000DDF8C7 /* AuthenticationRefresh */ = {
 			isa = PBXGroup;
 			children = (
+				D62E6E6C20737ED000CEABA4 /* LROAuth2RefreshHandler.h */,
+				D62E6E6B20737ED000CEABA4 /* LROAuth2RefreshHandler.m */,
 				D6E081FD2036F0A7008BBCC0 /* LRCookieExpirationHandler.h */,
 				D6E081FE2036F0A7008BBCC0 /* LRCookieExpirationHandler.m */,
 				D63CC71B2059616300DDF8C7 /* LRAuthenticationRefreshHandler.h */,
@@ -4978,6 +4984,7 @@
 				CC03FCE018ED7DCD00F3F16C /* LRMembershipRequestService_v62.m in Sources */,
 				D669F6F32052A0F700B44162 /* LRTrashEntryService_v71.m in Sources */,
 				CC941CF71C84EB680029C4A6 /* LRPollsQuestionService_v7.m in Sources */,
+				D64D3F342074D4A500B04225 /* LROAuth2RefreshHandler.m in Sources */,
 				D669F6392052A0F700B44162 /* LRAssetEntryService_v71.m in Sources */,
 				D669F67B2052A0F700B44162 /* LRDLFileVersionService_v71.m in Sources */,
 				CC03FCC218ED7DCD00F3F16C /* LRDLFileShortcutService_v62.m in Sources */,
@@ -5296,6 +5303,7 @@
 				D669F6D82052A0F700B44162 /* LRResourcePermissionService_v71.m in Sources */,
 				D669F6982052A0F700B44162 /* LRLayoutService_v71.m in Sources */,
 				D669F6BA2052A0F700B44162 /* LRMicroblogsentryService_v71.m in Sources */,
+				D62E6E6D20737ED000CEABA4 /* LROAuth2RefreshHandler.m in Sources */,
 				D669F6CC2052A0F700B44162 /* LRPortalService_v71.m in Sources */,
 				D669F6DE2052A0F700B44162 /* LRShoppingCategoryService_v71.m in Sources */,
 				D669F62A2052A0F700B44162 /* LRAddressService_v71.m in Sources */,
