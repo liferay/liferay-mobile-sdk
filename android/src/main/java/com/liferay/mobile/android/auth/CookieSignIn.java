@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.auth;
 
 import com.liferay.mobile.android.auth.basic.CookieAuthentication;
+import com.liferay.mobile.android.auth.refresh.CookieAuthenticationRefreshHandler;
 import com.liferay.mobile.android.exception.AuthenticationException;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
@@ -38,6 +39,8 @@ import java.net.CookiePolicy;
 import java.net.CookieStore;
 import java.net.HttpCookie;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -49,15 +52,16 @@ import okio.Buffer;
  */
 public class CookieSignIn {
 
-	public static Session signIn(Session session) throws Exception {
-		Authenticator authenticator = null;
-		return signIn(session, authenticator);
+	public static void registerAuthenticatorForServer(
+			String server, Authenticator authenticator) {
+
+		authenticators.put(server, authenticator);
 	}
 
-	public static Session signIn(Session session, Authenticator authenticator)
+	public static Session signIn(Session session)
 		throws Exception {
 
-		CookieSignIn cookieSignIn = new CookieSignIn(session, authenticator);
+		CookieSignIn cookieSignIn = new CookieSignIn(session);
 		Call call = cookieSignIn.signIn();
 
 		Response response = call.execute();
@@ -77,7 +81,7 @@ public class CookieSignIn {
 
 		try {
 			CookieSignIn cookieSignIn = new CookieSignIn(
-					session, authenticator);
+					session);
 
 			Call call = cookieSignIn.signIn();
 
@@ -184,9 +188,8 @@ public class CookieSignIn {
 		}
 	}
 
-	protected CookieSignIn(Session session, Authenticator authenticator) {
+	protected CookieSignIn(Session session) {
 		this.session = session;
-		this.authenticator = authenticator;
 	}
 
 	protected String getBody(String username, String password)
@@ -251,10 +254,9 @@ public class CookieSignIn {
 
 		OkHttpClient client = new OkHttpClient();
 
-		if (authenticator != null) {
-			CookieExpirationHandler.registerAuthenticatorForServer(
-					session.getServer(), authenticator);
+		Authenticator authenticator = authenticators.get(session.getServer());
 
+		if (authenticator != null) {
 			client.setAuthenticator(authenticator);
 		}
 
@@ -266,10 +268,12 @@ public class CookieSignIn {
 		return client.newCall(builder.build());
 	}
 
-	protected Authenticator authenticator;
+
 	protected CookieManager cookieManager;
 	protected String password;
 	protected Session session;
 	protected String username;
 
+	protected static final Map<String, Authenticator> authenticators =
+			new HashMap<String, Authenticator>();
 }
