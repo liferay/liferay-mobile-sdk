@@ -30,6 +30,7 @@ import org.json.JSONArray;
 import org.junit.Test;
 
 import static junit.framework.Assert.fail;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * @author Bruno Farache
@@ -88,5 +89,26 @@ public class CookieAuthenticationTest extends BaseTest {
 		lock.await(2000, TimeUnit.MILLISECONDS);
 		GroupServiceTest.assertUserSites(sites[0]);
 	}
+    @Test
+    public void cookieAuthenticationShouldBeRefreshed() throws Exception {
+        Session session = new SessionImpl(this.session);
+
+        Session cookieSession = CookieSignIn.signIn(session);
+
+        CookieAuthentication authentication = (CookieAuthentication)
+                cookieSession.getAuthentication();
+
+        String cookieHeader = authentication.getCookieHeader();
+        String authToken = authentication.getAuthToken();
+
+        authentication.setCookieExpirationTime(0);
+
+        JSONArray userSites = new GroupService(cookieSession)
+                .getUserSitesGroups();
+
+        assertNotEquals(cookieHeader, authentication.getCookieHeader());
+        assertNotEquals(authToken, authentication.getAuthToken());
+        GroupServiceTest.assertUserSites(userSites);
+    }
 
 }
