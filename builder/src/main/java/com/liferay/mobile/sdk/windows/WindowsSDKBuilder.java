@@ -42,10 +42,10 @@ public class WindowsSDKBuilder extends BaseBuilder {
 
 		if (Validator.isNotNull(destination)) {
 			sb.append(destination);
-			sb.append("/windows/");
+			sb.append(CharPool.SLASH);
 		}
 
-		sb.append("Liferay.SDK/Service");
+		sb.append("windows/Liferay.SDK/Service");
 		destination = sb.toString();
 
 		VelocityContext context = getVelocityContext(
