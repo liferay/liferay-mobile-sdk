@@ -1,0 +1,66 @@
+apply from: '../sdk-builder.gradle'
+
+configurations {
+	formatter
+}
+
+dependencies {
+	compile(group: 'com.liferay.mobile', name: 'liferay-sdk-builder', version: '7.0.0') {
+		exclude group: 'com.liferay.mobile', module: 'liferay-sdk-builder-sample'
+	}
+
+	compile group: 'commons-io', name: 'commons-io', version: '2.4'
+
+	formatter group: 'com.liferay.portal', name: 'portal-impl', version: '7.0.0-nightly'
+	formatter group: 'com.liferay.portal', name: 'portal-service', version: '7.0.0-nightly'
+	formatter group: 'com.liferay.portal', name: 'util-java', version: '7.0.0-nightly'
+	formatter group: 'dom4j', name: 'dom4j', version: '1.6.1'
+	formatter group: 'org.apache.ant', name: 'ant', version: '1.9.11'
+}
+
+sourceSets {
+	main {
+		resources {
+			exclude '**/*.Cache'
+			exclude '**/*.pfx'
+			exclude '**/*.suo'
+			exclude '**/Debug'
+			exclude '**/Debug/**'
+			exclude '**/Release'
+			exclude '**/Release/**'
+			exclude '**/bin'
+			exclude '**/bin/**'
+			exclude '**/obj'
+			exclude '**/obj/**'
+			exclude '**/packages'
+			exclude '**/packages/**'
+		}
+	}
+}
+
+task replaceCopyrightWindows {
+	group = project.description
+	description = 'Replaces the copyright information in .cs files.'
+
+	doLast {
+		def csFileTree = fileTree(dir: projectDir, include: '**/*.cs')
+
+		def copyrightEnd = '//------------------------------------------------------------------------------'
+
+		def copyrightFile = file('src/copyright-windows.txt')
+
+		def copyright = copyrightFile.text
+
+		csFileTree.each {
+			csFile ->
+
+			def content = csFile.text
+
+			def pos = content.lastIndexOf(copyrightEnd)
+
+			content = copyright.replace('${fileName}', csFile.name) + content.substring(pos + copyrightEnd.length())
+
+			csFile.text = content
+		}
+	}
+}
