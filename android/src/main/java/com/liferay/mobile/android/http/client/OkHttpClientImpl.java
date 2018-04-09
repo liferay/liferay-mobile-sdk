@@ -15,7 +15,9 @@
 package com.liferay.mobile.android.http.client;
 
 import com.liferay.mobile.android.auth.Authentication;
-import com.liferay.mobile.android.auth.CookieExpirationHandler;
+import com.liferay.mobile.android.auth.refresh.AuthenticationRefreshHandlerFactory;
+import com.liferay.mobile.android.auth.refresh.AuthenticationRefreshHandler;
+import com.liferay.mobile.android.auth.refresh.CookieAuthenticationRefreshHandler;
 import com.liferay.mobile.android.auth.CookieSignIn;
 import com.liferay.mobile.android.callback.Callback;
 import com.liferay.mobile.android.http.Method;
@@ -49,6 +51,12 @@ public class OkHttpClientImpl implements HttpClient {
 
 	public OkHttpClientImpl() {
 		client = new OkHttpClient();
+	}
+
+	public void setRefreshHandlerFactory(AuthenticationRefreshHandlerFactory
+		refreshHandlerFactory) {
+
+		this.refreshHandlerFactory = refreshHandlerFactory;
 	}
 
 	@Override
@@ -236,4 +244,7 @@ public class OkHttpClientImpl implements HttpClient {
 
 	protected OkHttpClient client;
 
+	protected AuthenticationRefreshHandlerFactory
+			refreshHandlerFactory = new AuthenticationRefreshHandlerFactory();
+	protected OkHttpClient client;
 }
