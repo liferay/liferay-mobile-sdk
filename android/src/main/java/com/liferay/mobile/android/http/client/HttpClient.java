@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android.http.client;
 
+import com.liferay.mobile.android.auth.refresh.AuthenticationRefreshHandlerFactory;
 import com.liferay.mobile.android.http.Request;
 import com.liferay.mobile.android.http.Response;
 
@@ -21,6 +22,8 @@ import com.liferay.mobile.android.http.Response;
  * @author Bruno Farache
  */
 public interface HttpClient {
+
+	void setRefreshHandlerFactory(AuthenticationRefreshHandlerFactory factory);
 
 	void cancel(Object tag);
 
