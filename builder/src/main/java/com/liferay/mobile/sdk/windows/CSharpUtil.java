@@ -19,7 +19,7 @@ import com.liferay.mobile.sdk.util.LanguageUtil;
 import com.liferay.mobile.sdk.util.Validator;
 
 /**
- * @author Andrea Di Giorgi (adigiorgi@outlook.com)
+ * @author Andrea Di Giorgi
  */
 public class CSharpUtil extends LanguageUtil {
 

@@ -28,7 +28,7 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.tools.generic.EscapeTool;
 
 /**
- * @author Andrea Di Giorgi (adigiorgi@outlook.com)
+ * @author Andrea Di Giorgi
  */
 public class WindowsSDKBuilder extends BaseBuilder {
 
