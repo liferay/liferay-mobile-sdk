@@ -12,9 +12,10 @@
  * details.
  */
 
-package com.liferay.mobile.windows;
+package com.liferay.mobile.sdk.windows;
 
 import com.liferay.mobile.sdk.BaseBuilder;
+import com.liferay.mobile.sdk.http.Action;
 import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.util.CharPool;
 import com.liferay.mobile.sdk.util.LanguageUtil;
@@ -22,6 +23,7 @@ import com.liferay.mobile.sdk.util.Validator;
 import com.liferay.mobile.sdk.velocity.VelocityUtil;
 
 import java.io.File;
+import java.util.List;
 
 import org.apache.commons.lang.WordUtils;
 import org.apache.velocity.VelocityContext;
@@ -34,9 +36,8 @@ public class WindowsSDKBuilder extends BaseBuilder {
 
 	@Override
 	public void build(
-			Discovery discovery, String packageName, int version, String filter,
-			String destination)
-		throws Exception {
+			Discovery discovery, List<Action> actions, String packageName,
+			int version, String filter, String destination) throws Exception {
 
 		StringBuilder sb = new StringBuilder();
 
@@ -49,11 +50,11 @@ public class WindowsSDKBuilder extends BaseBuilder {
 		destination = sb.toString();
 
 		VelocityContext context = getVelocityContext(
-			discovery, packageName, version, filter);
+				discovery, packageName, version, filter);
 
 		String templatePath = "templates/windows/service.vm";
 		String filePath = getServiceFilePath(
-			context, version, destination, filter);
+				context, version, destination, filter);
 
 		VelocityUtil.generate(context, templatePath, filePath, true);
 	}
@@ -112,5 +113,4 @@ public class WindowsSDKBuilder extends BaseBuilder {
 	}
 
 	protected static final String PACKAGE = "package";
-
 }

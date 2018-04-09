@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.windows;
+package com.liferay.mobile.sdk.windows;
 
 import com.liferay.mobile.sdk.util.CharPool;
 import com.liferay.mobile.sdk.util.LanguageUtil;
