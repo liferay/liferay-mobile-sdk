@@ -14,6 +14,7 @@
 
 package com.liferay.mobile.android.http;
 
+import com.liferay.mobile.android.auth.refresh.AuthenticationRefreshHandlerFactory;
 import com.liferay.mobile.android.callback.BaseCallback;
 import com.liferay.mobile.android.callback.Callback;
 import com.liferay.mobile.android.callback.file.DownloadCallback;
@@ -132,6 +133,12 @@ public class HttpUtil {
 		_JSONWS_PATH = jsonwsPath;
 	}
 
+	public static void setRefreshHandlerFactory
+			(AuthenticationRefreshHandlerFactory factory) {
+
+		client.setRefreshHandlerFactory(factory);
+	}
+
 	public static JSONArray upload(Session session, JSONObject command)
 		throws Exception {
 
@@ -159,7 +166,6 @@ public class HttpUtil {
 	}
 
 	protected static HttpClient client = new OkHttpClientImpl();
-
 	private static String _JSONWS_PATH = JSONWS_PATH_62;
 
 }
