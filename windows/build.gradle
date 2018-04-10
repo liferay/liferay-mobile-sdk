@@ -1,13 +1,5 @@
 apply from: '../sdk-builder.gradle'
 
-dependencies {
-	compile(group: 'com.liferay.mobile', name: 'liferay-sdk-builder', version: '7.0.0') {
-		exclude group: 'com.liferay.mobile', module: 'liferay-sdk-builder-sample'
-	}
-
-	compile group: 'commons-io', name: 'commons-io', version: '2.4'
-}
-
 sourceSets {
 	main {
 		resources {
