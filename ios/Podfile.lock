@@ -18,7 +18,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
-  - AppAuth (~> 0.92)
+  - AppAuth (= 0.92)
 
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
