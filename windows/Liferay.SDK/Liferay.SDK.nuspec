@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Liferay.SDK</id>
+    <version>6.2.0.3</version>
+    <title>Liferay SDK for Windows</title>
+    <authors>Andrea Di Giorgi</authors>
+    <owners>Andrea Di Giorgi</owners>
+    <licenseUrl>https://raw.githubusercontent.com/Ithildir/liferay-sdk-builder-windows/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/Ithildir/liferay-sdk-builder-windows</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides the means to consume Liferay Portal's core and plugins remote services</description>
+    <releaseNotes>Fixed issue #1 (https://github.com/Ithildir/liferay-sdk-builder-windows/issues/1).</releaseNotes>
+    <tags>Client JSON Liferay Services SDK</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\*.dll" target="lib\portable-net451+win81+wpa81" />
+  </files>
+</package>
