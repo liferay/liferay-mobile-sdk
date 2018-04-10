@@ -1,0 +1,41 @@
+PODS:
+  - AFNetworking (3.2.0):
+    - AFNetworking/NSURLSession (= 3.2.0)
+    - AFNetworking/Reachability (= 3.2.0)
+    - AFNetworking/Security (= 3.2.0)
+    - AFNetworking/Serialization (= 3.2.0)
+    - AFNetworking/UIKit (= 3.2.0)
+  - AFNetworking/NSURLSession (3.2.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.0)
+  - AFNetworking/Security (3.2.0)
+  - AFNetworking/Serialization (3.2.0)
+  - AFNetworking/UIKit (3.2.0):
+    - AFNetworking/NSURLSession
+  - AppAuth (0.92.0)
+  - Liferay-iOS-SDK (7.1-beta1):
+    - AFNetworking (~> 3.0)
+    - AppAuth (= 0.92)
+
+DEPENDENCIES:
+  - Liferay-iOS-SDK (from `../..`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - AppAuth
+
+EXTERNAL SOURCES:
+  Liferay-iOS-SDK:
+    :path: "../.."
+
+SPEC CHECKSUMS:
+  AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  AppAuth: 3f4f1d6d85ad631d0bbf15ffcdc10c447face97a
+  Liferay-iOS-SDK: 19e56741d78483a6b0d7dd4b328b14fd31040e37
+
+PODFILE CHECKSUM: 06eceb8ec6ffe222e3f485356d743dd88af94c48
+
+COCOAPODS: 1.5.0
