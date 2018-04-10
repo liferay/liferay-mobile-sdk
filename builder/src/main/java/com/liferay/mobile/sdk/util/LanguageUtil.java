@@ -120,6 +120,16 @@ public class LanguageUtil {
 		return sb.toString();
 	}
 
+	public String getServicePackageName(String serviceContext) {
+		String className = (String) _classNames.get(serviceContext);
+
+		if (className == null) {
+			className = WordUtils.capitalize(serviceContext);
+		}
+
+		return className;
+	}
+
 	public String getType(String type) {
 		if (type.equals("java.lang.Boolean")) {
 			return BOOLEAN;
@@ -155,5 +165,4 @@ public class LanguageUtil {
 		LanguageUtil.class.getName());
 
 	private Properties _classNames;
-
 }

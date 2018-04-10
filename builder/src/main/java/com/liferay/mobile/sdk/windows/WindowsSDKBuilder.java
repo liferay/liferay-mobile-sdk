@@ -25,7 +25,6 @@ import com.liferay.mobile.sdk.velocity.VelocityUtil;
 import java.io.File;
 import java.util.List;
 
-import org.apache.commons.lang.WordUtils;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.tools.generic.EscapeTool;
 
@@ -46,7 +45,7 @@ public class WindowsSDKBuilder extends BaseBuilder {
 			sb.append(CharPool.SLASH);
 		}
 
-		sb.append("windows/Liferay.SDK/Service");
+		sb.append("Liferay.SDK/Service");
 		destination = sb.toString();
 
 		VelocityContext context = getVelocityContext(
@@ -64,6 +63,7 @@ public class WindowsSDKBuilder extends BaseBuilder {
 		String filter) {
 
 		String className = (String)context.get(CLASS_NAME);
+		CSharpUtil cSharpUtil = (CSharpUtil)context.get(LANGUAGE_UTIL);
 
 		StringBuilder sb = new StringBuilder();
 
@@ -72,7 +72,7 @@ public class WindowsSDKBuilder extends BaseBuilder {
 		sb.append(version);
 		sb.append(CharPool.SLASH);
 
-		sb.append(WordUtils.capitalize(filter));
+		sb.append(cSharpUtil.getServicePackageName(filter));
 		sb.append(CharPool.SLASH);
 
 		File file = new File(sb.toString());
@@ -96,7 +96,7 @@ public class WindowsSDKBuilder extends BaseBuilder {
 		sb.append(".V");
 		sb.append(version);
 		sb.append(CharPool.PERIOD);
-		sb.append(WordUtils.capitalize(filter));
+		sb.append(cSharpUtil.getServicePackageName(filter));
 
 		packageName = sb.toString();
 
