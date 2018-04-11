@@ -29,7 +29,13 @@ public class Action {
 		_method = jsonObj.getString("method");
 		_path = jsonObj.getString("path");
 
-		_response = jsonObj.getJSONObject("returns").getString("type");
+		// Liferay 6.2: json key "response"
+		// Liferay 7.0: json key "type"
+		if (jsonObj.has("response")) {
+			_response = jsonObj.getString("response");
+		} else {
+			_response = jsonObj.getJSONObject("returns").getString("type");
+		}
 
 		JSONArray parameters = jsonObj.getJSONArray("parameters");
 
