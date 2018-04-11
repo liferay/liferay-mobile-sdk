@@ -1,28 +1,16 @@
-//------------------------------------------------------------------------------
-// <copyright file="JournalFolderService.cs">
-//    Copyright (c) 2014-present Andrea Di Giorgi
-//
-//    Permission is hereby granted, free of charge, to any person obtaining a
-//    copy of this software and associated documentation files (the "Software"),
-//    to deal in the Software without restriction, including without limitation
-//    the rights to use, copy, modify, merge, publish, distribute, sublicense,
-//    and/or sell copies of the Software, and to permit persons to whom the
-//    Software is furnished to do so, subject to the following conditions:
-//
-//    The above copyright notice and this permission notice shall be included in
-//    all copies or substantial portions of the Software.
-//
-//    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-//    THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-//    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-//    DEALINGS IN THE SOFTWARE.
-// </copyright>
-// <author>Andrea Di Giorgi</author>
-// <website>https://github.com/Ithildir/liferay-sdk-builder-windows</website>
-//------------------------------------------------------------------------------
+/**
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ */
 
 using System;
 using System.Collections.Generic;
@@ -86,6 +74,22 @@ namespace Liferay.SDK.Service.V62.JournalFolder
 			};
 
 			await this.Session.InvokeAsync(_command);
+		}
+
+		public async Task<dynamic> FetchFolderAsync(long folderId)
+		{
+			var _parameters = new JsonObject();
+
+			_parameters.Add("folderId", folderId);
+
+			var _command = new JsonObject()
+			{
+				{ "/journalfolder/fetch-folder", _parameters }
+			};
+
+			var _obj = await this.Session.InvokeAsync(_command);
+
+			return (dynamic)_obj;
 		}
 
 		public async Task<dynamic> GetFolderAsync(long folderId)
@@ -252,6 +256,28 @@ namespace Liferay.SDK.Service.V62.JournalFolder
 			return (IEnumerable<dynamic>)_obj;
 		}
 
+		public async Task<IEnumerable<dynamic>> GetFoldersAndArticlesAsync(long groupId, long userId, long folderId, int status, int start, int end, JsonObjectWrapper obc)
+		{
+			var _parameters = new JsonObject();
+
+			_parameters.Add("groupId", groupId);
+			_parameters.Add("userId", userId);
+			_parameters.Add("folderId", folderId);
+			_parameters.Add("status", status);
+			_parameters.Add("start", start);
+			_parameters.Add("end", end);
+			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+
+			var _command = new JsonObject()
+			{
+				{ "/journalfolder/get-folders-and-articles", _parameters }
+			};
+
+			var _obj = await this.Session.InvokeAsync(_command);
+
+			return (IEnumerable<dynamic>)_obj;
+		}
+
 		public async Task<long> GetFoldersAndArticlesCountAsync(long groupId, long folderId)
 		{
 			var _parameters = new JsonObject();
@@ -293,6 +319,25 @@ namespace Liferay.SDK.Service.V62.JournalFolder
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("folderIds", folderIds);
+			_parameters.Add("status", status);
+
+			var _command = new JsonObject()
+			{
+				{ "/journalfolder/get-folders-and-articles-count", _parameters }
+			};
+
+			var _obj = await this.Session.InvokeAsync(_command);
+
+			return (long)_obj;
+		}
+
+		public async Task<long> GetFoldersAndArticlesCountAsync(long groupId, long userId, long folderId, int status)
+		{
+			var _parameters = new JsonObject();
+
+			_parameters.Add("groupId", groupId);
+			_parameters.Add("userId", userId);
+			_parameters.Add("folderId", folderId);
 			_parameters.Add("status", status);
 
 			var _command = new JsonObject()
@@ -372,6 +417,23 @@ namespace Liferay.SDK.Service.V62.JournalFolder
 			var _obj = await this.Session.InvokeAsync(_command);
 
 			return (IEnumerable<dynamic>)_obj;
+		}
+
+		public async Task GetSubfolderIdsAsync(IEnumerable<object> folderIds, long groupId, long folderId, bool recurse)
+		{
+			var _parameters = new JsonObject();
+
+			_parameters.Add("folderIds", folderIds);
+			_parameters.Add("groupId", groupId);
+			_parameters.Add("folderId", folderId);
+			_parameters.Add("recurse", recurse);
+
+			var _command = new JsonObject()
+			{
+				{ "/journalfolder/get-subfolder-ids", _parameters }
+			};
+
+			await this.Session.InvokeAsync(_command);
 		}
 
 		public async Task<dynamic> MoveFolderAsync(long folderId, long parentFolderId, JsonObjectWrapper serviceContext)
