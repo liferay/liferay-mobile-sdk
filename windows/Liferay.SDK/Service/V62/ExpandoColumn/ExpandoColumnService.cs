@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.ExpandoColumn
 		{
 		}
 
-		public async Task<dynamic> AddColumnAsync(long tableId, string name, int type)
+		public async Task<IDictionary<string, object>> AddColumnAsync(long tableId, string name, int type)
 		{
 			var _parameters = new JsonObject();
 
@@ -42,10 +42,10 @@ namespace Liferay.SDK.Service.V62.ExpandoColumn
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddColumnAsync(long tableId, string name, int type, IDictionary<string, object> defaultData)
+		public async Task<IDictionary<string, object>> AddColumnAsync(long tableId, string name, int type, IDictionary<string, object> defaultData)
 		{
 			var _parameters = new JsonObject();
 
@@ -61,7 +61,7 @@ namespace Liferay.SDK.Service.V62.ExpandoColumn
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteColumnAsync(long columnId)
@@ -78,7 +78,7 @@ namespace Liferay.SDK.Service.V62.ExpandoColumn
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateColumnAsync(long columnId, string name, int type)
+		public async Task<IDictionary<string, object>> UpdateColumnAsync(long columnId, string name, int type)
 		{
 			var _parameters = new JsonObject();
 
@@ -93,10 +93,10 @@ namespace Liferay.SDK.Service.V62.ExpandoColumn
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateColumnAsync(long columnId, string name, int type, IDictionary<string, object> defaultData)
+		public async Task<IDictionary<string, object>> UpdateColumnAsync(long columnId, string name, int type, IDictionary<string, object> defaultData)
 		{
 			var _parameters = new JsonObject();
 
@@ -112,10 +112,10 @@ namespace Liferay.SDK.Service.V62.ExpandoColumn
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateTypeSettingsAsync(long columnId, string typeSettings)
+		public async Task<IDictionary<string, object>> UpdateTypeSettingsAsync(long columnId, string typeSettings)
 		{
 			var _parameters = new JsonObject();
 
@@ -129,7 +129,7 @@ namespace Liferay.SDK.Service.V62.ExpandoColumn
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

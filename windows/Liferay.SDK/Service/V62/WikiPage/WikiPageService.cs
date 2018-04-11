@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 		{
 		}
 
-		public async Task<dynamic> AddPageAsync(long nodeId, string title, string content, string summary, bool minorEdit, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddPageAsync(long nodeId, string title, string content, string summary, bool minorEdit, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -36,7 +36,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 			_parameters.Add("content", content);
 			_parameters.Add("summary", summary);
 			_parameters.Add("minorEdit", minorEdit);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -45,10 +45,10 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddPageAsync(long nodeId, string title, string content, string summary, bool minorEdit, string format, string parentTitle, string redirectTitle, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddPageAsync(long nodeId, string title, string content, string summary, bool minorEdit, string format, string parentTitle, string redirectTitle, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -60,7 +60,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 			_parameters.Add("format", format);
 			_parameters.Add("parentTitle", parentTitle);
 			_parameters.Add("redirectTitle", redirectTitle);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -69,10 +69,10 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task AddPageAttachmentAsync(long nodeId, string title, string fileName, Stream file, string mimeType)
+		public async Task AddPageAttachmentAsync(long nodeId, string title, string fileName, IDictionary<string, object> file, string mimeType)
 		{
 			var _parameters = new JsonObject();
 
@@ -87,7 +87,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 				{ "/wikipage/add-page-attachment", _parameters }
 			};
 
-			await this.Session.UploadAsync(_command);
+			await this.Session.InvokeAsync(_command);
 		}
 
 		public async Task AddPageAttachmentsAsync(long nodeId, string title, IEnumerable<object> inputStreamOVPs)
@@ -106,14 +106,14 @@ namespace Liferay.SDK.Service.V62.WikiPage
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task ChangeParentAsync(long nodeId, string title, string newParentTitle, JsonObjectWrapper serviceContext)
+		public async Task ChangeParentAsync(long nodeId, string title, string newParentTitle, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("nodeId", nodeId);
 			_parameters.Add("title", title);
 			_parameters.Add("newParentTitle", newParentTitle);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -249,7 +249,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetChildrenAsync(long groupId, long nodeId, bool head, string parentTitle)
+		public async Task<IDictionary<string, object>> GetChildrenAsync(long groupId, long nodeId, bool head, string parentTitle)
 		{
 			var _parameters = new JsonObject();
 
@@ -265,10 +265,10 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetDraftPageAsync(long nodeId, string title)
+		public async Task<IDictionary<string, object>> GetDraftPageAsync(long nodeId, string title)
 		{
 			var _parameters = new JsonObject();
 
@@ -282,10 +282,10 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetNodePagesAsync(long nodeId, int max)
+		public async Task<IDictionary<string, object>> GetNodePagesAsync(long nodeId, int max)
 		{
 			var _parameters = new JsonObject();
 
@@ -299,7 +299,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<string> GetNodePagesRssAsync(long nodeId, int max, string type, double version, string displayStyle, string feedURL, string entryURL)
@@ -347,7 +347,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 			return (string)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetOrphansAsync(long groupId, long nodeId)
+		public async Task<IDictionary<string, object>> GetOrphansAsync(long groupId, long nodeId)
 		{
 			var _parameters = new JsonObject();
 
@@ -361,10 +361,10 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetPageAsync(long nodeId, string title)
+		public async Task<IDictionary<string, object>> GetPageAsync(long nodeId, string title)
 		{
 			var _parameters = new JsonObject();
 
@@ -378,10 +378,10 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetPageAsync(long groupId, long nodeId, string title)
+		public async Task<IDictionary<string, object>> GetPageAsync(long groupId, long nodeId, string title)
 		{
 			var _parameters = new JsonObject();
 
@@ -396,16 +396,16 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetPageAsync(long nodeId, string title, JsonObjectWrapper head)
+		public async Task<IDictionary<string, object>> GetPageAsync(long nodeId, string title, IDictionary<string, object> head)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("nodeId", nodeId);
 			_parameters.Add("title", title);
-			this.MangleWrapper(_parameters, "head", "java.lang.Boolean", head);
+			_parameters.Add("head", head);
 
 			var _command = new JsonObject()
 			{
@@ -414,10 +414,10 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetPageAsync(long nodeId, string title, double version)
+		public async Task<IDictionary<string, object>> GetPageAsync(long nodeId, string title, double version)
 		{
 			var _parameters = new JsonObject();
 
@@ -432,10 +432,10 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetPagesAsync(long groupId, long userId, long nodeId, int status, int start, int end)
+		public async Task<IDictionary<string, object>> GetPagesAsync(long groupId, long userId, long nodeId, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -453,10 +453,10 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetPagesAsync(long groupId, long nodeId, bool head, int status, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetPagesAsync(long groupId, long nodeId, bool head, int status, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -466,7 +466,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 			_parameters.Add("status", status);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -475,10 +475,10 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetPagesAsync(long groupId, long nodeId, bool head, long userId, bool includeOwner, int status, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetPagesAsync(long groupId, long nodeId, bool head, long userId, bool includeOwner, int status, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -490,7 +490,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 			_parameters.Add("status", status);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -499,7 +499,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetPagesCountAsync(long groupId, long nodeId, bool head)
@@ -611,7 +611,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 			return (string)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetRecentChangesAsync(long groupId, long nodeId, int start, int end)
+		public async Task<IDictionary<string, object>> GetRecentChangesAsync(long groupId, long nodeId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -627,7 +627,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetRecentChangesCountAsync(long groupId, long nodeId)
@@ -666,14 +666,14 @@ namespace Liferay.SDK.Service.V62.WikiPage
 			return _jsonArray.Cast<string>();
 		}
 
-		public async Task MovePageAsync(long nodeId, string title, string newTitle, JsonObjectWrapper serviceContext)
+		public async Task MovePageAsync(long nodeId, string title, string newTitle, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("nodeId", nodeId);
 			_parameters.Add("title", title);
 			_parameters.Add("newTitle", newTitle);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -683,7 +683,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> MovePageAttachmentToTrashAsync(long nodeId, string title, string fileName)
+		public async Task<IDictionary<string, object>> MovePageAttachmentToTrashAsync(long nodeId, string title, string fileName)
 		{
 			var _parameters = new JsonObject();
 
@@ -698,10 +698,10 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> MovePageToTrashAsync(long nodeId, string title)
+		public async Task<IDictionary<string, object>> MovePageToTrashAsync(long nodeId, string title)
 		{
 			var _parameters = new JsonObject();
 
@@ -715,10 +715,10 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> MovePageToTrashAsync(long nodeId, string title, double version)
+		public async Task<IDictionary<string, object>> MovePageToTrashAsync(long nodeId, string title, double version)
 		{
 			var _parameters = new JsonObject();
 
@@ -733,7 +733,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task RestorePageAttachmentFromTrashAsync(long nodeId, string title, string fileName)
@@ -766,14 +766,14 @@ namespace Liferay.SDK.Service.V62.WikiPage
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> RevertPageAsync(long nodeId, string title, double version, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> RevertPageAsync(long nodeId, string title, double version, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("nodeId", nodeId);
 			_parameters.Add("title", title);
 			_parameters.Add("version", version);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -782,7 +782,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task SubscribePageAsync(long nodeId, string title)
@@ -815,7 +815,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdatePageAsync(long nodeId, string title, double version, string content, string summary, bool minorEdit, string format, string parentTitle, string redirectTitle, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdatePageAsync(long nodeId, string title, double version, string content, string summary, bool minorEdit, string format, string parentTitle, string redirectTitle, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -828,7 +828,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 			_parameters.Add("format", format);
 			_parameters.Add("parentTitle", parentTitle);
 			_parameters.Add("redirectTitle", redirectTitle);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -837,7 +837,7 @@ namespace Liferay.SDK.Service.V62.WikiPage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

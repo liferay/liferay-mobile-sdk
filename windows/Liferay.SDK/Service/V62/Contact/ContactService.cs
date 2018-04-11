@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.Contact
 		{
 		}
 
-		public async Task<dynamic> GetContactAsync(long contactId)
+		public async Task<IDictionary<string, object>> GetContactAsync(long contactId)
 		{
 			var _parameters = new JsonObject();
 
@@ -40,10 +40,10 @@ namespace Liferay.SDK.Service.V62.Contact
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetContactsAsync(long classNameId, long classPK, int start, int end, JsonObjectWrapper orderByComparator)
+		public async Task<IDictionary<string, object>> GetContactsAsync(long classNameId, long classPK, int start, int end, IDictionary<string, object> orderByComparator)
 		{
 			var _parameters = new JsonObject();
 
@@ -51,7 +51,7 @@ namespace Liferay.SDK.Service.V62.Contact
 			_parameters.Add("classPK", classPK);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
+			_parameters.Add("orderByComparator", orderByComparator);
 
 			var _command = new JsonObject()
 			{
@@ -60,7 +60,7 @@ namespace Liferay.SDK.Service.V62.Contact
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetContactsCountAsync(long classNameId, long classPK)

@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.Phone
 		{
 		}
 
-		public async Task<dynamic> AddPhoneAsync(string className, long classPK, string number, string extension, int typeId, bool primary)
+		public async Task<IDictionary<string, object>> AddPhoneAsync(string className, long classPK, string number, string extension, int typeId, bool primary)
 		{
 			var _parameters = new JsonObject();
 
@@ -45,10 +45,10 @@ namespace Liferay.SDK.Service.V62.Phone
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddPhoneAsync(string className, long classPK, string number, string extension, int typeId, bool primary, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddPhoneAsync(string className, long classPK, string number, string extension, int typeId, bool primary, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -58,7 +58,7 @@ namespace Liferay.SDK.Service.V62.Phone
 			_parameters.Add("extension", extension);
 			_parameters.Add("typeId", typeId);
 			_parameters.Add("primary", primary);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -67,7 +67,7 @@ namespace Liferay.SDK.Service.V62.Phone
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeletePhoneAsync(long phoneId)
@@ -84,7 +84,7 @@ namespace Liferay.SDK.Service.V62.Phone
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetPhoneAsync(long phoneId)
+		public async Task<IDictionary<string, object>> GetPhoneAsync(long phoneId)
 		{
 			var _parameters = new JsonObject();
 
@@ -97,10 +97,10 @@ namespace Liferay.SDK.Service.V62.Phone
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetPhonesAsync(string className, long classPK)
+		public async Task<IDictionary<string, object>> GetPhonesAsync(string className, long classPK)
 		{
 			var _parameters = new JsonObject();
 
@@ -114,10 +114,10 @@ namespace Liferay.SDK.Service.V62.Phone
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdatePhoneAsync(long phoneId, string number, string extension, int typeId, bool primary)
+		public async Task<IDictionary<string, object>> UpdatePhoneAsync(long phoneId, string number, string extension, int typeId, bool primary)
 		{
 			var _parameters = new JsonObject();
 
@@ -134,7 +134,7 @@ namespace Liferay.SDK.Service.V62.Phone
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

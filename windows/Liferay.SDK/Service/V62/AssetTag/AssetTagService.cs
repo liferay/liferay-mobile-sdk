@@ -27,13 +27,13 @@ namespace Liferay.SDK.Service.V62.AssetTag
 		{
 		}
 
-		public async Task<dynamic> AddTagAsync(string name, IEnumerable<string> tagProperties, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddTagAsync(string name, IEnumerable<string> tagProperties, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("name", name);
 			_parameters.Add("tagProperties", tagProperties);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -42,7 +42,7 @@ namespace Liferay.SDK.Service.V62.AssetTag
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteTagAsync(long tagId)
@@ -73,7 +73,7 @@ namespace Liferay.SDK.Service.V62.AssetTag
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupTagsAsync(long groupId)
+		public async Task<IDictionary<string, object>> GetGroupTagsAsync(long groupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -86,17 +86,17 @@ namespace Liferay.SDK.Service.V62.AssetTag
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupTagsAsync(long groupId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetGroupTagsAsync(long groupId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -105,7 +105,7 @@ namespace Liferay.SDK.Service.V62.AssetTag
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetGroupTagsCountAsync(long groupId)
@@ -124,7 +124,7 @@ namespace Liferay.SDK.Service.V62.AssetTag
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> GetGroupTagsDisplayAsync(long groupId, string name, int start, int end)
+		public async Task<IDictionary<string, object>> GetGroupTagsDisplayAsync(long groupId, string name, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -140,10 +140,10 @@ namespace Liferay.SDK.Service.V62.AssetTag
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupsTagsAsync(IEnumerable<long> groupIds)
+		public async Task<IDictionary<string, object>> GetGroupsTagsAsync(IEnumerable<long> groupIds)
 		{
 			var _parameters = new JsonObject();
 
@@ -156,10 +156,10 @@ namespace Liferay.SDK.Service.V62.AssetTag
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetJsonGroupTagsAsync(long groupId, string name, int start, int end)
+		public async Task<IDictionary<string, object>> GetJsonGroupTagsAsync(long groupId, string name, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -175,10 +175,10 @@ namespace Liferay.SDK.Service.V62.AssetTag
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetTagAsync(long tagId)
+		public async Task<IDictionary<string, object>> GetTagAsync(long tagId)
 		{
 			var _parameters = new JsonObject();
 
@@ -191,10 +191,10 @@ namespace Liferay.SDK.Service.V62.AssetTag
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetTagsAsync(string className, long classPK)
+		public async Task<IDictionary<string, object>> GetTagsAsync(string className, long classPK)
 		{
 			var _parameters = new JsonObject();
 
@@ -208,10 +208,10 @@ namespace Liferay.SDK.Service.V62.AssetTag
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetTagsAsync(long groupId, long classNameId, string name)
+		public async Task<IDictionary<string, object>> GetTagsAsync(long groupId, long classNameId, string name)
 		{
 			var _parameters = new JsonObject();
 
@@ -226,10 +226,10 @@ namespace Liferay.SDK.Service.V62.AssetTag
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetTagsAsync(long groupId, string name, IEnumerable<string> tagProperties, int start, int end)
+		public async Task<IDictionary<string, object>> GetTagsAsync(long groupId, string name, IEnumerable<string> tagProperties, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -246,10 +246,10 @@ namespace Liferay.SDK.Service.V62.AssetTag
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetTagsAsync(IEnumerable<long> groupIds, string name, IEnumerable<string> tagProperties, int start, int end)
+		public async Task<IDictionary<string, object>> GetTagsAsync(IEnumerable<long> groupIds, string name, IEnumerable<string> tagProperties, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -266,10 +266,10 @@ namespace Liferay.SDK.Service.V62.AssetTag
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetTagsAsync(long groupId, long classNameId, string name, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetTagsAsync(long groupId, long classNameId, string name, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -278,7 +278,7 @@ namespace Liferay.SDK.Service.V62.AssetTag
 			_parameters.Add("name", name);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -287,7 +287,7 @@ namespace Liferay.SDK.Service.V62.AssetTag
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetTagsCountAsync(long groupId, string name)
@@ -375,7 +375,7 @@ namespace Liferay.SDK.Service.V62.AssetTag
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long groupId, string name, IEnumerable<string> tagProperties, int start, int end)
+		public async Task<IDictionary<string, object>> SearchAsync(long groupId, string name, IEnumerable<string> tagProperties, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -392,10 +392,10 @@ namespace Liferay.SDK.Service.V62.AssetTag
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(IEnumerable<long> groupIds, string name, IEnumerable<string> tagProperties, int start, int end)
+		public async Task<IDictionary<string, object>> SearchAsync(IEnumerable<long> groupIds, string name, IEnumerable<string> tagProperties, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -412,17 +412,17 @@ namespace Liferay.SDK.Service.V62.AssetTag
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateTagAsync(long tagId, string name, IEnumerable<string> tagProperties, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateTagAsync(long tagId, string name, IEnumerable<string> tagProperties, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("tagId", tagId);
 			_parameters.Add("name", name);
 			_parameters.Add("tagProperties", tagProperties);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -431,7 +431,7 @@ namespace Liferay.SDK.Service.V62.AssetTag
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

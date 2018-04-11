@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.MDRRuleGroupInstance
 		{
 		}
 
-		public async Task<dynamic> AddRuleGroupInstanceAsync(long groupId, string className, long classPK, long ruleGroupId, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddRuleGroupInstanceAsync(long groupId, string className, long classPK, long ruleGroupId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -35,7 +35,7 @@ namespace Liferay.SDK.Service.V62.MDRRuleGroupInstance
 			_parameters.Add("className", className);
 			_parameters.Add("classPK", classPK);
 			_parameters.Add("ruleGroupId", ruleGroupId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -44,10 +44,10 @@ namespace Liferay.SDK.Service.V62.MDRRuleGroupInstance
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddRuleGroupInstanceAsync(long groupId, string className, long classPK, long ruleGroupId, int priority, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddRuleGroupInstanceAsync(long groupId, string className, long classPK, long ruleGroupId, int priority, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -56,7 +56,7 @@ namespace Liferay.SDK.Service.V62.MDRRuleGroupInstance
 			_parameters.Add("classPK", classPK);
 			_parameters.Add("ruleGroupId", ruleGroupId);
 			_parameters.Add("priority", priority);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -65,7 +65,7 @@ namespace Liferay.SDK.Service.V62.MDRRuleGroupInstance
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteRuleGroupInstanceAsync(long ruleGroupInstanceId)
@@ -82,7 +82,7 @@ namespace Liferay.SDK.Service.V62.MDRRuleGroupInstance
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetRuleGroupInstancesAsync(string className, long classPK, int start, int end, JsonObjectWrapper orderByComparator)
+		public async Task<IDictionary<string, object>> GetRuleGroupInstancesAsync(string className, long classPK, int start, int end, IDictionary<string, object> orderByComparator)
 		{
 			var _parameters = new JsonObject();
 
@@ -90,7 +90,7 @@ namespace Liferay.SDK.Service.V62.MDRRuleGroupInstance
 			_parameters.Add("classPK", classPK);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
+			_parameters.Add("orderByComparator", orderByComparator);
 
 			var _command = new JsonObject()
 			{
@@ -99,7 +99,7 @@ namespace Liferay.SDK.Service.V62.MDRRuleGroupInstance
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetRuleGroupInstancesCountAsync(string className, long classPK)
@@ -119,7 +119,7 @@ namespace Liferay.SDK.Service.V62.MDRRuleGroupInstance
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> UpdateRuleGroupInstanceAsync(long ruleGroupInstanceId, int priority)
+		public async Task<IDictionary<string, object>> UpdateRuleGroupInstanceAsync(long ruleGroupInstanceId, int priority)
 		{
 			var _parameters = new JsonObject();
 
@@ -133,7 +133,7 @@ namespace Liferay.SDK.Service.V62.MDRRuleGroupInstance
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

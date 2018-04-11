@@ -27,13 +27,13 @@ namespace Liferay.SDK.Service.V62.User
 		{
 		}
 
-		public async Task AddGroupUsersAsync(long groupId, IEnumerable<long> userIds, JsonObjectWrapper serviceContext)
+		public async Task AddGroupUsersAsync(long groupId, IEnumerable<long> userIds, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("userIds", userIds);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -103,7 +103,7 @@ namespace Liferay.SDK.Service.V62.User
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> AddUserAsync(long companyId, bool autoPassword, string password1, string password2, bool autoScreenName, string screenName, string emailAddress, long facebookId, string openId, string locale, string firstName, string middleName, string lastName, int prefixId, int suffixId, bool male, int birthdayMonth, int birthdayDay, int birthdayYear, string jobTitle, IEnumerable<long> groupIds, IEnumerable<long> organizationIds, IEnumerable<long> roleIds, IEnumerable<long> userGroupIds, bool sendEmail, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddUserAsync(long companyId, bool autoPassword, string password1, string password2, bool autoScreenName, string screenName, string emailAddress, long facebookId, string openId, string locale, string firstName, string middleName, string lastName, int prefixId, int suffixId, bool male, int birthdayMonth, int birthdayDay, int birthdayYear, string jobTitle, IEnumerable<long> groupIds, IEnumerable<long> organizationIds, IEnumerable<long> roleIds, IEnumerable<long> userGroupIds, bool sendEmail, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -132,7 +132,7 @@ namespace Liferay.SDK.Service.V62.User
 			_parameters.Add("roleIds", roleIds);
 			_parameters.Add("userGroupIds", userGroupIds);
 			_parameters.Add("sendEmail", sendEmail);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -141,10 +141,10 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddUserAsync(long companyId, bool autoPassword, string password1, string password2, bool autoScreenName, string screenName, string emailAddress, long facebookId, string openId, string locale, string firstName, string middleName, string lastName, int prefixId, int suffixId, bool male, int birthdayMonth, int birthdayDay, int birthdayYear, string jobTitle, IEnumerable<long> groupIds, IEnumerable<long> organizationIds, IEnumerable<long> roleIds, IEnumerable<long> userGroupIds, IEnumerable<object> addresses, IEnumerable<object> emailAddresses, IEnumerable<object> phones, IEnumerable<object> websites, IEnumerable<object> announcementsDelivers, bool sendEmail, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddUserAsync(long companyId, bool autoPassword, string password1, string password2, bool autoScreenName, string screenName, string emailAddress, long facebookId, string openId, string locale, string firstName, string middleName, string lastName, int prefixId, int suffixId, bool male, int birthdayMonth, int birthdayDay, int birthdayYear, string jobTitle, IEnumerable<long> groupIds, IEnumerable<long> organizationIds, IEnumerable<long> roleIds, IEnumerable<long> userGroupIds, IEnumerable<object> addresses, IEnumerable<object> emailAddresses, IEnumerable<object> phones, IEnumerable<object> websites, IEnumerable<object> announcementsDelivers, bool sendEmail, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -178,7 +178,7 @@ namespace Liferay.SDK.Service.V62.User
 			_parameters.Add("websites", websites);
 			_parameters.Add("announcementsDelivers", announcementsDelivers);
 			_parameters.Add("sendEmail", sendEmail);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -187,7 +187,7 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task AddUserGroupUsersAsync(long userGroupId, IEnumerable<long> userIds)
@@ -205,7 +205,7 @@ namespace Liferay.SDK.Service.V62.User
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> AddUserWithWorkflowAsync(long companyId, bool autoPassword, string password1, string password2, bool autoScreenName, string screenName, string emailAddress, long facebookId, string openId, string locale, string firstName, string middleName, string lastName, int prefixId, int suffixId, bool male, int birthdayMonth, int birthdayDay, int birthdayYear, string jobTitle, IEnumerable<long> groupIds, IEnumerable<long> organizationIds, IEnumerable<long> roleIds, IEnumerable<long> userGroupIds, bool sendEmail, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddUserWithWorkflowAsync(long companyId, bool autoPassword, string password1, string password2, bool autoScreenName, string screenName, string emailAddress, long facebookId, string openId, string locale, string firstName, string middleName, string lastName, int prefixId, int suffixId, bool male, int birthdayMonth, int birthdayDay, int birthdayYear, string jobTitle, IEnumerable<long> groupIds, IEnumerable<long> organizationIds, IEnumerable<long> roleIds, IEnumerable<long> userGroupIds, bool sendEmail, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -234,7 +234,7 @@ namespace Liferay.SDK.Service.V62.User
 			_parameters.Add("roleIds", roleIds);
 			_parameters.Add("userGroupIds", userGroupIds);
 			_parameters.Add("sendEmail", sendEmail);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -243,10 +243,10 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddUserWithWorkflowAsync(long companyId, bool autoPassword, string password1, string password2, bool autoScreenName, string screenName, string emailAddress, long facebookId, string openId, string locale, string firstName, string middleName, string lastName, int prefixId, int suffixId, bool male, int birthdayMonth, int birthdayDay, int birthdayYear, string jobTitle, IEnumerable<long> groupIds, IEnumerable<long> organizationIds, IEnumerable<long> roleIds, IEnumerable<long> userGroupIds, IEnumerable<object> addresses, IEnumerable<object> emailAddresses, IEnumerable<object> phones, IEnumerable<object> websites, IEnumerable<object> announcementsDelivers, bool sendEmail, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddUserWithWorkflowAsync(long companyId, bool autoPassword, string password1, string password2, bool autoScreenName, string screenName, string emailAddress, long facebookId, string openId, string locale, string firstName, string middleName, string lastName, int prefixId, int suffixId, bool male, int birthdayMonth, int birthdayDay, int birthdayYear, string jobTitle, IEnumerable<long> groupIds, IEnumerable<long> organizationIds, IEnumerable<long> roleIds, IEnumerable<long> userGroupIds, IEnumerable<object> addresses, IEnumerable<object> emailAddresses, IEnumerable<object> phones, IEnumerable<object> websites, IEnumerable<object> announcementsDelivers, bool sendEmail, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -280,7 +280,7 @@ namespace Liferay.SDK.Service.V62.User
 			_parameters.Add("websites", websites);
 			_parameters.Add("announcementsDelivers", announcementsDelivers);
 			_parameters.Add("sendEmail", sendEmail);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -289,7 +289,7 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeletePortraitAsync(long userId)
@@ -335,7 +335,7 @@ namespace Liferay.SDK.Service.V62.User
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetCompanyUsersAsync(long companyId, int start, int end)
+		public async Task<IDictionary<string, object>> GetCompanyUsersAsync(long companyId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -350,7 +350,7 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetCompanyUsersCountAsync(long companyId)
@@ -369,7 +369,7 @@ namespace Liferay.SDK.Service.V62.User
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> GetCurrentUserAsync()
+		public async Task<IDictionary<string, object>> GetCurrentUserAsync()
 		{
 			var _parameters = new JsonObject();
 
@@ -380,7 +380,7 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<IEnumerable<long>> GetGroupUserIdsAsync(long groupId)
@@ -401,7 +401,7 @@ namespace Liferay.SDK.Service.V62.User
 			return _jsonArray.Cast<long>();
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupUsersAsync(long groupId)
+		public async Task<IDictionary<string, object>> GetGroupUsersAsync(long groupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -414,7 +414,7 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<IEnumerable<long>> GetOrganizationUserIdsAsync(long organizationId)
@@ -435,7 +435,7 @@ namespace Liferay.SDK.Service.V62.User
 			return _jsonArray.Cast<long>();
 		}
 
-		public async Task<IEnumerable<dynamic>> GetOrganizationUsersAsync(long organizationId)
+		public async Task<IDictionary<string, object>> GetOrganizationUsersAsync(long organizationId)
 		{
 			var _parameters = new JsonObject();
 
@@ -448,7 +448,7 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<IEnumerable<long>> GetRoleUserIdsAsync(long roleId)
@@ -469,7 +469,7 @@ namespace Liferay.SDK.Service.V62.User
 			return _jsonArray.Cast<long>();
 		}
 
-		public async Task<dynamic> GetUserByEmailAddressAsync(long companyId, string emailAddress)
+		public async Task<IDictionary<string, object>> GetUserByEmailAddressAsync(long companyId, string emailAddress)
 		{
 			var _parameters = new JsonObject();
 
@@ -483,10 +483,10 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetUserByIdAsync(long userId)
+		public async Task<IDictionary<string, object>> GetUserByIdAsync(long userId)
 		{
 			var _parameters = new JsonObject();
 
@@ -499,10 +499,10 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetUserByScreenNameAsync(long companyId, string screenName)
+		public async Task<IDictionary<string, object>> GetUserByScreenNameAsync(long companyId, string screenName)
 		{
 			var _parameters = new JsonObject();
 
@@ -516,10 +516,10 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserGroupUsersAsync(long userGroupId)
+		public async Task<IDictionary<string, object>> GetUserGroupUsersAsync(long userGroupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -532,7 +532,7 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetUserIdByEmailAddressAsync(long companyId, string emailAddress)
@@ -667,13 +667,13 @@ namespace Liferay.SDK.Service.V62.User
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task UnsetGroupUsersAsync(long groupId, IEnumerable<long> userIds, JsonObjectWrapper serviceContext)
+		public async Task UnsetGroupUsersAsync(long groupId, IEnumerable<long> userIds, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("userIds", userIds);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -758,7 +758,7 @@ namespace Liferay.SDK.Service.V62.User
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateAgreedToTermsOfUseAsync(long userId, bool agreedToTermsOfUse)
+		public async Task<IDictionary<string, object>> UpdateAgreedToTermsOfUseAsync(long userId, bool agreedToTermsOfUse)
 		{
 			var _parameters = new JsonObject();
 
@@ -772,10 +772,10 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateEmailAddressAsync(long userId, string password, string emailAddress1, string emailAddress2, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateEmailAddressAsync(long userId, string password, string emailAddress1, string emailAddress2, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -783,7 +783,7 @@ namespace Liferay.SDK.Service.V62.User
 			_parameters.Add("password", password);
 			_parameters.Add("emailAddress1", emailAddress1);
 			_parameters.Add("emailAddress2", emailAddress2);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -792,10 +792,10 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateIncompleteUserAsync(long companyId, bool autoPassword, string password1, string password2, bool autoScreenName, string screenName, string emailAddress, long facebookId, string openId, string locale, string firstName, string middleName, string lastName, int prefixId, int suffixId, bool male, int birthdayMonth, int birthdayDay, int birthdayYear, string jobTitle, bool updateUserInformation, bool sendEmail, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateIncompleteUserAsync(long companyId, bool autoPassword, string password1, string password2, bool autoScreenName, string screenName, string emailAddress, long facebookId, string openId, string locale, string firstName, string middleName, string lastName, int prefixId, int suffixId, bool male, int birthdayMonth, int birthdayDay, int birthdayYear, string jobTitle, bool updateUserInformation, bool sendEmail, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -821,7 +821,7 @@ namespace Liferay.SDK.Service.V62.User
 			_parameters.Add("jobTitle", jobTitle);
 			_parameters.Add("updateUserInformation", updateUserInformation);
 			_parameters.Add("sendEmail", sendEmail);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -830,10 +830,10 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateLockoutByIdAsync(long userId, bool lockout)
+		public async Task<IDictionary<string, object>> UpdateLockoutByIdAsync(long userId, bool lockout)
 		{
 			var _parameters = new JsonObject();
 
@@ -847,10 +847,10 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateOpenIdAsync(long userId, string openId)
+		public async Task<IDictionary<string, object>> UpdateOpenIdAsync(long userId, string openId)
 		{
 			var _parameters = new JsonObject();
 
@@ -864,16 +864,16 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task UpdateOrganizationsAsync(long userId, IEnumerable<long> organizationIds, JsonObjectWrapper serviceContext)
+		public async Task UpdateOrganizationsAsync(long userId, IEnumerable<long> organizationIds, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("userId", userId);
 			_parameters.Add("organizationIds", organizationIds);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -883,7 +883,7 @@ namespace Liferay.SDK.Service.V62.User
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdatePasswordAsync(long userId, string password1, string password2, bool passwordReset)
+		public async Task<IDictionary<string, object>> UpdatePasswordAsync(long userId, string password1, string password2, bool passwordReset)
 		{
 			var _parameters = new JsonObject();
 
@@ -899,10 +899,10 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdatePortraitAsync(long userId, byte[] bytes)
+		public async Task<IDictionary<string, object>> UpdatePortraitAsync(long userId, byte[] bytes)
 		{
 			var _parameters = new JsonObject();
 
@@ -916,10 +916,10 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateReminderQueryAsync(long userId, string question, string answer)
+		public async Task<IDictionary<string, object>> UpdateReminderQueryAsync(long userId, string question, string answer)
 		{
 			var _parameters = new JsonObject();
 
@@ -934,10 +934,10 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateScreenNameAsync(long userId, string screenName)
+		public async Task<IDictionary<string, object>> UpdateScreenNameAsync(long userId, string screenName)
 		{
 			var _parameters = new JsonObject();
 
@@ -951,10 +951,10 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateStatusAsync(long userId, int status)
+		public async Task<IDictionary<string, object>> UpdateStatusAsync(long userId, int status)
 		{
 			var _parameters = new JsonObject();
 
@@ -968,16 +968,16 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateStatusAsync(long userId, int status, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateStatusAsync(long userId, int status, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("userId", userId);
 			_parameters.Add("status", status);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -986,10 +986,10 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateUserAsync(long userId, string oldPassword, string newPassword1, string newPassword2, bool passwordReset, string reminderQueryQuestion, string reminderQueryAnswer, string screenName, string emailAddress, long facebookId, string openId, string languageId, string timeZoneId, string greeting, string comments, string firstName, string middleName, string lastName, int prefixId, int suffixId, bool male, int birthdayMonth, int birthdayDay, int birthdayYear, string smsSn, string aimSn, string facebookSn, string icqSn, string jabberSn, string msnSn, string mySpaceSn, string skypeSn, string twitterSn, string ymSn, string jobTitle, IEnumerable<long> groupIds, IEnumerable<long> organizationIds, IEnumerable<long> roleIds, IEnumerable<object> userGroupRoles, IEnumerable<long> userGroupIds, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateUserAsync(long userId, string oldPassword, string newPassword1, string newPassword2, bool passwordReset, string reminderQueryQuestion, string reminderQueryAnswer, string screenName, string emailAddress, long facebookId, string openId, string languageId, string timeZoneId, string greeting, string comments, string firstName, string middleName, string lastName, int prefixId, int suffixId, bool male, int birthdayMonth, int birthdayDay, int birthdayYear, string smsSn, string aimSn, string facebookSn, string icqSn, string jabberSn, string msnSn, string mySpaceSn, string skypeSn, string twitterSn, string ymSn, string jobTitle, IEnumerable<long> groupIds, IEnumerable<long> organizationIds, IEnumerable<long> roleIds, IEnumerable<object> userGroupRoles, IEnumerable<long> userGroupIds, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -1033,7 +1033,7 @@ namespace Liferay.SDK.Service.V62.User
 			_parameters.Add("roleIds", roleIds);
 			_parameters.Add("userGroupRoles", userGroupRoles);
 			_parameters.Add("userGroupIds", userGroupIds);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -1042,10 +1042,10 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateUserAsync(long userId, string oldPassword, string newPassword1, string newPassword2, bool passwordReset, string reminderQueryQuestion, string reminderQueryAnswer, string screenName, string emailAddress, long facebookId, string openId, string languageId, string timeZoneId, string greeting, string comments, string firstName, string middleName, string lastName, int prefixId, int suffixId, bool male, int birthdayMonth, int birthdayDay, int birthdayYear, string smsSn, string aimSn, string facebookSn, string icqSn, string jabberSn, string msnSn, string mySpaceSn, string skypeSn, string twitterSn, string ymSn, string jobTitle, IEnumerable<long> groupIds, IEnumerable<long> organizationIds, IEnumerable<long> roleIds, IEnumerable<object> userGroupRoles, IEnumerable<long> userGroupIds, IEnumerable<object> addresses, IEnumerable<object> emailAddresses, IEnumerable<object> phones, IEnumerable<object> websites, IEnumerable<object> announcementsDelivers, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateUserAsync(long userId, string oldPassword, string newPassword1, string newPassword2, bool passwordReset, string reminderQueryQuestion, string reminderQueryAnswer, string screenName, string emailAddress, long facebookId, string openId, string languageId, string timeZoneId, string greeting, string comments, string firstName, string middleName, string lastName, int prefixId, int suffixId, bool male, int birthdayMonth, int birthdayDay, int birthdayYear, string smsSn, string aimSn, string facebookSn, string icqSn, string jabberSn, string msnSn, string mySpaceSn, string skypeSn, string twitterSn, string ymSn, string jobTitle, IEnumerable<long> groupIds, IEnumerable<long> organizationIds, IEnumerable<long> roleIds, IEnumerable<object> userGroupRoles, IEnumerable<long> userGroupIds, IEnumerable<object> addresses, IEnumerable<object> emailAddresses, IEnumerable<object> phones, IEnumerable<object> websites, IEnumerable<object> announcementsDelivers, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -1094,7 +1094,7 @@ namespace Liferay.SDK.Service.V62.User
 			_parameters.Add("phones", phones);
 			_parameters.Add("websites", websites);
 			_parameters.Add("announcementsDelivers", announcementsDelivers);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -1103,7 +1103,7 @@ namespace Liferay.SDK.Service.V62.User
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

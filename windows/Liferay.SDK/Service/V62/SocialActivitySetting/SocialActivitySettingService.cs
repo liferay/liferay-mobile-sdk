@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.SocialActivitySetting
 		{
 		}
 
-		public async Task<dynamic> GetActivityDefinitionAsync(long groupId, string className, int activityType)
+		public async Task<IDictionary<string, object>> GetActivityDefinitionAsync(long groupId, string className, int activityType)
 		{
 			var _parameters = new JsonObject();
 
@@ -42,10 +42,10 @@ namespace Liferay.SDK.Service.V62.SocialActivitySetting
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetActivityDefinitionsAsync(long groupId, string className)
+		public async Task<IDictionary<string, object>> GetActivityDefinitionsAsync(long groupId, string className)
 		{
 			var _parameters = new JsonObject();
 
@@ -59,10 +59,10 @@ namespace Liferay.SDK.Service.V62.SocialActivitySetting
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetActivitySettingsAsync(long groupId)
+		public async Task<IDictionary<string, object>> GetActivitySettingsAsync(long groupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -75,10 +75,10 @@ namespace Liferay.SDK.Service.V62.SocialActivitySetting
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetJsonActivityDefinitionsAsync(long groupId, string className)
+		public async Task<IDictionary<string, object>> GetJsonActivityDefinitionsAsync(long groupId, string className)
 		{
 			var _parameters = new JsonObject();
 
@@ -92,7 +92,7 @@ namespace Liferay.SDK.Service.V62.SocialActivitySetting
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task UpdateActivitySettingAsync(long groupId, string className, bool enabled)
@@ -111,14 +111,14 @@ namespace Liferay.SDK.Service.V62.SocialActivitySetting
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task UpdateActivitySettingAsync(long groupId, string className, int activityType, JsonObjectWrapper activityCounterDefinition)
+		public async Task UpdateActivitySettingAsync(long groupId, string className, int activityType, IDictionary<string, object> activityCounterDefinition)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("className", className);
 			_parameters.Add("activityType", activityType);
-			this.MangleWrapper(_parameters, "activityCounterDefinition", "com.liferay.portlet.social.model.SocialActivityCounterDefinition", activityCounterDefinition);
+			_parameters.Add("activityCounterDefinition", activityCounterDefinition);
 
 			var _command = new JsonObject()
 			{

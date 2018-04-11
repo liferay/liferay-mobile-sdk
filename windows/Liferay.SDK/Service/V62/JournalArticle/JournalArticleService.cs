@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 		{
 		}
 
-		public async Task<dynamic> AddArticleAsync(long groupId, long folderId, long classNameId, long classPK, string articleId, bool autoArticleId, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, string content, string type, string ddmStructureKey, string ddmTemplateKey, string layoutUuid, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, bool neverExpire, int reviewDateMonth, int reviewDateDay, int reviewDateYear, int reviewDateHour, int reviewDateMinute, bool neverReview, bool indexable, string articleURL, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddArticleAsync(long groupId, long folderId, long classNameId, long classPK, string articleId, bool autoArticleId, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, string content, string type, string ddmStructureKey, string ddmTemplateKey, string layoutUuid, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, bool neverExpire, int reviewDateMonth, int reviewDateDay, int reviewDateYear, int reviewDateHour, int reviewDateMinute, bool neverReview, bool indexable, string articleURL, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -63,7 +63,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("neverReview", neverReview);
 			_parameters.Add("indexable", indexable);
 			_parameters.Add("articleURL", articleURL);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -72,10 +72,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddArticleAsync(long groupId, long folderId, long classNameId, long classPK, string articleId, bool autoArticleId, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, string content, string type, string ddmStructureKey, string ddmTemplateKey, string layoutUuid, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, bool neverExpire, int reviewDateMonth, int reviewDateDay, int reviewDateYear, int reviewDateHour, int reviewDateMinute, bool neverReview, bool indexable, bool smallImage, string smallImageURL, Stream smallFile, IDictionary<string, object> images, string articleURL, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddArticleAsync(long groupId, long folderId, long classNameId, long classPK, string articleId, bool autoArticleId, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, string content, string type, string ddmStructureKey, string ddmTemplateKey, string layoutUuid, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, bool neverExpire, int reviewDateMonth, int reviewDateDay, int reviewDateYear, int reviewDateHour, int reviewDateMinute, bool neverReview, bool indexable, bool smallImage, string smallImageURL, IDictionary<string, object> smallFile, IDictionary<string, object> images, string articleURL, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -115,19 +115,19 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("smallFile", smallFile);
 			_parameters.Add("images", images);
 			_parameters.Add("articleURL", articleURL);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
 				{ "/journalarticle/add-article", _parameters }
 			};
 
-			var _obj = await this.Session.UploadAsync(_command);
+			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> CopyArticleAsync(long groupId, string oldArticleId, string newArticleId, bool autoArticleId, double version)
+		public async Task<IDictionary<string, object>> CopyArticleAsync(long groupId, string oldArticleId, string newArticleId, bool autoArticleId, double version)
 		{
 			var _parameters = new JsonObject();
 
@@ -144,17 +144,17 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task DeleteArticleAsync(long groupId, string articleId, string articleURL, JsonObjectWrapper serviceContext)
+		public async Task DeleteArticleAsync(long groupId, string articleId, string articleURL, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("articleId", articleId);
 			_parameters.Add("articleURL", articleURL);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -164,7 +164,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task DeleteArticleAsync(long groupId, string articleId, double version, string articleURL, JsonObjectWrapper serviceContext)
+		public async Task DeleteArticleAsync(long groupId, string articleId, double version, string articleURL, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -172,7 +172,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("articleId", articleId);
 			_parameters.Add("version", version);
 			_parameters.Add("articleURL", articleURL);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -182,14 +182,14 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task ExpireArticleAsync(long groupId, string articleId, string articleURL, JsonObjectWrapper serviceContext)
+		public async Task ExpireArticleAsync(long groupId, string articleId, string articleURL, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("articleId", articleId);
 			_parameters.Add("articleURL", articleURL);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -199,7 +199,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> ExpireArticleAsync(long groupId, string articleId, double version, string articleURL, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> ExpireArticleAsync(long groupId, string articleId, double version, string articleURL, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -207,7 +207,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("articleId", articleId);
 			_parameters.Add("version", version);
 			_parameters.Add("articleURL", articleURL);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -216,10 +216,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> FetchArticleAsync(long groupId, string articleId)
+		public async Task<IDictionary<string, object>> FetchArticleAsync(long groupId, string articleId)
 		{
 			var _parameters = new JsonObject();
 
@@ -233,10 +233,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetArticleAsync(long id)
+		public async Task<IDictionary<string, object>> GetArticleAsync(long id)
 		{
 			var _parameters = new JsonObject();
 
@@ -249,10 +249,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetArticleAsync(long groupId, string articleId)
+		public async Task<IDictionary<string, object>> GetArticleAsync(long groupId, string articleId)
 		{
 			var _parameters = new JsonObject();
 
@@ -266,10 +266,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetArticleAsync(long groupId, string articleId, double version)
+		public async Task<IDictionary<string, object>> GetArticleAsync(long groupId, string articleId, double version)
 		{
 			var _parameters = new JsonObject();
 
@@ -284,10 +284,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetArticleAsync(long groupId, string className, long classPK)
+		public async Task<IDictionary<string, object>> GetArticleAsync(long groupId, string className, long classPK)
 		{
 			var _parameters = new JsonObject();
 
@@ -302,10 +302,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetArticleByUrlTitleAsync(long groupId, string urlTitle)
+		public async Task<IDictionary<string, object>> GetArticleByUrlTitleAsync(long groupId, string urlTitle)
 		{
 			var _parameters = new JsonObject();
 
@@ -319,17 +319,17 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<string> GetArticleContentAsync(long groupId, string articleId, string languageId, JsonObjectWrapper themeDisplay)
+		public async Task<string> GetArticleContentAsync(long groupId, string articleId, string languageId, IDictionary<string, object> themeDisplay)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("articleId", articleId);
 			_parameters.Add("languageId", languageId);
-			this.MangleWrapper(_parameters, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
+			_parameters.Add("themeDisplay", themeDisplay);
 
 			var _command = new JsonObject()
 			{
@@ -341,7 +341,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			return (string)_obj;
 		}
 
-		public async Task<string> GetArticleContentAsync(long groupId, string articleId, double version, string languageId, JsonObjectWrapper themeDisplay)
+		public async Task<string> GetArticleContentAsync(long groupId, string articleId, double version, string languageId, IDictionary<string, object> themeDisplay)
 		{
 			var _parameters = new JsonObject();
 
@@ -349,7 +349,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("articleId", articleId);
 			_parameters.Add("version", version);
 			_parameters.Add("languageId", languageId);
-			this.MangleWrapper(_parameters, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
+			_parameters.Add("themeDisplay", themeDisplay);
 
 			var _command = new JsonObject()
 			{
@@ -361,7 +361,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			return (string)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetArticlesAsync(long groupId, long folderId)
+		public async Task<IDictionary<string, object>> GetArticlesAsync(long groupId, long folderId)
 		{
 			var _parameters = new JsonObject();
 
@@ -375,10 +375,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetArticlesAsync(long groupId, long folderId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetArticlesAsync(long groupId, long folderId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -386,7 +386,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("folderId", folderId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -395,10 +395,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetArticlesByArticleIdAsync(long groupId, string articleId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetArticlesByArticleIdAsync(long groupId, string articleId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -406,7 +406,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("articleId", articleId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -415,10 +415,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetArticlesByLayoutUuidAsync(long groupId, string layoutUuid)
+		public async Task<IDictionary<string, object>> GetArticlesByLayoutUuidAsync(long groupId, string layoutUuid)
 		{
 			var _parameters = new JsonObject();
 
@@ -432,10 +432,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetArticlesByStructureIdAsync(long groupId, string ddmStructureKey, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetArticlesByStructureIdAsync(long groupId, string ddmStructureKey, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -443,7 +443,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("ddmStructureKey", ddmStructureKey);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -452,10 +452,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetArticlesByStructureIdAsync(long groupId, long classNameId, string ddmStructureKey, int status, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetArticlesByStructureIdAsync(long groupId, long classNameId, string ddmStructureKey, int status, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -465,7 +465,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("status", status);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -474,7 +474,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetArticlesCountAsync(long groupId, long folderId)
@@ -565,7 +565,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> GetDisplayArticleByUrlTitleAsync(long groupId, string urlTitle)
+		public async Task<IDictionary<string, object>> GetDisplayArticleByUrlTitleAsync(long groupId, string urlTitle)
 		{
 			var _parameters = new JsonObject();
 
@@ -579,7 +579,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetFoldersAndArticlesCountAsync(long groupId, IEnumerable<object> folderIds)
@@ -599,7 +599,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupArticlesAsync(long groupId, long userId, long rootFolderId, int start, int end, JsonObjectWrapper orderByComparator)
+		public async Task<IDictionary<string, object>> GetGroupArticlesAsync(long groupId, long userId, long rootFolderId, int start, int end, IDictionary<string, object> orderByComparator)
 		{
 			var _parameters = new JsonObject();
 
@@ -608,7 +608,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("rootFolderId", rootFolderId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
+			_parameters.Add("orderByComparator", orderByComparator);
 
 			var _command = new JsonObject()
 			{
@@ -617,10 +617,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupArticlesAsync(long groupId, long userId, long rootFolderId, int status, int start, int end, JsonObjectWrapper orderByComparator)
+		public async Task<IDictionary<string, object>> GetGroupArticlesAsync(long groupId, long userId, long rootFolderId, int status, int start, int end, IDictionary<string, object> orderByComparator)
 		{
 			var _parameters = new JsonObject();
 
@@ -630,7 +630,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("status", status);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
+			_parameters.Add("orderByComparator", orderByComparator);
 
 			var _command = new JsonObject()
 			{
@@ -639,10 +639,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupArticlesAsync(long groupId, long userId, long rootFolderId, int status, bool includeOwner, int start, int end, JsonObjectWrapper orderByComparator)
+		public async Task<IDictionary<string, object>> GetGroupArticlesAsync(long groupId, long userId, long rootFolderId, int status, bool includeOwner, int start, int end, IDictionary<string, object> orderByComparator)
 		{
 			var _parameters = new JsonObject();
 
@@ -653,7 +653,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("includeOwner", includeOwner);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
+			_parameters.Add("orderByComparator", orderByComparator);
 
 			var _command = new JsonObject()
 			{
@@ -662,7 +662,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetGroupArticlesCountAsync(long groupId, long userId, long rootFolderId)
@@ -722,7 +722,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> GetLatestArticleAsync(long resourcePrimKey)
+		public async Task<IDictionary<string, object>> GetLatestArticleAsync(long resourcePrimKey)
 		{
 			var _parameters = new JsonObject();
 
@@ -735,10 +735,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetLatestArticleAsync(long groupId, string articleId, int status)
+		public async Task<IDictionary<string, object>> GetLatestArticleAsync(long groupId, string articleId, int status)
 		{
 			var _parameters = new JsonObject();
 
@@ -753,10 +753,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetLatestArticleAsync(long groupId, string className, long classPK)
+		public async Task<IDictionary<string, object>> GetLatestArticleAsync(long groupId, string className, long classPK)
 		{
 			var _parameters = new JsonObject();
 
@@ -771,7 +771,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task MoveArticleAsync(long groupId, string articleId, long newFolderId)
@@ -790,14 +790,14 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> MoveArticleFromTrashAsync(long groupId, string articleId, long newFolderId, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> MoveArticleFromTrashAsync(long groupId, string articleId, long newFolderId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("articleId", articleId);
 			_parameters.Add("newFolderId", newFolderId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -806,17 +806,17 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> MoveArticleFromTrashAsync(long groupId, long resourcePrimKey, long newFolderId, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> MoveArticleFromTrashAsync(long groupId, long resourcePrimKey, long newFolderId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("resourcePrimKey", resourcePrimKey);
 			_parameters.Add("newFolderId", newFolderId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -825,10 +825,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> MoveArticleToTrashAsync(long groupId, string articleId)
+		public async Task<IDictionary<string, object>> MoveArticleToTrashAsync(long groupId, string articleId)
 		{
 			var _parameters = new JsonObject();
 
@@ -842,7 +842,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task RemoveArticleLocaleAsync(long companyId, string languageId)
@@ -860,7 +860,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> RemoveArticleLocaleAsync(long groupId, string articleId, double version, string languageId)
+		public async Task<IDictionary<string, object>> RemoveArticleLocaleAsync(long groupId, string articleId, double version, string languageId)
 		{
 			var _parameters = new JsonObject();
 
@@ -876,7 +876,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task RestoreArticleFromTrashAsync(long resourcePrimKey)
@@ -908,7 +908,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long companyId, long groupId, IEnumerable<object> folderIds, long classNameId, string keywords, JsonObjectWrapper version, string type, string ddmStructureKey, string ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> SearchAsync(long companyId, long groupId, IEnumerable<object> folderIds, long classNameId, string keywords, IDictionary<string, object> version, string type, string ddmStructureKey, string ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -917,7 +917,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("folderIds", folderIds);
 			_parameters.Add("classNameId", classNameId);
 			_parameters.Add("keywords", keywords);
-			this.MangleWrapper(_parameters, "version", "java.lang.Double", version);
+			_parameters.Add("version", version);
 			_parameters.Add("type", type);
 			_parameters.Add("ddmStructureKey", ddmStructureKey);
 			_parameters.Add("ddmTemplateKey", ddmTemplateKey);
@@ -927,7 +927,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("reviewDate", reviewDate);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -936,10 +936,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long companyId, long groupId, IEnumerable<object> folderIds, long classNameId, string articleId, JsonObjectWrapper version, string title, string description, string content, string type, string ddmStructureKey, string ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, bool andOperator, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> SearchAsync(long companyId, long groupId, IEnumerable<object> folderIds, long classNameId, string articleId, IDictionary<string, object> version, string title, string description, string content, string type, string ddmStructureKey, string ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, bool andOperator, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -948,7 +948,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("folderIds", folderIds);
 			_parameters.Add("classNameId", classNameId);
 			_parameters.Add("articleId", articleId);
-			this.MangleWrapper(_parameters, "version", "java.lang.Double", version);
+			_parameters.Add("version", version);
 			_parameters.Add("title", title);
 			_parameters.Add("description", description);
 			_parameters.Add("content", content);
@@ -962,7 +962,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("andOperator", andOperator);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -971,10 +971,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long companyId, long groupId, IEnumerable<object> folderIds, long classNameId, string articleId, JsonObjectWrapper version, string title, string description, string content, string type, IEnumerable<string> ddmStructureKeys, IEnumerable<string> ddmTemplateKeys, long displayDateGT, long displayDateLT, int status, long reviewDate, bool andOperator, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> SearchAsync(long companyId, long groupId, IEnumerable<object> folderIds, long classNameId, string articleId, IDictionary<string, object> version, string title, string description, string content, string type, IEnumerable<string> ddmStructureKeys, IEnumerable<string> ddmTemplateKeys, long displayDateGT, long displayDateLT, int status, long reviewDate, bool andOperator, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -983,7 +983,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("folderIds", folderIds);
 			_parameters.Add("classNameId", classNameId);
 			_parameters.Add("articleId", articleId);
-			this.MangleWrapper(_parameters, "version", "java.lang.Double", version);
+			_parameters.Add("version", version);
 			_parameters.Add("title", title);
 			_parameters.Add("description", description);
 			_parameters.Add("content", content);
@@ -997,7 +997,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("andOperator", andOperator);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -1006,10 +1006,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> SearchAsync(long groupId, long creatorUserId, int status, int start, int end)
+		public async Task<IDictionary<string, object>> SearchAsync(long groupId, long creatorUserId, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -1026,10 +1026,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<long> SearchCountAsync(long companyId, long groupId, IEnumerable<object> folderIds, long classNameId, string keywords, JsonObjectWrapper version, string type, string ddmStructureKey, string ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate)
+		public async Task<long> SearchCountAsync(long companyId, long groupId, IEnumerable<object> folderIds, long classNameId, string keywords, IDictionary<string, object> version, string type, string ddmStructureKey, string ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate)
 		{
 			var _parameters = new JsonObject();
 
@@ -1038,7 +1038,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("folderIds", folderIds);
 			_parameters.Add("classNameId", classNameId);
 			_parameters.Add("keywords", keywords);
-			this.MangleWrapper(_parameters, "version", "java.lang.Double", version);
+			_parameters.Add("version", version);
 			_parameters.Add("type", type);
 			_parameters.Add("ddmStructureKey", ddmStructureKey);
 			_parameters.Add("ddmTemplateKey", ddmTemplateKey);
@@ -1057,7 +1057,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			return (long)_obj;
 		}
 
-		public async Task<long> SearchCountAsync(long companyId, long groupId, IEnumerable<object> folderIds, long classNameId, string articleId, JsonObjectWrapper version, string title, string description, string content, string type, string ddmStructureKey, string ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, bool andOperator)
+		public async Task<long> SearchCountAsync(long companyId, long groupId, IEnumerable<object> folderIds, long classNameId, string articleId, IDictionary<string, object> version, string title, string description, string content, string type, string ddmStructureKey, string ddmTemplateKey, long displayDateGT, long displayDateLT, int status, long reviewDate, bool andOperator)
 		{
 			var _parameters = new JsonObject();
 
@@ -1066,7 +1066,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("folderIds", folderIds);
 			_parameters.Add("classNameId", classNameId);
 			_parameters.Add("articleId", articleId);
-			this.MangleWrapper(_parameters, "version", "java.lang.Double", version);
+			_parameters.Add("version", version);
 			_parameters.Add("title", title);
 			_parameters.Add("description", description);
 			_parameters.Add("content", content);
@@ -1089,7 +1089,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			return (long)_obj;
 		}
 
-		public async Task<long> SearchCountAsync(long companyId, long groupId, IEnumerable<object> folderIds, long classNameId, string articleId, JsonObjectWrapper version, string title, string description, string content, string type, IEnumerable<string> ddmStructureKeys, IEnumerable<string> ddmTemplateKeys, long displayDateGT, long displayDateLT, int status, long reviewDate, bool andOperator)
+		public async Task<long> SearchCountAsync(long companyId, long groupId, IEnumerable<object> folderIds, long classNameId, string articleId, IDictionary<string, object> version, string title, string description, string content, string type, IEnumerable<string> ddmStructureKeys, IEnumerable<string> ddmTemplateKeys, long displayDateGT, long displayDateLT, int status, long reviewDate, bool andOperator)
 		{
 			var _parameters = new JsonObject();
 
@@ -1098,7 +1098,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("folderIds", folderIds);
 			_parameters.Add("classNameId", classNameId);
 			_parameters.Add("articleId", articleId);
-			this.MangleWrapper(_parameters, "version", "java.lang.Double", version);
+			_parameters.Add("version", version);
 			_parameters.Add("title", title);
 			_parameters.Add("description", description);
 			_parameters.Add("content", content);
@@ -1149,7 +1149,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateArticleAsync(long userId, long groupId, long folderId, string articleId, double version, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, string content, string layoutUuid, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateArticleAsync(long userId, long groupId, long folderId, string articleId, double version, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, string content, string layoutUuid, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -1162,7 +1162,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("descriptionMap", descriptionMap);
 			_parameters.Add("content", content);
 			_parameters.Add("layoutUuid", layoutUuid);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -1171,10 +1171,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateArticleAsync(long groupId, long folderId, string articleId, double version, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, string content, string type, string ddmStructureKey, string ddmTemplateKey, string layoutUuid, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, bool neverExpire, int reviewDateMonth, int reviewDateDay, int reviewDateYear, int reviewDateHour, int reviewDateMinute, bool neverReview, bool indexable, bool smallImage, string smallImageURL, Stream smallFile, IDictionary<string, object> images, string articleURL, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateArticleAsync(long groupId, long folderId, string articleId, double version, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, string content, string type, string ddmStructureKey, string ddmTemplateKey, string layoutUuid, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, bool neverExpire, int reviewDateMonth, int reviewDateDay, int reviewDateYear, int reviewDateHour, int reviewDateMinute, bool neverReview, bool indexable, bool smallImage, string smallImageURL, IDictionary<string, object> smallFile, IDictionary<string, object> images, string articleURL, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -1212,19 +1212,19 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("smallFile", smallFile);
 			_parameters.Add("images", images);
 			_parameters.Add("articleURL", articleURL);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
 				{ "/journalarticle/update-article", _parameters }
 			};
 
-			var _obj = await this.Session.UploadAsync(_command);
+			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateArticleAsync(long groupId, long folderId, string articleId, double version, string content, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateArticleAsync(long groupId, long folderId, string articleId, double version, string content, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -1233,7 +1233,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("articleId", articleId);
 			_parameters.Add("version", version);
 			_parameters.Add("content", content);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -1242,10 +1242,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateArticleTranslationAsync(long groupId, string articleId, double version, string locale, string title, string description, string content, IDictionary<string, object> images)
+		public async Task<IDictionary<string, object>> UpdateArticleTranslationAsync(long groupId, string articleId, double version, string locale, string title, string description, string content, IDictionary<string, object> images)
 		{
 			var _parameters = new JsonObject();
 
@@ -1265,10 +1265,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateArticleTranslationAsync(long groupId, string articleId, double version, string locale, string title, string description, string content, IDictionary<string, object> images, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateArticleTranslationAsync(long groupId, string articleId, double version, string locale, string title, string description, string content, IDictionary<string, object> images, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -1280,7 +1280,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("description", description);
 			_parameters.Add("content", content);
 			_parameters.Add("images", images);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -1289,10 +1289,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateContentAsync(long groupId, string articleId, double version, string content)
+		public async Task<IDictionary<string, object>> UpdateContentAsync(long groupId, string articleId, double version, string content)
 		{
 			var _parameters = new JsonObject();
 
@@ -1308,10 +1308,10 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateStatusAsync(long groupId, string articleId, double version, int status, string articleURL, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateStatusAsync(long groupId, string articleId, double version, int status, string articleURL, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -1320,7 +1320,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 			_parameters.Add("version", version);
 			_parameters.Add("status", status);
 			_parameters.Add("articleURL", articleURL);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -1329,7 +1329,7 @@ namespace Liferay.SDK.Service.V62.JournalArticle
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

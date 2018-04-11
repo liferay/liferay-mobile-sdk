@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.Website
 		{
 		}
 
-		public async Task<dynamic> AddWebsiteAsync(string className, long classPK, string url, int typeId, bool primary)
+		public async Task<IDictionary<string, object>> AddWebsiteAsync(string className, long classPK, string url, int typeId, bool primary)
 		{
 			var _parameters = new JsonObject();
 
@@ -44,10 +44,10 @@ namespace Liferay.SDK.Service.V62.Website
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddWebsiteAsync(string className, long classPK, string url, int typeId, bool primary, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddWebsiteAsync(string className, long classPK, string url, int typeId, bool primary, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -56,7 +56,7 @@ namespace Liferay.SDK.Service.V62.Website
 			_parameters.Add("url", url);
 			_parameters.Add("typeId", typeId);
 			_parameters.Add("primary", primary);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -65,7 +65,7 @@ namespace Liferay.SDK.Service.V62.Website
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteWebsiteAsync(long websiteId)
@@ -82,7 +82,7 @@ namespace Liferay.SDK.Service.V62.Website
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetWebsiteAsync(long websiteId)
+		public async Task<IDictionary<string, object>> GetWebsiteAsync(long websiteId)
 		{
 			var _parameters = new JsonObject();
 
@@ -95,10 +95,10 @@ namespace Liferay.SDK.Service.V62.Website
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetWebsitesAsync(string className, long classPK)
+		public async Task<IDictionary<string, object>> GetWebsitesAsync(string className, long classPK)
 		{
 			var _parameters = new JsonObject();
 
@@ -112,10 +112,10 @@ namespace Liferay.SDK.Service.V62.Website
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateWebsiteAsync(long websiteId, string url, int typeId, bool primary)
+		public async Task<IDictionary<string, object>> UpdateWebsiteAsync(long websiteId, string url, int typeId, bool primary)
 		{
 			var _parameters = new JsonObject();
 
@@ -131,7 +131,7 @@ namespace Liferay.SDK.Service.V62.Website
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

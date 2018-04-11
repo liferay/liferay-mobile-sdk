@@ -84,7 +84,7 @@ namespace Liferay.SDK.Service.V62.TrashEntry
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetEntriesAsync(long groupId)
+		public async Task<IDictionary<string, object>> GetEntriesAsync(long groupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -97,17 +97,17 @@ namespace Liferay.SDK.Service.V62.TrashEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetEntriesAsync(long groupId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetEntriesAsync(long groupId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -116,17 +116,17 @@ namespace Liferay.SDK.Service.V62.TrashEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task MoveEntryAsync(string className, long classPK, long destinationContainerModelId, JsonObjectWrapper serviceContext)
+		public async Task MoveEntryAsync(string className, long classPK, long destinationContainerModelId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("className", className);
 			_parameters.Add("classPK", classPK);
 			_parameters.Add("destinationContainerModelId", destinationContainerModelId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -136,7 +136,7 @@ namespace Liferay.SDK.Service.V62.TrashEntry
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> RestoreEntryAsync(long entryId)
+		public async Task<IDictionary<string, object>> RestoreEntryAsync(long entryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -149,10 +149,10 @@ namespace Liferay.SDK.Service.V62.TrashEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> RestoreEntryAsync(long entryId, long overrideClassPK, string name)
+		public async Task<IDictionary<string, object>> RestoreEntryAsync(long entryId, long overrideClassPK, string name)
 		{
 			var _parameters = new JsonObject();
 
@@ -167,7 +167,7 @@ namespace Liferay.SDK.Service.V62.TrashEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

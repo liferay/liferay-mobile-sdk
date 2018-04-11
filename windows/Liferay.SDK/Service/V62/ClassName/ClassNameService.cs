@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.ClassName
 		{
 		}
 
-		public async Task<dynamic> FetchClassNameAsync(string value)
+		public async Task<IDictionary<string, object>> FetchClassNameAsync(string value)
 		{
 			var _parameters = new JsonObject();
 
@@ -40,7 +40,7 @@ namespace Liferay.SDK.Service.V62.ClassName
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> FetchClassNameIdAsync(IDictionary<string, object> clazz)

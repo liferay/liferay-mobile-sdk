@@ -27,14 +27,14 @@ namespace Liferay.SDK.Service.V62.ShoppingCategory
 		{
 		}
 
-		public async Task<dynamic> AddCategoryAsync(long parentCategoryId, string name, string description, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddCategoryAsync(long parentCategoryId, string name, string description, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("parentCategoryId", parentCategoryId);
 			_parameters.Add("name", name);
 			_parameters.Add("description", description);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -43,7 +43,7 @@ namespace Liferay.SDK.Service.V62.ShoppingCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteCategoryAsync(long categoryId)
@@ -60,7 +60,7 @@ namespace Liferay.SDK.Service.V62.ShoppingCategory
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetCategoriesAsync(long groupId)
+		public async Task<IDictionary<string, object>> GetCategoriesAsync(long groupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -73,10 +73,10 @@ namespace Liferay.SDK.Service.V62.ShoppingCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetCategoriesAsync(long groupId, long parentCategoryId, int start, int end)
+		public async Task<IDictionary<string, object>> GetCategoriesAsync(long groupId, long parentCategoryId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -92,7 +92,7 @@ namespace Liferay.SDK.Service.V62.ShoppingCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetCategoriesCountAsync(long groupId, long parentCategoryId)
@@ -112,7 +112,7 @@ namespace Liferay.SDK.Service.V62.ShoppingCategory
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> GetCategoryAsync(long categoryId)
+		public async Task<IDictionary<string, object>> GetCategoryAsync(long categoryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -125,7 +125,7 @@ namespace Liferay.SDK.Service.V62.ShoppingCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task GetSubcategoryIdsAsync(IEnumerable<object> categoryIds, long groupId, long categoryId)
@@ -144,7 +144,7 @@ namespace Liferay.SDK.Service.V62.ShoppingCategory
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateCategoryAsync(long categoryId, long parentCategoryId, string name, string description, bool mergeWithParentCategory, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateCategoryAsync(long categoryId, long parentCategoryId, string name, string description, bool mergeWithParentCategory, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -153,7 +153,7 @@ namespace Liferay.SDK.Service.V62.ShoppingCategory
 			_parameters.Add("name", name);
 			_parameters.Add("description", description);
 			_parameters.Add("mergeWithParentCategory", mergeWithParentCategory);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -162,7 +162,7 @@ namespace Liferay.SDK.Service.V62.ShoppingCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

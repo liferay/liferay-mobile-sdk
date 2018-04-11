@@ -27,13 +27,13 @@ namespace Liferay.SDK.Service.V62.SocialRequest
 		{
 		}
 
-		public async Task<dynamic> UpdateRequestAsync(long requestId, int status, JsonObjectWrapper themeDisplay)
+		public async Task<IDictionary<string, object>> UpdateRequestAsync(long requestId, int status, IDictionary<string, object> themeDisplay)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("requestId", requestId);
 			_parameters.Add("status", status);
-			this.MangleWrapper(_parameters, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
+			_parameters.Add("themeDisplay", themeDisplay);
 
 			var _command = new JsonObject()
 			{
@@ -42,7 +42,7 @@ namespace Liferay.SDK.Service.V62.SocialRequest
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

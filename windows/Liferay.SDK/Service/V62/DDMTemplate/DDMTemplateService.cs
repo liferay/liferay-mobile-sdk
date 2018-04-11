@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 		{
 		}
 
-		public async Task<dynamic> AddTemplateAsync(long groupId, long classNameId, long classPK, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string type, string mode, string language, string script, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddTemplateAsync(long groupId, long classNameId, long classPK, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string type, string mode, string language, string script, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -40,7 +40,7 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 			_parameters.Add("mode", mode);
 			_parameters.Add("language", language);
 			_parameters.Add("script", script);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -49,10 +49,10 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddTemplateAsync(long groupId, long classNameId, long classPK, string templateKey, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string type, string mode, string language, string script, bool cacheable, bool smallImage, string smallImageURL, Stream smallImageFile, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddTemplateAsync(long groupId, long classNameId, long classPK, string templateKey, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string type, string mode, string language, string script, bool cacheable, bool smallImage, string smallImageURL, IDictionary<string, object> smallImageFile, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -70,24 +70,24 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 			_parameters.Add("smallImage", smallImage);
 			_parameters.Add("smallImageURL", smallImageURL);
 			_parameters.Add("smallImageFile", smallImageFile);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
 				{ "/ddmtemplate/add-template", _parameters }
 			};
 
-			var _obj = await this.Session.UploadAsync(_command);
+			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> CopyTemplateAsync(long templateId, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> CopyTemplateAsync(long templateId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("templateId", templateId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -96,17 +96,17 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> CopyTemplateAsync(long templateId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> CopyTemplateAsync(long templateId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("templateId", templateId);
 			_parameters.Add("nameMap", nameMap);
 			_parameters.Add("descriptionMap", descriptionMap);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -115,10 +115,10 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> CopyTemplatesAsync(long classNameId, long classPK, long newClassPK, string type, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> CopyTemplatesAsync(long classNameId, long classPK, long newClassPK, string type, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -126,7 +126,7 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 			_parameters.Add("classPK", classPK);
 			_parameters.Add("newClassPK", newClassPK);
 			_parameters.Add("type", type);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -135,7 +135,7 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteTemplateAsync(long templateId)
@@ -152,7 +152,7 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> FetchTemplateAsync(long groupId, long classNameId, string templateKey)
+		public async Task<IDictionary<string, object>> FetchTemplateAsync(long groupId, long classNameId, string templateKey)
 		{
 			var _parameters = new JsonObject();
 
@@ -167,10 +167,10 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetTemplateAsync(long templateId)
+		public async Task<IDictionary<string, object>> GetTemplateAsync(long templateId)
 		{
 			var _parameters = new JsonObject();
 
@@ -183,10 +183,10 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetTemplateAsync(long groupId, long classNameId, string templateKey)
+		public async Task<IDictionary<string, object>> GetTemplateAsync(long groupId, long classNameId, string templateKey)
 		{
 			var _parameters = new JsonObject();
 
@@ -201,10 +201,10 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetTemplateAsync(long groupId, long classNameId, string templateKey, bool includeGlobalTemplates)
+		public async Task<IDictionary<string, object>> GetTemplateAsync(long groupId, long classNameId, string templateKey, bool includeGlobalTemplates)
 		{
 			var _parameters = new JsonObject();
 
@@ -220,10 +220,10 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetTemplatesAsync(long groupId, long classNameId)
+		public async Task<IDictionary<string, object>> GetTemplatesAsync(long groupId, long classNameId)
 		{
 			var _parameters = new JsonObject();
 
@@ -237,10 +237,10 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetTemplatesAsync(long groupId, long classNameId, long classPK)
+		public async Task<IDictionary<string, object>> GetTemplatesAsync(long groupId, long classNameId, long classPK)
 		{
 			var _parameters = new JsonObject();
 
@@ -255,10 +255,10 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetTemplatesAsync(long groupId, long classNameId, long classPK, string type)
+		public async Task<IDictionary<string, object>> GetTemplatesAsync(long groupId, long classNameId, long classPK, string type)
 		{
 			var _parameters = new JsonObject();
 
@@ -274,10 +274,10 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetTemplatesAsync(long groupId, long classNameId, long classPK, string type, string mode)
+		public async Task<IDictionary<string, object>> GetTemplatesAsync(long groupId, long classNameId, long classPK, string type, string mode)
 		{
 			var _parameters = new JsonObject();
 
@@ -294,10 +294,10 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetTemplatesByClassPkAsync(long groupId, long classPK)
+		public async Task<IDictionary<string, object>> GetTemplatesByClassPkAsync(long groupId, long classPK)
 		{
 			var _parameters = new JsonObject();
 
@@ -311,10 +311,10 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetTemplatesByStructureClassNameIdAsync(long groupId, long structureClassNameId, int start, int end, JsonObjectWrapper orderByComparator)
+		public async Task<IDictionary<string, object>> GetTemplatesByStructureClassNameIdAsync(long groupId, long structureClassNameId, int start, int end, IDictionary<string, object> orderByComparator)
 		{
 			var _parameters = new JsonObject();
 
@@ -322,7 +322,7 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 			_parameters.Add("structureClassNameId", structureClassNameId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
+			_parameters.Add("orderByComparator", orderByComparator);
 
 			var _command = new JsonObject()
 			{
@@ -331,7 +331,7 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetTemplatesByStructureClassNameIdCountAsync(long groupId, long structureClassNameId)
@@ -351,7 +351,7 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long companyId, long groupId, long classNameId, long classPK, string keywords, string type, string mode, int start, int end, JsonObjectWrapper orderByComparator)
+		public async Task<IDictionary<string, object>> SearchAsync(long companyId, long groupId, long classNameId, long classPK, string keywords, string type, string mode, int start, int end, IDictionary<string, object> orderByComparator)
 		{
 			var _parameters = new JsonObject();
 
@@ -364,7 +364,7 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 			_parameters.Add("mode", mode);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
+			_parameters.Add("orderByComparator", orderByComparator);
 
 			var _command = new JsonObject()
 			{
@@ -373,10 +373,10 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long companyId, IEnumerable<long> groupIds, IEnumerable<long> classNameIds, IEnumerable<long> classPKs, string keywords, string type, string mode, int start, int end, JsonObjectWrapper orderByComparator)
+		public async Task<IDictionary<string, object>> SearchAsync(long companyId, IEnumerable<long> groupIds, IEnumerable<long> classNameIds, IEnumerable<long> classPKs, string keywords, string type, string mode, int start, int end, IDictionary<string, object> orderByComparator)
 		{
 			var _parameters = new JsonObject();
 
@@ -389,7 +389,7 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 			_parameters.Add("mode", mode);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
+			_parameters.Add("orderByComparator", orderByComparator);
 
 			var _command = new JsonObject()
 			{
@@ -398,10 +398,10 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long companyId, long groupId, long classNameId, long classPK, string name, string description, string type, string mode, string language, bool andOperator, int start, int end, JsonObjectWrapper orderByComparator)
+		public async Task<IDictionary<string, object>> SearchAsync(long companyId, long groupId, long classNameId, long classPK, string name, string description, string type, string mode, string language, bool andOperator, int start, int end, IDictionary<string, object> orderByComparator)
 		{
 			var _parameters = new JsonObject();
 
@@ -417,7 +417,7 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 			_parameters.Add("andOperator", andOperator);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
+			_parameters.Add("orderByComparator", orderByComparator);
 
 			var _command = new JsonObject()
 			{
@@ -426,10 +426,10 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long companyId, IEnumerable<long> groupIds, IEnumerable<long> classNameIds, IEnumerable<long> classPKs, string name, string description, string type, string mode, string language, bool andOperator, int start, int end, JsonObjectWrapper orderByComparator)
+		public async Task<IDictionary<string, object>> SearchAsync(long companyId, IEnumerable<long> groupIds, IEnumerable<long> classNameIds, IEnumerable<long> classPKs, string name, string description, string type, string mode, string language, bool andOperator, int start, int end, IDictionary<string, object> orderByComparator)
 		{
 			var _parameters = new JsonObject();
 
@@ -445,7 +445,7 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 			_parameters.Add("andOperator", andOperator);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
+			_parameters.Add("orderByComparator", orderByComparator);
 
 			var _command = new JsonObject()
 			{
@@ -454,7 +454,7 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> SearchCountAsync(long companyId, long groupId, long classNameId, long classPK, string name, string description, string type, string mode, string language, bool andOperator)
@@ -551,7 +551,7 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> UpdateTemplateAsync(long templateId, long classPK, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string type, string mode, string language, string script, bool cacheable, bool smallImage, string smallImageURL, Stream smallImageFile, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateTemplateAsync(long templateId, long classPK, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string type, string mode, string language, string script, bool cacheable, bool smallImage, string smallImageURL, IDictionary<string, object> smallImageFile, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -567,16 +567,16 @@ namespace Liferay.SDK.Service.V62.DDMTemplate
 			_parameters.Add("smallImage", smallImage);
 			_parameters.Add("smallImageURL", smallImageURL);
 			_parameters.Add("smallImageFile", smallImageFile);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
 				{ "/ddmtemplate/update-template", _parameters }
 			};
 
-			var _obj = await this.Session.UploadAsync(_command);
+			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

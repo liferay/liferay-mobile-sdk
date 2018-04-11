@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.Portlet
 		{
 		}
 
-		public async Task<IEnumerable<dynamic>> GetWarPortletsAsync()
+		public async Task<IDictionary<string, object>> GetWarPortletsAsync()
 		{
 			var _parameters = new JsonObject();
 
@@ -38,10 +38,10 @@ namespace Liferay.SDK.Service.V62.Portlet
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdatePortletAsync(long companyId, string portletId, string roles, bool active)
+		public async Task<IDictionary<string, object>> UpdatePortletAsync(long companyId, string portletId, string roles, bool active)
 		{
 			var _parameters = new JsonObject();
 
@@ -57,7 +57,7 @@ namespace Liferay.SDK.Service.V62.Portlet
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.DDLRecordSet
 		{
 		}
 
-		public async Task<dynamic> AddRecordSetAsync(long groupId, long ddmStructureId, string recordSetKey, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, int minDisplayRows, int scope, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddRecordSetAsync(long groupId, long ddmStructureId, string recordSetKey, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, int minDisplayRows, int scope, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -38,7 +38,7 @@ namespace Liferay.SDK.Service.V62.DDLRecordSet
 			_parameters.Add("descriptionMap", descriptionMap);
 			_parameters.Add("minDisplayRows", minDisplayRows);
 			_parameters.Add("scope", scope);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -47,7 +47,7 @@ namespace Liferay.SDK.Service.V62.DDLRecordSet
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteRecordSetAsync(long recordSetId)
@@ -64,7 +64,7 @@ namespace Liferay.SDK.Service.V62.DDLRecordSet
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetRecordSetAsync(long recordSetId)
+		public async Task<IDictionary<string, object>> GetRecordSetAsync(long recordSetId)
 		{
 			var _parameters = new JsonObject();
 
@@ -77,10 +77,10 @@ namespace Liferay.SDK.Service.V62.DDLRecordSet
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long companyId, long groupId, string keywords, int scope, int start, int end, JsonObjectWrapper orderByComparator)
+		public async Task<IDictionary<string, object>> SearchAsync(long companyId, long groupId, string keywords, int scope, int start, int end, IDictionary<string, object> orderByComparator)
 		{
 			var _parameters = new JsonObject();
 
@@ -90,7 +90,7 @@ namespace Liferay.SDK.Service.V62.DDLRecordSet
 			_parameters.Add("scope", scope);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
+			_parameters.Add("orderByComparator", orderByComparator);
 
 			var _command = new JsonObject()
 			{
@@ -99,10 +99,10 @@ namespace Liferay.SDK.Service.V62.DDLRecordSet
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long companyId, long groupId, string name, string description, int scope, bool andOperator, int start, int end, JsonObjectWrapper orderByComparator)
+		public async Task<IDictionary<string, object>> SearchAsync(long companyId, long groupId, string name, string description, int scope, bool andOperator, int start, int end, IDictionary<string, object> orderByComparator)
 		{
 			var _parameters = new JsonObject();
 
@@ -114,7 +114,7 @@ namespace Liferay.SDK.Service.V62.DDLRecordSet
 			_parameters.Add("andOperator", andOperator);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
+			_parameters.Add("orderByComparator", orderByComparator);
 
 			var _command = new JsonObject()
 			{
@@ -123,7 +123,7 @@ namespace Liferay.SDK.Service.V62.DDLRecordSet
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> SearchCountAsync(long companyId, long groupId, string keywords, int scope)
@@ -166,13 +166,13 @@ namespace Liferay.SDK.Service.V62.DDLRecordSet
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> UpdateMinDisplayRowsAsync(long recordSetId, int minDisplayRows, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateMinDisplayRowsAsync(long recordSetId, int minDisplayRows, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("recordSetId", recordSetId);
 			_parameters.Add("minDisplayRows", minDisplayRows);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -181,10 +181,10 @@ namespace Liferay.SDK.Service.V62.DDLRecordSet
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateRecordSetAsync(long recordSetId, long ddmStructureId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, int minDisplayRows, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateRecordSetAsync(long recordSetId, long ddmStructureId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, int minDisplayRows, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -193,7 +193,7 @@ namespace Liferay.SDK.Service.V62.DDLRecordSet
 			_parameters.Add("nameMap", nameMap);
 			_parameters.Add("descriptionMap", descriptionMap);
 			_parameters.Add("minDisplayRows", minDisplayRows);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -202,10 +202,10 @@ namespace Liferay.SDK.Service.V62.DDLRecordSet
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateRecordSetAsync(long groupId, long ddmStructureId, string recordSetKey, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, int minDisplayRows, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateRecordSetAsync(long groupId, long ddmStructureId, string recordSetKey, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, int minDisplayRows, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -215,7 +215,7 @@ namespace Liferay.SDK.Service.V62.DDLRecordSet
 			_parameters.Add("nameMap", nameMap);
 			_parameters.Add("descriptionMap", descriptionMap);
 			_parameters.Add("minDisplayRows", minDisplayRows);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -224,7 +224,7 @@ namespace Liferay.SDK.Service.V62.DDLRecordSet
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

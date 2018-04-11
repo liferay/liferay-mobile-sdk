@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.Region
 		{
 		}
 
-		public async Task<dynamic> AddRegionAsync(long countryId, string regionCode, string name, bool active)
+		public async Task<IDictionary<string, object>> AddRegionAsync(long countryId, string regionCode, string name, bool active)
 		{
 			var _parameters = new JsonObject();
 
@@ -43,10 +43,10 @@ namespace Liferay.SDK.Service.V62.Region
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> FetchRegionAsync(long countryId, string regionCode)
+		public async Task<IDictionary<string, object>> FetchRegionAsync(long countryId, string regionCode)
 		{
 			var _parameters = new JsonObject();
 
@@ -60,10 +60,10 @@ namespace Liferay.SDK.Service.V62.Region
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetRegionAsync(long regionId)
+		public async Task<IDictionary<string, object>> GetRegionAsync(long regionId)
 		{
 			var _parameters = new JsonObject();
 
@@ -76,10 +76,10 @@ namespace Liferay.SDK.Service.V62.Region
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetRegionAsync(long countryId, string regionCode)
+		public async Task<IDictionary<string, object>> GetRegionAsync(long countryId, string regionCode)
 		{
 			var _parameters = new JsonObject();
 
@@ -93,10 +93,10 @@ namespace Liferay.SDK.Service.V62.Region
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetRegionsAsync()
+		public async Task<IDictionary<string, object>> GetRegionsAsync()
 		{
 			var _parameters = new JsonObject();
 
@@ -107,10 +107,10 @@ namespace Liferay.SDK.Service.V62.Region
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetRegionsAsync(bool active)
+		public async Task<IDictionary<string, object>> GetRegionsAsync(bool active)
 		{
 			var _parameters = new JsonObject();
 
@@ -123,10 +123,10 @@ namespace Liferay.SDK.Service.V62.Region
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetRegionsAsync(long countryId)
+		public async Task<IDictionary<string, object>> GetRegionsAsync(long countryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -139,10 +139,10 @@ namespace Liferay.SDK.Service.V62.Region
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetRegionsAsync(long countryId, bool active)
+		public async Task<IDictionary<string, object>> GetRegionsAsync(long countryId, bool active)
 		{
 			var _parameters = new JsonObject();
 
@@ -156,7 +156,7 @@ namespace Liferay.SDK.Service.V62.Region
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

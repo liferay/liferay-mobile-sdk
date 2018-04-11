@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.Repository
 		{
 		}
 
-		public async Task<dynamic> AddRepositoryAsync(long groupId, long classNameId, long parentFolderId, string name, string description, string portletId, JsonObjectWrapper typeSettingsProperties, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddRepositoryAsync(long groupId, long classNameId, long parentFolderId, string name, string description, string portletId, IDictionary<string, object> typeSettingsProperties, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -37,8 +37,8 @@ namespace Liferay.SDK.Service.V62.Repository
 			_parameters.Add("name", name);
 			_parameters.Add("description", description);
 			_parameters.Add("portletId", portletId);
-			this.MangleWrapper(_parameters, "typeSettingsProperties", "com.liferay.portal.kernel.util.UnicodeProperties", typeSettingsProperties);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("typeSettingsProperties", typeSettingsProperties);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -47,7 +47,7 @@ namespace Liferay.SDK.Service.V62.Repository
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task CheckRepositoryAsync(long repositoryId)
@@ -78,7 +78,7 @@ namespace Liferay.SDK.Service.V62.Repository
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetLocalRepositoryImplAsync(long repositoryId)
+		public async Task<IDictionary<string, object>> GetLocalRepositoryImplAsync(long repositoryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -91,10 +91,10 @@ namespace Liferay.SDK.Service.V62.Repository
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetLocalRepositoryImplAsync(long folderId, long fileEntryId, long fileVersionId)
+		public async Task<IDictionary<string, object>> GetLocalRepositoryImplAsync(long folderId, long fileEntryId, long fileVersionId)
 		{
 			var _parameters = new JsonObject();
 
@@ -109,10 +109,10 @@ namespace Liferay.SDK.Service.V62.Repository
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetRepositoryAsync(long repositoryId)
+		public async Task<IDictionary<string, object>> GetRepositoryAsync(long repositoryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -125,10 +125,10 @@ namespace Liferay.SDK.Service.V62.Repository
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetRepositoryImplAsync(long repositoryId)
+		public async Task<IDictionary<string, object>> GetRepositoryImplAsync(long repositoryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -141,10 +141,10 @@ namespace Liferay.SDK.Service.V62.Repository
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetRepositoryImplAsync(long folderId, long fileEntryId, long fileVersionId)
+		public async Task<IDictionary<string, object>> GetRepositoryImplAsync(long folderId, long fileEntryId, long fileVersionId)
 		{
 			var _parameters = new JsonObject();
 
@@ -159,7 +159,7 @@ namespace Liferay.SDK.Service.V62.Repository
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<IEnumerable<string>> GetSupportedConfigurationsAsync(long classNameId)
@@ -199,7 +199,7 @@ namespace Liferay.SDK.Service.V62.Repository
 			return _jsonArray.Cast<string>();
 		}
 
-		public async Task<dynamic> GetTypeSettingsPropertiesAsync(long repositoryId)
+		public async Task<IDictionary<string, object>> GetTypeSettingsPropertiesAsync(long repositoryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -212,7 +212,7 @@ namespace Liferay.SDK.Service.V62.Repository
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task UpdateRepositoryAsync(long repositoryId, string name, string description)

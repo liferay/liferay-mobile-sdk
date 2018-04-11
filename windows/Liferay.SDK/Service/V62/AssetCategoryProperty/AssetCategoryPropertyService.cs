@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.AssetCategoryProperty
 		{
 		}
 
-		public async Task<dynamic> AddCategoryPropertyAsync(long entryId, string key, string value)
+		public async Task<IDictionary<string, object>> AddCategoryPropertyAsync(long entryId, string key, string value)
 		{
 			var _parameters = new JsonObject();
 
@@ -42,7 +42,7 @@ namespace Liferay.SDK.Service.V62.AssetCategoryProperty
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteCategoryPropertyAsync(long categoryPropertyId)
@@ -59,7 +59,7 @@ namespace Liferay.SDK.Service.V62.AssetCategoryProperty
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetCategoryPropertiesAsync(long entryId)
+		public async Task<IDictionary<string, object>> GetCategoryPropertiesAsync(long entryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -72,10 +72,10 @@ namespace Liferay.SDK.Service.V62.AssetCategoryProperty
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetCategoryPropertyValuesAsync(long companyId, string key)
+		public async Task<IDictionary<string, object>> GetCategoryPropertyValuesAsync(long companyId, string key)
 		{
 			var _parameters = new JsonObject();
 
@@ -89,10 +89,10 @@ namespace Liferay.SDK.Service.V62.AssetCategoryProperty
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateCategoryPropertyAsync(long categoryPropertyId, string key, string value)
+		public async Task<IDictionary<string, object>> UpdateCategoryPropertyAsync(long categoryPropertyId, string key, string value)
 		{
 			var _parameters = new JsonObject();
 
@@ -107,7 +107,7 @@ namespace Liferay.SDK.Service.V62.AssetCategoryProperty
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

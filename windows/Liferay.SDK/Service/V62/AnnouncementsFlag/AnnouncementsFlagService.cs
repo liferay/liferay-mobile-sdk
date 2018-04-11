@@ -56,7 +56,7 @@ namespace Liferay.SDK.Service.V62.AnnouncementsFlag
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetFlagAsync(long entryId, int value)
+		public async Task<IDictionary<string, object>> GetFlagAsync(long entryId, int value)
 		{
 			var _parameters = new JsonObject();
 
@@ -70,7 +70,7 @@ namespace Liferay.SDK.Service.V62.AnnouncementsFlag
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

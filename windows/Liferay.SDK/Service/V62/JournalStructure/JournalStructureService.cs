@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.JournalStructure
 		{
 		}
 
-		public async Task<dynamic> AddStructureAsync(long groupId, string structureId, bool autoStructureId, string parentStructureId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string xsd, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddStructureAsync(long groupId, string structureId, bool autoStructureId, string parentStructureId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string xsd, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -38,7 +38,7 @@ namespace Liferay.SDK.Service.V62.JournalStructure
 			_parameters.Add("nameMap", nameMap);
 			_parameters.Add("descriptionMap", descriptionMap);
 			_parameters.Add("xsd", xsd);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -47,10 +47,10 @@ namespace Liferay.SDK.Service.V62.JournalStructure
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> CopyStructureAsync(long groupId, string oldStructureId, string newStructureId, bool autoStructureId)
+		public async Task<IDictionary<string, object>> CopyStructureAsync(long groupId, string oldStructureId, string newStructureId, bool autoStructureId)
 		{
 			var _parameters = new JsonObject();
 
@@ -66,7 +66,7 @@ namespace Liferay.SDK.Service.V62.JournalStructure
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteStructureAsync(long groupId, string structureId)
@@ -84,7 +84,7 @@ namespace Liferay.SDK.Service.V62.JournalStructure
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetStructureAsync(long groupId, string structureId)
+		public async Task<IDictionary<string, object>> GetStructureAsync(long groupId, string structureId)
 		{
 			var _parameters = new JsonObject();
 
@@ -98,10 +98,10 @@ namespace Liferay.SDK.Service.V62.JournalStructure
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetStructureAsync(long groupId, string structureId, bool includeGlobalStructures)
+		public async Task<IDictionary<string, object>> GetStructureAsync(long groupId, string structureId, bool includeGlobalStructures)
 		{
 			var _parameters = new JsonObject();
 
@@ -116,10 +116,10 @@ namespace Liferay.SDK.Service.V62.JournalStructure
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetStructuresAsync(long groupId)
+		public async Task<IDictionary<string, object>> GetStructuresAsync(long groupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -132,10 +132,10 @@ namespace Liferay.SDK.Service.V62.JournalStructure
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetStructuresAsync(IEnumerable<long> groupIds)
+		public async Task<IDictionary<string, object>> GetStructuresAsync(IEnumerable<long> groupIds)
 		{
 			var _parameters = new JsonObject();
 
@@ -148,10 +148,10 @@ namespace Liferay.SDK.Service.V62.JournalStructure
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long companyId, IEnumerable<long> groupIds, string keywords, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> SearchAsync(long companyId, IEnumerable<long> groupIds, string keywords, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -160,7 +160,7 @@ namespace Liferay.SDK.Service.V62.JournalStructure
 			_parameters.Add("keywords", keywords);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -169,10 +169,10 @@ namespace Liferay.SDK.Service.V62.JournalStructure
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long companyId, IEnumerable<long> groupIds, string structureId, string name, string description, bool andOperator, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> SearchAsync(long companyId, IEnumerable<long> groupIds, string structureId, string name, string description, bool andOperator, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -184,7 +184,7 @@ namespace Liferay.SDK.Service.V62.JournalStructure
 			_parameters.Add("andOperator", andOperator);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -193,7 +193,7 @@ namespace Liferay.SDK.Service.V62.JournalStructure
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> SearchCountAsync(long companyId, IEnumerable<long> groupIds, string keywords)
@@ -235,7 +235,7 @@ namespace Liferay.SDK.Service.V62.JournalStructure
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> UpdateStructureAsync(long groupId, string structureId, string parentStructureId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string xsd, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateStructureAsync(long groupId, string structureId, string parentStructureId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string xsd, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -245,7 +245,7 @@ namespace Liferay.SDK.Service.V62.JournalStructure
 			_parameters.Add("nameMap", nameMap);
 			_parameters.Add("descriptionMap", descriptionMap);
 			_parameters.Add("xsd", xsd);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -254,7 +254,7 @@ namespace Liferay.SDK.Service.V62.JournalStructure
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

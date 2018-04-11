@@ -27,14 +27,14 @@ namespace Liferay.SDK.Service.V62.DLFileShortcut
 		{
 		}
 
-		public async Task<dynamic> AddFileShortcutAsync(long groupId, long folderId, long toFileEntryId, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddFileShortcutAsync(long groupId, long folderId, long toFileEntryId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("folderId", folderId);
 			_parameters.Add("toFileEntryId", toFileEntryId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -43,7 +43,7 @@ namespace Liferay.SDK.Service.V62.DLFileShortcut
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteFileShortcutAsync(long fileShortcutId)
@@ -60,7 +60,7 @@ namespace Liferay.SDK.Service.V62.DLFileShortcut
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetFileShortcutAsync(long fileShortcutId)
+		public async Task<IDictionary<string, object>> GetFileShortcutAsync(long fileShortcutId)
 		{
 			var _parameters = new JsonObject();
 
@@ -73,17 +73,17 @@ namespace Liferay.SDK.Service.V62.DLFileShortcut
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateFileShortcutAsync(long fileShortcutId, long folderId, long toFileEntryId, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateFileShortcutAsync(long fileShortcutId, long folderId, long toFileEntryId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("fileShortcutId", fileShortcutId);
 			_parameters.Add("folderId", folderId);
 			_parameters.Add("toFileEntryId", toFileEntryId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -92,7 +92,7 @@ namespace Liferay.SDK.Service.V62.DLFileShortcut
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

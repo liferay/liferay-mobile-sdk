@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.AnnouncementsDelivery
 		{
 		}
 
-		public async Task<dynamic> UpdateDeliveryAsync(long userId, string type, bool email, bool sms, bool website)
+		public async Task<IDictionary<string, object>> UpdateDeliveryAsync(long userId, string type, bool email, bool sms, bool website)
 		{
 			var _parameters = new JsonObject();
 
@@ -44,7 +44,7 @@ namespace Liferay.SDK.Service.V62.AnnouncementsDelivery
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 		{
 		}
 
-		public async Task<dynamic> AddFolderAsync(long groupId, long repositoryId, bool mountPoint, long parentFolderId, string name, string description, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddFolderAsync(long groupId, long repositoryId, bool mountPoint, long parentFolderId, string name, string description, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -37,7 +37,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 			_parameters.Add("parentFolderId", parentFolderId);
 			_parameters.Add("name", name);
 			_parameters.Add("description", description);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -46,7 +46,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteFolderAsync(long folderId)
@@ -94,7 +94,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetFileEntriesAndFileShortcutsAsync(long groupId, long folderId, int status, int start, int end)
+		public async Task<IDictionary<string, object>> GetFileEntriesAndFileShortcutsAsync(long groupId, long folderId, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -111,7 +111,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetFileEntriesAndFileShortcutsCountAsync(long groupId, long folderId, int status)
@@ -151,7 +151,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> GetFolderAsync(long folderId)
+		public async Task<IDictionary<string, object>> GetFolderAsync(long folderId)
 		{
 			var _parameters = new JsonObject();
 
@@ -164,10 +164,10 @@ namespace Liferay.SDK.Service.V62.DLFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetFolderAsync(long groupId, long parentFolderId, string name)
+		public async Task<IDictionary<string, object>> GetFolderAsync(long groupId, long parentFolderId, string name)
 		{
 			var _parameters = new JsonObject();
 
@@ -182,10 +182,10 @@ namespace Liferay.SDK.Service.V62.DLFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetFolderIdsAsync(long groupId, long folderId)
+		public async Task<IDictionary<string, object>> GetFolderIdsAsync(long groupId, long folderId)
 		{
 			var _parameters = new JsonObject();
 
@@ -199,10 +199,10 @@ namespace Liferay.SDK.Service.V62.DLFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetFoldersAsync(long groupId, long parentFolderId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetFoldersAsync(long groupId, long parentFolderId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -210,7 +210,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 			_parameters.Add("parentFolderId", parentFolderId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -219,10 +219,10 @@ namespace Liferay.SDK.Service.V62.DLFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetFoldersAsync(long groupId, long parentFolderId, int status, bool includeMountfolders, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetFoldersAsync(long groupId, long parentFolderId, int status, bool includeMountfolders, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -232,7 +232,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 			_parameters.Add("includeMountfolders", includeMountfolders);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -241,10 +241,10 @@ namespace Liferay.SDK.Service.V62.DLFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetFoldersAndFileEntriesAndFileShortcutsAsync(long groupId, long folderId, int status, bool includeMountFolders, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetFoldersAndFileEntriesAndFileShortcutsAsync(long groupId, long folderId, int status, bool includeMountFolders, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -254,7 +254,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 			_parameters.Add("includeMountFolders", includeMountFolders);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -263,10 +263,10 @@ namespace Liferay.SDK.Service.V62.DLFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetFoldersAndFileEntriesAndFileShortcutsAsync(long groupId, long folderId, int status, IEnumerable<string> mimeTypes, bool includeMountFolders, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetFoldersAndFileEntriesAndFileShortcutsAsync(long groupId, long folderId, int status, IEnumerable<string> mimeTypes, bool includeMountFolders, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -277,7 +277,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 			_parameters.Add("includeMountFolders", includeMountFolders);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -286,7 +286,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetFoldersAndFileEntriesAndFileShortcutsCountAsync(long groupId, long folderId, int status, bool includeMountFolders)
@@ -364,7 +364,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetMountFoldersAsync(long groupId, long parentFolderId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetMountFoldersAsync(long groupId, long parentFolderId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -372,7 +372,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 			_parameters.Add("parentFolderId", parentFolderId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -381,7 +381,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetMountFoldersCountAsync(long groupId, long parentFolderId)
@@ -417,7 +417,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetSubfolderIdsAsync(long groupId, long folderId, bool recurse)
+		public async Task<IDictionary<string, object>> GetSubfolderIdsAsync(long groupId, long folderId, bool recurse)
 		{
 			var _parameters = new JsonObject();
 
@@ -432,7 +432,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task GetSubfolderIdsAsync(IEnumerable<object> folderIds, long groupId, long folderId, bool recurse)
@@ -500,7 +500,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 			return (bool)_obj;
 		}
 
-		public async Task<dynamic> LockFolderAsync(long folderId)
+		public async Task<IDictionary<string, object>> LockFolderAsync(long folderId)
 		{
 			var _parameters = new JsonObject();
 
@@ -513,10 +513,10 @@ namespace Liferay.SDK.Service.V62.DLFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> LockFolderAsync(long folderId, string owner, bool inheritable, long expirationTime)
+		public async Task<IDictionary<string, object>> LockFolderAsync(long folderId, string owner, bool inheritable, long expirationTime)
 		{
 			var _parameters = new JsonObject();
 
@@ -532,16 +532,16 @@ namespace Liferay.SDK.Service.V62.DLFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> MoveFolderAsync(long folderId, long parentFolderId, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> MoveFolderAsync(long folderId, long parentFolderId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("folderId", folderId);
 			_parameters.Add("parentFolderId", parentFolderId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -550,10 +550,10 @@ namespace Liferay.SDK.Service.V62.DLFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> RefreshFolderLockAsync(string lockUuid, long companyId, long expirationTime)
+		public async Task<IDictionary<string, object>> RefreshFolderLockAsync(string lockUuid, long companyId, long expirationTime)
 		{
 			var _parameters = new JsonObject();
 
@@ -568,7 +568,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task UnlockFolderAsync(long folderId, string lockUuid)
@@ -603,7 +603,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateFolderAsync(long folderId, string name, string description, long defaultFileEntryTypeId, IEnumerable<object> fileEntryTypeIds, bool overrideFileEntryTypes, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateFolderAsync(long folderId, string name, string description, long defaultFileEntryTypeId, IEnumerable<object> fileEntryTypeIds, bool overrideFileEntryTypes, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -613,7 +613,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 			_parameters.Add("defaultFileEntryTypeId", defaultFileEntryTypeId);
 			_parameters.Add("fileEntryTypeIds", fileEntryTypeIds);
 			_parameters.Add("overrideFileEntryTypes", overrideFileEntryTypes);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -622,7 +622,7 @@ namespace Liferay.SDK.Service.V62.DLFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<bool> VerifyInheritableLockAsync(long folderId, string lockUuid)

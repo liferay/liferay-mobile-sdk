@@ -27,12 +27,12 @@ namespace Liferay.SDK.Service.V62.MBBan
 		{
 		}
 
-		public async Task<dynamic> AddBanAsync(long banUserId, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddBanAsync(long banUserId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("banUserId", banUserId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -41,15 +41,15 @@ namespace Liferay.SDK.Service.V62.MBBan
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task DeleteBanAsync(long banUserId, JsonObjectWrapper serviceContext)
+		public async Task DeleteBanAsync(long banUserId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("banUserId", banUserId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{

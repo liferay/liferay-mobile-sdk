@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.JournalFeed
 		{
 		}
 
-		public async Task<dynamic> AddFeedAsync(long groupId, string feedId, bool autoFeedId, string name, string description, string type, string structureId, string templateId, string rendererTemplateId, int delta, string orderByCol, string orderByType, string targetLayoutFriendlyUrl, string targetPortletId, string contentField, string feedType, double feedVersion, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddFeedAsync(long groupId, string feedId, bool autoFeedId, string name, string description, string type, string structureId, string templateId, string rendererTemplateId, int delta, string orderByCol, string orderByType, string targetLayoutFriendlyUrl, string targetPortletId, string contentField, string feedType, double feedVersion, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -48,7 +48,7 @@ namespace Liferay.SDK.Service.V62.JournalFeed
 			_parameters.Add("contentField", contentField);
 			_parameters.Add("feedType", feedType);
 			_parameters.Add("feedVersion", feedVersion);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -57,7 +57,7 @@ namespace Liferay.SDK.Service.V62.JournalFeed
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteFeedAsync(long feedId)
@@ -89,7 +89,7 @@ namespace Liferay.SDK.Service.V62.JournalFeed
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetFeedAsync(long feedId)
+		public async Task<IDictionary<string, object>> GetFeedAsync(long feedId)
 		{
 			var _parameters = new JsonObject();
 
@@ -102,10 +102,10 @@ namespace Liferay.SDK.Service.V62.JournalFeed
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetFeedAsync(long groupId, string feedId)
+		public async Task<IDictionary<string, object>> GetFeedAsync(long groupId, string feedId)
 		{
 			var _parameters = new JsonObject();
 
@@ -119,10 +119,10 @@ namespace Liferay.SDK.Service.V62.JournalFeed
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateFeedAsync(long groupId, string feedId, string name, string description, string type, string structureId, string templateId, string rendererTemplateId, int delta, string orderByCol, string orderByType, string targetLayoutFriendlyUrl, string targetPortletId, string contentField, string feedType, double feedVersion, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateFeedAsync(long groupId, string feedId, string name, string description, string type, string structureId, string templateId, string rendererTemplateId, int delta, string orderByCol, string orderByType, string targetLayoutFriendlyUrl, string targetPortletId, string contentField, string feedType, double feedVersion, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -142,7 +142,7 @@ namespace Liferay.SDK.Service.V62.JournalFeed
 			_parameters.Add("contentField", contentField);
 			_parameters.Add("feedType", feedType);
 			_parameters.Add("feedVersion", feedVersion);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -151,7 +151,7 @@ namespace Liferay.SDK.Service.V62.JournalFeed
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

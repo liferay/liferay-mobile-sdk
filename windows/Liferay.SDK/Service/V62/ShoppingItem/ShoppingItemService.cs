@@ -43,7 +43,7 @@ namespace Liferay.SDK.Service.V62.ShoppingItem
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> AddItemAsync(long groupId, long categoryId, string sku, string name, string description, string properties, string fieldsQuantities, bool requiresShipping, int stockQuantity, bool featured, JsonObjectWrapper sale, bool smallImage, string smallImageURL, Stream smallFile, bool mediumImage, string mediumImageURL, Stream mediumFile, bool largeImage, string largeImageURL, Stream largeFile, IEnumerable<object> itemFields, IEnumerable<object> itemPrices, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddItemAsync(long groupId, long categoryId, string sku, string name, string description, string properties, string fieldsQuantities, bool requiresShipping, int stockQuantity, bool featured, IDictionary<string, object> sale, bool smallImage, string smallImageURL, IDictionary<string, object> smallFile, bool mediumImage, string mediumImageURL, IDictionary<string, object> mediumFile, bool largeImage, string largeImageURL, IDictionary<string, object> largeFile, IEnumerable<object> itemFields, IEnumerable<object> itemPrices, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -57,7 +57,7 @@ namespace Liferay.SDK.Service.V62.ShoppingItem
 			_parameters.Add("requiresShipping", requiresShipping);
 			_parameters.Add("stockQuantity", stockQuantity);
 			_parameters.Add("featured", featured);
-			this.MangleWrapper(_parameters, "sale", "java.lang.Boolean", sale);
+			_parameters.Add("sale", sale);
 			_parameters.Add("smallImage", smallImage);
 			_parameters.Add("smallImageURL", smallImageURL);
 			_parameters.Add("smallFile", smallFile);
@@ -69,16 +69,16 @@ namespace Liferay.SDK.Service.V62.ShoppingItem
 			_parameters.Add("largeFile", largeFile);
 			_parameters.Add("itemFields", itemFields);
 			_parameters.Add("itemPrices", itemPrices);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
 				{ "/shoppingitem/add-item", _parameters }
 			};
 
-			var _obj = await this.Session.UploadAsync(_command);
+			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteItemAsync(long itemId)
@@ -112,7 +112,7 @@ namespace Liferay.SDK.Service.V62.ShoppingItem
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> GetItemAsync(long itemId)
+		public async Task<IDictionary<string, object>> GetItemAsync(long itemId)
 		{
 			var _parameters = new JsonObject();
 
@@ -125,10 +125,10 @@ namespace Liferay.SDK.Service.V62.ShoppingItem
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetItemsAsync(long groupId, long categoryId)
+		public async Task<IDictionary<string, object>> GetItemsAsync(long groupId, long categoryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -142,10 +142,10 @@ namespace Liferay.SDK.Service.V62.ShoppingItem
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetItemsAsync(long groupId, long categoryId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetItemsAsync(long groupId, long categoryId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -153,7 +153,7 @@ namespace Liferay.SDK.Service.V62.ShoppingItem
 			_parameters.Add("categoryId", categoryId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -162,7 +162,7 @@ namespace Liferay.SDK.Service.V62.ShoppingItem
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetItemsCountAsync(long groupId, long categoryId)
@@ -182,12 +182,12 @@ namespace Liferay.SDK.Service.V62.ShoppingItem
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetItemsPrevAndNextAsync(long itemId, JsonObjectWrapper obc)
+		public async Task<IEnumerable<dynamic>> GetItemsPrevAndNextAsync(long itemId, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("itemId", itemId);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -199,7 +199,7 @@ namespace Liferay.SDK.Service.V62.ShoppingItem
 			return (IEnumerable<dynamic>)_obj;
 		}
 
-		public async Task<dynamic> UpdateItemAsync(long itemId, long groupId, long categoryId, string sku, string name, string description, string properties, string fieldsQuantities, bool requiresShipping, int stockQuantity, bool featured, JsonObjectWrapper sale, bool smallImage, string smallImageURL, Stream smallFile, bool mediumImage, string mediumImageURL, Stream mediumFile, bool largeImage, string largeImageURL, Stream largeFile, IEnumerable<object> itemFields, IEnumerable<object> itemPrices, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateItemAsync(long itemId, long groupId, long categoryId, string sku, string name, string description, string properties, string fieldsQuantities, bool requiresShipping, int stockQuantity, bool featured, IDictionary<string, object> sale, bool smallImage, string smallImageURL, IDictionary<string, object> smallFile, bool mediumImage, string mediumImageURL, IDictionary<string, object> mediumFile, bool largeImage, string largeImageURL, IDictionary<string, object> largeFile, IEnumerable<object> itemFields, IEnumerable<object> itemPrices, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -214,7 +214,7 @@ namespace Liferay.SDK.Service.V62.ShoppingItem
 			_parameters.Add("requiresShipping", requiresShipping);
 			_parameters.Add("stockQuantity", stockQuantity);
 			_parameters.Add("featured", featured);
-			this.MangleWrapper(_parameters, "sale", "java.lang.Boolean", sale);
+			_parameters.Add("sale", sale);
 			_parameters.Add("smallImage", smallImage);
 			_parameters.Add("smallImageURL", smallImageURL);
 			_parameters.Add("smallFile", smallFile);
@@ -226,16 +226,16 @@ namespace Liferay.SDK.Service.V62.ShoppingItem
 			_parameters.Add("largeFile", largeFile);
 			_parameters.Add("itemFields", itemFields);
 			_parameters.Add("itemPrices", itemPrices);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
 				{ "/shoppingitem/update-item", _parameters }
 			};
 
-			var _obj = await this.Session.UploadAsync(_command);
+			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

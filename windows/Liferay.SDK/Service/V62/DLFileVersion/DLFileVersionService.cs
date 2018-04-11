@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.DLFileVersion
 		{
 		}
 
-		public async Task<dynamic> GetFileVersionAsync(long fileVersionId)
+		public async Task<IDictionary<string, object>> GetFileVersionAsync(long fileVersionId)
 		{
 			var _parameters = new JsonObject();
 
@@ -40,10 +40,10 @@ namespace Liferay.SDK.Service.V62.DLFileVersion
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetFileVersionsAsync(long fileEntryId, int status)
+		public async Task<IDictionary<string, object>> GetFileVersionsAsync(long fileEntryId, int status)
 		{
 			var _parameters = new JsonObject();
 
@@ -57,7 +57,7 @@ namespace Liferay.SDK.Service.V62.DLFileVersion
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetFileVersionsCountAsync(long fileEntryId, int status)
@@ -77,7 +77,7 @@ namespace Liferay.SDK.Service.V62.DLFileVersion
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> GetLatestFileVersionAsync(long fileEntryId)
+		public async Task<IDictionary<string, object>> GetLatestFileVersionAsync(long fileEntryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -90,7 +90,7 @@ namespace Liferay.SDK.Service.V62.DLFileVersion
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

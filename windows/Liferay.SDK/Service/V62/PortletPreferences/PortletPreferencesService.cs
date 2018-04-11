@@ -41,15 +41,15 @@ namespace Liferay.SDK.Service.V62.PortletPreferences
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task RestoreArchivedPreferencesAsync(long groupId, JsonObjectWrapper layout, string portletId, JsonObjectWrapper portletItem, JsonObjectWrapper preferences)
+		public async Task RestoreArchivedPreferencesAsync(long groupId, IDictionary<string, object> layout, string portletId, IDictionary<string, object> portletItem, IDictionary<string, object> preferences)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
-			this.MangleWrapper(_parameters, "layout", "com.liferay.portal.model.Layout", layout);
+			_parameters.Add("layout", layout);
 			_parameters.Add("portletId", portletId);
-			this.MangleWrapper(_parameters, "portletItem", "com.liferay.portal.model.PortletItem", portletItem);
-			this.MangleWrapper(_parameters, "preferences", "javax.portlet.PortletPreferences", preferences);
+			_parameters.Add("portletItem", portletItem);
+			_parameters.Add("preferences", preferences);
 
 			var _command = new JsonObject()
 			{
@@ -59,15 +59,15 @@ namespace Liferay.SDK.Service.V62.PortletPreferences
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task RestoreArchivedPreferencesAsync(long groupId, JsonObjectWrapper layout, string portletId, long portletItemId, JsonObjectWrapper preferences)
+		public async Task RestoreArchivedPreferencesAsync(long groupId, IDictionary<string, object> layout, string portletId, long portletItemId, IDictionary<string, object> preferences)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
-			this.MangleWrapper(_parameters, "layout", "com.liferay.portal.model.Layout", layout);
+			_parameters.Add("layout", layout);
 			_parameters.Add("portletId", portletId);
 			_parameters.Add("portletItemId", portletItemId);
-			this.MangleWrapper(_parameters, "preferences", "javax.portlet.PortletPreferences", preferences);
+			_parameters.Add("preferences", preferences);
 
 			var _command = new JsonObject()
 			{
@@ -77,15 +77,15 @@ namespace Liferay.SDK.Service.V62.PortletPreferences
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task RestoreArchivedPreferencesAsync(long groupId, string name, JsonObjectWrapper layout, string portletId, JsonObjectWrapper preferences)
+		public async Task RestoreArchivedPreferencesAsync(long groupId, string name, IDictionary<string, object> layout, string portletId, IDictionary<string, object> preferences)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("name", name);
-			this.MangleWrapper(_parameters, "layout", "com.liferay.portal.model.Layout", layout);
+			_parameters.Add("layout", layout);
 			_parameters.Add("portletId", portletId);
-			this.MangleWrapper(_parameters, "preferences", "javax.portlet.PortletPreferences", preferences);
+			_parameters.Add("preferences", preferences);
 
 			var _command = new JsonObject()
 			{
@@ -95,7 +95,7 @@ namespace Liferay.SDK.Service.V62.PortletPreferences
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task UpdateArchivePreferencesAsync(long userId, long groupId, string name, string portletId, JsonObjectWrapper preferences)
+		public async Task UpdateArchivePreferencesAsync(long userId, long groupId, string name, string portletId, IDictionary<string, object> preferences)
 		{
 			var _parameters = new JsonObject();
 
@@ -103,7 +103,7 @@ namespace Liferay.SDK.Service.V62.PortletPreferences
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("name", name);
 			_parameters.Add("portletId", portletId);
-			this.MangleWrapper(_parameters, "preferences", "javax.portlet.PortletPreferences", preferences);
+			_parameters.Add("preferences", preferences);
 
 			var _command = new JsonObject()
 			{

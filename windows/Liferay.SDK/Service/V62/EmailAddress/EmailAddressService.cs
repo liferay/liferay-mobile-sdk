@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.EmailAddress
 		{
 		}
 
-		public async Task<dynamic> AddEmailAddressAsync(string className, long classPK, string address, int typeId, bool primary)
+		public async Task<IDictionary<string, object>> AddEmailAddressAsync(string className, long classPK, string address, int typeId, bool primary)
 		{
 			var _parameters = new JsonObject();
 
@@ -44,10 +44,10 @@ namespace Liferay.SDK.Service.V62.EmailAddress
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddEmailAddressAsync(string className, long classPK, string address, int typeId, bool primary, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddEmailAddressAsync(string className, long classPK, string address, int typeId, bool primary, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -56,7 +56,7 @@ namespace Liferay.SDK.Service.V62.EmailAddress
 			_parameters.Add("address", address);
 			_parameters.Add("typeId", typeId);
 			_parameters.Add("primary", primary);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -65,7 +65,7 @@ namespace Liferay.SDK.Service.V62.EmailAddress
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteEmailAddressAsync(long emailAddressId)
@@ -82,7 +82,7 @@ namespace Liferay.SDK.Service.V62.EmailAddress
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetEmailAddressAsync(long emailAddressId)
+		public async Task<IDictionary<string, object>> GetEmailAddressAsync(long emailAddressId)
 		{
 			var _parameters = new JsonObject();
 
@@ -95,10 +95,10 @@ namespace Liferay.SDK.Service.V62.EmailAddress
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetEmailAddressesAsync(string className, long classPK)
+		public async Task<IDictionary<string, object>> GetEmailAddressesAsync(string className, long classPK)
 		{
 			var _parameters = new JsonObject();
 
@@ -112,10 +112,10 @@ namespace Liferay.SDK.Service.V62.EmailAddress
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateEmailAddressAsync(long emailAddressId, string address, int typeId, bool primary)
+		public async Task<IDictionary<string, object>> UpdateEmailAddressAsync(long emailAddressId, string address, int typeId, bool primary)
 		{
 			var _parameters = new JsonObject();
 
@@ -131,7 +131,7 @@ namespace Liferay.SDK.Service.V62.EmailAddress
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

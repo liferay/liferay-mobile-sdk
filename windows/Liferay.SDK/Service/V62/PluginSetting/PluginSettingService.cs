@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.PluginSetting
 		{
 		}
 
-		public async Task<dynamic> UpdatePluginSettingAsync(long companyId, string pluginId, string pluginType, string roles, bool active)
+		public async Task<IDictionary<string, object>> UpdatePluginSettingAsync(long companyId, string pluginId, string pluginType, string roles, bool active)
 		{
 			var _parameters = new JsonObject();
 
@@ -44,7 +44,7 @@ namespace Liferay.SDK.Service.V62.PluginSetting
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

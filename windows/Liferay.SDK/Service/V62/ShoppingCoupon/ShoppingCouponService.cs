@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.ShoppingCoupon
 		{
 		}
 
-		public async Task<dynamic> AddCouponAsync(string code, bool autoCode, string name, string description, int startDateMonth, int startDateDay, int startDateYear, int startDateHour, int startDateMinute, int endDateMonth, int endDateDay, int endDateYear, int endDateHour, int endDateMinute, bool neverExpire, bool active, string limitCategories, string limitSkus, double minOrder, double discount, string discountType, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddCouponAsync(string code, bool autoCode, string name, string description, int startDateMonth, int startDateDay, int startDateYear, int startDateHour, int startDateMinute, int endDateMonth, int endDateDay, int endDateYear, int endDateHour, int endDateMinute, bool neverExpire, bool active, string limitCategories, string limitSkus, double minOrder, double discount, string discountType, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -52,7 +52,7 @@ namespace Liferay.SDK.Service.V62.ShoppingCoupon
 			_parameters.Add("minOrder", minOrder);
 			_parameters.Add("discount", discount);
 			_parameters.Add("discountType", discountType);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -61,7 +61,7 @@ namespace Liferay.SDK.Service.V62.ShoppingCoupon
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteCouponAsync(long groupId, long couponId)
@@ -79,7 +79,7 @@ namespace Liferay.SDK.Service.V62.ShoppingCoupon
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetCouponAsync(long groupId, long couponId)
+		public async Task<IDictionary<string, object>> GetCouponAsync(long groupId, long couponId)
 		{
 			var _parameters = new JsonObject();
 
@@ -93,10 +93,10 @@ namespace Liferay.SDK.Service.V62.ShoppingCoupon
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long groupId, long companyId, string code, bool active, string discountType, bool andOperator, int start, int end)
+		public async Task<IDictionary<string, object>> SearchAsync(long groupId, long companyId, string code, bool active, string discountType, bool andOperator, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -116,10 +116,10 @@ namespace Liferay.SDK.Service.V62.ShoppingCoupon
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateCouponAsync(long couponId, string name, string description, int startDateMonth, int startDateDay, int startDateYear, int startDateHour, int startDateMinute, int endDateMonth, int endDateDay, int endDateYear, int endDateHour, int endDateMinute, bool neverExpire, bool active, string limitCategories, string limitSkus, double minOrder, double discount, string discountType, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateCouponAsync(long couponId, string name, string description, int startDateMonth, int startDateDay, int startDateYear, int startDateHour, int startDateMinute, int endDateMonth, int endDateDay, int endDateYear, int endDateHour, int endDateMinute, bool neverExpire, bool active, string limitCategories, string limitSkus, double minOrder, double discount, string discountType, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -143,7 +143,7 @@ namespace Liferay.SDK.Service.V62.ShoppingCoupon
 			_parameters.Add("minOrder", minOrder);
 			_parameters.Add("discount", discount);
 			_parameters.Add("discountType", discountType);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -152,7 +152,7 @@ namespace Liferay.SDK.Service.V62.ShoppingCoupon
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

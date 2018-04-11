@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.ShoppingOrder
 		{
 		}
 
-		public async Task CompleteOrderAsync(long groupId, string number, string ppTxnId, string ppPaymentStatus, double ppPaymentGross, string ppReceiverEmail, string ppPayerEmail, JsonObjectWrapper serviceContext)
+		public async Task CompleteOrderAsync(long groupId, string number, string ppTxnId, string ppPaymentStatus, double ppPaymentGross, string ppReceiverEmail, string ppPayerEmail, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -38,7 +38,7 @@ namespace Liferay.SDK.Service.V62.ShoppingOrder
 			_parameters.Add("ppPaymentGross", ppPaymentGross);
 			_parameters.Add("ppReceiverEmail", ppReceiverEmail);
 			_parameters.Add("ppPayerEmail", ppPayerEmail);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -63,7 +63,7 @@ namespace Liferay.SDK.Service.V62.ShoppingOrder
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetOrderAsync(long groupId, long orderId)
+		public async Task<IDictionary<string, object>> GetOrderAsync(long groupId, long orderId)
 		{
 			var _parameters = new JsonObject();
 
@@ -77,17 +77,17 @@ namespace Liferay.SDK.Service.V62.ShoppingOrder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task SendEmailAsync(long groupId, long orderId, string emailType, JsonObjectWrapper serviceContext)
+		public async Task SendEmailAsync(long groupId, long orderId, string emailType, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("orderId", orderId);
 			_parameters.Add("emailType", emailType);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -97,7 +97,7 @@ namespace Liferay.SDK.Service.V62.ShoppingOrder
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateOrderAsync(long groupId, long orderId, string billingFirstName, string billingLastName, string billingEmailAddress, string billingCompany, string billingStreet, string billingCity, string billingState, string billingZip, string billingCountry, string billingPhone, bool shipToBilling, string shippingFirstName, string shippingLastName, string shippingEmailAddress, string shippingCompany, string shippingStreet, string shippingCity, string shippingState, string shippingZip, string shippingCountry, string shippingPhone, string ccName, string ccType, string ccNumber, int ccExpMonth, int ccExpYear, string ccVerNumber, string comments)
+		public async Task<IDictionary<string, object>> UpdateOrderAsync(long groupId, long orderId, string billingFirstName, string billingLastName, string billingEmailAddress, string billingCompany, string billingStreet, string billingCity, string billingState, string billingZip, string billingCountry, string billingPhone, bool shipToBilling, string shippingFirstName, string shippingLastName, string shippingEmailAddress, string shippingCompany, string shippingStreet, string shippingCity, string shippingState, string shippingZip, string shippingCountry, string shippingPhone, string ccName, string ccType, string ccNumber, int ccExpMonth, int ccExpYear, string ccVerNumber, string comments)
 		{
 			var _parameters = new JsonObject();
 
@@ -139,10 +139,10 @@ namespace Liferay.SDK.Service.V62.ShoppingOrder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateOrderAsync(long groupId, long orderId, string ppTxnId, string ppPaymentStatus, double ppPaymentGross, string ppReceiverEmail, string ppPayerEmail)
+		public async Task<IDictionary<string, object>> UpdateOrderAsync(long groupId, long orderId, string ppTxnId, string ppPaymentStatus, double ppPaymentGross, string ppReceiverEmail, string ppPayerEmail)
 		{
 			var _parameters = new JsonObject();
 
@@ -161,7 +161,7 @@ namespace Liferay.SDK.Service.V62.ShoppingOrder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

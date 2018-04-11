@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.Address
 		{
 		}
 
-		public async Task<dynamic> AddAddressAsync(string className, long classPK, string street1, string street2, string street3, string city, string zip, long regionId, long countryId, int typeId, bool mailing, bool primary)
+		public async Task<IDictionary<string, object>> AddAddressAsync(string className, long classPK, string street1, string street2, string street3, string city, string zip, long regionId, long countryId, int typeId, bool mailing, bool primary)
 		{
 			var _parameters = new JsonObject();
 
@@ -51,10 +51,10 @@ namespace Liferay.SDK.Service.V62.Address
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddAddressAsync(string className, long classPK, string street1, string street2, string street3, string city, string zip, long regionId, long countryId, int typeId, bool mailing, bool primary, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddAddressAsync(string className, long classPK, string street1, string street2, string street3, string city, string zip, long regionId, long countryId, int typeId, bool mailing, bool primary, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -70,7 +70,7 @@ namespace Liferay.SDK.Service.V62.Address
 			_parameters.Add("typeId", typeId);
 			_parameters.Add("mailing", mailing);
 			_parameters.Add("primary", primary);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -79,7 +79,7 @@ namespace Liferay.SDK.Service.V62.Address
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteAddressAsync(long addressId)
@@ -96,7 +96,7 @@ namespace Liferay.SDK.Service.V62.Address
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetAddressAsync(long addressId)
+		public async Task<IDictionary<string, object>> GetAddressAsync(long addressId)
 		{
 			var _parameters = new JsonObject();
 
@@ -109,10 +109,10 @@ namespace Liferay.SDK.Service.V62.Address
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetAddressesAsync(string className, long classPK)
+		public async Task<IDictionary<string, object>> GetAddressesAsync(string className, long classPK)
 		{
 			var _parameters = new JsonObject();
 
@@ -126,10 +126,10 @@ namespace Liferay.SDK.Service.V62.Address
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateAddressAsync(long addressId, string street1, string street2, string street3, string city, string zip, long regionId, long countryId, int typeId, bool mailing, bool primary)
+		public async Task<IDictionary<string, object>> UpdateAddressAsync(long addressId, string street1, string street2, string street3, string city, string zip, long regionId, long countryId, int typeId, bool mailing, bool primary)
 		{
 			var _parameters = new JsonObject();
 
@@ -152,7 +152,7 @@ namespace Liferay.SDK.Service.V62.Address
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

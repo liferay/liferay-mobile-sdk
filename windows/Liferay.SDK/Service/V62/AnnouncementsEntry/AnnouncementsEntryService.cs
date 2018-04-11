@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.AnnouncementsEntry
 		{
 		}
 
-		public async Task<dynamic> AddEntryAsync(long plid, long classNameId, long classPK, string title, string content, string url, string type, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, int priority, bool alert)
+		public async Task<IDictionary<string, object>> AddEntryAsync(long plid, long classNameId, long classPK, string title, string content, string url, string type, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, int priority, bool alert)
 		{
 			var _parameters = new JsonObject();
 
@@ -58,10 +58,10 @@ namespace Liferay.SDK.Service.V62.AnnouncementsEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddEntryAsync(long plid, long classNameId, long classPK, string title, string content, string url, string type, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, bool displayImmediately, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, int priority, bool alert)
+		public async Task<IDictionary<string, object>> AddEntryAsync(long plid, long classNameId, long classPK, string title, string content, string url, string type, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, bool displayImmediately, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, int priority, bool alert)
 		{
 			var _parameters = new JsonObject();
 
@@ -93,7 +93,7 @@ namespace Liferay.SDK.Service.V62.AnnouncementsEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteEntryAsync(long entryId)
@@ -110,7 +110,7 @@ namespace Liferay.SDK.Service.V62.AnnouncementsEntry
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetEntryAsync(long entryId)
+		public async Task<IDictionary<string, object>> GetEntryAsync(long entryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -123,10 +123,10 @@ namespace Liferay.SDK.Service.V62.AnnouncementsEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateEntryAsync(long entryId, string title, string content, string url, string type, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, bool displayImmediately, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, int priority)
+		public async Task<IDictionary<string, object>> UpdateEntryAsync(long entryId, string title, string content, string url, string type, int displayDateMonth, int displayDateDay, int displayDateYear, int displayDateHour, int displayDateMinute, bool displayImmediately, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, int priority)
 		{
 			var _parameters = new JsonObject();
 
@@ -155,7 +155,7 @@ namespace Liferay.SDK.Service.V62.AnnouncementsEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

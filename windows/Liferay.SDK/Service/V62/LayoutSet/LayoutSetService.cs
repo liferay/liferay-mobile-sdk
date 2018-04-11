@@ -61,7 +61,7 @@ namespace Liferay.SDK.Service.V62.LayoutSet
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task UpdateLogoAsync(long groupId, bool privateLayout, bool logo, Stream file)
+		public async Task UpdateLogoAsync(long groupId, bool privateLayout, bool logo, IDictionary<string, object> file)
 		{
 			var _parameters = new JsonObject();
 
@@ -75,10 +75,10 @@ namespace Liferay.SDK.Service.V62.LayoutSet
 				{ "/layoutset/update-logo", _parameters }
 			};
 
-			await this.Session.UploadAsync(_command);
+			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateLookAndFeelAsync(long groupId, bool privateLayout, string themeId, string colorSchemeId, string css, bool wapTheme)
+		public async Task<IDictionary<string, object>> UpdateLookAndFeelAsync(long groupId, bool privateLayout, string themeId, string colorSchemeId, string css, bool wapTheme)
 		{
 			var _parameters = new JsonObject();
 
@@ -96,10 +96,10 @@ namespace Liferay.SDK.Service.V62.LayoutSet
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateSettingsAsync(long groupId, bool privateLayout, string settings)
+		public async Task<IDictionary<string, object>> UpdateSettingsAsync(long groupId, bool privateLayout, string settings)
 		{
 			var _parameters = new JsonObject();
 
@@ -114,10 +114,10 @@ namespace Liferay.SDK.Service.V62.LayoutSet
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateVirtualHostAsync(long groupId, bool privateLayout, string virtualHost)
+		public async Task<IDictionary<string, object>> UpdateVirtualHostAsync(long groupId, bool privateLayout, string virtualHost)
 		{
 			var _parameters = new JsonObject();
 
@@ -132,7 +132,7 @@ namespace Liferay.SDK.Service.V62.LayoutSet
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

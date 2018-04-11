@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 		{
 		}
 
-		public async Task<dynamic> AddEntryAsync(long groupId, long folderId, string name, string url, string description, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddEntryAsync(long groupId, long folderId, string name, string url, string description, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -36,7 +36,7 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 			_parameters.Add("name", name);
 			_parameters.Add("url", url);
 			_parameters.Add("description", description);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -45,7 +45,7 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteEntryAsync(long entryId)
@@ -62,7 +62,7 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetEntriesAsync(long groupId, long folderId, int start, int end)
+		public async Task<IDictionary<string, object>> GetEntriesAsync(long groupId, long folderId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -78,10 +78,10 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetEntriesAsync(long groupId, long folderId, int start, int end, JsonObjectWrapper orderByComparator)
+		public async Task<IDictionary<string, object>> GetEntriesAsync(long groupId, long folderId, int start, int end, IDictionary<string, object> orderByComparator)
 		{
 			var _parameters = new JsonObject();
 
@@ -89,7 +89,7 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 			_parameters.Add("folderId", folderId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "orderByComparator", "com.liferay.portal.kernel.util.OrderByComparator", orderByComparator);
+			_parameters.Add("orderByComparator", orderByComparator);
 
 			var _command = new JsonObject()
 			{
@@ -98,7 +98,7 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetEntriesCountAsync(long groupId, long folderId)
@@ -136,7 +136,7 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> GetEntryAsync(long entryId)
+		public async Task<IDictionary<string, object>> GetEntryAsync(long entryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -149,7 +149,7 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetFoldersEntriesCountAsync(long groupId, IEnumerable<object> folderIds)
@@ -169,7 +169,7 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupEntriesAsync(long groupId, int start, int end)
+		public async Task<IDictionary<string, object>> GetGroupEntriesAsync(long groupId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -184,10 +184,10 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupEntriesAsync(long groupId, long userId, int start, int end)
+		public async Task<IDictionary<string, object>> GetGroupEntriesAsync(long groupId, long userId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -203,10 +203,10 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupEntriesAsync(long groupId, long userId, long rootFolderId, int start, int end)
+		public async Task<IDictionary<string, object>> GetGroupEntriesAsync(long groupId, long userId, long rootFolderId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -223,7 +223,7 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetGroupEntriesCountAsync(long groupId)
@@ -277,7 +277,7 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> MoveEntryAsync(long entryId, long parentFolderId)
+		public async Task<IDictionary<string, object>> MoveEntryAsync(long entryId, long parentFolderId)
 		{
 			var _parameters = new JsonObject();
 
@@ -291,10 +291,10 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> MoveEntryFromTrashAsync(long entryId, long parentFolderId)
+		public async Task<IDictionary<string, object>> MoveEntryFromTrashAsync(long entryId, long parentFolderId)
 		{
 			var _parameters = new JsonObject();
 
@@ -308,10 +308,10 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> MoveEntryToTrashAsync(long entryId)
+		public async Task<IDictionary<string, object>> MoveEntryToTrashAsync(long entryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -324,14 +324,14 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> OpenEntryAsync(JsonObjectWrapper entry)
+		public async Task<IDictionary<string, object>> OpenEntryAsync(IDictionary<string, object> entry)
 		{
 			var _parameters = new JsonObject();
 
-			this.MangleWrapper(_parameters, "entry", "com.liferay.portlet.bookmarks.model.BookmarksEntry", entry);
+			_parameters.Add("entry", entry);
 
 			var _command = new JsonObject()
 			{
@@ -340,10 +340,10 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> OpenEntryAsync(long entryId)
+		public async Task<IDictionary<string, object>> OpenEntryAsync(long entryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -356,7 +356,7 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task RestoreEntryFromTrashAsync(long entryId)
@@ -373,7 +373,7 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> SearchAsync(long groupId, long creatorUserId, int status, int start, int end)
+		public async Task<IDictionary<string, object>> SearchAsync(long groupId, long creatorUserId, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -390,7 +390,7 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task SubscribeEntryAsync(long entryId)
@@ -421,7 +421,7 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateEntryAsync(long entryId, long groupId, long folderId, string name, string url, string description, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateEntryAsync(long entryId, long groupId, long folderId, string name, string url, string description, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -431,7 +431,7 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 			_parameters.Add("name", name);
 			_parameters.Add("url", url);
 			_parameters.Add("description", description);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -440,7 +440,7 @@ namespace Liferay.SDK.Service.V62.BookmarksEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

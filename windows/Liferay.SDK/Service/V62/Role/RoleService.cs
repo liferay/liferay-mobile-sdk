@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.Role
 		{
 		}
 
-		public async Task<dynamic> AddRoleAsync(string name, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, int type)
+		public async Task<IDictionary<string, object>> AddRoleAsync(string name, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, int type)
 		{
 			var _parameters = new JsonObject();
 
@@ -43,10 +43,10 @@ namespace Liferay.SDK.Service.V62.Role
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddRoleAsync(string className, long classPK, string name, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, int type, string subtype, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddRoleAsync(string className, long classPK, string name, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, int type, string subtype, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -57,7 +57,7 @@ namespace Liferay.SDK.Service.V62.Role
 			_parameters.Add("descriptionMap", descriptionMap);
 			_parameters.Add("type", type);
 			_parameters.Add("subtype", subtype);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -66,7 +66,7 @@ namespace Liferay.SDK.Service.V62.Role
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task AddUserRolesAsync(long userId, IEnumerable<long> roleIds)
@@ -98,7 +98,7 @@ namespace Liferay.SDK.Service.V62.Role
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupRolesAsync(long groupId)
+		public async Task<IDictionary<string, object>> GetGroupRolesAsync(long groupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -111,10 +111,10 @@ namespace Liferay.SDK.Service.V62.Role
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetRoleAsync(long roleId)
+		public async Task<IDictionary<string, object>> GetRoleAsync(long roleId)
 		{
 			var _parameters = new JsonObject();
 
@@ -127,10 +127,10 @@ namespace Liferay.SDK.Service.V62.Role
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetRoleAsync(long companyId, string name)
+		public async Task<IDictionary<string, object>> GetRoleAsync(long companyId, string name)
 		{
 			var _parameters = new JsonObject();
 
@@ -144,10 +144,10 @@ namespace Liferay.SDK.Service.V62.Role
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserGroupGroupRolesAsync(long userId, long groupId)
+		public async Task<IDictionary<string, object>> GetUserGroupGroupRolesAsync(long userId, long groupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -161,10 +161,10 @@ namespace Liferay.SDK.Service.V62.Role
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserGroupRolesAsync(long userId, long groupId)
+		public async Task<IDictionary<string, object>> GetUserGroupRolesAsync(long userId, long groupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -178,10 +178,10 @@ namespace Liferay.SDK.Service.V62.Role
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserRelatedRolesAsync(long userId, IEnumerable<object> groups)
+		public async Task<IDictionary<string, object>> GetUserRelatedRolesAsync(long userId, IEnumerable<object> groups)
 		{
 			var _parameters = new JsonObject();
 
@@ -195,10 +195,10 @@ namespace Liferay.SDK.Service.V62.Role
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserRolesAsync(long userId)
+		public async Task<IDictionary<string, object>> GetUserRolesAsync(long userId)
 		{
 			var _parameters = new JsonObject();
 
@@ -211,7 +211,7 @@ namespace Liferay.SDK.Service.V62.Role
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<bool> HasUserRoleAsync(long userId, long companyId, string name, bool inherited)
@@ -267,7 +267,7 @@ namespace Liferay.SDK.Service.V62.Role
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateRoleAsync(long roleId, string name, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, string subtype, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateRoleAsync(long roleId, string name, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, string subtype, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -276,7 +276,7 @@ namespace Liferay.SDK.Service.V62.Role
 			_parameters.Add("titleMap", titleMap);
 			_parameters.Add("descriptionMap", descriptionMap);
 			_parameters.Add("subtype", subtype);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -285,7 +285,7 @@ namespace Liferay.SDK.Service.V62.Role
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

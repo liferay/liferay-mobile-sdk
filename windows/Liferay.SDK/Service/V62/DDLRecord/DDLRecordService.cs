@@ -27,15 +27,15 @@ namespace Liferay.SDK.Service.V62.DDLRecord
 		{
 		}
 
-		public async Task<dynamic> AddRecordAsync(long groupId, long recordSetId, int displayIndex, JsonObjectWrapper fields, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddRecordAsync(long groupId, long recordSetId, int displayIndex, IDictionary<string, object> fields, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("recordSetId", recordSetId);
 			_parameters.Add("displayIndex", displayIndex);
-			this.MangleWrapper(_parameters, "fields", "com.liferay.portlet.dynamicdatamapping.storage.Fields", fields);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("fields", fields);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -44,10 +44,10 @@ namespace Liferay.SDK.Service.V62.DDLRecord
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddRecordAsync(long groupId, long recordSetId, int displayIndex, IDictionary<string, object> fieldsMap, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddRecordMapAsync(long groupId, long recordSetId, int displayIndex, IDictionary<string, object> fieldsMap, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -55,7 +55,7 @@ namespace Liferay.SDK.Service.V62.DDLRecord
 			_parameters.Add("recordSetId", recordSetId);
 			_parameters.Add("displayIndex", displayIndex);
 			_parameters.Add("fieldsMap", fieldsMap);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -64,7 +64,7 @@ namespace Liferay.SDK.Service.V62.DDLRecord
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteRecordAsync(long recordId)
@@ -81,13 +81,13 @@ namespace Liferay.SDK.Service.V62.DDLRecord
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> DeleteRecordLocaleAsync(long recordId, string locale, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> DeleteRecordLocaleAsync(long recordId, string locale, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("recordId", recordId);
 			_parameters.Add("locale", locale);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -96,10 +96,10 @@ namespace Liferay.SDK.Service.V62.DDLRecord
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetRecordAsync(long recordId)
+		public async Task<IDictionary<string, object>> GetRecordAsync(long recordId)
 		{
 			var _parameters = new JsonObject();
 
@@ -112,16 +112,16 @@ namespace Liferay.SDK.Service.V62.DDLRecord
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task RevertRecordVersionAsync(long recordId, string version, JsonObjectWrapper serviceContext)
+		public async Task RevertRecordVersionAsync(long recordId, string version, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("recordId", recordId);
 			_parameters.Add("version", version);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -131,7 +131,7 @@ namespace Liferay.SDK.Service.V62.DDLRecord
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateRecordAsync(long recordId, int displayIndex, IDictionary<string, object> fieldsMap, bool mergeFields, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateRecordAsync(long recordId, int displayIndex, IDictionary<string, object> fieldsMap, bool mergeFields, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -139,7 +139,7 @@ namespace Liferay.SDK.Service.V62.DDLRecord
 			_parameters.Add("displayIndex", displayIndex);
 			_parameters.Add("fieldsMap", fieldsMap);
 			_parameters.Add("mergeFields", mergeFields);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -148,19 +148,19 @@ namespace Liferay.SDK.Service.V62.DDLRecord
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateRecordAsync(long recordId, bool majorVersion, int displayIndex, JsonObjectWrapper fields, bool mergeFields, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateRecordAsync(long recordId, bool majorVersion, int displayIndex, IDictionary<string, object> fields, bool mergeFields, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("recordId", recordId);
 			_parameters.Add("majorVersion", majorVersion);
 			_parameters.Add("displayIndex", displayIndex);
-			this.MangleWrapper(_parameters, "fields", "com.liferay.portlet.dynamicdatamapping.storage.Fields", fields);
+			_parameters.Add("fields", fields);
 			_parameters.Add("mergeFields", mergeFields);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -169,7 +169,7 @@ namespace Liferay.SDK.Service.V62.DDLRecord
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

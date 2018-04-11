@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.Country
 		{
 		}
 
-		public async Task<dynamic> AddCountryAsync(string name, string a2, string a3, string number, string idd, bool active)
+		public async Task<IDictionary<string, object>> AddCountryAsync(string name, string a2, string a3, string number, string idd, bool active)
 		{
 			var _parameters = new JsonObject();
 
@@ -45,10 +45,10 @@ namespace Liferay.SDK.Service.V62.Country
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> FetchCountryAsync(long countryId)
+		public async Task<IDictionary<string, object>> FetchCountryAsync(long countryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -61,10 +61,10 @@ namespace Liferay.SDK.Service.V62.Country
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> FetchCountryByA2Async(string a2)
+		public async Task<IDictionary<string, object>> FetchCountryByA2Async(string a2)
 		{
 			var _parameters = new JsonObject();
 
@@ -77,10 +77,10 @@ namespace Liferay.SDK.Service.V62.Country
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> FetchCountryByA3Async(string a3)
+		public async Task<IDictionary<string, object>> FetchCountryByA3Async(string a3)
 		{
 			var _parameters = new JsonObject();
 
@@ -93,10 +93,10 @@ namespace Liferay.SDK.Service.V62.Country
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetCountriesAsync()
+		public async Task<IDictionary<string, object>> GetCountriesAsync()
 		{
 			var _parameters = new JsonObject();
 
@@ -107,10 +107,10 @@ namespace Liferay.SDK.Service.V62.Country
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetCountriesAsync(bool active)
+		public async Task<IDictionary<string, object>> GetCountriesAsync(bool active)
 		{
 			var _parameters = new JsonObject();
 
@@ -123,10 +123,10 @@ namespace Liferay.SDK.Service.V62.Country
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetCountryAsync(long countryId)
+		public async Task<IDictionary<string, object>> GetCountryAsync(long countryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -139,10 +139,10 @@ namespace Liferay.SDK.Service.V62.Country
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetCountryByA2Async(string a2)
+		public async Task<IDictionary<string, object>> GetCountryByA2Async(string a2)
 		{
 			var _parameters = new JsonObject();
 
@@ -155,10 +155,10 @@ namespace Liferay.SDK.Service.V62.Country
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetCountryByA3Async(string a3)
+		public async Task<IDictionary<string, object>> GetCountryByA3Async(string a3)
 		{
 			var _parameters = new JsonObject();
 
@@ -171,10 +171,10 @@ namespace Liferay.SDK.Service.V62.Country
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetCountryByNameAsync(string name)
+		public async Task<IDictionary<string, object>> GetCountryByNameAsync(string name)
 		{
 			var _parameters = new JsonObject();
 
@@ -187,7 +187,7 @@ namespace Liferay.SDK.Service.V62.Country
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

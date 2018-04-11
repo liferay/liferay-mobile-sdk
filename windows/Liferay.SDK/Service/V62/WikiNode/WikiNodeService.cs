@@ -27,13 +27,13 @@ namespace Liferay.SDK.Service.V62.WikiNode
 		{
 		}
 
-		public async Task<dynamic> AddNodeAsync(string name, string description, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddNodeAsync(string name, string description, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("name", name);
 			_parameters.Add("description", description);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -42,7 +42,7 @@ namespace Liferay.SDK.Service.V62.WikiNode
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteNodeAsync(long nodeId)
@@ -59,7 +59,7 @@ namespace Liferay.SDK.Service.V62.WikiNode
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetNodeAsync(long nodeId)
+		public async Task<IDictionary<string, object>> GetNodeAsync(long nodeId)
 		{
 			var _parameters = new JsonObject();
 
@@ -72,10 +72,10 @@ namespace Liferay.SDK.Service.V62.WikiNode
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetNodeAsync(long groupId, string name)
+		public async Task<IDictionary<string, object>> GetNodeAsync(long groupId, string name)
 		{
 			var _parameters = new JsonObject();
 
@@ -89,10 +89,10 @@ namespace Liferay.SDK.Service.V62.WikiNode
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetNodesAsync(long groupId)
+		public async Task<IDictionary<string, object>> GetNodesAsync(long groupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -105,10 +105,10 @@ namespace Liferay.SDK.Service.V62.WikiNode
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetNodesAsync(long groupId, int status)
+		public async Task<IDictionary<string, object>> GetNodesAsync(long groupId, int status)
 		{
 			var _parameters = new JsonObject();
 
@@ -122,10 +122,10 @@ namespace Liferay.SDK.Service.V62.WikiNode
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetNodesAsync(long groupId, int start, int end)
+		public async Task<IDictionary<string, object>> GetNodesAsync(long groupId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -140,10 +140,10 @@ namespace Liferay.SDK.Service.V62.WikiNode
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetNodesAsync(long groupId, int status, int start, int end)
+		public async Task<IDictionary<string, object>> GetNodesAsync(long groupId, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -159,7 +159,7 @@ namespace Liferay.SDK.Service.V62.WikiNode
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetNodesCountAsync(long groupId)
@@ -195,7 +195,7 @@ namespace Liferay.SDK.Service.V62.WikiNode
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> MoveNodeToTrashAsync(long nodeId)
+		public async Task<IDictionary<string, object>> MoveNodeToTrashAsync(long nodeId)
 		{
 			var _parameters = new JsonObject();
 
@@ -208,7 +208,7 @@ namespace Liferay.SDK.Service.V62.WikiNode
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task RestoreNodeFromTrashAsync(long nodeId)
@@ -253,14 +253,14 @@ namespace Liferay.SDK.Service.V62.WikiNode
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateNodeAsync(long nodeId, string name, string description, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateNodeAsync(long nodeId, string name, string description, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("nodeId", nodeId);
 			_parameters.Add("name", name);
 			_parameters.Add("description", description);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -269,7 +269,7 @@ namespace Liferay.SDK.Service.V62.WikiNode
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

@@ -42,7 +42,7 @@ namespace Liferay.SDK.Service.V62.RatingsEntry
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateEntryAsync(string className, long classPK, double score)
+		public async Task<IDictionary<string, object>> UpdateEntryAsync(string className, long classPK, double score)
 		{
 			var _parameters = new JsonObject();
 
@@ -57,7 +57,7 @@ namespace Liferay.SDK.Service.V62.RatingsEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

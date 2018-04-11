@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.SCProductEntry
 		{
 		}
 
-		public async Task<dynamic> AddProductEntryAsync(string name, string type, string tags, string shortDescription, string longDescription, string pageURL, string author, string repoGroupId, string repoArtifactId, IEnumerable<long> licenseIds, IEnumerable<object> thumbnails, IEnumerable<object> fullImages, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddProductEntryAsync(string name, string type, string tags, string shortDescription, string longDescription, string pageURL, string author, string repoGroupId, string repoArtifactId, IEnumerable<long> licenseIds, IEnumerable<object> thumbnails, IEnumerable<object> fullImages, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -43,7 +43,7 @@ namespace Liferay.SDK.Service.V62.SCProductEntry
 			_parameters.Add("licenseIds", licenseIds);
 			_parameters.Add("thumbnails", thumbnails);
 			_parameters.Add("fullImages", fullImages);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -52,7 +52,7 @@ namespace Liferay.SDK.Service.V62.SCProductEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteProductEntryAsync(long productEntryId)
@@ -69,7 +69,7 @@ namespace Liferay.SDK.Service.V62.SCProductEntry
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetProductEntryAsync(long productEntryId)
+		public async Task<IDictionary<string, object>> GetProductEntryAsync(long productEntryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -82,10 +82,10 @@ namespace Liferay.SDK.Service.V62.SCProductEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateProductEntryAsync(long productEntryId, string name, string type, string tags, string shortDescription, string longDescription, string pageURL, string author, string repoGroupId, string repoArtifactId, IEnumerable<long> licenseIds, IEnumerable<object> thumbnails, IEnumerable<object> fullImages)
+		public async Task<IDictionary<string, object>> UpdateProductEntryAsync(long productEntryId, string name, string type, string tags, string shortDescription, string longDescription, string pageURL, string author, string repoGroupId, string repoArtifactId, IEnumerable<long> licenseIds, IEnumerable<object> thumbnails, IEnumerable<object> fullImages)
 		{
 			var _parameters = new JsonObject();
 
@@ -110,7 +110,7 @@ namespace Liferay.SDK.Service.V62.SCProductEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.PollsQuestion
 		{
 		}
 
-		public async Task<dynamic> AddQuestionAsync(IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, bool neverExpire, IEnumerable<object> choices, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddQuestionAsync(IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, bool neverExpire, IEnumerable<object> choices, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -40,7 +40,7 @@ namespace Liferay.SDK.Service.V62.PollsQuestion
 			_parameters.Add("expirationDateMinute", expirationDateMinute);
 			_parameters.Add("neverExpire", neverExpire);
 			_parameters.Add("choices", choices);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -49,7 +49,7 @@ namespace Liferay.SDK.Service.V62.PollsQuestion
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteQuestionAsync(long questionId)
@@ -66,7 +66,7 @@ namespace Liferay.SDK.Service.V62.PollsQuestion
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetQuestionAsync(long questionId)
+		public async Task<IDictionary<string, object>> GetQuestionAsync(long questionId)
 		{
 			var _parameters = new JsonObject();
 
@@ -79,10 +79,10 @@ namespace Liferay.SDK.Service.V62.PollsQuestion
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateQuestionAsync(long questionId, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, bool neverExpire, IEnumerable<object> choices, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateQuestionAsync(long questionId, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, int expirationDateMonth, int expirationDateDay, int expirationDateYear, int expirationDateHour, int expirationDateMinute, bool neverExpire, IEnumerable<object> choices, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -96,7 +96,7 @@ namespace Liferay.SDK.Service.V62.PollsQuestion
 			_parameters.Add("expirationDateMinute", expirationDateMinute);
 			_parameters.Add("neverExpire", neverExpire);
 			_parameters.Add("choices", choices);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -105,7 +105,7 @@ namespace Liferay.SDK.Service.V62.PollsQuestion
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

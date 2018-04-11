@@ -41,7 +41,7 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetCompanyEntriesAsync(long companyId, long displayDate, int status, int max)
+		public async Task<IDictionary<string, object>> GetCompanyEntriesAsync(long companyId, long displayDate, int status, int max)
 		{
 			var _parameters = new JsonObject();
 
@@ -57,10 +57,10 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<string> GetCompanyEntriesRssAsync(long companyId, long displayDate, int status, int max, string type, double version, string displayStyle, string feedURL, string entryURL, JsonObjectWrapper themeDisplay)
+		public async Task<string> GetCompanyEntriesRssAsync(long companyId, long displayDate, int status, int max, string type, double version, string displayStyle, string feedURL, string entryURL, IDictionary<string, object> themeDisplay)
 		{
 			var _parameters = new JsonObject();
 
@@ -73,7 +73,7 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 			_parameters.Add("displayStyle", displayStyle);
 			_parameters.Add("feedURL", feedURL);
 			_parameters.Add("entryURL", entryURL);
-			this.MangleWrapper(_parameters, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
+			_parameters.Add("themeDisplay", themeDisplay);
 
 			var _command = new JsonObject()
 			{
@@ -85,7 +85,7 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 			return (string)_obj;
 		}
 
-		public async Task<dynamic> GetEntryAsync(long entryId)
+		public async Task<IDictionary<string, object>> GetEntryAsync(long entryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -98,10 +98,10 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetEntryAsync(long groupId, string urlTitle)
+		public async Task<IDictionary<string, object>> GetEntryAsync(long groupId, string urlTitle)
 		{
 			var _parameters = new JsonObject();
 
@@ -115,10 +115,10 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupEntriesAsync(long groupId, int status, int max)
+		public async Task<IDictionary<string, object>> GetGroupEntriesAsync(long groupId, int status, int max)
 		{
 			var _parameters = new JsonObject();
 
@@ -133,10 +133,10 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupEntriesAsync(long groupId, long displayDate, int status, int max)
+		public async Task<IDictionary<string, object>> GetGroupEntriesAsync(long groupId, long displayDate, int status, int max)
 		{
 			var _parameters = new JsonObject();
 
@@ -152,10 +152,10 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupEntriesAsync(long groupId, int status, int start, int end)
+		public async Task<IDictionary<string, object>> GetGroupEntriesAsync(long groupId, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -171,10 +171,10 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupEntriesAsync(long groupId, long displayDate, int status, int start, int end)
+		public async Task<IDictionary<string, object>> GetGroupEntriesAsync(long groupId, long displayDate, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -191,7 +191,7 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetGroupEntriesCountAsync(long groupId, int status)
@@ -229,7 +229,7 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 			return (long)_obj;
 		}
 
-		public async Task<string> GetGroupEntriesRssAsync(long groupId, long displayDate, int status, int max, string type, double version, string displayStyle, string feedURL, string entryURL, JsonObjectWrapper themeDisplay)
+		public async Task<string> GetGroupEntriesRssAsync(long groupId, long displayDate, int status, int max, string type, double version, string displayStyle, string feedURL, string entryURL, IDictionary<string, object> themeDisplay)
 		{
 			var _parameters = new JsonObject();
 
@@ -242,7 +242,7 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 			_parameters.Add("displayStyle", displayStyle);
 			_parameters.Add("feedURL", feedURL);
 			_parameters.Add("entryURL", entryURL);
-			this.MangleWrapper(_parameters, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
+			_parameters.Add("themeDisplay", themeDisplay);
 
 			var _command = new JsonObject()
 			{
@@ -254,7 +254,7 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 			return (string)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupsEntriesAsync(long companyId, long groupId, long displayDate, int status, int max)
+		public async Task<IDictionary<string, object>> GetGroupsEntriesAsync(long companyId, long groupId, long displayDate, int status, int max)
 		{
 			var _parameters = new JsonObject();
 
@@ -271,10 +271,10 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetOrganizationEntriesAsync(long organizationId, long displayDate, int status, int max)
+		public async Task<IDictionary<string, object>> GetOrganizationEntriesAsync(long organizationId, long displayDate, int status, int max)
 		{
 			var _parameters = new JsonObject();
 
@@ -290,10 +290,10 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<string> GetOrganizationEntriesRssAsync(long organizationId, long displayDate, int status, int max, string type, double version, string displayStyle, string feedURL, string entryURL, JsonObjectWrapper themeDisplay)
+		public async Task<string> GetOrganizationEntriesRssAsync(long organizationId, long displayDate, int status, int max, string type, double version, string displayStyle, string feedURL, string entryURL, IDictionary<string, object> themeDisplay)
 		{
 			var _parameters = new JsonObject();
 
@@ -306,7 +306,7 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 			_parameters.Add("displayStyle", displayStyle);
 			_parameters.Add("feedURL", feedURL);
 			_parameters.Add("entryURL", entryURL);
-			this.MangleWrapper(_parameters, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
+			_parameters.Add("themeDisplay", themeDisplay);
 
 			var _command = new JsonObject()
 			{
@@ -318,7 +318,7 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 			return (string)_obj;
 		}
 
-		public async Task<dynamic> MoveEntryToTrashAsync(long entryId)
+		public async Task<IDictionary<string, object>> MoveEntryToTrashAsync(long entryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -331,7 +331,7 @@ namespace Liferay.SDK.Service.V62.BlogsEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task RestoreEntryFromTrashAsync(long entryId)

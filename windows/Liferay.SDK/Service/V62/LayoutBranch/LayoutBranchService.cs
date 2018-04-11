@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.LayoutBranch
 		{
 		}
 
-		public async Task<dynamic> AddLayoutBranchAsync(long layoutRevisionId, string name, string description, bool master, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddLayoutBranchAsync(long layoutRevisionId, string name, string description, bool master, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -35,7 +35,7 @@ namespace Liferay.SDK.Service.V62.LayoutBranch
 			_parameters.Add("name", name);
 			_parameters.Add("description", description);
 			_parameters.Add("master", master);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -44,7 +44,7 @@ namespace Liferay.SDK.Service.V62.LayoutBranch
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteLayoutBranchAsync(long layoutBranchId)
@@ -61,14 +61,14 @@ namespace Liferay.SDK.Service.V62.LayoutBranch
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateLayoutBranchAsync(long layoutBranchId, string name, string description, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateLayoutBranchAsync(long layoutBranchId, string name, string description, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("layoutBranchId", layoutBranchId);
 			_parameters.Add("name", name);
 			_parameters.Add("description", description);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -77,7 +77,7 @@ namespace Liferay.SDK.Service.V62.LayoutBranch
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

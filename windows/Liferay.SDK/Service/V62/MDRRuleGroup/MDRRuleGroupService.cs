@@ -27,14 +27,14 @@ namespace Liferay.SDK.Service.V62.MDRRuleGroup
 		{
 		}
 
-		public async Task<dynamic> AddRuleGroupAsync(long groupId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddRuleGroupAsync(long groupId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("nameMap", nameMap);
 			_parameters.Add("descriptionMap", descriptionMap);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -43,16 +43,16 @@ namespace Liferay.SDK.Service.V62.MDRRuleGroup
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> CopyRuleGroupAsync(long ruleGroupId, long groupId, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> CopyRuleGroupAsync(long ruleGroupId, long groupId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("ruleGroupId", ruleGroupId);
 			_parameters.Add("groupId", groupId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -61,7 +61,7 @@ namespace Liferay.SDK.Service.V62.MDRRuleGroup
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteRuleGroupAsync(long ruleGroupId)
@@ -78,7 +78,7 @@ namespace Liferay.SDK.Service.V62.MDRRuleGroup
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> FetchRuleGroupAsync(long ruleGroupId)
+		public async Task<IDictionary<string, object>> FetchRuleGroupAsync(long ruleGroupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -91,10 +91,10 @@ namespace Liferay.SDK.Service.V62.MDRRuleGroup
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetRuleGroupAsync(long ruleGroupId)
+		public async Task<IDictionary<string, object>> GetRuleGroupAsync(long ruleGroupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -107,17 +107,17 @@ namespace Liferay.SDK.Service.V62.MDRRuleGroup
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateRuleGroupAsync(long ruleGroupId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateRuleGroupAsync(long ruleGroupId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("ruleGroupId", ruleGroupId);
 			_parameters.Add("nameMap", nameMap);
 			_parameters.Add("descriptionMap", descriptionMap);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -126,7 +126,7 @@ namespace Liferay.SDK.Service.V62.MDRRuleGroup
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

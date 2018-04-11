@@ -90,7 +90,7 @@ namespace Liferay.SDK.Service.V62.Staging
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> ValidateStagingRequestAsync(long stagingRequestId, bool privateLayout, IDictionary<string, object> parameterMap)
+		public async Task<IDictionary<string, object>> ValidateStagingRequestAsync(long stagingRequestId, bool privateLayout, IDictionary<string, object> parameterMap)
 		{
 			var _parameters = new JsonObject();
 
@@ -105,7 +105,7 @@ namespace Liferay.SDK.Service.V62.Staging
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

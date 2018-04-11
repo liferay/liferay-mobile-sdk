@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 		{
 		}
 
-		public async Task<IEnumerable<dynamic>> GetActivitiesAsync(string className, int start, int end)
+		public async Task<IDictionary<string, object>> GetActivitiesAsync(string className, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -42,10 +42,10 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetActivitiesAsync(long classNameId, int start, int end)
+		public async Task<IDictionary<string, object>> GetActivitiesAsync(long classNameId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -60,10 +60,10 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetActivitiesAsync(long mirrorActivityId, string className, long classPK, int start, int end)
+		public async Task<IDictionary<string, object>> GetActivitiesAsync(long mirrorActivityId, string className, long classPK, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -80,10 +80,10 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetActivitiesAsync(long mirrorActivityId, long classNameId, long classPK, int start, int end)
+		public async Task<IDictionary<string, object>> GetActivitiesAsync(long mirrorActivityId, long classNameId, long classPK, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -100,7 +100,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetActivitiesCountAsync(string className)
@@ -171,7 +171,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> GetActivityAsync(long activityId)
+		public async Task<IDictionary<string, object>> GetActivityAsync(long activityId)
 		{
 			var _parameters = new JsonObject();
 
@@ -184,10 +184,10 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetActivitySetActivitiesAsync(long activitySetId, int start, int end)
+		public async Task<IDictionary<string, object>> GetActivitySetActivitiesAsync(long activitySetId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -202,10 +202,10 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupActivitiesAsync(long groupId, int start, int end)
+		public async Task<IDictionary<string, object>> GetGroupActivitiesAsync(long groupId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -220,7 +220,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetGroupActivitiesCountAsync(long groupId)
@@ -239,7 +239,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupUsersActivitiesAsync(long groupId, int start, int end)
+		public async Task<IDictionary<string, object>> GetGroupUsersActivitiesAsync(long groupId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -254,7 +254,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetGroupUsersActivitiesCountAsync(long groupId)
@@ -273,7 +273,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> GetMirrorActivityAsync(long mirrorActivityId)
+		public async Task<IDictionary<string, object>> GetMirrorActivityAsync(long mirrorActivityId)
 		{
 			var _parameters = new JsonObject();
 
@@ -286,10 +286,10 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetOrganizationActivitiesAsync(long organizationId, int start, int end)
+		public async Task<IDictionary<string, object>> GetOrganizationActivitiesAsync(long organizationId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -304,7 +304,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetOrganizationActivitiesCountAsync(long organizationId)
@@ -323,7 +323,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetOrganizationUsersActivitiesAsync(long organizationId, int start, int end)
+		public async Task<IDictionary<string, object>> GetOrganizationUsersActivitiesAsync(long organizationId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -338,7 +338,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetOrganizationUsersActivitiesCountAsync(long organizationId)
@@ -357,7 +357,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetRelationActivitiesAsync(long userId, int start, int end)
+		public async Task<IDictionary<string, object>> GetRelationActivitiesAsync(long userId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -372,10 +372,10 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetRelationActivitiesAsync(long userId, int type, int start, int end)
+		public async Task<IDictionary<string, object>> GetRelationActivitiesAsync(long userId, int type, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -391,7 +391,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetRelationActivitiesCountAsync(long userId)
@@ -427,7 +427,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserActivitiesAsync(long userId, int start, int end)
+		public async Task<IDictionary<string, object>> GetUserActivitiesAsync(long userId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -442,7 +442,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetUserActivitiesCountAsync(long userId)
@@ -461,7 +461,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserGroupsActivitiesAsync(long userId, int start, int end)
+		public async Task<IDictionary<string, object>> GetUserGroupsActivitiesAsync(long userId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -476,7 +476,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetUserGroupsActivitiesCountAsync(long userId)
@@ -495,7 +495,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserGroupsAndOrganizationsActivitiesAsync(long userId, int start, int end)
+		public async Task<IDictionary<string, object>> GetUserGroupsAndOrganizationsActivitiesAsync(long userId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -510,7 +510,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetUserGroupsAndOrganizationsActivitiesCountAsync(long userId)
@@ -529,7 +529,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserOrganizationsActivitiesAsync(long userId, int start, int end)
+		public async Task<IDictionary<string, object>> GetUserOrganizationsActivitiesAsync(long userId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -544,7 +544,7 @@ namespace Liferay.SDK.Service.V62.SocialActivity
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetUserOrganizationsActivitiesCountAsync(long userId)

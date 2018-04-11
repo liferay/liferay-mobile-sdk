@@ -41,7 +41,7 @@ namespace Liferay.SDK.Service.V62.Company
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetCompanyByIdAsync(long companyId)
+		public async Task<IDictionary<string, object>> GetCompanyByIdAsync(long companyId)
 		{
 			var _parameters = new JsonObject();
 
@@ -54,10 +54,10 @@ namespace Liferay.SDK.Service.V62.Company
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetCompanyByLogoIdAsync(long logoId)
+		public async Task<IDictionary<string, object>> GetCompanyByLogoIdAsync(long logoId)
 		{
 			var _parameters = new JsonObject();
 
@@ -70,10 +70,10 @@ namespace Liferay.SDK.Service.V62.Company
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetCompanyByMxAsync(string mx)
+		public async Task<IDictionary<string, object>> GetCompanyByMxAsync(string mx)
 		{
 			var _parameters = new JsonObject();
 
@@ -86,10 +86,10 @@ namespace Liferay.SDK.Service.V62.Company
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetCompanyByVirtualHostAsync(string virtualHost)
+		public async Task<IDictionary<string, object>> GetCompanyByVirtualHostAsync(string virtualHost)
 		{
 			var _parameters = new JsonObject();
 
@@ -102,10 +102,10 @@ namespace Liferay.SDK.Service.V62.Company
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetCompanyByWebIdAsync(string webId)
+		public async Task<IDictionary<string, object>> GetCompanyByWebIdAsync(string webId)
 		{
 			var _parameters = new JsonObject();
 
@@ -118,10 +118,10 @@ namespace Liferay.SDK.Service.V62.Company
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateCompanyAsync(long companyId, string virtualHost, string mx, string homeURL, string name, string legalName, string legalId, string legalType, string sicCode, string tickerSymbol, string industry, string type, string size)
+		public async Task<IDictionary<string, object>> UpdateCompanyAsync(long companyId, string virtualHost, string mx, string homeURL, string name, string legalName, string legalId, string legalType, string sicCode, string tickerSymbol, string industry, string type, string size)
 		{
 			var _parameters = new JsonObject();
 
@@ -146,10 +146,10 @@ namespace Liferay.SDK.Service.V62.Company
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateCompanyAsync(long companyId, string virtualHost, string mx, int maxUsers, bool active)
+		public async Task<IDictionary<string, object>> UpdateCompanyAsync(long companyId, string virtualHost, string mx, int maxUsers, bool active)
 		{
 			var _parameters = new JsonObject();
 
@@ -166,7 +166,7 @@ namespace Liferay.SDK.Service.V62.Company
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task UpdateDisplayAsync(long companyId, string languageId, string timeZoneId)
@@ -185,7 +185,7 @@ namespace Liferay.SDK.Service.V62.Company
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateLogoAsync(long companyId, byte[] bytes)
+		public async Task<IDictionary<string, object>> UpdateLogoAsync(long companyId, byte[] bytes)
 		{
 			var _parameters = new JsonObject();
 
@@ -199,7 +199,7 @@ namespace Liferay.SDK.Service.V62.Company
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

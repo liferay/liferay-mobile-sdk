@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.AssetEntry
 		{
 		}
 
-		public async Task<IEnumerable<dynamic>> GetCompanyEntriesAsync(long companyId, int start, int end)
+		public async Task<IDictionary<string, object>> GetCompanyEntriesAsync(long companyId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -42,7 +42,7 @@ namespace Liferay.SDK.Service.V62.AssetEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetCompanyEntriesCountAsync(long companyId)
@@ -61,11 +61,11 @@ namespace Liferay.SDK.Service.V62.AssetEntry
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetEntriesAsync(JsonObjectWrapper entryQuery)
+		public async Task<IDictionary<string, object>> GetEntriesAsync(IDictionary<string, object> entryQuery)
 		{
 			var _parameters = new JsonObject();
 
-			this.MangleWrapper(_parameters, "entryQuery", "com.liferay.portlet.asset.service.persistence.AssetEntryQuery", entryQuery);
+			_parameters.Add("entryQuery", entryQuery);
 
 			var _command = new JsonObject()
 			{
@@ -74,14 +74,14 @@ namespace Liferay.SDK.Service.V62.AssetEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<long> GetEntriesCountAsync(JsonObjectWrapper entryQuery)
+		public async Task<long> GetEntriesCountAsync(IDictionary<string, object> entryQuery)
 		{
 			var _parameters = new JsonObject();
 
-			this.MangleWrapper(_parameters, "entryQuery", "com.liferay.portlet.asset.service.persistence.AssetEntryQuery", entryQuery);
+			_parameters.Add("entryQuery", entryQuery);
 
 			var _command = new JsonObject()
 			{
@@ -93,7 +93,7 @@ namespace Liferay.SDK.Service.V62.AssetEntry
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> GetEntryAsync(long entryId)
+		public async Task<IDictionary<string, object>> GetEntryAsync(long entryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -106,10 +106,10 @@ namespace Liferay.SDK.Service.V62.AssetEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> IncrementViewCounterAsync(string className, long classPK)
+		public async Task<IDictionary<string, object>> IncrementViewCounterAsync(string className, long classPK)
 		{
 			var _parameters = new JsonObject();
 
@@ -123,10 +123,10 @@ namespace Liferay.SDK.Service.V62.AssetEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateEntryAsync(long groupId, string className, long classPK, string classUuid, long classTypeId, IEnumerable<long> categoryIds, IEnumerable<string> tagNames, bool visible, long startDate, long endDate, long expirationDate, string mimeType, string title, string description, string summary, string url, string layoutUuid, int height, int width, JsonObjectWrapper priority, bool sync)
+		public async Task<IDictionary<string, object>> UpdateEntryAsync(long groupId, string className, long classPK, string classUuid, long classTypeId, IEnumerable<long> categoryIds, IEnumerable<string> tagNames, bool visible, long startDate, long endDate, long expirationDate, string mimeType, string title, string description, string summary, string url, string layoutUuid, int height, int width, IDictionary<string, object> priority, bool sync)
 		{
 			var _parameters = new JsonObject();
 
@@ -149,7 +149,7 @@ namespace Liferay.SDK.Service.V62.AssetEntry
 			_parameters.Add("layoutUuid", layoutUuid);
 			_parameters.Add("height", height);
 			_parameters.Add("width", width);
-			this.MangleWrapper(_parameters, "priority", "java.lang.Integer", priority);
+			_parameters.Add("priority", priority);
 			_parameters.Add("sync", sync);
 
 			var _command = new JsonObject()
@@ -159,10 +159,10 @@ namespace Liferay.SDK.Service.V62.AssetEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateEntryAsync(long groupId, string className, long classPK, string classUuid, long classTypeId, IEnumerable<long> categoryIds, IEnumerable<string> tagNames, bool visible, long startDate, long endDate, long publishDate, long expirationDate, string mimeType, string title, string description, string summary, string url, string layoutUuid, int height, int width, JsonObjectWrapper priority, bool sync)
+		public async Task<IDictionary<string, object>> UpdateEntryAsync(long groupId, string className, long classPK, string classUuid, long classTypeId, IEnumerable<long> categoryIds, IEnumerable<string> tagNames, bool visible, long startDate, long endDate, long publishDate, long expirationDate, string mimeType, string title, string description, string summary, string url, string layoutUuid, int height, int width, IDictionary<string, object> priority, bool sync)
 		{
 			var _parameters = new JsonObject();
 
@@ -186,7 +186,7 @@ namespace Liferay.SDK.Service.V62.AssetEntry
 			_parameters.Add("layoutUuid", layoutUuid);
 			_parameters.Add("height", height);
 			_parameters.Add("width", width);
-			this.MangleWrapper(_parameters, "priority", "java.lang.Integer", priority);
+			_parameters.Add("priority", priority);
 			_parameters.Add("sync", sync);
 
 			var _command = new JsonObject()
@@ -196,10 +196,10 @@ namespace Liferay.SDK.Service.V62.AssetEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateEntryAsync(long groupId, long createDate, long modifiedDate, string className, long classPK, string classUuid, long classTypeId, IEnumerable<long> categoryIds, IEnumerable<string> tagNames, bool visible, long startDate, long endDate, long expirationDate, string mimeType, string title, string description, string summary, string url, string layoutUuid, int height, int width, JsonObjectWrapper priority, bool sync)
+		public async Task<IDictionary<string, object>> UpdateEntryAsync(long groupId, long createDate, long modifiedDate, string className, long classPK, string classUuid, long classTypeId, IEnumerable<long> categoryIds, IEnumerable<string> tagNames, bool visible, long startDate, long endDate, long expirationDate, string mimeType, string title, string description, string summary, string url, string layoutUuid, int height, int width, IDictionary<string, object> priority, bool sync)
 		{
 			var _parameters = new JsonObject();
 
@@ -224,7 +224,7 @@ namespace Liferay.SDK.Service.V62.AssetEntry
 			_parameters.Add("layoutUuid", layoutUuid);
 			_parameters.Add("height", height);
 			_parameters.Add("width", width);
-			this.MangleWrapper(_parameters, "priority", "java.lang.Integer", priority);
+			_parameters.Add("priority", priority);
 			_parameters.Add("sync", sync);
 
 			var _command = new JsonObject()
@@ -234,7 +234,7 @@ namespace Liferay.SDK.Service.V62.AssetEntry
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

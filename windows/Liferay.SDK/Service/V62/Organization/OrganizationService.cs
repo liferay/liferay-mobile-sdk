@@ -42,7 +42,7 @@ namespace Liferay.SDK.Service.V62.Organization
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> AddOrganizationAsync(long parentOrganizationId, string name, string type, bool recursable, long regionId, long countryId, int statusId, string comments, bool site, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddOrganizationAsync(long parentOrganizationId, string name, string type, bool recursable, long regionId, long countryId, int statusId, string comments, bool site, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -55,7 +55,7 @@ namespace Liferay.SDK.Service.V62.Organization
 			_parameters.Add("statusId", statusId);
 			_parameters.Add("comments", comments);
 			_parameters.Add("site", site);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -64,10 +64,10 @@ namespace Liferay.SDK.Service.V62.Organization
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddOrganizationAsync(long parentOrganizationId, string name, string type, long regionId, long countryId, int statusId, string comments, bool site, IEnumerable<object> addresses, IEnumerable<object> emailAddresses, IEnumerable<object> orgLabors, IEnumerable<object> phones, IEnumerable<object> websites, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddOrganizationAsync(long parentOrganizationId, string name, string type, long regionId, long countryId, int statusId, string comments, bool site, IEnumerable<object> addresses, IEnumerable<object> emailAddresses, IEnumerable<object> orgLabors, IEnumerable<object> phones, IEnumerable<object> websites, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -84,7 +84,7 @@ namespace Liferay.SDK.Service.V62.Organization
 			_parameters.Add("orgLabors", orgLabors);
 			_parameters.Add("phones", phones);
 			_parameters.Add("websites", websites);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -93,10 +93,10 @@ namespace Liferay.SDK.Service.V62.Organization
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddOrganizationAsync(long parentOrganizationId, string name, string type, bool recursable, long regionId, long countryId, int statusId, string comments, bool site, IEnumerable<object> addresses, IEnumerable<object> emailAddresses, IEnumerable<object> orgLabors, IEnumerable<object> phones, IEnumerable<object> websites, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddOrganizationAsync(long parentOrganizationId, string name, string type, bool recursable, long regionId, long countryId, int statusId, string comments, bool site, IEnumerable<object> addresses, IEnumerable<object> emailAddresses, IEnumerable<object> orgLabors, IEnumerable<object> phones, IEnumerable<object> websites, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -114,7 +114,7 @@ namespace Liferay.SDK.Service.V62.Organization
 			_parameters.Add("orgLabors", orgLabors);
 			_parameters.Add("phones", phones);
 			_parameters.Add("websites", websites);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -123,10 +123,10 @@ namespace Liferay.SDK.Service.V62.Organization
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddOrganizationAsync(long parentOrganizationId, string name, string type, long regionId, long countryId, int statusId, string comments, bool site, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddOrganizationAsync(long parentOrganizationId, string name, string type, long regionId, long countryId, int statusId, string comments, bool site, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -138,7 +138,7 @@ namespace Liferay.SDK.Service.V62.Organization
 			_parameters.Add("statusId", statusId);
 			_parameters.Add("comments", comments);
 			_parameters.Add("site", site);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -147,7 +147,7 @@ namespace Liferay.SDK.Service.V62.Organization
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task AddPasswordPolicyOrganizationsAsync(long passwordPolicyId, IEnumerable<long> organizationIds)
@@ -193,7 +193,7 @@ namespace Liferay.SDK.Service.V62.Organization
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetManageableOrganizationsAsync(string actionId, int max)
+		public async Task<IDictionary<string, object>> GetManageableOrganizationsAsync(string actionId, int max)
 		{
 			var _parameters = new JsonObject();
 
@@ -207,10 +207,10 @@ namespace Liferay.SDK.Service.V62.Organization
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetOrganizationAsync(long organizationId)
+		public async Task<IDictionary<string, object>> GetOrganizationAsync(long organizationId)
 		{
 			var _parameters = new JsonObject();
 
@@ -223,7 +223,7 @@ namespace Liferay.SDK.Service.V62.Organization
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetOrganizationIdAsync(long companyId, string name)
@@ -243,7 +243,7 @@ namespace Liferay.SDK.Service.V62.Organization
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetOrganizationsAsync(long companyId, long parentOrganizationId)
+		public async Task<IDictionary<string, object>> GetOrganizationsAsync(long companyId, long parentOrganizationId)
 		{
 			var _parameters = new JsonObject();
 
@@ -257,10 +257,10 @@ namespace Liferay.SDK.Service.V62.Organization
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetOrganizationsAsync(long companyId, long parentOrganizationId, int start, int end)
+		public async Task<IDictionary<string, object>> GetOrganizationsAsync(long companyId, long parentOrganizationId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -276,7 +276,7 @@ namespace Liferay.SDK.Service.V62.Organization
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetOrganizationsCountAsync(long companyId, long parentOrganizationId)
@@ -296,7 +296,7 @@ namespace Liferay.SDK.Service.V62.Organization
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserOrganizationsAsync(long userId)
+		public async Task<IDictionary<string, object>> GetUserOrganizationsAsync(long userId)
 		{
 			var _parameters = new JsonObject();
 
@@ -309,7 +309,7 @@ namespace Liferay.SDK.Service.V62.Organization
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task SetGroupOrganizationsAsync(long groupId, IEnumerable<long> organizationIds)
@@ -357,7 +357,7 @@ namespace Liferay.SDK.Service.V62.Organization
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateOrganizationAsync(long organizationId, long parentOrganizationId, string name, string type, long regionId, long countryId, int statusId, string comments, bool site, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateOrganizationAsync(long organizationId, long parentOrganizationId, string name, string type, long regionId, long countryId, int statusId, string comments, bool site, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -370,7 +370,7 @@ namespace Liferay.SDK.Service.V62.Organization
 			_parameters.Add("statusId", statusId);
 			_parameters.Add("comments", comments);
 			_parameters.Add("site", site);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -379,10 +379,10 @@ namespace Liferay.SDK.Service.V62.Organization
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateOrganizationAsync(long organizationId, long parentOrganizationId, string name, string type, bool recursable, long regionId, long countryId, int statusId, string comments, bool site, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateOrganizationAsync(long organizationId, long parentOrganizationId, string name, string type, bool recursable, long regionId, long countryId, int statusId, string comments, bool site, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -396,7 +396,7 @@ namespace Liferay.SDK.Service.V62.Organization
 			_parameters.Add("statusId", statusId);
 			_parameters.Add("comments", comments);
 			_parameters.Add("site", site);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -405,10 +405,10 @@ namespace Liferay.SDK.Service.V62.Organization
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateOrganizationAsync(long organizationId, long parentOrganizationId, string name, string type, long regionId, long countryId, int statusId, string comments, bool site, IEnumerable<object> addresses, IEnumerable<object> emailAddresses, IEnumerable<object> orgLabors, IEnumerable<object> phones, IEnumerable<object> websites, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateOrganizationAsync(long organizationId, long parentOrganizationId, string name, string type, long regionId, long countryId, int statusId, string comments, bool site, IEnumerable<object> addresses, IEnumerable<object> emailAddresses, IEnumerable<object> orgLabors, IEnumerable<object> phones, IEnumerable<object> websites, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -426,7 +426,7 @@ namespace Liferay.SDK.Service.V62.Organization
 			_parameters.Add("orgLabors", orgLabors);
 			_parameters.Add("phones", phones);
 			_parameters.Add("websites", websites);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -435,10 +435,10 @@ namespace Liferay.SDK.Service.V62.Organization
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateOrganizationAsync(long organizationId, long parentOrganizationId, string name, string type, bool recursable, long regionId, long countryId, int statusId, string comments, bool site, IEnumerable<object> addresses, IEnumerable<object> emailAddresses, IEnumerable<object> orgLabors, IEnumerable<object> phones, IEnumerable<object> websites, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateOrganizationAsync(long organizationId, long parentOrganizationId, string name, string type, bool recursable, long regionId, long countryId, int statusId, string comments, bool site, IEnumerable<object> addresses, IEnumerable<object> emailAddresses, IEnumerable<object> orgLabors, IEnumerable<object> phones, IEnumerable<object> websites, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -457,7 +457,7 @@ namespace Liferay.SDK.Service.V62.Organization
 			_parameters.Add("orgLabors", orgLabors);
 			_parameters.Add("phones", phones);
 			_parameters.Add("websites", websites);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -466,7 +466,7 @@ namespace Liferay.SDK.Service.V62.Organization
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.LayoutPrototype
 		{
 		}
 
-		public async Task<dynamic> AddLayoutPrototypeAsync(IDictionary<string, string> nameMap, string description, bool active)
+		public async Task<IDictionary<string, object>> AddLayoutPrototypeAsync(IDictionary<string, string> nameMap, string description, bool active)
 		{
 			var _parameters = new JsonObject();
 
@@ -42,17 +42,17 @@ namespace Liferay.SDK.Service.V62.LayoutPrototype
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddLayoutPrototypeAsync(IDictionary<string, string> nameMap, string description, bool active, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddLayoutPrototypeAsync(IDictionary<string, string> nameMap, string description, bool active, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("nameMap", nameMap);
 			_parameters.Add("description", description);
 			_parameters.Add("active", active);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -61,7 +61,7 @@ namespace Liferay.SDK.Service.V62.LayoutPrototype
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteLayoutPrototypeAsync(long layoutPrototypeId)
@@ -78,7 +78,7 @@ namespace Liferay.SDK.Service.V62.LayoutPrototype
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetLayoutPrototypeAsync(long layoutPrototypeId)
+		public async Task<IDictionary<string, object>> GetLayoutPrototypeAsync(long layoutPrototypeId)
 		{
 			var _parameters = new JsonObject();
 
@@ -91,16 +91,16 @@ namespace Liferay.SDK.Service.V62.LayoutPrototype
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long companyId, JsonObjectWrapper active, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> SearchAsync(long companyId, IDictionary<string, object> active, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("companyId", companyId);
-			this.MangleWrapper(_parameters, "active", "java.lang.Boolean", active);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("active", active);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -109,10 +109,10 @@ namespace Liferay.SDK.Service.V62.LayoutPrototype
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateLayoutPrototypeAsync(long layoutPrototypeId, IDictionary<string, string> nameMap, string description, bool active)
+		public async Task<IDictionary<string, object>> UpdateLayoutPrototypeAsync(long layoutPrototypeId, IDictionary<string, string> nameMap, string description, bool active)
 		{
 			var _parameters = new JsonObject();
 
@@ -128,10 +128,10 @@ namespace Liferay.SDK.Service.V62.LayoutPrototype
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateLayoutPrototypeAsync(long layoutPrototypeId, IDictionary<string, string> nameMap, string description, bool active, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateLayoutPrototypeAsync(long layoutPrototypeId, IDictionary<string, string> nameMap, string description, bool active, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -139,7 +139,7 @@ namespace Liferay.SDK.Service.V62.LayoutPrototype
 			_parameters.Add("nameMap", nameMap);
 			_parameters.Add("description", description);
 			_parameters.Add("active", active);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -148,7 +148,7 @@ namespace Liferay.SDK.Service.V62.LayoutPrototype
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

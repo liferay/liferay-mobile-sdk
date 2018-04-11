@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.MBCategory
 		{
 		}
 
-		public async Task<dynamic> AddCategoryAsync(long parentCategoryId, string name, string description, string displayStyle, string emailAddress, string inProtocol, string inServerName, int inServerPort, bool inUseSSL, string inUserName, string inPassword, int inReadInterval, string outEmailAddress, bool outCustom, string outServerName, int outServerPort, bool outUseSSL, string outUserName, string outPassword, bool mailingListActive, bool allowAnonymousEmail, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddCategoryAsync(long parentCategoryId, string name, string description, string displayStyle, string emailAddress, string inProtocol, string inServerName, int inServerPort, bool inUseSSL, string inUserName, string inPassword, int inReadInterval, string outEmailAddress, bool outCustom, string outServerName, int outServerPort, bool outUseSSL, string outUserName, string outPassword, bool mailingListActive, bool allowAnonymousEmail, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -52,7 +52,7 @@ namespace Liferay.SDK.Service.V62.MBCategory
 			_parameters.Add("outPassword", outPassword);
 			_parameters.Add("mailingListActive", mailingListActive);
 			_parameters.Add("allowAnonymousEmail", allowAnonymousEmail);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -61,10 +61,10 @@ namespace Liferay.SDK.Service.V62.MBCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddCategoryAsync(long userId, long parentCategoryId, string name, string description, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddCategoryAsync(long userId, long parentCategoryId, string name, string description, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -72,7 +72,7 @@ namespace Liferay.SDK.Service.V62.MBCategory
 			_parameters.Add("parentCategoryId", parentCategoryId);
 			_parameters.Add("name", name);
 			_parameters.Add("description", description);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -81,7 +81,7 @@ namespace Liferay.SDK.Service.V62.MBCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteCategoryAsync(long categoryId, bool includeTrashedEntries)
@@ -114,7 +114,7 @@ namespace Liferay.SDK.Service.V62.MBCategory
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetCategoriesAsync(long groupId)
+		public async Task<IDictionary<string, object>> GetCategoriesAsync(long groupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -127,10 +127,10 @@ namespace Liferay.SDK.Service.V62.MBCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetCategoriesAsync(long groupId, int status)
+		public async Task<IDictionary<string, object>> GetCategoriesAsync(long groupId, int status)
 		{
 			var _parameters = new JsonObject();
 
@@ -144,10 +144,10 @@ namespace Liferay.SDK.Service.V62.MBCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetCategoriesAsync(long groupId, long parentCategoryId, int start, int end)
+		public async Task<IDictionary<string, object>> GetCategoriesAsync(long groupId, long parentCategoryId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -163,10 +163,10 @@ namespace Liferay.SDK.Service.V62.MBCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetCategoriesAsync(long groupId, IEnumerable<long> parentCategoryIds, int start, int end)
+		public async Task<IDictionary<string, object>> GetCategoriesAsync(long groupId, IEnumerable<long> parentCategoryIds, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -182,10 +182,10 @@ namespace Liferay.SDK.Service.V62.MBCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetCategoriesAsync(long groupId, long parentCategoryId, int status, int start, int end)
+		public async Task<IDictionary<string, object>> GetCategoriesAsync(long groupId, long parentCategoryId, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -202,10 +202,10 @@ namespace Liferay.SDK.Service.V62.MBCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetCategoriesAsync(long groupId, IEnumerable<long> parentCategoryIds, int status, int start, int end)
+		public async Task<IDictionary<string, object>> GetCategoriesAsync(long groupId, IEnumerable<long> parentCategoryIds, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -222,7 +222,7 @@ namespace Liferay.SDK.Service.V62.MBCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetCategoriesCountAsync(long groupId, long parentCategoryId)
@@ -295,7 +295,7 @@ namespace Liferay.SDK.Service.V62.MBCategory
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> GetCategoryAsync(long categoryId)
+		public async Task<IDictionary<string, object>> GetCategoryAsync(long categoryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -308,7 +308,7 @@ namespace Liferay.SDK.Service.V62.MBCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<IEnumerable<long>> GetCategoryIdsAsync(long groupId, long categoryId)
@@ -330,7 +330,7 @@ namespace Liferay.SDK.Service.V62.MBCategory
 			return _jsonArray.Cast<long>();
 		}
 
-		public async Task<IEnumerable<dynamic>> GetSubcategoryIdsAsync(IEnumerable<object> categoryIds, long groupId, long categoryId)
+		public async Task<IDictionary<string, object>> GetSubcategoryIdsAsync(IEnumerable<object> categoryIds, long groupId, long categoryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -345,10 +345,10 @@ namespace Liferay.SDK.Service.V62.MBCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetSubscribedCategoriesAsync(long groupId, long userId, int start, int end)
+		public async Task<IDictionary<string, object>> GetSubscribedCategoriesAsync(long groupId, long userId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -364,7 +364,7 @@ namespace Liferay.SDK.Service.V62.MBCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetSubscribedCategoriesCountAsync(long groupId, long userId)
@@ -384,7 +384,7 @@ namespace Liferay.SDK.Service.V62.MBCategory
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> MoveCategoryAsync(long categoryId, long parentCategoryId, bool mergeWithParentCategory)
+		public async Task<IDictionary<string, object>> MoveCategoryAsync(long categoryId, long parentCategoryId, bool mergeWithParentCategory)
 		{
 			var _parameters = new JsonObject();
 
@@ -399,10 +399,10 @@ namespace Liferay.SDK.Service.V62.MBCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> MoveCategoryFromTrashAsync(long categoryId, long newCategoryId)
+		public async Task<IDictionary<string, object>> MoveCategoryFromTrashAsync(long categoryId, long newCategoryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -416,10 +416,10 @@ namespace Liferay.SDK.Service.V62.MBCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> MoveCategoryToTrashAsync(long categoryId)
+		public async Task<IDictionary<string, object>> MoveCategoryToTrashAsync(long categoryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -432,7 +432,7 @@ namespace Liferay.SDK.Service.V62.MBCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task RestoreCategoryFromTrashAsync(long categoryId)
@@ -479,7 +479,7 @@ namespace Liferay.SDK.Service.V62.MBCategory
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateCategoryAsync(long categoryId, long parentCategoryId, string name, string description, string displayStyle, string emailAddress, string inProtocol, string inServerName, int inServerPort, bool inUseSSL, string inUserName, string inPassword, int inReadInterval, string outEmailAddress, bool outCustom, string outServerName, int outServerPort, bool outUseSSL, string outUserName, string outPassword, bool mailingListActive, bool allowAnonymousEmail, bool mergeWithParentCategory, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateCategoryAsync(long categoryId, long parentCategoryId, string name, string description, string displayStyle, string emailAddress, string inProtocol, string inServerName, int inServerPort, bool inUseSSL, string inUserName, string inPassword, int inReadInterval, string outEmailAddress, bool outCustom, string outServerName, int outServerPort, bool outUseSSL, string outUserName, string outPassword, bool mailingListActive, bool allowAnonymousEmail, bool mergeWithParentCategory, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -506,7 +506,7 @@ namespace Liferay.SDK.Service.V62.MBCategory
 			_parameters.Add("mailingListActive", mailingListActive);
 			_parameters.Add("allowAnonymousEmail", allowAnonymousEmail);
 			_parameters.Add("mergeWithParentCategory", mergeWithParentCategory);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -515,7 +515,7 @@ namespace Liferay.SDK.Service.V62.MBCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

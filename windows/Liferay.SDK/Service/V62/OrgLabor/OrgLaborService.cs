@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.OrgLabor
 		{
 		}
 
-		public async Task<dynamic> AddOrgLaborAsync(long organizationId, int typeId, int sunOpen, int sunClose, int monOpen, int monClose, int tueOpen, int tueClose, int wedOpen, int wedClose, int thuOpen, int thuClose, int friOpen, int friClose, int satOpen, int satClose)
+		public async Task<IDictionary<string, object>> AddOrgLaborAsync(long organizationId, int typeId, int sunOpen, int sunClose, int monOpen, int monClose, int tueOpen, int tueClose, int wedOpen, int wedClose, int thuOpen, int thuClose, int friOpen, int friClose, int satOpen, int satClose)
 		{
 			var _parameters = new JsonObject();
 
@@ -55,7 +55,7 @@ namespace Liferay.SDK.Service.V62.OrgLabor
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteOrgLaborAsync(long orgLaborId)
@@ -72,7 +72,7 @@ namespace Liferay.SDK.Service.V62.OrgLabor
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetOrgLaborAsync(long orgLaborId)
+		public async Task<IDictionary<string, object>> GetOrgLaborAsync(long orgLaborId)
 		{
 			var _parameters = new JsonObject();
 
@@ -85,10 +85,10 @@ namespace Liferay.SDK.Service.V62.OrgLabor
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetOrgLaborsAsync(long organizationId)
+		public async Task<IDictionary<string, object>> GetOrgLaborsAsync(long organizationId)
 		{
 			var _parameters = new JsonObject();
 
@@ -101,10 +101,10 @@ namespace Liferay.SDK.Service.V62.OrgLabor
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateOrgLaborAsync(long orgLaborId, int typeId, int sunOpen, int sunClose, int monOpen, int monClose, int tueOpen, int tueClose, int wedOpen, int wedClose, int thuOpen, int thuClose, int friOpen, int friClose, int satOpen, int satClose)
+		public async Task<IDictionary<string, object>> UpdateOrgLaborAsync(long orgLaborId, int typeId, int sunOpen, int sunClose, int monOpen, int monClose, int tueOpen, int tueClose, int wedOpen, int wedClose, int thuOpen, int thuClose, int friOpen, int friClose, int satOpen, int satClose)
 		{
 			var _parameters = new JsonObject();
 
@@ -132,7 +132,7 @@ namespace Liferay.SDK.Service.V62.OrgLabor
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

@@ -27,13 +27,13 @@ namespace Liferay.SDK.Service.V62.MembershipRequest
 		{
 		}
 
-		public async Task<dynamic> AddMembershipRequestAsync(long groupId, string comments, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddMembershipRequestAsync(long groupId, string comments, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("comments", comments);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -42,7 +42,7 @@ namespace Liferay.SDK.Service.V62.MembershipRequest
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteMembershipRequestsAsync(long groupId, int statusId)
@@ -60,7 +60,7 @@ namespace Liferay.SDK.Service.V62.MembershipRequest
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetMembershipRequestAsync(long membershipRequestId)
+		public async Task<IDictionary<string, object>> GetMembershipRequestAsync(long membershipRequestId)
 		{
 			var _parameters = new JsonObject();
 
@@ -73,17 +73,17 @@ namespace Liferay.SDK.Service.V62.MembershipRequest
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task UpdateStatusAsync(long membershipRequestId, string reviewComments, int statusId, JsonObjectWrapper serviceContext)
+		public async Task UpdateStatusAsync(long membershipRequestId, string reviewComments, int statusId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("membershipRequestId", membershipRequestId);
 			_parameters.Add("reviewComments", reviewComments);
 			_parameters.Add("statusId", statusId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{

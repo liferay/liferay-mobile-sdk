@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.Team
 		{
 		}
 
-		public async Task<dynamic> AddTeamAsync(long groupId, string name, string description)
+		public async Task<IDictionary<string, object>> AddTeamAsync(long groupId, string name, string description)
 		{
 			var _parameters = new JsonObject();
 
@@ -42,7 +42,7 @@ namespace Liferay.SDK.Service.V62.Team
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteTeamAsync(long teamId)
@@ -59,7 +59,7 @@ namespace Liferay.SDK.Service.V62.Team
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupTeamsAsync(long groupId)
+		public async Task<IDictionary<string, object>> GetGroupTeamsAsync(long groupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -72,10 +72,10 @@ namespace Liferay.SDK.Service.V62.Team
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetTeamAsync(long teamId)
+		public async Task<IDictionary<string, object>> GetTeamAsync(long teamId)
 		{
 			var _parameters = new JsonObject();
 
@@ -88,10 +88,10 @@ namespace Liferay.SDK.Service.V62.Team
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetTeamAsync(long groupId, string name)
+		public async Task<IDictionary<string, object>> GetTeamAsync(long groupId, string name)
 		{
 			var _parameters = new JsonObject();
 
@@ -105,10 +105,10 @@ namespace Liferay.SDK.Service.V62.Team
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserTeamsAsync(long userId)
+		public async Task<IDictionary<string, object>> GetUserTeamsAsync(long userId)
 		{
 			var _parameters = new JsonObject();
 
@@ -121,10 +121,10 @@ namespace Liferay.SDK.Service.V62.Team
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserTeamsAsync(long userId, long groupId)
+		public async Task<IDictionary<string, object>> GetUserTeamsAsync(long userId, long groupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -138,7 +138,7 @@ namespace Liferay.SDK.Service.V62.Team
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<bool> HasUserTeamAsync(long userId, long teamId)
@@ -158,7 +158,7 @@ namespace Liferay.SDK.Service.V62.Team
 			return (bool)_obj;
 		}
 
-		public async Task<dynamic> UpdateTeamAsync(long teamId, string name, string description)
+		public async Task<IDictionary<string, object>> UpdateTeamAsync(long teamId, string name, string description)
 		{
 			var _parameters = new JsonObject();
 
@@ -173,7 +173,7 @@ namespace Liferay.SDK.Service.V62.Team
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

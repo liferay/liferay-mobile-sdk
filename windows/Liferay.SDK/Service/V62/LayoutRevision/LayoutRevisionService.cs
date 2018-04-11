@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.LayoutRevision
 		{
 		}
 
-		public async Task<dynamic> AddLayoutRevisionAsync(long userId, long layoutSetBranchId, long layoutBranchId, long parentLayoutRevisionId, bool head, long plid, long portletPreferencesPlid, bool privateLayout, string name, string title, string description, string keywords, string robots, string typeSettings, bool iconImage, long iconImageId, string themeId, string colorSchemeId, string wapThemeId, string wapColorSchemeId, string css, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddLayoutRevisionAsync(long userId, long layoutSetBranchId, long layoutBranchId, long parentLayoutRevisionId, bool head, long plid, long portletPreferencesPlid, bool privateLayout, string name, string title, string description, string keywords, string robots, string typeSettings, bool iconImage, long iconImageId, string themeId, string colorSchemeId, string wapThemeId, string wapColorSchemeId, string css, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -52,7 +52,7 @@ namespace Liferay.SDK.Service.V62.LayoutRevision
 			_parameters.Add("wapThemeId", wapThemeId);
 			_parameters.Add("wapColorSchemeId", wapColorSchemeId);
 			_parameters.Add("css", css);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -61,7 +61,7 @@ namespace Liferay.SDK.Service.V62.LayoutRevision
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

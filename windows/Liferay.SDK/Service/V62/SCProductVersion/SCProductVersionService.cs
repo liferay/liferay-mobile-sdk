@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.SCProductVersion
 		{
 		}
 
-		public async Task<dynamic> AddProductVersionAsync(long productEntryId, string version, string changeLog, string downloadPageURL, string directDownloadURL, bool testDirectDownloadURL, bool repoStoreArtifact, IEnumerable<long> frameworkVersionIds, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddProductVersionAsync(long productEntryId, string version, string changeLog, string downloadPageURL, string directDownloadURL, bool testDirectDownloadURL, bool repoStoreArtifact, IEnumerable<long> frameworkVersionIds, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -39,7 +39,7 @@ namespace Liferay.SDK.Service.V62.SCProductVersion
 			_parameters.Add("testDirectDownloadURL", testDirectDownloadURL);
 			_parameters.Add("repoStoreArtifact", repoStoreArtifact);
 			_parameters.Add("frameworkVersionIds", frameworkVersionIds);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -48,7 +48,7 @@ namespace Liferay.SDK.Service.V62.SCProductVersion
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteProductVersionAsync(long productVersionId)
@@ -65,7 +65,7 @@ namespace Liferay.SDK.Service.V62.SCProductVersion
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetProductVersionAsync(long productVersionId)
+		public async Task<IDictionary<string, object>> GetProductVersionAsync(long productVersionId)
 		{
 			var _parameters = new JsonObject();
 
@@ -78,10 +78,10 @@ namespace Liferay.SDK.Service.V62.SCProductVersion
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetProductVersionsAsync(long productEntryId, int start, int end)
+		public async Task<IDictionary<string, object>> GetProductVersionsAsync(long productEntryId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -96,7 +96,7 @@ namespace Liferay.SDK.Service.V62.SCProductVersion
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetProductVersionsCountAsync(long productEntryId)
@@ -115,7 +115,7 @@ namespace Liferay.SDK.Service.V62.SCProductVersion
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> UpdateProductVersionAsync(long productVersionId, string version, string changeLog, string downloadPageURL, string directDownloadURL, bool testDirectDownloadURL, bool repoStoreArtifact, IEnumerable<long> frameworkVersionIds)
+		public async Task<IDictionary<string, object>> UpdateProductVersionAsync(long productVersionId, string version, string changeLog, string downloadPageURL, string directDownloadURL, bool testDirectDownloadURL, bool repoStoreArtifact, IEnumerable<long> frameworkVersionIds)
 		{
 			var _parameters = new JsonObject();
 
@@ -135,7 +135,7 @@ namespace Liferay.SDK.Service.V62.SCProductVersion
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

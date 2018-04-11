@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.Layout
 		{
 		}
 
-		public async Task<dynamic> AddLayoutAsync(long groupId, bool privateLayout, long parentLayoutId, string name, string title, string description, string type, bool hidden, string friendlyURL, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddLayoutAsync(long groupId, bool privateLayout, long parentLayoutId, string name, string title, string description, string type, bool hidden, string friendlyURL, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -40,7 +40,7 @@ namespace Liferay.SDK.Service.V62.Layout
 			_parameters.Add("type", type);
 			_parameters.Add("hidden", hidden);
 			_parameters.Add("friendlyURL", friendlyURL);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -49,10 +49,10 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddLayoutAsync(long groupId, bool privateLayout, long parentLayoutId, IDictionary<string, string> localeNamesMap, IDictionary<string, string> localeTitlesMap, IDictionary<string, string> descriptionMap, IDictionary<string, string> keywordsMap, IDictionary<string, string> robotsMap, string type, bool hidden, string friendlyURL, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddLayoutAsync(long groupId, bool privateLayout, long parentLayoutId, IDictionary<string, string> localeNamesMap, IDictionary<string, string> localeTitlesMap, IDictionary<string, string> descriptionMap, IDictionary<string, string> keywordsMap, IDictionary<string, string> robotsMap, string type, bool hidden, string friendlyURL, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -67,7 +67,7 @@ namespace Liferay.SDK.Service.V62.Layout
 			_parameters.Add("type", type);
 			_parameters.Add("hidden", hidden);
 			_parameters.Add("friendlyURL", friendlyURL);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -76,10 +76,10 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddLayoutAsync(long groupId, bool privateLayout, long parentLayoutId, IDictionary<string, string> localeNamesMap, IDictionary<string, string> localeTitlesMap, IDictionary<string, string> descriptionMap, IDictionary<string, string> keywordsMap, IDictionary<string, string> robotsMap, string type, string typeSettings, bool hidden, IDictionary<string, string> friendlyURLMap, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddLayoutAsync(long groupId, bool privateLayout, long parentLayoutId, IDictionary<string, string> localeNamesMap, IDictionary<string, string> localeTitlesMap, IDictionary<string, string> descriptionMap, IDictionary<string, string> keywordsMap, IDictionary<string, string> robotsMap, string type, string typeSettings, bool hidden, IDictionary<string, string> friendlyURLMap, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -95,7 +95,7 @@ namespace Liferay.SDK.Service.V62.Layout
 			_parameters.Add("typeSettings", typeSettings);
 			_parameters.Add("hidden", hidden);
 			_parameters.Add("friendlyURLMap", friendlyURLMap);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -104,15 +104,15 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task DeleteLayoutAsync(long plid, JsonObjectWrapper serviceContext)
+		public async Task DeleteLayoutAsync(long plid, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("plid", plid);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -122,14 +122,14 @@ namespace Liferay.SDK.Service.V62.Layout
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task DeleteLayoutAsync(long groupId, bool privateLayout, long layoutId, JsonObjectWrapper serviceContext)
+		public async Task DeleteLayoutAsync(long groupId, bool privateLayout, long layoutId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("groupId", groupId);
 			_parameters.Add("privateLayout", privateLayout);
 			_parameters.Add("layoutId", layoutId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -196,7 +196,7 @@ namespace Liferay.SDK.Service.V62.Layout
 			return (byte[])_obj;
 		}
 
-		public async Task<Stream> ExportLayoutsAsFileAsync(long groupId, bool privateLayout, IEnumerable<long> layoutIds, IDictionary<string, object> parameterMap, long startDate, long endDate)
+		public async Task<IDictionary<string, object>> ExportLayoutsAsFileAsync(long groupId, bool privateLayout, IEnumerable<long> layoutIds, IDictionary<string, object> parameterMap, long startDate, long endDate)
 		{
 			var _parameters = new JsonObject();
 
@@ -214,7 +214,7 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (Stream)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> ExportLayoutsAsFileInBackgroundAsync(string taskName, long groupId, bool privateLayout, IEnumerable<long> layoutIds, IDictionary<string, object> parameterMap, long startDate, long endDate, string fileName)
@@ -281,7 +281,7 @@ namespace Liferay.SDK.Service.V62.Layout
 			return (byte[])_obj;
 		}
 
-		public async Task<Stream> ExportPortletInfoAsFileAsync(string portletId, IDictionary<string, object> parameterMap, long startDate, long endDate)
+		public async Task<IDictionary<string, object>> ExportPortletInfoAsFileAsync(string portletId, IDictionary<string, object> parameterMap, long startDate, long endDate)
 		{
 			var _parameters = new JsonObject();
 
@@ -297,10 +297,10 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (Stream)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<Stream> ExportPortletInfoAsFileAsync(long plid, long groupId, string portletId, IDictionary<string, object> parameterMap, long startDate, long endDate)
+		public async Task<IDictionary<string, object>> ExportPortletInfoAsFileAsync(long plid, long groupId, string portletId, IDictionary<string, object> parameterMap, long startDate, long endDate)
 		{
 			var _parameters = new JsonObject();
 
@@ -318,7 +318,7 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (Stream)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> ExportPortletInfoAsFileInBackgroundAsync(string taskName, string portletId, IDictionary<string, object> parameterMap, long startDate, long endDate, string fileName)
@@ -365,7 +365,7 @@ namespace Liferay.SDK.Service.V62.Layout
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetAncestorLayoutsAsync(long plid)
+		public async Task<IDictionary<string, object>> GetAncestorLayoutsAsync(long plid)
 		{
 			var _parameters = new JsonObject();
 
@@ -378,7 +378,7 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetDefaultPlidAsync(long groupId, long scopeGroupId, string portletId)
@@ -418,7 +418,7 @@ namespace Liferay.SDK.Service.V62.Layout
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> GetLayoutByUuidAndGroupIdAsync(string uuid, long groupId, bool privateLayout)
+		public async Task<IDictionary<string, object>> GetLayoutByUuidAndGroupIdAsync(string uuid, long groupId, bool privateLayout)
 		{
 			var _parameters = new JsonObject();
 
@@ -433,7 +433,7 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<string> GetLayoutNameAsync(long groupId, bool privateLayout, long layoutId, string languageId)
@@ -474,7 +474,7 @@ namespace Liferay.SDK.Service.V62.Layout
 			return (IEnumerable<dynamic>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetLayoutsAsync(long groupId, bool privateLayout)
+		public async Task<IDictionary<string, object>> GetLayoutsAsync(long groupId, bool privateLayout)
 		{
 			var _parameters = new JsonObject();
 
@@ -488,10 +488,10 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetLayoutsAsync(long groupId, bool privateLayout, long parentLayoutId)
+		public async Task<IDictionary<string, object>> GetLayoutsAsync(long groupId, bool privateLayout, long parentLayoutId)
 		{
 			var _parameters = new JsonObject();
 
@@ -506,10 +506,10 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetLayoutsAsync(long groupId, bool privateLayout, long parentLayoutId, bool incomplete, int start, int end)
+		public async Task<IDictionary<string, object>> GetLayoutsAsync(long groupId, bool privateLayout, long parentLayoutId, bool incomplete, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -527,7 +527,7 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetLayoutsCountAsync(long groupId, bool privateLayout, long parentLayoutId)
@@ -584,7 +584,7 @@ namespace Liferay.SDK.Service.V62.Layout
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task ImportLayoutsAsync(long groupId, bool privateLayout, IDictionary<string, object> parameterMap, Stream file)
+		public async Task ImportLayoutsAsync(long groupId, bool privateLayout, IDictionary<string, object> parameterMap, IDictionary<string, object> file)
 		{
 			var _parameters = new JsonObject();
 
@@ -598,10 +598,10 @@ namespace Liferay.SDK.Service.V62.Layout
 				{ "/layout/import-layouts", _parameters }
 			};
 
-			await this.Session.UploadAsync(_command);
+			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<long> ImportLayoutsInBackgroundAsync(string taskName, long groupId, bool privateLayout, IDictionary<string, object> parameterMap, Stream file)
+		public async Task<long> ImportLayoutsInBackgroundAsync(string taskName, long groupId, bool privateLayout, IDictionary<string, object> parameterMap, IDictionary<string, object> file)
 		{
 			var _parameters = new JsonObject();
 
@@ -616,12 +616,12 @@ namespace Liferay.SDK.Service.V62.Layout
 				{ "/layout/import-layouts-in-background", _parameters }
 			};
 
-			var _obj = await this.Session.UploadAsync(_command);
+			var _obj = await this.Session.InvokeAsync(_command);
 
 			return (long)_obj;
 		}
 
-		public async Task ImportPortletInfoAsync(string portletId, IDictionary<string, object> parameterMap, Stream file)
+		public async Task ImportPortletInfoAsync(string portletId, IDictionary<string, object> parameterMap, IDictionary<string, object> file)
 		{
 			var _parameters = new JsonObject();
 
@@ -634,10 +634,10 @@ namespace Liferay.SDK.Service.V62.Layout
 				{ "/layout/import-portlet-info", _parameters }
 			};
 
-			await this.Session.UploadAsync(_command);
+			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task ImportPortletInfoAsync(long plid, long groupId, string portletId, IDictionary<string, object> parameterMap, Stream file)
+		public async Task ImportPortletInfoAsync(long plid, long groupId, string portletId, IDictionary<string, object> parameterMap, IDictionary<string, object> file)
 		{
 			var _parameters = new JsonObject();
 
@@ -652,10 +652,10 @@ namespace Liferay.SDK.Service.V62.Layout
 				{ "/layout/import-portlet-info", _parameters }
 			};
 
-			await this.Session.UploadAsync(_command);
+			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task ImportPortletInfoInBackgroundAsync(string taskName, string portletId, IDictionary<string, object> parameterMap, Stream file)
+		public async Task ImportPortletInfoInBackgroundAsync(string taskName, string portletId, IDictionary<string, object> parameterMap, IDictionary<string, object> file)
 		{
 			var _parameters = new JsonObject();
 
@@ -669,10 +669,10 @@ namespace Liferay.SDK.Service.V62.Layout
 				{ "/layout/import-portlet-info-in-background", _parameters }
 			};
 
-			await this.Session.UploadAsync(_command);
+			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<long> ImportPortletInfoInBackgroundAsync(string taskName, long plid, long groupId, string portletId, IDictionary<string, object> parameterMap, Stream file)
+		public async Task<long> ImportPortletInfoInBackgroundAsync(string taskName, long plid, long groupId, string portletId, IDictionary<string, object> parameterMap, IDictionary<string, object> file)
 		{
 			var _parameters = new JsonObject();
 
@@ -688,7 +688,7 @@ namespace Liferay.SDK.Service.V62.Layout
 				{ "/layout/import-portlet-info-in-background", _parameters }
 			};
 
-			var _obj = await this.Session.UploadAsync(_command);
+			var _obj = await this.Session.InvokeAsync(_command);
 
 			return (long)_obj;
 		}
@@ -749,7 +749,7 @@ namespace Liferay.SDK.Service.V62.Layout
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task SetLayoutsAsync(long groupId, bool privateLayout, long parentLayoutId, IEnumerable<long> layoutIds, JsonObjectWrapper serviceContext)
+		public async Task SetLayoutsAsync(long groupId, bool privateLayout, long parentLayoutId, IEnumerable<long> layoutIds, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -757,7 +757,7 @@ namespace Liferay.SDK.Service.V62.Layout
 			_parameters.Add("privateLayout", privateLayout);
 			_parameters.Add("parentLayoutId", parentLayoutId);
 			_parameters.Add("layoutIds", layoutIds);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -799,7 +799,7 @@ namespace Liferay.SDK.Service.V62.Layout
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateLayoutAsync(long groupId, bool privateLayout, long layoutId, long parentLayoutId, IDictionary<string, string> localeNamesMap, IDictionary<string, string> localeTitlesMap, IDictionary<string, string> descriptionMap, IDictionary<string, string> keywordsMap, IDictionary<string, string> robotsMap, string type, bool hidden, string friendlyURL, JsonObjectWrapper iconImage, byte[] iconBytes, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateLayoutAsync(long groupId, bool privateLayout, long layoutId, long parentLayoutId, IDictionary<string, string> localeNamesMap, IDictionary<string, string> localeTitlesMap, IDictionary<string, string> descriptionMap, IDictionary<string, string> keywordsMap, IDictionary<string, string> robotsMap, string type, bool hidden, string friendlyURL, IDictionary<string, object> iconImage, byte[] iconBytes, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -815,9 +815,9 @@ namespace Liferay.SDK.Service.V62.Layout
 			_parameters.Add("type", type);
 			_parameters.Add("hidden", hidden);
 			_parameters.Add("friendlyURL", friendlyURL);
-			this.MangleWrapper(_parameters, "iconImage", "java.lang.Boolean", iconImage);
+			_parameters.Add("iconImage", iconImage);
 			_parameters.Add("iconBytes", iconBytes);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -826,10 +826,10 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateLayoutAsync(long groupId, bool privateLayout, long layoutId, long parentLayoutId, IDictionary<string, string> localeNamesMap, IDictionary<string, string> localeTitlesMap, IDictionary<string, string> descriptionMap, IDictionary<string, string> keywordsMap, IDictionary<string, string> robotsMap, string type, bool hidden, IDictionary<string, string> friendlyURLMap, JsonObjectWrapper iconImage, byte[] iconBytes, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateLayoutAsync(long groupId, bool privateLayout, long layoutId, long parentLayoutId, IDictionary<string, string> localeNamesMap, IDictionary<string, string> localeTitlesMap, IDictionary<string, string> descriptionMap, IDictionary<string, string> keywordsMap, IDictionary<string, string> robotsMap, string type, bool hidden, IDictionary<string, string> friendlyURLMap, IDictionary<string, object> iconImage, byte[] iconBytes, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -845,9 +845,9 @@ namespace Liferay.SDK.Service.V62.Layout
 			_parameters.Add("type", type);
 			_parameters.Add("hidden", hidden);
 			_parameters.Add("friendlyURLMap", friendlyURLMap);
-			this.MangleWrapper(_parameters, "iconImage", "java.lang.Boolean", iconImage);
+			_parameters.Add("iconImage", iconImage);
 			_parameters.Add("iconBytes", iconBytes);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -856,10 +856,10 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateLayoutAsync(long groupId, bool privateLayout, long layoutId, string typeSettings)
+		public async Task<IDictionary<string, object>> UpdateLayoutAsync(long groupId, bool privateLayout, long layoutId, string typeSettings)
 		{
 			var _parameters = new JsonObject();
 
@@ -875,10 +875,10 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateLookAndFeelAsync(long groupId, bool privateLayout, long layoutId, string themeId, string colorSchemeId, string css, bool wapTheme)
+		public async Task<IDictionary<string, object>> UpdateLookAndFeelAsync(long groupId, bool privateLayout, long layoutId, string themeId, string colorSchemeId, string css, bool wapTheme)
 		{
 			var _parameters = new JsonObject();
 
@@ -897,10 +897,10 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateNameAsync(long plid, string name, string languageId)
+		public async Task<IDictionary<string, object>> UpdateNameAsync(long plid, string name, string languageId)
 		{
 			var _parameters = new JsonObject();
 
@@ -915,10 +915,10 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateNameAsync(long groupId, bool privateLayout, long layoutId, string name, string languageId)
+		public async Task<IDictionary<string, object>> UpdateNameAsync(long groupId, bool privateLayout, long layoutId, string name, string languageId)
 		{
 			var _parameters = new JsonObject();
 
@@ -935,10 +935,10 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateParentLayoutIdAsync(long plid, long parentPlid)
+		public async Task<IDictionary<string, object>> UpdateParentLayoutIdAsync(long plid, long parentPlid)
 		{
 			var _parameters = new JsonObject();
 
@@ -952,10 +952,10 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateParentLayoutIdAsync(long groupId, bool privateLayout, long layoutId, long parentLayoutId)
+		public async Task<IDictionary<string, object>> UpdateParentLayoutIdAsync(long groupId, bool privateLayout, long layoutId, long parentLayoutId)
 		{
 			var _parameters = new JsonObject();
 
@@ -971,10 +971,10 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateParentLayoutIdAndPriorityAsync(long plid, long parentPlid, int priority)
+		public async Task<IDictionary<string, object>> UpdateParentLayoutIdAndPriorityAsync(long plid, long parentPlid, int priority)
 		{
 			var _parameters = new JsonObject();
 
@@ -989,10 +989,10 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdatePriorityAsync(long plid, int priority)
+		public async Task<IDictionary<string, object>> UpdatePriorityAsync(long plid, int priority)
 		{
 			var _parameters = new JsonObject();
 
@@ -1006,10 +1006,10 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdatePriorityAsync(long groupId, bool privateLayout, long layoutId, int priority)
+		public async Task<IDictionary<string, object>> UpdatePriorityAsync(long groupId, bool privateLayout, long layoutId, int priority)
 		{
 			var _parameters = new JsonObject();
 
@@ -1025,10 +1025,10 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdatePriorityAsync(long groupId, bool privateLayout, long layoutId, long nextLayoutId, long previousLayoutId)
+		public async Task<IDictionary<string, object>> UpdatePriorityAsync(long groupId, bool privateLayout, long layoutId, long nextLayoutId, long previousLayoutId)
 		{
 			var _parameters = new JsonObject();
 
@@ -1045,10 +1045,10 @@ namespace Liferay.SDK.Service.V62.Layout
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> ValidateImportLayoutsFileAsync(long groupId, bool privateLayout, IDictionary<string, object> parameterMap, Stream file)
+		public async Task<IDictionary<string, object>> ValidateImportLayoutsFileAsync(long groupId, bool privateLayout, IDictionary<string, object> parameterMap, IDictionary<string, object> file)
 		{
 			var _parameters = new JsonObject();
 
@@ -1062,12 +1062,12 @@ namespace Liferay.SDK.Service.V62.Layout
 				{ "/layout/validate-import-layouts-file", _parameters }
 			};
 
-			var _obj = await this.Session.UploadAsync(_command);
+			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> ValidateImportPortletInfoAsync(long plid, long groupId, string portletId, IDictionary<string, object> parameterMap, Stream file)
+		public async Task<IDictionary<string, object>> ValidateImportPortletInfoAsync(long plid, long groupId, string portletId, IDictionary<string, object> parameterMap, IDictionary<string, object> file)
 		{
 			var _parameters = new JsonObject();
 
@@ -1082,9 +1082,9 @@ namespace Liferay.SDK.Service.V62.Layout
 				{ "/layout/validate-import-portlet-info", _parameters }
 			};
 
-			var _obj = await this.Session.UploadAsync(_command);
+			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.AssetTagProperty
 		{
 		}
 
-		public async Task<dynamic> AddTagPropertyAsync(long tagId, string key, string value)
+		public async Task<IDictionary<string, object>> AddTagPropertyAsync(long tagId, string key, string value)
 		{
 			var _parameters = new JsonObject();
 
@@ -42,7 +42,7 @@ namespace Liferay.SDK.Service.V62.AssetTagProperty
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteTagPropertyAsync(long tagPropertyId)
@@ -59,7 +59,7 @@ namespace Liferay.SDK.Service.V62.AssetTagProperty
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetTagPropertiesAsync(long tagId)
+		public async Task<IDictionary<string, object>> GetTagPropertiesAsync(long tagId)
 		{
 			var _parameters = new JsonObject();
 
@@ -72,10 +72,10 @@ namespace Liferay.SDK.Service.V62.AssetTagProperty
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetTagPropertyValuesAsync(long companyId, string key)
+		public async Task<IDictionary<string, object>> GetTagPropertyValuesAsync(long companyId, string key)
 		{
 			var _parameters = new JsonObject();
 
@@ -89,10 +89,10 @@ namespace Liferay.SDK.Service.V62.AssetTagProperty
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateTagPropertyAsync(long tagPropertyId, string key, string value)
+		public async Task<IDictionary<string, object>> UpdateTagPropertyAsync(long tagPropertyId, string key, string value)
 		{
 			var _parameters = new JsonObject();
 
@@ -107,7 +107,7 @@ namespace Liferay.SDK.Service.V62.AssetTagProperty
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

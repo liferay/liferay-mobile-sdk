@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.Image
 		{
 		}
 
-		public async Task<dynamic> GetImageAsync(long imageId)
+		public async Task<IDictionary<string, object>> GetImageAsync(long imageId)
 		{
 			var _parameters = new JsonObject();
 
@@ -40,7 +40,7 @@ namespace Liferay.SDK.Service.V62.Image
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

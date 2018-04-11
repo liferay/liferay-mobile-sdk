@@ -27,14 +27,14 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 		{
 		}
 
-		public async Task<dynamic> AddFolderAsync(long parentFolderId, string name, string description, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddFolderAsync(long parentFolderId, string name, string description, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("parentFolderId", parentFolderId);
 			_parameters.Add("name", name);
 			_parameters.Add("description", description);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -43,7 +43,7 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteFolderAsync(long folderId)
@@ -75,7 +75,7 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetFolderAsync(long folderId)
+		public async Task<IDictionary<string, object>> GetFolderAsync(long folderId)
 		{
 			var _parameters = new JsonObject();
 
@@ -88,10 +88,10 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetFolderIdsAsync(long groupId, long folderId)
+		public async Task<IDictionary<string, object>> GetFolderIdsAsync(long groupId, long folderId)
 		{
 			var _parameters = new JsonObject();
 
@@ -105,10 +105,10 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetFoldersAsync(long groupId)
+		public async Task<IDictionary<string, object>> GetFoldersAsync(long groupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -121,10 +121,10 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetFoldersAsync(long groupId, long parentFolderId)
+		public async Task<IDictionary<string, object>> GetFoldersAsync(long groupId, long parentFolderId)
 		{
 			var _parameters = new JsonObject();
 
@@ -138,10 +138,10 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetFoldersAsync(long groupId, long parentFolderId, int start, int end)
+		public async Task<IDictionary<string, object>> GetFoldersAsync(long groupId, long parentFolderId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -157,10 +157,10 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetFoldersAsync(long groupId, long parentFolderId, int status, int start, int end)
+		public async Task<IDictionary<string, object>> GetFoldersAsync(long groupId, long parentFolderId, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -177,10 +177,10 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetFoldersAndEntriesAsync(long groupId, long folderId)
+		public async Task<IDictionary<string, object>> GetFoldersAndEntriesAsync(long groupId, long folderId)
 		{
 			var _parameters = new JsonObject();
 
@@ -194,10 +194,10 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetFoldersAndEntriesAsync(long groupId, long folderId, int status)
+		public async Task<IDictionary<string, object>> GetFoldersAndEntriesAsync(long groupId, long folderId, int status)
 		{
 			var _parameters = new JsonObject();
 
@@ -212,10 +212,10 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetFoldersAndEntriesAsync(long groupId, long folderId, int status, int start, int end)
+		public async Task<IDictionary<string, object>> GetFoldersAndEntriesAsync(long groupId, long folderId, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -232,7 +232,7 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetFoldersAndEntriesCountAsync(long groupId, long folderId)
@@ -321,7 +321,7 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetSubfolderIdsAsync(long groupId, long folderId, bool recurse)
+		public async Task<IDictionary<string, object>> GetSubfolderIdsAsync(long groupId, long folderId, bool recurse)
 		{
 			var _parameters = new JsonObject();
 
@@ -336,7 +336,7 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task GetSubfolderIdsAsync(IEnumerable<object> folderIds, long groupId, long folderId, bool recurse)
@@ -356,7 +356,7 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> MoveFolderAsync(long folderId, long parentFolderId)
+		public async Task<IDictionary<string, object>> MoveFolderAsync(long folderId, long parentFolderId)
 		{
 			var _parameters = new JsonObject();
 
@@ -370,10 +370,10 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> MoveFolderFromTrashAsync(long folderId, long parentFolderId)
+		public async Task<IDictionary<string, object>> MoveFolderFromTrashAsync(long folderId, long parentFolderId)
 		{
 			var _parameters = new JsonObject();
 
@@ -387,10 +387,10 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> MoveFolderToTrashAsync(long folderId)
+		public async Task<IDictionary<string, object>> MoveFolderToTrashAsync(long folderId)
 		{
 			var _parameters = new JsonObject();
 
@@ -403,7 +403,7 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task RestoreFolderFromTrashAsync(long folderId)
@@ -450,7 +450,7 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateFolderAsync(long folderId, long parentFolderId, string name, string description, bool mergeWithParentFolder, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateFolderAsync(long folderId, long parentFolderId, string name, string description, bool mergeWithParentFolder, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -459,7 +459,7 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 			_parameters.Add("name", name);
 			_parameters.Add("description", description);
 			_parameters.Add("mergeWithParentFolder", mergeWithParentFolder);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -468,7 +468,7 @@ namespace Liferay.SDK.Service.V62.BookmarksFolder
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

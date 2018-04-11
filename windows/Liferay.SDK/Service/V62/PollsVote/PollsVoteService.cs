@@ -27,13 +27,13 @@ namespace Liferay.SDK.Service.V62.PollsVote
 		{
 		}
 
-		public async Task<dynamic> AddVoteAsync(long questionId, long choiceId, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddVoteAsync(long questionId, long choiceId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("questionId", questionId);
 			_parameters.Add("choiceId", choiceId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -42,7 +42,7 @@ namespace Liferay.SDK.Service.V62.PollsVote
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

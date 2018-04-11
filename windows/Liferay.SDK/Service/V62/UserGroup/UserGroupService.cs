@@ -57,7 +57,7 @@ namespace Liferay.SDK.Service.V62.UserGroup
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> AddUserGroupAsync(string name, string description)
+		public async Task<IDictionary<string, object>> AddUserGroupAsync(string name, string description)
 		{
 			var _parameters = new JsonObject();
 
@@ -71,16 +71,16 @@ namespace Liferay.SDK.Service.V62.UserGroup
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddUserGroupAsync(string name, string description, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddUserGroupAsync(string name, string description, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("name", name);
 			_parameters.Add("description", description);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -89,7 +89,7 @@ namespace Liferay.SDK.Service.V62.UserGroup
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteUserGroupAsync(long userGroupId)
@@ -106,7 +106,7 @@ namespace Liferay.SDK.Service.V62.UserGroup
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetUserGroupAsync(string name)
+		public async Task<IDictionary<string, object>> GetUserGroupAsync(string name)
 		{
 			var _parameters = new JsonObject();
 
@@ -119,10 +119,10 @@ namespace Liferay.SDK.Service.V62.UserGroup
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetUserGroupAsync(long userGroupId)
+		public async Task<IDictionary<string, object>> GetUserGroupAsync(long userGroupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -135,10 +135,10 @@ namespace Liferay.SDK.Service.V62.UserGroup
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserUserGroupsAsync(long userId)
+		public async Task<IDictionary<string, object>> GetUserUserGroupsAsync(long userId)
 		{
 			var _parameters = new JsonObject();
 
@@ -151,7 +151,7 @@ namespace Liferay.SDK.Service.V62.UserGroup
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task UnsetGroupUserGroupsAsync(long groupId, IEnumerable<long> userGroupIds)
@@ -184,7 +184,7 @@ namespace Liferay.SDK.Service.V62.UserGroup
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateUserGroupAsync(long userGroupId, string name, string description)
+		public async Task<IDictionary<string, object>> UpdateUserGroupAsync(long userGroupId, string name, string description)
 		{
 			var _parameters = new JsonObject();
 
@@ -199,17 +199,17 @@ namespace Liferay.SDK.Service.V62.UserGroup
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateUserGroupAsync(long userGroupId, string name, string description, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateUserGroupAsync(long userGroupId, string name, string description, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("userGroupId", userGroupId);
 			_parameters.Add("name", name);
 			_parameters.Add("description", description);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -218,7 +218,7 @@ namespace Liferay.SDK.Service.V62.UserGroup
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.SCFrameworkVersion
 		{
 		}
 
-		public async Task<dynamic> AddFrameworkVersionAsync(string name, string url, bool active, int priority, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddFrameworkVersionAsync(string name, string url, bool active, int priority, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -35,7 +35,7 @@ namespace Liferay.SDK.Service.V62.SCFrameworkVersion
 			_parameters.Add("url", url);
 			_parameters.Add("active", active);
 			_parameters.Add("priority", priority);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -44,7 +44,7 @@ namespace Liferay.SDK.Service.V62.SCFrameworkVersion
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteFrameworkVersionAsync(long frameworkVersionId)
@@ -61,7 +61,7 @@ namespace Liferay.SDK.Service.V62.SCFrameworkVersion
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetFrameworkVersionAsync(long frameworkVersionId)
+		public async Task<IDictionary<string, object>> GetFrameworkVersionAsync(long frameworkVersionId)
 		{
 			var _parameters = new JsonObject();
 
@@ -74,10 +74,10 @@ namespace Liferay.SDK.Service.V62.SCFrameworkVersion
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetFrameworkVersionsAsync(long groupId, bool active)
+		public async Task<IDictionary<string, object>> GetFrameworkVersionsAsync(long groupId, bool active)
 		{
 			var _parameters = new JsonObject();
 
@@ -91,10 +91,10 @@ namespace Liferay.SDK.Service.V62.SCFrameworkVersion
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetFrameworkVersionsAsync(long groupId, bool active, int start, int end)
+		public async Task<IDictionary<string, object>> GetFrameworkVersionsAsync(long groupId, bool active, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -110,10 +110,10 @@ namespace Liferay.SDK.Service.V62.SCFrameworkVersion
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateFrameworkVersionAsync(long frameworkVersionId, string name, string url, bool active, int priority)
+		public async Task<IDictionary<string, object>> UpdateFrameworkVersionAsync(long frameworkVersionId, string name, string url, bool active, int priority)
 		{
 			var _parameters = new JsonObject();
 
@@ -130,7 +130,7 @@ namespace Liferay.SDK.Service.V62.SCFrameworkVersion
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.ExpandoValue
 		{
 		}
 
-		public async Task<dynamic> AddValueAsync(long companyId, string className, string tableName, string columnName, long classPK, string data)
+		public async Task<IDictionary<string, object>> AddValueAsync(long companyId, string className, string tableName, string columnName, long classPK, string data)
 		{
 			var _parameters = new JsonObject();
 
@@ -45,7 +45,7 @@ namespace Liferay.SDK.Service.V62.ExpandoValue
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task AddValuesAsync(long companyId, string className, string tableName, long classPK, IDictionary<string, object> attributeValues)
@@ -86,7 +86,7 @@ namespace Liferay.SDK.Service.V62.ExpandoValue
 			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetDataAsync(long companyId, string className, string tableName, IDictionary<string, object> columnNames, long classPK)
+		public async Task<IDictionary<string, object>> GetDataAsync(long companyId, string className, string tableName, IDictionary<string, object> columnNames, long classPK)
 		{
 			var _parameters = new JsonObject();
 
@@ -103,10 +103,10 @@ namespace Liferay.SDK.Service.V62.ExpandoValue
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetJsonDataAsync(long companyId, string className, string tableName, string columnName, long classPK)
+		public async Task<IDictionary<string, object>> GetJsonDataAsync(long companyId, string className, string tableName, string columnName, long classPK)
 		{
 			var _parameters = new JsonObject();
 
@@ -123,7 +123,7 @@ namespace Liferay.SDK.Service.V62.ExpandoValue
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

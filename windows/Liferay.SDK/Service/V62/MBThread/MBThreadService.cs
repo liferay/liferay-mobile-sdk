@@ -41,7 +41,7 @@ namespace Liferay.SDK.Service.V62.MBThread
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupThreadsAsync(long groupId, long userId, int status, int start, int end)
+		public async Task<IDictionary<string, object>> GetGroupThreadsAsync(long groupId, long userId, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -58,10 +58,10 @@ namespace Liferay.SDK.Service.V62.MBThread
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupThreadsAsync(long groupId, long userId, long modifiedDate, int status, int start, int end)
+		public async Task<IDictionary<string, object>> GetGroupThreadsAsync(long groupId, long userId, long modifiedDate, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -79,10 +79,10 @@ namespace Liferay.SDK.Service.V62.MBThread
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupThreadsAsync(long groupId, long userId, int status, bool subscribed, int start, int end)
+		public async Task<IDictionary<string, object>> GetGroupThreadsAsync(long groupId, long userId, int status, bool subscribed, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -100,10 +100,10 @@ namespace Liferay.SDK.Service.V62.MBThread
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupThreadsAsync(long groupId, long userId, int status, bool subscribed, bool includeAnonymous, int start, int end)
+		public async Task<IDictionary<string, object>> GetGroupThreadsAsync(long groupId, long userId, int status, bool subscribed, bool includeAnonymous, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -122,7 +122,7 @@ namespace Liferay.SDK.Service.V62.MBThread
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetGroupThreadsCountAsync(long groupId, long userId, int status)
@@ -201,7 +201,7 @@ namespace Liferay.SDK.Service.V62.MBThread
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetThreadsAsync(long groupId, long categoryId, int status, int start, int end)
+		public async Task<IDictionary<string, object>> GetThreadsAsync(long groupId, long categoryId, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -218,7 +218,7 @@ namespace Liferay.SDK.Service.V62.MBThread
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetThreadsCountAsync(long groupId, long categoryId, int status)
@@ -239,7 +239,7 @@ namespace Liferay.SDK.Service.V62.MBThread
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> LockThreadAsync(long threadId)
+		public async Task<IDictionary<string, object>> LockThreadAsync(long threadId)
 		{
 			var _parameters = new JsonObject();
 
@@ -252,10 +252,10 @@ namespace Liferay.SDK.Service.V62.MBThread
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> MoveThreadAsync(long categoryId, long threadId)
+		public async Task<IDictionary<string, object>> MoveThreadAsync(long categoryId, long threadId)
 		{
 			var _parameters = new JsonObject();
 
@@ -269,10 +269,10 @@ namespace Liferay.SDK.Service.V62.MBThread
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> MoveThreadFromTrashAsync(long categoryId, long threadId)
+		public async Task<IDictionary<string, object>> MoveThreadFromTrashAsync(long categoryId, long threadId)
 		{
 			var _parameters = new JsonObject();
 
@@ -286,10 +286,10 @@ namespace Liferay.SDK.Service.V62.MBThread
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> MoveThreadToTrashAsync(long threadId)
+		public async Task<IDictionary<string, object>> MoveThreadToTrashAsync(long threadId)
 		{
 			var _parameters = new JsonObject();
 
@@ -302,7 +302,7 @@ namespace Liferay.SDK.Service.V62.MBThread
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task RestoreThreadFromTrashAsync(long threadId)
@@ -319,7 +319,7 @@ namespace Liferay.SDK.Service.V62.MBThread
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> SearchAsync(long groupId, long creatorUserId, int status, int start, int end)
+		public async Task<IDictionary<string, object>> SearchAsync(long groupId, long creatorUserId, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -336,10 +336,10 @@ namespace Liferay.SDK.Service.V62.MBThread
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> SearchAsync(long groupId, long creatorUserId, long startDate, long endDate, int status, int start, int end)
+		public async Task<IDictionary<string, object>> SearchAsync(long groupId, long creatorUserId, long startDate, long endDate, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -358,16 +358,16 @@ namespace Liferay.SDK.Service.V62.MBThread
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> SplitThreadAsync(long messageId, string subject, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> SplitThreadAsync(long messageId, string subject, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("messageId", messageId);
 			_parameters.Add("subject", subject);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -376,7 +376,7 @@ namespace Liferay.SDK.Service.V62.MBThread
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task UnlockThreadAsync(long threadId)

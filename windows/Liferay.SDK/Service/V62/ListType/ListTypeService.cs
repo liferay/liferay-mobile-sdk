@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.ListType
 		{
 		}
 
-		public async Task<dynamic> GetListTypeAsync(int listTypeId)
+		public async Task<IDictionary<string, object>> GetListTypeAsync(int listTypeId)
 		{
 			var _parameters = new JsonObject();
 
@@ -40,10 +40,10 @@ namespace Liferay.SDK.Service.V62.ListType
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetListTypesAsync(string type)
+		public async Task<IDictionary<string, object>> GetListTypesAsync(string type)
 		{
 			var _parameters = new JsonObject();
 
@@ -56,7 +56,7 @@ namespace Liferay.SDK.Service.V62.ListType
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task ValidateAsync(int listTypeId, string type)

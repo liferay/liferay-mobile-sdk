@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.Group
 		{
 		}
 
-		public async Task<dynamic> AddGroupAsync(long parentGroupId, long liveGroupId, string name, string description, int type, bool manualMembership, int membershipRestriction, string friendlyURL, bool site, bool active, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddGroupAsync(long parentGroupId, long liveGroupId, string name, string description, int type, bool manualMembership, int membershipRestriction, string friendlyURL, bool site, bool active, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -41,7 +41,7 @@ namespace Liferay.SDK.Service.V62.Group
 			_parameters.Add("friendlyURL", friendlyURL);
 			_parameters.Add("site", site);
 			_parameters.Add("active", active);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -50,10 +50,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddGroupAsync(string name, string description, int type, string friendlyURL, bool site, bool active, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddGroupAsync(string name, string description, int type, string friendlyURL, bool site, bool active, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -63,7 +63,7 @@ namespace Liferay.SDK.Service.V62.Group
 			_parameters.Add("friendlyURL", friendlyURL);
 			_parameters.Add("site", site);
 			_parameters.Add("active", active);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -72,10 +72,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddGroupAsync(long parentGroupId, string name, string description, int type, string friendlyURL, bool site, bool active, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddGroupAsync(long parentGroupId, string name, string description, int type, string friendlyURL, bool site, bool active, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -86,7 +86,7 @@ namespace Liferay.SDK.Service.V62.Group
 			_parameters.Add("friendlyURL", friendlyURL);
 			_parameters.Add("site", site);
 			_parameters.Add("active", active);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -95,7 +95,7 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task AddRoleGroupsAsync(long roleId, IEnumerable<long> groupIds)
@@ -169,7 +169,7 @@ namespace Liferay.SDK.Service.V62.Group
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetCompanyGroupAsync(long companyId)
+		public async Task<IDictionary<string, object>> GetCompanyGroupAsync(long companyId)
 		{
 			var _parameters = new JsonObject();
 
@@ -182,10 +182,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetGroupAsync(long groupId)
+		public async Task<IDictionary<string, object>> GetGroupAsync(long groupId)
 		{
 			var _parameters = new JsonObject();
 
@@ -198,10 +198,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetGroupAsync(long companyId, string name)
+		public async Task<IDictionary<string, object>> GetGroupAsync(long companyId, string name)
 		{
 			var _parameters = new JsonObject();
 
@@ -215,10 +215,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetGroupsAsync(long companyId, long parentGroupId, bool site)
+		public async Task<IDictionary<string, object>> GetGroupsAsync(long companyId, long parentGroupId, bool site)
 		{
 			var _parameters = new JsonObject();
 
@@ -233,10 +233,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetManageableSiteGroupsAsync(IDictionary<string, object> portlets, int max)
+		public async Task<IDictionary<string, object>> GetManageableSiteGroupsAsync(IDictionary<string, object> portlets, int max)
 		{
 			var _parameters = new JsonObject();
 
@@ -250,10 +250,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetManageableSitesAsync(IDictionary<string, object> portlets, int max)
+		public async Task<IDictionary<string, object>> GetManageableSitesAsync(IDictionary<string, object> portlets, int max)
 		{
 			var _parameters = new JsonObject();
 
@@ -267,10 +267,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetOrganizationsGroupsAsync(IEnumerable<object> organizations)
+		public async Task<IDictionary<string, object>> GetOrganizationsGroupsAsync(IEnumerable<object> organizations)
 		{
 			var _parameters = new JsonObject();
 
@@ -283,10 +283,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetUserGroupAsync(long companyId, long userId)
+		public async Task<IDictionary<string, object>> GetUserGroupAsync(long companyId, long userId)
 		{
 			var _parameters = new JsonObject();
 
@@ -300,10 +300,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserGroupsGroupsAsync(IEnumerable<object> userGroups)
+		public async Task<IDictionary<string, object>> GetUserGroupsGroupsAsync(IEnumerable<object> userGroups)
 		{
 			var _parameters = new JsonObject();
 
@@ -316,10 +316,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserOrganizationsGroupsAsync(long userId, int start, int end)
+		public async Task<IDictionary<string, object>> GetUserOrganizationsGroupsAsync(long userId, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -334,10 +334,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserPlacesAsync(IEnumerable<string> classNames, int max)
+		public async Task<IDictionary<string, object>> GetUserPlacesAsync(IEnumerable<string> classNames, int max)
 		{
 			var _parameters = new JsonObject();
 
@@ -351,10 +351,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserPlacesAsync(long userId, IEnumerable<string> classNames, int max)
+		public async Task<IDictionary<string, object>> GetUserPlacesAsync(long userId, IEnumerable<string> classNames, int max)
 		{
 			var _parameters = new JsonObject();
 
@@ -369,10 +369,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserPlacesAsync(long userId, IEnumerable<string> classNames, bool includeControlPanel, int max)
+		public async Task<IDictionary<string, object>> GetUserPlacesAsync(long userId, IEnumerable<string> classNames, bool includeControlPanel, int max)
 		{
 			var _parameters = new JsonObject();
 
@@ -388,7 +388,7 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetUserPlacesCountAsync()
@@ -405,7 +405,7 @@ namespace Liferay.SDK.Service.V62.Group
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserSitesAsync()
+		public async Task<IDictionary<string, object>> GetUserSitesAsync()
 		{
 			var _parameters = new JsonObject();
 
@@ -416,10 +416,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserSitesGroupsAsync()
+		public async Task<IDictionary<string, object>> GetUserSitesGroupsAsync()
 		{
 			var _parameters = new JsonObject();
 
@@ -430,10 +430,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserSitesGroupsAsync(IEnumerable<string> classNames, int max)
+		public async Task<IDictionary<string, object>> GetUserSitesGroupsAsync(IEnumerable<string> classNames, int max)
 		{
 			var _parameters = new JsonObject();
 
@@ -447,10 +447,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserSitesGroupsAsync(long userId, IEnumerable<string> classNames, int max)
+		public async Task<IDictionary<string, object>> GetUserSitesGroupsAsync(long userId, IEnumerable<string> classNames, int max)
 		{
 			var _parameters = new JsonObject();
 
@@ -465,10 +465,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetUserSitesGroupsAsync(long userId, IEnumerable<string> classNames, bool includeControlPanel, int max)
+		public async Task<IDictionary<string, object>> GetUserSitesGroupsAsync(long userId, IEnumerable<string> classNames, bool includeControlPanel, int max)
 		{
 			var _parameters = new JsonObject();
 
@@ -484,7 +484,7 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetUserSitesGroupsCountAsync()
@@ -518,7 +518,7 @@ namespace Liferay.SDK.Service.V62.Group
 			return (bool)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long companyId, string name, string description, IEnumerable<string> _params, int start, int end)
+		public async Task<IDictionary<string, object>> SearchAsync(long companyId, string name, string description, IEnumerable<string> _params, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -536,10 +536,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long companyId, IEnumerable<long> classNameIds, string keywords, IDictionary<string, object> _params, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> SearchAsync(long companyId, IEnumerable<long> classNameIds, string keywords, IDictionary<string, object> _params, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -549,7 +549,7 @@ namespace Liferay.SDK.Service.V62.Group
 			_parameters.Add("params", _params);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -558,10 +558,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long companyId, IEnumerable<long> classNameIds, string name, string description, IDictionary<string, object> _params, bool andOperator, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> SearchAsync(long companyId, IEnumerable<long> classNameIds, string name, string description, IDictionary<string, object> _params, bool andOperator, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -573,7 +573,7 @@ namespace Liferay.SDK.Service.V62.Group
 			_parameters.Add("andOperator", andOperator);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -582,7 +582,7 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> SearchCountAsync(long companyId, string name, string description, IEnumerable<string> _params)
@@ -634,7 +634,7 @@ namespace Liferay.SDK.Service.V62.Group
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateFriendlyUrlAsync(long groupId, string friendlyURL)
+		public async Task<IDictionary<string, object>> UpdateFriendlyUrlAsync(long groupId, string friendlyURL)
 		{
 			var _parameters = new JsonObject();
 
@@ -648,10 +648,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateGroupAsync(long groupId, long parentGroupId, string name, string description, int type, bool manualMembership, int membershipRestriction, string friendlyURL, bool active, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateGroupAsync(long groupId, long parentGroupId, string name, string description, int type, bool manualMembership, int membershipRestriction, string friendlyURL, bool active, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -664,7 +664,7 @@ namespace Liferay.SDK.Service.V62.Group
 			_parameters.Add("membershipRestriction", membershipRestriction);
 			_parameters.Add("friendlyURL", friendlyURL);
 			_parameters.Add("active", active);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -673,10 +673,10 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateGroupAsync(long groupId, string typeSettings)
+		public async Task<IDictionary<string, object>> UpdateGroupAsync(long groupId, string typeSettings)
 		{
 			var _parameters = new JsonObject();
 
@@ -690,7 +690,7 @@ namespace Liferay.SDK.Service.V62.Group
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task UpdateStagedPortletsAsync(long groupId, IDictionary<string, string> stagedPortletIds)

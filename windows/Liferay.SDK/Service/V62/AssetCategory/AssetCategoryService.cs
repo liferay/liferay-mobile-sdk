@@ -27,13 +27,13 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 		{
 		}
 
-		public async Task<dynamic> AddCategoryAsync(string title, long vocabularyId, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddCategoryAsync(string title, long vocabularyId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("title", title);
 			_parameters.Add("vocabularyId", vocabularyId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -42,10 +42,10 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddCategoryAsync(long parentCategoryId, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, long vocabularyId, IEnumerable<string> categoryProperties, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddCategoryAsync(long parentCategoryId, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, long vocabularyId, IEnumerable<string> categoryProperties, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -54,7 +54,7 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 			_parameters.Add("descriptionMap", descriptionMap);
 			_parameters.Add("vocabularyId", vocabularyId);
 			_parameters.Add("categoryProperties", categoryProperties);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -63,7 +63,7 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteCategoriesAsync(IEnumerable<long> categoryIds)
@@ -80,12 +80,12 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> DeleteCategoriesAsync(IEnumerable<long> categoryIds, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> DeleteCategoriesAsync(IEnumerable<long> categoryIds, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("categoryIds", categoryIds);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -94,7 +94,7 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteCategoryAsync(long categoryId)
@@ -111,7 +111,7 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetCategoriesAsync(string className, long classPK)
+		public async Task<IDictionary<string, object>> GetCategoriesAsync(string className, long classPK)
 		{
 			var _parameters = new JsonObject();
 
@@ -125,10 +125,10 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetCategoryAsync(long categoryId)
+		public async Task<IDictionary<string, object>> GetCategoryAsync(long categoryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -141,10 +141,10 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetChildCategoriesAsync(long parentCategoryId)
+		public async Task<IDictionary<string, object>> GetChildCategoriesAsync(long parentCategoryId)
 		{
 			var _parameters = new JsonObject();
 
@@ -157,17 +157,17 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetChildCategoriesAsync(long parentCategoryId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetChildCategoriesAsync(long parentCategoryId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("parentCategoryId", parentCategoryId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -176,10 +176,10 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetJsonSearchAsync(long groupId, string name, IEnumerable<long> vocabularyIds, int start, int end)
+		public async Task<IDictionary<string, object>> GetJsonSearchAsync(long groupId, string name, IEnumerable<long> vocabularyIds, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -196,17 +196,17 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetJsonVocabularyCategoriesAsync(long vocabularyId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetJsonVocabularyCategoriesAsync(long vocabularyId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("vocabularyId", vocabularyId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -215,10 +215,10 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetJsonVocabularyCategoriesAsync(long groupId, string title, long vocabularyId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetJsonVocabularyCategoriesAsync(long groupId, string title, long vocabularyId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -227,7 +227,7 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 			_parameters.Add("vocabularyId", vocabularyId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -236,17 +236,17 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetVocabularyCategoriesAsync(long vocabularyId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetVocabularyCategoriesAsync(long vocabularyId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("vocabularyId", vocabularyId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -255,10 +255,10 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetVocabularyCategoriesAsync(long parentCategoryId, long vocabularyId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetVocabularyCategoriesAsync(long parentCategoryId, long vocabularyId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -266,7 +266,7 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 			_parameters.Add("vocabularyId", vocabularyId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -275,10 +275,10 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetVocabularyCategoriesAsync(long groupId, string name, long vocabularyId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetVocabularyCategoriesAsync(long groupId, string name, long vocabularyId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -287,7 +287,7 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 			_parameters.Add("vocabularyId", vocabularyId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -296,7 +296,7 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetVocabularyCategoriesCountAsync(long groupId, long vocabularyId)
@@ -334,14 +334,14 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> GetVocabularyCategoriesDisplayAsync(long vocabularyId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetVocabularyCategoriesDisplayAsync(long vocabularyId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("vocabularyId", vocabularyId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -350,10 +350,10 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetVocabularyCategoriesDisplayAsync(long groupId, string name, long vocabularyId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetVocabularyCategoriesDisplayAsync(long groupId, string name, long vocabularyId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -362,7 +362,7 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 			_parameters.Add("vocabularyId", vocabularyId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -371,17 +371,17 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetVocabularyRootCategoriesAsync(long vocabularyId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetVocabularyRootCategoriesAsync(long vocabularyId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("vocabularyId", vocabularyId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -390,10 +390,10 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetVocabularyRootCategoriesAsync(long groupId, long vocabularyId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> GetVocabularyRootCategoriesAsync(long groupId, long vocabularyId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -401,7 +401,7 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 			_parameters.Add("vocabularyId", vocabularyId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -410,7 +410,7 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetVocabularyRootCategoriesCountAsync(long groupId, long vocabularyId)
@@ -430,14 +430,14 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 			return (long)_obj;
 		}
 
-		public async Task<dynamic> MoveCategoryAsync(long categoryId, long parentCategoryId, long vocabularyId, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> MoveCategoryAsync(long categoryId, long parentCategoryId, long vocabularyId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("categoryId", categoryId);
 			_parameters.Add("parentCategoryId", parentCategoryId);
 			_parameters.Add("vocabularyId", vocabularyId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -446,10 +446,10 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long groupId, string name, IEnumerable<string> categoryProperties, int start, int end)
+		public async Task<IDictionary<string, object>> SearchAsync(long groupId, string name, IEnumerable<string> categoryProperties, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -466,10 +466,10 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(IEnumerable<long> groupIds, string title, IEnumerable<long> vocabularyIds, int start, int end)
+		public async Task<IDictionary<string, object>> SearchAsync(IEnumerable<long> groupIds, string title, IEnumerable<long> vocabularyIds, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -486,10 +486,10 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> SearchAsync(long groupId, string keywords, long vocabularyId, int start, int end, JsonObjectWrapper obc)
+		public async Task<IDictionary<string, object>> SearchAsync(long groupId, string keywords, long vocabularyId, int start, int end, IDictionary<string, object> obc)
 		{
 			var _parameters = new JsonObject();
 
@@ -498,7 +498,7 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 			_parameters.Add("vocabularyId", vocabularyId);
 			_parameters.Add("start", start);
 			_parameters.Add("end", end);
-			this.MangleWrapper(_parameters, "obc", "com.liferay.portal.kernel.util.OrderByComparator", obc);
+			_parameters.Add("obc", obc);
 
 			var _command = new JsonObject()
 			{
@@ -507,10 +507,10 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateCategoryAsync(long categoryId, long parentCategoryId, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, long vocabularyId, IEnumerable<string> categoryProperties, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateCategoryAsync(long categoryId, long parentCategoryId, IDictionary<string, string> titleMap, IDictionary<string, string> descriptionMap, long vocabularyId, IEnumerable<string> categoryProperties, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -520,7 +520,7 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 			_parameters.Add("descriptionMap", descriptionMap);
 			_parameters.Add("vocabularyId", vocabularyId);
 			_parameters.Add("categoryProperties", categoryProperties);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -529,7 +529,7 @@ namespace Liferay.SDK.Service.V62.AssetCategory
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

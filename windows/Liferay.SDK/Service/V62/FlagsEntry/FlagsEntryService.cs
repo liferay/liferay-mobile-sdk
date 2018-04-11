@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.FlagsEntry
 		{
 		}
 
-		public async Task AddEntryAsync(string className, long classPK, string reporterEmailAddress, long reportedUserId, string contentTitle, string contentURL, string reason, JsonObjectWrapper serviceContext)
+		public async Task AddEntryAsync(string className, long classPK, string reporterEmailAddress, long reportedUserId, string contentTitle, string contentURL, string reason, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -38,7 +38,7 @@ namespace Liferay.SDK.Service.V62.FlagsEntry
 			_parameters.Add("contentTitle", contentTitle);
 			_parameters.Add("contentURL", contentURL);
 			_parameters.Add("reason", reason);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{

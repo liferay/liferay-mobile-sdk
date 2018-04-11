@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.SCLicense
 		{
 		}
 
-		public async Task<dynamic> AddLicenseAsync(string name, string url, bool openSource, bool active, bool recommended)
+		public async Task<IDictionary<string, object>> AddLicenseAsync(string name, string url, bool openSource, bool active, bool recommended)
 		{
 			var _parameters = new JsonObject();
 
@@ -44,7 +44,7 @@ namespace Liferay.SDK.Service.V62.SCLicense
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteLicenseAsync(long licenseId)
@@ -61,7 +61,7 @@ namespace Liferay.SDK.Service.V62.SCLicense
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> GetLicenseAsync(long licenseId)
+		public async Task<IDictionary<string, object>> GetLicenseAsync(long licenseId)
 		{
 			var _parameters = new JsonObject();
 
@@ -74,10 +74,10 @@ namespace Liferay.SDK.Service.V62.SCLicense
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateLicenseAsync(long licenseId, string name, string url, bool openSource, bool active, bool recommended)
+		public async Task<IDictionary<string, object>> UpdateLicenseAsync(long licenseId, string name, string url, bool openSource, bool active, bool recommended)
 		{
 			var _parameters = new JsonObject();
 
@@ -95,7 +95,7 @@ namespace Liferay.SDK.Service.V62.SCLicense
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

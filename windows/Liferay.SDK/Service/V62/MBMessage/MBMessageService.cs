@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 		{
 		}
 
-		public async Task<dynamic> AddDiscussionMessageAsync(long groupId, string className, long classPK, string permissionClassName, long permissionClassPK, long permissionOwnerId, long threadId, long parentMessageId, string subject, string body, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddDiscussionMessageAsync(long groupId, string className, long classPK, string permissionClassName, long permissionClassPK, long permissionOwnerId, long threadId, long parentMessageId, string subject, string body, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -41,7 +41,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			_parameters.Add("parentMessageId", parentMessageId);
 			_parameters.Add("subject", subject);
 			_parameters.Add("body", body);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -50,10 +50,10 @@ namespace Liferay.SDK.Service.V62.MBMessage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddMessageAsync(long groupId, long categoryId, string subject, string body, string format, IEnumerable<object> inputStreamOVPs, bool anonymous, double priority, bool allowPingbacks, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddMessageAsync(long groupId, long categoryId, string subject, string body, string format, IEnumerable<object> inputStreamOVPs, bool anonymous, double priority, bool allowPingbacks, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -66,7 +66,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			_parameters.Add("anonymous", anonymous);
 			_parameters.Add("priority", priority);
 			_parameters.Add("allowPingbacks", allowPingbacks);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -75,10 +75,10 @@ namespace Liferay.SDK.Service.V62.MBMessage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddMessageAsync(long groupId, long categoryId, long threadId, long parentMessageId, string subject, string body, string format, IEnumerable<object> inputStreamOVPs, bool anonymous, double priority, bool allowPingbacks, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddMessageAsync(long groupId, long categoryId, long threadId, long parentMessageId, string subject, string body, string format, IEnumerable<object> inputStreamOVPs, bool anonymous, double priority, bool allowPingbacks, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -93,7 +93,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			_parameters.Add("anonymous", anonymous);
 			_parameters.Add("priority", priority);
 			_parameters.Add("allowPingbacks", allowPingbacks);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -102,17 +102,17 @@ namespace Liferay.SDK.Service.V62.MBMessage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddMessageAsync(long categoryId, string subject, string body, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddMessageAsync(long categoryId, string subject, string body, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("categoryId", categoryId);
 			_parameters.Add("subject", subject);
 			_parameters.Add("body", body);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -121,10 +121,10 @@ namespace Liferay.SDK.Service.V62.MBMessage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddMessageAsync(long parentMessageId, string subject, string body, string format, IEnumerable<object> inputStreamOVPs, bool anonymous, double priority, bool allowPingbacks, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddMessageAsync(long parentMessageId, string subject, string body, string format, IEnumerable<object> inputStreamOVPs, bool anonymous, double priority, bool allowPingbacks, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -136,7 +136,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			_parameters.Add("anonymous", anonymous);
 			_parameters.Add("priority", priority);
 			_parameters.Add("allowPingbacks", allowPingbacks);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -145,7 +145,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteDiscussionMessageAsync(long groupId, string className, long classPK, string permissionClassName, long permissionClassPK, long permissionOwnerId, long messageId)
@@ -196,7 +196,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetCategoryMessagesAsync(long groupId, long categoryId, int status, int start, int end)
+		public async Task<IDictionary<string, object>> GetCategoryMessagesAsync(long groupId, long categoryId, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -213,7 +213,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetCategoryMessagesCountAsync(long groupId, long categoryId, int status)
@@ -234,7 +234,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			return (long)_obj;
 		}
 
-		public async Task<string> GetCategoryMessagesRssAsync(long groupId, long categoryId, int status, int max, string type, double version, string displayStyle, string feedURL, string entryURL, JsonObjectWrapper themeDisplay)
+		public async Task<string> GetCategoryMessagesRssAsync(long groupId, long categoryId, int status, int max, string type, double version, string displayStyle, string feedURL, string entryURL, IDictionary<string, object> themeDisplay)
 		{
 			var _parameters = new JsonObject();
 
@@ -247,7 +247,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			_parameters.Add("displayStyle", displayStyle);
 			_parameters.Add("feedURL", feedURL);
 			_parameters.Add("entryURL", entryURL);
-			this.MangleWrapper(_parameters, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
+			_parameters.Add("themeDisplay", themeDisplay);
 
 			var _command = new JsonObject()
 			{
@@ -259,7 +259,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			return (string)_obj;
 		}
 
-		public async Task<string> GetCompanyMessagesRssAsync(long companyId, int status, int max, string type, double version, string displayStyle, string feedURL, string entryURL, JsonObjectWrapper themeDisplay)
+		public async Task<string> GetCompanyMessagesRssAsync(long companyId, int status, int max, string type, double version, string displayStyle, string feedURL, string entryURL, IDictionary<string, object> themeDisplay)
 		{
 			var _parameters = new JsonObject();
 
@@ -271,7 +271,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			_parameters.Add("displayStyle", displayStyle);
 			_parameters.Add("feedURL", feedURL);
 			_parameters.Add("entryURL", entryURL);
-			this.MangleWrapper(_parameters, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
+			_parameters.Add("themeDisplay", themeDisplay);
 
 			var _command = new JsonObject()
 			{
@@ -300,7 +300,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			return (long)_obj;
 		}
 
-		public async Task<string> GetGroupMessagesRssAsync(long groupId, long userId, int status, int max, string type, double version, string displayStyle, string feedURL, string entryURL, JsonObjectWrapper themeDisplay)
+		public async Task<string> GetGroupMessagesRssAsync(long groupId, long userId, int status, int max, string type, double version, string displayStyle, string feedURL, string entryURL, IDictionary<string, object> themeDisplay)
 		{
 			var _parameters = new JsonObject();
 
@@ -313,7 +313,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			_parameters.Add("displayStyle", displayStyle);
 			_parameters.Add("feedURL", feedURL);
 			_parameters.Add("entryURL", entryURL);
-			this.MangleWrapper(_parameters, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
+			_parameters.Add("themeDisplay", themeDisplay);
 
 			var _command = new JsonObject()
 			{
@@ -325,7 +325,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			return (string)_obj;
 		}
 
-		public async Task<string> GetGroupMessagesRssAsync(long groupId, int status, int max, string type, double version, string displayStyle, string feedURL, string entryURL, JsonObjectWrapper themeDisplay)
+		public async Task<string> GetGroupMessagesRssAsync(long groupId, int status, int max, string type, double version, string displayStyle, string feedURL, string entryURL, IDictionary<string, object> themeDisplay)
 		{
 			var _parameters = new JsonObject();
 
@@ -337,7 +337,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			_parameters.Add("displayStyle", displayStyle);
 			_parameters.Add("feedURL", feedURL);
 			_parameters.Add("entryURL", entryURL);
-			this.MangleWrapper(_parameters, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
+			_parameters.Add("themeDisplay", themeDisplay);
 
 			var _command = new JsonObject()
 			{
@@ -349,7 +349,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			return (string)_obj;
 		}
 
-		public async Task<dynamic> GetMessageAsync(long messageId)
+		public async Task<IDictionary<string, object>> GetMessageAsync(long messageId)
 		{
 			var _parameters = new JsonObject();
 
@@ -362,10 +362,10 @@ namespace Liferay.SDK.Service.V62.MBMessage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetMessageDisplayAsync(long messageId, int status, string threadView, bool includePrevAndNext)
+		public async Task<IDictionary<string, object>> GetMessageDisplayAsync(long messageId, int status, string threadView, bool includePrevAndNext)
 		{
 			var _parameters = new JsonObject();
 
@@ -381,7 +381,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetThreadAnswersCountAsync(long groupId, long categoryId, long threadId)
@@ -402,7 +402,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			return (long)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetThreadMessagesAsync(long groupId, long categoryId, long threadId, int status, int start, int end)
+		public async Task<IDictionary<string, object>> GetThreadMessagesAsync(long groupId, long categoryId, long threadId, int status, int start, int end)
 		{
 			var _parameters = new JsonObject();
 
@@ -420,7 +420,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task<long> GetThreadMessagesCountAsync(long groupId, long categoryId, long threadId, int status)
@@ -442,7 +442,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			return (long)_obj;
 		}
 
-		public async Task<string> GetThreadMessagesRssAsync(long threadId, int status, int max, string type, double version, string displayStyle, string feedURL, string entryURL, JsonObjectWrapper themeDisplay)
+		public async Task<string> GetThreadMessagesRssAsync(long threadId, int status, int max, string type, double version, string displayStyle, string feedURL, string entryURL, IDictionary<string, object> themeDisplay)
 		{
 			var _parameters = new JsonObject();
 
@@ -454,7 +454,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			_parameters.Add("displayStyle", displayStyle);
 			_parameters.Add("feedURL", feedURL);
 			_parameters.Add("entryURL", entryURL);
-			this.MangleWrapper(_parameters, "themeDisplay", "com.liferay.portal.theme.ThemeDisplay", themeDisplay);
+			_parameters.Add("themeDisplay", themeDisplay);
 
 			var _command = new JsonObject()
 			{
@@ -525,7 +525,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdateDiscussionMessageAsync(string className, long classPK, string permissionClassName, long permissionClassPK, long permissionOwnerId, long messageId, string subject, string body, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateDiscussionMessageAsync(string className, long classPK, string permissionClassName, long permissionClassPK, long permissionOwnerId, long messageId, string subject, string body, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -537,7 +537,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			_parameters.Add("messageId", messageId);
 			_parameters.Add("subject", subject);
 			_parameters.Add("body", body);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -546,10 +546,10 @@ namespace Liferay.SDK.Service.V62.MBMessage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateMessageAsync(long messageId, string subject, string body, IEnumerable<object> inputStreamOVPs, IEnumerable<string> existingFiles, double priority, bool allowPingbacks, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateMessageAsync(long messageId, string subject, string body, IEnumerable<object> inputStreamOVPs, IEnumerable<string> existingFiles, double priority, bool allowPingbacks, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -560,7 +560,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 			_parameters.Add("existingFiles", existingFiles);
 			_parameters.Add("priority", priority);
 			_parameters.Add("allowPingbacks", allowPingbacks);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -569,7 +569,7 @@ namespace Liferay.SDK.Service.V62.MBMessage
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

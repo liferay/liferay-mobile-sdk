@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.PasswordPolicy
 		{
 		}
 
-		public async Task<dynamic> AddPasswordPolicyAsync(string name, string description, bool changeable, bool changeRequired, long minAge, bool checkSyntax, bool allowDictionaryWords, int minAlphanumeric, int minLength, int minLowerCase, int minNumbers, int minSymbols, int minUpperCase, bool history, int historyCount, bool expireable, long maxAge, long warningTime, int graceLimit, bool lockout, int maxFailure, long lockoutDuration, long resetFailureCount, long resetTicketMaxAge)
+		public async Task<IDictionary<string, object>> AddPasswordPolicyAsync(string name, string description, bool changeable, bool changeRequired, long minAge, bool checkSyntax, bool allowDictionaryWords, int minAlphanumeric, int minLength, int minLowerCase, int minNumbers, int minSymbols, int minUpperCase, bool history, int historyCount, bool expireable, long maxAge, long warningTime, int graceLimit, bool lockout, int maxFailure, long lockoutDuration, long resetFailureCount, long resetTicketMaxAge)
 		{
 			var _parameters = new JsonObject();
 
@@ -63,10 +63,10 @@ namespace Liferay.SDK.Service.V62.PasswordPolicy
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddPasswordPolicyAsync(string name, string description, bool changeable, bool changeRequired, long minAge, bool checkSyntax, bool allowDictionaryWords, int minAlphanumeric, int minLength, int minLowerCase, int minNumbers, int minSymbols, int minUpperCase, string regex, bool history, int historyCount, bool expireable, long maxAge, long warningTime, int graceLimit, bool lockout, int maxFailure, long lockoutDuration, long resetFailureCount, long resetTicketMaxAge, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddPasswordPolicyAsync(string name, string description, bool changeable, bool changeRequired, long minAge, bool checkSyntax, bool allowDictionaryWords, int minAlphanumeric, int minLength, int minLowerCase, int minNumbers, int minSymbols, int minUpperCase, string regex, bool history, int historyCount, bool expireable, long maxAge, long warningTime, int graceLimit, bool lockout, int maxFailure, long lockoutDuration, long resetFailureCount, long resetTicketMaxAge, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -95,7 +95,7 @@ namespace Liferay.SDK.Service.V62.PasswordPolicy
 			_parameters.Add("lockoutDuration", lockoutDuration);
 			_parameters.Add("resetFailureCount", resetFailureCount);
 			_parameters.Add("resetTicketMaxAge", resetTicketMaxAge);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -104,7 +104,7 @@ namespace Liferay.SDK.Service.V62.PasswordPolicy
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeletePasswordPolicyAsync(long passwordPolicyId)
@@ -121,7 +121,7 @@ namespace Liferay.SDK.Service.V62.PasswordPolicy
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> UpdatePasswordPolicyAsync(long passwordPolicyId, string name, string description, bool changeable, bool changeRequired, long minAge, bool checkSyntax, bool allowDictionaryWords, int minAlphanumeric, int minLength, int minLowerCase, int minNumbers, int minSymbols, int minUpperCase, bool history, int historyCount, bool expireable, long maxAge, long warningTime, int graceLimit, bool lockout, int maxFailure, long lockoutDuration, long resetFailureCount, long resetTicketMaxAge)
+		public async Task<IDictionary<string, object>> UpdatePasswordPolicyAsync(long passwordPolicyId, string name, string description, bool changeable, bool changeRequired, long minAge, bool checkSyntax, bool allowDictionaryWords, int minAlphanumeric, int minLength, int minLowerCase, int minNumbers, int minSymbols, int minUpperCase, bool history, int historyCount, bool expireable, long maxAge, long warningTime, int graceLimit, bool lockout, int maxFailure, long lockoutDuration, long resetFailureCount, long resetTicketMaxAge)
 		{
 			var _parameters = new JsonObject();
 
@@ -158,10 +158,10 @@ namespace Liferay.SDK.Service.V62.PasswordPolicy
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdatePasswordPolicyAsync(long passwordPolicyId, string name, string description, bool changeable, bool changeRequired, long minAge, bool checkSyntax, bool allowDictionaryWords, int minAlphanumeric, int minLength, int minLowerCase, int minNumbers, int minSymbols, int minUpperCase, string regex, bool history, int historyCount, bool expireable, long maxAge, long warningTime, int graceLimit, bool lockout, int maxFailure, long lockoutDuration, long resetFailureCount, long resetTicketMaxAge, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdatePasswordPolicyAsync(long passwordPolicyId, string name, string description, bool changeable, bool changeRequired, long minAge, bool checkSyntax, bool allowDictionaryWords, int minAlphanumeric, int minLength, int minLowerCase, int minNumbers, int minSymbols, int minUpperCase, string regex, bool history, int historyCount, bool expireable, long maxAge, long warningTime, int graceLimit, bool lockout, int maxFailure, long lockoutDuration, long resetFailureCount, long resetTicketMaxAge, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -191,7 +191,7 @@ namespace Liferay.SDK.Service.V62.PasswordPolicy
 			_parameters.Add("lockoutDuration", lockoutDuration);
 			_parameters.Add("resetFailureCount", resetFailureCount);
 			_parameters.Add("resetTicketMaxAge", resetTicketMaxAge);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -200,7 +200,7 @@ namespace Liferay.SDK.Service.V62.PasswordPolicy
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

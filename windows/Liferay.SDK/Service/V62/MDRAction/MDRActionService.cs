@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.MDRAction
 		{
 		}
 
-		public async Task<dynamic> AddActionAsync(long ruleGroupInstanceId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string type, string typeSettings, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddActionAsync(long ruleGroupInstanceId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string type, string typeSettings, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -36,7 +36,7 @@ namespace Liferay.SDK.Service.V62.MDRAction
 			_parameters.Add("descriptionMap", descriptionMap);
 			_parameters.Add("type", type);
 			_parameters.Add("typeSettings", typeSettings);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -45,10 +45,10 @@ namespace Liferay.SDK.Service.V62.MDRAction
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> AddActionAsync(long ruleGroupInstanceId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string type, JsonObjectWrapper typeSettingsProperties, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddActionAsync(long ruleGroupInstanceId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string type, IDictionary<string, object> typeSettingsProperties, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -56,8 +56,8 @@ namespace Liferay.SDK.Service.V62.MDRAction
 			_parameters.Add("nameMap", nameMap);
 			_parameters.Add("descriptionMap", descriptionMap);
 			_parameters.Add("type", type);
-			this.MangleWrapper(_parameters, "typeSettingsProperties", "com.liferay.portal.kernel.util.UnicodeProperties", typeSettingsProperties);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("typeSettingsProperties", typeSettingsProperties);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -66,7 +66,7 @@ namespace Liferay.SDK.Service.V62.MDRAction
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteActionAsync(long actionId)
@@ -83,7 +83,7 @@ namespace Liferay.SDK.Service.V62.MDRAction
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<dynamic> FetchActionAsync(long actionId)
+		public async Task<IDictionary<string, object>> FetchActionAsync(long actionId)
 		{
 			var _parameters = new JsonObject();
 
@@ -96,10 +96,10 @@ namespace Liferay.SDK.Service.V62.MDRAction
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> GetActionAsync(long actionId)
+		public async Task<IDictionary<string, object>> GetActionAsync(long actionId)
 		{
 			var _parameters = new JsonObject();
 
@@ -112,10 +112,10 @@ namespace Liferay.SDK.Service.V62.MDRAction
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateActionAsync(long actionId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string type, string typeSettings, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateActionAsync(long actionId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string type, string typeSettings, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -124,7 +124,7 @@ namespace Liferay.SDK.Service.V62.MDRAction
 			_parameters.Add("descriptionMap", descriptionMap);
 			_parameters.Add("type", type);
 			_parameters.Add("typeSettings", typeSettings);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -133,10 +133,10 @@ namespace Liferay.SDK.Service.V62.MDRAction
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateActionAsync(long actionId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string type, JsonObjectWrapper typeSettingsProperties, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateActionAsync(long actionId, IDictionary<string, string> nameMap, IDictionary<string, string> descriptionMap, string type, IDictionary<string, object> typeSettingsProperties, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -144,8 +144,8 @@ namespace Liferay.SDK.Service.V62.MDRAction
 			_parameters.Add("nameMap", nameMap);
 			_parameters.Add("descriptionMap", descriptionMap);
 			_parameters.Add("type", type);
-			this.MangleWrapper(_parameters, "typeSettingsProperties", "com.liferay.portal.kernel.util.UnicodeProperties", typeSettingsProperties);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("typeSettingsProperties", typeSettingsProperties);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -154,7 +154,7 @@ namespace Liferay.SDK.Service.V62.MDRAction
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.Theme
 		{
 		}
 
-		public async Task<IEnumerable<dynamic>> GetThemesAsync(long companyId)
+		public async Task<IDictionary<string, object>> GetThemesAsync(long companyId)
 		{
 			var _parameters = new JsonObject();
 
@@ -40,10 +40,10 @@ namespace Liferay.SDK.Service.V62.Theme
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<IEnumerable<dynamic>> GetWarThemesAsync()
+		public async Task<IDictionary<string, object>> GetWarThemesAsync()
 		{
 			var _parameters = new JsonObject();
 
@@ -54,7 +54,7 @@ namespace Liferay.SDK.Service.V62.Theme
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }

@@ -27,7 +27,7 @@ namespace Liferay.SDK.Service.V62.LayoutSetBranch
 		{
 		}
 
-		public async Task<dynamic> AddLayoutSetBranchAsync(long groupId, bool privateLayout, string name, string description, bool master, long copyLayoutSetBranchId, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> AddLayoutSetBranchAsync(long groupId, bool privateLayout, string name, string description, bool master, long copyLayoutSetBranchId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -37,7 +37,7 @@ namespace Liferay.SDK.Service.V62.LayoutSetBranch
 			_parameters.Add("description", description);
 			_parameters.Add("master", master);
 			_parameters.Add("copyLayoutSetBranchId", copyLayoutSetBranchId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -46,7 +46,7 @@ namespace Liferay.SDK.Service.V62.LayoutSetBranch
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
 		public async Task DeleteLayoutSetBranchAsync(long layoutSetBranchId)
@@ -63,7 +63,7 @@ namespace Liferay.SDK.Service.V62.LayoutSetBranch
 			await this.Session.InvokeAsync(_command);
 		}
 
-		public async Task<IEnumerable<dynamic>> GetLayoutSetBranchesAsync(long groupId, bool privateLayout)
+		public async Task<IDictionary<string, object>> GetLayoutSetBranchesAsync(long groupId, bool privateLayout)
 		{
 			var _parameters = new JsonObject();
 
@@ -77,16 +77,16 @@ namespace Liferay.SDK.Service.V62.LayoutSetBranch
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (IEnumerable<dynamic>)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> MergeLayoutSetBranchAsync(long layoutSetBranchId, long mergeLayoutSetBranchId, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> MergeLayoutSetBranchAsync(long layoutSetBranchId, long mergeLayoutSetBranchId, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
 			_parameters.Add("layoutSetBranchId", layoutSetBranchId);
 			_parameters.Add("mergeLayoutSetBranchId", mergeLayoutSetBranchId);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -95,10 +95,10 @@ namespace Liferay.SDK.Service.V62.LayoutSetBranch
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 
-		public async Task<dynamic> UpdateLayoutSetBranchAsync(long groupId, long layoutSetBranchId, string name, string description, JsonObjectWrapper serviceContext)
+		public async Task<IDictionary<string, object>> UpdateLayoutSetBranchAsync(long groupId, long layoutSetBranchId, string name, string description, IDictionary<string, object> serviceContext)
 		{
 			var _parameters = new JsonObject();
 
@@ -106,7 +106,7 @@ namespace Liferay.SDK.Service.V62.LayoutSetBranch
 			_parameters.Add("layoutSetBranchId", layoutSetBranchId);
 			_parameters.Add("name", name);
 			_parameters.Add("description", description);
-			this.MangleWrapper(_parameters, "serviceContext", "com.liferay.portal.service.ServiceContext", serviceContext);
+			_parameters.Add("serviceContext", serviceContext);
 
 			var _command = new JsonObject()
 			{
@@ -115,7 +115,7 @@ namespace Liferay.SDK.Service.V62.LayoutSetBranch
 
 			var _obj = await this.Session.InvokeAsync(_command);
 
-			return (dynamic)_obj;
+			return (IDictionary<string, object>)_obj;
 		}
 	}
 }
