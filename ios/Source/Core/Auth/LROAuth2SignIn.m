@@ -142,10 +142,9 @@ static NSString *_AUTHORIZATION_PATH;
 				callback(nil, error);
 			}
 			else {
-				LROAuth2Authentication *auth = [[LROAuth2Authentication alloc]
-					initWithAccessToken:tokenResponse.accessToken
-					refreshToken:tokenResponse.refreshToken scope:tokenResponse.scope
-					accessTokenExpirationDate:tokenResponse.accessTokenExpirationDate
+				LROAuth2Authentication *auth = [self createOrUpdateAuthentication:session.authentication
+					accessToken:tokenResponse.accessToken refreshToken:tokenResponse.refreshToken
+					scope:tokenResponse.scope accessTokenExpirationDate:tokenResponse.accessTokenExpirationDate
 					clientId:tokenResponse.request.clientID clientSecret:tokenResponse.request.clientSecret];
 
 				session.authentication = auth;
@@ -174,10 +173,9 @@ static NSString *_AUTHORIZATION_PATH;
 				localError = e;
 			}
 			else {
-				auth = [[LROAuth2Authentication alloc]
-					initWithAccessToken:tokenResponse.accessToken
-					refreshToken:tokenResponse.refreshToken scope:tokenResponse.scope
-					accessTokenExpirationDate:tokenResponse.accessTokenExpirationDate
+				auth = [self createOrUpdateAuthentication:session.authentication
+					accessToken:tokenResponse.accessToken refreshToken:tokenResponse.refreshToken
+					scope:tokenResponse.scope accessTokenExpirationDate:tokenResponse.accessTokenExpirationDate
 					clientId:tokenResponse.request.clientID clientSecret:tokenResponse.request.clientSecret];
 			}
 			dispatch_semaphore_signal(syncSemaphore);
@@ -193,6 +191,31 @@ static NSString *_AUTHORIZATION_PATH;
 		*error = localError;
 		return nil;
 	}
+}
+
++ (LROAuth2Authentication *)createOrUpdateAuthentication:(id<LRAuthentication>)authentication
+	accessToken:(NSString *)accessToken refreshToken:(NSString *)refreshToken scope:(NSString *)scope
+	accessTokenExpirationDate:(NSDate *)accessTokenExpirationDate clientId:(NSString *)clientId
+	clientSecret:(NSString *)clientSecret {
+
+	if ([authentication isKindOfClass:[LROAuth2Authentication class]]) {
+		LROAuth2Authentication *oauth2Auth = (LROAuth2Authentication *) authentication;
+
+		oauth2Auth.accessToken = accessToken;
+		oauth2Auth.refreshToken = refreshToken;
+		oauth2Auth.scope = scope;
+		oauth2Auth.accessTokenExpirationDate = accessTokenExpirationDate;
+		oauth2Auth.clientId = clientId;
+		oauth2Auth.clientSecret = clientSecret;
+
+		return oauth2Auth;
+	}
+
+	return [[LROAuth2Authentication alloc]
+		initWithAccessToken:accessToken
+		refreshToken:refreshToken scope:scope
+		accessTokenExpirationDate:accessTokenExpirationDate
+		clientId:clientId clientSecret:clientSecret];
 }
 
 + (OIDServiceConfiguration *)serviceConfigurationWithSession:(LRSession *)session {
