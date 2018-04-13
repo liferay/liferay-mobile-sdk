@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 	callback:(nullable LRSessionHandler)callback error:(NSError *_Nullable *_Nullable)error;
 
 + (LRSession * _Nullable)clientCredentialsSignInWithSession:(LRSession *)session
-	clientId:(NSString *)clientId clientSecret:(NSString *)clientSecret scopes:(NSArray<NSString *> *)scopes
+	clientId:(NSString *)clientId clientSecret:(NSString *)clientSecret scopes:(NSArray<NSString *> *_Nullable)scopes
 	callback:(nullable LRSessionHandler)callback error:(NSError *_Nullable *_Nullable)error;
 
 + (LRSession * _Nullable)refreshTokenWithSession:(LRSession *)session
