@@ -5,6 +5,7 @@ links:
 
 - [Android](android/README.md)
 - [iOS](ios/README.md)
+- [Windows](windows/README.md)
 - [Download](../../releases) 
 
 The Liferay Mobile SDK is a framework for building native mobile apps that
@@ -31,4 +32,3 @@ well:
 
 - [PhoneGap](https://github.com/salvatejero/cordova-liferay-plugin) (by Salva Tejero)
 - [Titanium SDK](https://github.com/smclab/liferay-connector) (by SMC, maintained by Pier Paolo Ramon)
-- [Windows](https://github.com/Ithildir/liferay-sdk-builder-windows) (by Andrea Di Giorgi)
