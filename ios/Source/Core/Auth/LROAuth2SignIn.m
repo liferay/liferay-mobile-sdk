@@ -114,6 +114,11 @@ static NSString *_AUTHORIZATION_PATH;
 	LROAuth2Authentication *authentication = session.authentication;
 	OIDServiceConfiguration *serviceConfig = [self serviceConfigurationWithSession:session];
 
+	if ([self isClientCredentialsAuthentication:authentication]) {
+		return [self clientCredentialsSignInWithSession:session clientId:authentication.clientId
+			clientSecret:authentication.clientSecret scopes:scopes callback:callback error:error];
+	}
+
 	OIDTokenRequest *tokenRequest = [[OIDTokenRequest alloc] initWithConfiguration:serviceConfig
 		grantType:OIDGrantTypeRefreshToken authorizationCode:nil redirectURL:nil clientID:authentication.clientId
 		clientSecret:authentication.clientSecret scopes:scopes
@@ -232,6 +237,11 @@ static NSString *_AUTHORIZATION_PATH;
 
 	return [[OIDServiceConfiguration alloc] initWithAuthorizationEndpoint:authorizationEndpoint
 		tokenEndpoint:tokenEndpoint];
+}
+
++ (BOOL)isClientCredentialsAuthentication:(LROAuth2Authentication *)auth {
+	// Tokens obtained with clientCredentials flow doesn't have refreshtoken
+	return auth.refreshToken.length == 0;
 }
 
 @end
