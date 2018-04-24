@@ -19,6 +19,7 @@
 #import "LRUserService_v7.h"
 #import "LROAuth2SignIn.h"
 #import "TRVSMonitor.h"
+#import "LRBlockCallback.h"
 
 @interface OAuth2AuthenticationTest : BaseTest
 
@@ -41,7 +42,8 @@ static NSString *const OAuth2password = @"";
 
 	self.monitor = [TRVSMonitor monitor];
 
-	[LROAuth2SignIn signInWithUsername:@"test@liferay.com" password:OAuth2password session:session clientId:@"12345" clientSecret:@"12345" scopes:@[] callback:^(LRSession *oauthSession, NSError *error) {
+	[LROAuth2SignIn signInWithUsername:@"test@liferay.com" password:OAuth2password session:session
+		clientId:@"12345" clientSecret:@"12345" scopes:@[] callback:^(LRSession *oauthSession, NSError *error) {
 		self.oauthSession = oauthSession;
 		self.error = error;
 
@@ -66,7 +68,8 @@ static NSString *const OAuth2password = @"";
 
 	self.monitor = [TRVSMonitor monitor];
 
-	[LROAuth2SignIn clientCredentialsSignInWithSession:session clientId:@"12345" clientSecret:@"12345" scopes:@[] callback:^(LRSession *oauthSession, NSError *error) {
+	[LROAuth2SignIn clientCredentialsSignInWithSession:session clientId:@"12345" clientSecret:@"12345" scopes:@[]
+		callback:^(LRSession *oauthSession, NSError *error) {
 		self.oauthSession = oauthSession;
 		self.error = error;
 
@@ -84,6 +87,62 @@ static NSString *const OAuth2password = @"";
 
 	XCTAssertNotNil(userAttrs);
 	XCTAssertNil(error);
+}
+
+-(void)testOAuth2RefreshAuthenticationWithUsernameAndPassword {
+	LRSession *session = [[LRSession alloc] initWithServer:OAuth2Server];
+
+	self.monitor = [TRVSMonitor monitor];
+
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		LRSession *oauthSession = [LROAuth2SignIn signInWithUsername:@"test@liferay.com"
+			password:OAuth2password session:session clientId:@"12345" clientSecret:@"12345"
+			scopes:@[] callback:nil error:nil];
+
+		[self checkRefreshIsSuccessful:oauthSession];
+
+		[self.monitor signal];
+	});
+
+	[self.monitor wait];
+}
+
+-(void)testOAuth2RefreshAuthenticationWithClientCredentials {
+	LRSession *session = [[LRSession alloc] initWithServer:OAuth2Server];
+
+	self.monitor = [TRVSMonitor monitor];
+
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		NSError *error;
+		LRSession *oauthSession = [LROAuth2SignIn clientCredentialsSignInWithSession:session clientId:@"12345"
+			clientSecret:@"12345" scopes:@[] callback:nil error:&error];
+
+		XCTAssertNil(error);
+		if (error == nil){
+			[self checkRefreshIsSuccessful:oauthSession];
+		}
+
+		[self.monitor signal];
+	});
+
+	[self.monitor wait];
+}
+
+-(void)checkRefreshIsSuccessful:(LRSession *)session {
+	LROAuth2Authentication *auth = (LROAuth2Authentication *) session.authentication;
+
+	NSString *accessToken = auth.accessToken;
+
+	auth.accessTokenExpirationDate = [NSDate date];
+
+	LRUserService_v7 *service = [[LRUserService_v7 alloc] initWithSession:session];
+	NSError *error;
+	NSDictionary *userAttrs = [service getCurrentUser:&error];
+
+	XCTAssertNotNil(userAttrs);
+	XCTAssertNil(error);
+
+	XCTAssertNotEqual(accessToken, auth.accessToken);
 }
 
 @end
