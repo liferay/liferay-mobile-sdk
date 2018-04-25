@@ -10,4 +10,4 @@ modules.each { File module ->
 	}
 }
 
-project(':android').name = 'liferay-mobile-sdk'
+project(':android').name = 'liferay-android-sdk'
