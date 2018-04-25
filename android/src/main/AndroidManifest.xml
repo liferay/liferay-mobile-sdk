@@ -1,9 +1,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
 	package="com.liferay.mobile.sdk">
 
 	<application>
+		<activity
+			android:name="net.openid.appauth.RedirectUriReceiverActivity"
+			tools:node="replace"/>
+
+		<activity
+			android:name="com.liferay.mobile.android.auth.oauth2.OAuth2RedirectActivity"
+			android:noHistory="true">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+				<category android:name="android.intent.category.BROWSABLE"/>
+
+				<data android:scheme="liferay-mobile"/>
+			</intent-filter>
+		</activity>
 
 	</application>
-
 
 </manifest>
