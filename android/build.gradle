@@ -1,5 +1,6 @@
 buildscript {
 	repositories {
+		jcenter()
 		mavenCentral()
 		maven {
 			url 'https://maven.google.com'
@@ -7,13 +8,37 @@ buildscript {
 	}
 	dependencies {
 		classpath 'com.android.tools.build:gradle:3.1.1'
+		classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+		classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
 	}
+}
+
+ext {
+	versionCode = 320
+	versionName = '3.1.0'
+
+	publishedGroupId = 'com.liferay.mobile'
+	libraryName = project.name
+	libraryDescription = project.description
+
+	bintrayRepo = 'liferay-mobile'
+	bintrayOrg = ''
+	//	    bintrayOrg = 'liferay'
+
+	siteUrl = 'https://github.com/liferay/liferay-mobile-sdk'
+	gitUrl = 'https://github.com/liferay/liferay-mobile-sdk.git'
+
+	developerId = 'brunofarache'
+	developerName = 'Bruno Farache'
+	developerEmail = 'bruno.farache@liferay.com'
+
+	licenseName = 'GNU Lesser General Public License, version 2.1'
+	licenseUrl = 'http://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html'
+	allLicenses = ["LGPL-2.1"]
 }
 
 apply from: '../formatter.gradle'
 format.workingDir = 'src/main/java'
-
-apply from: '../sdk-builder.gradle'
 
 apply plugin: 'com.android.library'
 
@@ -34,6 +59,7 @@ android {
 			}
 		}
 	}
+
 }
 
 repositories {
@@ -47,3 +73,6 @@ dependencies {
 	testImplementation 'org.json:json:20140107'
 	testImplementation 'junit:junit:4.12'
 }
+
+apply from: 'install.gradle'
+apply from: 'bintray.gradle'
