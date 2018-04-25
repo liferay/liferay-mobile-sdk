@@ -142,16 +142,7 @@ public class PortraitUtil {
 
 		byte[] bytes = digest.digest();
 
-		String token = null;
-
-		try {
-			token = Base64.encodeToString(bytes, Base64.NO_WRAP);
-		}
-		catch (RuntimeException re) {
-			if ("Stub!".equals(re.getMessage())) {
-				//token = DatatypeConverter.printBase64Binary(bytes);
-			}
-		}
+		String token = Base64.encodeToString(bytes, Base64.NO_WRAP);
 
 		if (token != null) {
 			sb.append("&img_id_token=");
