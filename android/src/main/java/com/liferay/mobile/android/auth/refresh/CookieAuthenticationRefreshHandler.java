@@ -17,6 +17,7 @@ package com.liferay.mobile.android.auth.refresh;
 import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.auth.CookieSignIn;
 import com.liferay.mobile.android.auth.CookieSignIn.CookieCallback;
+import com.liferay.mobile.android.auth.SessionCallback;
 import com.liferay.mobile.android.auth.basic.CookieAuthentication;
 import com.liferay.mobile.android.service.Session;
 
