@@ -15,6 +15,7 @@
 package com.liferay.mobile.android.http.client;
 
 import com.liferay.mobile.android.auth.Authentication;
+import com.liferay.mobile.android.auth.SessionCallback;
 import com.liferay.mobile.android.auth.refresh.AuthenticationRefreshHandlerFactory;
 import com.liferay.mobile.android.auth.refresh.AuthenticationRefreshHandler;
 import com.liferay.mobile.android.auth.refresh.CookieAuthenticationRefreshHandler;
@@ -206,7 +207,7 @@ public class OkHttpClientImpl implements HttpClient {
 		}
 		else {
 			refreshHandler.refreshAuthentication(session,
-					new AuthenticationRefreshHandler.SessionCallback() {
+					new SessionCallback() {
 
 				@Override
 				public void onSuccess(Session session) {
