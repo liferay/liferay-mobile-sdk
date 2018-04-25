@@ -1,40 +1,78 @@
-archivesBaseName = 'liferay-android-sdk'
+buildscript {
+	repositories {
+		jcenter()
+		mavenCentral()
+		maven {
+			url 'https://maven.google.com'
+		}
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:3.1.1'
+		classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+		classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
+	}
+}
+
+ext {
+	versionCode = 708
+	versionName = '7.0.8'
+
+	publishedGroupId = 'com.liferay.mobile'
+	libraryName = project.name
+	libraryDescription = project.description
+
+	bintrayRepo = 'liferay-mobile'
+	bintrayOrg = ''
+	//	    bintrayOrg = 'liferay'
+
+	siteUrl = 'https://github.com/liferay/liferay-mobile-sdk'
+	gitUrl = 'https://github.com/liferay/liferay-mobile-sdk.git'
+
+	developerId = 'brunofarache'
+	developerName = 'Bruno Farache'
+	developerEmail = 'bruno.farache@liferay.com'
+
+	licenseName = 'GNU Lesser General Public License, version 2.1'
+	licenseUrl = 'http://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html'
+	allLicenses = ["LGPL-2.1"]
+}
 
 apply from: '../formatter.gradle'
 format.workingDir = 'src/main/java'
 
-apply from: '../sdk-builder.gradle'
+apply plugin: 'com.android.library'
 
-sourceSets {
-	main {
-		java {
-			srcDir 'src/gen/java'
+android {
+	buildToolsVersion '27.0.3'
+	compileSdkVersion 27
+	useLibrary 'org.apache.http.legacy'
+
+	defaultConfig {
+		minSdkVersion 16
+		targetSdkVersion 27
+	}
+
+	sourceSets {
+		main {
+			java {
+				srcDir 'src/gen/java'
+			}
 		}
 	}
+
+}
+
+repositories {
+	google()
+	jcenter()
 }
 
 dependencies {
-	compile group: 'com.google.android', name: 'android', version: '2.3.3'
-	compile group: 'com.squareup.okhttp', name: 'okhttp', version: '2.4.0'
-	testCompile group: 'junit', name: 'junit', version: '4.12-beta-3'
+	implementation group: 'com.squareup.okhttp', name: 'okhttp', version: '2.7.5'
+
+	testImplementation 'org.json:json:20140107'
+	testImplementation 'junit:junit:4.12'
 }
 
-task formatTest(type: JavaExec) {
-	main = format.main
-	classpath = format.classpath
-	workingDir = 'src/test/java'
-}
-
-def excluded = "${packageName.replaceAll('\\.', '/')}/v*/**"
-
-task jarCore(type: Jar, dependsOn: classes) {
-	classifier = 'core'
-	from sourceSets.main.output
-	exclude(excluded)
-}
-
-task jarCoreSources(type: Jar, dependsOn: classes) {
-	classifier = 'core-sources'
-	from sourceSets.main.allSource
-	exclude(excluded)
-}
+apply from: 'install.gradle'
+apply from: 'bintray.gradle'

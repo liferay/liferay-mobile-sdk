@@ -11,7 +11,7 @@ allprojects {
 
 apply from: 'modules.gradle'
 
-configure(subprojects.findAll { it.name != 'ios' }) {
+configure(subprojects.findAll { it.name != 'ios' && it.name != 'liferay-android-sdk' }) {
 	apply plugin: 'java'
 	apply plugin: 'eclipse'
 	apply plugin: 'idea'
