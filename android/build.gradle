@@ -20,6 +20,7 @@ apply plugin: 'com.android.library'
 android {
 	buildToolsVersion '27.0.3'
 	compileSdkVersion 27
+	useLibrary 'org.apache.http.legacy'
 
 	defaultConfig {
 		minSdkVersion 16
@@ -41,10 +42,6 @@ repositories {
 }
 
 dependencies {
-	implementation group: 'org.apache.httpcomponents' , name: 'httpclient-android' , version: '4.3.5'
-	implementation (group: 'org.apache.httpcomponents' , name: 'httpmime' , version: '4.3.5') {
-		exclude module: 'org.apache.httpcomponents:httpclient'
-	}
 	implementation group: 'com.squareup.okhttp', name: 'okhttp', version: '2.7.5'
 
 	testImplementation 'org.json:json:20140107'
