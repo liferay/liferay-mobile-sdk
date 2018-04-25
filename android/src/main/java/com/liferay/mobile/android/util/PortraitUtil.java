@@ -34,8 +34,6 @@ import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.xml.bind.DatatypeConverter;
-
 /**
  * @author Bruno Farache
  * @author Silvio Santos
@@ -151,7 +149,7 @@ public class PortraitUtil {
 		}
 		catch (RuntimeException re) {
 			if ("Stub!".equals(re.getMessage())) {
-				token = DatatypeConverter.printBase64Binary(bytes);
+				//token = DatatypeConverter.printBase64Binary(bytes);
 			}
 		}
 

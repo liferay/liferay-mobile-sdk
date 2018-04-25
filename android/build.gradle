@@ -1,40 +1,52 @@
-archivesBaseName = 'liferay-android-sdk'
+buildscript {
+	repositories {
+		mavenCentral()
+		maven {
+			url 'https://maven.google.com'
+		}
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:3.1.1'
+	}
+}
 
 apply from: '../formatter.gradle'
 format.workingDir = 'src/main/java'
 
 apply from: '../sdk-builder.gradle'
 
-sourceSets {
-	main {
-		java {
-			srcDir 'src/gen/java'
+apply plugin: 'com.android.library'
+
+android {
+	buildToolsVersion '27.0.3'
+	compileSdkVersion 27
+
+	defaultConfig {
+		minSdkVersion 16
+		targetSdkVersion 27
+	}
+
+	sourceSets {
+		main {
+			java {
+				srcDir 'src/gen/java'
+			}
 		}
 	}
 }
 
+repositories {
+	google()
+	jcenter()
+}
+
 dependencies {
-	compile group: 'com.google.android', name: 'android', version: '2.3.3'
-	compile group: 'com.squareup.okhttp', name: 'okhttp', version: '2.4.0'
-	testCompile group: 'junit', name: 'junit', version: '4.12-beta-3'
-}
+	implementation group: 'org.apache.httpcomponents' , name: 'httpclient-android' , version: '4.3.5'
+	implementation (group: 'org.apache.httpcomponents' , name: 'httpmime' , version: '4.3.5') {
+		exclude module: 'org.apache.httpcomponents:httpclient'
+	}
+	implementation group: 'com.squareup.okhttp', name: 'okhttp', version: '2.7.5'
 
-task formatTest(type: JavaExec) {
-	main = format.main
-	classpath = format.classpath
-	workingDir = 'src/test/java'
-}
-
-def excluded = "${packageName.replaceAll('\\.', '/')}/v*/**"
-
-task jarCore(type: Jar, dependsOn: classes) {
-	classifier = 'core'
-	from sourceSets.main.output
-	exclude(excluded)
-}
-
-task jarCoreSources(type: Jar, dependsOn: classes) {
-	classifier = 'core-sources'
-	from sourceSets.main.allSource
-	exclude(excluded)
+	testImplementation 'org.json:json:20140107'
+	testImplementation 'junit:junit:4.12'
 }
