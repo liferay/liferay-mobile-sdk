@@ -1,6 +1,6 @@
 include 'android', 'builder', 'ios'
 
-rootProject.name = 'liferay-mobile-sdk'
+rootProject.name = 'liferay-mobile-sdk-project'
 
 def modules = files { file('modules').listFiles() }
 
@@ -9,3 +9,5 @@ modules.each { File module ->
 		include "modules/${module.name}"
 	}
 }
+
+project(':android').name = 'liferay-mobile-sdk'
