@@ -35,24 +35,27 @@ public class TokenRequester {
 	}
 
 	public static Map<String, String> parametersUsernameAndPassword(final String username, final String password) {
-		return new HashMap<String, String>() {{
-			put("username", username);
-			put("password", password);
-			put(GRANT_TYPE, GRANT_TYPE_PASSWORD);
-		}};
+		Map<String, String> parameters = new HashMap<>();
+		parameters.put("username", username);
+		parameters.put("password", password);
+		parameters.put(GRANT_TYPE, GRANT_TYPE_PASSWORD);
+
+		return parameters;
 	}
 
 	public static Map<String, String> parametersClientCredentials() {
-		return new HashMap<String, String>() {{
-			put(GRANT_TYPE, GRANT_TYPE_CLIENT_CREDENTIALS);
-		}};
+		Map<String, String> parameters = new HashMap<>();
+		parameters.put(GRANT_TYPE, GRANT_TYPE_CLIENT_CREDENTIALS);
+
+		return parameters;
 	}
 
 	public static Map<String, String> parametersRefresh(final String refreshToken) {
-		return new HashMap<String, String>() {{
-			put("refresh_token", refreshToken);
-			put(GRANT_TYPE, GRANT_TYPE_REFRESH_TOKEN);
-		}};
+		Map<String, String> parameters = new HashMap<>();
+		parameters.put("refresh_token", refreshToken);
+		parameters.put(GRANT_TYPE, GRANT_TYPE_REFRESH_TOKEN);
+
+		return parameters;
 	}
 
 	public Session send(final SessionCallback callback) throws Exception {
