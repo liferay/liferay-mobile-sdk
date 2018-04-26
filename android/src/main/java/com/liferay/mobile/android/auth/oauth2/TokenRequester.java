@@ -104,13 +104,13 @@ public class TokenRequester {
 		}
 	}
 
-	private Session parseResponse(Response response, Session session, String clienId, String clientSecret)
+	private Session parseResponse(Response response, Session session, String clientId, String clientSecret)
 		throws Exception {
 		if (!response.isSuccessful()) {
 			throw new ServerException(response.message());
 		}
 
-		OAuth2Authentication auth = parseJsonToken(response, session, clienId, clientSecret);
+		OAuth2Authentication auth = parseJsonToken(response, session, clientId, clientSecret);
 
 		Session oauth2Session = new SessionImpl(session);
 		oauth2Session.setAuthentication(auth);
@@ -118,7 +118,7 @@ public class TokenRequester {
 		return oauth2Session;
 	}
 
-	private OAuth2Authentication parseJsonToken(Response response, Session session, String clienId,
+	private OAuth2Authentication parseJsonToken(Response response, Session session, String clientId,
 		String clientSecret) throws Exception {
 		try {
 			JSONObject jsonObject = new JSONObject(response.body().string());
@@ -132,7 +132,7 @@ public class TokenRequester {
 			List<String> scopes = Arrays.asList(scope.split(" "));
 
 			return createOrUpdateAuthentication(session, accessToken, refreshToken, scopes, expirationDate,
-				clienId, clientSecret);
+				clientId, clientSecret);
 		} catch (JSONException e) {
 			throw new ServerException("Invalid json");
 		}
