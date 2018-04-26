@@ -29,23 +29,29 @@ public class OAuth2AuthenticationRefreshHandler implements AuthenticationRefresh
 				}
 			} else {
 
-				OAuth2SignIn.refreshToken(session, authentication.getScope(), new SessionCallback() {
-					@Override
-					public void onSuccess(Session oauth2Session) {
-						session.setAuthentication(oauth2Session.getAuthentication());
+				try {
+					OAuth2SignIn.refreshToken(session, authentication.getScope(), new SessionCallback() {
+						@Override
+						public void onSuccess(Session oauth2Session) {
+							session.setAuthentication(oauth2Session.getAuthentication());
 
-						lock.unlock();
+							lock.unlock();
 
-						callback.onSuccess(session);
-					}
+							callback.onSuccess(session);
+						}
 
-					@Override
-					public void onFailure(Exception e) {
-						lock.unlock();
+						@Override
+						public void onFailure(Exception e) {
+							lock.unlock();
 
-						callback.onFailure(e);
-					}
-				});
+							callback.onFailure(e);
+						}
+					});
+				} catch (Exception e) {
+					callback.onFailure(e);
+				} finally {
+					lock.unlock();
+				}
 
 				return null;
 			}
