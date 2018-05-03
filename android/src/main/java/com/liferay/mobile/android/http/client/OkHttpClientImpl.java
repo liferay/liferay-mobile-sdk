@@ -18,8 +18,6 @@ import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.auth.SessionCallback;
 import com.liferay.mobile.android.auth.refresh.AuthenticationRefreshHandlerFactory;
 import com.liferay.mobile.android.auth.refresh.AuthenticationRefreshHandler;
-import com.liferay.mobile.android.auth.refresh.CookieAuthenticationRefreshHandler;
-import com.liferay.mobile.android.auth.CookieSignIn;
 import com.liferay.mobile.android.callback.Callback;
 import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
