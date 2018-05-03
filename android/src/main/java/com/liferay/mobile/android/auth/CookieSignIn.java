@@ -15,7 +15,6 @@
 package com.liferay.mobile.android.auth;
 
 import com.liferay.mobile.android.auth.basic.CookieAuthentication;
-import com.liferay.mobile.android.auth.refresh.CookieAuthenticationRefreshHandler;
 import com.liferay.mobile.android.exception.AuthenticationException;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
