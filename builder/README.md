@@ -11,7 +11,7 @@
 	* [Generating remote services](#generating-remote-services)
 * [Building a Liferay Android SDK](#building-a-liferay-android-sdk)
 * [Building a Liferay iOS SDK](#building-a-liferay-ios-sdk)
-* [Other platforms](#other-platforms)
+* [Building a Liferay Windows SDK](#building-a-liferay-windows-sdk)
 
 ## What's the SDK Builder?
 
@@ -224,9 +224,17 @@ XCode project.
 To learn how to use the Liferay iOS SDK in your mobile app, see the
 [Liferay iOS SDK documentation](../ios/README.md).
 
-### Other platforms
+### Building a Liferay Windows SDK
 
-Besides Android and iOS, there's an
-[Windows](https://github.com/ithildir/liferay-sdk-builder-windows) extension of
-the SDK Builder implemented by a community member, in order to use it, type windows
-in the `Platforms` property.
+To build a `.nupkg` file containing the generated service and utility classes, run
+the following command from your module folder:
+
+    nuget pack Liferay.SDK/Liferay.SDK.nuspec
+
+The `Liferay.SDK.${version}.nupkg` file is written in the same folder. 
+You're ready to use the contents of this file in your Windows project.
+Simply add the file to your Visual Studio project. If you want to know how to add 
+a NuGet package, please see [this documentation](https://docs.microsoft.com/en-us/nuget/consume-packages/ways-to-install-a-package).
+
+To learn how to use the Liferay Windows SDK, see the
+[Liferay Windows SDK documentation](../windows/README.md).

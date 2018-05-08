@@ -40,7 +40,14 @@ public class Discovery {
 			}
 		}
 
-		JSONArray actions = jsonObj.getJSONArray("services");
+		// Liferay 6.2: json key "actions"
+		// Liferay 7.0: json key "services"
+		JSONArray actions;
+		if (jsonObj.has("services")) {
+			actions = jsonObj.getJSONArray("services");
+		} else {
+			actions = jsonObj.getJSONArray("actions");
+		}
 
 		for (int i = 0; i < actions.length(); i++) {
 			Action action = new Action(actions.getJSONObject(i));

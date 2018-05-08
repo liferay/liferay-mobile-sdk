@@ -51,3 +51,28 @@
 
 	- ($returnType)$methodName$parameterList$suffix
 #end
+
+#macro(cSharpMethodSignature $action)
+	#set ($returnType = $languageUtil.getReturnType($action.response))
+	#set ($methodName = $languageUtil.getMethodName($action.path))
+	#set ($parameters = $action.parameters)
+	#set ($parameterList = "")
+
+	#foreach ($parameter in $parameters)
+		#set ($parameterName = $languageUtil.getParameterName($parameter.name))
+		#set ($parameterType = $languageUtil.getType($parameter.type))
+		#set ($parameterList = "$parameterList$parameterType $parameterName")
+
+		#if ($foreach.hasNext)
+			#set ($parameterList = "$parameterList, ")
+		#end
+	#end
+
+	#if ($returnType == $VOID)
+		#set ($methodReturnType = "Task")
+	#else
+		#set ($methodReturnType = "Task<$returnType>")
+	#end
+
+	public async $methodReturnType $methodName($parameterList)
+#end

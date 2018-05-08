@@ -1,4 +1,4 @@
-include 'android', 'builder', 'ios'
+include 'android', 'ios', "windows", 'builder'
 
 rootProject.name = 'liferay-mobile-sdk-project'
 

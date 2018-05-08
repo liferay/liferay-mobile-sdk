@@ -1,0 +1,103 @@
+/**
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ */
+
+##n
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+
+##n
+
+namespace $package
+{
+##t	public class $className : ServiceBase
+##t	{
+##t		public $className(ISession session)
+##t			: base(session)
+##t		{
+##t		}
+
+##n
+
+#foreach ($action in $actions)
+	#set ($parameters = $action.parameters)
+
+	##t		#cSharpMethodSignature($action)
+	##t		{
+
+	##t			var _parameters = new JsonObject();
+
+	##n
+
+	#set ($invokeMethod = "InvokeAsync")
+
+	#foreach ($parameter in $parameters)
+		#set ($parameterName = $parameter.name)
+		#set ($parameterType = $languageUtil.getType($parameter.type))
+
+		#if ($parameterType == $STREAM)
+			#set ($invokeMethod = "UploadAsync")
+		#end
+
+		#set ($parameterValue = $languageUtil.getParameterName($parameterName))
+
+		#if ($parameterType == $JSON_OBJECT_WRAPPER)
+			##t			this.MangleWrapper(_parameters, ${esc.q}$parameterName${esc.q}, ${esc.q}$languageUtil.getJSONWrapperClassName($parameter.type)${esc.q}, $parameterValue);
+		#else
+			##t			_parameters.Add(${esc.q}$parameterName${esc.q}, $parameterValue);
+		#end
+
+		#if (!$foreach.hasNext)
+			##n
+		#end
+	#end
+
+	##t			var _command = new JsonObject()
+	##t			{
+	##t				{ ${esc.q}$action.path${esc.q}, _parameters }
+	##t			};
+
+	##n
+
+	#set ($ienumerableReturnCastType = $languageUtil.getIEnumerableCastType($action.response))
+
+	#if ($returnType == $VOID)
+		##t			await this.Session.$invokeMethod(_command);
+	#else
+		##t			var _obj = await this.Session.$invokeMethod(_command);
+
+		##n
+
+		#if ($ienumerableReturnCastType != "")
+			##t			var _jsonArray = (JsonArray)_obj;
+
+			##n
+
+			##t			return _jsonArray.Cast<$ienumerableReturnCastType>();
+		#else
+			##t			return ($returnType)_obj;
+		#end
+	#end
+
+	##t		}
+
+	#if ($foreach.hasNext)
+		##n
+	#end
+#end
+##t	}
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Liferay.SDK</id>
+    <version>7.1.0.1</version>
+    <title>Liferay SDK for Windows</title>
+    <authors>Andrea Di Giorgi, Liferay Inc.</authors>
+    <owners>Andrea Di Giorgi, LiferayScreens</owners>
+    <licenseUrl>https://github.com/liferay/liferay-mobile-sdk/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/liferay/liferay-mobile-sdk</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides the means to consume Liferay Portal's core and plugins remote services</description>
+    <releaseNotes>Released services for Liferay 7.1</releaseNotes>
+    <tags>Client JSON Liferay Services SDK LiferayScreens</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\*.dll" target="lib\portable-net451+win81+wpa81" />
+  </files>
+</package>
