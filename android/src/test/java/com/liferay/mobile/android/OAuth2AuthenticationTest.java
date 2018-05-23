@@ -23,8 +23,8 @@ public class OAuth2AuthenticationTest extends BaseTest {
 	@Test
 	public void testOAuth2SignInWithUsernameAnPassword() throws Exception {
 		Session oauth2Session =
-			OAuth2SignIn.signInWithUsernameAndPassword("test@liferay.com", "r3m3mb3r", session, "12345", "12345",
-				new ArrayList<String>(){{add("HEAD");}}, null);
+			OAuth2SignIn.signInWithUsernameAndPassword("test@liferay.com", "test", session, "1234", "1234",
+				new ArrayList<String>(){}, null);
 
 		GroupService service = new GroupService(oauth2Session);
 		JSONArray userSites = service.getUserSitesGroups();
@@ -46,7 +46,7 @@ public class OAuth2AuthenticationTest extends BaseTest {
 	@Test
 	public void testOAuth2RefreshUsernameAndPassword() throws Exception {
 		Session oauth2Session =
-			OAuth2SignIn.signInWithUsernameAndPassword("test@liferay.com", "r3m3mb3r", session, "12345", "12345",
+			OAuth2SignIn.signInWithUsernameAndPassword("test@liferay.com", "test", session, "1234", "1234",
 				new ArrayList<String>(), null);
 
 		OAuth2Authentication auth = (OAuth2Authentication) oauth2Session.getAuthentication();
