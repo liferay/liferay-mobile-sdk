@@ -15,15 +15,14 @@ buildscript {
 
 ext {
 	versionCode = 708
-	versionName = '7.0.8'
+	versionName = '7.1-beta2'
 
 	publishedGroupId = 'com.liferay.mobile'
 	libraryName = project.name
 	libraryDescription = project.description
 
 	bintrayRepo = 'liferay-mobile'
-	bintrayOrg = ''
-	//	    bintrayOrg = 'liferay'
+	bintrayOrg = 'liferay'
 
 	siteUrl = 'https://github.com/liferay/liferay-mobile-sdk'
 	gitUrl = 'https://github.com/liferay/liferay-mobile-sdk.git'
