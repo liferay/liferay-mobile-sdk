@@ -15,8 +15,9 @@
 package com.liferay.mobile.android.http.client;
 
 import com.liferay.mobile.android.auth.Authentication;
-import com.liferay.mobile.android.auth.CookieExpirationHandler;
-import com.liferay.mobile.android.auth.CookieSignIn;
+import com.liferay.mobile.android.auth.SessionCallback;
+import com.liferay.mobile.android.auth.refresh.AuthenticationRefreshHandlerFactory;
+import com.liferay.mobile.android.auth.refresh.AuthenticationRefreshHandler;
 import com.liferay.mobile.android.callback.Callback;
 import com.liferay.mobile.android.http.Method;
 import com.liferay.mobile.android.http.Request;
@@ -25,6 +26,7 @@ import com.liferay.mobile.android.http.file.InputStreamBody;
 import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.Session;
 
+import com.liferay.mobile.android.service.SessionImpl;
 import com.squareup.okhttp.Authenticator;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.HttpUrl;
@@ -49,6 +51,12 @@ public class OkHttpClientImpl implements HttpClient {
 
 	public OkHttpClientImpl() {
 		client = new OkHttpClient();
+	}
+
+	public void setRefreshHandlerFactory(AuthenticationRefreshHandlerFactory
+		refreshHandlerFactory) {
+
+		this.refreshHandlerFactory = refreshHandlerFactory;
 	}
 
 	@Override
@@ -182,21 +190,27 @@ public class OkHttpClientImpl implements HttpClient {
 
 		final Callback callback = request.getCallback();
 
-		if (request.getCallback() == null) {
-			Session session = CookieExpirationHandler.reloadSessionIfNeeded(
-					request, null);
+		Session session = getSessionFromRequest(request);
 
-			request.setAuthentication(session.getAuthentication());
+		AuthenticationRefreshHandler refreshHandler = refreshHandlerFactory
+				.refreshHandlerForAuthentication(request.getAuthentication());
+
+		if (request.getCallback() == null) {
+			Session refreshSession = refreshHandler
+					.refreshAuthentication(session, null);
+
+			request.setAuthentication(refreshSession.getAuthentication());
 
 			return doSend(builder, request);
 		}
 		else {
-			CookieExpirationHandler.reloadSessionIfNeeded(
-					request, new CookieSignIn.CookieCallback() {
+			refreshHandler.refreshAuthentication(session,
+					new SessionCallback() {
 
 				@Override
 				public void onSuccess(Session session) {
 					try {
+						request.setAuthentication(session.getAuthentication());
 						doSend(finalBuilder, request);
 					}
 					catch (Exception e) {
@@ -216,7 +230,6 @@ public class OkHttpClientImpl implements HttpClient {
 
 	protected void sendAsync(Call call, final Callback callback) {
 		call.enqueue(new com.squareup.okhttp.Callback() {
-
 			@Override
 			public void onFailure(
 				com.squareup.okhttp.Request request, IOException ioe) {
@@ -234,6 +247,26 @@ public class OkHttpClientImpl implements HttpClient {
 		});
 	}
 
-	protected OkHttpClient client;
+	protected String getServerURL(String url) {
+		if (url.contains("/api/jsonws/invoke")) {
+			url = url.substring(0, url.indexOf("/api/jsonws/invoke"));
+		}
 
+		return url;
+	}
+
+	protected Session getSessionFromRequest(Request request) {
+		Authentication authentication = request.getAuthentication();
+		Map<String, String> headers = request.getHeaders();
+		String server = getServerURL(request.getURL());
+
+		Session session = new SessionImpl(server, authentication);
+		session.setHeaders(headers);
+
+		return session;
+	}
+
+	protected AuthenticationRefreshHandlerFactory
+			refreshHandlerFactory = new AuthenticationRefreshHandlerFactory();
+	protected OkHttpClient client;
 }
