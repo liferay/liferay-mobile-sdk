@@ -14,14 +14,26 @@
 
 #import "SafariAuthorizationUICoordinator.h"
 
+#if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_WATCH
+	#import <UIKit/UIKit.h>
+#else
+	#import <AppKit/AppKit.h>
+#endif
+
 @implementation SafariAuthorizationUICoordinator
 
 - (BOOL)presentAuthorizationRequest:(OIDAuthorizationRequest *)request
 	session:(id<OIDAuthorizationFlowSession>)session {
 
 	NSURL *requestURL = [request authorizationRequestURL];
-	BOOL openedInBrowser = [[UIApplication sharedApplication] openURL:requestURL];
-	return openedInBrowser;
+
+	#if TARGET_OS_IOS || TARGET_OS_TV
+		return [[UIApplication sharedApplication] openURL:requestURL];
+	#elif  TARGET_OS_WATCH
+		return true;
+	#else
+		return [NSWorkspace.sharedWorkspace openURL:requestURL];
+	#endif
 }
 
 - (void)dismissAuthorizationAnimated:(BOOL)animated
