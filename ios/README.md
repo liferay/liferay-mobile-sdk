@@ -101,7 +101,7 @@ To find out which Liferay versions you are connecting to, use the
 
 #### iOS
 
-The Liferay iOS SDK is compatible with iOS versions 7.0 and up. It may work with
+The Liferay iOS SDK is compatible with iOS versions 10.0 and up. It may work with
 older versions, but these are the versions we use to run our unit tests.
 
 ## Use
