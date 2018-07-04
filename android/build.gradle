@@ -14,8 +14,8 @@ buildscript {
 }
 
 ext {
-	versionCode = 708
-	versionName = '7.1-beta2'
+	versionCode = 709
+	versionName = '7.1.0'
 
 	publishedGroupId = 'com.liferay.mobile'
 	libraryName = project.name
