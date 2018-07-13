@@ -33,12 +33,15 @@ import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.MultipartBuilder;
 import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Protocol;
 import com.squareup.okhttp.Request.Builder;
 import com.squareup.okhttp.RequestBody;
 
 import java.io.IOException;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -109,6 +112,14 @@ public class OkHttpClientImpl implements HttpClient {
 		}
 	}
 
+	protected void setProtocols(OkHttpClient client, Request request) {
+		List<Protocol> protocols= request.getProtocols();
+
+		if (!protocols.isEmpty()) {
+			client.setProtocols(protocols);
+		}
+	}
+
 	protected void authenticate(OkHttpClient client, Request request)
 		throws Exception {
 
@@ -128,6 +139,7 @@ public class OkHttpClientImpl implements HttpClient {
 		throws Exception {
 
 		authenticate(client, request);
+		setProtocols(client, request);
 		addHeaders(builder, request);
 
 		OkHttpClient client = getClient(

@@ -16,7 +16,9 @@ package com.liferay.mobile.android.service;
 
 import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.callback.Callback;
+import com.squareup.okhttp.Protocol;
 
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -50,5 +52,7 @@ public interface Session {
 	void setServer(String server);
 
 	JSONArray upload(JSONObject command) throws Exception;
+
+	JSONArray upload(JSONObject command, List<Protocol> protocols) throws Exception;
 
 }

@@ -23,9 +23,12 @@ import com.liferay.mobile.android.callback.file.UploadCallback;
 import com.liferay.mobile.android.http.client.HttpClient;
 import com.liferay.mobile.android.http.client.OkHttpClientImpl;
 import com.liferay.mobile.android.service.Session;
+import com.squareup.okhttp.Protocol;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.List;
 
 import static com.liferay.mobile.android.http.file.FileProgressUtil.transfer;
 
@@ -139,7 +142,7 @@ public class HttpUtil {
 		client.setRefreshHandlerFactory(factory);
 	}
 
-	public static JSONArray upload(Session session, JSONObject command)
+	public static JSONArray upload(Session session, JSONObject command, List<Protocol> protocols)
 		throws Exception {
 
 		String path = (String)command.keys().next();
@@ -154,6 +157,8 @@ public class HttpUtil {
 			session.getAuthentication(), Method.POST, session.getHeaders(),
 			getURL(session, path), command.getJSONObject(path),
 			session.getConnectionTimeout(), sessionCallback);
+
+		request.setProtocols(protocols);
 
 		Response response = client.upload(request);
 

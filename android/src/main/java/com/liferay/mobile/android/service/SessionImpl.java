@@ -18,10 +18,13 @@ import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.callback.Callback;
 import com.liferay.mobile.android.http.HttpUtil;
 import com.liferay.mobile.android.http.file.UploadData;
+import com.squareup.okhttp.Protocol;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -126,11 +129,16 @@ public class SessionImpl implements Session {
 
 	@Override
 	public JSONArray upload(JSONObject command) throws Exception {
+		return upload(command, new ArrayList<Protocol>());
+	}
+
+	@Override
+	public JSONArray upload(JSONObject command, List<Protocol> protocols) throws Exception {
 		if (!hasUploadData(command)) {
 			return invoke(command);
 		}
 
-		return HttpUtil.upload(this, command);
+		return HttpUtil.upload(this, command, protocols);
 	}
 
 	protected boolean hasUploadData(JSONObject command) throws JSONException {
