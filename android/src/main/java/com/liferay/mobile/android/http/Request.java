@@ -16,8 +16,11 @@ package com.liferay.mobile.android.http;
 
 import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.callback.Callback;
+import com.squareup.okhttp.Protocol;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -108,6 +111,10 @@ public class Request {
 		return _method;
 	}
 
+	public List<Protocol> getProtocols() {
+		return _protocols;
+	}
+
 	public Object getTag() {
 		return _tag;
 	}
@@ -144,6 +151,10 @@ public class Request {
 		_method = method;
 	}
 
+	public void setProtocols(List<Protocol> protocols) {
+		_protocols = protocols;
+	}
+
 	public void setURL(String url) {
 		_url = url;
 	}
@@ -156,10 +167,10 @@ public class Request {
 	private Object _body;
 	private Callback _callback;
 	private int _connectionTimeout;
+	private boolean _followRedirects;
 	private Map<String, String> _headers = new HashMap<String, String>();
 	private Method _method;
+	private List<Protocol> _protocols = new ArrayList<Protocol>();
 	private Object _tag;
 	private String _url;
-	private boolean _followRedirects;
-
 }
