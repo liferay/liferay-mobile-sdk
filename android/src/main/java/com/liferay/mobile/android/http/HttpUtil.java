@@ -25,6 +25,7 @@ import com.liferay.mobile.android.http.client.OkHttpClientImpl;
 import com.liferay.mobile.android.service.Session;
 import com.squareup.okhttp.Protocol;
 
+import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -140,6 +141,12 @@ public class HttpUtil {
 			(AuthenticationRefreshHandlerFactory factory) {
 
 		client.setRefreshHandlerFactory(factory);
+	}
+
+	public static JSONArray upload(Session session, JSONObject command)
+		throws Exception {
+
+		return upload(session, command, new ArrayList<Protocol>());
 	}
 
 	public static JSONArray upload(Session session, JSONObject command, List<Protocol> protocols)

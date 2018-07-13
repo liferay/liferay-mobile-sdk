@@ -39,7 +39,6 @@ import com.squareup.okhttp.RequestBody;
 
 import java.io.IOException;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -113,9 +112,9 @@ public class OkHttpClientImpl implements HttpClient {
 	}
 
 	protected void setProtocols(OkHttpClient client, Request request) {
-		List<Protocol> protocols= request.getProtocols();
+		List<Protocol> protocols = request.getProtocols();
 
-		if (!protocols.isEmpty()) {
+		if (protocols != null && !protocols.isEmpty()) {
 			client.setProtocols(protocols);
 		}
 	}
