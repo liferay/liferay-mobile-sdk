@@ -32,6 +32,7 @@ configure(subprojects.findAll { it.name.startsWith('modules/') }) {
 	}
 
 	dependencies {
+		compile project(path: ':liferay-android-sdk', configuration: 'default')
 		compile group: 'com.google.android', name: 'android', version: '2.3.3'
 		compile group: 'org.apache.httpcomponents', name: 'httpclient-android', version: '4.3.3'
 		compile group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.3.3'
