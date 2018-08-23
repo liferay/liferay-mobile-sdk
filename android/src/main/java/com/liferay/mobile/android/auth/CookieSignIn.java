@@ -197,6 +197,7 @@ public class CookieSignIn {
 		RequestBody formBody = new FormEncodingBuilder()
 			.add("login", username)
 			.add("password",password)
+			.add("rememberMe", "true")
 			.build();
 
 		Buffer buffer = new Buffer();
