@@ -21,6 +21,7 @@ import com.liferay.mobile.android.auth.SessionCallback;
 import com.liferay.mobile.android.auth.basic.CookieAuthentication;
 import com.liferay.mobile.android.service.Session;
 
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -36,7 +37,7 @@ public class CookieAuthenticationRefreshHandler implements
             CookieAuthentication authentication =
                     (CookieAuthentication) session.getAuthentication();
 
-            lock.lock();
+            semaphore.acquire();
 
             if (shouldRefreshCookie(
                     authentication.getLastCookieRefresh(),
@@ -46,24 +47,25 @@ public class CookieAuthenticationRefreshHandler implements
                     try {
                         return CookieSignIn.signIn(session);
                     } finally {
-                        lock.unlock();
+	                    semaphore.release();
                     }
                 } else {
                     CookieSignIn.signIn(session, new CookieCallback() {
 
                         @Override
                         public void onSuccess(Session cookieSession) {
+
                             session.setAuthentication(
                                     cookieSession.getAuthentication());
 
-                            lock.unlock();
+                            semaphore.release();
 
                             callback.onSuccess(session);
                         }
 
                         @Override
                         public void onFailure(Exception e) {
-                            lock.unlock();
+                            semaphore.release();
 
                             callback.onFailure(e);
                         }
@@ -72,7 +74,7 @@ public class CookieAuthenticationRefreshHandler implements
                     return null;
                 }
             } else {
-                lock.unlock();
+                semaphore.release();
             }
         }
 
@@ -111,6 +113,6 @@ public class CookieAuthenticationRefreshHandler implements
 
     }
 
-    protected static final Lock lock = new ReentrantLock();
+    protected static final Semaphore semaphore = new Semaphore(1);
     private static final int TOLERANCE = 60;
 }
