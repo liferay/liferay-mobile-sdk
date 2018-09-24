@@ -1,0 +1,10 @@
+apply from: '../common.gradle'
+
+dependencies {
+	implementation group: 'com.squareup.okhttp', name: 'okhttp', version: '2.7.5'
+
+	implementation 'net.openid:appauth:0.7.0'
+
+	testImplementation 'org.json:json:20140107'
+	testImplementation 'junit:junit:4.12'
+}

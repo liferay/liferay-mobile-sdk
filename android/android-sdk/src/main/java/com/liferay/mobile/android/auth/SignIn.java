@@ -17,10 +17,10 @@ package com.liferay.mobile.android.auth;
 import com.liferay.mobile.android.auth.basic.BasicAuthentication;
 import com.liferay.mobile.android.callback.typed.JSONArrayCallback;
 import com.liferay.mobile.android.callback.typed.JSONObjectCallback;
+import com.liferay.mobile.android.service.GroupService;
+import com.liferay.mobile.android.service.UserService;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.android.v7.group.GroupService;
-import com.liferay.mobile.android.v7.user.UserService;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
