@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.mobile.android.v62.journalarticle;
+package com.liferay.mobile.screens.service.v62;
 
 import com.liferay.mobile.android.http.file.UploadData;
 import com.liferay.mobile.android.service.BaseService;

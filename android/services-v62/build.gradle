@@ -1,0 +1,5 @@
+apply from: '../common.gradle'
+
+dependencies {
+	api project(':liferay-android-sdk-core')
+}
