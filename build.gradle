@@ -1,3 +1,20 @@
+buildscript {
+	repositories {
+		google()
+		jcenter()
+		mavenCentral()
+		maven {
+			url 'https://maven.google.com'
+		}
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:3.1.4'
+		classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+		classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
+	}
+}
+
+
 ext {
 	tasksGroup = 'Liferay'
 }
@@ -13,7 +30,13 @@ allprojects {
 
 apply from: 'modules.gradle'
 
-configure(subprojects.findAll { it.name != 'ios' && it.name != 'liferay-android-sdk' }) {
+configure(subprojects.findAll { it.name != 'ios' &&
+	it.name != 'liferay-android-sdk'&&
+	it.name != 'liferay-android-sdk-core'&&
+	it.name != 'liferay-android-services-v62' &&
+	it.name != 'liferay-android-services-v7' &&
+	it.name != 'liferay-android-services-v71'}) {
+
 	apply plugin: 'java'
 	apply plugin: 'eclipse'
 	apply plugin: 'idea'

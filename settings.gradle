@@ -1,4 +1,4 @@
-include 'android', 'ios', "windows", 'builder'
+include 'android/android-sdk', 'android/android-all', 'android/services-v62', 'android/services-v7', 'android/services-v71', 'ios', "windows", 'builder'
 
 rootProject.name = 'liferay-mobile-sdk-project'
 
@@ -10,4 +10,8 @@ modules.each { File module ->
 	}
 }
 
-project(':android').name = 'liferay-android-sdk'
+project(':android/android-all').name = 'liferay-android-sdk'
+project(':android/android-sdk').name = 'liferay-android-sdk-core'
+project(':android/services-v62').name = 'liferay-android-services-v62'
+project(':android/services-v7').name = 'liferay-android-services-v7'
+project(':android/services-v71').name = 'liferay-android-services-v71'
