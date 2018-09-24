@@ -1,0 +1,15 @@
+apply from: '../common.gradle'
+
+dependencies {
+	api (project(':liferay-android-services-v62')) {
+		exclude group: 'com.liferay.mobile', module: 'liferay-android-sdk-core'
+	}
+	api (project(':liferay-android-services-v7')) {
+		exclude group: 'com.liferay.mobile', module: 'liferay-android-sdk-core'
+	}
+	api (project(':liferay-android-services-v71')) {
+		exclude group: 'com.liferay.mobile', module: 'liferay-android-sdk-core'
+	}
+	api project(':liferay-android-sdk-core')
+}
+
