@@ -1,0 +1,46 @@
+ext {
+	versionCode = 711
+	versionName = '7.1.3-beta-1'
+
+	publishedGroupId = 'com.liferay.mobile'
+	libraryName = project.name
+	libraryDescription = project.description
+
+	bintrayRepo = 'liferay-mobile'
+	bintrayOrg = ''//'liferay'
+
+	siteUrl = 'https://github.com/liferay/liferay-mobile-sdk'
+	gitUrl = 'https://github.com/liferay/liferay-mobile-sdk.git'
+
+	developerId = 'brunofarache'
+	developerName = 'Bruno Farache'
+	developerEmail = 'bruno.farache@liferay.com'
+
+	licenseName = 'GNU Lesser General Public License, version 2.1'
+	licenseUrl = 'http://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html'
+	allLicenses = ["LGPL-2.1"]
+}
+
+apply from: '../../formatter.gradle'
+format.workingDir = 'src/main/java'
+
+apply plugin: 'com.android.library'
+
+android {
+	buildToolsVersion '27.0.3'
+	compileSdkVersion 27
+	useLibrary 'org.apache.http.legacy'
+
+	defaultConfig {
+		minSdkVersion 16
+		targetSdkVersion 27
+	}
+}
+
+repositories {
+	google()
+	jcenter()
+}
+
+apply from: '../install.gradle'
+apply from: '../bintray.gradle'
