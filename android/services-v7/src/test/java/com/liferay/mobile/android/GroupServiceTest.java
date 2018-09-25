@@ -14,12 +14,12 @@
 
 package com.liferay.mobile.android;
 
-import com.liferay.mobile.android.service.BatchSessionImpl;
 import com.liferay.mobile.android.v7.group.GroupService;
 
 import java.io.IOException;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import org.junit.Test;
 
@@ -28,29 +28,32 @@ import static org.junit.Assert.*;
 /**
  * @author Bruno Farache
  */
-public class BatchSessionTest extends BaseTest {
+public class GroupServiceTest extends BaseTest {
 
-	public BatchSessionTest() throws IOException {
+	public static void assertUserSites(JSONArray sites) throws Exception {
+		assertNotNull(sites);
+		assertTrue(sites.length() > 0);
+
+		JSONObject jsonObj = sites.getJSONObject(0);
+		assertEquals("/test", jsonObj.getString("friendlyURL"));
+
+		jsonObj = sites.getJSONObject(1);
+		assertEquals("/global", jsonObj.getString("friendlyURL"));
+
+		jsonObj = sites.getJSONObject(2);
+		assertEquals("/asdfasdfa", jsonObj.getString("friendlyURL"));
+	}
+
+	public GroupServiceTest() throws IOException {
 		super();
 	}
 
 	@Test
 	public void getUserSites() throws Exception {
-		BatchSessionImpl session = new BatchSessionImpl(this.session);
-
 		GroupService service = new GroupService(session);
 
-		service.getUserSitesGroups();
-		service.getUserSitesGroups();
-
-		JSONArray result = session.invoke();
-
-		GroupServiceTest.assertUserSites(result.getJSONArray(0));
-		GroupServiceTest.assertUserSites(result.getJSONArray(1));
-
-		result = session.invoke();
-
-		assertNull(result);
+		JSONArray sites = service.getUserSitesGroups();
+		assertUserSites(sites);
 	}
 
 }

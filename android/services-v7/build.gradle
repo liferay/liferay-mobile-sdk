@@ -2,4 +2,7 @@ apply from: '../common.gradle'
 
 dependencies {
 	api project(':liferay-android-sdk-core')
+
+	testImplementation 'org.json:json:20140107'
+	testImplementation 'junit:junit:4.12'
 }
