@@ -17,3 +17,5 @@ out/
 
 samples/liferay-ios-oauth2/Pods/
 xcuserdata/
+
+.nuget
