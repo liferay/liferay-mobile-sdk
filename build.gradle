@@ -8,8 +8,8 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:3.1.4'
-		classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+		classpath 'com.android.tools.build:gradle:3.4.0'
+		classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
 		classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
 	}
 }
@@ -108,8 +108,4 @@ configure(subprojects.findAll { it.name != 'ios' &&
 			signing.sign file("build/libs/${archivesBaseName}-${version}.pom")
 		}
 	}
-}
-
-task wrapper(type: Wrapper) {
-	gradleVersion = '1.11'
 }

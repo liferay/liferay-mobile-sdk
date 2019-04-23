@@ -7,7 +7,7 @@ dependencies {
 	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.2.5'
 	compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
 	compile group: 'org.apache.velocity', name: 'velocity-tools', version: '2.0'
-	compile group: 'org.json', name: 'json', version: '20140107'
+	compile group: 'org.json', name: 'json', version: '20180813'
 	compile group: 'commons-io', name: 'commons-io', version: '2.4'
 
 	runtime group: 'com.liferay.mobile', name: 'liferay-sdk-builder-sample', version: '[6.2,)'
