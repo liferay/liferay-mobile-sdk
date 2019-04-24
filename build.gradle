@@ -35,7 +35,8 @@ configure(subprojects.findAll { it.name != 'ios' &&
 	it.name != 'liferay-android-sdk-core'&&
 	it.name != 'liferay-android-services-v62' &&
 	it.name != 'liferay-android-services-v7' &&
-	it.name != 'liferay-android-services-v71'}) {
+	it.name != 'liferay-android-services-v71' &&
+	it.name != 'liferay-android-services-v72'}) {
 
 	apply plugin: 'java'
 	apply plugin: 'eclipse'
