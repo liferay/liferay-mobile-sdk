@@ -33,7 +33,7 @@ configure(subprojects.findAll { it.name.startsWith('modules/') }) {
 
 	dependencies {
 		if (isJavaCompile()) {
-			compile 'com.liferay.mobile:liferay-android-sdk:7.0.9'
+			compile 'com.liferay.mobile:liferay-android-sdk:7.1.4'
 		} else {
 			compile project(path: ':liferay-android-sdk', configuration: 'default')
 		}
@@ -69,7 +69,7 @@ task createModule {
 			def all = project.hasProperty('all')
 
 			def contexts = read("${N}Context", project.ext['contexts'])
-			def String platforms = project.ext['platforms']
+			def platforms = project.ext['platforms']
 			def url = project.ext['url']
 			def filter = project.ext['filter']
 			def portalVersion = project.ext['portalVersion']

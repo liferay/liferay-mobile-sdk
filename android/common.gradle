@@ -1,6 +1,6 @@
 ext {
-	versionCode = 714
-	versionName = '7.1.4'
+	versionCode = 720
+	versionName = '7.2.0'
 
 	publishedGroupId = 'com.liferay.mobile'
 	libraryName = project.name
@@ -27,13 +27,13 @@ format.workingDir = 'src/main/java'
 apply plugin: 'com.android.library'
 
 android {
-	buildToolsVersion '27.0.3'
-	compileSdkVersion 27
+	buildToolsVersion '28.0.3'
+	compileSdkVersion 28
 	useLibrary 'org.apache.http.legacy'
 
 	defaultConfig {
 		minSdkVersion 16
-		targetSdkVersion 27
+		targetSdkVersion 28
 	}
 }
 
