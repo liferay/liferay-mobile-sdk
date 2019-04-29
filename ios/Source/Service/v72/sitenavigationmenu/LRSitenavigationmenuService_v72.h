@@ -33,6 +33,6 @@
 - (NSDictionary *)addSiteNavigationMenuWithGroupId:(long long)groupId name:(NSString *)name serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addSiteNavigationMenuWithGroupId:(long long)groupId name:(NSString *)name type:(int)type serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)updateSiteNavigationMenuWithSiteNavigationMenuId:(long long)siteNavigationMenuId name:(NSString *)name serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
-- (NSDictionary *)updateSiteNavigationMenuWithSiteNavigationMenuId:(long long)siteNavigationMenuId type:(int)type auto:(BOOL)auto serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
+- (NSDictionary *)updateSiteNavigationMenuWithSiteNavigationMenuId:(long long)siteNavigationMenuId type:(int)type auto:(BOOL)_auto serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 
 @end

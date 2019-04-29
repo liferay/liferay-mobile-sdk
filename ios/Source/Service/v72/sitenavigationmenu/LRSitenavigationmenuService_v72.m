@@ -139,11 +139,11 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateSiteNavigationMenuWithSiteNavigationMenuId:(long long)siteNavigationMenuId type:(int)type auto:(BOOL)auto serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateSiteNavigationMenuWithSiteNavigationMenuId:(long long)siteNavigationMenuId type:(int)type auto:(BOOL)_auto serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"siteNavigationMenuId": @(siteNavigationMenuId),
 		@"type": @(type),
-		@"auto": @(auto),
+		@"auto": @(_auto),
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.kernel.service.ServiceContext" wrapper:serviceContext];
