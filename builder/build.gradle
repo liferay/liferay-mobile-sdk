@@ -4,7 +4,7 @@ apply from: '../formatter.gradle'
 format.workingDir = 'src/main/java'
 
 dependencies {
-	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.2.5'
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.6'
 	compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
 	compile group: 'org.apache.velocity', name: 'velocity-tools', version: '2.0'
 	compile group: 'org.json', name: 'json', version: '20180813'
