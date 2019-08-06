@@ -3,7 +3,7 @@
 Stable releases and documentation for each platform is available at the following
 links:
 
-- [Android](android/README.md)
+- [Android](android/android-sdk/README.md)
 - [iOS](ios/README.md)
 - [Windows](windows/README.md)
 - [Download](../../releases) 
