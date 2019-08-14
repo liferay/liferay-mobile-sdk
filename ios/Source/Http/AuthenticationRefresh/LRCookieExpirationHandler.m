@@ -30,8 +30,8 @@ static dispatch_semaphore_t syncSemaphore;
 
 	LRCookieAuthentication *auth = (LRCookieAuthentication *) session.authentication;
 
-	dispatch_semaphore_wait(syncSemaphore, DISPATCH_TIME_FOREVER);
 	if (auth.shouldHandleExpiration) {
+		dispatch_semaphore_wait(syncSemaphore, DISPATCH_TIME_FOREVER);
 		if ([self shouldCookieBeUpdated: session.authentication]) {
 			if (handler == nil) {
 				LRSession *cookieSession =  [LRCookieSignIn
