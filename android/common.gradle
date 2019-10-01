@@ -1,6 +1,6 @@
 ext {
 	versionCode = 721
-	versionName = '7.2.1'
+	versionName = '7.2.2'
 
 	publishedGroupId = 'com.liferay.mobile'
 	libraryName = project.name
