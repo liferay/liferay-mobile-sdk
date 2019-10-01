@@ -198,8 +198,19 @@ static NSMutableDictionary<NSString *, ChallengeBlock> *challengeBlocks;
 - (NSData *)_getBodyWithUsername:(NSString *)username
 	password:(NSString *) password {
 
+	NSString *unreserved = @"*-._";
+
+	NSMutableCharacterSet *allowed = [NSMutableCharacterSet alphanumericCharacterSet];
+	[allowed addCharactersInString:unreserved];
+
+	NSString *encodedUsername = [username
+		stringByAddingPercentEncodingWithAllowedCharacters:allowed];
+
+	NSString *encodedPassword = [password
+		stringByAddingPercentEncodingWithAllowedCharacters:allowed];
+
 	NSString *bodyString = [NSString stringWithFormat:@"login=%@&password=%@",
-		username, password];
+		encodedUsername, encodedPassword];
 
 	return [bodyString dataUsingEncoding:NSASCIIStringEncoding];
 }
