@@ -13,7 +13,7 @@
  */
 
 #import "LRUploadUtil.h"
-#import <AFNetworking/AFNetworking.h>
+#import <AFNetworking/AFURLSessionManager.h>
 #import "LRHttpUtil.h"
 #import "LRUploadData.h"
 #import "LRResponseParser.h"

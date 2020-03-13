@@ -13,7 +13,6 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <AFNetworking/AFNetworking.h>
 #import "LRAuthenticationRefreshHandler.h"
 
 @interface LRBasicAuthRefreshHandler : NSObject <LRAuthenticationRefreshHandler>
