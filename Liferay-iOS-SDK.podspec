@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
 								]
 							}
 	s.requires_arc			= true
-	s.dependency			"AFNetworking", "~> 3.0"
+	s.dependency			"AFNetworking/NSURLSession", "~> 3.0"
 	s.dependency			"AppAuth", "0.92"
 	
 	s.pod_target_xcconfig = { 'OTHER_CFLAGS' => '-DLIFERAY_MOBILE_SDK_FRAMEWORK=1' }
