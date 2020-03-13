@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06F1E1DC85F266A409149FC6 /* libPods-mobile-sdk-Test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8819FB7BE81082CFB4BDD0E4 /* libPods-mobile-sdk-Test.a */; };
 		0B57EC291D9AA80E00D0AD23 /* LRCookieAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57EC281D9AA80E00D0AD23 /* LRCookieAuthentication.m */; };
 		0B57EC2C1D9AA81D00D0AD23 /* LRCookieSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57EC2B1D9AA81D00D0AD23 /* LRCookieSignIn.m */; };
 		0B57EC2E1D9AA86800D0AD23 /* CookieAuthenticationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57EC2D1D9AA86800D0AD23 /* CookieAuthenticationTest.m */; };
 		0B6268621EE9AAF500B81D67 /* ParseAuthTokenTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6268611EE9AAF500B81D67 /* ParseAuthTokenTest.m */; };
-		87C8D0C95025EA314CC11BBC /* libPods-mobile-sdk-Liferay iOS SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12B01AB1138179D989511F7 /* libPods-mobile-sdk-Liferay iOS SDK.a */; };
-		C42E38B6066A8FEA9F781821 /* libPods-mobile-sdk-Test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7ED85BFD06170E8C7DA6BA2 /* libPods-mobile-sdk-Test.a */; };
 		CC03FB6F18ED7BA000F3F16C /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC03FB6C18ED7BA000F3F16C /* settings.plist */; };
 		CC03FCA418ED7DCD00F3F16C /* LRBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FB7418ED7DCC00F3F16C /* LRBaseService.m */; };
 		CC03FCA518ED7DCD00F3F16C /* LRBatchSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CC03FB7618ED7DCC00F3F16C /* LRBatchSession.m */; };
@@ -766,6 +765,7 @@
 		D6DBDEE32068DFF4004F979F /* SafariAuthorizationUICoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DBDEE12068DE18004F979F /* SafariAuthorizationUICoordinator.m */; };
 		D6DBDEE52068F22E004F979F /* OAuth2AuthenticationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DBDEE42068F22E004F979F /* OAuth2AuthenticationTest.m */; };
 		D6E081FF2036F0A7008BBCC0 /* LRCookieExpirationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E081FE2036F0A7008BBCC0 /* LRCookieExpirationHandler.m */; };
+		EBCAD65B0B8476A8F274AFC5 /* libPods-mobile-sdk-Liferay iOS SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FEE25064ED86467B7DC20E5A /* libPods-mobile-sdk-Liferay iOS SDK.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -799,11 +799,11 @@
 		0B62685E1EE9AA3700B81D67 /* LRCookieSignIn+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LRCookieSignIn+Test.h"; sourceTree = "<group>"; };
 		0B6268611EE9AAF500B81D67 /* ParseAuthTokenTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseAuthTokenTest.m; sourceTree = "<group>"; };
 		0B89AD6B1E5F313300D57681 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
-		18CD854F54CBDD248C048762 /* Pods-mobile-sdk-Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-sdk-Test.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mobile-sdk-Test/Pods-mobile-sdk-Test.debug.xcconfig"; sourceTree = "<group>"; };
-		38316EDF65692D8428B60858 /* Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mobile-sdk-Liferay iOS SDK/Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig"; sourceTree = "<group>"; };
-		8B7FD4FF85FE802EBA325FBD /* Pods-mobile-sdk-Liferay iOS SDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-sdk-Liferay iOS SDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-mobile-sdk-Liferay iOS SDK/Pods-mobile-sdk-Liferay iOS SDK.release.xcconfig"; sourceTree = "<group>"; };
-		ABFA6B3106F89CECBBB4A1AD /* Pods-mobile-sdk-Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-sdk-Test.release.xcconfig"; path = "Pods/Target Support Files/Pods-mobile-sdk-Test/Pods-mobile-sdk-Test.release.xcconfig"; sourceTree = "<group>"; };
-		C7ED85BFD06170E8C7DA6BA2 /* libPods-mobile-sdk-Test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobile-sdk-Test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6396C5B9F72C5D34043E1FEA /* Pods-mobile-sdk-Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-sdk-Test.release.xcconfig"; path = "Target Support Files/Pods-mobile-sdk-Test/Pods-mobile-sdk-Test.release.xcconfig"; sourceTree = "<group>"; };
+		7990DB09FFF142027A75774C /* Pods-mobile-sdk-Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-sdk-Test.debug.xcconfig"; path = "Target Support Files/Pods-mobile-sdk-Test/Pods-mobile-sdk-Test.debug.xcconfig"; sourceTree = "<group>"; };
+		8819FB7BE81082CFB4BDD0E4 /* libPods-mobile-sdk-Test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobile-sdk-Test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4A37A6A5448D3448A6104A8 /* Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig"; path = "Target Support Files/Pods-mobile-sdk-Liferay iOS SDK/Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig"; sourceTree = "<group>"; };
+		AF940B5E5ABCB1F908F5BCE0 /* Pods-mobile-sdk-Liferay iOS SDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-sdk-Liferay iOS SDK.release.xcconfig"; path = "Target Support Files/Pods-mobile-sdk-Liferay iOS SDK/Pods-mobile-sdk-Liferay iOS SDK.release.xcconfig"; sourceTree = "<group>"; };
 		CC03FB6C18ED7BA000F3F16C /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		CC03FB6D18ED7BA000F3F16C /* Test-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Test-Info.plist"; sourceTree = "<group>"; };
 		CC03FB6E18ED7BA000F3F16C /* Test-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Test-Prefix.pch"; sourceTree = "<group>"; };
@@ -1285,7 +1285,6 @@
 		CCDCE0581A694BB20045023A /* BatchSessionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchSessionTest.m; sourceTree = "<group>"; };
 		CCF098001ABA355E0023951B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CCF5F35D1AB869E0006132AA /* DownloadFileTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadFileTest.m; sourceTree = "<group>"; };
-		D12B01AB1138179D989511F7 /* libPods-mobile-sdk-Liferay iOS SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobile-sdk-Liferay iOS SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D62E6E6B20737ED000CEABA4 /* LROAuth2RefreshHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LROAuth2RefreshHandler.m; sourceTree = "<group>"; };
 		D62E6E6C20737ED000CEABA4 /* LROAuth2RefreshHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LROAuth2RefreshHandler.h; sourceTree = "<group>"; };
 		D63CC71B2059616300DDF8C7 /* LRAuthenticationRefreshHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRAuthenticationRefreshHandler.h; sourceTree = "<group>"; };
@@ -1794,6 +1793,7 @@
 		D6E081FD2036F0A7008BBCC0 /* LRCookieExpirationHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRCookieExpirationHandler.h; sourceTree = "<group>"; };
 		D6E081FE2036F0A7008BBCC0 /* LRCookieExpirationHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRCookieExpirationHandler.m; sourceTree = "<group>"; };
 		D6E082032036FD37008BBCC0 /* LRCookieCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCookieCallback.h; sourceTree = "<group>"; };
+		FEE25064ED86467B7DC20E5A /* libPods-mobile-sdk-Liferay iOS SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobile-sdk-Liferay iOS SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1803,7 +1803,7 @@
 			files = (
 				CCF098011ABA355E0023951B /* UIKit.framework in Frameworks */,
 				CC677D2818EC511900F3DFAB /* Foundation.framework in Frameworks */,
-				C42E38B6066A8FEA9F781821 /* libPods-mobile-sdk-Test.a in Frameworks */,
+				06F1E1DC85F266A409149FC6 /* libPods-mobile-sdk-Test.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1812,7 +1812,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCA6594518EC4BE800957D20 /* Foundation.framework in Frameworks */,
-				87C8D0C95025EA314CC11BBC /* libPods-mobile-sdk-Liferay iOS SDK.a in Frameworks */,
+				EBCAD65B0B8476A8F274AFC5 /* libPods-mobile-sdk-Liferay iOS SDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1828,15 +1828,16 @@
 			path = Cookie;
 			sourceTree = "<group>";
 		};
-		AEF4F1B2D8A8F9656A1245AF /* Pods */ = {
+		241319F3F3422E695A4E775E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				38316EDF65692D8428B60858 /* Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig */,
-				8B7FD4FF85FE802EBA325FBD /* Pods-mobile-sdk-Liferay iOS SDK.release.xcconfig */,
-				18CD854F54CBDD248C048762 /* Pods-mobile-sdk-Test.debug.xcconfig */,
-				ABFA6B3106F89CECBBB4A1AD /* Pods-mobile-sdk-Test.release.xcconfig */,
+				A4A37A6A5448D3448A6104A8 /* Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig */,
+				AF940B5E5ABCB1F908F5BCE0 /* Pods-mobile-sdk-Liferay iOS SDK.release.xcconfig */,
+				7990DB09FFF142027A75774C /* Pods-mobile-sdk-Test.debug.xcconfig */,
+				6396C5B9F72C5D34043E1FEA /* Pods-mobile-sdk-Test.release.xcconfig */,
 			);
 			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		CC03FB6B18ED7BA000F3F16C /* Supporting Files */ = {
@@ -4041,7 +4042,7 @@
 				CCA6594218EC4BE800957D20 /* Products */,
 				CC6130C71B7A2E4000AF9657 /* gradle.properties */,
 				CC6130C61B7A2E1600AF9657 /* Liferay-iOS-SDK.podspec */,
-				AEF4F1B2D8A8F9656A1245AF /* Pods */,
+				241319F3F3422E695A4E775E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -4059,8 +4060,8 @@
 			children = (
 				CCF098001ABA355E0023951B /* UIKit.framework */,
 				CCA6594418EC4BE800957D20 /* Foundation.framework */,
-				D12B01AB1138179D989511F7 /* libPods-mobile-sdk-Liferay iOS SDK.a */,
-				C7ED85BFD06170E8C7DA6BA2 /* libPods-mobile-sdk-Test.a */,
+				FEE25064ED86467B7DC20E5A /* libPods-mobile-sdk-Liferay iOS SDK.a */,
+				8819FB7BE81082CFB4BDD0E4 /* libPods-mobile-sdk-Test.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -6546,7 +6547,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC677D3518EC511900F3DFAB /* Build configuration list for PBXNativeTarget "Test" */;
 			buildPhases = (
-				2E1556BCD70DB8B0236D95ED /* [CP] Check Pods Manifest.lock */,
+				4AA1771A785C6DDF82365243 /* [CP] Check Pods Manifest.lock */,
 				CC677D2218EC511900F3DFAB /* Sources */,
 				CC677D2318EC511900F3DFAB /* Frameworks */,
 				CC677D2418EC511900F3DFAB /* Resources */,
@@ -6565,7 +6566,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CCA6596418EC4BE800957D20 /* Build configuration list for PBXNativeTarget "Liferay iOS SDK" */;
 			buildPhases = (
-				B31219864A8749A21505F7BB /* [CP] Check Pods Manifest.lock */,
+				538E0FC0FB9479A9ECDFAEC4 /* [CP] Check Pods Manifest.lock */,
 				CCA6593D18EC4BE800957D20 /* Sources */,
 				CCA6593E18EC4BE800957D20 /* Frameworks */,
 				CCA6593F18EC4BE800957D20 /* CopyFiles */,
@@ -6627,16 +6628,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2E1556BCD70DB8B0236D95ED /* [CP] Check Pods Manifest.lock */ = {
+		4AA1771A785C6DDF82365243 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-mobile-sdk-Test-checkManifestLockResult.txt",
 			);
@@ -6645,16 +6650,20 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B31219864A8749A21505F7BB /* [CP] Check Pods Manifest.lock */ = {
+		538E0FC0FB9479A9ECDFAEC4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-mobile-sdk-Liferay iOS SDK-checkManifestLockResult.txt",
 			);
@@ -7456,7 +7465,7 @@
 /* Begin XCBuildConfiguration section */
 		CC677D3618EC511900F3DFAB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18CD854F54CBDD248C048762 /* Pods-mobile-sdk-Test.debug.xcconfig */;
+			baseConfigurationReference = 7990DB09FFF142027A75774C /* Pods-mobile-sdk-Test.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -7477,7 +7486,7 @@
 		};
 		CC677D3718EC511900F3DFAB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ABFA6B3106F89CECBBB4A1AD /* Pods-mobile-sdk-Test.release.xcconfig */;
+			baseConfigurationReference = 6396C5B9F72C5D34043E1FEA /* Pods-mobile-sdk-Test.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -7564,7 +7573,7 @@
 		};
 		CCA6596518EC4BE800957D20 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38316EDF65692D8428B60858 /* Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig */;
+			baseConfigurationReference = A4A37A6A5448D3448A6104A8 /* Pods-mobile-sdk-Liferay iOS SDK.debug.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/Liferay_iOS_SDK.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -7576,7 +7585,7 @@
 		};
 		CCA6596618EC4BE800957D20 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B7FD4FF85FE802EBA325FBD /* Pods-mobile-sdk-Liferay iOS SDK.release.xcconfig */;
+			baseConfigurationReference = AF940B5E5ABCB1F908F5BCE0 /* Pods-mobile-sdk-Liferay iOS SDK.release.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/Liferay_iOS_SDK.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
