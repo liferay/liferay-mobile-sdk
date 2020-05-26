@@ -105,17 +105,17 @@ a Mobile SDK for you portlet.
 
 From the root folder, run the following command to start up the wizard:
 
-    ./gradlew createModule
+    ./gradlew createModule --console plain
 
 This will start a wizard with the most common required [properties](#properties)
 it needs to generate code for your portlet. If for some reason you need more
 control over these properties, run the same command with the `all` argument:
 
-    ./gradlew createModule -P=all
+    ./gradlew createModule -P=all --console plain
 
 If you receive an "Error while getting console" message. Disable daemon mode:
 
-    ./gradlew createModule --no-daemon
+    ./gradlew createModule --no-daemon --console plain
 
 It should print out something like this:
 
