@@ -33,9 +33,7 @@ configure(subprojects.findAll { it.name.startsWith('modules-') }) {
 
 	dependencies {
 		if (isJavaCompile()) {
-			compile 'com.liferay.mobile:liferay-android-sdk:7.1.4'
-		} else {
-			compile project(path: ':liferay-android-sdk', configuration: 'default')
+			compile 'com.liferay.mobile:liferay-android-sdk:7.0.8'
 		}
 
 		compile group: 'com.google.android', name: 'android', version: '2.3.3'
