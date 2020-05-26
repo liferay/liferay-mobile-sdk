@@ -11,7 +11,7 @@ ext {
 
 apply from: 'sdk-builder.gradle'
 
-configure(subprojects.findAll { it.name.startsWith('modules/') }) {
+configure(subprojects.findAll { it.name.startsWith('modules-') }) {
 	apply from: '../../sdk-builder.gradle'
 	apply plugin: 'java'
 
