@@ -1,4 +1,15 @@
-include 'android/android-sdk', 'android/android-all', 'android/services-v62', 'android/services-v7', 'android/services-v71', 'android/services-v72', 'ios', "windows", 'builder'
+include 'builder'
+
+if (!isBuilderTask()) {
+	include 'android/android-sdk', 'android/android-all', 'android/services-v62', 'android/services-v7', 'android/services-v71', 'android/services-v72', 'ios', 'windows' 
+
+	project(':android/android-all').name = 'liferay-android-sdk'
+	project(':android/android-sdk').name = 'liferay-android-sdk-core'
+	project(':android/services-v62').name = 'liferay-android-services-v62'
+	project(':android/services-v7').name = 'liferay-android-services-v7'
+	project(':android/services-v71').name = 'liferay-android-services-v71'
+	project(':android/services-v72').name = 'liferay-android-services-v72'
+}
 
 rootProject.name = 'liferay-mobile-sdk-project'
 
@@ -11,9 +22,8 @@ modules.each { File module ->
 	}
 }
 
-project(':android/android-all').name = 'liferay-android-sdk'
-project(':android/android-sdk').name = 'liferay-android-sdk-core'
-project(':android/services-v62').name = 'liferay-android-services-v62'
-project(':android/services-v7').name = 'liferay-android-services-v7'
-project(':android/services-v71').name = 'liferay-android-services-v71'
-project(':android/services-v72').name = 'liferay-android-services-v72'
+def isBuilderTask() {
+	def taskNames = gradle.startParameter.taskNames
+
+	return taskNames.size() > 0 && (taskNames.get(0).equals("createModule") || taskNames.get(0).equals("generate"))
+}
