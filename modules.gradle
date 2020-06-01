@@ -15,7 +15,7 @@ configure(subprojects.findAll { it.name.startsWith('modules-') }) {
 	apply from: '../../sdk-builder.gradle'
 	apply plugin: 'java'
 
-	archivesBaseName = "liferay-${contexts}-android-sdk"
+	archivesBaseName = "liferay-android-sdk-services"
 
 	sourceSets {
 		main {
