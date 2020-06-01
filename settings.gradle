@@ -25,5 +25,5 @@ modules.each { File module ->
 def isBuilderTask() {
 	def taskNames = gradle.startParameter.taskNames
 
-	return taskNames.size() > 0 && (taskNames.get(0).equals("createModule") || taskNames.get(0).equals("generate"))
+	return taskNames.size() > 0 && (taskNames.get(0).equals("createModule") || taskNames.get(0).equals("generate") || taskNames.get(0).equals("jar"))
 }
