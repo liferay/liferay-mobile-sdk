@@ -24,9 +24,9 @@
 @interface LRSitenavigationmenuService_v73 : LRBaseService
 
 - (NSDictionary *)addSiteNavigationMenuWithGroupId:(long long)groupId name:(NSString *)name serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
-- (NSDictionary *)addSiteNavigationMenuWithGroupId:(long long)groupId name:(NSString *)name type:(int)type auto:(BOOL)auto serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addSiteNavigationMenuWithGroupId:(long long)groupId name:(NSString *)name type:(int)type automatic:(BOOL)automatic serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addSiteNavigationMenuWithGroupId:(long long)groupId name:(NSString *)name type:(int)type serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
-- (NSDictionary *)updateSiteNavigationMenuWithSiteNavigationMenuId:(long long)siteNavigationMenuId type:(int)type auto:(BOOL)auto serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
+- (NSDictionary *)updateSiteNavigationMenuWithSiteNavigationMenuId:(long long)siteNavigationMenuId type:(int)type automatic:(BOOL)automatic serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSDictionary *)updateSiteNavigationMenuWithSiteNavigationMenuId:(long long)siteNavigationMenuId name:(NSString *)name serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error;
 - (NSArray *)getSiteNavigationMenusWithGroupId:(long long)groupId keywords:(NSString *)keywords start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error;
 - (NSArray *)getSiteNavigationMenusWithGroupIds:(NSArray *)groupIds start:(int)start end:(int)end orderByComparator:(LRJSONObjectWrapper *)orderByComparator error:(NSError **)error;

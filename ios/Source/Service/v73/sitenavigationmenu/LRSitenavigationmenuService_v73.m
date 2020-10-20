@@ -32,12 +32,12 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addSiteNavigationMenuWithGroupId:(long long)groupId name:(NSString *)name type:(int)type auto:(BOOL)auto serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addSiteNavigationMenuWithGroupId:(long long)groupId name:(NSString *)name type:(int)type automatic:(BOOL)automatic serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"name": [self checkNull: name],
 		@"type": @(type),
-		@"auto": @(auto),
+		@"auto": @(automatic),
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.kernel.service.ServiceContext" wrapper:serviceContext];
@@ -61,11 +61,11 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateSiteNavigationMenuWithSiteNavigationMenuId:(long long)siteNavigationMenuId type:(int)type auto:(BOOL)auto serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateSiteNavigationMenuWithSiteNavigationMenuId:(long long)siteNavigationMenuId type:(int)type automatic:(BOOL)automatic serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"siteNavigationMenuId": @(siteNavigationMenuId),
 		@"type": @(type),
-		@"auto": @(auto),
+		@"auto": @(automatic),
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.kernel.service.ServiceContext" wrapper:serviceContext];
