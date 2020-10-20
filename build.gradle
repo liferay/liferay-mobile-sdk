@@ -31,12 +31,13 @@ allprojects {
 apply from: 'modules.gradle'
 
 configure(subprojects.findAll { it.name != 'ios' &&
-	it.name != 'liferay-android-sdk'&&
+	it.name != 'liferay-android-sdk' &&
 	it.name != 'liferay-android-sdk-core'&&
 	it.name != 'liferay-android-services-v62' &&
 	it.name != 'liferay-android-services-v7' &&
 	it.name != 'liferay-android-services-v71' &&
-	it.name != 'liferay-android-services-v72'}) {
+	it.name != 'liferay-android-services-v72' &&
+	it.name != 'liferay-android-services-v73' }) {
 
 	apply plugin: 'java'
 	apply plugin: 'eclipse'
