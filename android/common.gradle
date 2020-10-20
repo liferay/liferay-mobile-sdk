@@ -44,3 +44,7 @@ repositories {
 
 apply from: '../install.gradle'
 apply from: '../bintray.gradle'
+
+javadoc {
+	failOnError = false
+}
