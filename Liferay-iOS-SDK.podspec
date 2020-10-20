@@ -11,11 +11,10 @@ Pod::Spec.new do |s|
 	s.authors				= {
 								"Bruno Farache" => "bruno.farache@liferay.com"
 							}
-	s.osx.deployment_target = "10.9"
-	s.ios.deployment_target = "8.0"
+	s.osx.deployment_target = "10.10"
+	s.ios.deployment_target = "9.0"
 	s.tvos.deployment_target = "9.0"
 	s.watchos.deployment_target = "2.0"
-	s.ios.deployment_target	= '7.0'
 	s.source				= {
 								:git => "https://github.com/liferay/liferay-mobile-sdk.git",
 								:tag => "ios-7.2.3"
@@ -27,7 +26,7 @@ Pod::Spec.new do |s|
 								]
 							}
 	s.requires_arc			= true
-	s.dependency			"AFNetworking/NSURLSession", "~> 3.0"
+	s.dependency			"AFNetworking/NSURLSession", "~> 4.0"
 	s.dependency			"AppAuth", "0.92"
 	
 	s.pod_target_xcconfig = { 'OTHER_CFLAGS' => '-DLIFERAY_MOBILE_SDK_FRAMEWORK=1' }

@@ -1,15 +1,15 @@
 PODS:
-  - AFNetworking/NSURLSession (3.2.1):
+  - AFNetworking/NSURLSession (4.0.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.1)
-  - AFNetworking/Security (3.2.1)
-  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
   - AppAuth (0.92.0)
 
 DEPENDENCIES:
-  - AFNetworking/NSURLSession (~> 3.0)
+  - AFNetworking/NSURLSession (~> 4.0)
   - AppAuth (= 0.92)
 
 SPEC REPOS:
@@ -19,9 +19,9 @@ SPEC REPOS:
     - AFNetworking
 
 SPEC CHECKSUMS:
-  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   AppAuth: 3f4f1d6d85ad631d0bbf15ffcdc10c447face97a
 
 PODFILE CHECKSUM: cc09e4cb18c80161bde7d9f487ffa0104f60f545
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3
