@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
-	package="servicesv71">
+	package="com.liferay.mobile.android.v71">
 
 </manifest>

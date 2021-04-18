@@ -1,9 +1,8 @@
 include 'builder'
 
 if (!isBuilderTask()) {
-	include 'android/android-sdk', 'android/android-all', 'android/services-v62', 'android/services-v7', 'android/services-v71', 'android/services-v72', 'android/services-v73', 'ios', 'windows'
+	include 'android/android-sdk', 'android/services-v62', 'android/services-v7', 'android/services-v71', 'android/services-v72', 'android/services-v73', 'ios', 'windows'
 
-	project(':android/android-all').name = 'liferay-android-sdk'
 	project(':android/android-sdk').name = 'liferay-android-sdk-core'
 	project(':android/services-v62').name = 'liferay-android-services-v62'
 	project(':android/services-v7').name = 'liferay-android-services-v7'

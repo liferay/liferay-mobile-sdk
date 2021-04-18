@@ -12,9 +12,9 @@ ext {
 	siteUrl = 'https://github.com/liferay/liferay-mobile-sdk'
 	gitUrl = 'https://github.com/liferay/liferay-mobile-sdk.git'
 
-	developerId = 'brunofarache'
-	developerName = 'Bruno Farache'
-	developerEmail = 'bruno.farache@liferay.com'
+	developerId = 'nhpatt'
+	developerName = 'Javier Gamarra'
+	developerEmail = 'javier.gamarra@liferay.com'
 
 	licenseName = 'GNU Lesser General Public License, version 2.1'
 	licenseUrl = 'http://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html'
@@ -43,8 +43,3 @@ repositories {
 }
 
 apply from: '../install.gradle'
-apply from: '../bintray.gradle'
-
-javadoc {
-	failOnError = false
-}
