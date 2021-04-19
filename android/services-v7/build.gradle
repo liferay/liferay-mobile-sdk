@@ -3,6 +3,6 @@ apply from: '../common.gradle'
 dependencies {
 	api project(':liferay-android-sdk-core')
 
-	testImplementation 'org.json:json:20180813'
-	testImplementation 'junit:junit:4.12'
+	testImplementation 'org.json:json:20201115'
+	testImplementation 'junit:junit:4.13.2'
 }

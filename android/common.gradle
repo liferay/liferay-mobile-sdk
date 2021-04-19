@@ -18,7 +18,7 @@ ext {
 
 	licenseName = 'GNU Lesser General Public License, version 2.1'
 	licenseUrl = 'http://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html'
-	allLicenses = ["LGPL-2.1"]
+	allLicenses = ['LGPL-2.1']
 }
 
 apply from: '../../formatter.gradle'
@@ -27,7 +27,7 @@ format.workingDir = 'src/main/java'
 apply plugin: 'com.android.library'
 
 android {
-	buildToolsVersion "30.0.2"
+	buildToolsVersion '30.0.3'
 	compileSdkVersion 30
 	useLibrary 'org.apache.http.legacy'
 
@@ -39,7 +39,6 @@ android {
 
 repositories {
 	google()
-	jcenter()
 }
 
 apply from: '../install.gradle'
