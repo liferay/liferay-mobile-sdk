@@ -8,6 +8,7 @@
 			tools:node="replace"/>
 
 		<activity
+			android:exported="true"
 			android:name="com.liferay.mobile.android.auth.oauth2.OAuth2RedirectActivity"
 			android:noHistory="true">
 			<intent-filter>
